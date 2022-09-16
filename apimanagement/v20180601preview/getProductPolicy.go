@@ -21,19 +21,28 @@ func LookupProductPolicy(ctx *pulumi.Context, args *LookupProductPolicyArgs, opt
 }
 
 type LookupProductPolicyArgs struct {
-	PolicyId          string `pulumi:"policyId"`
-	ProductId         string `pulumi:"productId"`
+	// The identifier of the Policy.
+	PolicyId string `pulumi:"policyId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId string `pulumi:"productId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Policy Contract details.
 type LookupProductPolicyResult struct {
+	// Format of the policyContent.
 	ContentFormat *string `pulumi:"contentFormat"`
-	Id            string  `pulumi:"id"`
-	Name          string  `pulumi:"name"`
-	PolicyContent string  `pulumi:"policyContent"`
-	Type          string  `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Json escaped Xml Encoded contents of the Policy.
+	PolicyContent string `pulumi:"policyContent"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupProductPolicyResult
@@ -63,10 +72,14 @@ func LookupProductPolicyOutput(ctx *pulumi.Context, args LookupProductPolicyOutp
 }
 
 type LookupProductPolicyOutputArgs struct {
-	PolicyId          pulumi.StringInput `pulumi:"policyId"`
-	ProductId         pulumi.StringInput `pulumi:"productId"`
+	// The identifier of the Policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupProductPolicyOutputArgs) ElementType() reflect.Type {
@@ -88,22 +101,27 @@ func (o LookupProductPolicyResultOutput) ToLookupProductPolicyResultOutputWithCo
 	return o
 }
 
+// Format of the policyContent.
 func (o LookupProductPolicyResultOutput) ContentFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) *string { return v.ContentFormat }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupProductPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupProductPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Json escaped Xml Encoded contents of the Policy.
 func (o LookupProductPolicyResultOutput) PolicyContent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.PolicyContent }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupProductPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,19 +21,28 @@ func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysA
 }
 
 type ListNotificationHubKeysArgs struct {
+	// The connection string of the NotificationHub for the specified authorizationRule.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	NotificationHubName   string `pulumi:"notificationHubName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The notification hub name.
+	NotificationHubName string `pulumi:"notificationHubName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Namespace/NotificationHub Connection String
 type ListNotificationHubKeysResult struct {
-	KeyName                   *string `pulumi:"keyName"`
-	PrimaryConnectionString   *string `pulumi:"primaryConnectionString"`
-	PrimaryKey                *string `pulumi:"primaryKey"`
+	// KeyName of the created AuthorizationRule
+	KeyName *string `pulumi:"keyName"`
+	// PrimaryConnectionString of the AuthorizationRule.
+	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
+	// PrimaryKey of the created AuthorizationRule.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// SecondaryConnectionString of the created AuthorizationRule
 	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
-	SecondaryKey              *string `pulumi:"secondaryKey"`
+	// SecondaryKey of the created AuthorizationRule
+	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
 func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHubKeysOutputArgs, opts ...pulumi.InvokeOption) ListNotificationHubKeysResultOutput {
@@ -50,10 +59,14 @@ func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHub
 }
 
 type ListNotificationHubKeysOutputArgs struct {
+	// The connection string of the NotificationHub for the specified authorizationRule.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	NotificationHubName   pulumi.StringInput `pulumi:"notificationHubName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The notification hub name.
+	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListNotificationHubKeysOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutp
 	return o
 }
 
+// KeyName of the created AuthorizationRule
 func (o ListNotificationHubKeysResultOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
+// PrimaryConnectionString of the AuthorizationRule.
 func (o ListNotificationHubKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// PrimaryKey of the created AuthorizationRule.
 func (o ListNotificationHubKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// SecondaryConnectionString of the created AuthorizationRule
 func (o ListNotificationHubKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// SecondaryKey of the created AuthorizationRule
 func (o ListNotificationHubKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

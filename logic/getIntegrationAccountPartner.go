@@ -22,23 +22,36 @@ func LookupIntegrationAccountPartner(ctx *pulumi.Context, args *LookupIntegratio
 }
 
 type LookupIntegrationAccountPartnerArgs struct {
+	// The integration account name.
 	IntegrationAccountName string `pulumi:"integrationAccountName"`
-	PartnerName            string `pulumi:"partnerName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The integration account partner name.
+	PartnerName string `pulumi:"partnerName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The integration account partner.
 type LookupIntegrationAccountPartnerResult struct {
-	ChangedTime string                 `pulumi:"changedTime"`
-	Content     PartnerContentResponse `pulumi:"content"`
-	CreatedTime string                 `pulumi:"createdTime"`
-	Id          string                 `pulumi:"id"`
-	Location    *string                `pulumi:"location"`
-	Metadata    interface{}            `pulumi:"metadata"`
-	Name        string                 `pulumi:"name"`
-	PartnerType string                 `pulumi:"partnerType"`
-	Tags        map[string]string      `pulumi:"tags"`
-	Type        string                 `pulumi:"type"`
+	// The changed time.
+	ChangedTime string `pulumi:"changedTime"`
+	// The partner content.
+	Content PartnerContentResponse `pulumi:"content"`
+	// The created time.
+	CreatedTime string `pulumi:"createdTime"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// The metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The partner type.
+	PartnerType string `pulumi:"partnerType"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupIntegrationAccountPartnerOutput(ctx *pulumi.Context, args LookupIntegrationAccountPartnerOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountPartnerResultOutput {
@@ -55,9 +68,12 @@ func LookupIntegrationAccountPartnerOutput(ctx *pulumi.Context, args LookupInteg
 }
 
 type LookupIntegrationAccountPartnerOutputArgs struct {
+	// The integration account name.
 	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
-	PartnerName            pulumi.StringInput `pulumi:"partnerName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The integration account partner name.
+	PartnerName pulumi.StringInput `pulumi:"partnerName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupIntegrationAccountPartnerOutputArgs) ElementType() reflect.Type {
@@ -79,42 +95,52 @@ func (o LookupIntegrationAccountPartnerResultOutput) ToLookupIntegrationAccountP
 	return o
 }
 
+// The changed time.
 func (o LookupIntegrationAccountPartnerResultOutput) ChangedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.ChangedTime }).(pulumi.StringOutput)
 }
 
+// The partner content.
 func (o LookupIntegrationAccountPartnerResultOutput) Content() PartnerContentResponseOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) PartnerContentResponse { return v.Content }).(PartnerContentResponseOutput)
 }
 
+// The created time.
 func (o LookupIntegrationAccountPartnerResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
+// The resource id.
 func (o LookupIntegrationAccountPartnerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupIntegrationAccountPartnerResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The metadata.
 func (o LookupIntegrationAccountPartnerResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
+// Gets the resource name.
 func (o LookupIntegrationAccountPartnerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The partner type.
 func (o LookupIntegrationAccountPartnerResultOutput) PartnerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.PartnerType }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupIntegrationAccountPartnerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupIntegrationAccountPartnerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.Type }).(pulumi.StringOutput)
 }

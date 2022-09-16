@@ -21,28 +21,46 @@ func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, o
 }
 
 type LookupRoleAssignmentArgs struct {
-	RoleAssignmentName string  `pulumi:"roleAssignmentName"`
-	Scope              string  `pulumi:"scope"`
-	TenantId           *string `pulumi:"tenantId"`
+	// The name of the role assignment. It can be any valid GUID.
+	RoleAssignmentName string `pulumi:"roleAssignmentName"`
+	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	Scope string `pulumi:"scope"`
+	// Tenant ID for cross-tenant request
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // Role Assignments
 type LookupRoleAssignmentResult struct {
-	Condition                          *string `pulumi:"condition"`
-	ConditionVersion                   *string `pulumi:"conditionVersion"`
-	CreatedBy                          string  `pulumi:"createdBy"`
-	CreatedOn                          string  `pulumi:"createdOn"`
+	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
+	Condition *string `pulumi:"condition"`
+	// Version of the condition. Currently accepted value is '2.0'
+	ConditionVersion *string `pulumi:"conditionVersion"`
+	// Id of the user who created the assignment
+	CreatedBy string `pulumi:"createdBy"`
+	// Time it was created
+	CreatedOn string `pulumi:"createdOn"`
+	// Id of the delegated managed identity resource
 	DelegatedManagedIdentityResourceId *string `pulumi:"delegatedManagedIdentityResourceId"`
-	Description                        *string `pulumi:"description"`
-	Id                                 string  `pulumi:"id"`
-	Name                               string  `pulumi:"name"`
-	PrincipalId                        string  `pulumi:"principalId"`
-	PrincipalType                      *string `pulumi:"principalType"`
-	RoleDefinitionId                   string  `pulumi:"roleDefinitionId"`
-	Scope                              string  `pulumi:"scope"`
-	Type                               string  `pulumi:"type"`
-	UpdatedBy                          string  `pulumi:"updatedBy"`
-	UpdatedOn                          string  `pulumi:"updatedOn"`
+	// Description of role assignment
+	Description *string `pulumi:"description"`
+	// The role assignment ID.
+	Id string `pulumi:"id"`
+	// The role assignment name.
+	Name string `pulumi:"name"`
+	// The principal ID.
+	PrincipalId string `pulumi:"principalId"`
+	// The principal type of the assigned principal ID.
+	PrincipalType *string `pulumi:"principalType"`
+	// The role definition ID.
+	RoleDefinitionId string `pulumi:"roleDefinitionId"`
+	// The role assignment scope.
+	Scope string `pulumi:"scope"`
+	// The role assignment type.
+	Type string `pulumi:"type"`
+	// Id of the user who updated the assignment
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Time it was updated
+	UpdatedOn string `pulumi:"updatedOn"`
 }
 
 // Defaults sets the appropriate defaults for LookupRoleAssignmentResult
@@ -72,9 +90,12 @@ func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOu
 }
 
 type LookupRoleAssignmentOutputArgs struct {
-	RoleAssignmentName pulumi.StringInput    `pulumi:"roleAssignmentName"`
-	Scope              pulumi.StringInput    `pulumi:"scope"`
-	TenantId           pulumi.StringPtrInput `pulumi:"tenantId"`
+	// The name of the role assignment. It can be any valid GUID.
+	RoleAssignmentName pulumi.StringInput `pulumi:"roleAssignmentName"`
+	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Tenant ID for cross-tenant request
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
 func (LookupRoleAssignmentOutputArgs) ElementType() reflect.Type {
@@ -96,62 +117,77 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWith
 	return o
 }
 
+// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 func (o LookupRoleAssignmentResultOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
+// Version of the condition. Currently accepted value is '2.0'
 func (o LookupRoleAssignmentResultOutput) ConditionVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.ConditionVersion }).(pulumi.StringPtrOutput)
 }
 
+// Id of the user who created the assignment
 func (o LookupRoleAssignmentResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Time it was created
 func (o LookupRoleAssignmentResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Id of the delegated managed identity resource
 func (o LookupRoleAssignmentResultOutput) DelegatedManagedIdentityResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.DelegatedManagedIdentityResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Description of role assignment
 func (o LookupRoleAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The role assignment ID.
 func (o LookupRoleAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role assignment name.
 func (o LookupRoleAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The principal ID.
 func (o LookupRoleAssignmentResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
+// The principal type of the assigned principal ID.
 func (o LookupRoleAssignmentResultOutput) PrincipalType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.PrincipalType }).(pulumi.StringPtrOutput)
 }
 
+// The role definition ID.
 func (o LookupRoleAssignmentResultOutput) RoleDefinitionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.RoleDefinitionId }).(pulumi.StringOutput)
 }
 
+// The role assignment scope.
 func (o LookupRoleAssignmentResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Scope }).(pulumi.StringOutput)
 }
 
+// The role assignment type.
 func (o LookupRoleAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Id of the user who updated the assignment
 func (o LookupRoleAssignmentResultOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
+// Time it was updated
 func (o LookupRoleAssignmentResultOutput) UpdatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.UpdatedOn }).(pulumi.StringOutput)
 }

@@ -23,5 +23,6 @@ type GetGetPrivateDnsZoneSuffixExecuteArgs struct {
 
 // The response of get private dns zone suffix.
 type GetGetPrivateDnsZoneSuffixExecuteResult struct {
+	// Represents the private DNS zone suffix.
 	PrivateDnsZoneSuffix *string `pulumi:"privateDnsZoneSuffix"`
 }

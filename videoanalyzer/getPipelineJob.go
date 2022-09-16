@@ -22,23 +22,36 @@ func LookupPipelineJob(ctx *pulumi.Context, args *LookupPipelineJobArgs, opts ..
 }
 
 type LookupPipelineJobArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PipelineJobName   string `pulumi:"pipelineJobName"`
+	// The Azure Video Analyzer account name.
+	AccountName string `pulumi:"accountName"`
+	// The pipeline job name.
+	PipelineJobName string `pulumi:"pipelineJobName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
 type LookupPipelineJobResult struct {
-	Description  *string                       `pulumi:"description"`
-	Error        PipelineJobErrorResponse      `pulumi:"error"`
-	Expiration   string                        `pulumi:"expiration"`
-	Id           string                        `pulumi:"id"`
-	Name         string                        `pulumi:"name"`
-	Parameters   []ParameterDefinitionResponse `pulumi:"parameters"`
-	State        string                        `pulumi:"state"`
-	SystemData   SystemDataResponse            `pulumi:"systemData"`
-	TopologyName string                        `pulumi:"topologyName"`
-	Type         string                        `pulumi:"type"`
+	// An optional description for the pipeline.
+	Description *string `pulumi:"description"`
+	// Details about the error, in case the pipeline job fails.
+	Error PipelineJobErrorResponse `pulumi:"error"`
+	// The date-time by when this pipeline job will be automatically deleted from your account.
+	Expiration string `pulumi:"expiration"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
+	Parameters []ParameterDefinitionResponse `pulumi:"parameters"`
+	// Current state of the pipeline (read-only).
+	State string `pulumi:"state"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Reference to an existing pipeline topology. When activated, this pipeline job will process content according to the pipeline topology definition.
+	TopologyName string `pulumi:"topologyName"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupPipelineJobOutput(ctx *pulumi.Context, args LookupPipelineJobOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineJobResultOutput {
@@ -55,8 +68,11 @@ func LookupPipelineJobOutput(ctx *pulumi.Context, args LookupPipelineJobOutputAr
 }
 
 type LookupPipelineJobOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PipelineJobName   pulumi.StringInput `pulumi:"pipelineJobName"`
+	// The Azure Video Analyzer account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The pipeline job name.
+	PipelineJobName pulumi.StringInput `pulumi:"pipelineJobName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,42 +95,52 @@ func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutputWithContex
 	return o
 }
 
+// An optional description for the pipeline.
 func (o LookupPipelineJobResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Details about the error, in case the pipeline job fails.
 func (o LookupPipelineJobResultOutput) Error() PipelineJobErrorResponseOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) PipelineJobErrorResponse { return v.Error }).(PipelineJobErrorResponseOutput)
 }
 
+// The date-time by when this pipeline job will be automatically deleted from your account.
 func (o LookupPipelineJobResultOutput) Expiration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.Expiration }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPipelineJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPipelineJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
 func (o LookupPipelineJobResultOutput) Parameters() ParameterDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) []ParameterDefinitionResponse { return v.Parameters }).(ParameterDefinitionResponseArrayOutput)
 }
 
+// Current state of the pipeline (read-only).
 func (o LookupPipelineJobResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPipelineJobResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Reference to an existing pipeline topology. When activated, this pipeline job will process content according to the pipeline topology definition.
 func (o LookupPipelineJobResultOutput) TopologyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.TopologyName }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPipelineJobResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.Type }).(pulumi.StringOutput)
 }

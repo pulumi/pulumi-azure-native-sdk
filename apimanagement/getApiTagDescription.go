@@ -22,22 +22,34 @@ func LookupApiTagDescription(ctx *pulumi.Context, args *LookupApiTagDescriptionA
 }
 
 type LookupApiTagDescriptionArgs struct {
-	ApiId             string `pulumi:"apiId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId string `pulumi:"apiId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	TagDescriptionId  string `pulumi:"tagDescriptionId"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// Tag description identifier. Used when creating tagDescription for API/Tag association. Based on API and Tag names.
+	TagDescriptionId string `pulumi:"tagDescriptionId"`
 }
 
 // Contract details.
 type LookupApiTagDescriptionResult struct {
-	Description             *string `pulumi:"description"`
-	DisplayName             *string `pulumi:"displayName"`
+	// Description of the Tag.
+	Description *string `pulumi:"description"`
+	// Tag name.
+	DisplayName *string `pulumi:"displayName"`
+	// Description of the external resources describing the tag.
 	ExternalDocsDescription *string `pulumi:"externalDocsDescription"`
-	ExternalDocsUrl         *string `pulumi:"externalDocsUrl"`
-	Id                      string  `pulumi:"id"`
-	Name                    string  `pulumi:"name"`
-	TagId                   *string `pulumi:"tagId"`
-	Type                    string  `pulumi:"type"`
+	// Absolute URL of external resources describing the tag.
+	ExternalDocsUrl *string `pulumi:"externalDocsUrl"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Identifier of the tag in the form of /tags/{tagId}
+	TagId *string `pulumi:"tagId"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupApiTagDescriptionOutput(ctx *pulumi.Context, args LookupApiTagDescriptionOutputArgs, opts ...pulumi.InvokeOption) LookupApiTagDescriptionResultOutput {
@@ -54,10 +66,14 @@ func LookupApiTagDescriptionOutput(ctx *pulumi.Context, args LookupApiTagDescrip
 }
 
 type LookupApiTagDescriptionOutputArgs struct {
-	ApiId             pulumi.StringInput `pulumi:"apiId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	TagDescriptionId  pulumi.StringInput `pulumi:"tagDescriptionId"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Tag description identifier. Used when creating tagDescription for API/Tag association. Based on API and Tag names.
+	TagDescriptionId pulumi.StringInput `pulumi:"tagDescriptionId"`
 }
 
 func (LookupApiTagDescriptionOutputArgs) ElementType() reflect.Type {
@@ -79,34 +95,42 @@ func (o LookupApiTagDescriptionResultOutput) ToLookupApiTagDescriptionResultOutp
 	return o
 }
 
+// Description of the Tag.
 func (o LookupApiTagDescriptionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Tag name.
 func (o LookupApiTagDescriptionResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Description of the external resources describing the tag.
 func (o LookupApiTagDescriptionResultOutput) ExternalDocsDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.ExternalDocsDescription }).(pulumi.StringPtrOutput)
 }
 
+// Absolute URL of external resources describing the tag.
 func (o LookupApiTagDescriptionResultOutput) ExternalDocsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.ExternalDocsUrl }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupApiTagDescriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupApiTagDescriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Identifier of the tag in the form of /tags/{tagId}
 func (o LookupApiTagDescriptionResultOutput) TagId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.TagId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupApiTagDescriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

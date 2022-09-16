@@ -22,19 +22,28 @@ func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.Invo
 }
 
 type LookupTrackArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	AssetName         string `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Asset name.
+	AssetName string `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TrackName         string `pulumi:"trackName"`
+	// The Asset Track name.
+	TrackName string `pulumi:"trackName"`
 }
 
 // An Asset Track resource.
 type LookupTrackResult struct {
-	Id                string      `pulumi:"id"`
-	Name              string      `pulumi:"name"`
-	ProvisioningState string      `pulumi:"provisioningState"`
-	Track             interface{} `pulumi:"track"`
-	Type              string      `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Provisioning state of the asset track.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Detailed information about a track in the asset.
+	Track interface{} `pulumi:"track"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupTrackOutput(ctx *pulumi.Context, args LookupTrackOutputArgs, opts ...pulumi.InvokeOption) LookupTrackResultOutput {
@@ -51,10 +60,14 @@ func LookupTrackOutput(ctx *pulumi.Context, args LookupTrackOutputArgs, opts ...
 }
 
 type LookupTrackOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	AssetName         pulumi.StringInput `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Asset name.
+	AssetName pulumi.StringInput `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TrackName         pulumi.StringInput `pulumi:"trackName"`
+	// The Asset Track name.
+	TrackName pulumi.StringInput `pulumi:"trackName"`
 }
 
 func (LookupTrackOutputArgs) ElementType() reflect.Type {
@@ -76,22 +89,27 @@ func (o LookupTrackResultOutput) ToLookupTrackResultOutputWithContext(ctx contex
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTrackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupTrackResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrackResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the asset track.
 func (o LookupTrackResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrackResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Detailed information about a track in the asset.
 func (o LookupTrackResultOutput) Track() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupTrackResult) interface{} { return v.Track }).(pulumi.AnyOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTrackResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrackResult) string { return v.Type }).(pulumi.StringOutput)
 }

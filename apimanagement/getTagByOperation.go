@@ -22,19 +22,28 @@ func LookupTagByOperation(ctx *pulumi.Context, args *LookupTagByOperationArgs, o
 }
 
 type LookupTagByOperationArgs struct {
-	ApiId             string `pulumi:"apiId"`
-	OperationId       string `pulumi:"operationId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId string `pulumi:"apiId"`
+	// Operation identifier within an API. Must be unique in the current API Management service instance.
+	OperationId string `pulumi:"operationId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	TagId             string `pulumi:"tagId"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// Tag identifier. Must be unique in the current API Management service instance.
+	TagId string `pulumi:"tagId"`
 }
 
 // Tag Contract details.
 type LookupTagByOperationResult struct {
+	// Tag name.
 	DisplayName string `pulumi:"displayName"`
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	Type        string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupTagByOperationOutput(ctx *pulumi.Context, args LookupTagByOperationOutputArgs, opts ...pulumi.InvokeOption) LookupTagByOperationResultOutput {
@@ -51,11 +60,16 @@ func LookupTagByOperationOutput(ctx *pulumi.Context, args LookupTagByOperationOu
 }
 
 type LookupTagByOperationOutputArgs struct {
-	ApiId             pulumi.StringInput `pulumi:"apiId"`
-	OperationId       pulumi.StringInput `pulumi:"operationId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// Operation identifier within an API. Must be unique in the current API Management service instance.
+	OperationId pulumi.StringInput `pulumi:"operationId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	TagId             pulumi.StringInput `pulumi:"tagId"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Tag identifier. Must be unique in the current API Management service instance.
+	TagId pulumi.StringInput `pulumi:"tagId"`
 }
 
 func (LookupTagByOperationOutputArgs) ElementType() reflect.Type {
@@ -77,18 +91,22 @@ func (o LookupTagByOperationResultOutput) ToLookupTagByOperationResultOutputWith
 	return o
 }
 
+// Tag name.
 func (o LookupTagByOperationResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByOperationResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupTagByOperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByOperationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupTagByOperationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByOperationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupTagByOperationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByOperationResult) string { return v.Type }).(pulumi.StringOutput)
 }

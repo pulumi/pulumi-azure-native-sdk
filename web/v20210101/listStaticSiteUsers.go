@@ -21,15 +21,20 @@ func ListStaticSiteUsers(ctx *pulumi.Context, args *ListStaticSiteUsersArgs, opt
 }
 
 type ListStaticSiteUsersArgs struct {
-	Authprovider      string `pulumi:"authprovider"`
-	Name              string `pulumi:"name"`
+	// The auth provider for the users.
+	Authprovider string `pulumi:"authprovider"`
+	// Name of the static site.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Collection of static site custom users.
 type ListStaticSiteUsersResult struct {
-	NextLink string                              `pulumi:"nextLink"`
-	Value    []StaticSiteUserARMResourceResponse `pulumi:"value"`
+	// Link to next page of resources.
+	NextLink string `pulumi:"nextLink"`
+	// Collection of resources.
+	Value []StaticSiteUserARMResourceResponse `pulumi:"value"`
 }
 
 func ListStaticSiteUsersOutput(ctx *pulumi.Context, args ListStaticSiteUsersOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteUsersResultOutput {
@@ -46,8 +51,11 @@ func ListStaticSiteUsersOutput(ctx *pulumi.Context, args ListStaticSiteUsersOutp
 }
 
 type ListStaticSiteUsersOutputArgs struct {
-	Authprovider      pulumi.StringInput `pulumi:"authprovider"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The auth provider for the users.
+	Authprovider pulumi.StringInput `pulumi:"authprovider"`
+	// Name of the static site.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,10 +78,12 @@ func (o ListStaticSiteUsersResultOutput) ToListStaticSiteUsersResultOutputWithCo
 	return o
 }
 
+// Link to next page of resources.
 func (o ListStaticSiteUsersResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteUsersResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Collection of resources.
 func (o ListStaticSiteUsersResultOutput) Value() StaticSiteUserARMResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListStaticSiteUsersResult) []StaticSiteUserARMResourceResponse { return v.Value }).(StaticSiteUserARMResourceResponseArrayOutput)
 }

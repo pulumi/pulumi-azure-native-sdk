@@ -23,22 +23,34 @@ func LookupOrder(ctx *pulumi.Context, args *LookupOrderArgs, opts ...pulumi.Invo
 }
 
 type LookupOrderArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The order details.
 type LookupOrderResult struct {
-	ContactInformation   ContactDetailsResponse `pulumi:"contactInformation"`
-	CurrentStatus        *OrderStatusResponse   `pulumi:"currentStatus"`
+	// The contact details.
+	ContactInformation ContactDetailsResponse `pulumi:"contactInformation"`
+	// Current status of the order.
+	CurrentStatus *OrderStatusResponse `pulumi:"currentStatus"`
+	// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
 	DeliveryTrackingInfo []TrackingInfoResponse `pulumi:"deliveryTrackingInfo"`
-	Id                   string                 `pulumi:"id"`
-	Name                 string                 `pulumi:"name"`
-	OrderHistory         []OrderStatusResponse  `pulumi:"orderHistory"`
-	ReturnTrackingInfo   []TrackingInfoResponse `pulumi:"returnTrackingInfo"`
-	SerialNumber         string                 `pulumi:"serialNumber"`
-	ShippingAddress      AddressResponse        `pulumi:"shippingAddress"`
-	Type                 string                 `pulumi:"type"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// List of status changes in the order.
+	OrderHistory []OrderStatusResponse `pulumi:"orderHistory"`
+	// Tracking information for the package returned from the customer whether it has an original or a replacement device.
+	ReturnTrackingInfo []TrackingInfoResponse `pulumi:"returnTrackingInfo"`
+	// Serial number of the device.
+	SerialNumber string `pulumi:"serialNumber"`
+	// The shipping address.
+	ShippingAddress AddressResponse `pulumi:"shippingAddress"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupOrderOutput(ctx *pulumi.Context, args LookupOrderOutputArgs, opts ...pulumi.InvokeOption) LookupOrderResultOutput {
@@ -55,7 +67,9 @@ func LookupOrderOutput(ctx *pulumi.Context, args LookupOrderOutputArgs, opts ...
 }
 
 type LookupOrderOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +92,52 @@ func (o LookupOrderResultOutput) ToLookupOrderResultOutputWithContext(ctx contex
 	return o
 }
 
+// The contact details.
 func (o LookupOrderResultOutput) ContactInformation() ContactDetailsResponseOutput {
 	return o.ApplyT(func(v LookupOrderResult) ContactDetailsResponse { return v.ContactInformation }).(ContactDetailsResponseOutput)
 }
 
+// Current status of the order.
 func (o LookupOrderResultOutput) CurrentStatus() OrderStatusResponsePtrOutput {
 	return o.ApplyT(func(v LookupOrderResult) *OrderStatusResponse { return v.CurrentStatus }).(OrderStatusResponsePtrOutput)
 }
 
+// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
 func (o LookupOrderResultOutput) DeliveryTrackingInfo() TrackingInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupOrderResult) []TrackingInfoResponse { return v.DeliveryTrackingInfo }).(TrackingInfoResponseArrayOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupOrderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupOrderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of status changes in the order.
 func (o LookupOrderResultOutput) OrderHistory() OrderStatusResponseArrayOutput {
 	return o.ApplyT(func(v LookupOrderResult) []OrderStatusResponse { return v.OrderHistory }).(OrderStatusResponseArrayOutput)
 }
 
+// Tracking information for the package returned from the customer whether it has an original or a replacement device.
 func (o LookupOrderResultOutput) ReturnTrackingInfo() TrackingInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupOrderResult) []TrackingInfoResponse { return v.ReturnTrackingInfo }).(TrackingInfoResponseArrayOutput)
 }
 
+// Serial number of the device.
 func (o LookupOrderResultOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderResult) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
+// The shipping address.
 func (o LookupOrderResultOutput) ShippingAddress() AddressResponseOutput {
 	return o.ApplyT(func(v LookupOrderResult) AddressResponse { return v.ShippingAddress }).(AddressResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupOrderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderResult) string { return v.Type }).(pulumi.StringOutput)
 }

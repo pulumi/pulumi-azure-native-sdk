@@ -23,20 +23,30 @@ func LookupAlertRule(ctx *pulumi.Context, args *LookupAlertRuleArgs, opts ...pul
 }
 
 type LookupAlertRuleArgs struct {
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	RuleId                              string `pulumi:"ruleId"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Alert rule ID
+	RuleId string `pulumi:"ruleId"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Alert rule.
 type LookupAlertRuleResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The kind of the alert rule
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAlertRuleOutput(ctx *pulumi.Context, args LookupAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRuleResultOutput {
@@ -53,10 +63,14 @@ func LookupAlertRuleOutput(ctx *pulumi.Context, args LookupAlertRuleOutputArgs, 
 }
 
 type LookupAlertRuleOutputArgs struct {
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleId                              pulumi.StringInput `pulumi:"ruleId"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Alert rule ID
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupAlertRuleOutputArgs) ElementType() reflect.Type {
@@ -78,26 +92,32 @@ func (o LookupAlertRuleResultOutput) ToLookupAlertRuleResultOutputWithContext(ct
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupAlertRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the alert rule
 func (o LookupAlertRuleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupAlertRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource type
 func (o LookupAlertRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

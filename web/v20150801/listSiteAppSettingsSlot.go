@@ -21,20 +21,30 @@ func ListSiteAppSettingsSlot(ctx *pulumi.Context, args *ListSiteAppSettingsSlotA
 }
 
 type ListSiteAppSettingsSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // String dictionary resource
 type ListSiteAppSettingsSlotResult struct {
-	Id         *string           `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Location   string            `pulumi:"location"`
-	Name       *string           `pulumi:"name"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// Settings
 	Properties map[string]string `pulumi:"properties"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       *string           `pulumi:"type"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func ListSiteAppSettingsSlotOutput(ctx *pulumi.Context, args ListSiteAppSettingsSlotOutputArgs, opts ...pulumi.InvokeOption) ListSiteAppSettingsSlotResultOutput {
@@ -51,9 +61,12 @@ func ListSiteAppSettingsSlotOutput(ctx *pulumi.Context, args ListSiteAppSettings
 }
 
 type ListSiteAppSettingsSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListSiteAppSettingsSlotOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o ListSiteAppSettingsSlotResultOutput) ToListSiteAppSettingsSlotResultOutp
 	return o
 }
 
+// Resource Id
 func (o ListSiteAppSettingsSlotResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o ListSiteAppSettingsSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o ListSiteAppSettingsSlotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o ListSiteAppSettingsSlotResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Settings
 func (o ListSiteAppSettingsSlotResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource tags
 func (o ListSiteAppSettingsSlotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o ListSiteAppSettingsSlotResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsSlotResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

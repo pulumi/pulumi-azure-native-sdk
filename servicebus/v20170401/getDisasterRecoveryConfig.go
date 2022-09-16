@@ -21,21 +21,32 @@ func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecov
 }
 
 type LookupDisasterRecoveryConfigArgs struct {
-	Alias             string `pulumi:"alias"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The Disaster Recovery configuration name
+	Alias string `pulumi:"alias"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
 type LookupDisasterRecoveryConfigResult struct {
-	AlternateName                     *string `pulumi:"alternateName"`
-	Id                                string  `pulumi:"id"`
-	Name                              string  `pulumi:"name"`
-	PartnerNamespace                  *string `pulumi:"partnerNamespace"`
+	// Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+	AlternateName *string `pulumi:"alternateName"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+	PartnerNamespace *string `pulumi:"partnerNamespace"`
+	// Number of entities pending to be replicated.
 	PendingReplicationOperationsCount float64 `pulumi:"pendingReplicationOperationsCount"`
-	ProvisioningState                 string  `pulumi:"provisioningState"`
-	Role                              string  `pulumi:"role"`
-	Type                              string  `pulumi:"type"`
+	// Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed'
+	ProvisioningState string `pulumi:"provisioningState"`
+	// role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'
+	Role string `pulumi:"role"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDisasterRecoveryConfigOutput(ctx *pulumi.Context, args LookupDisasterRecoveryConfigOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryConfigResultOutput {
@@ -52,8 +63,11 @@ func LookupDisasterRecoveryConfigOutput(ctx *pulumi.Context, args LookupDisaster
 }
 
 type LookupDisasterRecoveryConfigOutputArgs struct {
-	Alias             pulumi.StringInput `pulumi:"alias"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The Disaster Recovery configuration name
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,34 +90,42 @@ func (o LookupDisasterRecoveryConfigResultOutput) ToLookupDisasterRecoveryConfig
 	return o
 }
 
+// Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 func (o LookupDisasterRecoveryConfigResultOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) *string { return v.AlternateName }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupDisasterRecoveryConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupDisasterRecoveryConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 func (o LookupDisasterRecoveryConfigResultOutput) PartnerNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) *string { return v.PartnerNamespace }).(pulumi.StringPtrOutput)
 }
 
+// Number of entities pending to be replicated.
 func (o LookupDisasterRecoveryConfigResultOutput) PendingReplicationOperationsCount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) float64 { return v.PendingReplicationOperationsCount }).(pulumi.Float64Output)
 }
 
+// Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed'
 func (o LookupDisasterRecoveryConfigResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'
 func (o LookupDisasterRecoveryConfigResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupDisasterRecoveryConfigResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Type }).(pulumi.StringOutput)
 }

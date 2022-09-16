@@ -21,23 +21,36 @@ func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.
 }
 
 type LookupProductArgs struct {
-	ProductId         string `pulumi:"productId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId string `pulumi:"productId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Product details.
 type LookupProductResult struct {
-	ApprovalRequired     *bool   `pulumi:"approvalRequired"`
-	Description          *string `pulumi:"description"`
-	DisplayName          string  `pulumi:"displayName"`
-	Id                   string  `pulumi:"id"`
-	Name                 string  `pulumi:"name"`
-	State                *string `pulumi:"state"`
-	SubscriptionRequired *bool   `pulumi:"subscriptionRequired"`
-	SubscriptionsLimit   *int    `pulumi:"subscriptionsLimit"`
-	Terms                *string `pulumi:"terms"`
-	Type                 string  `pulumi:"type"`
+	// whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// Product description. May include HTML formatting tags.
+	Description *string `pulumi:"description"`
+	// Product name.
+	DisplayName string `pulumi:"displayName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished.
+	State *string `pulumi:"state"`
+	// Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true.
+	SubscriptionRequired *bool `pulumi:"subscriptionRequired"`
+	// Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false.
+	SubscriptionsLimit *int `pulumi:"subscriptionsLimit"`
+	// Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
+	Terms *string `pulumi:"terms"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupProductOutput(ctx *pulumi.Context, args LookupProductOutputArgs, opts ...pulumi.InvokeOption) LookupProductResultOutput {
@@ -54,9 +67,12 @@ func LookupProductOutput(ctx *pulumi.Context, args LookupProductOutputArgs, opts
 }
 
 type LookupProductOutputArgs struct {
-	ProductId         pulumi.StringInput `pulumi:"productId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupProductOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupProductResultOutput) ToLookupProductResultOutputWithContext(ctx co
 	return o
 }
 
+// whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 func (o LookupProductResultOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
+// Product description. May include HTML formatting tags.
 func (o LookupProductResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Product name.
 func (o LookupProductResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProductResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupProductResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished.
 func (o LookupProductResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true.
 func (o LookupProductResultOutput) SubscriptionRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *bool { return v.SubscriptionRequired }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false.
 func (o LookupProductResultOutput) SubscriptionsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *int { return v.SubscriptionsLimit }).(pulumi.IntPtrOutput)
 }
 
+// Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
 func (o LookupProductResultOutput) Terms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *string { return v.Terms }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProductResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Type }).(pulumi.StringOutput)
 }

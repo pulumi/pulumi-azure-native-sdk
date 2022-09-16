@@ -21,19 +21,28 @@ func LookupGlobalSchema(ctx *pulumi.Context, args *LookupGlobalSchemaArgs, opts 
 }
 
 type LookupGlobalSchemaArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SchemaId          string `pulumi:"schemaId"`
-	ServiceName       string `pulumi:"serviceName"`
+	// Schema id identifier. Must be unique in the current API Management service instance.
+	SchemaId string `pulumi:"schemaId"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Global Schema Contract details.
 type LookupGlobalSchemaResult struct {
-	Description *string     `pulumi:"description"`
-	Id          string      `pulumi:"id"`
-	Name        string      `pulumi:"name"`
-	SchemaType  string      `pulumi:"schemaType"`
-	Type        string      `pulumi:"type"`
-	Value       interface{} `pulumi:"value"`
+	// Free-form schema entity description.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Schema Type. Immutable.
+	SchemaType string `pulumi:"schemaType"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Json-encoded string for non json-based schema.
+	Value interface{} `pulumi:"value"`
 }
 
 func LookupGlobalSchemaOutput(ctx *pulumi.Context, args LookupGlobalSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalSchemaResultOutput {
@@ -50,9 +59,12 @@ func LookupGlobalSchemaOutput(ctx *pulumi.Context, args LookupGlobalSchemaOutput
 }
 
 type LookupGlobalSchemaOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SchemaId          pulumi.StringInput `pulumi:"schemaId"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// Schema id identifier. Must be unique in the current API Management service instance.
+	SchemaId pulumi.StringInput `pulumi:"schemaId"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupGlobalSchemaOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupGlobalSchemaResultOutput) ToLookupGlobalSchemaResultOutputWithCont
 	return o
 }
 
+// Free-form schema entity description.
 func (o LookupGlobalSchemaResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalSchemaResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGlobalSchemaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalSchemaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupGlobalSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalSchemaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Schema Type. Immutable.
 func (o LookupGlobalSchemaResultOutput) SchemaType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalSchemaResult) string { return v.SchemaType }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGlobalSchemaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalSchemaResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Json-encoded string for non json-based schema.
 func (o LookupGlobalSchemaResultOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupGlobalSchemaResult) interface{} { return v.Value }).(pulumi.AnyOutput)
 }

@@ -21,13 +21,17 @@ func GetChannelFullUrl(ctx *pulumi.Context, args *GetChannelFullUrlArgs, opts ..
 }
 
 type GetChannelFullUrlArgs struct {
-	ChannelName          string `pulumi:"channelName"`
+	// Name of the Channel.
+	ChannelName string `pulumi:"channelName"`
+	// Name of the partner namespace.
 	PartnerNamespaceName string `pulumi:"partnerNamespaceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the partners subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Full endpoint url of an event subscription
 type GetChannelFullUrlResult struct {
+	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
 }
 
@@ -45,9 +49,12 @@ func GetChannelFullUrlOutput(ctx *pulumi.Context, args GetChannelFullUrlOutputAr
 }
 
 type GetChannelFullUrlOutputArgs struct {
-	ChannelName          pulumi.StringInput `pulumi:"channelName"`
+	// Name of the Channel.
+	ChannelName pulumi.StringInput `pulumi:"channelName"`
+	// Name of the partner namespace.
 	PartnerNamespaceName pulumi.StringInput `pulumi:"partnerNamespaceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the partners subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetChannelFullUrlOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o GetChannelFullUrlResultOutput) ToGetChannelFullUrlResultOutputWithContex
 	return o
 }
 
+// The URL that represents the endpoint of the destination of an event subscription.
 func (o GetChannelFullUrlResultOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetChannelFullUrlResult) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
 }

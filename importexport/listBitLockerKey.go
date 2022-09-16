@@ -22,12 +22,15 @@ func ListBitLockerKey(ctx *pulumi.Context, args *ListBitLockerKeyArgs, opts ...p
 }
 
 type ListBitLockerKeyArgs struct {
-	JobName           string `pulumi:"jobName"`
+	// The name of the import/export job.
+	JobName string `pulumi:"jobName"`
+	// The resource group name uniquely identifies the resource group within the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // GetBitLockerKeys response
 type ListBitLockerKeyResult struct {
+	// drive status
 	Value []DriveBitLockerKeyResponse `pulumi:"value"`
 }
 
@@ -45,7 +48,9 @@ func ListBitLockerKeyOutput(ctx *pulumi.Context, args ListBitLockerKeyOutputArgs
 }
 
 type ListBitLockerKeyOutputArgs struct {
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the import/export job.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The resource group name uniquely identifies the resource group within the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListBitLockerKeyResultOutput) ToListBitLockerKeyResultOutputWithContext(
 	return o
 }
 
+// drive status
 func (o ListBitLockerKeyResultOutput) Value() DriveBitLockerKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListBitLockerKeyResult) []DriveBitLockerKeyResponse { return v.Value }).(DriveBitLockerKeyResponseArrayOutput)
 }

@@ -21,20 +21,31 @@ func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.
 }
 
 type LookupMECRoleArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The role name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // MEC role.
 type LookupMECRoleResult struct {
+	// Activation key of the MEC.
 	ConnectionString *AsymmetricEncryptedSecretResponse `pulumi:"connectionString"`
-	Id               string                             `pulumi:"id"`
-	Kind             string                             `pulumi:"kind"`
-	Name             string                             `pulumi:"name"`
-	RoleStatus       string                             `pulumi:"roleStatus"`
-	SystemData       SystemDataResponse                 `pulumi:"systemData"`
-	Type             string                             `pulumi:"type"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Role type.
+	// Expected value is 'MEC'.
+	Kind string `pulumi:"kind"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Role status.
+	RoleStatus string `pulumi:"roleStatus"`
+	// Role configured on ASE resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupMECRoleOutput(ctx *pulumi.Context, args LookupMECRoleOutputArgs, opts ...pulumi.InvokeOption) LookupMECRoleResultOutput {
@@ -51,8 +62,11 @@ func LookupMECRoleOutput(ctx *pulumi.Context, args LookupMECRoleOutputArgs, opts
 }
 
 type LookupMECRoleOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The role name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +89,38 @@ func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutputWithContext(ctx co
 	return o
 }
 
+// Activation key of the MEC.
 func (o LookupMECRoleResultOutput) ConnectionString() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) *AsymmetricEncryptedSecretResponse { return v.ConnectionString }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupMECRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Role type.
+// Expected value is 'MEC'.
 func (o LookupMECRoleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupMECRoleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Role status.
 func (o LookupMECRoleResultOutput) RoleStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
+// Role configured on ASE resource
 func (o LookupMECRoleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupMECRoleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }

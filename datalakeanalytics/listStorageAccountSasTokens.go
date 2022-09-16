@@ -22,16 +22,22 @@ func ListStorageAccountSasTokens(ctx *pulumi.Context, args *ListStorageAccountSa
 }
 
 type ListStorageAccountSasTokensArgs struct {
-	AccountName        string `pulumi:"accountName"`
-	ContainerName      string `pulumi:"containerName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the Data Lake Analytics account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Azure storage container for which the SAS token is being requested.
+	ContainerName string `pulumi:"containerName"`
+	// The name of the Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Azure storage account for which the SAS token is being requested.
 	StorageAccountName string `pulumi:"storageAccountName"`
 }
 
 // The SAS response that contains the storage account, container and associated SAS token for connection use.
 type ListStorageAccountSasTokensResult struct {
-	NextLink string                        `pulumi:"nextLink"`
-	Value    []SasTokenInformationResponse `pulumi:"value"`
+	// The link (url) to the next page of results.
+	NextLink string `pulumi:"nextLink"`
+	// The results of the list operation.
+	Value []SasTokenInformationResponse `pulumi:"value"`
 }
 
 func ListStorageAccountSasTokensOutput(ctx *pulumi.Context, args ListStorageAccountSasTokensOutputArgs, opts ...pulumi.InvokeOption) ListStorageAccountSasTokensResultOutput {
@@ -48,9 +54,13 @@ func ListStorageAccountSasTokensOutput(ctx *pulumi.Context, args ListStorageAcco
 }
 
 type ListStorageAccountSasTokensOutputArgs struct {
-	AccountName        pulumi.StringInput `pulumi:"accountName"`
-	ContainerName      pulumi.StringInput `pulumi:"containerName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Data Lake Analytics account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Azure storage container for which the SAS token is being requested.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// The name of the Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Azure storage account for which the SAS token is being requested.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
 }
 
@@ -73,10 +83,12 @@ func (o ListStorageAccountSasTokensResultOutput) ToListStorageAccountSasTokensRe
 	return o
 }
 
+// The link (url) to the next page of results.
 func (o ListStorageAccountSasTokensResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStorageAccountSasTokensResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// The results of the list operation.
 func (o ListStorageAccountSasTokensResultOutput) Value() SasTokenInformationResponseArrayOutput {
 	return o.ApplyT(func(v ListStorageAccountSasTokensResult) []SasTokenInformationResponse { return v.Value }).(SasTokenInformationResponseArrayOutput)
 }

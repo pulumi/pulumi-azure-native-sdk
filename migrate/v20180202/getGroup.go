@@ -21,21 +21,32 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 }
 
 type LookupGroupArgs struct {
-	GroupName         string `pulumi:"groupName"`
-	ProjectName       string `pulumi:"projectName"`
+	// Unique name of a group within a project.
+	GroupName string `pulumi:"groupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A group created in a Migration project.
 type LookupGroupResult struct {
-	Assessments      []string `pulumi:"assessments"`
-	CreatedTimestamp string   `pulumi:"createdTimestamp"`
-	ETag             *string  `pulumi:"eTag"`
-	Id               string   `pulumi:"id"`
-	Machines         []string `pulumi:"machines"`
-	Name             string   `pulumi:"name"`
-	Type             string   `pulumi:"type"`
-	UpdatedTimestamp string   `pulumi:"updatedTimestamp"`
+	// List of References to Assessments created on this group.
+	Assessments []string `pulumi:"assessments"`
+	// Time when this project was created. Date-Time represented in ISO-8601 format.
+	CreatedTimestamp string `pulumi:"createdTimestamp"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this group. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}
+	Id string `pulumi:"id"`
+	// List of machine names that are part of this group.
+	Machines []string `pulumi:"machines"`
+	// Name of the group.
+	Name string `pulumi:"name"`
+	// Type of the object = [Microsoft.Migrate/projects/groups].
+	Type string `pulumi:"type"`
+	// Time when this project was last updated. Date-Time represented in ISO-8601 format.
+	UpdatedTimestamp string `pulumi:"updatedTimestamp"`
 }
 
 func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
@@ -52,8 +63,11 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 }
 
 type LookupGroupOutputArgs struct {
-	GroupName         pulumi.StringInput `pulumi:"groupName"`
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Unique name of a group within a project.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,34 +90,42 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx contex
 	return o
 }
 
+// List of References to Assessments created on this group.
 func (o LookupGroupResultOutput) Assessments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Assessments }).(pulumi.StringArrayOutput)
 }
 
+// Time when this project was created. Date-Time represented in ISO-8601 format.
 func (o LookupGroupResultOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.CreatedTimestamp }).(pulumi.StringOutput)
 }
 
+// For optimistic concurrency control.
 func (o LookupGroupResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this group. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of machine names that are part of this group.
 func (o LookupGroupResultOutput) Machines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Machines }).(pulumi.StringArrayOutput)
 }
 
+// Name of the group.
 func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/projects/groups].
 func (o LookupGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Time when this project was last updated. Date-Time represented in ISO-8601 format.
 func (o LookupGroupResultOutput) UpdatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.UpdatedTimestamp }).(pulumi.StringOutput)
 }

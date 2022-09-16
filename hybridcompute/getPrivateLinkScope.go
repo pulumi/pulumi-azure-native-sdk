@@ -22,19 +22,28 @@ func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArg
 }
 
 type LookupPrivateLinkScopeArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ScopeName         string `pulumi:"scopeName"`
+	// The name of the Azure Arc PrivateLinkScope resource.
+	ScopeName string `pulumi:"scopeName"`
 }
 
 // An Azure Arc PrivateLinkScope definition.
 type LookupPrivateLinkScopeResult struct {
-	Id         string                                          `pulumi:"id"`
-	Location   string                                          `pulumi:"location"`
-	Name       string                                          `pulumi:"name"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Properties that define a Azure Arc PrivateLinkScope resource.
 	Properties HybridComputePrivateLinkScopePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                              `pulumi:"systemData"`
-	Tags       map[string]string                               `pulumi:"tags"`
-	Type       string                                          `pulumi:"type"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateLinkScopeOutput(ctx *pulumi.Context, args LookupPrivateLinkScopeOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkScopeResultOutput {
@@ -51,8 +60,10 @@ func LookupPrivateLinkScopeOutput(ctx *pulumi.Context, args LookupPrivateLinkSco
 }
 
 type LookupPrivateLinkScopeOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ScopeName         pulumi.StringInput `pulumi:"scopeName"`
+	// The name of the Azure Arc PrivateLinkScope resource.
+	ScopeName pulumi.StringInput `pulumi:"scopeName"`
 }
 
 func (LookupPrivateLinkScopeOutputArgs) ElementType() reflect.Type {
@@ -74,32 +85,39 @@ func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutput
 	return o
 }
 
+// Azure resource Id
 func (o LookupPrivateLinkScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupPrivateLinkScopeResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupPrivateLinkScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties that define a Azure Arc PrivateLinkScope resource.
 func (o LookupPrivateLinkScopeResultOutput) Properties() HybridComputePrivateLinkScopePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) HybridComputePrivateLinkScopePropertiesResponse {
 		return v.Properties
 	}).(HybridComputePrivateLinkScopePropertiesResponseOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupPrivateLinkScopeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags
 func (o LookupPrivateLinkScopeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type
 func (o LookupPrivateLinkScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

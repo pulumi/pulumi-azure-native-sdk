@@ -21,12 +21,15 @@ func GetProfileSupportedOptimizationTypes(ctx *pulumi.Context, args *GetProfileS
 }
 
 type GetProfileSupportedOptimizationTypesArgs struct {
-	ProfileName       string `pulumi:"profileName"`
+	// Name of the CDN profile which is unique within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The result of the GetSupportedOptimizationTypes API
 type GetProfileSupportedOptimizationTypesResult struct {
+	// Supported optimization types for a profile.
 	SupportedOptimizationTypes []string `pulumi:"supportedOptimizationTypes"`
 }
 
@@ -44,7 +47,9 @@ func GetProfileSupportedOptimizationTypesOutput(ctx *pulumi.Context, args GetPro
 }
 
 type GetProfileSupportedOptimizationTypesOutputArgs struct {
-	ProfileName       pulumi.StringInput `pulumi:"profileName"`
+	// Name of the CDN profile which is unique within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -67,6 +72,7 @@ func (o GetProfileSupportedOptimizationTypesResultOutput) ToGetProfileSupportedO
 	return o
 }
 
+// Supported optimization types for a profile.
 func (o GetProfileSupportedOptimizationTypesResultOutput) SupportedOptimizationTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProfileSupportedOptimizationTypesResult) []string { return v.SupportedOptimizationTypes }).(pulumi.StringArrayOutput)
 }

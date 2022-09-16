@@ -22,11 +22,13 @@ func GetDnsResourceReferenceByTarResources(ctx *pulumi.Context, args *GetDnsReso
 }
 
 type GetDnsResourceReferenceByTarResourcesArgs struct {
+	// A list of references to azure resources for which referencing dns records need to be queried.
 	TargetResources []SubResource `pulumi:"targetResources"`
 }
 
 // Represents the properties of the Dns Resource Reference Result.
 type GetDnsResourceReferenceByTarResourcesResult struct {
+	// The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request
 	DnsResourceReferences []DnsResourceReferenceResponse `pulumi:"dnsResourceReferences"`
 }
 
@@ -44,6 +46,7 @@ func GetDnsResourceReferenceByTarResourcesOutput(ctx *pulumi.Context, args GetDn
 }
 
 type GetDnsResourceReferenceByTarResourcesOutputArgs struct {
+	// A list of references to azure resources for which referencing dns records need to be queried.
 	TargetResources SubResourceArrayInput `pulumi:"targetResources"`
 }
 
@@ -66,6 +69,7 @@ func (o GetDnsResourceReferenceByTarResourcesResultOutput) ToGetDnsResourceRefer
 	return o
 }
 
+// The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request
 func (o GetDnsResourceReferenceByTarResourcesResultOutput) DnsResourceReferences() DnsResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v GetDnsResourceReferenceByTarResourcesResult) []DnsResourceReferenceResponse {
 		return v.DnsResourceReferences

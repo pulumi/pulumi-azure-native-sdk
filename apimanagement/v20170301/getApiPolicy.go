@@ -21,18 +21,26 @@ func LookupApiPolicy(ctx *pulumi.Context, args *LookupApiPolicyArgs, opts ...pul
 }
 
 type LookupApiPolicyArgs struct {
-	ApiId             string `pulumi:"apiId"`
-	PolicyId          string `pulumi:"policyId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId string `pulumi:"apiId"`
+	// The identifier of the Policy.
+	PolicyId string `pulumi:"policyId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Policy Contract details.
 type LookupApiPolicyResult struct {
-	Id            string `pulumi:"id"`
-	Name          string `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Json escaped Xml Encoded contents of the Policy.
 	PolicyContent string `pulumi:"policyContent"`
-	Type          string `pulumi:"type"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupApiPolicyOutput(ctx *pulumi.Context, args LookupApiPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupApiPolicyResultOutput {
@@ -49,10 +57,14 @@ func LookupApiPolicyOutput(ctx *pulumi.Context, args LookupApiPolicyOutputArgs, 
 }
 
 type LookupApiPolicyOutputArgs struct {
-	ApiId             pulumi.StringInput `pulumi:"apiId"`
-	PolicyId          pulumi.StringInput `pulumi:"policyId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// The identifier of the Policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupApiPolicyOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupApiPolicyResultOutput) ToLookupApiPolicyResultOutputWithContext(ct
 	return o
 }
 
+// Resource ID.
 func (o LookupApiPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupApiPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Json escaped Xml Encoded contents of the Policy.
 func (o LookupApiPolicyResultOutput) PolicyContent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.PolicyContent }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupApiPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,22 +21,34 @@ func LookupManagementLockAtResourceLevel(ctx *pulumi.Context, args *LookupManage
 }
 
 type LookupManagementLockAtResourceLevelArgs struct {
-	LockName                  string `pulumi:"lockName"`
-	ParentResourcePath        string `pulumi:"parentResourcePath"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
-	ResourceName              string `pulumi:"resourceName"`
+	// The name of lock.
+	LockName string `pulumi:"lockName"`
+	// An extra path parameter needed in some services, like SQL Databases.
+	ParentResourcePath string `pulumi:"parentResourcePath"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
+	// The namespace of the resource provider.
 	ResourceProviderNamespace string `pulumi:"resourceProviderNamespace"`
-	ResourceType              string `pulumi:"resourceType"`
+	// The type of the resource.
+	ResourceType string `pulumi:"resourceType"`
 }
 
 // The lock information.
 type LookupManagementLockAtResourceLevelResult struct {
-	Id     string                        `pulumi:"id"`
-	Level  string                        `pulumi:"level"`
-	Name   string                        `pulumi:"name"`
-	Notes  *string                       `pulumi:"notes"`
+	// The resource ID of the lock.
+	Id string `pulumi:"id"`
+	// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
+	Level string `pulumi:"level"`
+	// The name of the lock.
+	Name string `pulumi:"name"`
+	// Notes about the lock. Maximum of 512 characters.
+	Notes *string `pulumi:"notes"`
+	// The owners of the lock.
 	Owners []ManagementLockOwnerResponse `pulumi:"owners"`
-	Type   string                        `pulumi:"type"`
+	// The resource type of the lock - Microsoft.Authorization/locks.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementLockAtResourceLevelOutput(ctx *pulumi.Context, args LookupManagementLockAtResourceLevelOutputArgs, opts ...pulumi.InvokeOption) LookupManagementLockAtResourceLevelResultOutput {
@@ -53,12 +65,18 @@ func LookupManagementLockAtResourceLevelOutput(ctx *pulumi.Context, args LookupM
 }
 
 type LookupManagementLockAtResourceLevelOutputArgs struct {
-	LockName                  pulumi.StringInput `pulumi:"lockName"`
-	ParentResourcePath        pulumi.StringInput `pulumi:"parentResourcePath"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName              pulumi.StringInput `pulumi:"resourceName"`
+	// The name of lock.
+	LockName pulumi.StringInput `pulumi:"lockName"`
+	// An extra path parameter needed in some services, like SQL Databases.
+	ParentResourcePath pulumi.StringInput `pulumi:"parentResourcePath"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// The namespace of the resource provider.
 	ResourceProviderNamespace pulumi.StringInput `pulumi:"resourceProviderNamespace"`
-	ResourceType              pulumi.StringInput `pulumi:"resourceType"`
+	// The type of the resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (LookupManagementLockAtResourceLevelOutputArgs) ElementType() reflect.Type {
@@ -80,26 +98,32 @@ func (o LookupManagementLockAtResourceLevelResultOutput) ToLookupManagementLockA
 	return o
 }
 
+// The resource ID of the lock.
 func (o LookupManagementLockAtResourceLevelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockAtResourceLevelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
 func (o LookupManagementLockAtResourceLevelResultOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockAtResourceLevelResult) string { return v.Level }).(pulumi.StringOutput)
 }
 
+// The name of the lock.
 func (o LookupManagementLockAtResourceLevelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockAtResourceLevelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Notes about the lock. Maximum of 512 characters.
 func (o LookupManagementLockAtResourceLevelResultOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementLockAtResourceLevelResult) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// The owners of the lock.
 func (o LookupManagementLockAtResourceLevelResultOutput) Owners() ManagementLockOwnerResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagementLockAtResourceLevelResult) []ManagementLockOwnerResponse { return v.Owners }).(ManagementLockOwnerResponseArrayOutput)
 }
 
+// The resource type of the lock - Microsoft.Authorization/locks.
 func (o LookupManagementLockAtResourceLevelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockAtResourceLevelResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,18 +21,26 @@ func LookupWebAppSlotConfigurationNames(ctx *pulumi.Context, args *LookupWebAppS
 }
 
 type LookupWebAppSlotConfigurationNamesArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Slot Config names azure resource.
 type LookupWebAppSlotConfigurationNamesResult struct {
-	AppSettingNames       []string `pulumi:"appSettingNames"`
+	// List of application settings names.
+	AppSettingNames []string `pulumi:"appSettingNames"`
+	// List of connection string names.
 	ConnectionStringNames []string `pulumi:"connectionStringNames"`
-	Id                    string   `pulumi:"id"`
-	Kind                  *string  `pulumi:"kind"`
-	Name                  string   `pulumi:"name"`
-	Type                  string   `pulumi:"type"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppSlotConfigurationNamesOutput(ctx *pulumi.Context, args LookupWebAppSlotConfigurationNamesOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSlotConfigurationNamesResultOutput {
@@ -49,7 +57,9 @@ func LookupWebAppSlotConfigurationNamesOutput(ctx *pulumi.Context, args LookupWe
 }
 
 type LookupWebAppSlotConfigurationNamesOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,26 +82,32 @@ func (o LookupWebAppSlotConfigurationNamesResultOutput) ToLookupWebAppSlotConfig
 	return o
 }
 
+// List of application settings names.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) AppSettingNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) []string { return v.AppSettingNames }).(pulumi.StringArrayOutput)
 }
 
+// List of connection string names.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) ConnectionStringNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) []string { return v.ConnectionStringNames }).(pulumi.StringArrayOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) string { return v.Type }).(pulumi.StringOutput)
 }

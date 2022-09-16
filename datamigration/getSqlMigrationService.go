@@ -22,20 +22,24 @@ func LookupSqlMigrationService(ctx *pulumi.Context, args *LookupSqlMigrationServ
 }
 
 type LookupSqlMigrationServiceArgs struct {
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL Migration Service.
 	SqlMigrationServiceName string `pulumi:"sqlMigrationServiceName"`
 }
 
 // A SQL Migration Service.
 type LookupSqlMigrationServiceResult struct {
-	Id                      string             `pulumi:"id"`
-	IntegrationRuntimeState string             `pulumi:"integrationRuntimeState"`
-	Location                *string            `pulumi:"location"`
-	Name                    string             `pulumi:"name"`
-	ProvisioningState       string             `pulumi:"provisioningState"`
-	SystemData              SystemDataResponse `pulumi:"systemData"`
-	Tags                    map[string]string  `pulumi:"tags"`
-	Type                    string             `pulumi:"type"`
+	Id string `pulumi:"id"`
+	// Current state of the Integration runtime.
+	IntegrationRuntimeState string  `pulumi:"integrationRuntimeState"`
+	Location                *string `pulumi:"location"`
+	Name                    string  `pulumi:"name"`
+	// Provisioning state to track the async operation status.
+	ProvisioningState string             `pulumi:"provisioningState"`
+	SystemData        SystemDataResponse `pulumi:"systemData"`
+	Tags              map[string]string  `pulumi:"tags"`
+	Type              string             `pulumi:"type"`
 }
 
 func LookupSqlMigrationServiceOutput(ctx *pulumi.Context, args LookupSqlMigrationServiceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlMigrationServiceResultOutput {
@@ -52,7 +56,9 @@ func LookupSqlMigrationServiceOutput(ctx *pulumi.Context, args LookupSqlMigratio
 }
 
 type LookupSqlMigrationServiceOutputArgs struct {
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL Migration Service.
 	SqlMigrationServiceName pulumi.StringInput `pulumi:"sqlMigrationServiceName"`
 }
 
@@ -79,6 +85,7 @@ func (o LookupSqlMigrationServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlMigrationServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Current state of the Integration runtime.
 func (o LookupSqlMigrationServiceResultOutput) IntegrationRuntimeState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlMigrationServiceResult) string { return v.IntegrationRuntimeState }).(pulumi.StringOutput)
 }
@@ -91,6 +98,7 @@ func (o LookupSqlMigrationServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlMigrationServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state to track the async operation status.
 func (o LookupSqlMigrationServiceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlMigrationServiceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

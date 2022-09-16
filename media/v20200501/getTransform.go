@@ -21,21 +21,32 @@ func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pul
 }
 
 type LookupTransformArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TransformName     string `pulumi:"transformName"`
+	// The Transform name.
+	TransformName string `pulumi:"transformName"`
 }
 
 // A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
 type LookupTransformResult struct {
-	Created      string                    `pulumi:"created"`
-	Description  *string                   `pulumi:"description"`
-	Id           string                    `pulumi:"id"`
-	LastModified string                    `pulumi:"lastModified"`
-	Name         string                    `pulumi:"name"`
-	Outputs      []TransformOutputResponse `pulumi:"outputs"`
-	SystemData   SystemDataResponse        `pulumi:"systemData"`
-	Type         string                    `pulumi:"type"`
+	// The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.
+	Created string `pulumi:"created"`
+	// An optional verbose description of the Transform.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The UTC date and time when the Transform was last updated, in 'YYYY-MM-DDThh:mm:ssZ' format.
+	LastModified string `pulumi:"lastModified"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// An array of one or more TransformOutputs that the Transform should generate.
+	Outputs []TransformOutputResponse `pulumi:"outputs"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupTransformOutput(ctx *pulumi.Context, args LookupTransformOutputArgs, opts ...pulumi.InvokeOption) LookupTransformResultOutput {
@@ -52,9 +63,12 @@ func LookupTransformOutput(ctx *pulumi.Context, args LookupTransformOutputArgs, 
 }
 
 type LookupTransformOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TransformName     pulumi.StringInput `pulumi:"transformName"`
+	// The Transform name.
+	TransformName pulumi.StringInput `pulumi:"transformName"`
 }
 
 func (LookupTransformOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupTransformResultOutput) ToLookupTransformResultOutputWithContext(ct
 	return o
 }
 
+// The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.
 func (o LookupTransformResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransformResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// An optional verbose description of the Transform.
 func (o LookupTransformResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTransformResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTransformResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransformResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The UTC date and time when the Transform was last updated, in 'YYYY-MM-DDThh:mm:ssZ' format.
 func (o LookupTransformResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransformResult) string { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupTransformResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransformResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An array of one or more TransformOutputs that the Transform should generate.
 func (o LookupTransformResultOutput) Outputs() TransformOutputResponseArrayOutput {
 	return o.ApplyT(func(v LookupTransformResult) []TransformOutputResponse { return v.Outputs }).(TransformOutputResponseArrayOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupTransformResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTransformResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTransformResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransformResult) string { return v.Type }).(pulumi.StringOutput)
 }

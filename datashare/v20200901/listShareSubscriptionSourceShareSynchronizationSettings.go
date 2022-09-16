@@ -21,16 +21,22 @@ func ListShareSubscriptionSourceShareSynchronizationSettings(ctx *pulumi.Context
 }
 
 type ListShareSubscriptionSourceShareSynchronizationSettingsArgs struct {
-	AccountName           string  `pulumi:"accountName"`
-	ResourceGroupName     string  `pulumi:"resourceGroupName"`
-	ShareSubscriptionName string  `pulumi:"shareSubscriptionName"`
-	SkipToken             *string `pulumi:"skipToken"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the shareSubscription.
+	ShareSubscriptionName string `pulumi:"shareSubscriptionName"`
+	// Continuation token
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // List response for get source share Synchronization settings
 type ListShareSubscriptionSourceShareSynchronizationSettingsResult struct {
-	NextLink *string                                         `pulumi:"nextLink"`
-	Value    []ScheduledSourceSynchronizationSettingResponse `pulumi:"value"`
+	// The Url of next result page.
+	NextLink *string `pulumi:"nextLink"`
+	// Collection of items of type DataTransferObjects.
+	Value []ScheduledSourceSynchronizationSettingResponse `pulumi:"value"`
 }
 
 func ListShareSubscriptionSourceShareSynchronizationSettingsOutput(ctx *pulumi.Context, args ListShareSubscriptionSourceShareSynchronizationSettingsOutputArgs, opts ...pulumi.InvokeOption) ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput {
@@ -47,10 +53,14 @@ func ListShareSubscriptionSourceShareSynchronizationSettingsOutput(ctx *pulumi.C
 }
 
 type ListShareSubscriptionSourceShareSynchronizationSettingsOutputArgs struct {
-	AccountName           pulumi.StringInput    `pulumi:"accountName"`
-	ResourceGroupName     pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ShareSubscriptionName pulumi.StringInput    `pulumi:"shareSubscriptionName"`
-	SkipToken             pulumi.StringPtrInput `pulumi:"skipToken"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the shareSubscription.
+	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
+	// Continuation token
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListShareSubscriptionSourceShareSynchronizationSettingsOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput) ToL
 	return o
 }
 
+// The Url of next result page.
 func (o ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListShareSubscriptionSourceShareSynchronizationSettingsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Collection of items of type DataTransferObjects.
 func (o ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput) Value() ScheduledSourceSynchronizationSettingResponseArrayOutput {
 	return o.ApplyT(func(v ListShareSubscriptionSourceShareSynchronizationSettingsResult) []ScheduledSourceSynchronizationSettingResponse {
 		return v.Value

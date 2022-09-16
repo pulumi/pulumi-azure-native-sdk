@@ -22,14 +22,19 @@ func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccou
 }
 
 type GetTestBaseAccountFileUploadUrlArgs struct {
-	BlobName            *string `pulumi:"blobName"`
-	ResourceGroupName   string  `pulumi:"resourceGroupName"`
-	TestBaseAccountName string  `pulumi:"testBaseAccountName"`
+	// The custom file name of the uploaded blob.
+	BlobName *string `pulumi:"blobName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
+	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
 
 // The URL response
 type GetTestBaseAccountFileUploadUrlResult struct {
-	BlobPath  string `pulumi:"blobPath"`
+	// The blob path of the uploaded package. It will be used as the 'blobPath' property of PackageResource.
+	BlobPath string `pulumi:"blobPath"`
+	// The URL used for uploading the package.
 	UploadUrl string `pulumi:"uploadUrl"`
 }
 
@@ -47,9 +52,12 @@ func GetTestBaseAccountFileUploadUrlOutput(ctx *pulumi.Context, args GetTestBase
 }
 
 type GetTestBaseAccountFileUploadUrlOutputArgs struct {
-	BlobName            pulumi.StringPtrInput `pulumi:"blobName"`
-	ResourceGroupName   pulumi.StringInput    `pulumi:"resourceGroupName"`
-	TestBaseAccountName pulumi.StringInput    `pulumi:"testBaseAccountName"`
+	// The custom file name of the uploaded blob.
+	BlobName pulumi.StringPtrInput `pulumi:"blobName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
+	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }
 
 func (GetTestBaseAccountFileUploadUrlOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o GetTestBaseAccountFileUploadUrlResultOutput) ToGetTestBaseAccountFileUpl
 	return o
 }
 
+// The blob path of the uploaded package. It will be used as the 'blobPath' property of PackageResource.
 func (o GetTestBaseAccountFileUploadUrlResultOutput) BlobPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestBaseAccountFileUploadUrlResult) string { return v.BlobPath }).(pulumi.StringOutput)
 }
 
+// The URL used for uploading the package.
 func (o GetTestBaseAccountFileUploadUrlResultOutput) UploadUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestBaseAccountFileUploadUrlResult) string { return v.UploadUrl }).(pulumi.StringOutput)
 }

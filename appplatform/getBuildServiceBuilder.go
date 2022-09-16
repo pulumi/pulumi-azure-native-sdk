@@ -22,19 +22,28 @@ func LookupBuildServiceBuilder(ctx *pulumi.Context, args *LookupBuildServiceBuil
 }
 
 type LookupBuildServiceBuilderArgs struct {
-	BuildServiceName  string `pulumi:"buildServiceName"`
-	BuilderName       string `pulumi:"builderName"`
+	// The name of the build service resource.
+	BuildServiceName string `pulumi:"buildServiceName"`
+	// The name of the builder resource.
+	BuilderName string `pulumi:"builderName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // KPack Builder resource
 type LookupBuildServiceBuilderResult struct {
-	Id         string                    `pulumi:"id"`
-	Name       string                    `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Property of the Builder resource.
 	Properties BuilderPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse        `pulumi:"systemData"`
-	Type       string                    `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupBuildServiceBuilderOutput(ctx *pulumi.Context, args LookupBuildServiceBuilderOutputArgs, opts ...pulumi.InvokeOption) LookupBuildServiceBuilderResultOutput {
@@ -51,10 +60,14 @@ func LookupBuildServiceBuilderOutput(ctx *pulumi.Context, args LookupBuildServic
 }
 
 type LookupBuildServiceBuilderOutputArgs struct {
-	BuildServiceName  pulumi.StringInput `pulumi:"buildServiceName"`
-	BuilderName       pulumi.StringInput `pulumi:"builderName"`
+	// The name of the build service resource.
+	BuildServiceName pulumi.StringInput `pulumi:"buildServiceName"`
+	// The name of the builder resource.
+	BuilderName pulumi.StringInput `pulumi:"builderName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupBuildServiceBuilderOutputArgs) ElementType() reflect.Type {
@@ -76,22 +89,27 @@ func (o LookupBuildServiceBuilderResultOutput) ToLookupBuildServiceBuilderResult
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupBuildServiceBuilderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildServiceBuilderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupBuildServiceBuilderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildServiceBuilderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Property of the Builder resource.
 func (o LookupBuildServiceBuilderResultOutput) Properties() BuilderPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupBuildServiceBuilderResult) BuilderPropertiesResponse { return v.Properties }).(BuilderPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupBuildServiceBuilderResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBuildServiceBuilderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupBuildServiceBuilderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildServiceBuilderResult) string { return v.Type }).(pulumi.StringOutput)
 }

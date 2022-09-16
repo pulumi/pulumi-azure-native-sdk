@@ -21,14 +21,19 @@ func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOp
 }
 
 type GetEntityArgs struct {
+	// A filter which allows the call to be filtered for a specific group.
 	GroupName *string `pulumi:"groupName"`
+	// Page continuation token is only used if a previous operation returned a partial result.
+	// If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
 	Skiptoken *string `pulumi:"skiptoken"`
 }
 
 // Describes the result of the request to view entities.
 type GetEntityResult struct {
-	NextLink string               `pulumi:"nextLink"`
-	Value    []EntityInfoResponse `pulumi:"value"`
+	// The URL to use for getting the next set of results.
+	NextLink string `pulumi:"nextLink"`
+	// The list of entities.
+	Value []EntityInfoResponse `pulumi:"value"`
 }
 
 func GetEntityOutput(ctx *pulumi.Context, args GetEntityOutputArgs, opts ...pulumi.InvokeOption) GetEntityResultOutput {
@@ -45,7 +50,10 @@ func GetEntityOutput(ctx *pulumi.Context, args GetEntityOutputArgs, opts ...pulu
 }
 
 type GetEntityOutputArgs struct {
+	// A filter which allows the call to be filtered for a specific group.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// Page continuation token is only used if a previous operation returned a partial result.
+	// If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
 	Skiptoken pulumi.StringPtrInput `pulumi:"skiptoken"`
 }
 
@@ -68,10 +76,12 @@ func (o GetEntityResultOutput) ToGetEntityResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// The URL to use for getting the next set of results.
 func (o GetEntityResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEntityResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// The list of entities.
 func (o GetEntityResultOutput) Value() EntityInfoResponseArrayOutput {
 	return o.ApplyT(func(v GetEntityResult) []EntityInfoResponse { return v.Value }).(EntityInfoResponseArrayOutput)
 }

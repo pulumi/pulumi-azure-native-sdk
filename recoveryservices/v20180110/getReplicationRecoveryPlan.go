@@ -23,18 +23,26 @@ func LookupReplicationRecoveryPlan(ctx *pulumi.Context, args *LookupReplicationR
 }
 
 type LookupReplicationRecoveryPlanArgs struct {
-	RecoveryPlanName  string `pulumi:"recoveryPlanName"`
+	// Name of the recovery plan.
+	RecoveryPlanName string `pulumi:"recoveryPlanName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the recovery services vault.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Recovery plan details.
 type LookupReplicationRecoveryPlanResult struct {
-	Id         string                         `pulumi:"id"`
-	Location   *string                        `pulumi:"location"`
-	Name       string                         `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// The custom details.
 	Properties RecoveryPlanPropertiesResponse `pulumi:"properties"`
-	Type       string                         `pulumi:"type"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationRecoveryPlanOutput(ctx *pulumi.Context, args LookupReplicationRecoveryPlanOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationRecoveryPlanResultOutput {
@@ -51,9 +59,12 @@ func LookupReplicationRecoveryPlanOutput(ctx *pulumi.Context, args LookupReplica
 }
 
 type LookupReplicationRecoveryPlanOutputArgs struct {
-	RecoveryPlanName  pulumi.StringInput `pulumi:"recoveryPlanName"`
+	// Name of the recovery plan.
+	RecoveryPlanName pulumi.StringInput `pulumi:"recoveryPlanName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the recovery services vault.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupReplicationRecoveryPlanOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupReplicationRecoveryPlanResultOutput) ToLookupReplicationRecoveryPl
 	return o
 }
 
+// Resource Id
 func (o LookupReplicationRecoveryPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryPlanResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupReplicationRecoveryPlanResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryPlanResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupReplicationRecoveryPlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryPlanResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The custom details.
 func (o LookupReplicationRecoveryPlanResultOutput) Properties() RecoveryPlanPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryPlanResult) RecoveryPlanPropertiesResponse { return v.Properties }).(RecoveryPlanPropertiesResponseOutput)
 }
 
+// Resource Type
 func (o LookupReplicationRecoveryPlanResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryPlanResult) string { return v.Type }).(pulumi.StringOutput)
 }

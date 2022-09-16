@@ -23,18 +23,26 @@ func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.
 }
 
 type LookupTriggerArgs struct {
-	FactoryName       string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TriggerName       string `pulumi:"triggerName"`
+	// The trigger name.
+	TriggerName string `pulumi:"triggerName"`
 }
 
 // Trigger resource type.
 type LookupTriggerResult struct {
-	Etag       string      `pulumi:"etag"`
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Etag identifies change in the resource.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Properties of the trigger.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
@@ -51,9 +59,12 @@ func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts
 }
 
 type LookupTriggerOutputArgs struct {
-	FactoryName       pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TriggerName       pulumi.StringInput `pulumi:"triggerName"`
+	// The trigger name.
+	TriggerName pulumi.StringInput `pulumi:"triggerName"`
 }
 
 func (LookupTriggerOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx co
 	return o
 }
 
+// Etag identifies change in the resource.
 func (o LookupTriggerResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupTriggerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the trigger.
 func (o LookupTriggerResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupTriggerResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The resource type.
 func (o LookupTriggerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Type }).(pulumi.StringOutput)
 }

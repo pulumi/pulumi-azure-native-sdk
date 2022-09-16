@@ -21,24 +21,38 @@ func GetPredictionModelStatus(ctx *pulumi.Context, args *GetPredictionModelStatu
 }
 
 type GetPredictionModelStatusArgs struct {
-	HubName           string `pulumi:"hubName"`
-	PredictionName    string `pulumi:"predictionName"`
+	// The name of the hub.
+	HubName string `pulumi:"hubName"`
+	// The name of the Prediction.
+	PredictionName string `pulumi:"predictionName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The prediction model status.
 type GetPredictionModelStatusResult struct {
-	Message            string `pulumi:"message"`
-	ModelVersion       string `pulumi:"modelVersion"`
-	PredictionGuidId   string `pulumi:"predictionGuidId"`
-	PredictionName     string `pulumi:"predictionName"`
-	SignalsUsed        int    `pulumi:"signalsUsed"`
-	Status             string `pulumi:"status"`
-	TenantId           string `pulumi:"tenantId"`
-	TestSetCount       int    `pulumi:"testSetCount"`
-	TrainingAccuracy   int    `pulumi:"trainingAccuracy"`
-	TrainingSetCount   int    `pulumi:"trainingSetCount"`
-	ValidationSetCount int    `pulumi:"validationSetCount"`
+	// The model status message.
+	Message string `pulumi:"message"`
+	// Version of the model.
+	ModelVersion string `pulumi:"modelVersion"`
+	// The prediction GUID ID.
+	PredictionGuidId string `pulumi:"predictionGuidId"`
+	// The prediction name.
+	PredictionName string `pulumi:"predictionName"`
+	// The signals used.
+	SignalsUsed int `pulumi:"signalsUsed"`
+	// Prediction model life cycle.  When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API.
+	Status string `pulumi:"status"`
+	// The hub name.
+	TenantId string `pulumi:"tenantId"`
+	// Count of the test set.
+	TestSetCount int `pulumi:"testSetCount"`
+	// The training accuracy.
+	TrainingAccuracy int `pulumi:"trainingAccuracy"`
+	// Count of the training set.
+	TrainingSetCount int `pulumi:"trainingSetCount"`
+	// Count of the validation set.
+	ValidationSetCount int `pulumi:"validationSetCount"`
 }
 
 func GetPredictionModelStatusOutput(ctx *pulumi.Context, args GetPredictionModelStatusOutputArgs, opts ...pulumi.InvokeOption) GetPredictionModelStatusResultOutput {
@@ -55,8 +69,11 @@ func GetPredictionModelStatusOutput(ctx *pulumi.Context, args GetPredictionModel
 }
 
 type GetPredictionModelStatusOutputArgs struct {
-	HubName           pulumi.StringInput `pulumi:"hubName"`
-	PredictionName    pulumi.StringInput `pulumi:"predictionName"`
+	// The name of the hub.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// The name of the Prediction.
+	PredictionName pulumi.StringInput `pulumi:"predictionName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,46 +96,57 @@ func (o GetPredictionModelStatusResultOutput) ToGetPredictionModelStatusResultOu
 	return o
 }
 
+// The model status message.
 func (o GetPredictionModelStatusResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// Version of the model.
 func (o GetPredictionModelStatusResultOutput) ModelVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) string { return v.ModelVersion }).(pulumi.StringOutput)
 }
 
+// The prediction GUID ID.
 func (o GetPredictionModelStatusResultOutput) PredictionGuidId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) string { return v.PredictionGuidId }).(pulumi.StringOutput)
 }
 
+// The prediction name.
 func (o GetPredictionModelStatusResultOutput) PredictionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) string { return v.PredictionName }).(pulumi.StringOutput)
 }
 
+// The signals used.
 func (o GetPredictionModelStatusResultOutput) SignalsUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) int { return v.SignalsUsed }).(pulumi.IntOutput)
 }
 
+// Prediction model life cycle.  When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API.
 func (o GetPredictionModelStatusResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The hub name.
 func (o GetPredictionModelStatusResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Count of the test set.
 func (o GetPredictionModelStatusResultOutput) TestSetCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) int { return v.TestSetCount }).(pulumi.IntOutput)
 }
 
+// The training accuracy.
 func (o GetPredictionModelStatusResultOutput) TrainingAccuracy() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) int { return v.TrainingAccuracy }).(pulumi.IntOutput)
 }
 
+// Count of the training set.
 func (o GetPredictionModelStatusResultOutput) TrainingSetCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) int { return v.TrainingSetCount }).(pulumi.IntOutput)
 }
 
+// Count of the validation set.
 func (o GetPredictionModelStatusResultOutput) ValidationSetCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPredictionModelStatusResult) int { return v.ValidationSetCount }).(pulumi.IntOutput)
 }

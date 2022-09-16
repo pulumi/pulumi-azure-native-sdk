@@ -21,22 +21,35 @@ func LookupKustoClusterDataSet(ctx *pulumi.Context, args *LookupKustoClusterData
 }
 
 type LookupKustoClusterDataSetArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DataSetName       string `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName string `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
 }
 
 // A kusto cluster data set.
 type LookupKustoClusterDataSetResult struct {
-	DataSetId              string `pulumi:"dataSetId"`
-	Id                     string `pulumi:"id"`
-	Kind                   string `pulumi:"kind"`
+	// Unique id for identifying a data set resource
+	DataSetId string `pulumi:"dataSetId"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set.
+	// Expected value is 'KustoCluster'.
+	Kind string `pulumi:"kind"`
+	// Resource id of the kusto cluster.
 	KustoClusterResourceId string `pulumi:"kustoClusterResourceId"`
-	Location               string `pulumi:"location"`
-	Name                   string `pulumi:"name"`
-	ProvisioningState      string `pulumi:"provisioningState"`
-	Type                   string `pulumi:"type"`
+	// Location of the kusto cluster.
+	Location string `pulumi:"location"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// Provisioning state of the kusto cluster data set.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupKustoClusterDataSetOutput(ctx *pulumi.Context, args LookupKustoClusterDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupKustoClusterDataSetResultOutput {
@@ -53,10 +66,14 @@ func LookupKustoClusterDataSetOutput(ctx *pulumi.Context, args LookupKustoCluste
 }
 
 type LookupKustoClusterDataSetOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DataSetName       pulumi.StringInput `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName pulumi.StringInput `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupKustoClusterDataSetOutputArgs) ElementType() reflect.Type {
@@ -78,34 +95,43 @@ func (o LookupKustoClusterDataSetResultOutput) ToLookupKustoClusterDataSetResult
 	return o
 }
 
+// Unique id for identifying a data set resource
 func (o LookupKustoClusterDataSetResultOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupKustoClusterDataSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set.
+// Expected value is 'KustoCluster'.
 func (o LookupKustoClusterDataSetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource id of the kusto cluster.
 func (o LookupKustoClusterDataSetResultOutput) KustoClusterResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.KustoClusterResourceId }).(pulumi.StringOutput)
 }
 
+// Location of the kusto cluster.
 func (o LookupKustoClusterDataSetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupKustoClusterDataSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the kusto cluster data set.
 func (o LookupKustoClusterDataSetResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Type of the azure resource
 func (o LookupKustoClusterDataSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

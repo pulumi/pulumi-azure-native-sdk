@@ -21,12 +21,15 @@ func GetEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetEventS
 }
 
 type GetEventSubscriptionDeliveryAttributesArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	Scope                 string `pulumi:"scope"`
+	// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+	Scope string `pulumi:"scope"`
 }
 
 // Result of the Get delivery attributes operation.
 type GetEventSubscriptionDeliveryAttributesResult struct {
+	// A collection of DeliveryAttributeMapping
 	Value []interface{} `pulumi:"value"`
 }
 
@@ -44,8 +47,10 @@ func GetEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetE
 }
 
 type GetEventSubscriptionDeliveryAttributesOutputArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	Scope                 pulumi.StringInput `pulumi:"scope"`
+	// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (GetEventSubscriptionDeliveryAttributesOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o GetEventSubscriptionDeliveryAttributesResultOutput) ToGetEventSubscripti
 	return o
 }
 
+// A collection of DeliveryAttributeMapping
 func (o GetEventSubscriptionDeliveryAttributesResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetEventSubscriptionDeliveryAttributesResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

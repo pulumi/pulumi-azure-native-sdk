@@ -22,14 +22,18 @@ func ListRegistryCredentials(ctx *pulumi.Context, args *ListRegistryCredentialsA
 }
 
 type ListRegistryCredentialsArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response from the ListCredentials operation.
 type ListRegistryCredentialsResult struct {
+	// The list of passwords for a container registry.
 	Passwords []RegistryPasswordResponse `pulumi:"passwords"`
-	Username  *string                    `pulumi:"username"`
+	// The username for a container registry.
+	Username *string `pulumi:"username"`
 }
 
 func ListRegistryCredentialsOutput(ctx *pulumi.Context, args ListRegistryCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListRegistryCredentialsResultOutput {
@@ -46,7 +50,9 @@ func ListRegistryCredentialsOutput(ctx *pulumi.Context, args ListRegistryCredent
 }
 
 type ListRegistryCredentialsOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListRegistryCredentialsResultOutput) ToListRegistryCredentialsResultOutp
 	return o
 }
 
+// The list of passwords for a container registry.
 func (o ListRegistryCredentialsResultOutput) Passwords() RegistryPasswordResponseArrayOutput {
 	return o.ApplyT(func(v ListRegistryCredentialsResult) []RegistryPasswordResponse { return v.Passwords }).(RegistryPasswordResponseArrayOutput)
 }
 
+// The username for a container registry.
 func (o ListRegistryCredentialsResultOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListRegistryCredentialsResult) *string { return v.Username }).(pulumi.StringPtrOutput)
 }

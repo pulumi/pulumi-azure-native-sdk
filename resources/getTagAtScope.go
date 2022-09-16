@@ -22,15 +22,20 @@ func LookupTagAtScope(ctx *pulumi.Context, args *LookupTagAtScopeArgs, opts ...p
 }
 
 type LookupTagAtScopeArgs struct {
+	// The resource scope.
 	Scope string `pulumi:"scope"`
 }
 
 // Wrapper resource for tags API requests and responses.
 type LookupTagAtScopeResult struct {
-	Id         string       `pulumi:"id"`
-	Name       string       `pulumi:"name"`
+	// The ID of the tags wrapper resource.
+	Id string `pulumi:"id"`
+	// The name of the tags wrapper resource.
+	Name string `pulumi:"name"`
+	// The set of tags.
 	Properties TagsResponse `pulumi:"properties"`
-	Type       string       `pulumi:"type"`
+	// The type of the tags wrapper resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupTagAtScopeOutput(ctx *pulumi.Context, args LookupTagAtScopeOutputArgs, opts ...pulumi.InvokeOption) LookupTagAtScopeResultOutput {
@@ -47,6 +52,7 @@ func LookupTagAtScopeOutput(ctx *pulumi.Context, args LookupTagAtScopeOutputArgs
 }
 
 type LookupTagAtScopeOutputArgs struct {
+	// The resource scope.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -69,18 +75,22 @@ func (o LookupTagAtScopeResultOutput) ToLookupTagAtScopeResultOutputWithContext(
 	return o
 }
 
+// The ID of the tags wrapper resource.
 func (o LookupTagAtScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagAtScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the tags wrapper resource.
 func (o LookupTagAtScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagAtScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The set of tags.
 func (o LookupTagAtScopeResultOutput) Properties() TagsResponseOutput {
 	return o.ApplyT(func(v LookupTagAtScopeResult) TagsResponse { return v.Properties }).(TagsResponseOutput)
 }
 
+// The type of the tags wrapper resource.
 func (o LookupTagAtScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagAtScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,26 +21,42 @@ func LookupWebApplicationFirewallPolicy(ctx *pulumi.Context, args *LookupWebAppl
 }
 
 type LookupWebApplicationFirewallPolicyArgs struct {
-	PolicyName        string `pulumi:"policyName"`
+	// The name of the policy.
+	PolicyName string `pulumi:"policyName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Defines web application firewall policy.
 type LookupWebApplicationFirewallPolicyResult struct {
-	ApplicationGateways []ApplicationGatewayResponse               `pulumi:"applicationGateways"`
-	CustomRules         []WebApplicationFirewallCustomRuleResponse `pulumi:"customRules"`
-	Etag                string                                     `pulumi:"etag"`
-	HttpListeners       []SubResourceResponse                      `pulumi:"httpListeners"`
-	Id                  *string                                    `pulumi:"id"`
-	Location            *string                                    `pulumi:"location"`
-	ManagedRules        ManagedRulesDefinitionResponse             `pulumi:"managedRules"`
-	Name                string                                     `pulumi:"name"`
-	PathBasedRules      []SubResourceResponse                      `pulumi:"pathBasedRules"`
-	PolicySettings      *PolicySettingsResponse                    `pulumi:"policySettings"`
-	ProvisioningState   string                                     `pulumi:"provisioningState"`
-	ResourceState       string                                     `pulumi:"resourceState"`
-	Tags                map[string]string                          `pulumi:"tags"`
-	Type                string                                     `pulumi:"type"`
+	// A collection of references to application gateways.
+	ApplicationGateways []ApplicationGatewayResponse `pulumi:"applicationGateways"`
+	// Describes custom rules inside the policy.
+	CustomRules []WebApplicationFirewallCustomRuleResponse `pulumi:"customRules"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// A collection of references to application gateway http listeners.
+	HttpListeners []SubResourceResponse `pulumi:"httpListeners"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Describes the managedRules structure.
+	ManagedRules ManagedRulesDefinitionResponse `pulumi:"managedRules"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// A collection of references to application gateway path rules.
+	PathBasedRules []SubResourceResponse `pulumi:"pathBasedRules"`
+	// Describes policySettings for policy.
+	PolicySettings *PolicySettingsResponse `pulumi:"policySettings"`
+	// The provisioning state of the web application firewall policy resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource status of the policy.
+	ResourceState string `pulumi:"resourceState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebApplicationFirewallPolicyOutput(ctx *pulumi.Context, args LookupWebApplicationFirewallPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebApplicationFirewallPolicyResultOutput {
@@ -57,7 +73,9 @@ func LookupWebApplicationFirewallPolicyOutput(ctx *pulumi.Context, args LookupWe
 }
 
 type LookupWebApplicationFirewallPolicyOutputArgs struct {
-	PolicyName        pulumi.StringInput `pulumi:"policyName"`
+	// The name of the policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,62 +98,76 @@ func (o LookupWebApplicationFirewallPolicyResultOutput) ToLookupWebApplicationFi
 	return o
 }
 
+// A collection of references to application gateways.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ApplicationGateways() ApplicationGatewayResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []ApplicationGatewayResponse {
 		return v.ApplicationGateways
 	}).(ApplicationGatewayResponseArrayOutput)
 }
 
+// Describes custom rules inside the policy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) CustomRules() WebApplicationFirewallCustomRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []WebApplicationFirewallCustomRuleResponse {
 		return v.CustomRules
 	}).(WebApplicationFirewallCustomRuleResponseArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// A collection of references to application gateway http listeners.
 func (o LookupWebApplicationFirewallPolicyResultOutput) HttpListeners() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []SubResourceResponse { return v.HttpListeners }).(SubResourceResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Describes the managedRules structure.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ManagedRules() ManagedRulesDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) ManagedRulesDefinitionResponse { return v.ManagedRules }).(ManagedRulesDefinitionResponseOutput)
 }
 
+// Resource name.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A collection of references to application gateway path rules.
 func (o LookupWebApplicationFirewallPolicyResultOutput) PathBasedRules() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []SubResourceResponse { return v.PathBasedRules }).(SubResourceResponseArrayOutput)
 }
 
+// Describes policySettings for policy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) PolicySettings() PolicySettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *PolicySettingsResponse { return v.PolicySettings }).(PolicySettingsResponsePtrOutput)
 }
 
+// The provisioning state of the web application firewall policy resource.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource status of the policy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

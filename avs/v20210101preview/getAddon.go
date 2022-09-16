@@ -21,19 +21,28 @@ func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.Invo
 }
 
 type LookupAddonArgs struct {
-	AddonName         string `pulumi:"addonName"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the addon for the private cloud
+	AddonName string `pulumi:"addonName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An addon resource
 type LookupAddonResult struct {
-	AddonType         *string `pulumi:"addonType"`
-	Id                string  `pulumi:"id"`
-	LicenseKey        *string `pulumi:"licenseKey"`
-	Name              string  `pulumi:"name"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	Type              string  `pulumi:"type"`
+	// The type of private cloud addon
+	AddonType *string `pulumi:"addonType"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The SRM license
+	LicenseKey *string `pulumi:"licenseKey"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The state of the addon provisioning
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...pulumi.InvokeOption) LookupAddonResultOutput {
@@ -50,8 +59,11 @@ func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...
 }
 
 type LookupAddonOutputArgs struct {
-	AddonName         pulumi.StringInput `pulumi:"addonName"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the addon for the private cloud
+	AddonName pulumi.StringInput `pulumi:"addonName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,26 +86,32 @@ func (o LookupAddonResultOutput) ToLookupAddonResultOutputWithContext(ctx contex
 	return o
 }
 
+// The type of private cloud addon
 func (o LookupAddonResultOutput) AddonType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAddonResult) *string { return v.AddonType }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupAddonResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The SRM license
 func (o LookupAddonResultOutput) LicenseKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAddonResult) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupAddonResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The state of the addon provisioning
 func (o LookupAddonResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupAddonResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Type }).(pulumi.StringOutput)
 }

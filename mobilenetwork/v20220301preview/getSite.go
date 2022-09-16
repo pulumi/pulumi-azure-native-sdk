@@ -21,27 +21,44 @@ func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.Invoke
 }
 
 type LookupSiteArgs struct {
+	// The name of the mobile network.
 	MobileNetworkName string `pulumi:"mobileNetworkName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SiteName          string `pulumi:"siteName"`
+	// The name of the mobile network site.
+	SiteName string `pulumi:"siteName"`
 }
 
 // Site resource.
 type LookupSiteResult struct {
-	CreatedAt          *string               `pulumi:"createdAt"`
-	CreatedBy          *string               `pulumi:"createdBy"`
-	CreatedByType      *string               `pulumi:"createdByType"`
-	Id                 string                `pulumi:"id"`
-	LastModifiedAt     *string               `pulumi:"lastModifiedAt"`
-	LastModifiedBy     *string               `pulumi:"lastModifiedBy"`
-	LastModifiedByType *string               `pulumi:"lastModifiedByType"`
-	Location           string                `pulumi:"location"`
-	Name               string                `pulumi:"name"`
-	NetworkFunctions   []SubResourceResponse `pulumi:"networkFunctions"`
-	ProvisioningState  string                `pulumi:"provisioningState"`
-	SystemData         SystemDataResponse    `pulumi:"systemData"`
-	Tags               map[string]string     `pulumi:"tags"`
-	Type               string                `pulumi:"type"`
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// An array of ids of the network functions deployed on the site, maintained by the user.
+	NetworkFunctions []SubResourceResponse `pulumi:"networkFunctions"`
+	// The provisioning state of the site resource. **TODO**: Confirm if this is needed
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pulumi.InvokeOption) LookupSiteResultOutput {
@@ -58,9 +75,12 @@ func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pu
 }
 
 type LookupSiteOutputArgs struct {
+	// The name of the mobile network.
 	MobileNetworkName pulumi.StringInput `pulumi:"mobileNetworkName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SiteName          pulumi.StringInput `pulumi:"siteName"`
+	// The name of the mobile network site.
+	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 
 func (LookupSiteOutputArgs) ElementType() reflect.Type {
@@ -82,58 +102,72 @@ func (o LookupSiteResultOutput) ToLookupSiteResultOutputWithContext(ctx context.
 	return o
 }
 
+// The timestamp of resource creation (UTC).
 func (o LookupSiteResultOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The identity that created the resource.
 func (o LookupSiteResultOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// The type of identity that created the resource.
 func (o LookupSiteResultOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The timestamp of resource last modification (UTC)
 func (o LookupSiteResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
 
+// The identity that last modified the resource.
 func (o LookupSiteResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
 }
 
+// The type of identity that last modified the resource.
 func (o LookupSiteResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSiteResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSiteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An array of ids of the network functions deployed on the site, maintained by the user.
 func (o LookupSiteResultOutput) NetworkFunctions() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupSiteResult) []SubResourceResponse { return v.NetworkFunctions }).(SubResourceResponseArrayOutput)
 }
 
+// The provisioning state of the site resource. **TODO**: Confirm if this is needed
 func (o LookupSiteResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSiteResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSiteResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSiteResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

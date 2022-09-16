@@ -22,20 +22,30 @@ func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts 
 }
 
 type LookupEmailServiceArgs struct {
-	EmailServiceName  string `pulumi:"emailServiceName"`
+	// The name of the EmailService resource.
+	EmailServiceName string `pulumi:"emailServiceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A class representing an EmailService resource.
 type LookupEmailServiceResult struct {
-	DataLocation      string             `pulumi:"dataLocation"`
-	Id                string             `pulumi:"id"`
-	Location          string             `pulumi:"location"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	Type              string             `pulumi:"type"`
+	// The location where the email service stores its data at rest.
+	DataLocation string `pulumi:"dataLocation"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEmailServiceOutput(ctx *pulumi.Context, args LookupEmailServiceOutputArgs, opts ...pulumi.InvokeOption) LookupEmailServiceResultOutput {
@@ -52,7 +62,9 @@ func LookupEmailServiceOutput(ctx *pulumi.Context, args LookupEmailServiceOutput
 }
 
 type LookupEmailServiceOutputArgs struct {
-	EmailServiceName  pulumi.StringInput `pulumi:"emailServiceName"`
+	// The name of the EmailService resource.
+	EmailServiceName pulumi.StringInput `pulumi:"emailServiceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,34 +87,42 @@ func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutputWithCont
 	return o
 }
 
+// The location where the email service stores its data at rest.
 func (o LookupEmailServiceResultOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.DataLocation }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEmailServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupEmailServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEmailServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupEmailServiceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEmailServiceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupEmailServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEmailServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

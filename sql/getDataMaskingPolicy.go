@@ -22,23 +22,36 @@ func LookupDataMaskingPolicy(ctx *pulumi.Context, args *LookupDataMaskingPolicyA
 }
 
 type LookupDataMaskingPolicyArgs struct {
+	// The name of the database for which the data masking rule applies.
 	DataMaskingPolicyName string `pulumi:"dataMaskingPolicyName"`
-	DatabaseName          string `pulumi:"databaseName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	ServerName            string `pulumi:"serverName"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents a database data masking policy.
 type LookupDataMaskingPolicyResult struct {
-	ApplicationPrincipals string  `pulumi:"applicationPrincipals"`
-	DataMaskingState      string  `pulumi:"dataMaskingState"`
-	ExemptPrincipals      *string `pulumi:"exemptPrincipals"`
-	Id                    string  `pulumi:"id"`
-	Kind                  string  `pulumi:"kind"`
-	Location              string  `pulumi:"location"`
-	MaskingLevel          string  `pulumi:"maskingLevel"`
-	Name                  string  `pulumi:"name"`
-	Type                  string  `pulumi:"type"`
+	// The list of the application principals. This is a legacy parameter and is no longer used.
+	ApplicationPrincipals string `pulumi:"applicationPrincipals"`
+	// The state of the data masking policy.
+	DataMaskingState string `pulumi:"dataMaskingState"`
+	// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
+	ExemptPrincipals *string `pulumi:"exemptPrincipals"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The kind of data masking policy. Metadata, used for Azure portal.
+	Kind string `pulumi:"kind"`
+	// The location of the data masking policy.
+	Location string `pulumi:"location"`
+	// The masking level. This is a legacy parameter and is no longer used.
+	MaskingLevel string `pulumi:"maskingLevel"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDataMaskingPolicyOutput(ctx *pulumi.Context, args LookupDataMaskingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDataMaskingPolicyResultOutput {
@@ -55,10 +68,14 @@ func LookupDataMaskingPolicyOutput(ctx *pulumi.Context, args LookupDataMaskingPo
 }
 
 type LookupDataMaskingPolicyOutputArgs struct {
+	// The name of the database for which the data masking rule applies.
 	DataMaskingPolicyName pulumi.StringInput `pulumi:"dataMaskingPolicyName"`
-	DatabaseName          pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName            pulumi.StringInput `pulumi:"serverName"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupDataMaskingPolicyOutputArgs) ElementType() reflect.Type {
@@ -80,38 +97,47 @@ func (o LookupDataMaskingPolicyResultOutput) ToLookupDataMaskingPolicyResultOutp
 	return o
 }
 
+// The list of the application principals. This is a legacy parameter and is no longer used.
 func (o LookupDataMaskingPolicyResultOutput) ApplicationPrincipals() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.ApplicationPrincipals }).(pulumi.StringOutput)
 }
 
+// The state of the data masking policy.
 func (o LookupDataMaskingPolicyResultOutput) DataMaskingState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.DataMaskingState }).(pulumi.StringOutput)
 }
 
+// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
 func (o LookupDataMaskingPolicyResultOutput) ExemptPrincipals() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) *string { return v.ExemptPrincipals }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupDataMaskingPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of data masking policy. Metadata, used for Azure portal.
 func (o LookupDataMaskingPolicyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The location of the data masking policy.
 func (o LookupDataMaskingPolicyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The masking level. This is a legacy parameter and is no longer used.
 func (o LookupDataMaskingPolicyResultOutput) MaskingLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.MaskingLevel }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupDataMaskingPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupDataMaskingPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

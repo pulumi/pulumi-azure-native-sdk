@@ -21,18 +21,26 @@ func LookupTransparentDataEncryption(ctx *pulumi.Context, args *LookupTransparen
 }
 
 type LookupTransparentDataEncryptionArgs struct {
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the logical database for which the transparent data encryption is defined.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
-	TdeName           string `pulumi:"tdeName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the transparent data encryption configuration.
+	TdeName string `pulumi:"tdeName"`
 }
 
 // A logical database transparent data encryption state.
 type LookupTransparentDataEncryptionResult struct {
-	Id    string `pulumi:"id"`
-	Name  string `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Specifies the state of the transparent data encryption.
 	State string `pulumi:"state"`
-	Type  string `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupTransparentDataEncryptionOutput(ctx *pulumi.Context, args LookupTransparentDataEncryptionOutputArgs, opts ...pulumi.InvokeOption) LookupTransparentDataEncryptionResultOutput {
@@ -49,10 +57,14 @@ func LookupTransparentDataEncryptionOutput(ctx *pulumi.Context, args LookupTrans
 }
 
 type LookupTransparentDataEncryptionOutputArgs struct {
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the logical database for which the transparent data encryption is defined.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
-	TdeName           pulumi.StringInput `pulumi:"tdeName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the transparent data encryption configuration.
+	TdeName pulumi.StringInput `pulumi:"tdeName"`
 }
 
 func (LookupTransparentDataEncryptionOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupTransparentDataEncryptionResultOutput) ToLookupTransparentDataEncr
 	return o
 }
 
+// Resource ID.
 func (o LookupTransparentDataEncryptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransparentDataEncryptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupTransparentDataEncryptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransparentDataEncryptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies the state of the transparent data encryption.
 func (o LookupTransparentDataEncryptionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransparentDataEncryptionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupTransparentDataEncryptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransparentDataEncryptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

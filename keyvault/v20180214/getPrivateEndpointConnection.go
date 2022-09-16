@@ -23,21 +23,32 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
+	// Name of the private endpoint connection associated with the key vault.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
-	VaultName                     string `pulumi:"vaultName"`
+	// Name of the resource group that contains the key vault.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the key vault.
+	VaultName string `pulumi:"vaultName"`
 }
 
 // Private endpoint connection resource.
 type LookupPrivateEndpointConnectionResult struct {
-	Id                                string                                     `pulumi:"id"`
-	Location                          string                                     `pulumi:"location"`
-	Name                              string                                     `pulumi:"name"`
-	PrivateEndpoint                   *PrivateEndpointResponse                   `pulumi:"privateEndpoint"`
+	// Fully qualified identifier of the key vault resource.
+	Id string `pulumi:"id"`
+	// Azure location of the key vault resource.
+	Location string `pulumi:"location"`
+	// Name of the key vault resource.
+	Name string `pulumi:"name"`
+	// Properties of the private endpoint object.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// Approval state of the private link connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                     `pulumi:"provisioningState"`
-	Tags                              map[string]string                          `pulumi:"tags"`
-	Type                              string                                     `pulumi:"type"`
+	// Provisioning state of the private endpoint connection.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Tags assigned to the key vault resource.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type of the key vault resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
@@ -54,9 +65,12 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
+	// Name of the private endpoint connection associated with the key vault.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
-	VaultName                     pulumi.StringInput `pulumi:"vaultName"`
+	// Name of the resource group that contains the key vault.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the key vault.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -78,36 +92,44 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 	return o
 }
 
+// Fully qualified identifier of the key vault resource.
 func (o LookupPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure location of the key vault resource.
 func (o LookupPrivateEndpointConnectionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the key vault resource.
 func (o LookupPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the private endpoint object.
 func (o LookupPrivateEndpointConnectionResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
 
+// Approval state of the private link connection.
 func (o LookupPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) *PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
+// Provisioning state of the private endpoint connection.
 func (o LookupPrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Tags assigned to the key vault resource.
 func (o LookupPrivateEndpointConnectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type of the key vault resource.
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,20 +21,30 @@ func LookupApplicationType(ctx *pulumi.Context, args *LookupApplicationTypeArgs,
 }
 
 type LookupApplicationTypeArgs struct {
+	// The name of the application type name resource.
 	ApplicationTypeName string `pulumi:"applicationTypeName"`
-	ClusterName         string `pulumi:"clusterName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the cluster resource.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The application type name resource
 type LookupApplicationTypeResult struct {
-	Id                string             `pulumi:"id"`
-	Location          *string            `pulumi:"location"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	Type              string             `pulumi:"type"`
+	// Azure resource identifier.
+	Id string `pulumi:"id"`
+	// Resource location depends on the parent resource.
+	Location *string `pulumi:"location"`
+	// Azure resource name.
+	Name string `pulumi:"name"`
+	// The current deployment or provisioning state, which only appears in the response.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationTypeOutput(ctx *pulumi.Context, args LookupApplicationTypeOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationTypeResultOutput {
@@ -51,9 +61,12 @@ func LookupApplicationTypeOutput(ctx *pulumi.Context, args LookupApplicationType
 }
 
 type LookupApplicationTypeOutputArgs struct {
+	// The name of the application type name resource.
 	ApplicationTypeName pulumi.StringInput `pulumi:"applicationTypeName"`
-	ClusterName         pulumi.StringInput `pulumi:"clusterName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the cluster resource.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupApplicationTypeOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupApplicationTypeResultOutput) ToLookupApplicationTypeResultOutputWi
 	return o
 }
 
+// Azure resource identifier.
 func (o LookupApplicationTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location depends on the parent resource.
 func (o LookupApplicationTypeResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource name.
 func (o LookupApplicationTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current deployment or provisioning state, which only appears in the response.
 func (o LookupApplicationTypeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupApplicationTypeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource tags.
 func (o LookupApplicationTypeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type.
 func (o LookupApplicationTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,15 +22,20 @@ func GetAssetEncryptionKey(ctx *pulumi.Context, args *GetAssetEncryptionKeyArgs,
 }
 
 type GetAssetEncryptionKeyArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	AssetName         string `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Asset name.
+	AssetName string `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Data needed to decrypt asset files encrypted with legacy storage encryption.
 type GetAssetEncryptionKeyResult struct {
+	// Asset File encryption metadata.
 	AssetFileEncryptionMetadata []AssetFileEncryptionMetadataResponse `pulumi:"assetFileEncryptionMetadata"`
-	Key                         *string                               `pulumi:"key"`
+	// The Asset File storage encryption key.
+	Key *string `pulumi:"key"`
 }
 
 func GetAssetEncryptionKeyOutput(ctx *pulumi.Context, args GetAssetEncryptionKeyOutputArgs, opts ...pulumi.InvokeOption) GetAssetEncryptionKeyResultOutput {
@@ -47,8 +52,11 @@ func GetAssetEncryptionKeyOutput(ctx *pulumi.Context, args GetAssetEncryptionKey
 }
 
 type GetAssetEncryptionKeyOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	AssetName         pulumi.StringInput `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Asset name.
+	AssetName pulumi.StringInput `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,12 +79,14 @@ func (o GetAssetEncryptionKeyResultOutput) ToGetAssetEncryptionKeyResultOutputWi
 	return o
 }
 
+// Asset File encryption metadata.
 func (o GetAssetEncryptionKeyResultOutput) AssetFileEncryptionMetadata() AssetFileEncryptionMetadataResponseArrayOutput {
 	return o.ApplyT(func(v GetAssetEncryptionKeyResult) []AssetFileEncryptionMetadataResponse {
 		return v.AssetFileEncryptionMetadata
 	}).(AssetFileEncryptionMetadataResponseArrayOutput)
 }
 
+// The Asset File storage encryption key.
 func (o GetAssetEncryptionKeyResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAssetEncryptionKeyResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }

@@ -23,26 +23,44 @@ func LookupInvitation(ctx *pulumi.Context, args *LookupInvitationArgs, opts ...p
 }
 
 type LookupInvitationArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	InvitationName    string `pulumi:"invitationName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the invitation.
+	InvitationName string `pulumi:"invitationName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
 }
 
 // A Invitation data transfer object.
 type LookupInvitationResult struct {
-	Id                      string  `pulumi:"id"`
-	InvitationId            string  `pulumi:"invitationId"`
-	InvitationStatus        string  `pulumi:"invitationStatus"`
-	Name                    string  `pulumi:"name"`
-	RespondedAt             string  `pulumi:"respondedAt"`
-	SentAt                  string  `pulumi:"sentAt"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// unique invitation id
+	InvitationId string `pulumi:"invitationId"`
+	// The status of the invitation.
+	InvitationStatus string `pulumi:"invitationStatus"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// The time the recipient responded to the invitation.
+	RespondedAt string `pulumi:"respondedAt"`
+	// Gets the time at which the invitation was sent.
+	SentAt string `pulumi:"sentAt"`
+	// The target Azure AD Id. Can't be combined with email.
 	TargetActiveDirectoryId *string `pulumi:"targetActiveDirectoryId"`
-	TargetEmail             *string `pulumi:"targetEmail"`
-	TargetObjectId          *string `pulumi:"targetObjectId"`
-	Type                    string  `pulumi:"type"`
-	UserEmail               string  `pulumi:"userEmail"`
-	UserName                string  `pulumi:"userName"`
+	// The email the invitation is directed to.
+	TargetEmail *string `pulumi:"targetEmail"`
+	// The target user or application Id that invitation is being sent to.
+	// Must be specified along TargetActiveDirectoryId. This enables sending
+	// invitations to specific users or applications in an AD tenant.
+	TargetObjectId *string `pulumi:"targetObjectId"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
+	// Email of the user who created the resource
+	UserEmail string `pulumi:"userEmail"`
+	// Name of the user who created the resource
+	UserName string `pulumi:"userName"`
 }
 
 func LookupInvitationOutput(ctx *pulumi.Context, args LookupInvitationOutputArgs, opts ...pulumi.InvokeOption) LookupInvitationResultOutput {
@@ -59,10 +77,14 @@ func LookupInvitationOutput(ctx *pulumi.Context, args LookupInvitationOutputArgs
 }
 
 type LookupInvitationOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	InvitationName    pulumi.StringInput `pulumi:"invitationName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the invitation.
+	InvitationName pulumi.StringInput `pulumi:"invitationName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupInvitationOutputArgs) ElementType() reflect.Type {
@@ -84,50 +106,64 @@ func (o LookupInvitationResultOutput) ToLookupInvitationResultOutputWithContext(
 	return o
 }
 
+// The resource id of the azure resource
 func (o LookupInvitationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// unique invitation id
 func (o LookupInvitationResultOutput) InvitationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.InvitationId }).(pulumi.StringOutput)
 }
 
+// The status of the invitation.
 func (o LookupInvitationResultOutput) InvitationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.InvitationStatus }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupInvitationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The time the recipient responded to the invitation.
 func (o LookupInvitationResultOutput) RespondedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.RespondedAt }).(pulumi.StringOutput)
 }
 
+// Gets the time at which the invitation was sent.
 func (o LookupInvitationResultOutput) SentAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.SentAt }).(pulumi.StringOutput)
 }
 
+// The target Azure AD Id. Can't be combined with email.
 func (o LookupInvitationResultOutput) TargetActiveDirectoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInvitationResult) *string { return v.TargetActiveDirectoryId }).(pulumi.StringPtrOutput)
 }
 
+// The email the invitation is directed to.
 func (o LookupInvitationResultOutput) TargetEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInvitationResult) *string { return v.TargetEmail }).(pulumi.StringPtrOutput)
 }
 
+// The target user or application Id that invitation is being sent to.
+// Must be specified along TargetActiveDirectoryId. This enables sending
+// invitations to specific users or applications in an AD tenant.
 func (o LookupInvitationResultOutput) TargetObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInvitationResult) *string { return v.TargetObjectId }).(pulumi.StringPtrOutput)
 }
 
+// Type of the azure resource
 func (o LookupInvitationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Email of the user who created the resource
 func (o LookupInvitationResultOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.UserEmail }).(pulumi.StringOutput)
 }
 
+// Name of the user who created the resource
 func (o LookupInvitationResultOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInvitationResult) string { return v.UserName }).(pulumi.StringOutput)
 }

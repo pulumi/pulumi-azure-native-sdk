@@ -23,15 +23,20 @@ func LookupSubscriptionAlias(ctx *pulumi.Context, args *LookupSubscriptionAliasA
 }
 
 type LookupSubscriptionAliasArgs struct {
+	// Name for this subscription creation request also known as alias. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
 	AliasName string `pulumi:"aliasName"`
 }
 
 // Subscription Information with the alias.
 type LookupSubscriptionAliasResult struct {
-	Id         string                             `pulumi:"id"`
-	Name       string                             `pulumi:"name"`
+	// Fully qualified ID for the alias resource.
+	Id string `pulumi:"id"`
+	// Alias ID.
+	Name string `pulumi:"name"`
+	// Put Alias response properties.
 	Properties PutAliasResponsePropertiesResponse `pulumi:"properties"`
-	Type       string                             `pulumi:"type"`
+	// Resource type, Microsoft.Subscription/aliases.
+	Type string `pulumi:"type"`
 }
 
 func LookupSubscriptionAliasOutput(ctx *pulumi.Context, args LookupSubscriptionAliasOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionAliasResultOutput {
@@ -48,6 +53,7 @@ func LookupSubscriptionAliasOutput(ctx *pulumi.Context, args LookupSubscriptionA
 }
 
 type LookupSubscriptionAliasOutputArgs struct {
+	// Name for this subscription creation request also known as alias. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
 	AliasName pulumi.StringInput `pulumi:"aliasName"`
 }
 
@@ -70,18 +76,22 @@ func (o LookupSubscriptionAliasResultOutput) ToLookupSubscriptionAliasResultOutp
 	return o
 }
 
+// Fully qualified ID for the alias resource.
 func (o LookupSubscriptionAliasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionAliasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Alias ID.
 func (o LookupSubscriptionAliasResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionAliasResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Put Alias response properties.
 func (o LookupSubscriptionAliasResultOutput) Properties() PutAliasResponsePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSubscriptionAliasResult) PutAliasResponsePropertiesResponse { return v.Properties }).(PutAliasResponsePropertiesResponseOutput)
 }
 
+// Resource type, Microsoft.Subscription/aliases.
 func (o LookupSubscriptionAliasResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionAliasResult) string { return v.Type }).(pulumi.StringOutput)
 }

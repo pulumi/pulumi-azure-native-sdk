@@ -22,13 +22,17 @@ func ListAgentPoolQueueStatus(ctx *pulumi.Context, args *ListAgentPoolQueueStatu
 }
 
 type ListAgentPoolQueueStatusArgs struct {
-	AgentPoolName     string `pulumi:"agentPoolName"`
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the agent pool.
+	AgentPoolName string `pulumi:"agentPoolName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The QueueStatus of Agent Pool
 type ListAgentPoolQueueStatusResult struct {
+	// The number of pending runs in the queue
 	Count *int `pulumi:"count"`
 }
 
@@ -46,8 +50,11 @@ func ListAgentPoolQueueStatusOutput(ctx *pulumi.Context, args ListAgentPoolQueue
 }
 
 type ListAgentPoolQueueStatusOutputArgs struct {
-	AgentPoolName     pulumi.StringInput `pulumi:"agentPoolName"`
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the agent pool.
+	AgentPoolName pulumi.StringInput `pulumi:"agentPoolName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,6 +77,7 @@ func (o ListAgentPoolQueueStatusResultOutput) ToListAgentPoolQueueStatusResultOu
 	return o
 }
 
+// The number of pending runs in the queue
 func (o ListAgentPoolQueueStatusResultOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListAgentPoolQueueStatusResult) *int { return v.Count }).(pulumi.IntPtrOutput)
 }

@@ -21,14 +21,19 @@ func ListApplicationTokens(ctx *pulumi.Context, args *ListApplicationTokensArgs,
 }
 
 type ListApplicationTokensArgs struct {
-	ApplicationName        string   `pulumi:"applicationName"`
-	AuthorizationAudience  *string  `pulumi:"authorizationAudience"`
-	ResourceGroupName      string   `pulumi:"resourceGroupName"`
+	// The name of the managed application.
+	ApplicationName string `pulumi:"applicationName"`
+	// The authorization audience.
+	AuthorizationAudience *string `pulumi:"authorizationAudience"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The user assigned identities.
 	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // The array of managed identity tokens.
 type ListApplicationTokensResult struct {
+	// The array of managed identity tokens.
 	Value []ManagedIdentityTokenResponse `pulumi:"value"`
 }
 
@@ -46,9 +51,13 @@ func ListApplicationTokensOutput(ctx *pulumi.Context, args ListApplicationTokens
 }
 
 type ListApplicationTokensOutputArgs struct {
-	ApplicationName        pulumi.StringInput      `pulumi:"applicationName"`
-	AuthorizationAudience  pulumi.StringPtrInput   `pulumi:"authorizationAudience"`
-	ResourceGroupName      pulumi.StringInput      `pulumi:"resourceGroupName"`
+	// The name of the managed application.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The authorization audience.
+	AuthorizationAudience pulumi.StringPtrInput `pulumi:"authorizationAudience"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The user assigned identities.
 	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
@@ -71,6 +80,7 @@ func (o ListApplicationTokensResultOutput) ToListApplicationTokensResultOutputWi
 	return o
 }
 
+// The array of managed identity tokens.
 func (o ListApplicationTokensResultOutput) Value() ManagedIdentityTokenResponseArrayOutput {
 	return o.ApplyT(func(v ListApplicationTokensResult) []ManagedIdentityTokenResponse { return v.Value }).(ManagedIdentityTokenResponseArrayOutput)
 }

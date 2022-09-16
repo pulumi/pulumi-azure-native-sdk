@@ -22,13 +22,17 @@ func GetGlobalUserEnvironment(ctx *pulumi.Context, args *GetGlobalUserEnvironmen
 }
 
 type GetGlobalUserEnvironmentArgs struct {
-	EnvironmentId string  `pulumi:"environmentId"`
-	Expand        *string `pulumi:"expand"`
-	UserName      string  `pulumi:"userName"`
+	// The resourceId of the environment
+	EnvironmentId string `pulumi:"environmentId"`
+	// Specify the $expand query. Example: 'properties($expand=environment)'
+	Expand *string `pulumi:"expand"`
+	// The name of the user.
+	UserName string `pulumi:"userName"`
 }
 
 // Represents the environments details
 type GetGlobalUserEnvironmentResult struct {
+	// Details of the environment
 	Environment EnvironmentDetailsResponse `pulumi:"environment"`
 }
 
@@ -46,9 +50,12 @@ func GetGlobalUserEnvironmentOutput(ctx *pulumi.Context, args GetGlobalUserEnvir
 }
 
 type GetGlobalUserEnvironmentOutputArgs struct {
-	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
-	Expand        pulumi.StringPtrInput `pulumi:"expand"`
-	UserName      pulumi.StringInput    `pulumi:"userName"`
+	// The resourceId of the environment
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// Specify the $expand query. Example: 'properties($expand=environment)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the user.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (GetGlobalUserEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o GetGlobalUserEnvironmentResultOutput) ToGetGlobalUserEnvironmentResultOu
 	return o
 }
 
+// Details of the environment
 func (o GetGlobalUserEnvironmentResultOutput) Environment() EnvironmentDetailsResponseOutput {
 	return o.ApplyT(func(v GetGlobalUserEnvironmentResult) EnvironmentDetailsResponse { return v.Environment }).(EnvironmentDetailsResponseOutput)
 }

@@ -21,26 +21,42 @@ func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorA
 }
 
 type LookupConnectionMonitorArgs struct {
+	// The name of the connection monitor.
 	ConnectionMonitorName string `pulumi:"connectionMonitorName"`
-	NetworkWatcherName    string `pulumi:"networkWatcherName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the Network Watcher resource.
+	NetworkWatcherName string `pulumi:"networkWatcherName"`
+	// The name of the resource group containing Network Watcher.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Information about the connection monitor.
 type LookupConnectionMonitorResult struct {
-	AutoStart                   *bool                                `pulumi:"autoStart"`
-	Destination                 ConnectionMonitorDestinationResponse `pulumi:"destination"`
-	Etag                        *string                              `pulumi:"etag"`
-	Id                          string                               `pulumi:"id"`
-	Location                    *string                              `pulumi:"location"`
-	MonitoringIntervalInSeconds *int                                 `pulumi:"monitoringIntervalInSeconds"`
-	MonitoringStatus            *string                              `pulumi:"monitoringStatus"`
-	Name                        string                               `pulumi:"name"`
-	ProvisioningState           string                               `pulumi:"provisioningState"`
-	Source                      ConnectionMonitorSourceResponse      `pulumi:"source"`
-	StartTime                   *string                              `pulumi:"startTime"`
-	Tags                        map[string]string                    `pulumi:"tags"`
-	Type                        string                               `pulumi:"type"`
+	// Determines if the connection monitor will start automatically once created.
+	AutoStart *bool `pulumi:"autoStart"`
+	// Describes the destination of connection monitor.
+	Destination ConnectionMonitorDestinationResponse `pulumi:"destination"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// ID of the connection monitor.
+	Id string `pulumi:"id"`
+	// Connection monitor location.
+	Location *string `pulumi:"location"`
+	// Monitoring interval in seconds.
+	MonitoringIntervalInSeconds *int `pulumi:"monitoringIntervalInSeconds"`
+	// The monitoring status of the connection monitor.
+	MonitoringStatus *string `pulumi:"monitoringStatus"`
+	// Name of the connection monitor.
+	Name string `pulumi:"name"`
+	// The provisioning state of the connection monitor.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Describes the source of connection monitor.
+	Source ConnectionMonitorSourceResponse `pulumi:"source"`
+	// The date and time when the connection monitor was started.
+	StartTime *string `pulumi:"startTime"`
+	// Connection monitor tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Connection monitor type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupConnectionMonitorResult
@@ -78,9 +94,12 @@ func LookupConnectionMonitorOutput(ctx *pulumi.Context, args LookupConnectionMon
 }
 
 type LookupConnectionMonitorOutputArgs struct {
+	// The name of the connection monitor.
 	ConnectionMonitorName pulumi.StringInput `pulumi:"connectionMonitorName"`
-	NetworkWatcherName    pulumi.StringInput `pulumi:"networkWatcherName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Network Watcher resource.
+	NetworkWatcherName pulumi.StringInput `pulumi:"networkWatcherName"`
+	// The name of the resource group containing Network Watcher.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupConnectionMonitorOutputArgs) ElementType() reflect.Type {
@@ -102,54 +121,67 @@ func (o LookupConnectionMonitorResultOutput) ToLookupConnectionMonitorResultOutp
 	return o
 }
 
+// Determines if the connection monitor will start automatically once created.
 func (o LookupConnectionMonitorResultOutput) AutoStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *bool { return v.AutoStart }).(pulumi.BoolPtrOutput)
 }
 
+// Describes the destination of connection monitor.
 func (o LookupConnectionMonitorResultOutput) Destination() ConnectionMonitorDestinationResponseOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) ConnectionMonitorDestinationResponse { return v.Destination }).(ConnectionMonitorDestinationResponseOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupConnectionMonitorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// ID of the connection monitor.
 func (o LookupConnectionMonitorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Connection monitor location.
 func (o LookupConnectionMonitorResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Monitoring interval in seconds.
 func (o LookupConnectionMonitorResultOutput) MonitoringIntervalInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *int { return v.MonitoringIntervalInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The monitoring status of the connection monitor.
 func (o LookupConnectionMonitorResultOutput) MonitoringStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *string { return v.MonitoringStatus }).(pulumi.StringPtrOutput)
 }
 
+// Name of the connection monitor.
 func (o LookupConnectionMonitorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the connection monitor.
 func (o LookupConnectionMonitorResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Describes the source of connection monitor.
 func (o LookupConnectionMonitorResultOutput) Source() ConnectionMonitorSourceResponseOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) ConnectionMonitorSourceResponse { return v.Source }).(ConnectionMonitorSourceResponseOutput)
 }
 
+// The date and time when the connection monitor was started.
 func (o LookupConnectionMonitorResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// Connection monitor tags.
 func (o LookupConnectionMonitorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Connection monitor type.
 func (o LookupConnectionMonitorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) string { return v.Type }).(pulumi.StringOutput)
 }

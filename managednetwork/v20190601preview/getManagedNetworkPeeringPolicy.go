@@ -21,18 +21,26 @@ func LookupManagedNetworkPeeringPolicy(ctx *pulumi.Context, args *LookupManagedN
 }
 
 type LookupManagedNetworkPeeringPolicyArgs struct {
-	ManagedNetworkName              string `pulumi:"managedNetworkName"`
+	// The name of the Managed Network.
+	ManagedNetworkName string `pulumi:"managedNetworkName"`
+	// The name of the Managed Network Peering Policy.
 	ManagedNetworkPeeringPolicyName string `pulumi:"managedNetworkPeeringPolicyName"`
-	ResourceGroupName               string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Managed Network Peering Policy resource
 type LookupManagedNetworkPeeringPolicyResult struct {
-	Id         string                                        `pulumi:"id"`
-	Location   *string                                       `pulumi:"location"`
-	Name       string                                        `pulumi:"name"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets the properties of a Managed Network Policy
 	Properties ManagedNetworkPeeringPolicyPropertiesResponse `pulumi:"properties"`
-	Type       string                                        `pulumi:"type"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedNetworkPeeringPolicyOutput(ctx *pulumi.Context, args LookupManagedNetworkPeeringPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkPeeringPolicyResultOutput {
@@ -49,9 +57,12 @@ func LookupManagedNetworkPeeringPolicyOutput(ctx *pulumi.Context, args LookupMan
 }
 
 type LookupManagedNetworkPeeringPolicyOutputArgs struct {
-	ManagedNetworkName              pulumi.StringInput `pulumi:"managedNetworkName"`
+	// The name of the Managed Network.
+	ManagedNetworkName pulumi.StringInput `pulumi:"managedNetworkName"`
+	// The name of the Managed Network Peering Policy.
 	ManagedNetworkPeeringPolicyName pulumi.StringInput `pulumi:"managedNetworkPeeringPolicyName"`
-	ResourceGroupName               pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedNetworkPeeringPolicyOutputArgs) ElementType() reflect.Type {
@@ -73,24 +84,29 @@ func (o LookupManagedNetworkPeeringPolicyResultOutput) ToLookupManagedNetworkPee
 	return o
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagedNetworkPeeringPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkPeeringPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupManagedNetworkPeeringPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedNetworkPeeringPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupManagedNetworkPeeringPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkPeeringPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the properties of a Managed Network Policy
 func (o LookupManagedNetworkPeeringPolicyResultOutput) Properties() ManagedNetworkPeeringPolicyPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupManagedNetworkPeeringPolicyResult) ManagedNetworkPeeringPolicyPropertiesResponse {
 		return v.Properties
 	}).(ManagedNetworkPeeringPolicyPropertiesResponseOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupManagedNetworkPeeringPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkPeeringPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

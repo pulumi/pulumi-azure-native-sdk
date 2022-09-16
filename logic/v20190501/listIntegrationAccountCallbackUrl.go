@@ -21,14 +21,19 @@ func ListIntegrationAccountCallbackUrl(ctx *pulumi.Context, args *ListIntegratio
 }
 
 type ListIntegrationAccountCallbackUrlArgs struct {
-	IntegrationAccountName string  `pulumi:"integrationAccountName"`
-	KeyType                *string `pulumi:"keyType"`
-	NotAfter               *string `pulumi:"notAfter"`
-	ResourceGroupName      string  `pulumi:"resourceGroupName"`
+	// The integration account name.
+	IntegrationAccountName string `pulumi:"integrationAccountName"`
+	// The key type.
+	KeyType *string `pulumi:"keyType"`
+	// The expiry time.
+	NotAfter *string `pulumi:"notAfter"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The callback url.
 type ListIntegrationAccountCallbackUrlResult struct {
+	// The URL value.
 	Value *string `pulumi:"value"`
 }
 
@@ -46,10 +51,14 @@ func ListIntegrationAccountCallbackUrlOutput(ctx *pulumi.Context, args ListInteg
 }
 
 type ListIntegrationAccountCallbackUrlOutputArgs struct {
-	IntegrationAccountName pulumi.StringInput    `pulumi:"integrationAccountName"`
-	KeyType                pulumi.StringPtrInput `pulumi:"keyType"`
-	NotAfter               pulumi.StringPtrInput `pulumi:"notAfter"`
-	ResourceGroupName      pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The integration account name.
+	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
+	// The key type.
+	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
+	// The expiry time.
+	NotAfter pulumi.StringPtrInput `pulumi:"notAfter"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListIntegrationAccountCallbackUrlOutputArgs) ElementType() reflect.Type {
@@ -71,6 +80,7 @@ func (o ListIntegrationAccountCallbackUrlResultOutput) ToListIntegrationAccountC
 	return o
 }
 
+// The URL value.
 func (o ListIntegrationAccountCallbackUrlResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIntegrationAccountCallbackUrlResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

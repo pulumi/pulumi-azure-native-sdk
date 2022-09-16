@@ -22,19 +22,28 @@ func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...p
 }
 
 type LookupAssessmentArgs struct {
-	AssessmentName    string `pulumi:"assessmentName"`
-	GroupName         string `pulumi:"groupName"`
-	ProjectName       string `pulumi:"projectName"`
+	// Unique name of an assessment within a project.
+	AssessmentName string `pulumi:"assessmentName"`
+	// Unique name of a group within a project.
+	GroupName string `pulumi:"groupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An assessment created for a group in the Migration project.
 type LookupAssessmentResult struct {
-	ETag       *string                      `pulumi:"eTag"`
-	Id         string                       `pulumi:"id"`
-	Name       string                       `pulumi:"name"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this assessment. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessment/{assessmentName}
+	Id string `pulumi:"id"`
+	// Unique name of an assessment.
+	Name string `pulumi:"name"`
+	// Properties of the assessment.
 	Properties AssessmentPropertiesResponse `pulumi:"properties"`
-	Type       string                       `pulumi:"type"`
+	// Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
+	Type string `pulumi:"type"`
 }
 
 func LookupAssessmentOutput(ctx *pulumi.Context, args LookupAssessmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentResultOutput {
@@ -51,9 +60,13 @@ func LookupAssessmentOutput(ctx *pulumi.Context, args LookupAssessmentOutputArgs
 }
 
 type LookupAssessmentOutputArgs struct {
-	AssessmentName    pulumi.StringInput `pulumi:"assessmentName"`
-	GroupName         pulumi.StringInput `pulumi:"groupName"`
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Unique name of an assessment within a project.
+	AssessmentName pulumi.StringInput `pulumi:"assessmentName"`
+	// Unique name of a group within a project.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,22 +89,27 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(
 	return o
 }
 
+// For optimistic concurrency control.
 func (o LookupAssessmentResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this assessment. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessment/{assessmentName}
 func (o LookupAssessmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique name of an assessment.
 func (o LookupAssessmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the assessment.
 func (o LookupAssessmentResultOutput) Properties() AssessmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) AssessmentPropertiesResponse { return v.Properties }).(AssessmentPropertiesResponseOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
 func (o LookupAssessmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

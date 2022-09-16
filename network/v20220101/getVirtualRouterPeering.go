@@ -21,20 +21,30 @@ func LookupVirtualRouterPeering(ctx *pulumi.Context, args *LookupVirtualRouterPe
 }
 
 type LookupVirtualRouterPeeringArgs struct {
-	PeeringName       string `pulumi:"peeringName"`
+	// The name of the Virtual Router Peering.
+	PeeringName string `pulumi:"peeringName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Virtual Router.
 	VirtualRouterName string `pulumi:"virtualRouterName"`
 }
 
 // Virtual Router Peering resource.
 type LookupVirtualRouterPeeringResult struct {
-	Etag              string   `pulumi:"etag"`
-	Id                *string  `pulumi:"id"`
-	Name              *string  `pulumi:"name"`
-	PeerAsn           *float64 `pulumi:"peerAsn"`
-	PeerIp            *string  `pulumi:"peerIp"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	Type              string   `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Name of the virtual router peering that is unique within a virtual router.
+	Name *string `pulumi:"name"`
+	// Peer ASN.
+	PeerAsn *float64 `pulumi:"peerAsn"`
+	// Peer IP.
+	PeerIp *string `pulumi:"peerIp"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Peering type.
+	Type string `pulumi:"type"`
 }
 
 func LookupVirtualRouterPeeringOutput(ctx *pulumi.Context, args LookupVirtualRouterPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualRouterPeeringResultOutput {
@@ -51,8 +61,11 @@ func LookupVirtualRouterPeeringOutput(ctx *pulumi.Context, args LookupVirtualRou
 }
 
 type LookupVirtualRouterPeeringOutputArgs struct {
-	PeeringName       pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the Virtual Router Peering.
+	PeeringName pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Virtual Router.
 	VirtualRouterName pulumi.StringInput `pulumi:"virtualRouterName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupVirtualRouterPeeringResultOutput) ToLookupVirtualRouterPeeringResu
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualRouterPeeringResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualRouterPeeringResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Name of the virtual router peering that is unique within a virtual router.
 func (o LookupVirtualRouterPeeringResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Peer ASN.
 func (o LookupVirtualRouterPeeringResultOutput) PeerAsn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) *float64 { return v.PeerAsn }).(pulumi.Float64PtrOutput)
 }
 
+// Peer IP.
 func (o LookupVirtualRouterPeeringResultOutput) PeerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) *string { return v.PeerIp }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupVirtualRouterPeeringResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Peering type.
 func (o LookupVirtualRouterPeeringResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualRouterPeeringResult) string { return v.Type }).(pulumi.StringOutput)
 }

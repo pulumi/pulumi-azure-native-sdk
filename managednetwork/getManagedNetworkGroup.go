@@ -22,24 +22,38 @@ func LookupManagedNetworkGroup(ctx *pulumi.Context, args *LookupManagedNetworkGr
 }
 
 type LookupManagedNetworkGroupArgs struct {
+	// The name of the Managed Network Group.
 	ManagedNetworkGroupName string `pulumi:"managedNetworkGroupName"`
-	ManagedNetworkName      string `pulumi:"managedNetworkName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the Managed Network.
+	ManagedNetworkName string `pulumi:"managedNetworkName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Managed Network Group resource
 type LookupManagedNetworkGroupResult struct {
-	Etag              string               `pulumi:"etag"`
-	Id                string               `pulumi:"id"`
-	Kind              *string              `pulumi:"kind"`
-	Location          *string              `pulumi:"location"`
-	ManagementGroups  []ResourceIdResponse `pulumi:"managementGroups"`
-	Name              string               `pulumi:"name"`
-	ProvisioningState string               `pulumi:"provisioningState"`
-	Subnets           []ResourceIdResponse `pulumi:"subnets"`
-	Subscriptions     []ResourceIdResponse `pulumi:"subscriptions"`
-	Type              string               `pulumi:"type"`
-	VirtualNetworks   []ResourceIdResponse `pulumi:"virtualNetworks"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Responsibility role under which this Managed Network Group will be created
+	Kind *string `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location *string `pulumi:"location"`
+	// The collection of management groups covered by the Managed Network
+	ManagementGroups []ResourceIdResponse `pulumi:"managementGroups"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Provisioning state of the ManagedNetwork resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The collection of  subnets covered by the Managed Network
+	Subnets []ResourceIdResponse `pulumi:"subnets"`
+	// The collection of subscriptions covered by the Managed Network
+	Subscriptions []ResourceIdResponse `pulumi:"subscriptions"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
+	// The collection of virtual nets covered by the Managed Network
+	VirtualNetworks []ResourceIdResponse `pulumi:"virtualNetworks"`
 }
 
 func LookupManagedNetworkGroupOutput(ctx *pulumi.Context, args LookupManagedNetworkGroupOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkGroupResultOutput {
@@ -56,9 +70,12 @@ func LookupManagedNetworkGroupOutput(ctx *pulumi.Context, args LookupManagedNetw
 }
 
 type LookupManagedNetworkGroupOutputArgs struct {
+	// The name of the Managed Network Group.
 	ManagedNetworkGroupName pulumi.StringInput `pulumi:"managedNetworkGroupName"`
-	ManagedNetworkName      pulumi.StringInput `pulumi:"managedNetworkName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Managed Network.
+	ManagedNetworkName pulumi.StringInput `pulumi:"managedNetworkName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedNetworkGroupOutputArgs) ElementType() reflect.Type {
@@ -80,46 +97,57 @@ func (o LookupManagedNetworkGroupResultOutput) ToLookupManagedNetworkGroupResult
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupManagedNetworkGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagedNetworkGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Responsibility role under which this Managed Network Group will be created
 func (o LookupManagedNetworkGroupResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupManagedNetworkGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The collection of management groups covered by the Managed Network
 func (o LookupManagedNetworkGroupResultOutput) ManagementGroups() ResourceIdResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) []ResourceIdResponse { return v.ManagementGroups }).(ResourceIdResponseArrayOutput)
 }
 
+// The name of the resource
 func (o LookupManagedNetworkGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the ManagedNetwork resource.
 func (o LookupManagedNetworkGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The collection of  subnets covered by the Managed Network
 func (o LookupManagedNetworkGroupResultOutput) Subnets() ResourceIdResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) []ResourceIdResponse { return v.Subnets }).(ResourceIdResponseArrayOutput)
 }
 
+// The collection of subscriptions covered by the Managed Network
 func (o LookupManagedNetworkGroupResultOutput) Subscriptions() ResourceIdResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) []ResourceIdResponse { return v.Subscriptions }).(ResourceIdResponseArrayOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupManagedNetworkGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The collection of virtual nets covered by the Managed Network
 func (o LookupManagedNetworkGroupResultOutput) VirtualNetworks() ResourceIdResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagedNetworkGroupResult) []ResourceIdResponse { return v.VirtualNetworks }).(ResourceIdResponseArrayOutput)
 }

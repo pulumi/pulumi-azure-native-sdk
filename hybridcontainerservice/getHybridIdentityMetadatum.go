@@ -22,21 +22,32 @@ func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdenti
 }
 
 type LookupHybridIdentityMetadatumArgs struct {
+	// Parameter for the name of the hybrid identity metadata resource.
 	HybridIdentityMetadataResourceName string `pulumi:"hybridIdentityMetadataResourceName"`
-	ProvisionedClustersName            string `pulumi:"provisionedClustersName"`
-	ResourceGroupName                  string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ProvisionedClustersName string `pulumi:"provisionedClustersName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Defines the hybridIdentityMetadata.
 type LookupHybridIdentityMetadatumResult struct {
-	Id                string                              `pulumi:"id"`
-	Identity          *ProvisionedClusterIdentityResponse `pulumi:"identity"`
-	Name              string                              `pulumi:"name"`
-	ProvisioningState string                              `pulumi:"provisioningState"`
-	PublicKey         *string                             `pulumi:"publicKey"`
-	ResourceUid       *string                             `pulumi:"resourceUid"`
-	SystemData        SystemDataResponse                  `pulumi:"systemData"`
-	Type              string                              `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity of the provisioned cluster.
+	Identity *ProvisionedClusterIdentityResponse `pulumi:"identity"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// provisioning state of the hybridIdentityMetadata resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
+	PublicKey *string `pulumi:"publicKey"`
+	// Unique id of the parent provisioned cluster resource.
+	ResourceUid *string `pulumi:"resourceUid"`
+	// The system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadatumOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadatumResultOutput {
@@ -53,9 +64,12 @@ func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridI
 }
 
 type LookupHybridIdentityMetadatumOutputArgs struct {
+	// Parameter for the name of the hybrid identity metadata resource.
 	HybridIdentityMetadataResourceName pulumi.StringInput `pulumi:"hybridIdentityMetadataResourceName"`
-	ProvisionedClustersName            pulumi.StringInput `pulumi:"provisionedClustersName"`
-	ResourceGroupName                  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ProvisionedClustersName pulumi.StringInput `pulumi:"provisionedClustersName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupHybridIdentityMetadatumOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupHybridIdentityMetadatumResultOutput) ToLookupHybridIdentityMetadat
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupHybridIdentityMetadatumResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the provisioned cluster.
 func (o LookupHybridIdentityMetadatumResultOutput) Identity() ProvisionedClusterIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) *ProvisionedClusterIdentityResponse { return v.Identity }).(ProvisionedClusterIdentityResponsePtrOutput)
 }
 
+// The name of the resource
 func (o LookupHybridIdentityMetadatumResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// provisioning state of the hybridIdentityMetadata resource.
 func (o LookupHybridIdentityMetadatumResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
 func (o LookupHybridIdentityMetadatumResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// Unique id of the parent provisioned cluster resource.
 func (o LookupHybridIdentityMetadatumResultOutput) ResourceUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) *string { return v.ResourceUid }).(pulumi.StringPtrOutput)
 }
 
+// The system data.
 func (o LookupHybridIdentityMetadatumResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupHybridIdentityMetadatumResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Type }).(pulumi.StringOutput)
 }

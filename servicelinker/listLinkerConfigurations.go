@@ -22,12 +22,15 @@ func ListLinkerConfigurations(ctx *pulumi.Context, args *ListLinkerConfiguration
 }
 
 type ListLinkerConfigurationsArgs struct {
-	LinkerName  string `pulumi:"linkerName"`
+	// The name Linker resource.
+	LinkerName string `pulumi:"linkerName"`
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // Configurations for source resource, include appSettings, connectionString and serviceBindings
 type ListLinkerConfigurationsResult struct {
+	// The configuration properties for source resource.
 	Configurations []SourceConfigurationResponse `pulumi:"configurations"`
 }
 
@@ -45,7 +48,9 @@ func ListLinkerConfigurationsOutput(ctx *pulumi.Context, args ListLinkerConfigur
 }
 
 type ListLinkerConfigurationsOutputArgs struct {
-	LinkerName  pulumi.StringInput `pulumi:"linkerName"`
+	// The name Linker resource.
+	LinkerName pulumi.StringInput `pulumi:"linkerName"`
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -68,6 +73,7 @@ func (o ListLinkerConfigurationsResultOutput) ToListLinkerConfigurationsResultOu
 	return o
 }
 
+// The configuration properties for source resource.
 func (o ListLinkerConfigurationsResultOutput) Configurations() SourceConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ListLinkerConfigurationsResult) []SourceConfigurationResponse { return v.Configurations }).(SourceConfigurationResponseArrayOutput)
 }

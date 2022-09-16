@@ -21,13 +21,17 @@ func ListSqlMigrationServiceMonitoringData(ctx *pulumi.Context, args *ListSqlMig
 }
 
 type ListSqlMigrationServiceMonitoringDataArgs struct {
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL Migration Service.
 	SqlMigrationServiceName string `pulumi:"sqlMigrationServiceName"`
 }
 
 // Integration Runtime Monitoring Data.
 type ListSqlMigrationServiceMonitoringDataResult struct {
-	Name  string                       `pulumi:"name"`
+	// The name of Integration Runtime.
+	Name string `pulumi:"name"`
+	// Integration Runtime node monitoring data.
 	Nodes []NodeMonitoringDataResponse `pulumi:"nodes"`
 }
 
@@ -45,7 +49,9 @@ func ListSqlMigrationServiceMonitoringDataOutput(ctx *pulumi.Context, args ListS
 }
 
 type ListSqlMigrationServiceMonitoringDataOutputArgs struct {
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL Migration Service.
 	SqlMigrationServiceName pulumi.StringInput `pulumi:"sqlMigrationServiceName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListSqlMigrationServiceMonitoringDataResultOutput) ToListSqlMigrationSer
 	return o
 }
 
+// The name of Integration Runtime.
 func (o ListSqlMigrationServiceMonitoringDataResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSqlMigrationServiceMonitoringDataResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Integration Runtime node monitoring data.
 func (o ListSqlMigrationServiceMonitoringDataResultOutput) Nodes() NodeMonitoringDataResponseArrayOutput {
 	return o.ApplyT(func(v ListSqlMigrationServiceMonitoringDataResult) []NodeMonitoringDataResponse { return v.Nodes }).(NodeMonitoringDataResponseArrayOutput)
 }

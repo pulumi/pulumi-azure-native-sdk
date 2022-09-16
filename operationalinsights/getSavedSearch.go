@@ -22,24 +22,38 @@ func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ..
 }
 
 type LookupSavedSearchArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SavedSearchId     string `pulumi:"savedSearchId"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The id of the saved search.
+	SavedSearchId string `pulumi:"savedSearchId"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Value object for saved search results.
 type LookupSavedSearchResult struct {
-	Category           string        `pulumi:"category"`
-	DisplayName        string        `pulumi:"displayName"`
-	Etag               *string       `pulumi:"etag"`
-	FunctionAlias      *string       `pulumi:"functionAlias"`
-	FunctionParameters *string       `pulumi:"functionParameters"`
-	Id                 string        `pulumi:"id"`
-	Name               string        `pulumi:"name"`
-	Query              string        `pulumi:"query"`
-	Tags               []TagResponse `pulumi:"tags"`
-	Type               string        `pulumi:"type"`
-	Version            *float64      `pulumi:"version"`
+	// The category of the saved search. This helps the user to find a saved search faster.
+	Category string `pulumi:"category"`
+	// Saved search display name.
+	DisplayName string `pulumi:"displayName"`
+	// The ETag of the saved search. To override an existing saved search, use "*" or specify the current Etag
+	Etag *string `pulumi:"etag"`
+	// The function alias if query serves as a function.
+	FunctionAlias *string `pulumi:"functionAlias"`
+	// The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
+	FunctionParameters *string `pulumi:"functionParameters"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The query expression for the saved search.
+	Query string `pulumi:"query"`
+	// The tags attached to the saved search.
+	Tags []TagResponse `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The version number of the query language. The current version is 2 and is the default.
+	Version *float64 `pulumi:"version"`
 }
 
 func LookupSavedSearchOutput(ctx *pulumi.Context, args LookupSavedSearchOutputArgs, opts ...pulumi.InvokeOption) LookupSavedSearchResultOutput {
@@ -56,9 +70,12 @@ func LookupSavedSearchOutput(ctx *pulumi.Context, args LookupSavedSearchOutputAr
 }
 
 type LookupSavedSearchOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SavedSearchId     pulumi.StringInput `pulumi:"savedSearchId"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The id of the saved search.
+	SavedSearchId pulumi.StringInput `pulumi:"savedSearchId"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSavedSearchOutputArgs) ElementType() reflect.Type {
@@ -80,46 +97,57 @@ func (o LookupSavedSearchResultOutput) ToLookupSavedSearchResultOutputWithContex
 	return o
 }
 
+// The category of the saved search. This helps the user to find a saved search faster.
 func (o LookupSavedSearchResultOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// Saved search display name.
 func (o LookupSavedSearchResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The ETag of the saved search. To override an existing saved search, use "*" or specify the current Etag
 func (o LookupSavedSearchResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The function alias if query serves as a function.
 func (o LookupSavedSearchResultOutput) FunctionAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) *string { return v.FunctionAlias }).(pulumi.StringPtrOutput)
 }
 
+// The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
 func (o LookupSavedSearchResultOutput) FunctionParameters() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) *string { return v.FunctionParameters }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSavedSearchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSavedSearchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The query expression for the saved search.
 func (o LookupSavedSearchResultOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// The tags attached to the saved search.
 func (o LookupSavedSearchResultOutput) Tags() TagResponseArrayOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) []TagResponse { return v.Tags }).(TagResponseArrayOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSavedSearchResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The version number of the query language. The current version is 2 and is the default.
 func (o LookupSavedSearchResultOutput) Version() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) *float64 { return v.Version }).(pulumi.Float64PtrOutput)
 }

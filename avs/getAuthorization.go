@@ -22,19 +22,28 @@ func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opt
 }
 
 type LookupAuthorizationArgs struct {
+	// Name of the ExpressRoute Circuit Authorization in the private cloud
 	AuthorizationName string `pulumi:"authorizationName"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRoute Circuit Authorization
 type LookupAuthorizationResult struct {
-	ExpressRouteAuthorizationId  string `pulumi:"expressRouteAuthorizationId"`
+	// The ID of the ExpressRoute Circuit Authorization
+	ExpressRouteAuthorizationId string `pulumi:"expressRouteAuthorizationId"`
+	// The key of the ExpressRoute Circuit Authorization
 	ExpressRouteAuthorizationKey string `pulumi:"expressRouteAuthorizationKey"`
-	Id                           string `pulumi:"id"`
-	Name                         string `pulumi:"name"`
-	ProvisioningState            string `pulumi:"provisioningState"`
-	Type                         string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The state of the  ExpressRoute Circuit Authorization provisioning
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAuthorizationOutput(ctx *pulumi.Context, args LookupAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationResultOutput {
@@ -51,8 +60,11 @@ func LookupAuthorizationOutput(ctx *pulumi.Context, args LookupAuthorizationOutp
 }
 
 type LookupAuthorizationOutputArgs struct {
+	// Name of the ExpressRoute Circuit Authorization in the private cloud
 	AuthorizationName pulumi.StringInput `pulumi:"authorizationName"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,26 +87,32 @@ func (o LookupAuthorizationResultOutput) ToLookupAuthorizationResultOutputWithCo
 	return o
 }
 
+// The ID of the ExpressRoute Circuit Authorization
 func (o LookupAuthorizationResultOutput) ExpressRouteAuthorizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.ExpressRouteAuthorizationId }).(pulumi.StringOutput)
 }
 
+// The key of the ExpressRoute Circuit Authorization
 func (o LookupAuthorizationResultOutput) ExpressRouteAuthorizationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.ExpressRouteAuthorizationKey }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupAuthorizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupAuthorizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The state of the  ExpressRoute Circuit Authorization provisioning
 func (o LookupAuthorizationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupAuthorizationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.Type }).(pulumi.StringOutput)
 }

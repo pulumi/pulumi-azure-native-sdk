@@ -21,22 +21,34 @@ func LookupPolicyDefinitionAtManagementGroup(ctx *pulumi.Context, args *LookupPo
 }
 
 type LookupPolicyDefinitionAtManagementGroupArgs struct {
-	ManagementGroupId    string `pulumi:"managementGroupId"`
+	// The ID of the management group.
+	ManagementGroupId string `pulumi:"managementGroupId"`
+	// The name of the policy definition to get.
 	PolicyDefinitionName string `pulumi:"policyDefinitionName"`
 }
 
 // The policy definition.
 type LookupPolicyDefinitionAtManagementGroupResult struct {
-	Description *string     `pulumi:"description"`
-	DisplayName *string     `pulumi:"displayName"`
-	Id          string      `pulumi:"id"`
-	Metadata    interface{} `pulumi:"metadata"`
-	Mode        *string     `pulumi:"mode"`
-	Name        string      `pulumi:"name"`
-	Parameters  interface{} `pulumi:"parameters"`
-	PolicyRule  interface{} `pulumi:"policyRule"`
-	PolicyType  *string     `pulumi:"policyType"`
-	Type        string      `pulumi:"type"`
+	// The policy definition description.
+	Description *string `pulumi:"description"`
+	// The display name of the policy definition.
+	DisplayName *string `pulumi:"displayName"`
+	// The ID of the policy definition.
+	Id string `pulumi:"id"`
+	// The policy definition metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// The policy definition mode. Possible values are NotSpecified, Indexed, and All.
+	Mode *string `pulumi:"mode"`
+	// The name of the policy definition.
+	Name string `pulumi:"name"`
+	// Required if a parameter is used in policy rule.
+	Parameters interface{} `pulumi:"parameters"`
+	// The policy rule.
+	PolicyRule interface{} `pulumi:"policyRule"`
+	// The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
+	PolicyType *string `pulumi:"policyType"`
+	// The type of the resource (Microsoft.Authorization/policyDefinitions).
+	Type string `pulumi:"type"`
 }
 
 func LookupPolicyDefinitionAtManagementGroupOutput(ctx *pulumi.Context, args LookupPolicyDefinitionAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyDefinitionAtManagementGroupResultOutput {
@@ -53,7 +65,9 @@ func LookupPolicyDefinitionAtManagementGroupOutput(ctx *pulumi.Context, args Loo
 }
 
 type LookupPolicyDefinitionAtManagementGroupOutputArgs struct {
-	ManagementGroupId    pulumi.StringInput `pulumi:"managementGroupId"`
+	// The ID of the management group.
+	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
+	// The name of the policy definition to get.
 	PolicyDefinitionName pulumi.StringInput `pulumi:"policyDefinitionName"`
 }
 
@@ -76,42 +90,52 @@ func (o LookupPolicyDefinitionAtManagementGroupResultOutput) ToLookupPolicyDefin
 	return o
 }
 
+// The policy definition description.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The display name of the policy definition.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the policy definition.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The policy definition metadata.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
+// The policy definition mode. Possible values are NotSpecified, Indexed, and All.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// The name of the policy definition.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Required if a parameter is used in policy rule.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Parameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
+// The policy rule.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) PolicyRule() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) interface{} { return v.PolicyRule }).(pulumi.AnyOutput)
 }
 
+// The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource (Microsoft.Authorization/policyDefinitions).
 func (o LookupPolicyDefinitionAtManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionAtManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,18 +21,26 @@ func LookupPrivateEndpoint(ctx *pulumi.Context, args *LookupPrivateEndpointArgs,
 }
 
 type LookupPrivateEndpointArgs struct {
-	ClusterName         string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the private endpoint.
 	PrivateEndpointName string `pulumi:"privateEndpointName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Complete information about the private endpoint.
 type LookupPrivateEndpointResult struct {
-	Etag       string                            `pulumi:"etag"`
-	Id         string                            `pulumi:"id"`
-	Name       string                            `pulumi:"name"`
+	// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties associated with a private endpoint.
 	Properties PrivateEndpointPropertiesResponse `pulumi:"properties"`
-	Type       string                            `pulumi:"type"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointOutput(ctx *pulumi.Context, args LookupPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointResultOutput {
@@ -49,9 +57,12 @@ func LookupPrivateEndpointOutput(ctx *pulumi.Context, args LookupPrivateEndpoint
 }
 
 type LookupPrivateEndpointOutputArgs struct {
-	ClusterName         pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the private endpoint.
 	PrivateEndpointName pulumi.StringInput `pulumi:"privateEndpointName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateEndpointOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupPrivateEndpointResultOutput) ToLookupPrivateEndpointResultOutputWi
 	return o
 }
 
+// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
 func (o LookupPrivateEndpointResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPrivateEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties associated with a private endpoint.
 func (o LookupPrivateEndpointResultOutput) Properties() PrivateEndpointPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) PrivateEndpointPropertiesResponse { return v.Properties }).(PrivateEndpointPropertiesResponseOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupPrivateEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

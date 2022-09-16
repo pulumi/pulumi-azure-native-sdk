@@ -23,21 +23,32 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 }
 
 type LookupNetworkArgs struct {
-	NetworkName       string `pulumi:"networkName"`
+	// The identity of the network.
+	NetworkName string `pulumi:"networkName"`
+	// Azure resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // This type describes a network resource.
 type LookupNetworkResult struct {
-	AddressPrefix     string                 `pulumi:"addressPrefix"`
-	Description       *string                `pulumi:"description"`
-	Id                string                 `pulumi:"id"`
-	IngressConfig     *IngressConfigResponse `pulumi:"ingressConfig"`
-	Location          string                 `pulumi:"location"`
-	Name              string                 `pulumi:"name"`
-	ProvisioningState string                 `pulumi:"provisioningState"`
-	Tags              map[string]string      `pulumi:"tags"`
-	Type              string                 `pulumi:"type"`
+	// the address prefix for this network.
+	AddressPrefix string `pulumi:"addressPrefix"`
+	// User readable description of the network.
+	Description *string `pulumi:"description"`
+	// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Configuration for public connectivity for this network.
+	IngressConfig *IngressConfigResponse `pulumi:"ingressConfig"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// State of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkResultOutput {
@@ -54,7 +65,9 @@ func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts
 }
 
 type LookupNetworkOutputArgs struct {
-	NetworkName       pulumi.StringInput `pulumi:"networkName"`
+	// The identity of the network.
+	NetworkName pulumi.StringInput `pulumi:"networkName"`
+	// Azure resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,38 +90,47 @@ func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx co
 	return o
 }
 
+// the address prefix for this network.
 func (o LookupNetworkResultOutput) AddressPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.AddressPrefix }).(pulumi.StringOutput)
 }
 
+// User readable description of the network.
 func (o LookupNetworkResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Configuration for public connectivity for this network.
 func (o LookupNetworkResultOutput) IngressConfig() IngressConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupNetworkResult) *IngressConfigResponse { return v.IngressConfig }).(IngressConfigResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupNetworkResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of the resource.
 func (o LookupNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupNetworkResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNetworkResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }

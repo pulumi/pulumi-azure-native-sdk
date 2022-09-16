@@ -21,27 +21,44 @@ func LookupNetworkSecurityGroup(ctx *pulumi.Context, args *LookupNetworkSecurity
 }
 
 type LookupNetworkSecurityGroupArgs struct {
-	Expand                   *string `pulumi:"expand"`
-	NetworkSecurityGroupName string  `pulumi:"networkSecurityGroupName"`
-	ResourceGroupName        string  `pulumi:"resourceGroupName"`
+	// Expands referenced resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the network security group.
+	NetworkSecurityGroupName string `pulumi:"networkSecurityGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NetworkSecurityGroup resource.
 type LookupNetworkSecurityGroupResult struct {
-	DefaultSecurityRules []SecurityRuleResponse     `pulumi:"defaultSecurityRules"`
-	Etag                 string                     `pulumi:"etag"`
-	FlowLogs             []FlowLogResponse          `pulumi:"flowLogs"`
-	FlushConnection      *bool                      `pulumi:"flushConnection"`
-	Id                   *string                    `pulumi:"id"`
-	Location             *string                    `pulumi:"location"`
-	Name                 string                     `pulumi:"name"`
-	NetworkInterfaces    []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
-	ProvisioningState    string                     `pulumi:"provisioningState"`
-	ResourceGuid         string                     `pulumi:"resourceGuid"`
-	SecurityRules        []SecurityRuleResponse     `pulumi:"securityRules"`
-	Subnets              []SubnetResponse           `pulumi:"subnets"`
-	Tags                 map[string]string          `pulumi:"tags"`
-	Type                 string                     `pulumi:"type"`
+	// The default security rules of network security group.
+	DefaultSecurityRules []SecurityRuleResponse `pulumi:"defaultSecurityRules"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// A collection of references to flow log resources.
+	FlowLogs []FlowLogResponse `pulumi:"flowLogs"`
+	// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+	FlushConnection *bool `pulumi:"flushConnection"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// A collection of references to network interfaces.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// The provisioning state of the network security group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the network security group resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// A collection of security rules of the network security group.
+	SecurityRules []SecurityRuleResponse `pulumi:"securityRules"`
+	// A collection of references to subnets.
+	Subnets []SubnetResponse `pulumi:"subnets"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupNetworkSecurityGroupOutput(ctx *pulumi.Context, args LookupNetworkSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkSecurityGroupResultOutput {
@@ -58,9 +75,12 @@ func LookupNetworkSecurityGroupOutput(ctx *pulumi.Context, args LookupNetworkSec
 }
 
 type LookupNetworkSecurityGroupOutputArgs struct {
-	Expand                   pulumi.StringPtrInput `pulumi:"expand"`
-	NetworkSecurityGroupName pulumi.StringInput    `pulumi:"networkSecurityGroupName"`
-	ResourceGroupName        pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Expands referenced resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the network security group.
+	NetworkSecurityGroupName pulumi.StringInput `pulumi:"networkSecurityGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNetworkSecurityGroupOutputArgs) ElementType() reflect.Type {
@@ -82,58 +102,72 @@ func (o LookupNetworkSecurityGroupResultOutput) ToLookupNetworkSecurityGroupResu
 	return o
 }
 
+// The default security rules of network security group.
 func (o LookupNetworkSecurityGroupResultOutput) DefaultSecurityRules() SecurityRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SecurityRuleResponse { return v.DefaultSecurityRules }).(SecurityRuleResponseArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupNetworkSecurityGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// A collection of references to flow log resources.
 func (o LookupNetworkSecurityGroupResultOutput) FlowLogs() FlowLogResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []FlowLogResponse { return v.FlowLogs }).(FlowLogResponseArrayOutput)
 }
 
+// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
 func (o LookupNetworkSecurityGroupResultOutput) FlushConnection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *bool { return v.FlushConnection }).(pulumi.BoolPtrOutput)
 }
 
+// Resource ID.
 func (o LookupNetworkSecurityGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupNetworkSecurityGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupNetworkSecurityGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A collection of references to network interfaces.
 func (o LookupNetworkSecurityGroupResultOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
+// The provisioning state of the network security group resource.
 func (o LookupNetworkSecurityGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource GUID property of the network security group resource.
 func (o LookupNetworkSecurityGroupResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// A collection of security rules of the network security group.
 func (o LookupNetworkSecurityGroupResultOutput) SecurityRules() SecurityRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SecurityRuleResponse { return v.SecurityRules }).(SecurityRuleResponseArrayOutput)
 }
 
+// A collection of references to subnets.
 func (o LookupNetworkSecurityGroupResultOutput) Subnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SubnetResponse { return v.Subnets }).(SubnetResponseArrayOutput)
 }
 
+// Resource tags.
 func (o LookupNetworkSecurityGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupNetworkSecurityGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

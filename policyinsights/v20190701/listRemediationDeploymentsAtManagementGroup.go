@@ -21,16 +21,22 @@ func ListRemediationDeploymentsAtManagementGroup(ctx *pulumi.Context, args *List
 }
 
 type ListRemediationDeploymentsAtManagementGroupArgs struct {
-	ManagementGroupId         string `pulumi:"managementGroupId"`
+	// Management group ID.
+	ManagementGroupId string `pulumi:"managementGroupId"`
+	// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
 	ManagementGroupsNamespace string `pulumi:"managementGroupsNamespace"`
-	RemediationName           string `pulumi:"remediationName"`
-	Top                       *int   `pulumi:"top"`
+	// The name of the remediation.
+	RemediationName string `pulumi:"remediationName"`
+	// Maximum number of records to return.
+	Top *int `pulumi:"top"`
 }
 
 // List of deployments for a remediation.
 type ListRemediationDeploymentsAtManagementGroupResult struct {
-	NextLink string                          `pulumi:"nextLink"`
-	Value    []RemediationDeploymentResponse `pulumi:"value"`
+	// The URL to get the next set of results.
+	NextLink string `pulumi:"nextLink"`
+	// Array of deployments for the remediation.
+	Value []RemediationDeploymentResponse `pulumi:"value"`
 }
 
 func ListRemediationDeploymentsAtManagementGroupOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtManagementGroupResultOutput {
@@ -47,10 +53,14 @@ func ListRemediationDeploymentsAtManagementGroupOutput(ctx *pulumi.Context, args
 }
 
 type ListRemediationDeploymentsAtManagementGroupOutputArgs struct {
-	ManagementGroupId         pulumi.StringInput `pulumi:"managementGroupId"`
+	// Management group ID.
+	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
+	// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
 	ManagementGroupsNamespace pulumi.StringInput `pulumi:"managementGroupsNamespace"`
-	RemediationName           pulumi.StringInput `pulumi:"remediationName"`
-	Top                       pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the remediation.
+	RemediationName pulumi.StringInput `pulumi:"remediationName"`
+	// Maximum number of records to return.
+	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
 func (ListRemediationDeploymentsAtManagementGroupOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o ListRemediationDeploymentsAtManagementGroupResultOutput) ToListRemediati
 	return o
 }
 
+// The URL to get the next set of results.
 func (o ListRemediationDeploymentsAtManagementGroupResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListRemediationDeploymentsAtManagementGroupResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Array of deployments for the remediation.
 func (o ListRemediationDeploymentsAtManagementGroupResultOutput) Value() RemediationDeploymentResponseArrayOutput {
 	return o.ApplyT(func(v ListRemediationDeploymentsAtManagementGroupResult) []RemediationDeploymentResponse {
 		return v.Value

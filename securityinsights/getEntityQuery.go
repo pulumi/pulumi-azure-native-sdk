@@ -24,20 +24,30 @@ func LookupEntityQuery(ctx *pulumi.Context, args *LookupEntityQueryArgs, opts ..
 }
 
 type LookupEntityQueryArgs struct {
-	EntityQueryId                       string `pulumi:"entityQueryId"`
+	// entity query ID
+	EntityQueryId string `pulumi:"entityQueryId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Specific entity query.
 type LookupEntityQueryResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// the entity query kind
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupEntityQueryOutput(ctx *pulumi.Context, args LookupEntityQueryOutputArgs, opts ...pulumi.InvokeOption) LookupEntityQueryResultOutput {
@@ -54,10 +64,14 @@ func LookupEntityQueryOutput(ctx *pulumi.Context, args LookupEntityQueryOutputAr
 }
 
 type LookupEntityQueryOutputArgs struct {
-	EntityQueryId                       pulumi.StringInput `pulumi:"entityQueryId"`
+	// entity query ID
+	EntityQueryId pulumi.StringInput `pulumi:"entityQueryId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupEntityQueryOutputArgs) ElementType() reflect.Type {
@@ -79,26 +93,32 @@ func (o LookupEntityQueryResultOutput) ToLookupEntityQueryResultOutputWithContex
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupEntityQueryResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupEntityQueryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// the entity query kind
 func (o LookupEntityQueryResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupEntityQueryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource type
 func (o LookupEntityQueryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Type }).(pulumi.StringOutput)
 }

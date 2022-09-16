@@ -21,18 +21,26 @@ func ListWebAppConnectionStringsSlot(ctx *pulumi.Context, args *ListWebAppConnec
 }
 
 type ListWebAppConnectionStringsSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the connection settings for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // String dictionary resource.
 type ListWebAppConnectionStringsSlotResult struct {
-	Id         string                                     `pulumi:"id"`
-	Kind       *string                                    `pulumi:"kind"`
-	Name       string                                     `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Connection strings.
 	Properties map[string]ConnStringValueTypePairResponse `pulumi:"properties"`
-	Type       string                                     `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppConnectionStringsSlotOutput(ctx *pulumi.Context, args ListWebAppConnectionStringsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppConnectionStringsSlotResultOutput {
@@ -49,9 +57,12 @@ func ListWebAppConnectionStringsSlotOutput(ctx *pulumi.Context, args ListWebAppC
 }
 
 type ListWebAppConnectionStringsSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the connection settings for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppConnectionStringsSlotOutputArgs) ElementType() reflect.Type {
@@ -73,24 +84,29 @@ func (o ListWebAppConnectionStringsSlotResultOutput) ToListWebAppConnectionStrin
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppConnectionStringsSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppConnectionStringsSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppConnectionStringsSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppConnectionStringsSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppConnectionStringsSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppConnectionStringsSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Connection strings.
 func (o ListWebAppConnectionStringsSlotResultOutput) Properties() ConnStringValueTypePairResponseMapOutput {
 	return o.ApplyT(func(v ListWebAppConnectionStringsSlotResult) map[string]ConnStringValueTypePairResponse {
 		return v.Properties
 	}).(ConnStringValueTypePairResponseMapOutput)
 }
 
+// Resource type.
 func (o ListWebAppConnectionStringsSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppConnectionStringsSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

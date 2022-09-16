@@ -22,38 +22,46 @@ func LookupIoMAMPolicyByName(ctx *pulumi.Context, args *LookupIoMAMPolicyByNameA
 }
 
 type LookupIoMAMPolicyByNameArgs struct {
-	HostName   string  `pulumi:"hostName"`
-	PolicyName string  `pulumi:"policyName"`
-	Select     *string `pulumi:"select"`
+	// Location hostName for the tenant
+	HostName string `pulumi:"hostName"`
+	// Unique name for the policy
+	PolicyName string `pulumi:"policyName"`
+	// select specific fields in entity.
+	Select *string `pulumi:"select"`
 }
 
 // iOS Policy entity for Intune MAM.
 type LookupIoMAMPolicyByNameResult struct {
-	AccessRecheckOfflineTimeout *string           `pulumi:"accessRecheckOfflineTimeout"`
-	AccessRecheckOnlineTimeout  *string           `pulumi:"accessRecheckOnlineTimeout"`
-	AppSharingFromLevel         *string           `pulumi:"appSharingFromLevel"`
-	AppSharingToLevel           *string           `pulumi:"appSharingToLevel"`
-	Authentication              *string           `pulumi:"authentication"`
-	ClipboardSharingLevel       *string           `pulumi:"clipboardSharingLevel"`
-	DataBackup                  *string           `pulumi:"dataBackup"`
-	Description                 *string           `pulumi:"description"`
-	DeviceCompliance            *string           `pulumi:"deviceCompliance"`
-	FileEncryptionLevel         *string           `pulumi:"fileEncryptionLevel"`
-	FileSharingSaveAs           *string           `pulumi:"fileSharingSaveAs"`
-	FriendlyName                string            `pulumi:"friendlyName"`
-	GroupStatus                 string            `pulumi:"groupStatus"`
-	Id                          string            `pulumi:"id"`
-	LastModifiedTime            string            `pulumi:"lastModifiedTime"`
-	Location                    *string           `pulumi:"location"`
-	ManagedBrowser              *string           `pulumi:"managedBrowser"`
-	Name                        string            `pulumi:"name"`
-	NumOfApps                   int               `pulumi:"numOfApps"`
-	OfflineWipeTimeout          *string           `pulumi:"offlineWipeTimeout"`
-	Pin                         *string           `pulumi:"pin"`
-	PinNumRetry                 *int              `pulumi:"pinNumRetry"`
-	Tags                        map[string]string `pulumi:"tags"`
-	TouchId                     *string           `pulumi:"touchId"`
-	Type                        string            `pulumi:"type"`
+	AccessRecheckOfflineTimeout *string `pulumi:"accessRecheckOfflineTimeout"`
+	AccessRecheckOnlineTimeout  *string `pulumi:"accessRecheckOnlineTimeout"`
+	AppSharingFromLevel         *string `pulumi:"appSharingFromLevel"`
+	AppSharingToLevel           *string `pulumi:"appSharingToLevel"`
+	Authentication              *string `pulumi:"authentication"`
+	ClipboardSharingLevel       *string `pulumi:"clipboardSharingLevel"`
+	DataBackup                  *string `pulumi:"dataBackup"`
+	Description                 *string `pulumi:"description"`
+	DeviceCompliance            *string `pulumi:"deviceCompliance"`
+	FileEncryptionLevel         *string `pulumi:"fileEncryptionLevel"`
+	FileSharingSaveAs           *string `pulumi:"fileSharingSaveAs"`
+	FriendlyName                string  `pulumi:"friendlyName"`
+	GroupStatus                 string  `pulumi:"groupStatus"`
+	// Resource Id
+	Id               string `pulumi:"id"`
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// Resource Location
+	Location       *string `pulumi:"location"`
+	ManagedBrowser *string `pulumi:"managedBrowser"`
+	// Resource name
+	Name               string  `pulumi:"name"`
+	NumOfApps          int     `pulumi:"numOfApps"`
+	OfflineWipeTimeout *string `pulumi:"offlineWipeTimeout"`
+	Pin                *string `pulumi:"pin"`
+	PinNumRetry        *int    `pulumi:"pinNumRetry"`
+	// Resource Tags
+	Tags    map[string]string `pulumi:"tags"`
+	TouchId *string           `pulumi:"touchId"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupIoMAMPolicyByNameResult
@@ -126,9 +134,12 @@ func LookupIoMAMPolicyByNameOutput(ctx *pulumi.Context, args LookupIoMAMPolicyBy
 }
 
 type LookupIoMAMPolicyByNameOutputArgs struct {
-	HostName   pulumi.StringInput    `pulumi:"hostName"`
-	PolicyName pulumi.StringInput    `pulumi:"policyName"`
-	Select     pulumi.StringPtrInput `pulumi:"select"`
+	// Location hostName for the tenant
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Unique name for the policy
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// select specific fields in entity.
+	Select pulumi.StringPtrInput `pulumi:"select"`
 }
 
 func (LookupIoMAMPolicyByNameOutputArgs) ElementType() reflect.Type {
@@ -202,6 +213,7 @@ func (o LookupIoMAMPolicyByNameResultOutput) GroupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) string { return v.GroupStatus }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupIoMAMPolicyByNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -210,6 +222,7 @@ func (o LookupIoMAMPolicyByNameResultOutput) LastModifiedTime() pulumi.StringOut
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupIoMAMPolicyByNameResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -218,6 +231,7 @@ func (o LookupIoMAMPolicyByNameResultOutput) ManagedBrowser() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) *string { return v.ManagedBrowser }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupIoMAMPolicyByNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -238,6 +252,7 @@ func (o LookupIoMAMPolicyByNameResultOutput) PinNumRetry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) *int { return v.PinNumRetry }).(pulumi.IntPtrOutput)
 }
 
+// Resource Tags
 func (o LookupIoMAMPolicyByNameResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -246,6 +261,7 @@ func (o LookupIoMAMPolicyByNameResultOutput) TouchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) *string { return v.TouchId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type
 func (o LookupIoMAMPolicyByNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

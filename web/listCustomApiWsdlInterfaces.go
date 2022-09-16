@@ -22,16 +22,23 @@ func ListCustomApiWsdlInterfaces(ctx *pulumi.Context, args *ListCustomApiWsdlInt
 }
 
 type ListCustomApiWsdlInterfacesArgs struct {
-	Content        *string      `pulumi:"content"`
-	ImportMethod   *string      `pulumi:"importMethod"`
-	Location       string       `pulumi:"location"`
-	Service        *WsdlService `pulumi:"service"`
-	SubscriptionId *string      `pulumi:"subscriptionId"`
-	Url            *string      `pulumi:"url"`
+	// The WSDL content
+	Content *string `pulumi:"content"`
+	// The WSDL import method
+	ImportMethod *string `pulumi:"importMethod"`
+	// The location
+	Location string `pulumi:"location"`
+	// The service with name and endpoint names
+	Service *WsdlService `pulumi:"service"`
+	// Subscription Id
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// The WSDL URL
+	Url *string `pulumi:"url"`
 }
 
 // A list of custom API WSDL interfaces
 type ListCustomApiWsdlInterfacesResult struct {
+	// Collection of WSDL interfaces
 	Value []WsdlServiceResponse `pulumi:"value"`
 }
 
@@ -49,12 +56,18 @@ func ListCustomApiWsdlInterfacesOutput(ctx *pulumi.Context, args ListCustomApiWs
 }
 
 type ListCustomApiWsdlInterfacesOutputArgs struct {
-	Content        pulumi.StringPtrInput `pulumi:"content"`
-	ImportMethod   pulumi.StringPtrInput `pulumi:"importMethod"`
-	Location       pulumi.StringInput    `pulumi:"location"`
-	Service        WsdlServicePtrInput   `pulumi:"service"`
+	// The WSDL content
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The WSDL import method
+	ImportMethod pulumi.StringPtrInput `pulumi:"importMethod"`
+	// The location
+	Location pulumi.StringInput `pulumi:"location"`
+	// The service with name and endpoint names
+	Service WsdlServicePtrInput `pulumi:"service"`
+	// Subscription Id
 	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
-	Url            pulumi.StringPtrInput `pulumi:"url"`
+	// The WSDL URL
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ListCustomApiWsdlInterfacesOutputArgs) ElementType() reflect.Type {
@@ -76,6 +89,7 @@ func (o ListCustomApiWsdlInterfacesResultOutput) ToListCustomApiWsdlInterfacesRe
 	return o
 }
 
+// Collection of WSDL interfaces
 func (o ListCustomApiWsdlInterfacesResultOutput) Value() WsdlServiceResponseArrayOutput {
 	return o.ApplyT(func(v ListCustomApiWsdlInterfacesResult) []WsdlServiceResponse { return v.Value }).(WsdlServiceResponseArrayOutput)
 }

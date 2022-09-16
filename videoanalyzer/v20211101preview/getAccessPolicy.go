@@ -21,19 +21,28 @@ func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts 
 }
 
 type LookupAccessPolicyArgs struct {
-	AccessPolicyName  string `pulumi:"accessPolicyName"`
-	AccountName       string `pulumi:"accountName"`
+	// The Access Policy name.
+	AccessPolicyName string `pulumi:"accessPolicyName"`
+	// The Azure Video Analyzer account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Access policies help define the authentication rules, and control access to specific video resources.
 type LookupAccessPolicyResult struct {
+	// Authentication method to be used when validating client API access.
 	Authentication *JwtAuthenticationResponse `pulumi:"authentication"`
-	Id             string                     `pulumi:"id"`
-	Name           string                     `pulumi:"name"`
-	Role           *string                    `pulumi:"role"`
-	SystemData     SystemDataResponse         `pulumi:"systemData"`
-	Type           string                     `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Defines the access level granted by this policy.
+	Role *string `pulumi:"role"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyResultOutput {
@@ -50,8 +59,11 @@ func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutput
 }
 
 type LookupAccessPolicyOutputArgs struct {
-	AccessPolicyName  pulumi.StringInput `pulumi:"accessPolicyName"`
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Access Policy name.
+	AccessPolicyName pulumi.StringInput `pulumi:"accessPolicyName"`
+	// The Azure Video Analyzer account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,26 +86,32 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithCont
 	return o
 }
 
+// Authentication method to be used when validating client API access.
 func (o LookupAccessPolicyResultOutput) Authentication() JwtAuthenticationResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *JwtAuthenticationResponse { return v.Authentication }).(JwtAuthenticationResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccessPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAccessPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the access level granted by this policy.
 func (o LookupAccessPolicyResultOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAccessPolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAccessPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

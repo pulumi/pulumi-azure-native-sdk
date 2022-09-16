@@ -20,13 +20,18 @@ func ListWorkflowAccessKeySecretKeys(ctx *pulumi.Context, args *ListWorkflowAcce
 }
 
 type ListWorkflowAccessKeySecretKeysArgs struct {
-	AccessKeyName     string `pulumi:"accessKeyName"`
+	// The workflow access key name.
+	AccessKeyName string `pulumi:"accessKeyName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkflowName      string `pulumi:"workflowName"`
+	// The workflow name.
+	WorkflowName string `pulumi:"workflowName"`
 }
 
 type ListWorkflowAccessKeySecretKeysResult struct {
-	PrimarySecretKey   string `pulumi:"primarySecretKey"`
+	// Gets the primary secret key.
+	PrimarySecretKey string `pulumi:"primarySecretKey"`
+	// Gets the secondary secret key.
 	SecondarySecretKey string `pulumi:"secondarySecretKey"`
 }
 
@@ -44,9 +49,12 @@ func ListWorkflowAccessKeySecretKeysOutput(ctx *pulumi.Context, args ListWorkflo
 }
 
 type ListWorkflowAccessKeySecretKeysOutputArgs struct {
-	AccessKeyName     pulumi.StringInput `pulumi:"accessKeyName"`
+	// The workflow access key name.
+	AccessKeyName pulumi.StringInput `pulumi:"accessKeyName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkflowName      pulumi.StringInput `pulumi:"workflowName"`
+	// The workflow name.
+	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
 
 func (ListWorkflowAccessKeySecretKeysOutputArgs) ElementType() reflect.Type {
@@ -67,10 +75,12 @@ func (o ListWorkflowAccessKeySecretKeysResultOutput) ToListWorkflowAccessKeySecr
 	return o
 }
 
+// Gets the primary secret key.
 func (o ListWorkflowAccessKeySecretKeysResultOutput) PrimarySecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWorkflowAccessKeySecretKeysResult) string { return v.PrimarySecretKey }).(pulumi.StringOutput)
 }
 
+// Gets the secondary secret key.
 func (o ListWorkflowAccessKeySecretKeysResultOutput) SecondarySecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWorkflowAccessKeySecretKeysResult) string { return v.SecondarySecretKey }).(pulumi.StringOutput)
 }

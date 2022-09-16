@@ -21,9 +21,12 @@ func ListMediaServiceEdgePolicies(ctx *pulumi.Context, args *ListMediaServiceEdg
 }
 
 type ListMediaServiceEdgePoliciesArgs struct {
-	AccountName       string  `pulumi:"accountName"`
-	DeviceId          *string `pulumi:"deviceId"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// Unique identifier of the edge device.
+	DeviceId *string `pulumi:"deviceId"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type ListMediaServiceEdgePoliciesResult struct {
@@ -44,9 +47,12 @@ func ListMediaServiceEdgePoliciesOutput(ctx *pulumi.Context, args ListMediaServi
 }
 
 type ListMediaServiceEdgePoliciesOutputArgs struct {
-	AccountName       pulumi.StringInput    `pulumi:"accountName"`
-	DeviceId          pulumi.StringPtrInput `pulumi:"deviceId"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Unique identifier of the edge device.
+	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListMediaServiceEdgePoliciesOutputArgs) ElementType() reflect.Type {

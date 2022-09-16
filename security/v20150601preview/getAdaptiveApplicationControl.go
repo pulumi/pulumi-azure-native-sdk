@@ -21,23 +21,34 @@ func LookupAdaptiveApplicationControl(ctx *pulumi.Context, args *LookupAdaptiveA
 }
 
 type LookupAdaptiveApplicationControlArgs struct {
+	// The location where ASC stores the data of the subscription. can be retrieved from Get locations
 	AscLocation string `pulumi:"ascLocation"`
-	GroupName   string `pulumi:"groupName"`
+	// Name of an application control VM/server group
+	GroupName string `pulumi:"groupName"`
 }
 
 type LookupAdaptiveApplicationControlResult struct {
-	ConfigurationStatus  *string                               `pulumi:"configurationStatus"`
-	EnforcementMode      *string                               `pulumi:"enforcementMode"`
-	Id                   string                                `pulumi:"id"`
-	Issues               []AppWhitelistingIssueSummaryResponse `pulumi:"issues"`
-	Location             string                                `pulumi:"location"`
-	Name                 string                                `pulumi:"name"`
-	PathRecommendations  []PathRecommendationResponse          `pulumi:"pathRecommendations"`
-	ProtectionMode       *ProtectionModeResponse               `pulumi:"protectionMode"`
-	RecommendationStatus *string                               `pulumi:"recommendationStatus"`
-	SourceSystem         *string                               `pulumi:"sourceSystem"`
-	Type                 string                                `pulumi:"type"`
-	VmRecommendations    []VmRecommendationResponse            `pulumi:"vmRecommendations"`
+	// The configuration status of the VM/server group or machine or rule on the machine
+	ConfigurationStatus *string `pulumi:"configurationStatus"`
+	// The application control policy enforcement/protection mode of the VM/server group
+	EnforcementMode *string `pulumi:"enforcementMode"`
+	// Resource Id
+	Id     string                                `pulumi:"id"`
+	Issues []AppWhitelistingIssueSummaryResponse `pulumi:"issues"`
+	// Location where the resource is stored
+	Location string `pulumi:"location"`
+	// Resource name
+	Name                string                       `pulumi:"name"`
+	PathRecommendations []PathRecommendationResponse `pulumi:"pathRecommendations"`
+	// The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
+	ProtectionMode *ProtectionModeResponse `pulumi:"protectionMode"`
+	// The recommendation status of the VM/server group or VM/server
+	RecommendationStatus *string `pulumi:"recommendationStatus"`
+	// The source type of the VM/server group
+	SourceSystem *string `pulumi:"sourceSystem"`
+	// Resource type
+	Type              string                     `pulumi:"type"`
+	VmRecommendations []VmRecommendationResponse `pulumi:"vmRecommendations"`
 }
 
 func LookupAdaptiveApplicationControlOutput(ctx *pulumi.Context, args LookupAdaptiveApplicationControlOutputArgs, opts ...pulumi.InvokeOption) LookupAdaptiveApplicationControlResultOutput {
@@ -54,8 +65,10 @@ func LookupAdaptiveApplicationControlOutput(ctx *pulumi.Context, args LookupAdap
 }
 
 type LookupAdaptiveApplicationControlOutputArgs struct {
+	// The location where ASC stores the data of the subscription. can be retrieved from Get locations
 	AscLocation pulumi.StringInput `pulumi:"ascLocation"`
-	GroupName   pulumi.StringInput `pulumi:"groupName"`
+	// Name of an application control VM/server group
+	GroupName pulumi.StringInput `pulumi:"groupName"`
 }
 
 func (LookupAdaptiveApplicationControlOutputArgs) ElementType() reflect.Type {
@@ -76,14 +89,17 @@ func (o LookupAdaptiveApplicationControlResultOutput) ToLookupAdaptiveApplicatio
 	return o
 }
 
+// The configuration status of the VM/server group or machine or rule on the machine
 func (o LookupAdaptiveApplicationControlResultOutput) ConfigurationStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) *string { return v.ConfigurationStatus }).(pulumi.StringPtrOutput)
 }
 
+// The application control policy enforcement/protection mode of the VM/server group
 func (o LookupAdaptiveApplicationControlResultOutput) EnforcementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) *string { return v.EnforcementMode }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupAdaptiveApplicationControlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -92,10 +108,12 @@ func (o LookupAdaptiveApplicationControlResultOutput) Issues() AppWhitelistingIs
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) []AppWhitelistingIssueSummaryResponse { return v.Issues }).(AppWhitelistingIssueSummaryResponseArrayOutput)
 }
 
+// Location where the resource is stored
 func (o LookupAdaptiveApplicationControlResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupAdaptiveApplicationControlResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -106,18 +124,22 @@ func (o LookupAdaptiveApplicationControlResultOutput) PathRecommendations() Path
 	}).(PathRecommendationResponseArrayOutput)
 }
 
+// The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
 func (o LookupAdaptiveApplicationControlResultOutput) ProtectionMode() ProtectionModeResponsePtrOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) *ProtectionModeResponse { return v.ProtectionMode }).(ProtectionModeResponsePtrOutput)
 }
 
+// The recommendation status of the VM/server group or VM/server
 func (o LookupAdaptiveApplicationControlResultOutput) RecommendationStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) *string { return v.RecommendationStatus }).(pulumi.StringPtrOutput)
 }
 
+// The source type of the VM/server group
 func (o LookupAdaptiveApplicationControlResultOutput) SourceSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) *string { return v.SourceSystem }).(pulumi.StringPtrOutput)
 }
 
+// Resource type
 func (o LookupAdaptiveApplicationControlResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdaptiveApplicationControlResult) string { return v.Type }).(pulumi.StringOutput)
 }

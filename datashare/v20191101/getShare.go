@@ -23,23 +23,36 @@ func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.Invo
 }
 
 type LookupShareArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share to retrieve.
+	ShareName string `pulumi:"shareName"`
 }
 
 // A share data transfer object.
 type LookupShareResult struct {
-	CreatedAt         string  `pulumi:"createdAt"`
-	Description       *string `pulumi:"description"`
-	Id                string  `pulumi:"id"`
-	Name              string  `pulumi:"name"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	ShareKind         *string `pulumi:"shareKind"`
-	Terms             *string `pulumi:"terms"`
-	Type              string  `pulumi:"type"`
-	UserEmail         string  `pulumi:"userEmail"`
-	UserName          string  `pulumi:"userName"`
+	// Time at which the share was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Share description.
+	Description *string `pulumi:"description"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// Gets or sets the provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Share kind.
+	ShareKind *string `pulumi:"shareKind"`
+	// Share terms.
+	Terms *string `pulumi:"terms"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
+	// Email of the user who created the resource
+	UserEmail string `pulumi:"userEmail"`
+	// Name of the user who created the resource
+	UserName string `pulumi:"userName"`
 }
 
 func LookupShareOutput(ctx *pulumi.Context, args LookupShareOutputArgs, opts ...pulumi.InvokeOption) LookupShareResultOutput {
@@ -56,9 +69,12 @@ func LookupShareOutput(ctx *pulumi.Context, args LookupShareOutputArgs, opts ...
 }
 
 type LookupShareOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share to retrieve.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupShareOutputArgs) ElementType() reflect.Type {
@@ -80,42 +96,52 @@ func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx contex
 	return o
 }
 
+// Time at which the share was created.
 func (o LookupShareResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Share description.
 func (o LookupShareResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupShareResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupShareResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the provisioning state
 func (o LookupShareResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Share kind.
 func (o LookupShareResultOutput) ShareKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupShareResult) *string { return v.ShareKind }).(pulumi.StringPtrOutput)
 }
 
+// Share terms.
 func (o LookupShareResultOutput) Terms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupShareResult) *string { return v.Terms }).(pulumi.StringPtrOutput)
 }
 
+// Type of the azure resource
 func (o LookupShareResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Email of the user who created the resource
 func (o LookupShareResultOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.UserEmail }).(pulumi.StringOutput)
 }
 
+// Name of the user who created the resource
 func (o LookupShareResultOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.UserName }).(pulumi.StringOutput)
 }

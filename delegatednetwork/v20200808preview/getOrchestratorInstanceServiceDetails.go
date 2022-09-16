@@ -23,26 +23,42 @@ func LookupOrchestratorInstanceServiceDetails(ctx *pulumi.Context, args *LookupO
 }
 
 type LookupOrchestratorInstanceServiceDetailsArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Represents an instance of a orchestrator.
 type LookupOrchestratorInstanceServiceDetailsResult struct {
-	ApiServerEndpoint    *string                       `pulumi:"apiServerEndpoint"`
-	ClusterRootCA        *string                       `pulumi:"clusterRootCA"`
-	ControllerDetails    ControllerDetailsResponse     `pulumi:"controllerDetails"`
-	Id                   string                        `pulumi:"id"`
-	Identity             *OrchestratorIdentityResponse `pulumi:"identity"`
-	Kind                 string                        `pulumi:"kind"`
-	Location             *string                       `pulumi:"location"`
-	Name                 string                        `pulumi:"name"`
-	OrchestratorAppId    *string                       `pulumi:"orchestratorAppId"`
-	OrchestratorTenantId *string                       `pulumi:"orchestratorTenantId"`
-	ProvisioningState    string                        `pulumi:"provisioningState"`
-	ResourceGuid         string                        `pulumi:"resourceGuid"`
-	Tags                 map[string]string             `pulumi:"tags"`
-	Type                 string                        `pulumi:"type"`
+	// K8s APIServer url
+	ApiServerEndpoint *string `pulumi:"apiServerEndpoint"`
+	// RootCA certificate of kubernetes cluster base64 encoded
+	ClusterRootCA *string `pulumi:"clusterRootCA"`
+	// Properties of the controller.
+	ControllerDetails ControllerDetailsResponse `pulumi:"controllerDetails"`
+	// An identifier that represents the resource.
+	Id string `pulumi:"id"`
+	// The identity of the orchestrator
+	Identity *OrchestratorIdentityResponse `pulumi:"identity"`
+	// The kind of workbook. Choices are user and shared.
+	Kind string `pulumi:"kind"`
+	// Location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// AAD ID used with apiserver
+	OrchestratorAppId *string `pulumi:"orchestratorAppId"`
+	// TenantID of server App ID
+	OrchestratorTenantId *string `pulumi:"orchestratorTenantId"`
+	// The current state of orchestratorInstance resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource guid.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupOrchestratorInstanceServiceDetailsOutput(ctx *pulumi.Context, args LookupOrchestratorInstanceServiceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorInstanceServiceDetailsResultOutput {
@@ -59,8 +75,10 @@ func LookupOrchestratorInstanceServiceDetailsOutput(ctx *pulumi.Context, args Lo
 }
 
 type LookupOrchestratorInstanceServiceDetailsOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupOrchestratorInstanceServiceDetailsOutputArgs) ElementType() reflect.Type {
@@ -82,62 +100,76 @@ func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ToLookupOrchestrat
 	return o
 }
 
+// K8s APIServer url
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ApiServerEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *string { return v.ApiServerEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// RootCA certificate of kubernetes cluster base64 encoded
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ClusterRootCA() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *string { return v.ClusterRootCA }).(pulumi.StringPtrOutput)
 }
 
+// Properties of the controller.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ControllerDetails() ControllerDetailsResponseOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) ControllerDetailsResponse {
 		return v.ControllerDetails
 	}).(ControllerDetailsResponseOutput)
 }
 
+// An identifier that represents the resource.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the orchestrator
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Identity() OrchestratorIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *OrchestratorIdentityResponse {
 		return v.Identity
 	}).(OrchestratorIdentityResponsePtrOutput)
 }
 
+// The kind of workbook. Choices are user and shared.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Location of the resource.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// AAD ID used with apiserver
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) OrchestratorAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *string { return v.OrchestratorAppId }).(pulumi.StringPtrOutput)
 }
 
+// TenantID of server App ID
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) OrchestratorTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *string { return v.OrchestratorTenantId }).(pulumi.StringPtrOutput)
 }
 
+// The current state of orchestratorInstance resource.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource guid.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of resource.
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.Type }).(pulumi.StringOutput)
 }

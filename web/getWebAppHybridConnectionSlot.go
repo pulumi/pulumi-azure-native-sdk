@@ -22,27 +22,45 @@ func LookupWebAppHybridConnectionSlot(ctx *pulumi.Context, args *LookupWebAppHyb
 }
 
 type LookupWebAppHybridConnectionSlotArgs struct {
-	Name              string `pulumi:"name"`
-	NamespaceName     string `pulumi:"namespaceName"`
-	RelayName         string `pulumi:"relayName"`
+	// The name of the web app.
+	Name string `pulumi:"name"`
+	// The namespace for this hybrid connection.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The relay name for this hybrid connection.
+	RelayName string `pulumi:"relayName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// The name of the slot for the web app.
+	Slot string `pulumi:"slot"`
 }
 
 // Hybrid Connection contract. This is used to configure a Hybrid Connection.
 type LookupWebAppHybridConnectionSlotResult struct {
-	Hostname            *string `pulumi:"hostname"`
-	Id                  string  `pulumi:"id"`
-	Kind                *string `pulumi:"kind"`
-	Name                string  `pulumi:"name"`
-	Port                *int    `pulumi:"port"`
-	RelayArmUri         *string `pulumi:"relayArmUri"`
-	RelayName           *string `pulumi:"relayName"`
-	SendKeyName         *string `pulumi:"sendKeyName"`
-	SendKeyValue        *string `pulumi:"sendKeyValue"`
+	// The hostname of the endpoint.
+	Hostname *string `pulumi:"hostname"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// The port of the endpoint.
+	Port *int `pulumi:"port"`
+	// The ARM URI to the Service Bus relay.
+	RelayArmUri *string `pulumi:"relayArmUri"`
+	// The name of the Service Bus relay.
+	RelayName *string `pulumi:"relayName"`
+	// The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
+	SendKeyName *string `pulumi:"sendKeyName"`
+	// The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
+	// normally, use the POST /listKeys API instead.
+	SendKeyValue *string `pulumi:"sendKeyValue"`
+	// The name of the Service Bus namespace.
 	ServiceBusNamespace *string `pulumi:"serviceBusNamespace"`
-	ServiceBusSuffix    *string `pulumi:"serviceBusSuffix"`
-	Type                string  `pulumi:"type"`
+	// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
+	ServiceBusSuffix *string `pulumi:"serviceBusSuffix"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppHybridConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppHybridConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHybridConnectionSlotResultOutput {
@@ -59,11 +77,16 @@ func LookupWebAppHybridConnectionSlotOutput(ctx *pulumi.Context, args LookupWebA
 }
 
 type LookupWebAppHybridConnectionSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
-	RelayName         pulumi.StringInput `pulumi:"relayName"`
+	// The name of the web app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace for this hybrid connection.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The relay name for this hybrid connection.
+	RelayName pulumi.StringInput `pulumi:"relayName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// The name of the slot for the web app.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupWebAppHybridConnectionSlotOutputArgs) ElementType() reflect.Type {
@@ -85,50 +108,63 @@ func (o LookupWebAppHybridConnectionSlotResultOutput) ToLookupWebAppHybridConnec
 	return o
 }
 
+// The hostname of the endpoint.
 func (o LookupWebAppHybridConnectionSlotResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppHybridConnectionSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppHybridConnectionSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppHybridConnectionSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port of the endpoint.
 func (o LookupWebAppHybridConnectionSlotResultOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// The ARM URI to the Service Bus relay.
 func (o LookupWebAppHybridConnectionSlotResultOutput) RelayArmUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.RelayArmUri }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Service Bus relay.
 func (o LookupWebAppHybridConnectionSlotResultOutput) RelayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.RelayName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
 func (o LookupWebAppHybridConnectionSlotResultOutput) SendKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.SendKeyName }).(pulumi.StringPtrOutput)
 }
 
+// The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
+// normally, use the POST /listKeys API instead.
 func (o LookupWebAppHybridConnectionSlotResultOutput) SendKeyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.SendKeyValue }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Service Bus namespace.
 func (o LookupWebAppHybridConnectionSlotResultOutput) ServiceBusNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.ServiceBusNamespace }).(pulumi.StringPtrOutput)
 }
 
+// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
 func (o LookupWebAppHybridConnectionSlotResultOutput) ServiceBusSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.ServiceBusSuffix }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppHybridConnectionSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

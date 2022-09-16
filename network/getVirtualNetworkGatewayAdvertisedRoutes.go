@@ -22,13 +22,17 @@ func GetVirtualNetworkGatewayAdvertisedRoutes(ctx *pulumi.Context, args *GetVirt
 }
 
 type GetVirtualNetworkGatewayAdvertisedRoutesArgs struct {
-	Peer                      string `pulumi:"peer"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The IP address of the peer.
+	Peer string `pulumi:"peer"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName string `pulumi:"virtualNetworkGatewayName"`
 }
 
 // List of virtual network gateway routes.
 type GetVirtualNetworkGatewayAdvertisedRoutesResult struct {
+	// List of gateway routes.
 	Value []GatewayRouteResponse `pulumi:"value"`
 }
 
@@ -46,8 +50,11 @@ func GetVirtualNetworkGatewayAdvertisedRoutesOutput(ctx *pulumi.Context, args Ge
 }
 
 type GetVirtualNetworkGatewayAdvertisedRoutesOutputArgs struct {
-	Peer                      pulumi.StringInput `pulumi:"peer"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The IP address of the peer.
+	Peer pulumi.StringInput `pulumi:"peer"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName pulumi.StringInput `pulumi:"virtualNetworkGatewayName"`
 }
 
@@ -70,6 +77,7 @@ func (o GetVirtualNetworkGatewayAdvertisedRoutesResultOutput) ToGetVirtualNetwor
 	return o
 }
 
+// List of gateway routes.
 func (o GetVirtualNetworkGatewayAdvertisedRoutesResultOutput) Value() GatewayRouteResponseArrayOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayAdvertisedRoutesResult) []GatewayRouteResponse { return v.Value }).(GatewayRouteResponseArrayOutput)
 }

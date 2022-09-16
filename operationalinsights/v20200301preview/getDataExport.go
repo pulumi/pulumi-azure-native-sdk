@@ -21,23 +21,36 @@ func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...p
 }
 
 type LookupDataExportArgs struct {
-	DataExportName    string `pulumi:"dataExportName"`
+	// The data export rule name.
+	DataExportName string `pulumi:"dataExportName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The top level data export resource container.
 type LookupDataExportResult struct {
-	CreatedDate      *string  `pulumi:"createdDate"`
-	DataExportId     *string  `pulumi:"dataExportId"`
-	Enable           *bool    `pulumi:"enable"`
-	EventHubName     *string  `pulumi:"eventHubName"`
-	Id               string   `pulumi:"id"`
-	LastModifiedDate *string  `pulumi:"lastModifiedDate"`
-	Name             string   `pulumi:"name"`
-	ResourceId       string   `pulumi:"resourceId"`
-	TableNames       []string `pulumi:"tableNames"`
-	Type             string   `pulumi:"type"`
+	// The latest data export rule modification time.
+	CreatedDate *string `pulumi:"createdDate"`
+	// The data export rule ID.
+	DataExportId *string `pulumi:"dataExportId"`
+	// Active when enabled.
+	Enable *bool `pulumi:"enable"`
+	// Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.
+	EventHubName *string `pulumi:"eventHubName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Date and time when the export was last modified.
+	LastModifiedDate *string `pulumi:"lastModifiedDate"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
+	ResourceId string `pulumi:"resourceId"`
+	// An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
+	TableNames []string `pulumi:"tableNames"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDataExportOutput(ctx *pulumi.Context, args LookupDataExportOutputArgs, opts ...pulumi.InvokeOption) LookupDataExportResultOutput {
@@ -54,9 +67,12 @@ func LookupDataExportOutput(ctx *pulumi.Context, args LookupDataExportOutputArgs
 }
 
 type LookupDataExportOutputArgs struct {
-	DataExportName    pulumi.StringInput `pulumi:"dataExportName"`
+	// The data export rule name.
+	DataExportName pulumi.StringInput `pulumi:"dataExportName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupDataExportOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupDataExportResultOutput) ToLookupDataExportResultOutputWithContext(
 	return o
 }
 
+// The latest data export rule modification time.
 func (o LookupDataExportResultOutput) CreatedDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataExportResult) *string { return v.CreatedDate }).(pulumi.StringPtrOutput)
 }
 
+// The data export rule ID.
 func (o LookupDataExportResultOutput) DataExportId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataExportResult) *string { return v.DataExportId }).(pulumi.StringPtrOutput)
 }
 
+// Active when enabled.
 func (o LookupDataExportResultOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDataExportResult) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.
 func (o LookupDataExportResultOutput) EventHubName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataExportResult) *string { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDataExportResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataExportResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Date and time when the export was last modified.
 func (o LookupDataExportResultOutput) LastModifiedDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataExportResult) *string { return v.LastModifiedDate }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupDataExportResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataExportResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
 func (o LookupDataExportResultOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataExportResult) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
+// An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
 func (o LookupDataExportResultOutput) TableNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDataExportResult) []string { return v.TableNames }).(pulumi.StringArrayOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDataExportResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataExportResult) string { return v.Type }).(pulumi.StringOutput)
 }

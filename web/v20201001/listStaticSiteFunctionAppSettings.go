@@ -21,18 +21,26 @@ func ListStaticSiteFunctionAppSettings(ctx *pulumi.Context, args *ListStaticSite
 }
 
 type ListStaticSiteFunctionAppSettingsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the static site.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String dictionary resource.
 type ListStaticSiteFunctionAppSettingsResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       *string            `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
-	Properties map[string]string  `pulumi:"properties"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
+	Properties map[string]string `pulumi:"properties"`
+	// The system metadata relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListStaticSiteFunctionAppSettingsOutput(ctx *pulumi.Context, args ListStaticSiteFunctionAppSettingsOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteFunctionAppSettingsResultOutput {
@@ -49,7 +57,9 @@ func ListStaticSiteFunctionAppSettingsOutput(ctx *pulumi.Context, args ListStati
 }
 
 type ListStaticSiteFunctionAppSettingsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the static site.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,26 +82,32 @@ func (o ListStaticSiteFunctionAppSettingsResultOutput) ToListStaticSiteFunctionA
 	return o
 }
 
+// Resource Id.
 func (o ListStaticSiteFunctionAppSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteFunctionAppSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListStaticSiteFunctionAppSettingsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListStaticSiteFunctionAppSettingsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListStaticSiteFunctionAppSettingsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteFunctionAppSettingsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListStaticSiteFunctionAppSettingsResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListStaticSiteFunctionAppSettingsResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// The system metadata relating to this resource.
 func (o ListStaticSiteFunctionAppSettingsResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v ListStaticSiteFunctionAppSettingsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o ListStaticSiteFunctionAppSettingsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteFunctionAppSettingsResult) string { return v.Type }).(pulumi.StringOutput)
 }

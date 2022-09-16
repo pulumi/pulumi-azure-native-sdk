@@ -21,22 +21,34 @@ func LookupMachineLearningCompute(ctx *pulumi.Context, args *LookupMachineLearni
 }
 
 type LookupMachineLearningComputeArgs struct {
-	ComputeName       string `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName string `pulumi:"computeName"`
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 type LookupMachineLearningComputeResult struct {
-	Id         string             `pulumi:"id"`
-	Identity   *IdentityResponse  `pulumi:"identity"`
-	Location   *string            `pulumi:"location"`
-	Name       string             `pulumi:"name"`
-	Properties interface{}        `pulumi:"properties"`
-	Sku        *SkuResponse       `pulumi:"sku"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// Compute properties
+	Properties interface{} `pulumi:"properties"`
+	// The sku of the workspace.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Tags       map[string]string  `pulumi:"tags"`
-	Type       string             `pulumi:"type"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMachineLearningComputeOutput(ctx *pulumi.Context, args LookupMachineLearningComputeOutputArgs, opts ...pulumi.InvokeOption) LookupMachineLearningComputeResultOutput {
@@ -53,9 +65,12 @@ func LookupMachineLearningComputeOutput(ctx *pulumi.Context, args LookupMachineL
 }
 
 type LookupMachineLearningComputeOutputArgs struct {
-	ComputeName       pulumi.StringInput `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName pulumi.StringInput `pulumi:"computeName"`
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupMachineLearningComputeOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupMachineLearningComputeResultOutput) ToLookupMachineLearningCompute
 	return o
 }
 
+// Specifies the resource ID.
 func (o LookupMachineLearningComputeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupMachineLearningComputeResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupMachineLearningComputeResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupMachineLearningComputeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Compute properties
 func (o LookupMachineLearningComputeResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The sku of the workspace.
 func (o LookupMachineLearningComputeResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Read only system data
 func (o LookupMachineLearningComputeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupMachineLearningComputeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupMachineLearningComputeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineLearningComputeResult) string { return v.Type }).(pulumi.StringOutput)
 }

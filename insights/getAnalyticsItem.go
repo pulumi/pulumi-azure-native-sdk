@@ -22,24 +22,38 @@ func LookupAnalyticsItem(ctx *pulumi.Context, args *LookupAnalyticsItemArgs, opt
 }
 
 type LookupAnalyticsItemArgs struct {
-	Id                *string `pulumi:"id"`
-	Name              *string `pulumi:"name"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ResourceName      string  `pulumi:"resourceName"`
-	ScopePath         string  `pulumi:"scopePath"`
+	// The Id of a specific item defined in the Application Insights component
+	Id *string `pulumi:"id"`
+	// The name of a specific item defined in the Application Insights component
+	Name *string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Application Insights component resource.
+	ResourceName string `pulumi:"resourceName"`
+	// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
+	ScopePath string `pulumi:"scopePath"`
 }
 
 // Properties that define an Analytics item that is associated to an Application Insights component.
 type LookupAnalyticsItemResult struct {
-	Content      *string                                                     `pulumi:"content"`
-	Id           *string                                                     `pulumi:"id"`
-	Name         *string                                                     `pulumi:"name"`
-	Properties   ApplicationInsightsComponentAnalyticsItemPropertiesResponse `pulumi:"properties"`
-	Scope        *string                                                     `pulumi:"scope"`
-	TimeCreated  string                                                      `pulumi:"timeCreated"`
-	TimeModified string                                                      `pulumi:"timeModified"`
-	Type         *string                                                     `pulumi:"type"`
-	Version      string                                                      `pulumi:"version"`
+	// The content of this item
+	Content *string `pulumi:"content"`
+	// Internally assigned unique id of the item definition.
+	Id *string `pulumi:"id"`
+	// The user-defined name of the item.
+	Name *string `pulumi:"name"`
+	// A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
+	Properties ApplicationInsightsComponentAnalyticsItemPropertiesResponse `pulumi:"properties"`
+	// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
+	Scope *string `pulumi:"scope"`
+	// Date and time in UTC when this item was created.
+	TimeCreated string `pulumi:"timeCreated"`
+	// Date and time in UTC of the last modification that was made to this item.
+	TimeModified string `pulumi:"timeModified"`
+	// Enum indicating the type of the Analytics item.
+	Type *string `pulumi:"type"`
+	// This instance's version of the data model. This can change as new features are added.
+	Version string `pulumi:"version"`
 }
 
 func LookupAnalyticsItemOutput(ctx *pulumi.Context, args LookupAnalyticsItemOutputArgs, opts ...pulumi.InvokeOption) LookupAnalyticsItemResultOutput {
@@ -56,11 +70,16 @@ func LookupAnalyticsItemOutput(ctx *pulumi.Context, args LookupAnalyticsItemOutp
 }
 
 type LookupAnalyticsItemOutputArgs struct {
-	Id                pulumi.StringPtrInput `pulumi:"id"`
-	Name              pulumi.StringPtrInput `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput    `pulumi:"resourceName"`
-	ScopePath         pulumi.StringInput    `pulumi:"scopePath"`
+	// The Id of a specific item defined in the Application Insights component
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of a specific item defined in the Application Insights component
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Application Insights component resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
+	ScopePath pulumi.StringInput `pulumi:"scopePath"`
 }
 
 func (LookupAnalyticsItemOutputArgs) ElementType() reflect.Type {
@@ -82,40 +101,49 @@ func (o LookupAnalyticsItemResultOutput) ToLookupAnalyticsItemResultOutputWithCo
 	return o
 }
 
+// The content of this item
 func (o LookupAnalyticsItemResultOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Internally assigned unique id of the item definition.
 func (o LookupAnalyticsItemResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The user-defined name of the item.
 func (o LookupAnalyticsItemResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
 func (o LookupAnalyticsItemResultOutput) Properties() ApplicationInsightsComponentAnalyticsItemPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) ApplicationInsightsComponentAnalyticsItemPropertiesResponse {
 		return v.Properties
 	}).(ApplicationInsightsComponentAnalyticsItemPropertiesResponseOutput)
 }
 
+// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 func (o LookupAnalyticsItemResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// Date and time in UTC when this item was created.
 func (o LookupAnalyticsItemResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
+// Date and time in UTC of the last modification that was made to this item.
 func (o LookupAnalyticsItemResultOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) string { return v.TimeModified }).(pulumi.StringOutput)
 }
 
+// Enum indicating the type of the Analytics item.
 func (o LookupAnalyticsItemResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// This instance's version of the data model. This can change as new features are added.
 func (o LookupAnalyticsItemResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnalyticsItemResult) string { return v.Version }).(pulumi.StringOutput)
 }

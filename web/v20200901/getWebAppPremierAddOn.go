@@ -21,25 +21,40 @@ func LookupWebAppPremierAddOn(ctx *pulumi.Context, args *LookupWebAppPremierAddO
 }
 
 type LookupWebAppPremierAddOnArgs struct {
-	Name              string `pulumi:"name"`
-	PremierAddOnName  string `pulumi:"premierAddOnName"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Add-on name.
+	PremierAddOnName string `pulumi:"premierAddOnName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Premier add-on.
 type LookupWebAppPremierAddOnResult struct {
-	Id                   string             `pulumi:"id"`
-	Kind                 *string            `pulumi:"kind"`
-	Location             string             `pulumi:"location"`
-	MarketplaceOffer     *string            `pulumi:"marketplaceOffer"`
-	MarketplacePublisher *string            `pulumi:"marketplacePublisher"`
-	Name                 string             `pulumi:"name"`
-	Product              *string            `pulumi:"product"`
-	Sku                  *string            `pulumi:"sku"`
-	SystemData           SystemDataResponse `pulumi:"systemData"`
-	Tags                 map[string]string  `pulumi:"tags"`
-	Type                 string             `pulumi:"type"`
-	Vendor               *string            `pulumi:"vendor"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Location.
+	Location string `pulumi:"location"`
+	// Premier add on Marketplace offer.
+	MarketplaceOffer *string `pulumi:"marketplaceOffer"`
+	// Premier add on Marketplace publisher.
+	MarketplacePublisher *string `pulumi:"marketplacePublisher"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Premier add on Product.
+	Product *string `pulumi:"product"`
+	// Premier add on SKU.
+	Sku *string `pulumi:"sku"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Premier add on Vendor.
+	Vendor *string `pulumi:"vendor"`
 }
 
 func LookupWebAppPremierAddOnOutput(ctx *pulumi.Context, args LookupWebAppPremierAddOnOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPremierAddOnResultOutput {
@@ -56,8 +71,11 @@ func LookupWebAppPremierAddOnOutput(ctx *pulumi.Context, args LookupWebAppPremie
 }
 
 type LookupWebAppPremierAddOnOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
-	PremierAddOnName  pulumi.StringInput `pulumi:"premierAddOnName"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Add-on name.
+	PremierAddOnName pulumi.StringInput `pulumi:"premierAddOnName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,50 +98,62 @@ func (o LookupWebAppPremierAddOnResultOutput) ToLookupWebAppPremierAddOnResultOu
 	return o
 }
 
+// Resource Id.
 func (o LookupWebAppPremierAddOnResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppPremierAddOnResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location.
 func (o LookupWebAppPremierAddOnResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Premier add on Marketplace offer.
 func (o LookupWebAppPremierAddOnResultOutput) MarketplaceOffer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.MarketplaceOffer }).(pulumi.StringPtrOutput)
 }
 
+// Premier add on Marketplace publisher.
 func (o LookupWebAppPremierAddOnResultOutput) MarketplacePublisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.MarketplacePublisher }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppPremierAddOnResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Premier add on Product.
 func (o LookupWebAppPremierAddOnResultOutput) Product() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.Product }).(pulumi.StringPtrOutput)
 }
 
+// Premier add on SKU.
 func (o LookupWebAppPremierAddOnResultOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupWebAppPremierAddOnResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupWebAppPremierAddOnResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupWebAppPremierAddOnResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Premier add on Vendor.
 func (o LookupWebAppPremierAddOnResultOutput) Vendor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.Vendor }).(pulumi.StringPtrOutput)
 }

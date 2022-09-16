@@ -21,22 +21,34 @@ func LookupStaticSiteLinkedBackendForBuild(ctx *pulumi.Context, args *LookupStat
 }
 
 type LookupStaticSiteLinkedBackendForBuildArgs struct {
-	EnvironmentName   string `pulumi:"environmentName"`
+	// The stage site identifier
+	EnvironmentName string `pulumi:"environmentName"`
+	// Name of the linked backend that should be retrieved
 	LinkedBackendName string `pulumi:"linkedBackendName"`
-	Name              string `pulumi:"name"`
+	// Name of the static site
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Static Site Linked Backend ARM resource.
 type LookupStaticSiteLinkedBackendForBuildResult struct {
+	// The resource id of the backend linked to the static site
 	BackendResourceId *string `pulumi:"backendResourceId"`
-	CreatedOn         string  `pulumi:"createdOn"`
-	Id                string  `pulumi:"id"`
-	Kind              *string `pulumi:"kind"`
-	Name              string  `pulumi:"name"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	Region            *string `pulumi:"region"`
-	Type              string  `pulumi:"type"`
+	// The date and time on which the backend was linked to the static site.
+	CreatedOn string `pulumi:"createdOn"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the linking process.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The region of the backend linked to the static site
+	Region *string `pulumi:"region"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupStaticSiteLinkedBackendForBuildOutput(ctx *pulumi.Context, args LookupStaticSiteLinkedBackendForBuildOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteLinkedBackendForBuildResultOutput {
@@ -53,9 +65,13 @@ func LookupStaticSiteLinkedBackendForBuildOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupStaticSiteLinkedBackendForBuildOutputArgs struct {
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
+	// The stage site identifier
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Name of the linked backend that should be retrieved
 	LinkedBackendName pulumi.StringInput `pulumi:"linkedBackendName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the static site
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,34 +94,42 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLin
 	return o
 }
 
+// The resource id of the backend linked to the static site
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) BackendResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) *string { return v.BackendResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The date and time on which the backend was linked to the static site.
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Resource Id.
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the linking process.
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The region of the backend linked to the static site
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.Type }).(pulumi.StringOutput)
 }

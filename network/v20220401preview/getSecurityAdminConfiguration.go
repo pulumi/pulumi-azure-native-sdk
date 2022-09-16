@@ -21,21 +21,32 @@ func LookupSecurityAdminConfiguration(ctx *pulumi.Context, args *LookupSecurityA
 }
 
 type LookupSecurityAdminConfigurationArgs struct {
-	ConfigurationName  string `pulumi:"configurationName"`
+	// The name of the network manager Security Configuration.
+	ConfigurationName string `pulumi:"configurationName"`
+	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Defines the security admin configuration
 type LookupSecurityAdminConfigurationResult struct {
-	ApplyOnNetworkIntentPolicyBasedServices []string           `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
-	Description                             *string            `pulumi:"description"`
-	Etag                                    string             `pulumi:"etag"`
-	Id                                      string             `pulumi:"id"`
-	Name                                    string             `pulumi:"name"`
-	ProvisioningState                       string             `pulumi:"provisioningState"`
-	SystemData                              SystemDataResponse `pulumi:"systemData"`
-	Type                                    string             `pulumi:"type"`
+	// Enum list of network intent policy based services.
+	ApplyOnNetworkIntentPolicyBasedServices []string `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
+	// A description of the security configuration.
+	Description *string `pulumi:"description"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityAdminConfigurationOutput(ctx *pulumi.Context, args LookupSecurityAdminConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityAdminConfigurationResultOutput {
@@ -52,9 +63,12 @@ func LookupSecurityAdminConfigurationOutput(ctx *pulumi.Context, args LookupSecu
 }
 
 type LookupSecurityAdminConfigurationOutputArgs struct {
-	ConfigurationName  pulumi.StringInput `pulumi:"configurationName"`
+	// The name of the network manager Security Configuration.
+	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
+	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupSecurityAdminConfigurationOutputArgs) ElementType() reflect.Type {
@@ -76,36 +90,44 @@ func (o LookupSecurityAdminConfigurationResultOutput) ToLookupSecurityAdminConfi
 	return o
 }
 
+// Enum list of network intent policy based services.
 func (o LookupSecurityAdminConfigurationResultOutput) ApplyOnNetworkIntentPolicyBasedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) []string {
 		return v.ApplyOnNetworkIntentPolicyBasedServices
 	}).(pulumi.StringArrayOutput)
 }
 
+// A description of the security configuration.
 func (o LookupSecurityAdminConfigurationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupSecurityAdminConfigurationResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSecurityAdminConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSecurityAdminConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupSecurityAdminConfigurationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupSecurityAdminConfigurationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupSecurityAdminConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

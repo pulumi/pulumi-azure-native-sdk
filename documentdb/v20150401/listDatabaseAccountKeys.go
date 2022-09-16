@@ -21,15 +21,21 @@ func ListDatabaseAccountKeys(ctx *pulumi.Context, args *ListDatabaseAccountKeysA
 }
 
 type ListDatabaseAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The access keys for the given database account.
 type ListDatabaseAccountKeysResult struct {
-	PrimaryMasterKey           string `pulumi:"primaryMasterKey"`
-	PrimaryReadonlyMasterKey   string `pulumi:"primaryReadonlyMasterKey"`
-	SecondaryMasterKey         string `pulumi:"secondaryMasterKey"`
+	// Base 64 encoded value of the primary read-write key.
+	PrimaryMasterKey string `pulumi:"primaryMasterKey"`
+	// Base 64 encoded value of the primary read-only key.
+	PrimaryReadonlyMasterKey string `pulumi:"primaryReadonlyMasterKey"`
+	// Base 64 encoded value of the secondary read-write key.
+	SecondaryMasterKey string `pulumi:"secondaryMasterKey"`
+	// Base 64 encoded value of the secondary read-only key.
 	SecondaryReadonlyMasterKey string `pulumi:"secondaryReadonlyMasterKey"`
 }
 
@@ -47,7 +53,9 @@ func ListDatabaseAccountKeysOutput(ctx *pulumi.Context, args ListDatabaseAccount
 }
 
 type ListDatabaseAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,18 +78,22 @@ func (o ListDatabaseAccountKeysResultOutput) ToListDatabaseAccountKeysResultOutp
 	return o
 }
 
+// Base 64 encoded value of the primary read-write key.
 func (o ListDatabaseAccountKeysResultOutput) PrimaryMasterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatabaseAccountKeysResult) string { return v.PrimaryMasterKey }).(pulumi.StringOutput)
 }
 
+// Base 64 encoded value of the primary read-only key.
 func (o ListDatabaseAccountKeysResultOutput) PrimaryReadonlyMasterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatabaseAccountKeysResult) string { return v.PrimaryReadonlyMasterKey }).(pulumi.StringOutput)
 }
 
+// Base 64 encoded value of the secondary read-write key.
 func (o ListDatabaseAccountKeysResultOutput) SecondaryMasterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatabaseAccountKeysResult) string { return v.SecondaryMasterKey }).(pulumi.StringOutput)
 }
 
+// Base 64 encoded value of the secondary read-only key.
 func (o ListDatabaseAccountKeysResultOutput) SecondaryReadonlyMasterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatabaseAccountKeysResult) string { return v.SecondaryReadonlyMasterKey }).(pulumi.StringOutput)
 }

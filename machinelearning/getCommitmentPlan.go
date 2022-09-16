@@ -22,20 +22,30 @@ func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, o
 }
 
 type LookupCommitmentPlanArgs struct {
+	// The Azure ML commitment plan name.
 	CommitmentPlanName string `pulumi:"commitmentPlanName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure ML commitment plan resource.
 type LookupCommitmentPlanResult struct {
-	Etag       *string                          `pulumi:"etag"`
-	Id         string                           `pulumi:"id"`
-	Location   string                           `pulumi:"location"`
-	Name       string                           `pulumi:"name"`
+	// An entity tag used to enforce optimistic concurrency.
+	Etag *string `pulumi:"etag"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The commitment plan properties.
 	Properties CommitmentPlanPropertiesResponse `pulumi:"properties"`
-	Sku        *ResourceSkuResponse             `pulumi:"sku"`
-	Tags       map[string]string                `pulumi:"tags"`
-	Type       string                           `pulumi:"type"`
+	// The commitment plan SKU.
+	Sku *ResourceSkuResponse `pulumi:"sku"`
+	// User-defined tags for the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupCommitmentPlanOutput(ctx *pulumi.Context, args LookupCommitmentPlanOutputArgs, opts ...pulumi.InvokeOption) LookupCommitmentPlanResultOutput {
@@ -52,8 +62,10 @@ func LookupCommitmentPlanOutput(ctx *pulumi.Context, args LookupCommitmentPlanOu
 }
 
 type LookupCommitmentPlanOutputArgs struct {
+	// The Azure ML commitment plan name.
 	CommitmentPlanName pulumi.StringInput `pulumi:"commitmentPlanName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupCommitmentPlanOutputArgs) ElementType() reflect.Type {
@@ -75,34 +87,42 @@ func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutputWith
 	return o
 }
 
+// An entity tag used to enforce optimistic concurrency.
 func (o LookupCommitmentPlanResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupCommitmentPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupCommitmentPlanResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupCommitmentPlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The commitment plan properties.
 func (o LookupCommitmentPlanResultOutput) Properties() CommitmentPlanPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) CommitmentPlanPropertiesResponse { return v.Properties }).(CommitmentPlanPropertiesResponseOutput)
 }
 
+// The commitment plan SKU.
 func (o LookupCommitmentPlanResultOutput) Sku() ResourceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) *ResourceSkuResponse { return v.Sku }).(ResourceSkuResponsePtrOutput)
 }
 
+// User-defined tags for the resource.
 func (o LookupCommitmentPlanResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupCommitmentPlanResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.Type }).(pulumi.StringOutput)
 }

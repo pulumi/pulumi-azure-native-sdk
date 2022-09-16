@@ -23,17 +23,24 @@ func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.Invo
 }
 
 type LookupTableArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TableName         string `pulumi:"tableName"`
+	// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
+	TableName string `pulumi:"tableName"`
 }
 
 // Properties of the table, including Id, resource name, resource type.
 type LookupTableResult struct {
-	Id        string `pulumi:"id"`
-	Name      string `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Table name under the specified account
 	TableName string `pulumi:"tableName"`
-	Type      string `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResultOutput {
@@ -50,9 +57,12 @@ func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...
 }
 
 type LookupTableOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TableName         pulumi.StringInput `pulumi:"tableName"`
+	// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
+	TableName pulumi.StringInput `pulumi:"tableName"`
 }
 
 func (LookupTableOutputArgs) ElementType() reflect.Type {
@@ -74,18 +84,22 @@ func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx contex
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Table name under the specified account
 func (o LookupTableResultOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Type }).(pulumi.StringOutput)
 }

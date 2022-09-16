@@ -22,23 +22,36 @@ func LookupStreamingPolicy(ctx *pulumi.Context, args *LookupStreamingPolicyArgs,
 }
 
 type LookupStreamingPolicyArgs struct {
-	AccountName         string `pulumi:"accountName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Streaming Policy name.
 	StreamingPolicyName string `pulumi:"streamingPolicyName"`
 }
 
 // A Streaming Policy resource
 type LookupStreamingPolicyResult struct {
-	CommonEncryptionCbcs        *CommonEncryptionCbcsResponse `pulumi:"commonEncryptionCbcs"`
-	CommonEncryptionCenc        *CommonEncryptionCencResponse `pulumi:"commonEncryptionCenc"`
-	Created                     string                        `pulumi:"created"`
-	DefaultContentKeyPolicyName *string                       `pulumi:"defaultContentKeyPolicyName"`
-	EnvelopeEncryption          *EnvelopeEncryptionResponse   `pulumi:"envelopeEncryption"`
-	Id                          string                        `pulumi:"id"`
-	Name                        string                        `pulumi:"name"`
-	NoEncryption                *NoEncryptionResponse         `pulumi:"noEncryption"`
-	SystemData                  SystemDataResponse            `pulumi:"systemData"`
-	Type                        string                        `pulumi:"type"`
+	// Configuration of CommonEncryptionCbcs
+	CommonEncryptionCbcs *CommonEncryptionCbcsResponse `pulumi:"commonEncryptionCbcs"`
+	// Configuration of CommonEncryptionCenc
+	CommonEncryptionCenc *CommonEncryptionCencResponse `pulumi:"commonEncryptionCenc"`
+	// Creation time of Streaming Policy
+	Created string `pulumi:"created"`
+	// Default ContentKey used by current Streaming Policy
+	DefaultContentKeyPolicyName *string `pulumi:"defaultContentKeyPolicyName"`
+	// Configuration of EnvelopeEncryption
+	EnvelopeEncryption *EnvelopeEncryptionResponse `pulumi:"envelopeEncryption"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Configurations of NoEncryption
+	NoEncryption *NoEncryptionResponse `pulumi:"noEncryption"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupStreamingPolicyOutput(ctx *pulumi.Context, args LookupStreamingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingPolicyResultOutput {
@@ -55,8 +68,11 @@ func LookupStreamingPolicyOutput(ctx *pulumi.Context, args LookupStreamingPolicy
 }
 
 type LookupStreamingPolicyOutputArgs struct {
-	AccountName         pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Streaming Policy name.
 	StreamingPolicyName pulumi.StringInput `pulumi:"streamingPolicyName"`
 }
 
@@ -79,42 +95,52 @@ func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutputWi
 	return o
 }
 
+// Configuration of CommonEncryptionCbcs
 func (o LookupStreamingPolicyResultOutput) CommonEncryptionCbcs() CommonEncryptionCbcsResponsePtrOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) *CommonEncryptionCbcsResponse { return v.CommonEncryptionCbcs }).(CommonEncryptionCbcsResponsePtrOutput)
 }
 
+// Configuration of CommonEncryptionCenc
 func (o LookupStreamingPolicyResultOutput) CommonEncryptionCenc() CommonEncryptionCencResponsePtrOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) *CommonEncryptionCencResponse { return v.CommonEncryptionCenc }).(CommonEncryptionCencResponsePtrOutput)
 }
 
+// Creation time of Streaming Policy
 func (o LookupStreamingPolicyResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Default ContentKey used by current Streaming Policy
 func (o LookupStreamingPolicyResultOutput) DefaultContentKeyPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) *string { return v.DefaultContentKeyPolicyName }).(pulumi.StringPtrOutput)
 }
 
+// Configuration of EnvelopeEncryption
 func (o LookupStreamingPolicyResultOutput) EnvelopeEncryption() EnvelopeEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) *EnvelopeEncryptionResponse { return v.EnvelopeEncryption }).(EnvelopeEncryptionResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupStreamingPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupStreamingPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configurations of NoEncryption
 func (o LookupStreamingPolicyResultOutput) NoEncryption() NoEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) *NoEncryptionResponse { return v.NoEncryption }).(NoEncryptionResponsePtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupStreamingPolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStreamingPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

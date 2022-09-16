@@ -22,14 +22,18 @@ func ListMonitorHosts(ctx *pulumi.Context, args *ListMonitorHostsArgs, opts ...p
 }
 
 type ListMonitorHostsArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list operation.
 type ListMonitorHostsResult struct {
-	NextLink *string               `pulumi:"nextLink"`
-	Value    []DatadogHostResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of a list operation.
+	Value []DatadogHostResponse `pulumi:"value"`
 }
 
 func ListMonitorHostsOutput(ctx *pulumi.Context, args ListMonitorHostsOutputArgs, opts ...pulumi.InvokeOption) ListMonitorHostsResultOutput {
@@ -46,7 +50,9 @@ func ListMonitorHostsOutput(ctx *pulumi.Context, args ListMonitorHostsOutputArgs
 }
 
 type ListMonitorHostsOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListMonitorHostsResultOutput) ToListMonitorHostsResultOutputWithContext(
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitorHostsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitorHostsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of a list operation.
 func (o ListMonitorHostsResultOutput) Value() DatadogHostResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitorHostsResult) []DatadogHostResponse { return v.Value }).(DatadogHostResponseArrayOutput)
 }

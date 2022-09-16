@@ -23,26 +23,42 @@ func LookupSiteHostNameBindingSlot(ctx *pulumi.Context, args *LookupSiteHostName
 }
 
 type LookupSiteHostNameBindingSlotArgs struct {
-	HostName          string `pulumi:"hostName"`
-	Name              string `pulumi:"name"`
+	// Name of host
+	HostName string `pulumi:"hostName"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // A host name binding object
 type LookupSiteHostNameBindingSlotResult struct {
-	AzureResourceName           *string           `pulumi:"azureResourceName"`
-	AzureResourceType           *string           `pulumi:"azureResourceType"`
-	CustomHostNameDnsRecordType *string           `pulumi:"customHostNameDnsRecordType"`
-	DomainId                    *string           `pulumi:"domainId"`
-	HostNameType                *string           `pulumi:"hostNameType"`
-	Id                          *string           `pulumi:"id"`
-	Kind                        *string           `pulumi:"kind"`
-	Location                    string            `pulumi:"location"`
-	Name                        *string           `pulumi:"name"`
-	SiteName                    *string           `pulumi:"siteName"`
-	Tags                        map[string]string `pulumi:"tags"`
-	Type                        *string           `pulumi:"type"`
+	// Azure resource name
+	AzureResourceName *string `pulumi:"azureResourceName"`
+	// Azure resource type
+	AzureResourceType *string `pulumi:"azureResourceType"`
+	// Custom DNS record type
+	CustomHostNameDnsRecordType *string `pulumi:"customHostNameDnsRecordType"`
+	// Fully qualified ARM domain resource URI
+	DomainId *string `pulumi:"domainId"`
+	// Host name type
+	HostNameType *string `pulumi:"hostNameType"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// Web app name
+	SiteName *string `pulumi:"siteName"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func LookupSiteHostNameBindingSlotOutput(ctx *pulumi.Context, args LookupSiteHostNameBindingSlotOutputArgs, opts ...pulumi.InvokeOption) LookupSiteHostNameBindingSlotResultOutput {
@@ -59,10 +75,14 @@ func LookupSiteHostNameBindingSlotOutput(ctx *pulumi.Context, args LookupSiteHos
 }
 
 type LookupSiteHostNameBindingSlotOutputArgs struct {
-	HostName          pulumi.StringInput `pulumi:"hostName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of host
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupSiteHostNameBindingSlotOutputArgs) ElementType() reflect.Type {
@@ -84,50 +104,62 @@ func (o LookupSiteHostNameBindingSlotResultOutput) ToLookupSiteHostNameBindingSl
 	return o
 }
 
+// Azure resource name
 func (o LookupSiteHostNameBindingSlotResultOutput) AzureResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.AzureResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource type
 func (o LookupSiteHostNameBindingSlotResultOutput) AzureResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.AzureResourceType }).(pulumi.StringPtrOutput)
 }
 
+// Custom DNS record type
 func (o LookupSiteHostNameBindingSlotResultOutput) CustomHostNameDnsRecordType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.CustomHostNameDnsRecordType }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified ARM domain resource URI
 func (o LookupSiteHostNameBindingSlotResultOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.DomainId }).(pulumi.StringPtrOutput)
 }
 
+// Host name type
 func (o LookupSiteHostNameBindingSlotResultOutput) HostNameType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.HostNameType }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSiteHostNameBindingSlotResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o LookupSiteHostNameBindingSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o LookupSiteHostNameBindingSlotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o LookupSiteHostNameBindingSlotResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Web app name
 func (o LookupSiteHostNameBindingSlotResultOutput) SiteName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.SiteName }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupSiteHostNameBindingSlotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSiteHostNameBindingSlotResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteHostNameBindingSlotResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

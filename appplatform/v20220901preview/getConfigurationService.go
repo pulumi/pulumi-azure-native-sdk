@@ -21,18 +21,26 @@ func LookupConfigurationService(ctx *pulumi.Context, args *LookupConfigurationSe
 }
 
 type LookupConfigurationServiceArgs struct {
+	// The name of Application Configuration Service.
 	ConfigurationServiceName string `pulumi:"configurationServiceName"`
-	ResourceGroupName        string `pulumi:"resourceGroupName"`
-	ServiceName              string `pulumi:"serviceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Application Configuration Service resource
 type LookupConfigurationServiceResult struct {
-	Id         string                                 `pulumi:"id"`
-	Name       string                                 `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Application Configuration Service properties payload
 	Properties ConfigurationServicePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                     `pulumi:"systemData"`
-	Type       string                                 `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationServiceOutput(ctx *pulumi.Context, args LookupConfigurationServiceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationServiceResultOutput {
@@ -49,9 +57,12 @@ func LookupConfigurationServiceOutput(ctx *pulumi.Context, args LookupConfigurat
 }
 
 type LookupConfigurationServiceOutputArgs struct {
+	// The name of Application Configuration Service.
 	ConfigurationServiceName pulumi.StringInput `pulumi:"configurationServiceName"`
-	ResourceGroupName        pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName              pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupConfigurationServiceOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupConfigurationServiceResultOutput) ToLookupConfigurationServiceResu
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupConfigurationServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupConfigurationServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Application Configuration Service properties payload
 func (o LookupConfigurationServiceResultOutput) Properties() ConfigurationServicePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationServiceResult) ConfigurationServicePropertiesResponse { return v.Properties }).(ConfigurationServicePropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupConfigurationServiceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupConfigurationServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

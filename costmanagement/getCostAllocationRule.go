@@ -22,16 +22,22 @@ func LookupCostAllocationRule(ctx *pulumi.Context, args *LookupCostAllocationRul
 }
 
 type LookupCostAllocationRuleArgs struct {
+	// BillingAccount ID
 	BillingAccountId string `pulumi:"billingAccountId"`
-	RuleName         string `pulumi:"ruleName"`
+	// Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
+	RuleName string `pulumi:"ruleName"`
 }
 
 // The cost allocation rule model definition
 type LookupCostAllocationRuleResult struct {
-	Id         string                               `pulumi:"id"`
-	Name       string                               `pulumi:"name"`
+	// Azure Resource Manager Id for the rule. This is a read ony value.
+	Id string `pulumi:"id"`
+	// Name of the rule. This is a read only value.
+	Name string `pulumi:"name"`
+	// Cost allocation rule properties
 	Properties CostAllocationRulePropertiesResponse `pulumi:"properties"`
-	Type       string                               `pulumi:"type"`
+	// Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
+	Type string `pulumi:"type"`
 }
 
 func LookupCostAllocationRuleOutput(ctx *pulumi.Context, args LookupCostAllocationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupCostAllocationRuleResultOutput {
@@ -48,8 +54,10 @@ func LookupCostAllocationRuleOutput(ctx *pulumi.Context, args LookupCostAllocati
 }
 
 type LookupCostAllocationRuleOutputArgs struct {
+	// BillingAccount ID
 	BillingAccountId pulumi.StringInput `pulumi:"billingAccountId"`
-	RuleName         pulumi.StringInput `pulumi:"ruleName"`
+	// Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
 }
 
 func (LookupCostAllocationRuleOutputArgs) ElementType() reflect.Type {
@@ -71,18 +79,22 @@ func (o LookupCostAllocationRuleResultOutput) ToLookupCostAllocationRuleResultOu
 	return o
 }
 
+// Azure Resource Manager Id for the rule. This is a read ony value.
 func (o LookupCostAllocationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCostAllocationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the rule. This is a read only value.
 func (o LookupCostAllocationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCostAllocationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Cost allocation rule properties
 func (o LookupCostAllocationRuleResultOutput) Properties() CostAllocationRulePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCostAllocationRuleResult) CostAllocationRulePropertiesResponse { return v.Properties }).(CostAllocationRulePropertiesResponseOutput)
 }
 
+// Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
 func (o LookupCostAllocationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCostAllocationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

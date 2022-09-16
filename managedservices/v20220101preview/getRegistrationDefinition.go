@@ -21,18 +21,26 @@ func LookupRegistrationDefinition(ctx *pulumi.Context, args *LookupRegistrationD
 }
 
 type LookupRegistrationDefinitionArgs struct {
+	// The GUID of the registration definition.
 	RegistrationDefinitionId string `pulumi:"registrationDefinitionId"`
-	Scope                    string `pulumi:"scope"`
+	// The scope of the resource.
+	Scope string `pulumi:"scope"`
 }
 
 // The registration definition.
 type LookupRegistrationDefinitionResult struct {
-	Id         string                                   `pulumi:"id"`
-	Name       string                                   `pulumi:"name"`
-	Plan       *PlanResponse                            `pulumi:"plan"`
+	// The fully qualified path of the registration definition.
+	Id string `pulumi:"id"`
+	// The name of the registration definition.
+	Name string `pulumi:"name"`
+	// The details for the Managed Services offer’s plan in Azure Marketplace.
+	Plan *PlanResponse `pulumi:"plan"`
+	// The properties of a registration definition.
 	Properties RegistrationDefinitionPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                       `pulumi:"systemData"`
-	Type       string                                   `pulumi:"type"`
+	// The metadata for the registration assignment resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
+	Type string `pulumi:"type"`
 }
 
 func LookupRegistrationDefinitionOutput(ctx *pulumi.Context, args LookupRegistrationDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationDefinitionResultOutput {
@@ -49,8 +57,10 @@ func LookupRegistrationDefinitionOutput(ctx *pulumi.Context, args LookupRegistra
 }
 
 type LookupRegistrationDefinitionOutputArgs struct {
+	// The GUID of the registration definition.
 	RegistrationDefinitionId pulumi.StringInput `pulumi:"registrationDefinitionId"`
-	Scope                    pulumi.StringInput `pulumi:"scope"`
+	// The scope of the resource.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRegistrationDefinitionOutputArgs) ElementType() reflect.Type {
@@ -72,28 +82,34 @@ func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinition
 	return o
 }
 
+// The fully qualified path of the registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The details for the Managed Services offer’s plan in Azure Marketplace.
 func (o LookupRegistrationDefinitionResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
+// The properties of a registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Properties() RegistrationDefinitionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) RegistrationDefinitionPropertiesResponse {
 		return v.Properties
 	}).(RegistrationDefinitionPropertiesResponseOutput)
 }
 
+// The metadata for the registration assignment resource.
 func (o LookupRegistrationDefinitionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
 func (o LookupRegistrationDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

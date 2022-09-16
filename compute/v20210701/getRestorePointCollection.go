@@ -21,22 +21,34 @@ func LookupRestorePointCollection(ctx *pulumi.Context, args *LookupRestorePointC
 }
 
 type LookupRestorePointCollectionArgs struct {
-	Expand                     *string `pulumi:"expand"`
-	ResourceGroupName          string  `pulumi:"resourceGroupName"`
-	RestorePointCollectionName string  `pulumi:"restorePointCollectionName"`
+	// The expand expression to apply on the operation. If expand=restorePoints, server will return all contained restore points in the restorePointCollection.
+	Expand *string `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the restore point collection.
+	RestorePointCollectionName string `pulumi:"restorePointCollectionName"`
 }
 
 // Create or update Restore Point collection parameters.
 type LookupRestorePointCollectionResult struct {
-	Id                       string                                          `pulumi:"id"`
-	Location                 string                                          `pulumi:"location"`
-	Name                     string                                          `pulumi:"name"`
-	ProvisioningState        string                                          `pulumi:"provisioningState"`
-	RestorePointCollectionId string                                          `pulumi:"restorePointCollectionId"`
-	RestorePoints            []RestorePointResponse                          `pulumi:"restorePoints"`
-	Source                   *RestorePointCollectionSourcePropertiesResponse `pulumi:"source"`
-	Tags                     map[string]string                               `pulumi:"tags"`
-	Type                     string                                          `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The provisioning state of the restore point collection.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The unique id of the restore point collection.
+	RestorePointCollectionId string `pulumi:"restorePointCollectionId"`
+	// A list containing all restore points created under this restore point collection.
+	RestorePoints []RestorePointResponse `pulumi:"restorePoints"`
+	// The properties of the source resource that this restore point collection is created from.
+	Source *RestorePointCollectionSourcePropertiesResponse `pulumi:"source"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupRestorePointCollectionOutput(ctx *pulumi.Context, args LookupRestorePointCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupRestorePointCollectionResultOutput {
@@ -53,9 +65,12 @@ func LookupRestorePointCollectionOutput(ctx *pulumi.Context, args LookupRestoreP
 }
 
 type LookupRestorePointCollectionOutputArgs struct {
-	Expand                     pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName          pulumi.StringInput    `pulumi:"resourceGroupName"`
-	RestorePointCollectionName pulumi.StringInput    `pulumi:"restorePointCollectionName"`
+	// The expand expression to apply on the operation. If expand=restorePoints, server will return all contained restore points in the restorePointCollection.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the restore point collection.
+	RestorePointCollectionName pulumi.StringInput `pulumi:"restorePointCollectionName"`
 }
 
 func (LookupRestorePointCollectionOutputArgs) ElementType() reflect.Type {
@@ -77,40 +92,49 @@ func (o LookupRestorePointCollectionResultOutput) ToLookupRestorePointCollection
 	return o
 }
 
+// Resource Id
 func (o LookupRestorePointCollectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupRestorePointCollectionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupRestorePointCollectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the restore point collection.
 func (o LookupRestorePointCollectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The unique id of the restore point collection.
 func (o LookupRestorePointCollectionResultOutput) RestorePointCollectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.RestorePointCollectionId }).(pulumi.StringOutput)
 }
 
+// A list containing all restore points created under this restore point collection.
 func (o LookupRestorePointCollectionResultOutput) RestorePoints() RestorePointResponseArrayOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) []RestorePointResponse { return v.RestorePoints }).(RestorePointResponseArrayOutput)
 }
 
+// The properties of the source resource that this restore point collection is created from.
 func (o LookupRestorePointCollectionResultOutput) Source() RestorePointCollectionSourcePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) *RestorePointCollectionSourcePropertiesResponse {
 		return v.Source
 	}).(RestorePointCollectionSourcePropertiesResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupRestorePointCollectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupRestorePointCollectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

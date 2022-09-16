@@ -22,22 +22,34 @@ func LookupAttachedNetworkByDevCenter(ctx *pulumi.Context, args *LookupAttachedN
 }
 
 type LookupAttachedNetworkByDevCenterArgs struct {
+	// The name of the attached NetworkConnection.
 	AttachedNetworkConnectionName string `pulumi:"attachedNetworkConnectionName"`
-	DevCenterName                 string `pulumi:"devCenterName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// The name of the devcenter.
+	DevCenterName string `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents an attached NetworkConnection.
 type LookupAttachedNetworkByDevCenterResult struct {
-	DomainJoinType            string             `pulumi:"domainJoinType"`
-	HealthCheckStatus         string             `pulumi:"healthCheckStatus"`
-	Id                        string             `pulumi:"id"`
-	Name                      string             `pulumi:"name"`
-	NetworkConnectionId       string             `pulumi:"networkConnectionId"`
-	NetworkConnectionLocation string             `pulumi:"networkConnectionLocation"`
-	ProvisioningState         string             `pulumi:"provisioningState"`
-	SystemData                SystemDataResponse `pulumi:"systemData"`
-	Type                      string             `pulumi:"type"`
+	// AAD Join type of the network. This is populated based on the referenced Network Connection.
+	DomainJoinType string `pulumi:"domainJoinType"`
+	// Health check status values
+	HealthCheckStatus string `pulumi:"healthCheckStatus"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource ID of the NetworkConnection you want to attach.
+	NetworkConnectionId string `pulumi:"networkConnectionId"`
+	// The geo-location where the NetworkConnection resource specified in 'networkConnectionResourceId' property lives.
+	NetworkConnectionLocation string `pulumi:"networkConnectionLocation"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAttachedNetworkByDevCenterOutput(ctx *pulumi.Context, args LookupAttachedNetworkByDevCenterOutputArgs, opts ...pulumi.InvokeOption) LookupAttachedNetworkByDevCenterResultOutput {
@@ -54,9 +66,12 @@ func LookupAttachedNetworkByDevCenterOutput(ctx *pulumi.Context, args LookupAtta
 }
 
 type LookupAttachedNetworkByDevCenterOutputArgs struct {
+	// The name of the attached NetworkConnection.
 	AttachedNetworkConnectionName pulumi.StringInput `pulumi:"attachedNetworkConnectionName"`
-	DevCenterName                 pulumi.StringInput `pulumi:"devCenterName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the devcenter.
+	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAttachedNetworkByDevCenterOutputArgs) ElementType() reflect.Type {
@@ -78,38 +93,47 @@ func (o LookupAttachedNetworkByDevCenterResultOutput) ToLookupAttachedNetworkByD
 	return o
 }
 
+// AAD Join type of the network. This is populated based on the referenced Network Connection.
 func (o LookupAttachedNetworkByDevCenterResultOutput) DomainJoinType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.DomainJoinType }).(pulumi.StringOutput)
 }
 
+// Health check status values
 func (o LookupAttachedNetworkByDevCenterResultOutput) HealthCheckStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.HealthCheckStatus }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAttachedNetworkByDevCenterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAttachedNetworkByDevCenterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource ID of the NetworkConnection you want to attach.
 func (o LookupAttachedNetworkByDevCenterResultOutput) NetworkConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.NetworkConnectionId }).(pulumi.StringOutput)
 }
 
+// The geo-location where the NetworkConnection resource specified in 'networkConnectionResourceId' property lives.
 func (o LookupAttachedNetworkByDevCenterResultOutput) NetworkConnectionLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.NetworkConnectionLocation }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupAttachedNetworkByDevCenterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAttachedNetworkByDevCenterResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAttachedNetworkByDevCenterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,26 +21,42 @@ func LookupDevBoxDefinition(ctx *pulumi.Context, args *LookupDevBoxDefinitionArg
 }
 
 type LookupDevBoxDefinitionArgs struct {
+	// The name of the Dev Box definition.
 	DevBoxDefinitionName string `pulumi:"devBoxDefinitionName"`
-	DevCenterName        string `pulumi:"devCenterName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the devcenter.
+	DevCenterName string `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a definition for a Developer Machine.
 type LookupDevBoxDefinitionResult struct {
-	ActiveImageReference        ImageReferenceResponse              `pulumi:"activeImageReference"`
-	Id                          string                              `pulumi:"id"`
-	ImageReference              ImageReferenceResponse              `pulumi:"imageReference"`
+	// Image reference information for the currently active image (only populated during updates).
+	ActiveImageReference ImageReferenceResponse `pulumi:"activeImageReference"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Image reference information.
+	ImageReference ImageReferenceResponse `pulumi:"imageReference"`
+	// Details for image validator error. Populated when the image validation is not successful.
 	ImageValidationErrorDetails ImageValidationErrorDetailsResponse `pulumi:"imageValidationErrorDetails"`
-	ImageValidationStatus       string                              `pulumi:"imageValidationStatus"`
-	Location                    string                              `pulumi:"location"`
-	Name                        string                              `pulumi:"name"`
-	OsStorageType               string                              `pulumi:"osStorageType"`
-	ProvisioningState           string                              `pulumi:"provisioningState"`
-	Sku                         SkuResponse                         `pulumi:"sku"`
-	SystemData                  SystemDataResponse                  `pulumi:"systemData"`
-	Tags                        map[string]string                   `pulumi:"tags"`
-	Type                        string                              `pulumi:"type"`
+	// Validation status of the configured image.
+	ImageValidationStatus string `pulumi:"imageValidationStatus"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The storage type used for the Operating System disk of Dev Boxes created using this definition.
+	OsStorageType string `pulumi:"osStorageType"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU for Dev Boxes created using this definition.
+	Sku SkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDevBoxDefinitionOutput(ctx *pulumi.Context, args LookupDevBoxDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupDevBoxDefinitionResultOutput {
@@ -57,9 +73,12 @@ func LookupDevBoxDefinitionOutput(ctx *pulumi.Context, args LookupDevBoxDefiniti
 }
 
 type LookupDevBoxDefinitionOutputArgs struct {
+	// The name of the Dev Box definition.
 	DevBoxDefinitionName pulumi.StringInput `pulumi:"devBoxDefinitionName"`
-	DevCenterName        pulumi.StringInput `pulumi:"devCenterName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the devcenter.
+	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDevBoxDefinitionOutputArgs) ElementType() reflect.Type {
@@ -81,56 +100,69 @@ func (o LookupDevBoxDefinitionResultOutput) ToLookupDevBoxDefinitionResultOutput
 	return o
 }
 
+// Image reference information for the currently active image (only populated during updates).
 func (o LookupDevBoxDefinitionResultOutput) ActiveImageReference() ImageReferenceResponseOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) ImageReferenceResponse { return v.ActiveImageReference }).(ImageReferenceResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDevBoxDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Image reference information.
 func (o LookupDevBoxDefinitionResultOutput) ImageReference() ImageReferenceResponseOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) ImageReferenceResponse { return v.ImageReference }).(ImageReferenceResponseOutput)
 }
 
+// Details for image validator error. Populated when the image validation is not successful.
 func (o LookupDevBoxDefinitionResultOutput) ImageValidationErrorDetails() ImageValidationErrorDetailsResponseOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) ImageValidationErrorDetailsResponse {
 		return v.ImageValidationErrorDetails
 	}).(ImageValidationErrorDetailsResponseOutput)
 }
 
+// Validation status of the configured image.
 func (o LookupDevBoxDefinitionResultOutput) ImageValidationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.ImageValidationStatus }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupDevBoxDefinitionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDevBoxDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The storage type used for the Operating System disk of Dev Boxes created using this definition.
 func (o LookupDevBoxDefinitionResultOutput) OsStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.OsStorageType }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupDevBoxDefinitionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU for Dev Boxes created using this definition.
 func (o LookupDevBoxDefinitionResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDevBoxDefinitionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupDevBoxDefinitionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDevBoxDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

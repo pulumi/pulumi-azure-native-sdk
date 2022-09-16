@@ -21,21 +21,32 @@ func LookupContentKeyPolicy(ctx *pulumi.Context, args *LookupContentKeyPolicyArg
 }
 
 type LookupContentKeyPolicyArgs struct {
-	AccountName          string `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Content Key Policy name.
 	ContentKeyPolicyName string `pulumi:"contentKeyPolicyName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Content Key Policy resource.
 type LookupContentKeyPolicyResult struct {
-	Created      string                           `pulumi:"created"`
-	Description  *string                          `pulumi:"description"`
-	Id           string                           `pulumi:"id"`
-	LastModified string                           `pulumi:"lastModified"`
-	Name         string                           `pulumi:"name"`
-	Options      []ContentKeyPolicyOptionResponse `pulumi:"options"`
-	PolicyId     string                           `pulumi:"policyId"`
-	Type         string                           `pulumi:"type"`
+	// The creation date of the Policy
+	Created string `pulumi:"created"`
+	// A description for the Policy.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource ID for the resource.
+	Id string `pulumi:"id"`
+	// The last modified date of the Policy
+	LastModified string `pulumi:"lastModified"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The Key Policy options.
+	Options []ContentKeyPolicyOptionResponse `pulumi:"options"`
+	// The legacy Policy ID.
+	PolicyId string `pulumi:"policyId"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupContentKeyPolicyOutput(ctx *pulumi.Context, args LookupContentKeyPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupContentKeyPolicyResultOutput {
@@ -52,9 +63,12 @@ func LookupContentKeyPolicyOutput(ctx *pulumi.Context, args LookupContentKeyPoli
 }
 
 type LookupContentKeyPolicyOutputArgs struct {
-	AccountName          pulumi.StringInput `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Content Key Policy name.
 	ContentKeyPolicyName pulumi.StringInput `pulumi:"contentKeyPolicyName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupContentKeyPolicyOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupContentKeyPolicyResultOutput) ToLookupContentKeyPolicyResultOutput
 	return o
 }
 
+// The creation date of the Policy
 func (o LookupContentKeyPolicyResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// A description for the Policy.
 func (o LookupContentKeyPolicyResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource.
 func (o LookupContentKeyPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The last modified date of the Policy
 func (o LookupContentKeyPolicyResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupContentKeyPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Key Policy options.
 func (o LookupContentKeyPolicyResultOutput) Options() ContentKeyPolicyOptionResponseArrayOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) []ContentKeyPolicyOptionResponse { return v.Options }).(ContentKeyPolicyOptionResponseArrayOutput)
 }
 
+// The legacy Policy ID.
 func (o LookupContentKeyPolicyResultOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupContentKeyPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

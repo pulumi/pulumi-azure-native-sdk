@@ -22,26 +22,42 @@ func LookupWebAppDeployment(ctx *pulumi.Context, args *LookupWebAppDeploymentArg
 }
 
 type LookupWebAppDeploymentArgs struct {
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
+	// Deployment ID.
+	Id string `pulumi:"id"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // User credentials used for publishing activity.
 type LookupWebAppDeploymentResult struct {
-	Active      *bool   `pulumi:"active"`
-	Author      *string `pulumi:"author"`
+	// True if deployment is currently active, false if completed and null if not started.
+	Active *bool `pulumi:"active"`
+	// Who authored the deployment.
+	Author *string `pulumi:"author"`
+	// Author email.
 	AuthorEmail *string `pulumi:"authorEmail"`
-	Deployer    *string `pulumi:"deployer"`
-	Details     *string `pulumi:"details"`
-	EndTime     *string `pulumi:"endTime"`
-	Id          string  `pulumi:"id"`
-	Kind        *string `pulumi:"kind"`
-	Message     *string `pulumi:"message"`
-	Name        string  `pulumi:"name"`
-	StartTime   *string `pulumi:"startTime"`
-	Status      *int    `pulumi:"status"`
-	Type        string  `pulumi:"type"`
+	// Who performed the deployment.
+	Deployer *string `pulumi:"deployer"`
+	// Details on deployment.
+	Details *string `pulumi:"details"`
+	// End time.
+	EndTime *string `pulumi:"endTime"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Details about deployment status.
+	Message *string `pulumi:"message"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Start time.
+	StartTime *string `pulumi:"startTime"`
+	// Deployment status.
+	Status *int `pulumi:"status"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppDeploymentOutput(ctx *pulumi.Context, args LookupWebAppDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDeploymentResultOutput {
@@ -58,8 +74,11 @@ func LookupWebAppDeploymentOutput(ctx *pulumi.Context, args LookupWebAppDeployme
 }
 
 type LookupWebAppDeploymentOutputArgs struct {
-	Id                pulumi.StringInput `pulumi:"id"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Deployment ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,54 +101,67 @@ func (o LookupWebAppDeploymentResultOutput) ToLookupWebAppDeploymentResultOutput
 	return o
 }
 
+// True if deployment is currently active, false if completed and null if not started.
 func (o LookupWebAppDeploymentResultOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
+// Who authored the deployment.
 func (o LookupWebAppDeploymentResultOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.Author }).(pulumi.StringPtrOutput)
 }
 
+// Author email.
 func (o LookupWebAppDeploymentResultOutput) AuthorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
 }
 
+// Who performed the deployment.
 func (o LookupWebAppDeploymentResultOutput) Deployer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.Deployer }).(pulumi.StringPtrOutput)
 }
 
+// Details on deployment.
 func (o LookupWebAppDeploymentResultOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
+// End time.
 func (o LookupWebAppDeploymentResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppDeploymentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Details about deployment status.
 func (o LookupWebAppDeploymentResultOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Start time.
 func (o LookupWebAppDeploymentResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// Deployment status.
 func (o LookupWebAppDeploymentResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppDeploymentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.Type }).(pulumi.StringOutput)
 }

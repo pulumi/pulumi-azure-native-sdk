@@ -22,21 +22,32 @@ func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdenti
 }
 
 type LookupHybridIdentityMetadatumArgs struct {
-	MetadataName       string `pulumi:"metadataName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// Name of the HybridIdentityMetadata.
+	MetadataName string `pulumi:"metadataName"`
+	// The Resource Group Name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the vm.
 	VirtualMachineName string `pulumi:"virtualMachineName"`
 }
 
 // Defines the HybridIdentityMetadata.
 type LookupHybridIdentityMetadatumResult struct {
-	Id                string             `pulumi:"id"`
-	Identity          IdentityResponse   `pulumi:"identity"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	PublicKey         *string            `pulumi:"publicKey"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
-	VmId              *string            `pulumi:"vmId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity IdentityResponse `pulumi:"identity"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets the provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the Public Key.
+	PublicKey *string `pulumi:"publicKey"`
+	// The system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Gets or sets the Vm Id.
+	VmId *string `pulumi:"vmId"`
 }
 
 func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadatumOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadatumResultOutput {
@@ -53,8 +64,11 @@ func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridI
 }
 
 type LookupHybridIdentityMetadatumOutputArgs struct {
-	MetadataName       pulumi.StringInput `pulumi:"metadataName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the HybridIdentityMetadata.
+	MetadataName pulumi.StringInput `pulumi:"metadataName"`
+	// The Resource Group Name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the vm.
 	VirtualMachineName pulumi.StringInput `pulumi:"virtualMachineName"`
 }
 
@@ -77,34 +91,42 @@ func (o LookupHybridIdentityMetadatumResultOutput) ToLookupHybridIdentityMetadat
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupHybridIdentityMetadatumResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupHybridIdentityMetadatumResultOutput) Identity() IdentityResponseOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) IdentityResponse { return v.Identity }).(IdentityResponseOutput)
 }
 
+// The name of the resource
 func (o LookupHybridIdentityMetadatumResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the provisioning state.
 func (o LookupHybridIdentityMetadatumResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Gets or sets the Public Key.
 func (o LookupHybridIdentityMetadatumResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// The system data.
 func (o LookupHybridIdentityMetadatumResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupHybridIdentityMetadatumResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Gets or sets the Vm Id.
 func (o LookupHybridIdentityMetadatumResultOutput) VmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) *string { return v.VmId }).(pulumi.StringPtrOutput)
 }

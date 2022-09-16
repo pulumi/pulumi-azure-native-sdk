@@ -20,8 +20,10 @@ func ListWorkspaceStorageAccountKeys(ctx *pulumi.Context, args *ListWorkspaceSto
 }
 
 type ListWorkspaceStorageAccountKeysArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 type ListWorkspaceStorageAccountKeysResult struct {
@@ -42,8 +44,10 @@ func ListWorkspaceStorageAccountKeysOutput(ctx *pulumi.Context, args ListWorkspa
 }
 
 type ListWorkspaceStorageAccountKeysOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListWorkspaceStorageAccountKeysOutputArgs) ElementType() reflect.Type {

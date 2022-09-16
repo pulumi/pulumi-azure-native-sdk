@@ -21,23 +21,36 @@ func LookupTransactionNode(ctx *pulumi.Context, args *LookupTransactionNodeArgs,
 }
 
 type LookupTransactionNodeArgs struct {
+	// Blockchain member name.
 	BlockchainMemberName string `pulumi:"blockchainMemberName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
-	TransactionNodeName  string `pulumi:"transactionNodeName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Transaction node name.
+	TransactionNodeName string `pulumi:"transactionNodeName"`
 }
 
 // Payload of the transaction node which is the request/response of the resource provider.
 type LookupTransactionNodeResult struct {
-	Dns               string                 `pulumi:"dns"`
-	FirewallRules     []FirewallRuleResponse `pulumi:"firewallRules"`
-	Id                string                 `pulumi:"id"`
-	Location          *string                `pulumi:"location"`
-	Name              string                 `pulumi:"name"`
-	Password          *string                `pulumi:"password"`
-	ProvisioningState string                 `pulumi:"provisioningState"`
-	PublicKey         string                 `pulumi:"publicKey"`
-	Type              string                 `pulumi:"type"`
-	UserName          string                 `pulumi:"userName"`
+	// Gets or sets the transaction node dns endpoint.
+	Dns string `pulumi:"dns"`
+	// Gets or sets the firewall rules.
+	FirewallRules []FirewallRuleResponse `pulumi:"firewallRules"`
+	// Fully qualified resource Id of the resource.
+	Id string `pulumi:"id"`
+	// Gets or sets the transaction node location.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Sets the transaction node dns endpoint basic auth password.
+	Password *string `pulumi:"password"`
+	// Gets or sets the blockchain member provision state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the transaction node public key.
+	PublicKey string `pulumi:"publicKey"`
+	// The type of the service - e.g. "Microsoft.Blockchain"
+	Type string `pulumi:"type"`
+	// Gets or sets the transaction node dns endpoint basic auth user name.
+	UserName string `pulumi:"userName"`
 }
 
 func LookupTransactionNodeOutput(ctx *pulumi.Context, args LookupTransactionNodeOutputArgs, opts ...pulumi.InvokeOption) LookupTransactionNodeResultOutput {
@@ -54,9 +67,12 @@ func LookupTransactionNodeOutput(ctx *pulumi.Context, args LookupTransactionNode
 }
 
 type LookupTransactionNodeOutputArgs struct {
+	// Blockchain member name.
 	BlockchainMemberName pulumi.StringInput `pulumi:"blockchainMemberName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
-	TransactionNodeName  pulumi.StringInput `pulumi:"transactionNodeName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Transaction node name.
+	TransactionNodeName pulumi.StringInput `pulumi:"transactionNodeName"`
 }
 
 func (LookupTransactionNodeOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupTransactionNodeResultOutput) ToLookupTransactionNodeResultOutputWi
 	return o
 }
 
+// Gets or sets the transaction node dns endpoint.
 func (o LookupTransactionNodeResultOutput) Dns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.Dns }).(pulumi.StringOutput)
 }
 
+// Gets or sets the firewall rules.
 func (o LookupTransactionNodeResultOutput) FirewallRules() FirewallRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) []FirewallRuleResponse { return v.FirewallRules }).(FirewallRuleResponseArrayOutput)
 }
 
+// Fully qualified resource Id of the resource.
 func (o LookupTransactionNodeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the transaction node location.
 func (o LookupTransactionNodeResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupTransactionNodeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sets the transaction node dns endpoint basic auth password.
 func (o LookupTransactionNodeResultOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the blockchain member provision state.
 func (o LookupTransactionNodeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Gets or sets the transaction node public key.
 func (o LookupTransactionNodeResultOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
+// The type of the service - e.g. "Microsoft.Blockchain"
 func (o LookupTransactionNodeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Gets or sets the transaction node dns endpoint basic auth user name.
 func (o LookupTransactionNodeResultOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransactionNodeResult) string { return v.UserName }).(pulumi.StringOutput)
 }

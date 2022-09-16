@@ -22,18 +22,26 @@ func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAc
 }
 
 type LookupLinkedStorageAccountArgs struct {
-	DataSourceType    string `pulumi:"dataSourceType"`
+	// Linked storage accounts type.
+	DataSourceType string `pulumi:"dataSourceType"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Linked storage accounts top level resource container.
 type LookupLinkedStorageAccountResult struct {
-	DataSourceType    string   `pulumi:"dataSourceType"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
+	// Linked storage accounts type.
+	DataSourceType string `pulumi:"dataSourceType"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Linked storage accounts resources ids.
 	StorageAccountIds []string `pulumi:"storageAccountIds"`
-	Type              string   `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupLinkedStorageAccountOutput(ctx *pulumi.Context, args LookupLinkedStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedStorageAccountResultOutput {
@@ -50,9 +58,12 @@ func LookupLinkedStorageAccountOutput(ctx *pulumi.Context, args LookupLinkedStor
 }
 
 type LookupLinkedStorageAccountOutputArgs struct {
-	DataSourceType    pulumi.StringInput `pulumi:"dataSourceType"`
+	// Linked storage accounts type.
+	DataSourceType pulumi.StringInput `pulumi:"dataSourceType"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupLinkedStorageAccountOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o LookupLinkedStorageAccountResultOutput) ToLookupLinkedStorageAccountResu
 	return o
 }
 
+// Linked storage accounts type.
 func (o LookupLinkedStorageAccountResultOutput) DataSourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.DataSourceType }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLinkedStorageAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupLinkedStorageAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Linked storage accounts resources ids.
 func (o LookupLinkedStorageAccountResultOutput) StorageAccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) []string { return v.StorageAccountIds }).(pulumi.StringArrayOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupLinkedStorageAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

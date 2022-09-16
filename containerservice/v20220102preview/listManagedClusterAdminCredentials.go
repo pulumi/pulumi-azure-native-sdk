@@ -21,14 +21,19 @@ func ListManagedClusterAdminCredentials(ctx *pulumi.Context, args *ListManagedCl
 }
 
 type ListManagedClusterAdminCredentialsArgs struct {
-	Format            *string `pulumi:"format"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ResourceName      string  `pulumi:"resourceName"`
-	ServerFqdn        *string `pulumi:"serverFqdn"`
+	// Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path.
+	Format *string `pulumi:"format"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName string `pulumi:"resourceName"`
+	// server fqdn type for credentials to be returned
+	ServerFqdn *string `pulumi:"serverFqdn"`
 }
 
 // The list credential result response.
 type ListManagedClusterAdminCredentialsResult struct {
+	// Base64-encoded Kubernetes configuration file.
 	Kubeconfigs []CredentialResultResponse `pulumi:"kubeconfigs"`
 }
 
@@ -46,10 +51,14 @@ func ListManagedClusterAdminCredentialsOutput(ctx *pulumi.Context, args ListMana
 }
 
 type ListManagedClusterAdminCredentialsOutputArgs struct {
-	Format            pulumi.StringPtrInput `pulumi:"format"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput    `pulumi:"resourceName"`
-	ServerFqdn        pulumi.StringPtrInput `pulumi:"serverFqdn"`
+	// Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// server fqdn type for credentials to be returned
+	ServerFqdn pulumi.StringPtrInput `pulumi:"serverFqdn"`
 }
 
 func (ListManagedClusterAdminCredentialsOutputArgs) ElementType() reflect.Type {
@@ -71,6 +80,7 @@ func (o ListManagedClusterAdminCredentialsResultOutput) ToListManagedClusterAdmi
 	return o
 }
 
+// Base64-encoded Kubernetes configuration file.
 func (o ListManagedClusterAdminCredentialsResultOutput) Kubeconfigs() CredentialResultResponseArrayOutput {
 	return o.ApplyT(func(v ListManagedClusterAdminCredentialsResult) []CredentialResultResponse { return v.Kubeconfigs }).(CredentialResultResponseArrayOutput)
 }

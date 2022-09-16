@@ -23,21 +23,32 @@ func LookupDigitalTwin(ctx *pulumi.Context, args *LookupDigitalTwinArgs, opts ..
 }
 
 type LookupDigitalTwinArgs struct {
+	// The name of the resource group that contains the DigitalTwinsInstance.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the DigitalTwinsInstance.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The description of the DigitalTwins service.
 type LookupDigitalTwinResult struct {
-	CreatedTime       string            `pulumi:"createdTime"`
-	HostName          string            `pulumi:"hostName"`
-	Id                string            `pulumi:"id"`
-	LastUpdatedTime   string            `pulumi:"lastUpdatedTime"`
-	Location          string            `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              string            `pulumi:"type"`
+	// Time when DigitalTwinsInstance was created.
+	CreatedTime string `pulumi:"createdTime"`
+	// Api endpoint to work with DigitalTwinsInstance.
+	HostName string `pulumi:"hostName"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// Time when DigitalTwinsInstance was updated.
+	LastUpdatedTime string `pulumi:"lastUpdatedTime"`
+	// The resource location.
+	Location string `pulumi:"location"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDigitalTwinOutput(ctx *pulumi.Context, args LookupDigitalTwinOutputArgs, opts ...pulumi.InvokeOption) LookupDigitalTwinResultOutput {
@@ -54,8 +65,10 @@ func LookupDigitalTwinOutput(ctx *pulumi.Context, args LookupDigitalTwinOutputAr
 }
 
 type LookupDigitalTwinOutputArgs struct {
+	// The name of the resource group that contains the DigitalTwinsInstance.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the DigitalTwinsInstance.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupDigitalTwinOutputArgs) ElementType() reflect.Type {
@@ -77,38 +90,47 @@ func (o LookupDigitalTwinResultOutput) ToLookupDigitalTwinResultOutputWithContex
 	return o
 }
 
+// Time when DigitalTwinsInstance was created.
 func (o LookupDigitalTwinResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
+// Api endpoint to work with DigitalTwinsInstance.
 func (o LookupDigitalTwinResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupDigitalTwinResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Time when DigitalTwinsInstance was updated.
 func (o LookupDigitalTwinResultOutput) LastUpdatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.LastUpdatedTime }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupDigitalTwinResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupDigitalTwinResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state.
 func (o LookupDigitalTwinResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupDigitalTwinResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The resource type.
 func (o LookupDigitalTwinResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.Type }).(pulumi.StringOutput)
 }

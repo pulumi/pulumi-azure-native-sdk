@@ -21,24 +21,38 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 }
 
 type LookupUserArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LabName           string  `pulumi:"labName"`
-	Name              string  `pulumi:"name"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($select=identity)'
+	Expand *string `pulumi:"expand"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the user profile.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Profile of a lab user.
 type LookupUserResult struct {
-	CreatedDate       string                   `pulumi:"createdDate"`
-	Id                string                   `pulumi:"id"`
-	Identity          *UserIdentityResponse    `pulumi:"identity"`
-	Location          *string                  `pulumi:"location"`
-	Name              string                   `pulumi:"name"`
-	ProvisioningState string                   `pulumi:"provisioningState"`
-	SecretStore       *UserSecretStoreResponse `pulumi:"secretStore"`
-	Tags              map[string]string        `pulumi:"tags"`
-	Type              string                   `pulumi:"type"`
-	UniqueIdentifier  string                   `pulumi:"uniqueIdentifier"`
+	// The creation date of the user profile.
+	CreatedDate string `pulumi:"createdDate"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The identity of the user.
+	Identity *UserIdentityResponse `pulumi:"identity"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning status of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The secret store of the user.
+	SecretStore *UserSecretStoreResponse `pulumi:"secretStore"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The unique immutable identifier of a resource (Guid).
+	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -55,10 +69,14 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 }
 
 type LookupUserOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LabName           pulumi.StringInput    `pulumi:"labName"`
-	Name              pulumi.StringInput    `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($select=identity)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the user profile.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -80,42 +98,52 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// The creation date of the user profile.
 func (o LookupUserResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CreatedDate }).(pulumi.StringOutput)
 }
 
+// The identifier of the resource.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the user.
 func (o LookupUserResultOutput) Identity() UserIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *UserIdentityResponse { return v.Identity }).(UserIdentityResponsePtrOutput)
 }
 
+// The location of the resource.
 func (o LookupUserResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupUserResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The secret store of the user.
 func (o LookupUserResultOutput) SecretStore() UserSecretStoreResponsePtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *UserSecretStoreResponse { return v.SecretStore }).(UserSecretStoreResponsePtrOutput)
 }
 
+// The tags of the resource.
 func (o LookupUserResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupUserResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique immutable identifier of a resource (Guid).
 func (o LookupUserResultOutput) UniqueIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.UniqueIdentifier }).(pulumi.StringOutput)
 }

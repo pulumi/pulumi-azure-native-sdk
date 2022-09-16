@@ -21,20 +21,30 @@ func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ..
 }
 
 type LookupCertificateArgs struct {
-	CertificateId     string `pulumi:"certificateId"`
+	// Identifier of the certificate entity. Must be unique in the current API Management service instance.
+	CertificateId string `pulumi:"certificateId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Certificate details.
 type LookupCertificateResult struct {
-	ExpirationDate string                              `pulumi:"expirationDate"`
-	Id             string                              `pulumi:"id"`
-	KeyVault       *KeyVaultContractPropertiesResponse `pulumi:"keyVault"`
-	Name           string                              `pulumi:"name"`
-	Subject        string                              `pulumi:"subject"`
-	Thumbprint     string                              `pulumi:"thumbprint"`
-	Type           string                              `pulumi:"type"`
+	// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	ExpirationDate string `pulumi:"expirationDate"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// KeyVault location details of the certificate.
+	KeyVault *KeyVaultContractPropertiesResponse `pulumi:"keyVault"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Subject attribute of the certificate.
+	Subject string `pulumi:"subject"`
+	// Thumbprint of the certificate.
+	Thumbprint string `pulumi:"thumbprint"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
@@ -51,9 +61,12 @@ func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputAr
 }
 
 type LookupCertificateOutputArgs struct {
-	CertificateId     pulumi.StringInput `pulumi:"certificateId"`
+	// Identifier of the certificate entity. Must be unique in the current API Management service instance.
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupCertificateOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 	return o
 }
 
+// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 func (o LookupCertificateResultOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.ExpirationDate }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// KeyVault location details of the certificate.
 func (o LookupCertificateResultOutput) KeyVault() KeyVaultContractPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupCertificateResult) *KeyVaultContractPropertiesResponse { return v.KeyVault }).(KeyVaultContractPropertiesResponsePtrOutput)
 }
 
+// Resource name.
 func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Subject attribute of the certificate.
 func (o LookupCertificateResultOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Subject }).(pulumi.StringOutput)
 }
 
+// Thumbprint of the certificate.
 func (o LookupCertificateResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }
