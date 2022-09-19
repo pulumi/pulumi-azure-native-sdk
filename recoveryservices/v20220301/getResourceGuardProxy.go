@@ -20,19 +20,28 @@ func LookupResourceGuardProxy(ctx *pulumi.Context, args *LookupResourceGuardProx
 }
 
 type LookupResourceGuardProxyArgs struct {
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName      string `pulumi:"resourceGroupName"`
 	ResourceGuardProxyName string `pulumi:"resourceGuardProxyName"`
-	VaultName              string `pulumi:"vaultName"`
+	// The name of the recovery services vault.
+	VaultName string `pulumi:"vaultName"`
 }
 
 type LookupResourceGuardProxyResult struct {
-	ETag       *string                        `pulumi:"eTag"`
-	Id         string                         `pulumi:"id"`
-	Location   *string                        `pulumi:"location"`
-	Name       string                         `pulumi:"name"`
+	// Optional ETag.
+	ETag *string `pulumi:"eTag"`
+	// Resource Id represents the complete path to the resource.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name associated with the resource.
+	Name string `pulumi:"name"`
+	// ResourceGuardProxyBaseResource properties
 	Properties ResourceGuardProxyBaseResponse `pulumi:"properties"`
-	Tags       map[string]string              `pulumi:"tags"`
-	Type       string                         `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+	Type string `pulumi:"type"`
 }
 
 func LookupResourceGuardProxyOutput(ctx *pulumi.Context, args LookupResourceGuardProxyOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGuardProxyResultOutput {
@@ -49,9 +58,11 @@ func LookupResourceGuardProxyOutput(ctx *pulumi.Context, args LookupResourceGuar
 }
 
 type LookupResourceGuardProxyOutputArgs struct {
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
 	ResourceGuardProxyName pulumi.StringInput `pulumi:"resourceGuardProxyName"`
-	VaultName              pulumi.StringInput `pulumi:"vaultName"`
+	// The name of the recovery services vault.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupResourceGuardProxyOutputArgs) ElementType() reflect.Type {
@@ -72,30 +83,37 @@ func (o LookupResourceGuardProxyResultOutput) ToLookupResourceGuardProxyResultOu
 	return o
 }
 
+// Optional ETag.
 func (o LookupResourceGuardProxyResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id represents the complete path to the resource.
 func (o LookupResourceGuardProxyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupResourceGuardProxyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name associated with the resource.
 func (o LookupResourceGuardProxyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ResourceGuardProxyBaseResource properties
 func (o LookupResourceGuardProxyResultOutput) Properties() ResourceGuardProxyBaseResponseOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) ResourceGuardProxyBaseResponse { return v.Properties }).(ResourceGuardProxyBaseResponseOutput)
 }
 
+// Resource tags.
 func (o LookupResourceGuardProxyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 func (o LookupResourceGuardProxyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGuardProxyResult) string { return v.Type }).(pulumi.StringOutput)
 }

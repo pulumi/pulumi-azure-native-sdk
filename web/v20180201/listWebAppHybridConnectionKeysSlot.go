@@ -21,21 +21,32 @@ func ListWebAppHybridConnectionKeysSlot(ctx *pulumi.Context, args *ListWebAppHyb
 }
 
 type ListWebAppHybridConnectionKeysSlotArgs struct {
-	Name              string `pulumi:"name"`
-	NamespaceName     string `pulumi:"namespaceName"`
-	RelayName         string `pulumi:"relayName"`
+	// The name of the web app.
+	Name string `pulumi:"name"`
+	// The namespace for this hybrid connection.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The relay name for this hybrid connection.
+	RelayName string `pulumi:"relayName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// The name of the slot for the web app.
+	Slot string `pulumi:"slot"`
 }
 
 // Hybrid Connection key contract. This has the send key name and value for a Hybrid Connection.
 type ListWebAppHybridConnectionKeysSlotResult struct {
-	Id           string  `pulumi:"id"`
-	Kind         *string `pulumi:"kind"`
-	Name         string  `pulumi:"name"`
-	SendKeyName  string  `pulumi:"sendKeyName"`
-	SendKeyValue string  `pulumi:"sendKeyValue"`
-	Type         string  `pulumi:"type"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// The name of the send key.
+	SendKeyName string `pulumi:"sendKeyName"`
+	// The value of the send key.
+	SendKeyValue string `pulumi:"sendKeyValue"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppHybridConnectionKeysSlotOutput(ctx *pulumi.Context, args ListWebAppHybridConnectionKeysSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHybridConnectionKeysSlotResultOutput {
@@ -52,11 +63,16 @@ func ListWebAppHybridConnectionKeysSlotOutput(ctx *pulumi.Context, args ListWebA
 }
 
 type ListWebAppHybridConnectionKeysSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
-	RelayName         pulumi.StringInput `pulumi:"relayName"`
+	// The name of the web app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace for this hybrid connection.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The relay name for this hybrid connection.
+	RelayName pulumi.StringInput `pulumi:"relayName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// The name of the slot for the web app.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppHybridConnectionKeysSlotOutputArgs) ElementType() reflect.Type {
@@ -78,26 +94,32 @@ func (o ListWebAppHybridConnectionKeysSlotResultOutput) ToListWebAppHybridConnec
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the send key.
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) SendKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysSlotResult) string { return v.SendKeyName }).(pulumi.StringOutput)
 }
 
+// The value of the send key.
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) SendKeyValue() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysSlotResult) string { return v.SendKeyValue }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

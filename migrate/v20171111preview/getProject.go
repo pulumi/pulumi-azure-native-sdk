@@ -23,26 +23,42 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 }
 
 type LookupProjectArgs struct {
-	ProjectName       string `pulumi:"projectName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure Migrate Project.
 type LookupProjectResult struct {
-	CreatedTimestamp    string      `pulumi:"createdTimestamp"`
-	CustomerWorkspaceId *string     `pulumi:"customerWorkspaceId"`
-	DiscoveryStatus     string      `pulumi:"discoveryStatus"`
-	ETag                *string     `pulumi:"eTag"`
-	Id                  string      `pulumi:"id"`
-	Location            *string     `pulumi:"location"`
-	Name                string      `pulumi:"name"`
-	NumberOfAssessments int         `pulumi:"numberOfAssessments"`
-	NumberOfGroups      int         `pulumi:"numberOfGroups"`
-	NumberOfMachines    int         `pulumi:"numberOfMachines"`
-	ProvisioningState   *string     `pulumi:"provisioningState"`
-	Tags                interface{} `pulumi:"tags"`
-	Type                string      `pulumi:"type"`
-	UpdatedTimestamp    string      `pulumi:"updatedTimestamp"`
+	// Time when this project was created. Date-Time represented in ISO-8601 format.
+	CreatedTimestamp string `pulumi:"createdTimestamp"`
+	// ARM ID of the Service Map workspace created by user.
+	CustomerWorkspaceId *string `pulumi:"customerWorkspaceId"`
+	// Reports whether project is under discovery.
+	DiscoveryStatus string `pulumi:"discoveryStatus"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}
+	Id string `pulumi:"id"`
+	// Azure location in which project is created.
+	Location *string `pulumi:"location"`
+	// Name of the project.
+	Name string `pulumi:"name"`
+	// Number of assessments created in the project.
+	NumberOfAssessments int `pulumi:"numberOfAssessments"`
+	// Number of groups created in the project.
+	NumberOfGroups int `pulumi:"numberOfGroups"`
+	// Number of machines in the project.
+	NumberOfMachines int `pulumi:"numberOfMachines"`
+	// Provisioning state of the project.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Tags provided by Azure Tagging service.
+	Tags interface{} `pulumi:"tags"`
+	// Type of the object = [Microsoft.Migrate/projects].
+	Type string `pulumi:"type"`
+	// Time when this project was last updated. Date-Time represented in ISO-8601 format.
+	UpdatedTimestamp string `pulumi:"updatedTimestamp"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -59,7 +75,9 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 }
 
 type LookupProjectOutputArgs struct {
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,58 +100,72 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// Time when this project was created. Date-Time represented in ISO-8601 format.
 func (o LookupProjectResultOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CreatedTimestamp }).(pulumi.StringOutput)
 }
 
+// ARM ID of the Service Map workspace created by user.
 func (o LookupProjectResultOutput) CustomerWorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.CustomerWorkspaceId }).(pulumi.StringPtrOutput)
 }
 
+// Reports whether project is under discovery.
 func (o LookupProjectResultOutput) DiscoveryStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.DiscoveryStatus }).(pulumi.StringOutput)
 }
 
+// For optimistic concurrency control.
 func (o LookupProjectResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure location in which project is created.
 func (o LookupProjectResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the project.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Number of assessments created in the project.
 func (o LookupProjectResultOutput) NumberOfAssessments() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.NumberOfAssessments }).(pulumi.IntOutput)
 }
 
+// Number of groups created in the project.
 func (o LookupProjectResultOutput) NumberOfGroups() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.NumberOfGroups }).(pulumi.IntOutput)
 }
 
+// Number of machines in the project.
 func (o LookupProjectResultOutput) NumberOfMachines() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.NumberOfMachines }).(pulumi.IntOutput)
 }
 
+// Provisioning state of the project.
 func (o LookupProjectResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Tags provided by Azure Tagging service.
 func (o LookupProjectResultOutput) Tags() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProjectResult) interface{} { return v.Tags }).(pulumi.AnyOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/projects].
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Time when this project was last updated. Date-Time represented in ISO-8601 format.
 func (o LookupProjectResultOutput) UpdatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.UpdatedTimestamp }).(pulumi.StringOutput)
 }

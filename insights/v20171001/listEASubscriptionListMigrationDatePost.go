@@ -22,6 +22,8 @@ type ListEASubscriptionListMigrationDatePostArgs struct {
 
 // Subscription migrate date information properties
 type ListEASubscriptionListMigrationDatePostResult struct {
-	IsGrandFatherableSubscription *bool   `pulumi:"isGrandFatherableSubscription"`
-	OptedInDate                   *string `pulumi:"optedInDate"`
+	// Is subscription in the grand fatherable subscription list.
+	IsGrandFatherableSubscription *bool `pulumi:"isGrandFatherableSubscription"`
+	// Time to start using new pricing model.
+	OptedInDate *string `pulumi:"optedInDate"`
 }

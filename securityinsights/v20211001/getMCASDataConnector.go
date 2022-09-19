@@ -21,21 +21,33 @@ func LookupMCASDataConnector(ctx *pulumi.Context, args *LookupMCASDataConnectorA
 }
 
 type LookupMCASDataConnectorArgs struct {
-	DataConnectorId   string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
 type LookupMCASDataConnectorResult struct {
-	DataTypes  *MCASDataConnectorDataTypesResponse `pulumi:"dataTypes"`
-	Etag       *string                             `pulumi:"etag"`
-	Id         string                              `pulumi:"id"`
-	Kind       string                              `pulumi:"kind"`
-	Name       string                              `pulumi:"name"`
-	SystemData SystemDataResponse                  `pulumi:"systemData"`
-	TenantId   *string                             `pulumi:"tenantId"`
-	Type       string                              `pulumi:"type"`
+	// The available data types for the connector.
+	DataTypes *MCASDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the data connector
+	// Expected value is 'MicrosoftCloudAppSecurity'.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tenant id to connect to, and get the data from.
+	TenantId *string `pulumi:"tenantId"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupMCASDataConnectorOutput(ctx *pulumi.Context, args LookupMCASDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMCASDataConnectorResultOutput {
@@ -52,9 +64,12 @@ func LookupMCASDataConnectorOutput(ctx *pulumi.Context, args LookupMCASDataConne
 }
 
 type LookupMCASDataConnectorOutputArgs struct {
-	DataConnectorId   pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupMCASDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -76,34 +91,43 @@ func (o LookupMCASDataConnectorResultOutput) ToLookupMCASDataConnectorResultOutp
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupMCASDataConnectorResultOutput) DataTypes() MCASDataConnectorDataTypesResponsePtrOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) *MCASDataConnectorDataTypesResponse { return v.DataTypes }).(MCASDataConnectorDataTypesResponsePtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupMCASDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMCASDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the data connector
+// Expected value is 'MicrosoftCloudAppSecurity'.
 func (o LookupMCASDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupMCASDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupMCASDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupMCASDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupMCASDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

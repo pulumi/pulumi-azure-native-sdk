@@ -21,23 +21,36 @@ func LookupNetworkProfile(ctx *pulumi.Context, args *LookupNetworkProfileArgs, o
 }
 
 type LookupNetworkProfileArgs struct {
-	Expand             *string `pulumi:"expand"`
-	NetworkProfileName string  `pulumi:"networkProfileName"`
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
+	// Expands referenced resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the Public IP Prefix.
+	NetworkProfileName string `pulumi:"networkProfileName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Network profile resource.
 type LookupNetworkProfileResult struct {
+	// List of chid container network interface configurations.
 	ContainerNetworkInterfaceConfigurations []ContainerNetworkInterfaceConfigurationResponse `pulumi:"containerNetworkInterfaceConfigurations"`
-	ContainerNetworkInterfaces              []ContainerNetworkInterfaceResponse              `pulumi:"containerNetworkInterfaces"`
-	Etag                                    *string                                          `pulumi:"etag"`
-	Id                                      *string                                          `pulumi:"id"`
-	Location                                *string                                          `pulumi:"location"`
-	Name                                    string                                           `pulumi:"name"`
-	ProvisioningState                       string                                           `pulumi:"provisioningState"`
-	ResourceGuid                            string                                           `pulumi:"resourceGuid"`
-	Tags                                    map[string]string                                `pulumi:"tags"`
-	Type                                    string                                           `pulumi:"type"`
+	// List of child container network interfaces.
+	ContainerNetworkInterfaces []ContainerNetworkInterfaceResponse `pulumi:"containerNetworkInterfaces"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the network interface resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupNetworkProfileOutput(ctx *pulumi.Context, args LookupNetworkProfileOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkProfileResultOutput {
@@ -54,9 +67,12 @@ func LookupNetworkProfileOutput(ctx *pulumi.Context, args LookupNetworkProfileOu
 }
 
 type LookupNetworkProfileOutputArgs struct {
-	Expand             pulumi.StringPtrInput `pulumi:"expand"`
-	NetworkProfileName pulumi.StringInput    `pulumi:"networkProfileName"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Expands referenced resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the Public IP Prefix.
+	NetworkProfileName pulumi.StringInput `pulumi:"networkProfileName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNetworkProfileOutputArgs) ElementType() reflect.Type {
@@ -78,46 +94,56 @@ func (o LookupNetworkProfileResultOutput) ToLookupNetworkProfileResultOutputWith
 	return o
 }
 
+// List of chid container network interface configurations.
 func (o LookupNetworkProfileResultOutput) ContainerNetworkInterfaceConfigurations() ContainerNetworkInterfaceConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) []ContainerNetworkInterfaceConfigurationResponse {
 		return v.ContainerNetworkInterfaceConfigurations
 	}).(ContainerNetworkInterfaceConfigurationResponseArrayOutput)
 }
 
+// List of child container network interfaces.
 func (o LookupNetworkProfileResultOutput) ContainerNetworkInterfaces() ContainerNetworkInterfaceResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) []ContainerNetworkInterfaceResponse {
 		return v.ContainerNetworkInterfaces
 	}).(ContainerNetworkInterfaceResponseArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupNetworkProfileResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupNetworkProfileResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupNetworkProfileResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupNetworkProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupNetworkProfileResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource GUID property of the network interface resource.
 func (o LookupNetworkProfileResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupNetworkProfileResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupNetworkProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

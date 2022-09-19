@@ -22,20 +22,30 @@ func LookupReportByBillingAccount(ctx *pulumi.Context, args *LookupReportByBilli
 }
 
 type LookupReportByBillingAccountArgs struct {
+	// BillingAccount ID
 	BillingAccountId string `pulumi:"billingAccountId"`
-	ReportName       string `pulumi:"reportName"`
+	// Report Name.
+	ReportName string `pulumi:"reportName"`
 }
 
 // A report resource.
 type LookupReportByBillingAccountResult struct {
-	Definition   ReportDefinitionResponse   `pulumi:"definition"`
+	// Has definition for the report.
+	Definition ReportDefinitionResponse `pulumi:"definition"`
+	// Has delivery information for the report.
 	DeliveryInfo ReportDeliveryInfoResponse `pulumi:"deliveryInfo"`
-	Format       *string                    `pulumi:"format"`
-	Id           string                     `pulumi:"id"`
-	Name         string                     `pulumi:"name"`
-	Schedule     *ReportScheduleResponse    `pulumi:"schedule"`
-	Tags         map[string]string          `pulumi:"tags"`
-	Type         string                     `pulumi:"type"`
+	// The format of the report being delivered.
+	Format *string `pulumi:"format"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Has schedule information for the report.
+	Schedule *ReportScheduleResponse `pulumi:"schedule"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupReportByBillingAccountOutput(ctx *pulumi.Context, args LookupReportByBillingAccountOutputArgs, opts ...pulumi.InvokeOption) LookupReportByBillingAccountResultOutput {
@@ -52,8 +62,10 @@ func LookupReportByBillingAccountOutput(ctx *pulumi.Context, args LookupReportBy
 }
 
 type LookupReportByBillingAccountOutputArgs struct {
+	// BillingAccount ID
 	BillingAccountId pulumi.StringInput `pulumi:"billingAccountId"`
-	ReportName       pulumi.StringInput `pulumi:"reportName"`
+	// Report Name.
+	ReportName pulumi.StringInput `pulumi:"reportName"`
 }
 
 func (LookupReportByBillingAccountOutputArgs) ElementType() reflect.Type {
@@ -75,34 +87,42 @@ func (o LookupReportByBillingAccountResultOutput) ToLookupReportByBillingAccount
 	return o
 }
 
+// Has definition for the report.
 func (o LookupReportByBillingAccountResultOutput) Definition() ReportDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) ReportDefinitionResponse { return v.Definition }).(ReportDefinitionResponseOutput)
 }
 
+// Has delivery information for the report.
 func (o LookupReportByBillingAccountResultOutput) DeliveryInfo() ReportDeliveryInfoResponseOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) ReportDeliveryInfoResponse { return v.DeliveryInfo }).(ReportDeliveryInfoResponseOutput)
 }
 
+// The format of the report being delivered.
 func (o LookupReportByBillingAccountResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupReportByBillingAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupReportByBillingAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Has schedule information for the report.
 func (o LookupReportByBillingAccountResultOutput) Schedule() ReportScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) *ReportScheduleResponse { return v.Schedule }).(ReportScheduleResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupReportByBillingAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupReportByBillingAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportByBillingAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

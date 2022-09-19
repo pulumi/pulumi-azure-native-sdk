@@ -21,16 +21,22 @@ func ListSignalRKeys(ctx *pulumi.Context, args *ListSignalRKeysArgs, opts ...pul
 }
 
 type ListSignalRKeysArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A class represents the access keys of the resource.
 type ListSignalRKeysResult struct {
-	PrimaryConnectionString   *string `pulumi:"primaryConnectionString"`
-	PrimaryKey                *string `pulumi:"primaryKey"`
+	// Connection string constructed via the primaryKey
+	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
+	// The primary access key.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Connection string constructed via the secondaryKey
 	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
-	SecondaryKey              *string `pulumi:"secondaryKey"`
+	// The secondary access key.
+	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
 func ListSignalRKeysOutput(ctx *pulumi.Context, args ListSignalRKeysOutputArgs, opts ...pulumi.InvokeOption) ListSignalRKeysResultOutput {
@@ -47,8 +53,10 @@ func ListSignalRKeysOutput(ctx *pulumi.Context, args ListSignalRKeysOutputArgs, 
 }
 
 type ListSignalRKeysOutputArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListSignalRKeysOutputArgs) ElementType() reflect.Type {
@@ -70,18 +78,22 @@ func (o ListSignalRKeysResultOutput) ToListSignalRKeysResultOutputWithContext(ct
 	return o
 }
 
+// Connection string constructed via the primaryKey
 func (o ListSignalRKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSignalRKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// The primary access key.
 func (o ListSignalRKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSignalRKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Connection string constructed via the secondaryKey
 func (o ListSignalRKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSignalRKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// The secondary access key.
 func (o ListSignalRKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSignalRKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

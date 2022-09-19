@@ -22,22 +22,34 @@ func LookupReferenceDataSet(ctx *pulumi.Context, args *LookupReferenceDataSetArg
 }
 
 type LookupReferenceDataSetArgs struct {
-	EnvironmentName      string `pulumi:"environmentName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// The name of the Time Series Insights reference data set associated with the specified environment.
 	ReferenceDataSetName string `pulumi:"referenceDataSetName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
 type LookupReferenceDataSetResult struct {
-	CreationTime                 string                                `pulumi:"creationTime"`
-	DataStringComparisonBehavior *string                               `pulumi:"dataStringComparisonBehavior"`
-	Id                           string                                `pulumi:"id"`
-	KeyProperties                []ReferenceDataSetKeyPropertyResponse `pulumi:"keyProperties"`
-	Location                     string                                `pulumi:"location"`
-	Name                         string                                `pulumi:"name"`
-	ProvisioningState            string                                `pulumi:"provisioningState"`
-	Tags                         map[string]string                     `pulumi:"tags"`
-	Type                         string                                `pulumi:"type"`
+	// The time the resource was created.
+	CreationTime string `pulumi:"creationTime"`
+	// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
+	DataStringComparisonBehavior *string `pulumi:"dataStringComparisonBehavior"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The list of key properties for the reference data set.
+	KeyProperties []ReferenceDataSetKeyPropertyResponse `pulumi:"keyProperties"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupReferenceDataSetOutput(ctx *pulumi.Context, args LookupReferenceDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupReferenceDataSetResultOutput {
@@ -54,9 +66,12 @@ func LookupReferenceDataSetOutput(ctx *pulumi.Context, args LookupReferenceDataS
 }
 
 type LookupReferenceDataSetOutputArgs struct {
-	EnvironmentName      pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the Time Series Insights reference data set associated with the specified environment.
 	ReferenceDataSetName pulumi.StringInput `pulumi:"referenceDataSetName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupReferenceDataSetOutputArgs) ElementType() reflect.Type {
@@ -78,38 +93,47 @@ func (o LookupReferenceDataSetResultOutput) ToLookupReferenceDataSetResultOutput
 	return o
 }
 
+// The time the resource was created.
 func (o LookupReferenceDataSetResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
 func (o LookupReferenceDataSetResultOutput) DataStringComparisonBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) *string { return v.DataStringComparisonBehavior }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupReferenceDataSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of key properties for the reference data set.
 func (o LookupReferenceDataSetResultOutput) KeyProperties() ReferenceDataSetKeyPropertyResponseArrayOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) []ReferenceDataSetKeyPropertyResponse { return v.KeyProperties }).(ReferenceDataSetKeyPropertyResponseArrayOutput)
 }
 
+// Resource location
 func (o LookupReferenceDataSetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupReferenceDataSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupReferenceDataSetResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupReferenceDataSetResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupReferenceDataSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReferenceDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

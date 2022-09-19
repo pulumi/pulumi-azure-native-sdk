@@ -21,19 +21,28 @@ func LookupDataVersion(ctx *pulumi.Context, args *LookupDataVersionArgs, opts ..
 }
 
 type LookupDataVersionArgs struct {
-	Name              string `pulumi:"name"`
+	// Container name.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Version           string `pulumi:"version"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Version identifier.
+	Version string `pulumi:"version"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupDataVersionResult struct {
-	Id         string              `pulumi:"id"`
-	Name       string              `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
 	Properties DataVersionResponse `pulumi:"properties"`
-	SystemData SystemDataResponse  `pulumi:"systemData"`
-	Type       string              `pulumi:"type"`
+	// System data associated with resource provider
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDataVersionOutput(ctx *pulumi.Context, args LookupDataVersionOutputArgs, opts ...pulumi.InvokeOption) LookupDataVersionResultOutput {
@@ -50,10 +59,14 @@ func LookupDataVersionOutput(ctx *pulumi.Context, args LookupDataVersionOutputAr
 }
 
 type LookupDataVersionOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Container name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Version           pulumi.StringInput `pulumi:"version"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Version identifier.
+	Version pulumi.StringInput `pulumi:"version"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupDataVersionOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupDataVersionResultOutput) ToLookupDataVersionResultOutputWithContex
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDataVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDataVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
 func (o LookupDataVersionResultOutput) Properties() DataVersionResponseOutput {
 	return o.ApplyT(func(v LookupDataVersionResult) DataVersionResponse { return v.Properties }).(DataVersionResponseOutput)
 }
 
+// System data associated with resource provider
 func (o LookupDataVersionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDataVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDataVersionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataVersionResult) string { return v.Type }).(pulumi.StringOutput)
 }

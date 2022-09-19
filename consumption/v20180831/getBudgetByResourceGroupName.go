@@ -23,23 +23,36 @@ func LookupBudgetByResourceGroupName(ctx *pulumi.Context, args *LookupBudgetByRe
 }
 
 type LookupBudgetByResourceGroupNameArgs struct {
-	BudgetName        string `pulumi:"budgetName"`
+	// Budget Name.
+	BudgetName string `pulumi:"budgetName"`
+	// Azure Resource Group Name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A budget resource.
 type LookupBudgetByResourceGroupNameResult struct {
-	Amount        float64                         `pulumi:"amount"`
-	Category      string                          `pulumi:"category"`
-	CurrentSpend  CurrentSpendResponse            `pulumi:"currentSpend"`
-	ETag          *string                         `pulumi:"eTag"`
-	Filters       *FiltersResponse                `pulumi:"filters"`
-	Id            string                          `pulumi:"id"`
-	Name          string                          `pulumi:"name"`
+	// The total amount of cost to track with the budget
+	Amount float64 `pulumi:"amount"`
+	// The category of the budget, whether the budget tracks cost or usage.
+	Category string `pulumi:"category"`
+	// The current amount of cost which is being tracked for a budget.
+	CurrentSpend CurrentSpendResponse `pulumi:"currentSpend"`
+	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+	ETag *string `pulumi:"eTag"`
+	// May be used to filter budgets by resource group, resource, or meter.
+	Filters *FiltersResponse `pulumi:"filters"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 	Notifications map[string]NotificationResponse `pulumi:"notifications"`
-	TimeGrain     string                          `pulumi:"timeGrain"`
-	TimePeriod    BudgetTimePeriodResponse        `pulumi:"timePeriod"`
-	Type          string                          `pulumi:"type"`
+	// The time covered by a budget. Tracking of the amount will be reset based on the time grain.
+	TimeGrain string `pulumi:"timeGrain"`
+	// Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than three months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
+	TimePeriod BudgetTimePeriodResponse `pulumi:"timePeriod"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupBudgetByResourceGroupNameOutput(ctx *pulumi.Context, args LookupBudgetByResourceGroupNameOutputArgs, opts ...pulumi.InvokeOption) LookupBudgetByResourceGroupNameResultOutput {
@@ -56,7 +69,9 @@ func LookupBudgetByResourceGroupNameOutput(ctx *pulumi.Context, args LookupBudge
 }
 
 type LookupBudgetByResourceGroupNameOutputArgs struct {
-	BudgetName        pulumi.StringInput `pulumi:"budgetName"`
+	// Budget Name.
+	BudgetName pulumi.StringInput `pulumi:"budgetName"`
+	// Azure Resource Group Name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,46 +94,57 @@ func (o LookupBudgetByResourceGroupNameResultOutput) ToLookupBudgetByResourceGro
 	return o
 }
 
+// The total amount of cost to track with the budget
 func (o LookupBudgetByResourceGroupNameResultOutput) Amount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) float64 { return v.Amount }).(pulumi.Float64Output)
 }
 
+// The category of the budget, whether the budget tracks cost or usage.
 func (o LookupBudgetByResourceGroupNameResultOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The current amount of cost which is being tracked for a budget.
 func (o LookupBudgetByResourceGroupNameResultOutput) CurrentSpend() CurrentSpendResponseOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) CurrentSpendResponse { return v.CurrentSpend }).(CurrentSpendResponseOutput)
 }
 
+// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
 func (o LookupBudgetByResourceGroupNameResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// May be used to filter budgets by resource group, resource, or meter.
 func (o LookupBudgetByResourceGroupNameResultOutput) Filters() FiltersResponsePtrOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) *FiltersResponse { return v.Filters }).(FiltersResponsePtrOutput)
 }
 
+// Resource Id.
 func (o LookupBudgetByResourceGroupNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupBudgetByResourceGroupNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 func (o LookupBudgetByResourceGroupNameResultOutput) Notifications() NotificationResponseMapOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) map[string]NotificationResponse { return v.Notifications }).(NotificationResponseMapOutput)
 }
 
+// The time covered by a budget. Tracking of the amount will be reset based on the time grain.
 func (o LookupBudgetByResourceGroupNameResultOutput) TimeGrain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) string { return v.TimeGrain }).(pulumi.StringOutput)
 }
 
+// Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than three months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
 func (o LookupBudgetByResourceGroupNameResultOutput) TimePeriod() BudgetTimePeriodResponseOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) BudgetTimePeriodResponse { return v.TimePeriod }).(BudgetTimePeriodResponseOutput)
 }
 
+// Resource type.
 func (o LookupBudgetByResourceGroupNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetByResourceGroupNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,12 +22,15 @@ func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollower
 }
 
 type ListClusterFollowerDatabasesArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The list Kusto database principals operation response.
 type ListClusterFollowerDatabasesResult struct {
+	// The list of follower database result.
 	Value []FollowerDatabaseDefinitionResponse `pulumi:"value"`
 }
 
@@ -45,7 +48,9 @@ func ListClusterFollowerDatabasesOutput(ctx *pulumi.Context, args ListClusterFol
 }
 
 type ListClusterFollowerDatabasesOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListClusterFollowerDatabasesResultOutput) ToListClusterFollowerDatabases
 	return o
 }
 
+// The list of follower database result.
 func (o ListClusterFollowerDatabasesResultOutput) Value() FollowerDatabaseDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v ListClusterFollowerDatabasesResult) []FollowerDatabaseDefinitionResponse { return v.Value }).(FollowerDatabaseDefinitionResponseArrayOutput)
 }

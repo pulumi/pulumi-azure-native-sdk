@@ -21,14 +21,19 @@ func ListIntegrationRuntimeAuthKey(ctx *pulumi.Context, args *ListIntegrationRun
 }
 
 type ListIntegrationRuntimeAuthKeyArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	WorkspaceName          string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The integration runtime authentication keys.
 type ListIntegrationRuntimeAuthKeyResult struct {
+	// The primary integration runtime authentication key.
 	AuthKey1 *string `pulumi:"authKey1"`
+	// The secondary integration runtime authentication key.
 	AuthKey2 *string `pulumi:"authKey2"`
 }
 
@@ -46,9 +51,12 @@ func ListIntegrationRuntimeAuthKeyOutput(ctx *pulumi.Context, args ListIntegrati
 }
 
 type ListIntegrationRuntimeAuthKeyOutputArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName          pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListIntegrationRuntimeAuthKeyOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListIntegrationRuntimeAuthKeyResultOutput) ToListIntegrationRuntimeAuthK
 	return o
 }
 
+// The primary integration runtime authentication key.
 func (o ListIntegrationRuntimeAuthKeyResultOutput) AuthKey1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIntegrationRuntimeAuthKeyResult) *string { return v.AuthKey1 }).(pulumi.StringPtrOutput)
 }
 
+// The secondary integration runtime authentication key.
 func (o ListIntegrationRuntimeAuthKeyResultOutput) AuthKey2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIntegrationRuntimeAuthKeyResult) *string { return v.AuthKey2 }).(pulumi.StringPtrOutput)
 }

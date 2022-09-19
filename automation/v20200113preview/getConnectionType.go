@@ -21,21 +21,32 @@ func LookupConnectionType(ctx *pulumi.Context, args *LookupConnectionTypeArgs, o
 }
 
 type LookupConnectionTypeArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	ConnectionTypeName    string `pulumi:"connectionTypeName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of connection type.
+	ConnectionTypeName string `pulumi:"connectionTypeName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the connection type.
 type LookupConnectionTypeResult struct {
-	CreationTime     string                             `pulumi:"creationTime"`
-	Description      *string                            `pulumi:"description"`
+	// Gets the creation time.
+	CreationTime string `pulumi:"creationTime"`
+	// Gets or sets the description.
+	Description *string `pulumi:"description"`
+	// Gets the field definitions of the connection type.
 	FieldDefinitions map[string]FieldDefinitionResponse `pulumi:"fieldDefinitions"`
-	Id               string                             `pulumi:"id"`
-	IsGlobal         *bool                              `pulumi:"isGlobal"`
-	LastModifiedTime *string                            `pulumi:"lastModifiedTime"`
-	Name             string                             `pulumi:"name"`
-	Type             string                             `pulumi:"type"`
+	// Gets the id of the resource.
+	Id string `pulumi:"id"`
+	// Gets or sets a Boolean value to indicate if the connection type is global.
+	IsGlobal *bool `pulumi:"isGlobal"`
+	// Gets or sets the last modified time.
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
+	// Gets the name of the connection type.
+	Name string `pulumi:"name"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupConnectionTypeOutput(ctx *pulumi.Context, args LookupConnectionTypeOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionTypeResultOutput {
@@ -52,9 +63,12 @@ func LookupConnectionTypeOutput(ctx *pulumi.Context, args LookupConnectionTypeOu
 }
 
 type LookupConnectionTypeOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	ConnectionTypeName    pulumi.StringInput `pulumi:"connectionTypeName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of connection type.
+	ConnectionTypeName pulumi.StringInput `pulumi:"connectionTypeName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupConnectionTypeOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupConnectionTypeResultOutput) ToLookupConnectionTypeResultOutputWith
 	return o
 }
 
+// Gets the creation time.
 func (o LookupConnectionTypeResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Gets or sets the description.
 func (o LookupConnectionTypeResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Gets the field definitions of the connection type.
 func (o LookupConnectionTypeResultOutput) FieldDefinitions() FieldDefinitionResponseMapOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) map[string]FieldDefinitionResponse { return v.FieldDefinitions }).(FieldDefinitionResponseMapOutput)
 }
 
+// Gets the id of the resource.
 func (o LookupConnectionTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets a Boolean value to indicate if the connection type is global.
 func (o LookupConnectionTypeResultOutput) IsGlobal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) *bool { return v.IsGlobal }).(pulumi.BoolPtrOutput)
 }
 
+// Gets or sets the last modified time.
 func (o LookupConnectionTypeResultOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) *string { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
 
+// Gets the name of the connection type.
 func (o LookupConnectionTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupConnectionTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }

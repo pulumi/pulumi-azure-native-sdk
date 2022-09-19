@@ -21,12 +21,15 @@ func GetVirtualNetworkGatewayVpnclientConnectionHealth(ctx *pulumi.Context, args
 }
 
 type GetVirtualNetworkGatewayVpnclientConnectionHealthArgs struct {
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName string `pulumi:"virtualNetworkGatewayName"`
 }
 
 // List of virtual network gateway vpn client connection health.
 type GetVirtualNetworkGatewayVpnclientConnectionHealthResult struct {
+	// List of vpn client connection health.
 	Value []VpnClientConnectionHealthDetailResponse `pulumi:"value"`
 }
 
@@ -44,7 +47,9 @@ func GetVirtualNetworkGatewayVpnclientConnectionHealthOutput(ctx *pulumi.Context
 }
 
 type GetVirtualNetworkGatewayVpnclientConnectionHealthOutputArgs struct {
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName pulumi.StringInput `pulumi:"virtualNetworkGatewayName"`
 }
 
@@ -67,6 +72,7 @@ func (o GetVirtualNetworkGatewayVpnclientConnectionHealthResultOutput) ToGetVirt
 	return o
 }
 
+// List of vpn client connection health.
 func (o GetVirtualNetworkGatewayVpnclientConnectionHealthResultOutput) Value() VpnClientConnectionHealthDetailResponseArrayOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientConnectionHealthResult) []VpnClientConnectionHealthDetailResponse {
 		return v.Value

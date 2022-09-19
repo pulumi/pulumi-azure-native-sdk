@@ -28,8 +28,11 @@ func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, o
 }
 
 type LookupKubernetesRoleArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The role name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -42,17 +45,29 @@ type LookupKubernetesRoleArgs struct {
 //     Or Demo: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8S-Cloud-Management-20210323.mp4
 //     By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
 type LookupKubernetesRoleResult struct {
-	HostPlatform            string                          `pulumi:"hostPlatform"`
-	HostPlatformType        string                          `pulumi:"hostPlatformType"`
-	Id                      string                          `pulumi:"id"`
-	Kind                    string                          `pulumi:"kind"`
-	KubernetesClusterInfo   KubernetesClusterInfoResponse   `pulumi:"kubernetesClusterInfo"`
+	// Host OS supported by the Kubernetes role.
+	HostPlatform string `pulumi:"hostPlatform"`
+	// Platform where the runtime is hosted.
+	HostPlatformType string `pulumi:"hostPlatformType"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Role type.
+	// Expected value is 'Kubernetes'.
+	Kind string `pulumi:"kind"`
+	// Kubernetes cluster configuration
+	KubernetesClusterInfo KubernetesClusterInfoResponse `pulumi:"kubernetesClusterInfo"`
+	// Kubernetes role resources
 	KubernetesRoleResources KubernetesRoleResourcesResponse `pulumi:"kubernetesRoleResources"`
-	Name                    string                          `pulumi:"name"`
-	ProvisioningState       string                          `pulumi:"provisioningState"`
-	RoleStatus              string                          `pulumi:"roleStatus"`
-	SystemData              SystemDataResponse              `pulumi:"systemData"`
-	Type                    string                          `pulumi:"type"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// State of Kubernetes deployment
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Role status.
+	RoleStatus string `pulumi:"roleStatus"`
+	// Role configured on ASE resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupKubernetesRoleOutput(ctx *pulumi.Context, args LookupKubernetesRoleOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesRoleResultOutput {
@@ -69,8 +84,11 @@ func LookupKubernetesRoleOutput(ctx *pulumi.Context, args LookupKubernetesRoleOu
 }
 
 type LookupKubernetesRoleOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The role name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -100,46 +118,58 @@ func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutputWith
 	return o
 }
 
+// Host OS supported by the Kubernetes role.
 func (o LookupKubernetesRoleResultOutput) HostPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.HostPlatform }).(pulumi.StringOutput)
 }
 
+// Platform where the runtime is hosted.
 func (o LookupKubernetesRoleResultOutput) HostPlatformType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupKubernetesRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Role type.
+// Expected value is 'Kubernetes'.
 func (o LookupKubernetesRoleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Kubernetes cluster configuration
 func (o LookupKubernetesRoleResultOutput) KubernetesClusterInfo() KubernetesClusterInfoResponseOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) KubernetesClusterInfoResponse { return v.KubernetesClusterInfo }).(KubernetesClusterInfoResponseOutput)
 }
 
+// Kubernetes role resources
 func (o LookupKubernetesRoleResultOutput) KubernetesRoleResources() KubernetesRoleResourcesResponseOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) KubernetesRoleResourcesResponse { return v.KubernetesRoleResources }).(KubernetesRoleResourcesResponseOutput)
 }
 
+// The object name.
 func (o LookupKubernetesRoleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of Kubernetes deployment
 func (o LookupKubernetesRoleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Role status.
 func (o LookupKubernetesRoleResultOutput) RoleStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
+// Role configured on ASE resource
 func (o LookupKubernetesRoleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupKubernetesRoleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,29 +23,48 @@ func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulum
 }
 
 type LookupEndpointArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
-	ProfileName       string `pulumi:"profileName"`
+	// Name of the endpoint within the CDN profile.
+	EndpointName string `pulumi:"endpointName"`
+	// Name of the CDN profile within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // CDN endpoint is the entity within a CDN profile containing configuration information regarding caching behaviors and origins. The CDN endpoint is exposed using the URL format <endpointname>.azureedge.net by default, but custom domains can also be created.
 type LookupEndpointResult struct {
-	ContentTypesToCompress     []string                    `pulumi:"contentTypesToCompress"`
-	HostName                   string                      `pulumi:"hostName"`
-	Id                         string                      `pulumi:"id"`
-	IsCompressionEnabled       *bool                       `pulumi:"isCompressionEnabled"`
-	IsHttpAllowed              *bool                       `pulumi:"isHttpAllowed"`
-	IsHttpsAllowed             *bool                       `pulumi:"isHttpsAllowed"`
-	Location                   string                      `pulumi:"location"`
-	Name                       string                      `pulumi:"name"`
-	OriginHostHeader           *string                     `pulumi:"originHostHeader"`
-	OriginPath                 *string                     `pulumi:"originPath"`
-	Origins                    []DeepCreatedOriginResponse `pulumi:"origins"`
-	ProvisioningState          string                      `pulumi:"provisioningState"`
-	QueryStringCachingBehavior *string                     `pulumi:"queryStringCachingBehavior"`
-	ResourceState              string                      `pulumi:"resourceState"`
-	Tags                       map[string]string           `pulumi:"tags"`
-	Type                       string                      `pulumi:"type"`
+	// List of content types on which compression will be applied. The value for the elements should be a valid MIME type.
+	ContentTypesToCompress []string `pulumi:"contentTypesToCompress"`
+	// The host name of the endpoint {endpointName}.{DNSZone}
+	HostName string `pulumi:"hostName"`
+	// Resource ID
+	Id string `pulumi:"id"`
+	// Indicates whether the compression is enabled. Default value is false. If compression is enabled, the content transferred from cdn endpoint to end user will be compressed. The requested content must be larger than 1 byte and smaller than 1 MB.
+	IsCompressionEnabled *bool `pulumi:"isCompressionEnabled"`
+	// Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
+	IsHttpAllowed *bool `pulumi:"isHttpAllowed"`
+	// Indicates whether https traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
+	IsHttpsAllowed *bool `pulumi:"isHttpsAllowed"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The host header the CDN provider will send along with content requests to origins. The default value is the host name of the origin.
+	OriginHostHeader *string `pulumi:"originHostHeader"`
+	// The path used for origin requests.
+	OriginPath *string `pulumi:"originPath"`
+	// The set of origins for the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options.
+	Origins []DeepCreatedOriginResponse `pulumi:"origins"`
+	// Provisioning status of the endpoint.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Defines the query string caching behavior.
+	QueryStringCachingBehavior *string `pulumi:"queryStringCachingBehavior"`
+	// Resource status of the endpoint.
+	ResourceState string `pulumi:"resourceState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointResultOutput {
@@ -62,8 +81,11 @@ func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, op
 }
 
 type LookupEndpointOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
-	ProfileName       pulumi.StringInput `pulumi:"profileName"`
+	// Name of the endpoint within the CDN profile.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// Name of the CDN profile within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -86,66 +108,82 @@ func (o LookupEndpointResultOutput) ToLookupEndpointResultOutputWithContext(ctx 
 	return o
 }
 
+// List of content types on which compression will be applied. The value for the elements should be a valid MIME type.
 func (o LookupEndpointResultOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEndpointResult) []string { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
 }
 
+// The host name of the endpoint {endpointName}.{DNSZone}
 func (o LookupEndpointResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// Resource ID
 func (o LookupEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether the compression is enabled. Default value is false. If compression is enabled, the content transferred from cdn endpoint to end user will be compressed. The requested content must be larger than 1 byte and smaller than 1 MB.
 func (o LookupEndpointResultOutput) IsCompressionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *bool { return v.IsCompressionEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
 func (o LookupEndpointResultOutput) IsHttpAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *bool { return v.IsHttpAllowed }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether https traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
 func (o LookupEndpointResultOutput) IsHttpsAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *bool { return v.IsHttpsAllowed }).(pulumi.BoolPtrOutput)
 }
 
+// Resource location
 func (o LookupEndpointResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The host header the CDN provider will send along with content requests to origins. The default value is the host name of the origin.
 func (o LookupEndpointResultOutput) OriginHostHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *string { return v.OriginHostHeader }).(pulumi.StringPtrOutput)
 }
 
+// The path used for origin requests.
 func (o LookupEndpointResultOutput) OriginPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *string { return v.OriginPath }).(pulumi.StringPtrOutput)
 }
 
+// The set of origins for the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options.
 func (o LookupEndpointResultOutput) Origins() DeepCreatedOriginResponseArrayOutput {
 	return o.ApplyT(func(v LookupEndpointResult) []DeepCreatedOriginResponse { return v.Origins }).(DeepCreatedOriginResponseArrayOutput)
 }
 
+// Provisioning status of the endpoint.
 func (o LookupEndpointResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Defines the query string caching behavior.
 func (o LookupEndpointResultOutput) QueryStringCachingBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *string { return v.QueryStringCachingBehavior }).(pulumi.StringPtrOutput)
 }
 
+// Resource status of the endpoint.
 func (o LookupEndpointResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupEndpointResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEndpointResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

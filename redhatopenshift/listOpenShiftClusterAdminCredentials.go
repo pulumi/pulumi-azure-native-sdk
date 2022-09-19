@@ -22,12 +22,15 @@ func ListOpenShiftClusterAdminCredentials(ctx *pulumi.Context, args *ListOpenShi
 }
 
 type ListOpenShiftClusterAdminCredentialsArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the OpenShift cluster resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // OpenShiftClusterAdminKubeconfig represents an OpenShift cluster's admin kubeconfig.
 type ListOpenShiftClusterAdminCredentialsResult struct {
+	// The base64-encoded kubeconfig file.
 	Kubeconfig *string `pulumi:"kubeconfig"`
 }
 
@@ -45,8 +48,10 @@ func ListOpenShiftClusterAdminCredentialsOutput(ctx *pulumi.Context, args ListOp
 }
 
 type ListOpenShiftClusterAdminCredentialsOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the OpenShift cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListOpenShiftClusterAdminCredentialsOutputArgs) ElementType() reflect.Type {
@@ -68,6 +73,7 @@ func (o ListOpenShiftClusterAdminCredentialsResultOutput) ToListOpenShiftCluster
 	return o
 }
 
+// The base64-encoded kubeconfig file.
 func (o ListOpenShiftClusterAdminCredentialsResultOutput) Kubeconfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListOpenShiftClusterAdminCredentialsResult) *string { return v.Kubeconfig }).(pulumi.StringPtrOutput)
 }

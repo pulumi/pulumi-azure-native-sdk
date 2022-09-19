@@ -21,20 +21,30 @@ func LookupProperty(ctx *pulumi.Context, args *LookupPropertyArgs, opts ...pulum
 }
 
 type LookupPropertyArgs struct {
-	PropId            string `pulumi:"propId"`
+	// Identifier of the property.
+	PropId string `pulumi:"propId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Property details.
 type LookupPropertyResult struct {
-	DisplayName string   `pulumi:"displayName"`
-	Id          string   `pulumi:"id"`
-	Name        string   `pulumi:"name"`
-	Secret      *bool    `pulumi:"secret"`
-	Tags        []string `pulumi:"tags"`
-	Type        string   `pulumi:"type"`
-	Value       string   `pulumi:"value"`
+	// Unique name of Property. It may contain only letters, digits, period, dash, and underscore characters.
+	DisplayName string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Determines whether the value is a secret and should be encrypted or not. Default value is false.
+	Secret *bool `pulumi:"secret"`
+	// Optional tags that when provided can be used to filter the property list.
+	Tags []string `pulumi:"tags"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// Value of the property. Can contain policy expressions. It may not be empty or consist only of whitespace.
+	Value string `pulumi:"value"`
 }
 
 func LookupPropertyOutput(ctx *pulumi.Context, args LookupPropertyOutputArgs, opts ...pulumi.InvokeOption) LookupPropertyResultOutput {
@@ -51,9 +61,12 @@ func LookupPropertyOutput(ctx *pulumi.Context, args LookupPropertyOutputArgs, op
 }
 
 type LookupPropertyOutputArgs struct {
-	PropId            pulumi.StringInput `pulumi:"propId"`
+	// Identifier of the property.
+	PropId pulumi.StringInput `pulumi:"propId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupPropertyOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupPropertyResultOutput) ToLookupPropertyResultOutputWithContext(ctx 
 	return o
 }
 
+// Unique name of Property. It may contain only letters, digits, period, dash, and underscore characters.
 func (o LookupPropertyResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPropertyResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupPropertyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPropertyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupPropertyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPropertyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Determines whether the value is a secret and should be encrypted or not. Default value is false.
 func (o LookupPropertyResultOutput) Secret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPropertyResult) *bool { return v.Secret }).(pulumi.BoolPtrOutput)
 }
 
+// Optional tags that when provided can be used to filter the property list.
 func (o LookupPropertyResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPropertyResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupPropertyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPropertyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Value of the property. Can contain policy expressions. It may not be empty or consist only of whitespace.
 func (o LookupPropertyResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPropertyResult) string { return v.Value }).(pulumi.StringOutput)
 }

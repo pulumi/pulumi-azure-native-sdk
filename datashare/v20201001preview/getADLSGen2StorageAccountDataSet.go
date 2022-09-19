@@ -21,23 +21,37 @@ func LookupADLSGen2StorageAccountDataSet(ctx *pulumi.Context, args *LookupADLSGe
 }
 
 type LookupADLSGen2StorageAccountDataSetArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DataSetName       string `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName string `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
 }
 
 // An ADLSGen2 storage account data set.
 type LookupADLSGen2StorageAccountDataSetResult struct {
-	DataSetId                string                               `pulumi:"dataSetId"`
-	Id                       string                               `pulumi:"id"`
-	Kind                     string                               `pulumi:"kind"`
-	Location                 string                               `pulumi:"location"`
-	Name                     string                               `pulumi:"name"`
-	Paths                    []ADLSGen2StorageAccountPathResponse `pulumi:"paths"`
-	StorageAccountResourceId string                               `pulumi:"storageAccountResourceId"`
-	SystemData               SystemDataResponse                   `pulumi:"systemData"`
-	Type                     string                               `pulumi:"type"`
+	// Unique id for identifying a data set resource
+	DataSetId string `pulumi:"dataSetId"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set.
+	// Expected value is 'AdlsGen2StorageAccount'.
+	Kind string `pulumi:"kind"`
+	// Location of the ADLSGen2 storage account.
+	Location string `pulumi:"location"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// A list of ADLSGen2 storage account paths.
+	Paths []ADLSGen2StorageAccountPathResponse `pulumi:"paths"`
+	// Resource id of the ADLSGen2 storage account.
+	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
+	// System Data of the Azure resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupADLSGen2StorageAccountDataSetOutput(ctx *pulumi.Context, args LookupADLSGen2StorageAccountDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen2StorageAccountDataSetResultOutput {
@@ -54,10 +68,14 @@ func LookupADLSGen2StorageAccountDataSetOutput(ctx *pulumi.Context, args LookupA
 }
 
 type LookupADLSGen2StorageAccountDataSetOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DataSetName       pulumi.StringInput `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName pulumi.StringInput `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupADLSGen2StorageAccountDataSetOutputArgs) ElementType() reflect.Type {
@@ -79,38 +97,48 @@ func (o LookupADLSGen2StorageAccountDataSetResultOutput) ToLookupADLSGen2Storage
 	return o
 }
 
+// Unique id for identifying a data set resource
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set.
+// Expected value is 'AdlsGen2StorageAccount'.
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Location of the ADLSGen2 storage account.
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of ADLSGen2 storage account paths.
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) Paths() ADLSGen2StorageAccountPathResponseArrayOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) []ADLSGen2StorageAccountPathResponse { return v.Paths }).(ADLSGen2StorageAccountPathResponseArrayOutput)
 }
 
+// Resource id of the ADLSGen2 storage account.
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) StorageAccountResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
+// System Data of the Azure resource.
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the azure resource
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen2StorageAccountDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

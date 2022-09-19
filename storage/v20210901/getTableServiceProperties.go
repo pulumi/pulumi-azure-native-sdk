@@ -21,17 +21,24 @@ func LookupTableServiceProperties(ctx *pulumi.Context, args *LookupTableServiceP
 }
 
 type LookupTableServicePropertiesArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TableServiceName  string `pulumi:"tableServiceName"`
+	// The name of the Table Service within the specified storage account. Table Service Name must be 'default'
+	TableServiceName string `pulumi:"tableServiceName"`
 }
 
 // The properties of a storage account’s Table service.
 type LookupTableServicePropertiesResult struct {
+	// Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
 	Cors *CorsRulesResponse `pulumi:"cors"`
-	Id   string             `pulumi:"id"`
-	Name string             `pulumi:"name"`
-	Type string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupTableServicePropertiesOutput(ctx *pulumi.Context, args LookupTableServicePropertiesOutputArgs, opts ...pulumi.InvokeOption) LookupTableServicePropertiesResultOutput {
@@ -48,9 +55,12 @@ func LookupTableServicePropertiesOutput(ctx *pulumi.Context, args LookupTableSer
 }
 
 type LookupTableServicePropertiesOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TableServiceName  pulumi.StringInput `pulumi:"tableServiceName"`
+	// The name of the Table Service within the specified storage account. Table Service Name must be 'default'
+	TableServiceName pulumi.StringInput `pulumi:"tableServiceName"`
 }
 
 func (LookupTableServicePropertiesOutputArgs) ElementType() reflect.Type {
@@ -72,18 +82,22 @@ func (o LookupTableServicePropertiesResultOutput) ToLookupTableServiceProperties
 	return o
 }
 
+// Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
 func (o LookupTableServicePropertiesResultOutput) Cors() CorsRulesResponsePtrOutput {
 	return o.ApplyT(func(v LookupTableServicePropertiesResult) *CorsRulesResponse { return v.Cors }).(CorsRulesResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTableServicePropertiesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableServicePropertiesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupTableServicePropertiesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableServicePropertiesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTableServicePropertiesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableServicePropertiesResult) string { return v.Type }).(pulumi.StringOutput)
 }

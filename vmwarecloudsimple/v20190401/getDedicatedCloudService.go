@@ -21,21 +21,32 @@ func LookupDedicatedCloudService(ctx *pulumi.Context, args *LookupDedicatedCloud
 }
 
 type LookupDedicatedCloudServiceArgs struct {
+	// dedicated cloud Service name
 	DedicatedCloudServiceName string `pulumi:"dedicatedCloudServiceName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Dedicated cloud service model
 type LookupDedicatedCloudServiceResult struct {
-	GatewaySubnet      string            `pulumi:"gatewaySubnet"`
-	Id                 string            `pulumi:"id"`
-	IsAccountOnboarded string            `pulumi:"isAccountOnboarded"`
-	Location           string            `pulumi:"location"`
-	Name               string            `pulumi:"name"`
-	Nodes              int               `pulumi:"nodes"`
-	ServiceURL         string            `pulumi:"serviceURL"`
-	Tags               map[string]string `pulumi:"tags"`
-	Type               string            `pulumi:"type"`
+	// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
+	GatewaySubnet string `pulumi:"gatewaySubnet"`
+	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
+	Id string `pulumi:"id"`
+	// indicates whether account onboarded or not in a given region
+	IsAccountOnboarded string `pulumi:"isAccountOnboarded"`
+	// Azure region
+	Location string `pulumi:"location"`
+	// {dedicatedCloudServiceName}
+	Name string `pulumi:"name"`
+	// total nodes purchased
+	Nodes int `pulumi:"nodes"`
+	// link to a service management web portal
+	ServiceURL string `pulumi:"serviceURL"`
+	// The list of tags
+	Tags map[string]string `pulumi:"tags"`
+	// {resourceProviderNamespace}/{resourceType}
+	Type string `pulumi:"type"`
 }
 
 func LookupDedicatedCloudServiceOutput(ctx *pulumi.Context, args LookupDedicatedCloudServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedCloudServiceResultOutput {
@@ -52,8 +63,10 @@ func LookupDedicatedCloudServiceOutput(ctx *pulumi.Context, args LookupDedicated
 }
 
 type LookupDedicatedCloudServiceOutputArgs struct {
+	// dedicated cloud Service name
 	DedicatedCloudServiceName pulumi.StringInput `pulumi:"dedicatedCloudServiceName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDedicatedCloudServiceOutputArgs) ElementType() reflect.Type {
@@ -75,38 +88,47 @@ func (o LookupDedicatedCloudServiceResultOutput) ToLookupDedicatedCloudServiceRe
 	return o
 }
 
+// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
 func (o LookupDedicatedCloudServiceResultOutput) GatewaySubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.GatewaySubnet }).(pulumi.StringOutput)
 }
 
+// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
 func (o LookupDedicatedCloudServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// indicates whether account onboarded or not in a given region
 func (o LookupDedicatedCloudServiceResultOutput) IsAccountOnboarded() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.IsAccountOnboarded }).(pulumi.StringOutput)
 }
 
+// Azure region
 func (o LookupDedicatedCloudServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// {dedicatedCloudServiceName}
 func (o LookupDedicatedCloudServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// total nodes purchased
 func (o LookupDedicatedCloudServiceResultOutput) Nodes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) int { return v.Nodes }).(pulumi.IntOutput)
 }
 
+// link to a service management web portal
 func (o LookupDedicatedCloudServiceResultOutput) ServiceURL() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.ServiceURL }).(pulumi.StringOutput)
 }
 
+// The list of tags
 func (o LookupDedicatedCloudServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// {resourceProviderNamespace}/{resourceType}
 func (o LookupDedicatedCloudServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

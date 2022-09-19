@@ -22,19 +22,28 @@ func LookupWorkspaceAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceAadAdminA
 }
 
 type LookupWorkspaceAadAdminArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Workspace active directory administrator
 type LookupWorkspaceAadAdminResult struct {
+	// Workspace active directory administrator type
 	AdministratorType *string `pulumi:"administratorType"`
-	Id                string  `pulumi:"id"`
-	Login             *string `pulumi:"login"`
-	Name              string  `pulumi:"name"`
-	Sid               *string `pulumi:"sid"`
-	TenantId          *string `pulumi:"tenantId"`
-	Type              string  `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Login of the workspace active directory administrator
+	Login *string `pulumi:"login"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Object ID of the workspace active directory administrator
+	Sid *string `pulumi:"sid"`
+	// Tenant ID of the workspace active directory administrator
+	TenantId *string `pulumi:"tenantId"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkspaceAadAdminOutput(ctx *pulumi.Context, args LookupWorkspaceAadAdminOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceAadAdminResultOutput {
@@ -51,8 +60,10 @@ func LookupWorkspaceAadAdminOutput(ctx *pulumi.Context, args LookupWorkspaceAadA
 }
 
 type LookupWorkspaceAadAdminOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupWorkspaceAadAdminOutputArgs) ElementType() reflect.Type {
@@ -74,30 +85,37 @@ func (o LookupWorkspaceAadAdminResultOutput) ToLookupWorkspaceAadAdminResultOutp
 	return o
 }
 
+// Workspace active directory administrator type
 func (o LookupWorkspaceAadAdminResultOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) *string { return v.AdministratorType }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceAadAdminResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Login of the workspace active directory administrator
 func (o LookupWorkspaceAadAdminResultOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupWorkspaceAadAdminResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Object ID of the workspace active directory administrator
 func (o LookupWorkspaceAadAdminResultOutput) Sid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) *string { return v.Sid }).(pulumi.StringPtrOutput)
 }
 
+// Tenant ID of the workspace active directory administrator
 func (o LookupWorkspaceAadAdminResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkspaceAadAdminResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) string { return v.Type }).(pulumi.StringOutput)
 }

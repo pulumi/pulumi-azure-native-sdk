@@ -21,19 +21,28 @@ func LookupSolution(ctx *pulumi.Context, args *LookupSolutionArgs, opts ...pulum
 }
 
 type LookupSolutionArgs struct {
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SolutionName      string `pulumi:"solutionName"`
+	// User Solution Name.
+	SolutionName string `pulumi:"solutionName"`
 }
 
 // The container for solution.
 type LookupSolutionResult struct {
-	Id         string                     `pulumi:"id"`
-	Location   *string                    `pulumi:"location"`
-	Name       string                     `pulumi:"name"`
-	Plan       *SolutionPlanResponse      `pulumi:"plan"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Plan for solution object supported by the OperationsManagement resource provider.
+	Plan *SolutionPlanResponse `pulumi:"plan"`
+	// Properties for solution object supported by the OperationsManagement resource provider.
 	Properties SolutionPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string          `pulumi:"tags"`
-	Type       string                     `pulumi:"type"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSolutionOutput(ctx *pulumi.Context, args LookupSolutionOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionResultOutput {
@@ -50,8 +59,10 @@ func LookupSolutionOutput(ctx *pulumi.Context, args LookupSolutionOutputArgs, op
 }
 
 type LookupSolutionOutputArgs struct {
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SolutionName      pulumi.StringInput `pulumi:"solutionName"`
+	// User Solution Name.
+	SolutionName pulumi.StringInput `pulumi:"solutionName"`
 }
 
 func (LookupSolutionOutputArgs) ElementType() reflect.Type {
@@ -73,30 +84,37 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx 
 	return o
 }
 
+// Resource ID.
 func (o LookupSolutionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupSolutionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSolutionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupSolutionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Plan for solution object supported by the OperationsManagement resource provider.
 func (o LookupSolutionResultOutput) Plan() SolutionPlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupSolutionResult) *SolutionPlanResponse { return v.Plan }).(SolutionPlanResponsePtrOutput)
 }
 
+// Properties for solution object supported by the OperationsManagement resource provider.
 func (o LookupSolutionResultOutput) Properties() SolutionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSolutionResult) SolutionPropertiesResponse { return v.Properties }).(SolutionPropertiesResponseOutput)
 }
 
+// Resource tags
 func (o LookupSolutionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSolutionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupSolutionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionResult) string { return v.Type }).(pulumi.StringOutput)
 }

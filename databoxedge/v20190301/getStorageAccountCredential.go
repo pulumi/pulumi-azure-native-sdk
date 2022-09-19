@@ -23,23 +23,36 @@ func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAcco
 }
 
 type LookupStorageAccountCredentialArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The storage account credential name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The storage account credential.
 type LookupStorageAccountCredentialResult struct {
-	AccountKey       *AsymmetricEncryptedSecretResponse `pulumi:"accountKey"`
-	AccountType      string                             `pulumi:"accountType"`
-	Alias            string                             `pulumi:"alias"`
-	BlobDomainName   *string                            `pulumi:"blobDomainName"`
-	ConnectionString *string                            `pulumi:"connectionString"`
-	Id               string                             `pulumi:"id"`
-	Name             string                             `pulumi:"name"`
-	SslStatus        string                             `pulumi:"sslStatus"`
-	Type             string                             `pulumi:"type"`
-	UserName         *string                            `pulumi:"userName"`
+	// Encrypted storage key.
+	AccountKey *AsymmetricEncryptedSecretResponse `pulumi:"accountKey"`
+	// Type of storage accessed on the storage account.
+	AccountType string `pulumi:"accountType"`
+	// Alias for the storage account.
+	Alias string `pulumi:"alias"`
+	// Blob end point for private clouds.
+	BlobDomainName *string `pulumi:"blobDomainName"`
+	// Connection string for the storage account. Use this string if username and account key are not specified.
+	ConnectionString *string `pulumi:"connectionString"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Signifies whether SSL needs to be enabled or not.
+	SslStatus string `pulumi:"sslStatus"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
+	// Username for the storage account.
+	UserName *string `pulumi:"userName"`
 }
 
 func LookupStorageAccountCredentialOutput(ctx *pulumi.Context, args LookupStorageAccountCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountCredentialResultOutput {
@@ -56,8 +69,11 @@ func LookupStorageAccountCredentialOutput(ctx *pulumi.Context, args LookupStorag
 }
 
 type LookupStorageAccountCredentialOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The storage account credential name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,42 +96,52 @@ func (o LookupStorageAccountCredentialResultOutput) ToLookupStorageAccountCreden
 	return o
 }
 
+// Encrypted storage key.
 func (o LookupStorageAccountCredentialResultOutput) AccountKey() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *AsymmetricEncryptedSecretResponse { return v.AccountKey }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
+// Type of storage accessed on the storage account.
 func (o LookupStorageAccountCredentialResultOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.AccountType }).(pulumi.StringOutput)
 }
 
+// Alias for the storage account.
 func (o LookupStorageAccountCredentialResultOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Alias }).(pulumi.StringOutput)
 }
 
+// Blob end point for private clouds.
 func (o LookupStorageAccountCredentialResultOutput) BlobDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *string { return v.BlobDomainName }).(pulumi.StringPtrOutput)
 }
 
+// Connection string for the storage account. Use this string if username and account key are not specified.
 func (o LookupStorageAccountCredentialResultOutput) ConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupStorageAccountCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupStorageAccountCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Signifies whether SSL needs to be enabled or not.
 func (o LookupStorageAccountCredentialResultOutput) SslStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.SslStatus }).(pulumi.StringOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupStorageAccountCredentialResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Username for the storage account.
 func (o LookupStorageAccountCredentialResultOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }

@@ -22,21 +22,32 @@ func LookupAlertsSuppressionRule(ctx *pulumi.Context, args *LookupAlertsSuppress
 }
 
 type LookupAlertsSuppressionRuleArgs struct {
+	// The unique name of the suppression alert rule
 	AlertsSuppressionRuleName string `pulumi:"alertsSuppressionRuleName"`
 }
 
 // Describes the suppression rule
 type LookupAlertsSuppressionRuleResult struct {
-	AlertType              string                          `pulumi:"alertType"`
-	Comment                *string                         `pulumi:"comment"`
-	ExpirationDateUtc      *string                         `pulumi:"expirationDateUtc"`
-	Id                     string                          `pulumi:"id"`
-	LastModifiedUtc        string                          `pulumi:"lastModifiedUtc"`
-	Name                   string                          `pulumi:"name"`
-	Reason                 string                          `pulumi:"reason"`
-	State                  string                          `pulumi:"state"`
+	// Type of the alert to automatically suppress. For all alert types, use '*'
+	AlertType string `pulumi:"alertType"`
+	// Any comment regarding the rule
+	Comment *string `pulumi:"comment"`
+	// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+	ExpirationDateUtc *string `pulumi:"expirationDateUtc"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The last time this rule was modified
+	LastModifiedUtc string `pulumi:"lastModifiedUtc"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The reason for dismissing the alert
+	Reason string `pulumi:"reason"`
+	// Possible states of the rule
+	State string `pulumi:"state"`
+	// The suppression conditions
 	SuppressionAlertsScope *SuppressionAlertsScopeResponse `pulumi:"suppressionAlertsScope"`
-	Type                   string                          `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAlertsSuppressionRuleOutput(ctx *pulumi.Context, args LookupAlertsSuppressionRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertsSuppressionRuleResultOutput {
@@ -53,6 +64,7 @@ func LookupAlertsSuppressionRuleOutput(ctx *pulumi.Context, args LookupAlertsSup
 }
 
 type LookupAlertsSuppressionRuleOutputArgs struct {
+	// The unique name of the suppression alert rule
 	AlertsSuppressionRuleName pulumi.StringInput `pulumi:"alertsSuppressionRuleName"`
 }
 
@@ -75,44 +87,54 @@ func (o LookupAlertsSuppressionRuleResultOutput) ToLookupAlertsSuppressionRuleRe
 	return o
 }
 
+// Type of the alert to automatically suppress. For all alert types, use '*'
 func (o LookupAlertsSuppressionRuleResultOutput) AlertType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.AlertType }).(pulumi.StringOutput)
 }
 
+// Any comment regarding the rule
 func (o LookupAlertsSuppressionRuleResultOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
 func (o LookupAlertsSuppressionRuleResultOutput) ExpirationDateUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *string { return v.ExpirationDateUtc }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupAlertsSuppressionRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The last time this rule was modified
 func (o LookupAlertsSuppressionRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupAlertsSuppressionRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The reason for dismissing the alert
 func (o LookupAlertsSuppressionRuleResultOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+// Possible states of the rule
 func (o LookupAlertsSuppressionRuleResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The suppression conditions
 func (o LookupAlertsSuppressionRuleResultOutput) SuppressionAlertsScope() SuppressionAlertsScopeResponsePtrOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *SuppressionAlertsScopeResponse {
 		return v.SuppressionAlertsScope
 	}).(SuppressionAlertsScopeResponsePtrOutput)
 }
 
+// Resource type
 func (o LookupAlertsSuppressionRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

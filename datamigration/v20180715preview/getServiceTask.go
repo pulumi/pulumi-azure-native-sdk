@@ -21,19 +21,28 @@ func LookupServiceTask(ctx *pulumi.Context, args *LookupServiceTaskArgs, opts ..
 }
 
 type LookupServiceTaskArgs struct {
-	Expand      *string `pulumi:"expand"`
-	GroupName   string  `pulumi:"groupName"`
-	ServiceName string  `pulumi:"serviceName"`
-	TaskName    string  `pulumi:"taskName"`
+	// Expand the response
+	Expand *string `pulumi:"expand"`
+	// Name of the resource group
+	GroupName string `pulumi:"groupName"`
+	// Name of the service
+	ServiceName string `pulumi:"serviceName"`
+	// Name of the Task
+	TaskName string `pulumi:"taskName"`
 }
 
 // A task resource
 type LookupServiceTaskResult struct {
-	Etag       *string     `pulumi:"etag"`
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// HTTP strong entity tag value. This is ignored if submitted.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Custom task properties
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceTaskOutput(ctx *pulumi.Context, args LookupServiceTaskOutputArgs, opts ...pulumi.InvokeOption) LookupServiceTaskResultOutput {
@@ -50,10 +59,14 @@ func LookupServiceTaskOutput(ctx *pulumi.Context, args LookupServiceTaskOutputAr
 }
 
 type LookupServiceTaskOutputArgs struct {
-	Expand      pulumi.StringPtrInput `pulumi:"expand"`
-	GroupName   pulumi.StringInput    `pulumi:"groupName"`
-	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
-	TaskName    pulumi.StringInput    `pulumi:"taskName"`
+	// Expand the response
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Name of the resource group
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the service
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Name of the Task
+	TaskName pulumi.StringInput `pulumi:"taskName"`
 }
 
 func (LookupServiceTaskOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupServiceTaskResultOutput) ToLookupServiceTaskResultOutputWithContex
 	return o
 }
 
+// HTTP strong entity tag value. This is ignored if submitted.
 func (o LookupServiceTaskResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceTaskResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupServiceTaskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTaskResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServiceTaskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTaskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Custom task properties
 func (o LookupServiceTaskResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupServiceTaskResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource type.
 func (o LookupServiceTaskResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTaskResult) string { return v.Type }).(pulumi.StringOutput)
 }

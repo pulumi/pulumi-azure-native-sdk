@@ -23,18 +23,26 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 }
 
 type LookupRoleArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The role name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Compute role.
 type LookupRoleResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Role type.
+	Kind string `pulumi:"kind"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Role configured on ASE resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
@@ -51,8 +59,11 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 }
 
 type LookupRoleOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The role name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,22 +86,27 @@ func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.
 	return o
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Role type.
 func (o LookupRoleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupRoleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Role configured on ASE resource
 func (o LookupRoleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupRoleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,20 +21,30 @@ func LookupDataPool(ctx *pulumi.Context, args *LookupDataPoolArgs, opts ...pulum
 }
 
 type LookupDataPoolArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DataPoolName      string `pulumi:"dataPoolName"`
+	// The name of the ADP account
+	AccountName string `pulumi:"accountName"`
+	// The name of the Data Pool
+	DataPoolName string `pulumi:"dataPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ADP Data Pool
 type LookupDataPoolResult struct {
-	DataPoolId        string                     `pulumi:"dataPoolId"`
-	Id                string                     `pulumi:"id"`
-	Locations         []DataPoolLocationResponse `pulumi:"locations"`
-	Name              string                     `pulumi:"name"`
-	ProvisioningState string                     `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse         `pulumi:"systemData"`
-	Type              string                     `pulumi:"type"`
+	// The Data Pool's data-plane ID
+	DataPoolId string `pulumi:"dataPoolId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Gets or sets the collection of locations where Data Pool resources should be created
+	Locations []DataPoolLocationResponse `pulumi:"locations"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets the status of the data pool at the time the operation was called
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system meta data relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDataPoolOutput(ctx *pulumi.Context, args LookupDataPoolOutputArgs, opts ...pulumi.InvokeOption) LookupDataPoolResultOutput {
@@ -51,8 +61,11 @@ func LookupDataPoolOutput(ctx *pulumi.Context, args LookupDataPoolOutputArgs, op
 }
 
 type LookupDataPoolOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DataPoolName      pulumi.StringInput `pulumi:"dataPoolName"`
+	// The name of the ADP account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Data Pool
+	DataPoolName pulumi.StringInput `pulumi:"dataPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupDataPoolResultOutput) ToLookupDataPoolResultOutputWithContext(ctx 
 	return o
 }
 
+// The Data Pool's data-plane ID
 func (o LookupDataPoolResultOutput) DataPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) string { return v.DataPoolId }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDataPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the collection of locations where Data Pool resources should be created
 func (o LookupDataPoolResultOutput) Locations() DataPoolLocationResponseArrayOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) []DataPoolLocationResponse { return v.Locations }).(DataPoolLocationResponseArrayOutput)
 }
 
+// The name of the resource
 func (o LookupDataPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets the status of the data pool at the time the operation was called
 func (o LookupDataPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource
 func (o LookupDataPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDataPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }

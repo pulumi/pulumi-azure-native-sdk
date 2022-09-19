@@ -21,19 +21,28 @@ func LookupPeerAsn(ctx *pulumi.Context, args *LookupPeerAsnArgs, opts ...pulumi.
 }
 
 type LookupPeerAsnArgs struct {
+	// The peer ASN name.
 	PeerAsnName string `pulumi:"peerAsnName"`
 }
 
 // The essential information related to the peer's ASN.
 type LookupPeerAsnResult struct {
-	ErrorMessage      string                  `pulumi:"errorMessage"`
-	Id                string                  `pulumi:"id"`
-	Name              string                  `pulumi:"name"`
-	PeerAsn           *int                    `pulumi:"peerAsn"`
+	// The error message for the validation state
+	ErrorMessage string `pulumi:"errorMessage"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The Autonomous System Number (ASN) of the peer.
+	PeerAsn *int `pulumi:"peerAsn"`
+	// The contact details of the peer.
 	PeerContactDetail []ContactDetailResponse `pulumi:"peerContactDetail"`
-	PeerName          *string                 `pulumi:"peerName"`
-	Type              string                  `pulumi:"type"`
-	ValidationState   *string                 `pulumi:"validationState"`
+	// The name of the peer.
+	PeerName *string `pulumi:"peerName"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The validation state of the ASN associated with the peer.
+	ValidationState *string `pulumi:"validationState"`
 }
 
 func LookupPeerAsnOutput(ctx *pulumi.Context, args LookupPeerAsnOutputArgs, opts ...pulumi.InvokeOption) LookupPeerAsnResultOutput {
@@ -50,6 +59,7 @@ func LookupPeerAsnOutput(ctx *pulumi.Context, args LookupPeerAsnOutputArgs, opts
 }
 
 type LookupPeerAsnOutputArgs struct {
+	// The peer ASN name.
 	PeerAsnName pulumi.StringInput `pulumi:"peerAsnName"`
 }
 
@@ -72,34 +82,42 @@ func (o LookupPeerAsnResultOutput) ToLookupPeerAsnResultOutputWithContext(ctx co
 	return o
 }
 
+// The error message for the validation state
 func (o LookupPeerAsnResultOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
+// The ID of the resource.
 func (o LookupPeerAsnResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupPeerAsnResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Autonomous System Number (ASN) of the peer.
 func (o LookupPeerAsnResultOutput) PeerAsn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) *int { return v.PeerAsn }).(pulumi.IntPtrOutput)
 }
 
+// The contact details of the peer.
 func (o LookupPeerAsnResultOutput) PeerContactDetail() ContactDetailResponseArrayOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) []ContactDetailResponse { return v.PeerContactDetail }).(ContactDetailResponseArrayOutput)
 }
 
+// The name of the peer.
 func (o LookupPeerAsnResultOutput) PeerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) *string { return v.PeerName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.
 func (o LookupPeerAsnResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The validation state of the ASN associated with the peer.
 func (o LookupPeerAsnResultOutput) ValidationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeerAsnResult) *string { return v.ValidationState }).(pulumi.StringPtrOutput)
 }

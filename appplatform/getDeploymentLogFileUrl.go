@@ -22,14 +22,19 @@ func GetDeploymentLogFileUrl(ctx *pulumi.Context, args *GetDeploymentLogFileUrlA
 }
 
 type GetDeploymentLogFileUrlArgs struct {
-	AppName           string `pulumi:"appName"`
-	DeploymentName    string `pulumi:"deploymentName"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the Deployment resource.
+	DeploymentName string `pulumi:"deploymentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Log file URL payload
 type GetDeploymentLogFileUrlResult struct {
+	// URL of the log file
 	Url string `pulumi:"url"`
 }
 
@@ -47,10 +52,14 @@ func GetDeploymentLogFileUrlOutput(ctx *pulumi.Context, args GetDeploymentLogFil
 }
 
 type GetDeploymentLogFileUrlOutputArgs struct {
-	AppName           pulumi.StringInput `pulumi:"appName"`
-	DeploymentName    pulumi.StringInput `pulumi:"deploymentName"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the Deployment resource.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetDeploymentLogFileUrlOutputArgs) ElementType() reflect.Type {
@@ -72,6 +81,7 @@ func (o GetDeploymentLogFileUrlResultOutput) ToGetDeploymentLogFileUrlResultOutp
 	return o
 }
 
+// URL of the log file
 func (o GetDeploymentLogFileUrlResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeploymentLogFileUrlResult) string { return v.Url }).(pulumi.StringOutput)
 }

@@ -21,21 +21,33 @@ func LookupFileEventTrigger(ctx *pulumi.Context, args *LookupFileEventTriggerArg
 }
 
 type LookupFileEventTriggerArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The trigger name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Trigger details.
 type LookupFileEventTriggerResult struct {
-	CustomContextTag *string                `pulumi:"customContextTag"`
-	Id               string                 `pulumi:"id"`
-	Kind             string                 `pulumi:"kind"`
-	Name             string                 `pulumi:"name"`
-	SinkInfo         RoleSinkInfoResponse   `pulumi:"sinkInfo"`
-	SourceInfo       FileSourceInfoResponse `pulumi:"sourceInfo"`
-	SystemData       SystemDataResponse     `pulumi:"systemData"`
-	Type             string                 `pulumi:"type"`
+	// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
+	CustomContextTag *string `pulumi:"customContextTag"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Trigger Kind.
+	// Expected value is 'FileEvent'.
+	Kind string `pulumi:"kind"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Role sink info.
+	SinkInfo RoleSinkInfoResponse `pulumi:"sinkInfo"`
+	// File event source details.
+	SourceInfo FileSourceInfoResponse `pulumi:"sourceInfo"`
+	// Trigger in DataBoxEdge Resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupFileEventTriggerOutput(ctx *pulumi.Context, args LookupFileEventTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupFileEventTriggerResultOutput {
@@ -52,8 +64,11 @@ func LookupFileEventTriggerOutput(ctx *pulumi.Context, args LookupFileEventTrigg
 }
 
 type LookupFileEventTriggerOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The trigger name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,34 +91,43 @@ func (o LookupFileEventTriggerResultOutput) ToLookupFileEventTriggerResultOutput
 	return o
 }
 
+// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
 func (o LookupFileEventTriggerResultOutput) CustomContextTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) *string { return v.CustomContextTag }).(pulumi.StringPtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupFileEventTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Trigger Kind.
+// Expected value is 'FileEvent'.
 func (o LookupFileEventTriggerResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupFileEventTriggerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Role sink info.
 func (o LookupFileEventTriggerResultOutput) SinkInfo() RoleSinkInfoResponseOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) RoleSinkInfoResponse { return v.SinkInfo }).(RoleSinkInfoResponseOutput)
 }
 
+// File event source details.
 func (o LookupFileEventTriggerResultOutput) SourceInfo() FileSourceInfoResponseOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) FileSourceInfoResponse { return v.SourceInfo }).(FileSourceInfoResponseOutput)
 }
 
+// Trigger in DataBoxEdge Resource
 func (o LookupFileEventTriggerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupFileEventTriggerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileEventTriggerResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,24 +22,38 @@ func LookupIncidentComment(ctx *pulumi.Context, args *LookupIncidentCommentArgs,
 }
 
 type LookupIncidentCommentArgs struct {
-	IncidentCommentId                   string `pulumi:"incidentCommentId"`
-	IncidentId                          string `pulumi:"incidentId"`
+	// Incident comment ID
+	IncidentCommentId string `pulumi:"incidentCommentId"`
+	// Incident ID
+	IncidentId string `pulumi:"incidentId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents an incident comment
 type LookupIncidentCommentResult struct {
-	Author              ClientInfoResponse `pulumi:"author"`
-	CreatedTimeUtc      string             `pulumi:"createdTimeUtc"`
-	Etag                *string            `pulumi:"etag"`
-	Id                  string             `pulumi:"id"`
-	LastModifiedTimeUtc string             `pulumi:"lastModifiedTimeUtc"`
-	Message             string             `pulumi:"message"`
-	Name                string             `pulumi:"name"`
-	SystemData          SystemDataResponse `pulumi:"systemData"`
-	Type                string             `pulumi:"type"`
+	// Describes the client that created the comment
+	Author ClientInfoResponse `pulumi:"author"`
+	// The time the comment was created
+	CreatedTimeUtc string `pulumi:"createdTimeUtc"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The time the comment was updated
+	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
+	// The comment message
+	Message string `pulumi:"message"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupIncidentCommentOutput(ctx *pulumi.Context, args LookupIncidentCommentOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentCommentResultOutput {
@@ -56,11 +70,16 @@ func LookupIncidentCommentOutput(ctx *pulumi.Context, args LookupIncidentComment
 }
 
 type LookupIncidentCommentOutputArgs struct {
-	IncidentCommentId                   pulumi.StringInput `pulumi:"incidentCommentId"`
-	IncidentId                          pulumi.StringInput `pulumi:"incidentId"`
+	// Incident comment ID
+	IncidentCommentId pulumi.StringInput `pulumi:"incidentCommentId"`
+	// Incident ID
+	IncidentId pulumi.StringInput `pulumi:"incidentId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupIncidentCommentOutputArgs) ElementType() reflect.Type {
@@ -82,38 +101,47 @@ func (o LookupIncidentCommentResultOutput) ToLookupIncidentCommentResultOutputWi
 	return o
 }
 
+// Describes the client that created the comment
 func (o LookupIncidentCommentResultOutput) Author() ClientInfoResponseOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) ClientInfoResponse { return v.Author }).(ClientInfoResponseOutput)
 }
 
+// The time the comment was created
 func (o LookupIncidentCommentResultOutput) CreatedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.CreatedTimeUtc }).(pulumi.StringOutput)
 }
 
+// Etag of the azure resource
 func (o LookupIncidentCommentResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupIncidentCommentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The time the comment was updated
 func (o LookupIncidentCommentResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
+// The comment message
 func (o LookupIncidentCommentResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupIncidentCommentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupIncidentCommentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource type
 func (o LookupIncidentCommentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.Type }).(pulumi.StringOutput)
 }

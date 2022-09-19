@@ -21,24 +21,38 @@ func LookupPeeringService(ctx *pulumi.Context, args *LookupPeeringServiceArgs, o
 }
 
 type LookupPeeringServiceArgs struct {
+	// The name of the peering.
 	PeeringServiceName string `pulumi:"peeringServiceName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Peering Service
 type LookupPeeringServiceResult struct {
-	Id                              string                                   `pulumi:"id"`
-	Location                        string                                   `pulumi:"location"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The location of the resource.
+	Location string `pulumi:"location"`
+	// The Log Analytics Workspace Properties
 	LogAnalyticsWorkspaceProperties *LogAnalyticsWorkspacePropertiesResponse `pulumi:"logAnalyticsWorkspaceProperties"`
-	Name                            string                                   `pulumi:"name"`
-	PeeringServiceLocation          *string                                  `pulumi:"peeringServiceLocation"`
-	PeeringServiceProvider          *string                                  `pulumi:"peeringServiceProvider"`
-	ProviderBackupPeeringLocation   *string                                  `pulumi:"providerBackupPeeringLocation"`
-	ProviderPrimaryPeeringLocation  *string                                  `pulumi:"providerPrimaryPeeringLocation"`
-	ProvisioningState               string                                   `pulumi:"provisioningState"`
-	Sku                             *PeeringServiceSkuResponse               `pulumi:"sku"`
-	Tags                            map[string]string                        `pulumi:"tags"`
-	Type                            string                                   `pulumi:"type"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The location (state/province) of the customer.
+	PeeringServiceLocation *string `pulumi:"peeringServiceLocation"`
+	// The name of the service provider.
+	PeeringServiceProvider *string `pulumi:"peeringServiceProvider"`
+	// The backup peering (Microsoft/service provider) location to be used for customer traffic.
+	ProviderBackupPeeringLocation *string `pulumi:"providerBackupPeeringLocation"`
+	// The primary peering (Microsoft/service provider) location to be used for customer traffic.
+	ProviderPrimaryPeeringLocation *string `pulumi:"providerPrimaryPeeringLocation"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU that defines the type of the peering service.
+	Sku *PeeringServiceSkuResponse `pulumi:"sku"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPeeringServiceOutput(ctx *pulumi.Context, args LookupPeeringServiceOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringServiceResultOutput {
@@ -55,8 +69,10 @@ func LookupPeeringServiceOutput(ctx *pulumi.Context, args LookupPeeringServiceOu
 }
 
 type LookupPeeringServiceOutputArgs struct {
+	// The name of the peering.
 	PeeringServiceName pulumi.StringInput `pulumi:"peeringServiceName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPeeringServiceOutputArgs) ElementType() reflect.Type {
@@ -78,52 +94,64 @@ func (o LookupPeeringServiceResultOutput) ToLookupPeeringServiceResultOutputWith
 	return o
 }
 
+// The ID of the resource.
 func (o LookupPeeringServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupPeeringServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The Log Analytics Workspace Properties
 func (o LookupPeeringServiceResultOutput) LogAnalyticsWorkspaceProperties() LogAnalyticsWorkspacePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) *LogAnalyticsWorkspacePropertiesResponse {
 		return v.LogAnalyticsWorkspaceProperties
 	}).(LogAnalyticsWorkspacePropertiesResponsePtrOutput)
 }
 
+// The name of the resource.
 func (o LookupPeeringServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The location (state/province) of the customer.
 func (o LookupPeeringServiceResultOutput) PeeringServiceLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) *string { return v.PeeringServiceLocation }).(pulumi.StringPtrOutput)
 }
 
+// The name of the service provider.
 func (o LookupPeeringServiceResultOutput) PeeringServiceProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) *string { return v.PeeringServiceProvider }).(pulumi.StringPtrOutput)
 }
 
+// The backup peering (Microsoft/service provider) location to be used for customer traffic.
 func (o LookupPeeringServiceResultOutput) ProviderBackupPeeringLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) *string { return v.ProviderBackupPeeringLocation }).(pulumi.StringPtrOutput)
 }
 
+// The primary peering (Microsoft/service provider) location to be used for customer traffic.
 func (o LookupPeeringServiceResultOutput) ProviderPrimaryPeeringLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) *string { return v.ProviderPrimaryPeeringLocation }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupPeeringServiceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU that defines the type of the peering service.
 func (o LookupPeeringServiceResultOutput) Sku() PeeringServiceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) *PeeringServiceSkuResponse { return v.Sku }).(PeeringServiceSkuResponsePtrOutput)
 }
 
+// The resource tags.
 func (o LookupPeeringServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupPeeringServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,13 +21,17 @@ func ListRunLogSasUrl(ctx *pulumi.Context, args *ListRunLogSasUrlArgs, opts ...p
 }
 
 type ListRunLogSasUrlArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RunId             string `pulumi:"runId"`
+	// The run ID.
+	RunId string `pulumi:"runId"`
 }
 
 // The result of get log link operation.
 type ListRunLogSasUrlResult struct {
+	// The link to logs for a run on a azure container registry.
 	LogLink *string `pulumi:"logLink"`
 }
 
@@ -45,9 +49,12 @@ func ListRunLogSasUrlOutput(ctx *pulumi.Context, args ListRunLogSasUrlOutputArgs
 }
 
 type ListRunLogSasUrlOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RunId             pulumi.StringInput `pulumi:"runId"`
+	// The run ID.
+	RunId pulumi.StringInput `pulumi:"runId"`
 }
 
 func (ListRunLogSasUrlOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListRunLogSasUrlResultOutput) ToListRunLogSasUrlResultOutputWithContext(
 	return o
 }
 
+// The link to logs for a run on a azure container registry.
 func (o ListRunLogSasUrlResultOutput) LogLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListRunLogSasUrlResult) *string { return v.LogLink }).(pulumi.StringPtrOutput)
 }

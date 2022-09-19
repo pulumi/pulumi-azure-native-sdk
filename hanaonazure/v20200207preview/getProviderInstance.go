@@ -21,19 +21,28 @@ func LookupProviderInstance(ctx *pulumi.Context, args *LookupProviderInstanceArg
 }
 
 type LookupProviderInstanceArgs struct {
+	// Name of the provider instance.
 	ProviderInstanceName string `pulumi:"providerInstanceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
-	SapMonitorName       string `pulumi:"sapMonitorName"`
+	// Name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SAP monitor resource.
+	SapMonitorName string `pulumi:"sapMonitorName"`
 }
 
 // A provider instance associated with a SAP monitor.
 type LookupProviderInstanceResult struct {
-	Id                string  `pulumi:"id"`
-	Metadata          *string `pulumi:"metadata"`
-	Name              string  `pulumi:"name"`
-	Properties        string  `pulumi:"properties"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	Type              string  `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// A JSON string containing metadata of the provider instance.
+	Metadata *string `pulumi:"metadata"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// A JSON string containing the properties of the provider instance.
+	Properties string `pulumi:"properties"`
+	// State of provisioning of the provider instance
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupProviderInstanceOutput(ctx *pulumi.Context, args LookupProviderInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupProviderInstanceResultOutput {
@@ -50,9 +59,12 @@ func LookupProviderInstanceOutput(ctx *pulumi.Context, args LookupProviderInstan
 }
 
 type LookupProviderInstanceOutputArgs struct {
+	// Name of the provider instance.
 	ProviderInstanceName pulumi.StringInput `pulumi:"providerInstanceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
-	SapMonitorName       pulumi.StringInput `pulumi:"sapMonitorName"`
+	// Name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SAP monitor resource.
+	SapMonitorName pulumi.StringInput `pulumi:"sapMonitorName"`
 }
 
 func (LookupProviderInstanceOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupProviderInstanceResultOutput) ToLookupProviderInstanceResultOutput
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProviderInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A JSON string containing metadata of the provider instance.
 func (o LookupProviderInstanceResultOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) *string { return v.Metadata }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupProviderInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A JSON string containing the properties of the provider instance.
 func (o LookupProviderInstanceResultOutput) Properties() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Properties }).(pulumi.StringOutput)
 }
 
+// State of provisioning of the provider instance
 func (o LookupProviderInstanceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProviderInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

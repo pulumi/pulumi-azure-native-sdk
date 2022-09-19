@@ -22,22 +22,34 @@ func LookupHubVirtualNetworkConnection(ctx *pulumi.Context, args *LookupHubVirtu
 }
 
 type LookupHubVirtualNetworkConnectionArgs struct {
-	ConnectionName    string `pulumi:"connectionName"`
+	// The name of the vpn connection.
+	ConnectionName string `pulumi:"connectionName"`
+	// The resource group name of the VirtualHub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VirtualHubName    string `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName string `pulumi:"virtualHubName"`
 }
 
 // HubVirtualNetworkConnection Resource.
 type LookupHubVirtualNetworkConnectionResult struct {
-	AllowHubToRemoteVnetTransit         *bool                         `pulumi:"allowHubToRemoteVnetTransit"`
-	AllowRemoteVnetToUseHubVnetGateways *bool                         `pulumi:"allowRemoteVnetToUseHubVnetGateways"`
-	EnableInternetSecurity              *bool                         `pulumi:"enableInternetSecurity"`
-	Etag                                string                        `pulumi:"etag"`
-	Id                                  *string                       `pulumi:"id"`
-	Name                                *string                       `pulumi:"name"`
-	ProvisioningState                   string                        `pulumi:"provisioningState"`
-	RemoteVirtualNetwork                *SubResourceResponse          `pulumi:"remoteVirtualNetwork"`
-	RoutingConfiguration                *RoutingConfigurationResponse `pulumi:"routingConfiguration"`
+	// Deprecated: VirtualHub to RemoteVnet transit to enabled or not.
+	AllowHubToRemoteVnetTransit *bool `pulumi:"allowHubToRemoteVnetTransit"`
+	// Deprecated: Allow RemoteVnet to use Virtual Hub's gateways.
+	AllowRemoteVnetToUseHubVnetGateways *bool `pulumi:"allowRemoteVnetToUseHubVnetGateways"`
+	// Enable internet security.
+	EnableInternetSecurity *bool `pulumi:"enableInternetSecurity"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the hub virtual network connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Reference to the remote virtual network.
+	RemoteVirtualNetwork *SubResourceResponse `pulumi:"remoteVirtualNetwork"`
+	// The Routing Configuration indicating the associated and propagated route tables on this connection.
+	RoutingConfiguration *RoutingConfigurationResponse `pulumi:"routingConfiguration"`
 }
 
 func LookupHubVirtualNetworkConnectionOutput(ctx *pulumi.Context, args LookupHubVirtualNetworkConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupHubVirtualNetworkConnectionResultOutput {
@@ -54,9 +66,12 @@ func LookupHubVirtualNetworkConnectionOutput(ctx *pulumi.Context, args LookupHub
 }
 
 type LookupHubVirtualNetworkConnectionOutputArgs struct {
-	ConnectionName    pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the vpn connection.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The resource group name of the VirtualHub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VirtualHubName    pulumi.StringInput `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName pulumi.StringInput `pulumi:"virtualHubName"`
 }
 
 func (LookupHubVirtualNetworkConnectionOutputArgs) ElementType() reflect.Type {
@@ -78,38 +93,47 @@ func (o LookupHubVirtualNetworkConnectionResultOutput) ToLookupHubVirtualNetwork
 	return o
 }
 
+// Deprecated: VirtualHub to RemoteVnet transit to enabled or not.
 func (o LookupHubVirtualNetworkConnectionResultOutput) AllowHubToRemoteVnetTransit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *bool { return v.AllowHubToRemoteVnetTransit }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated: Allow RemoteVnet to use Virtual Hub's gateways.
 func (o LookupHubVirtualNetworkConnectionResultOutput) AllowRemoteVnetToUseHubVnetGateways() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *bool { return v.AllowRemoteVnetToUseHubVnetGateways }).(pulumi.BoolPtrOutput)
 }
 
+// Enable internet security.
 func (o LookupHubVirtualNetworkConnectionResultOutput) EnableInternetSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *bool { return v.EnableInternetSecurity }).(pulumi.BoolPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupHubVirtualNetworkConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupHubVirtualNetworkConnectionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupHubVirtualNetworkConnectionResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the hub virtual network connection resource.
 func (o LookupHubVirtualNetworkConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Reference to the remote virtual network.
 func (o LookupHubVirtualNetworkConnectionResultOutput) RemoteVirtualNetwork() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *SubResourceResponse { return v.RemoteVirtualNetwork }).(SubResourceResponsePtrOutput)
 }
 
+// The Routing Configuration indicating the associated and propagated route tables on this connection.
 func (o LookupHubVirtualNetworkConnectionResultOutput) RoutingConfiguration() RoutingConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupHubVirtualNetworkConnectionResult) *RoutingConfigurationResponse {
 		return v.RoutingConfiguration

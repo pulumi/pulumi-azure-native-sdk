@@ -23,19 +23,28 @@ func LookupExpressRouteCircuitAuthorization(ctx *pulumi.Context, args *LookupExp
 }
 
 type LookupExpressRouteCircuitAuthorizationArgs struct {
+	// The name of the authorization.
 	AuthorizationName string `pulumi:"authorizationName"`
-	CircuitName       string `pulumi:"circuitName"`
+	// The name of the express route circuit.
+	CircuitName string `pulumi:"circuitName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Authorization in a ExpressRouteCircuit resource
 type LookupExpressRouteCircuitAuthorizationResult struct {
-	AuthorizationKey       *string `pulumi:"authorizationKey"`
+	// Gets or sets the authorization key
+	AuthorizationKey *string `pulumi:"authorizationKey"`
+	// Gets or sets AuthorizationUseStatus
 	AuthorizationUseStatus *string `pulumi:"authorizationUseStatus"`
-	Etag                   *string `pulumi:"etag"`
-	Id                     *string `pulumi:"id"`
-	Name                   *string `pulumi:"name"`
-	ProvisioningState      *string `pulumi:"provisioningState"`
+	// A unique read-only string that changes whenever the resource is updated
+	Etag *string `pulumi:"etag"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Gets name of the resource that is unique within a resource group. This name can be used to access the resource
+	Name *string `pulumi:"name"`
+	// Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
+	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
 func LookupExpressRouteCircuitAuthorizationOutput(ctx *pulumi.Context, args LookupExpressRouteCircuitAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteCircuitAuthorizationResultOutput {
@@ -52,8 +61,11 @@ func LookupExpressRouteCircuitAuthorizationOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupExpressRouteCircuitAuthorizationOutputArgs struct {
+	// The name of the authorization.
 	AuthorizationName pulumi.StringInput `pulumi:"authorizationName"`
-	CircuitName       pulumi.StringInput `pulumi:"circuitName"`
+	// The name of the express route circuit.
+	CircuitName pulumi.StringInput `pulumi:"circuitName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,26 +88,32 @@ func (o LookupExpressRouteCircuitAuthorizationResultOutput) ToLookupExpressRoute
 	return o
 }
 
+// Gets or sets the authorization key
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) AuthorizationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets AuthorizationUseStatus
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) AuthorizationUseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.AuthorizationUseStatus }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets name of the resource that is unique within a resource group. This name can be used to access the resource
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }

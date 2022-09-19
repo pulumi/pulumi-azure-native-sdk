@@ -23,18 +23,26 @@ func LookupAlertRule(ctx *pulumi.Context, args *LookupAlertRuleArgs, opts ...pul
 }
 
 type LookupAlertRuleArgs struct {
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RuleId            string `pulumi:"ruleId"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Alert rule ID
+	RuleId string `pulumi:"ruleId"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Alert rule.
 type LookupAlertRuleResult struct {
+	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	Id   string  `pulumi:"id"`
-	Kind string  `pulumi:"kind"`
-	Name string  `pulumi:"name"`
-	Type string  `pulumi:"type"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The alert rule kind
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAlertRuleOutput(ctx *pulumi.Context, args LookupAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRuleResultOutput {
@@ -51,9 +59,12 @@ func LookupAlertRuleOutput(ctx *pulumi.Context, args LookupAlertRuleOutputArgs, 
 }
 
 type LookupAlertRuleOutputArgs struct {
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleId            pulumi.StringInput `pulumi:"ruleId"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Alert rule ID
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupAlertRuleOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupAlertRuleResultOutput) ToLookupAlertRuleResultOutputWithContext(ct
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupAlertRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The alert rule kind
 func (o LookupAlertRuleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupAlertRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupAlertRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

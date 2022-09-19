@@ -21,21 +21,33 @@ func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorA
 }
 
 type LookupAATPDataConnectorArgs struct {
-	DataConnectorId   string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
 type LookupAATPDataConnectorResult struct {
-	DataTypes  *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
-	Etag       *string                                `pulumi:"etag"`
-	Id         string                                 `pulumi:"id"`
-	Kind       string                                 `pulumi:"kind"`
-	Name       string                                 `pulumi:"name"`
-	SystemData SystemDataResponse                     `pulumi:"systemData"`
-	TenantId   string                                 `pulumi:"tenantId"`
-	Type       string                                 `pulumi:"type"`
+	// The available data types for the connector.
+	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the data connector
+	// Expected value is 'AzureAdvancedThreatProtection'.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tenant id to connect to, and get the data from.
+	TenantId string `pulumi:"tenantId"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAATPDataConnectorOutput(ctx *pulumi.Context, args LookupAATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAATPDataConnectorResultOutput {
@@ -52,9 +64,12 @@ func LookupAATPDataConnectorOutput(ctx *pulumi.Context, args LookupAATPDataConne
 }
 
 type LookupAATPDataConnectorOutputArgs struct {
-	DataConnectorId   pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupAATPDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -76,34 +91,43 @@ func (o LookupAATPDataConnectorResultOutput) ToLookupAATPDataConnectorResultOutp
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupAATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupAATPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAATPDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the data connector
+// Expected value is 'AzureAdvancedThreatProtection'.
 func (o LookupAATPDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAATPDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAATPDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupAATPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAATPDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

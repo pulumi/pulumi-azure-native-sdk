@@ -21,16 +21,22 @@ func ListProductsAndConfigurationProductFamilies(ctx *pulumi.Context, args *List
 }
 
 type ListProductsAndConfigurationProductFamiliesArgs struct {
-	CustomerSubscriptionDetails *CustomerSubscriptionDetails    `pulumi:"customerSubscriptionDetails"`
-	Expand                      *string                         `pulumi:"expand"`
-	FilterableProperties        map[string][]FilterableProperty `pulumi:"filterableProperties"`
-	SkipToken                   *string                         `pulumi:"skipToken"`
+	// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
+	CustomerSubscriptionDetails *CustomerSubscriptionDetails `pulumi:"customerSubscriptionDetails"`
+	// $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
+	Expand *string `pulumi:"expand"`
+	// Dictionary of filterable properties on product family.
+	FilterableProperties map[string][]FilterableProperty `pulumi:"filterableProperties"`
+	// $skipToken is supported on list of product families, which provides the next page in the list of product families.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // The list of product families.
 type ListProductsAndConfigurationProductFamiliesResult struct {
-	NextLink *string                 `pulumi:"nextLink"`
-	Value    []ProductFamilyResponse `pulumi:"value"`
+	// Link for the next set of product families.
+	NextLink *string `pulumi:"nextLink"`
+	// List of product families.
+	Value []ProductFamilyResponse `pulumi:"value"`
 }
 
 func ListProductsAndConfigurationProductFamiliesOutput(ctx *pulumi.Context, args ListProductsAndConfigurationProductFamiliesOutputArgs, opts ...pulumi.InvokeOption) ListProductsAndConfigurationProductFamiliesResultOutput {
@@ -47,10 +53,14 @@ func ListProductsAndConfigurationProductFamiliesOutput(ctx *pulumi.Context, args
 }
 
 type ListProductsAndConfigurationProductFamiliesOutputArgs struct {
+	// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
 	CustomerSubscriptionDetails CustomerSubscriptionDetailsPtrInput `pulumi:"customerSubscriptionDetails"`
-	Expand                      pulumi.StringPtrInput               `pulumi:"expand"`
-	FilterableProperties        FilterablePropertyArrayMapInput     `pulumi:"filterableProperties"`
-	SkipToken                   pulumi.StringPtrInput               `pulumi:"skipToken"`
+	// $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Dictionary of filterable properties on product family.
+	FilterableProperties FilterablePropertyArrayMapInput `pulumi:"filterableProperties"`
+	// $skipToken is supported on list of product families, which provides the next page in the list of product families.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListProductsAndConfigurationProductFamiliesOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o ListProductsAndConfigurationProductFamiliesResultOutput) ToListProductsA
 	return o
 }
 
+// Link for the next set of product families.
 func (o ListProductsAndConfigurationProductFamiliesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationProductFamiliesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of product families.
 func (o ListProductsAndConfigurationProductFamiliesResultOutput) Value() ProductFamilyResponseArrayOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationProductFamiliesResult) []ProductFamilyResponse { return v.Value }).(ProductFamilyResponseArrayOutput)
 }

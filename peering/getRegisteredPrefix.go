@@ -22,21 +22,32 @@ func LookupRegisteredPrefix(ctx *pulumi.Context, args *LookupRegisteredPrefixArg
 }
 
 type LookupRegisteredPrefixArgs struct {
-	PeeringName          string `pulumi:"peeringName"`
+	// The name of the peering.
+	PeeringName string `pulumi:"peeringName"`
+	// The name of the registered prefix.
 	RegisteredPrefixName string `pulumi:"registeredPrefixName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The customer's prefix that is registered by the peering service provider.
 type LookupRegisteredPrefixResult struct {
-	ErrorMessage            string  `pulumi:"errorMessage"`
-	Id                      string  `pulumi:"id"`
-	Name                    string  `pulumi:"name"`
-	PeeringServicePrefixKey string  `pulumi:"peeringServicePrefixKey"`
-	Prefix                  *string `pulumi:"prefix"`
-	PrefixValidationState   string  `pulumi:"prefixValidationState"`
-	ProvisioningState       string  `pulumi:"provisioningState"`
-	Type                    string  `pulumi:"type"`
+	// The error message associated with the validation state, if any.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The peering service prefix key that is to be shared with the customer.
+	PeeringServicePrefixKey string `pulumi:"peeringServicePrefixKey"`
+	// The customer's prefix from which traffic originates.
+	Prefix *string `pulumi:"prefix"`
+	// The prefix validation state.
+	PrefixValidationState string `pulumi:"prefixValidationState"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupRegisteredPrefixOutput(ctx *pulumi.Context, args LookupRegisteredPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredPrefixResultOutput {
@@ -53,9 +64,12 @@ func LookupRegisteredPrefixOutput(ctx *pulumi.Context, args LookupRegisteredPref
 }
 
 type LookupRegisteredPrefixOutputArgs struct {
-	PeeringName          pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the peering.
+	PeeringName pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the registered prefix.
 	RegisteredPrefixName pulumi.StringInput `pulumi:"registeredPrefixName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupRegisteredPrefixOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupRegisteredPrefixResultOutput) ToLookupRegisteredPrefixResultOutput
 	return o
 }
 
+// The error message associated with the validation state, if any.
 func (o LookupRegisteredPrefixResultOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
+// The ID of the resource.
 func (o LookupRegisteredPrefixResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupRegisteredPrefixResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The peering service prefix key that is to be shared with the customer.
 func (o LookupRegisteredPrefixResultOutput) PeeringServicePrefixKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.PeeringServicePrefixKey }).(pulumi.StringOutput)
 }
 
+// The customer's prefix from which traffic originates.
 func (o LookupRegisteredPrefixResultOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The prefix validation state.
 func (o LookupRegisteredPrefixResultOutput) PrefixValidationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.PrefixValidationState }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupRegisteredPrefixResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupRegisteredPrefixResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.Type }).(pulumi.StringOutput)
 }

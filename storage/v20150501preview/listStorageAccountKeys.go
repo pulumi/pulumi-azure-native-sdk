@@ -21,13 +21,17 @@ func ListStorageAccountKeys(ctx *pulumi.Context, args *ListStorageAccountKeysArg
 }
 
 type ListStorageAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the storage account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The access keys for the storage account.
 type ListStorageAccountKeysResult struct {
+	// Gets the value of key 1.
 	Key1 *string `pulumi:"key1"`
+	// Gets the value of key 2.
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -45,7 +49,9 @@ func ListStorageAccountKeysOutput(ctx *pulumi.Context, args ListStorageAccountKe
 }
 
 type ListStorageAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListStorageAccountKeysResultOutput) ToListStorageAccountKeysResultOutput
 	return o
 }
 
+// Gets the value of key 1.
 func (o ListStorageAccountKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListStorageAccountKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Gets the value of key 2.
 func (o ListStorageAccountKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListStorageAccountKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

@@ -21,25 +21,40 @@ func LookupKustoPoolAttachedDatabaseConfiguration(ctx *pulumi.Context, args *Loo
 }
 
 type LookupKustoPoolAttachedDatabaseConfigurationArgs struct {
+	// The name of the attached database configuration.
 	AttachedDatabaseConfigurationName string `pulumi:"attachedDatabaseConfigurationName"`
-	KustoPoolName                     string `pulumi:"kustoPoolName"`
-	ResourceGroupName                 string `pulumi:"resourceGroupName"`
-	WorkspaceName                     string `pulumi:"workspaceName"`
+	// The name of the Kusto pool.
+	KustoPoolName string `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Class representing an attached database configuration.
 type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
-	AttachedDatabaseNames             []string                             `pulumi:"attachedDatabaseNames"`
-	DatabaseName                      string                               `pulumi:"databaseName"`
-	DefaultPrincipalsModificationKind string                               `pulumi:"defaultPrincipalsModificationKind"`
-	Id                                string                               `pulumi:"id"`
-	KustoPoolResourceId               string                               `pulumi:"kustoPoolResourceId"`
-	Location                          *string                              `pulumi:"location"`
-	Name                              string                               `pulumi:"name"`
-	ProvisioningState                 string                               `pulumi:"provisioningState"`
-	SystemData                        SystemDataResponse                   `pulumi:"systemData"`
-	TableLevelSharingProperties       *TableLevelSharingPropertiesResponse `pulumi:"tableLevelSharingProperties"`
-	Type                              string                               `pulumi:"type"`
+	// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
+	AttachedDatabaseNames []string `pulumi:"attachedDatabaseNames"`
+	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
+	DatabaseName string `pulumi:"databaseName"`
+	// The default principals modification kind
+	DefaultPrincipalsModificationKind string `pulumi:"defaultPrincipalsModificationKind"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The resource id of the kusto pool where the databases you would like to attach reside.
+	KustoPoolResourceId string `pulumi:"kustoPoolResourceId"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Table level sharing specifications
+	TableLevelSharingProperties *TableLevelSharingPropertiesResponse `pulumi:"tableLevelSharingProperties"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupKustoPoolAttachedDatabaseConfigurationOutput(ctx *pulumi.Context, args LookupKustoPoolAttachedDatabaseConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolAttachedDatabaseConfigurationResultOutput {
@@ -56,10 +71,14 @@ func LookupKustoPoolAttachedDatabaseConfigurationOutput(ctx *pulumi.Context, arg
 }
 
 type LookupKustoPoolAttachedDatabaseConfigurationOutputArgs struct {
+	// The name of the attached database configuration.
 	AttachedDatabaseConfigurationName pulumi.StringInput `pulumi:"attachedDatabaseConfigurationName"`
-	KustoPoolName                     pulumi.StringInput `pulumi:"kustoPoolName"`
-	ResourceGroupName                 pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the Kusto pool.
+	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupKustoPoolAttachedDatabaseConfigurationOutputArgs) ElementType() reflect.Type {
@@ -81,50 +100,61 @@ func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) ToLookupKustoP
 	return o
 }
 
+// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) AttachedDatabaseNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) []string { return v.AttachedDatabaseNames }).(pulumi.StringArrayOutput)
 }
 
+// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
+// The default principals modification kind
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) DefaultPrincipalsModificationKind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string {
 		return v.DefaultPrincipalsModificationKind
 	}).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource id of the kusto pool where the databases you would like to attach reside.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) KustoPoolResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.KustoPoolResourceId }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Table level sharing specifications
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) TableLevelSharingProperties() TableLevelSharingPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) *TableLevelSharingPropertiesResponse {
 		return v.TableLevelSharingProperties
 	}).(TableLevelSharingPropertiesResponsePtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

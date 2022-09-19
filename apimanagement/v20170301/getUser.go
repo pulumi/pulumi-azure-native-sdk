@@ -21,24 +21,38 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 }
 
 type LookupUserArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	Uid               string `pulumi:"uid"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// User identifier. Must be unique in the current API Management service instance.
+	Uid string `pulumi:"uid"`
 }
 
 // User details.
 type LookupUserResult struct {
-	Email            *string                        `pulumi:"email"`
-	FirstName        *string                        `pulumi:"firstName"`
-	Groups           []GroupContractResponse        `pulumi:"groups"`
-	Id               string                         `pulumi:"id"`
-	Identities       []UserIdentityContractResponse `pulumi:"identities"`
-	LastName         *string                        `pulumi:"lastName"`
-	Name             string                         `pulumi:"name"`
-	Note             *string                        `pulumi:"note"`
-	RegistrationDate *string                        `pulumi:"registrationDate"`
-	State            *string                        `pulumi:"state"`
-	Type             string                         `pulumi:"type"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name.
+	FirstName *string `pulumi:"firstName"`
+	// Collection of groups user is part of.
+	Groups []GroupContractResponse `pulumi:"groups"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Collection of user identities.
+	Identities []UserIdentityContractResponse `pulumi:"identities"`
+	// Last name.
+	LastName *string `pulumi:"lastName"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Optional note about a user set by the administrator.
+	Note *string `pulumi:"note"`
+	// Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	RegistrationDate *string `pulumi:"registrationDate"`
+	// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
+	State *string `pulumi:"state"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupUserResult
@@ -68,9 +82,12 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 }
 
 type LookupUserOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	Uid               pulumi.StringInput `pulumi:"uid"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// User identifier. Must be unique in the current API Management service instance.
+	Uid pulumi.StringInput `pulumi:"uid"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -92,46 +109,57 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// Email address.
 func (o LookupUserResultOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
+// First name.
 func (o LookupUserResultOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.FirstName }).(pulumi.StringPtrOutput)
 }
 
+// Collection of groups user is part of.
 func (o LookupUserResultOutput) Groups() GroupContractResponseArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GroupContractResponse { return v.Groups }).(GroupContractResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Collection of user identities.
 func (o LookupUserResultOutput) Identities() UserIdentityContractResponseArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []UserIdentityContractResponse { return v.Identities }).(UserIdentityContractResponseArrayOutput)
 }
 
+// Last name.
 func (o LookupUserResultOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional note about a user set by the administrator.
 func (o LookupUserResultOutput) Note() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.Note }).(pulumi.StringPtrOutput)
 }
 
+// Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 func (o LookupUserResultOutput) RegistrationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.RegistrationDate }).(pulumi.StringPtrOutput)
 }
 
+// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
 func (o LookupUserResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Type }).(pulumi.StringOutput)
 }

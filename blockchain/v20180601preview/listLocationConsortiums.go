@@ -21,11 +21,13 @@ func ListLocationConsortiums(ctx *pulumi.Context, args *ListLocationConsortiumsA
 }
 
 type ListLocationConsortiumsArgs struct {
+	// Location Name.
 	LocationName string `pulumi:"locationName"`
 }
 
 // Collection of the consortium payload.
 type ListLocationConsortiumsResult struct {
+	// Gets or sets the collection of consortiums.
 	Value []ConsortiumResponse `pulumi:"value"`
 }
 
@@ -43,6 +45,7 @@ func ListLocationConsortiumsOutput(ctx *pulumi.Context, args ListLocationConsort
 }
 
 type ListLocationConsortiumsOutputArgs struct {
+	// Location Name.
 	LocationName pulumi.StringInput `pulumi:"locationName"`
 }
 
@@ -65,6 +68,7 @@ func (o ListLocationConsortiumsResultOutput) ToListLocationConsortiumsResultOutp
 	return o
 }
 
+// Gets or sets the collection of consortiums.
 func (o ListLocationConsortiumsResultOutput) Value() ConsortiumResponseArrayOutput {
 	return o.ApplyT(func(v ListLocationConsortiumsResult) []ConsortiumResponse { return v.Value }).(ConsortiumResponseArrayOutput)
 }

@@ -22,29 +22,48 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 }
 
 type LookupPolicyArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LabName           string  `pulumi:"labName"`
-	Name              string  `pulumi:"name"`
-	PolicySetName     string  `pulumi:"policySetName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($select=description)'
+	Expand *string `pulumi:"expand"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the policy.
+	Name string `pulumi:"name"`
+	// The name of the policy set.
+	PolicySetName string `pulumi:"policySetName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Policy.
 type LookupPolicyResult struct {
-	CreatedDate       string            `pulumi:"createdDate"`
-	Description       *string           `pulumi:"description"`
-	EvaluatorType     *string           `pulumi:"evaluatorType"`
-	FactData          *string           `pulumi:"factData"`
-	FactName          *string           `pulumi:"factName"`
-	Id                string            `pulumi:"id"`
-	Location          *string           `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	Status            *string           `pulumi:"status"`
-	Tags              map[string]string `pulumi:"tags"`
-	Threshold         *string           `pulumi:"threshold"`
-	Type              string            `pulumi:"type"`
-	UniqueIdentifier  string            `pulumi:"uniqueIdentifier"`
+	// The creation date of the policy.
+	CreatedDate string `pulumi:"createdDate"`
+	// The description of the policy.
+	Description *string `pulumi:"description"`
+	// The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
+	EvaluatorType *string `pulumi:"evaluatorType"`
+	// The fact data of the policy.
+	FactData *string `pulumi:"factData"`
+	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
+	FactName *string `pulumi:"factName"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning status of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The status of the policy.
+	Status *string `pulumi:"status"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
+	Threshold *string `pulumi:"threshold"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The unique immutable identifier of a resource (Guid).
+	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
 }
 
 func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyResultOutput {
@@ -61,11 +80,16 @@ func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts .
 }
 
 type LookupPolicyOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LabName           pulumi.StringInput    `pulumi:"labName"`
-	Name              pulumi.StringInput    `pulumi:"name"`
-	PolicySetName     pulumi.StringInput    `pulumi:"policySetName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($select=description)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the policy set.
+	PolicySetName pulumi.StringInput `pulumi:"policySetName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPolicyOutputArgs) ElementType() reflect.Type {
@@ -87,58 +111,72 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx cont
 	return o
 }
 
+// The creation date of the policy.
 func (o LookupPolicyResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.CreatedDate }).(pulumi.StringOutput)
 }
 
+// The description of the policy.
 func (o LookupPolicyResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
 func (o LookupPolicyResultOutput) EvaluatorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.EvaluatorType }).(pulumi.StringPtrOutput)
 }
 
+// The fact data of the policy.
 func (o LookupPolicyResultOutput) FactData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.FactData }).(pulumi.StringPtrOutput)
 }
 
+// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 func (o LookupPolicyResultOutput) FactName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.FactName }).(pulumi.StringPtrOutput)
 }
 
+// The identifier of the resource.
 func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The status of the policy.
 func (o LookupPolicyResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the resource.
 func (o LookupPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
 func (o LookupPolicyResultOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.
 func (o LookupPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique immutable identifier of a resource (Guid).
 func (o LookupPolicyResultOutput) UniqueIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.UniqueIdentifier }).(pulumi.StringOutput)
 }

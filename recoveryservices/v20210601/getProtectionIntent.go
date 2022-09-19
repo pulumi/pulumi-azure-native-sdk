@@ -21,21 +21,32 @@ func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArg
 }
 
 type LookupProtectionIntentArgs struct {
-	FabricName        string `pulumi:"fabricName"`
-	IntentObjectName  string `pulumi:"intentObjectName"`
+	// Fabric name associated with the backed up item.
+	FabricName string `pulumi:"fabricName"`
+	// Backed up item name whose details are to be fetched.
+	IntentObjectName string `pulumi:"intentObjectName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VaultName         string `pulumi:"vaultName"`
+	// The name of the recovery services vault.
+	VaultName string `pulumi:"vaultName"`
 }
 
 // Base class for backup ProtectionIntent.
 type LookupProtectionIntentResult struct {
-	ETag       *string           `pulumi:"eTag"`
-	Id         string            `pulumi:"id"`
-	Location   *string           `pulumi:"location"`
-	Name       string            `pulumi:"name"`
-	Properties interface{}       `pulumi:"properties"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       string            `pulumi:"type"`
+	// Optional ETag.
+	ETag *string `pulumi:"eTag"`
+	// Resource Id represents the complete path to the resource.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name associated with the resource.
+	Name string `pulumi:"name"`
+	// ProtectionIntentResource properties
+	Properties interface{} `pulumi:"properties"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+	Type string `pulumi:"type"`
 }
 
 func LookupProtectionIntentOutput(ctx *pulumi.Context, args LookupProtectionIntentOutputArgs, opts ...pulumi.InvokeOption) LookupProtectionIntentResultOutput {
@@ -52,10 +63,14 @@ func LookupProtectionIntentOutput(ctx *pulumi.Context, args LookupProtectionInte
 }
 
 type LookupProtectionIntentOutputArgs struct {
-	FabricName        pulumi.StringInput `pulumi:"fabricName"`
-	IntentObjectName  pulumi.StringInput `pulumi:"intentObjectName"`
+	// Fabric name associated with the backed up item.
+	FabricName pulumi.StringInput `pulumi:"fabricName"`
+	// Backed up item name whose details are to be fetched.
+	IntentObjectName pulumi.StringInput `pulumi:"intentObjectName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VaultName         pulumi.StringInput `pulumi:"vaultName"`
+	// The name of the recovery services vault.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupProtectionIntentOutputArgs) ElementType() reflect.Type {
@@ -77,30 +92,37 @@ func (o LookupProtectionIntentResultOutput) ToLookupProtectionIntentResultOutput
 	return o
 }
 
+// Optional ETag.
 func (o LookupProtectionIntentResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id represents the complete path to the resource.
 func (o LookupProtectionIntentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupProtectionIntentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name associated with the resource.
 func (o LookupProtectionIntentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ProtectionIntentResource properties
 func (o LookupProtectionIntentResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource tags.
 func (o LookupProtectionIntentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 func (o LookupProtectionIntentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProtectionIntentResult) string { return v.Type }).(pulumi.StringOutput)
 }

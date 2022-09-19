@@ -21,19 +21,28 @@ func GetEntitiesGetTimeline(ctx *pulumi.Context, args *GetEntitiesGetTimelineArg
 }
 
 type GetEntitiesGetTimelineArgs struct {
-	EndTime           string   `pulumi:"endTime"`
-	EntityId          string   `pulumi:"entityId"`
-	Kinds             []string `pulumi:"kinds"`
-	NumberOfBucket    *int     `pulumi:"numberOfBucket"`
-	ResourceGroupName string   `pulumi:"resourceGroupName"`
-	StartTime         string   `pulumi:"startTime"`
-	WorkspaceName     string   `pulumi:"workspaceName"`
+	// The end timeline date, so the results returned are before this date.
+	EndTime string `pulumi:"endTime"`
+	// entity ID
+	EntityId string `pulumi:"entityId"`
+	// Array of timeline Item kinds.
+	Kinds []string `pulumi:"kinds"`
+	// The number of bucket for timeline queries aggregation.
+	NumberOfBucket *int `pulumi:"numberOfBucket"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The start timeline date, so the results returned are after this date.
+	StartTime string `pulumi:"startTime"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The entity timeline result operation response.
 type GetEntitiesGetTimelineResult struct {
+	// The metadata from the timeline operation results.
 	MetaData *TimelineResultsMetadataResponse `pulumi:"metaData"`
-	Value    []interface{}                    `pulumi:"value"`
+	// The timeline result values.
+	Value []interface{} `pulumi:"value"`
 }
 
 func GetEntitiesGetTimelineOutput(ctx *pulumi.Context, args GetEntitiesGetTimelineOutputArgs, opts ...pulumi.InvokeOption) GetEntitiesGetTimelineResultOutput {
@@ -50,13 +59,20 @@ func GetEntitiesGetTimelineOutput(ctx *pulumi.Context, args GetEntitiesGetTimeli
 }
 
 type GetEntitiesGetTimelineOutputArgs struct {
-	EndTime           pulumi.StringInput      `pulumi:"endTime"`
-	EntityId          pulumi.StringInput      `pulumi:"entityId"`
-	Kinds             pulumi.StringArrayInput `pulumi:"kinds"`
-	NumberOfBucket    pulumi.IntPtrInput      `pulumi:"numberOfBucket"`
-	ResourceGroupName pulumi.StringInput      `pulumi:"resourceGroupName"`
-	StartTime         pulumi.StringInput      `pulumi:"startTime"`
-	WorkspaceName     pulumi.StringInput      `pulumi:"workspaceName"`
+	// The end timeline date, so the results returned are before this date.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// entity ID
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// Array of timeline Item kinds.
+	Kinds pulumi.StringArrayInput `pulumi:"kinds"`
+	// The number of bucket for timeline queries aggregation.
+	NumberOfBucket pulumi.IntPtrInput `pulumi:"numberOfBucket"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The start timeline date, so the results returned are after this date.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetEntitiesGetTimelineOutputArgs) ElementType() reflect.Type {
@@ -78,10 +94,12 @@ func (o GetEntitiesGetTimelineResultOutput) ToGetEntitiesGetTimelineResultOutput
 	return o
 }
 
+// The metadata from the timeline operation results.
 func (o GetEntitiesGetTimelineResultOutput) MetaData() TimelineResultsMetadataResponsePtrOutput {
 	return o.ApplyT(func(v GetEntitiesGetTimelineResult) *TimelineResultsMetadataResponse { return v.MetaData }).(TimelineResultsMetadataResponsePtrOutput)
 }
 
+// The timeline result values.
 func (o GetEntitiesGetTimelineResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetEntitiesGetTimelineResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

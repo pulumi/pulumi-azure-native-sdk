@@ -23,22 +23,34 @@ func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAcco
 }
 
 type LookupStorageAccountCredentialArgs struct {
-	CredentialName    string `pulumi:"credentialName"`
-	ManagerName       string `pulumi:"managerName"`
+	// The name of storage account credential to be fetched.
+	CredentialName string `pulumi:"credentialName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The storage account credential
 type LookupStorageAccountCredentialResult struct {
+	// The details of the storage account password
 	AccessKey *AsymmetricEncryptedSecretResponse `pulumi:"accessKey"`
-	CloudType string                             `pulumi:"cloudType"`
-	EnableSSL string                             `pulumi:"enableSSL"`
-	EndPoint  string                             `pulumi:"endPoint"`
-	Id        string                             `pulumi:"id"`
-	Location  *string                            `pulumi:"location"`
-	Login     string                             `pulumi:"login"`
-	Name      string                             `pulumi:"name"`
-	Type      string                             `pulumi:"type"`
+	// The cloud service provider
+	CloudType string `pulumi:"cloudType"`
+	// SSL needs to be enabled or not
+	EnableSSL string `pulumi:"enableSSL"`
+	// The storage endpoint
+	EndPoint string `pulumi:"endPoint"`
+	// The identifier.
+	Id string `pulumi:"id"`
+	// The storage account's geo location
+	Location *string `pulumi:"location"`
+	// The storage account login
+	Login string `pulumi:"login"`
+	// The name.
+	Name string `pulumi:"name"`
+	// The type.
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageAccountCredentialOutput(ctx *pulumi.Context, args LookupStorageAccountCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountCredentialResultOutput {
@@ -55,8 +67,11 @@ func LookupStorageAccountCredentialOutput(ctx *pulumi.Context, args LookupStorag
 }
 
 type LookupStorageAccountCredentialOutputArgs struct {
-	CredentialName    pulumi.StringInput `pulumi:"credentialName"`
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The name of storage account credential to be fetched.
+	CredentialName pulumi.StringInput `pulumi:"credentialName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,38 +94,47 @@ func (o LookupStorageAccountCredentialResultOutput) ToLookupStorageAccountCreden
 	return o
 }
 
+// The details of the storage account password
 func (o LookupStorageAccountCredentialResultOutput) AccessKey() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *AsymmetricEncryptedSecretResponse { return v.AccessKey }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
+// The cloud service provider
 func (o LookupStorageAccountCredentialResultOutput) CloudType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.CloudType }).(pulumi.StringOutput)
 }
 
+// SSL needs to be enabled or not
 func (o LookupStorageAccountCredentialResultOutput) EnableSSL() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.EnableSSL }).(pulumi.StringOutput)
 }
 
+// The storage endpoint
 func (o LookupStorageAccountCredentialResultOutput) EndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.EndPoint }).(pulumi.StringOutput)
 }
 
+// The identifier.
 func (o LookupStorageAccountCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The storage account's geo location
 func (o LookupStorageAccountCredentialResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The storage account login
 func (o LookupStorageAccountCredentialResultOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Login }).(pulumi.StringOutput)
 }
 
+// The name.
 func (o LookupStorageAccountCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type.
 func (o LookupStorageAccountCredentialResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Type }).(pulumi.StringOutput)
 }

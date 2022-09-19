@@ -22,15 +22,20 @@ func ListProducts(ctx *pulumi.Context, args *ListProductsArgs, opts ...pulumi.In
 }
 
 type ListProductsArgs struct {
-	ProductName      string `pulumi:"productName"`
+	// Name of the product.
+	ProductName string `pulumi:"productName"`
+	// Name of the Azure Stack registration.
 	RegistrationName string `pulumi:"registrationName"`
-	ResourceGroup    string `pulumi:"resourceGroup"`
+	// Name of the resource group.
+	ResourceGroup string `pulumi:"resourceGroup"`
 }
 
 // Pageable list of products.
 type ListProductsResult struct {
-	NextLink *string           `pulumi:"nextLink"`
-	Value    []ProductResponse `pulumi:"value"`
+	// URI to the next page.
+	NextLink *string `pulumi:"nextLink"`
+	// List of products.
+	Value []ProductResponse `pulumi:"value"`
 }
 
 func ListProductsOutput(ctx *pulumi.Context, args ListProductsOutputArgs, opts ...pulumi.InvokeOption) ListProductsResultOutput {
@@ -47,9 +52,12 @@ func ListProductsOutput(ctx *pulumi.Context, args ListProductsOutputArgs, opts .
 }
 
 type ListProductsOutputArgs struct {
-	ProductName      pulumi.StringInput `pulumi:"productName"`
+	// Name of the product.
+	ProductName pulumi.StringInput `pulumi:"productName"`
+	// Name of the Azure Stack registration.
 	RegistrationName pulumi.StringInput `pulumi:"registrationName"`
-	ResourceGroup    pulumi.StringInput `pulumi:"resourceGroup"`
+	// Name of the resource group.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
 }
 
 func (ListProductsOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListProductsResultOutput) ToListProductsResultOutputWithContext(ctx cont
 	return o
 }
 
+// URI to the next page.
 func (o ListProductsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListProductsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of products.
 func (o ListProductsResultOutput) Value() ProductResponseArrayOutput {
 	return o.ApplyT(func(v ListProductsResult) []ProductResponse { return v.Value }).(ProductResponseArrayOutput)
 }

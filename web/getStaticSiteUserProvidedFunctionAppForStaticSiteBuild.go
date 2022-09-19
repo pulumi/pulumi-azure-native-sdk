@@ -22,21 +22,32 @@ func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Conte
 }
 
 type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs struct {
-	EnvironmentName   string `pulumi:"environmentName"`
-	FunctionAppName   string `pulumi:"functionAppName"`
-	Name              string `pulumi:"name"`
+	// The stage site identifier.
+	EnvironmentName string `pulumi:"environmentName"`
+	// Name of the function app registered with the static site build.
+	FunctionAppName string `pulumi:"functionAppName"`
+	// Name of the static site.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Static Site User Provided Function App ARM resource.
 type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult struct {
-	CreatedOn             string  `pulumi:"createdOn"`
-	FunctionAppRegion     *string `pulumi:"functionAppRegion"`
+	// The date and time on which the function app was registered with the static site.
+	CreatedOn string `pulumi:"createdOn"`
+	// The region of the function app registered with the static site
+	FunctionAppRegion *string `pulumi:"functionAppRegion"`
+	// The resource id of the function app registered with the static site
 	FunctionAppResourceId *string `pulumi:"functionAppResourceId"`
-	Id                    string  `pulumi:"id"`
-	Kind                  *string `pulumi:"kind"`
-	Name                  string  `pulumi:"name"`
-	Type                  string  `pulumi:"type"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput(ctx *pulumi.Context, args LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput {
@@ -53,9 +64,13 @@ func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput(ctx *pulumi
 }
 
 type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputArgs struct {
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
-	FunctionAppName   pulumi.StringInput `pulumi:"functionAppName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The stage site identifier.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Name of the function app registered with the static site build.
+	FunctionAppName pulumi.StringInput `pulumi:"functionAppName"`
+	// Name of the static site.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,34 +93,41 @@ func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) T
 	return o
 }
 
+// The date and time on which the function app was registered with the static site.
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// The region of the function app registered with the static site
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) FunctionAppRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) *string {
 		return v.FunctionAppRegion
 	}).(pulumi.StringPtrOutput)
 }
 
+// The resource id of the function app registered with the static site
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) FunctionAppResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) *string {
 		return v.FunctionAppResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.Type }).(pulumi.StringOutput)
 }

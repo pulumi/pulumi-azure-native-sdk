@@ -21,19 +21,28 @@ func LookupNetworkSecurityPerimeter(ctx *pulumi.Context, args *LookupNetworkSecu
 }
 
 type LookupNetworkSecurityPerimeterArgs struct {
+	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName string `pulumi:"networkSecurityPerimeterName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Network Security Perimeter resource
 type LookupNetworkSecurityPerimeterResult struct {
-	Id                string            `pulumi:"id"`
-	Location          *string           `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	PerimeterGuid     string            `pulumi:"perimeterGuid"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              string            `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// perimeter guid of the network security perimeter.
+	PerimeterGuid string `pulumi:"perimeterGuid"`
+	// The provisioning state of the scope assignment resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupNetworkSecurityPerimeterOutput(ctx *pulumi.Context, args LookupNetworkSecurityPerimeterOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkSecurityPerimeterResultOutput {
@@ -50,8 +59,10 @@ func LookupNetworkSecurityPerimeterOutput(ctx *pulumi.Context, args LookupNetwor
 }
 
 type LookupNetworkSecurityPerimeterOutputArgs struct {
+	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName pulumi.StringInput `pulumi:"networkSecurityPerimeterName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNetworkSecurityPerimeterOutputArgs) ElementType() reflect.Type {
@@ -73,30 +84,37 @@ func (o LookupNetworkSecurityPerimeterResultOutput) ToLookupNetworkSecurityPerim
 	return o
 }
 
+// Resource ID.
 func (o LookupNetworkSecurityPerimeterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupNetworkSecurityPerimeterResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupNetworkSecurityPerimeterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// perimeter guid of the network security perimeter.
 func (o LookupNetworkSecurityPerimeterResultOutput) PerimeterGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.PerimeterGuid }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the scope assignment resource.
 func (o LookupNetworkSecurityPerimeterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupNetworkSecurityPerimeterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupNetworkSecurityPerimeterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.Type }).(pulumi.StringOutput)
 }

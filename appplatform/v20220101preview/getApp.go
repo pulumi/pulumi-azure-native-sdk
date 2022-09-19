@@ -21,21 +21,32 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupAppArgs struct {
-	AppName           string  `pulumi:"appName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ServiceName       string  `pulumi:"serviceName"`
-	SyncStatus        *string `pulumi:"syncStatus"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
+	// Indicates whether sync status
+	SyncStatus *string `pulumi:"syncStatus"`
 }
 
 // App resource payload
 type LookupAppResult struct {
-	Id         string                             `pulumi:"id"`
-	Identity   *ManagedIdentityPropertiesResponse `pulumi:"identity"`
-	Location   *string                            `pulumi:"location"`
-	Name       string                             `pulumi:"name"`
-	Properties AppResourcePropertiesResponse      `pulumi:"properties"`
-	SystemData SystemDataResponse                 `pulumi:"systemData"`
-	Type       string                             `pulumi:"type"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The Managed Identity type of the app resource
+	Identity *ManagedIdentityPropertiesResponse `pulumi:"identity"`
+	// The GEO location of the application, always the same with its parent resource
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of the App resource
+	Properties AppResourcePropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupAppResult
@@ -63,10 +74,14 @@ func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulu
 }
 
 type LookupAppOutputArgs struct {
-	AppName           pulumi.StringInput    `pulumi:"appName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput    `pulumi:"serviceName"`
-	SyncStatus        pulumi.StringPtrInput `pulumi:"syncStatus"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Indicates whether sync status
+	SyncStatus pulumi.StringPtrInput `pulumi:"syncStatus"`
 }
 
 func (LookupAppOutputArgs) ElementType() reflect.Type {
@@ -88,30 +103,37 @@ func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Managed Identity type of the app resource
 func (o LookupAppResultOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupAppResult) *ManagedIdentityPropertiesResponse { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
+// The GEO location of the application, always the same with its parent resource
 func (o LookupAppResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the App resource
 func (o LookupAppResultOutput) Properties() AppResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAppResult) AppResourcePropertiesResponse { return v.Properties }).(AppResourcePropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupAppResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAppResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupAppResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Type }).(pulumi.StringOutput)
 }

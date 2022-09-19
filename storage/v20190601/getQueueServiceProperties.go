@@ -23,17 +23,24 @@ func LookupQueueServiceProperties(ctx *pulumi.Context, args *LookupQueueServiceP
 }
 
 type LookupQueueServicePropertiesArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	QueueServiceName  string `pulumi:"queueServiceName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
+	QueueServiceName string `pulumi:"queueServiceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of a storage account’s Queue service.
 type LookupQueueServicePropertiesResult struct {
+	// Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.
 	Cors *CorsRulesResponse `pulumi:"cors"`
-	Id   string             `pulumi:"id"`
-	Name string             `pulumi:"name"`
-	Type string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupQueueServicePropertiesOutput(ctx *pulumi.Context, args LookupQueueServicePropertiesOutputArgs, opts ...pulumi.InvokeOption) LookupQueueServicePropertiesResultOutput {
@@ -50,8 +57,11 @@ func LookupQueueServicePropertiesOutput(ctx *pulumi.Context, args LookupQueueSer
 }
 
 type LookupQueueServicePropertiesOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	QueueServiceName  pulumi.StringInput `pulumi:"queueServiceName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
+	QueueServiceName pulumi.StringInput `pulumi:"queueServiceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,18 +84,22 @@ func (o LookupQueueServicePropertiesResultOutput) ToLookupQueueServiceProperties
 	return o
 }
 
+// Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.
 func (o LookupQueueServicePropertiesResultOutput) Cors() CorsRulesResponsePtrOutput {
 	return o.ApplyT(func(v LookupQueueServicePropertiesResult) *CorsRulesResponse { return v.Cors }).(CorsRulesResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupQueueServicePropertiesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueServicePropertiesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupQueueServicePropertiesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueServicePropertiesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupQueueServicePropertiesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueServicePropertiesResult) string { return v.Type }).(pulumi.StringOutput)
 }

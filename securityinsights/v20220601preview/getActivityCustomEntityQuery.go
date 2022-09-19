@@ -21,30 +21,51 @@ func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCu
 }
 
 type LookupActivityCustomEntityQueryArgs struct {
-	EntityQueryId     string `pulumi:"entityQueryId"`
+	// entity query ID
+	EntityQueryId string `pulumi:"entityQueryId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents Activity entity query.
 type LookupActivityCustomEntityQueryResult struct {
-	Content                 *string                                                  `pulumi:"content"`
-	CreatedTimeUtc          string                                                   `pulumi:"createdTimeUtc"`
-	Description             *string                                                  `pulumi:"description"`
-	Enabled                 *bool                                                    `pulumi:"enabled"`
-	EntitiesFilter          map[string][]string                                      `pulumi:"entitiesFilter"`
-	Etag                    *string                                                  `pulumi:"etag"`
-	Id                      string                                                   `pulumi:"id"`
-	InputEntityType         *string                                                  `pulumi:"inputEntityType"`
-	Kind                    string                                                   `pulumi:"kind"`
-	LastModifiedTimeUtc     string                                                   `pulumi:"lastModifiedTimeUtc"`
-	Name                    string                                                   `pulumi:"name"`
-	QueryDefinitions        *ActivityEntityQueriesPropertiesResponseQueryDefinitions `pulumi:"queryDefinitions"`
-	RequiredInputFieldsSets [][]string                                               `pulumi:"requiredInputFieldsSets"`
-	SystemData              SystemDataResponse                                       `pulumi:"systemData"`
-	TemplateName            *string                                                  `pulumi:"templateName"`
-	Title                   *string                                                  `pulumi:"title"`
-	Type                    string                                                   `pulumi:"type"`
+	// The entity query content to display in timeline
+	Content *string `pulumi:"content"`
+	// The time the activity was created
+	CreatedTimeUtc string `pulumi:"createdTimeUtc"`
+	// The entity query description
+	Description *string `pulumi:"description"`
+	// Determines whether this activity is enabled or disabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The query applied only to entities matching to all filters
+	EntitiesFilter map[string][]string `pulumi:"entitiesFilter"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The type of the query's source entity
+	InputEntityType *string `pulumi:"inputEntityType"`
+	// The kind of the entity query
+	// Expected value is 'Activity'.
+	Kind string `pulumi:"kind"`
+	// The last time the activity was updated
+	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Activity query definitions
+	QueryDefinitions *ActivityEntityQueriesPropertiesResponseQueryDefinitions `pulumi:"queryDefinitions"`
+	// List of the fields of the source entity that are required to run the query
+	RequiredInputFieldsSets [][]string `pulumi:"requiredInputFieldsSets"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The template id this activity was created from
+	TemplateName *string `pulumi:"templateName"`
+	// The entity query title
+	Title *string `pulumi:"title"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupActivityCustomEntityQueryOutput(ctx *pulumi.Context, args LookupActivityCustomEntityQueryOutputArgs, opts ...pulumi.InvokeOption) LookupActivityCustomEntityQueryResultOutput {
@@ -61,9 +82,12 @@ func LookupActivityCustomEntityQueryOutput(ctx *pulumi.Context, args LookupActiv
 }
 
 type LookupActivityCustomEntityQueryOutputArgs struct {
-	EntityQueryId     pulumi.StringInput `pulumi:"entityQueryId"`
+	// entity query ID
+	EntityQueryId pulumi.StringInput `pulumi:"entityQueryId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupActivityCustomEntityQueryOutputArgs) ElementType() reflect.Type {
@@ -85,72 +109,90 @@ func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntit
 	return o
 }
 
+// The entity query content to display in timeline
 func (o LookupActivityCustomEntityQueryResultOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The time the activity was created
 func (o LookupActivityCustomEntityQueryResultOutput) CreatedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.CreatedTimeUtc }).(pulumi.StringOutput)
 }
 
+// The entity query description
 func (o LookupActivityCustomEntityQueryResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Determines whether this activity is enabled or disabled.
 func (o LookupActivityCustomEntityQueryResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The query applied only to entities matching to all filters
 func (o LookupActivityCustomEntityQueryResultOutput) EntitiesFilter() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) map[string][]string { return v.EntitiesFilter }).(pulumi.StringArrayMapOutput)
 }
 
+// Etag of the azure resource
 func (o LookupActivityCustomEntityQueryResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupActivityCustomEntityQueryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The type of the query's source entity
 func (o LookupActivityCustomEntityQueryResultOutput) InputEntityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.InputEntityType }).(pulumi.StringPtrOutput)
 }
 
+// The kind of the entity query
+// Expected value is 'Activity'.
 func (o LookupActivityCustomEntityQueryResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The last time the activity was updated
 func (o LookupActivityCustomEntityQueryResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupActivityCustomEntityQueryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Activity query definitions
 func (o LookupActivityCustomEntityQueryResultOutput) QueryDefinitions() ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *ActivityEntityQueriesPropertiesResponseQueryDefinitions {
 		return v.QueryDefinitions
 	}).(ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput)
 }
 
+// List of the fields of the source entity that are required to run the query
 func (o LookupActivityCustomEntityQueryResultOutput) RequiredInputFieldsSets() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) [][]string { return v.RequiredInputFieldsSets }).(pulumi.StringArrayArrayOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupActivityCustomEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The template id this activity was created from
 func (o LookupActivityCustomEntityQueryResultOutput) TemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
 }
 
+// The entity query title
 func (o LookupActivityCustomEntityQueryResultOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupActivityCustomEntityQueryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Type }).(pulumi.StringOutput)
 }

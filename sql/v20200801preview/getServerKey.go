@@ -21,21 +21,32 @@ func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pul
 }
 
 type LookupServerKeyArgs struct {
-	KeyName           string `pulumi:"keyName"`
+	// The name of the server key to be retrieved.
+	KeyName string `pulumi:"keyName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // A server key.
 type LookupServerKeyResult struct {
+	// The server key creation date.
 	CreationDate string `pulumi:"creationDate"`
-	Id           string `pulumi:"id"`
-	Kind         string `pulumi:"kind"`
-	Location     string `pulumi:"location"`
-	Name         string `pulumi:"name"`
-	Subregion    string `pulumi:"subregion"`
-	Thumbprint   string `pulumi:"thumbprint"`
-	Type         string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Kind of encryption protector. This is metadata used for the Azure portal experience.
+	Kind string `pulumi:"kind"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Subregion of the server key.
+	Subregion string `pulumi:"subregion"`
+	// Thumbprint of the server key.
+	Thumbprint string `pulumi:"thumbprint"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, opts ...pulumi.InvokeOption) LookupServerKeyResultOutput {
@@ -52,9 +63,12 @@ func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, 
 }
 
 type LookupServerKeyOutputArgs struct {
-	KeyName           pulumi.StringInput `pulumi:"keyName"`
+	// The name of the server key to be retrieved.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerKeyOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupServerKeyResultOutput) ToLookupServerKeyResultOutputWithContext(ct
 	return o
 }
 
+// The server key creation date.
 func (o LookupServerKeyResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupServerKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of encryption protector. This is metadata used for the Azure portal experience.
 func (o LookupServerKeyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupServerKeyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Subregion of the server key.
 func (o LookupServerKeyResultOutput) Subregion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Subregion }).(pulumi.StringOutput)
 }
 
+// Thumbprint of the server key.
 func (o LookupServerKeyResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupServerKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }

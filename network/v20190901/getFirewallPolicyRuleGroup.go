@@ -21,20 +21,30 @@ func LookupFirewallPolicyRuleGroup(ctx *pulumi.Context, args *LookupFirewallPoli
 }
 
 type LookupFirewallPolicyRuleGroupArgs struct {
+	// The name of the Firewall Policy.
 	FirewallPolicyName string `pulumi:"firewallPolicyName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	RuleGroupName      string `pulumi:"ruleGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the FirewallPolicyRuleGroup.
+	RuleGroupName string `pulumi:"ruleGroupName"`
 }
 
 // Rule Group resource.
 type LookupFirewallPolicyRuleGroupResult struct {
-	Etag              string        `pulumi:"etag"`
-	Id                *string       `pulumi:"id"`
-	Name              *string       `pulumi:"name"`
-	Priority          *int          `pulumi:"priority"`
-	ProvisioningState string        `pulumi:"provisioningState"`
-	Rules             []interface{} `pulumi:"rules"`
-	Type              string        `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Priority of the Firewall Policy Rule Group resource.
+	Priority *int `pulumi:"priority"`
+	// The provisioning state of the firewall policy rule group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Group of Firewall Policy rules.
+	Rules []interface{} `pulumi:"rules"`
+	// Rule Group type.
+	Type string `pulumi:"type"`
 }
 
 func LookupFirewallPolicyRuleGroupOutput(ctx *pulumi.Context, args LookupFirewallPolicyRuleGroupOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallPolicyRuleGroupResultOutput {
@@ -51,9 +61,12 @@ func LookupFirewallPolicyRuleGroupOutput(ctx *pulumi.Context, args LookupFirewal
 }
 
 type LookupFirewallPolicyRuleGroupOutputArgs struct {
+	// The name of the Firewall Policy.
 	FirewallPolicyName pulumi.StringInput `pulumi:"firewallPolicyName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleGroupName      pulumi.StringInput `pulumi:"ruleGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the FirewallPolicyRuleGroup.
+	RuleGroupName pulumi.StringInput `pulumi:"ruleGroupName"`
 }
 
 func (LookupFirewallPolicyRuleGroupOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupFirewallPolicyRuleGroupResultOutput) ToLookupFirewallPolicyRuleGro
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupFirewallPolicyRuleGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupFirewallPolicyRuleGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupFirewallPolicyRuleGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Priority of the Firewall Policy Rule Group resource.
 func (o LookupFirewallPolicyRuleGroupResultOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The provisioning state of the firewall policy rule group resource.
 func (o LookupFirewallPolicyRuleGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Group of Firewall Policy rules.
 func (o LookupFirewallPolicyRuleGroupResultOutput) Rules() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) []interface{} { return v.Rules }).(pulumi.ArrayOutput)
 }
 
+// Rule Group type.
 func (o LookupFirewallPolicyRuleGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

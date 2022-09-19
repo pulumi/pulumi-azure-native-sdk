@@ -21,27 +21,44 @@ func LookupFlowLog(ctx *pulumi.Context, args *LookupFlowLogArgs, opts ...pulumi.
 }
 
 type LookupFlowLogArgs struct {
-	FlowLogName        string `pulumi:"flowLogName"`
+	// The name of the flow log resource.
+	FlowLogName string `pulumi:"flowLogName"`
+	// The name of the network watcher.
 	NetworkWatcherName string `pulumi:"networkWatcherName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A flow log resource.
 type LookupFlowLogResult struct {
-	Enabled                    *bool                               `pulumi:"enabled"`
-	Etag                       string                              `pulumi:"etag"`
+	// Flag to enable/disable flow logging.
+	Enabled *bool `pulumi:"enabled"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Parameters that define the configuration of traffic analytics.
 	FlowAnalyticsConfiguration *TrafficAnalyticsPropertiesResponse `pulumi:"flowAnalyticsConfiguration"`
-	Format                     *FlowLogFormatParametersResponse    `pulumi:"format"`
-	Id                         *string                             `pulumi:"id"`
-	Location                   *string                             `pulumi:"location"`
-	Name                       string                              `pulumi:"name"`
-	ProvisioningState          string                              `pulumi:"provisioningState"`
-	RetentionPolicy            *RetentionPolicyParametersResponse  `pulumi:"retentionPolicy"`
-	StorageId                  string                              `pulumi:"storageId"`
-	Tags                       map[string]string                   `pulumi:"tags"`
-	TargetResourceGuid         string                              `pulumi:"targetResourceGuid"`
-	TargetResourceId           string                              `pulumi:"targetResourceId"`
-	Type                       string                              `pulumi:"type"`
+	// Parameters that define the flow log format.
+	Format *FlowLogFormatParametersResponse `pulumi:"format"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the flow log.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Parameters that define the retention policy for flow log.
+	RetentionPolicy *RetentionPolicyParametersResponse `pulumi:"retentionPolicy"`
+	// ID of the storage account which is used to store the flow log.
+	StorageId string `pulumi:"storageId"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Guid of network security group to which flow log will be applied.
+	TargetResourceGuid string `pulumi:"targetResourceGuid"`
+	// ID of network security group to which flow log will be applied.
+	TargetResourceId string `pulumi:"targetResourceId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupFlowLogResult
@@ -71,9 +88,12 @@ func LookupFlowLogOutput(ctx *pulumi.Context, args LookupFlowLogOutputArgs, opts
 }
 
 type LookupFlowLogOutputArgs struct {
-	FlowLogName        pulumi.StringInput `pulumi:"flowLogName"`
+	// The name of the flow log resource.
+	FlowLogName pulumi.StringInput `pulumi:"flowLogName"`
+	// The name of the network watcher.
 	NetworkWatcherName pulumi.StringInput `pulumi:"networkWatcherName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupFlowLogOutputArgs) ElementType() reflect.Type {
@@ -95,58 +115,72 @@ func (o LookupFlowLogResultOutput) ToLookupFlowLogResultOutputWithContext(ctx co
 	return o
 }
 
+// Flag to enable/disable flow logging.
 func (o LookupFlowLogResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupFlowLogResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Parameters that define the configuration of traffic analytics.
 func (o LookupFlowLogResultOutput) FlowAnalyticsConfiguration() TrafficAnalyticsPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *TrafficAnalyticsPropertiesResponse { return v.FlowAnalyticsConfiguration }).(TrafficAnalyticsPropertiesResponsePtrOutput)
 }
 
+// Parameters that define the flow log format.
 func (o LookupFlowLogResultOutput) Format() FlowLogFormatParametersResponsePtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *FlowLogFormatParametersResponse { return v.Format }).(FlowLogFormatParametersResponsePtrOutput)
 }
 
+// Resource ID.
 func (o LookupFlowLogResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupFlowLogResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupFlowLogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the flow log.
 func (o LookupFlowLogResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Parameters that define the retention policy for flow log.
 func (o LookupFlowLogResultOutput) RetentionPolicy() RetentionPolicyParametersResponsePtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *RetentionPolicyParametersResponse { return v.RetentionPolicy }).(RetentionPolicyParametersResponsePtrOutput)
 }
 
+// ID of the storage account which is used to store the flow log.
 func (o LookupFlowLogResultOutput) StorageId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.StorageId }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupFlowLogResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Guid of network security group to which flow log will be applied.
 func (o LookupFlowLogResultOutput) TargetResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.TargetResourceGuid }).(pulumi.StringOutput)
 }
 
+// ID of network security group to which flow log will be applied.
 func (o LookupFlowLogResultOutput) TargetResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.TargetResourceId }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupFlowLogResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) string { return v.Type }).(pulumi.StringOutput)
 }

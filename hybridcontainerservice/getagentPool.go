@@ -22,34 +22,56 @@ func GetagentPool(ctx *pulumi.Context, args *GetagentPoolArgs, opts ...pulumi.In
 }
 
 type GetagentPoolArgs struct {
-	AgentPoolName           string `pulumi:"agentPoolName"`
+	// Parameter for the name of the agent pool in the provisioned cluster
+	AgentPoolName string `pulumi:"agentPoolName"`
+	// Parameter for the name of the provisioned cluster
 	ProvisionedClustersName string `pulumi:"provisionedClustersName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The agentPool resource definition
 type GetagentPoolResult struct {
-	AvailabilityZones    []string                                   `pulumi:"availabilityZones"`
-	CloudProviderProfile *CloudProviderProfileResponse              `pulumi:"cloudProviderProfile"`
-	Count                *int                                       `pulumi:"count"`
-	ExtendedLocation     *AgentPoolResponseExtendedLocation         `pulumi:"extendedLocation"`
-	Id                   string                                     `pulumi:"id"`
-	Location             *string                                    `pulumi:"location"`
-	MaxCount             *int                                       `pulumi:"maxCount"`
-	MaxPods              *int                                       `pulumi:"maxPods"`
-	MinCount             *int                                       `pulumi:"minCount"`
-	Mode                 *string                                    `pulumi:"mode"`
-	Name                 string                                     `pulumi:"name"`
-	NodeImageVersion     *string                                    `pulumi:"nodeImageVersion"`
-	NodeLabels           map[string]string                          `pulumi:"nodeLabels"`
-	NodeTaints           []string                                   `pulumi:"nodeTaints"`
-	OsType               *string                                    `pulumi:"osType"`
-	ProvisioningState    string                                     `pulumi:"provisioningState"`
-	Status               *AgentPoolProvisioningStatusResponseStatus `pulumi:"status"`
-	SystemData           SystemDataResponse                         `pulumi:"systemData"`
-	Tags                 map[string]string                          `pulumi:"tags"`
-	Type                 string                                     `pulumi:"type"`
-	VmSize               *string                                    `pulumi:"vmSize"`
+	// AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The underlying cloud infra provider properties.
+	CloudProviderProfile *CloudProviderProfileResponse `pulumi:"cloudProviderProfile"`
+	// Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
+	Count            *int                               `pulumi:"count"`
+	ExtendedLocation *AgentPoolResponseExtendedLocation `pulumi:"extendedLocation"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The resource location
+	Location *string `pulumi:"location"`
+	// The maximum number of nodes for auto-scaling
+	MaxCount *int `pulumi:"maxCount"`
+	// The maximum number of pods that can run on a node.
+	MaxPods *int `pulumi:"maxPods"`
+	// The minimum number of nodes for auto-scaling
+	MinCount *int `pulumi:"minCount"`
+	// Mode - AgentPoolMode represents mode of an agent pool. Possible values include: 'System', 'LB', 'User'. Default is 'User'
+	Mode *string `pulumi:"mode"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// The version of node image
+	NodeImageVersion *string `pulumi:"nodeImageVersion"`
+	// NodeLabels - Agent pool node labels to be persisted across all nodes in agent pool.
+	NodeLabels map[string]string `pulumi:"nodeLabels"`
+	// NodeTaints - Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
+	NodeTaints []string `pulumi:"nodeTaints"`
+	// OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
+	OsType            *string `pulumi:"osType"`
+	ProvisioningState string  `pulumi:"provisioningState"`
+	// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
+	Status *AgentPoolProvisioningStatusResponseStatus `pulumi:"status"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource Type
+	Type string `pulumi:"type"`
+	// VmSize - The size of the agent pool VMs.
+	VmSize *string `pulumi:"vmSize"`
 }
 
 // Defaults sets the appropriate defaults for GetagentPoolResult
@@ -87,9 +109,12 @@ func GetagentPoolOutput(ctx *pulumi.Context, args GetagentPoolOutputArgs, opts .
 }
 
 type GetagentPoolOutputArgs struct {
-	AgentPoolName           pulumi.StringInput `pulumi:"agentPoolName"`
+	// Parameter for the name of the agent pool in the provisioned cluster
+	AgentPoolName pulumi.StringInput `pulumi:"agentPoolName"`
+	// Parameter for the name of the provisioned cluster
 	ProvisionedClustersName pulumi.StringInput `pulumi:"provisionedClustersName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetagentPoolOutputArgs) ElementType() reflect.Type {
@@ -111,14 +136,17 @@ func (o GetagentPoolResultOutput) ToGetagentPoolResultOutputWithContext(ctx cont
 	return o
 }
 
+// AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
 func (o GetagentPoolResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetagentPoolResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The underlying cloud infra provider properties.
 func (o GetagentPoolResultOutput) CloudProviderProfile() CloudProviderProfileResponsePtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *CloudProviderProfileResponse { return v.CloudProviderProfile }).(CloudProviderProfileResponsePtrOutput)
 }
 
+// Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
 func (o GetagentPoolResultOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
@@ -127,46 +155,57 @@ func (o GetagentPoolResultOutput) ExtendedLocation() AgentPoolResponseExtendedLo
 	return o.ApplyT(func(v GetagentPoolResult) *AgentPoolResponseExtendedLocation { return v.ExtendedLocation }).(AgentPoolResponseExtendedLocationPtrOutput)
 }
 
+// Resource Id
 func (o GetagentPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetagentPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource location
 func (o GetagentPoolResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of nodes for auto-scaling
 func (o GetagentPoolResultOutput) MaxCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *int { return v.MaxCount }).(pulumi.IntPtrOutput)
 }
 
+// The maximum number of pods that can run on a node.
 func (o GetagentPoolResultOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of nodes for auto-scaling
 func (o GetagentPoolResultOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *int { return v.MinCount }).(pulumi.IntPtrOutput)
 }
 
+// Mode - AgentPoolMode represents mode of an agent pool. Possible values include: 'System', 'LB', 'User'. Default is 'User'
 func (o GetagentPoolResultOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o GetagentPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetagentPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The version of node image
 func (o GetagentPoolResultOutput) NodeImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *string { return v.NodeImageVersion }).(pulumi.StringPtrOutput)
 }
 
+// NodeLabels - Agent pool node labels to be persisted across all nodes in agent pool.
 func (o GetagentPoolResultOutput) NodeLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetagentPoolResult) map[string]string { return v.NodeLabels }).(pulumi.StringMapOutput)
 }
 
+// NodeTaints - Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
 func (o GetagentPoolResultOutput) NodeTaints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetagentPoolResult) []string { return v.NodeTaints }).(pulumi.StringArrayOutput)
 }
 
+// OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
 func (o GetagentPoolResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
@@ -175,22 +214,27 @@ func (o GetagentPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetagentPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
 func (o GetagentPoolResultOutput) Status() AgentPoolProvisioningStatusResponseStatusPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *AgentPoolProvisioningStatusResponseStatus { return v.Status }).(AgentPoolProvisioningStatusResponseStatusPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o GetagentPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v GetagentPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags
 func (o GetagentPoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetagentPoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource Type
 func (o GetagentPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetagentPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// VmSize - The size of the agent pool VMs.
 func (o GetagentPoolResultOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetagentPoolResult) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }

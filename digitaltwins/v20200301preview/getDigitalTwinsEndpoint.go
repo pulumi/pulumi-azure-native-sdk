@@ -23,17 +23,24 @@ func LookupDigitalTwinsEndpoint(ctx *pulumi.Context, args *LookupDigitalTwinsEnd
 }
 
 type LookupDigitalTwinsEndpointArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
+	// Name of Endpoint Resource.
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group that contains the DigitalTwinsInstance.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the DigitalTwinsInstance.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // DigitalTwinsInstance endpoint resource.
 type LookupDigitalTwinsEndpointResult struct {
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// Extension resource name.
+	Name string `pulumi:"name"`
+	// DigitalTwinsInstance endpoint resource properties.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDigitalTwinsEndpointOutput(ctx *pulumi.Context, args LookupDigitalTwinsEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupDigitalTwinsEndpointResultOutput {
@@ -50,9 +57,12 @@ func LookupDigitalTwinsEndpointOutput(ctx *pulumi.Context, args LookupDigitalTwi
 }
 
 type LookupDigitalTwinsEndpointOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
+	// Name of Endpoint Resource.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group that contains the DigitalTwinsInstance.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the DigitalTwinsInstance.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupDigitalTwinsEndpointOutputArgs) ElementType() reflect.Type {
@@ -74,18 +84,22 @@ func (o LookupDigitalTwinsEndpointResultOutput) ToLookupDigitalTwinsEndpointResu
 	return o
 }
 
+// The resource identifier.
 func (o LookupDigitalTwinsEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinsEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Extension resource name.
 func (o LookupDigitalTwinsEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinsEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// DigitalTwinsInstance endpoint resource properties.
 func (o LookupDigitalTwinsEndpointResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDigitalTwinsEndpointResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The resource type.
 func (o LookupDigitalTwinsEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDigitalTwinsEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

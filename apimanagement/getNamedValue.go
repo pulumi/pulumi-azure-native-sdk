@@ -22,21 +22,32 @@ func LookupNamedValue(ctx *pulumi.Context, args *LookupNamedValueArgs, opts ...p
 }
 
 type LookupNamedValueArgs struct {
-	NamedValueId      string `pulumi:"namedValueId"`
+	// Identifier of the NamedValue.
+	NamedValueId string `pulumi:"namedValueId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // NamedValue details.
 type LookupNamedValueResult struct {
-	DisplayName string                              `pulumi:"displayName"`
-	Id          string                              `pulumi:"id"`
-	KeyVault    *KeyVaultContractPropertiesResponse `pulumi:"keyVault"`
-	Name        string                              `pulumi:"name"`
-	Secret      *bool                               `pulumi:"secret"`
-	Tags        []string                            `pulumi:"tags"`
-	Type        string                              `pulumi:"type"`
-	Value       *string                             `pulumi:"value"`
+	// Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
+	DisplayName string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// KeyVault location details of the namedValue.
+	KeyVault *KeyVaultContractPropertiesResponse `pulumi:"keyVault"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Determines whether the value is a secret and should be encrypted or not. Default value is false.
+	Secret *bool `pulumi:"secret"`
+	// Optional tags that when provided can be used to filter the NamedValue list.
+	Tags []string `pulumi:"tags"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
+	Value *string `pulumi:"value"`
 }
 
 func LookupNamedValueOutput(ctx *pulumi.Context, args LookupNamedValueOutputArgs, opts ...pulumi.InvokeOption) LookupNamedValueResultOutput {
@@ -53,9 +64,12 @@ func LookupNamedValueOutput(ctx *pulumi.Context, args LookupNamedValueOutputArgs
 }
 
 type LookupNamedValueOutputArgs struct {
-	NamedValueId      pulumi.StringInput `pulumi:"namedValueId"`
+	// Identifier of the NamedValue.
+	NamedValueId pulumi.StringInput `pulumi:"namedValueId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupNamedValueOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupNamedValueResultOutput) ToLookupNamedValueResultOutputWithContext(
 	return o
 }
 
+// Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
 func (o LookupNamedValueResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupNamedValueResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// KeyVault location details of the namedValue.
 func (o LookupNamedValueResultOutput) KeyVault() KeyVaultContractPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) *KeyVaultContractPropertiesResponse { return v.KeyVault }).(KeyVaultContractPropertiesResponsePtrOutput)
 }
 
+// Resource name.
 func (o LookupNamedValueResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Determines whether the value is a secret and should be encrypted or not. Default value is false.
 func (o LookupNamedValueResultOutput) Secret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) *bool { return v.Secret }).(pulumi.BoolPtrOutput)
 }
 
+// Optional tags that when provided can be used to filter the NamedValue list.
 func (o LookupNamedValueResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupNamedValueResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 func (o LookupNamedValueResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

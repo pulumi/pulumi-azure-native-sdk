@@ -21,31 +21,52 @@ func LookupFrontDoor(ctx *pulumi.Context, args *LookupFrontDoorArgs, opts ...pul
 }
 
 type LookupFrontDoorArgs struct {
-	FrontDoorName     string `pulumi:"frontDoorName"`
+	// Name of the Front Door which is globally unique.
+	FrontDoorName string `pulumi:"frontDoorName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
 type LookupFrontDoorResult struct {
-	BackendPools          []BackendPoolResponse                `pulumi:"backendPools"`
-	BackendPoolsSettings  *BackendPoolsSettingsResponse        `pulumi:"backendPoolsSettings"`
-	Cname                 string                               `pulumi:"cname"`
-	EnabledState          *string                              `pulumi:"enabledState"`
-	ExtendedProperties    map[string]string                    `pulumi:"extendedProperties"`
-	FriendlyName          *string                              `pulumi:"friendlyName"`
-	FrontdoorId           string                               `pulumi:"frontdoorId"`
-	FrontendEndpoints     []FrontendEndpointResponse           `pulumi:"frontendEndpoints"`
-	HealthProbeSettings   []HealthProbeSettingsModelResponse   `pulumi:"healthProbeSettings"`
-	Id                    string                               `pulumi:"id"`
+	// Backend pools available to routing rules.
+	BackendPools []BackendPoolResponse `pulumi:"backendPools"`
+	// Settings for all backendPools
+	BackendPoolsSettings *BackendPoolsSettingsResponse `pulumi:"backendPoolsSettings"`
+	// The host that each frontendEndpoint must CNAME to.
+	Cname string `pulumi:"cname"`
+	// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
+	EnabledState *string `pulumi:"enabledState"`
+	// Key-Value pair representing additional properties for frontdoor.
+	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
+	// A friendly name for the frontDoor
+	FriendlyName *string `pulumi:"friendlyName"`
+	// The Id of the frontdoor.
+	FrontdoorId string `pulumi:"frontdoorId"`
+	// Frontend endpoints available to routing rules.
+	FrontendEndpoints []FrontendEndpointResponse `pulumi:"frontendEndpoints"`
+	// Health probe settings associated with this Front Door instance.
+	HealthProbeSettings []HealthProbeSettingsModelResponse `pulumi:"healthProbeSettings"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Load balancing settings associated with this Front Door instance.
 	LoadBalancingSettings []LoadBalancingSettingsModelResponse `pulumi:"loadBalancingSettings"`
-	Location              *string                              `pulumi:"location"`
-	Name                  string                               `pulumi:"name"`
-	ProvisioningState     string                               `pulumi:"provisioningState"`
-	ResourceState         string                               `pulumi:"resourceState"`
-	RoutingRules          []RoutingRuleResponse                `pulumi:"routingRules"`
-	RulesEngines          []RulesEngineResponse                `pulumi:"rulesEngines"`
-	Tags                  map[string]string                    `pulumi:"tags"`
-	Type                  string                               `pulumi:"type"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Provisioning state of the Front Door.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource status of the Front Door.
+	ResourceState string `pulumi:"resourceState"`
+	// Routing rules associated with this Front Door.
+	RoutingRules []RoutingRuleResponse `pulumi:"routingRules"`
+	// Rules Engine Configurations available to routing rules.
+	RulesEngines []RulesEngineResponse `pulumi:"rulesEngines"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupFrontDoorResult
@@ -73,7 +94,9 @@ func LookupFrontDoorOutput(ctx *pulumi.Context, args LookupFrontDoorOutputArgs, 
 }
 
 type LookupFrontDoorOutputArgs struct {
-	FrontDoorName     pulumi.StringInput `pulumi:"frontDoorName"`
+	// Name of the Front Door which is globally unique.
+	FrontDoorName pulumi.StringInput `pulumi:"frontDoorName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,78 +119,97 @@ func (o LookupFrontDoorResultOutput) ToLookupFrontDoorResultOutputWithContext(ct
 	return o
 }
 
+// Backend pools available to routing rules.
 func (o LookupFrontDoorResultOutput) BackendPools() BackendPoolResponseArrayOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) []BackendPoolResponse { return v.BackendPools }).(BackendPoolResponseArrayOutput)
 }
 
+// Settings for all backendPools
 func (o LookupFrontDoorResultOutput) BackendPoolsSettings() BackendPoolsSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) *BackendPoolsSettingsResponse { return v.BackendPoolsSettings }).(BackendPoolsSettingsResponsePtrOutput)
 }
 
+// The host that each frontendEndpoint must CNAME to.
 func (o LookupFrontDoorResultOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.Cname }).(pulumi.StringOutput)
 }
 
+// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 func (o LookupFrontDoorResultOutput) EnabledState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
 }
 
+// Key-Value pair representing additional properties for frontdoor.
 func (o LookupFrontDoorResultOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
+// A friendly name for the frontDoor
 func (o LookupFrontDoorResultOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
+// The Id of the frontdoor.
 func (o LookupFrontDoorResultOutput) FrontdoorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.FrontdoorId }).(pulumi.StringOutput)
 }
 
+// Frontend endpoints available to routing rules.
 func (o LookupFrontDoorResultOutput) FrontendEndpoints() FrontendEndpointResponseArrayOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) []FrontendEndpointResponse { return v.FrontendEndpoints }).(FrontendEndpointResponseArrayOutput)
 }
 
+// Health probe settings associated with this Front Door instance.
 func (o LookupFrontDoorResultOutput) HealthProbeSettings() HealthProbeSettingsModelResponseArrayOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) []HealthProbeSettingsModelResponse { return v.HealthProbeSettings }).(HealthProbeSettingsModelResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupFrontDoorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Load balancing settings associated with this Front Door instance.
 func (o LookupFrontDoorResultOutput) LoadBalancingSettings() LoadBalancingSettingsModelResponseArrayOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) []LoadBalancingSettingsModelResponse { return v.LoadBalancingSettings }).(LoadBalancingSettingsModelResponseArrayOutput)
 }
 
+// Resource location.
 func (o LookupFrontDoorResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupFrontDoorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the Front Door.
 func (o LookupFrontDoorResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource status of the Front Door.
 func (o LookupFrontDoorResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Routing rules associated with this Front Door.
 func (o LookupFrontDoorResultOutput) RoutingRules() RoutingRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) []RoutingRuleResponse { return v.RoutingRules }).(RoutingRuleResponseArrayOutput)
 }
 
+// Rules Engine Configurations available to routing rules.
 func (o LookupFrontDoorResultOutput) RulesEngines() RulesEngineResponseArrayOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) []RulesEngineResponse { return v.RulesEngines }).(RulesEngineResponseArrayOutput)
 }
 
+// Resource tags.
 func (o LookupFrontDoorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupFrontDoorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) string { return v.Type }).(pulumi.StringOutput)
 }

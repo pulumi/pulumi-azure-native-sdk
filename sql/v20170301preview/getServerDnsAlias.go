@@ -21,17 +21,24 @@ func LookupServerDnsAlias(ctx *pulumi.Context, args *LookupServerDnsAliasArgs, o
 }
 
 type LookupServerDnsAliasArgs struct {
-	DnsAliasName      string `pulumi:"dnsAliasName"`
+	// The name of the server DNS alias.
+	DnsAliasName string `pulumi:"dnsAliasName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server that the alias is pointing to.
+	ServerName string `pulumi:"serverName"`
 }
 
 // A server DNS alias.
 type LookupServerDnsAliasResult struct {
+	// The fully qualified DNS record for alias
 	AzureDnsRecord string `pulumi:"azureDnsRecord"`
-	Id             string `pulumi:"id"`
-	Name           string `pulumi:"name"`
-	Type           string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerDnsAliasOutput(ctx *pulumi.Context, args LookupServerDnsAliasOutputArgs, opts ...pulumi.InvokeOption) LookupServerDnsAliasResultOutput {
@@ -48,9 +55,12 @@ func LookupServerDnsAliasOutput(ctx *pulumi.Context, args LookupServerDnsAliasOu
 }
 
 type LookupServerDnsAliasOutputArgs struct {
-	DnsAliasName      pulumi.StringInput `pulumi:"dnsAliasName"`
+	// The name of the server DNS alias.
+	DnsAliasName pulumi.StringInput `pulumi:"dnsAliasName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server that the alias is pointing to.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerDnsAliasOutputArgs) ElementType() reflect.Type {
@@ -72,18 +82,22 @@ func (o LookupServerDnsAliasResultOutput) ToLookupServerDnsAliasResultOutputWith
 	return o
 }
 
+// The fully qualified DNS record for alias
 func (o LookupServerDnsAliasResultOutput) AzureDnsRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDnsAliasResult) string { return v.AzureDnsRecord }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupServerDnsAliasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDnsAliasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerDnsAliasResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDnsAliasResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupServerDnsAliasResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDnsAliasResult) string { return v.Type }).(pulumi.StringOutput)
 }

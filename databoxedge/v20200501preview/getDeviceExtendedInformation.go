@@ -21,18 +21,26 @@ func GetDeviceExtendedInformation(ctx *pulumi.Context, args *GetDeviceExtendedIn
 }
 
 type GetDeviceExtendedInformationArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The extended Info of the Data Box Edge/Gateway device.
 type GetDeviceExtendedInformationResult struct {
-	EncryptionKey           *string `pulumi:"encryptionKey"`
+	// The public part of the encryption certificate. Client uses this to encrypt any secret.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The digital signature of encrypted certificate.
 	EncryptionKeyThumbprint *string `pulumi:"encryptionKeyThumbprint"`
-	Id                      string  `pulumi:"id"`
-	Name                    string  `pulumi:"name"`
-	ResourceKey             string  `pulumi:"resourceKey"`
-	Type                    string  `pulumi:"type"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// The Resource ID of the Resource.
+	ResourceKey string `pulumi:"resourceKey"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func GetDeviceExtendedInformationOutput(ctx *pulumi.Context, args GetDeviceExtendedInformationOutputArgs, opts ...pulumi.InvokeOption) GetDeviceExtendedInformationResultOutput {
@@ -49,7 +57,9 @@ func GetDeviceExtendedInformationOutput(ctx *pulumi.Context, args GetDeviceExten
 }
 
 type GetDeviceExtendedInformationOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,26 +82,32 @@ func (o GetDeviceExtendedInformationResultOutput) ToGetDeviceExtendedInformation
 	return o
 }
 
+// The public part of the encryption certificate. Client uses this to encrypt any secret.
 func (o GetDeviceExtendedInformationResultOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDeviceExtendedInformationResult) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
+// The digital signature of encrypted certificate.
 func (o GetDeviceExtendedInformationResultOutput) EncryptionKeyThumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDeviceExtendedInformationResult) *string { return v.EncryptionKeyThumbprint }).(pulumi.StringPtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o GetDeviceExtendedInformationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceExtendedInformationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o GetDeviceExtendedInformationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceExtendedInformationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Resource ID of the Resource.
 func (o GetDeviceExtendedInformationResultOutput) ResourceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceExtendedInformationResult) string { return v.ResourceKey }).(pulumi.StringOutput)
 }
 
+// The hierarchical type of the object.
 func (o GetDeviceExtendedInformationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceExtendedInformationResult) string { return v.Type }).(pulumi.StringOutput)
 }

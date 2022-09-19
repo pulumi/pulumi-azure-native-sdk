@@ -21,25 +21,40 @@ func LookupSqlVirtualMachineGroup(ctx *pulumi.Context, args *LookupSqlVirtualMac
 }
 
 type LookupSqlVirtualMachineGroupArgs struct {
-	ResourceGroupName          string `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName string `pulumi:"sqlVirtualMachineGroupName"`
 }
 
 // A SQL virtual machine group.
 type LookupSqlVirtualMachineGroupResult struct {
-	ClusterConfiguration string                     `pulumi:"clusterConfiguration"`
-	ClusterManagerType   string                     `pulumi:"clusterManagerType"`
-	Id                   string                     `pulumi:"id"`
-	Location             string                     `pulumi:"location"`
-	Name                 string                     `pulumi:"name"`
-	ProvisioningState    string                     `pulumi:"provisioningState"`
-	ScaleType            string                     `pulumi:"scaleType"`
-	SqlImageOffer        *string                    `pulumi:"sqlImageOffer"`
-	SqlImageSku          *string                    `pulumi:"sqlImageSku"`
-	SystemData           SystemDataResponse         `pulumi:"systemData"`
-	Tags                 map[string]string          `pulumi:"tags"`
-	Type                 string                     `pulumi:"type"`
-	WsfcDomainProfile    *WsfcDomainProfileResponse `pulumi:"wsfcDomainProfile"`
+	// Cluster type.
+	ClusterConfiguration string `pulumi:"clusterConfiguration"`
+	// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
+	ClusterManagerType string `pulumi:"clusterManagerType"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Provisioning state to track the async operation status.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Scale type.
+	ScaleType string `pulumi:"scaleType"`
+	// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
+	SqlImageOffer *string `pulumi:"sqlImageOffer"`
+	// SQL image sku.
+	SqlImageSku *string `pulumi:"sqlImageSku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Cluster Active Directory domain profile.
+	WsfcDomainProfile *WsfcDomainProfileResponse `pulumi:"wsfcDomainProfile"`
 }
 
 func LookupSqlVirtualMachineGroupOutput(ctx *pulumi.Context, args LookupSqlVirtualMachineGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSqlVirtualMachineGroupResultOutput {
@@ -56,7 +71,9 @@ func LookupSqlVirtualMachineGroupOutput(ctx *pulumi.Context, args LookupSqlVirtu
 }
 
 type LookupSqlVirtualMachineGroupOutputArgs struct {
-	ResourceGroupName          pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName pulumi.StringInput `pulumi:"sqlVirtualMachineGroupName"`
 }
 
@@ -79,54 +96,67 @@ func (o LookupSqlVirtualMachineGroupResultOutput) ToLookupSqlVirtualMachineGroup
 	return o
 }
 
+// Cluster type.
 func (o LookupSqlVirtualMachineGroupResultOutput) ClusterConfiguration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.ClusterConfiguration }).(pulumi.StringOutput)
 }
 
+// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
 func (o LookupSqlVirtualMachineGroupResultOutput) ClusterManagerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.ClusterManagerType }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSqlVirtualMachineGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupSqlVirtualMachineGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSqlVirtualMachineGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state to track the async operation status.
 func (o LookupSqlVirtualMachineGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Scale type.
 func (o LookupSqlVirtualMachineGroupResultOutput) ScaleType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.ScaleType }).(pulumi.StringOutput)
 }
 
+// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
 func (o LookupSqlVirtualMachineGroupResultOutput) SqlImageOffer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) *string { return v.SqlImageOffer }).(pulumi.StringPtrOutput)
 }
 
+// SQL image sku.
 func (o LookupSqlVirtualMachineGroupResultOutput) SqlImageSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) *string { return v.SqlImageSku }).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupSqlVirtualMachineGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSqlVirtualMachineGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupSqlVirtualMachineGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Cluster Active Directory domain profile.
 func (o LookupSqlVirtualMachineGroupResultOutput) WsfcDomainProfile() WsfcDomainProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) *WsfcDomainProfileResponse { return v.WsfcDomainProfile }).(WsfcDomainProfileResponsePtrOutput)
 }

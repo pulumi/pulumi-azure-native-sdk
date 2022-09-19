@@ -23,19 +23,28 @@ func LookupQueueAuthorizationRule(ctx *pulumi.Context, args *LookupQueueAuthoriz
 }
 
 type LookupQueueAuthorizationRuleArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	QueueName             string `pulumi:"queueName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The queue name.
+	QueueName string `pulumi:"queueName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a namespace authorization rule.
 type LookupQueueAuthorizationRuleResult struct {
-	Id       string   `pulumi:"id"`
-	Location *string  `pulumi:"location"`
-	Name     string   `pulumi:"name"`
-	Rights   []string `pulumi:"rights"`
-	Type     string   `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupQueueAuthorizationRuleOutput(ctx *pulumi.Context, args LookupQueueAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupQueueAuthorizationRuleResultOutput {
@@ -52,10 +61,14 @@ func LookupQueueAuthorizationRuleOutput(ctx *pulumi.Context, args LookupQueueAut
 }
 
 type LookupQueueAuthorizationRuleOutputArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	QueueName             pulumi.StringInput `pulumi:"queueName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The queue name.
+	QueueName pulumi.StringInput `pulumi:"queueName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupQueueAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -77,22 +90,27 @@ func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRule
 	return o
 }
 
+// Resource Id
 func (o LookupQueueAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupQueueAuthorizationRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupQueueAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupQueueAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// Resource type
 func (o LookupQueueAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

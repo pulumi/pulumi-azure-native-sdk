@@ -21,15 +21,20 @@ func GetWebhookCallbackConfig(ctx *pulumi.Context, args *GetWebhookCallbackConfi
 }
 
 type GetWebhookCallbackConfigArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WebhookName       string `pulumi:"webhookName"`
+	// The name of the webhook.
+	WebhookName string `pulumi:"webhookName"`
 }
 
 // The configuration of service URI and custom headers for the webhook.
 type GetWebhookCallbackConfigResult struct {
+	// Custom headers that will be added to the webhook notifications.
 	CustomHeaders map[string]string `pulumi:"customHeaders"`
-	ServiceUri    string            `pulumi:"serviceUri"`
+	// The service URI for the webhook to post notifications.
+	ServiceUri string `pulumi:"serviceUri"`
 }
 
 func GetWebhookCallbackConfigOutput(ctx *pulumi.Context, args GetWebhookCallbackConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebhookCallbackConfigResultOutput {
@@ -46,9 +51,12 @@ func GetWebhookCallbackConfigOutput(ctx *pulumi.Context, args GetWebhookCallback
 }
 
 type GetWebhookCallbackConfigOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WebhookName       pulumi.StringInput `pulumi:"webhookName"`
+	// The name of the webhook.
+	WebhookName pulumi.StringInput `pulumi:"webhookName"`
 }
 
 func (GetWebhookCallbackConfigOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o GetWebhookCallbackConfigResultOutput) ToGetWebhookCallbackConfigResultOu
 	return o
 }
 
+// Custom headers that will be added to the webhook notifications.
 func (o GetWebhookCallbackConfigResultOutput) CustomHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetWebhookCallbackConfigResult) map[string]string { return v.CustomHeaders }).(pulumi.StringMapOutput)
 }
 
+// The service URI for the webhook to post notifications.
 func (o GetWebhookCallbackConfigResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhookCallbackConfigResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }

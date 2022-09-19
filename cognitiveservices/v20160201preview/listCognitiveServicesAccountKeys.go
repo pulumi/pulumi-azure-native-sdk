@@ -21,13 +21,17 @@ func ListCognitiveServicesAccountKeys(ctx *pulumi.Context, args *ListCognitiveSe
 }
 
 type ListCognitiveServicesAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the cognitive services account within the specified resource group. Cognitive Services account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The access keys for the cognitive services account.
 type ListCognitiveServicesAccountKeysResult struct {
+	// Gets the value of key 1.
 	Key1 *string `pulumi:"key1"`
+	// Gets the value of key 2.
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -45,7 +49,9 @@ func ListCognitiveServicesAccountKeysOutput(ctx *pulumi.Context, args ListCognit
 }
 
 type ListCognitiveServicesAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the cognitive services account within the specified resource group. Cognitive Services account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListCognitiveServicesAccountKeysResultOutput) ToListCognitiveServicesAcc
 	return o
 }
 
+// Gets the value of key 1.
 func (o ListCognitiveServicesAccountKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListCognitiveServicesAccountKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Gets the value of key 2.
 func (o ListCognitiveServicesAccountKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListCognitiveServicesAccountKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

@@ -21,18 +21,26 @@ func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts 
 }
 
 type LookupFirewallRuleArgs struct {
-	CacheName         string `pulumi:"cacheName"`
+	// The name of the Redis cache.
+	CacheName string `pulumi:"cacheName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RuleName          string `pulumi:"ruleName"`
+	// The name of the firewall rule.
+	RuleName string `pulumi:"ruleName"`
 }
 
 // A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
 type LookupFirewallRuleResult struct {
-	EndIP   string `pulumi:"endIP"`
-	Id      string `pulumi:"id"`
-	Name    string `pulumi:"name"`
+	// highest IP address included in the range
+	EndIP string `pulumi:"endIP"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// lowest IP address included in the range
 	StartIP string `pulumi:"startIP"`
-	Type    string `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallRuleResultOutput {
@@ -49,9 +57,12 @@ func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutput
 }
 
 type LookupFirewallRuleOutputArgs struct {
-	CacheName         pulumi.StringInput `pulumi:"cacheName"`
+	// The name of the Redis cache.
+	CacheName pulumi.StringInput `pulumi:"cacheName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleName          pulumi.StringInput `pulumi:"ruleName"`
+	// The name of the firewall rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
 }
 
 func (LookupFirewallRuleOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithCont
 	return o
 }
 
+// highest IP address included in the range
 func (o LookupFirewallRuleResultOutput) EndIP() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.EndIP }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupFirewallRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// lowest IP address included in the range
 func (o LookupFirewallRuleResultOutput) StartIP() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.StartIP }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFirewallRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,12 +21,15 @@ func ListFleetCredentials(ctx *pulumi.Context, args *ListFleetCredentialsArgs, o
 }
 
 type ListFleetCredentialsArgs struct {
-	FleetName         string `pulumi:"fleetName"`
+	// The name of the Fleet resource.
+	FleetName string `pulumi:"fleetName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The list credential result response.
 type ListFleetCredentialsResult struct {
+	// Base64-encoded Kubernetes configuration file.
 	Kubeconfigs []FleetCredentialResultResponse `pulumi:"kubeconfigs"`
 }
 
@@ -44,7 +47,9 @@ func ListFleetCredentialsOutput(ctx *pulumi.Context, args ListFleetCredentialsOu
 }
 
 type ListFleetCredentialsOutputArgs struct {
-	FleetName         pulumi.StringInput `pulumi:"fleetName"`
+	// The name of the Fleet resource.
+	FleetName pulumi.StringInput `pulumi:"fleetName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -67,6 +72,7 @@ func (o ListFleetCredentialsResultOutput) ToListFleetCredentialsResultOutputWith
 	return o
 }
 
+// Base64-encoded Kubernetes configuration file.
 func (o ListFleetCredentialsResultOutput) Kubeconfigs() FleetCredentialResultResponseArrayOutput {
 	return o.ApplyT(func(v ListFleetCredentialsResult) []FleetCredentialResultResponse { return v.Kubeconfigs }).(FleetCredentialResultResponseArrayOutput)
 }

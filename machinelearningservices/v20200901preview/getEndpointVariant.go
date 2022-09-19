@@ -21,22 +21,34 @@ func LookupEndpointVariant(ctx *pulumi.Context, args *LookupEndpointVariantArgs,
 }
 
 type LookupEndpointVariantArgs struct {
-	Expand            *bool  `pulumi:"expand"`
+	// Set to True to include Model details.
+	Expand *bool `pulumi:"expand"`
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of the Azure Machine Learning service.
+	ServiceName string `pulumi:"serviceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
 type LookupEndpointVariantResult struct {
-	Id         string            `pulumi:"id"`
-	Identity   *IdentityResponse `pulumi:"identity"`
-	Location   *string           `pulumi:"location"`
-	Name       string            `pulumi:"name"`
-	Properties interface{}       `pulumi:"properties"`
-	Sku        *SkuResponse      `pulumi:"sku"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       string            `pulumi:"type"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// Service properties
+	Properties interface{} `pulumi:"properties"`
+	// The sku of the workspace.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupEndpointVariantOutput(ctx *pulumi.Context, args LookupEndpointVariantOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointVariantResultOutput {
@@ -53,10 +65,14 @@ func LookupEndpointVariantOutput(ctx *pulumi.Context, args LookupEndpointVariant
 }
 
 type LookupEndpointVariantOutputArgs struct {
-	Expand            pulumi.BoolPtrInput `pulumi:"expand"`
-	ResourceGroupName pulumi.StringInput  `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput  `pulumi:"serviceName"`
-	WorkspaceName     pulumi.StringInput  `pulumi:"workspaceName"`
+	// Set to True to include Model details.
+	Expand pulumi.BoolPtrInput `pulumi:"expand"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Machine Learning service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupEndpointVariantOutputArgs) ElementType() reflect.Type {
@@ -78,34 +94,42 @@ func (o LookupEndpointVariantResultOutput) ToLookupEndpointVariantResultOutputWi
 	return o
 }
 
+// Specifies the resource ID.
 func (o LookupEndpointVariantResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupEndpointVariantResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupEndpointVariantResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupEndpointVariantResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Service properties
 func (o LookupEndpointVariantResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The sku of the workspace.
 func (o LookupEndpointVariantResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupEndpointVariantResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupEndpointVariantResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointVariantResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,14 +22,19 @@ func ListWebAppFunctionSecrets(ctx *pulumi.Context, args *ListWebAppFunctionSecr
 }
 
 type ListWebAppFunctionSecretsArgs struct {
-	FunctionName      string `pulumi:"functionName"`
-	Name              string `pulumi:"name"`
+	// Function name.
+	FunctionName string `pulumi:"functionName"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Function secrets.
 type ListWebAppFunctionSecretsResult struct {
-	Key        *string `pulumi:"key"`
+	// Secret key.
+	Key *string `pulumi:"key"`
+	// Trigger URL.
 	TriggerUrl *string `pulumi:"triggerUrl"`
 }
 
@@ -47,8 +52,11 @@ func ListWebAppFunctionSecretsOutput(ctx *pulumi.Context, args ListWebAppFunctio
 }
 
 type ListWebAppFunctionSecretsOutputArgs struct {
-	FunctionName      pulumi.StringInput `pulumi:"functionName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Function name.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,10 +79,12 @@ func (o ListWebAppFunctionSecretsResultOutput) ToListWebAppFunctionSecretsResult
 	return o
 }
 
+// Secret key.
 func (o ListWebAppFunctionSecretsResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Trigger URL.
 func (o ListWebAppFunctionSecretsResultOutput) TriggerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsResult) *string { return v.TriggerUrl }).(pulumi.StringPtrOutput)
 }

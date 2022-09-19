@@ -21,19 +21,28 @@ func LookupManagedInstanceKey(ctx *pulumi.Context, args *LookupManagedInstanceKe
 }
 
 type LookupManagedInstanceKeyArgs struct {
-	KeyName             string `pulumi:"keyName"`
+	// The name of the managed instance key to be retrieved.
+	KeyName string `pulumi:"keyName"`
+	// The name of the managed instance.
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A managed instance key.
 type LookupManagedInstanceKeyResult struct {
+	// The key creation date.
 	CreationDate string `pulumi:"creationDate"`
-	Id           string `pulumi:"id"`
-	Kind         string `pulumi:"kind"`
-	Name         string `pulumi:"name"`
-	Thumbprint   string `pulumi:"thumbprint"`
-	Type         string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Kind of encryption protector. This is metadata used for the Azure portal experience.
+	Kind string `pulumi:"kind"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Thumbprint of the key.
+	Thumbprint string `pulumi:"thumbprint"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedInstanceKeyOutput(ctx *pulumi.Context, args LookupManagedInstanceKeyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceKeyResultOutput {
@@ -50,9 +59,12 @@ func LookupManagedInstanceKeyOutput(ctx *pulumi.Context, args LookupManagedInsta
 }
 
 type LookupManagedInstanceKeyOutputArgs struct {
-	KeyName             pulumi.StringInput `pulumi:"keyName"`
+	// The name of the managed instance key to be retrieved.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the managed instance.
 	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedInstanceKeyOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupManagedInstanceKeyResultOutput) ToLookupManagedInstanceKeyResultOu
 	return o
 }
 
+// The key creation date.
 func (o LookupManagedInstanceKeyResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupManagedInstanceKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of encryption protector. This is metadata used for the Azure portal experience.
 func (o LookupManagedInstanceKeyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupManagedInstanceKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Thumbprint of the key.
 func (o LookupManagedInstanceKeyResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupManagedInstanceKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }

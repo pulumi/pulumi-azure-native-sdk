@@ -22,14 +22,18 @@ func ListRegistryBuildSourceUploadUrl(ctx *pulumi.Context, args *ListRegistryBui
 }
 
 type ListRegistryBuildSourceUploadUrlArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of a response to source upload request.
 type ListRegistryBuildSourceUploadUrlResult struct {
+	// The relative path to the source. This is used to submit the subsequent queue build request.
 	RelativePath *string `pulumi:"relativePath"`
-	UploadUrl    *string `pulumi:"uploadUrl"`
+	// The URL where the client can upload the source.
+	UploadUrl *string `pulumi:"uploadUrl"`
 }
 
 func ListRegistryBuildSourceUploadUrlOutput(ctx *pulumi.Context, args ListRegistryBuildSourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) ListRegistryBuildSourceUploadUrlResultOutput {
@@ -46,7 +50,9 @@ func ListRegistryBuildSourceUploadUrlOutput(ctx *pulumi.Context, args ListRegist
 }
 
 type ListRegistryBuildSourceUploadUrlOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListRegistryBuildSourceUploadUrlResultOutput) ToListRegistryBuildSourceU
 	return o
 }
 
+// The relative path to the source. This is used to submit the subsequent queue build request.
 func (o ListRegistryBuildSourceUploadUrlResultOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListRegistryBuildSourceUploadUrlResult) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }
 
+// The URL where the client can upload the source.
 func (o ListRegistryBuildSourceUploadUrlResultOutput) UploadUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListRegistryBuildSourceUploadUrlResult) *string { return v.UploadUrl }).(pulumi.StringPtrOutput)
 }

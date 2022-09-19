@@ -21,20 +21,31 @@ func GetSAPSizingRecommendations(ctx *pulumi.Context, args *GetSAPSizingRecommen
 }
 
 type GetSAPSizingRecommendationsArgs struct {
-	AppLocation          string  `pulumi:"appLocation"`
-	DatabaseType         string  `pulumi:"databaseType"`
-	DbMemory             float64 `pulumi:"dbMemory"`
-	DbScaleMethod        *string `pulumi:"dbScaleMethod"`
-	DeploymentType       string  `pulumi:"deploymentType"`
-	Environment          string  `pulumi:"environment"`
+	// The geo-location where the resource is to be created.
+	AppLocation string `pulumi:"appLocation"`
+	// The database type.
+	DatabaseType string `pulumi:"databaseType"`
+	// The database memory configuration.
+	DbMemory float64 `pulumi:"dbMemory"`
+	// The DB scale method.
+	DbScaleMethod *string `pulumi:"dbScaleMethod"`
+	// The deployment type. Eg: SingleServer/ThreeTier
+	DeploymentType string `pulumi:"deploymentType"`
+	// Defines the environment type - Production/Non Production.
+	Environment string `pulumi:"environment"`
+	// The high availability type.
 	HighAvailabilityType *string `pulumi:"highAvailabilityType"`
-	Location             string  `pulumi:"location"`
-	SapProduct           string  `pulumi:"sapProduct"`
-	Saps                 float64 `pulumi:"saps"`
+	// The name of Azure region.
+	Location string `pulumi:"location"`
+	// Defines the SAP Product type.
+	SapProduct string `pulumi:"sapProduct"`
+	// The SAP Application Performance Standard measurement.
+	Saps float64 `pulumi:"saps"`
 }
 
 // The SAP sizing recommendation result.
 type GetSAPSizingRecommendationsResult struct {
+	// The type of SAP deployment, single server or Three tier.
 	DeploymentType string `pulumi:"deploymentType"`
 }
 
@@ -52,16 +63,26 @@ func GetSAPSizingRecommendationsOutput(ctx *pulumi.Context, args GetSAPSizingRec
 }
 
 type GetSAPSizingRecommendationsOutputArgs struct {
-	AppLocation          pulumi.StringInput    `pulumi:"appLocation"`
-	DatabaseType         pulumi.StringInput    `pulumi:"databaseType"`
-	DbMemory             pulumi.Float64Input   `pulumi:"dbMemory"`
-	DbScaleMethod        pulumi.StringPtrInput `pulumi:"dbScaleMethod"`
-	DeploymentType       pulumi.StringInput    `pulumi:"deploymentType"`
-	Environment          pulumi.StringInput    `pulumi:"environment"`
+	// The geo-location where the resource is to be created.
+	AppLocation pulumi.StringInput `pulumi:"appLocation"`
+	// The database type.
+	DatabaseType pulumi.StringInput `pulumi:"databaseType"`
+	// The database memory configuration.
+	DbMemory pulumi.Float64Input `pulumi:"dbMemory"`
+	// The DB scale method.
+	DbScaleMethod pulumi.StringPtrInput `pulumi:"dbScaleMethod"`
+	// The deployment type. Eg: SingleServer/ThreeTier
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// Defines the environment type - Production/Non Production.
+	Environment pulumi.StringInput `pulumi:"environment"`
+	// The high availability type.
 	HighAvailabilityType pulumi.StringPtrInput `pulumi:"highAvailabilityType"`
-	Location             pulumi.StringInput    `pulumi:"location"`
-	SapProduct           pulumi.StringInput    `pulumi:"sapProduct"`
-	Saps                 pulumi.Float64Input   `pulumi:"saps"`
+	// The name of Azure region.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Defines the SAP Product type.
+	SapProduct pulumi.StringInput `pulumi:"sapProduct"`
+	// The SAP Application Performance Standard measurement.
+	Saps pulumi.Float64Input `pulumi:"saps"`
 }
 
 func (GetSAPSizingRecommendationsOutputArgs) ElementType() reflect.Type {
@@ -83,6 +104,7 @@ func (o GetSAPSizingRecommendationsResultOutput) ToGetSAPSizingRecommendationsRe
 	return o
 }
 
+// The type of SAP deployment, single server or Three tier.
 func (o GetSAPSizingRecommendationsResultOutput) DeploymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAPSizingRecommendationsResult) string { return v.DeploymentType }).(pulumi.StringOutput)
 }

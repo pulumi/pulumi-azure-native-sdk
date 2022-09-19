@@ -21,22 +21,34 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The HDInsight cluster.
 type LookupClusterResult struct {
-	Etag       *string                      `pulumi:"etag"`
-	Id         string                       `pulumi:"id"`
-	Identity   *ClusterIdentityResponse     `pulumi:"identity"`
-	Location   string                       `pulumi:"location"`
-	Name       string                       `pulumi:"name"`
+	// The ETag for the resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity of the cluster, if configured.
+	Identity *ClusterIdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties of the cluster.
 	Properties ClusterGetPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse           `pulumi:"systemData"`
-	Tags       map[string]string            `pulumi:"tags"`
-	Type       string                       `pulumi:"type"`
-	Zones      []string                     `pulumi:"zones"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The availability zones.
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for LookupClusterResult
@@ -64,7 +76,9 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 }
 
 type LookupClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -87,42 +101,52 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The ETag for the resource
 func (o LookupClusterResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the cluster, if configured.
 func (o LookupClusterResultOutput) Identity() ClusterIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *ClusterIdentityResponse { return v.Identity }).(ClusterIdentityResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of the cluster.
 func (o LookupClusterResultOutput) Properties() ClusterGetPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ClusterGetPropertiesResponse { return v.Properties }).(ClusterGetPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupClusterResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The availability zones.
 func (o LookupClusterResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

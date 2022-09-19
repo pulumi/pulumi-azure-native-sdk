@@ -22,20 +22,31 @@ func LookupMDATPDataConnector(ctx *pulumi.Context, args *LookupMDATPDataConnecto
 }
 
 type LookupMDATPDataConnectorArgs struct {
-	DataConnectorId   string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector.
 type LookupMDATPDataConnectorResult struct {
+	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
-	Etag      *string                                `pulumi:"etag"`
-	Id        string                                 `pulumi:"id"`
-	Kind      string                                 `pulumi:"kind"`
-	Name      string                                 `pulumi:"name"`
-	TenantId  *string                                `pulumi:"tenantId"`
-	Type      string                                 `pulumi:"type"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The kind of the data connector
+	// Expected value is 'MicrosoftDefenderAdvancedThreatProtection'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The tenant id to connect to, and get the data from.
+	TenantId *string `pulumi:"tenantId"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupMDATPDataConnectorOutput(ctx *pulumi.Context, args LookupMDATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMDATPDataConnectorResultOutput {
@@ -52,9 +63,12 @@ func LookupMDATPDataConnectorOutput(ctx *pulumi.Context, args LookupMDATPDataCon
 }
 
 type LookupMDATPDataConnectorOutputArgs struct {
-	DataConnectorId   pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupMDATPDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -76,30 +90,38 @@ func (o LookupMDATPDataConnectorResultOutput) ToLookupMDATPDataConnectorResultOu
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupMDATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupMDATPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupMDATPDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the data connector
+// Expected value is 'MicrosoftDefenderAdvancedThreatProtection'.
 func (o LookupMDATPDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupMDATPDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupMDATPDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource type
 func (o LookupMDATPDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMDATPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,20 +23,30 @@ func LookupRoleDefinition(ctx *pulumi.Context, args *LookupRoleDefinitionArgs, o
 }
 
 type LookupRoleDefinitionArgs struct {
+	// The ID of the role definition.
 	RoleDefinitionId string `pulumi:"roleDefinitionId"`
-	Scope            string `pulumi:"scope"`
+	// The scope of the role definition.
+	Scope string `pulumi:"scope"`
 }
 
 // Role definition.
 type LookupRoleDefinitionResult struct {
-	AssignableScopes []string             `pulumi:"assignableScopes"`
-	Description      *string              `pulumi:"description"`
-	Id               string               `pulumi:"id"`
-	Name             string               `pulumi:"name"`
-	Permissions      []PermissionResponse `pulumi:"permissions"`
-	RoleName         *string              `pulumi:"roleName"`
-	RoleType         *string              `pulumi:"roleType"`
-	Type             string               `pulumi:"type"`
+	// Role definition assignable scopes.
+	AssignableScopes []string `pulumi:"assignableScopes"`
+	// The role definition description.
+	Description *string `pulumi:"description"`
+	// The role definition ID.
+	Id string `pulumi:"id"`
+	// The role definition name.
+	Name string `pulumi:"name"`
+	// Role definition permissions.
+	Permissions []PermissionResponse `pulumi:"permissions"`
+	// The role name.
+	RoleName *string `pulumi:"roleName"`
+	// The role type.
+	RoleType *string `pulumi:"roleType"`
+	// The role definition type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRoleDefinitionOutput(ctx *pulumi.Context, args LookupRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupRoleDefinitionResultOutput {
@@ -53,8 +63,10 @@ func LookupRoleDefinitionOutput(ctx *pulumi.Context, args LookupRoleDefinitionOu
 }
 
 type LookupRoleDefinitionOutputArgs struct {
+	// The ID of the role definition.
 	RoleDefinitionId pulumi.StringInput `pulumi:"roleDefinitionId"`
-	Scope            pulumi.StringInput `pulumi:"scope"`
+	// The scope of the role definition.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRoleDefinitionOutputArgs) ElementType() reflect.Type {
@@ -76,34 +88,42 @@ func (o LookupRoleDefinitionResultOutput) ToLookupRoleDefinitionResultOutputWith
 	return o
 }
 
+// Role definition assignable scopes.
 func (o LookupRoleDefinitionResultOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) []string { return v.AssignableScopes }).(pulumi.StringArrayOutput)
 }
 
+// The role definition description.
 func (o LookupRoleDefinitionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The role definition ID.
 func (o LookupRoleDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role definition name.
 func (o LookupRoleDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Role definition permissions.
 func (o LookupRoleDefinitionResultOutput) Permissions() PermissionResponseArrayOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) []PermissionResponse { return v.Permissions }).(PermissionResponseArrayOutput)
 }
 
+// The role name.
 func (o LookupRoleDefinitionResultOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) *string { return v.RoleName }).(pulumi.StringPtrOutput)
 }
 
+// The role type.
 func (o LookupRoleDefinitionResultOutput) RoleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) *string { return v.RoleType }).(pulumi.StringPtrOutput)
 }
 
+// The role definition type.
 func (o LookupRoleDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

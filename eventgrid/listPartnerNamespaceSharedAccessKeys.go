@@ -22,13 +22,17 @@ func ListPartnerNamespaceSharedAccessKeys(ctx *pulumi.Context, args *ListPartner
 }
 
 type ListPartnerNamespaceSharedAccessKeysArgs struct {
+	// Name of the partner namespace.
 	PartnerNamespaceName string `pulumi:"partnerNamespaceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Shared access keys of the partner namespace.
 type ListPartnerNamespaceSharedAccessKeysResult struct {
+	// Shared access key1 for the partner namespace.
 	Key1 *string `pulumi:"key1"`
+	// Shared access key2 for the partner namespace.
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -46,8 +50,10 @@ func ListPartnerNamespaceSharedAccessKeysOutput(ctx *pulumi.Context, args ListPa
 }
 
 type ListPartnerNamespaceSharedAccessKeysOutputArgs struct {
+	// Name of the partner namespace.
 	PartnerNamespaceName pulumi.StringInput `pulumi:"partnerNamespaceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListPartnerNamespaceSharedAccessKeysOutputArgs) ElementType() reflect.Type {
@@ -69,10 +75,12 @@ func (o ListPartnerNamespaceSharedAccessKeysResultOutput) ToListPartnerNamespace
 	return o
 }
 
+// Shared access key1 for the partner namespace.
 func (o ListPartnerNamespaceSharedAccessKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListPartnerNamespaceSharedAccessKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Shared access key2 for the partner namespace.
 func (o ListPartnerNamespaceSharedAccessKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListPartnerNamespaceSharedAccessKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

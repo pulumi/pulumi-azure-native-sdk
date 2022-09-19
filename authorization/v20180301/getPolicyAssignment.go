@@ -21,23 +21,36 @@ func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArg
 }
 
 type LookupPolicyAssignmentArgs struct {
+	// The name of the policy assignment to get.
 	PolicyAssignmentName string `pulumi:"policyAssignmentName"`
-	Scope                string `pulumi:"scope"`
+	// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	Scope string `pulumi:"scope"`
 }
 
 // The policy assignment.
 type LookupPolicyAssignmentResult struct {
-	Description        *string            `pulumi:"description"`
-	DisplayName        *string            `pulumi:"displayName"`
-	Id                 string             `pulumi:"id"`
-	Metadata           interface{}        `pulumi:"metadata"`
-	Name               string             `pulumi:"name"`
-	NotScopes          []string           `pulumi:"notScopes"`
-	Parameters         interface{}        `pulumi:"parameters"`
-	PolicyDefinitionId *string            `pulumi:"policyDefinitionId"`
-	Scope              *string            `pulumi:"scope"`
-	Sku                *PolicySkuResponse `pulumi:"sku"`
-	Type               string             `pulumi:"type"`
+	// This message will be part of response in case of policy violation.
+	Description *string `pulumi:"description"`
+	// The display name of the policy assignment.
+	DisplayName *string `pulumi:"displayName"`
+	// The ID of the policy assignment.
+	Id string `pulumi:"id"`
+	// The policy assignment metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// The name of the policy assignment.
+	Name string `pulumi:"name"`
+	// The policy's excluded scopes.
+	NotScopes []string `pulumi:"notScopes"`
+	// Required if a parameter is used in policy rule.
+	Parameters interface{} `pulumi:"parameters"`
+	// The ID of the policy definition or policy set definition being assigned.
+	PolicyDefinitionId *string `pulumi:"policyDefinitionId"`
+	// The scope for the policy assignment.
+	Scope *string `pulumi:"scope"`
+	// The policy sku. This property is optional, obsolete, and will be ignored.
+	Sku *PolicySkuResponse `pulumi:"sku"`
+	// The type of the policy assignment.
+	Type string `pulumi:"type"`
 }
 
 func LookupPolicyAssignmentOutput(ctx *pulumi.Context, args LookupPolicyAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyAssignmentResultOutput {
@@ -54,8 +67,10 @@ func LookupPolicyAssignmentOutput(ctx *pulumi.Context, args LookupPolicyAssignme
 }
 
 type LookupPolicyAssignmentOutputArgs struct {
+	// The name of the policy assignment to get.
 	PolicyAssignmentName pulumi.StringInput `pulumi:"policyAssignmentName"`
-	Scope                pulumi.StringInput `pulumi:"scope"`
+	// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupPolicyAssignmentOutputArgs) ElementType() reflect.Type {
@@ -77,46 +92,57 @@ func (o LookupPolicyAssignmentResultOutput) ToLookupPolicyAssignmentResultOutput
 	return o
 }
 
+// This message will be part of response in case of policy violation.
 func (o LookupPolicyAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The display name of the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The policy assignment metadata.
 func (o LookupPolicyAssignmentResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
+// The name of the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The policy's excluded scopes.
 func (o LookupPolicyAssignmentResultOutput) NotScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) []string { return v.NotScopes }).(pulumi.StringArrayOutput)
 }
 
+// Required if a parameter is used in policy rule.
 func (o LookupPolicyAssignmentResultOutput) Parameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
+// The ID of the policy definition or policy set definition being assigned.
 func (o LookupPolicyAssignmentResultOutput) PolicyDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.PolicyDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// The scope for the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// The policy sku. This property is optional, obsolete, and will be ignored.
 func (o LookupPolicyAssignmentResultOutput) Sku() PolicySkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *PolicySkuResponse { return v.Sku }).(PolicySkuResponsePtrOutput)
 }
 
+// The type of the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,22 +21,34 @@ func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.In
 }
 
 type LookupDeviceArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The name of the device resource.
+	DeviceName string `pulumi:"deviceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Device resource.
 type LookupDeviceResult struct {
-	DeviceType        string                `pulumi:"deviceType"`
-	Id                string                `pulumi:"id"`
-	Location          string                `pulumi:"location"`
-	Name              string                `pulumi:"name"`
-	NetworkFunctions  []SubResourceResponse `pulumi:"networkFunctions"`
-	ProvisioningState string                `pulumi:"provisioningState"`
-	Status            string                `pulumi:"status"`
-	SystemData        SystemDataResponse    `pulumi:"systemData"`
-	Tags              map[string]string     `pulumi:"tags"`
-	Type              string                `pulumi:"type"`
+	// The type of the device.
+	DeviceType string `pulumi:"deviceType"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The list of network functions deployed on the device.
+	NetworkFunctions []SubResourceResponse `pulumi:"networkFunctions"`
+	// The provisioning state of the device resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The current device status.
+	Status string `pulumi:"status"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceResultOutput {
@@ -53,7 +65,9 @@ func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts .
 }
 
 type LookupDeviceOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The name of the device resource.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,42 +90,52 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx cont
 	return o
 }
 
+// The type of the device.
 func (o LookupDeviceResultOutput) DeviceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.DeviceType }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDeviceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupDeviceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDeviceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of network functions deployed on the device.
 func (o LookupDeviceResultOutput) NetworkFunctions() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceResult) []SubResourceResponse { return v.NetworkFunctions }).(SubResourceResponseArrayOutput)
 }
 
+// The provisioning state of the device resource.
 func (o LookupDeviceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The current device status.
 func (o LookupDeviceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupDeviceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDeviceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupDeviceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeviceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDeviceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Type }).(pulumi.StringOutput)
 }

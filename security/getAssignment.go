@@ -22,29 +22,48 @@ func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...p
 }
 
 type LookupAssignmentArgs struct {
-	AssignmentId      string `pulumi:"assignmentId"`
+	// The security assignment key - unique key for the standard assignment
+	AssignmentId string `pulumi:"assignmentId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Security Assignment on a resource group over a given scope
 type LookupAssignmentResult struct {
-	AdditionalData    *AssignmentPropertiesResponseAdditionalData `pulumi:"additionalData"`
-	AssignedComponent *AssignedComponentItemResponse              `pulumi:"assignedComponent"`
-	AssignedStandard  *AssignedStandardItemResponse               `pulumi:"assignedStandard"`
-	Description       *string                                     `pulumi:"description"`
-	DisplayName       *string                                     `pulumi:"displayName"`
-	Effect            *string                                     `pulumi:"effect"`
-	Etag              *string                                     `pulumi:"etag"`
-	ExpiresOn         *string                                     `pulumi:"expiresOn"`
-	Id                string                                      `pulumi:"id"`
-	Kind              *string                                     `pulumi:"kind"`
-	Location          *string                                     `pulumi:"location"`
-	Metadata          interface{}                                 `pulumi:"metadata"`
-	Name              string                                      `pulumi:"name"`
-	Scope             *string                                     `pulumi:"scope"`
-	SystemData        SystemDataResponse                          `pulumi:"systemData"`
-	Tags              map[string]string                           `pulumi:"tags"`
-	Type              string                                      `pulumi:"type"`
+	// Additional data about the assignment
+	AdditionalData *AssignmentPropertiesResponseAdditionalData `pulumi:"additionalData"`
+	// Component item with key as applied to this standard assignment over the given scope
+	AssignedComponent *AssignedComponentItemResponse `pulumi:"assignedComponent"`
+	// Standard item with key as applied to this standard assignment over the given scope
+	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
+	// description of the standardAssignment
+	Description *string `pulumi:"description"`
+	// display name of the standardAssignment
+	DisplayName *string `pulumi:"displayName"`
+	// expected effect of this assignment (Disable/Exempt/etc)
+	Effect *string `pulumi:"effect"`
+	// Entity tag is used for comparing two or more entities from the same requested resource.
+	Etag *string `pulumi:"etag"`
+	// Expiration date of this assignment as a full ISO date
+	ExpiresOn *string `pulumi:"expiresOn"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Kind of the resource
+	Kind *string `pulumi:"kind"`
+	// Location where the resource is stored
+	Location *string `pulumi:"location"`
+	// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+	Metadata interface{} `pulumi:"metadata"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
+	Scope *string `pulumi:"scope"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// A list of key value pairs that describe the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssignmentResultOutput {
@@ -61,7 +80,9 @@ func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs
 }
 
 type LookupAssignmentOutputArgs struct {
-	AssignmentId      pulumi.StringInput `pulumi:"assignmentId"`
+	// The security assignment key - unique key for the standard assignment
+	AssignmentId pulumi.StringInput `pulumi:"assignmentId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,70 +105,87 @@ func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutputWithContext(
 	return o
 }
 
+// Additional data about the assignment
 func (o LookupAssignmentResultOutput) AdditionalData() AssignmentPropertiesResponseAdditionalDataPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignmentPropertiesResponseAdditionalData { return v.AdditionalData }).(AssignmentPropertiesResponseAdditionalDataPtrOutput)
 }
 
+// Component item with key as applied to this standard assignment over the given scope
 func (o LookupAssignmentResultOutput) AssignedComponent() AssignedComponentItemResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignedComponentItemResponse { return v.AssignedComponent }).(AssignedComponentItemResponsePtrOutput)
 }
 
+// Standard item with key as applied to this standard assignment over the given scope
 func (o LookupAssignmentResultOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignedStandardItemResponse { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
 }
 
+// description of the standardAssignment
 func (o LookupAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// display name of the standardAssignment
 func (o LookupAssignmentResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// expected effect of this assignment (Disable/Exempt/etc)
 func (o LookupAssignmentResultOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
+// Entity tag is used for comparing two or more entities from the same requested resource.
 func (o LookupAssignmentResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Expiration date of this assignment as a full ISO date
 func (o LookupAssignmentResultOutput) ExpiresOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.ExpiresOn }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of the resource
 func (o LookupAssignmentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Location where the resource is stored
 func (o LookupAssignmentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
 func (o LookupAssignmentResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
+// Resource name
 func (o LookupAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 func (o LookupAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// A list of key value pairs that describe the resource.
 func (o LookupAssignmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

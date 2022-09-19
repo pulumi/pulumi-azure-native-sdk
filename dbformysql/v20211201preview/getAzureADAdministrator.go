@@ -21,22 +21,34 @@ func LookupAzureADAdministrator(ctx *pulumi.Context, args *LookupAzureADAdminist
 }
 
 type LookupAzureADAdministratorArgs struct {
+	// The name of the Azure AD Administrator.
 	AdministratorName string `pulumi:"administratorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents a Administrator.
 type LookupAzureADAdministratorResult struct {
-	AdministratorType  *string            `pulumi:"administratorType"`
-	Id                 string             `pulumi:"id"`
-	IdentityResourceId *string            `pulumi:"identityResourceId"`
-	Login              *string            `pulumi:"login"`
-	Name               string             `pulumi:"name"`
-	Sid                *string            `pulumi:"sid"`
-	SystemData         SystemDataResponse `pulumi:"systemData"`
-	TenantId           *string            `pulumi:"tenantId"`
-	Type               string             `pulumi:"type"`
+	// Type of the sever administrator.
+	AdministratorType *string `pulumi:"administratorType"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The resource id of the identity used for AAD Authentication.
+	IdentityResourceId *string `pulumi:"identityResourceId"`
+	// Login name of the server administrator.
+	Login *string `pulumi:"login"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// SID (object ID) of the server administrator.
+	Sid *string `pulumi:"sid"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Tenant ID of the administrator.
+	TenantId *string `pulumi:"tenantId"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAzureADAdministratorOutput(ctx *pulumi.Context, args LookupAzureADAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureADAdministratorResultOutput {
@@ -53,9 +65,12 @@ func LookupAzureADAdministratorOutput(ctx *pulumi.Context, args LookupAzureADAdm
 }
 
 type LookupAzureADAdministratorOutputArgs struct {
+	// The name of the Azure AD Administrator.
 	AdministratorName pulumi.StringInput `pulumi:"administratorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupAzureADAdministratorOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupAzureADAdministratorResultOutput) ToLookupAzureADAdministratorResu
 	return o
 }
 
+// Type of the sever administrator.
 func (o LookupAzureADAdministratorResultOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.AdministratorType }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAzureADAdministratorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource id of the identity used for AAD Authentication.
 func (o LookupAzureADAdministratorResultOutput) IdentityResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.IdentityResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Login name of the server administrator.
 func (o LookupAzureADAdministratorResultOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupAzureADAdministratorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SID (object ID) of the server administrator.
 func (o LookupAzureADAdministratorResultOutput) Sid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.Sid }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupAzureADAdministratorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Tenant ID of the administrator.
 func (o LookupAzureADAdministratorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAzureADAdministratorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) string { return v.Type }).(pulumi.StringOutput)
 }

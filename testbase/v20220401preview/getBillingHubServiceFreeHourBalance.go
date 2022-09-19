@@ -20,7 +20,9 @@ func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHu
 }
 
 type GetBillingHubServiceFreeHourBalanceArgs struct {
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
 
@@ -43,7 +45,9 @@ func GetBillingHubServiceFreeHourBalanceOutput(ctx *pulumi.Context, args GetBill
 }
 
 type GetBillingHubServiceFreeHourBalanceOutputArgs struct {
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }
 

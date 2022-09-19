@@ -22,13 +22,17 @@ func ListIdentityProviderSecrets(ctx *pulumi.Context, args *ListIdentityProvider
 }
 
 type ListIdentityProviderSecretsArgs struct {
+	// Identity Provider Type identifier.
 	IdentityProviderName string `pulumi:"identityProviderName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
-	ServiceName          string `pulumi:"serviceName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 type ListIdentityProviderSecretsResult struct {
+	// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 	ClientSecret *string `pulumi:"clientSecret"`
 }
 
@@ -46,9 +50,12 @@ func ListIdentityProviderSecretsOutput(ctx *pulumi.Context, args ListIdentityPro
 }
 
 type ListIdentityProviderSecretsOutputArgs struct {
+	// Identity Provider Type identifier.
 	IdentityProviderName pulumi.StringInput `pulumi:"identityProviderName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName          pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListIdentityProviderSecretsOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o ListIdentityProviderSecretsResultOutput) ToListIdentityProviderSecretsRe
 	return o
 }
 
+// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 func (o ListIdentityProviderSecretsResultOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIdentityProviderSecretsResult) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }

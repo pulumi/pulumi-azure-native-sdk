@@ -22,13 +22,17 @@ func GetSolutionConfig(ctx *pulumi.Context, args *GetSolutionConfigArgs, opts ..
 }
 
 type GetSolutionConfigArgs struct {
+	// Name of the Azure Migrate project.
 	MigrateProjectName string `pulumi:"migrateProjectName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	SolutionName       string `pulumi:"solutionName"`
+	// Name of the Azure Resource Group that migrate project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Unique name of a migration solution within a migrate project.
+	SolutionName string `pulumi:"solutionName"`
 }
 
 // Class representing the config for the solution in the migrate project.
 type GetSolutionConfigResult struct {
+	// Gets or sets the publisher sas uri for the solution.
 	PublisherSasUri *string `pulumi:"publisherSasUri"`
 }
 
@@ -46,9 +50,12 @@ func GetSolutionConfigOutput(ctx *pulumi.Context, args GetSolutionConfigOutputAr
 }
 
 type GetSolutionConfigOutputArgs struct {
+	// Name of the Azure Migrate project.
 	MigrateProjectName pulumi.StringInput `pulumi:"migrateProjectName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	SolutionName       pulumi.StringInput `pulumi:"solutionName"`
+	// Name of the Azure Resource Group that migrate project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Unique name of a migration solution within a migrate project.
+	SolutionName pulumi.StringInput `pulumi:"solutionName"`
 }
 
 func (GetSolutionConfigOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o GetSolutionConfigResultOutput) ToGetSolutionConfigResultOutputWithContex
 	return o
 }
 
+// Gets or sets the publisher sas uri for the solution.
 func (o GetSolutionConfigResultOutput) PublisherSasUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSolutionConfigResult) *string { return v.PublisherSasUri }).(pulumi.StringPtrOutput)
 }

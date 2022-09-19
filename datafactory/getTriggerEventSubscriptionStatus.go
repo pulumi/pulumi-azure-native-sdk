@@ -22,14 +22,19 @@ func GetTriggerEventSubscriptionStatus(ctx *pulumi.Context, args *GetTriggerEven
 }
 
 type GetTriggerEventSubscriptionStatusArgs struct {
-	FactoryName       string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TriggerName       string `pulumi:"triggerName"`
+	// The trigger name.
+	TriggerName string `pulumi:"triggerName"`
 }
 
 // Defines the response of a trigger subscription operation.
 type GetTriggerEventSubscriptionStatusResult struct {
-	Status      string `pulumi:"status"`
+	// Event Subscription Status.
+	Status string `pulumi:"status"`
+	// Trigger name.
 	TriggerName string `pulumi:"triggerName"`
 }
 
@@ -47,9 +52,12 @@ func GetTriggerEventSubscriptionStatusOutput(ctx *pulumi.Context, args GetTrigge
 }
 
 type GetTriggerEventSubscriptionStatusOutputArgs struct {
-	FactoryName       pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TriggerName       pulumi.StringInput `pulumi:"triggerName"`
+	// The trigger name.
+	TriggerName pulumi.StringInput `pulumi:"triggerName"`
 }
 
 func (GetTriggerEventSubscriptionStatusOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o GetTriggerEventSubscriptionStatusResultOutput) ToGetTriggerEventSubscrip
 	return o
 }
 
+// Event Subscription Status.
 func (o GetTriggerEventSubscriptionStatusResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerEventSubscriptionStatusResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Trigger name.
 func (o GetTriggerEventSubscriptionStatusResultOutput) TriggerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerEventSubscriptionStatusResult) string { return v.TriggerName }).(pulumi.StringOutput)
 }

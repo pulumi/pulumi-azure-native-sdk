@@ -21,27 +21,44 @@ func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs,
 }
 
 type LookupNotificationHubArgs struct {
-	NamespaceName       string `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The notification hub name.
 	NotificationHubName string `pulumi:"notificationHubName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a NotificationHub Resource.
 type LookupNotificationHubResult struct {
-	AdmCredential      *AdmCredentialResponse                            `pulumi:"admCredential"`
-	ApnsCredential     *ApnsCredentialResponse                           `pulumi:"apnsCredential"`
+	// The AdmCredential of the created NotificationHub
+	AdmCredential *AdmCredentialResponse `pulumi:"admCredential"`
+	// The ApnsCredential of the created NotificationHub
+	ApnsCredential *ApnsCredentialResponse `pulumi:"apnsCredential"`
+	// The AuthorizationRules of the created NotificationHub
 	AuthorizationRules []SharedAccessAuthorizationRulePropertiesResponse `pulumi:"authorizationRules"`
-	BaiduCredential    *BaiduCredentialResponse                          `pulumi:"baiduCredential"`
-	GcmCredential      *GcmCredentialResponse                            `pulumi:"gcmCredential"`
-	Id                 string                                            `pulumi:"id"`
-	Location           *string                                           `pulumi:"location"`
-	MpnsCredential     *MpnsCredentialResponse                           `pulumi:"mpnsCredential"`
-	Name               string                                            `pulumi:"name"`
-	RegistrationTtl    *string                                           `pulumi:"registrationTtl"`
-	Sku                *SkuResponse                                      `pulumi:"sku"`
-	Tags               map[string]string                                 `pulumi:"tags"`
-	Type               string                                            `pulumi:"type"`
-	WnsCredential      *WnsCredentialResponse                            `pulumi:"wnsCredential"`
+	// The BaiduCredential of the created NotificationHub
+	BaiduCredential *BaiduCredentialResponse `pulumi:"baiduCredential"`
+	// The GcmCredential of the created NotificationHub
+	GcmCredential *GcmCredentialResponse `pulumi:"gcmCredential"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// The MpnsCredential of the created NotificationHub
+	MpnsCredential *MpnsCredentialResponse `pulumi:"mpnsCredential"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The RegistrationTtl of the created NotificationHub
+	RegistrationTtl *string `pulumi:"registrationTtl"`
+	// The sku of the created namespace
+	Sku *SkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The WnsCredential of the created NotificationHub
+	WnsCredential *WnsCredentialResponse `pulumi:"wnsCredential"`
 }
 
 func LookupNotificationHubOutput(ctx *pulumi.Context, args LookupNotificationHubOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubResultOutput {
@@ -58,9 +75,12 @@ func LookupNotificationHubOutput(ctx *pulumi.Context, args LookupNotificationHub
 }
 
 type LookupNotificationHubOutputArgs struct {
-	NamespaceName       pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The notification hub name.
 	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNotificationHubOutputArgs) ElementType() reflect.Type {
@@ -82,60 +102,74 @@ func (o LookupNotificationHubResultOutput) ToLookupNotificationHubResultOutputWi
 	return o
 }
 
+// The AdmCredential of the created NotificationHub
 func (o LookupNotificationHubResultOutput) AdmCredential() AdmCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *AdmCredentialResponse { return v.AdmCredential }).(AdmCredentialResponsePtrOutput)
 }
 
+// The ApnsCredential of the created NotificationHub
 func (o LookupNotificationHubResultOutput) ApnsCredential() ApnsCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *ApnsCredentialResponse { return v.ApnsCredential }).(ApnsCredentialResponsePtrOutput)
 }
 
+// The AuthorizationRules of the created NotificationHub
 func (o LookupNotificationHubResultOutput) AuthorizationRules() SharedAccessAuthorizationRulePropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) []SharedAccessAuthorizationRulePropertiesResponse {
 		return v.AuthorizationRules
 	}).(SharedAccessAuthorizationRulePropertiesResponseArrayOutput)
 }
 
+// The BaiduCredential of the created NotificationHub
 func (o LookupNotificationHubResultOutput) BaiduCredential() BaiduCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *BaiduCredentialResponse { return v.BaiduCredential }).(BaiduCredentialResponsePtrOutput)
 }
 
+// The GcmCredential of the created NotificationHub
 func (o LookupNotificationHubResultOutput) GcmCredential() GcmCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *GcmCredentialResponse { return v.GcmCredential }).(GcmCredentialResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupNotificationHubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupNotificationHubResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The MpnsCredential of the created NotificationHub
 func (o LookupNotificationHubResultOutput) MpnsCredential() MpnsCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *MpnsCredentialResponse { return v.MpnsCredential }).(MpnsCredentialResponsePtrOutput)
 }
 
+// Resource name
 func (o LookupNotificationHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The RegistrationTtl of the created NotificationHub
 func (o LookupNotificationHubResultOutput) RegistrationTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.RegistrationTtl }).(pulumi.StringPtrOutput)
 }
 
+// The sku of the created namespace
 func (o LookupNotificationHubResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupNotificationHubResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupNotificationHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The WnsCredential of the created NotificationHub
 func (o LookupNotificationHubResultOutput) WnsCredential() WnsCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *WnsCredentialResponse { return v.WnsCredential }).(WnsCredentialResponsePtrOutput)
 }

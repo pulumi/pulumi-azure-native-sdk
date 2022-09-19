@@ -21,21 +21,32 @@ func LookupApiOperationPolicy(ctx *pulumi.Context, args *LookupApiOperationPolic
 }
 
 type LookupApiOperationPolicyArgs struct {
-	ApiId             string  `pulumi:"apiId"`
-	Format            *string `pulumi:"format"`
-	OperationId       string  `pulumi:"operationId"`
-	PolicyId          string  `pulumi:"policyId"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ServiceName       string  `pulumi:"serviceName"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId string `pulumi:"apiId"`
+	// Policy Export Format.
+	Format *string `pulumi:"format"`
+	// Operation identifier within an API. Must be unique in the current API Management service instance.
+	OperationId string `pulumi:"operationId"`
+	// The identifier of the Policy.
+	PolicyId string `pulumi:"policyId"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Policy Contract details.
 type LookupApiOperationPolicyResult struct {
+	// Format of the policyContent.
 	Format *string `pulumi:"format"`
-	Id     string  `pulumi:"id"`
-	Name   string  `pulumi:"name"`
-	Type   string  `pulumi:"type"`
-	Value  string  `pulumi:"value"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// Contents of the Policy as defined by the format.
+	Value string `pulumi:"value"`
 }
 
 // Defaults sets the appropriate defaults for LookupApiOperationPolicyResult
@@ -65,12 +76,18 @@ func LookupApiOperationPolicyOutput(ctx *pulumi.Context, args LookupApiOperation
 }
 
 type LookupApiOperationPolicyOutputArgs struct {
-	ApiId             pulumi.StringInput    `pulumi:"apiId"`
-	Format            pulumi.StringPtrInput `pulumi:"format"`
-	OperationId       pulumi.StringInput    `pulumi:"operationId"`
-	PolicyId          pulumi.StringInput    `pulumi:"policyId"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput    `pulumi:"serviceName"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// Policy Export Format.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// Operation identifier within an API. Must be unique in the current API Management service instance.
+	OperationId pulumi.StringInput `pulumi:"operationId"`
+	// The identifier of the Policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupApiOperationPolicyOutputArgs) ElementType() reflect.Type {
@@ -92,22 +109,27 @@ func (o LookupApiOperationPolicyResultOutput) ToLookupApiOperationPolicyResultOu
 	return o
 }
 
+// Format of the policyContent.
 func (o LookupApiOperationPolicyResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiOperationPolicyResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupApiOperationPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiOperationPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupApiOperationPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiOperationPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupApiOperationPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiOperationPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Contents of the Policy as defined by the format.
 func (o LookupApiOperationPolicyResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiOperationPolicyResult) string { return v.Value }).(pulumi.StringOutput)
 }
