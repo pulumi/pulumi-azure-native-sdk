@@ -21,28 +21,46 @@ func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.In
 }
 
 type LookupSchemaArgs struct {
+	// The integration account name.
 	IntegrationAccountName string `pulumi:"integrationAccountName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	SchemaName             string `pulumi:"schemaName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The integration account schema name.
+	SchemaName string `pulumi:"schemaName"`
 }
 
 // The integration account schema.
 type LookupSchemaResult struct {
-	ChangedTime     string              `pulumi:"changedTime"`
-	Content         *string             `pulumi:"content"`
-	ContentLink     ContentLinkResponse `pulumi:"contentLink"`
-	ContentType     *string             `pulumi:"contentType"`
-	CreatedTime     string              `pulumi:"createdTime"`
-	DocumentName    *string             `pulumi:"documentName"`
-	FileName        *string             `pulumi:"fileName"`
-	Id              string              `pulumi:"id"`
-	Location        *string             `pulumi:"location"`
-	Metadata        interface{}         `pulumi:"metadata"`
-	Name            string              `pulumi:"name"`
-	SchemaType      string              `pulumi:"schemaType"`
-	Tags            map[string]string   `pulumi:"tags"`
-	TargetNamespace *string             `pulumi:"targetNamespace"`
-	Type            string              `pulumi:"type"`
+	// The changed time.
+	ChangedTime string `pulumi:"changedTime"`
+	// The content.
+	Content *string `pulumi:"content"`
+	// The content link.
+	ContentLink ContentLinkResponse `pulumi:"contentLink"`
+	// The content type.
+	ContentType *string `pulumi:"contentType"`
+	// The created time.
+	CreatedTime string `pulumi:"createdTime"`
+	// The document name.
+	DocumentName *string `pulumi:"documentName"`
+	// The file name.
+	FileName *string `pulumi:"fileName"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// The metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The schema type.
+	SchemaType string `pulumi:"schemaType"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The target namespace of the schema.
+	TargetNamespace *string `pulumi:"targetNamespace"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSchemaOutput(ctx *pulumi.Context, args LookupSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaResultOutput {
@@ -59,9 +77,12 @@ func LookupSchemaOutput(ctx *pulumi.Context, args LookupSchemaOutputArgs, opts .
 }
 
 type LookupSchemaOutputArgs struct {
+	// The integration account name.
 	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	SchemaName             pulumi.StringInput `pulumi:"schemaName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The integration account schema name.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
 
 func (LookupSchemaOutputArgs) ElementType() reflect.Type {
@@ -83,62 +104,77 @@ func (o LookupSchemaResultOutput) ToLookupSchemaResultOutputWithContext(ctx cont
 	return o
 }
 
+// The changed time.
 func (o LookupSchemaResultOutput) ChangedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.ChangedTime }).(pulumi.StringOutput)
 }
 
+// The content.
 func (o LookupSchemaResultOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaResult) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The content link.
 func (o LookupSchemaResultOutput) ContentLink() ContentLinkResponseOutput {
 	return o.ApplyT(func(v LookupSchemaResult) ContentLinkResponse { return v.ContentLink }).(ContentLinkResponseOutput)
 }
 
+// The content type.
 func (o LookupSchemaResultOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaResult) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
+// The created time.
 func (o LookupSchemaResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
+// The document name.
 func (o LookupSchemaResultOutput) DocumentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaResult) *string { return v.DocumentName }).(pulumi.StringPtrOutput)
 }
 
+// The file name.
 func (o LookupSchemaResultOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaResult) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
 
+// The resource id.
 func (o LookupSchemaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupSchemaResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The metadata.
 func (o LookupSchemaResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupSchemaResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
+// Gets the resource name.
 func (o LookupSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The schema type.
 func (o LookupSchemaResultOutput) SchemaType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.SchemaType }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupSchemaResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSchemaResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The target namespace of the schema.
 func (o LookupSchemaResultOutput) TargetNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaResult) *string { return v.TargetNamespace }).(pulumi.StringPtrOutput)
 }
 
+// Gets the resource type.
 func (o LookupSchemaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,21 +21,32 @@ func LookupServerAzureADAdministrator(ctx *pulumi.Context, args *LookupServerAzu
 }
 
 type LookupServerAzureADAdministratorArgs struct {
+	// The name of server active directory administrator.
 	AdministratorName string `pulumi:"administratorName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Azure Active Directory administrator.
 type LookupServerAzureADAdministratorResult struct {
-	AdministratorType         string  `pulumi:"administratorType"`
-	AzureADOnlyAuthentication bool    `pulumi:"azureADOnlyAuthentication"`
-	Id                        string  `pulumi:"id"`
-	Login                     string  `pulumi:"login"`
-	Name                      string  `pulumi:"name"`
-	Sid                       string  `pulumi:"sid"`
-	TenantId                  *string `pulumi:"tenantId"`
-	Type                      string  `pulumi:"type"`
+	// Type of the sever administrator.
+	AdministratorType string `pulumi:"administratorType"`
+	// Azure Active Directory only Authentication enabled.
+	AzureADOnlyAuthentication bool `pulumi:"azureADOnlyAuthentication"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Login name of the server administrator.
+	Login string `pulumi:"login"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// SID (object ID) of the server administrator.
+	Sid string `pulumi:"sid"`
+	// Tenant ID of the administrator.
+	TenantId *string `pulumi:"tenantId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerAzureADAdministratorOutput(ctx *pulumi.Context, args LookupServerAzureADAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAzureADAdministratorResultOutput {
@@ -52,9 +63,12 @@ func LookupServerAzureADAdministratorOutput(ctx *pulumi.Context, args LookupServ
 }
 
 type LookupServerAzureADAdministratorOutputArgs struct {
+	// The name of server active directory administrator.
 	AdministratorName pulumi.StringInput `pulumi:"administratorName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerAzureADAdministratorOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupServerAzureADAdministratorResultOutput) ToLookupServerAzureADAdmin
 	return o
 }
 
+// Type of the sever administrator.
 func (o LookupServerAzureADAdministratorResultOutput) AdministratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.AdministratorType }).(pulumi.StringOutput)
 }
 
+// Azure Active Directory only Authentication enabled.
 func (o LookupServerAzureADAdministratorResultOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
 }
 
+// Resource ID.
 func (o LookupServerAzureADAdministratorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Login name of the server administrator.
 func (o LookupServerAzureADAdministratorResultOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.Login }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerAzureADAdministratorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SID (object ID) of the server administrator.
 func (o LookupServerAzureADAdministratorResultOutput) Sid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.Sid }).(pulumi.StringOutput)
 }
 
+// Tenant ID of the administrator.
 func (o LookupServerAzureADAdministratorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupServerAzureADAdministratorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.Type }).(pulumi.StringOutput)
 }

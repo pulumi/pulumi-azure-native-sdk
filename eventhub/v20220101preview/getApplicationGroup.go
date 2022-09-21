@@ -21,21 +21,32 @@ func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArg
 }
 
 type LookupApplicationGroupArgs struct {
+	// The Application Group name
 	ApplicationGroupName string `pulumi:"applicationGroupName"`
-	NamespaceName        string `pulumi:"namespaceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Application Group object
 type LookupApplicationGroupResult struct {
-	ClientAppGroupIdentifier string                     `pulumi:"clientAppGroupIdentifier"`
-	Id                       string                     `pulumi:"id"`
-	IsEnabled                *bool                      `pulumi:"isEnabled"`
-	Location                 string                     `pulumi:"location"`
-	Name                     string                     `pulumi:"name"`
-	Policies                 []ThrottlingPolicyResponse `pulumi:"policies"`
-	SystemData               SystemDataResponse         `pulumi:"systemData"`
-	Type                     string                     `pulumi:"type"`
+	// The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
+	ClientAppGroupIdentifier string `pulumi:"clientAppGroupIdentifier"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
+	Policies []ThrottlingPolicyResponse `pulumi:"policies"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationGroupOutput(ctx *pulumi.Context, args LookupApplicationGroupOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationGroupResultOutput {
@@ -52,9 +63,12 @@ func LookupApplicationGroupOutput(ctx *pulumi.Context, args LookupApplicationGro
 }
 
 type LookupApplicationGroupOutputArgs struct {
+	// The Application Group name
 	ApplicationGroupName pulumi.StringInput `pulumi:"applicationGroupName"`
-	NamespaceName        pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupApplicationGroupOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupApplicationGroupResultOutput) ToLookupApplicationGroupResultOutput
 	return o
 }
 
+// The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
 func (o LookupApplicationGroupResultOutput) ClientAppGroupIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.ClientAppGroupIdentifier }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupApplicationGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed
 func (o LookupApplicationGroupResultOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupApplicationGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupApplicationGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
 func (o LookupApplicationGroupResultOutput) Policies() ThrottlingPolicyResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) []ThrottlingPolicyResponse { return v.Policies }).(ThrottlingPolicyResponseArrayOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupApplicationGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o LookupApplicationGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

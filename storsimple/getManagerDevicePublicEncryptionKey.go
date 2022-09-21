@@ -22,13 +22,17 @@ func GetManagerDevicePublicEncryptionKey(ctx *pulumi.Context, args *GetManagerDe
 }
 
 type GetManagerDevicePublicEncryptionKeyArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	ManagerName       string `pulumi:"managerName"`
+	// The device name
+	DeviceName string `pulumi:"deviceName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The public key.
 type GetManagerDevicePublicEncryptionKeyResult struct {
+	// The key.
 	Key string `pulumi:"key"`
 }
 
@@ -46,8 +50,11 @@ func GetManagerDevicePublicEncryptionKeyOutput(ctx *pulumi.Context, args GetMana
 }
 
 type GetManagerDevicePublicEncryptionKeyOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The device name
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,6 +77,7 @@ func (o GetManagerDevicePublicEncryptionKeyResultOutput) ToGetManagerDevicePubli
 	return o
 }
 
+// The key.
 func (o GetManagerDevicePublicEncryptionKeyResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagerDevicePublicEncryptionKeyResult) string { return v.Key }).(pulumi.StringOutput)
 }

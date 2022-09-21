@@ -21,27 +21,44 @@ func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulum
 }
 
 type LookupWorkflowArgs struct {
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkflowName      string `pulumi:"workflowName"`
+	// The workflow name.
+	WorkflowName string `pulumi:"workflowName"`
 }
 
 // The workflow type.
 type LookupWorkflowResult struct {
-	AccessEndpoint     string                               `pulumi:"accessEndpoint"`
-	ChangedTime        string                               `pulumi:"changedTime"`
-	CreatedTime        string                               `pulumi:"createdTime"`
-	Definition         interface{}                          `pulumi:"definition"`
-	Id                 string                               `pulumi:"id"`
-	IntegrationAccount *ResourceReferenceResponse           `pulumi:"integrationAccount"`
-	Location           *string                              `pulumi:"location"`
-	Name               string                               `pulumi:"name"`
-	Parameters         map[string]WorkflowParameterResponse `pulumi:"parameters"`
-	ProvisioningState  string                               `pulumi:"provisioningState"`
-	Sku                *SkuResponse                         `pulumi:"sku"`
-	State              *string                              `pulumi:"state"`
-	Tags               map[string]string                    `pulumi:"tags"`
-	Type               string                               `pulumi:"type"`
-	Version            string                               `pulumi:"version"`
+	// Gets the access endpoint.
+	AccessEndpoint string `pulumi:"accessEndpoint"`
+	// Gets the changed time.
+	ChangedTime string `pulumi:"changedTime"`
+	// Gets the created time.
+	CreatedTime string `pulumi:"createdTime"`
+	// The definition. See [Schema reference for Workflow Definition Language in Azure Logic Apps](https://aka.ms/logic-apps-workflow-definition-language).
+	Definition interface{} `pulumi:"definition"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The integration account.
+	IntegrationAccount *ResourceReferenceResponse `pulumi:"integrationAccount"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The parameters.
+	Parameters map[string]WorkflowParameterResponse `pulumi:"parameters"`
+	// Gets the provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The sku.
+	Sku *SkuResponse `pulumi:"sku"`
+	// The state.
+	State *string `pulumi:"state"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
+	// Gets the version.
+	Version string `pulumi:"version"`
 }
 
 func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
@@ -58,8 +75,10 @@ func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, op
 }
 
 type LookupWorkflowOutputArgs struct {
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkflowName      pulumi.StringInput `pulumi:"workflowName"`
+	// The workflow name.
+	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
 
 func (LookupWorkflowOutputArgs) ElementType() reflect.Type {
@@ -81,62 +100,77 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx 
 	return o
 }
 
+// Gets the access endpoint.
 func (o LookupWorkflowResultOutput) AccessEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AccessEndpoint }).(pulumi.StringOutput)
 }
 
+// Gets the changed time.
 func (o LookupWorkflowResultOutput) ChangedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.ChangedTime }).(pulumi.StringOutput)
 }
 
+// Gets the created time.
 func (o LookupWorkflowResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
+// The definition. See [Schema reference for Workflow Definition Language in Azure Logic Apps](https://aka.ms/logic-apps-workflow-definition-language).
 func (o LookupWorkflowResultOutput) Definition() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) interface{} { return v.Definition }).(pulumi.AnyOutput)
 }
 
+// The resource id.
 func (o LookupWorkflowResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The integration account.
 func (o LookupWorkflowResultOutput) IntegrationAccount() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *ResourceReferenceResponse { return v.IntegrationAccount }).(ResourceReferenceResponsePtrOutput)
 }
 
+// The resource location.
 func (o LookupWorkflowResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the resource name.
 func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The parameters.
 func (o LookupWorkflowResultOutput) Parameters() WorkflowParameterResponseMapOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) map[string]WorkflowParameterResponse { return v.Parameters }).(WorkflowParameterResponseMapOutput)
 }
 
+// Gets the provisioning state.
 func (o LookupWorkflowResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sku.
 func (o LookupWorkflowResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// The state.
 func (o LookupWorkflowResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// The resource tags.
 func (o LookupWorkflowResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupWorkflowResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Gets the version.
 func (o LookupWorkflowResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Version }).(pulumi.StringOutput)
 }

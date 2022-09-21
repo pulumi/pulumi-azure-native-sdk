@@ -21,22 +21,34 @@ func LookupWebAppSourceControlSlot(ctx *pulumi.Context, args *LookupWebAppSource
 }
 
 type LookupWebAppSourceControlSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Source control configuration for an app.
 type LookupWebAppSourceControlSlotResult struct {
-	Branch                    *string `pulumi:"branch"`
-	DeploymentRollbackEnabled *bool   `pulumi:"deploymentRollbackEnabled"`
-	Id                        string  `pulumi:"id"`
-	IsManualIntegration       *bool   `pulumi:"isManualIntegration"`
-	IsMercurial               *bool   `pulumi:"isMercurial"`
-	Kind                      *string `pulumi:"kind"`
-	Name                      string  `pulumi:"name"`
-	RepoUrl                   *string `pulumi:"repoUrl"`
-	Type                      string  `pulumi:"type"`
+	// Name of branch to use for deployment.
+	Branch *string `pulumi:"branch"`
+	// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+	DeploymentRollbackEnabled *bool `pulumi:"deploymentRollbackEnabled"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+	IsManualIntegration *bool `pulumi:"isManualIntegration"`
+	// <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+	IsMercurial *bool `pulumi:"isMercurial"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Repository or source control URL.
+	RepoUrl *string `pulumi:"repoUrl"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppSourceControlSlotOutput(ctx *pulumi.Context, args LookupWebAppSourceControlSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSourceControlSlotResultOutput {
@@ -53,9 +65,12 @@ func LookupWebAppSourceControlSlotOutput(ctx *pulumi.Context, args LookupWebAppS
 }
 
 type LookupWebAppSourceControlSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupWebAppSourceControlSlotOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupWebAppSourceControlSlotResultOutput) ToLookupWebAppSourceControlSl
 	return o
 }
 
+// Name of branch to use for deployment.
 func (o LookupWebAppSourceControlSlotResultOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
 func (o LookupWebAppSourceControlSlotResultOutput) DeploymentRollbackEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) *bool { return v.DeploymentRollbackEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppSourceControlSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
 func (o LookupWebAppSourceControlSlotResultOutput) IsManualIntegration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) *bool { return v.IsManualIntegration }).(pulumi.BoolPtrOutput)
 }
 
+// <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
 func (o LookupWebAppSourceControlSlotResultOutput) IsMercurial() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) *bool { return v.IsMercurial }).(pulumi.BoolPtrOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppSourceControlSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppSourceControlSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Repository or source control URL.
 func (o LookupWebAppSourceControlSlotResultOutput) RepoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) *string { return v.RepoUrl }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppSourceControlSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

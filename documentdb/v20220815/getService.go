@@ -21,17 +21,24 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 }
 
 type LookupServiceArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// Cosmos DB service name.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Properties for the database account.
 type LookupServiceResult struct {
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// Services response resource.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -48,9 +55,12 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 }
 
 type LookupServiceOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// Cosmos DB service name.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupServiceOutputArgs) ElementType() reflect.Type {
@@ -72,18 +82,22 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 	return o
 }
 
+// The unique resource identifier of the database account.
 func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the database account.
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Services response resource.
 func (o LookupServiceResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The type of Azure resource.
 func (o LookupServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,23 +23,36 @@ func LookupEventHub(ctx *pulumi.Context, args *LookupEventHubArgs, opts ...pulum
 }
 
 type LookupEventHubArgs struct {
-	EventHubName      string `pulumi:"eventHubName"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The Event Hub name
+	EventHubName string `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Event Hub operation
 type LookupEventHubResult struct {
-	CreatedAt              string   `pulumi:"createdAt"`
-	Id                     string   `pulumi:"id"`
-	Location               *string  `pulumi:"location"`
+	// Exact time the Event Hub was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Number of days to retain the events for this Event Hub.
 	MessageRetentionInDays *float64 `pulumi:"messageRetentionInDays"`
-	Name                   string   `pulumi:"name"`
-	PartitionCount         *float64 `pulumi:"partitionCount"`
-	PartitionIds           []string `pulumi:"partitionIds"`
-	Status                 *string  `pulumi:"status"`
-	Type                   string   `pulumi:"type"`
-	UpdatedAt              string   `pulumi:"updatedAt"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Number of partitions created for the Event Hub.
+	PartitionCount *float64 `pulumi:"partitionCount"`
+	// Current number of shards on the Event Hub.
+	PartitionIds []string `pulumi:"partitionIds"`
+	// Enumerates the possible values for the status of the Event Hub.
+	Status *string `pulumi:"status"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The exact time the message was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupEventHubOutput(ctx *pulumi.Context, args LookupEventHubOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubResultOutput {
@@ -56,8 +69,11 @@ func LookupEventHubOutput(ctx *pulumi.Context, args LookupEventHubOutputArgs, op
 }
 
 type LookupEventHubOutputArgs struct {
-	EventHubName      pulumi.StringInput `pulumi:"eventHubName"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The Event Hub name
+	EventHubName pulumi.StringInput `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,42 +96,52 @@ func (o LookupEventHubResultOutput) ToLookupEventHubResultOutputWithContext(ctx 
 	return o
 }
 
+// Exact time the Event Hub was created.
 func (o LookupEventHubResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupEventHubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupEventHubResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEventHubResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Number of days to retain the events for this Event Hub.
 func (o LookupEventHubResultOutput) MessageRetentionInDays() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupEventHubResult) *float64 { return v.MessageRetentionInDays }).(pulumi.Float64PtrOutput)
 }
 
+// Resource name
 func (o LookupEventHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Number of partitions created for the Event Hub.
 func (o LookupEventHubResultOutput) PartitionCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupEventHubResult) *float64 { return v.PartitionCount }).(pulumi.Float64PtrOutput)
 }
 
+// Current number of shards on the Event Hub.
 func (o LookupEventHubResultOutput) PartitionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEventHubResult) []string { return v.PartitionIds }).(pulumi.StringArrayOutput)
 }
 
+// Enumerates the possible values for the status of the Event Hub.
 func (o LookupEventHubResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEventHubResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Resource type
 func (o LookupEventHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The exact time the message was updated.
 func (o LookupEventHubResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

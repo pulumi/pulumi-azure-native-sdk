@@ -22,21 +22,32 @@ func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ..
 }
 
 type LookupVolumeGroupArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VolumeGroupName   string `pulumi:"volumeGroupName"`
+	// The name of the volumeGroup
+	VolumeGroupName string `pulumi:"volumeGroupName"`
 }
 
 // Volume group resource for create
 type LookupVolumeGroupResult struct {
-	GroupMetaData     *VolumeGroupMetaDataResponse          `pulumi:"groupMetaData"`
-	Id                string                                `pulumi:"id"`
-	Location          *string                               `pulumi:"location"`
-	Name              string                                `pulumi:"name"`
-	ProvisioningState string                                `pulumi:"provisioningState"`
-	Tags              map[string]string                     `pulumi:"tags"`
-	Type              string                                `pulumi:"type"`
-	Volumes           []VolumeGroupVolumePropertiesResponse `pulumi:"volumes"`
+	// Volume group details
+	GroupMetaData *VolumeGroupMetaDataResponse `pulumi:"groupMetaData"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// List of volumes from group
+	Volumes []VolumeGroupVolumePropertiesResponse `pulumi:"volumes"`
 }
 
 func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeGroupResultOutput {
@@ -53,9 +64,12 @@ func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputAr
 }
 
 type LookupVolumeGroupOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VolumeGroupName   pulumi.StringInput `pulumi:"volumeGroupName"`
+	// The name of the volumeGroup
+	VolumeGroupName pulumi.StringInput `pulumi:"volumeGroupName"`
 }
 
 func (LookupVolumeGroupOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutputWithContex
 	return o
 }
 
+// Volume group details
 func (o LookupVolumeGroupResultOutput) GroupMetaData() VolumeGroupMetaDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *VolumeGroupMetaDataResponse { return v.GroupMetaData }).(VolumeGroupMetaDataResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupVolumeGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupVolumeGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupVolumeGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupVolumeGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupVolumeGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupVolumeGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List of volumes from group
 func (o LookupVolumeGroupResultOutput) Volumes() VolumeGroupVolumePropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) []VolumeGroupVolumePropertiesResponse { return v.Volumes }).(VolumeGroupVolumePropertiesResponseArrayOutput)
 }

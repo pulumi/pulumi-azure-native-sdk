@@ -22,19 +22,28 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
-	PeConnectionName  string `pulumi:"peConnectionName"`
+	// Private link resource name.
+	PeConnectionName string `pulumi:"peConnectionName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SiteName          string `pulumi:"siteName"`
+	// Site name.
+	SiteName string `pulumi:"siteName"`
 }
 
 // REST model used to encapsulate the user visible state of a PrivateEndpoint.
 type LookupPrivateEndpointConnectionResult struct {
-	ETag       string                                      `pulumi:"eTag"`
-	Id         string                                      `pulumi:"id"`
-	Name       string                                      `pulumi:"name"`
+	// Gets the tag for optimistic concurrency control.
+	ETag string `pulumi:"eTag"`
+	// Relative URL to get this Sites.
+	Id string `pulumi:"id"`
+	// Gets the name of the resource.
+	Name string `pulumi:"name"`
+	// Gets the properties of the object.
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                          `pulumi:"systemData"`
-	Type       string                                      `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
@@ -51,9 +60,12 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
-	PeConnectionName  pulumi.StringInput `pulumi:"peConnectionName"`
+	// Private link resource name.
+	PeConnectionName pulumi.StringInput `pulumi:"peConnectionName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SiteName          pulumi.StringInput `pulumi:"siteName"`
+	// Site name.
+	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 
 func (LookupPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -75,28 +87,34 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 	return o
 }
 
+// Gets the tag for optimistic concurrency control.
 func (o LookupPrivateEndpointConnectionResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.ETag }).(pulumi.StringOutput)
 }
 
+// Relative URL to get this Sites.
 func (o LookupPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets the name of the resource.
 func (o LookupPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets the properties of the object.
 func (o LookupPrivateEndpointConnectionResultOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Gets the resource type.
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

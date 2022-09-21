@@ -21,22 +21,35 @@ func GetApplicationGatewayBackendHealthOnDemand(ctx *pulumi.Context, args *GetAp
 }
 
 type GetApplicationGatewayBackendHealthOnDemandArgs struct {
-	ApplicationGatewayName              string                                      `pulumi:"applicationGatewayName"`
-	BackendAddressPool                  *SubResource                                `pulumi:"backendAddressPool"`
-	BackendHttpSettings                 *SubResource                                `pulumi:"backendHttpSettings"`
-	Expand                              *string                                     `pulumi:"expand"`
-	Host                                *string                                     `pulumi:"host"`
-	Match                               *ApplicationGatewayProbeHealthResponseMatch `pulumi:"match"`
-	Path                                *string                                     `pulumi:"path"`
-	PickHostNameFromBackendHttpSettings *bool                                       `pulumi:"pickHostNameFromBackendHttpSettings"`
-	Protocol                            *string                                     `pulumi:"protocol"`
-	ResourceGroupName                   string                                      `pulumi:"resourceGroupName"`
-	Timeout                             *int                                        `pulumi:"timeout"`
+	// The name of the application gateway.
+	ApplicationGatewayName string `pulumi:"applicationGatewayName"`
+	// Reference of backend pool of application gateway to which probe request will be sent.
+	BackendAddressPool *SubResource `pulumi:"backendAddressPool"`
+	// Reference of backend http setting of application gateway to be used for test probe.
+	BackendHttpSettings *SubResource `pulumi:"backendHttpSettings"`
+	// Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
+	Expand *string `pulumi:"expand"`
+	// Host name to send the probe to.
+	Host *string `pulumi:"host"`
+	// Criterion for classifying a healthy probe response.
+	Match *ApplicationGatewayProbeHealthResponseMatch `pulumi:"match"`
+	// Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+	Path *string `pulumi:"path"`
+	// Whether the host header should be picked from the backend http settings. Default value is false.
+	PickHostNameFromBackendHttpSettings *bool `pulumi:"pickHostNameFromBackendHttpSettings"`
+	// The protocol used for the probe.
+	Protocol *string `pulumi:"protocol"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // Result of on demand test probe
 type GetApplicationGatewayBackendHealthOnDemandResult struct {
-	BackendAddressPool        *ApplicationGatewayBackendAddressPoolResponse        `pulumi:"backendAddressPool"`
+	// Reference of an ApplicationGatewayBackendAddressPool resource.
+	BackendAddressPool *ApplicationGatewayBackendAddressPoolResponse `pulumi:"backendAddressPool"`
+	// Application gateway BackendHealthHttp settings.
 	BackendHealthHttpSettings *ApplicationGatewayBackendHealthHttpSettingsResponse `pulumi:"backendHealthHttpSettings"`
 }
 
@@ -54,17 +67,28 @@ func GetApplicationGatewayBackendHealthOnDemandOutput(ctx *pulumi.Context, args 
 }
 
 type GetApplicationGatewayBackendHealthOnDemandOutputArgs struct {
-	ApplicationGatewayName              pulumi.StringInput                                 `pulumi:"applicationGatewayName"`
-	BackendAddressPool                  SubResourcePtrInput                                `pulumi:"backendAddressPool"`
-	BackendHttpSettings                 SubResourcePtrInput                                `pulumi:"backendHttpSettings"`
-	Expand                              pulumi.StringPtrInput                              `pulumi:"expand"`
-	Host                                pulumi.StringPtrInput                              `pulumi:"host"`
-	Match                               ApplicationGatewayProbeHealthResponseMatchPtrInput `pulumi:"match"`
-	Path                                pulumi.StringPtrInput                              `pulumi:"path"`
-	PickHostNameFromBackendHttpSettings pulumi.BoolPtrInput                                `pulumi:"pickHostNameFromBackendHttpSettings"`
-	Protocol                            pulumi.StringPtrInput                              `pulumi:"protocol"`
-	ResourceGroupName                   pulumi.StringInput                                 `pulumi:"resourceGroupName"`
-	Timeout                             pulumi.IntPtrInput                                 `pulumi:"timeout"`
+	// The name of the application gateway.
+	ApplicationGatewayName pulumi.StringInput `pulumi:"applicationGatewayName"`
+	// Reference of backend pool of application gateway to which probe request will be sent.
+	BackendAddressPool SubResourcePtrInput `pulumi:"backendAddressPool"`
+	// Reference of backend http setting of application gateway to be used for test probe.
+	BackendHttpSettings SubResourcePtrInput `pulumi:"backendHttpSettings"`
+	// Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Host name to send the probe to.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Criterion for classifying a healthy probe response.
+	Match ApplicationGatewayProbeHealthResponseMatchPtrInput `pulumi:"match"`
+	// Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Whether the host header should be picked from the backend http settings. Default value is false.
+	PickHostNameFromBackendHttpSettings pulumi.BoolPtrInput `pulumi:"pickHostNameFromBackendHttpSettings"`
+	// The protocol used for the probe.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (GetApplicationGatewayBackendHealthOnDemandOutputArgs) ElementType() reflect.Type {
@@ -86,12 +110,14 @@ func (o GetApplicationGatewayBackendHealthOnDemandResultOutput) ToGetApplication
 	return o
 }
 
+// Reference of an ApplicationGatewayBackendAddressPool resource.
 func (o GetApplicationGatewayBackendHealthOnDemandResultOutput) BackendAddressPool() ApplicationGatewayBackendAddressPoolResponsePtrOutput {
 	return o.ApplyT(func(v GetApplicationGatewayBackendHealthOnDemandResult) *ApplicationGatewayBackendAddressPoolResponse {
 		return v.BackendAddressPool
 	}).(ApplicationGatewayBackendAddressPoolResponsePtrOutput)
 }
 
+// Application gateway BackendHealthHttp settings.
 func (o GetApplicationGatewayBackendHealthOnDemandResultOutput) BackendHealthHttpSettings() ApplicationGatewayBackendHealthHttpSettingsResponsePtrOutput {
 	return o.ApplyT(func(v GetApplicationGatewayBackendHealthOnDemandResult) *ApplicationGatewayBackendHealthHttpSettingsResponse {
 		return v.BackendHealthHttpSettings

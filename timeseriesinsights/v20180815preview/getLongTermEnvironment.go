@@ -21,28 +21,47 @@ func LookupLongTermEnvironment(ctx *pulumi.Context, args *LookupLongTermEnvironm
 }
 
 type LookupLongTermEnvironmentArgs struct {
-	EnvironmentName   string  `pulumi:"environmentName"`
-	Expand            *string `pulumi:"expand"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+	Expand *string `pulumi:"expand"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. LongTerm environments do not have set data retention limits.
 type LookupLongTermEnvironmentResult struct {
-	CreationTime           string                                     `pulumi:"creationTime"`
-	DataAccessFqdn         string                                     `pulumi:"dataAccessFqdn"`
-	DataAccessId           string                                     `pulumi:"dataAccessId"`
-	Id                     string                                     `pulumi:"id"`
-	Kind                   string                                     `pulumi:"kind"`
-	Location               string                                     `pulumi:"location"`
-	Name                   string                                     `pulumi:"name"`
-	ProvisioningState      string                                     `pulumi:"provisioningState"`
-	Sku                    SkuResponse                                `pulumi:"sku"`
-	Status                 EnvironmentStatusResponse                  `pulumi:"status"`
-	StorageConfiguration   LongTermStorageConfigurationOutputResponse `pulumi:"storageConfiguration"`
-	Tags                   map[string]string                          `pulumi:"tags"`
-	TimeSeriesIdProperties []TimeSeriesIdPropertyResponse             `pulumi:"timeSeriesIdProperties"`
-	Type                   string                                     `pulumi:"type"`
-	WarmStoreConfiguration *WarmStoreConfigurationPropertiesResponse  `pulumi:"warmStoreConfiguration"`
+	// The time the resource was created.
+	CreationTime string `pulumi:"creationTime"`
+	// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+	DataAccessFqdn string `pulumi:"dataAccessFqdn"`
+	// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+	DataAccessId string `pulumi:"dataAccessId"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The kind of the environment.
+	// Expected value is 'LongTerm'.
+	Kind string `pulumi:"kind"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The sku determines the type of environment, either standard (S1 or S2) or long-term (L1). For standard environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
+	Sku SkuResponse `pulumi:"sku"`
+	// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
+	Status EnvironmentStatusResponse `pulumi:"status"`
+	// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
+	StorageConfiguration LongTermStorageConfigurationOutputResponse `pulumi:"storageConfiguration"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// The list of event properties which will be used to define the environment's time series id.
+	TimeSeriesIdProperties []TimeSeriesIdPropertyResponse `pulumi:"timeSeriesIdProperties"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
+	WarmStoreConfiguration *WarmStoreConfigurationPropertiesResponse `pulumi:"warmStoreConfiguration"`
 }
 
 func LookupLongTermEnvironmentOutput(ctx *pulumi.Context, args LookupLongTermEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupLongTermEnvironmentResultOutput {
@@ -59,9 +78,12 @@ func LookupLongTermEnvironmentOutput(ctx *pulumi.Context, args LookupLongTermEnv
 }
 
 type LookupLongTermEnvironmentOutputArgs struct {
-	EnvironmentName   pulumi.StringInput    `pulumi:"environmentName"`
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupLongTermEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -83,66 +105,82 @@ func (o LookupLongTermEnvironmentResultOutput) ToLookupLongTermEnvironmentResult
 	return o
 }
 
+// The time the resource was created.
 func (o LookupLongTermEnvironmentResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
 func (o LookupLongTermEnvironmentResultOutput) DataAccessFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.DataAccessFqdn }).(pulumi.StringOutput)
 }
 
+// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
 func (o LookupLongTermEnvironmentResultOutput) DataAccessId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.DataAccessId }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupLongTermEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the environment.
+// Expected value is 'LongTerm'.
 func (o LookupLongTermEnvironmentResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupLongTermEnvironmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupLongTermEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupLongTermEnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sku determines the type of environment, either standard (S1 or S2) or long-term (L1). For standard environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
 func (o LookupLongTermEnvironmentResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
+// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
 func (o LookupLongTermEnvironmentResultOutput) Status() EnvironmentStatusResponseOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) EnvironmentStatusResponse { return v.Status }).(EnvironmentStatusResponseOutput)
 }
 
+// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
 func (o LookupLongTermEnvironmentResultOutput) StorageConfiguration() LongTermStorageConfigurationOutputResponseOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) LongTermStorageConfigurationOutputResponse {
 		return v.StorageConfiguration
 	}).(LongTermStorageConfigurationOutputResponseOutput)
 }
 
+// Resource tags
 func (o LookupLongTermEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The list of event properties which will be used to define the environment's time series id.
 func (o LookupLongTermEnvironmentResultOutput) TimeSeriesIdProperties() TimeSeriesIdPropertyResponseArrayOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) []TimeSeriesIdPropertyResponse {
 		return v.TimeSeriesIdProperties
 	}).(TimeSeriesIdPropertyResponseArrayOutput)
 }
 
+// Resource type
 func (o LookupLongTermEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
 func (o LookupLongTermEnvironmentResultOutput) WarmStoreConfiguration() WarmStoreConfigurationPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupLongTermEnvironmentResult) *WarmStoreConfigurationPropertiesResponse {
 		return v.WarmStoreConfiguration

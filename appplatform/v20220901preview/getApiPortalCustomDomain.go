@@ -21,19 +21,28 @@ func LookupApiPortalCustomDomain(ctx *pulumi.Context, args *LookupApiPortalCusto
 }
 
 type LookupApiPortalCustomDomainArgs struct {
-	ApiPortalName     string `pulumi:"apiPortalName"`
-	DomainName        string `pulumi:"domainName"`
+	// The name of API portal.
+	ApiPortalName string `pulumi:"apiPortalName"`
+	// The name of the API portal custom domain.
+	DomainName string `pulumi:"domainName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Custom domain of the API portal
 type LookupApiPortalCustomDomainResult struct {
-	Id         string                                  `pulumi:"id"`
-	Name       string                                  `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The properties of custom domain for API portal
 	Properties ApiPortalCustomDomainPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                      `pulumi:"systemData"`
-	Type       string                                  `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupApiPortalCustomDomainOutput(ctx *pulumi.Context, args LookupApiPortalCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupApiPortalCustomDomainResultOutput {
@@ -50,10 +59,14 @@ func LookupApiPortalCustomDomainOutput(ctx *pulumi.Context, args LookupApiPortal
 }
 
 type LookupApiPortalCustomDomainOutputArgs struct {
-	ApiPortalName     pulumi.StringInput `pulumi:"apiPortalName"`
-	DomainName        pulumi.StringInput `pulumi:"domainName"`
+	// The name of API portal.
+	ApiPortalName pulumi.StringInput `pulumi:"apiPortalName"`
+	// The name of the API portal custom domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupApiPortalCustomDomainOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupApiPortalCustomDomainResultOutput) ToLookupApiPortalCustomDomainRe
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupApiPortalCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPortalCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupApiPortalCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPortalCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of custom domain for API portal
 func (o LookupApiPortalCustomDomainResultOutput) Properties() ApiPortalCustomDomainPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupApiPortalCustomDomainResult) ApiPortalCustomDomainPropertiesResponse { return v.Properties }).(ApiPortalCustomDomainPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupApiPortalCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApiPortalCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupApiPortalCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPortalCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

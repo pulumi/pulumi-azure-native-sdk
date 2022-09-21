@@ -23,17 +23,24 @@ func LookupFileServiceProperties(ctx *pulumi.Context, args *LookupFileServicePro
 }
 
 type LookupFileServicePropertiesArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	FileServicesName  string `pulumi:"fileServicesName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the file Service within the specified storage account. File Service Name must be "default"
+	FileServicesName string `pulumi:"fileServicesName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of File services in storage account.
 type LookupFileServicePropertiesResult struct {
+	// Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
 	Cors *CorsRulesResponse `pulumi:"cors"`
-	Id   string             `pulumi:"id"`
-	Name string             `pulumi:"name"`
-	Type string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupFileServicePropertiesOutput(ctx *pulumi.Context, args LookupFileServicePropertiesOutputArgs, opts ...pulumi.InvokeOption) LookupFileServicePropertiesResultOutput {
@@ -50,8 +57,11 @@ func LookupFileServicePropertiesOutput(ctx *pulumi.Context, args LookupFileServi
 }
 
 type LookupFileServicePropertiesOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	FileServicesName  pulumi.StringInput `pulumi:"fileServicesName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the file Service within the specified storage account. File Service Name must be "default"
+	FileServicesName pulumi.StringInput `pulumi:"fileServicesName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,18 +84,22 @@ func (o LookupFileServicePropertiesResultOutput) ToLookupFileServicePropertiesRe
 	return o
 }
 
+// Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
 func (o LookupFileServicePropertiesResultOutput) Cors() CorsRulesResponsePtrOutput {
 	return o.ApplyT(func(v LookupFileServicePropertiesResult) *CorsRulesResponse { return v.Cors }).(CorsRulesResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFileServicePropertiesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileServicePropertiesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupFileServicePropertiesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileServicePropertiesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFileServicePropertiesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileServicePropertiesResult) string { return v.Type }).(pulumi.StringOutput)
 }

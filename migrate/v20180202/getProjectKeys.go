@@ -21,13 +21,17 @@ func GetProjectKeys(ctx *pulumi.Context, args *GetProjectKeysArgs, opts ...pulum
 }
 
 type GetProjectKeysArgs struct {
-	ProjectName       string `pulumi:"projectName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ID and Key for Migration Project.
 type GetProjectKeysResult struct {
-	WorkspaceId  string `pulumi:"workspaceId"`
+	// ID of Migration Project.
+	WorkspaceId string `pulumi:"workspaceId"`
+	// Key of Migration Project.
 	WorkspaceKey string `pulumi:"workspaceKey"`
 }
 
@@ -45,7 +49,9 @@ func GetProjectKeysOutput(ctx *pulumi.Context, args GetProjectKeysOutputArgs, op
 }
 
 type GetProjectKeysOutputArgs struct {
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o GetProjectKeysResultOutput) ToGetProjectKeysResultOutputWithContext(ctx 
 	return o
 }
 
+// ID of Migration Project.
 func (o GetProjectKeysResultOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectKeysResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
+// Key of Migration Project.
 func (o GetProjectKeysResultOutput) WorkspaceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectKeysResult) string { return v.WorkspaceKey }).(pulumi.StringOutput)
 }

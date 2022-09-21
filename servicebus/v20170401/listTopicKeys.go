@@ -21,21 +21,32 @@ func ListTopicKeys(ctx *pulumi.Context, args *ListTopicKeysArgs, opts ...pulumi.
 }
 
 type ListTopicKeysArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	TopicName             string `pulumi:"topicName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The topic name.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Namespace/ServiceBus Connection String
 type ListTopicKeysResult struct {
-	AliasPrimaryConnectionString   string `pulumi:"aliasPrimaryConnectionString"`
+	// Primary connection string of the alias if GEO DR is enabled
+	AliasPrimaryConnectionString string `pulumi:"aliasPrimaryConnectionString"`
+	// Secondary  connection string of the alias if GEO DR is enabled
 	AliasSecondaryConnectionString string `pulumi:"aliasSecondaryConnectionString"`
-	KeyName                        string `pulumi:"keyName"`
-	PrimaryConnectionString        string `pulumi:"primaryConnectionString"`
-	PrimaryKey                     string `pulumi:"primaryKey"`
-	SecondaryConnectionString      string `pulumi:"secondaryConnectionString"`
-	SecondaryKey                   string `pulumi:"secondaryKey"`
+	// A string that describes the authorization rule.
+	KeyName string `pulumi:"keyName"`
+	// Primary connection string of the created namespace authorization rule.
+	PrimaryConnectionString string `pulumi:"primaryConnectionString"`
+	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// Secondary connection string of the created namespace authorization rule.
+	SecondaryConnectionString string `pulumi:"secondaryConnectionString"`
+	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
+	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
 func ListTopicKeysOutput(ctx *pulumi.Context, args ListTopicKeysOutputArgs, opts ...pulumi.InvokeOption) ListTopicKeysResultOutput {
@@ -52,10 +63,14 @@ func ListTopicKeysOutput(ctx *pulumi.Context, args ListTopicKeysOutputArgs, opts
 }
 
 type ListTopicKeysOutputArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName             pulumi.StringInput `pulumi:"topicName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The topic name.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (ListTopicKeysOutputArgs) ElementType() reflect.Type {
@@ -77,30 +92,37 @@ func (o ListTopicKeysResultOutput) ToListTopicKeysResultOutputWithContext(ctx co
 	return o
 }
 
+// Primary connection string of the alias if GEO DR is enabled
 func (o ListTopicKeysResultOutput) AliasPrimaryConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.AliasPrimaryConnectionString }).(pulumi.StringOutput)
 }
 
+// Secondary  connection string of the alias if GEO DR is enabled
 func (o ListTopicKeysResultOutput) AliasSecondaryConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.AliasSecondaryConnectionString }).(pulumi.StringOutput)
 }
 
+// A string that describes the authorization rule.
 func (o ListTopicKeysResultOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// Primary connection string of the created namespace authorization rule.
 func (o ListTopicKeysResultOutput) PrimaryConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.PrimaryConnectionString }).(pulumi.StringOutput)
 }
 
+// A base64-encoded 256-bit primary key for signing and validating the SAS token.
 func (o ListTopicKeysResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// Secondary connection string of the created namespace authorization rule.
 func (o ListTopicKeysResultOutput) SecondaryConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.SecondaryConnectionString }).(pulumi.StringOutput)
 }
 
+// A base64-encoded 256-bit primary key for signing and validating the SAS token.
 func (o ListTopicKeysResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopicKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }

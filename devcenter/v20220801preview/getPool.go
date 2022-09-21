@@ -21,24 +21,38 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 }
 
 type LookupPoolArgs struct {
-	PoolName          string `pulumi:"poolName"`
-	ProjectName       string `pulumi:"projectName"`
+	// Name of the pool.
+	PoolName string `pulumi:"poolName"`
+	// The name of the project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A pool of Virtual Machines.
 type LookupPoolResult struct {
-	DevBoxDefinitionName  string             `pulumi:"devBoxDefinitionName"`
-	Id                    string             `pulumi:"id"`
-	LicenseType           string             `pulumi:"licenseType"`
-	LocalAdministrator    string             `pulumi:"localAdministrator"`
-	Location              string             `pulumi:"location"`
-	Name                  string             `pulumi:"name"`
-	NetworkConnectionName string             `pulumi:"networkConnectionName"`
-	ProvisioningState     string             `pulumi:"provisioningState"`
-	SystemData            SystemDataResponse `pulumi:"systemData"`
-	Tags                  map[string]string  `pulumi:"tags"`
-	Type                  string             `pulumi:"type"`
+	// Name of a Dev Box definition in parent Project of this Pool
+	DevBoxDefinitionName string `pulumi:"devBoxDefinitionName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
+	LicenseType string `pulumi:"licenseType"`
+	// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
+	LocalAdministrator string `pulumi:"localAdministrator"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Name of a Network Connection in parent Project of this Pool
+	NetworkConnectionName string `pulumi:"networkConnectionName"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPoolResultOutput {
@@ -55,8 +69,11 @@ func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pu
 }
 
 type LookupPoolOutputArgs struct {
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Name of the pool.
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,46 +96,57 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.
 	return o
 }
 
+// Name of a Dev Box definition in parent Project of this Pool
 func (o LookupPoolResultOutput) DevBoxDefinitionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.DevBoxDefinitionName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 func (o LookupPoolResultOutput) LicenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.LicenseType }).(pulumi.StringOutput)
 }
 
+// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
 func (o LookupPoolResultOutput) LocalAdministrator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.LocalAdministrator }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupPoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Name of a Network Connection in parent Project of this Pool
 func (o LookupPoolResultOutput) NetworkConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.NetworkConnectionName }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupPoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }

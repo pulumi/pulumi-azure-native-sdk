@@ -21,19 +21,28 @@ func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivat
 }
 
 type LookupManagedPrivateEndpointArgs struct {
-	FactoryName                string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// Managed private endpoint name
 	ManagedPrivateEndpointName string `pulumi:"managedPrivateEndpointName"`
-	ManagedVirtualNetworkName  string `pulumi:"managedVirtualNetworkName"`
-	ResourceGroupName          string `pulumi:"resourceGroupName"`
+	// Managed virtual network name
+	ManagedVirtualNetworkName string `pulumi:"managedVirtualNetworkName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Managed private endpoint resource type.
 type LookupManagedPrivateEndpointResult struct {
-	Etag       string                         `pulumi:"etag"`
-	Id         string                         `pulumi:"id"`
-	Name       string                         `pulumi:"name"`
+	// Etag identifies change in the resource.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Managed private endpoint properties.
 	Properties ManagedPrivateEndpointResponse `pulumi:"properties"`
-	Type       string                         `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedPrivateEndpointOutput(ctx *pulumi.Context, args LookupManagedPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupManagedPrivateEndpointResultOutput {
@@ -50,10 +59,14 @@ func LookupManagedPrivateEndpointOutput(ctx *pulumi.Context, args LookupManagedP
 }
 
 type LookupManagedPrivateEndpointOutputArgs struct {
-	FactoryName                pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// Managed private endpoint name
 	ManagedPrivateEndpointName pulumi.StringInput `pulumi:"managedPrivateEndpointName"`
-	ManagedVirtualNetworkName  pulumi.StringInput `pulumi:"managedVirtualNetworkName"`
-	ResourceGroupName          pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Managed virtual network name
+	ManagedVirtualNetworkName pulumi.StringInput `pulumi:"managedVirtualNetworkName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedPrivateEndpointOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpoint
 	return o
 }
 
+// Etag identifies change in the resource.
 func (o LookupManagedPrivateEndpointResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupManagedPrivateEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupManagedPrivateEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Managed private endpoint properties.
 func (o LookupManagedPrivateEndpointResultOutput) Properties() ManagedPrivateEndpointResponseOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) ManagedPrivateEndpointResponse { return v.Properties }).(ManagedPrivateEndpointResponseOutput)
 }
 
+// The resource type.
 func (o LookupManagedPrivateEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

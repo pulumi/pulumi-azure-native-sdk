@@ -23,22 +23,34 @@ func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStor
 }
 
 type LookupConfigurationStoreArgs struct {
-	ConfigStoreName   string `pulumi:"configStoreName"`
+	// The name of the configuration store.
+	ConfigStoreName string `pulumi:"configStoreName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
 type LookupConfigurationStoreResult struct {
-	CreationDate      string                    `pulumi:"creationDate"`
-	Endpoint          string                    `pulumi:"endpoint"`
-	Id                string                    `pulumi:"id"`
-	Identity          *ResourceIdentityResponse `pulumi:"identity"`
-	Location          string                    `pulumi:"location"`
-	Name              string                    `pulumi:"name"`
-	ProvisioningState string                    `pulumi:"provisioningState"`
-	Sku               SkuResponse               `pulumi:"sku"`
-	Tags              map[string]string         `pulumi:"tags"`
-	Type              string                    `pulumi:"type"`
+	// The creation date of configuration store.
+	CreationDate string `pulumi:"creationDate"`
+	// The DNS endpoint where the configuration store API will be available.
+	Endpoint string `pulumi:"endpoint"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The managed identity information, if configured.
+	Identity *ResourceIdentityResponse `pulumi:"identity"`
+	// The location of the resource. This cannot be changed after the resource is created.
+	Location string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning state of the configuration store.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The sku of the configuration store.
+	Sku SkuResponse `pulumi:"sku"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationStoreOutput(ctx *pulumi.Context, args LookupConfigurationStoreOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationStoreResultOutput {
@@ -55,7 +67,9 @@ func LookupConfigurationStoreOutput(ctx *pulumi.Context, args LookupConfiguratio
 }
 
 type LookupConfigurationStoreOutputArgs struct {
-	ConfigStoreName   pulumi.StringInput `pulumi:"configStoreName"`
+	// The name of the configuration store.
+	ConfigStoreName pulumi.StringInput `pulumi:"configStoreName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +92,52 @@ func (o LookupConfigurationStoreResultOutput) ToLookupConfigurationStoreResultOu
 	return o
 }
 
+// The creation date of configuration store.
 func (o LookupConfigurationStoreResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// The DNS endpoint where the configuration store API will be available.
 func (o LookupConfigurationStoreResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// The resource ID.
 func (o LookupConfigurationStoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The managed identity information, if configured.
 func (o LookupConfigurationStoreResultOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
+// The location of the resource. This cannot be changed after the resource is created.
 func (o LookupConfigurationStoreResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupConfigurationStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the configuration store.
 func (o LookupConfigurationStoreResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sku of the configuration store.
 func (o LookupConfigurationStoreResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
+// The tags of the resource.
 func (o LookupConfigurationStoreResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupConfigurationStoreResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.Type }).(pulumi.StringOutput)
 }

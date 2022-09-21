@@ -20,15 +20,20 @@ func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistr
 }
 
 type LookupProviderRegistrationArgs struct {
+	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace string `pulumi:"providerNamespace"`
 }
 
 type LookupProviderRegistrationResult struct {
-	Id         string                                 `pulumi:"id"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
 	Name       string                                 `pulumi:"name"`
 	Properties ProviderRegistrationResponseProperties `pulumi:"properties"`
-	SystemData SystemDataResponse                     `pulumi:"systemData"`
-	Type       string                                 `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupProviderRegistrationOutput(ctx *pulumi.Context, args LookupProviderRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupProviderRegistrationResultOutput {
@@ -45,6 +50,7 @@ func LookupProviderRegistrationOutput(ctx *pulumi.Context, args LookupProviderRe
 }
 
 type LookupProviderRegistrationOutputArgs struct {
+	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
 }
 
@@ -66,10 +72,12 @@ func (o LookupProviderRegistrationResultOutput) ToLookupProviderRegistrationResu
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProviderRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupProviderRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -78,10 +86,12 @@ func (o LookupProviderRegistrationResultOutput) Properties() ProviderRegistratio
 	return o.ApplyT(func(v LookupProviderRegistrationResult) ProviderRegistrationResponseProperties { return v.Properties }).(ProviderRegistrationResponsePropertiesOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupProviderRegistrationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProviderRegistrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

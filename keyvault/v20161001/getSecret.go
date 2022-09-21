@@ -23,19 +23,28 @@ func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.In
 }
 
 type LookupSecretArgs struct {
+	// The name of the Resource Group to which the vault belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SecretName        string `pulumi:"secretName"`
-	VaultName         string `pulumi:"vaultName"`
+	// The name of the secret.
+	SecretName string `pulumi:"secretName"`
+	// The name of the vault.
+	VaultName string `pulumi:"vaultName"`
 }
 
 // Resource information with extended details.
 type LookupSecretResult struct {
-	Id         string                   `pulumi:"id"`
-	Location   string                   `pulumi:"location"`
-	Name       string                   `pulumi:"name"`
+	// The Azure Resource Manager resource ID for the key vault.
+	Id string `pulumi:"id"`
+	// The supported Azure location where the key vault should be created.
+	Location string `pulumi:"location"`
+	// The name of the key vault.
+	Name string `pulumi:"name"`
+	// Properties of the secret
 	Properties SecretPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string        `pulumi:"tags"`
-	Type       string                   `pulumi:"type"`
+	// The tags that will be assigned to the key vault.
+	Tags map[string]string `pulumi:"tags"`
+	// The resource type of the key vault.
+	Type string `pulumi:"type"`
 }
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
@@ -52,9 +61,12 @@ func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts .
 }
 
 type LookupSecretOutputArgs struct {
+	// The name of the Resource Group to which the vault belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SecretName        pulumi.StringInput `pulumi:"secretName"`
-	VaultName         pulumi.StringInput `pulumi:"vaultName"`
+	// The name of the secret.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// The name of the vault.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupSecretOutputArgs) ElementType() reflect.Type {
@@ -76,26 +88,32 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure Resource Manager resource ID for the key vault.
 func (o LookupSecretResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The supported Azure location where the key vault should be created.
 func (o LookupSecretResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the key vault.
 func (o LookupSecretResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the secret
 func (o LookupSecretResultOutput) Properties() SecretPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSecretResult) SecretPropertiesResponse { return v.Properties }).(SecretPropertiesResponseOutput)
 }
 
+// The tags that will be assigned to the key vault.
 func (o LookupSecretResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The resource type of the key vault.
 func (o LookupSecretResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Type }).(pulumi.StringOutput)
 }

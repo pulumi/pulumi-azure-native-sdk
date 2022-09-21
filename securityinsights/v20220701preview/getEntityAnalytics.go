@@ -21,20 +21,31 @@ func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs,
 }
 
 type LookupEntityAnalyticsArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SettingsName      string `pulumi:"settingsName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName string `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Settings with single toggle.
 type LookupEntityAnalyticsResult struct {
-	EntityProviders []string           `pulumi:"entityProviders"`
-	Etag            *string            `pulumi:"etag"`
-	Id              string             `pulumi:"id"`
-	Kind            string             `pulumi:"kind"`
-	Name            string             `pulumi:"name"`
-	SystemData      SystemDataResponse `pulumi:"systemData"`
-	Type            string             `pulumi:"type"`
+	// The relevant entity providers that are synced
+	EntityProviders []string `pulumi:"entityProviders"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the setting
+	// Expected value is 'EntityAnalytics'.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEntityAnalyticsOutput(ctx *pulumi.Context, args LookupEntityAnalyticsOutputArgs, opts ...pulumi.InvokeOption) LookupEntityAnalyticsResultOutput {
@@ -51,9 +62,12 @@ func LookupEntityAnalyticsOutput(ctx *pulumi.Context, args LookupEntityAnalytics
 }
 
 type LookupEntityAnalyticsOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SettingsName      pulumi.StringInput `pulumi:"settingsName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName pulumi.StringInput `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupEntityAnalyticsOutputArgs) ElementType() reflect.Type {
@@ -75,30 +89,38 @@ func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutputWi
 	return o
 }
 
+// The relevant entity providers that are synced
 func (o LookupEntityAnalyticsResultOutput) EntityProviders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) []string { return v.EntityProviders }).(pulumi.StringArrayOutput)
 }
 
+// Etag of the azure resource
 func (o LookupEntityAnalyticsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEntityAnalyticsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the setting
+// Expected value is 'EntityAnalytics'.
 func (o LookupEntityAnalyticsResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEntityAnalyticsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEntityAnalyticsResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEntityAnalyticsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Type }).(pulumi.StringOutput)
 }

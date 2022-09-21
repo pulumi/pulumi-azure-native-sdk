@@ -22,12 +22,15 @@ func GetRegistrationActivationKey(ctx *pulumi.Context, args *GetRegistrationActi
 }
 
 type GetRegistrationActivationKeyArgs struct {
+	// Name of the Azure Stack registration.
 	RegistrationName string `pulumi:"registrationName"`
-	ResourceGroup    string `pulumi:"resourceGroup"`
+	// Name of the resource group.
+	ResourceGroup string `pulumi:"resourceGroup"`
 }
 
 // The resource containing the Azure Stack activation key.
 type GetRegistrationActivationKeyResult struct {
+	// Azure Stack activation key.
 	ActivationKey *string `pulumi:"activationKey"`
 }
 
@@ -45,8 +48,10 @@ func GetRegistrationActivationKeyOutput(ctx *pulumi.Context, args GetRegistratio
 }
 
 type GetRegistrationActivationKeyOutputArgs struct {
+	// Name of the Azure Stack registration.
 	RegistrationName pulumi.StringInput `pulumi:"registrationName"`
-	ResourceGroup    pulumi.StringInput `pulumi:"resourceGroup"`
+	// Name of the resource group.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
 }
 
 func (GetRegistrationActivationKeyOutputArgs) ElementType() reflect.Type {
@@ -68,6 +73,7 @@ func (o GetRegistrationActivationKeyResultOutput) ToGetRegistrationActivationKey
 	return o
 }
 
+// Azure Stack activation key.
 func (o GetRegistrationActivationKeyResultOutput) ActivationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistrationActivationKeyResult) *string { return v.ActivationKey }).(pulumi.StringPtrOutput)
 }

@@ -22,20 +22,30 @@ func LookupVirtualApplianceSite(ctx *pulumi.Context, args *LookupVirtualApplianc
 }
 
 type LookupVirtualApplianceSiteArgs struct {
+	// The name of the Network Virtual Appliance.
 	NetworkVirtualApplianceName string `pulumi:"networkVirtualApplianceName"`
-	ResourceGroupName           string `pulumi:"resourceGroupName"`
-	SiteName                    string `pulumi:"siteName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the site.
+	SiteName string `pulumi:"siteName"`
 }
 
 // Virtual Appliance Site resource.
 type LookupVirtualApplianceSiteResult struct {
-	AddressPrefix     *string                            `pulumi:"addressPrefix"`
-	Etag              string                             `pulumi:"etag"`
-	Id                *string                            `pulumi:"id"`
-	Name              *string                            `pulumi:"name"`
-	O365Policy        *Office365PolicyPropertiesResponse `pulumi:"o365Policy"`
-	ProvisioningState string                             `pulumi:"provisioningState"`
-	Type              string                             `pulumi:"type"`
+	// Address Prefix.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Name of the virtual appliance site.
+	Name *string `pulumi:"name"`
+	// Office 365 Policy.
+	O365Policy *Office365PolicyPropertiesResponse `pulumi:"o365Policy"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Site type.
+	Type string `pulumi:"type"`
 }
 
 func LookupVirtualApplianceSiteOutput(ctx *pulumi.Context, args LookupVirtualApplianceSiteOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualApplianceSiteResultOutput {
@@ -52,9 +62,12 @@ func LookupVirtualApplianceSiteOutput(ctx *pulumi.Context, args LookupVirtualApp
 }
 
 type LookupVirtualApplianceSiteOutputArgs struct {
+	// The name of the Network Virtual Appliance.
 	NetworkVirtualApplianceName pulumi.StringInput `pulumi:"networkVirtualApplianceName"`
-	ResourceGroupName           pulumi.StringInput `pulumi:"resourceGroupName"`
-	SiteName                    pulumi.StringInput `pulumi:"siteName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the site.
+	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 
 func (LookupVirtualApplianceSiteOutputArgs) ElementType() reflect.Type {
@@ -76,30 +89,37 @@ func (o LookupVirtualApplianceSiteResultOutput) ToLookupVirtualApplianceSiteResu
 	return o
 }
 
+// Address Prefix.
 func (o LookupVirtualApplianceSiteResultOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualApplianceSiteResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualApplianceSiteResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Name of the virtual appliance site.
 func (o LookupVirtualApplianceSiteResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Office 365 Policy.
 func (o LookupVirtualApplianceSiteResultOutput) O365Policy() Office365PolicyPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) *Office365PolicyPropertiesResponse { return v.O365Policy }).(Office365PolicyPropertiesResponsePtrOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupVirtualApplianceSiteResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Site type.
 func (o LookupVirtualApplianceSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualApplianceSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

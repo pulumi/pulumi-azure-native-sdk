@@ -21,15 +21,21 @@ func GetMonitorDefaultKey(ctx *pulumi.Context, args *GetMonitorDefaultKeyArgs, o
 }
 
 type GetMonitorDefaultKeyArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type GetMonitorDefaultKeyResult struct {
-	Created   *string `pulumi:"created"`
+	// The time of creation of the API key.
+	Created *string `pulumi:"created"`
+	// The user that created the API key.
 	CreatedBy *string `pulumi:"createdBy"`
-	Key       string  `pulumi:"key"`
-	Name      *string `pulumi:"name"`
+	// The value of the API key.
+	Key string `pulumi:"key"`
+	// The name of the API key.
+	Name *string `pulumi:"name"`
 }
 
 func GetMonitorDefaultKeyOutput(ctx *pulumi.Context, args GetMonitorDefaultKeyOutputArgs, opts ...pulumi.InvokeOption) GetMonitorDefaultKeyResultOutput {
@@ -46,7 +52,9 @@ func GetMonitorDefaultKeyOutput(ctx *pulumi.Context, args GetMonitorDefaultKeyOu
 }
 
 type GetMonitorDefaultKeyOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,18 +76,22 @@ func (o GetMonitorDefaultKeyResultOutput) ToGetMonitorDefaultKeyResultOutputWith
 	return o
 }
 
+// The time of creation of the API key.
 func (o GetMonitorDefaultKeyResultOutput) Created() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorDefaultKeyResult) *string { return v.Created }).(pulumi.StringPtrOutput)
 }
 
+// The user that created the API key.
 func (o GetMonitorDefaultKeyResultOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorDefaultKeyResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// The value of the API key.
 func (o GetMonitorDefaultKeyResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorDefaultKeyResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The name of the API key.
 func (o GetMonitorDefaultKeyResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMonitorDefaultKeyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

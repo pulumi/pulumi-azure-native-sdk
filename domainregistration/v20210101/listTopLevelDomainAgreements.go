@@ -21,15 +21,20 @@ func ListTopLevelDomainAgreements(ctx *pulumi.Context, args *ListTopLevelDomainA
 }
 
 type ListTopLevelDomainAgreementsArgs struct {
-	ForTransfer    *bool  `pulumi:"forTransfer"`
-	IncludePrivacy *bool  `pulumi:"includePrivacy"`
-	Name           string `pulumi:"name"`
+	// If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.
+	ForTransfer *bool `pulumi:"forTransfer"`
+	// If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
+	IncludePrivacy *bool `pulumi:"includePrivacy"`
+	// Name of the top-level domain.
+	Name string `pulumi:"name"`
 }
 
 // Collection of top-level domain legal agreements.
 type ListTopLevelDomainAgreementsResult struct {
-	NextLink string                      `pulumi:"nextLink"`
-	Value    []TldLegalAgreementResponse `pulumi:"value"`
+	// Link to next page of resources.
+	NextLink string `pulumi:"nextLink"`
+	// Collection of resources.
+	Value []TldLegalAgreementResponse `pulumi:"value"`
 }
 
 func ListTopLevelDomainAgreementsOutput(ctx *pulumi.Context, args ListTopLevelDomainAgreementsOutputArgs, opts ...pulumi.InvokeOption) ListTopLevelDomainAgreementsResultOutput {
@@ -46,9 +51,12 @@ func ListTopLevelDomainAgreementsOutput(ctx *pulumi.Context, args ListTopLevelDo
 }
 
 type ListTopLevelDomainAgreementsOutputArgs struct {
-	ForTransfer    pulumi.BoolPtrInput `pulumi:"forTransfer"`
+	// If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.
+	ForTransfer pulumi.BoolPtrInput `pulumi:"forTransfer"`
+	// If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
 	IncludePrivacy pulumi.BoolPtrInput `pulumi:"includePrivacy"`
-	Name           pulumi.StringInput  `pulumi:"name"`
+	// Name of the top-level domain.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (ListTopLevelDomainAgreementsOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListTopLevelDomainAgreementsResultOutput) ToListTopLevelDomainAgreements
 	return o
 }
 
+// Link to next page of resources.
 func (o ListTopLevelDomainAgreementsResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTopLevelDomainAgreementsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Collection of resources.
 func (o ListTopLevelDomainAgreementsResultOutput) Value() TldLegalAgreementResponseArrayOutput {
 	return o.ApplyT(func(v ListTopLevelDomainAgreementsResult) []TldLegalAgreementResponse { return v.Value }).(TldLegalAgreementResponseArrayOutput)
 }

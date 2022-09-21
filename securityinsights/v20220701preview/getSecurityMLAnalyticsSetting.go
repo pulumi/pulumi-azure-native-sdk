@@ -23,19 +23,28 @@ func LookupSecurityMLAnalyticsSetting(ctx *pulumi.Context, args *LookupSecurityM
 }
 
 type LookupSecurityMLAnalyticsSettingArgs struct {
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Security ML Analytics Settings resource name
 	SettingsResourceName string `pulumi:"settingsResourceName"`
-	WorkspaceName        string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Security ML Analytics Setting
 type LookupSecurityMLAnalyticsSettingResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of security ML Analytics Settings
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityMLAnalyticsSettingOutput(ctx *pulumi.Context, args LookupSecurityMLAnalyticsSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityMLAnalyticsSettingResultOutput {
@@ -52,9 +61,12 @@ func LookupSecurityMLAnalyticsSettingOutput(ctx *pulumi.Context, args LookupSecu
 }
 
 type LookupSecurityMLAnalyticsSettingOutputArgs struct {
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Security ML Analytics Settings resource name
 	SettingsResourceName pulumi.StringInput `pulumi:"settingsResourceName"`
-	WorkspaceName        pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSecurityMLAnalyticsSettingOutputArgs) ElementType() reflect.Type {
@@ -76,26 +88,32 @@ func (o LookupSecurityMLAnalyticsSettingResultOutput) ToLookupSecurityMLAnalytic
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupSecurityMLAnalyticsSettingResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityMLAnalyticsSettingResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSecurityMLAnalyticsSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityMLAnalyticsSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of security ML Analytics Settings
 func (o LookupSecurityMLAnalyticsSettingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityMLAnalyticsSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSecurityMLAnalyticsSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityMLAnalyticsSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSecurityMLAnalyticsSettingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSecurityMLAnalyticsSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSecurityMLAnalyticsSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityMLAnalyticsSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

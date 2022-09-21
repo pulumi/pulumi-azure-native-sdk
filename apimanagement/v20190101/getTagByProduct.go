@@ -21,18 +21,26 @@ func LookupTagByProduct(ctx *pulumi.Context, args *LookupTagByProductArgs, opts 
 }
 
 type LookupTagByProductArgs struct {
-	ProductId         string `pulumi:"productId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId string `pulumi:"productId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	TagId             string `pulumi:"tagId"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// Tag identifier. Must be unique in the current API Management service instance.
+	TagId string `pulumi:"tagId"`
 }
 
 // Tag Contract details.
 type LookupTagByProductResult struct {
+	// Tag name.
 	DisplayName string `pulumi:"displayName"`
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	Type        string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupTagByProductOutput(ctx *pulumi.Context, args LookupTagByProductOutputArgs, opts ...pulumi.InvokeOption) LookupTagByProductResultOutput {
@@ -49,10 +57,14 @@ func LookupTagByProductOutput(ctx *pulumi.Context, args LookupTagByProductOutput
 }
 
 type LookupTagByProductOutputArgs struct {
-	ProductId         pulumi.StringInput `pulumi:"productId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	TagId             pulumi.StringInput `pulumi:"tagId"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Tag identifier. Must be unique in the current API Management service instance.
+	TagId pulumi.StringInput `pulumi:"tagId"`
 }
 
 func (LookupTagByProductOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupTagByProductResultOutput) ToLookupTagByProductResultOutputWithCont
 	return o
 }
 
+// Tag name.
 func (o LookupTagByProductResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByProductResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupTagByProductResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByProductResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupTagByProductResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByProductResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupTagByProductResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagByProductResult) string { return v.Type }).(pulumi.StringOutput)
 }

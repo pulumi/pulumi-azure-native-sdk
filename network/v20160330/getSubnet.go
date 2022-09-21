@@ -23,22 +23,34 @@ func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.In
 }
 
 type LookupSubnetArgs struct {
-	Expand             *string `pulumi:"expand"`
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
-	SubnetName         string  `pulumi:"subnetName"`
-	VirtualNetworkName string  `pulumi:"virtualNetworkName"`
+	// expand references resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the subnet.
+	SubnetName string `pulumi:"subnetName"`
+	// The name of the virtual network.
+	VirtualNetworkName string `pulumi:"virtualNetworkName"`
 }
 
 // Subnet in a VirtualNetwork resource
 type LookupSubnetResult struct {
-	AddressPrefix        *string                       `pulumi:"addressPrefix"`
-	Etag                 *string                       `pulumi:"etag"`
-	Id                   *string                       `pulumi:"id"`
-	IpConfigurations     []IPConfigurationResponse     `pulumi:"ipConfigurations"`
-	Name                 *string                       `pulumi:"name"`
+	// Gets or sets Address prefix for the subnet.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// A unique read-only string that changes whenever the resource is updated
+	Etag *string `pulumi:"etag"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Gets array of references to the network interface IP configurations using subnet
+	IpConfigurations []IPConfigurationResponse `pulumi:"ipConfigurations"`
+	// Gets name of the resource that is unique within a resource group. This name can be used to access the resource
+	Name *string `pulumi:"name"`
+	// Gets or sets the reference of the NetworkSecurityGroup resource
 	NetworkSecurityGroup *NetworkSecurityGroupResponse `pulumi:"networkSecurityGroup"`
-	ProvisioningState    *string                       `pulumi:"provisioningState"`
-	RouteTable           *RouteTableResponse           `pulumi:"routeTable"`
+	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets the reference of the RouteTable resource
+	RouteTable *RouteTableResponse `pulumi:"routeTable"`
 }
 
 func LookupSubnetOutput(ctx *pulumi.Context, args LookupSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetResultOutput {
@@ -55,10 +67,14 @@ func LookupSubnetOutput(ctx *pulumi.Context, args LookupSubnetOutputArgs, opts .
 }
 
 type LookupSubnetOutputArgs struct {
-	Expand             pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SubnetName         pulumi.StringInput    `pulumi:"subnetName"`
-	VirtualNetworkName pulumi.StringInput    `pulumi:"virtualNetworkName"`
+	// expand references resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the subnet.
+	SubnetName pulumi.StringInput `pulumi:"subnetName"`
+	// The name of the virtual network.
+	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
 }
 
 func (LookupSubnetOutputArgs) ElementType() reflect.Type {
@@ -80,34 +96,42 @@ func (o LookupSubnetResultOutput) ToLookupSubnetResultOutputWithContext(ctx cont
 	return o
 }
 
+// Gets or sets Address prefix for the subnet.
 func (o LookupSubnetResultOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated
 func (o LookupSubnetResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSubnetResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets array of references to the network interface IP configurations using subnet
 func (o LookupSubnetResultOutput) IpConfigurations() IPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupSubnetResult) []IPConfigurationResponse { return v.IpConfigurations }).(IPConfigurationResponseArrayOutput)
 }
 
+// Gets name of the resource that is unique within a resource group. This name can be used to access the resource
 func (o LookupSubnetResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the reference of the NetworkSecurityGroup resource
 func (o LookupSubnetResultOutput) NetworkSecurityGroup() NetworkSecurityGroupResponsePtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *NetworkSecurityGroupResponse { return v.NetworkSecurityGroup }).(NetworkSecurityGroupResponsePtrOutput)
 }
 
+// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
 func (o LookupSubnetResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the reference of the RouteTable resource
 func (o LookupSubnetResultOutput) RouteTable() RouteTableResponsePtrOutput {
 	return o.ApplyT(func(v LookupSubnetResult) *RouteTableResponse { return v.RouteTable }).(RouteTableResponsePtrOutput)
 }

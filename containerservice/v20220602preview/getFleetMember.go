@@ -21,20 +21,30 @@ func LookupFleetMember(ctx *pulumi.Context, args *LookupFleetMemberArgs, opts ..
 }
 
 type LookupFleetMemberArgs struct {
-	FleetMemberName   string `pulumi:"fleetMemberName"`
-	FleetName         string `pulumi:"fleetName"`
+	// The name of the Fleet member resource.
+	FleetMemberName string `pulumi:"fleetMemberName"`
+	// The name of the Fleet resource.
+	FleetName string `pulumi:"fleetName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
 type LookupFleetMemberResult struct {
-	ClusterResourceId *string            `pulumi:"clusterResourceId"`
-	Etag              string             `pulumi:"etag"`
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
+	ClusterResourceId *string `pulumi:"clusterResourceId"`
+	// Resource Etag.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the last accepted operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupFleetMemberOutput(ctx *pulumi.Context, args LookupFleetMemberOutputArgs, opts ...pulumi.InvokeOption) LookupFleetMemberResultOutput {
@@ -51,8 +61,11 @@ func LookupFleetMemberOutput(ctx *pulumi.Context, args LookupFleetMemberOutputAr
 }
 
 type LookupFleetMemberOutputArgs struct {
-	FleetMemberName   pulumi.StringInput `pulumi:"fleetMemberName"`
-	FleetName         pulumi.StringInput `pulumi:"fleetName"`
+	// The name of the Fleet member resource.
+	FleetMemberName pulumi.StringInput `pulumi:"fleetMemberName"`
+	// The name of the Fleet resource.
+	FleetName pulumi.StringInput `pulumi:"fleetName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupFleetMemberResultOutput) ToLookupFleetMemberResultOutputWithContex
 	return o
 }
 
+// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
 func (o LookupFleetMemberResultOutput) ClusterResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) *string { return v.ClusterResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Resource Etag.
 func (o LookupFleetMemberResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFleetMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupFleetMemberResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the last accepted operation.
 func (o LookupFleetMemberResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupFleetMemberResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFleetMemberResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.Type }).(pulumi.StringOutput)
 }

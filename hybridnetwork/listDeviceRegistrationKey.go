@@ -22,12 +22,15 @@ func ListDeviceRegistrationKey(ctx *pulumi.Context, args *ListDeviceRegistration
 }
 
 type ListDeviceRegistrationKeyArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The name of the device resource.
+	DeviceName string `pulumi:"deviceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The device registration key.
 type ListDeviceRegistrationKeyResult struct {
+	// The registration key for the device.
 	RegistrationKey string `pulumi:"registrationKey"`
 }
 
@@ -45,7 +48,9 @@ func ListDeviceRegistrationKeyOutput(ctx *pulumi.Context, args ListDeviceRegistr
 }
 
 type ListDeviceRegistrationKeyOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The name of the device resource.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListDeviceRegistrationKeyResultOutput) ToListDeviceRegistrationKeyResult
 	return o
 }
 
+// The registration key for the device.
 func (o ListDeviceRegistrationKeyResultOutput) RegistrationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeviceRegistrationKeyResult) string { return v.RegistrationKey }).(pulumi.StringOutput)
 }

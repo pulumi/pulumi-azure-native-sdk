@@ -21,18 +21,26 @@ func LookupStorage(ctx *pulumi.Context, args *LookupStorageArgs, opts ...pulumi.
 }
 
 type LookupStorageArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	StorageName       string `pulumi:"storageName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
+	// The name of the storage resource.
+	StorageName string `pulumi:"storageName"`
 }
 
 // Storage resource payload.
 type LookupStorageResult struct {
-	Id         string                 `pulumi:"id"`
-	Name       string                 `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of the storage resource payload.
 	Properties StorageAccountResponse `pulumi:"properties"`
-	SystemData SystemDataResponse     `pulumi:"systemData"`
-	Type       string                 `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts ...pulumi.InvokeOption) LookupStorageResultOutput {
@@ -49,9 +57,12 @@ func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts
 }
 
 type LookupStorageOutputArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	StorageName       pulumi.StringInput `pulumi:"storageName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the storage resource.
+	StorageName pulumi.StringInput `pulumi:"storageName"`
 }
 
 func (LookupStorageOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupStorageResultOutput) ToLookupStorageResultOutputWithContext(ctx co
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupStorageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupStorageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the storage resource payload.
 func (o LookupStorageResultOutput) Properties() StorageAccountResponseOutput {
 	return o.ApplyT(func(v LookupStorageResult) StorageAccountResponse { return v.Properties }).(StorageAccountResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupStorageResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStorageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupStorageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Type }).(pulumi.StringOutput)
 }

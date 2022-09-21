@@ -21,19 +21,28 @@ func LookupThreatIntelligenceIndicator(ctx *pulumi.Context, args *LookupThreatIn
 }
 
 type LookupThreatIntelligenceIndicatorArgs struct {
-	Name              string `pulumi:"name"`
+	// Threat intelligence indicator name field.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Threat intelligence information object.
 type LookupThreatIntelligenceIndicatorResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the entity.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupThreatIntelligenceIndicatorOutput(ctx *pulumi.Context, args LookupThreatIntelligenceIndicatorOutputArgs, opts ...pulumi.InvokeOption) LookupThreatIntelligenceIndicatorResultOutput {
@@ -50,9 +59,12 @@ func LookupThreatIntelligenceIndicatorOutput(ctx *pulumi.Context, args LookupThr
 }
 
 type LookupThreatIntelligenceIndicatorOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Threat intelligence indicator name field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupThreatIntelligenceIndicatorOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupThreatIntelligenceIndicatorResultOutput) ToLookupThreatIntelligenc
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupThreatIntelligenceIndicatorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupThreatIntelligenceIndicatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the entity.
 func (o LookupThreatIntelligenceIndicatorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupThreatIntelligenceIndicatorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupThreatIntelligenceIndicatorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupThreatIntelligenceIndicatorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) string { return v.Type }).(pulumi.StringOutput)
 }

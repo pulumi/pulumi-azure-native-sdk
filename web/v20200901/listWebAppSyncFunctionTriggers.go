@@ -21,13 +21,17 @@ func ListWebAppSyncFunctionTriggers(ctx *pulumi.Context, args *ListWebAppSyncFun
 }
 
 type ListWebAppSyncFunctionTriggersArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Function secrets.
 type ListWebAppSyncFunctionTriggersResult struct {
-	Key        *string `pulumi:"key"`
+	// Secret key.
+	Key *string `pulumi:"key"`
+	// Trigger URL.
 	TriggerUrl *string `pulumi:"triggerUrl"`
 }
 
@@ -45,7 +49,9 @@ func ListWebAppSyncFunctionTriggersOutput(ctx *pulumi.Context, args ListWebAppSy
 }
 
 type ListWebAppSyncFunctionTriggersOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListWebAppSyncFunctionTriggersResultOutput) ToListWebAppSyncFunctionTrig
 	return o
 }
 
+// Secret key.
 func (o ListWebAppSyncFunctionTriggersResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppSyncFunctionTriggersResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Trigger URL.
 func (o ListWebAppSyncFunctionTriggersResultOutput) TriggerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppSyncFunctionTriggersResult) *string { return v.TriggerUrl }).(pulumi.StringPtrOutput)
 }

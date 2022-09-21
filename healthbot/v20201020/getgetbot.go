@@ -23,20 +23,30 @@ func Getgetbot(ctx *pulumi.Context, args *GetgetbotArgs, opts ...pulumi.InvokeOp
 }
 
 type GetgetbotArgs struct {
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Bot resource definition
 type GetgetbotResult struct {
-	Id         string                      `pulumi:"id"`
-	Location   string                      `pulumi:"location"`
-	Name       string                      `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The set of properties specific to healthcare bot resource.
 	Properties HealthBotPropertiesResponse `pulumi:"properties"`
-	Sku        *SkuResponse                `pulumi:"sku"`
-	SystemData SystemDataResponse          `pulumi:"systemData"`
-	Tags       map[string]string           `pulumi:"tags"`
-	Type       string                      `pulumi:"type"`
+	// SKU of the HealthBot.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func GetgetbotOutput(ctx *pulumi.Context, args GetgetbotOutputArgs, opts ...pulumi.InvokeOption) GetgetbotResultOutput {
@@ -53,8 +63,10 @@ func GetgetbotOutput(ctx *pulumi.Context, args GetgetbotOutputArgs, opts ...pulu
 }
 
 type GetgetbotOutputArgs struct {
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (GetgetbotOutputArgs) ElementType() reflect.Type {
@@ -76,34 +88,42 @@ func (o GetgetbotResultOutput) ToGetgetbotResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o GetgetbotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetgetbotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o GetgetbotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetgetbotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o GetgetbotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetgetbotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The set of properties specific to healthcare bot resource.
 func (o GetgetbotResultOutput) Properties() HealthBotPropertiesResponseOutput {
 	return o.ApplyT(func(v GetgetbotResult) HealthBotPropertiesResponse { return v.Properties }).(HealthBotPropertiesResponseOutput)
 }
 
+// SKU of the HealthBot.
 func (o GetgetbotResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v GetgetbotResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource
 func (o GetgetbotResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v GetgetbotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o GetgetbotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetgetbotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o GetgetbotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetgetbotResult) string { return v.Type }).(pulumi.StringOutput)
 }

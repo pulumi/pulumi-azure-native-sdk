@@ -22,16 +22,23 @@ func LookupNamespaceVirtualNetworkRule(ctx *pulumi.Context, args *LookupNamespac
 }
 
 type LookupNamespaceVirtualNetworkRuleArgs struct {
-	NamespaceName          string `pulumi:"namespaceName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Virtual Network Rule name.
 	VirtualNetworkRuleName string `pulumi:"virtualNetworkRuleName"`
 }
 
 // Single item in a List or Get VirtualNetworkRules operation
 type LookupNamespaceVirtualNetworkRuleResult struct {
-	Id                     string  `pulumi:"id"`
-	Name                   string  `pulumi:"name"`
-	Type                   string  `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// ARM ID of Virtual Network Subnet
 	VirtualNetworkSubnetId *string `pulumi:"virtualNetworkSubnetId"`
 }
 
@@ -49,8 +56,11 @@ func LookupNamespaceVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupNam
 }
 
 type LookupNamespaceVirtualNetworkRuleOutputArgs struct {
-	NamespaceName          pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Virtual Network Rule name.
 	VirtualNetworkRuleName pulumi.StringInput `pulumi:"virtualNetworkRuleName"`
 }
 
@@ -73,18 +83,22 @@ func (o LookupNamespaceVirtualNetworkRuleResultOutput) ToLookupNamespaceVirtualN
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNamespaceVirtualNetworkRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceVirtualNetworkRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupNamespaceVirtualNetworkRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceVirtualNetworkRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamespaceVirtualNetworkRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceVirtualNetworkRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// ARM ID of Virtual Network Subnet
 func (o LookupNamespaceVirtualNetworkRuleResultOutput) VirtualNetworkSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceVirtualNetworkRuleResult) *string { return v.VirtualNetworkSubnetId }).(pulumi.StringPtrOutput)
 }

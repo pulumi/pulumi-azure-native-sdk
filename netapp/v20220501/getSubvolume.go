@@ -21,22 +21,34 @@ func LookupSubvolume(ctx *pulumi.Context, args *LookupSubvolumeArgs, opts ...pul
 }
 
 type LookupSubvolumeArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SubvolumeName     string `pulumi:"subvolumeName"`
-	VolumeName        string `pulumi:"volumeName"`
+	// The name of the subvolume.
+	SubvolumeName string `pulumi:"subvolumeName"`
+	// The name of the volume
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // Subvolume Information properties
 type LookupSubvolumeResult struct {
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ParentPath        *string            `pulumi:"parentPath"`
-	Path              *string            `pulumi:"path"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// parent path to the subvolume
+	ParentPath *string `pulumi:"parentPath"`
+	// Path to the subvolume
+	Path *string `pulumi:"path"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSubvolumeOutput(ctx *pulumi.Context, args LookupSubvolumeOutputArgs, opts ...pulumi.InvokeOption) LookupSubvolumeResultOutput {
@@ -53,11 +65,16 @@ func LookupSubvolumeOutput(ctx *pulumi.Context, args LookupSubvolumeOutputArgs, 
 }
 
 type LookupSubvolumeOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SubvolumeName     pulumi.StringInput `pulumi:"subvolumeName"`
-	VolumeName        pulumi.StringInput `pulumi:"volumeName"`
+	// The name of the subvolume.
+	SubvolumeName pulumi.StringInput `pulumi:"subvolumeName"`
+	// The name of the volume
+	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (LookupSubvolumeOutputArgs) ElementType() reflect.Type {
@@ -79,30 +96,37 @@ func (o LookupSubvolumeResultOutput) ToLookupSubvolumeResultOutputWithContext(ct
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSubvolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSubvolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parent path to the subvolume
 func (o LookupSubvolumeResultOutput) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) *string { return v.ParentPath }).(pulumi.StringPtrOutput)
 }
 
+// Path to the subvolume
 func (o LookupSubvolumeResultOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Azure lifecycle management
 func (o LookupSubvolumeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSubvolumeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSubvolumeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubvolumeResult) string { return v.Type }).(pulumi.StringOutput)
 }

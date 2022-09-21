@@ -21,14 +21,18 @@ func ListJobCredentials(ctx *pulumi.Context, args *ListJobCredentialsArgs, opts 
 }
 
 type ListJobCredentialsArgs struct {
-	JobName           string `pulumi:"jobName"`
+	// The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
+	JobName string `pulumi:"jobName"`
+	// The Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // List of unencrypted credentials for accessing device.
 type ListJobCredentialsResult struct {
-	NextLink *string                          `pulumi:"nextLink"`
-	Value    []UnencryptedCredentialsResponse `pulumi:"value"`
+	// Link for the next set of unencrypted credentials.
+	NextLink *string `pulumi:"nextLink"`
+	// List of unencrypted credentials.
+	Value []UnencryptedCredentialsResponse `pulumi:"value"`
 }
 
 func ListJobCredentialsOutput(ctx *pulumi.Context, args ListJobCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListJobCredentialsResultOutput {
@@ -45,7 +49,9 @@ func ListJobCredentialsOutput(ctx *pulumi.Context, args ListJobCredentialsOutput
 }
 
 type ListJobCredentialsOutputArgs struct {
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The Resource Group Name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListJobCredentialsResultOutput) ToListJobCredentialsResultOutputWithCont
 	return o
 }
 
+// Link for the next set of unencrypted credentials.
 func (o ListJobCredentialsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListJobCredentialsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of unencrypted credentials.
 func (o ListJobCredentialsResultOutput) Value() UnencryptedCredentialsResponseArrayOutput {
 	return o.ApplyT(func(v ListJobCredentialsResult) []UnencryptedCredentialsResponse { return v.Value }).(UnencryptedCredentialsResponseArrayOutput)
 }

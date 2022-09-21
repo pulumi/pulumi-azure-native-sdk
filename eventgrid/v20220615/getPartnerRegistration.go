@@ -21,20 +21,31 @@ func LookupPartnerRegistration(ctx *pulumi.Context, args *LookupPartnerRegistrat
 }
 
 type LookupPartnerRegistrationArgs struct {
+	// Name of the partner registration.
 	PartnerRegistrationName string `pulumi:"partnerRegistrationName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Information about a partner registration.
 type LookupPartnerRegistrationResult struct {
-	Id                             string             `pulumi:"id"`
-	Location                       string             `pulumi:"location"`
-	Name                           string             `pulumi:"name"`
-	PartnerRegistrationImmutableId *string            `pulumi:"partnerRegistrationImmutableId"`
-	ProvisioningState              string             `pulumi:"provisioningState"`
-	SystemData                     SystemDataResponse `pulumi:"systemData"`
-	Tags                           map[string]string  `pulumi:"tags"`
-	Type                           string             `pulumi:"type"`
+	// Fully qualified identifier of the resource.
+	Id string `pulumi:"id"`
+	// Location of the resource.
+	Location string `pulumi:"location"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// The immutableId of the corresponding partner registration.
+	// Note: This property is marked for deprecation and is not supported in any future GA API version
+	PartnerRegistrationImmutableId *string `pulumi:"partnerRegistrationImmutableId"`
+	// Provisioning state of the partner registration.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system metadata relating to Partner Registration resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPartnerRegistrationOutput(ctx *pulumi.Context, args LookupPartnerRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerRegistrationResultOutput {
@@ -51,8 +62,10 @@ func LookupPartnerRegistrationOutput(ctx *pulumi.Context, args LookupPartnerRegi
 }
 
 type LookupPartnerRegistrationOutputArgs struct {
+	// Name of the partner registration.
 	PartnerRegistrationName pulumi.StringInput `pulumi:"partnerRegistrationName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPartnerRegistrationOutputArgs) ElementType() reflect.Type {
@@ -74,34 +87,43 @@ func (o LookupPartnerRegistrationResultOutput) ToLookupPartnerRegistrationResult
 	return o
 }
 
+// Fully qualified identifier of the resource.
 func (o LookupPartnerRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the resource.
 func (o LookupPartnerRegistrationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the resource.
 func (o LookupPartnerRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The immutableId of the corresponding partner registration.
+// Note: This property is marked for deprecation and is not supported in any future GA API version
 func (o LookupPartnerRegistrationResultOutput) PartnerRegistrationImmutableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) *string { return v.PartnerRegistrationImmutableId }).(pulumi.StringPtrOutput)
 }
 
+// Provisioning state of the partner registration.
 func (o LookupPartnerRegistrationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system metadata relating to Partner Registration resource.
 func (o LookupPartnerRegistrationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Tags of the resource.
 func (o LookupPartnerRegistrationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Type of the resource.
 func (o LookupPartnerRegistrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

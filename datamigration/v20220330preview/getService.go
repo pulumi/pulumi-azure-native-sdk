@@ -21,27 +21,38 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 }
 
 type LookupServiceArgs struct {
-	GroupName   string `pulumi:"groupName"`
+	// Name of the resource group
+	GroupName string `pulumi:"groupName"`
+	// Name of the service
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A Database Migration Service resource
 type LookupServiceResult struct {
-	AutoStopDelay         *string             `pulumi:"autoStopDelay"`
-	DeleteResourcesOnStop *bool               `pulumi:"deleteResourcesOnStop"`
-	Etag                  *string             `pulumi:"etag"`
-	Id                    string              `pulumi:"id"`
-	Kind                  *string             `pulumi:"kind"`
-	Location              *string             `pulumi:"location"`
-	Name                  string              `pulumi:"name"`
-	ProvisioningState     string              `pulumi:"provisioningState"`
-	PublicKey             *string             `pulumi:"publicKey"`
-	Sku                   *ServiceSkuResponse `pulumi:"sku"`
-	SystemData            SystemDataResponse  `pulumi:"systemData"`
-	Tags                  map[string]string   `pulumi:"tags"`
-	Type                  string              `pulumi:"type"`
-	VirtualNicId          *string             `pulumi:"virtualNicId"`
-	VirtualSubnetId       *string             `pulumi:"virtualSubnetId"`
+	// The time delay before the service is auto-stopped when idle.
+	AutoStopDelay *string `pulumi:"autoStopDelay"`
+	// Whether service resources should be deleted when stopped. (Turned on by default)
+	DeleteResourcesOnStop *bool `pulumi:"deleteResourcesOnStop"`
+	// HTTP strong entity tag value. Ignored if submitted
+	Etag *string `pulumi:"etag"`
+	Id   string  `pulumi:"id"`
+	// The resource kind. Only 'vm' (the default) is supported.
+	Kind     *string `pulumi:"kind"`
+	Location *string `pulumi:"location"`
+	Name     string  `pulumi:"name"`
+	// The resource's provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The public key of the service, used to encrypt secrets sent to the service
+	PublicKey *string `pulumi:"publicKey"`
+	// Service SKU
+	Sku        *ServiceSkuResponse `pulumi:"sku"`
+	SystemData SystemDataResponse  `pulumi:"systemData"`
+	Tags       map[string]string   `pulumi:"tags"`
+	Type       string              `pulumi:"type"`
+	// The ID of the Microsoft.Network/networkInterfaces resource which the service have
+	VirtualNicId *string `pulumi:"virtualNicId"`
+	// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
+	VirtualSubnetId *string `pulumi:"virtualSubnetId"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -58,7 +69,9 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 }
 
 type LookupServiceOutputArgs struct {
-	GroupName   pulumi.StringInput `pulumi:"groupName"`
+	// Name of the resource group
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the service
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -81,14 +94,17 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 	return o
 }
 
+// The time delay before the service is auto-stopped when idle.
 func (o LookupServiceResultOutput) AutoStopDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.AutoStopDelay }).(pulumi.StringPtrOutput)
 }
 
+// Whether service resources should be deleted when stopped. (Turned on by default)
 func (o LookupServiceResultOutput) DeleteResourcesOnStop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *bool { return v.DeleteResourcesOnStop }).(pulumi.BoolPtrOutput)
 }
 
+// HTTP strong entity tag value. Ignored if submitted
 func (o LookupServiceResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -97,6 +113,7 @@ func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource kind. Only 'vm' (the default) is supported.
 func (o LookupServiceResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -109,14 +126,17 @@ func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource's provisioning state
 func (o LookupServiceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The public key of the service, used to encrypt secrets sent to the service
 func (o LookupServiceResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// Service SKU
 func (o LookupServiceResultOutput) Sku() ServiceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *ServiceSkuResponse { return v.Sku }).(ServiceSkuResponsePtrOutput)
 }
@@ -133,10 +153,12 @@ func (o LookupServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The ID of the Microsoft.Network/networkInterfaces resource which the service have
 func (o LookupServiceResultOutput) VirtualNicId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.VirtualNicId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
 func (o LookupServiceResultOutput) VirtualSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.VirtualSubnetId }).(pulumi.StringPtrOutput)
 }

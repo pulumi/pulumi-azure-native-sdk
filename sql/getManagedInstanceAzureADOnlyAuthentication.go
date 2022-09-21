@@ -22,17 +22,24 @@ func LookupManagedInstanceAzureADOnlyAuthentication(ctx *pulumi.Context, args *L
 }
 
 type LookupManagedInstanceAzureADOnlyAuthenticationArgs struct {
-	AuthenticationName  string `pulumi:"authenticationName"`
+	// The name of server azure active directory only authentication.
+	AuthenticationName string `pulumi:"authenticationName"`
+	// The name of the managed instance.
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure Active Directory only authentication.
 type LookupManagedInstanceAzureADOnlyAuthenticationResult struct {
-	AzureADOnlyAuthentication bool   `pulumi:"azureADOnlyAuthentication"`
-	Id                        string `pulumi:"id"`
-	Name                      string `pulumi:"name"`
-	Type                      string `pulumi:"type"`
+	// Azure Active Directory only Authentication enabled.
+	AzureADOnlyAuthentication bool `pulumi:"azureADOnlyAuthentication"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedInstanceAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, args LookupManagedInstanceAzureADOnlyAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceAzureADOnlyAuthenticationResultOutput {
@@ -49,9 +56,12 @@ func LookupManagedInstanceAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, a
 }
 
 type LookupManagedInstanceAzureADOnlyAuthenticationOutputArgs struct {
-	AuthenticationName  pulumi.StringInput `pulumi:"authenticationName"`
+	// The name of server azure active directory only authentication.
+	AuthenticationName pulumi.StringInput `pulumi:"authenticationName"`
+	// The name of the managed instance.
 	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedInstanceAzureADOnlyAuthenticationOutputArgs) ElementType() reflect.Type {
@@ -73,18 +83,22 @@ func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) ToLookupMana
 	return o
 }
 
+// Azure Active Directory only Authentication enabled.
 func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAzureADOnlyAuthenticationResult) bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
 }
 
+// Resource ID.
 func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAzureADOnlyAuthenticationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAzureADOnlyAuthenticationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAzureADOnlyAuthenticationResult) string { return v.Type }).(pulumi.StringOutput)
 }

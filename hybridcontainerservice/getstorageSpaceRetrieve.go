@@ -22,20 +22,29 @@ func GetstorageSpaceRetrieve(ctx *pulumi.Context, args *GetstorageSpaceRetrieveA
 }
 
 type GetstorageSpaceRetrieveArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the storage object
 	StorageSpacesName string `pulumi:"storageSpacesName"`
 }
 
 // The storageSpaces resource definition.
 type GetstorageSpaceRetrieveResult struct {
 	ExtendedLocation *StorageSpacesResponseExtendedLocation `pulumi:"extendedLocation"`
-	Id               string                                 `pulumi:"id"`
-	Location         string                                 `pulumi:"location"`
-	Name             string                                 `pulumi:"name"`
-	Properties       StorageSpacesPropertiesResponse        `pulumi:"properties"`
-	SystemData       SystemDataResponse                     `pulumi:"systemData"`
-	Tags             map[string]string                      `pulumi:"tags"`
-	Type             string                                 `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// HybridAKSStorageSpec defines the desired state of HybridAKSStorage
+	Properties StorageSpacesPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func GetstorageSpaceRetrieveOutput(ctx *pulumi.Context, args GetstorageSpaceRetrieveOutputArgs, opts ...pulumi.InvokeOption) GetstorageSpaceRetrieveResultOutput {
@@ -52,7 +61,9 @@ func GetstorageSpaceRetrieveOutput(ctx *pulumi.Context, args GetstorageSpaceRetr
 }
 
 type GetstorageSpaceRetrieveOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Parameter for the name of the storage object
 	StorageSpacesName pulumi.StringInput `pulumi:"storageSpacesName"`
 }
 
@@ -81,30 +92,37 @@ func (o GetstorageSpaceRetrieveResultOutput) ExtendedLocation() StorageSpacesRes
 	}).(StorageSpacesResponseExtendedLocationPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o GetstorageSpaceRetrieveResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o GetstorageSpaceRetrieveResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o GetstorageSpaceRetrieveResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// HybridAKSStorageSpec defines the desired state of HybridAKSStorage
 func (o GetstorageSpaceRetrieveResultOutput) Properties() StorageSpacesPropertiesResponseOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) StorageSpacesPropertiesResponse { return v.Properties }).(StorageSpacesPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o GetstorageSpaceRetrieveResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o GetstorageSpaceRetrieveResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GetstorageSpaceRetrieveResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetstorageSpaceRetrieveResult) string { return v.Type }).(pulumi.StringOutput)
 }

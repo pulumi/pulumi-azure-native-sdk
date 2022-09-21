@@ -21,11 +21,13 @@ func ListIngestionSettingTokens(ctx *pulumi.Context, args *ListIngestionSettingT
 }
 
 type ListIngestionSettingTokensArgs struct {
+	// Name of the ingestion setting
 	IngestionSettingName string `pulumi:"ingestionSettingName"`
 }
 
 // Configures how to correlate scan data and logs with resources associated with the subscription.
 type ListIngestionSettingTokensResult struct {
+	// The token is used for correlating security data and logs with the resources in the subscription.
 	Token string `pulumi:"token"`
 }
 
@@ -43,6 +45,7 @@ func ListIngestionSettingTokensOutput(ctx *pulumi.Context, args ListIngestionSet
 }
 
 type ListIngestionSettingTokensOutputArgs struct {
+	// Name of the ingestion setting
 	IngestionSettingName pulumi.StringInput `pulumi:"ingestionSettingName"`
 }
 
@@ -65,6 +68,7 @@ func (o ListIngestionSettingTokensResultOutput) ToListIngestionSettingTokensResu
 	return o
 }
 
+// The token is used for correlating security data and logs with the resources in the subscription.
 func (o ListIngestionSettingTokensResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v ListIngestionSettingTokensResult) string { return v.Token }).(pulumi.StringOutput)
 }

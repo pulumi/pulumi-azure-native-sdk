@@ -23,22 +23,32 @@ func LookupGremlinResourceGremlinGraph(ctx *pulumi.Context, args *LookupGremlinR
 }
 
 type LookupGremlinResourceGremlinGraphArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DatabaseName      string `pulumi:"databaseName"`
-	GraphName         string `pulumi:"graphName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Cosmos DB database name.
+	DatabaseName string `pulumi:"databaseName"`
+	// Cosmos DB graph name.
+	GraphName string `pulumi:"graphName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure Cosmos DB Gremlin graph.
 type LookupGremlinResourceGremlinGraphResult struct {
-	Id       string                                     `pulumi:"id"`
-	Identity *ManagedServiceIdentityResponse            `pulumi:"identity"`
-	Location *string                                    `pulumi:"location"`
+	// The unique resource identifier of the ARM resource.
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the ARM resource.
 	Name     string                                     `pulumi:"name"`
 	Options  *GremlinGraphGetPropertiesResponseOptions  `pulumi:"options"`
 	Resource *GremlinGraphGetPropertiesResponseResource `pulumi:"resource"`
-	Tags     map[string]string                          `pulumi:"tags"`
-	Type     string                                     `pulumi:"type"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupGremlinResourceGremlinGraphResult
@@ -66,9 +76,13 @@ func LookupGremlinResourceGremlinGraphOutput(ctx *pulumi.Context, args LookupGre
 }
 
 type LookupGremlinResourceGremlinGraphOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
-	GraphName         pulumi.StringInput `pulumi:"graphName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database name.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// Cosmos DB graph name.
+	GraphName pulumi.StringInput `pulumi:"graphName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -91,18 +105,22 @@ func (o LookupGremlinResourceGremlinGraphResultOutput) ToLookupGremlinResourceGr
 	return o
 }
 
+// The unique resource identifier of the ARM resource.
 func (o LookupGremlinResourceGremlinGraphResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGremlinResourceGremlinGraphResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupGremlinResourceGremlinGraphResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupGremlinResourceGremlinGraphResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupGremlinResourceGremlinGraphResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGremlinResourceGremlinGraphResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the ARM resource.
 func (o LookupGremlinResourceGremlinGraphResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGremlinResourceGremlinGraphResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -119,10 +137,12 @@ func (o LookupGremlinResourceGremlinGraphResultOutput) Resource() GremlinGraphGe
 	}).(GremlinGraphGetPropertiesResponseResourcePtrOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupGremlinResourceGremlinGraphResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGremlinResourceGremlinGraphResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of Azure resource.
 func (o LookupGremlinResourceGremlinGraphResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGremlinResourceGremlinGraphResult) string { return v.Type }).(pulumi.StringOutput)
 }

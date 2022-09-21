@@ -23,28 +23,46 @@ func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pul
 }
 
 type LookupApplianceArgs struct {
-	ApplianceName     string `pulumi:"applianceName"`
+	// The name of the appliance.
+	ApplianceName string `pulumi:"applianceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Information about appliance.
 type LookupApplianceResult struct {
-	ApplianceDefinitionId  *string           `pulumi:"applianceDefinitionId"`
-	Id                     string            `pulumi:"id"`
-	Identity               *IdentityResponse `pulumi:"identity"`
-	Kind                   *string           `pulumi:"kind"`
-	Location               *string           `pulumi:"location"`
-	ManagedBy              *string           `pulumi:"managedBy"`
-	ManagedResourceGroupId string            `pulumi:"managedResourceGroupId"`
-	Name                   string            `pulumi:"name"`
-	Outputs                interface{}       `pulumi:"outputs"`
-	Parameters             interface{}       `pulumi:"parameters"`
-	Plan                   *PlanResponse     `pulumi:"plan"`
-	ProvisioningState      string            `pulumi:"provisioningState"`
-	Sku                    *SkuResponse      `pulumi:"sku"`
-	Tags                   map[string]string `pulumi:"tags"`
-	Type                   string            `pulumi:"type"`
-	UiDefinitionUri        *string           `pulumi:"uiDefinitionUri"`
+	// The fully qualified path of appliance definition Id.
+	ApplianceDefinitionId *string `pulumi:"applianceDefinitionId"`
+	// Resource ID
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// The kind of the appliance. Allowed values are MarketPlace and ServiceCatalog.
+	Kind *string `pulumi:"kind"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// ID of the resource that manages this resource.
+	ManagedBy *string `pulumi:"managedBy"`
+	// The managed resource group Id.
+	ManagedResourceGroupId string `pulumi:"managedResourceGroupId"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Name and value pairs that define the appliance outputs.
+	Outputs interface{} `pulumi:"outputs"`
+	// Name and value pairs that define the appliance parameters. It can be a JObject or a well formed JSON string.
+	Parameters interface{} `pulumi:"parameters"`
+	// The plan information.
+	Plan *PlanResponse `pulumi:"plan"`
+	// The appliance provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The blob URI where the UI definition file is located.
+	UiDefinitionUri *string `pulumi:"uiDefinitionUri"`
 }
 
 func LookupApplianceOutput(ctx *pulumi.Context, args LookupApplianceOutputArgs, opts ...pulumi.InvokeOption) LookupApplianceResultOutput {
@@ -61,7 +79,9 @@ func LookupApplianceOutput(ctx *pulumi.Context, args LookupApplianceOutputArgs, 
 }
 
 type LookupApplianceOutputArgs struct {
-	ApplianceName     pulumi.StringInput `pulumi:"applianceName"`
+	// The name of the appliance.
+	ApplianceName pulumi.StringInput `pulumi:"applianceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,66 +104,82 @@ func (o LookupApplianceResultOutput) ToLookupApplianceResultOutputWithContext(ct
 	return o
 }
 
+// The fully qualified path of appliance definition Id.
 func (o LookupApplianceResultOutput) ApplianceDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.ApplianceDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID
 func (o LookupApplianceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupApplianceResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// The kind of the appliance. Allowed values are MarketPlace and ServiceCatalog.
 func (o LookupApplianceResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource location
 func (o LookupApplianceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// ID of the resource that manages this resource.
 func (o LookupApplianceResultOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
+// The managed resource group Id.
 func (o LookupApplianceResultOutput) ManagedResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.ManagedResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupApplianceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Name and value pairs that define the appliance outputs.
 func (o LookupApplianceResultOutput) Outputs() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupApplianceResult) interface{} { return v.Outputs }).(pulumi.AnyOutput)
 }
 
+// Name and value pairs that define the appliance parameters. It can be a JObject or a well formed JSON string.
 func (o LookupApplianceResultOutput) Parameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupApplianceResult) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
+// The plan information.
 func (o LookupApplianceResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
+// The appliance provisioning state.
 func (o LookupApplianceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU of the resource.
 func (o LookupApplianceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupApplianceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplianceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupApplianceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The blob URI where the UI definition file is located.
 func (o LookupApplianceResultOutput) UiDefinitionUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.UiDefinitionUri }).(pulumi.StringPtrOutput)
 }

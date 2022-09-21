@@ -21,19 +21,28 @@ func LookupExpressRouteConnection(ctx *pulumi.Context, args *LookupExpressRouteC
 }
 
 type LookupExpressRouteConnectionArgs struct {
-	ConnectionName          string `pulumi:"connectionName"`
+	// The name of the ExpressRoute connection.
+	ConnectionName string `pulumi:"connectionName"`
+	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName string `pulumi:"expressRouteGatewayName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRouteConnection resource.
 type LookupExpressRouteConnectionResult struct {
-	AuthorizationKey           *string                              `pulumi:"authorizationKey"`
+	// Authorization key to establish the connection.
+	AuthorizationKey *string `pulumi:"authorizationKey"`
+	// The ExpressRoute circuit peering.
 	ExpressRouteCircuitPeering ExpressRouteCircuitPeeringIdResponse `pulumi:"expressRouteCircuitPeering"`
-	Id                         *string                              `pulumi:"id"`
-	Name                       string                               `pulumi:"name"`
-	ProvisioningState          string                               `pulumi:"provisioningState"`
-	RoutingWeight              *int                                 `pulumi:"routingWeight"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning state of the express route connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The routing weight associated to the connection.
+	RoutingWeight *int `pulumi:"routingWeight"`
 }
 
 func LookupExpressRouteConnectionOutput(ctx *pulumi.Context, args LookupExpressRouteConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteConnectionResultOutput {
@@ -50,9 +59,12 @@ func LookupExpressRouteConnectionOutput(ctx *pulumi.Context, args LookupExpressR
 }
 
 type LookupExpressRouteConnectionOutputArgs struct {
-	ConnectionName          pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the ExpressRoute connection.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName pulumi.StringInput `pulumi:"expressRouteGatewayName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExpressRouteConnectionOutputArgs) ElementType() reflect.Type {
@@ -74,28 +86,34 @@ func (o LookupExpressRouteConnectionResultOutput) ToLookupExpressRouteConnection
 	return o
 }
 
+// Authorization key to establish the connection.
 func (o LookupExpressRouteConnectionResultOutput) AuthorizationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
 }
 
+// The ExpressRoute circuit peering.
 func (o LookupExpressRouteConnectionResultOutput) ExpressRouteCircuitPeering() ExpressRouteCircuitPeeringIdResponseOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) ExpressRouteCircuitPeeringIdResponse {
 		return v.ExpressRouteCircuitPeering
 	}).(ExpressRouteCircuitPeeringIdResponseOutput)
 }
 
+// Resource ID.
 func (o LookupExpressRouteConnectionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupExpressRouteConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the express route connection resource.
 func (o LookupExpressRouteConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The routing weight associated to the connection.
 func (o LookupExpressRouteConnectionResultOutput) RoutingWeight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *int { return v.RoutingWeight }).(pulumi.IntPtrOutput)
 }

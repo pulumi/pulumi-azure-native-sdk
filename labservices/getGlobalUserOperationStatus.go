@@ -22,12 +22,15 @@ func GetGlobalUserOperationStatus(ctx *pulumi.Context, args *GetGlobalUserOperat
 }
 
 type GetGlobalUserOperationStatusArgs struct {
+	// The operation url of long running operation
 	OperationUrl string `pulumi:"operationUrl"`
-	UserName     string `pulumi:"userName"`
+	// The name of the user.
+	UserName string `pulumi:"userName"`
 }
 
 // Status Details of the long running operation for an environment
 type GetGlobalUserOperationStatusResult struct {
+	// status of the long running operation for an environment
 	Status string `pulumi:"status"`
 }
 
@@ -45,8 +48,10 @@ func GetGlobalUserOperationStatusOutput(ctx *pulumi.Context, args GetGlobalUserO
 }
 
 type GetGlobalUserOperationStatusOutputArgs struct {
+	// The operation url of long running operation
 	OperationUrl pulumi.StringInput `pulumi:"operationUrl"`
-	UserName     pulumi.StringInput `pulumi:"userName"`
+	// The name of the user.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (GetGlobalUserOperationStatusOutputArgs) ElementType() reflect.Type {
@@ -68,6 +73,7 @@ func (o GetGlobalUserOperationStatusResultOutput) ToGetGlobalUserOperationStatus
 	return o
 }
 
+// status of the long running operation for an environment
 func (o GetGlobalUserOperationStatusResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalUserOperationStatusResult) string { return v.Status }).(pulumi.StringOutput)
 }

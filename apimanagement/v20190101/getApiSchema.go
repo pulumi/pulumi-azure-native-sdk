@@ -21,19 +21,28 @@ func LookupApiSchema(ctx *pulumi.Context, args *LookupApiSchemaArgs, opts ...pul
 }
 
 type LookupApiSchemaArgs struct {
-	ApiId             string `pulumi:"apiId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId string `pulumi:"apiId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SchemaId          string `pulumi:"schemaId"`
-	ServiceName       string `pulumi:"serviceName"`
+	// Schema identifier within an API. Must be unique in the current API Management service instance.
+	SchemaId string `pulumi:"schemaId"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Schema Contract details.
 type LookupApiSchemaResult struct {
-	ContentType string      `pulumi:"contentType"`
-	Document    interface{} `pulumi:"document"`
-	Id          string      `pulumi:"id"`
-	Name        string      `pulumi:"name"`
-	Type        string      `pulumi:"type"`
+	// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
+	ContentType string `pulumi:"contentType"`
+	// Properties of the Schema Document.
+	Document interface{} `pulumi:"document"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupApiSchemaOutput(ctx *pulumi.Context, args LookupApiSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupApiSchemaResultOutput {
@@ -50,10 +59,14 @@ func LookupApiSchemaOutput(ctx *pulumi.Context, args LookupApiSchemaOutputArgs, 
 }
 
 type LookupApiSchemaOutputArgs struct {
-	ApiId             pulumi.StringInput `pulumi:"apiId"`
+	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SchemaId          pulumi.StringInput `pulumi:"schemaId"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// Schema identifier within an API. Must be unique in the current API Management service instance.
+	SchemaId pulumi.StringInput `pulumi:"schemaId"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupApiSchemaOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupApiSchemaResultOutput) ToLookupApiSchemaResultOutputWithContext(ct
 	return o
 }
 
+// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
 func (o LookupApiSchemaResultOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiSchemaResult) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
+// Properties of the Schema Document.
 func (o LookupApiSchemaResultOutput) Document() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupApiSchemaResult) interface{} { return v.Document }).(pulumi.AnyOutput)
 }
 
+// Resource ID.
 func (o LookupApiSchemaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiSchemaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupApiSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiSchemaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupApiSchemaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiSchemaResult) string { return v.Type }).(pulumi.StringOutput)
 }

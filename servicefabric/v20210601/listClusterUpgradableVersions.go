@@ -21,9 +21,12 @@ func ListClusterUpgradableVersions(ctx *pulumi.Context, args *ListClusterUpgrada
 }
 
 type ListClusterUpgradableVersionsArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster resource.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TargetVersion     string `pulumi:"targetVersion"`
+	// The target code version.
+	TargetVersion string `pulumi:"targetVersion"`
 }
 
 // The list of intermediate cluster code versions for an upgrade or downgrade. Or minimum and maximum upgradable version if no target was given
@@ -45,9 +48,12 @@ func ListClusterUpgradableVersionsOutput(ctx *pulumi.Context, args ListClusterUp
 }
 
 type ListClusterUpgradableVersionsOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster resource.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TargetVersion     pulumi.StringInput `pulumi:"targetVersion"`
+	// The target code version.
+	TargetVersion pulumi.StringInput `pulumi:"targetVersion"`
 }
 
 func (ListClusterUpgradableVersionsOutputArgs) ElementType() reflect.Type {

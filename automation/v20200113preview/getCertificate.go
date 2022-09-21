@@ -21,22 +21,34 @@ func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ..
 }
 
 type LookupCertificateArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	CertificateName       string `pulumi:"certificateName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of certificate.
+	CertificateName string `pulumi:"certificateName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the certificate.
 type LookupCertificateResult struct {
-	CreationTime     string  `pulumi:"creationTime"`
-	Description      *string `pulumi:"description"`
-	ExpiryTime       string  `pulumi:"expiryTime"`
-	Id               string  `pulumi:"id"`
-	IsExportable     bool    `pulumi:"isExportable"`
-	LastModifiedTime string  `pulumi:"lastModifiedTime"`
-	Name             string  `pulumi:"name"`
-	Thumbprint       string  `pulumi:"thumbprint"`
-	Type             string  `pulumi:"type"`
+	// Gets the creation time.
+	CreationTime string `pulumi:"creationTime"`
+	// Gets or sets the description.
+	Description *string `pulumi:"description"`
+	// Gets the expiry time of the certificate.
+	ExpiryTime string `pulumi:"expiryTime"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// Gets the is exportable flag of the certificate.
+	IsExportable bool `pulumi:"isExportable"`
+	// Gets the last modified time.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets the thumbprint of the certificate.
+	Thumbprint string `pulumi:"thumbprint"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
@@ -53,9 +65,12 @@ func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputAr
 }
 
 type LookupCertificateOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	CertificateName       pulumi.StringInput `pulumi:"certificateName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of certificate.
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupCertificateOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 	return o
 }
 
+// Gets the creation time.
 func (o LookupCertificateResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Gets or sets the description.
 func (o LookupCertificateResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificateResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Gets the expiry time of the certificate.
 func (o LookupCertificateResultOutput) ExpiryTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.ExpiryTime }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets the is exportable flag of the certificate.
 func (o LookupCertificateResultOutput) IsExportable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCertificateResult) bool { return v.IsExportable }).(pulumi.BoolOutput)
 }
 
+// Gets the last modified time.
 func (o LookupCertificateResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets the thumbprint of the certificate.
 func (o LookupCertificateResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

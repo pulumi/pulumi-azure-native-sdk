@@ -22,20 +22,30 @@ func LookupAccountFilter(ctx *pulumi.Context, args *LookupAccountFilterArgs, opt
 }
 
 type LookupAccountFilterArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	FilterName        string `pulumi:"filterName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Account Filter name
+	FilterName string `pulumi:"filterName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Account Filter.
 type LookupAccountFilterResult struct {
-	FirstQuality          *FirstQualityResponse          `pulumi:"firstQuality"`
-	Id                    string                         `pulumi:"id"`
-	Name                  string                         `pulumi:"name"`
+	// The first quality.
+	FirstQuality *FirstQualityResponse `pulumi:"firstQuality"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The presentation time range.
 	PresentationTimeRange *PresentationTimeRangeResponse `pulumi:"presentationTimeRange"`
-	SystemData            SystemDataResponse             `pulumi:"systemData"`
-	Tracks                []FilterTrackSelectionResponse `pulumi:"tracks"`
-	Type                  string                         `pulumi:"type"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tracks selection conditions.
+	Tracks []FilterTrackSelectionResponse `pulumi:"tracks"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAccountFilterOutput(ctx *pulumi.Context, args LookupAccountFilterOutputArgs, opts ...pulumi.InvokeOption) LookupAccountFilterResultOutput {
@@ -52,8 +62,11 @@ func LookupAccountFilterOutput(ctx *pulumi.Context, args LookupAccountFilterOutp
 }
 
 type LookupAccountFilterOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	FilterName        pulumi.StringInput `pulumi:"filterName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Account Filter name
+	FilterName pulumi.StringInput `pulumi:"filterName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,30 +89,37 @@ func (o LookupAccountFilterResultOutput) ToLookupAccountFilterResultOutputWithCo
 	return o
 }
 
+// The first quality.
 func (o LookupAccountFilterResultOutput) FirstQuality() FirstQualityResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) *FirstQualityResponse { return v.FirstQuality }).(FirstQualityResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccountFilterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAccountFilterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The presentation time range.
 func (o LookupAccountFilterResultOutput) PresentationTimeRange() PresentationTimeRangeResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) *PresentationTimeRangeResponse { return v.PresentationTimeRange }).(PresentationTimeRangeResponsePtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupAccountFilterResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tracks selection conditions.
 func (o LookupAccountFilterResultOutput) Tracks() FilterTrackSelectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) []FilterTrackSelectionResponse { return v.Tracks }).(FilterTrackSelectionResponseArrayOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAccountFilterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountFilterResult) string { return v.Type }).(pulumi.StringOutput)
 }

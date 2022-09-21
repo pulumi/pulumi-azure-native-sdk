@@ -21,17 +21,24 @@ func LookupRegistrationAssignment(ctx *pulumi.Context, args *LookupRegistrationA
 }
 
 type LookupRegistrationAssignmentArgs struct {
-	ExpandRegistrationDefinition *bool  `pulumi:"expandRegistrationDefinition"`
-	RegistrationAssignmentId     string `pulumi:"registrationAssignmentId"`
-	Scope                        string `pulumi:"scope"`
+	// Tells whether to return registration definition details also along with registration assignment details.
+	ExpandRegistrationDefinition *bool `pulumi:"expandRegistrationDefinition"`
+	// Guid of the registration assignment.
+	RegistrationAssignmentId string `pulumi:"registrationAssignmentId"`
+	// Scope of the resource.
+	Scope string `pulumi:"scope"`
 }
 
 // Registration assignment.
 type LookupRegistrationAssignmentResult struct {
-	Id         string                                   `pulumi:"id"`
-	Name       string                                   `pulumi:"name"`
+	// The fully qualified path of the registration assignment.
+	Id string `pulumi:"id"`
+	// Name of the registration assignment.
+	Name string `pulumi:"name"`
+	// Properties of a registration assignment.
 	Properties RegistrationAssignmentPropertiesResponse `pulumi:"properties"`
-	Type       string                                   `pulumi:"type"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupRegistrationAssignmentOutput(ctx *pulumi.Context, args LookupRegistrationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationAssignmentResultOutput {
@@ -48,9 +55,12 @@ func LookupRegistrationAssignmentOutput(ctx *pulumi.Context, args LookupRegistra
 }
 
 type LookupRegistrationAssignmentOutputArgs struct {
+	// Tells whether to return registration definition details also along with registration assignment details.
 	ExpandRegistrationDefinition pulumi.BoolPtrInput `pulumi:"expandRegistrationDefinition"`
-	RegistrationAssignmentId     pulumi.StringInput  `pulumi:"registrationAssignmentId"`
-	Scope                        pulumi.StringInput  `pulumi:"scope"`
+	// Guid of the registration assignment.
+	RegistrationAssignmentId pulumi.StringInput `pulumi:"registrationAssignmentId"`
+	// Scope of the resource.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRegistrationAssignmentOutputArgs) ElementType() reflect.Type {
@@ -72,20 +82,24 @@ func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignment
 	return o
 }
 
+// The fully qualified path of the registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of a registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Properties() RegistrationAssignmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) RegistrationAssignmentPropertiesResponse {
 		return v.Properties
 	}).(RegistrationAssignmentPropertiesResponseOutput)
 }
 
+// Type of the resource.
 func (o LookupRegistrationAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

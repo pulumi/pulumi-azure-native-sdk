@@ -23,19 +23,28 @@ func LookupProductSetting(ctx *pulumi.Context, args *LookupProductSettingArgs, o
 }
 
 type LookupProductSettingArgs struct {
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	SettingsName                        string `pulumi:"settingsName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName string `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The Setting.
 type LookupProductSettingResult struct {
+	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	Id   string  `pulumi:"id"`
-	Kind string  `pulumi:"kind"`
-	Name string  `pulumi:"name"`
-	Type string  `pulumi:"type"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The kind of the setting
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupProductSettingOutput(ctx *pulumi.Context, args LookupProductSettingOutputArgs, opts ...pulumi.InvokeOption) LookupProductSettingResultOutput {
@@ -52,10 +61,14 @@ func LookupProductSettingOutput(ctx *pulumi.Context, args LookupProductSettingOu
 }
 
 type LookupProductSettingOutputArgs struct {
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	SettingsName                        pulumi.StringInput `pulumi:"settingsName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName pulumi.StringInput `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupProductSettingOutputArgs) ElementType() reflect.Type {
@@ -77,22 +90,27 @@ func (o LookupProductSettingResultOutput) ToLookupProductSettingResultOutputWith
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupProductSettingResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupProductSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the setting
 func (o LookupProductSettingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupProductSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupProductSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

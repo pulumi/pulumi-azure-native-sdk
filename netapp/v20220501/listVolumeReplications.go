@@ -21,14 +21,19 @@ func ListVolumeReplications(ctx *pulumi.Context, args *ListVolumeReplicationsArg
 }
 
 type ListVolumeReplicationsArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VolumeName        string `pulumi:"volumeName"`
+	// The name of the volume
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // List Replications
 type ListVolumeReplicationsResult struct {
+	// A list of replications
 	Value []ReplicationResponse `pulumi:"value"`
 }
 
@@ -46,10 +51,14 @@ func ListVolumeReplicationsOutput(ctx *pulumi.Context, args ListVolumeReplicatio
 }
 
 type ListVolumeReplicationsOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VolumeName        pulumi.StringInput `pulumi:"volumeName"`
+	// The name of the volume
+	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (ListVolumeReplicationsOutputArgs) ElementType() reflect.Type {
@@ -71,6 +80,7 @@ func (o ListVolumeReplicationsResultOutput) ToListVolumeReplicationsResultOutput
 	return o
 }
 
+// A list of replications
 func (o ListVolumeReplicationsResultOutput) Value() ReplicationResponseArrayOutput {
 	return o.ApplyT(func(v ListVolumeReplicationsResult) []ReplicationResponse { return v.Value }).(ReplicationResponseArrayOutput)
 }

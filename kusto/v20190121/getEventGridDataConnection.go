@@ -21,25 +21,41 @@ func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDat
 }
 
 type LookupEventGridDataConnectionArgs struct {
-	ClusterName        string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the data connection.
 	DataConnectionName string `pulumi:"dataConnectionName"`
-	DatabaseName       string `pulumi:"databaseName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing an Event Grid data connection.
 type LookupEventGridDataConnectionResult struct {
-	ConsumerGroup            string  `pulumi:"consumerGroup"`
-	DataFormat               string  `pulumi:"dataFormat"`
-	EventHubResourceId       string  `pulumi:"eventHubResourceId"`
-	Id                       string  `pulumi:"id"`
-	Kind                     string  `pulumi:"kind"`
-	Location                 *string `pulumi:"location"`
-	MappingRuleName          *string `pulumi:"mappingRuleName"`
-	Name                     string  `pulumi:"name"`
-	StorageAccountResourceId string  `pulumi:"storageAccountResourceId"`
-	TableName                string  `pulumi:"tableName"`
-	Type                     string  `pulumi:"type"`
+	// The event hub consumer group.
+	ConsumerGroup string `pulumi:"consumerGroup"`
+	// The data format of the message. Optionally the data format can be added to each message.
+	DataFormat string `pulumi:"dataFormat"`
+	// The resource ID where the event grid is configured to send events.
+	EventHubResourceId string `pulumi:"eventHubResourceId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Kind of the endpoint for the data connection
+	// Expected value is 'EventGrid'.
+	Kind string `pulumi:"kind"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
+	MappingRuleName *string `pulumi:"mappingRuleName"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource ID of the storage account where the data resides.
+	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
+	// The table where the data should be ingested. Optionally the table information can be added to each message.
+	TableName string `pulumi:"tableName"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEventGridDataConnectionOutput(ctx *pulumi.Context, args LookupEventGridDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEventGridDataConnectionResultOutput {
@@ -56,10 +72,14 @@ func LookupEventGridDataConnectionOutput(ctx *pulumi.Context, args LookupEventGr
 }
 
 type LookupEventGridDataConnectionOutputArgs struct {
-	ClusterName        pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the data connection.
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
-	DatabaseName       pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupEventGridDataConnectionOutputArgs) ElementType() reflect.Type {
@@ -81,46 +101,58 @@ func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnecti
 	return o
 }
 
+// The event hub consumer group.
 func (o LookupEventGridDataConnectionResultOutput) ConsumerGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.ConsumerGroup }).(pulumi.StringOutput)
 }
 
+// The data format of the message. Optionally the data format can be added to each message.
 func (o LookupEventGridDataConnectionResultOutput) DataFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.DataFormat }).(pulumi.StringOutput)
 }
 
+// The resource ID where the event grid is configured to send events.
 func (o LookupEventGridDataConnectionResultOutput) EventHubResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.EventHubResourceId }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEventGridDataConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of the endpoint for the data connection
+// Expected value is 'EventGrid'.
 func (o LookupEventGridDataConnectionResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupEventGridDataConnectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 func (o LookupEventGridDataConnectionResultOutput) MappingRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) *string { return v.MappingRuleName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupEventGridDataConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource ID of the storage account where the data resides.
 func (o LookupEventGridDataConnectionResultOutput) StorageAccountResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
+// The table where the data should be ingested. Optionally the table information can be added to each message.
 func (o LookupEventGridDataConnectionResultOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEventGridDataConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

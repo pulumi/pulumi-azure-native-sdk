@@ -21,19 +21,28 @@ func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManageme
 }
 
 type LookupManagementGroupSubscriptionArgs struct {
-	GroupId        string  `pulumi:"groupId"`
+	// Management Group ID.
+	GroupId string `pulumi:"groupId"`
+	// Subscription ID.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // The details of subscription under management group.
 type LookupManagementGroupSubscriptionResult struct {
-	DisplayName *string                     `pulumi:"displayName"`
-	Id          string                      `pulumi:"id"`
-	Name        string                      `pulumi:"name"`
-	Parent      *ParentGroupBagInfoResponse `pulumi:"parent"`
-	State       *string                     `pulumi:"state"`
-	Tenant      *string                     `pulumi:"tenant"`
-	Type        string                      `pulumi:"type"`
+	// The friendly name of the subscription.
+	DisplayName *string `pulumi:"displayName"`
+	// The fully qualified ID for the subscription.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/subscriptions/0000000-0000-0000-0000-000000000001
+	Id string `pulumi:"id"`
+	// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
+	Name string `pulumi:"name"`
+	// The ID, name and displayName of the parent management group.
+	Parent *ParentGroupBagInfoResponse `pulumi:"parent"`
+	// The state of the subscription.
+	State *string `pulumi:"state"`
+	// The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
+	Tenant *string `pulumi:"tenant"`
+	// The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementGroupSubscriptionOutput(ctx *pulumi.Context, args LookupManagementGroupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupSubscriptionResultOutput {
@@ -50,7 +59,9 @@ func LookupManagementGroupSubscriptionOutput(ctx *pulumi.Context, args LookupMan
 }
 
 type LookupManagementGroupSubscriptionOutputArgs struct {
-	GroupId        pulumi.StringInput    `pulumi:"groupId"`
+	// Management Group ID.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// Subscription ID.
 	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
@@ -73,30 +84,37 @@ func (o LookupManagementGroupSubscriptionResultOutput) ToLookupManagementGroupSu
 	return o
 }
 
+// The friendly name of the subscription.
 func (o LookupManagementGroupSubscriptionResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The fully qualified ID for the subscription.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/subscriptions/0000000-0000-0000-0000-000000000001
 func (o LookupManagementGroupSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupManagementGroupSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID, name and displayName of the parent management group.
 func (o LookupManagementGroupSubscriptionResultOutput) Parent() ParentGroupBagInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *ParentGroupBagInfoResponse { return v.Parent }).(ParentGroupBagInfoResponsePtrOutput)
 }
 
+// The state of the subscription.
 func (o LookupManagementGroupSubscriptionResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupManagementGroupSubscriptionResultOutput) Tenant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *string { return v.Tenant }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
 func (o LookupManagementGroupSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

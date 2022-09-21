@@ -23,29 +23,48 @@ func LookupApplicationDefinition(ctx *pulumi.Context, args *LookupApplicationDef
 }
 
 type LookupApplicationDefinitionArgs struct {
+	// The name of the managed application definition.
 	ApplicationDefinitionName string `pulumi:"applicationDefinitionName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Information about managed application definition.
 type LookupApplicationDefinitionResult struct {
-	Artifacts          []ApplicationArtifactResponse              `pulumi:"artifacts"`
-	Authorizations     []ApplicationProviderAuthorizationResponse `pulumi:"authorizations"`
-	CreateUiDefinition interface{}                                `pulumi:"createUiDefinition"`
-	Description        *string                                    `pulumi:"description"`
-	DisplayName        *string                                    `pulumi:"displayName"`
-	Id                 string                                     `pulumi:"id"`
-	Identity           *IdentityResponse                          `pulumi:"identity"`
-	IsEnabled          *string                                    `pulumi:"isEnabled"`
-	Location           *string                                    `pulumi:"location"`
-	LockLevel          string                                     `pulumi:"lockLevel"`
-	MainTemplate       interface{}                                `pulumi:"mainTemplate"`
-	ManagedBy          *string                                    `pulumi:"managedBy"`
-	Name               string                                     `pulumi:"name"`
-	PackageFileUri     *string                                    `pulumi:"packageFileUri"`
-	Sku                *SkuResponse                               `pulumi:"sku"`
-	Tags               map[string]string                          `pulumi:"tags"`
-	Type               string                                     `pulumi:"type"`
+	// The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
+	Artifacts []ApplicationArtifactResponse `pulumi:"artifacts"`
+	// The managed application provider authorizations.
+	Authorizations []ApplicationProviderAuthorizationResponse `pulumi:"authorizations"`
+	// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
+	CreateUiDefinition interface{} `pulumi:"createUiDefinition"`
+	// The managed application definition description.
+	Description *string `pulumi:"description"`
+	// The managed application definition display name.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource ID
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// A value indicating whether the package is enabled or not.
+	IsEnabled *string `pulumi:"isEnabled"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// The managed application lock level.
+	LockLevel string `pulumi:"lockLevel"`
+	// The inline main template json which has resources to be provisioned. It can be a JObject or well-formed JSON string.
+	MainTemplate interface{} `pulumi:"mainTemplate"`
+	// ID of the resource that manages this resource.
+	ManagedBy *string `pulumi:"managedBy"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The managed application definition package file Uri. Use this element
+	PackageFileUri *string `pulumi:"packageFileUri"`
+	// The SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationDefinitionOutput(ctx *pulumi.Context, args LookupApplicationDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationDefinitionResultOutput {
@@ -62,8 +81,10 @@ func LookupApplicationDefinitionOutput(ctx *pulumi.Context, args LookupApplicati
 }
 
 type LookupApplicationDefinitionOutputArgs struct {
+	// The name of the managed application definition.
 	ApplicationDefinitionName pulumi.StringInput `pulumi:"applicationDefinitionName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupApplicationDefinitionOutputArgs) ElementType() reflect.Type {
@@ -85,72 +106,89 @@ func (o LookupApplicationDefinitionResultOutput) ToLookupApplicationDefinitionRe
 	return o
 }
 
+// The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
 func (o LookupApplicationDefinitionResultOutput) Artifacts() ApplicationArtifactResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) []ApplicationArtifactResponse { return v.Artifacts }).(ApplicationArtifactResponseArrayOutput)
 }
 
+// The managed application provider authorizations.
 func (o LookupApplicationDefinitionResultOutput) Authorizations() ApplicationProviderAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) []ApplicationProviderAuthorizationResponse {
 		return v.Authorizations
 	}).(ApplicationProviderAuthorizationResponseArrayOutput)
 }
 
+// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
 func (o LookupApplicationDefinitionResultOutput) CreateUiDefinition() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) interface{} { return v.CreateUiDefinition }).(pulumi.AnyOutput)
 }
 
+// The managed application definition description.
 func (o LookupApplicationDefinitionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The managed application definition display name.
 func (o LookupApplicationDefinitionResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID
 func (o LookupApplicationDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupApplicationDefinitionResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// A value indicating whether the package is enabled or not.
 func (o LookupApplicationDefinitionResultOutput) IsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.IsEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Resource location
 func (o LookupApplicationDefinitionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The managed application lock level.
 func (o LookupApplicationDefinitionResultOutput) LockLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) string { return v.LockLevel }).(pulumi.StringOutput)
 }
 
+// The inline main template json which has resources to be provisioned. It can be a JObject or well-formed JSON string.
 func (o LookupApplicationDefinitionResultOutput) MainTemplate() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) interface{} { return v.MainTemplate }).(pulumi.AnyOutput)
 }
 
+// ID of the resource that manages this resource.
 func (o LookupApplicationDefinitionResultOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupApplicationDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The managed application definition package file Uri. Use this element
 func (o LookupApplicationDefinitionResultOutput) PackageFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.PackageFileUri }).(pulumi.StringPtrOutput)
 }
 
+// The SKU of the resource.
 func (o LookupApplicationDefinitionResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupApplicationDefinitionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupApplicationDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,19 +23,28 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 }
 
 type LookupApplicationArgs struct {
-	ApplicationName   string `pulumi:"applicationName"`
-	ClusterName       string `pulumi:"clusterName"`
+	// The constant value for the application name.
+	ApplicationName string `pulumi:"applicationName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The HDInsight cluster application
 type LookupApplicationResult struct {
-	Etag       *string                       `pulumi:"etag"`
-	Id         string                        `pulumi:"id"`
-	Name       string                        `pulumi:"name"`
+	// The ETag for the application
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties of the application.
 	Properties ApplicationPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string             `pulumi:"tags"`
-	Type       string                        `pulumi:"type"`
+	// The tags for the application.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationResultOutput {
@@ -52,8 +61,11 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 }
 
 type LookupApplicationOutputArgs struct {
-	ApplicationName   pulumi.StringInput `pulumi:"applicationName"`
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The constant value for the application name.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,26 +88,32 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContex
 	return o
 }
 
+// The ETag for the application
 func (o LookupApplicationResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of the application.
 func (o LookupApplicationResultOutput) Properties() ApplicationPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupApplicationResult) ApplicationPropertiesResponse { return v.Properties }).(ApplicationPropertiesResponseOutput)
 }
 
+// The tags for the application.
 func (o LookupApplicationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

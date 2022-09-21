@@ -21,14 +21,18 @@ func ListIotDpsResourceKeys(ctx *pulumi.Context, args *ListIotDpsResourceKeysArg
 }
 
 type ListIotDpsResourceKeysArgs struct {
+	// The provisioning service name to get the shared access keys for.
 	ProvisioningServiceName string `pulumi:"provisioningServiceName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // List of shared access keys.
 type ListIotDpsResourceKeysResult struct {
-	NextLink string                                                                  `pulumi:"nextLink"`
-	Value    []SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse `pulumi:"value"`
+	// The next link.
+	NextLink string `pulumi:"nextLink"`
+	// The list of shared access policies.
+	Value []SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse `pulumi:"value"`
 }
 
 func ListIotDpsResourceKeysOutput(ctx *pulumi.Context, args ListIotDpsResourceKeysOutputArgs, opts ...pulumi.InvokeOption) ListIotDpsResourceKeysResultOutput {
@@ -45,8 +49,10 @@ func ListIotDpsResourceKeysOutput(ctx *pulumi.Context, args ListIotDpsResourceKe
 }
 
 type ListIotDpsResourceKeysOutputArgs struct {
+	// The provisioning service name to get the shared access keys for.
 	ProvisioningServiceName pulumi.StringInput `pulumi:"provisioningServiceName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListIotDpsResourceKeysOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListIotDpsResourceKeysResultOutput) ToListIotDpsResourceKeysResultOutput
 	return o
 }
 
+// The next link.
 func (o ListIotDpsResourceKeysResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListIotDpsResourceKeysResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// The list of shared access policies.
 func (o ListIotDpsResourceKeysResultOutput) Value() SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseArrayOutput {
 	return o.ApplyT(func(v ListIotDpsResourceKeysResult) []SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
 		return v.Value

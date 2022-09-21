@@ -22,18 +22,26 @@ func LookupCloudLink(ctx *pulumi.Context, args *LookupCloudLinkArgs, opts ...pul
 }
 
 type LookupCloudLinkArgs struct {
-	CloudLinkName     string `pulumi:"cloudLinkName"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the cloud link resource
+	CloudLinkName string `pulumi:"cloudLinkName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A cloud link resource
 type LookupCloudLinkResult struct {
-	Id          string  `pulumi:"id"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Identifier of the other private cloud participating in the link.
 	LinkedCloud *string `pulumi:"linkedCloud"`
-	Name        string  `pulumi:"name"`
-	Status      string  `pulumi:"status"`
-	Type        string  `pulumi:"type"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The state of the cloud link.
+	Status string `pulumi:"status"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupCloudLinkOutput(ctx *pulumi.Context, args LookupCloudLinkOutputArgs, opts ...pulumi.InvokeOption) LookupCloudLinkResultOutput {
@@ -50,8 +58,11 @@ func LookupCloudLinkOutput(ctx *pulumi.Context, args LookupCloudLinkOutputArgs, 
 }
 
 type LookupCloudLinkOutputArgs struct {
-	CloudLinkName     pulumi.StringInput `pulumi:"cloudLinkName"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the cloud link resource
+	CloudLinkName pulumi.StringInput `pulumi:"cloudLinkName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,22 +85,27 @@ func (o LookupCloudLinkResultOutput) ToLookupCloudLinkResultOutputWithContext(ct
 	return o
 }
 
+// Resource ID.
 func (o LookupCloudLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identifier of the other private cloud participating in the link.
 func (o LookupCloudLinkResultOutput) LinkedCloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) *string { return v.LinkedCloud }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupCloudLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The state of the cloud link.
 func (o LookupCloudLinkResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupCloudLinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Type }).(pulumi.StringOutput)
 }

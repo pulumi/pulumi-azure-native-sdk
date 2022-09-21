@@ -23,18 +23,26 @@ func LookupSshPublicKey(ctx *pulumi.Context, args *LookupSshPublicKeyArgs, opts 
 }
 
 type LookupSshPublicKeyArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SshPublicKeyName  string `pulumi:"sshPublicKeyName"`
+	// The name of the SSH public key.
+	SshPublicKeyName string `pulumi:"sshPublicKeyName"`
 }
 
 // Specifies information about the SSH public key.
 type LookupSshPublicKeyResult struct {
-	Id        string            `pulumi:"id"`
-	Location  string            `pulumi:"location"`
-	Name      string            `pulumi:"name"`
-	PublicKey *string           `pulumi:"publicKey"`
-	Tags      map[string]string `pulumi:"tags"`
-	Type      string            `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// SSH public key used to authenticate to a virtual machine through ssh. If this property is not initially provided when the resource is created, the publicKey property will be populated when generateKeyPair is called. If the public key is provided upon resource creation, the provided public key needs to be at least 2048-bit and in ssh-rsa format.
+	PublicKey *string `pulumi:"publicKey"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSshPublicKeyOutput(ctx *pulumi.Context, args LookupSshPublicKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSshPublicKeyResultOutput {
@@ -51,8 +59,10 @@ func LookupSshPublicKeyOutput(ctx *pulumi.Context, args LookupSshPublicKeyOutput
 }
 
 type LookupSshPublicKeyOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SshPublicKeyName  pulumi.StringInput `pulumi:"sshPublicKeyName"`
+	// The name of the SSH public key.
+	SshPublicKeyName pulumi.StringInput `pulumi:"sshPublicKeyName"`
 }
 
 func (LookupSshPublicKeyOutputArgs) ElementType() reflect.Type {
@@ -74,26 +84,32 @@ func (o LookupSshPublicKeyResultOutput) ToLookupSshPublicKeyResultOutputWithCont
 	return o
 }
 
+// Resource Id
 func (o LookupSshPublicKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshPublicKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupSshPublicKeyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshPublicKeyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupSshPublicKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshPublicKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SSH public key used to authenticate to a virtual machine through ssh. If this property is not initially provided when the resource is created, the publicKey property will be populated when generateKeyPair is called. If the public key is provided upon resource creation, the provided public key needs to be at least 2048-bit and in ssh-rsa format.
 func (o LookupSshPublicKeyResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSshPublicKeyResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupSshPublicKeyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSshPublicKeyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSshPublicKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshPublicKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }

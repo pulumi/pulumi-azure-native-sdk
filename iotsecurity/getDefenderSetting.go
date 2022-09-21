@@ -23,12 +23,20 @@ type LookupDefenderSettingArgs struct {
 
 // IoT Defender settings
 type LookupDefenderSettingResult struct {
-	DeviceQuota                  int                                              `pulumi:"deviceQuota"`
-	EvaluationEndTime            string                                           `pulumi:"evaluationEndTime"`
-	Id                           string                                           `pulumi:"id"`
-	MdeIntegration               DefenderSettingsPropertiesResponseMdeIntegration `pulumi:"mdeIntegration"`
-	Name                         string                                           `pulumi:"name"`
-	OnboardingKind               string                                           `pulumi:"onboardingKind"`
-	SentinelWorkspaceResourceIds []string                                         `pulumi:"sentinelWorkspaceResourceIds"`
-	Type                         string                                           `pulumi:"type"`
+	// Size of the device quota. Value is required to be in multiples of 100.
+	DeviceQuota int `pulumi:"deviceQuota"`
+	// End time of the evaluation period, if such exist
+	EvaluationEndTime string `pulumi:"evaluationEndTime"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// MDE integration configuration
+	MdeIntegration DefenderSettingsPropertiesResponseMdeIntegration `pulumi:"mdeIntegration"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The kind of onboarding for the subscription
+	OnboardingKind string `pulumi:"onboardingKind"`
+	// Sentinel Workspace Resource Ids
+	SentinelWorkspaceResourceIds []string `pulumi:"sentinelWorkspaceResourceIds"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }

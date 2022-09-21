@@ -21,22 +21,34 @@ func LookupDscNodeConfiguration(ctx *pulumi.Context, args *LookupDscNodeConfigur
 }
 
 type LookupDscNodeConfigurationArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
+	// The Dsc node configuration name.
 	NodeConfigurationName string `pulumi:"nodeConfigurationName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the dsc node configuration.
 type LookupDscNodeConfigurationResult struct {
-	Configuration                   *DscConfigurationAssociationPropertyResponse `pulumi:"configuration"`
-	CreationTime                    *string                                      `pulumi:"creationTime"`
-	Id                              string                                       `pulumi:"id"`
-	IncrementNodeConfigurationBuild *bool                                        `pulumi:"incrementNodeConfigurationBuild"`
-	LastModifiedTime                *string                                      `pulumi:"lastModifiedTime"`
-	Name                            string                                       `pulumi:"name"`
-	NodeCount                       *float64                                     `pulumi:"nodeCount"`
-	Source                          *string                                      `pulumi:"source"`
-	Type                            string                                       `pulumi:"type"`
+	// Gets or sets the configuration of the node.
+	Configuration *DscConfigurationAssociationPropertyResponse `pulumi:"configuration"`
+	// Gets or sets creation time.
+	CreationTime *string `pulumi:"creationTime"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// If a new build version of NodeConfiguration is required.
+	IncrementNodeConfigurationBuild *bool `pulumi:"incrementNodeConfigurationBuild"`
+	// Gets or sets the last modified time.
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Number of nodes with this node configuration assigned
+	NodeCount *float64 `pulumi:"nodeCount"`
+	// Source of node configuration.
+	Source *string `pulumi:"source"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupDscNodeConfigurationOutput(ctx *pulumi.Context, args LookupDscNodeConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDscNodeConfigurationResultOutput {
@@ -53,9 +65,12 @@ func LookupDscNodeConfigurationOutput(ctx *pulumi.Context, args LookupDscNodeCon
 }
 
 type LookupDscNodeConfigurationOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
+	// The Dsc node configuration name.
 	NodeConfigurationName pulumi.StringInput `pulumi:"nodeConfigurationName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDscNodeConfigurationOutputArgs) ElementType() reflect.Type {
@@ -77,40 +92,49 @@ func (o LookupDscNodeConfigurationResultOutput) ToLookupDscNodeConfigurationResu
 	return o
 }
 
+// Gets or sets the configuration of the node.
 func (o LookupDscNodeConfigurationResultOutput) Configuration() DscConfigurationAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *DscConfigurationAssociationPropertyResponse {
 		return v.Configuration
 	}).(DscConfigurationAssociationPropertyResponsePtrOutput)
 }
 
+// Gets or sets creation time.
 func (o LookupDscNodeConfigurationResultOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupDscNodeConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If a new build version of NodeConfiguration is required.
 func (o LookupDscNodeConfigurationResultOutput) IncrementNodeConfigurationBuild() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *bool { return v.IncrementNodeConfigurationBuild }).(pulumi.BoolPtrOutput)
 }
 
+// Gets or sets the last modified time.
 func (o LookupDscNodeConfigurationResultOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *string { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupDscNodeConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Number of nodes with this node configuration assigned
 func (o LookupDscNodeConfigurationResultOutput) NodeCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *float64 { return v.NodeCount }).(pulumi.Float64PtrOutput)
 }
 
+// Source of node configuration.
 func (o LookupDscNodeConfigurationResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.
 func (o LookupDscNodeConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

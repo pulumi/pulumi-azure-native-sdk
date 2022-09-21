@@ -22,13 +22,17 @@ func ListDeviceFailoverSets(ctx *pulumi.Context, args *ListDeviceFailoverSetsArg
 }
 
 type ListDeviceFailoverSetsArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	ManagerName       string `pulumi:"managerName"`
+	// The device name
+	DeviceName string `pulumi:"deviceName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The list of failover sets.
 type ListDeviceFailoverSetsResult struct {
+	// The list of failover sets.
 	Value []FailoverSetResponse `pulumi:"value"`
 }
 
@@ -46,8 +50,11 @@ func ListDeviceFailoverSetsOutput(ctx *pulumi.Context, args ListDeviceFailoverSe
 }
 
 type ListDeviceFailoverSetsOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The device name
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,6 +77,7 @@ func (o ListDeviceFailoverSetsResultOutput) ToListDeviceFailoverSetsResultOutput
 	return o
 }
 
+// The list of failover sets.
 func (o ListDeviceFailoverSetsResultOutput) Value() FailoverSetResponseArrayOutput {
 	return o.ApplyT(func(v ListDeviceFailoverSetsResult) []FailoverSetResponse { return v.Value }).(FailoverSetResponseArrayOutput)
 }

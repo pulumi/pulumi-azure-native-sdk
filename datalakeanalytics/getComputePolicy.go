@@ -22,20 +22,30 @@ func LookupComputePolicy(ctx *pulumi.Context, args *LookupComputePolicyArgs, opt
 }
 
 type LookupComputePolicyArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the Data Lake Analytics account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the compute policy to retrieve.
 	ComputePolicyName string `pulumi:"computePolicyName"`
+	// The name of the Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Data Lake Analytics compute policy information.
 type LookupComputePolicyResult struct {
-	Id                           string `pulumi:"id"`
-	MaxDegreeOfParallelismPerJob int    `pulumi:"maxDegreeOfParallelismPerJob"`
-	MinPriorityPerJob            int    `pulumi:"minPriorityPerJob"`
-	Name                         string `pulumi:"name"`
-	ObjectId                     string `pulumi:"objectId"`
-	ObjectType                   string `pulumi:"objectType"`
-	Type                         string `pulumi:"type"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The maximum degree of parallelism per job this user can use to submit jobs.
+	MaxDegreeOfParallelismPerJob int `pulumi:"maxDegreeOfParallelismPerJob"`
+	// The minimum priority per job this user can use to submit jobs.
+	MinPriorityPerJob int `pulumi:"minPriorityPerJob"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The AAD object identifier for the entity to create a policy for.
+	ObjectId string `pulumi:"objectId"`
+	// The type of AAD object the object identifier refers to.
+	ObjectType string `pulumi:"objectType"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupComputePolicyOutput(ctx *pulumi.Context, args LookupComputePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupComputePolicyResultOutput {
@@ -52,8 +62,11 @@ func LookupComputePolicyOutput(ctx *pulumi.Context, args LookupComputePolicyOutp
 }
 
 type LookupComputePolicyOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Data Lake Analytics account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the compute policy to retrieve.
 	ComputePolicyName pulumi.StringInput `pulumi:"computePolicyName"`
+	// The name of the Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,30 +89,37 @@ func (o LookupComputePolicyResultOutput) ToLookupComputePolicyResultOutputWithCo
 	return o
 }
 
+// The resource identifier.
 func (o LookupComputePolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The maximum degree of parallelism per job this user can use to submit jobs.
 func (o LookupComputePolicyResultOutput) MaxDegreeOfParallelismPerJob() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) int { return v.MaxDegreeOfParallelismPerJob }).(pulumi.IntOutput)
 }
 
+// The minimum priority per job this user can use to submit jobs.
 func (o LookupComputePolicyResultOutput) MinPriorityPerJob() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) int { return v.MinPriorityPerJob }).(pulumi.IntOutput)
 }
 
+// The resource name.
 func (o LookupComputePolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The AAD object identifier for the entity to create a policy for.
 func (o LookupComputePolicyResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// The type of AAD object the object identifier refers to.
 func (o LookupComputePolicyResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) string { return v.ObjectType }).(pulumi.StringOutput)
 }
 
+// The resource type.
 func (o LookupComputePolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputePolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

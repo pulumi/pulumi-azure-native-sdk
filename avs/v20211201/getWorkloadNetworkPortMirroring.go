@@ -21,23 +21,36 @@ func LookupWorkloadNetworkPortMirroring(ctx *pulumi.Context, args *LookupWorkloa
 }
 
 type LookupWorkloadNetworkPortMirroringArgs struct {
-	PortMirroringId   string `pulumi:"portMirroringId"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+	PortMirroringId string `pulumi:"portMirroringId"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NSX Port Mirroring
 type LookupWorkloadNetworkPortMirroringResult struct {
-	Destination       *string  `pulumi:"destination"`
-	Direction         *string  `pulumi:"direction"`
-	DisplayName       *string  `pulumi:"displayName"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	Revision          *float64 `pulumi:"revision"`
-	Source            *string  `pulumi:"source"`
-	Status            string   `pulumi:"status"`
-	Type              string   `pulumi:"type"`
+	// Destination VM Group.
+	Destination *string `pulumi:"destination"`
+	// Direction of port mirroring profile.
+	Direction *string `pulumi:"direction"`
+	// Display name of the port mirroring profile.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// NSX revision number.
+	Revision *float64 `pulumi:"revision"`
+	// Source VM Group.
+	Source *string `pulumi:"source"`
+	// Port Mirroring Status.
+	Status string `pulumi:"status"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadNetworkPortMirroringOutput(ctx *pulumi.Context, args LookupWorkloadNetworkPortMirroringOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkPortMirroringResultOutput {
@@ -54,8 +67,11 @@ func LookupWorkloadNetworkPortMirroringOutput(ctx *pulumi.Context, args LookupWo
 }
 
 type LookupWorkloadNetworkPortMirroringOutputArgs struct {
-	PortMirroringId   pulumi.StringInput `pulumi:"portMirroringId"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+	PortMirroringId pulumi.StringInput `pulumi:"portMirroringId"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +94,52 @@ func (o LookupWorkloadNetworkPortMirroringResultOutput) ToLookupWorkloadNetworkP
 	return o
 }
 
+// Destination VM Group.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
+// Direction of port mirroring profile.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
+// Display name of the port mirroring profile.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state
 func (o LookupWorkloadNetworkPortMirroringResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// NSX revision number.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Revision() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
 }
 
+// Source VM Group.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Port Mirroring Status.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,21 +21,32 @@ func LookupDynamics365DataConnector(ctx *pulumi.Context, args *LookupDynamics365
 }
 
 type LookupDynamics365DataConnectorArgs struct {
-	DataConnectorId                     string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents Dynamics365 data connector.
 type LookupDynamics365DataConnectorResult struct {
+	// The available data types for the connector.
 	DataTypes Dynamics365DataConnectorDataTypesResponse `pulumi:"dataTypes"`
-	Etag      *string                                   `pulumi:"etag"`
-	Id        string                                    `pulumi:"id"`
-	Kind      string                                    `pulumi:"kind"`
-	Name      string                                    `pulumi:"name"`
-	TenantId  string                                    `pulumi:"tenantId"`
-	Type      string                                    `pulumi:"type"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Expected value is 'Dynamics365'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The tenant id to connect to, and get the data from.
+	TenantId string `pulumi:"tenantId"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDynamics365DataConnectorOutput(ctx *pulumi.Context, args LookupDynamics365DataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDynamics365DataConnectorResultOutput {
@@ -52,10 +63,14 @@ func LookupDynamics365DataConnectorOutput(ctx *pulumi.Context, args LookupDynami
 }
 
 type LookupDynamics365DataConnectorOutputArgs struct {
-	DataConnectorId                     pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupDynamics365DataConnectorOutputArgs) ElementType() reflect.Type {
@@ -77,32 +92,39 @@ func (o LookupDynamics365DataConnectorResultOutput) ToLookupDynamics365DataConne
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupDynamics365DataConnectorResultOutput) DataTypes() Dynamics365DataConnectorDataTypesResponseOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) Dynamics365DataConnectorDataTypesResponse {
 		return v.DataTypes
 	}).(Dynamics365DataConnectorDataTypesResponseOutput)
 }
 
+// Etag of the azure resource
 func (o LookupDynamics365DataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupDynamics365DataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Expected value is 'Dynamics365'.
 func (o LookupDynamics365DataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupDynamics365DataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupDynamics365DataConnectorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupDynamics365DataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

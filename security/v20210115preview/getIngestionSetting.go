@@ -21,13 +21,17 @@ func LookupIngestionSetting(ctx *pulumi.Context, args *LookupIngestionSettingArg
 }
 
 type LookupIngestionSettingArgs struct {
+	// Name of the ingestion setting
 	IngestionSettingName string `pulumi:"ingestionSettingName"`
 }
 
 // Configures how to correlate scan data and logs with resources associated with the subscription.
 type LookupIngestionSettingResult struct {
-	Id   string `pulumi:"id"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
 	Name string `pulumi:"name"`
+	// Resource type
 	Type string `pulumi:"type"`
 }
 
@@ -45,6 +49,7 @@ func LookupIngestionSettingOutput(ctx *pulumi.Context, args LookupIngestionSetti
 }
 
 type LookupIngestionSettingOutputArgs struct {
+	// Name of the ingestion setting
 	IngestionSettingName pulumi.StringInput `pulumi:"ingestionSettingName"`
 }
 
@@ -67,14 +72,17 @@ func (o LookupIngestionSettingResultOutput) ToLookupIngestionSettingResultOutput
 	return o
 }
 
+// Resource Id
 func (o LookupIngestionSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIngestionSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupIngestionSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIngestionSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupIngestionSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIngestionSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,25 +21,41 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 }
 
 type LookupApplicationArgs struct {
-	ApplicationName   string `pulumi:"applicationName"`
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the application resource.
+	ApplicationName string `pulumi:"applicationName"`
+	// The name of the cluster resource.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The application resource.
 type LookupApplicationResult struct {
-	Id                string                                    `pulumi:"id"`
-	Identity          *ManagedIdentityResponse                  `pulumi:"identity"`
-	Location          *string                                   `pulumi:"location"`
+	// Azure resource identifier.
+	Id string `pulumi:"id"`
+	// Describes the managed identities for an Azure resource.
+	Identity *ManagedIdentityResponse `pulumi:"identity"`
+	// Resource location depends on the parent resource.
+	Location *string `pulumi:"location"`
+	// List of user assigned identities for the application, each mapped to a friendly name.
 	ManagedIdentities []ApplicationUserAssignedIdentityResponse `pulumi:"managedIdentities"`
-	Name              string                                    `pulumi:"name"`
-	Parameters        map[string]string                         `pulumi:"parameters"`
-	ProvisioningState string                                    `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse                        `pulumi:"systemData"`
-	Tags              map[string]string                         `pulumi:"tags"`
-	Type              string                                    `pulumi:"type"`
-	UpgradePolicy     *ApplicationUpgradePolicyResponse         `pulumi:"upgradePolicy"`
-	Version           *string                                   `pulumi:"version"`
+	// Azure resource name.
+	Name string `pulumi:"name"`
+	// List of application parameters with overridden values from their default values specified in the application manifest.
+	Parameters map[string]string `pulumi:"parameters"`
+	// The current deployment or provisioning state, which only appears in the response
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
+	// Describes the policy for a monitored application upgrade.
+	UpgradePolicy *ApplicationUpgradePolicyResponse `pulumi:"upgradePolicy"`
+	// The version of the application type as defined in the application manifest.
+	// This name must be the full Arm Resource ID for the referenced application type version.
+	Version *string `pulumi:"version"`
 }
 
 func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationResultOutput {
@@ -56,8 +72,11 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 }
 
 type LookupApplicationOutputArgs struct {
-	ApplicationName   pulumi.StringInput `pulumi:"applicationName"`
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the application resource.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The name of the cluster resource.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,50 +99,63 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContex
 	return o
 }
 
+// Azure resource identifier.
 func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Describes the managed identities for an Azure resource.
 func (o LookupApplicationResultOutput) Identity() ManagedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *ManagedIdentityResponse { return v.Identity }).(ManagedIdentityResponsePtrOutput)
 }
 
+// Resource location depends on the parent resource.
 func (o LookupApplicationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// List of user assigned identities for the application, each mapped to a friendly name.
 func (o LookupApplicationResultOutput) ManagedIdentities() ApplicationUserAssignedIdentityResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []ApplicationUserAssignedIdentityResponse { return v.ManagedIdentities }).(ApplicationUserAssignedIdentityResponseArrayOutput)
 }
 
+// Azure resource name.
 func (o LookupApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of application parameters with overridden values from their default values specified in the application manifest.
 func (o LookupApplicationResultOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationResult) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
+// The current deployment or provisioning state, which only appears in the response
 func (o LookupApplicationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupApplicationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApplicationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource tags.
 func (o LookupApplicationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type.
 func (o LookupApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Describes the policy for a monitored application upgrade.
 func (o LookupApplicationResultOutput) UpgradePolicy() ApplicationUpgradePolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *ApplicationUpgradePolicyResponse { return v.UpgradePolicy }).(ApplicationUpgradePolicyResponsePtrOutput)
 }
 
+// The version of the application type as defined in the application manifest.
+// This name must be the full Arm Resource ID for the referenced application type version.
 func (o LookupApplicationResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

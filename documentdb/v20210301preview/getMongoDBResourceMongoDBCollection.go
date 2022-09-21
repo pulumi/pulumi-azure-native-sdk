@@ -21,22 +21,32 @@ func LookupMongoDBResourceMongoDBCollection(ctx *pulumi.Context, args *LookupMon
 }
 
 type LookupMongoDBResourceMongoDBCollectionArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	CollectionName    string `pulumi:"collectionName"`
-	DatabaseName      string `pulumi:"databaseName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Cosmos DB collection name.
+	CollectionName string `pulumi:"collectionName"`
+	// Cosmos DB database name.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure Cosmos DB MongoDB collection.
 type LookupMongoDBResourceMongoDBCollectionResult struct {
-	Id       string                                          `pulumi:"id"`
-	Identity *ManagedServiceIdentityResponse                 `pulumi:"identity"`
-	Location *string                                         `pulumi:"location"`
+	// The unique resource identifier of the ARM resource.
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the ARM resource.
 	Name     string                                          `pulumi:"name"`
 	Options  *MongoDBCollectionGetPropertiesResponseOptions  `pulumi:"options"`
 	Resource *MongoDBCollectionGetPropertiesResponseResource `pulumi:"resource"`
-	Tags     map[string]string                               `pulumi:"tags"`
-	Type     string                                          `pulumi:"type"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMongoDBResourceMongoDBCollectionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoDBCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoDBCollectionResultOutput {
@@ -53,9 +63,13 @@ func LookupMongoDBResourceMongoDBCollectionOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupMongoDBResourceMongoDBCollectionOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	CollectionName    pulumi.StringInput `pulumi:"collectionName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB collection name.
+	CollectionName pulumi.StringInput `pulumi:"collectionName"`
+	// Cosmos DB database name.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,20 +92,24 @@ func (o LookupMongoDBResourceMongoDBCollectionResultOutput) ToLookupMongoDBResou
 	return o
 }
 
+// The unique resource identifier of the ARM resource.
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoDBCollectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoDBCollectionResult) *ManagedServiceIdentityResponse {
 		return v.Identity
 	}).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoDBCollectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the ARM resource.
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoDBCollectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -108,10 +126,12 @@ func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Resource() MongoDBCo
 	}).(MongoDBCollectionGetPropertiesResponseResourcePtrOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoDBCollectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of Azure resource.
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoDBCollectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

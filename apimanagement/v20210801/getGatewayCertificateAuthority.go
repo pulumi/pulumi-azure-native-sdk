@@ -21,18 +21,26 @@ func LookupGatewayCertificateAuthority(ctx *pulumi.Context, args *LookupGatewayC
 }
 
 type LookupGatewayCertificateAuthorityArgs struct {
-	CertificateId     string `pulumi:"certificateId"`
-	GatewayId         string `pulumi:"gatewayId"`
+	// Identifier of the certificate entity. Must be unique in the current API Management service instance.
+	CertificateId string `pulumi:"certificateId"`
+	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
+	GatewayId string `pulumi:"gatewayId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Gateway certificate authority details.
 type LookupGatewayCertificateAuthorityResult struct {
-	Id        string `pulumi:"id"`
-	IsTrusted *bool  `pulumi:"isTrusted"`
-	Name      string `pulumi:"name"`
-	Type      string `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Determines whether certificate authority is trusted.
+	IsTrusted *bool `pulumi:"isTrusted"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupGatewayCertificateAuthorityOutput(ctx *pulumi.Context, args LookupGatewayCertificateAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayCertificateAuthorityResultOutput {
@@ -49,10 +57,14 @@ func LookupGatewayCertificateAuthorityOutput(ctx *pulumi.Context, args LookupGat
 }
 
 type LookupGatewayCertificateAuthorityOutputArgs struct {
-	CertificateId     pulumi.StringInput `pulumi:"certificateId"`
-	GatewayId         pulumi.StringInput `pulumi:"gatewayId"`
+	// Identifier of the certificate entity. Must be unique in the current API Management service instance.
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupGatewayCertificateAuthorityOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupGatewayCertificateAuthorityResultOutput) ToLookupGatewayCertificat
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGatewayCertificateAuthorityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Determines whether certificate authority is trusted.
 func (o LookupGatewayCertificateAuthorityResultOutput) IsTrusted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) *bool { return v.IsTrusted }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the resource
 func (o LookupGatewayCertificateAuthorityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGatewayCertificateAuthorityResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) string { return v.Type }).(pulumi.StringOutput)
 }

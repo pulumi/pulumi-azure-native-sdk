@@ -21,18 +21,26 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupJobArgs struct {
-	Id                string `pulumi:"id"`
+	// The name and identifier for the Job. This is case-sensitive.
+	Id string `pulumi:"id"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupJobResult struct {
-	Id             string             `pulumi:"id"`
-	JobBaseDetails interface{}        `pulumi:"jobBaseDetails"`
-	Name           string             `pulumi:"name"`
-	SystemData     SystemDataResponse `pulumi:"systemData"`
-	Type           string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// [Required] Additional attributes of the entity.
+	JobBaseDetails interface{} `pulumi:"jobBaseDetails"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
@@ -49,9 +57,12 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 }
 
 type LookupJobOutputArgs struct {
-	Id                pulumi.StringInput `pulumi:"id"`
+	// The name and identifier for the Job. This is case-sensitive.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupJobOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
 func (o LookupJobResultOutput) JobBaseDetails() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupJobResult) interface{} { return v.JobBaseDetails }).(pulumi.AnyOutput)
 }
 
+// The name of the resource
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupJobResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupJobResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupJobResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Type }).(pulumi.StringOutput)
 }

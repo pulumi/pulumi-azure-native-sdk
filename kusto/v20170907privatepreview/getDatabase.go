@@ -23,23 +23,36 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a Kusto database.
 type LookupDatabaseResult struct {
-	Etag                   string                     `pulumi:"etag"`
-	HotCachePeriodInDays   *int                       `pulumi:"hotCachePeriodInDays"`
-	Id                     string                     `pulumi:"id"`
-	Location               string                     `pulumi:"location"`
-	Name                   string                     `pulumi:"name"`
-	ProvisioningState      string                     `pulumi:"provisioningState"`
-	SoftDeletePeriodInDays int                        `pulumi:"softDeletePeriodInDays"`
-	Statistics             DatabaseStatisticsResponse `pulumi:"statistics"`
-	Tags                   map[string]string          `pulumi:"tags"`
-	Type                   string                     `pulumi:"type"`
+	// An ETag of the resource created.
+	Etag string `pulumi:"etag"`
+	// The number of days of data that should be kept in cache for fast queries.
+	HotCachePeriodInDays *int `pulumi:"hotCachePeriodInDays"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The number of days data should be kept before it stops being accessible to queries.
+	SoftDeletePeriodInDays int `pulumi:"softDeletePeriodInDays"`
+	// The statistics of the database.
+	Statistics DatabaseStatisticsResponse `pulumi:"statistics"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
@@ -56,8 +69,11 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 }
 
 type LookupDatabaseOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,42 +96,52 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 	return o
 }
 
+// An ETag of the resource created.
 func (o LookupDatabaseResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The number of days of data that should be kept in cache for fast queries.
 func (o LookupDatabaseResultOutput) HotCachePeriodInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *int { return v.HotCachePeriodInDays }).(pulumi.IntPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupDatabaseResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupDatabaseResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The number of days data should be kept before it stops being accessible to queries.
 func (o LookupDatabaseResultOutput) SoftDeletePeriodInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) int { return v.SoftDeletePeriodInDays }).(pulumi.IntOutput)
 }
 
+// The statistics of the database.
 func (o LookupDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
 }
 
+// Resource tags.
 func (o LookupDatabaseResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }

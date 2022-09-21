@@ -22,23 +22,36 @@ func LookupImportPipeline(ctx *pulumi.Context, args *LookupImportPipelineArgs, o
 }
 
 type LookupImportPipelineArgs struct {
+	// The name of the import pipeline.
 	ImportPipelineName string `pulumi:"importPipelineName"`
-	RegistryName       string `pulumi:"registryName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An object that represents an import pipeline for a container registry.
 type LookupImportPipelineResult struct {
-	Id                string                                 `pulumi:"id"`
-	Identity          *IdentityPropertiesResponse            `pulumi:"identity"`
-	Location          *string                                `pulumi:"location"`
-	Name              string                                 `pulumi:"name"`
-	Options           []string                               `pulumi:"options"`
-	ProvisioningState string                                 `pulumi:"provisioningState"`
-	Source            ImportPipelineSourcePropertiesResponse `pulumi:"source"`
-	SystemData        SystemDataResponse                     `pulumi:"systemData"`
-	Trigger           *PipelineTriggerPropertiesResponse     `pulumi:"trigger"`
-	Type              string                                 `pulumi:"type"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The identity of the import pipeline.
+	Identity *IdentityPropertiesResponse `pulumi:"identity"`
+	// The location of the import pipeline.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The list of all options configured for the pipeline.
+	Options []string `pulumi:"options"`
+	// The provisioning state of the pipeline at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The source properties of the import pipeline.
+	Source ImportPipelineSourcePropertiesResponse `pulumi:"source"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The properties that describe the trigger of the import pipeline.
+	Trigger *PipelineTriggerPropertiesResponse `pulumi:"trigger"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupImportPipelineResult
@@ -68,9 +81,12 @@ func LookupImportPipelineOutput(ctx *pulumi.Context, args LookupImportPipelineOu
 }
 
 type LookupImportPipelineOutputArgs struct {
+	// The name of the import pipeline.
 	ImportPipelineName pulumi.StringInput `pulumi:"importPipelineName"`
-	RegistryName       pulumi.StringInput `pulumi:"registryName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupImportPipelineOutputArgs) ElementType() reflect.Type {
@@ -92,42 +108,52 @@ func (o LookupImportPipelineResultOutput) ToLookupImportPipelineResultOutputWith
 	return o
 }
 
+// The resource ID.
 func (o LookupImportPipelineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the import pipeline.
 func (o LookupImportPipelineResultOutput) Identity() IdentityPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) *IdentityPropertiesResponse { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
+// The location of the import pipeline.
 func (o LookupImportPipelineResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupImportPipelineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of all options configured for the pipeline.
 func (o LookupImportPipelineResultOutput) Options() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) []string { return v.Options }).(pulumi.StringArrayOutput)
 }
 
+// The provisioning state of the pipeline at the time the operation was called.
 func (o LookupImportPipelineResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The source properties of the import pipeline.
 func (o LookupImportPipelineResultOutput) Source() ImportPipelineSourcePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) ImportPipelineSourcePropertiesResponse { return v.Source }).(ImportPipelineSourcePropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupImportPipelineResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The properties that describe the trigger of the import pipeline.
 func (o LookupImportPipelineResultOutput) Trigger() PipelineTriggerPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) *PipelineTriggerPropertiesResponse { return v.Trigger }).(PipelineTriggerPropertiesResponsePtrOutput)
 }
 
+// The type of the resource.
 func (o LookupImportPipelineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImportPipelineResult) string { return v.Type }).(pulumi.StringOutput)
 }

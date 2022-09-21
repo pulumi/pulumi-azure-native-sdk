@@ -23,27 +23,44 @@ func LookupDatabaseAccountGremlinGraph(ctx *pulumi.Context, args *LookupDatabase
 }
 
 type LookupDatabaseAccountGremlinGraphArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DatabaseName      string `pulumi:"databaseName"`
-	GraphName         string `pulumi:"graphName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Cosmos DB database name.
+	DatabaseName string `pulumi:"databaseName"`
+	// Cosmos DB graph name.
+	GraphName string `pulumi:"graphName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure Cosmos DB Gremlin graph.
 type LookupDatabaseAccountGremlinGraphResult struct {
+	// The conflict resolution policy for the graph.
 	ConflictResolutionPolicy *ConflictResolutionPolicyResponse `pulumi:"conflictResolutionPolicy"`
-	DefaultTtl               *int                              `pulumi:"defaultTtl"`
-	Etag                     *string                           `pulumi:"etag"`
-	Id                       string                            `pulumi:"id"`
-	IndexingPolicy           *IndexingPolicyResponse           `pulumi:"indexingPolicy"`
-	Location                 *string                           `pulumi:"location"`
-	Name                     string                            `pulumi:"name"`
-	PartitionKey             *ContainerPartitionKeyResponse    `pulumi:"partitionKey"`
-	Rid                      *string                           `pulumi:"rid"`
-	Tags                     map[string]string                 `pulumi:"tags"`
-	Ts                       interface{}                       `pulumi:"ts"`
-	Type                     string                            `pulumi:"type"`
-	UniqueKeyPolicy          *UniqueKeyPolicyResponse          `pulumi:"uniqueKeyPolicy"`
+	// Default time to live
+	DefaultTtl *int `pulumi:"defaultTtl"`
+	// A system generated property representing the resource etag required for optimistic concurrency control.
+	Etag *string `pulumi:"etag"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
+	IndexingPolicy *IndexingPolicyResponse `pulumi:"indexingPolicy"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// The configuration of the partition key to be used for partitioning data into multiple partitions
+	PartitionKey *ContainerPartitionKeyResponse `pulumi:"partitionKey"`
+	// A system generated property. A unique identifier.
+	Rid *string `pulumi:"rid"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// A system generated property that denotes the last updated timestamp of the resource.
+	Ts interface{} `pulumi:"ts"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
+	// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+	UniqueKeyPolicy *UniqueKeyPolicyResponse `pulumi:"uniqueKeyPolicy"`
 }
 
 // Defaults sets the appropriate defaults for LookupDatabaseAccountGremlinGraphResult
@@ -75,9 +92,13 @@ func LookupDatabaseAccountGremlinGraphOutput(ctx *pulumi.Context, args LookupDat
 }
 
 type LookupDatabaseAccountGremlinGraphOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
-	GraphName         pulumi.StringInput `pulumi:"graphName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database name.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// Cosmos DB graph name.
+	GraphName pulumi.StringInput `pulumi:"graphName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -100,56 +121,69 @@ func (o LookupDatabaseAccountGremlinGraphResultOutput) ToLookupDatabaseAccountGr
 	return o
 }
 
+// The conflict resolution policy for the graph.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) ConflictResolutionPolicy() ConflictResolutionPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *ConflictResolutionPolicyResponse {
 		return v.ConflictResolutionPolicy
 	}).(ConflictResolutionPolicyResponsePtrOutput)
 }
 
+// Default time to live
 func (o LookupDatabaseAccountGremlinGraphResultOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
+// A system generated property representing the resource etag required for optimistic concurrency control.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The unique resource identifier of the database account.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
 func (o LookupDatabaseAccountGremlinGraphResultOutput) IndexingPolicy() IndexingPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *IndexingPolicyResponse { return v.IndexingPolicy }).(IndexingPolicyResponsePtrOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the database account.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The configuration of the partition key to be used for partitioning data into multiple partitions
 func (o LookupDatabaseAccountGremlinGraphResultOutput) PartitionKey() ContainerPartitionKeyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *ContainerPartitionKeyResponse { return v.PartitionKey }).(ContainerPartitionKeyResponsePtrOutput)
 }
 
+// A system generated property. A unique identifier.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Rid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *string { return v.Rid }).(pulumi.StringPtrOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// A system generated property that denotes the last updated timestamp of the resource.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Ts() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) interface{} { return v.Ts }).(pulumi.AnyOutput)
 }
 
+// The type of Azure resource.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
 func (o LookupDatabaseAccountGremlinGraphResultOutput) UniqueKeyPolicy() UniqueKeyPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinGraphResult) *UniqueKeyPolicyResponse { return v.UniqueKeyPolicy }).(UniqueKeyPolicyResponsePtrOutput)
 }

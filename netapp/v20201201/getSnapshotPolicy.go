@@ -21,24 +21,38 @@ func LookupSnapshotPolicy(ctx *pulumi.Context, args *LookupSnapshotPolicyArgs, o
 }
 
 type LookupSnapshotPolicyArgs struct {
-	AccountName        string `pulumi:"accountName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the snapshot policy
 	SnapshotPolicyName string `pulumi:"snapshotPolicyName"`
 }
 
 // Snapshot policy information
 type LookupSnapshotPolicyResult struct {
-	DailySchedule     *DailyScheduleResponse   `pulumi:"dailySchedule"`
-	Enabled           *bool                    `pulumi:"enabled"`
-	HourlySchedule    *HourlyScheduleResponse  `pulumi:"hourlySchedule"`
-	Id                string                   `pulumi:"id"`
-	Location          string                   `pulumi:"location"`
-	MonthlySchedule   *MonthlyScheduleResponse `pulumi:"monthlySchedule"`
-	Name              string                   `pulumi:"name"`
-	ProvisioningState string                   `pulumi:"provisioningState"`
-	Tags              map[string]string        `pulumi:"tags"`
-	Type              string                   `pulumi:"type"`
-	WeeklySchedule    *WeeklyScheduleResponse  `pulumi:"weeklySchedule"`
+	// Schedule for daily snapshots
+	DailySchedule *DailyScheduleResponse `pulumi:"dailySchedule"`
+	// The property to decide policy is enabled or not
+	Enabled *bool `pulumi:"enabled"`
+	// Schedule for hourly snapshots
+	HourlySchedule *HourlyScheduleResponse `pulumi:"hourlySchedule"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Schedule for monthly snapshots
+	MonthlySchedule *MonthlyScheduleResponse `pulumi:"monthlySchedule"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// Schedule for weekly snapshots
+	WeeklySchedule *WeeklyScheduleResponse `pulumi:"weeklySchedule"`
 }
 
 func LookupSnapshotPolicyOutput(ctx *pulumi.Context, args LookupSnapshotPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSnapshotPolicyResultOutput {
@@ -55,8 +69,11 @@ func LookupSnapshotPolicyOutput(ctx *pulumi.Context, args LookupSnapshotPolicyOu
 }
 
 type LookupSnapshotPolicyOutputArgs struct {
-	AccountName        pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the snapshot policy
 	SnapshotPolicyName pulumi.StringInput `pulumi:"snapshotPolicyName"`
 }
 
@@ -79,46 +96,57 @@ func (o LookupSnapshotPolicyResultOutput) ToLookupSnapshotPolicyResultOutputWith
 	return o
 }
 
+// Schedule for daily snapshots
 func (o LookupSnapshotPolicyResultOutput) DailySchedule() DailyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *DailyScheduleResponse { return v.DailySchedule }).(DailyScheduleResponsePtrOutput)
 }
 
+// The property to decide policy is enabled or not
 func (o LookupSnapshotPolicyResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Schedule for hourly snapshots
 func (o LookupSnapshotPolicyResultOutput) HourlySchedule() HourlyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *HourlyScheduleResponse { return v.HourlySchedule }).(HourlyScheduleResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupSnapshotPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupSnapshotPolicyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Schedule for monthly snapshots
 func (o LookupSnapshotPolicyResultOutput) MonthlySchedule() MonthlyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *MonthlyScheduleResponse { return v.MonthlySchedule }).(MonthlyScheduleResponsePtrOutput)
 }
 
+// Resource name
 func (o LookupSnapshotPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupSnapshotPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupSnapshotPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSnapshotPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Schedule for weekly snapshots
 func (o LookupSnapshotPolicyResultOutput) WeeklySchedule() WeeklyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *WeeklyScheduleResponse { return v.WeeklySchedule }).(WeeklyScheduleResponsePtrOutput)
 }

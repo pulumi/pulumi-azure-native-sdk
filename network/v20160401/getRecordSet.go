@@ -23,30 +23,50 @@ func LookupRecordSet(ctx *pulumi.Context, args *LookupRecordSetArgs, opts ...pul
 }
 
 type LookupRecordSetArgs struct {
-	RecordType            string `pulumi:"recordType"`
+	// The type of DNS record in this record set.
+	RecordType string `pulumi:"recordType"`
+	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName string `pulumi:"relativeRecordSetName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	ZoneName              string `pulumi:"zoneName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the DNS zone (without a terminating dot).
+	ZoneName string `pulumi:"zoneName"`
 }
 
 // Describes a DNS record set (a collection of DNS records with the same name and type).
 type LookupRecordSetResult struct {
-	ARecords    []ARecordResponse    `pulumi:"aRecords"`
+	// The list of A records in the record set.
+	ARecords []ARecordResponse `pulumi:"aRecords"`
+	// The list of AAAA records in the record set.
 	AaaaRecords []AaaaRecordResponse `pulumi:"aaaaRecords"`
+	// The CNAME record in the  record set.
 	CnameRecord *CnameRecordResponse `pulumi:"cnameRecord"`
-	Etag        *string              `pulumi:"etag"`
-	Fqdn        string               `pulumi:"fqdn"`
-	Id          *string              `pulumi:"id"`
-	Metadata    map[string]string    `pulumi:"metadata"`
-	MxRecords   []MxRecordResponse   `pulumi:"mxRecords"`
-	Name        *string              `pulumi:"name"`
-	NsRecords   []NsRecordResponse   `pulumi:"nsRecords"`
-	PtrRecords  []PtrRecordResponse  `pulumi:"ptrRecords"`
-	SoaRecord   *SoaRecordResponse   `pulumi:"soaRecord"`
-	SrvRecords  []SrvRecordResponse  `pulumi:"srvRecords"`
-	Ttl         *float64             `pulumi:"ttl"`
-	TxtRecords  []TxtRecordResponse  `pulumi:"txtRecords"`
-	Type        *string              `pulumi:"type"`
+	// The etag of the record set.
+	Etag *string `pulumi:"etag"`
+	// Fully qualified domain name of the record set.
+	Fqdn string `pulumi:"fqdn"`
+	// The ID of the record set.
+	Id *string `pulumi:"id"`
+	// The metadata attached to the record set.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The list of MX records in the record set.
+	MxRecords []MxRecordResponse `pulumi:"mxRecords"`
+	// The name of the record set.
+	Name *string `pulumi:"name"`
+	// The list of NS records in the record set.
+	NsRecords []NsRecordResponse `pulumi:"nsRecords"`
+	// The list of PTR records in the record set.
+	PtrRecords []PtrRecordResponse `pulumi:"ptrRecords"`
+	// The SOA record in the record set.
+	SoaRecord *SoaRecordResponse `pulumi:"soaRecord"`
+	// The list of SRV records in the record set.
+	SrvRecords []SrvRecordResponse `pulumi:"srvRecords"`
+	// The TTL (time-to-live) of the records in the record set.
+	Ttl *float64 `pulumi:"ttl"`
+	// The list of TXT records in the record set.
+	TxtRecords []TxtRecordResponse `pulumi:"txtRecords"`
+	// The type of the record set.
+	Type *string `pulumi:"type"`
 }
 
 func LookupRecordSetOutput(ctx *pulumi.Context, args LookupRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupRecordSetResultOutput {
@@ -63,10 +83,14 @@ func LookupRecordSetOutput(ctx *pulumi.Context, args LookupRecordSetOutputArgs, 
 }
 
 type LookupRecordSetOutputArgs struct {
-	RecordType            pulumi.StringInput `pulumi:"recordType"`
+	// The type of DNS record in this record set.
+	RecordType pulumi.StringInput `pulumi:"recordType"`
+	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName pulumi.StringInput `pulumi:"relativeRecordSetName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	ZoneName              pulumi.StringInput `pulumi:"zoneName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the DNS zone (without a terminating dot).
+	ZoneName pulumi.StringInput `pulumi:"zoneName"`
 }
 
 func (LookupRecordSetOutputArgs) ElementType() reflect.Type {
@@ -88,66 +112,82 @@ func (o LookupRecordSetResultOutput) ToLookupRecordSetResultOutputWithContext(ct
 	return o
 }
 
+// The list of A records in the record set.
 func (o LookupRecordSetResultOutput) ARecords() ARecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []ARecordResponse { return v.ARecords }).(ARecordResponseArrayOutput)
 }
 
+// The list of AAAA records in the record set.
 func (o LookupRecordSetResultOutput) AaaaRecords() AaaaRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []AaaaRecordResponse { return v.AaaaRecords }).(AaaaRecordResponseArrayOutput)
 }
 
+// The CNAME record in the  record set.
 func (o LookupRecordSetResultOutput) CnameRecord() CnameRecordResponsePtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *CnameRecordResponse { return v.CnameRecord }).(CnameRecordResponsePtrOutput)
 }
 
+// The etag of the record set.
 func (o LookupRecordSetResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified domain name of the record set.
 func (o LookupRecordSetResultOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
+// The ID of the record set.
 func (o LookupRecordSetResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The metadata attached to the record set.
 func (o LookupRecordSetResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// The list of MX records in the record set.
 func (o LookupRecordSetResultOutput) MxRecords() MxRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []MxRecordResponse { return v.MxRecords }).(MxRecordResponseArrayOutput)
 }
 
+// The name of the record set.
 func (o LookupRecordSetResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The list of NS records in the record set.
 func (o LookupRecordSetResultOutput) NsRecords() NsRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []NsRecordResponse { return v.NsRecords }).(NsRecordResponseArrayOutput)
 }
 
+// The list of PTR records in the record set.
 func (o LookupRecordSetResultOutput) PtrRecords() PtrRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []PtrRecordResponse { return v.PtrRecords }).(PtrRecordResponseArrayOutput)
 }
 
+// The SOA record in the record set.
 func (o LookupRecordSetResultOutput) SoaRecord() SoaRecordResponsePtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *SoaRecordResponse { return v.SoaRecord }).(SoaRecordResponsePtrOutput)
 }
 
+// The list of SRV records in the record set.
 func (o LookupRecordSetResultOutput) SrvRecords() SrvRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []SrvRecordResponse { return v.SrvRecords }).(SrvRecordResponseArrayOutput)
 }
 
+// The TTL (time-to-live) of the records in the record set.
 func (o LookupRecordSetResultOutput) Ttl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
 }
 
+// The list of TXT records in the record set.
 func (o LookupRecordSetResultOutput) TxtRecords() TxtRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []TxtRecordResponse { return v.TxtRecords }).(TxtRecordResponseArrayOutput)
 }
 
+// The type of the record set.
 func (o LookupRecordSetResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

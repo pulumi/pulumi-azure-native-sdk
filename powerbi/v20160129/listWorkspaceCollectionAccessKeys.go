@@ -20,12 +20,16 @@ func ListWorkspaceCollectionAccessKeys(ctx *pulumi.Context, args *ListWorkspaceC
 }
 
 type ListWorkspaceCollectionAccessKeysArgs struct {
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Azure resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Power BI Embedded Workspace Collection name
 	WorkspaceCollectionName string `pulumi:"workspaceCollectionName"`
 }
 
 type ListWorkspaceCollectionAccessKeysResult struct {
+	// Access key 1
 	Key1 *string `pulumi:"key1"`
+	// Access key 2
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -43,7 +47,9 @@ func ListWorkspaceCollectionAccessKeysOutput(ctx *pulumi.Context, args ListWorks
 }
 
 type ListWorkspaceCollectionAccessKeysOutputArgs struct {
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Azure resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Power BI Embedded Workspace Collection name
 	WorkspaceCollectionName pulumi.StringInput `pulumi:"workspaceCollectionName"`
 }
 
@@ -65,10 +71,12 @@ func (o ListWorkspaceCollectionAccessKeysResultOutput) ToListWorkspaceCollection
 	return o
 }
 
+// Access key 1
 func (o ListWorkspaceCollectionAccessKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkspaceCollectionAccessKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Access key 2
 func (o ListWorkspaceCollectionAccessKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkspaceCollectionAccessKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

@@ -22,15 +22,20 @@ func ListVideoStreamingToken(ctx *pulumi.Context, args *ListVideoStreamingTokenA
 }
 
 type ListVideoStreamingTokenArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The Azure Video Analyzer account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VideoName         string `pulumi:"videoName"`
+	// The name of the video to generate a token for playback.
+	VideoName string `pulumi:"videoName"`
 }
 
 // Video streaming token grants access to the video streaming URLs which can be used by an compatible HLS or DASH player.
 type ListVideoStreamingTokenResult struct {
+	// The streaming token expiration date in ISO8601 format (eg. 2021-01-01T00:00:00Z).
 	ExpirationDate string `pulumi:"expirationDate"`
-	Token          string `pulumi:"token"`
+	// The streaming token value to be added to the video streaming URL as the value for a "token" query string parameter. The token is specific to a single video.
+	Token string `pulumi:"token"`
 }
 
 func ListVideoStreamingTokenOutput(ctx *pulumi.Context, args ListVideoStreamingTokenOutputArgs, opts ...pulumi.InvokeOption) ListVideoStreamingTokenResultOutput {
@@ -47,9 +52,12 @@ func ListVideoStreamingTokenOutput(ctx *pulumi.Context, args ListVideoStreamingT
 }
 
 type ListVideoStreamingTokenOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Azure Video Analyzer account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VideoName         pulumi.StringInput `pulumi:"videoName"`
+	// The name of the video to generate a token for playback.
+	VideoName pulumi.StringInput `pulumi:"videoName"`
 }
 
 func (ListVideoStreamingTokenOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListVideoStreamingTokenResultOutput) ToListVideoStreamingTokenResultOutp
 	return o
 }
 
+// The streaming token expiration date in ISO8601 format (eg. 2021-01-01T00:00:00Z).
 func (o ListVideoStreamingTokenResultOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVideoStreamingTokenResult) string { return v.ExpirationDate }).(pulumi.StringOutput)
 }
 
+// The streaming token value to be added to the video streaming URL as the value for a "token" query string parameter. The token is specific to a single video.
 func (o ListVideoStreamingTokenResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVideoStreamingTokenResult) string { return v.Token }).(pulumi.StringOutput)
 }

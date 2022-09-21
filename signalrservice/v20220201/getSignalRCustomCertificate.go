@@ -21,21 +21,32 @@ func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCust
 }
 
 type LookupSignalRCustomCertificateArgs struct {
-	CertificateName   string `pulumi:"certificateName"`
+	// Custom certificate name
+	CertificateName string `pulumi:"certificateName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A custom certificate.
 type LookupSignalRCustomCertificateResult struct {
-	Id                    string             `pulumi:"id"`
-	KeyVaultBaseUri       string             `pulumi:"keyVaultBaseUri"`
-	KeyVaultSecretName    string             `pulumi:"keyVaultSecretName"`
-	KeyVaultSecretVersion *string            `pulumi:"keyVaultSecretVersion"`
-	Name                  string             `pulumi:"name"`
-	ProvisioningState     string             `pulumi:"provisioningState"`
-	SystemData            SystemDataResponse `pulumi:"systemData"`
-	Type                  string             `pulumi:"type"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// Base uri of the KeyVault that stores certificate.
+	KeyVaultBaseUri string `pulumi:"keyVaultBaseUri"`
+	// Certificate secret name.
+	KeyVaultSecretName string `pulumi:"keyVaultSecretName"`
+	// Certificate secret version.
+	KeyVaultSecretVersion *string `pulumi:"keyVaultSecretVersion"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	Type string `pulumi:"type"`
 }
 
 func LookupSignalRCustomCertificateOutput(ctx *pulumi.Context, args LookupSignalRCustomCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRCustomCertificateResultOutput {
@@ -52,9 +63,12 @@ func LookupSignalRCustomCertificateOutput(ctx *pulumi.Context, args LookupSignal
 }
 
 type LookupSignalRCustomCertificateOutputArgs struct {
-	CertificateName   pulumi.StringInput `pulumi:"certificateName"`
+	// Custom certificate name
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupSignalRCustomCertificateOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupSignalRCustomCertificateResultOutput) ToLookupSignalRCustomCertifi
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupSignalRCustomCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Base uri of the KeyVault that stores certificate.
 func (o LookupSignalRCustomCertificateResultOutput) KeyVaultBaseUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.KeyVaultBaseUri }).(pulumi.StringOutput)
 }
 
+// Certificate secret name.
 func (o LookupSignalRCustomCertificateResultOutput) KeyVaultSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.KeyVaultSecretName }).(pulumi.StringOutput)
 }
 
+// Certificate secret version.
 func (o LookupSignalRCustomCertificateResultOutput) KeyVaultSecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) *string { return v.KeyVaultSecretVersion }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupSignalRCustomCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupSignalRCustomCertificateResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupSignalRCustomCertificateResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 func (o LookupSignalRCustomCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }
