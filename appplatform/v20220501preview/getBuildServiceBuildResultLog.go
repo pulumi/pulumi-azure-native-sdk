@@ -21,15 +21,21 @@ func GetBuildServiceBuildResultLog(ctx *pulumi.Context, args *GetBuildServiceBui
 }
 
 type GetBuildServiceBuildResultLogArgs struct {
-	BuildName         string `pulumi:"buildName"`
-	BuildResultName   string `pulumi:"buildResultName"`
-	BuildServiceName  string `pulumi:"buildServiceName"`
+	// The name of the build resource.
+	BuildName string `pulumi:"buildName"`
+	// The name of the build result resource.
+	BuildResultName string `pulumi:"buildResultName"`
+	// The name of the build service resource.
+	BuildServiceName string `pulumi:"buildServiceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Build result log resource properties payload
 type GetBuildServiceBuildResultLogResult struct {
+	// The public download URL of this build result log
 	BlobUrl *string `pulumi:"blobUrl"`
 }
 
@@ -47,11 +53,16 @@ func GetBuildServiceBuildResultLogOutput(ctx *pulumi.Context, args GetBuildServi
 }
 
 type GetBuildServiceBuildResultLogOutputArgs struct {
-	BuildName         pulumi.StringInput `pulumi:"buildName"`
-	BuildResultName   pulumi.StringInput `pulumi:"buildResultName"`
-	BuildServiceName  pulumi.StringInput `pulumi:"buildServiceName"`
+	// The name of the build resource.
+	BuildName pulumi.StringInput `pulumi:"buildName"`
+	// The name of the build result resource.
+	BuildResultName pulumi.StringInput `pulumi:"buildResultName"`
+	// The name of the build service resource.
+	BuildServiceName pulumi.StringInput `pulumi:"buildServiceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetBuildServiceBuildResultLogOutputArgs) ElementType() reflect.Type {
@@ -73,6 +84,7 @@ func (o GetBuildServiceBuildResultLogResultOutput) ToGetBuildServiceBuildResultL
 	return o
 }
 
+// The public download URL of this build result log
 func (o GetBuildServiceBuildResultLogResultOutput) BlobUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBuildServiceBuildResultLogResult) *string { return v.BlobUrl }).(pulumi.StringPtrOutput)
 }

@@ -22,26 +22,42 @@ func LookupDistributedAvailabilityGroup(ctx *pulumi.Context, args *LookupDistrib
 }
 
 type LookupDistributedAvailabilityGroupArgs struct {
+	// The distributed availability group name.
 	DistributedAvailabilityGroupName string `pulumi:"distributedAvailabilityGroupName"`
-	ManagedInstanceName              string `pulumi:"managedInstanceName"`
-	ResourceGroupName                string `pulumi:"resourceGroupName"`
+	// The name of the managed instance.
+	ManagedInstanceName string `pulumi:"managedInstanceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Distributed availability group between box and Sql Managed Instance.
 type LookupDistributedAvailabilityGroupResult struct {
-	DistributedAvailabilityGroupId string  `pulumi:"distributedAvailabilityGroupId"`
-	Id                             string  `pulumi:"id"`
-	LastHardenedLsn                string  `pulumi:"lastHardenedLsn"`
-	LinkState                      string  `pulumi:"linkState"`
-	Name                           string  `pulumi:"name"`
-	PrimaryAvailabilityGroupName   *string `pulumi:"primaryAvailabilityGroupName"`
-	ReplicationMode                *string `pulumi:"replicationMode"`
+	// The distributed availability group id
+	DistributedAvailabilityGroupId string `pulumi:"distributedAvailabilityGroupId"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The last hardened lsn
+	LastHardenedLsn string `pulumi:"lastHardenedLsn"`
+	// The link state
+	LinkState string `pulumi:"linkState"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The primary availability group name
+	PrimaryAvailabilityGroupName *string `pulumi:"primaryAvailabilityGroupName"`
+	// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
+	ReplicationMode *string `pulumi:"replicationMode"`
+	// The secondary availability group name
 	SecondaryAvailabilityGroupName *string `pulumi:"secondaryAvailabilityGroupName"`
-	SourceEndpoint                 *string `pulumi:"sourceEndpoint"`
-	SourceReplicaId                string  `pulumi:"sourceReplicaId"`
-	TargetDatabase                 *string `pulumi:"targetDatabase"`
-	TargetReplicaId                string  `pulumi:"targetReplicaId"`
-	Type                           string  `pulumi:"type"`
+	// The source endpoint
+	SourceEndpoint *string `pulumi:"sourceEndpoint"`
+	// The source replica id
+	SourceReplicaId string `pulumi:"sourceReplicaId"`
+	// The name of the target database
+	TargetDatabase *string `pulumi:"targetDatabase"`
+	// The target replica id
+	TargetReplicaId string `pulumi:"targetReplicaId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDistributedAvailabilityGroupOutput(ctx *pulumi.Context, args LookupDistributedAvailabilityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDistributedAvailabilityGroupResultOutput {
@@ -58,9 +74,12 @@ func LookupDistributedAvailabilityGroupOutput(ctx *pulumi.Context, args LookupDi
 }
 
 type LookupDistributedAvailabilityGroupOutputArgs struct {
+	// The distributed availability group name.
 	DistributedAvailabilityGroupName pulumi.StringInput `pulumi:"distributedAvailabilityGroupName"`
-	ManagedInstanceName              pulumi.StringInput `pulumi:"managedInstanceName"`
-	ResourceGroupName                pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the managed instance.
+	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDistributedAvailabilityGroupOutputArgs) ElementType() reflect.Type {
@@ -82,54 +101,67 @@ func (o LookupDistributedAvailabilityGroupResultOutput) ToLookupDistributedAvail
 	return o
 }
 
+// The distributed availability group id
 func (o LookupDistributedAvailabilityGroupResultOutput) DistributedAvailabilityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.DistributedAvailabilityGroupId }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupDistributedAvailabilityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The last hardened lsn
 func (o LookupDistributedAvailabilityGroupResultOutput) LastHardenedLsn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.LastHardenedLsn }).(pulumi.StringOutput)
 }
 
+// The link state
 func (o LookupDistributedAvailabilityGroupResultOutput) LinkState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.LinkState }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupDistributedAvailabilityGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The primary availability group name
 func (o LookupDistributedAvailabilityGroupResultOutput) PrimaryAvailabilityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.PrimaryAvailabilityGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 func (o LookupDistributedAvailabilityGroupResultOutput) ReplicationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.ReplicationMode }).(pulumi.StringPtrOutput)
 }
 
+// The secondary availability group name
 func (o LookupDistributedAvailabilityGroupResultOutput) SecondaryAvailabilityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.SecondaryAvailabilityGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The source endpoint
 func (o LookupDistributedAvailabilityGroupResultOutput) SourceEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.SourceEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The source replica id
 func (o LookupDistributedAvailabilityGroupResultOutput) SourceReplicaId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.SourceReplicaId }).(pulumi.StringOutput)
 }
 
+// The name of the target database
 func (o LookupDistributedAvailabilityGroupResultOutput) TargetDatabase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.TargetDatabase }).(pulumi.StringPtrOutput)
 }
 
+// The target replica id
 func (o LookupDistributedAvailabilityGroupResultOutput) TargetReplicaId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.TargetReplicaId }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupDistributedAvailabilityGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

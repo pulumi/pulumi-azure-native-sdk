@@ -21,17 +21,24 @@ func ListMediaServiceKeys(ctx *pulumi.Context, args *ListMediaServiceKeysArgs, o
 }
 
 type ListMediaServiceKeysArgs struct {
-	MediaServiceName  string `pulumi:"mediaServiceName"`
+	// Name of the Media Service.
+	MediaServiceName string `pulumi:"mediaServiceName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response body for a ListKeys API.
 type ListMediaServiceKeysResult struct {
-	PrimaryAuthEndpoint   *string `pulumi:"primaryAuthEndpoint"`
-	PrimaryKey            *string `pulumi:"primaryKey"`
-	Scope                 *string `pulumi:"scope"`
+	// The primary authorization endpoint.
+	PrimaryAuthEndpoint *string `pulumi:"primaryAuthEndpoint"`
+	// The primary key for the Media Service resource.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// The authorization scope.
+	Scope *string `pulumi:"scope"`
+	// The secondary authorization endpoint.
 	SecondaryAuthEndpoint *string `pulumi:"secondaryAuthEndpoint"`
-	SecondaryKey          *string `pulumi:"secondaryKey"`
+	// The secondary key for the Media Service resource.
+	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
 func ListMediaServiceKeysOutput(ctx *pulumi.Context, args ListMediaServiceKeysOutputArgs, opts ...pulumi.InvokeOption) ListMediaServiceKeysResultOutput {
@@ -48,7 +55,9 @@ func ListMediaServiceKeysOutput(ctx *pulumi.Context, args ListMediaServiceKeysOu
 }
 
 type ListMediaServiceKeysOutputArgs struct {
-	MediaServiceName  pulumi.StringInput `pulumi:"mediaServiceName"`
+	// Name of the Media Service.
+	MediaServiceName pulumi.StringInput `pulumi:"mediaServiceName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,22 +80,27 @@ func (o ListMediaServiceKeysResultOutput) ToListMediaServiceKeysResultOutputWith
 	return o
 }
 
+// The primary authorization endpoint.
 func (o ListMediaServiceKeysResultOutput) PrimaryAuthEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMediaServiceKeysResult) *string { return v.PrimaryAuthEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The primary key for the Media Service resource.
 func (o ListMediaServiceKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMediaServiceKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// The authorization scope.
 func (o ListMediaServiceKeysResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMediaServiceKeysResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// The secondary authorization endpoint.
 func (o ListMediaServiceKeysResultOutput) SecondaryAuthEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMediaServiceKeysResult) *string { return v.SecondaryAuthEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The secondary key for the Media Service resource.
 func (o ListMediaServiceKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMediaServiceKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

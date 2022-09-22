@@ -21,16 +21,23 @@ func ListComputeNodes(ctx *pulumi.Context, args *ListComputeNodesArgs, opts ...p
 }
 
 type ListComputeNodesArgs struct {
-	ComputeName       string `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName string `pulumi:"computeName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Compute node information related to a AmlCompute.
 type ListComputeNodesResult struct {
-	ComputeType string                              `pulumi:"computeType"`
-	NextLink    string                              `pulumi:"nextLink"`
-	Nodes       []AmlComputeNodeInformationResponse `pulumi:"nodes"`
+	// The type of compute
+	// Expected value is 'AmlCompute'.
+	ComputeType string `pulumi:"computeType"`
+	// The continuation token.
+	NextLink string `pulumi:"nextLink"`
+	// The collection of returned AmlCompute nodes details.
+	Nodes []AmlComputeNodeInformationResponse `pulumi:"nodes"`
 }
 
 func ListComputeNodesOutput(ctx *pulumi.Context, args ListComputeNodesOutputArgs, opts ...pulumi.InvokeOption) ListComputeNodesResultOutput {
@@ -47,9 +54,12 @@ func ListComputeNodesOutput(ctx *pulumi.Context, args ListComputeNodesOutputArgs
 }
 
 type ListComputeNodesOutputArgs struct {
-	ComputeName       pulumi.StringInput `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName pulumi.StringInput `pulumi:"computeName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListComputeNodesOutputArgs) ElementType() reflect.Type {
@@ -71,14 +81,18 @@ func (o ListComputeNodesResultOutput) ToListComputeNodesResultOutputWithContext(
 	return o
 }
 
+// The type of compute
+// Expected value is 'AmlCompute'.
 func (o ListComputeNodesResultOutput) ComputeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ListComputeNodesResult) string { return v.ComputeType }).(pulumi.StringOutput)
 }
 
+// The continuation token.
 func (o ListComputeNodesResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListComputeNodesResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// The collection of returned AmlCompute nodes details.
 func (o ListComputeNodesResultOutput) Nodes() AmlComputeNodeInformationResponseArrayOutput {
 	return o.ApplyT(func(v ListComputeNodesResult) []AmlComputeNodeInformationResponse { return v.Nodes }).(AmlComputeNodeInformationResponseArrayOutput)
 }

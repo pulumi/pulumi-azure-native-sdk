@@ -22,19 +22,28 @@ func LookupEnvironmentType(ctx *pulumi.Context, args *LookupEnvironmentTypeArgs,
 }
 
 type LookupEnvironmentTypeArgs struct {
-	DevCenterName       string `pulumi:"devCenterName"`
+	// The name of the devcenter.
+	DevCenterName string `pulumi:"devCenterName"`
+	// The name of the environment type.
 	EnvironmentTypeName string `pulumi:"environmentTypeName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents an environment type.
 type LookupEnvironmentTypeResult struct {
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	Type              string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEnvironmentTypeOutput(ctx *pulumi.Context, args LookupEnvironmentTypeOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentTypeResultOutput {
@@ -51,9 +60,12 @@ func LookupEnvironmentTypeOutput(ctx *pulumi.Context, args LookupEnvironmentType
 }
 
 type LookupEnvironmentTypeOutputArgs struct {
-	DevCenterName       pulumi.StringInput `pulumi:"devCenterName"`
+	// The name of the devcenter.
+	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
+	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringInput `pulumi:"environmentTypeName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupEnvironmentTypeOutputArgs) ElementType() reflect.Type {
@@ -75,26 +87,32 @@ func (o LookupEnvironmentTypeResultOutput) ToLookupEnvironmentTypeResultOutputWi
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEnvironmentTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEnvironmentTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupEnvironmentTypeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEnvironmentTypeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupEnvironmentTypeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEnvironmentTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }

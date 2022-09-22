@@ -21,24 +21,38 @@ func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pul
 }
 
 type LookupSyncGroupArgs struct {
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the database on which the sync group is hosted.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
-	SyncGroupName     string `pulumi:"syncGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the sync group.
+	SyncGroupName string `pulumi:"syncGroupName"`
 }
 
 // An Azure SQL Database sync group.
 type LookupSyncGroupResult struct {
-	ConflictResolutionPolicy *string                  `pulumi:"conflictResolutionPolicy"`
-	HubDatabaseUserName      *string                  `pulumi:"hubDatabaseUserName"`
-	Id                       string                   `pulumi:"id"`
-	Interval                 *int                     `pulumi:"interval"`
-	LastSyncTime             string                   `pulumi:"lastSyncTime"`
-	Name                     string                   `pulumi:"name"`
-	Schema                   *SyncGroupSchemaResponse `pulumi:"schema"`
-	SyncDatabaseId           *string                  `pulumi:"syncDatabaseId"`
-	SyncState                string                   `pulumi:"syncState"`
-	Type                     string                   `pulumi:"type"`
+	// Conflict resolution policy of the sync group.
+	ConflictResolutionPolicy *string `pulumi:"conflictResolutionPolicy"`
+	// User name for the sync group hub database credential.
+	HubDatabaseUserName *string `pulumi:"hubDatabaseUserName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Sync interval of the sync group.
+	Interval *int `pulumi:"interval"`
+	// Last sync time of the sync group.
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Sync schema of the sync group.
+	Schema *SyncGroupSchemaResponse `pulumi:"schema"`
+	// ARM resource id of the sync database in the sync group.
+	SyncDatabaseId *string `pulumi:"syncDatabaseId"`
+	// Sync state of the sync group.
+	SyncState string `pulumi:"syncState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSyncGroupOutput(ctx *pulumi.Context, args LookupSyncGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSyncGroupResultOutput {
@@ -55,10 +69,14 @@ func LookupSyncGroupOutput(ctx *pulumi.Context, args LookupSyncGroupOutputArgs, 
 }
 
 type LookupSyncGroupOutputArgs struct {
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the database on which the sync group is hosted.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
-	SyncGroupName     pulumi.StringInput `pulumi:"syncGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the sync group.
+	SyncGroupName pulumi.StringInput `pulumi:"syncGroupName"`
 }
 
 func (LookupSyncGroupOutputArgs) ElementType() reflect.Type {
@@ -80,42 +98,52 @@ func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutputWithContext(ct
 	return o
 }
 
+// Conflict resolution policy of the sync group.
 func (o LookupSyncGroupResultOutput) ConflictResolutionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) *string { return v.ConflictResolutionPolicy }).(pulumi.StringPtrOutput)
 }
 
+// User name for the sync group hub database credential.
 func (o LookupSyncGroupResultOutput) HubDatabaseUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) *string { return v.HubDatabaseUserName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupSyncGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Sync interval of the sync group.
 func (o LookupSyncGroupResultOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
+// Last sync time of the sync group.
 func (o LookupSyncGroupResultOutput) LastSyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.LastSyncTime }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSyncGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sync schema of the sync group.
 func (o LookupSyncGroupResultOutput) Schema() SyncGroupSchemaResponsePtrOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) *SyncGroupSchemaResponse { return v.Schema }).(SyncGroupSchemaResponsePtrOutput)
 }
 
+// ARM resource id of the sync database in the sync group.
 func (o LookupSyncGroupResultOutput) SyncDatabaseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) *string { return v.SyncDatabaseId }).(pulumi.StringPtrOutput)
 }
 
+// Sync state of the sync group.
 func (o LookupSyncGroupResultOutput) SyncState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.SyncState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupSyncGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

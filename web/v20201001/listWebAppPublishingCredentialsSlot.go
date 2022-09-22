@@ -21,23 +21,36 @@ func ListWebAppPublishingCredentialsSlot(ctx *pulumi.Context, args *ListWebAppPu
 }
 
 type ListWebAppPublishingCredentialsSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the publishing credentials for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // User credentials used for publishing activity.
 type ListWebAppPublishingCredentialsSlotResult struct {
-	Id                         string             `pulumi:"id"`
-	Kind                       *string            `pulumi:"kind"`
-	Name                       string             `pulumi:"name"`
-	PublishingPassword         *string            `pulumi:"publishingPassword"`
-	PublishingPasswordHash     *string            `pulumi:"publishingPasswordHash"`
-	PublishingPasswordHashSalt *string            `pulumi:"publishingPasswordHashSalt"`
-	PublishingUserName         string             `pulumi:"publishingUserName"`
-	ScmUri                     *string            `pulumi:"scmUri"`
-	SystemData                 SystemDataResponse `pulumi:"systemData"`
-	Type                       string             `pulumi:"type"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Password used for publishing.
+	PublishingPassword *string `pulumi:"publishingPassword"`
+	// Password hash used for publishing.
+	PublishingPasswordHash *string `pulumi:"publishingPasswordHash"`
+	// Password hash salt used for publishing.
+	PublishingPasswordHashSalt *string `pulumi:"publishingPasswordHashSalt"`
+	// Username used for publishing.
+	PublishingUserName string `pulumi:"publishingUserName"`
+	// Url of SCM site.
+	ScmUri *string `pulumi:"scmUri"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppPublishingCredentialsSlotOutput(ctx *pulumi.Context, args ListWebAppPublishingCredentialsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppPublishingCredentialsSlotResultOutput {
@@ -54,9 +67,12 @@ func ListWebAppPublishingCredentialsSlotOutput(ctx *pulumi.Context, args ListWeb
 }
 
 type ListWebAppPublishingCredentialsSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the publishing credentials for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppPublishingCredentialsSlotOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o ListWebAppPublishingCredentialsSlotResultOutput) ToListWebAppPublishingC
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Password used for publishing.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) PublishingPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) *string { return v.PublishingPassword }).(pulumi.StringPtrOutput)
 }
 
+// Password hash used for publishing.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) PublishingPasswordHash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) *string { return v.PublishingPasswordHash }).(pulumi.StringPtrOutput)
 }
 
+// Password hash salt used for publishing.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) PublishingPasswordHashSalt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) *string { return v.PublishingPasswordHashSalt }).(pulumi.StringPtrOutput)
 }
 
+// Username used for publishing.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) PublishingUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) string { return v.PublishingUserName }).(pulumi.StringOutput)
 }
 
+// Url of SCM site.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) ScmUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) *string { return v.ScmUri }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o ListWebAppPublishingCredentialsSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

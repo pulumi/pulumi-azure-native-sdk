@@ -21,21 +21,32 @@ func LookupOpenIdConnectProvider(ctx *pulumi.Context, args *LookupOpenIdConnectP
 }
 
 type LookupOpenIdConnectProviderArgs struct {
-	Opid              string `pulumi:"opid"`
+	// Identifier of the OpenID Connect Provider.
+	Opid string `pulumi:"opid"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // OpenId Connect Provider details.
 type LookupOpenIdConnectProviderResult struct {
-	ClientId         string  `pulumi:"clientId"`
-	ClientSecret     *string `pulumi:"clientSecret"`
-	Description      *string `pulumi:"description"`
-	DisplayName      string  `pulumi:"displayName"`
-	Id               string  `pulumi:"id"`
-	MetadataEndpoint string  `pulumi:"metadataEndpoint"`
-	Name             string  `pulumi:"name"`
-	Type             string  `pulumi:"type"`
+	// Client ID of developer console which is the client application.
+	ClientId string `pulumi:"clientId"`
+	// Client Secret of developer console which is the client application.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// User-friendly description of OpenID Connect Provider.
+	Description *string `pulumi:"description"`
+	// User-friendly OpenID Connect Provider name.
+	DisplayName string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Metadata endpoint URI.
+	MetadataEndpoint string `pulumi:"metadataEndpoint"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupOpenIdConnectProviderOutput(ctx *pulumi.Context, args LookupOpenIdConnectProviderOutputArgs, opts ...pulumi.InvokeOption) LookupOpenIdConnectProviderResultOutput {
@@ -52,9 +63,12 @@ func LookupOpenIdConnectProviderOutput(ctx *pulumi.Context, args LookupOpenIdCon
 }
 
 type LookupOpenIdConnectProviderOutputArgs struct {
-	Opid              pulumi.StringInput `pulumi:"opid"`
+	// Identifier of the OpenID Connect Provider.
+	Opid pulumi.StringInput `pulumi:"opid"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupOpenIdConnectProviderOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupOpenIdConnectProviderResultOutput) ToLookupOpenIdConnectProviderRe
 	return o
 }
 
+// Client ID of developer console which is the client application.
 func (o LookupOpenIdConnectProviderResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// Client Secret of developer console which is the client application.
 func (o LookupOpenIdConnectProviderResultOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// User-friendly description of OpenID Connect Provider.
 func (o LookupOpenIdConnectProviderResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// User-friendly OpenID Connect Provider name.
 func (o LookupOpenIdConnectProviderResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupOpenIdConnectProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Metadata endpoint URI.
 func (o LookupOpenIdConnectProviderResultOutput) MetadataEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.MetadataEndpoint }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupOpenIdConnectProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupOpenIdConnectProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }

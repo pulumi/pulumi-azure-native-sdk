@@ -21,17 +21,23 @@ func LookupOutboundFirewallRule(ctx *pulumi.Context, args *LookupOutboundFirewal
 }
 
 type LookupOutboundFirewallRuleArgs struct {
-	OutboundRuleFqdn  string `pulumi:"outboundRuleFqdn"`
+	OutboundRuleFqdn string `pulumi:"outboundRuleFqdn"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // An Azure SQL DB Server Outbound Firewall Rule.
 type LookupOutboundFirewallRuleResult struct {
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The state of the outbound rule.
 	ProvisioningState string `pulumi:"provisioningState"`
-	Type              string `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupOutboundFirewallRuleOutput(ctx *pulumi.Context, args LookupOutboundFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupOutboundFirewallRuleResultOutput {
@@ -48,9 +54,11 @@ func LookupOutboundFirewallRuleOutput(ctx *pulumi.Context, args LookupOutboundFi
 }
 
 type LookupOutboundFirewallRuleOutputArgs struct {
-	OutboundRuleFqdn  pulumi.StringInput `pulumi:"outboundRuleFqdn"`
+	OutboundRuleFqdn pulumi.StringInput `pulumi:"outboundRuleFqdn"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupOutboundFirewallRuleOutputArgs) ElementType() reflect.Type {
@@ -72,18 +80,22 @@ func (o LookupOutboundFirewallRuleResultOutput) ToLookupOutboundFirewallRuleResu
 	return o
 }
 
+// Resource ID.
 func (o LookupOutboundFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutboundFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupOutboundFirewallRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutboundFirewallRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The state of the outbound rule.
 func (o LookupOutboundFirewallRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutboundFirewallRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupOutboundFirewallRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutboundFirewallRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

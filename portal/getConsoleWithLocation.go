@@ -22,12 +22,15 @@ func LookupConsoleWithLocation(ctx *pulumi.Context, args *LookupConsoleWithLocat
 }
 
 type LookupConsoleWithLocationArgs struct {
+	// The name of the console
 	ConsoleName string `pulumi:"consoleName"`
-	Location    string `pulumi:"location"`
+	// The provider location
+	Location string `pulumi:"location"`
 }
 
 // Cloud shell console
 type LookupConsoleWithLocationResult struct {
+	// Cloud shell console properties.
 	Properties ConsolePropertiesResponse `pulumi:"properties"`
 }
 
@@ -45,8 +48,10 @@ func LookupConsoleWithLocationOutput(ctx *pulumi.Context, args LookupConsoleWith
 }
 
 type LookupConsoleWithLocationOutputArgs struct {
+	// The name of the console
 	ConsoleName pulumi.StringInput `pulumi:"consoleName"`
-	Location    pulumi.StringInput `pulumi:"location"`
+	// The provider location
+	Location pulumi.StringInput `pulumi:"location"`
 }
 
 func (LookupConsoleWithLocationOutputArgs) ElementType() reflect.Type {
@@ -68,6 +73,7 @@ func (o LookupConsoleWithLocationResultOutput) ToLookupConsoleWithLocationResult
 	return o
 }
 
+// Cloud shell console properties.
 func (o LookupConsoleWithLocationResultOutput) Properties() ConsolePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConsoleWithLocationResult) ConsolePropertiesResponse { return v.Properties }).(ConsolePropertiesResponseOutput)
 }

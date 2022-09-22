@@ -21,19 +21,28 @@ func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.Invo
 }
 
 type LookupCacheArgs struct {
-	CacheId           string `pulumi:"cacheId"`
+	// Identifier of the Cache entity. Cache identifier (should be either 'default' or valid Azure region identifier).
+	CacheId string `pulumi:"cacheId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Cache details.
 type LookupCacheResult struct {
-	ConnectionString string  `pulumi:"connectionString"`
-	Description      *string `pulumi:"description"`
-	Id               string  `pulumi:"id"`
-	Name             string  `pulumi:"name"`
-	ResourceId       *string `pulumi:"resourceId"`
-	Type             string  `pulumi:"type"`
+	// Runtime connection string to cache
+	ConnectionString string `pulumi:"connectionString"`
+	// Cache description
+	Description *string `pulumi:"description"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Original uri of entity in external system cache points to
+	ResourceId *string `pulumi:"resourceId"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCacheOutput(ctx *pulumi.Context, args LookupCacheOutputArgs, opts ...pulumi.InvokeOption) LookupCacheResultOutput {
@@ -50,9 +59,12 @@ func LookupCacheOutput(ctx *pulumi.Context, args LookupCacheOutputArgs, opts ...
 }
 
 type LookupCacheOutputArgs struct {
-	CacheId           pulumi.StringInput `pulumi:"cacheId"`
+	// Identifier of the Cache entity. Cache identifier (should be either 'default' or valid Azure region identifier).
+	CacheId pulumi.StringInput `pulumi:"cacheId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupCacheOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupCacheResultOutput) ToLookupCacheResultOutputWithContext(ctx contex
 	return o
 }
 
+// Runtime connection string to cache
 func (o LookupCacheResultOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
+// Cache description
 func (o LookupCacheResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCacheResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupCacheResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Original uri of entity in external system cache points to
 func (o LookupCacheResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCacheResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupCacheResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.Type }).(pulumi.StringOutput)
 }

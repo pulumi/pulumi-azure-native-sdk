@@ -21,29 +21,48 @@ func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.In
 }
 
 type LookupBackupArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	BackupName        string `pulumi:"backupName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the backup
+	BackupName string `pulumi:"backupName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VolumeName        string `pulumi:"volumeName"`
+	// The name of the volume
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // Backup of a Volume
 type LookupBackupResult struct {
-	BackupId            string             `pulumi:"backupId"`
-	BackupType          string             `pulumi:"backupType"`
-	CreationDate        string             `pulumi:"creationDate"`
-	FailureReason       string             `pulumi:"failureReason"`
-	Id                  string             `pulumi:"id"`
-	Label               *string            `pulumi:"label"`
-	Location            string             `pulumi:"location"`
-	Name                string             `pulumi:"name"`
-	ProvisioningState   string             `pulumi:"provisioningState"`
-	Size                float64            `pulumi:"size"`
-	SystemData          SystemDataResponse `pulumi:"systemData"`
-	Type                string             `pulumi:"type"`
-	UseExistingSnapshot *bool              `pulumi:"useExistingSnapshot"`
-	VolumeName          string             `pulumi:"volumeName"`
+	// UUID v4 used to identify the Backup
+	BackupId string `pulumi:"backupId"`
+	// Type of backup Manual or Scheduled
+	BackupType string `pulumi:"backupType"`
+	// The creation date of the backup
+	CreationDate string `pulumi:"creationDate"`
+	// Failure reason
+	FailureReason string `pulumi:"failureReason"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Label for backup
+	Label *string `pulumi:"label"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Size of backup
+	Size float64 `pulumi:"size"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
+	UseExistingSnapshot *bool `pulumi:"useExistingSnapshot"`
+	// Volume name
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // Defaults sets the appropriate defaults for LookupBackupResult
@@ -73,11 +92,16 @@ func LookupBackupOutput(ctx *pulumi.Context, args LookupBackupOutputArgs, opts .
 }
 
 type LookupBackupOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	BackupName        pulumi.StringInput `pulumi:"backupName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the backup
+	BackupName pulumi.StringInput `pulumi:"backupName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VolumeName        pulumi.StringInput `pulumi:"volumeName"`
+	// The name of the volume
+	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (LookupBackupOutputArgs) ElementType() reflect.Type {
@@ -99,58 +123,72 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx cont
 	return o
 }
 
+// UUID v4 used to identify the Backup
 func (o LookupBackupResultOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.BackupId }).(pulumi.StringOutput)
 }
 
+// Type of backup Manual or Scheduled
 func (o LookupBackupResultOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.BackupType }).(pulumi.StringOutput)
 }
 
+// The creation date of the backup
 func (o LookupBackupResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// Failure reason
 func (o LookupBackupResultOutput) FailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.FailureReason }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupBackupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Label for backup
 func (o LookupBackupResultOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// Resource location
 func (o LookupBackupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupBackupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Size of backup
 func (o LookupBackupResultOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupBackupResult) float64 { return v.Size }).(pulumi.Float64Output)
 }
 
+// The system meta data relating to this resource.
 func (o LookupBackupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBackupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type
 func (o LookupBackupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
 func (o LookupBackupResultOutput) UseExistingSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *bool { return v.UseExistingSnapshot }).(pulumi.BoolPtrOutput)
 }
 
+// Volume name
 func (o LookupBackupResultOutput) VolumeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.VolumeName }).(pulumi.StringOutput)
 }

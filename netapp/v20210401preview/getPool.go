@@ -21,25 +21,40 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 }
 
 type LookupPoolArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Capacity pool resource
 type LookupPoolResult struct {
-	Id                      string            `pulumi:"id"`
-	Location                string            `pulumi:"location"`
-	Name                    string            `pulumi:"name"`
-	PoolId                  string            `pulumi:"poolId"`
-	ProvisioningState       string            `pulumi:"provisioningState"`
-	QosType                 *string           `pulumi:"qosType"`
-	ServiceLevel            string            `pulumi:"serviceLevel"`
-	Size                    float64           `pulumi:"size"`
-	Tags                    map[string]string `pulumi:"tags"`
-	TotalThroughputMibps    float64           `pulumi:"totalThroughputMibps"`
-	Type                    string            `pulumi:"type"`
-	UtilizedThroughputMibps float64           `pulumi:"utilizedThroughputMibps"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// UUID v4 used to identify the Pool
+	PoolId string `pulumi:"poolId"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The qos type of the pool
+	QosType *string `pulumi:"qosType"`
+	// The service level of the file system
+	ServiceLevel string `pulumi:"serviceLevel"`
+	// Provisioned size of the pool (in bytes). Allowed values are in 4TiB chunks (value must be multiply of 4398046511104).
+	Size float64 `pulumi:"size"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Total throughput of pool in Mibps
+	TotalThroughputMibps float64 `pulumi:"totalThroughputMibps"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// Utilized throughput of pool in Mibps
+	UtilizedThroughputMibps float64 `pulumi:"utilizedThroughputMibps"`
 }
 
 // Defaults sets the appropriate defaults for LookupPoolResult
@@ -72,8 +87,11 @@ func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pu
 }
 
 type LookupPoolOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,50 +114,62 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.
 	return o
 }
 
+// Resource Id
 func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupPoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// UUID v4 used to identify the Pool
 func (o LookupPoolResultOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.PoolId }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The qos type of the pool
 func (o LookupPoolResultOutput) QosType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPoolResult) *string { return v.QosType }).(pulumi.StringPtrOutput)
 }
 
+// The service level of the file system
 func (o LookupPoolResultOutput) ServiceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ServiceLevel }).(pulumi.StringOutput)
 }
 
+// Provisioned size of the pool (in bytes). Allowed values are in 4TiB chunks (value must be multiply of 4398046511104).
 func (o LookupPoolResultOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPoolResult) float64 { return v.Size }).(pulumi.Float64Output)
 }
 
+// Resource tags
 func (o LookupPoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Total throughput of pool in Mibps
 func (o LookupPoolResultOutput) TotalThroughputMibps() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPoolResult) float64 { return v.TotalThroughputMibps }).(pulumi.Float64Output)
 }
 
+// Resource type
 func (o LookupPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Utilized throughput of pool in Mibps
 func (o LookupPoolResultOutput) UtilizedThroughputMibps() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPoolResult) float64 { return v.UtilizedThroughputMibps }).(pulumi.Float64Output)
 }

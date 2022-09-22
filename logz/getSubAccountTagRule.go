@@ -22,19 +22,27 @@ func LookupSubAccountTagRule(ctx *pulumi.Context, args *LookupSubAccountTagRuleA
 }
 
 type LookupSubAccountTagRuleArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	RuleSetName       string `pulumi:"ruleSetName"`
-	SubAccountName    string `pulumi:"subAccountName"`
+	// Sub Account resource name
+	SubAccountName string `pulumi:"subAccountName"`
 }
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 type LookupSubAccountTagRuleResult struct {
-	Id         string                               `pulumi:"id"`
-	Name       string                               `pulumi:"name"`
+	// The id of the rule set.
+	Id string `pulumi:"id"`
+	// Name of the rule set.
+	Name string `pulumi:"name"`
+	// Definition of the properties for a TagRules resource.
 	Properties MonitoringTagRulesPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                   `pulumi:"systemData"`
-	Type       string                               `pulumi:"type"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the rule set.
+	Type string `pulumi:"type"`
 }
 
 func LookupSubAccountTagRuleOutput(ctx *pulumi.Context, args LookupSubAccountTagRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSubAccountTagRuleResultOutput {
@@ -51,10 +59,13 @@ func LookupSubAccountTagRuleOutput(ctx *pulumi.Context, args LookupSubAccountTag
 }
 
 type LookupSubAccountTagRuleOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	RuleSetName       pulumi.StringInput `pulumi:"ruleSetName"`
-	SubAccountName    pulumi.StringInput `pulumi:"subAccountName"`
+	// Sub Account resource name
+	SubAccountName pulumi.StringInput `pulumi:"subAccountName"`
 }
 
 func (LookupSubAccountTagRuleOutputArgs) ElementType() reflect.Type {
@@ -76,22 +87,27 @@ func (o LookupSubAccountTagRuleResultOutput) ToLookupSubAccountTagRuleResultOutp
 	return o
 }
 
+// The id of the rule set.
 func (o LookupSubAccountTagRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountTagRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the rule set.
 func (o LookupSubAccountTagRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountTagRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Definition of the properties for a TagRules resource.
 func (o LookupSubAccountTagRuleResultOutput) Properties() MonitoringTagRulesPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSubAccountTagRuleResult) MonitoringTagRulesPropertiesResponse { return v.Properties }).(MonitoringTagRulesPropertiesResponseOutput)
 }
 
+// The system metadata relating to this resource
 func (o LookupSubAccountTagRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSubAccountTagRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the rule set.
 func (o LookupSubAccountTagRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountTagRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

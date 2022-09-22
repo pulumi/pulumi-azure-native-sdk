@@ -21,12 +21,15 @@ func GetEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetEventSubscription
 }
 
 type GetEventSubscriptionFullUrlArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	Scope                 string `pulumi:"scope"`
+	// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+	Scope string `pulumi:"scope"`
 }
 
 // Full endpoint url of an event subscription
 type GetEventSubscriptionFullUrlResult struct {
+	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
 }
 
@@ -44,8 +47,10 @@ func GetEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetEventSubscri
 }
 
 type GetEventSubscriptionFullUrlOutputArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	Scope                 pulumi.StringInput `pulumi:"scope"`
+	// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (GetEventSubscriptionFullUrlOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o GetEventSubscriptionFullUrlResultOutput) ToGetEventSubscriptionFullUrlRe
 	return o
 }
 
+// The URL that represents the endpoint of the destination of an event subscription.
 func (o GetEventSubscriptionFullUrlResultOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEventSubscriptionFullUrlResult) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
 }

@@ -21,25 +21,40 @@ func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...p
 }
 
 type LookupGuestAgentArgs struct {
-	Name               string `pulumi:"name"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// Name of the GuestAgent.
+	Name string `pulumi:"name"`
+	// The Resource Group Name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the vm.
 	VirtualMachineName string `pulumi:"virtualMachineName"`
 }
 
 // Defines the GuestAgent.
 type LookupGuestAgentResult struct {
-	Credentials        *GuestCredentialResponse        `pulumi:"credentials"`
-	CustomResourceName string                          `pulumi:"customResourceName"`
-	HttpProxyConfig    *HttpProxyConfigurationResponse `pulumi:"httpProxyConfig"`
-	Id                 string                          `pulumi:"id"`
-	Name               string                          `pulumi:"name"`
-	ProvisioningAction *string                         `pulumi:"provisioningAction"`
-	ProvisioningState  string                          `pulumi:"provisioningState"`
-	Status             string                          `pulumi:"status"`
-	Statuses           []ResourceStatusResponse        `pulumi:"statuses"`
-	SystemData         SystemDataResponse              `pulumi:"systemData"`
-	Type               string                          `pulumi:"type"`
-	Uuid               string                          `pulumi:"uuid"`
+	// Username / Password Credentials to provision guest agent.
+	Credentials *GuestCredentialResponse `pulumi:"credentials"`
+	// Gets the name of the corresponding resource in Kubernetes.
+	CustomResourceName string `pulumi:"customResourceName"`
+	// HTTP Proxy configuration for the VM.
+	HttpProxyConfig *HttpProxyConfigurationResponse `pulumi:"httpProxyConfig"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets the guest agent provisioning action.
+	ProvisioningAction *string `pulumi:"provisioningAction"`
+	// Gets or sets the provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the guest agent status.
+	Status string `pulumi:"status"`
+	// The resource status information.
+	Statuses []ResourceStatusResponse `pulumi:"statuses"`
+	// The system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Gets or sets a unique identifier for this resource.
+	Uuid string `pulumi:"uuid"`
 }
 
 func LookupGuestAgentOutput(ctx *pulumi.Context, args LookupGuestAgentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestAgentResultOutput {
@@ -56,8 +71,11 @@ func LookupGuestAgentOutput(ctx *pulumi.Context, args LookupGuestAgentOutputArgs
 }
 
 type LookupGuestAgentOutputArgs struct {
-	Name               pulumi.StringInput `pulumi:"name"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the GuestAgent.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Resource Group Name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the vm.
 	VirtualMachineName pulumi.StringInput `pulumi:"virtualMachineName"`
 }
 
@@ -80,50 +98,62 @@ func (o LookupGuestAgentResultOutput) ToLookupGuestAgentResultOutputWithContext(
 	return o
 }
 
+// Username / Password Credentials to provision guest agent.
 func (o LookupGuestAgentResultOutput) Credentials() GuestCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) *GuestCredentialResponse { return v.Credentials }).(GuestCredentialResponsePtrOutput)
 }
 
+// Gets the name of the corresponding resource in Kubernetes.
 func (o LookupGuestAgentResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
+// HTTP Proxy configuration for the VM.
 func (o LookupGuestAgentResultOutput) HttpProxyConfig() HttpProxyConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) *HttpProxyConfigurationResponse { return v.HttpProxyConfig }).(HttpProxyConfigurationResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGuestAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupGuestAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the guest agent provisioning action.
 func (o LookupGuestAgentResultOutput) ProvisioningAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) *string { return v.ProvisioningAction }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the provisioning state.
 func (o LookupGuestAgentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Gets or sets the guest agent status.
 func (o LookupGuestAgentResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The resource status information.
 func (o LookupGuestAgentResultOutput) Statuses() ResourceStatusResponseArrayOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) []ResourceStatusResponse { return v.Statuses }).(ResourceStatusResponseArrayOutput)
 }
 
+// The system data.
 func (o LookupGuestAgentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGuestAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Gets or sets a unique identifier for this resource.
 func (o LookupGuestAgentResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Uuid }).(pulumi.StringOutput)
 }

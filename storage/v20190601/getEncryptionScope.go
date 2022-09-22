@@ -23,21 +23,32 @@ func LookupEncryptionScope(ctx *pulumi.Context, args *LookupEncryptionScopeArgs,
 }
 
 type LookupEncryptionScopeArgs struct {
-	AccountName         string `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
 	EncryptionScopeName string `pulumi:"encryptionScopeName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Encryption Scope resource.
 type LookupEncryptionScopeResult struct {
-	CreationTime       string                                     `pulumi:"creationTime"`
-	Id                 string                                     `pulumi:"id"`
+	// Gets the creation date and time of the encryption scope in UTC.
+	CreationTime string `pulumi:"creationTime"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
 	KeyVaultProperties *EncryptionScopeKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
-	LastModifiedTime   string                                     `pulumi:"lastModifiedTime"`
-	Name               string                                     `pulumi:"name"`
-	Source             *string                                    `pulumi:"source"`
-	State              *string                                    `pulumi:"state"`
-	Type               string                                     `pulumi:"type"`
+	// Gets the last modification date and time of the encryption scope in UTC.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
+	Source *string `pulumi:"source"`
+	// The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
+	State *string `pulumi:"state"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEncryptionScopeOutput(ctx *pulumi.Context, args LookupEncryptionScopeOutputArgs, opts ...pulumi.InvokeOption) LookupEncryptionScopeResultOutput {
@@ -54,9 +65,12 @@ func LookupEncryptionScopeOutput(ctx *pulumi.Context, args LookupEncryptionScope
 }
 
 type LookupEncryptionScopeOutputArgs struct {
-	AccountName         pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
 	EncryptionScopeName pulumi.StringInput `pulumi:"encryptionScopeName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupEncryptionScopeOutputArgs) ElementType() reflect.Type {
@@ -78,36 +92,44 @@ func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutputWi
 	return o
 }
 
+// Gets the creation date and time of the encryption scope in UTC.
 func (o LookupEncryptionScopeResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEncryptionScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
 func (o LookupEncryptionScopeResultOutput) KeyVaultProperties() EncryptionScopeKeyVaultPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) *EncryptionScopeKeyVaultPropertiesResponse {
 		return v.KeyVaultProperties
 	}).(EncryptionScopeKeyVaultPropertiesResponsePtrOutput)
 }
 
+// Gets the last modification date and time of the encryption scope in UTC.
 func (o LookupEncryptionScopeResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEncryptionScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
 func (o LookupEncryptionScopeResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
 func (o LookupEncryptionScopeResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEncryptionScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

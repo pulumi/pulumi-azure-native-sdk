@@ -21,23 +21,36 @@ func LookupStorageAccount(ctx *pulumi.Context, args *LookupStorageAccountArgs, o
 }
 
 type LookupStorageAccountArgs struct {
-	DeviceName         string `pulumi:"deviceName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The storage account name.
 	StorageAccountName string `pulumi:"storageAccountName"`
 }
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
 type LookupStorageAccountResult struct {
-	BlobEndpoint               string             `pulumi:"blobEndpoint"`
-	ContainerCount             int                `pulumi:"containerCount"`
-	DataPolicy                 string             `pulumi:"dataPolicy"`
-	Description                *string            `pulumi:"description"`
-	Id                         string             `pulumi:"id"`
-	Name                       string             `pulumi:"name"`
-	StorageAccountCredentialId *string            `pulumi:"storageAccountCredentialId"`
-	StorageAccountStatus       *string            `pulumi:"storageAccountStatus"`
-	SystemData                 SystemDataResponse `pulumi:"systemData"`
-	Type                       string             `pulumi:"type"`
+	// BlobEndpoint of Storage Account
+	BlobEndpoint string `pulumi:"blobEndpoint"`
+	// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
+	ContainerCount int `pulumi:"containerCount"`
+	// Data policy of the storage Account.
+	DataPolicy string `pulumi:"dataPolicy"`
+	// Description for the storage Account.
+	Description *string `pulumi:"description"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Storage Account Credential Id
+	StorageAccountCredentialId *string `pulumi:"storageAccountCredentialId"`
+	// Current status of the storage account
+	StorageAccountStatus *string `pulumi:"storageAccountStatus"`
+	// Metadata pertaining to creation and last modification of StorageAccount
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageAccountOutput(ctx *pulumi.Context, args LookupStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountResultOutput {
@@ -54,8 +67,11 @@ func LookupStorageAccountOutput(ctx *pulumi.Context, args LookupStorageAccountOu
 }
 
 type LookupStorageAccountOutputArgs struct {
-	DeviceName         pulumi.StringInput `pulumi:"deviceName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The storage account name.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
 }
 
@@ -78,42 +94,52 @@ func (o LookupStorageAccountResultOutput) ToLookupStorageAccountResultOutputWith
 	return o
 }
 
+// BlobEndpoint of Storage Account
 func (o LookupStorageAccountResultOutput) BlobEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) string { return v.BlobEndpoint }).(pulumi.StringOutput)
 }
 
+// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
 func (o LookupStorageAccountResultOutput) ContainerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) int { return v.ContainerCount }).(pulumi.IntOutput)
 }
 
+// Data policy of the storage Account.
 func (o LookupStorageAccountResultOutput) DataPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) string { return v.DataPolicy }).(pulumi.StringOutput)
 }
 
+// Description for the storage Account.
 func (o LookupStorageAccountResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupStorageAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupStorageAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Storage Account Credential Id
 func (o LookupStorageAccountResultOutput) StorageAccountCredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) *string { return v.StorageAccountCredentialId }).(pulumi.StringPtrOutput)
 }
 
+// Current status of the storage account
 func (o LookupStorageAccountResultOutput) StorageAccountStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) *string { return v.StorageAccountStatus }).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of StorageAccount
 func (o LookupStorageAccountResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupStorageAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,14 +21,18 @@ func GetRegistryBuildSourceUploadUrl(ctx *pulumi.Context, args *GetRegistryBuild
 }
 
 type GetRegistryBuildSourceUploadUrlArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of a response to source upload request.
 type GetRegistryBuildSourceUploadUrlResult struct {
+	// The relative path to the source. This is used to submit the subsequent queue build request.
 	RelativePath *string `pulumi:"relativePath"`
-	UploadUrl    *string `pulumi:"uploadUrl"`
+	// The URL where the client can upload the source.
+	UploadUrl *string `pulumi:"uploadUrl"`
 }
 
 func GetRegistryBuildSourceUploadUrlOutput(ctx *pulumi.Context, args GetRegistryBuildSourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) GetRegistryBuildSourceUploadUrlResultOutput {
@@ -45,7 +49,9 @@ func GetRegistryBuildSourceUploadUrlOutput(ctx *pulumi.Context, args GetRegistry
 }
 
 type GetRegistryBuildSourceUploadUrlOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o GetRegistryBuildSourceUploadUrlResultOutput) ToGetRegistryBuildSourceUpl
 	return o
 }
 
+// The relative path to the source. This is used to submit the subsequent queue build request.
 func (o GetRegistryBuildSourceUploadUrlResultOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryBuildSourceUploadUrlResult) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }
 
+// The URL where the client can upload the source.
 func (o GetRegistryBuildSourceUploadUrlResultOutput) UploadUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryBuildSourceUploadUrlResult) *string { return v.UploadUrl }).(pulumi.StringPtrOutput)
 }

@@ -21,22 +21,34 @@ func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCo
 }
 
 type LookupAzureTrafficCollectorArgs struct {
+	// Azure Traffic Collector name
 	AzureTrafficCollectorName string `pulumi:"azureTrafficCollectorName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure Traffic Collector resource.
 type LookupAzureTrafficCollectorResult struct {
-	CollectorPolicies []CollectorPolicyResponse         `pulumi:"collectorPolicies"`
-	Etag              string                            `pulumi:"etag"`
-	Id                string                            `pulumi:"id"`
-	Location          *string                           `pulumi:"location"`
-	Name              string                            `pulumi:"name"`
-	ProvisioningState string                            `pulumi:"provisioningState"`
-	SystemData        TrackedResourceResponseSystemData `pulumi:"systemData"`
-	Tags              map[string]string                 `pulumi:"tags"`
-	Type              string                            `pulumi:"type"`
-	VirtualHub        *ResourceReferenceResponse        `pulumi:"virtualHub"`
+	// Collector Policies for Azure Traffic Collector.
+	CollectorPolicies []CollectorPolicyResponse `pulumi:"collectorPolicies"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the application rule collection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData TrackedResourceResponseSystemData `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The virtualHub to which the Azure Traffic Collector belongs.
+	VirtualHub *ResourceReferenceResponse `pulumi:"virtualHub"`
 }
 
 func LookupAzureTrafficCollectorOutput(ctx *pulumi.Context, args LookupAzureTrafficCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureTrafficCollectorResultOutput {
@@ -53,8 +65,10 @@ func LookupAzureTrafficCollectorOutput(ctx *pulumi.Context, args LookupAzureTraf
 }
 
 type LookupAzureTrafficCollectorOutputArgs struct {
+	// Azure Traffic Collector name
 	AzureTrafficCollectorName pulumi.StringInput `pulumi:"azureTrafficCollectorName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAzureTrafficCollectorOutputArgs) ElementType() reflect.Type {
@@ -76,42 +90,52 @@ func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorRe
 	return o
 }
 
+// Collector Policies for Azure Traffic Collector.
 func (o LookupAzureTrafficCollectorResultOutput) CollectorPolicies() CollectorPolicyResponseArrayOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) []CollectorPolicyResponse { return v.CollectorPolicies }).(CollectorPolicyResponseArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupAzureTrafficCollectorResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupAzureTrafficCollectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupAzureTrafficCollectorResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupAzureTrafficCollectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the application rule collection resource.
 func (o LookupAzureTrafficCollectorResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupAzureTrafficCollectorResultOutput) SystemData() TrackedResourceResponseSystemDataOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) TrackedResourceResponseSystemData { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
 }
 
+// Resource tags.
 func (o LookupAzureTrafficCollectorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupAzureTrafficCollectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The virtualHub to which the Azure Traffic Collector belongs.
 func (o LookupAzureTrafficCollectorResultOutput) VirtualHub() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) *ResourceReferenceResponse { return v.VirtualHub }).(ResourceReferenceResponsePtrOutput)
 }

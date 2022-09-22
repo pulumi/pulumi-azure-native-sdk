@@ -21,22 +21,34 @@ func LookupVirtualNetworkGatewayNatRule(ctx *pulumi.Context, args *LookupVirtual
 }
 
 type LookupVirtualNetworkGatewayNatRuleArgs struct {
-	NatRuleName               string `pulumi:"natRuleName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the nat rule.
+	NatRuleName string `pulumi:"natRuleName"`
+	// The resource group name of the Virtual Network Gateway.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the gateway.
 	VirtualNetworkGatewayName string `pulumi:"virtualNetworkGatewayName"`
 }
 
 // VirtualNetworkGatewayNatRule Resource.
 type LookupVirtualNetworkGatewayNatRuleResult struct {
-	Etag              string                      `pulumi:"etag"`
-	ExternalMappings  []VpnNatRuleMappingResponse `pulumi:"externalMappings"`
-	Id                *string                     `pulumi:"id"`
-	InternalMappings  []VpnNatRuleMappingResponse `pulumi:"internalMappings"`
-	IpConfigurationId *string                     `pulumi:"ipConfigurationId"`
-	Mode              *string                     `pulumi:"mode"`
-	Name              *string                     `pulumi:"name"`
-	ProvisioningState string                      `pulumi:"provisioningState"`
-	Type              string                      `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The private IP address external mapping for NAT.
+	ExternalMappings []VpnNatRuleMappingResponse `pulumi:"externalMappings"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The private IP address internal mapping for NAT.
+	InternalMappings []VpnNatRuleMappingResponse `pulumi:"internalMappings"`
+	// The IP Configuration ID this NAT rule applies to.
+	IpConfigurationId *string `pulumi:"ipConfigurationId"`
+	// The Source NAT direction of a VPN NAT.
+	Mode *string `pulumi:"mode"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the NAT Rule resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupVirtualNetworkGatewayNatRuleOutput(ctx *pulumi.Context, args LookupVirtualNetworkGatewayNatRuleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkGatewayNatRuleResultOutput {
@@ -53,8 +65,11 @@ func LookupVirtualNetworkGatewayNatRuleOutput(ctx *pulumi.Context, args LookupVi
 }
 
 type LookupVirtualNetworkGatewayNatRuleOutputArgs struct {
-	NatRuleName               pulumi.StringInput `pulumi:"natRuleName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the nat rule.
+	NatRuleName pulumi.StringInput `pulumi:"natRuleName"`
+	// The resource group name of the Virtual Network Gateway.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the gateway.
 	VirtualNetworkGatewayName pulumi.StringInput `pulumi:"virtualNetworkGatewayName"`
 }
 
@@ -77,42 +92,51 @@ func (o LookupVirtualNetworkGatewayNatRuleResultOutput) ToLookupVirtualNetworkGa
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The private IP address external mapping for NAT.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) ExternalMappings() VpnNatRuleMappingResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) []VpnNatRuleMappingResponse {
 		return v.ExternalMappings
 	}).(VpnNatRuleMappingResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The private IP address internal mapping for NAT.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) InternalMappings() VpnNatRuleMappingResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) []VpnNatRuleMappingResponse {
 		return v.InternalMappings
 	}).(VpnNatRuleMappingResponseArrayOutput)
 }
 
+// The IP Configuration ID this NAT rule applies to.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) IpConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) *string { return v.IpConfigurationId }).(pulumi.StringPtrOutput)
 }
 
+// The Source NAT direction of a VPN NAT.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the NAT Rule resource.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupVirtualNetworkGatewayNatRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayNatRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

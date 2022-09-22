@@ -22,19 +22,28 @@ func LookupServerAdministrator(ctx *pulumi.Context, args *LookupServerAdministra
 }
 
 type LookupServerAdministratorArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents a and external administrator to be created.
 type LookupServerAdministratorResult struct {
+	// The type of administrator.
 	AdministratorType string `pulumi:"administratorType"`
-	Id                string `pulumi:"id"`
-	Login             string `pulumi:"login"`
-	Name              string `pulumi:"name"`
-	Sid               string `pulumi:"sid"`
-	TenantId          string `pulumi:"tenantId"`
-	Type              string `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The server administrator login account name.
+	Login string `pulumi:"login"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The server administrator Sid (Secure ID).
+	Sid string `pulumi:"sid"`
+	// The server Active Directory Administrator tenant id.
+	TenantId string `pulumi:"tenantId"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupServerAdministratorOutput(ctx *pulumi.Context, args LookupServerAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAdministratorResultOutput {
@@ -51,8 +60,10 @@ func LookupServerAdministratorOutput(ctx *pulumi.Context, args LookupServerAdmin
 }
 
 type LookupServerAdministratorOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerAdministratorOutputArgs) ElementType() reflect.Type {
@@ -74,30 +85,37 @@ func (o LookupServerAdministratorResultOutput) ToLookupServerAdministratorResult
 	return o
 }
 
+// The type of administrator.
 func (o LookupServerAdministratorResultOutput) AdministratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.AdministratorType }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServerAdministratorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The server administrator login account name.
 func (o LookupServerAdministratorResultOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.Login }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupServerAdministratorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The server administrator Sid (Secure ID).
 func (o LookupServerAdministratorResultOutput) Sid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.Sid }).(pulumi.StringOutput)
 }
 
+// The server Active Directory Administrator tenant id.
 func (o LookupServerAdministratorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServerAdministratorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdministratorResult) string { return v.Type }).(pulumi.StringOutput)
 }

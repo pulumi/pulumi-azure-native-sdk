@@ -21,25 +21,40 @@ func LookupPrivateEndpoint(ctx *pulumi.Context, args *LookupPrivateEndpointArgs,
 }
 
 type LookupPrivateEndpointArgs struct {
-	Expand              *string `pulumi:"expand"`
-	PrivateEndpointName string  `pulumi:"privateEndpointName"`
-	ResourceGroupName   string  `pulumi:"resourceGroupName"`
+	// Expands referenced resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the private endpoint.
+	PrivateEndpointName string `pulumi:"privateEndpointName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Private endpoint resource.
 type LookupPrivateEndpointResult struct {
-	CustomDnsConfigs                    []CustomDnsConfigPropertiesFormatResponse `pulumi:"customDnsConfigs"`
-	Etag                                string                                    `pulumi:"etag"`
-	Id                                  *string                                   `pulumi:"id"`
-	Location                            *string                                   `pulumi:"location"`
-	ManualPrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse    `pulumi:"manualPrivateLinkServiceConnections"`
-	Name                                string                                    `pulumi:"name"`
-	NetworkInterfaces                   []NetworkInterfaceResponse                `pulumi:"networkInterfaces"`
-	PrivateLinkServiceConnections       []PrivateLinkServiceConnectionResponse    `pulumi:"privateLinkServiceConnections"`
-	ProvisioningState                   string                                    `pulumi:"provisioningState"`
-	Subnet                              *SubnetResponse                           `pulumi:"subnet"`
-	Tags                                map[string]string                         `pulumi:"tags"`
-	Type                                string                                    `pulumi:"type"`
+	// An array of custom dns configurations.
+	CustomDnsConfigs []CustomDnsConfigPropertiesFormatResponse `pulumi:"customDnsConfigs"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
+	ManualPrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"manualPrivateLinkServiceConnections"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// An array of references to the network interfaces created for this private endpoint.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// A grouping of information about the connection to the remote resource.
+	PrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"privateLinkServiceConnections"`
+	// The provisioning state of the private endpoint resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The ID of the subnet from which the private IP will be allocated.
+	Subnet *SubnetResponse `pulumi:"subnet"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupPrivateEndpointResult
@@ -67,9 +82,12 @@ func LookupPrivateEndpointOutput(ctx *pulumi.Context, args LookupPrivateEndpoint
 }
 
 type LookupPrivateEndpointOutputArgs struct {
-	Expand              pulumi.StringPtrInput `pulumi:"expand"`
-	PrivateEndpointName pulumi.StringInput    `pulumi:"privateEndpointName"`
-	ResourceGroupName   pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Expands referenced resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the private endpoint.
+	PrivateEndpointName pulumi.StringInput `pulumi:"privateEndpointName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateEndpointOutputArgs) ElementType() reflect.Type {
@@ -91,56 +109,68 @@ func (o LookupPrivateEndpointResultOutput) ToLookupPrivateEndpointResultOutputWi
 	return o
 }
 
+// An array of custom dns configurations.
 func (o LookupPrivateEndpointResultOutput) CustomDnsConfigs() CustomDnsConfigPropertiesFormatResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) []CustomDnsConfigPropertiesFormatResponse {
 		return v.CustomDnsConfigs
 	}).(CustomDnsConfigPropertiesFormatResponseArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupPrivateEndpointResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupPrivateEndpointResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupPrivateEndpointResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
 func (o LookupPrivateEndpointResultOutput) ManualPrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) []PrivateLinkServiceConnectionResponse {
 		return v.ManualPrivateLinkServiceConnections
 	}).(PrivateLinkServiceConnectionResponseArrayOutput)
 }
 
+// Resource name.
 func (o LookupPrivateEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An array of references to the network interfaces created for this private endpoint.
 func (o LookupPrivateEndpointResultOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
+// A grouping of information about the connection to the remote resource.
 func (o LookupPrivateEndpointResultOutput) PrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) []PrivateLinkServiceConnectionResponse {
 		return v.PrivateLinkServiceConnections
 	}).(PrivateLinkServiceConnectionResponseArrayOutput)
 }
 
+// The provisioning state of the private endpoint resource.
 func (o LookupPrivateEndpointResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The ID of the subnet from which the private IP will be allocated.
 func (o LookupPrivateEndpointResultOutput) Subnet() SubnetResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) *SubnetResponse { return v.Subnet }).(SubnetResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupPrivateEndpointResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupPrivateEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

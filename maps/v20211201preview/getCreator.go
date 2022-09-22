@@ -21,20 +21,30 @@ func LookupCreator(ctx *pulumi.Context, args *LookupCreatorArgs, opts ...pulumi.
 }
 
 type LookupCreatorArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	CreatorName       string `pulumi:"creatorName"`
+	// The name of the Maps Account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Maps Creator instance.
+	CreatorName string `pulumi:"creatorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure resource which represents Maps Creator product and provides ability to manage private location data.
 type LookupCreatorResult struct {
-	Id         string                    `pulumi:"id"`
-	Location   string                    `pulumi:"location"`
-	Name       string                    `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Creator resource properties.
 	Properties CreatorPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse        `pulumi:"systemData"`
-	Tags       map[string]string         `pulumi:"tags"`
-	Type       string                    `pulumi:"type"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupCreatorOutput(ctx *pulumi.Context, args LookupCreatorOutputArgs, opts ...pulumi.InvokeOption) LookupCreatorResultOutput {
@@ -51,8 +61,11 @@ func LookupCreatorOutput(ctx *pulumi.Context, args LookupCreatorOutputArgs, opts
 }
 
 type LookupCreatorOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	CreatorName       pulumi.StringInput `pulumi:"creatorName"`
+	// The name of the Maps Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Maps Creator instance.
+	CreatorName pulumi.StringInput `pulumi:"creatorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupCreatorResultOutput) ToLookupCreatorResultOutputWithContext(ctx co
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCreatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCreatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupCreatorResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCreatorResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupCreatorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCreatorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Creator resource properties.
 func (o LookupCreatorResultOutput) Properties() CreatorPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCreatorResult) CreatorPropertiesResponse { return v.Properties }).(CreatorPropertiesResponseOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupCreatorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCreatorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupCreatorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCreatorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCreatorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCreatorResult) string { return v.Type }).(pulumi.StringOutput)
 }

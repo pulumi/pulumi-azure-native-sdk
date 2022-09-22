@@ -22,19 +22,28 @@ func LookupMigrateProject(ctx *pulumi.Context, args *LookupMigrateProjectArgs, o
 }
 
 type LookupMigrateProjectArgs struct {
+	// Name of the Azure Migrate project.
 	MigrateProjectName string `pulumi:"migrateProjectName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// Name of the Azure Resource Group that migrate project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Migrate Project REST Resource.
 type LookupMigrateProjectResult struct {
-	ETag       *string                          `pulumi:"eTag"`
-	Id         string                           `pulumi:"id"`
-	Location   *string                          `pulumi:"location"`
-	Name       string                           `pulumi:"name"`
+	// Gets or sets the eTag for concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Gets the relative URL to get this migrate project.
+	Id string `pulumi:"id"`
+	// Gets or sets the Azure location in which migrate project is created.
+	Location *string `pulumi:"location"`
+	// Gets the name of the migrate project.
+	Name string `pulumi:"name"`
+	// Gets or sets the nested properties.
 	Properties MigrateProjectPropertiesResponse `pulumi:"properties"`
-	Tags       *MigrateProjectResponseTags      `pulumi:"tags"`
-	Type       string                           `pulumi:"type"`
+	// Gets or sets the tags.
+	Tags *MigrateProjectResponseTags `pulumi:"tags"`
+	// Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
+	Type string `pulumi:"type"`
 }
 
 func LookupMigrateProjectOutput(ctx *pulumi.Context, args LookupMigrateProjectOutputArgs, opts ...pulumi.InvokeOption) LookupMigrateProjectResultOutput {
@@ -51,8 +60,10 @@ func LookupMigrateProjectOutput(ctx *pulumi.Context, args LookupMigrateProjectOu
 }
 
 type LookupMigrateProjectOutputArgs struct {
+	// Name of the Azure Migrate project.
 	MigrateProjectName pulumi.StringInput `pulumi:"migrateProjectName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Resource Group that migrate project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupMigrateProjectOutputArgs) ElementType() reflect.Type {
@@ -74,30 +85,37 @@ func (o LookupMigrateProjectResultOutput) ToLookupMigrateProjectResultOutputWith
 	return o
 }
 
+// Gets or sets the eTag for concurrency control.
 func (o LookupMigrateProjectResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Gets the relative URL to get this migrate project.
 func (o LookupMigrateProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the Azure location in which migrate project is created.
 func (o LookupMigrateProjectResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the name of the migrate project.
 func (o LookupMigrateProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the nested properties.
 func (o LookupMigrateProjectResultOutput) Properties() MigrateProjectPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) MigrateProjectPropertiesResponse { return v.Properties }).(MigrateProjectPropertiesResponseOutput)
 }
 
+// Gets or sets the tags.
 func (o LookupMigrateProjectResultOutput) Tags() MigrateProjectResponseTagsPtrOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) *MigrateProjectResponseTags { return v.Tags }).(MigrateProjectResponseTagsPtrOutput)
 }
 
+// Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
 func (o LookupMigrateProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrateProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

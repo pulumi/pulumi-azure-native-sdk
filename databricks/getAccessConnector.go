@@ -22,19 +22,28 @@ func LookupAccessConnector(ctx *pulumi.Context, args *LookupAccessConnectorArgs,
 }
 
 type LookupAccessConnectorArgs struct {
-	ConnectorName     string `pulumi:"connectorName"`
+	// The name of the azure databricks accessConnector.
+	ConnectorName string `pulumi:"connectorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Information about azure databricks accessConnector.
 type LookupAccessConnectorResult struct {
-	Id         string                            `pulumi:"id"`
-	Identity   *IdentityDataResponse             `pulumi:"identity"`
-	Location   string                            `pulumi:"location"`
-	Name       string                            `pulumi:"name"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *IdentityDataResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Databricks accessConnector properties
 	Properties AccessConnectorPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string                 `pulumi:"tags"`
-	Type       string                            `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupAccessConnectorOutput(ctx *pulumi.Context, args LookupAccessConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAccessConnectorResultOutput {
@@ -51,7 +60,9 @@ func LookupAccessConnectorOutput(ctx *pulumi.Context, args LookupAccessConnector
 }
 
 type LookupAccessConnectorOutputArgs struct {
-	ConnectorName     pulumi.StringInput `pulumi:"connectorName"`
+	// The name of the azure databricks accessConnector.
+	ConnectorName pulumi.StringInput `pulumi:"connectorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,30 +85,37 @@ func (o LookupAccessConnectorResultOutput) ToLookupAccessConnectorResultOutputWi
 	return o
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccessConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupAccessConnectorResultOutput) Identity() IdentityDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) *IdentityDataResponse { return v.Identity }).(IdentityDataResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupAccessConnectorResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAccessConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Databricks accessConnector properties
 func (o LookupAccessConnectorResultOutput) Properties() AccessConnectorPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) AccessConnectorPropertiesResponse { return v.Properties }).(AccessConnectorPropertiesResponseOutput)
 }
 
+// Resource tags.
 func (o LookupAccessConnectorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupAccessConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

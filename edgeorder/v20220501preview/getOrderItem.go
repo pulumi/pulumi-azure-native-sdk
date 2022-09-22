@@ -21,23 +21,36 @@ func LookupOrderItem(ctx *pulumi.Context, args *LookupOrderItemArgs, opts ...pul
 }
 
 type LookupOrderItemArgs struct {
-	Expand            *string `pulumi:"expand"`
-	OrderItemName     string  `pulumi:"orderItemName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// $expand is supported on parent device details, device details, forward shipping details and reverse shipping details parameters. Each of these can be provided as a comma separated list. Parent Device Details for order item provides details on the devices of the product, Device Details for order item provides details on the devices of the child configurations of the product, Forward and Reverse Shipping details provide forward and reverse shipping details respectively.
+	Expand *string `pulumi:"expand"`
+	// The name of the order item.
+	OrderItemName string `pulumi:"orderItemName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents order item resource.
 type LookupOrderItemResult struct {
-	AddressDetails   AddressDetailsResponse   `pulumi:"addressDetails"`
-	Id               string                   `pulumi:"id"`
-	Location         string                   `pulumi:"location"`
-	Name             string                   `pulumi:"name"`
-	OrderId          string                   `pulumi:"orderId"`
+	// Represents shipping and return address for order item.
+	AddressDetails AddressDetailsResponse `pulumi:"addressDetails"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Id of the order to which order item belongs to.
+	OrderId string `pulumi:"orderId"`
+	// Represents order item details.
 	OrderItemDetails OrderItemDetailsResponse `pulumi:"orderItemDetails"`
-	StartTime        string                   `pulumi:"startTime"`
-	SystemData       SystemDataResponse       `pulumi:"systemData"`
-	Tags             map[string]string        `pulumi:"tags"`
-	Type             string                   `pulumi:"type"`
+	// Start time of order item.
+	StartTime string `pulumi:"startTime"`
+	// Represents resource creation and update time.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupOrderItemOutput(ctx *pulumi.Context, args LookupOrderItemOutputArgs, opts ...pulumi.InvokeOption) LookupOrderItemResultOutput {
@@ -54,9 +67,12 @@ func LookupOrderItemOutput(ctx *pulumi.Context, args LookupOrderItemOutputArgs, 
 }
 
 type LookupOrderItemOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	OrderItemName     pulumi.StringInput    `pulumi:"orderItemName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// $expand is supported on parent device details, device details, forward shipping details and reverse shipping details parameters. Each of these can be provided as a comma separated list. Parent Device Details for order item provides details on the devices of the product, Device Details for order item provides details on the devices of the child configurations of the product, Forward and Reverse Shipping details provide forward and reverse shipping details respectively.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the order item.
+	OrderItemName pulumi.StringInput `pulumi:"orderItemName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupOrderItemOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupOrderItemResultOutput) ToLookupOrderItemResultOutputWithContext(ct
 	return o
 }
 
+// Represents shipping and return address for order item.
 func (o LookupOrderItemResultOutput) AddressDetails() AddressDetailsResponseOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) AddressDetailsResponse { return v.AddressDetails }).(AddressDetailsResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupOrderItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupOrderItemResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupOrderItemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Id of the order to which order item belongs to.
 func (o LookupOrderItemResultOutput) OrderId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.OrderId }).(pulumi.StringOutput)
 }
 
+// Represents order item details.
 func (o LookupOrderItemResultOutput) OrderItemDetails() OrderItemDetailsResponseOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) OrderItemDetailsResponse { return v.OrderItemDetails }).(OrderItemDetailsResponseOutput)
 }
 
+// Start time of order item.
 func (o LookupOrderItemResultOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// Represents resource creation and update time.
 func (o LookupOrderItemResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupOrderItemResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupOrderItemResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.Type }).(pulumi.StringOutput)
 }

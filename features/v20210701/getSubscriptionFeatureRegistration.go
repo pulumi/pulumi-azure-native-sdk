@@ -21,16 +21,21 @@ func LookupSubscriptionFeatureRegistration(ctx *pulumi.Context, args *LookupSubs
 }
 
 type LookupSubscriptionFeatureRegistrationArgs struct {
-	FeatureName       string `pulumi:"featureName"`
+	// The feature name.
+	FeatureName string `pulumi:"featureName"`
+	// The provider namespace.
 	ProviderNamespace string `pulumi:"providerNamespace"`
 }
 
 // Subscription feature registration details
 type LookupSubscriptionFeatureRegistrationResult struct {
-	Id         string                                            `pulumi:"id"`
+	// Azure resource Id.
+	Id string `pulumi:"id"`
+	// Azure resource name.
 	Name       string                                            `pulumi:"name"`
 	Properties SubscriptionFeatureRegistrationResponseProperties `pulumi:"properties"`
-	Type       string                                            `pulumi:"type"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupSubscriptionFeatureRegistrationResult
@@ -58,7 +63,9 @@ func LookupSubscriptionFeatureRegistrationOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupSubscriptionFeatureRegistrationOutputArgs struct {
-	FeatureName       pulumi.StringInput `pulumi:"featureName"`
+	// The feature name.
+	FeatureName pulumi.StringInput `pulumi:"featureName"`
+	// The provider namespace.
 	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
 }
 
@@ -81,10 +88,12 @@ func (o LookupSubscriptionFeatureRegistrationResultOutput) ToLookupSubscriptionF
 	return o
 }
 
+// Azure resource Id.
 func (o LookupSubscriptionFeatureRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionFeatureRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure resource name.
 func (o LookupSubscriptionFeatureRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionFeatureRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -95,6 +104,7 @@ func (o LookupSubscriptionFeatureRegistrationResultOutput) Properties() Subscrip
 	}).(SubscriptionFeatureRegistrationResponsePropertiesOutput)
 }
 
+// Azure resource type.
 func (o LookupSubscriptionFeatureRegistrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionFeatureRegistrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

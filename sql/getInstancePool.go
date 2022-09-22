@@ -22,21 +22,32 @@ func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts 
 }
 
 type LookupInstancePoolArgs struct {
-	InstancePoolName  string `pulumi:"instancePoolName"`
+	// The name of the instance pool to be retrieved.
+	InstancePoolName string `pulumi:"instancePoolName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure SQL instance pool.
 type LookupInstancePoolResult struct {
-	Id          string            `pulumi:"id"`
-	LicenseType string            `pulumi:"licenseType"`
-	Location    string            `pulumi:"location"`
-	Name        string            `pulumi:"name"`
-	Sku         *SkuResponse      `pulumi:"sku"`
-	SubnetId    string            `pulumi:"subnetId"`
-	Tags        map[string]string `pulumi:"tags"`
-	Type        string            `pulumi:"type"`
-	VCores      int               `pulumi:"vCores"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
+	LicenseType string `pulumi:"licenseType"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The name and tier of the SKU.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Resource ID of the subnet to place this instance pool in.
+	SubnetId string `pulumi:"subnetId"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Count of vCores belonging to this instance pool.
+	VCores int `pulumi:"vCores"`
 }
 
 func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInstancePoolResultOutput {
@@ -53,7 +64,9 @@ func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutput
 }
 
 type LookupInstancePoolOutputArgs struct {
-	InstancePoolName  pulumi.StringInput `pulumi:"instancePoolName"`
+	// The name of the instance pool to be retrieved.
+	InstancePoolName pulumi.StringInput `pulumi:"instancePoolName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,38 +89,47 @@ func (o LookupInstancePoolResultOutput) ToLookupInstancePoolResultOutputWithCont
 	return o
 }
 
+// Resource ID.
 func (o LookupInstancePoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
 func (o LookupInstancePoolResultOutput) LicenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.LicenseType }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupInstancePoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupInstancePoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name and tier of the SKU.
 func (o LookupInstancePoolResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Resource ID of the subnet to place this instance pool in.
 func (o LookupInstancePoolResultOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupInstancePoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupInstancePoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Count of vCores belonging to this instance pool.
 func (o LookupInstancePoolResultOutput) VCores() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) int { return v.VCores }).(pulumi.IntOutput)
 }

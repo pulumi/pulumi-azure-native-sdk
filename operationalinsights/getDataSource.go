@@ -22,20 +22,30 @@ func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...p
 }
 
 type LookupDataSourceArgs struct {
-	DataSourceName    string `pulumi:"dataSourceName"`
+	// Name of the datasource
+	DataSourceName string `pulumi:"dataSourceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Datasources under OMS Workspace.
 type LookupDataSourceResult struct {
-	Etag       *string           `pulumi:"etag"`
-	Id         string            `pulumi:"id"`
-	Kind       string            `pulumi:"kind"`
-	Name       string            `pulumi:"name"`
-	Properties interface{}       `pulumi:"properties"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       string            `pulumi:"type"`
+	// The ETag of the data source.
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the DataSource.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The data source properties in raw json format, each kind of data source have it's own schema.
+	Properties interface{} `pulumi:"properties"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDataSourceOutput(ctx *pulumi.Context, args LookupDataSourceOutputArgs, opts ...pulumi.InvokeOption) LookupDataSourceResultOutput {
@@ -52,9 +62,12 @@ func LookupDataSourceOutput(ctx *pulumi.Context, args LookupDataSourceOutputArgs
 }
 
 type LookupDataSourceOutputArgs struct {
-	DataSourceName    pulumi.StringInput `pulumi:"dataSourceName"`
+	// Name of the datasource
+	DataSourceName pulumi.StringInput `pulumi:"dataSourceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupDataSourceOutputArgs) ElementType() reflect.Type {
@@ -76,30 +89,37 @@ func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutputWithContext(
 	return o
 }
 
+// The ETag of the data source.
 func (o LookupDataSourceResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDataSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the DataSource.
 func (o LookupDataSourceResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDataSourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The data source properties in raw json format, each kind of data source have it's own schema.
 func (o LookupDataSourceResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource tags.
 func (o LookupDataSourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDataSourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

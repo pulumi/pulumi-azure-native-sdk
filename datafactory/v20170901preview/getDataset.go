@@ -23,18 +23,26 @@ func LookupDataset(ctx *pulumi.Context, args *LookupDatasetArgs, opts ...pulumi.
 }
 
 type LookupDatasetArgs struct {
-	DatasetName       string `pulumi:"datasetName"`
-	FactoryName       string `pulumi:"factoryName"`
+	// The dataset name.
+	DatasetName string `pulumi:"datasetName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Dataset resource type.
 type LookupDatasetResult struct {
-	Etag       string      `pulumi:"etag"`
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Etag identifies change in the resource.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Dataset properties.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetResultOutput {
@@ -51,8 +59,11 @@ func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts
 }
 
 type LookupDatasetOutputArgs struct {
-	DatasetName       pulumi.StringInput `pulumi:"datasetName"`
-	FactoryName       pulumi.StringInput `pulumi:"factoryName"`
+	// The dataset name.
+	DatasetName pulumi.StringInput `pulumi:"datasetName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,22 +86,27 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx co
 	return o
 }
 
+// Etag identifies change in the resource.
 func (o LookupDatasetResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupDatasetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupDatasetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Dataset properties.
 func (o LookupDatasetResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDatasetResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The resource type.
 func (o LookupDatasetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Type }).(pulumi.StringOutput)
 }

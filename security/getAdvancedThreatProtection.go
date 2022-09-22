@@ -22,16 +22,22 @@ func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThr
 }
 
 type LookupAdvancedThreatProtectionArgs struct {
-	ResourceId  string `pulumi:"resourceId"`
+	// The identifier of the resource.
+	ResourceId string `pulumi:"resourceId"`
+	// Advanced Threat Protection setting name.
 	SettingName string `pulumi:"settingName"`
 }
 
 // The Advanced Threat Protection resource.
 type LookupAdvancedThreatProtectionResult struct {
-	Id        string `pulumi:"id"`
-	IsEnabled *bool  `pulumi:"isEnabled"`
-	Name      string `pulumi:"name"`
-	Type      string `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Indicates whether Advanced Threat Protection is enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAdvancedThreatProtectionOutput(ctx *pulumi.Context, args LookupAdvancedThreatProtectionOutputArgs, opts ...pulumi.InvokeOption) LookupAdvancedThreatProtectionResultOutput {
@@ -48,7 +54,9 @@ func LookupAdvancedThreatProtectionOutput(ctx *pulumi.Context, args LookupAdvanc
 }
 
 type LookupAdvancedThreatProtectionOutputArgs struct {
-	ResourceId  pulumi.StringInput `pulumi:"resourceId"`
+	// The identifier of the resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// Advanced Threat Protection setting name.
 	SettingName pulumi.StringInput `pulumi:"settingName"`
 }
 
@@ -71,18 +79,22 @@ func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtec
 	return o
 }
 
+// Resource Id
 func (o LookupAdvancedThreatProtectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether Advanced Threat Protection is enabled.
 func (o LookupAdvancedThreatProtectionResultOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource name
 func (o LookupAdvancedThreatProtectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupAdvancedThreatProtectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

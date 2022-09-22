@@ -21,22 +21,34 @@ func ListWebAppBackupConfiguration(ctx *pulumi.Context, args *ListWebAppBackupCo
 }
 
 type ListWebAppBackupConfigurationArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a backup which will be performed.
 type ListWebAppBackupConfigurationResult struct {
-	BackupName        *string                         `pulumi:"backupName"`
-	BackupSchedule    *BackupScheduleResponse         `pulumi:"backupSchedule"`
-	Databases         []DatabaseBackupSettingResponse `pulumi:"databases"`
-	Enabled           *bool                           `pulumi:"enabled"`
-	Id                string                          `pulumi:"id"`
-	Kind              *string                         `pulumi:"kind"`
-	Name              string                          `pulumi:"name"`
-	StorageAccountUrl string                          `pulumi:"storageAccountUrl"`
-	SystemData        SystemDataResponse              `pulumi:"systemData"`
-	Type              string                          `pulumi:"type"`
+	// Name of the backup.
+	BackupName *string `pulumi:"backupName"`
+	// Schedule for the backup if it is executed periodically.
+	BackupSchedule *BackupScheduleResponse `pulumi:"backupSchedule"`
+	// Databases included in the backup.
+	Databases []DatabaseBackupSettingResponse `pulumi:"databases"`
+	// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// SAS URL to the container.
+	StorageAccountUrl string `pulumi:"storageAccountUrl"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for ListWebAppBackupConfigurationResult
@@ -64,7 +76,9 @@ func ListWebAppBackupConfigurationOutput(ctx *pulumi.Context, args ListWebAppBac
 }
 
 type ListWebAppBackupConfigurationOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -87,42 +101,52 @@ func (o ListWebAppBackupConfigurationResultOutput) ToListWebAppBackupConfigurati
 	return o
 }
 
+// Name of the backup.
 func (o ListWebAppBackupConfigurationResultOutput) BackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) *string { return v.BackupName }).(pulumi.StringPtrOutput)
 }
 
+// Schedule for the backup if it is executed periodically.
 func (o ListWebAppBackupConfigurationResultOutput) BackupSchedule() BackupScheduleResponsePtrOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) *BackupScheduleResponse { return v.BackupSchedule }).(BackupScheduleResponsePtrOutput)
 }
 
+// Databases included in the backup.
 func (o ListWebAppBackupConfigurationResultOutput) Databases() DatabaseBackupSettingResponseArrayOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) []DatabaseBackupSettingResponse { return v.Databases }).(DatabaseBackupSettingResponseArrayOutput)
 }
 
+// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
 func (o ListWebAppBackupConfigurationResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource Id.
 func (o ListWebAppBackupConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppBackupConfigurationResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppBackupConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SAS URL to the container.
 func (o ListWebAppBackupConfigurationResultOutput) StorageAccountUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) string { return v.StorageAccountUrl }).(pulumi.StringOutput)
 }
 
+// The system metadata relating to this resource.
 func (o ListWebAppBackupConfigurationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o ListWebAppBackupConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

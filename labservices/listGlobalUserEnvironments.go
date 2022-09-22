@@ -22,12 +22,15 @@ func ListGlobalUserEnvironments(ctx *pulumi.Context, args *ListGlobalUserEnviron
 }
 
 type ListGlobalUserEnvironmentsArgs struct {
-	LabId    *string `pulumi:"labId"`
-	UserName string  `pulumi:"userName"`
+	// The resource Id of the lab
+	LabId *string `pulumi:"labId"`
+	// The name of the user.
+	UserName string `pulumi:"userName"`
 }
 
 // Represents the list of environments owned by a user
 type ListGlobalUserEnvironmentsResult struct {
+	// List of all the environments
 	Environments []EnvironmentDetailsResponse `pulumi:"environments"`
 }
 
@@ -45,8 +48,10 @@ func ListGlobalUserEnvironmentsOutput(ctx *pulumi.Context, args ListGlobalUserEn
 }
 
 type ListGlobalUserEnvironmentsOutputArgs struct {
-	LabId    pulumi.StringPtrInput `pulumi:"labId"`
-	UserName pulumi.StringInput    `pulumi:"userName"`
+	// The resource Id of the lab
+	LabId pulumi.StringPtrInput `pulumi:"labId"`
+	// The name of the user.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (ListGlobalUserEnvironmentsOutputArgs) ElementType() reflect.Type {
@@ -68,6 +73,7 @@ func (o ListGlobalUserEnvironmentsResultOutput) ToListGlobalUserEnvironmentsResu
 	return o
 }
 
+// List of all the environments
 func (o ListGlobalUserEnvironmentsResultOutput) Environments() EnvironmentDetailsResponseArrayOutput {
 	return o.ApplyT(func(v ListGlobalUserEnvironmentsResult) []EnvironmentDetailsResponse { return v.Environments }).(EnvironmentDetailsResponseArrayOutput)
 }

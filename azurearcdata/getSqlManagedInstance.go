@@ -22,21 +22,32 @@ func LookupSqlManagedInstance(ctx *pulumi.Context, args *LookupSqlManagedInstanc
 }
 
 type LookupSqlManagedInstanceArgs struct {
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The name of the Azure resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of SQL Managed Instance
 	SqlManagedInstanceName string `pulumi:"sqlManagedInstanceName"`
 }
 
 // A SqlManagedInstance.
 type LookupSqlManagedInstanceResult struct {
-	ExtendedLocation *ExtendedLocationResponse            `pulumi:"extendedLocation"`
-	Id               string                               `pulumi:"id"`
-	Location         string                               `pulumi:"location"`
-	Name             string                               `pulumi:"name"`
-	Properties       SqlManagedInstancePropertiesResponse `pulumi:"properties"`
-	Sku              *SqlManagedInstanceSkuResponse       `pulumi:"sku"`
-	SystemData       SystemDataResponse                   `pulumi:"systemData"`
-	Tags             map[string]string                    `pulumi:"tags"`
-	Type             string                               `pulumi:"type"`
+	// The extendedLocation of the resource.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// null
+	Properties SqlManagedInstancePropertiesResponse `pulumi:"properties"`
+	// Resource sku.
+	Sku *SqlManagedInstanceSkuResponse `pulumi:"sku"`
+	// Read only system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupSqlManagedInstanceResult
@@ -64,7 +75,9 @@ func LookupSqlManagedInstanceOutput(ctx *pulumi.Context, args LookupSqlManagedIn
 }
 
 type LookupSqlManagedInstanceOutputArgs struct {
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Azure resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of SQL Managed Instance
 	SqlManagedInstanceName pulumi.StringInput `pulumi:"sqlManagedInstanceName"`
 }
 
@@ -87,38 +100,47 @@ func (o LookupSqlManagedInstanceResultOutput) ToLookupSqlManagedInstanceResultOu
 	return o
 }
 
+// The extendedLocation of the resource.
 func (o LookupSqlManagedInstanceResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlManagedInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSqlManagedInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSqlManagedInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// null
 func (o LookupSqlManagedInstanceResultOutput) Properties() SqlManagedInstancePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) SqlManagedInstancePropertiesResponse { return v.Properties }).(SqlManagedInstancePropertiesResponseOutput)
 }
 
+// Resource sku.
 func (o LookupSqlManagedInstanceResultOutput) Sku() SqlManagedInstanceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) *SqlManagedInstanceSkuResponse { return v.Sku }).(SqlManagedInstanceSkuResponsePtrOutput)
 }
 
+// Read only system data
 func (o LookupSqlManagedInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSqlManagedInstanceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupSqlManagedInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlManagedInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

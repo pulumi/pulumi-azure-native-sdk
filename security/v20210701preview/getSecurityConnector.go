@@ -21,24 +21,38 @@ func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorA
 }
 
 type LookupSecurityConnectorArgs struct {
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The security connector name.
 	SecurityConnectorName string `pulumi:"securityConnectorName"`
 }
 
 // The security connector resource.
 type LookupSecurityConnectorResult struct {
-	CloudName           *string                                                `pulumi:"cloudName"`
-	Etag                *string                                                `pulumi:"etag"`
-	HierarchyIdentifier *string                                                `pulumi:"hierarchyIdentifier"`
-	Id                  string                                                 `pulumi:"id"`
-	Kind                *string                                                `pulumi:"kind"`
-	Location            *string                                                `pulumi:"location"`
-	Name                string                                                 `pulumi:"name"`
-	Offerings           []interface{}                                          `pulumi:"offerings"`
-	OrganizationalData  *SecurityConnectorPropertiesResponseOrganizationalData `pulumi:"organizationalData"`
-	SystemData          SystemDataResponse                                     `pulumi:"systemData"`
-	Tags                map[string]string                                      `pulumi:"tags"`
-	Type                string                                                 `pulumi:"type"`
+	// The multi cloud resource's cloud name.
+	CloudName *string `pulumi:"cloudName"`
+	// Entity tag is used for comparing two or more entities from the same requested resource.
+	Etag *string `pulumi:"etag"`
+	// The multi cloud resource identifier (account id in case of AWS connector).
+	HierarchyIdentifier *string `pulumi:"hierarchyIdentifier"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Kind of the resource
+	Kind *string `pulumi:"kind"`
+	// Location where the resource is stored
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// A collection of offerings for the security connector.
+	Offerings []interface{} `pulumi:"offerings"`
+	// The multi cloud account's organizational data
+	OrganizationalData *SecurityConnectorPropertiesResponseOrganizationalData `pulumi:"organizationalData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// A list of key value pairs that describe the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityConnectorOutput(ctx *pulumi.Context, args LookupSecurityConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityConnectorResultOutput {
@@ -55,7 +69,9 @@ func LookupSecurityConnectorOutput(ctx *pulumi.Context, args LookupSecurityConne
 }
 
 type LookupSecurityConnectorOutputArgs struct {
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The security connector name.
 	SecurityConnectorName pulumi.StringInput `pulumi:"securityConnectorName"`
 }
 
@@ -78,52 +94,64 @@ func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutp
 	return o
 }
 
+// The multi cloud resource's cloud name.
 func (o LookupSecurityConnectorResultOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
 }
 
+// Entity tag is used for comparing two or more entities from the same requested resource.
 func (o LookupSecurityConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The multi cloud resource identifier (account id in case of AWS connector).
 func (o LookupSecurityConnectorResultOutput) HierarchyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.HierarchyIdentifier }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSecurityConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of the resource
 func (o LookupSecurityConnectorResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Location where the resource is stored
 func (o LookupSecurityConnectorResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupSecurityConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A collection of offerings for the security connector.
 func (o LookupSecurityConnectorResultOutput) Offerings() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) []interface{} { return v.Offerings }).(pulumi.ArrayOutput)
 }
 
+// The multi cloud account's organizational data
 func (o LookupSecurityConnectorResultOutput) OrganizationalData() SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *SecurityConnectorPropertiesResponseOrganizationalData {
 		return v.OrganizationalData
 	}).(SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSecurityConnectorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// A list of key value pairs that describe the resource.
 func (o LookupSecurityConnectorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSecurityConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

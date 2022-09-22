@@ -21,18 +21,26 @@ func LookupContentItem(ctx *pulumi.Context, args *LookupContentItemArgs, opts ..
 }
 
 type LookupContentItemArgs struct {
-	ContentItemId     string `pulumi:"contentItemId"`
-	ContentTypeId     string `pulumi:"contentTypeId"`
+	// Content item identifier.
+	ContentItemId string `pulumi:"contentItemId"`
+	// Content type identifier.
+	ContentTypeId string `pulumi:"contentTypeId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Content type contract details.
 type LookupContentItemResult struct {
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Properties of the content item.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupContentItemOutput(ctx *pulumi.Context, args LookupContentItemOutputArgs, opts ...pulumi.InvokeOption) LookupContentItemResultOutput {
@@ -49,10 +57,14 @@ func LookupContentItemOutput(ctx *pulumi.Context, args LookupContentItemOutputAr
 }
 
 type LookupContentItemOutputArgs struct {
-	ContentItemId     pulumi.StringInput `pulumi:"contentItemId"`
-	ContentTypeId     pulumi.StringInput `pulumi:"contentTypeId"`
+	// Content item identifier.
+	ContentItemId pulumi.StringInput `pulumi:"contentItemId"`
+	// Content type identifier.
+	ContentTypeId pulumi.StringInput `pulumi:"contentTypeId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupContentItemOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupContentItemResultOutput) ToLookupContentItemResultOutputWithContex
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupContentItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupContentItemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the content item.
 func (o LookupContentItemResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupContentItemResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupContentItemResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentItemResult) string { return v.Type }).(pulumi.StringOutput)
 }

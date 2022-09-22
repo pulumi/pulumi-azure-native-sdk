@@ -21,8 +21,10 @@ func ListNotebookKeys(ctx *pulumi.Context, args *ListNotebookKeysArgs, opts ...p
 }
 
 type ListNotebookKeysArgs struct {
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 type ListNotebookKeysResult struct {
@@ -44,8 +46,10 @@ func ListNotebookKeysOutput(ctx *pulumi.Context, args ListNotebookKeysOutputArgs
 }
 
 type ListNotebookKeysOutputArgs struct {
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListNotebookKeysOutputArgs) ElementType() reflect.Type {

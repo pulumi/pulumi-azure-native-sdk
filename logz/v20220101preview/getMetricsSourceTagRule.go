@@ -21,19 +21,27 @@ func LookupMetricsSourceTagRule(ctx *pulumi.Context, args *LookupMetricsSourceTa
 }
 
 type LookupMetricsSourceTagRuleArgs struct {
+	// Metrics Account resource name
 	MetricsSourceName string `pulumi:"metricsSourceName"`
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	RuleSetName       string `pulumi:"ruleSetName"`
 }
 
 // Capture metrics of Azure resources based on ARM tags.
 type LookupMetricsSourceTagRuleResult struct {
-	Id         string                            `pulumi:"id"`
-	Name       string                            `pulumi:"name"`
+	// The id of the rule set.
+	Id string `pulumi:"id"`
+	// Name of the rule set.
+	Name string `pulumi:"name"`
+	// Definition of the properties for a TagRules resource.
 	Properties MetricsTagRulesPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                `pulumi:"systemData"`
-	Type       string                            `pulumi:"type"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the rule set.
+	Type string `pulumi:"type"`
 }
 
 func LookupMetricsSourceTagRuleOutput(ctx *pulumi.Context, args LookupMetricsSourceTagRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMetricsSourceTagRuleResultOutput {
@@ -50,8 +58,11 @@ func LookupMetricsSourceTagRuleOutput(ctx *pulumi.Context, args LookupMetricsSou
 }
 
 type LookupMetricsSourceTagRuleOutputArgs struct {
+	// Metrics Account resource name
 	MetricsSourceName pulumi.StringInput `pulumi:"metricsSourceName"`
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	RuleSetName       pulumi.StringInput `pulumi:"ruleSetName"`
 }
@@ -75,22 +86,27 @@ func (o LookupMetricsSourceTagRuleResultOutput) ToLookupMetricsSourceTagRuleResu
 	return o
 }
 
+// The id of the rule set.
 func (o LookupMetricsSourceTagRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceTagRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the rule set.
 func (o LookupMetricsSourceTagRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceTagRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Definition of the properties for a TagRules resource.
 func (o LookupMetricsSourceTagRuleResultOutput) Properties() MetricsTagRulesPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMetricsSourceTagRuleResult) MetricsTagRulesPropertiesResponse { return v.Properties }).(MetricsTagRulesPropertiesResponseOutput)
 }
 
+// The system metadata relating to this resource
 func (o LookupMetricsSourceTagRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMetricsSourceTagRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the rule set.
 func (o LookupMetricsSourceTagRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceTagRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,13 +21,17 @@ func ListAdminKey(ctx *pulumi.Context, args *ListAdminKeyArgs, opts ...pulumi.In
 }
 
 type ListAdminKeyArgs struct {
+	// The name of the resource group within the current subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Search service for which to list admin keys.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Response containing the primary and secondary API keys for a given Azure Search service.
 type ListAdminKeyResult struct {
-	PrimaryKey   string `pulumi:"primaryKey"`
+	// The primary API key of the Search service.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// The secondary API key of the Search service.
 	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
@@ -45,8 +49,10 @@ func ListAdminKeyOutput(ctx *pulumi.Context, args ListAdminKeyOutputArgs, opts .
 }
 
 type ListAdminKeyOutputArgs struct {
+	// The name of the resource group within the current subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Search service for which to list admin keys.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListAdminKeyOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListAdminKeyResultOutput) ToListAdminKeyResultOutputWithContext(ctx cont
 	return o
 }
 
+// The primary API key of the Search service.
 func (o ListAdminKeyResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAdminKeyResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// The secondary API key of the Search service.
 func (o ListAdminKeyResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAdminKeyResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }

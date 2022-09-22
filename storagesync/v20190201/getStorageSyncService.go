@@ -23,19 +23,28 @@ func LookupStorageSyncService(ctx *pulumi.Context, args *LookupStorageSyncServic
 }
 
 type LookupStorageSyncServiceArgs struct {
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName string `pulumi:"storageSyncServiceName"`
 }
 
 // Storage Sync Service object.
 type LookupStorageSyncServiceResult struct {
-	Id                       string            `pulumi:"id"`
-	Location                 string            `pulumi:"location"`
-	Name                     string            `pulumi:"name"`
-	StorageSyncServiceStatus int               `pulumi:"storageSyncServiceStatus"`
-	StorageSyncServiceUid    string            `pulumi:"storageSyncServiceUid"`
-	Tags                     map[string]string `pulumi:"tags"`
-	Type                     string            `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Storage Sync service status.
+	StorageSyncServiceStatus int `pulumi:"storageSyncServiceStatus"`
+	// Storage Sync service Uid
+	StorageSyncServiceUid string `pulumi:"storageSyncServiceUid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageSyncServiceOutput(ctx *pulumi.Context, args LookupStorageSyncServiceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageSyncServiceResultOutput {
@@ -52,7 +61,9 @@ func LookupStorageSyncServiceOutput(ctx *pulumi.Context, args LookupStorageSyncS
 }
 
 type LookupStorageSyncServiceOutputArgs struct {
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName pulumi.StringInput `pulumi:"storageSyncServiceName"`
 }
 
@@ -75,30 +86,37 @@ func (o LookupStorageSyncServiceResultOutput) ToLookupStorageSyncServiceResultOu
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupStorageSyncServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupStorageSyncServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupStorageSyncServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Storage Sync service status.
 func (o LookupStorageSyncServiceResultOutput) StorageSyncServiceStatus() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) int { return v.StorageSyncServiceStatus }).(pulumi.IntOutput)
 }
 
+// Storage Sync service Uid
 func (o LookupStorageSyncServiceResultOutput) StorageSyncServiceUid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.StorageSyncServiceUid }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupStorageSyncServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStorageSyncServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

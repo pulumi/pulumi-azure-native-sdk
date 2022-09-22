@@ -21,18 +21,26 @@ func ListWebAppFunctionKeys(ctx *pulumi.Context, args *ListWebAppFunctionKeysArg
 }
 
 type ListWebAppFunctionKeysArgs struct {
-	FunctionName      string `pulumi:"functionName"`
-	Name              string `pulumi:"name"`
+	// Function name.
+	FunctionName string `pulumi:"functionName"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String dictionary resource.
 type ListWebAppFunctionKeysResult struct {
-	Id         string            `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Name       string            `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
 	Properties map[string]string `pulumi:"properties"`
-	Type       string            `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppFunctionKeysOutput(ctx *pulumi.Context, args ListWebAppFunctionKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppFunctionKeysResultOutput {
@@ -49,8 +57,11 @@ func ListWebAppFunctionKeysOutput(ctx *pulumi.Context, args ListWebAppFunctionKe
 }
 
 type ListWebAppFunctionKeysOutputArgs struct {
-	FunctionName      pulumi.StringInput `pulumi:"functionName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Function name.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,22 +84,27 @@ func (o ListWebAppFunctionKeysResultOutput) ToListWebAppFunctionKeysResultOutput
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppFunctionKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppFunctionKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppFunctionKeysResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppFunctionKeysResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppFunctionKeysResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppFunctionKeysResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListWebAppFunctionKeysResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppFunctionKeysResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o ListWebAppFunctionKeysResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppFunctionKeysResult) string { return v.Type }).(pulumi.StringOutput)
 }

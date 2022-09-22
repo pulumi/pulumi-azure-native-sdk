@@ -21,19 +21,28 @@ func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNet
 }
 
 type LookupNamespaceNetworkRuleSetArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of topic resource.
 type LookupNamespaceNetworkRuleSetResult struct {
-	DefaultAction               *string                                `pulumi:"defaultAction"`
-	Id                          string                                 `pulumi:"id"`
-	IpRules                     []NWRuleSetIpRulesResponse             `pulumi:"ipRules"`
-	Name                        string                                 `pulumi:"name"`
-	TrustedServiceAccessEnabled *bool                                  `pulumi:"trustedServiceAccessEnabled"`
-	Type                        string                                 `pulumi:"type"`
-	VirtualNetworkRules         []NWRuleSetVirtualNetworkRulesResponse `pulumi:"virtualNetworkRules"`
+	// Default Action for Network Rule Set
+	DefaultAction *string `pulumi:"defaultAction"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// List of IpRules
+	IpRules []NWRuleSetIpRulesResponse `pulumi:"ipRules"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Value that indicates whether Trusted Service Access is Enabled or not.
+	TrustedServiceAccessEnabled *bool `pulumi:"trustedServiceAccessEnabled"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// List VirtualNetwork Rules
+	VirtualNetworkRules []NWRuleSetVirtualNetworkRulesResponse `pulumi:"virtualNetworkRules"`
 }
 
 func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespaceNetworkRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceNetworkRuleSetResultOutput {
@@ -50,7 +59,9 @@ func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespa
 }
 
 type LookupNamespaceNetworkRuleSetOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,30 +84,37 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleS
 	return o
 }
 
+// Default Action for Network Rule Set
 func (o LookupNamespaceNetworkRuleSetResultOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNamespaceNetworkRuleSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of IpRules
 func (o LookupNamespaceNetworkRuleSetResultOutput) IpRules() NWRuleSetIpRulesResponseArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) []NWRuleSetIpRulesResponse { return v.IpRules }).(NWRuleSetIpRulesResponseArrayOutput)
 }
 
+// The name of the resource
 func (o LookupNamespaceNetworkRuleSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value that indicates whether Trusted Service Access is Enabled or not.
 func (o LookupNamespaceNetworkRuleSetResultOutput) TrustedServiceAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *bool { return v.TrustedServiceAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamespaceNetworkRuleSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List VirtualNetwork Rules
 func (o LookupNamespaceNetworkRuleSetResultOutput) VirtualNetworkRules() NWRuleSetVirtualNetworkRulesResponseArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) []NWRuleSetVirtualNetworkRulesResponse {
 		return v.VirtualNetworkRules

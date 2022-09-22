@@ -21,15 +21,20 @@ func ListConfigurationStoreKeys(ctx *pulumi.Context, args *ListConfigurationStor
 }
 
 type ListConfigurationStoreKeysArgs struct {
-	ConfigStoreName   string  `pulumi:"configStoreName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	SkipToken         *string `pulumi:"skipToken"`
+	// The name of the configuration store.
+	ConfigStoreName string `pulumi:"configStoreName"`
+	// The name of the resource group to which the container registry belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // The result of a request to list API keys.
 type ListConfigurationStoreKeysResult struct {
-	NextLink *string          `pulumi:"nextLink"`
-	Value    []ApiKeyResponse `pulumi:"value"`
+	// The URI that can be used to request the next set of paged results.
+	NextLink *string `pulumi:"nextLink"`
+	// The collection value.
+	Value []ApiKeyResponse `pulumi:"value"`
 }
 
 func ListConfigurationStoreKeysOutput(ctx *pulumi.Context, args ListConfigurationStoreKeysOutputArgs, opts ...pulumi.InvokeOption) ListConfigurationStoreKeysResultOutput {
@@ -46,9 +51,12 @@ func ListConfigurationStoreKeysOutput(ctx *pulumi.Context, args ListConfiguratio
 }
 
 type ListConfigurationStoreKeysOutputArgs struct {
-	ConfigStoreName   pulumi.StringInput    `pulumi:"configStoreName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SkipToken         pulumi.StringPtrInput `pulumi:"skipToken"`
+	// The name of the configuration store.
+	ConfigStoreName pulumi.StringInput `pulumi:"configStoreName"`
+	// The name of the resource group to which the container registry belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListConfigurationStoreKeysOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListConfigurationStoreKeysResultOutput) ToListConfigurationStoreKeysResu
 	return o
 }
 
+// The URI that can be used to request the next set of paged results.
 func (o ListConfigurationStoreKeysResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListConfigurationStoreKeysResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// The collection value.
 func (o ListConfigurationStoreKeysResultOutput) Value() ApiKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListConfigurationStoreKeysResult) []ApiKeyResponse { return v.Value }).(ApiKeyResponseArrayOutput)
 }

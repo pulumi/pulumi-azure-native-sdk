@@ -23,6 +23,8 @@ type ListListTenantConfigurationViolationArgs struct {
 
 // List of list of items that violate tenant's configuration.
 type ListListTenantConfigurationViolationResult struct {
-	NextLink *string             `pulumi:"nextLink"`
-	Value    []ViolationResponse `pulumi:"value"`
+	// The URL to use for getting the next set of results.
+	NextLink *string `pulumi:"nextLink"`
+	// The array of violations.
+	Value []ViolationResponse `pulumi:"value"`
 }

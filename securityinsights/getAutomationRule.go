@@ -22,26 +22,42 @@ func LookupAutomationRule(ctx *pulumi.Context, args *LookupAutomationRuleArgs, o
 }
 
 type LookupAutomationRuleArgs struct {
-	AutomationRuleId                    string `pulumi:"automationRuleId"`
+	// Automation rule ID
+	AutomationRuleId string `pulumi:"automationRuleId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents an automation rule.
 type LookupAutomationRuleResult struct {
-	Actions             []interface{}                         `pulumi:"actions"`
-	CreatedBy           ClientInfoResponse                    `pulumi:"createdBy"`
-	CreatedTimeUtc      string                                `pulumi:"createdTimeUtc"`
-	DisplayName         string                                `pulumi:"displayName"`
-	Etag                *string                               `pulumi:"etag"`
-	Id                  string                                `pulumi:"id"`
-	LastModifiedBy      ClientInfoResponse                    `pulumi:"lastModifiedBy"`
-	LastModifiedTimeUtc string                                `pulumi:"lastModifiedTimeUtc"`
-	Name                string                                `pulumi:"name"`
-	Order               int                                   `pulumi:"order"`
-	TriggeringLogic     AutomationRuleTriggeringLogicResponse `pulumi:"triggeringLogic"`
-	Type                string                                `pulumi:"type"`
+	// The actions to execute when the automation rule is triggered
+	Actions []interface{} `pulumi:"actions"`
+	// Describes the client that created the automation rule
+	CreatedBy ClientInfoResponse `pulumi:"createdBy"`
+	// The time the automation rule was created
+	CreatedTimeUtc string `pulumi:"createdTimeUtc"`
+	// The display name of the automation  rule
+	DisplayName string `pulumi:"displayName"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Describes the client that last updated the automation rule
+	LastModifiedBy ClientInfoResponse `pulumi:"lastModifiedBy"`
+	// The last time the automation rule was updated
+	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The order of execution of the automation rule
+	Order int `pulumi:"order"`
+	// The triggering logic of the automation rule
+	TriggeringLogic AutomationRuleTriggeringLogicResponse `pulumi:"triggeringLogic"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAutomationRuleOutput(ctx *pulumi.Context, args LookupAutomationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAutomationRuleResultOutput {
@@ -58,10 +74,14 @@ func LookupAutomationRuleOutput(ctx *pulumi.Context, args LookupAutomationRuleOu
 }
 
 type LookupAutomationRuleOutputArgs struct {
-	AutomationRuleId                    pulumi.StringInput `pulumi:"automationRuleId"`
+	// Automation rule ID
+	AutomationRuleId pulumi.StringInput `pulumi:"automationRuleId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupAutomationRuleOutputArgs) ElementType() reflect.Type {
@@ -83,50 +103,62 @@ func (o LookupAutomationRuleResultOutput) ToLookupAutomationRuleResultOutputWith
 	return o
 }
 
+// The actions to execute when the automation rule is triggered
 func (o LookupAutomationRuleResultOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) []interface{} { return v.Actions }).(pulumi.ArrayOutput)
 }
 
+// Describes the client that created the automation rule
 func (o LookupAutomationRuleResultOutput) CreatedBy() ClientInfoResponseOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) ClientInfoResponse { return v.CreatedBy }).(ClientInfoResponseOutput)
 }
 
+// The time the automation rule was created
 func (o LookupAutomationRuleResultOutput) CreatedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) string { return v.CreatedTimeUtc }).(pulumi.StringOutput)
 }
 
+// The display name of the automation  rule
 func (o LookupAutomationRuleResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Etag of the azure resource
 func (o LookupAutomationRuleResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupAutomationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Describes the client that last updated the automation rule
 func (o LookupAutomationRuleResultOutput) LastModifiedBy() ClientInfoResponseOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) ClientInfoResponse { return v.LastModifiedBy }).(ClientInfoResponseOutput)
 }
 
+// The last time the automation rule was updated
 func (o LookupAutomationRuleResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupAutomationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The order of execution of the automation rule
 func (o LookupAutomationRuleResultOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) int { return v.Order }).(pulumi.IntOutput)
 }
 
+// The triggering logic of the automation rule
 func (o LookupAutomationRuleResultOutput) TriggeringLogic() AutomationRuleTriggeringLogicResponseOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) AutomationRuleTriggeringLogicResponse { return v.TriggeringLogic }).(AutomationRuleTriggeringLogicResponseOutput)
 }
 
+// Azure resource type
 func (o LookupAutomationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

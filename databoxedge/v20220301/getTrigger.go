@@ -23,18 +23,26 @@ func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.
 }
 
 type LookupTriggerArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The trigger name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Trigger details.
 type LookupTriggerResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Trigger Kind.
+	Kind string `pulumi:"kind"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Metadata pertaining to creation and last modification of Trigger
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
@@ -51,8 +59,11 @@ func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts
 }
 
 type LookupTriggerOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The trigger name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,22 +86,27 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx co
 	return o
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Trigger Kind.
 func (o LookupTriggerResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupTriggerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of Trigger
 func (o LookupTriggerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTriggerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupTriggerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Type }).(pulumi.StringOutput)
 }

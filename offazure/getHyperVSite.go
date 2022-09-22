@@ -22,19 +22,27 @@ func LookupHyperVSite(ctx *pulumi.Context, args *LookupHyperVSiteArgs, opts ...p
 }
 
 type LookupHyperVSiteArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SiteName          string `pulumi:"siteName"`
+	// Site name.
+	SiteName string `pulumi:"siteName"`
 }
 
 // Site REST Resource.
 type LookupHyperVSiteResult struct {
-	ETag       *string                `pulumi:"eTag"`
-	Id         string                 `pulumi:"id"`
-	Location   *string                `pulumi:"location"`
-	Name       *string                `pulumi:"name"`
+	// eTag for concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Azure location in which Sites is created.
+	Location *string `pulumi:"location"`
+	// Name of the Hyper-V site.
+	Name *string `pulumi:"name"`
+	// Nested properties of Hyper-V site.
 	Properties SitePropertiesResponse `pulumi:"properties"`
 	Tags       map[string]string      `pulumi:"tags"`
-	Type       string                 `pulumi:"type"`
+	// Type of resource. Type = Microsoft.OffAzure/HyperVSites.
+	Type string `pulumi:"type"`
 }
 
 func LookupHyperVSiteOutput(ctx *pulumi.Context, args LookupHyperVSiteOutputArgs, opts ...pulumi.InvokeOption) LookupHyperVSiteResultOutput {
@@ -51,8 +59,10 @@ func LookupHyperVSiteOutput(ctx *pulumi.Context, args LookupHyperVSiteOutputArgs
 }
 
 type LookupHyperVSiteOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SiteName          pulumi.StringInput `pulumi:"siteName"`
+	// Site name.
+	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 
 func (LookupHyperVSiteOutputArgs) ElementType() reflect.Type {
@@ -74,22 +84,27 @@ func (o LookupHyperVSiteResultOutput) ToLookupHyperVSiteResultOutputWithContext(
 	return o
 }
 
+// eTag for concurrency control.
 func (o LookupHyperVSiteResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupHyperVSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure location in which Sites is created.
 func (o LookupHyperVSiteResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Hyper-V site.
 func (o LookupHyperVSiteResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Nested properties of Hyper-V site.
 func (o LookupHyperVSiteResultOutput) Properties() SitePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) SitePropertiesResponse { return v.Properties }).(SitePropertiesResponseOutput)
 }
@@ -98,6 +113,7 @@ func (o LookupHyperVSiteResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Type of resource. Type = Microsoft.OffAzure/HyperVSites.
 func (o LookupHyperVSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperVSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

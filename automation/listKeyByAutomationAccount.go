@@ -21,11 +21,14 @@ func ListKeyByAutomationAccount(ctx *pulumi.Context, args *ListKeyByAutomationAc
 }
 
 type ListKeyByAutomationAccountArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type ListKeyByAutomationAccountResult struct {
+	// Lists the automation keys.
 	Keys []KeyResponse `pulumi:"keys"`
 }
 
@@ -43,8 +46,10 @@ func ListKeyByAutomationAccountOutput(ctx *pulumi.Context, args ListKeyByAutomat
 }
 
 type ListKeyByAutomationAccountOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListKeyByAutomationAccountOutputArgs) ElementType() reflect.Type {
@@ -65,6 +70,7 @@ func (o ListKeyByAutomationAccountResultOutput) ToListKeyByAutomationAccountResu
 	return o
 }
 
+// Lists the automation keys.
 func (o ListKeyByAutomationAccountResultOutput) Keys() KeyResponseArrayOutput {
 	return o.ApplyT(func(v ListKeyByAutomationAccountResult) []KeyResponse { return v.Keys }).(KeyResponseArrayOutput)
 }

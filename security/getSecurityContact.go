@@ -22,18 +22,26 @@ func LookupSecurityContact(ctx *pulumi.Context, args *LookupSecurityContactArgs,
 }
 
 type LookupSecurityContactArgs struct {
+	// Name of the security contact object
 	SecurityContactName string `pulumi:"securityContactName"`
 }
 
 // Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
 type LookupSecurityContactResult struct {
-	AlertNotifications  *SecurityContactPropertiesResponseAlertNotifications  `pulumi:"alertNotifications"`
-	Emails              *string                                               `pulumi:"emails"`
-	Id                  string                                                `pulumi:"id"`
-	Name                string                                                `pulumi:"name"`
+	// Defines whether to send email notifications about new security alerts
+	AlertNotifications *SecurityContactPropertiesResponseAlertNotifications `pulumi:"alertNotifications"`
+	// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
+	Emails *string `pulumi:"emails"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 	NotificationsByRole *SecurityContactPropertiesResponseNotificationsByRole `pulumi:"notificationsByRole"`
-	Phone               *string                                               `pulumi:"phone"`
-	Type                string                                                `pulumi:"type"`
+	// The security contact's phone number
+	Phone *string `pulumi:"phone"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityContactOutput(ctx *pulumi.Context, args LookupSecurityContactOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityContactResultOutput {
@@ -50,6 +58,7 @@ func LookupSecurityContactOutput(ctx *pulumi.Context, args LookupSecurityContact
 }
 
 type LookupSecurityContactOutputArgs struct {
+	// Name of the security contact object
 	SecurityContactName pulumi.StringInput `pulumi:"securityContactName"`
 }
 
@@ -72,34 +81,41 @@ func (o LookupSecurityContactResultOutput) ToLookupSecurityContactResultOutputWi
 	return o
 }
 
+// Defines whether to send email notifications about new security alerts
 func (o LookupSecurityContactResultOutput) AlertNotifications() SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) *SecurityContactPropertiesResponseAlertNotifications {
 		return v.AlertNotifications
 	}).(SecurityContactPropertiesResponseAlertNotificationsPtrOutput)
 }
 
+// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
 func (o LookupSecurityContactResultOutput) Emails() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) *string { return v.Emails }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSecurityContactResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupSecurityContactResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 func (o LookupSecurityContactResultOutput) NotificationsByRole() SecurityContactPropertiesResponseNotificationsByRolePtrOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) *SecurityContactPropertiesResponseNotificationsByRole {
 		return v.NotificationsByRole
 	}).(SecurityContactPropertiesResponseNotificationsByRolePtrOutput)
 }
 
+// The security contact's phone number
 func (o LookupSecurityContactResultOutput) Phone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) *string { return v.Phone }).(pulumi.StringPtrOutput)
 }
 
+// Resource type
 func (o LookupSecurityContactResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) string { return v.Type }).(pulumi.StringOutput)
 }

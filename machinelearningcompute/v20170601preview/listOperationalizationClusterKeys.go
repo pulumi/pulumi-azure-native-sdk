@@ -21,18 +21,26 @@ func ListOperationalizationClusterKeys(ctx *pulumi.Context, args *ListOperationa
 }
 
 type ListOperationalizationClusterKeysArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// Name of the resource group in which the cluster is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Credentials to resources in the cluster.
 type ListOperationalizationClusterKeysResult struct {
-	AppInsights              *AppInsightsCredentialsResponse       `pulumi:"appInsights"`
-	ContainerRegistry        *ContainerRegistryCredentialsResponse `pulumi:"containerRegistry"`
-	ContainerService         *ContainerServiceCredentialsResponse  `pulumi:"containerService"`
-	ServiceAuthConfiguration *ServiceAuthConfigurationResponse     `pulumi:"serviceAuthConfiguration"`
-	SslConfiguration         *SslConfigurationResponse             `pulumi:"sslConfiguration"`
-	StorageAccount           *StorageAccountCredentialsResponse    `pulumi:"storageAccount"`
+	// Credentials for Azure AppInsights.
+	AppInsights *AppInsightsCredentialsResponse `pulumi:"appInsights"`
+	// Credentials for Azure Container Registry.
+	ContainerRegistry *ContainerRegistryCredentialsResponse `pulumi:"containerRegistry"`
+	// Credentials for Azure Container Service.
+	ContainerService *ContainerServiceCredentialsResponse `pulumi:"containerService"`
+	// Global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
+	ServiceAuthConfiguration *ServiceAuthConfigurationResponse `pulumi:"serviceAuthConfiguration"`
+	// The SSL configuration for the services.
+	SslConfiguration *SslConfigurationResponse `pulumi:"sslConfiguration"`
+	// Credentials for the Storage Account.
+	StorageAccount *StorageAccountCredentialsResponse `pulumi:"storageAccount"`
 }
 
 // Defaults sets the appropriate defaults for ListOperationalizationClusterKeysResult
@@ -60,7 +68,9 @@ func ListOperationalizationClusterKeysOutput(ctx *pulumi.Context, args ListOpera
 }
 
 type ListOperationalizationClusterKeysOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Name of the resource group in which the cluster is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -83,32 +93,38 @@ func (o ListOperationalizationClusterKeysResultOutput) ToListOperationalizationC
 	return o
 }
 
+// Credentials for Azure AppInsights.
 func (o ListOperationalizationClusterKeysResultOutput) AppInsights() AppInsightsCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v ListOperationalizationClusterKeysResult) *AppInsightsCredentialsResponse { return v.AppInsights }).(AppInsightsCredentialsResponsePtrOutput)
 }
 
+// Credentials for Azure Container Registry.
 func (o ListOperationalizationClusterKeysResultOutput) ContainerRegistry() ContainerRegistryCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v ListOperationalizationClusterKeysResult) *ContainerRegistryCredentialsResponse {
 		return v.ContainerRegistry
 	}).(ContainerRegistryCredentialsResponsePtrOutput)
 }
 
+// Credentials for Azure Container Service.
 func (o ListOperationalizationClusterKeysResultOutput) ContainerService() ContainerServiceCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v ListOperationalizationClusterKeysResult) *ContainerServiceCredentialsResponse {
 		return v.ContainerService
 	}).(ContainerServiceCredentialsResponsePtrOutput)
 }
 
+// Global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
 func (o ListOperationalizationClusterKeysResultOutput) ServiceAuthConfiguration() ServiceAuthConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v ListOperationalizationClusterKeysResult) *ServiceAuthConfigurationResponse {
 		return v.ServiceAuthConfiguration
 	}).(ServiceAuthConfigurationResponsePtrOutput)
 }
 
+// The SSL configuration for the services.
 func (o ListOperationalizationClusterKeysResultOutput) SslConfiguration() SslConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v ListOperationalizationClusterKeysResult) *SslConfigurationResponse { return v.SslConfiguration }).(SslConfigurationResponsePtrOutput)
 }
 
+// Credentials for the Storage Account.
 func (o ListOperationalizationClusterKeysResultOutput) StorageAccount() StorageAccountCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v ListOperationalizationClusterKeysResult) *StorageAccountCredentialsResponse {
 		return v.StorageAccount

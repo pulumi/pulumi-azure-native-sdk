@@ -21,23 +21,37 @@ func LookupBlobStorageAccountDataSet(ctx *pulumi.Context, args *LookupBlobStorag
 }
 
 type LookupBlobStorageAccountDataSetArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DataSetName       string `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName string `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
 }
 
 // An Azure blob storage account data set.
 type LookupBlobStorageAccountDataSetResult struct {
-	DataSetId                string                           `pulumi:"dataSetId"`
-	Id                       string                           `pulumi:"id"`
-	Kind                     string                           `pulumi:"kind"`
-	Location                 string                           `pulumi:"location"`
-	Name                     string                           `pulumi:"name"`
-	Paths                    []BlobStorageAccountPathResponse `pulumi:"paths"`
-	StorageAccountResourceId string                           `pulumi:"storageAccountResourceId"`
-	SystemData               SystemDataResponse               `pulumi:"systemData"`
-	Type                     string                           `pulumi:"type"`
+	// Unique id for identifying a data set resource
+	DataSetId string `pulumi:"dataSetId"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set.
+	// Expected value is 'BlobStorageAccount'.
+	Kind string `pulumi:"kind"`
+	// Location of the storage account.
+	Location string `pulumi:"location"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// A list of storage account paths.
+	Paths []BlobStorageAccountPathResponse `pulumi:"paths"`
+	// Resource id of the storage account.
+	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
+	// System Data of the Azure resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupBlobStorageAccountDataSetOutput(ctx *pulumi.Context, args LookupBlobStorageAccountDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupBlobStorageAccountDataSetResultOutput {
@@ -54,10 +68,14 @@ func LookupBlobStorageAccountDataSetOutput(ctx *pulumi.Context, args LookupBlobS
 }
 
 type LookupBlobStorageAccountDataSetOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DataSetName       pulumi.StringInput `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName pulumi.StringInput `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupBlobStorageAccountDataSetOutputArgs) ElementType() reflect.Type {
@@ -79,38 +97,48 @@ func (o LookupBlobStorageAccountDataSetResultOutput) ToLookupBlobStorageAccountD
 	return o
 }
 
+// Unique id for identifying a data set resource
 func (o LookupBlobStorageAccountDataSetResultOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupBlobStorageAccountDataSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set.
+// Expected value is 'BlobStorageAccount'.
 func (o LookupBlobStorageAccountDataSetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Location of the storage account.
 func (o LookupBlobStorageAccountDataSetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupBlobStorageAccountDataSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of storage account paths.
 func (o LookupBlobStorageAccountDataSetResultOutput) Paths() BlobStorageAccountPathResponseArrayOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) []BlobStorageAccountPathResponse { return v.Paths }).(BlobStorageAccountPathResponseArrayOutput)
 }
 
+// Resource id of the storage account.
 func (o LookupBlobStorageAccountDataSetResultOutput) StorageAccountResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
+// System Data of the Azure resource.
 func (o LookupBlobStorageAccountDataSetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the azure resource
 func (o LookupBlobStorageAccountDataSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobStorageAccountDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

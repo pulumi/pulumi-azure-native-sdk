@@ -21,21 +21,32 @@ func ListServiceFabricApplicableSchedules(ctx *pulumi.Context, args *ListService
 }
 
 type ListServiceFabricApplicableSchedulesArgs struct {
-	LabName           string `pulumi:"labName"`
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the service fabric.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	UserName          string `pulumi:"userName"`
+	// The name of the user profile.
+	UserName string `pulumi:"userName"`
 }
 
 // Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
 type ListServiceFabricApplicableSchedulesResult struct {
-	Id             string            `pulumi:"id"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
 	LabVmsShutdown *ScheduleResponse `pulumi:"labVmsShutdown"`
-	LabVmsStartup  *ScheduleResponse `pulumi:"labVmsStartup"`
-	Location       *string           `pulumi:"location"`
-	Name           string            `pulumi:"name"`
-	Tags           map[string]string `pulumi:"tags"`
-	Type           string            `pulumi:"type"`
+	// The auto-startup schedule, if one has been set at the lab or lab resource level.
+	LabVmsStartup *ScheduleResponse `pulumi:"labVmsStartup"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for ListServiceFabricApplicableSchedulesResult
@@ -65,10 +76,14 @@ func ListServiceFabricApplicableSchedulesOutput(ctx *pulumi.Context, args ListSe
 }
 
 type ListServiceFabricApplicableSchedulesOutputArgs struct {
-	LabName           pulumi.StringInput `pulumi:"labName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the service fabric.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	UserName          pulumi.StringInput `pulumi:"userName"`
+	// The name of the user profile.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (ListServiceFabricApplicableSchedulesOutputArgs) ElementType() reflect.Type {
@@ -90,30 +105,37 @@ func (o ListServiceFabricApplicableSchedulesResultOutput) ToListServiceFabricApp
 	return o
 }
 
+// The identifier of the resource.
 func (o ListServiceFabricApplicableSchedulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
 func (o ListServiceFabricApplicableSchedulesResultOutput) LabVmsShutdown() ScheduleResponsePtrOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) *ScheduleResponse { return v.LabVmsShutdown }).(ScheduleResponsePtrOutput)
 }
 
+// The auto-startup schedule, if one has been set at the lab or lab resource level.
 func (o ListServiceFabricApplicableSchedulesResultOutput) LabVmsStartup() ScheduleResponsePtrOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) *ScheduleResponse { return v.LabVmsStartup }).(ScheduleResponsePtrOutput)
 }
 
+// The location of the resource.
 func (o ListServiceFabricApplicableSchedulesResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o ListServiceFabricApplicableSchedulesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tags of the resource.
 func (o ListServiceFabricApplicableSchedulesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o ListServiceFabricApplicableSchedulesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) string { return v.Type }).(pulumi.StringOutput)
 }

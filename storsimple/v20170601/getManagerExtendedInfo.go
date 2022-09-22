@@ -21,23 +21,36 @@ func LookupManagerExtendedInfo(ctx *pulumi.Context, args *LookupManagerExtendedI
 }
 
 type LookupManagerExtendedInfoArgs struct {
-	ManagerName       string `pulumi:"managerName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The extended info of the manager.
 type LookupManagerExtendedInfoResult struct {
-	Algorithm                   string  `pulumi:"algorithm"`
-	EncryptionKey               *string `pulumi:"encryptionKey"`
-	EncryptionKeyThumbprint     *string `pulumi:"encryptionKeyThumbprint"`
-	Etag                        *string `pulumi:"etag"`
-	Id                          string  `pulumi:"id"`
-	IntegrityKey                string  `pulumi:"integrityKey"`
-	Kind                        *string `pulumi:"kind"`
-	Name                        string  `pulumi:"name"`
+	// Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted
+	Algorithm string `pulumi:"algorithm"`
+	// Represents the CEK of the resource.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// Represents the Cert thumbprint that was used to encrypt the CEK.
+	EncryptionKeyThumbprint *string `pulumi:"encryptionKeyThumbprint"`
+	// The etag of the resource.
+	Etag *string `pulumi:"etag"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Represents the CIK of the resource.
+	IntegrityKey string `pulumi:"integrityKey"`
+	// The Kind of the object. Currently only Series8000 is supported
+	Kind *string `pulumi:"kind"`
+	// The name of the object.
+	Name string `pulumi:"name"`
+	// Represents the portal thumbprint which can be used optionally to encrypt the entire data before storing it.
 	PortalCertificateThumbprint *string `pulumi:"portalCertificateThumbprint"`
-	Type                        string  `pulumi:"type"`
-	Version                     *string `pulumi:"version"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
+	// The version of the extended info being persisted.
+	Version *string `pulumi:"version"`
 }
 
 func LookupManagerExtendedInfoOutput(ctx *pulumi.Context, args LookupManagerExtendedInfoOutputArgs, opts ...pulumi.InvokeOption) LookupManagerExtendedInfoResultOutput {
@@ -54,7 +67,9 @@ func LookupManagerExtendedInfoOutput(ctx *pulumi.Context, args LookupManagerExte
 }
 
 type LookupManagerExtendedInfoOutputArgs struct {
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,46 +92,57 @@ func (o LookupManagerExtendedInfoResultOutput) ToLookupManagerExtendedInfoResult
 	return o
 }
 
+// Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted
 func (o LookupManagerExtendedInfoResultOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// Represents the CEK of the resource.
 func (o LookupManagerExtendedInfoResultOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
+// Represents the Cert thumbprint that was used to encrypt the CEK.
 func (o LookupManagerExtendedInfoResultOutput) EncryptionKeyThumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) *string { return v.EncryptionKeyThumbprint }).(pulumi.StringPtrOutput)
 }
 
+// The etag of the resource.
 func (o LookupManagerExtendedInfoResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupManagerExtendedInfoResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Represents the CIK of the resource.
 func (o LookupManagerExtendedInfoResultOutput) IntegrityKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.IntegrityKey }).(pulumi.StringOutput)
 }
 
+// The Kind of the object. Currently only Series8000 is supported
 func (o LookupManagerExtendedInfoResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The name of the object.
 func (o LookupManagerExtendedInfoResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Represents the portal thumbprint which can be used optionally to encrypt the entire data before storing it.
 func (o LookupManagerExtendedInfoResultOutput) PortalCertificateThumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) *string { return v.PortalCertificateThumbprint }).(pulumi.StringPtrOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupManagerExtendedInfoResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The version of the extended info being persisted.
 func (o LookupManagerExtendedInfoResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

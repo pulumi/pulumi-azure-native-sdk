@@ -21,18 +21,26 @@ func LookupManagedEnvironmentsStorage(ctx *pulumi.Context, args *LookupManagedEn
 }
 
 type LookupManagedEnvironmentsStorageArgs struct {
-	EnvName           string `pulumi:"envName"`
-	Name              string `pulumi:"name"`
+	// Name of the Environment.
+	EnvName string `pulumi:"envName"`
+	// Name of the storage.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Storage resource for managedEnvironment.
 type LookupManagedEnvironmentsStorageResult struct {
-	Id         string                                      `pulumi:"id"`
-	Name       string                                      `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Storage properties
 	Properties ManagedEnvironmentStorageResponseProperties `pulumi:"properties"`
-	SystemData SystemDataResponse                          `pulumi:"systemData"`
-	Type       string                                      `pulumi:"type"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedEnvironmentsStorageOutput(ctx *pulumi.Context, args LookupManagedEnvironmentsStorageOutputArgs, opts ...pulumi.InvokeOption) LookupManagedEnvironmentsStorageResultOutput {
@@ -49,8 +57,11 @@ func LookupManagedEnvironmentsStorageOutput(ctx *pulumi.Context, args LookupMana
 }
 
 type LookupManagedEnvironmentsStorageOutputArgs struct {
-	EnvName           pulumi.StringInput `pulumi:"envName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the Environment.
+	EnvName pulumi.StringInput `pulumi:"envName"`
+	// Name of the storage.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,24 +84,29 @@ func (o LookupManagedEnvironmentsStorageResultOutput) ToLookupManagedEnvironment
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagedEnvironmentsStorageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentsStorageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupManagedEnvironmentsStorageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentsStorageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Storage properties
 func (o LookupManagedEnvironmentsStorageResultOutput) Properties() ManagedEnvironmentStorageResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentsStorageResult) ManagedEnvironmentStorageResponseProperties {
 		return v.Properties
 	}).(ManagedEnvironmentStorageResponsePropertiesOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupManagedEnvironmentsStorageResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentsStorageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupManagedEnvironmentsStorageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentsStorageResult) string { return v.Type }).(pulumi.StringOutput)
 }

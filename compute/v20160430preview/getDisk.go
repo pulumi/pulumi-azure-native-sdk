@@ -23,25 +23,40 @@ func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.Invoke
 }
 
 type LookupDiskArgs struct {
-	DiskName          string `pulumi:"diskName"`
+	// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	DiskName string `pulumi:"diskName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Disk resource.
 type LookupDiskResult struct {
-	AccountType        *string                     `pulumi:"accountType"`
-	CreationData       CreationDataResponse        `pulumi:"creationData"`
-	DiskSizeGB         *int                        `pulumi:"diskSizeGB"`
+	// the storage account type of the disk.
+	AccountType *string `pulumi:"accountType"`
+	// Disk source information. CreationData information cannot be changed after the disk has been created.
+	CreationData CreationDataResponse `pulumi:"creationData"`
+	// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
+	DiskSizeGB *int `pulumi:"diskSizeGB"`
+	// Encryption settings for disk or snapshot
 	EncryptionSettings *EncryptionSettingsResponse `pulumi:"encryptionSettings"`
-	Id                 string                      `pulumi:"id"`
-	Location           string                      `pulumi:"location"`
-	Name               string                      `pulumi:"name"`
-	OsType             *string                     `pulumi:"osType"`
-	OwnerId            string                      `pulumi:"ownerId"`
-	ProvisioningState  string                      `pulumi:"provisioningState"`
-	Tags               map[string]string           `pulumi:"tags"`
-	TimeCreated        string                      `pulumi:"timeCreated"`
-	Type               string                      `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The Operating System type.
+	OsType *string `pulumi:"osType"`
+	// A relative URI containing the VM id that has the disk attached.
+	OwnerId string `pulumi:"ownerId"`
+	// The disk provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// The time when the disk was created.
+	TimeCreated string `pulumi:"timeCreated"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pulumi.InvokeOption) LookupDiskResultOutput {
@@ -58,7 +73,9 @@ func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pu
 }
 
 type LookupDiskOutputArgs struct {
-	DiskName          pulumi.StringInput `pulumi:"diskName"`
+	// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -81,54 +98,67 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.
 	return o
 }
 
+// the storage account type of the disk.
 func (o LookupDiskResultOutput) AccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.AccountType }).(pulumi.StringPtrOutput)
 }
 
+// Disk source information. CreationData information cannot be changed after the disk has been created.
 func (o LookupDiskResultOutput) CreationData() CreationDataResponseOutput {
 	return o.ApplyT(func(v LookupDiskResult) CreationDataResponse { return v.CreationData }).(CreationDataResponseOutput)
 }
 
+// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
 func (o LookupDiskResultOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
 }
 
+// Encryption settings for disk or snapshot
 func (o LookupDiskResultOutput) EncryptionSettings() EncryptionSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *EncryptionSettingsResponse { return v.EncryptionSettings }).(EncryptionSettingsResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupDiskResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Operating System type.
 func (o LookupDiskResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
+// A relative URI containing the VM id that has the disk attached.
 func (o LookupDiskResultOutput) OwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.OwnerId }).(pulumi.StringOutput)
 }
 
+// The disk provisioning state.
 func (o LookupDiskResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupDiskResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The time when the disk was created.
 func (o LookupDiskResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupDiskResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Type }).(pulumi.StringOutput)
 }

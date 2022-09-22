@@ -21,16 +21,22 @@ func LookupDeviceGroup(ctx *pulumi.Context, args *LookupDeviceGroupArgs, opts ..
 }
 
 type LookupDeviceGroupArgs struct {
-	DeviceGroupName     string `pulumi:"deviceGroupName"`
+	// Device group name
+	DeviceGroupName string `pulumi:"deviceGroupName"`
+	// Defender for IoT location
 	IotDefenderLocation string `pulumi:"iotDefenderLocation"`
 }
 
 // Device group
 type LookupDeviceGroupResult struct {
-	Id         string             `pulumi:"id"`
-	Name       string             `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDeviceGroupOutput(ctx *pulumi.Context, args LookupDeviceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceGroupResultOutput {
@@ -47,7 +53,9 @@ func LookupDeviceGroupOutput(ctx *pulumi.Context, args LookupDeviceGroupOutputAr
 }
 
 type LookupDeviceGroupOutputArgs struct {
-	DeviceGroupName     pulumi.StringInput `pulumi:"deviceGroupName"`
+	// Device group name
+	DeviceGroupName pulumi.StringInput `pulumi:"deviceGroupName"`
+	// Defender for IoT location
 	IotDefenderLocation pulumi.StringInput `pulumi:"iotDefenderLocation"`
 }
 
@@ -70,18 +78,22 @@ func (o LookupDeviceGroupResultOutput) ToLookupDeviceGroupResultOutputWithContex
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDeviceGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDeviceGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDeviceGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDeviceGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDeviceGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

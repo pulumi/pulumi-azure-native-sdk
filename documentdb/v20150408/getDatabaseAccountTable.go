@@ -23,18 +23,26 @@ func LookupDatabaseAccountTable(ctx *pulumi.Context, args *LookupDatabaseAccount
 }
 
 type LookupDatabaseAccountTableArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TableName         string `pulumi:"tableName"`
+	// Cosmos DB table name.
+	TableName string `pulumi:"tableName"`
 }
 
 // An Azure Cosmos DB Table.
 type LookupDatabaseAccountTableResult struct {
-	Id       string            `pulumi:"id"`
-	Location *string           `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Tags     map[string]string `pulumi:"tags"`
-	Type     string            `pulumi:"type"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupDatabaseAccountTableOutput(ctx *pulumi.Context, args LookupDatabaseAccountTableOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountTableResultOutput {
@@ -51,9 +59,12 @@ func LookupDatabaseAccountTableOutput(ctx *pulumi.Context, args LookupDatabaseAc
 }
 
 type LookupDatabaseAccountTableOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TableName         pulumi.StringInput `pulumi:"tableName"`
+	// Cosmos DB table name.
+	TableName pulumi.StringInput `pulumi:"tableName"`
 }
 
 func (LookupDatabaseAccountTableOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupDatabaseAccountTableResultOutput) ToLookupDatabaseAccountTableResu
 	return o
 }
 
+// The unique resource identifier of the database account.
 func (o LookupDatabaseAccountTableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupDatabaseAccountTableResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountTableResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the database account.
 func (o LookupDatabaseAccountTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountTableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupDatabaseAccountTableResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountTableResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of Azure resource.
 func (o LookupDatabaseAccountTableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountTableResult) string { return v.Type }).(pulumi.StringOutput)
 }

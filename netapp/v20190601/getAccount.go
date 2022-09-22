@@ -23,19 +23,28 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 }
 
 type LookupAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NetApp account resource
 type LookupAccountResult struct {
+	// Active Directories
 	ActiveDirectories []ActiveDirectoryResponse `pulumi:"activeDirectories"`
-	Id                string                    `pulumi:"id"`
-	Location          string                    `pulumi:"location"`
-	Name              string                    `pulumi:"name"`
-	ProvisioningState string                    `pulumi:"provisioningState"`
-	Tags              interface{}               `pulumi:"tags"`
-	Type              string                    `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags interface{} `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
@@ -52,7 +61,9 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 }
 
 type LookupAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +86,37 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// Active Directories
 func (o LookupAccountResultOutput) ActiveDirectories() ActiveDirectoryResponseArrayOutput {
 	return o.ApplyT(func(v LookupAccountResult) []ActiveDirectoryResponse { return v.ActiveDirectories }).(ActiveDirectoryResponseArrayOutput)
 }
 
+// Resource Id
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupAccountResultOutput) Tags() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAccountResult) interface{} { return v.Tags }).(pulumi.AnyOutput)
 }
 
+// Resource type
 func (o LookupAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

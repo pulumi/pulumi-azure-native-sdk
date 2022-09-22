@@ -21,22 +21,34 @@ func LookupApplicationTypeVersion(ctx *pulumi.Context, args *LookupApplicationTy
 }
 
 type LookupApplicationTypeVersionArgs struct {
+	// The name of the application type name resource.
 	ApplicationTypeName string `pulumi:"applicationTypeName"`
-	ClusterName         string `pulumi:"clusterName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
-	Version             string `pulumi:"version"`
+	// The name of the cluster resource.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The application type version.
+	Version string `pulumi:"version"`
 }
 
 // An application type version resource for the specified application type name resource.
 type LookupApplicationTypeVersionResult struct {
-	AppPackageUrl     string             `pulumi:"appPackageUrl"`
-	Id                string             `pulumi:"id"`
-	Location          *string            `pulumi:"location"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	Type              string             `pulumi:"type"`
+	// The URL to the application package
+	AppPackageUrl string `pulumi:"appPackageUrl"`
+	// Azure resource identifier.
+	Id string `pulumi:"id"`
+	// Resource location depends on the parent resource.
+	Location *string `pulumi:"location"`
+	// Azure resource name.
+	Name string `pulumi:"name"`
+	// The current deployment or provisioning state, which only appears in the response
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationTypeVersionOutput(ctx *pulumi.Context, args LookupApplicationTypeVersionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationTypeVersionResultOutput {
@@ -53,10 +65,14 @@ func LookupApplicationTypeVersionOutput(ctx *pulumi.Context, args LookupApplicat
 }
 
 type LookupApplicationTypeVersionOutputArgs struct {
+	// The name of the application type name resource.
 	ApplicationTypeName pulumi.StringInput `pulumi:"applicationTypeName"`
-	ClusterName         pulumi.StringInput `pulumi:"clusterName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
-	Version             pulumi.StringInput `pulumi:"version"`
+	// The name of the cluster resource.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The application type version.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (LookupApplicationTypeVersionOutputArgs) ElementType() reflect.Type {
@@ -78,34 +94,42 @@ func (o LookupApplicationTypeVersionResultOutput) ToLookupApplicationTypeVersion
 	return o
 }
 
+// The URL to the application package
 func (o LookupApplicationTypeVersionResultOutput) AppPackageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) string { return v.AppPackageUrl }).(pulumi.StringOutput)
 }
 
+// Azure resource identifier.
 func (o LookupApplicationTypeVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location depends on the parent resource.
 func (o LookupApplicationTypeVersionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource name.
 func (o LookupApplicationTypeVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current deployment or provisioning state, which only appears in the response
 func (o LookupApplicationTypeVersionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupApplicationTypeVersionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource tags.
 func (o LookupApplicationTypeVersionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type.
 func (o LookupApplicationTypeVersionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationTypeVersionResult) string { return v.Type }).(pulumi.StringOutput)
 }

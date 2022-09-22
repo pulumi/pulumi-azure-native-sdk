@@ -21,22 +21,34 @@ func ListSiteBackupConfiguration(ctx *pulumi.Context, args *ListSiteBackupConfig
 }
 
 type ListSiteBackupConfigurationArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a backup which will be performed
 type ListSiteBackupConfigurationResult struct {
-	BackupSchedule    *BackupScheduleResponse         `pulumi:"backupSchedule"`
-	Databases         []DatabaseBackupSettingResponse `pulumi:"databases"`
-	Enabled           *bool                           `pulumi:"enabled"`
-	Id                *string                         `pulumi:"id"`
-	Kind              *string                         `pulumi:"kind"`
-	Location          string                          `pulumi:"location"`
-	Name              *string                         `pulumi:"name"`
-	StorageAccountUrl *string                         `pulumi:"storageAccountUrl"`
-	Tags              map[string]string               `pulumi:"tags"`
-	Type              string                          `pulumi:"type"`
+	// Schedule for the backup if it is executed periodically
+	BackupSchedule *BackupScheduleResponse `pulumi:"backupSchedule"`
+	// Databases included in the backup
+	Databases []DatabaseBackupSettingResponse `pulumi:"databases"`
+	// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
+	Enabled *bool `pulumi:"enabled"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// SAS URL to the container
+	StorageAccountUrl *string `pulumi:"storageAccountUrl"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func ListSiteBackupConfigurationOutput(ctx *pulumi.Context, args ListSiteBackupConfigurationOutputArgs, opts ...pulumi.InvokeOption) ListSiteBackupConfigurationResultOutput {
@@ -53,7 +65,9 @@ func ListSiteBackupConfigurationOutput(ctx *pulumi.Context, args ListSiteBackupC
 }
 
 type ListSiteBackupConfigurationOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,42 +90,52 @@ func (o ListSiteBackupConfigurationResultOutput) ToListSiteBackupConfigurationRe
 	return o
 }
 
+// Schedule for the backup if it is executed periodically
 func (o ListSiteBackupConfigurationResultOutput) BackupSchedule() BackupScheduleResponsePtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) *BackupScheduleResponse { return v.BackupSchedule }).(BackupScheduleResponsePtrOutput)
 }
 
+// Databases included in the backup
 func (o ListSiteBackupConfigurationResultOutput) Databases() DatabaseBackupSettingResponseArrayOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) []DatabaseBackupSettingResponse { return v.Databases }).(DatabaseBackupSettingResponseArrayOutput)
 }
 
+// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
 func (o ListSiteBackupConfigurationResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource Id
 func (o ListSiteBackupConfigurationResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o ListSiteBackupConfigurationResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o ListSiteBackupConfigurationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o ListSiteBackupConfigurationResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// SAS URL to the container
 func (o ListSiteBackupConfigurationResultOutput) StorageAccountUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) *string { return v.StorageAccountUrl }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o ListSiteBackupConfigurationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o ListSiteBackupConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

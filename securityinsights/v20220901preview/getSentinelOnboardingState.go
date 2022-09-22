@@ -21,19 +21,28 @@ func LookupSentinelOnboardingState(ctx *pulumi.Context, args *LookupSentinelOnbo
 }
 
 type LookupSentinelOnboardingStateArgs struct {
-	ResourceGroupName           string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Sentinel onboarding state name. Supports - default
 	SentinelOnboardingStateName string `pulumi:"sentinelOnboardingStateName"`
-	WorkspaceName               string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Sentinel onboarding state
 type LookupSentinelOnboardingStateResult struct {
-	CustomerManagedKey *bool              `pulumi:"customerManagedKey"`
-	Etag               *string            `pulumi:"etag"`
-	Id                 string             `pulumi:"id"`
-	Name               string             `pulumi:"name"`
-	SystemData         SystemDataResponse `pulumi:"systemData"`
-	Type               string             `pulumi:"type"`
+	// Flag that indicates the status of the CMK setting
+	CustomerManagedKey *bool `pulumi:"customerManagedKey"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSentinelOnboardingStateOutput(ctx *pulumi.Context, args LookupSentinelOnboardingStateOutputArgs, opts ...pulumi.InvokeOption) LookupSentinelOnboardingStateResultOutput {
@@ -50,9 +59,12 @@ func LookupSentinelOnboardingStateOutput(ctx *pulumi.Context, args LookupSentine
 }
 
 type LookupSentinelOnboardingStateOutputArgs struct {
-	ResourceGroupName           pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Sentinel onboarding state name. Supports - default
 	SentinelOnboardingStateName pulumi.StringInput `pulumi:"sentinelOnboardingStateName"`
-	WorkspaceName               pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSentinelOnboardingStateOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupSentinelOnboardingStateResultOutput) ToLookupSentinelOnboardingSta
 	return o
 }
 
+// Flag that indicates the status of the CMK setting
 func (o LookupSentinelOnboardingStateResultOutput) CustomerManagedKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) *bool { return v.CustomerManagedKey }).(pulumi.BoolPtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupSentinelOnboardingStateResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSentinelOnboardingStateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSentinelOnboardingStateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSentinelOnboardingStateResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSentinelOnboardingStateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) string { return v.Type }).(pulumi.StringOutput)
 }

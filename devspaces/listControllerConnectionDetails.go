@@ -21,12 +21,16 @@ func ListControllerConnectionDetails(ctx *pulumi.Context, args *ListControllerCo
 }
 
 type ListControllerConnectionDetailsArgs struct {
-	Name                          string `pulumi:"name"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// Resource group to which the resource belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Resource ID of the target container host mapped to the Azure Dev Spaces Controller.
 	TargetContainerHostResourceId string `pulumi:"targetContainerHostResourceId"`
 }
 
 type ListControllerConnectionDetailsResult struct {
+	// List of Azure Dev Spaces Controller connection details.
 	ConnectionDetailsList []ControllerConnectionDetailsResponse `pulumi:"connectionDetailsList"`
 }
 
@@ -44,8 +48,11 @@ func ListControllerConnectionDetailsOutput(ctx *pulumi.Context, args ListControl
 }
 
 type ListControllerConnectionDetailsOutputArgs struct {
-	Name                          pulumi.StringInput `pulumi:"name"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Resource group to which the resource belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Resource ID of the target container host mapped to the Azure Dev Spaces Controller.
 	TargetContainerHostResourceId pulumi.StringInput `pulumi:"targetContainerHostResourceId"`
 }
 
@@ -67,6 +74,7 @@ func (o ListControllerConnectionDetailsResultOutput) ToListControllerConnectionD
 	return o
 }
 
+// List of Azure Dev Spaces Controller connection details.
 func (o ListControllerConnectionDetailsResultOutput) ConnectionDetailsList() ControllerConnectionDetailsResponseArrayOutput {
 	return o.ApplyT(func(v ListControllerConnectionDetailsResult) []ControllerConnectionDetailsResponse {
 		return v.ConnectionDetailsList

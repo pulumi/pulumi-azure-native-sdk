@@ -21,25 +21,40 @@ func LookupScheduledActionByScope(ctx *pulumi.Context, args *LookupScheduledActi
 }
 
 type LookupScheduledActionByScopeArgs struct {
-	Name  string `pulumi:"name"`
+	// Scheduled action name.
+	Name string `pulumi:"name"`
+	// The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope.
 	Scope string `pulumi:"scope"`
 }
 
 // Scheduled action definition.
 type LookupScheduledActionByScopeResult struct {
-	DisplayName     string                         `pulumi:"displayName"`
-	ETag            string                         `pulumi:"eTag"`
-	FileDestination *FileDestinationResponse       `pulumi:"fileDestination"`
-	Id              string                         `pulumi:"id"`
-	Kind            *string                        `pulumi:"kind"`
-	Name            string                         `pulumi:"name"`
-	Notification    NotificationPropertiesResponse `pulumi:"notification"`
-	Schedule        SchedulePropertiesResponse     `pulumi:"schedule"`
-	Scope           *string                        `pulumi:"scope"`
-	Status          string                         `pulumi:"status"`
-	SystemData      SystemDataResponse             `pulumi:"systemData"`
-	Type            string                         `pulumi:"type"`
-	ViewId          string                         `pulumi:"viewId"`
+	// Scheduled action name.
+	DisplayName string `pulumi:"displayName"`
+	// Resource Etag.
+	ETag string `pulumi:"eTag"`
+	// Destination format of the view data. This is optional.
+	FileDestination *FileDestinationResponse `pulumi:"fileDestination"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of the scheduled action.
+	Kind *string `pulumi:"kind"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Notification properties based on scheduled action kind.
+	Notification NotificationPropertiesResponse `pulumi:"notification"`
+	// Schedule of the scheduled action.
+	Schedule SchedulePropertiesResponse `pulumi:"schedule"`
+	// Cost Management scope like 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
+	Scope *string `pulumi:"scope"`
+	// Status of the scheduled action.
+	Status string `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
+	ViewId string `pulumi:"viewId"`
 }
 
 func LookupScheduledActionByScopeOutput(ctx *pulumi.Context, args LookupScheduledActionByScopeOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledActionByScopeResultOutput {
@@ -56,7 +71,9 @@ func LookupScheduledActionByScopeOutput(ctx *pulumi.Context, args LookupSchedule
 }
 
 type LookupScheduledActionByScopeOutputArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// Scheduled action name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -79,54 +96,67 @@ func (o LookupScheduledActionByScopeResultOutput) ToLookupScheduledActionByScope
 	return o
 }
 
+// Scheduled action name.
 func (o LookupScheduledActionByScopeResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource Etag.
 func (o LookupScheduledActionByScopeResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.ETag }).(pulumi.StringOutput)
 }
 
+// Destination format of the view data. This is optional.
 func (o LookupScheduledActionByScopeResultOutput) FileDestination() FileDestinationResponsePtrOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) *FileDestinationResponse { return v.FileDestination }).(FileDestinationResponsePtrOutput)
 }
 
+// Resource Id.
 func (o LookupScheduledActionByScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of the scheduled action.
 func (o LookupScheduledActionByScopeResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupScheduledActionByScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Notification properties based on scheduled action kind.
 func (o LookupScheduledActionByScopeResultOutput) Notification() NotificationPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) NotificationPropertiesResponse { return v.Notification }).(NotificationPropertiesResponseOutput)
 }
 
+// Schedule of the scheduled action.
 func (o LookupScheduledActionByScopeResultOutput) Schedule() SchedulePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) SchedulePropertiesResponse { return v.Schedule }).(SchedulePropertiesResponseOutput)
 }
 
+// Cost Management scope like 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
 func (o LookupScheduledActionByScopeResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// Status of the scheduled action.
 func (o LookupScheduledActionByScopeResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupScheduledActionByScopeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupScheduledActionByScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
 func (o LookupScheduledActionByScopeResultOutput) ViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.ViewId }).(pulumi.StringOutput)
 }

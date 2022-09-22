@@ -23,22 +23,34 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 }
 
 type LookupPoolArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Capacity pool resource
 type LookupPoolResult struct {
-	Id                string      `pulumi:"id"`
-	Location          string      `pulumi:"location"`
-	Name              string      `pulumi:"name"`
-	PoolId            string      `pulumi:"poolId"`
-	ProvisioningState string      `pulumi:"provisioningState"`
-	ServiceLevel      string      `pulumi:"serviceLevel"`
-	Size              float64     `pulumi:"size"`
-	Tags              interface{} `pulumi:"tags"`
-	Type              string      `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// UUID v4 used to identify the Pool
+	PoolId string `pulumi:"poolId"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The service level of the file system
+	ServiceLevel string `pulumi:"serviceLevel"`
+	// Provisioned size of the pool (in bytes). Allowed values are in 4TiB chunks (value must be multiply of 4398046511104).
+	Size float64 `pulumi:"size"`
+	// Resource tags
+	Tags interface{} `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupPoolResult
@@ -67,8 +79,11 @@ func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pu
 }
 
 type LookupPoolOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -91,38 +106,47 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.
 	return o
 }
 
+// Resource Id
 func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupPoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// UUID v4 used to identify the Pool
 func (o LookupPoolResultOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.PoolId }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The service level of the file system
 func (o LookupPoolResultOutput) ServiceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ServiceLevel }).(pulumi.StringOutput)
 }
 
+// Provisioned size of the pool (in bytes). Allowed values are in 4TiB chunks (value must be multiply of 4398046511104).
 func (o LookupPoolResultOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPoolResult) float64 { return v.Size }).(pulumi.Float64Output)
 }
 
+// Resource tags
 func (o LookupPoolResultOutput) Tags() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPoolResult) interface{} { return v.Tags }).(pulumi.AnyOutput)
 }
 
+// Resource type
 func (o LookupPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }

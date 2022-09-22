@@ -21,23 +21,37 @@ func LookupADLSGen1FolderDataSet(ctx *pulumi.Context, args *LookupADLSGen1Folder
 }
 
 type LookupADLSGen1FolderDataSetArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DataSetName       string `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName string `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
 }
 
 // An ADLS Gen 1 folder data set.
 type LookupADLSGen1FolderDataSetResult struct {
-	AccountName    string `pulumi:"accountName"`
-	DataSetId      string `pulumi:"dataSetId"`
-	FolderPath     string `pulumi:"folderPath"`
-	Id             string `pulumi:"id"`
-	Kind           string `pulumi:"kind"`
-	Name           string `pulumi:"name"`
-	ResourceGroup  string `pulumi:"resourceGroup"`
+	// The ADLS account name.
+	AccountName string `pulumi:"accountName"`
+	// Unique id for identifying a data set resource
+	DataSetId string `pulumi:"dataSetId"`
+	// The folder path within the ADLS account.
+	FolderPath string `pulumi:"folderPath"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set.
+	// Expected value is 'AdlsGen1Folder'.
+	Kind string `pulumi:"kind"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// Resource group of ADLS account.
+	ResourceGroup string `pulumi:"resourceGroup"`
+	// Subscription id of ADLS account.
 	SubscriptionId string `pulumi:"subscriptionId"`
-	Type           string `pulumi:"type"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupADLSGen1FolderDataSetOutput(ctx *pulumi.Context, args LookupADLSGen1FolderDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen1FolderDataSetResultOutput {
@@ -54,10 +68,14 @@ func LookupADLSGen1FolderDataSetOutput(ctx *pulumi.Context, args LookupADLSGen1F
 }
 
 type LookupADLSGen1FolderDataSetOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DataSetName       pulumi.StringInput `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName pulumi.StringInput `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupADLSGen1FolderDataSetOutputArgs) ElementType() reflect.Type {
@@ -79,38 +97,48 @@ func (o LookupADLSGen1FolderDataSetResultOutput) ToLookupADLSGen1FolderDataSetRe
 	return o
 }
 
+// The ADLS account name.
 func (o LookupADLSGen1FolderDataSetResultOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
+// Unique id for identifying a data set resource
 func (o LookupADLSGen1FolderDataSetResultOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// The folder path within the ADLS account.
 func (o LookupADLSGen1FolderDataSetResultOutput) FolderPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.FolderPath }).(pulumi.StringOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupADLSGen1FolderDataSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set.
+// Expected value is 'AdlsGen1Folder'.
 func (o LookupADLSGen1FolderDataSetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupADLSGen1FolderDataSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource group of ADLS account.
 func (o LookupADLSGen1FolderDataSetResultOutput) ResourceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
+// Subscription id of ADLS account.
 func (o LookupADLSGen1FolderDataSetResultOutput) SubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
+// Type of the azure resource
 func (o LookupADLSGen1FolderDataSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,29 +21,49 @@ func LookupIotHubDataConnection(ctx *pulumi.Context, args *LookupIotHubDataConne
 }
 
 type LookupIotHubDataConnectionArgs struct {
-	ClusterName        string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the data connection.
 	DataConnectionName string `pulumi:"dataConnectionName"`
-	DatabaseName       string `pulumi:"databaseName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing an iot hub data connection.
 type LookupIotHubDataConnectionResult struct {
-	ConsumerGroup          string   `pulumi:"consumerGroup"`
-	DataFormat             *string  `pulumi:"dataFormat"`
-	DatabaseRouting        *string  `pulumi:"databaseRouting"`
-	EventSystemProperties  []string `pulumi:"eventSystemProperties"`
-	Id                     string   `pulumi:"id"`
-	IotHubResourceId       string   `pulumi:"iotHubResourceId"`
-	Kind                   string   `pulumi:"kind"`
-	Location               *string  `pulumi:"location"`
-	MappingRuleName        *string  `pulumi:"mappingRuleName"`
-	Name                   string   `pulumi:"name"`
-	ProvisioningState      string   `pulumi:"provisioningState"`
-	RetrievalStartDate     *string  `pulumi:"retrievalStartDate"`
-	SharedAccessPolicyName string   `pulumi:"sharedAccessPolicyName"`
-	TableName              *string  `pulumi:"tableName"`
-	Type                   string   `pulumi:"type"`
+	// The iot hub consumer group.
+	ConsumerGroup string `pulumi:"consumerGroup"`
+	// The data format of the message. Optionally the data format can be added to each message.
+	DataFormat *string `pulumi:"dataFormat"`
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting *string `pulumi:"databaseRouting"`
+	// System properties of the iot hub
+	EventSystemProperties []string `pulumi:"eventSystemProperties"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The resource ID of the Iot hub to be used to create a data connection.
+	IotHubResourceId string `pulumi:"iotHubResourceId"`
+	// Kind of the endpoint for the data connection
+	// Expected value is 'IotHub'.
+	Kind string `pulumi:"kind"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
+	MappingRuleName *string `pulumi:"mappingRuleName"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+	RetrievalStartDate *string `pulumi:"retrievalStartDate"`
+	// The name of the share access policy
+	SharedAccessPolicyName string `pulumi:"sharedAccessPolicyName"`
+	// The table where the data should be ingested. Optionally the table information can be added to each message.
+	TableName *string `pulumi:"tableName"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupIotHubDataConnectionResult
@@ -73,10 +93,14 @@ func LookupIotHubDataConnectionOutput(ctx *pulumi.Context, args LookupIotHubData
 }
 
 type LookupIotHubDataConnectionOutputArgs struct {
-	ClusterName        pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the data connection.
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
-	DatabaseName       pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupIotHubDataConnectionOutputArgs) ElementType() reflect.Type {
@@ -98,62 +122,78 @@ func (o LookupIotHubDataConnectionResultOutput) ToLookupIotHubDataConnectionResu
 	return o
 }
 
+// The iot hub consumer group.
 func (o LookupIotHubDataConnectionResultOutput) ConsumerGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.ConsumerGroup }).(pulumi.StringOutput)
 }
 
+// The data format of the message. Optionally the data format can be added to each message.
 func (o LookupIotHubDataConnectionResultOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) *string { return v.DataFormat }).(pulumi.StringPtrOutput)
 }
 
+// Indication for database routing information from the data connection, by default only database routing information is allowed
 func (o LookupIotHubDataConnectionResultOutput) DatabaseRouting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) *string { return v.DatabaseRouting }).(pulumi.StringPtrOutput)
 }
 
+// System properties of the iot hub
 func (o LookupIotHubDataConnectionResultOutput) EventSystemProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) []string { return v.EventSystemProperties }).(pulumi.StringArrayOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIotHubDataConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource ID of the Iot hub to be used to create a data connection.
 func (o LookupIotHubDataConnectionResultOutput) IotHubResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.IotHubResourceId }).(pulumi.StringOutput)
 }
 
+// Kind of the endpoint for the data connection
+// Expected value is 'IotHub'.
 func (o LookupIotHubDataConnectionResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupIotHubDataConnectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 func (o LookupIotHubDataConnectionResultOutput) MappingRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) *string { return v.MappingRuleName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupIotHubDataConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupIotHubDataConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
 func (o LookupIotHubDataConnectionResultOutput) RetrievalStartDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) *string { return v.RetrievalStartDate }).(pulumi.StringPtrOutput)
 }
 
+// The name of the share access policy
 func (o LookupIotHubDataConnectionResultOutput) SharedAccessPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.SharedAccessPolicyName }).(pulumi.StringOutput)
 }
 
+// The table where the data should be ingested. Optionally the table information can be added to each message.
 func (o LookupIotHubDataConnectionResultOutput) TableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) *string { return v.TableName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupIotHubDataConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

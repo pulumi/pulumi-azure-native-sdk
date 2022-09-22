@@ -21,13 +21,17 @@ func ListKustoPoolLanguageExtensions(ctx *pulumi.Context, args *ListKustoPoolLan
 }
 
 type ListKustoPoolLanguageExtensionsArgs struct {
-	KustoPoolName     string `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName string `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The list of language extension objects.
 type ListKustoPoolLanguageExtensionsResult struct {
+	// The list of language extensions.
 	Value []LanguageExtensionResponse `pulumi:"value"`
 }
 
@@ -45,9 +49,12 @@ func ListKustoPoolLanguageExtensionsOutput(ctx *pulumi.Context, args ListKustoPo
 }
 
 type ListKustoPoolLanguageExtensionsOutputArgs struct {
-	KustoPoolName     pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListKustoPoolLanguageExtensionsOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListKustoPoolLanguageExtensionsResultOutput) ToListKustoPoolLanguageExte
 	return o
 }
 
+// The list of language extensions.
 func (o ListKustoPoolLanguageExtensionsResultOutput) Value() LanguageExtensionResponseArrayOutput {
 	return o.ApplyT(func(v ListKustoPoolLanguageExtensionsResult) []LanguageExtensionResponse { return v.Value }).(LanguageExtensionResponseArrayOutput)
 }

@@ -21,20 +21,30 @@ func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.In
 }
 
 type LookupExportArgs struct {
+	// Export Name.
 	ExportName string `pulumi:"exportName"`
-	Scope      string `pulumi:"scope"`
+	// The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope..
+	Scope string `pulumi:"scope"`
 }
 
 // A export resource.
 type LookupExportResult struct {
-	Definition   QueryDefinitionResponse    `pulumi:"definition"`
+	// Has definition for the export.
+	Definition QueryDefinitionResponse `pulumi:"definition"`
+	// Has delivery information for the export.
 	DeliveryInfo ExportDeliveryInfoResponse `pulumi:"deliveryInfo"`
-	Format       *string                    `pulumi:"format"`
-	Id           string                     `pulumi:"id"`
-	Name         string                     `pulumi:"name"`
-	Schedule     *ExportScheduleResponse    `pulumi:"schedule"`
-	Tags         map[string]string          `pulumi:"tags"`
-	Type         string                     `pulumi:"type"`
+	// The format of the export being delivered.
+	Format *string `pulumi:"format"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Has schedule information for the export.
+	Schedule *ExportScheduleResponse `pulumi:"schedule"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupExportOutput(ctx *pulumi.Context, args LookupExportOutputArgs, opts ...pulumi.InvokeOption) LookupExportResultOutput {
@@ -51,8 +61,10 @@ func LookupExportOutput(ctx *pulumi.Context, args LookupExportOutputArgs, opts .
 }
 
 type LookupExportOutputArgs struct {
+	// Export Name.
 	ExportName pulumi.StringInput `pulumi:"exportName"`
-	Scope      pulumi.StringInput `pulumi:"scope"`
+	// The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope..
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupExportOutputArgs) ElementType() reflect.Type {
@@ -74,34 +86,42 @@ func (o LookupExportResultOutput) ToLookupExportResultOutputWithContext(ctx cont
 	return o
 }
 
+// Has definition for the export.
 func (o LookupExportResultOutput) Definition() QueryDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupExportResult) QueryDefinitionResponse { return v.Definition }).(QueryDefinitionResponseOutput)
 }
 
+// Has delivery information for the export.
 func (o LookupExportResultOutput) DeliveryInfo() ExportDeliveryInfoResponseOutput {
 	return o.ApplyT(func(v LookupExportResult) ExportDeliveryInfoResponse { return v.DeliveryInfo }).(ExportDeliveryInfoResponseOutput)
 }
 
+// The format of the export being delivered.
 func (o LookupExportResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExportResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupExportResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExportResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupExportResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExportResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Has schedule information for the export.
 func (o LookupExportResultOutput) Schedule() ExportScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupExportResult) *ExportScheduleResponse { return v.Schedule }).(ExportScheduleResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupExportResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExportResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupExportResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExportResult) string { return v.Type }).(pulumi.StringOutput)
 }

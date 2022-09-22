@@ -21,17 +21,24 @@ func LookupRegistrationDefinition(ctx *pulumi.Context, args *LookupRegistrationD
 }
 
 type LookupRegistrationDefinitionArgs struct {
+	// Guid of the registration definition.
 	RegistrationDefinitionId string `pulumi:"registrationDefinitionId"`
-	Scope                    string `pulumi:"scope"`
+	// Scope of the resource.
+	Scope string `pulumi:"scope"`
 }
 
 // Registration definition.
 type LookupRegistrationDefinitionResult struct {
-	Id         string                                   `pulumi:"id"`
-	Name       string                                   `pulumi:"name"`
-	Plan       *PlanResponse                            `pulumi:"plan"`
+	// Fully qualified path of the registration definition.
+	Id string `pulumi:"id"`
+	// Name of the registration definition.
+	Name string `pulumi:"name"`
+	// Plan details for the managed services.
+	Plan *PlanResponse `pulumi:"plan"`
+	// Properties of a registration definition.
 	Properties RegistrationDefinitionPropertiesResponse `pulumi:"properties"`
-	Type       string                                   `pulumi:"type"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupRegistrationDefinitionOutput(ctx *pulumi.Context, args LookupRegistrationDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationDefinitionResultOutput {
@@ -48,8 +55,10 @@ func LookupRegistrationDefinitionOutput(ctx *pulumi.Context, args LookupRegistra
 }
 
 type LookupRegistrationDefinitionOutputArgs struct {
+	// Guid of the registration definition.
 	RegistrationDefinitionId pulumi.StringInput `pulumi:"registrationDefinitionId"`
-	Scope                    pulumi.StringInput `pulumi:"scope"`
+	// Scope of the resource.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRegistrationDefinitionOutputArgs) ElementType() reflect.Type {
@@ -71,24 +80,29 @@ func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinition
 	return o
 }
 
+// Fully qualified path of the registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Plan details for the managed services.
 func (o LookupRegistrationDefinitionResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
+// Properties of a registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Properties() RegistrationDefinitionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) RegistrationDefinitionPropertiesResponse {
 		return v.Properties
 	}).(RegistrationDefinitionPropertiesResponseOutput)
 }
 
+// Type of the resource.
 func (o LookupRegistrationDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

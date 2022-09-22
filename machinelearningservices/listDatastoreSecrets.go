@@ -22,13 +22,17 @@ func ListDatastoreSecrets(ctx *pulumi.Context, args *ListDatastoreSecretsArgs, o
 }
 
 type ListDatastoreSecretsArgs struct {
-	Name              string `pulumi:"name"`
+	// Datastore name.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Base definition for datastore secrets.
 type ListDatastoreSecretsResult struct {
+	// [Required] Credential type used to authentication with storage.
 	SecretsType string `pulumi:"secretsType"`
 }
 
@@ -46,9 +50,12 @@ func ListDatastoreSecretsOutput(ctx *pulumi.Context, args ListDatastoreSecretsOu
 }
 
 type ListDatastoreSecretsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Datastore name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListDatastoreSecretsOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o ListDatastoreSecretsResultOutput) ToListDatastoreSecretsResultOutputWith
 	return o
 }
 
+// [Required] Credential type used to authentication with storage.
 func (o ListDatastoreSecretsResultOutput) SecretsType() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatastoreSecretsResult) string { return v.SecretsType }).(pulumi.StringOutput)
 }

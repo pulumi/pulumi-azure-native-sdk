@@ -21,13 +21,17 @@ func ListManagedClusterMonitoringUserCredentials(ctx *pulumi.Context, args *List
 }
 
 type ListManagedClusterMonitoringUserCredentialsArgs struct {
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ResourceName      string  `pulumi:"resourceName"`
-	ServerFqdn        *string `pulumi:"serverFqdn"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName string `pulumi:"resourceName"`
+	// server fqdn type for credentials to be returned
+	ServerFqdn *string `pulumi:"serverFqdn"`
 }
 
 // The list credential result response.
 type ListManagedClusterMonitoringUserCredentialsResult struct {
+	// Base64-encoded Kubernetes configuration file.
 	Kubeconfigs []CredentialResultResponse `pulumi:"kubeconfigs"`
 }
 
@@ -45,9 +49,12 @@ func ListManagedClusterMonitoringUserCredentialsOutput(ctx *pulumi.Context, args
 }
 
 type ListManagedClusterMonitoringUserCredentialsOutputArgs struct {
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput    `pulumi:"resourceName"`
-	ServerFqdn        pulumi.StringPtrInput `pulumi:"serverFqdn"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// server fqdn type for credentials to be returned
+	ServerFqdn pulumi.StringPtrInput `pulumi:"serverFqdn"`
 }
 
 func (ListManagedClusterMonitoringUserCredentialsOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListManagedClusterMonitoringUserCredentialsResultOutput) ToListManagedCl
 	return o
 }
 
+// Base64-encoded Kubernetes configuration file.
 func (o ListManagedClusterMonitoringUserCredentialsResultOutput) Kubeconfigs() CredentialResultResponseArrayOutput {
 	return o.ApplyT(func(v ListManagedClusterMonitoringUserCredentialsResult) []CredentialResultResponse {
 		return v.Kubeconfigs

@@ -21,12 +21,15 @@ func ListManagerActivationKey(ctx *pulumi.Context, args *ListManagerActivationKe
 }
 
 type ListManagerActivationKeyArgs struct {
-	ManagerName       string `pulumi:"managerName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The key.
 type ListManagerActivationKeyResult struct {
+	// The activation key for the device.
 	ActivationKey string `pulumi:"activationKey"`
 }
 
@@ -44,7 +47,9 @@ func ListManagerActivationKeyOutput(ctx *pulumi.Context, args ListManagerActivat
 }
 
 type ListManagerActivationKeyOutputArgs struct {
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -67,6 +72,7 @@ func (o ListManagerActivationKeyResultOutput) ToListManagerActivationKeyResultOu
 	return o
 }
 
+// The activation key for the device.
 func (o ListManagerActivationKeyResultOutput) ActivationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListManagerActivationKeyResult) string { return v.ActivationKey }).(pulumi.StringOutput)
 }

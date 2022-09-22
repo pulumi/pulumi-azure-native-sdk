@@ -22,20 +22,30 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Stream Analytics Cluster object
 type LookupClusterResult struct {
-	Etag       string                    `pulumi:"etag"`
-	Id         string                    `pulumi:"id"`
-	Location   *string                   `pulumi:"location"`
-	Name       string                    `pulumi:"name"`
+	// The current entity tag for the cluster. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties associated with a Stream Analytics cluster.
 	Properties ClusterPropertiesResponse `pulumi:"properties"`
-	Sku        *ClusterSkuResponse       `pulumi:"sku"`
-	Tags       map[string]string         `pulumi:"tags"`
-	Type       string                    `pulumi:"type"`
+	// The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
+	Sku *ClusterSkuResponse `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -52,7 +62,9 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 }
 
 type LookupClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,34 +87,42 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The current entity tag for the cluster. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
 func (o LookupClusterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupClusterResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties associated with a Stream Analytics cluster.
 func (o LookupClusterResultOutput) Properties() ClusterPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ClusterPropertiesResponse { return v.Properties }).(ClusterPropertiesResponseOutput)
 }
 
+// The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
 func (o LookupClusterResultOutput) Sku() ClusterSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *ClusterSkuResponse { return v.Sku }).(ClusterSkuResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }

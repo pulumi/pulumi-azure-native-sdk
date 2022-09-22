@@ -22,20 +22,26 @@ func LookupDatabaseMigrationsSqlDb(ctx *pulumi.Context, args *LookupDatabaseMigr
 }
 
 type LookupDatabaseMigrationsSqlDbArgs struct {
-	Expand               *string `pulumi:"expand"`
+	// Complete migration details be included in the response.
+	Expand *string `pulumi:"expand"`
+	// Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.
 	MigrationOperationId *string `pulumi:"migrationOperationId"`
-	ResourceGroupName    string  `pulumi:"resourceGroupName"`
-	SqlDbInstanceName    string  `pulumi:"sqlDbInstanceName"`
-	TargetDbName         string  `pulumi:"targetDbName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	SqlDbInstanceName string `pulumi:"sqlDbInstanceName"`
+	// The name of the target database.
+	TargetDbName string `pulumi:"targetDbName"`
 }
 
 // Database Migration Resource for SQL Database.
 type LookupDatabaseMigrationsSqlDbResult struct {
-	Id         string                                   `pulumi:"id"`
-	Name       string                                   `pulumi:"name"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// Database Migration Resource properties for SQL database.
 	Properties DatabaseMigrationPropertiesSqlDbResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                       `pulumi:"systemData"`
-	Type       string                                   `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Type       string             `pulumi:"type"`
 }
 
 func LookupDatabaseMigrationsSqlDbOutput(ctx *pulumi.Context, args LookupDatabaseMigrationsSqlDbOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationsSqlDbResultOutput {
@@ -52,11 +58,15 @@ func LookupDatabaseMigrationsSqlDbOutput(ctx *pulumi.Context, args LookupDatabas
 }
 
 type LookupDatabaseMigrationsSqlDbOutputArgs struct {
-	Expand               pulumi.StringPtrInput `pulumi:"expand"`
+	// Complete migration details be included in the response.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.
 	MigrationOperationId pulumi.StringPtrInput `pulumi:"migrationOperationId"`
-	ResourceGroupName    pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SqlDbInstanceName    pulumi.StringInput    `pulumi:"sqlDbInstanceName"`
-	TargetDbName         pulumi.StringInput    `pulumi:"targetDbName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	SqlDbInstanceName pulumi.StringInput `pulumi:"sqlDbInstanceName"`
+	// The name of the target database.
+	TargetDbName pulumi.StringInput `pulumi:"targetDbName"`
 }
 
 func (LookupDatabaseMigrationsSqlDbOutputArgs) ElementType() reflect.Type {
@@ -86,12 +96,14 @@ func (o LookupDatabaseMigrationsSqlDbResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMigrationsSqlDbResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Database Migration Resource properties for SQL database.
 func (o LookupDatabaseMigrationsSqlDbResultOutput) Properties() DatabaseMigrationPropertiesSqlDbResponseOutput {
 	return o.ApplyT(func(v LookupDatabaseMigrationsSqlDbResult) DatabaseMigrationPropertiesSqlDbResponse {
 		return v.Properties
 	}).(DatabaseMigrationPropertiesSqlDbResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupDatabaseMigrationsSqlDbResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDatabaseMigrationsSqlDbResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

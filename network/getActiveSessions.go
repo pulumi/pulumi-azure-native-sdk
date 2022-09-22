@@ -22,14 +22,18 @@ func GetActiveSessions(ctx *pulumi.Context, args *GetActiveSessionsArgs, opts ..
 }
 
 type GetActiveSessionsArgs struct {
-	BastionHostName   string `pulumi:"bastionHostName"`
+	// The name of the Bastion Host.
+	BastionHostName string `pulumi:"bastionHostName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response for GetActiveSessions.
 type GetActiveSessionsResult struct {
-	NextLink *string                        `pulumi:"nextLink"`
-	Value    []BastionActiveSessionResponse `pulumi:"value"`
+	// The URL to get the next set of results.
+	NextLink *string `pulumi:"nextLink"`
+	// List of active sessions on the bastion.
+	Value []BastionActiveSessionResponse `pulumi:"value"`
 }
 
 func GetActiveSessionsOutput(ctx *pulumi.Context, args GetActiveSessionsOutputArgs, opts ...pulumi.InvokeOption) GetActiveSessionsResultOutput {
@@ -46,7 +50,9 @@ func GetActiveSessionsOutput(ctx *pulumi.Context, args GetActiveSessionsOutputAr
 }
 
 type GetActiveSessionsOutputArgs struct {
-	BastionHostName   pulumi.StringInput `pulumi:"bastionHostName"`
+	// The name of the Bastion Host.
+	BastionHostName pulumi.StringInput `pulumi:"bastionHostName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o GetActiveSessionsResultOutput) ToGetActiveSessionsResultOutputWithContex
 	return o
 }
 
+// The URL to get the next set of results.
 func (o GetActiveSessionsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetActiveSessionsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of active sessions on the bastion.
 func (o GetActiveSessionsResultOutput) Value() BastionActiveSessionResponseArrayOutput {
 	return o.ApplyT(func(v GetActiveSessionsResult) []BastionActiveSessionResponse { return v.Value }).(BastionActiveSessionResponseArrayOutput)
 }

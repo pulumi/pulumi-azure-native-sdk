@@ -21,12 +21,15 @@ func ListServerGatewayStatus(ctx *pulumi.Context, args *ListServerGatewayStatusA
 }
 
 type ListServerGatewayStatusArgs struct {
+	// The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the Analysis Services server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Status of gateway is live.
 type ListServerGatewayStatusResult struct {
+	// Live message of list gateway. Status: 0 - Live
 	Status *int `pulumi:"status"`
 }
 
@@ -44,8 +47,10 @@ func ListServerGatewayStatusOutput(ctx *pulumi.Context, args ListServerGatewaySt
 }
 
 type ListServerGatewayStatusOutputArgs struct {
+	// The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the Analysis Services server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (ListServerGatewayStatusOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o ListServerGatewayStatusResultOutput) ToListServerGatewayStatusResultOutp
 	return o
 }
 
+// Live message of list gateway. Status: 0 - Live
 func (o ListServerGatewayStatusResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListServerGatewayStatusResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

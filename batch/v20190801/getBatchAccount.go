@@ -23,28 +23,44 @@ func LookupBatchAccount(ctx *pulumi.Context, args *LookupBatchAccountArgs, opts 
 }
 
 type LookupBatchAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the Batch account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Contains information about an Azure Batch account.
 type LookupBatchAccountResult struct {
-	AccountEndpoint                       string                                  `pulumi:"accountEndpoint"`
-	ActiveJobAndJobScheduleQuota          int                                     `pulumi:"activeJobAndJobScheduleQuota"`
-	AutoStorage                           AutoStoragePropertiesResponse           `pulumi:"autoStorage"`
-	DedicatedCoreQuota                    int                                     `pulumi:"dedicatedCoreQuota"`
-	DedicatedCoreQuotaPerVMFamily         []VirtualMachineFamilyCoreQuotaResponse `pulumi:"dedicatedCoreQuotaPerVMFamily"`
-	DedicatedCoreQuotaPerVMFamilyEnforced bool                                    `pulumi:"dedicatedCoreQuotaPerVMFamilyEnforced"`
-	Id                                    string                                  `pulumi:"id"`
-	KeyVaultReference                     KeyVaultReferenceResponse               `pulumi:"keyVaultReference"`
-	Location                              string                                  `pulumi:"location"`
-	LowPriorityCoreQuota                  int                                     `pulumi:"lowPriorityCoreQuota"`
-	Name                                  string                                  `pulumi:"name"`
-	PoolAllocationMode                    string                                  `pulumi:"poolAllocationMode"`
-	PoolQuota                             int                                     `pulumi:"poolQuota"`
-	ProvisioningState                     string                                  `pulumi:"provisioningState"`
-	Tags                                  map[string]string                       `pulumi:"tags"`
-	Type                                  string                                  `pulumi:"type"`
+	// The account endpoint used to interact with the Batch service.
+	AccountEndpoint              string `pulumi:"accountEndpoint"`
+	ActiveJobAndJobScheduleQuota int    `pulumi:"activeJobAndJobScheduleQuota"`
+	// Contains information about the auto-storage account associated with a Batch account.
+	AutoStorage AutoStoragePropertiesResponse `pulumi:"autoStorage"`
+	// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
+	DedicatedCoreQuota int `pulumi:"dedicatedCoreQuota"`
+	// A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
+	DedicatedCoreQuotaPerVMFamily []VirtualMachineFamilyCoreQuotaResponse `pulumi:"dedicatedCoreQuotaPerVMFamily"`
+	// Batch is transitioning its core quota system for dedicated cores to be enforced per Virtual Machine family. During this transitional phase, the dedicated core quota per Virtual Machine family may not yet be enforced. If this flag is false, dedicated core quota is enforced via the old dedicatedCoreQuota property on the account and does not consider Virtual Machine family. If this flag is true, dedicated core quota is enforced via the dedicatedCoreQuotaPerVMFamily property on the account, and the old dedicatedCoreQuota does not apply.
+	DedicatedCoreQuotaPerVMFamilyEnforced bool `pulumi:"dedicatedCoreQuotaPerVMFamilyEnforced"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// Identifies the Azure key vault associated with a Batch account.
+	KeyVaultReference KeyVaultReferenceResponse `pulumi:"keyVaultReference"`
+	// The location of the resource.
+	Location string `pulumi:"location"`
+	// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
+	LowPriorityCoreQuota int `pulumi:"lowPriorityCoreQuota"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The allocation mode for creating pools in the Batch account.
+	PoolAllocationMode string `pulumi:"poolAllocationMode"`
+	PoolQuota          int    `pulumi:"poolQuota"`
+	// The provisioned state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupBatchAccountOutput(ctx *pulumi.Context, args LookupBatchAccountOutputArgs, opts ...pulumi.InvokeOption) LookupBatchAccountResultOutput {
@@ -61,7 +77,9 @@ func LookupBatchAccountOutput(ctx *pulumi.Context, args LookupBatchAccountOutput
 }
 
 type LookupBatchAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Batch account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,6 +102,7 @@ func (o LookupBatchAccountResultOutput) ToLookupBatchAccountResultOutputWithCont
 	return o
 }
 
+// The account endpoint used to interact with the Batch service.
 func (o LookupBatchAccountResultOutput) AccountEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.AccountEndpoint }).(pulumi.StringOutput)
 }
@@ -92,44 +111,54 @@ func (o LookupBatchAccountResultOutput) ActiveJobAndJobScheduleQuota() pulumi.In
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.ActiveJobAndJobScheduleQuota }).(pulumi.IntOutput)
 }
 
+// Contains information about the auto-storage account associated with a Batch account.
 func (o LookupBatchAccountResultOutput) AutoStorage() AutoStoragePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) AutoStoragePropertiesResponse { return v.AutoStorage }).(AutoStoragePropertiesResponseOutput)
 }
 
+// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 func (o LookupBatchAccountResultOutput) DedicatedCoreQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.DedicatedCoreQuota }).(pulumi.IntOutput)
 }
 
+// A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 func (o LookupBatchAccountResultOutput) DedicatedCoreQuotaPerVMFamily() VirtualMachineFamilyCoreQuotaResponseArrayOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) []VirtualMachineFamilyCoreQuotaResponse {
 		return v.DedicatedCoreQuotaPerVMFamily
 	}).(VirtualMachineFamilyCoreQuotaResponseArrayOutput)
 }
 
+// Batch is transitioning its core quota system for dedicated cores to be enforced per Virtual Machine family. During this transitional phase, the dedicated core quota per Virtual Machine family may not yet be enforced. If this flag is false, dedicated core quota is enforced via the old dedicatedCoreQuota property on the account and does not consider Virtual Machine family. If this flag is true, dedicated core quota is enforced via the dedicatedCoreQuotaPerVMFamily property on the account, and the old dedicatedCoreQuota does not apply.
 func (o LookupBatchAccountResultOutput) DedicatedCoreQuotaPerVMFamilyEnforced() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) bool { return v.DedicatedCoreQuotaPerVMFamilyEnforced }).(pulumi.BoolOutput)
 }
 
+// The ID of the resource.
 func (o LookupBatchAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identifies the Azure key vault associated with a Batch account.
 func (o LookupBatchAccountResultOutput) KeyVaultReference() KeyVaultReferenceResponseOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) KeyVaultReferenceResponse { return v.KeyVaultReference }).(KeyVaultReferenceResponseOutput)
 }
 
+// The location of the resource.
 func (o LookupBatchAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 func (o LookupBatchAccountResultOutput) LowPriorityCoreQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.LowPriorityCoreQuota }).(pulumi.IntOutput)
 }
 
+// The name of the resource.
 func (o LookupBatchAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The allocation mode for creating pools in the Batch account.
 func (o LookupBatchAccountResultOutput) PoolAllocationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.PoolAllocationMode }).(pulumi.StringOutput)
 }
@@ -138,14 +167,17 @@ func (o LookupBatchAccountResultOutput) PoolQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.PoolQuota }).(pulumi.IntOutput)
 }
 
+// The provisioned state of the resource
 func (o LookupBatchAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The tags of the resource.
 func (o LookupBatchAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupBatchAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

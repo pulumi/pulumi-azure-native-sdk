@@ -22,13 +22,17 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 }
 
 type ListAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the account.
+	AccountName string `pulumi:"accountName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Account access keys.
 type ListAccountKeysResult struct {
-	AtlasKafkaPrimaryEndpoint   *string `pulumi:"atlasKafkaPrimaryEndpoint"`
+	// Gets or sets the primary connection string.
+	AtlasKafkaPrimaryEndpoint *string `pulumi:"atlasKafkaPrimaryEndpoint"`
+	// Gets or sets the secondary connection string.
 	AtlasKafkaSecondaryEndpoint *string `pulumi:"atlasKafkaSecondaryEndpoint"`
 }
 
@@ -46,7 +50,9 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 }
 
 type ListAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ct
 	return o
 }
 
+// Gets or sets the primary connection string.
 func (o ListAccountKeysResultOutput) AtlasKafkaPrimaryEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) *string { return v.AtlasKafkaPrimaryEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the secondary connection string.
 func (o ListAccountKeysResultOutput) AtlasKafkaSecondaryEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) *string { return v.AtlasKafkaSecondaryEndpoint }).(pulumi.StringPtrOutput)
 }

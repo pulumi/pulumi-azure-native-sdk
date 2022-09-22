@@ -22,18 +22,26 @@ func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupKeyArgs struct {
-	KeyName           string `pulumi:"keyName"`
+	// The name of the workspace key
+	KeyName string `pulumi:"keyName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // A workspace key
 type LookupKeyResult struct {
-	Id          string  `pulumi:"id"`
-	IsActiveCMK *bool   `pulumi:"isActiveCMK"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Used to activate the workspace after a customer managed key is provided.
+	IsActiveCMK *bool `pulumi:"isActiveCMK"`
+	// The Key Vault Url of the workspace key.
 	KeyVaultUrl *string `pulumi:"keyVaultUrl"`
-	Name        string  `pulumi:"name"`
-	Type        string  `pulumi:"type"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKeyResultOutput {
@@ -50,9 +58,12 @@ func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulu
 }
 
 type LookupKeyOutputArgs struct {
-	KeyName           pulumi.StringInput `pulumi:"keyName"`
+	// The name of the workspace key
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupKeyOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o LookupKeyResultOutput) ToLookupKeyResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Used to activate the workspace after a customer managed key is provided.
 func (o LookupKeyResultOutput) IsActiveCMK() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *bool { return v.IsActiveCMK }).(pulumi.BoolPtrOutput)
 }
 
+// The Key Vault Url of the workspace key.
 func (o LookupKeyResultOutput) KeyVaultUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *string { return v.KeyVaultUrl }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }

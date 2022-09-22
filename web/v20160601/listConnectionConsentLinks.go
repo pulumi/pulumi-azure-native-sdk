@@ -21,14 +21,19 @@ func ListConnectionConsentLinks(ctx *pulumi.Context, args *ListConnectionConsent
 }
 
 type ListConnectionConsentLinksArgs struct {
-	ConnectionName    string                           `pulumi:"connectionName"`
-	Parameters        []ConsentLinkParameterDefinition `pulumi:"parameters"`
-	ResourceGroupName string                           `pulumi:"resourceGroupName"`
-	SubscriptionId    *string                          `pulumi:"subscriptionId"`
+	// Connection name
+	ConnectionName string `pulumi:"connectionName"`
+	// Collection of resources
+	Parameters []ConsentLinkParameterDefinition `pulumi:"parameters"`
+	// The resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Subscription Id
+	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // Collection of consent links
 type ListConnectionConsentLinksResult struct {
+	// Collection of resources
 	Value []ConsentLinkDefinitionResponse `pulumi:"value"`
 }
 
@@ -46,10 +51,14 @@ func ListConnectionConsentLinksOutput(ctx *pulumi.Context, args ListConnectionCo
 }
 
 type ListConnectionConsentLinksOutputArgs struct {
-	ConnectionName    pulumi.StringInput                       `pulumi:"connectionName"`
-	Parameters        ConsentLinkParameterDefinitionArrayInput `pulumi:"parameters"`
-	ResourceGroupName pulumi.StringInput                       `pulumi:"resourceGroupName"`
-	SubscriptionId    pulumi.StringPtrInput                    `pulumi:"subscriptionId"`
+	// Connection name
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// Collection of resources
+	Parameters ConsentLinkParameterDefinitionArrayInput `pulumi:"parameters"`
+	// The resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Subscription Id
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
 func (ListConnectionConsentLinksOutputArgs) ElementType() reflect.Type {
@@ -71,6 +80,7 @@ func (o ListConnectionConsentLinksResultOutput) ToListConnectionConsentLinksResu
 	return o
 }
 
+// Collection of resources
 func (o ListConnectionConsentLinksResultOutput) Value() ConsentLinkDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v ListConnectionConsentLinksResult) []ConsentLinkDefinitionResponse { return v.Value }).(ConsentLinkDefinitionResponseArrayOutput)
 }

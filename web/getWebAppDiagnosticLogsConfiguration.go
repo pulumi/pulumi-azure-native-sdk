@@ -22,20 +22,30 @@ func LookupWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context, args *LookupWe
 }
 
 type LookupWebAppDiagnosticLogsConfigurationArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Configuration of App Service site logs.
 type LookupWebAppDiagnosticLogsConfigurationResult struct {
-	ApplicationLogs       *ApplicationLogsConfigResponse `pulumi:"applicationLogs"`
-	DetailedErrorMessages *EnabledConfigResponse         `pulumi:"detailedErrorMessages"`
-	FailedRequestsTracing *EnabledConfigResponse         `pulumi:"failedRequestsTracing"`
-	HttpLogs              *HttpLogsConfigResponse        `pulumi:"httpLogs"`
-	Id                    string                         `pulumi:"id"`
-	Kind                  *string                        `pulumi:"kind"`
-	Name                  string                         `pulumi:"name"`
-	Type                  string                         `pulumi:"type"`
+	// Application logs configuration.
+	ApplicationLogs *ApplicationLogsConfigResponse `pulumi:"applicationLogs"`
+	// Detailed error messages configuration.
+	DetailedErrorMessages *EnabledConfigResponse `pulumi:"detailedErrorMessages"`
+	// Failed requests tracing configuration.
+	FailedRequestsTracing *EnabledConfigResponse `pulumi:"failedRequestsTracing"`
+	// HTTP logs configuration.
+	HttpLogs *HttpLogsConfigResponse `pulumi:"httpLogs"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupWebAppDiagnosticLogsConfigurationResult
@@ -63,7 +73,9 @@ func LookupWebAppDiagnosticLogsConfigurationOutput(ctx *pulumi.Context, args Loo
 }
 
 type LookupWebAppDiagnosticLogsConfigurationOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -86,40 +98,48 @@ func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) ToLookupWebAppDiagn
 	return o
 }
 
+// Application logs configuration.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) ApplicationLogs() ApplicationLogsConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) *ApplicationLogsConfigResponse {
 		return v.ApplicationLogs
 	}).(ApplicationLogsConfigResponsePtrOutput)
 }
 
+// Detailed error messages configuration.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) DetailedErrorMessages() EnabledConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) *EnabledConfigResponse {
 		return v.DetailedErrorMessages
 	}).(EnabledConfigResponsePtrOutput)
 }
 
+// Failed requests tracing configuration.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) FailedRequestsTracing() EnabledConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) *EnabledConfigResponse {
 		return v.FailedRequestsTracing
 	}).(EnabledConfigResponsePtrOutput)
 }
 
+// HTTP logs configuration.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) HttpLogs() HttpLogsConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) *HttpLogsConfigResponse { return v.HttpLogs }).(HttpLogsConfigResponsePtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

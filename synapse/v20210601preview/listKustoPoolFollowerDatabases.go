@@ -21,13 +21,17 @@ func ListKustoPoolFollowerDatabases(ctx *pulumi.Context, args *ListKustoPoolFoll
 }
 
 type ListKustoPoolFollowerDatabasesArgs struct {
-	KustoPoolName     string `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName string `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The list Kusto database principals operation response.
 type ListKustoPoolFollowerDatabasesResult struct {
+	// The list of follower database result.
 	Value []FollowerDatabaseDefinitionResponse `pulumi:"value"`
 }
 
@@ -45,9 +49,12 @@ func ListKustoPoolFollowerDatabasesOutput(ctx *pulumi.Context, args ListKustoPoo
 }
 
 type ListKustoPoolFollowerDatabasesOutputArgs struct {
-	KustoPoolName     pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListKustoPoolFollowerDatabasesOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListKustoPoolFollowerDatabasesResultOutput) ToListKustoPoolFollowerDatab
 	return o
 }
 
+// The list of follower database result.
 func (o ListKustoPoolFollowerDatabasesResultOutput) Value() FollowerDatabaseDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v ListKustoPoolFollowerDatabasesResult) []FollowerDatabaseDefinitionResponse { return v.Value }).(FollowerDatabaseDefinitionResponseArrayOutput)
 }

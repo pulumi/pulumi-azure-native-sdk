@@ -22,21 +22,32 @@ func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ..
 }
 
 type LookupJobScheduleArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	JobScheduleId         string `pulumi:"jobScheduleId"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The job schedule name.
+	JobScheduleId string `pulumi:"jobScheduleId"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the job schedule.
 type LookupJobScheduleResult struct {
-	Id            string                               `pulumi:"id"`
-	JobScheduleId *string                              `pulumi:"jobScheduleId"`
-	Name          string                               `pulumi:"name"`
-	Parameters    map[string]string                    `pulumi:"parameters"`
-	RunOn         *string                              `pulumi:"runOn"`
-	Runbook       *RunbookAssociationPropertyResponse  `pulumi:"runbook"`
-	Schedule      *ScheduleAssociationPropertyResponse `pulumi:"schedule"`
-	Type          string                               `pulumi:"type"`
+	// Gets the id of the resource.
+	Id string `pulumi:"id"`
+	// Gets or sets the id of job schedule.
+	JobScheduleId *string `pulumi:"jobScheduleId"`
+	// Gets the name of the variable.
+	Name string `pulumi:"name"`
+	// Gets or sets the parameters of the job schedule.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Gets or sets the hybrid worker group that the scheduled job should run on.
+	RunOn *string `pulumi:"runOn"`
+	// Gets or sets the runbook.
+	Runbook *RunbookAssociationPropertyResponse `pulumi:"runbook"`
+	// Gets or sets the schedule.
+	Schedule *ScheduleAssociationPropertyResponse `pulumi:"schedule"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupJobScheduleOutput(ctx *pulumi.Context, args LookupJobScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupJobScheduleResultOutput {
@@ -53,9 +64,12 @@ func LookupJobScheduleOutput(ctx *pulumi.Context, args LookupJobScheduleOutputAr
 }
 
 type LookupJobScheduleOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	JobScheduleId         pulumi.StringInput `pulumi:"jobScheduleId"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The job schedule name.
+	JobScheduleId pulumi.StringInput `pulumi:"jobScheduleId"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupJobScheduleOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupJobScheduleResultOutput) ToLookupJobScheduleResultOutputWithContex
 	return o
 }
 
+// Gets the id of the resource.
 func (o LookupJobScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the id of job schedule.
 func (o LookupJobScheduleResultOutput) JobScheduleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) *string { return v.JobScheduleId }).(pulumi.StringPtrOutput)
 }
 
+// Gets the name of the variable.
 func (o LookupJobScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the parameters of the job schedule.
 func (o LookupJobScheduleResultOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
+// Gets or sets the hybrid worker group that the scheduled job should run on.
 func (o LookupJobScheduleResultOutput) RunOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) *string { return v.RunOn }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the runbook.
 func (o LookupJobScheduleResultOutput) Runbook() RunbookAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) *RunbookAssociationPropertyResponse { return v.Runbook }).(RunbookAssociationPropertyResponsePtrOutput)
 }
 
+// Gets or sets the schedule.
 func (o LookupJobScheduleResultOutput) Schedule() ScheduleAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) *ScheduleAssociationPropertyResponse { return v.Schedule }).(ScheduleAssociationPropertyResponsePtrOutput)
 }
 
+// Resource type
 func (o LookupJobScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

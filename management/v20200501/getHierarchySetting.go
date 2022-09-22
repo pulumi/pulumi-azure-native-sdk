@@ -21,17 +21,24 @@ func LookupHierarchySetting(ctx *pulumi.Context, args *LookupHierarchySettingArg
 }
 
 type LookupHierarchySettingArgs struct {
+	// Management Group ID.
 	GroupId string `pulumi:"groupId"`
 }
 
 // Settings defined at the Management Group scope.
 type LookupHierarchySettingResult struct {
-	DefaultManagementGroup               *string `pulumi:"defaultManagementGroup"`
-	Id                                   string  `pulumi:"id"`
-	Name                                 string  `pulumi:"name"`
-	RequireAuthorizationForGroupCreation *bool   `pulumi:"requireAuthorizationForGroupCreation"`
-	TenantId                             *string `pulumi:"tenantId"`
-	Type                                 string  `pulumi:"type"`
+	// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
+	DefaultManagementGroup *string `pulumi:"defaultManagementGroup"`
+	// The fully qualified ID for the settings object.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default.
+	Id string `pulumi:"id"`
+	// The name of the object. In this case, default.
+	Name string `pulumi:"name"`
+	// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
+	RequireAuthorizationForGroupCreation *bool `pulumi:"requireAuthorizationForGroupCreation"`
+	// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
+	TenantId *string `pulumi:"tenantId"`
+	// The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
+	Type string `pulumi:"type"`
 }
 
 func LookupHierarchySettingOutput(ctx *pulumi.Context, args LookupHierarchySettingOutputArgs, opts ...pulumi.InvokeOption) LookupHierarchySettingResultOutput {
@@ -48,6 +55,7 @@ func LookupHierarchySettingOutput(ctx *pulumi.Context, args LookupHierarchySetti
 }
 
 type LookupHierarchySettingOutputArgs struct {
+	// Management Group ID.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 }
 
@@ -70,26 +78,32 @@ func (o LookupHierarchySettingResultOutput) ToLookupHierarchySettingResultOutput
 	return o
 }
 
+// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
 func (o LookupHierarchySettingResultOutput) DefaultManagementGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) *string { return v.DefaultManagementGroup }).(pulumi.StringPtrOutput)
 }
 
+// The fully qualified ID for the settings object.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default.
 func (o LookupHierarchySettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the object. In this case, default.
 func (o LookupHierarchySettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
 func (o LookupHierarchySettingResultOutput) RequireAuthorizationForGroupCreation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) *bool { return v.RequireAuthorizationForGroupCreation }).(pulumi.BoolPtrOutput)
 }
 
+// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupHierarchySettingResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
 func (o LookupHierarchySettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

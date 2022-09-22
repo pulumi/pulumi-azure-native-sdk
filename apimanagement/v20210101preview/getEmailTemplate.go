@@ -21,22 +21,34 @@ func LookupEmailTemplate(ctx *pulumi.Context, args *LookupEmailTemplateArgs, opt
 }
 
 type LookupEmailTemplateArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	TemplateName      string `pulumi:"templateName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// Email Template Name Identifier.
+	TemplateName string `pulumi:"templateName"`
 }
 
 // Email Template details.
 type LookupEmailTemplateResult struct {
-	Body        string                                              `pulumi:"body"`
-	Description *string                                             `pulumi:"description"`
-	Id          string                                              `pulumi:"id"`
-	IsDefault   bool                                                `pulumi:"isDefault"`
-	Name        string                                              `pulumi:"name"`
-	Parameters  []EmailTemplateParametersContractPropertiesResponse `pulumi:"parameters"`
-	Subject     string                                              `pulumi:"subject"`
-	Title       *string                                             `pulumi:"title"`
-	Type        string                                              `pulumi:"type"`
+	// Email Template Body. This should be a valid XDocument
+	Body string `pulumi:"body"`
+	// Description of the Email Template.
+	Description *string `pulumi:"description"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Whether the template is the default template provided by API Management or has been edited.
+	IsDefault bool `pulumi:"isDefault"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Email Template Parameter values.
+	Parameters []EmailTemplateParametersContractPropertiesResponse `pulumi:"parameters"`
+	// Subject of the Template.
+	Subject string `pulumi:"subject"`
+	// Title of the Template.
+	Title *string `pulumi:"title"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupEmailTemplateOutput(ctx *pulumi.Context, args LookupEmailTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupEmailTemplateResultOutput {
@@ -53,9 +65,12 @@ func LookupEmailTemplateOutput(ctx *pulumi.Context, args LookupEmailTemplateOutp
 }
 
 type LookupEmailTemplateOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	TemplateName      pulumi.StringInput `pulumi:"templateName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Email Template Name Identifier.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
 }
 
 func (LookupEmailTemplateOutputArgs) ElementType() reflect.Type {
@@ -77,40 +92,49 @@ func (o LookupEmailTemplateResultOutput) ToLookupEmailTemplateResultOutputWithCo
 	return o
 }
 
+// Email Template Body. This should be a valid XDocument
 func (o LookupEmailTemplateResultOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) string { return v.Body }).(pulumi.StringOutput)
 }
 
+// Description of the Email Template.
 func (o LookupEmailTemplateResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupEmailTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether the template is the default template provided by API Management or has been edited.
 func (o LookupEmailTemplateResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
+// Resource name.
 func (o LookupEmailTemplateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Email Template Parameter values.
 func (o LookupEmailTemplateResultOutput) Parameters() EmailTemplateParametersContractPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) []EmailTemplateParametersContractPropertiesResponse {
 		return v.Parameters
 	}).(EmailTemplateParametersContractPropertiesResponseArrayOutput)
 }
 
+// Subject of the Template.
 func (o LookupEmailTemplateResultOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) string { return v.Subject }).(pulumi.StringOutput)
 }
 
+// Title of the Template.
 func (o LookupEmailTemplateResultOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupEmailTemplateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailTemplateResult) string { return v.Type }).(pulumi.StringOutput)
 }

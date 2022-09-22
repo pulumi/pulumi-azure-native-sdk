@@ -23,18 +23,26 @@ func LookupHybridConnectionAuthorizationRule(ctx *pulumi.Context, args *LookupHy
 }
 
 type LookupHybridConnectionAuthorizationRuleArgs struct {
+	// The authorizationRule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	HybridConnectionName  string `pulumi:"hybridConnectionName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The hybrid connection name.
+	HybridConnectionName string `pulumi:"hybridConnectionName"`
+	// The Namespace Name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a Namespace AuthorizationRules.
 type LookupHybridConnectionAuthorizationRuleResult struct {
-	Id     string   `pulumi:"id"`
-	Name   string   `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
 	Rights []string `pulumi:"rights"`
-	Type   string   `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupHybridConnectionAuthorizationRuleOutput(ctx *pulumi.Context, args LookupHybridConnectionAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupHybridConnectionAuthorizationRuleResultOutput {
@@ -51,10 +59,14 @@ func LookupHybridConnectionAuthorizationRuleOutput(ctx *pulumi.Context, args Loo
 }
 
 type LookupHybridConnectionAuthorizationRuleOutputArgs struct {
+	// The authorizationRule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	HybridConnectionName  pulumi.StringInput `pulumi:"hybridConnectionName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The hybrid connection name.
+	HybridConnectionName pulumi.StringInput `pulumi:"hybridConnectionName"`
+	// The Namespace Name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupHybridConnectionAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -76,18 +88,22 @@ func (o LookupHybridConnectionAuthorizationRuleResultOutput) ToLookupHybridConne
 	return o
 }
 
+// Resource Id
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// Resource type
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

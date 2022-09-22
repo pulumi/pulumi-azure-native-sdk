@@ -21,15 +21,21 @@ func LookupPrivateLinkAssociation(ctx *pulumi.Context, args *LookupPrivateLinkAs
 }
 
 type LookupPrivateLinkAssociationArgs struct {
+	// The management group ID.
 	GroupId string `pulumi:"groupId"`
-	PlaId   string `pulumi:"plaId"`
+	// The ID of the PLA
+	PlaId string `pulumi:"plaId"`
 }
 
 type LookupPrivateLinkAssociationResult struct {
-	Id         string                                           `pulumi:"id"`
-	Name       string                                           `pulumi:"name"`
+	// The plaResourceID.
+	Id string `pulumi:"id"`
+	// The pla name.
+	Name string `pulumi:"name"`
+	// The private link association properties.
 	Properties PrivateLinkAssociationPropertiesExpandedResponse `pulumi:"properties"`
-	Type       string                                           `pulumi:"type"`
+	// The operation type.
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateLinkAssociationOutput(ctx *pulumi.Context, args LookupPrivateLinkAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkAssociationResultOutput {
@@ -46,8 +52,10 @@ func LookupPrivateLinkAssociationOutput(ctx *pulumi.Context, args LookupPrivateL
 }
 
 type LookupPrivateLinkAssociationOutputArgs struct {
+	// The management group ID.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
-	PlaId   pulumi.StringInput `pulumi:"plaId"`
+	// The ID of the PLA
+	PlaId pulumi.StringInput `pulumi:"plaId"`
 }
 
 func (LookupPrivateLinkAssociationOutputArgs) ElementType() reflect.Type {
@@ -68,20 +76,24 @@ func (o LookupPrivateLinkAssociationResultOutput) ToLookupPrivateLinkAssociation
 	return o
 }
 
+// The plaResourceID.
 func (o LookupPrivateLinkAssociationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkAssociationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The pla name.
 func (o LookupPrivateLinkAssociationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkAssociationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The private link association properties.
 func (o LookupPrivateLinkAssociationResultOutput) Properties() PrivateLinkAssociationPropertiesExpandedResponseOutput {
 	return o.ApplyT(func(v LookupPrivateLinkAssociationResult) PrivateLinkAssociationPropertiesExpandedResponse {
 		return v.Properties
 	}).(PrivateLinkAssociationPropertiesExpandedResponseOutput)
 }
 
+// The operation type.
 func (o LookupPrivateLinkAssociationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkAssociationResult) string { return v.Type }).(pulumi.StringOutput)
 }

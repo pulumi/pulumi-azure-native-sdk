@@ -21,16 +21,22 @@ func ListActiveSecurityAdminRule(ctx *pulumi.Context, args *ListActiveSecurityAd
 }
 
 type ListActiveSecurityAdminRuleArgs struct {
-	NetworkManagerName string   `pulumi:"networkManagerName"`
-	Regions            []string `pulumi:"regions"`
-	ResourceGroupName  string   `pulumi:"resourceGroupName"`
-	SkipToken          *string  `pulumi:"skipToken"`
+	// The name of the network manager.
+	NetworkManagerName string `pulumi:"networkManagerName"`
+	// List of regions.
+	Regions []string `pulumi:"regions"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // Result of the request to list active security admin rules. It contains a list of active security admin rules and a skiptoken to get the next set of results.
 type ListActiveSecurityAdminRuleResult struct {
-	SkipToken *string       `pulumi:"skipToken"`
-	Value     []interface{} `pulumi:"value"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// Gets a page of active security admin rules.
+	Value []interface{} `pulumi:"value"`
 }
 
 func ListActiveSecurityAdminRuleOutput(ctx *pulumi.Context, args ListActiveSecurityAdminRuleOutputArgs, opts ...pulumi.InvokeOption) ListActiveSecurityAdminRuleResultOutput {
@@ -47,10 +53,14 @@ func ListActiveSecurityAdminRuleOutput(ctx *pulumi.Context, args ListActiveSecur
 }
 
 type ListActiveSecurityAdminRuleOutputArgs struct {
-	NetworkManagerName pulumi.StringInput      `pulumi:"networkManagerName"`
-	Regions            pulumi.StringArrayInput `pulumi:"regions"`
-	ResourceGroupName  pulumi.StringInput      `pulumi:"resourceGroupName"`
-	SkipToken          pulumi.StringPtrInput   `pulumi:"skipToken"`
+	// The name of the network manager.
+	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
+	// List of regions.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListActiveSecurityAdminRuleOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o ListActiveSecurityAdminRuleResultOutput) ToListActiveSecurityAdminRuleRe
 	return o
 }
 
+// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 func (o ListActiveSecurityAdminRuleResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListActiveSecurityAdminRuleResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// Gets a page of active security admin rules.
 func (o ListActiveSecurityAdminRuleResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ListActiveSecurityAdminRuleResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

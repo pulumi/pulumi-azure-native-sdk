@@ -21,23 +21,36 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 }
 
 type LookupServiceArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The name of the Windows IoT Device Service.
+	DeviceName string `pulumi:"deviceName"`
+	// The name of the resource group that contains the Windows IoT Device Service.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The description of the Windows IoT Device Service.
 type LookupServiceResult struct {
-	AdminDomainName   *string           `pulumi:"adminDomainName"`
-	BillingDomainName *string           `pulumi:"billingDomainName"`
-	Etag              *string           `pulumi:"etag"`
-	Id                string            `pulumi:"id"`
-	Location          *string           `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	Notes             *string           `pulumi:"notes"`
-	Quantity          *float64          `pulumi:"quantity"`
-	StartDate         string            `pulumi:"startDate"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              string            `pulumi:"type"`
+	// Windows IoT Device Service OEM AAD domain
+	AdminDomainName *string `pulumi:"adminDomainName"`
+	// Windows IoT Device Service ODM AAD domain
+	BillingDomainName *string `pulumi:"billingDomainName"`
+	// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// The Azure Region where the resource lives
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Windows IoT Device Service notes.
+	Notes *string `pulumi:"notes"`
+	// Windows IoT Device Service device allocation,
+	Quantity *float64 `pulumi:"quantity"`
+	// Windows IoT Device Service start date,
+	StartDate string `pulumi:"startDate"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -54,7 +67,9 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 }
 
 type LookupServiceOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The name of the Windows IoT Device Service.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The name of the resource group that contains the Windows IoT Device Service.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,46 +92,57 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 	return o
 }
 
+// Windows IoT Device Service OEM AAD domain
 func (o LookupServiceResultOutput) AdminDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.AdminDomainName }).(pulumi.StringPtrOutput)
 }
 
+// Windows IoT Device Service ODM AAD domain
 func (o LookupServiceResultOutput) BillingDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.BillingDomainName }).(pulumi.StringPtrOutput)
 }
 
+// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
 func (o LookupServiceResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Azure Region where the resource lives
 func (o LookupServiceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Windows IoT Device Service notes.
 func (o LookupServiceResultOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// Windows IoT Device Service device allocation,
 func (o LookupServiceResultOutput) Quantity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *float64 { return v.Quantity }).(pulumi.Float64PtrOutput)
 }
 
+// Windows IoT Device Service start date,
 func (o LookupServiceResultOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.StartDate }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

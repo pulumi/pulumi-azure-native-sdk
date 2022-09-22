@@ -21,30 +21,50 @@ func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArg
 }
 
 type LookupExpressRoutePortArgs struct {
+	// The name of ExpressRoutePort.
 	ExpressRoutePortName string `pulumi:"expressRoutePortName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRoutePort resource definition.
 type LookupExpressRoutePortResult struct {
-	AllocationDate             string                          `pulumi:"allocationDate"`
-	BandwidthInGbps            *int                            `pulumi:"bandwidthInGbps"`
-	Circuits                   []SubResourceResponse           `pulumi:"circuits"`
-	Encapsulation              *string                         `pulumi:"encapsulation"`
-	Etag                       string                          `pulumi:"etag"`
-	EtherType                  string                          `pulumi:"etherType"`
-	Id                         *string                         `pulumi:"id"`
-	Identity                   *ManagedServiceIdentityResponse `pulumi:"identity"`
-	Links                      []ExpressRouteLinkResponse      `pulumi:"links"`
-	Location                   *string                         `pulumi:"location"`
-	Mtu                        string                          `pulumi:"mtu"`
-	Name                       string                          `pulumi:"name"`
-	PeeringLocation            *string                         `pulumi:"peeringLocation"`
-	ProvisionedBandwidthInGbps float64                         `pulumi:"provisionedBandwidthInGbps"`
-	ProvisioningState          string                          `pulumi:"provisioningState"`
-	ResourceGuid               string                          `pulumi:"resourceGuid"`
-	Tags                       map[string]string               `pulumi:"tags"`
-	Type                       string                          `pulumi:"type"`
+	// Date of the physical port allocation to be used in Letter of Authorization.
+	AllocationDate string `pulumi:"allocationDate"`
+	// Bandwidth of procured ports in Gbps.
+	BandwidthInGbps *int `pulumi:"bandwidthInGbps"`
+	// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
+	Circuits []SubResourceResponse `pulumi:"circuits"`
+	// Encapsulation method on physical ports.
+	Encapsulation *string `pulumi:"encapsulation"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Ether type of the physical port.
+	EtherType string `pulumi:"etherType"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The identity of ExpressRoutePort, if configured.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The set of physical links of the ExpressRoutePort resource.
+	Links []ExpressRouteLinkResponse `pulumi:"links"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Maximum transmission unit of the physical port pair(s).
+	Mtu string `pulumi:"mtu"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The name of the peering location that the ExpressRoutePort is mapped to physically.
+	PeeringLocation *string `pulumi:"peeringLocation"`
+	// Aggregate Gbps of associated circuit bandwidths.
+	ProvisionedBandwidthInGbps float64 `pulumi:"provisionedBandwidthInGbps"`
+	// The provisioning state of the express route port resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the express route port resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupExpressRoutePortOutput(ctx *pulumi.Context, args LookupExpressRoutePortOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRoutePortResultOutput {
@@ -61,8 +81,10 @@ func LookupExpressRoutePortOutput(ctx *pulumi.Context, args LookupExpressRoutePo
 }
 
 type LookupExpressRoutePortOutputArgs struct {
+	// The name of ExpressRoutePort.
 	ExpressRoutePortName pulumi.StringInput `pulumi:"expressRoutePortName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExpressRoutePortOutputArgs) ElementType() reflect.Type {
@@ -84,74 +106,92 @@ func (o LookupExpressRoutePortResultOutput) ToLookupExpressRoutePortResultOutput
 	return o
 }
 
+// Date of the physical port allocation to be used in Letter of Authorization.
 func (o LookupExpressRoutePortResultOutput) AllocationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.AllocationDate }).(pulumi.StringOutput)
 }
 
+// Bandwidth of procured ports in Gbps.
 func (o LookupExpressRoutePortResultOutput) BandwidthInGbps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *int { return v.BandwidthInGbps }).(pulumi.IntPtrOutput)
 }
 
+// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
 func (o LookupExpressRoutePortResultOutput) Circuits() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) []SubResourceResponse { return v.Circuits }).(SubResourceResponseArrayOutput)
 }
 
+// Encapsulation method on physical ports.
 func (o LookupExpressRoutePortResultOutput) Encapsulation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *string { return v.Encapsulation }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupExpressRoutePortResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Ether type of the physical port.
 func (o LookupExpressRoutePortResultOutput) EtherType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.EtherType }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupExpressRoutePortResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The identity of ExpressRoutePort, if configured.
 func (o LookupExpressRoutePortResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The set of physical links of the ExpressRoutePort resource.
 func (o LookupExpressRoutePortResultOutput) Links() ExpressRouteLinkResponseArrayOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) []ExpressRouteLinkResponse { return v.Links }).(ExpressRouteLinkResponseArrayOutput)
 }
 
+// Resource location.
 func (o LookupExpressRoutePortResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Maximum transmission unit of the physical port pair(s).
 func (o LookupExpressRoutePortResultOutput) Mtu() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.Mtu }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupExpressRoutePortResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the peering location that the ExpressRoutePort is mapped to physically.
 func (o LookupExpressRoutePortResultOutput) PeeringLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *string { return v.PeeringLocation }).(pulumi.StringPtrOutput)
 }
 
+// Aggregate Gbps of associated circuit bandwidths.
 func (o LookupExpressRoutePortResultOutput) ProvisionedBandwidthInGbps() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) float64 { return v.ProvisionedBandwidthInGbps }).(pulumi.Float64Output)
 }
 
+// The provisioning state of the express route port resource.
 func (o LookupExpressRoutePortResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource GUID property of the express route port resource.
 func (o LookupExpressRoutePortResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupExpressRoutePortResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupExpressRoutePortResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,19 +21,28 @@ func LookupMigrateProjectsControllerMigrateProject(ctx *pulumi.Context, args *Lo
 }
 
 type LookupMigrateProjectsControllerMigrateProjectArgs struct {
+	// Migrate project name.
 	MigrateProjectName string `pulumi:"migrateProjectName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Migrate project.
 type LookupMigrateProjectsControllerMigrateProjectResult struct {
-	ETag       *string                          `pulumi:"eTag"`
-	Id         string                           `pulumi:"id"`
-	Location   *string                          `pulumi:"location"`
-	Name       string                           `pulumi:"name"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{projectName}
+	Id string `pulumi:"id"`
+	// Azure location in which project is created.
+	Location *string `pulumi:"location"`
+	// Name of the project.
+	Name string `pulumi:"name"`
+	// Properties of a migrate project.
 	Properties MigrateProjectPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse               `pulumi:"systemData"`
-	Type       string                           `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Type of the object = [Microsoft.Migrate/migrateProjects].
+	Type string `pulumi:"type"`
 }
 
 func LookupMigrateProjectsControllerMigrateProjectOutput(ctx *pulumi.Context, args LookupMigrateProjectsControllerMigrateProjectOutputArgs, opts ...pulumi.InvokeOption) LookupMigrateProjectsControllerMigrateProjectResultOutput {
@@ -50,8 +59,10 @@ func LookupMigrateProjectsControllerMigrateProjectOutput(ctx *pulumi.Context, ar
 }
 
 type LookupMigrateProjectsControllerMigrateProjectOutputArgs struct {
+	// Migrate project name.
 	MigrateProjectName pulumi.StringInput `pulumi:"migrateProjectName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupMigrateProjectsControllerMigrateProjectOutputArgs) ElementType() reflect.Type {
@@ -73,32 +84,39 @@ func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) ToLookupMigra
 	return o
 }
 
+// For optimistic concurrency control.
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{projectName}
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure location in which project is created.
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the project.
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of a migrate project.
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) Properties() MigrateProjectPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) MigrateProjectPropertiesResponse {
 		return v.Properties
 	}).(MigrateProjectPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/migrateProjects].
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrateProjectsControllerMigrateProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

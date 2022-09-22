@@ -22,17 +22,24 @@ func LookupServerAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupServ
 }
 
 type LookupServerAzureADOnlyAuthenticationArgs struct {
+	// The name of server azure active directory only authentication.
 	AuthenticationName string `pulumi:"authenticationName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	ServerName         string `pulumi:"serverName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Azure Active Directory only authentication.
 type LookupServerAzureADOnlyAuthenticationResult struct {
-	AzureADOnlyAuthentication bool   `pulumi:"azureADOnlyAuthentication"`
-	Id                        string `pulumi:"id"`
-	Name                      string `pulumi:"name"`
-	Type                      string `pulumi:"type"`
+	// Azure Active Directory only Authentication enabled.
+	AzureADOnlyAuthentication bool `pulumi:"azureADOnlyAuthentication"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, args LookupServerAzureADOnlyAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupServerAzureADOnlyAuthenticationResultOutput {
@@ -49,9 +56,12 @@ func LookupServerAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupServerAzureADOnlyAuthenticationOutputArgs struct {
+	// The name of server azure active directory only authentication.
 	AuthenticationName pulumi.StringInput `pulumi:"authenticationName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName         pulumi.StringInput `pulumi:"serverName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerAzureADOnlyAuthenticationOutputArgs) ElementType() reflect.Type {
@@ -73,18 +83,22 @@ func (o LookupServerAzureADOnlyAuthenticationResultOutput) ToLookupServerAzureAD
 	return o
 }
 
+// Azure Active Directory only Authentication enabled.
 func (o LookupServerAzureADOnlyAuthenticationResultOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerAzureADOnlyAuthenticationResult) bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
 }
 
+// Resource ID.
 func (o LookupServerAzureADOnlyAuthenticationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADOnlyAuthenticationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerAzureADOnlyAuthenticationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADOnlyAuthenticationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupServerAzureADOnlyAuthenticationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAzureADOnlyAuthenticationResult) string { return v.Type }).(pulumi.StringOutput)
 }

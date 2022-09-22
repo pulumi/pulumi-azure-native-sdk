@@ -22,13 +22,17 @@ func ListUpgradableVersionDetails(ctx *pulumi.Context, args *ListUpgradableVersi
 }
 
 type ListUpgradableVersionDetailsArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Stack Versions that this version can upgrade to
 type ListUpgradableVersionDetailsResult struct {
-	CurrentVersion     *string  `pulumi:"currentVersion"`
+	// Current version of the elastic monitor
+	CurrentVersion *string `pulumi:"currentVersion"`
+	// Stack Versions that this version can upgrade to
 	UpgradableVersions []string `pulumi:"upgradableVersions"`
 }
 
@@ -46,7 +50,9 @@ func ListUpgradableVersionDetailsOutput(ctx *pulumi.Context, args ListUpgradable
 }
 
 type ListUpgradableVersionDetailsOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListUpgradableVersionDetailsResultOutput) ToListUpgradableVersionDetails
 	return o
 }
 
+// Current version of the elastic monitor
 func (o ListUpgradableVersionDetailsResultOutput) CurrentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListUpgradableVersionDetailsResult) *string { return v.CurrentVersion }).(pulumi.StringPtrOutput)
 }
 
+// Stack Versions that this version can upgrade to
 func (o ListUpgradableVersionDetailsResultOutput) UpgradableVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListUpgradableVersionDetailsResult) []string { return v.UpgradableVersions }).(pulumi.StringArrayOutput)
 }

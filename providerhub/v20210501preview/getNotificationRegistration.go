@@ -21,16 +21,21 @@ func LookupNotificationRegistration(ctx *pulumi.Context, args *LookupNotificatio
 }
 
 type LookupNotificationRegistrationArgs struct {
+	// The notification registration.
 	NotificationRegistrationName string `pulumi:"notificationRegistrationName"`
-	ProviderNamespace            string `pulumi:"providerNamespace"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace string `pulumi:"providerNamespace"`
 }
 
 // The notification registration definition.
 type LookupNotificationRegistrationResult struct {
-	Id         string                                     `pulumi:"id"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
 	Name       string                                     `pulumi:"name"`
 	Properties NotificationRegistrationResponseProperties `pulumi:"properties"`
-	Type       string                                     `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupNotificationRegistrationOutput(ctx *pulumi.Context, args LookupNotificationRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationRegistrationResultOutput {
@@ -47,8 +52,10 @@ func LookupNotificationRegistrationOutput(ctx *pulumi.Context, args LookupNotifi
 }
 
 type LookupNotificationRegistrationOutputArgs struct {
+	// The notification registration.
 	NotificationRegistrationName pulumi.StringInput `pulumi:"notificationRegistrationName"`
-	ProviderNamespace            pulumi.StringInput `pulumi:"providerNamespace"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
 }
 
 func (LookupNotificationRegistrationOutputArgs) ElementType() reflect.Type {
@@ -70,10 +77,12 @@ func (o LookupNotificationRegistrationResultOutput) ToLookupNotificationRegistra
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNotificationRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupNotificationRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -84,6 +93,7 @@ func (o LookupNotificationRegistrationResultOutput) Properties() NotificationReg
 	}).(NotificationRegistrationResponsePropertiesOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNotificationRegistrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

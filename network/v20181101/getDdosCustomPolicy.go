@@ -21,22 +21,34 @@ func LookupDdosCustomPolicy(ctx *pulumi.Context, args *LookupDdosCustomPolicyArg
 }
 
 type LookupDdosCustomPolicyArgs struct {
+	// The name of the DDoS custom policy.
 	DdosCustomPolicyName string `pulumi:"ddosCustomPolicyName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A DDoS custom policy in a resource group.
 type LookupDdosCustomPolicyResult struct {
-	Etag                   string                                 `pulumi:"etag"`
-	Id                     *string                                `pulumi:"id"`
-	Location               *string                                `pulumi:"location"`
-	Name                   string                                 `pulumi:"name"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The protocol-specific DDoS policy customization parameters.
 	ProtocolCustomSettings []ProtocolCustomSettingsFormatResponse `pulumi:"protocolCustomSettings"`
-	ProvisioningState      string                                 `pulumi:"provisioningState"`
-	PublicIPAddresses      []SubResourceResponse                  `pulumi:"publicIPAddresses"`
-	ResourceGuid           string                                 `pulumi:"resourceGuid"`
-	Tags                   map[string]string                      `pulumi:"tags"`
-	Type                   string                                 `pulumi:"type"`
+	// The provisioning state of the DDoS custom policy resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The list of public IPs associated with the DDoS custom policy resource. This list is read-only.
+	PublicIPAddresses []SubResourceResponse `pulumi:"publicIPAddresses"`
+	// The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDdosCustomPolicyOutput(ctx *pulumi.Context, args LookupDdosCustomPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDdosCustomPolicyResultOutput {
@@ -53,8 +65,10 @@ func LookupDdosCustomPolicyOutput(ctx *pulumi.Context, args LookupDdosCustomPoli
 }
 
 type LookupDdosCustomPolicyOutputArgs struct {
+	// The name of the DDoS custom policy.
 	DdosCustomPolicyName pulumi.StringInput `pulumi:"ddosCustomPolicyName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDdosCustomPolicyOutputArgs) ElementType() reflect.Type {
@@ -76,44 +90,54 @@ func (o LookupDdosCustomPolicyResultOutput) ToLookupDdosCustomPolicyResultOutput
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupDdosCustomPolicyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupDdosCustomPolicyResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupDdosCustomPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupDdosCustomPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The protocol-specific DDoS policy customization parameters.
 func (o LookupDdosCustomPolicyResultOutput) ProtocolCustomSettings() ProtocolCustomSettingsFormatResponseArrayOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) []ProtocolCustomSettingsFormatResponse {
 		return v.ProtocolCustomSettings
 	}).(ProtocolCustomSettingsFormatResponseArrayOutput)
 }
 
+// The provisioning state of the DDoS custom policy resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
 func (o LookupDdosCustomPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The list of public IPs associated with the DDoS custom policy resource. This list is read-only.
 func (o LookupDdosCustomPolicyResultOutput) PublicIPAddresses() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) []SubResourceResponse { return v.PublicIPAddresses }).(SubResourceResponseArrayOutput)
 }
 
+// The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
 func (o LookupDdosCustomPolicyResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupDdosCustomPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupDdosCustomPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDdosCustomPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

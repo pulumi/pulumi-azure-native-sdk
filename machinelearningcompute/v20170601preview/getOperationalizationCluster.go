@@ -23,27 +23,44 @@ func LookupOperationalizationCluster(ctx *pulumi.Context, args *LookupOperationa
 }
 
 type LookupOperationalizationClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// Name of the resource group in which the cluster is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Instance of an Azure ML Operationalization Cluster resource.
 type LookupOperationalizationClusterResult struct {
-	AppInsights                *AppInsightsCredentialsResponse      `pulumi:"appInsights"`
-	ClusterType                string                               `pulumi:"clusterType"`
-	ContainerRegistry          *ContainerRegistryPropertiesResponse `pulumi:"containerRegistry"`
-	ContainerService           AcsClusterPropertiesResponse         `pulumi:"containerService"`
-	CreatedOn                  string                               `pulumi:"createdOn"`
-	Description                *string                              `pulumi:"description"`
-	GlobalServiceConfiguration *GlobalServiceConfigurationResponse  `pulumi:"globalServiceConfiguration"`
-	Id                         string                               `pulumi:"id"`
-	Location                   string                               `pulumi:"location"`
-	ModifiedOn                 string                               `pulumi:"modifiedOn"`
-	Name                       string                               `pulumi:"name"`
-	ProvisioningState          string                               `pulumi:"provisioningState"`
-	StorageAccount             *StorageAccountPropertiesResponse    `pulumi:"storageAccount"`
-	Tags                       map[string]string                    `pulumi:"tags"`
-	Type                       string                               `pulumi:"type"`
+	// AppInsights configuration
+	AppInsights *AppInsightsCredentialsResponse `pulumi:"appInsights"`
+	// The cluster type.
+	ClusterType string `pulumi:"clusterType"`
+	// Container Registry properties.
+	ContainerRegistry *ContainerRegistryPropertiesResponse `pulumi:"containerRegistry"`
+	// Parameters for the Azure Container Service cluster.
+	ContainerService AcsClusterPropertiesResponse `pulumi:"containerService"`
+	// The date and time when the cluster was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// The description of the cluster.
+	Description *string `pulumi:"description"`
+	// Contains global configuration for the web services in the cluster.
+	GlobalServiceConfiguration *GlobalServiceConfigurationResponse `pulumi:"globalServiceConfiguration"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// Specifies the location of the resource.
+	Location string `pulumi:"location"`
+	// The date and time when the cluster was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Storage Account properties.
+	StorageAccount *StorageAccountPropertiesResponse `pulumi:"storageAccount"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupOperationalizationClusterResult
@@ -73,7 +90,9 @@ func LookupOperationalizationClusterOutput(ctx *pulumi.Context, args LookupOpera
 }
 
 type LookupOperationalizationClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Name of the resource group in which the cluster is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,68 +115,83 @@ func (o LookupOperationalizationClusterResultOutput) ToLookupOperationalizationC
 	return o
 }
 
+// AppInsights configuration
 func (o LookupOperationalizationClusterResultOutput) AppInsights() AppInsightsCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) *AppInsightsCredentialsResponse { return v.AppInsights }).(AppInsightsCredentialsResponsePtrOutput)
 }
 
+// The cluster type.
 func (o LookupOperationalizationClusterResultOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
+// Container Registry properties.
 func (o LookupOperationalizationClusterResultOutput) ContainerRegistry() ContainerRegistryPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) *ContainerRegistryPropertiesResponse {
 		return v.ContainerRegistry
 	}).(ContainerRegistryPropertiesResponsePtrOutput)
 }
 
+// Parameters for the Azure Container Service cluster.
 func (o LookupOperationalizationClusterResultOutput) ContainerService() AcsClusterPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) AcsClusterPropertiesResponse { return v.ContainerService }).(AcsClusterPropertiesResponseOutput)
 }
 
+// The date and time when the cluster was created.
 func (o LookupOperationalizationClusterResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// The description of the cluster.
 func (o LookupOperationalizationClusterResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Contains global configuration for the web services in the cluster.
 func (o LookupOperationalizationClusterResultOutput) GlobalServiceConfiguration() GlobalServiceConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) *GlobalServiceConfigurationResponse {
 		return v.GlobalServiceConfiguration
 	}).(GlobalServiceConfigurationResponsePtrOutput)
 }
 
+// Specifies the resource ID.
 func (o LookupOperationalizationClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupOperationalizationClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The date and time when the cluster was last modified.
 func (o LookupOperationalizationClusterResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupOperationalizationClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 func (o LookupOperationalizationClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Storage Account properties.
 func (o LookupOperationalizationClusterResultOutput) StorageAccount() StorageAccountPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) *StorageAccountPropertiesResponse {
 		return v.StorageAccount
 	}).(StorageAccountPropertiesResponsePtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupOperationalizationClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupOperationalizationClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOperationalizationClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }

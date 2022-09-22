@@ -21,18 +21,26 @@ func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulum
 }
 
 type LookupScheduleArgs struct {
-	Name              string `pulumi:"name"`
+	// Schedule name.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupScheduleResult struct {
-	Id                 string             `pulumi:"id"`
-	Name               string             `pulumi:"name"`
-	ScheduleProperties ScheduleResponse   `pulumi:"scheduleProperties"`
-	SystemData         SystemDataResponse `pulumi:"systemData"`
-	Type               string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	ScheduleProperties ScheduleResponse `pulumi:"scheduleProperties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupScheduleResult
@@ -60,9 +68,12 @@ func LookupScheduleOutput(ctx *pulumi.Context, args LookupScheduleOutputArgs, op
 }
 
 type LookupScheduleOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Schedule name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupScheduleOutputArgs) ElementType() reflect.Type {
@@ -84,22 +95,27 @@ func (o LookupScheduleResultOutput) ToLookupScheduleResultOutputWithContext(ctx 
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
 func (o LookupScheduleResultOutput) ScheduleProperties() ScheduleResponseOutput {
 	return o.ApplyT(func(v LookupScheduleResult) ScheduleResponse { return v.ScheduleProperties }).(ScheduleResponseOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupScheduleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

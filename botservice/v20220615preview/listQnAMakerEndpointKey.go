@@ -21,15 +21,21 @@ func ListQnAMakerEndpointKey(ctx *pulumi.Context, args *ListQnAMakerEndpointKeyA
 }
 
 type ListQnAMakerEndpointKeyArgs struct {
-	Authkey  *string `pulumi:"authkey"`
+	// Subscription key which provides access to this API.
+	Authkey *string `pulumi:"authkey"`
+	// the host name of the QnA Maker endpoint
 	Hostname *string `pulumi:"hostname"`
 }
 
 // Schema for EndpointKeys generate/refresh operations.
 type ListQnAMakerEndpointKeyResult struct {
-	InstalledVersion     *string `pulumi:"installedVersion"`
-	LastStableVersion    *string `pulumi:"lastStableVersion"`
-	PrimaryEndpointKey   *string `pulumi:"primaryEndpointKey"`
+	// Current version of runtime.
+	InstalledVersion *string `pulumi:"installedVersion"`
+	// Latest version of runtime.
+	LastStableVersion *string `pulumi:"lastStableVersion"`
+	// Primary Access Key.
+	PrimaryEndpointKey *string `pulumi:"primaryEndpointKey"`
+	// Secondary Access Key.
 	SecondaryEndpointKey *string `pulumi:"secondaryEndpointKey"`
 }
 
@@ -47,7 +53,9 @@ func ListQnAMakerEndpointKeyOutput(ctx *pulumi.Context, args ListQnAMakerEndpoin
 }
 
 type ListQnAMakerEndpointKeyOutputArgs struct {
-	Authkey  pulumi.StringPtrInput `pulumi:"authkey"`
+	// Subscription key which provides access to this API.
+	Authkey pulumi.StringPtrInput `pulumi:"authkey"`
+	// the host name of the QnA Maker endpoint
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 }
 
@@ -70,18 +78,22 @@ func (o ListQnAMakerEndpointKeyResultOutput) ToListQnAMakerEndpointKeyResultOutp
 	return o
 }
 
+// Current version of runtime.
 func (o ListQnAMakerEndpointKeyResultOutput) InstalledVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQnAMakerEndpointKeyResult) *string { return v.InstalledVersion }).(pulumi.StringPtrOutput)
 }
 
+// Latest version of runtime.
 func (o ListQnAMakerEndpointKeyResultOutput) LastStableVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQnAMakerEndpointKeyResult) *string { return v.LastStableVersion }).(pulumi.StringPtrOutput)
 }
 
+// Primary Access Key.
 func (o ListQnAMakerEndpointKeyResultOutput) PrimaryEndpointKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQnAMakerEndpointKeyResult) *string { return v.PrimaryEndpointKey }).(pulumi.StringPtrOutput)
 }
 
+// Secondary Access Key.
 func (o ListQnAMakerEndpointKeyResultOutput) SecondaryEndpointKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQnAMakerEndpointKeyResult) *string { return v.SecondaryEndpointKey }).(pulumi.StringPtrOutput)
 }
