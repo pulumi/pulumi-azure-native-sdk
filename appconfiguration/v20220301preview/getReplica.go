@@ -21,20 +21,30 @@ func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.
 }
 
 type LookupReplicaArgs struct {
-	ConfigStoreName   string `pulumi:"configStoreName"`
-	ReplicaName       string `pulumi:"replicaName"`
+	// The name of the configuration store.
+	ConfigStoreName string `pulumi:"configStoreName"`
+	// The name of the replica.
+	ReplicaName string `pulumi:"replicaName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The replica resource.
 type LookupReplicaResult struct {
-	Endpoint          string             `pulumi:"endpoint"`
-	Id                string             `pulumi:"id"`
-	Location          *string            `pulumi:"location"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// The URI of the replica where the replica API will be available.
+	Endpoint string `pulumi:"endpoint"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The location of the replica.
+	Location *string `pulumi:"location"`
+	// The name of the replica.
+	Name string `pulumi:"name"`
+	// The provisioning state of the replica.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource system metadata.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicaOutput(ctx *pulumi.Context, args LookupReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupReplicaResultOutput {
@@ -51,8 +61,11 @@ func LookupReplicaOutput(ctx *pulumi.Context, args LookupReplicaOutputArgs, opts
 }
 
 type LookupReplicaOutputArgs struct {
-	ConfigStoreName   pulumi.StringInput `pulumi:"configStoreName"`
-	ReplicaName       pulumi.StringInput `pulumi:"replicaName"`
+	// The name of the configuration store.
+	ConfigStoreName pulumi.StringInput `pulumi:"configStoreName"`
+	// The name of the replica.
+	ReplicaName pulumi.StringInput `pulumi:"replicaName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupReplicaResultOutput) ToLookupReplicaResultOutputWithContext(ctx co
 	return o
 }
 
+// The URI of the replica where the replica API will be available.
 func (o LookupReplicaResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicaResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// The resource ID.
 func (o LookupReplicaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the replica.
 func (o LookupReplicaResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicaResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the replica.
 func (o LookupReplicaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the replica.
 func (o LookupReplicaResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicaResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource system metadata.
 func (o LookupReplicaResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupReplicaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupReplicaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicaResult) string { return v.Type }).(pulumi.StringOutput)
 }

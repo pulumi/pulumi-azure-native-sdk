@@ -21,23 +21,36 @@ func ListSiteBackupConfigurationSlot(ctx *pulumi.Context, args *ListSiteBackupCo
 }
 
 type ListSiteBackupConfigurationSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Description of a backup which will be performed
 type ListSiteBackupConfigurationSlotResult struct {
-	BackupSchedule    *BackupScheduleResponse         `pulumi:"backupSchedule"`
-	Databases         []DatabaseBackupSettingResponse `pulumi:"databases"`
-	Enabled           *bool                           `pulumi:"enabled"`
-	Id                *string                         `pulumi:"id"`
-	Kind              *string                         `pulumi:"kind"`
-	Location          string                          `pulumi:"location"`
-	Name              *string                         `pulumi:"name"`
-	StorageAccountUrl *string                         `pulumi:"storageAccountUrl"`
-	Tags              map[string]string               `pulumi:"tags"`
-	Type              string                          `pulumi:"type"`
+	// Schedule for the backup if it is executed periodically
+	BackupSchedule *BackupScheduleResponse `pulumi:"backupSchedule"`
+	// Databases included in the backup
+	Databases []DatabaseBackupSettingResponse `pulumi:"databases"`
+	// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
+	Enabled *bool `pulumi:"enabled"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// SAS URL to the container
+	StorageAccountUrl *string `pulumi:"storageAccountUrl"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func ListSiteBackupConfigurationSlotOutput(ctx *pulumi.Context, args ListSiteBackupConfigurationSlotOutputArgs, opts ...pulumi.InvokeOption) ListSiteBackupConfigurationSlotResultOutput {
@@ -54,9 +67,12 @@ func ListSiteBackupConfigurationSlotOutput(ctx *pulumi.Context, args ListSiteBac
 }
 
 type ListSiteBackupConfigurationSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListSiteBackupConfigurationSlotOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o ListSiteBackupConfigurationSlotResultOutput) ToListSiteBackupConfigurati
 	return o
 }
 
+// Schedule for the backup if it is executed periodically
 func (o ListSiteBackupConfigurationSlotResultOutput) BackupSchedule() BackupScheduleResponsePtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) *BackupScheduleResponse { return v.BackupSchedule }).(BackupScheduleResponsePtrOutput)
 }
 
+// Databases included in the backup
 func (o ListSiteBackupConfigurationSlotResultOutput) Databases() DatabaseBackupSettingResponseArrayOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) []DatabaseBackupSettingResponse { return v.Databases }).(DatabaseBackupSettingResponseArrayOutput)
 }
 
+// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
 func (o ListSiteBackupConfigurationSlotResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource Id
 func (o ListSiteBackupConfigurationSlotResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o ListSiteBackupConfigurationSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o ListSiteBackupConfigurationSlotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o ListSiteBackupConfigurationSlotResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// SAS URL to the container
 func (o ListSiteBackupConfigurationSlotResultOutput) StorageAccountUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) *string { return v.StorageAccountUrl }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o ListSiteBackupConfigurationSlotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o ListSiteBackupConfigurationSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteBackupConfigurationSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

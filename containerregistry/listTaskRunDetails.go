@@ -23,24 +23,37 @@ func ListTaskRunDetails(ctx *pulumi.Context, args *ListTaskRunDetailsArgs, opts 
 }
 
 type ListTaskRunDetailsArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TaskRunName       string `pulumi:"taskRunName"`
+	// The name of the task run.
+	TaskRunName string `pulumi:"taskRunName"`
 }
 
 // The task run that has the ARM resource and properties.
 // The task run will have the information of request and result of a run.
 type ListTaskRunDetailsResult struct {
-	ForceUpdateTag    *string                     `pulumi:"forceUpdateTag"`
-	Id                string                      `pulumi:"id"`
-	Identity          *IdentityPropertiesResponse `pulumi:"identity"`
-	Location          *string                     `pulumi:"location"`
-	Name              string                      `pulumi:"name"`
-	ProvisioningState string                      `pulumi:"provisioningState"`
-	RunRequest        interface{}                 `pulumi:"runRequest"`
-	RunResult         RunResponse                 `pulumi:"runResult"`
-	SystemData        SystemDataResponse          `pulumi:"systemData"`
-	Type              string                      `pulumi:"type"`
+	// How the run should be forced to rerun even if the run request configuration has not changed
+	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *IdentityPropertiesResponse `pulumi:"identity"`
+	// The location of the resource
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning state of this task run
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The request (parameters) for the run
+	RunRequest interface{} `pulumi:"runRequest"`
+	// The result of this task run
+	RunResult RunResponse `pulumi:"runResult"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for ListTaskRunDetailsResult
@@ -68,9 +81,12 @@ func ListTaskRunDetailsOutput(ctx *pulumi.Context, args ListTaskRunDetailsOutput
 }
 
 type ListTaskRunDetailsOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TaskRunName       pulumi.StringInput `pulumi:"taskRunName"`
+	// The name of the task run.
+	TaskRunName pulumi.StringInput `pulumi:"taskRunName"`
 }
 
 func (ListTaskRunDetailsOutputArgs) ElementType() reflect.Type {
@@ -93,42 +109,52 @@ func (o ListTaskRunDetailsResultOutput) ToListTaskRunDetailsResultOutputWithCont
 	return o
 }
 
+// How the run should be forced to rerun even if the run request configuration has not changed
 func (o ListTaskRunDetailsResultOutput) ForceUpdateTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
 }
 
+// The resource ID.
 func (o ListTaskRunDetailsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o ListTaskRunDetailsResultOutput) Identity() IdentityPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) *IdentityPropertiesResponse { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
+// The location of the resource
 func (o ListTaskRunDetailsResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o ListTaskRunDetailsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of this task run
 func (o ListTaskRunDetailsResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The request (parameters) for the run
 func (o ListTaskRunDetailsResultOutput) RunRequest() pulumi.AnyOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) interface{} { return v.RunRequest }).(pulumi.AnyOutput)
 }
 
+// The result of this task run
 func (o ListTaskRunDetailsResultOutput) RunResult() RunResponseOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) RunResponse { return v.RunResult }).(RunResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o ListTaskRunDetailsResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o ListTaskRunDetailsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListTaskRunDetailsResult) string { return v.Type }).(pulumi.StringOutput)
 }

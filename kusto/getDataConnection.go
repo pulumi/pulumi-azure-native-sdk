@@ -24,19 +24,28 @@ func LookupDataConnection(ctx *pulumi.Context, args *LookupDataConnectionArgs, o
 }
 
 type LookupDataConnectionArgs struct {
-	ClusterName        string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the data connection.
 	DataConnectionName string `pulumi:"dataConnectionName"`
-	DatabaseName       string `pulumi:"databaseName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing an data connection.
 type LookupDataConnectionResult struct {
-	Id       string  `pulumi:"id"`
-	Kind     string  `pulumi:"kind"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Kind of the endpoint for the data connection
+	Kind string `pulumi:"kind"`
+	// Resource location.
 	Location *string `pulumi:"location"`
-	Name     string  `pulumi:"name"`
-	Type     string  `pulumi:"type"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDataConnectionOutput(ctx *pulumi.Context, args LookupDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupDataConnectionResultOutput {
@@ -53,10 +62,14 @@ func LookupDataConnectionOutput(ctx *pulumi.Context, args LookupDataConnectionOu
 }
 
 type LookupDataConnectionOutputArgs struct {
-	ClusterName        pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the data connection.
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
-	DatabaseName       pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDataConnectionOutputArgs) ElementType() reflect.Type {
@@ -78,22 +91,27 @@ func (o LookupDataConnectionResultOutput) ToLookupDataConnectionResultOutputWith
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDataConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of the endpoint for the data connection
 func (o LookupDataConnectionResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectionResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupDataConnectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupDataConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDataConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

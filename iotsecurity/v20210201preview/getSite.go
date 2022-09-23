@@ -21,17 +21,24 @@ func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.Invoke
 }
 
 type LookupSiteArgs struct {
+	// Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
 	Scope string `pulumi:"scope"`
 }
 
 // IoT site model
 type LookupSiteResult struct {
-	DisplayName string             `pulumi:"displayName"`
-	Id          string             `pulumi:"id"`
-	Name        string             `pulumi:"name"`
-	SystemData  SystemDataResponse `pulumi:"systemData"`
-	Tags        map[string]string  `pulumi:"tags"`
-	Type        string             `pulumi:"type"`
+	// Display name of the IoT site
+	DisplayName string `pulumi:"displayName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Tags of the IoT site
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pulumi.InvokeOption) LookupSiteResultOutput {
@@ -48,6 +55,7 @@ func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pu
 }
 
 type LookupSiteOutputArgs struct {
+	// Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -70,26 +78,32 @@ func (o LookupSiteResultOutput) ToLookupSiteResultOutputWithContext(ctx context.
 	return o
 }
 
+// Display name of the IoT site
 func (o LookupSiteResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSiteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSiteResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSiteResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Tags of the IoT site
 func (o LookupSiteResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

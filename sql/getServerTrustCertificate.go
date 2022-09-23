@@ -22,19 +22,28 @@ func LookupServerTrustCertificate(ctx *pulumi.Context, args *LookupServerTrustCe
 }
 
 type LookupServerTrustCertificateArgs struct {
-	CertificateName     string `pulumi:"certificateName"`
+	// Name of of the certificate to get.
+	CertificateName string `pulumi:"certificateName"`
+	// The name of the managed instance.
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
 type LookupServerTrustCertificateResult struct {
-	CertificateName string  `pulumi:"certificateName"`
-	Id              string  `pulumi:"id"`
-	Name            string  `pulumi:"name"`
-	PublicBlob      *string `pulumi:"publicBlob"`
-	Thumbprint      string  `pulumi:"thumbprint"`
-	Type            string  `pulumi:"type"`
+	// The certificate name
+	CertificateName string `pulumi:"certificateName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The certificate public blob
+	PublicBlob *string `pulumi:"publicBlob"`
+	// The certificate thumbprint
+	Thumbprint string `pulumi:"thumbprint"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerTrustCertificateOutput(ctx *pulumi.Context, args LookupServerTrustCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupServerTrustCertificateResultOutput {
@@ -51,9 +60,12 @@ func LookupServerTrustCertificateOutput(ctx *pulumi.Context, args LookupServerTr
 }
 
 type LookupServerTrustCertificateOutputArgs struct {
-	CertificateName     pulumi.StringInput `pulumi:"certificateName"`
+	// Name of of the certificate to get.
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// The name of the managed instance.
 	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupServerTrustCertificateOutputArgs) ElementType() reflect.Type {
@@ -75,26 +87,32 @@ func (o LookupServerTrustCertificateResultOutput) ToLookupServerTrustCertificate
 	return o
 }
 
+// The certificate name
 func (o LookupServerTrustCertificateResultOutput) CertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustCertificateResult) string { return v.CertificateName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupServerTrustCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerTrustCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The certificate public blob
 func (o LookupServerTrustCertificateResultOutput) PublicBlob() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerTrustCertificateResult) *string { return v.PublicBlob }).(pulumi.StringPtrOutput)
 }
 
+// The certificate thumbprint
 func (o LookupServerTrustCertificateResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustCertificateResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupServerTrustCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

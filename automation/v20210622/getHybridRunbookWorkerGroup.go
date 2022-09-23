@@ -21,20 +21,30 @@ func LookupHybridRunbookWorkerGroup(ctx *pulumi.Context, args *LookupHybridRunbo
 }
 
 type LookupHybridRunbookWorkerGroupArgs struct {
-	AutomationAccountName        string `pulumi:"automationAccountName"`
+	// The name of the automation account.
+	AutomationAccountName string `pulumi:"automationAccountName"`
+	// The hybrid runbook worker group name
 	HybridRunbookWorkerGroupName string `pulumi:"hybridRunbookWorkerGroupName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of hybrid runbook worker group.
 type LookupHybridRunbookWorkerGroupResult struct {
-	Credential           *RunAsCredentialAssociationPropertyResponse `pulumi:"credential"`
-	GroupType            *string                                     `pulumi:"groupType"`
-	HybridRunbookWorkers []HybridRunbookWorkerLegacyResponse         `pulumi:"hybridRunbookWorkers"`
-	Id                   *string                                     `pulumi:"id"`
-	Name                 *string                                     `pulumi:"name"`
-	SystemData           SystemDataResponse                          `pulumi:"systemData"`
-	Type                 string                                      `pulumi:"type"`
+	// Sets the credential of a worker group.
+	Credential *RunAsCredentialAssociationPropertyResponse `pulumi:"credential"`
+	// Type of the HybridWorkerGroup.
+	GroupType *string `pulumi:"groupType"`
+	// Gets or sets the list of hybrid runbook workers.
+	HybridRunbookWorkers []HybridRunbookWorkerLegacyResponse `pulumi:"hybridRunbookWorkers"`
+	// Gets or sets the id of the resource.
+	Id *string `pulumi:"id"`
+	// Gets or sets the name of the group.
+	Name *string `pulumi:"name"`
+	// Resource system metadata.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupHybridRunbookWorkerGroupOutput(ctx *pulumi.Context, args LookupHybridRunbookWorkerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupHybridRunbookWorkerGroupResultOutput {
@@ -51,9 +61,12 @@ func LookupHybridRunbookWorkerGroupOutput(ctx *pulumi.Context, args LookupHybrid
 }
 
 type LookupHybridRunbookWorkerGroupOutputArgs struct {
-	AutomationAccountName        pulumi.StringInput `pulumi:"automationAccountName"`
+	// The name of the automation account.
+	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
+	// The hybrid runbook worker group name
 	HybridRunbookWorkerGroupName pulumi.StringInput `pulumi:"hybridRunbookWorkerGroupName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupHybridRunbookWorkerGroupOutputArgs) ElementType() reflect.Type {
@@ -75,34 +88,41 @@ func (o LookupHybridRunbookWorkerGroupResultOutput) ToLookupHybridRunbookWorkerG
 	return o
 }
 
+// Sets the credential of a worker group.
 func (o LookupHybridRunbookWorkerGroupResultOutput) Credential() RunAsCredentialAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) *RunAsCredentialAssociationPropertyResponse {
 		return v.Credential
 	}).(RunAsCredentialAssociationPropertyResponsePtrOutput)
 }
 
+// Type of the HybridWorkerGroup.
 func (o LookupHybridRunbookWorkerGroupResultOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) *string { return v.GroupType }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the list of hybrid runbook workers.
 func (o LookupHybridRunbookWorkerGroupResultOutput) HybridRunbookWorkers() HybridRunbookWorkerLegacyResponseArrayOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) []HybridRunbookWorkerLegacyResponse {
 		return v.HybridRunbookWorkers
 	}).(HybridRunbookWorkerLegacyResponseArrayOutput)
 }
 
+// Gets or sets the id of the resource.
 func (o LookupHybridRunbookWorkerGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the name of the group.
 func (o LookupHybridRunbookWorkerGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Resource system metadata.
 func (o LookupHybridRunbookWorkerGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupHybridRunbookWorkerGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

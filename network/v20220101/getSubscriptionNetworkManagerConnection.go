@@ -21,18 +21,26 @@ func LookupSubscriptionNetworkManagerConnection(ctx *pulumi.Context, args *Looku
 }
 
 type LookupSubscriptionNetworkManagerConnectionArgs struct {
+	// Name for the network manager connection.
 	NetworkManagerConnectionName string `pulumi:"networkManagerConnectionName"`
 }
 
 // The Network Manager Connection resource
 type LookupSubscriptionNetworkManagerConnectionResult struct {
-	Description      *string            `pulumi:"description"`
-	Etag             string             `pulumi:"etag"`
-	Id               string             `pulumi:"id"`
-	Name             string             `pulumi:"name"`
-	NetworkManagerId *string            `pulumi:"networkManagerId"`
-	SystemData       SystemDataResponse `pulumi:"systemData"`
-	Type             string             `pulumi:"type"`
+	// A description of the network manager connection.
+	Description *string `pulumi:"description"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Network Manager Id.
+	NetworkManagerId *string `pulumi:"networkManagerId"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSubscriptionNetworkManagerConnectionOutput(ctx *pulumi.Context, args LookupSubscriptionNetworkManagerConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionNetworkManagerConnectionResultOutput {
@@ -49,6 +57,7 @@ func LookupSubscriptionNetworkManagerConnectionOutput(ctx *pulumi.Context, args 
 }
 
 type LookupSubscriptionNetworkManagerConnectionOutputArgs struct {
+	// Name for the network manager connection.
 	NetworkManagerConnectionName pulumi.StringInput `pulumi:"networkManagerConnectionName"`
 }
 
@@ -71,30 +80,37 @@ func (o LookupSubscriptionNetworkManagerConnectionResultOutput) ToLookupSubscrip
 	return o
 }
 
+// A description of the network manager connection.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Network Manager Id.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) NetworkManagerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) *string { return v.NetworkManagerId }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

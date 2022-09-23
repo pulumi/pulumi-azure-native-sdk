@@ -22,14 +22,18 @@ func ListRemediationDeploymentsAtSubscription(ctx *pulumi.Context, args *ListRem
 }
 
 type ListRemediationDeploymentsAtSubscriptionArgs struct {
+	// The name of the remediation.
 	RemediationName string `pulumi:"remediationName"`
-	Top             *int   `pulumi:"top"`
+	// Maximum number of records to return.
+	Top *int `pulumi:"top"`
 }
 
 // List of deployments for a remediation.
 type ListRemediationDeploymentsAtSubscriptionResult struct {
-	NextLink string                          `pulumi:"nextLink"`
-	Value    []RemediationDeploymentResponse `pulumi:"value"`
+	// The URL to get the next set of results.
+	NextLink string `pulumi:"nextLink"`
+	// Array of deployments for the remediation.
+	Value []RemediationDeploymentResponse `pulumi:"value"`
 }
 
 func ListRemediationDeploymentsAtSubscriptionOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtSubscriptionOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtSubscriptionResultOutput {
@@ -46,8 +50,10 @@ func ListRemediationDeploymentsAtSubscriptionOutput(ctx *pulumi.Context, args Li
 }
 
 type ListRemediationDeploymentsAtSubscriptionOutputArgs struct {
+	// The name of the remediation.
 	RemediationName pulumi.StringInput `pulumi:"remediationName"`
-	Top             pulumi.IntPtrInput `pulumi:"top"`
+	// Maximum number of records to return.
+	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
 func (ListRemediationDeploymentsAtSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -69,10 +75,12 @@ func (o ListRemediationDeploymentsAtSubscriptionResultOutput) ToListRemediationD
 	return o
 }
 
+// The URL to get the next set of results.
 func (o ListRemediationDeploymentsAtSubscriptionResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListRemediationDeploymentsAtSubscriptionResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Array of deployments for the remediation.
 func (o ListRemediationDeploymentsAtSubscriptionResultOutput) Value() RemediationDeploymentResponseArrayOutput {
 	return o.ApplyT(func(v ListRemediationDeploymentsAtSubscriptionResult) []RemediationDeploymentResponse { return v.Value }).(RemediationDeploymentResponseArrayOutput)
 }

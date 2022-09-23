@@ -21,24 +21,38 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 }
 
 type LookupAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NetApp account resource
 type LookupAccountResult struct {
-	ActiveDirectories []ActiveDirectoryResponse  `pulumi:"activeDirectories"`
-	DisableShowmount  bool                       `pulumi:"disableShowmount"`
-	Encryption        *AccountEncryptionResponse `pulumi:"encryption"`
-	Etag              string                     `pulumi:"etag"`
-	Id                string                     `pulumi:"id"`
-	Identity          *IdentityResponse          `pulumi:"identity"`
-	Location          string                     `pulumi:"location"`
-	Name              string                     `pulumi:"name"`
-	ProvisioningState string                     `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse         `pulumi:"systemData"`
-	Tags              map[string]string          `pulumi:"tags"`
-	Type              string                     `pulumi:"type"`
+	// Active Directories
+	ActiveDirectories []ActiveDirectoryResponse `pulumi:"activeDirectories"`
+	// Shows the status of disableShowmount for all volumes under the subscription, null equals false
+	DisableShowmount bool `pulumi:"disableShowmount"`
+	// Encryption settings
+	Encryption *AccountEncryptionResponse `pulumi:"encryption"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupAccountResult
@@ -66,7 +80,9 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 }
 
 type LookupAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -89,50 +105,62 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// Active Directories
 func (o LookupAccountResultOutput) ActiveDirectories() ActiveDirectoryResponseArrayOutput {
 	return o.ApplyT(func(v LookupAccountResult) []ActiveDirectoryResponse { return v.ActiveDirectories }).(ActiveDirectoryResponseArrayOutput)
 }
 
+// Shows the status of disableShowmount for all volumes under the subscription, null equals false
 func (o LookupAccountResultOutput) DisableShowmount() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccountResult) bool { return v.DisableShowmount }).(pulumi.BoolOutput)
 }
 
+// Encryption settings
 func (o LookupAccountResultOutput) Encryption() AccountEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *AccountEncryptionResponse { return v.Encryption }).(AccountEncryptionResponsePtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupAccountResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupAccountResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAccountResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

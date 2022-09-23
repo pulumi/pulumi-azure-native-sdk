@@ -21,28 +21,46 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a Kusto cluster.
 type LookupClusterResult struct {
-	DataIngestionUri            string                               `pulumi:"dataIngestionUri"`
-	EnableDiskEncryption        *bool                                `pulumi:"enableDiskEncryption"`
-	EnableStreamingIngest       *bool                                `pulumi:"enableStreamingIngest"`
-	Id                          string                               `pulumi:"id"`
-	Location                    string                               `pulumi:"location"`
-	Name                        string                               `pulumi:"name"`
-	OptimizedAutoscale          *OptimizedAutoscaleResponse          `pulumi:"optimizedAutoscale"`
-	ProvisioningState           string                               `pulumi:"provisioningState"`
-	Sku                         AzureSkuResponse                     `pulumi:"sku"`
-	State                       string                               `pulumi:"state"`
-	Tags                        map[string]string                    `pulumi:"tags"`
-	TrustedExternalTenants      []TrustedExternalTenantResponse      `pulumi:"trustedExternalTenants"`
-	Type                        string                               `pulumi:"type"`
-	Uri                         string                               `pulumi:"uri"`
+	// The cluster data ingestion URI.
+	DataIngestionUri string `pulumi:"dataIngestionUri"`
+	// A boolean value that indicates if the cluster's disks are encrypted.
+	EnableDiskEncryption *bool `pulumi:"enableDiskEncryption"`
+	// A boolean value that indicates if the streaming ingest is enabled.
+	EnableStreamingIngest *bool `pulumi:"enableStreamingIngest"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Optimized auto scale definition.
+	OptimizedAutoscale *OptimizedAutoscaleResponse `pulumi:"optimizedAutoscale"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU of the cluster.
+	Sku AzureSkuResponse `pulumi:"sku"`
+	// The state of the resource.
+	State string `pulumi:"state"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The cluster's external tenants.
+	TrustedExternalTenants []TrustedExternalTenantResponse `pulumi:"trustedExternalTenants"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The cluster URI.
+	Uri string `pulumi:"uri"`
+	// Virtual network definition.
 	VirtualNetworkConfiguration *VirtualNetworkConfigurationResponse `pulumi:"virtualNetworkConfiguration"`
-	Zones                       []string                             `pulumi:"zones"`
+	// The availability zones of the cluster.
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for LookupClusterResult
@@ -72,7 +90,9 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 }
 
 type LookupClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -95,66 +115,82 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The cluster data ingestion URI.
 func (o LookupClusterResultOutput) DataIngestionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DataIngestionUri }).(pulumi.StringOutput)
 }
 
+// A boolean value that indicates if the cluster's disks are encrypted.
 func (o LookupClusterResultOutput) EnableDiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *bool { return v.EnableDiskEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// A boolean value that indicates if the streaming ingest is enabled.
 func (o LookupClusterResultOutput) EnableStreamingIngest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *bool { return v.EnableStreamingIngest }).(pulumi.BoolPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optimized auto scale definition.
 func (o LookupClusterResultOutput) OptimizedAutoscale() OptimizedAutoscaleResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *OptimizedAutoscaleResponse { return v.OptimizedAutoscale }).(OptimizedAutoscaleResponsePtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU of the cluster.
 func (o LookupClusterResultOutput) Sku() AzureSkuResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) AzureSkuResponse { return v.Sku }).(AzureSkuResponseOutput)
 }
 
+// The state of the resource.
 func (o LookupClusterResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The cluster's external tenants.
 func (o LookupClusterResultOutput) TrustedExternalTenants() TrustedExternalTenantResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []TrustedExternalTenantResponse { return v.TrustedExternalTenants }).(TrustedExternalTenantResponseArrayOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The cluster URI.
 func (o LookupClusterResultOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Uri }).(pulumi.StringOutput)
 }
 
+// Virtual network definition.
 func (o LookupClusterResultOutput) VirtualNetworkConfiguration() VirtualNetworkConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *VirtualNetworkConfigurationResponse { return v.VirtualNetworkConfiguration }).(VirtualNetworkConfigurationResponsePtrOutput)
 }
 
+// The availability zones of the cluster.
 func (o LookupClusterResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

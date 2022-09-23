@@ -21,18 +21,26 @@ func LookupJobTargetGroup(ctx *pulumi.Context, args *LookupJobTargetGroupArgs, o
 }
 
 type LookupJobTargetGroupArgs struct {
-	JobAgentName      string `pulumi:"jobAgentName"`
+	// The name of the job agent.
+	JobAgentName string `pulumi:"jobAgentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
-	TargetGroupName   string `pulumi:"targetGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the target group.
+	TargetGroupName string `pulumi:"targetGroupName"`
 }
 
 // A group of job targets.
 type LookupJobTargetGroupResult struct {
-	Id      string              `pulumi:"id"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Members of the target group.
 	Members []JobTargetResponse `pulumi:"members"`
-	Name    string              `pulumi:"name"`
-	Type    string              `pulumi:"type"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupJobTargetGroupOutput(ctx *pulumi.Context, args LookupJobTargetGroupOutputArgs, opts ...pulumi.InvokeOption) LookupJobTargetGroupResultOutput {
@@ -49,10 +57,14 @@ func LookupJobTargetGroupOutput(ctx *pulumi.Context, args LookupJobTargetGroupOu
 }
 
 type LookupJobTargetGroupOutputArgs struct {
-	JobAgentName      pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the job agent.
+	JobAgentName pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
-	TargetGroupName   pulumi.StringInput `pulumi:"targetGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the target group.
+	TargetGroupName pulumi.StringInput `pulumi:"targetGroupName"`
 }
 
 func (LookupJobTargetGroupOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupJobTargetGroupResultOutput) ToLookupJobTargetGroupResultOutputWith
 	return o
 }
 
+// Resource ID.
 func (o LookupJobTargetGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobTargetGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Members of the target group.
 func (o LookupJobTargetGroupResultOutput) Members() JobTargetResponseArrayOutput {
 	return o.ApplyT(func(v LookupJobTargetGroupResult) []JobTargetResponse { return v.Members }).(JobTargetResponseArrayOutput)
 }
 
+// Resource name.
 func (o LookupJobTargetGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobTargetGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupJobTargetGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobTargetGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

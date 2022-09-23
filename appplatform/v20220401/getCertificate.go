@@ -21,18 +21,26 @@ func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ..
 }
 
 type LookupCertificateArgs struct {
-	CertificateName   string `pulumi:"certificateName"`
+	// The name of the certificate resource.
+	CertificateName string `pulumi:"certificateName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Certificate resource payload.
 type LookupCertificateResult struct {
-	Id         string             `pulumi:"id"`
-	Name       string             `pulumi:"name"`
-	Properties interface{}        `pulumi:"properties"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of the certificate resource payload.
+	Properties interface{} `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
@@ -49,9 +57,12 @@ func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputAr
 }
 
 type LookupCertificateOutputArgs struct {
-	CertificateName   pulumi.StringInput `pulumi:"certificateName"`
+	// The name of the certificate resource.
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupCertificateOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the certificate resource payload.
 func (o LookupCertificateResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupCertificateResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupCertificateResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCertificateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

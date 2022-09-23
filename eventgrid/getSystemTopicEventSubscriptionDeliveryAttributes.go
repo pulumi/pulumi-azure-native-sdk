@@ -22,13 +22,17 @@ func GetSystemTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args
 }
 
 type GetSystemTopicEventSubscriptionDeliveryAttributesArgs struct {
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	SystemTopicName       string `pulumi:"systemTopicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the system topic.
+	SystemTopicName string `pulumi:"systemTopicName"`
 }
 
 // Result of the Get delivery attributes operation.
 type GetSystemTopicEventSubscriptionDeliveryAttributesResult struct {
+	// A collection of DeliveryAttributeMapping
 	Value []interface{} `pulumi:"value"`
 }
 
@@ -46,9 +50,12 @@ func GetSystemTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context
 }
 
 type GetSystemTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	SystemTopicName       pulumi.StringInput `pulumi:"systemTopicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the system topic.
+	SystemTopicName pulumi.StringInput `pulumi:"systemTopicName"`
 }
 
 func (GetSystemTopicEventSubscriptionDeliveryAttributesOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput) ToGetSyst
 	return o
 }
 
+// A collection of DeliveryAttributeMapping
 func (o GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetSystemTopicEventSubscriptionDeliveryAttributesResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

@@ -21,18 +21,26 @@ func LookupConfigurationProfilePreference(ctx *pulumi.Context, args *LookupConfi
 }
 
 type LookupConfigurationProfilePreferenceArgs struct {
+	// The configuration profile preference name.
 	ConfigurationProfilePreferenceName string `pulumi:"configurationProfilePreferenceName"`
-	ResourceGroupName                  string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the configuration profile preference.
 type LookupConfigurationProfilePreferenceResult struct {
-	Id         string                                           `pulumi:"id"`
-	Location   string                                           `pulumi:"location"`
-	Name       string                                           `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Properties of the configuration profile preference.
 	Properties ConfigurationProfilePreferencePropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string                                `pulumi:"tags"`
-	Type       string                                           `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationProfilePreferenceOutput(ctx *pulumi.Context, args LookupConfigurationProfilePreferenceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfilePreferenceResultOutput {
@@ -49,8 +57,10 @@ func LookupConfigurationProfilePreferenceOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupConfigurationProfilePreferenceOutputArgs struct {
+	// The configuration profile preference name.
 	ConfigurationProfilePreferenceName pulumi.StringInput `pulumi:"configurationProfilePreferenceName"`
-	ResourceGroupName                  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupConfigurationProfilePreferenceOutputArgs) ElementType() reflect.Type {
@@ -72,28 +82,34 @@ func (o LookupConfigurationProfilePreferenceResultOutput) ToLookupConfigurationP
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationProfilePreferenceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfilePreferenceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupConfigurationProfilePreferenceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfilePreferenceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupConfigurationProfilePreferenceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfilePreferenceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the configuration profile preference.
 func (o LookupConfigurationProfilePreferenceResultOutput) Properties() ConfigurationProfilePreferencePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationProfilePreferenceResult) ConfigurationProfilePreferencePropertiesResponse {
 		return v.Properties
 	}).(ConfigurationProfilePreferencePropertiesResponseOutput)
 }
 
+// Resource tags.
 func (o LookupConfigurationProfilePreferenceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConfigurationProfilePreferenceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationProfilePreferenceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfilePreferenceResult) string { return v.Type }).(pulumi.StringOutput)
 }

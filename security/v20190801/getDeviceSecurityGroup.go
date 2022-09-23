@@ -21,19 +21,28 @@ func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGr
 }
 
 type LookupDeviceSecurityGroupArgs struct {
+	// The name of the device security group. Note that the name of the device security group is case insensitive.
 	DeviceSecurityGroupName string `pulumi:"deviceSecurityGroupName"`
-	ResourceId              string `pulumi:"resourceId"`
+	// The identifier of the resource.
+	ResourceId string `pulumi:"resourceId"`
 }
 
 // The device security group resource
 type LookupDeviceSecurityGroupResult struct {
-	AllowlistRules  []AllowlistCustomAlertRuleResponse  `pulumi:"allowlistRules"`
-	DenylistRules   []DenylistCustomAlertRuleResponse   `pulumi:"denylistRules"`
-	Id              string                              `pulumi:"id"`
-	Name            string                              `pulumi:"name"`
-	ThresholdRules  []ThresholdCustomAlertRuleResponse  `pulumi:"thresholdRules"`
+	// The allow-list custom alert rules.
+	AllowlistRules []AllowlistCustomAlertRuleResponse `pulumi:"allowlistRules"`
+	// The deny-list custom alert rules.
+	DenylistRules []DenylistCustomAlertRuleResponse `pulumi:"denylistRules"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The list of custom alert threshold rules.
+	ThresholdRules []ThresholdCustomAlertRuleResponse `pulumi:"thresholdRules"`
+	// The list of custom alert time-window rules.
 	TimeWindowRules []TimeWindowCustomAlertRuleResponse `pulumi:"timeWindowRules"`
-	Type            string                              `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDeviceSecurityGroupOutput(ctx *pulumi.Context, args LookupDeviceSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceSecurityGroupResultOutput {
@@ -50,8 +59,10 @@ func LookupDeviceSecurityGroupOutput(ctx *pulumi.Context, args LookupDeviceSecur
 }
 
 type LookupDeviceSecurityGroupOutputArgs struct {
+	// The name of the device security group. Note that the name of the device security group is case insensitive.
 	DeviceSecurityGroupName pulumi.StringInput `pulumi:"deviceSecurityGroupName"`
-	ResourceId              pulumi.StringInput `pulumi:"resourceId"`
+	// The identifier of the resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
 
 func (LookupDeviceSecurityGroupOutputArgs) ElementType() reflect.Type {
@@ -73,30 +84,37 @@ func (o LookupDeviceSecurityGroupResultOutput) ToLookupDeviceSecurityGroupResult
 	return o
 }
 
+// The allow-list custom alert rules.
 func (o LookupDeviceSecurityGroupResultOutput) AllowlistRules() AllowlistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []AllowlistCustomAlertRuleResponse { return v.AllowlistRules }).(AllowlistCustomAlertRuleResponseArrayOutput)
 }
 
+// The deny-list custom alert rules.
 func (o LookupDeviceSecurityGroupResultOutput) DenylistRules() DenylistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []DenylistCustomAlertRuleResponse { return v.DenylistRules }).(DenylistCustomAlertRuleResponseArrayOutput)
 }
 
+// Resource Id
 func (o LookupDeviceSecurityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupDeviceSecurityGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of custom alert threshold rules.
 func (o LookupDeviceSecurityGroupResultOutput) ThresholdRules() ThresholdCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []ThresholdCustomAlertRuleResponse { return v.ThresholdRules }).(ThresholdCustomAlertRuleResponseArrayOutput)
 }
 
+// The list of custom alert time-window rules.
 func (o LookupDeviceSecurityGroupResultOutput) TimeWindowRules() TimeWindowCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []TimeWindowCustomAlertRuleResponse { return v.TimeWindowRules }).(TimeWindowCustomAlertRuleResponseArrayOutput)
 }
 
+// Resource type
 func (o LookupDeviceSecurityGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

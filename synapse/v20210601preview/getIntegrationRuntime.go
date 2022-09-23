@@ -21,18 +21,26 @@ func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntim
 }
 
 type LookupIntegrationRuntimeArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	WorkspaceName          string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Integration runtime resource type.
 type LookupIntegrationRuntimeResult struct {
-	Etag       string      `pulumi:"etag"`
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Resource Etag.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Integration runtime properties.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupIntegrationRuntimeOutput(ctx *pulumi.Context, args LookupIntegrationRuntimeOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationRuntimeResultOutput {
@@ -49,9 +57,12 @@ func LookupIntegrationRuntimeOutput(ctx *pulumi.Context, args LookupIntegrationR
 }
 
 type LookupIntegrationRuntimeOutputArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName          pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupIntegrationRuntimeOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupIntegrationRuntimeResultOutput) ToLookupIntegrationRuntimeResultOu
 	return o
 }
 
+// Resource Etag.
 func (o LookupIntegrationRuntimeResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIntegrationRuntimeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupIntegrationRuntimeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Integration runtime properties.
 func (o LookupIntegrationRuntimeResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupIntegrationRuntimeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Type }).(pulumi.StringOutput)
 }

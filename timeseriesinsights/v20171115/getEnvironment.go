@@ -23,27 +23,44 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 }
 
 type LookupEnvironmentArgs struct {
-	EnvironmentName   string  `pulumi:"environmentName"`
-	Expand            *string `pulumi:"expand"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+	Expand *string `pulumi:"expand"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource.
 type LookupEnvironmentResult struct {
-	CreationTime                 string                         `pulumi:"creationTime"`
-	DataAccessFqdn               string                         `pulumi:"dataAccessFqdn"`
-	DataAccessId                 string                         `pulumi:"dataAccessId"`
-	DataRetentionTime            string                         `pulumi:"dataRetentionTime"`
-	Id                           string                         `pulumi:"id"`
-	Location                     string                         `pulumi:"location"`
-	Name                         string                         `pulumi:"name"`
-	PartitionKeyProperties       []PartitionKeyPropertyResponse `pulumi:"partitionKeyProperties"`
-	ProvisioningState            string                         `pulumi:"provisioningState"`
-	Sku                          *SkuResponse                   `pulumi:"sku"`
-	Status                       EnvironmentStatusResponse      `pulumi:"status"`
-	StorageLimitExceededBehavior *string                        `pulumi:"storageLimitExceededBehavior"`
-	Tags                         map[string]string              `pulumi:"tags"`
-	Type                         string                         `pulumi:"type"`
+	// The time the resource was created.
+	CreationTime string `pulumi:"creationTime"`
+	// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+	DataAccessFqdn string `pulumi:"dataAccessFqdn"`
+	// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
+	DataAccessId string `pulumi:"dataAccessId"`
+	// ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
+	DataRetentionTime string `pulumi:"dataRetentionTime"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The list of partition keys according to which the data in the environment will be ordered.
+	PartitionKeyProperties []PartitionKeyPropertyResponse `pulumi:"partitionKeyProperties"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The sku determines the capacity of the environment, the SLA (in queries-per-minute and total capacity), and the billing rate.
+	Sku *SkuResponse `pulumi:"sku"`
+	// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
+	Status EnvironmentStatusResponse `pulumi:"status"`
+	// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
+	StorageLimitExceededBehavior *string `pulumi:"storageLimitExceededBehavior"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -60,9 +77,12 @@ func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputAr
 }
 
 type LookupEnvironmentOutputArgs struct {
-	EnvironmentName   pulumi.StringInput    `pulumi:"environmentName"`
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -84,58 +104,72 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 	return o
 }
 
+// The time the resource was created.
 func (o LookupEnvironmentResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
 func (o LookupEnvironmentResultOutput) DataAccessFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DataAccessFqdn }).(pulumi.StringOutput)
 }
 
+// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
 func (o LookupEnvironmentResultOutput) DataAccessId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DataAccessId }).(pulumi.StringOutput)
 }
 
+// ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
 func (o LookupEnvironmentResultOutput) DataRetentionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DataRetentionTime }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupEnvironmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of partition keys according to which the data in the environment will be ordered.
 func (o LookupEnvironmentResultOutput) PartitionKeyProperties() PartitionKeyPropertyResponseArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []PartitionKeyPropertyResponse { return v.PartitionKeyProperties }).(PartitionKeyPropertyResponseArrayOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupEnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sku determines the capacity of the environment, the SLA (in queries-per-minute and total capacity), and the billing rate.
 func (o LookupEnvironmentResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
 func (o LookupEnvironmentResultOutput) Status() EnvironmentStatusResponseOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) EnvironmentStatusResponse { return v.Status }).(EnvironmentStatusResponseOutput)
 }
 
+// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
 func (o LookupEnvironmentResultOutput) StorageLimitExceededBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.StorageLimitExceededBehavior }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,22 +21,33 @@ func LookupVirtualWAN(ctx *pulumi.Context, args *LookupVirtualWANArgs, opts ...p
 }
 
 type LookupVirtualWANArgs struct {
+	// The resource group name of the VirtualWan.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VirtualWANName    string `pulumi:"virtualWANName"`
+	// The name of the VirtualWAN being retrieved.
+	VirtualWANName string `pulumi:"virtualWANName"`
 }
 
 // VirtualWAN Resource.
 type LookupVirtualWANResult struct {
-	DisableVpnEncryption *bool                 `pulumi:"disableVpnEncryption"`
-	Etag                 string                `pulumi:"etag"`
-	Id                   *string               `pulumi:"id"`
-	Location             string                `pulumi:"location"`
-	Name                 string                `pulumi:"name"`
-	ProvisioningState    string                `pulumi:"provisioningState"`
-	Tags                 map[string]string     `pulumi:"tags"`
-	Type                 string                `pulumi:"type"`
-	VirtualHubs          []SubResourceResponse `pulumi:"virtualHubs"`
-	VpnSites             []SubResourceResponse `pulumi:"vpnSites"`
+	// Vpn encryption to be disabled or not.
+	DisableVpnEncryption *bool `pulumi:"disableVpnEncryption"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// List of VirtualHubs in the VirtualWAN.
+	VirtualHubs []SubResourceResponse `pulumi:"virtualHubs"`
+	VpnSites    []SubResourceResponse `pulumi:"vpnSites"`
 }
 
 func LookupVirtualWANOutput(ctx *pulumi.Context, args LookupVirtualWANOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualWANResultOutput {
@@ -53,8 +64,10 @@ func LookupVirtualWANOutput(ctx *pulumi.Context, args LookupVirtualWANOutputArgs
 }
 
 type LookupVirtualWANOutputArgs struct {
+	// The resource group name of the VirtualWan.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VirtualWANName    pulumi.StringInput `pulumi:"virtualWANName"`
+	// The name of the VirtualWAN being retrieved.
+	VirtualWANName pulumi.StringInput `pulumi:"virtualWANName"`
 }
 
 func (LookupVirtualWANOutputArgs) ElementType() reflect.Type {
@@ -76,38 +89,47 @@ func (o LookupVirtualWANResultOutput) ToLookupVirtualWANResultOutputWithContext(
 	return o
 }
 
+// Vpn encryption to be disabled or not.
 func (o LookupVirtualWANResultOutput) DisableVpnEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) *bool { return v.DisableVpnEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualWANResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualWANResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupVirtualWANResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupVirtualWANResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupVirtualWANResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupVirtualWANResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupVirtualWANResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List of VirtualHubs in the VirtualWAN.
 func (o LookupVirtualWANResultOutput) VirtualHubs() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualWANResult) []SubResourceResponse { return v.VirtualHubs }).(SubResourceResponseArrayOutput)
 }

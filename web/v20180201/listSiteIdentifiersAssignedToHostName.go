@@ -21,13 +21,16 @@ func ListSiteIdentifiersAssignedToHostName(ctx *pulumi.Context, args *ListSiteId
 }
 
 type ListSiteIdentifiersAssignedToHostNameArgs struct {
+	// Name of the object.
 	Name *string `pulumi:"name"`
 }
 
 // Collection of identifiers.
 type ListSiteIdentifiersAssignedToHostNameResult struct {
-	NextLink string               `pulumi:"nextLink"`
-	Value    []IdentifierResponse `pulumi:"value"`
+	// Link to next page of resources.
+	NextLink string `pulumi:"nextLink"`
+	// Collection of resources.
+	Value []IdentifierResponse `pulumi:"value"`
 }
 
 func ListSiteIdentifiersAssignedToHostNameOutput(ctx *pulumi.Context, args ListSiteIdentifiersAssignedToHostNameOutputArgs, opts ...pulumi.InvokeOption) ListSiteIdentifiersAssignedToHostNameResultOutput {
@@ -44,6 +47,7 @@ func ListSiteIdentifiersAssignedToHostNameOutput(ctx *pulumi.Context, args ListS
 }
 
 type ListSiteIdentifiersAssignedToHostNameOutputArgs struct {
+	// Name of the object.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -66,10 +70,12 @@ func (o ListSiteIdentifiersAssignedToHostNameResultOutput) ToListSiteIdentifiers
 	return o
 }
 
+// Link to next page of resources.
 func (o ListSiteIdentifiersAssignedToHostNameResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteIdentifiersAssignedToHostNameResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Collection of resources.
 func (o ListSiteIdentifiersAssignedToHostNameResultOutput) Value() IdentifierResponseArrayOutput {
 	return o.ApplyT(func(v ListSiteIdentifiersAssignedToHostNameResult) []IdentifierResponse { return v.Value }).(IdentifierResponseArrayOutput)
 }

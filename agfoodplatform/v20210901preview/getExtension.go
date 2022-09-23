@@ -21,23 +21,36 @@ func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pul
 }
 
 type LookupExtensionArgs struct {
-	ExtensionId           string `pulumi:"extensionId"`
+	// Id of extension resource.
+	ExtensionId string `pulumi:"extensionId"`
+	// FarmBeats resource name.
 	FarmBeatsResourceName string `pulumi:"farmBeatsResourceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Extension resource.
 type LookupExtensionResult struct {
-	ETag                      string             `pulumi:"eTag"`
-	ExtensionApiDocsLink      string             `pulumi:"extensionApiDocsLink"`
-	ExtensionAuthLink         string             `pulumi:"extensionAuthLink"`
-	ExtensionCategory         string             `pulumi:"extensionCategory"`
-	ExtensionId               string             `pulumi:"extensionId"`
-	Id                        string             `pulumi:"id"`
-	InstalledExtensionVersion string             `pulumi:"installedExtensionVersion"`
-	Name                      string             `pulumi:"name"`
-	SystemData                SystemDataResponse `pulumi:"systemData"`
-	Type                      string             `pulumi:"type"`
+	// The ETag value to implement optimistic concurrency.
+	ETag string `pulumi:"eTag"`
+	// Extension api docs link.
+	ExtensionApiDocsLink string `pulumi:"extensionApiDocsLink"`
+	// Extension auth link.
+	ExtensionAuthLink string `pulumi:"extensionAuthLink"`
+	// Extension category. e.g. weather/sensor/satellite.
+	ExtensionCategory string `pulumi:"extensionCategory"`
+	// Extension Id.
+	ExtensionId string `pulumi:"extensionId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Installed extension version.
+	InstalledExtensionVersion string `pulumi:"installedExtensionVersion"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupExtensionOutput(ctx *pulumi.Context, args LookupExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupExtensionResultOutput {
@@ -54,9 +67,12 @@ func LookupExtensionOutput(ctx *pulumi.Context, args LookupExtensionOutputArgs, 
 }
 
 type LookupExtensionOutputArgs struct {
-	ExtensionId           pulumi.StringInput `pulumi:"extensionId"`
+	// Id of extension resource.
+	ExtensionId pulumi.StringInput `pulumi:"extensionId"`
+	// FarmBeats resource name.
 	FarmBeatsResourceName pulumi.StringInput `pulumi:"farmBeatsResourceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExtensionOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupExtensionResultOutput) ToLookupExtensionResultOutputWithContext(ct
 	return o
 }
 
+// The ETag value to implement optimistic concurrency.
 func (o LookupExtensionResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ETag }).(pulumi.StringOutput)
 }
 
+// Extension api docs link.
 func (o LookupExtensionResultOutput) ExtensionApiDocsLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ExtensionApiDocsLink }).(pulumi.StringOutput)
 }
 
+// Extension auth link.
 func (o LookupExtensionResultOutput) ExtensionAuthLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ExtensionAuthLink }).(pulumi.StringOutput)
 }
 
+// Extension category. e.g. weather/sensor/satellite.
 func (o LookupExtensionResultOutput) ExtensionCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ExtensionCategory }).(pulumi.StringOutput)
 }
 
+// Extension Id.
 func (o LookupExtensionResultOutput) ExtensionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ExtensionId }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupExtensionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Installed extension version.
 func (o LookupExtensionResultOutput) InstalledExtensionVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.InstalledExtensionVersion }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupExtensionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupExtensionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupExtensionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,17 +21,24 @@ func ListWebAppAzureStorageAccounts(ctx *pulumi.Context, args *ListWebAppAzureSt
 }
 
 type ListWebAppAzureStorageAccountsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // AzureStorageInfo dictionary resource.
 type ListWebAppAzureStorageAccountsResult struct {
-	Id         string                                   `pulumi:"id"`
-	Kind       *string                                  `pulumi:"kind"`
-	Name       string                                   `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Azure storage accounts.
 	Properties map[string]AzureStorageInfoValueResponse `pulumi:"properties"`
-	Type       string                                   `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppAzureStorageAccountsOutput(ctx *pulumi.Context, args ListWebAppAzureStorageAccountsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppAzureStorageAccountsResultOutput {
@@ -48,7 +55,9 @@ func ListWebAppAzureStorageAccountsOutput(ctx *pulumi.Context, args ListWebAppAz
 }
 
 type ListWebAppAzureStorageAccountsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,24 +80,29 @@ func (o ListWebAppAzureStorageAccountsResultOutput) ToListWebAppAzureStorageAcco
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppAzureStorageAccountsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppAzureStorageAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppAzureStorageAccountsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppAzureStorageAccountsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppAzureStorageAccountsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppAzureStorageAccountsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure storage accounts.
 func (o ListWebAppAzureStorageAccountsResultOutput) Properties() AzureStorageInfoValueResponseMapOutput {
 	return o.ApplyT(func(v ListWebAppAzureStorageAccountsResult) map[string]AzureStorageInfoValueResponse {
 		return v.Properties
 	}).(AzureStorageInfoValueResponseMapOutput)
 }
 
+// Resource type.
 func (o ListWebAppAzureStorageAccountsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppAzureStorageAccountsResult) string { return v.Type }).(pulumi.StringOutput)
 }

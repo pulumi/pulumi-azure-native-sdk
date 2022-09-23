@@ -21,13 +21,17 @@ func ListComputeKeys(ctx *pulumi.Context, args *ListComputeKeysArgs, opts ...pul
 }
 
 type ListComputeKeysArgs struct {
-	ComputeName       string `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName string `pulumi:"computeName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Secrets related to a Machine Learning compute. Might differ for every type of compute.
 type ListComputeKeysResult struct {
+	// The type of compute
 	ComputeType string `pulumi:"computeType"`
 }
 
@@ -45,9 +49,12 @@ func ListComputeKeysOutput(ctx *pulumi.Context, args ListComputeKeysOutputArgs, 
 }
 
 type ListComputeKeysOutputArgs struct {
-	ComputeName       pulumi.StringInput `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName pulumi.StringInput `pulumi:"computeName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListComputeKeysOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListComputeKeysResultOutput) ToListComputeKeysResultOutputWithContext(ct
 	return o
 }
 
+// The type of compute
 func (o ListComputeKeysResultOutput) ComputeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ListComputeKeysResult) string { return v.ComputeType }).(pulumi.StringOutput)
 }

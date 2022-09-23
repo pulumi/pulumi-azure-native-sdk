@@ -21,21 +21,32 @@ func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.
 }
 
 type LookupGrafanaArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The workspace name of Azure Managed Grafana.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The grafana resource type.
 type LookupGrafanaResult struct {
-	Id         string                           `pulumi:"id"`
-	Identity   *ManagedServiceIdentityResponse  `pulumi:"identity"`
-	Location   *string                          `pulumi:"location"`
-	Name       string                           `pulumi:"name"`
+	// ARM id of the grafana resource
+	Id string `pulumi:"id"`
+	// The managed identity of the grafana resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The geo-location where the grafana resource lives
+	Location *string `pulumi:"location"`
+	// Name of the grafana resource.
+	Name string `pulumi:"name"`
+	// Properties specific to the grafana resource.
 	Properties ManagedGrafanaPropertiesResponse `pulumi:"properties"`
-	Sku        *ResourceSkuResponse             `pulumi:"sku"`
-	SystemData SystemDataResponse               `pulumi:"systemData"`
-	Tags       map[string]string                `pulumi:"tags"`
-	Type       string                           `pulumi:"type"`
+	// The Sku of the grafana resource.
+	Sku *ResourceSkuResponse `pulumi:"sku"`
+	// The system meta data relating to this grafana resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tags for grafana resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the grafana resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts ...pulumi.InvokeOption) LookupGrafanaResultOutput {
@@ -52,8 +63,10 @@ func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts
 }
 
 type LookupGrafanaOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The workspace name of Azure Managed Grafana.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupGrafanaOutputArgs) ElementType() reflect.Type {
@@ -75,38 +88,47 @@ func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutputWithContext(ctx co
 	return o
 }
 
+// ARM id of the grafana resource
 func (o LookupGrafanaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The managed identity of the grafana resource.
 func (o LookupGrafanaResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The geo-location where the grafana resource lives
 func (o LookupGrafanaResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the grafana resource.
 func (o LookupGrafanaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties specific to the grafana resource.
 func (o LookupGrafanaResultOutput) Properties() ManagedGrafanaPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) ManagedGrafanaPropertiesResponse { return v.Properties }).(ManagedGrafanaPropertiesResponseOutput)
 }
 
+// The Sku of the grafana resource.
 func (o LookupGrafanaResultOutput) Sku() ResourceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) *ResourceSkuResponse { return v.Sku }).(ResourceSkuResponsePtrOutput)
 }
 
+// The system meta data relating to this grafana resource.
 func (o LookupGrafanaResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tags for grafana resource.
 func (o LookupGrafanaResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the grafana resource.
 func (o LookupGrafanaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Type }).(pulumi.StringOutput)
 }

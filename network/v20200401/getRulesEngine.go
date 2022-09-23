@@ -21,18 +21,26 @@ func LookupRulesEngine(ctx *pulumi.Context, args *LookupRulesEngineArgs, opts ..
 }
 
 type LookupRulesEngineArgs struct {
-	FrontDoorName     string `pulumi:"frontDoorName"`
+	// Name of the Front Door which is globally unique.
+	FrontDoorName string `pulumi:"frontDoorName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RulesEngineName   string `pulumi:"rulesEngineName"`
+	// Name of the Rules Engine which is unique within the Front Door.
+	RulesEngineName string `pulumi:"rulesEngineName"`
 }
 
 // A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
 type LookupRulesEngineResult struct {
-	Id            string                    `pulumi:"id"`
-	Name          string                    `pulumi:"name"`
-	ResourceState string                    `pulumi:"resourceState"`
-	Rules         []RulesEngineRuleResponse `pulumi:"rules"`
-	Type          string                    `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource status.
+	ResourceState string `pulumi:"resourceState"`
+	// A list of rules that define a particular Rules Engine Configuration.
+	Rules []RulesEngineRuleResponse `pulumi:"rules"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRulesEngineOutput(ctx *pulumi.Context, args LookupRulesEngineOutputArgs, opts ...pulumi.InvokeOption) LookupRulesEngineResultOutput {
@@ -49,9 +57,12 @@ func LookupRulesEngineOutput(ctx *pulumi.Context, args LookupRulesEngineOutputAr
 }
 
 type LookupRulesEngineOutputArgs struct {
-	FrontDoorName     pulumi.StringInput `pulumi:"frontDoorName"`
+	// Name of the Front Door which is globally unique.
+	FrontDoorName pulumi.StringInput `pulumi:"frontDoorName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RulesEngineName   pulumi.StringInput `pulumi:"rulesEngineName"`
+	// Name of the Rules Engine which is unique within the Front Door.
+	RulesEngineName pulumi.StringInput `pulumi:"rulesEngineName"`
 }
 
 func (LookupRulesEngineOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupRulesEngineResultOutput) ToLookupRulesEngineResultOutputWithContex
 	return o
 }
 
+// Resource ID.
 func (o LookupRulesEngineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesEngineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupRulesEngineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesEngineResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource status.
 func (o LookupRulesEngineResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesEngineResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// A list of rules that define a particular Rules Engine Configuration.
 func (o LookupRulesEngineResultOutput) Rules() RulesEngineRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupRulesEngineResult) []RulesEngineRuleResponse { return v.Rules }).(RulesEngineRuleResponseArrayOutput)
 }
 
+// Resource type.
 func (o LookupRulesEngineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesEngineResult) string { return v.Type }).(pulumi.StringOutput)
 }

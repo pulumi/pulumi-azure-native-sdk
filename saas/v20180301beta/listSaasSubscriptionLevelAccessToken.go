@@ -21,14 +21,18 @@ func ListSaasSubscriptionLevelAccessToken(ctx *pulumi.Context, args *ListSaasSub
 }
 
 type ListSaasSubscriptionLevelAccessTokenArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // the ISV access token result response.
 type ListSaasSubscriptionLevelAccessTokenResult struct {
+	// The Publisher Offer Base Uri
 	PublisherOfferBaseUri *string `pulumi:"publisherOfferBaseUri"`
-	Token                 *string `pulumi:"token"`
+	// The generated token
+	Token *string `pulumi:"token"`
 }
 
 func ListSaasSubscriptionLevelAccessTokenOutput(ctx *pulumi.Context, args ListSaasSubscriptionLevelAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListSaasSubscriptionLevelAccessTokenResultOutput {
@@ -45,8 +49,10 @@ func ListSaasSubscriptionLevelAccessTokenOutput(ctx *pulumi.Context, args ListSa
 }
 
 type ListSaasSubscriptionLevelAccessTokenOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListSaasSubscriptionLevelAccessTokenOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListSaasSubscriptionLevelAccessTokenResultOutput) ToListSaasSubscription
 	return o
 }
 
+// The Publisher Offer Base Uri
 func (o ListSaasSubscriptionLevelAccessTokenResultOutput) PublisherOfferBaseUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSaasSubscriptionLevelAccessTokenResult) *string { return v.PublisherOfferBaseUri }).(pulumi.StringPtrOutput)
 }
 
+// The generated token
 func (o ListSaasSubscriptionLevelAccessTokenResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSaasSubscriptionLevelAccessTokenResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

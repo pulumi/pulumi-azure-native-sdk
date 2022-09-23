@@ -21,24 +21,38 @@ func LookupDiagnostic(ctx *pulumi.Context, args *LookupDiagnosticArgs, opts ...p
 }
 
 type LookupDiagnosticArgs struct {
-	DiagnosticId      string `pulumi:"diagnosticId"`
+	// Diagnostic identifier. Must be unique in the current API Management service instance.
+	DiagnosticId string `pulumi:"diagnosticId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Diagnostic details.
 type LookupDiagnosticResult struct {
-	AlwaysLog                    *string                             `pulumi:"alwaysLog"`
-	Backend                      *PipelineDiagnosticSettingsResponse `pulumi:"backend"`
-	EnableHttpCorrelationHeaders *bool                               `pulumi:"enableHttpCorrelationHeaders"`
-	Frontend                     *PipelineDiagnosticSettingsResponse `pulumi:"frontend"`
-	HttpCorrelationProtocol      *string                             `pulumi:"httpCorrelationProtocol"`
-	Id                           string                              `pulumi:"id"`
-	LoggerId                     string                              `pulumi:"loggerId"`
-	Name                         string                              `pulumi:"name"`
-	Sampling                     *SamplingSettingsResponse           `pulumi:"sampling"`
-	Type                         string                              `pulumi:"type"`
-	Verbosity                    *string                             `pulumi:"verbosity"`
+	// Specifies for what type of messages sampling settings should not apply.
+	AlwaysLog *string `pulumi:"alwaysLog"`
+	// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
+	Backend *PipelineDiagnosticSettingsResponse `pulumi:"backend"`
+	// Whether to process Correlation Headers coming to Api Management Service. Only applicable to Application Insights diagnostics. Default is true.
+	EnableHttpCorrelationHeaders *bool `pulumi:"enableHttpCorrelationHeaders"`
+	// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
+	Frontend *PipelineDiagnosticSettingsResponse `pulumi:"frontend"`
+	// Sets correlation protocol to use for Application Insights diagnostics.
+	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource Id of a target logger.
+	LoggerId string `pulumi:"loggerId"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Sampling settings for Diagnostic.
+	Sampling *SamplingSettingsResponse `pulumi:"sampling"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// The verbosity level applied to traces emitted by trace policies.
+	Verbosity *string `pulumi:"verbosity"`
 }
 
 func LookupDiagnosticOutput(ctx *pulumi.Context, args LookupDiagnosticOutputArgs, opts ...pulumi.InvokeOption) LookupDiagnosticResultOutput {
@@ -55,9 +69,12 @@ func LookupDiagnosticOutput(ctx *pulumi.Context, args LookupDiagnosticOutputArgs
 }
 
 type LookupDiagnosticOutputArgs struct {
-	DiagnosticId      pulumi.StringInput `pulumi:"diagnosticId"`
+	// Diagnostic identifier. Must be unique in the current API Management service instance.
+	DiagnosticId pulumi.StringInput `pulumi:"diagnosticId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupDiagnosticOutputArgs) ElementType() reflect.Type {
@@ -79,46 +96,57 @@ func (o LookupDiagnosticResultOutput) ToLookupDiagnosticResultOutputWithContext(
 	return o
 }
 
+// Specifies for what type of messages sampling settings should not apply.
 func (o LookupDiagnosticResultOutput) AlwaysLog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *string { return v.AlwaysLog }).(pulumi.StringPtrOutput)
 }
 
+// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 func (o LookupDiagnosticResultOutput) Backend() PipelineDiagnosticSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *PipelineDiagnosticSettingsResponse { return v.Backend }).(PipelineDiagnosticSettingsResponsePtrOutput)
 }
 
+// Whether to process Correlation Headers coming to Api Management Service. Only applicable to Application Insights diagnostics. Default is true.
 func (o LookupDiagnosticResultOutput) EnableHttpCorrelationHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *bool { return v.EnableHttpCorrelationHeaders }).(pulumi.BoolPtrOutput)
 }
 
+// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
 func (o LookupDiagnosticResultOutput) Frontend() PipelineDiagnosticSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *PipelineDiagnosticSettingsResponse { return v.Frontend }).(PipelineDiagnosticSettingsResponsePtrOutput)
 }
 
+// Sets correlation protocol to use for Application Insights diagnostics.
 func (o LookupDiagnosticResultOutput) HttpCorrelationProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *string { return v.HttpCorrelationProtocol }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupDiagnosticResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Id of a target logger.
 func (o LookupDiagnosticResultOutput) LoggerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.LoggerId }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupDiagnosticResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sampling settings for Diagnostic.
 func (o LookupDiagnosticResultOutput) Sampling() SamplingSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *SamplingSettingsResponse { return v.Sampling }).(SamplingSettingsResponsePtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupDiagnosticResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The verbosity level applied to traces emitted by trace policies.
 func (o LookupDiagnosticResultOutput) Verbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *string { return v.Verbosity }).(pulumi.StringPtrOutput)
 }

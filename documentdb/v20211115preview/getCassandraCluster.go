@@ -21,19 +21,28 @@ func LookupCassandraCluster(ctx *pulumi.Context, args *LookupCassandraClusterArg
 }
 
 type LookupCassandraClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// Managed Cassandra cluster name.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Representation of a managed Cassandra cluster.
 type LookupCassandraClusterResult struct {
-	Id         string                                          `pulumi:"id"`
-	Identity   *ManagedCassandraManagedServiceIdentityResponse `pulumi:"identity"`
-	Location   *string                                         `pulumi:"location"`
-	Name       string                                          `pulumi:"name"`
-	Properties ClusterResourceResponseProperties               `pulumi:"properties"`
-	Tags       map[string]string                               `pulumi:"tags"`
-	Type       string                                          `pulumi:"type"`
+	// The unique resource identifier of the ARM resource.
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *ManagedCassandraManagedServiceIdentityResponse `pulumi:"identity"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the ARM resource.
+	Name string `pulumi:"name"`
+	// Properties of a managed Cassandra cluster.
+	Properties ClusterResourceResponseProperties `pulumi:"properties"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCassandraClusterOutput(ctx *pulumi.Context, args LookupCassandraClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraClusterResultOutput {
@@ -50,7 +59,9 @@ func LookupCassandraClusterOutput(ctx *pulumi.Context, args LookupCassandraClust
 }
 
 type LookupCassandraClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// Managed Cassandra cluster name.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,32 +84,39 @@ func (o LookupCassandraClusterResultOutput) ToLookupCassandraClusterResultOutput
 	return o
 }
 
+// The unique resource identifier of the ARM resource.
 func (o LookupCassandraClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupCassandraClusterResultOutput) Identity() ManagedCassandraManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) *ManagedCassandraManagedServiceIdentityResponse {
 		return v.Identity
 	}).(ManagedCassandraManagedServiceIdentityResponsePtrOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupCassandraClusterResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the ARM resource.
 func (o LookupCassandraClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of a managed Cassandra cluster.
 func (o LookupCassandraClusterResultOutput) Properties() ClusterResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) ClusterResourceResponseProperties { return v.Properties }).(ClusterResourceResponsePropertiesOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupCassandraClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of Azure resource.
 func (o LookupCassandraClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,21 +22,32 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 }
 
 type LookupProjectArgs struct {
-	ProjectName       string `pulumi:"projectName"`
+	// The name of the project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a project resource.
 type LookupProjectResult struct {
-	Description       *string            `pulumi:"description"`
-	DevCenterId       *string            `pulumi:"devCenterId"`
-	Id                string             `pulumi:"id"`
-	Location          string             `pulumi:"location"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	Type              string             `pulumi:"type"`
+	// Description of the project.
+	Description *string `pulumi:"description"`
+	// Resource Id of an associated DevCenter
+	DevCenterId *string `pulumi:"devCenterId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -53,7 +64,9 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 }
 
 type LookupProjectOutputArgs struct {
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// The name of the project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,38 +89,47 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// Description of the project.
 func (o LookupProjectResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id of an associated DevCenter
 func (o LookupProjectResultOutput) DevCenterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.DevCenterId }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupProjectResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupProjectResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupProjectResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProjectResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupProjectResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,15 +21,21 @@ func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysA
 }
 
 type ListNotificationHubKeysArgs struct {
+	// The connection string of the NotificationHub for the specified authorizationRule.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	NotificationHubName   string `pulumi:"notificationHubName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The notification hub name.
+	NotificationHubName string `pulumi:"notificationHubName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Namespace/NotificationHub Connection String
 type ListNotificationHubKeysResult struct {
-	PrimaryConnectionString   *string `pulumi:"primaryConnectionString"`
+	// Gets or sets the primaryConnectionString of the created Namespace AuthorizationRule.
+	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
+	// Gets or sets the secondaryConnectionString of the created Namespace AuthorizationRule
 	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
 }
 
@@ -47,10 +53,14 @@ func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHub
 }
 
 type ListNotificationHubKeysOutputArgs struct {
+	// The connection string of the NotificationHub for the specified authorizationRule.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	NotificationHubName   pulumi.StringInput `pulumi:"notificationHubName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The notification hub name.
+	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListNotificationHubKeysOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutp
 	return o
 }
 
+// Gets or sets the primaryConnectionString of the created Namespace AuthorizationRule.
 func (o ListNotificationHubKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the secondaryConnectionString of the created Namespace AuthorizationRule
 func (o ListNotificationHubKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
 }

@@ -22,15 +22,20 @@ func GetExposureControlFeatureValue(ctx *pulumi.Context, args *GetExposureContro
 }
 
 type GetExposureControlFeatureValueArgs struct {
+	// The feature name.
 	FeatureName *string `pulumi:"featureName"`
+	// The feature type.
 	FeatureType *string `pulumi:"featureType"`
-	LocationId  string  `pulumi:"locationId"`
+	// The location identifier.
+	LocationId string `pulumi:"locationId"`
 }
 
 // The exposure control response.
 type GetExposureControlFeatureValueResult struct {
+	// The feature name.
 	FeatureName string `pulumi:"featureName"`
-	Value       string `pulumi:"value"`
+	// The feature value.
+	Value string `pulumi:"value"`
 }
 
 func GetExposureControlFeatureValueOutput(ctx *pulumi.Context, args GetExposureControlFeatureValueOutputArgs, opts ...pulumi.InvokeOption) GetExposureControlFeatureValueResultOutput {
@@ -47,9 +52,12 @@ func GetExposureControlFeatureValueOutput(ctx *pulumi.Context, args GetExposureC
 }
 
 type GetExposureControlFeatureValueOutputArgs struct {
+	// The feature name.
 	FeatureName pulumi.StringPtrInput `pulumi:"featureName"`
+	// The feature type.
 	FeatureType pulumi.StringPtrInput `pulumi:"featureType"`
-	LocationId  pulumi.StringInput    `pulumi:"locationId"`
+	// The location identifier.
+	LocationId pulumi.StringInput `pulumi:"locationId"`
 }
 
 func (GetExposureControlFeatureValueOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o GetExposureControlFeatureValueResultOutput) ToGetExposureControlFeatureV
 	return o
 }
 
+// The feature name.
 func (o GetExposureControlFeatureValueResultOutput) FeatureName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExposureControlFeatureValueResult) string { return v.FeatureName }).(pulumi.StringOutput)
 }
 
+// The feature value.
 func (o GetExposureControlFeatureValueResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExposureControlFeatureValueResult) string { return v.Value }).(pulumi.StringOutput)
 }

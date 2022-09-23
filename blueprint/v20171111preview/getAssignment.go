@@ -23,25 +23,40 @@ func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...p
 }
 
 type LookupAssignmentArgs struct {
-	AssignmentName string  `pulumi:"assignmentName"`
+	// name of the assignment.
+	AssignmentName string `pulumi:"assignmentName"`
+	// azure subscriptionId, which we assign the blueprint to.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // Represents a Blueprint assignment.
 type LookupAssignmentResult struct {
-	BlueprintId       *string                               `pulumi:"blueprintId"`
-	Description       *string                               `pulumi:"description"`
-	DisplayName       *string                               `pulumi:"displayName"`
-	Id                string                                `pulumi:"id"`
-	Identity          ManagedServiceIdentityResponse        `pulumi:"identity"`
-	Location          string                                `pulumi:"location"`
-	Locks             *AssignmentLockSettingsResponse       `pulumi:"locks"`
-	Name              string                                `pulumi:"name"`
-	Parameters        map[string]ParameterValueBaseResponse `pulumi:"parameters"`
-	ProvisioningState string                                `pulumi:"provisioningState"`
-	ResourceGroups    map[string]ResourceGroupValueResponse `pulumi:"resourceGroups"`
-	Status            AssignmentStatusResponse              `pulumi:"status"`
-	Type              string                                `pulumi:"type"`
+	// ID of the Blueprint definition resource.
+	BlueprintId *string `pulumi:"blueprintId"`
+	// Multi-line explain this resource.
+	Description *string `pulumi:"description"`
+	// One-liner string explain this resource.
+	DisplayName *string `pulumi:"displayName"`
+	// String Id used to locate any resource on Azure.
+	Id string `pulumi:"id"`
+	// Managed Service Identity for this Blueprint assignment
+	Identity ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The location of this Blueprint assignment.
+	Location string `pulumi:"location"`
+	// Defines how Blueprint-managed resources will be locked.
+	Locks *AssignmentLockSettingsResponse `pulumi:"locks"`
+	// Name of this resource.
+	Name string `pulumi:"name"`
+	// Blueprint parameter values.
+	Parameters map[string]ParameterValueBaseResponse `pulumi:"parameters"`
+	// State of the assignment.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Names and locations of resource group placeholders.
+	ResourceGroups map[string]ResourceGroupValueResponse `pulumi:"resourceGroups"`
+	// Status of Blueprint assignment. This field is readonly.
+	Status AssignmentStatusResponse `pulumi:"status"`
+	// Type of this resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssignmentResultOutput {
@@ -58,7 +73,9 @@ func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs
 }
 
 type LookupAssignmentOutputArgs struct {
-	AssignmentName pulumi.StringInput    `pulumi:"assignmentName"`
+	// name of the assignment.
+	AssignmentName pulumi.StringInput `pulumi:"assignmentName"`
+	// azure subscriptionId, which we assign the blueprint to.
 	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
@@ -81,54 +98,67 @@ func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutputWithContext(
 	return o
 }
 
+// ID of the Blueprint definition resource.
 func (o LookupAssignmentResultOutput) BlueprintId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.BlueprintId }).(pulumi.StringPtrOutput)
 }
 
+// Multi-line explain this resource.
 func (o LookupAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// One-liner string explain this resource.
 func (o LookupAssignmentResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// String Id used to locate any resource on Azure.
 func (o LookupAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed Service Identity for this Blueprint assignment
 func (o LookupAssignmentResultOutput) Identity() ManagedServiceIdentityResponseOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponseOutput)
 }
 
+// The location of this Blueprint assignment.
 func (o LookupAssignmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Defines how Blueprint-managed resources will be locked.
 func (o LookupAssignmentResultOutput) Locks() AssignmentLockSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignmentLockSettingsResponse { return v.Locks }).(AssignmentLockSettingsResponsePtrOutput)
 }
 
+// Name of this resource.
 func (o LookupAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Blueprint parameter values.
 func (o LookupAssignmentResultOutput) Parameters() ParameterValueBaseResponseMapOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) map[string]ParameterValueBaseResponse { return v.Parameters }).(ParameterValueBaseResponseMapOutput)
 }
 
+// State of the assignment.
 func (o LookupAssignmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Names and locations of resource group placeholders.
 func (o LookupAssignmentResultOutput) ResourceGroups() ResourceGroupValueResponseMapOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) map[string]ResourceGroupValueResponse { return v.ResourceGroups }).(ResourceGroupValueResponseMapOutput)
 }
 
+// Status of Blueprint assignment. This field is readonly.
 func (o LookupAssignmentResultOutput) Status() AssignmentStatusResponseOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) AssignmentStatusResponse { return v.Status }).(AssignmentStatusResponseOutput)
 }
 
+// Type of this resource.
 func (o LookupAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

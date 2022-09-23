@@ -21,20 +21,30 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupJobArgs struct {
-	JobAgentName      string `pulumi:"jobAgentName"`
-	JobName           string `pulumi:"jobName"`
+	// The name of the job agent.
+	JobAgentName string `pulumi:"jobAgentName"`
+	// The name of the job to get.
+	JobName string `pulumi:"jobName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // A job.
 type LookupJobResult struct {
-	Description *string              `pulumi:"description"`
-	Id          string               `pulumi:"id"`
-	Name        string               `pulumi:"name"`
-	Schedule    *JobScheduleResponse `pulumi:"schedule"`
-	Type        string               `pulumi:"type"`
-	Version     int                  `pulumi:"version"`
+	// User-defined description of the job.
+	Description *string `pulumi:"description"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Schedule properties of the job.
+	Schedule *JobScheduleResponse `pulumi:"schedule"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The job version number.
+	Version int `pulumi:"version"`
 }
 
 // Defaults sets the appropriate defaults for LookupJobResult
@@ -66,10 +76,14 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 }
 
 type LookupJobOutputArgs struct {
-	JobAgentName      pulumi.StringInput `pulumi:"jobAgentName"`
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the job agent.
+	JobAgentName pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the job to get.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupJobOutputArgs) ElementType() reflect.Type {
@@ -91,26 +105,32 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// User-defined description of the job.
 func (o LookupJobResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Schedule properties of the job.
 func (o LookupJobResultOutput) Schedule() JobScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobResult) *JobScheduleResponse { return v.Schedule }).(JobScheduleResponsePtrOutput)
 }
 
+// Resource type.
 func (o LookupJobResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The job version number.
 func (o LookupJobResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupJobResult) int { return v.Version }).(pulumi.IntOutput)
 }

@@ -21,15 +21,20 @@ func ListEffectiveConnectivityConfiguration(ctx *pulumi.Context, args *ListEffec
 }
 
 type ListEffectiveConnectivityConfigurationArgs struct {
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
-	SkipToken          *string `pulumi:"skipToken"`
-	VirtualNetworkName string  `pulumi:"virtualNetworkName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// The name of the virtual network.
+	VirtualNetworkName string `pulumi:"virtualNetworkName"`
 }
 
 // Result of the request to list networkManagerEffectiveConnectivityConfiguration. It contains a list of groups and a skiptoken to get the next set of results.
 type ListEffectiveConnectivityConfigurationResult struct {
-	SkipToken *string                                      `pulumi:"skipToken"`
-	Value     []EffectiveConnectivityConfigurationResponse `pulumi:"value"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// Gets a page of NetworkManagerEffectiveConnectivityConfiguration
+	Value []EffectiveConnectivityConfigurationResponse `pulumi:"value"`
 }
 
 func ListEffectiveConnectivityConfigurationOutput(ctx *pulumi.Context, args ListEffectiveConnectivityConfigurationOutputArgs, opts ...pulumi.InvokeOption) ListEffectiveConnectivityConfigurationResultOutput {
@@ -46,9 +51,12 @@ func ListEffectiveConnectivityConfigurationOutput(ctx *pulumi.Context, args List
 }
 
 type ListEffectiveConnectivityConfigurationOutputArgs struct {
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SkipToken          pulumi.StringPtrInput `pulumi:"skipToken"`
-	VirtualNetworkName pulumi.StringInput    `pulumi:"virtualNetworkName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
+	// The name of the virtual network.
+	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
 }
 
 func (ListEffectiveConnectivityConfigurationOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListEffectiveConnectivityConfigurationResultOutput) ToListEffectiveConne
 	return o
 }
 
+// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 func (o ListEffectiveConnectivityConfigurationResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListEffectiveConnectivityConfigurationResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// Gets a page of NetworkManagerEffectiveConnectivityConfiguration
 func (o ListEffectiveConnectivityConfigurationResultOutput) Value() EffectiveConnectivityConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ListEffectiveConnectivityConfigurationResult) []EffectiveConnectivityConfigurationResponse {
 		return v.Value

@@ -22,17 +22,25 @@ func GetSAPDiskConfigurations(ctx *pulumi.Context, args *GetSAPDiskConfiguration
 }
 
 type GetSAPDiskConfigurationsArgs struct {
-	AppLocation    string `pulumi:"appLocation"`
-	DatabaseType   string `pulumi:"databaseType"`
-	DbVmSku        string `pulumi:"dbVmSku"`
+	// The geo-location where the SAP resources will be created.
+	AppLocation string `pulumi:"appLocation"`
+	// The database type. Eg: HANA, DB2, etc
+	DatabaseType string `pulumi:"databaseType"`
+	// The VM SKU for database instance.
+	DbVmSku string `pulumi:"dbVmSku"`
+	// The deployment type. Eg: SingleServer/ThreeTier
 	DeploymentType string `pulumi:"deploymentType"`
-	Environment    string `pulumi:"environment"`
-	Location       string `pulumi:"location"`
-	SapProduct     string `pulumi:"sapProduct"`
+	// Defines the environment type - Production/Non Production.
+	Environment string `pulumi:"environment"`
+	// The name of Azure region.
+	Location string `pulumi:"location"`
+	// Defines the SAP Product type.
+	SapProduct string `pulumi:"sapProduct"`
 }
 
 // The list of disk configuration for vmSku which are part of SAP deployment.
 type GetSAPDiskConfigurationsResult struct {
+	// Gets the list of Disk Configurations.
 	DiskConfigurations []SAPDiskConfigurationResponse `pulumi:"diskConfigurations"`
 }
 
@@ -50,13 +58,20 @@ func GetSAPDiskConfigurationsOutput(ctx *pulumi.Context, args GetSAPDiskConfigur
 }
 
 type GetSAPDiskConfigurationsOutputArgs struct {
-	AppLocation    pulumi.StringInput `pulumi:"appLocation"`
-	DatabaseType   pulumi.StringInput `pulumi:"databaseType"`
-	DbVmSku        pulumi.StringInput `pulumi:"dbVmSku"`
+	// The geo-location where the SAP resources will be created.
+	AppLocation pulumi.StringInput `pulumi:"appLocation"`
+	// The database type. Eg: HANA, DB2, etc
+	DatabaseType pulumi.StringInput `pulumi:"databaseType"`
+	// The VM SKU for database instance.
+	DbVmSku pulumi.StringInput `pulumi:"dbVmSku"`
+	// The deployment type. Eg: SingleServer/ThreeTier
 	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
-	Environment    pulumi.StringInput `pulumi:"environment"`
-	Location       pulumi.StringInput `pulumi:"location"`
-	SapProduct     pulumi.StringInput `pulumi:"sapProduct"`
+	// Defines the environment type - Production/Non Production.
+	Environment pulumi.StringInput `pulumi:"environment"`
+	// The name of Azure region.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Defines the SAP Product type.
+	SapProduct pulumi.StringInput `pulumi:"sapProduct"`
 }
 
 func (GetSAPDiskConfigurationsOutputArgs) ElementType() reflect.Type {
@@ -78,6 +93,7 @@ func (o GetSAPDiskConfigurationsResultOutput) ToGetSAPDiskConfigurationsResultOu
 	return o
 }
 
+// Gets the list of Disk Configurations.
 func (o GetSAPDiskConfigurationsResultOutput) DiskConfigurations() SAPDiskConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v GetSAPDiskConfigurationsResult) []SAPDiskConfigurationResponse { return v.DiskConfigurations }).(SAPDiskConfigurationResponseArrayOutput)
 }

@@ -22,14 +22,18 @@ func ListApplianceClusterCustomerUserCredential(ctx *pulumi.Context, args *ListA
 }
 
 type ListApplianceClusterCustomerUserCredentialArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// Appliances name.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The List Cluster Customer User Credential Results appliance.
 type ListApplianceClusterCustomerUserCredentialResult struct {
+	// The list of appliance kubeconfigs.
 	Kubeconfigs []ApplianceCredentialKubeconfigResponse `pulumi:"kubeconfigs"`
-	SshKeys     map[string]SSHKeyResponse               `pulumi:"sshKeys"`
+	// Map of Customer User Public and Private SSH Keys
+	SshKeys map[string]SSHKeyResponse `pulumi:"sshKeys"`
 }
 
 func ListApplianceClusterCustomerUserCredentialOutput(ctx *pulumi.Context, args ListApplianceClusterCustomerUserCredentialOutputArgs, opts ...pulumi.InvokeOption) ListApplianceClusterCustomerUserCredentialResultOutput {
@@ -46,8 +50,10 @@ func ListApplianceClusterCustomerUserCredentialOutput(ctx *pulumi.Context, args 
 }
 
 type ListApplianceClusterCustomerUserCredentialOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// Appliances name.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListApplianceClusterCustomerUserCredentialOutputArgs) ElementType() reflect.Type {
@@ -69,12 +75,14 @@ func (o ListApplianceClusterCustomerUserCredentialResultOutput) ToListApplianceC
 	return o
 }
 
+// The list of appliance kubeconfigs.
 func (o ListApplianceClusterCustomerUserCredentialResultOutput) Kubeconfigs() ApplianceCredentialKubeconfigResponseArrayOutput {
 	return o.ApplyT(func(v ListApplianceClusterCustomerUserCredentialResult) []ApplianceCredentialKubeconfigResponse {
 		return v.Kubeconfigs
 	}).(ApplianceCredentialKubeconfigResponseArrayOutput)
 }
 
+// Map of Customer User Public and Private SSH Keys
 func (o ListApplianceClusterCustomerUserCredentialResultOutput) SshKeys() SSHKeyResponseMapOutput {
 	return o.ApplyT(func(v ListApplianceClusterCustomerUserCredentialResult) map[string]SSHKeyResponse { return v.SshKeys }).(SSHKeyResponseMapOutput)
 }

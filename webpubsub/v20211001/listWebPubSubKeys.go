@@ -21,16 +21,22 @@ func ListWebPubSubKeys(ctx *pulumi.Context, args *ListWebPubSubKeysArgs, opts ..
 }
 
 type ListWebPubSubKeysArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A class represents the access keys of the resource.
 type ListWebPubSubKeysResult struct {
-	PrimaryConnectionString   *string `pulumi:"primaryConnectionString"`
-	PrimaryKey                *string `pulumi:"primaryKey"`
+	// Connection string constructed via the primaryKey
+	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
+	// The primary access key.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Connection string constructed via the secondaryKey
 	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
-	SecondaryKey              *string `pulumi:"secondaryKey"`
+	// The secondary access key.
+	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
 func ListWebPubSubKeysOutput(ctx *pulumi.Context, args ListWebPubSubKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebPubSubKeysResultOutput {
@@ -47,8 +53,10 @@ func ListWebPubSubKeysOutput(ctx *pulumi.Context, args ListWebPubSubKeysOutputAr
 }
 
 type ListWebPubSubKeysOutputArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListWebPubSubKeysOutputArgs) ElementType() reflect.Type {
@@ -70,18 +78,22 @@ func (o ListWebPubSubKeysResultOutput) ToListWebPubSubKeysResultOutputWithContex
 	return o
 }
 
+// Connection string constructed via the primaryKey
 func (o ListWebPubSubKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebPubSubKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// The primary access key.
 func (o ListWebPubSubKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebPubSubKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Connection string constructed via the secondaryKey
 func (o ListWebPubSubKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebPubSubKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// The secondary access key.
 func (o ListWebPubSubKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebPubSubKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

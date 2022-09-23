@@ -22,17 +22,24 @@ func ListBuildTaskSourceRepositoryProperties(ctx *pulumi.Context, args *ListBuil
 }
 
 type ListBuildTaskSourceRepositoryPropertiesArgs struct {
-	BuildTaskName     string `pulumi:"buildTaskName"`
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry build task.
+	BuildTaskName string `pulumi:"buildTaskName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of the source code repository.
 type ListBuildTaskSourceRepositoryPropertiesResult struct {
-	IsCommitTriggerEnabled      *bool                          `pulumi:"isCommitTriggerEnabled"`
-	RepositoryUrl               string                         `pulumi:"repositoryUrl"`
+	// The value of this property indicates whether the source control commit trigger is enabled or not.
+	IsCommitTriggerEnabled *bool `pulumi:"isCommitTriggerEnabled"`
+	// The full URL to the source code repository
+	RepositoryUrl string `pulumi:"repositoryUrl"`
+	// The authorization properties for accessing the source code repository.
 	SourceControlAuthProperties *SourceControlAuthInfoResponse `pulumi:"sourceControlAuthProperties"`
-	SourceControlType           string                         `pulumi:"sourceControlType"`
+	// The type of source control service.
+	SourceControlType string `pulumi:"sourceControlType"`
 }
 
 // Defaults sets the appropriate defaults for ListBuildTaskSourceRepositoryPropertiesResult
@@ -62,8 +69,11 @@ func ListBuildTaskSourceRepositoryPropertiesOutput(ctx *pulumi.Context, args Lis
 }
 
 type ListBuildTaskSourceRepositoryPropertiesOutputArgs struct {
-	BuildTaskName     pulumi.StringInput `pulumi:"buildTaskName"`
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry build task.
+	BuildTaskName pulumi.StringInput `pulumi:"buildTaskName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -86,20 +96,24 @@ func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) ToListBuildTaskSour
 	return o
 }
 
+// The value of this property indicates whether the source control commit trigger is enabled or not.
 func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) IsCommitTriggerEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListBuildTaskSourceRepositoryPropertiesResult) *bool { return v.IsCommitTriggerEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The full URL to the source code repository
 func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBuildTaskSourceRepositoryPropertiesResult) string { return v.RepositoryUrl }).(pulumi.StringOutput)
 }
 
+// The authorization properties for accessing the source code repository.
 func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) SourceControlAuthProperties() SourceControlAuthInfoResponsePtrOutput {
 	return o.ApplyT(func(v ListBuildTaskSourceRepositoryPropertiesResult) *SourceControlAuthInfoResponse {
 		return v.SourceControlAuthProperties
 	}).(SourceControlAuthInfoResponsePtrOutput)
 }
 
+// The type of source control service.
 func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) SourceControlType() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBuildTaskSourceRepositoryPropertiesResult) string { return v.SourceControlType }).(pulumi.StringOutput)
 }

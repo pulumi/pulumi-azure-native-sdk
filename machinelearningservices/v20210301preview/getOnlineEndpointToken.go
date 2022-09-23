@@ -21,17 +21,24 @@ func GetOnlineEndpointToken(ctx *pulumi.Context, args *GetOnlineEndpointTokenArg
 }
 
 type GetOnlineEndpointTokenArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
+	// Online Endpoint name.
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Service Token
 type GetOnlineEndpointTokenResult struct {
-	AccessToken         *string  `pulumi:"accessToken"`
-	ExpiryTimeUtc       *float64 `pulumi:"expiryTimeUtc"`
+	// Access token.
+	AccessToken *string `pulumi:"accessToken"`
+	// Access token expiry time (UTC).
+	ExpiryTimeUtc *float64 `pulumi:"expiryTimeUtc"`
+	// Refresh access token after time (UTC).
 	RefreshAfterTimeUtc *float64 `pulumi:"refreshAfterTimeUtc"`
-	TokenType           *string  `pulumi:"tokenType"`
+	// Access token type.
+	TokenType *string `pulumi:"tokenType"`
 }
 
 func GetOnlineEndpointTokenOutput(ctx *pulumi.Context, args GetOnlineEndpointTokenOutputArgs, opts ...pulumi.InvokeOption) GetOnlineEndpointTokenResultOutput {
@@ -48,9 +55,12 @@ func GetOnlineEndpointTokenOutput(ctx *pulumi.Context, args GetOnlineEndpointTok
 }
 
 type GetOnlineEndpointTokenOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
+	// Online Endpoint name.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetOnlineEndpointTokenOutputArgs) ElementType() reflect.Type {
@@ -72,18 +82,22 @@ func (o GetOnlineEndpointTokenResultOutput) ToGetOnlineEndpointTokenResultOutput
 	return o
 }
 
+// Access token.
 func (o GetOnlineEndpointTokenResultOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOnlineEndpointTokenResult) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
+// Access token expiry time (UTC).
 func (o GetOnlineEndpointTokenResultOutput) ExpiryTimeUtc() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOnlineEndpointTokenResult) *float64 { return v.ExpiryTimeUtc }).(pulumi.Float64PtrOutput)
 }
 
+// Refresh access token after time (UTC).
 func (o GetOnlineEndpointTokenResultOutput) RefreshAfterTimeUtc() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOnlineEndpointTokenResult) *float64 { return v.RefreshAfterTimeUtc }).(pulumi.Float64PtrOutput)
 }
 
+// Access token type.
 func (o GetOnlineEndpointTokenResultOutput) TokenType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOnlineEndpointTokenResult) *string { return v.TokenType }).(pulumi.StringPtrOutput)
 }

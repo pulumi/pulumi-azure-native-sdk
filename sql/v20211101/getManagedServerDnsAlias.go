@@ -21,18 +21,25 @@ func LookupManagedServerDnsAlias(ctx *pulumi.Context, args *LookupManagedServerD
 }
 
 type LookupManagedServerDnsAliasArgs struct {
-	DnsAliasName        string `pulumi:"dnsAliasName"`
+	DnsAliasName string `pulumi:"dnsAliasName"`
+	// The name of the managed instance.
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A managed server DNS alias.
 type LookupManagedServerDnsAliasResult struct {
-	AzureDnsRecord       string `pulumi:"azureDnsRecord"`
-	Id                   string `pulumi:"id"`
-	Name                 string `pulumi:"name"`
+	// The fully qualified DNS record for managed server alias
+	AzureDnsRecord string `pulumi:"azureDnsRecord"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The fully qualified public DNS record for managed server alias
 	PublicAzureDnsRecord string `pulumi:"publicAzureDnsRecord"`
-	Type                 string `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedServerDnsAliasOutput(ctx *pulumi.Context, args LookupManagedServerDnsAliasOutputArgs, opts ...pulumi.InvokeOption) LookupManagedServerDnsAliasResultOutput {
@@ -49,9 +56,11 @@ func LookupManagedServerDnsAliasOutput(ctx *pulumi.Context, args LookupManagedSe
 }
 
 type LookupManagedServerDnsAliasOutputArgs struct {
-	DnsAliasName        pulumi.StringInput `pulumi:"dnsAliasName"`
+	DnsAliasName pulumi.StringInput `pulumi:"dnsAliasName"`
+	// The name of the managed instance.
 	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedServerDnsAliasOutputArgs) ElementType() reflect.Type {
@@ -73,22 +82,27 @@ func (o LookupManagedServerDnsAliasResultOutput) ToLookupManagedServerDnsAliasRe
 	return o
 }
 
+// The fully qualified DNS record for managed server alias
 func (o LookupManagedServerDnsAliasResultOutput) AzureDnsRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedServerDnsAliasResult) string { return v.AzureDnsRecord }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupManagedServerDnsAliasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedServerDnsAliasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupManagedServerDnsAliasResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedServerDnsAliasResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The fully qualified public DNS record for managed server alias
 func (o LookupManagedServerDnsAliasResultOutput) PublicAzureDnsRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedServerDnsAliasResult) string { return v.PublicAzureDnsRecord }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupManagedServerDnsAliasResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedServerDnsAliasResult) string { return v.Type }).(pulumi.StringOutput)
 }

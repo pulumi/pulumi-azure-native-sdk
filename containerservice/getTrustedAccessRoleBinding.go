@@ -22,20 +22,30 @@ func LookupTrustedAccessRoleBinding(ctx *pulumi.Context, args *LookupTrustedAcce
 }
 
 type LookupTrustedAccessRoleBindingArgs struct {
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
-	ResourceName                 string `pulumi:"resourceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName string `pulumi:"resourceName"`
+	// The name of trusted access role binding.
 	TrustedAccessRoleBindingName string `pulumi:"trustedAccessRoleBindingName"`
 }
 
 // Defines binding between a resource and role
 type LookupTrustedAccessRoleBindingResult struct {
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	Roles             []string           `pulumi:"roles"`
-	SourceResourceId  string             `pulumi:"sourceResourceId"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The current provisioning state of trusted access role binding.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
+	Roles []string `pulumi:"roles"`
+	// The ARM resource ID of source resource that trusted access is configured for.
+	SourceResourceId string `pulumi:"sourceResourceId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupTrustedAccessRoleBindingOutput(ctx *pulumi.Context, args LookupTrustedAccessRoleBindingOutputArgs, opts ...pulumi.InvokeOption) LookupTrustedAccessRoleBindingResultOutput {
@@ -52,8 +62,11 @@ func LookupTrustedAccessRoleBindingOutput(ctx *pulumi.Context, args LookupTruste
 }
 
 type LookupTrustedAccessRoleBindingOutputArgs struct {
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                 pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// The name of trusted access role binding.
 	TrustedAccessRoleBindingName pulumi.StringInput `pulumi:"trustedAccessRoleBindingName"`
 }
 
@@ -76,30 +89,37 @@ func (o LookupTrustedAccessRoleBindingResultOutput) ToLookupTrustedAccessRoleBin
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTrustedAccessRoleBindingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupTrustedAccessRoleBindingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current provisioning state of trusted access role binding.
 func (o LookupTrustedAccessRoleBindingResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
 func (o LookupTrustedAccessRoleBindingResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// The ARM resource ID of source resource that trusted access is configured for.
 func (o LookupTrustedAccessRoleBindingResultOutput) SourceResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) string { return v.SourceResourceId }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupTrustedAccessRoleBindingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTrustedAccessRoleBindingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedAccessRoleBindingResult) string { return v.Type }).(pulumi.StringOutput)
 }

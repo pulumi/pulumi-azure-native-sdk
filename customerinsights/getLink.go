@@ -22,29 +22,48 @@ func LookupLink(ctx *pulumi.Context, args *LookupLinkArgs, opts ...pulumi.Invoke
 }
 
 type LookupLinkArgs struct {
-	HubName           string `pulumi:"hubName"`
-	LinkName          string `pulumi:"linkName"`
+	// The name of the hub.
+	HubName string `pulumi:"hubName"`
+	// The name of the link.
+	LinkName string `pulumi:"linkName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The link resource format.
 type LookupLinkResult struct {
-	Description                   map[string]string                      `pulumi:"description"`
-	DisplayName                   map[string]string                      `pulumi:"displayName"`
-	Id                            string                                 `pulumi:"id"`
-	LinkName                      string                                 `pulumi:"linkName"`
-	Mappings                      []TypePropertiesMappingResponse        `pulumi:"mappings"`
-	Name                          string                                 `pulumi:"name"`
-	OperationType                 *string                                `pulumi:"operationType"`
+	// Localized descriptions for the Link.
+	Description map[string]string `pulumi:"description"`
+	// Localized display name for the Link.
+	DisplayName map[string]string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The link name.
+	LinkName string `pulumi:"linkName"`
+	// The set of properties mappings between the source and target Types.
+	Mappings []TypePropertiesMappingResponse `pulumi:"mappings"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
+	OperationType *string `pulumi:"operationType"`
+	// The properties that represent the participating profile.
 	ParticipantPropertyReferences []ParticipantPropertyReferenceResponse `pulumi:"participantPropertyReferences"`
-	ProvisioningState             string                                 `pulumi:"provisioningState"`
-	ReferenceOnly                 *bool                                  `pulumi:"referenceOnly"`
-	SourceEntityType              string                                 `pulumi:"sourceEntityType"`
-	SourceEntityTypeName          string                                 `pulumi:"sourceEntityTypeName"`
-	TargetEntityType              string                                 `pulumi:"targetEntityType"`
-	TargetEntityTypeName          string                                 `pulumi:"targetEntityTypeName"`
-	TenantId                      string                                 `pulumi:"tenantId"`
-	Type                          string                                 `pulumi:"type"`
+	// Provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
+	ReferenceOnly *bool `pulumi:"referenceOnly"`
+	// Type of source entity.
+	SourceEntityType string `pulumi:"sourceEntityType"`
+	// Name of the source Entity Type.
+	SourceEntityTypeName string `pulumi:"sourceEntityTypeName"`
+	// Type of target entity.
+	TargetEntityType string `pulumi:"targetEntityType"`
+	// Name of the target Entity Type.
+	TargetEntityTypeName string `pulumi:"targetEntityTypeName"`
+	// The hub name.
+	TenantId string `pulumi:"tenantId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupLinkOutput(ctx *pulumi.Context, args LookupLinkOutputArgs, opts ...pulumi.InvokeOption) LookupLinkResultOutput {
@@ -61,8 +80,11 @@ func LookupLinkOutput(ctx *pulumi.Context, args LookupLinkOutputArgs, opts ...pu
 }
 
 type LookupLinkOutputArgs struct {
-	HubName           pulumi.StringInput `pulumi:"hubName"`
-	LinkName          pulumi.StringInput `pulumi:"linkName"`
+	// The name of the hub.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// The name of the link.
+	LinkName pulumi.StringInput `pulumi:"linkName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -85,68 +107,84 @@ func (o LookupLinkResultOutput) ToLookupLinkResultOutputWithContext(ctx context.
 	return o
 }
 
+// Localized descriptions for the Link.
 func (o LookupLinkResultOutput) Description() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLinkResult) map[string]string { return v.Description }).(pulumi.StringMapOutput)
 }
 
+// Localized display name for the Link.
 func (o LookupLinkResultOutput) DisplayName() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLinkResult) map[string]string { return v.DisplayName }).(pulumi.StringMapOutput)
 }
 
+// Resource ID.
 func (o LookupLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The link name.
 func (o LookupLinkResultOutput) LinkName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.LinkName }).(pulumi.StringOutput)
 }
 
+// The set of properties mappings between the source and target Types.
 func (o LookupLinkResultOutput) Mappings() TypePropertiesMappingResponseArrayOutput {
 	return o.ApplyT(func(v LookupLinkResult) []TypePropertiesMappingResponse { return v.Mappings }).(TypePropertiesMappingResponseArrayOutput)
 }
 
+// Resource name.
 func (o LookupLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
 func (o LookupLinkResultOutput) OperationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkResult) *string { return v.OperationType }).(pulumi.StringPtrOutput)
 }
 
+// The properties that represent the participating profile.
 func (o LookupLinkResultOutput) ParticipantPropertyReferences() ParticipantPropertyReferenceResponseArrayOutput {
 	return o.ApplyT(func(v LookupLinkResult) []ParticipantPropertyReferenceResponse {
 		return v.ParticipantPropertyReferences
 	}).(ParticipantPropertyReferenceResponseArrayOutput)
 }
 
+// Provisioning state.
 func (o LookupLinkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
 func (o LookupLinkResultOutput) ReferenceOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupLinkResult) *bool { return v.ReferenceOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Type of source entity.
 func (o LookupLinkResultOutput) SourceEntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.SourceEntityType }).(pulumi.StringOutput)
 }
 
+// Name of the source Entity Type.
 func (o LookupLinkResultOutput) SourceEntityTypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.SourceEntityTypeName }).(pulumi.StringOutput)
 }
 
+// Type of target entity.
 func (o LookupLinkResultOutput) TargetEntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.TargetEntityType }).(pulumi.StringOutput)
 }
 
+// Name of the target Entity Type.
 func (o LookupLinkResultOutput) TargetEntityTypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.TargetEntityTypeName }).(pulumi.StringOutput)
 }
 
+// The hub name.
 func (o LookupLinkResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupLinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.Type }).(pulumi.StringOutput)
 }

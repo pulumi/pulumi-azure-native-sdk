@@ -23,17 +23,24 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
+	// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
-	SearchServiceName             string `pulumi:"searchServiceName"`
+	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Azure Cognitive Search service associated with the specified resource group.
+	SearchServiceName string `pulumi:"searchServiceName"`
 }
 
 // Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
 type LookupPrivateEndpointConnectionResult struct {
-	Id         string                                      `pulumi:"id"`
-	Name       string                                      `pulumi:"name"`
+	// The ID of the private endpoint connection. This can be used with the Azure Resource Manager to link resources together.
+	Id string `pulumi:"id"`
+	// The name of the private endpoint connection.
+	Name string `pulumi:"name"`
+	// Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	Type       string                                      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupPrivateEndpointConnectionResult
@@ -61,9 +68,12 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
+	// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
-	SearchServiceName             pulumi.StringInput `pulumi:"searchServiceName"`
+	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Azure Cognitive Search service associated with the specified resource group.
+	SearchServiceName pulumi.StringInput `pulumi:"searchServiceName"`
 }
 
 func (LookupPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -85,20 +95,24 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 	return o
 }
 
+// The ID of the private endpoint connection. This can be used with the Azure Resource Manager to link resources together.
 func (o LookupPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the private endpoint connection.
 func (o LookupPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
 func (o LookupPrivateEndpointConnectionResultOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
+// The resource type.
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

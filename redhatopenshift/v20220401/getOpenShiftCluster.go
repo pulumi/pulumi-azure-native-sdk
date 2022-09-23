@@ -21,27 +21,44 @@ func LookupOpenShiftCluster(ctx *pulumi.Context, args *LookupOpenShiftClusterArg
 }
 
 type LookupOpenShiftClusterArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the OpenShift cluster resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // OpenShiftCluster represents an Azure Red Hat OpenShift cluster.
 type LookupOpenShiftClusterResult struct {
-	ApiserverProfile        *APIServerProfileResponse        `pulumi:"apiserverProfile"`
-	ClusterProfile          *ClusterProfileResponse          `pulumi:"clusterProfile"`
-	ConsoleProfile          *ConsoleProfileResponse          `pulumi:"consoleProfile"`
-	Id                      string                           `pulumi:"id"`
-	IngressProfiles         []IngressProfileResponse         `pulumi:"ingressProfiles"`
-	Location                string                           `pulumi:"location"`
-	MasterProfile           *MasterProfileResponse           `pulumi:"masterProfile"`
-	Name                    string                           `pulumi:"name"`
-	NetworkProfile          *NetworkProfileResponse          `pulumi:"networkProfile"`
-	ProvisioningState       *string                          `pulumi:"provisioningState"`
+	// The cluster API server profile.
+	ApiserverProfile *APIServerProfileResponse `pulumi:"apiserverProfile"`
+	// The cluster profile.
+	ClusterProfile *ClusterProfileResponse `pulumi:"clusterProfile"`
+	// The console profile.
+	ConsoleProfile *ConsoleProfileResponse `pulumi:"consoleProfile"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The cluster ingress profiles.
+	IngressProfiles []IngressProfileResponse `pulumi:"ingressProfiles"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The cluster master profile.
+	MasterProfile *MasterProfileResponse `pulumi:"masterProfile"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The cluster network profile.
+	NetworkProfile *NetworkProfileResponse `pulumi:"networkProfile"`
+	// The cluster provisioning state.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The cluster service principal profile.
 	ServicePrincipalProfile *ServicePrincipalProfileResponse `pulumi:"servicePrincipalProfile"`
-	SystemData              SystemDataResponse               `pulumi:"systemData"`
-	Tags                    map[string]string                `pulumi:"tags"`
-	Type                    string                           `pulumi:"type"`
-	WorkerProfiles          []WorkerProfileResponse          `pulumi:"workerProfiles"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The cluster worker profiles.
+	WorkerProfiles []WorkerProfileResponse `pulumi:"workerProfiles"`
 }
 
 func LookupOpenShiftClusterOutput(ctx *pulumi.Context, args LookupOpenShiftClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftClusterResultOutput {
@@ -58,8 +75,10 @@ func LookupOpenShiftClusterOutput(ctx *pulumi.Context, args LookupOpenShiftClust
 }
 
 type LookupOpenShiftClusterOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the OpenShift cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupOpenShiftClusterOutputArgs) ElementType() reflect.Type {
@@ -81,64 +100,79 @@ func (o LookupOpenShiftClusterResultOutput) ToLookupOpenShiftClusterResultOutput
 	return o
 }
 
+// The cluster API server profile.
 func (o LookupOpenShiftClusterResultOutput) ApiserverProfile() APIServerProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *APIServerProfileResponse { return v.ApiserverProfile }).(APIServerProfileResponsePtrOutput)
 }
 
+// The cluster profile.
 func (o LookupOpenShiftClusterResultOutput) ClusterProfile() ClusterProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *ClusterProfileResponse { return v.ClusterProfile }).(ClusterProfileResponsePtrOutput)
 }
 
+// The console profile.
 func (o LookupOpenShiftClusterResultOutput) ConsoleProfile() ConsoleProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *ConsoleProfileResponse { return v.ConsoleProfile }).(ConsoleProfileResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupOpenShiftClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The cluster ingress profiles.
 func (o LookupOpenShiftClusterResultOutput) IngressProfiles() IngressProfileResponseArrayOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) []IngressProfileResponse { return v.IngressProfiles }).(IngressProfileResponseArrayOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupOpenShiftClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The cluster master profile.
 func (o LookupOpenShiftClusterResultOutput) MasterProfile() MasterProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *MasterProfileResponse { return v.MasterProfile }).(MasterProfileResponsePtrOutput)
 }
 
+// The name of the resource
 func (o LookupOpenShiftClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The cluster network profile.
 func (o LookupOpenShiftClusterResultOutput) NetworkProfile() NetworkProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *NetworkProfileResponse { return v.NetworkProfile }).(NetworkProfileResponsePtrOutput)
 }
 
+// The cluster provisioning state.
 func (o LookupOpenShiftClusterResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// The cluster service principal profile.
 func (o LookupOpenShiftClusterResultOutput) ServicePrincipalProfile() ServicePrincipalProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *ServicePrincipalProfileResponse {
 		return v.ServicePrincipalProfile
 	}).(ServicePrincipalProfileResponsePtrOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupOpenShiftClusterResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupOpenShiftClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupOpenShiftClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The cluster worker profiles.
 func (o LookupOpenShiftClusterResultOutput) WorkerProfiles() WorkerProfileResponseArrayOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) []WorkerProfileResponse { return v.WorkerProfiles }).(WorkerProfileResponseArrayOutput)
 }

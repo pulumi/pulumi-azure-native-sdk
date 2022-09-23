@@ -21,25 +21,33 @@ func LookupWebAppRelayServiceConnectionSlot(ctx *pulumi.Context, args *LookupWeb
 }
 
 type LookupWebAppRelayServiceConnectionSlotArgs struct {
-	EntityName        string `pulumi:"entityName"`
-	Name              string `pulumi:"name"`
+	// Name of the hybrid connection.
+	EntityName string `pulumi:"entityName"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Hybrid Connection for an App Service app.
 type LookupWebAppRelayServiceConnectionSlotResult struct {
-	BiztalkUri               *string `pulumi:"biztalkUri"`
-	EntityConnectionString   *string `pulumi:"entityConnectionString"`
-	EntityName               *string `pulumi:"entityName"`
-	Hostname                 *string `pulumi:"hostname"`
-	Id                       string  `pulumi:"id"`
-	Kind                     *string `pulumi:"kind"`
+	BiztalkUri             *string `pulumi:"biztalkUri"`
+	EntityConnectionString *string `pulumi:"entityConnectionString"`
+	EntityName             *string `pulumi:"entityName"`
+	Hostname               *string `pulumi:"hostname"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
 	Name                     string  `pulumi:"name"`
 	Port                     *int    `pulumi:"port"`
 	ResourceConnectionString *string `pulumi:"resourceConnectionString"`
 	ResourceType             *string `pulumi:"resourceType"`
-	Type                     string  `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppRelayServiceConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppRelayServiceConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppRelayServiceConnectionSlotResultOutput {
@@ -56,10 +64,14 @@ func LookupWebAppRelayServiceConnectionSlotOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupWebAppRelayServiceConnectionSlotOutputArgs struct {
-	EntityName        pulumi.StringInput `pulumi:"entityName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the hybrid connection.
+	EntityName pulumi.StringInput `pulumi:"entityName"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupWebAppRelayServiceConnectionSlotOutputArgs) ElementType() reflect.Type {
@@ -97,14 +109,17 @@ func (o LookupWebAppRelayServiceConnectionSlotResultOutput) Hostname() pulumi.St
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppRelayServiceConnectionSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppRelayServiceConnectionSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppRelayServiceConnectionSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -121,6 +136,7 @@ func (o LookupWebAppRelayServiceConnectionSlotResultOutput) ResourceType() pulum
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppRelayServiceConnectionSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

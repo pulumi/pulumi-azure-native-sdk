@@ -21,13 +21,17 @@ func GetSharedKeys(ctx *pulumi.Context, args *GetSharedKeysArgs, opts ...pulumi.
 }
 
 type GetSharedKeysArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The shared keys for a workspace.
 type GetSharedKeysResult struct {
-	PrimarySharedKey   *string `pulumi:"primarySharedKey"`
+	// The primary shared key of a workspace.
+	PrimarySharedKey *string `pulumi:"primarySharedKey"`
+	// The secondary shared key of a workspace.
 	SecondarySharedKey *string `pulumi:"secondarySharedKey"`
 }
 
@@ -45,8 +49,10 @@ func GetSharedKeysOutput(ctx *pulumi.Context, args GetSharedKeysOutputArgs, opts
 }
 
 type GetSharedKeysOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetSharedKeysOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o GetSharedKeysResultOutput) ToGetSharedKeysResultOutputWithContext(ctx co
 	return o
 }
 
+// The primary shared key of a workspace.
 func (o GetSharedKeysResultOutput) PrimarySharedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedKeysResult) *string { return v.PrimarySharedKey }).(pulumi.StringPtrOutput)
 }
 
+// The secondary shared key of a workspace.
 func (o GetSharedKeysResultOutput) SecondarySharedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedKeysResult) *string { return v.SecondarySharedKey }).(pulumi.StringPtrOutput)
 }

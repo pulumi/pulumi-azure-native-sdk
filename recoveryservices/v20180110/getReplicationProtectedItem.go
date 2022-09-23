@@ -23,20 +23,30 @@ func LookupReplicationProtectedItem(ctx *pulumi.Context, args *LookupReplication
 }
 
 type LookupReplicationProtectedItemArgs struct {
-	FabricName                  string `pulumi:"fabricName"`
-	ProtectionContainerName     string `pulumi:"protectionContainerName"`
+	// Fabric unique name.
+	FabricName string `pulumi:"fabricName"`
+	// Protection container name.
+	ProtectionContainerName string `pulumi:"protectionContainerName"`
+	// Replication protected item name.
 	ReplicatedProtectedItemName string `pulumi:"replicatedProtectedItemName"`
-	ResourceGroupName           string `pulumi:"resourceGroupName"`
-	ResourceName                string `pulumi:"resourceName"`
+	// The name of the resource group where the recovery services vault is present.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the recovery services vault.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Replication protected item.
 type LookupReplicationProtectedItemResult struct {
-	Id         string                                     `pulumi:"id"`
-	Location   *string                                    `pulumi:"location"`
-	Name       string                                     `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// The custom data.
 	Properties ReplicationProtectedItemPropertiesResponse `pulumi:"properties"`
-	Type       string                                     `pulumi:"type"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationProtectedItemOutput(ctx *pulumi.Context, args LookupReplicationProtectedItemOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationProtectedItemResultOutput {
@@ -53,11 +63,16 @@ func LookupReplicationProtectedItemOutput(ctx *pulumi.Context, args LookupReplic
 }
 
 type LookupReplicationProtectedItemOutputArgs struct {
-	FabricName                  pulumi.StringInput `pulumi:"fabricName"`
-	ProtectionContainerName     pulumi.StringInput `pulumi:"protectionContainerName"`
+	// Fabric unique name.
+	FabricName pulumi.StringInput `pulumi:"fabricName"`
+	// Protection container name.
+	ProtectionContainerName pulumi.StringInput `pulumi:"protectionContainerName"`
+	// Replication protected item name.
 	ReplicatedProtectedItemName pulumi.StringInput `pulumi:"replicatedProtectedItemName"`
-	ResourceGroupName           pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource group where the recovery services vault is present.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the recovery services vault.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupReplicationProtectedItemOutputArgs) ElementType() reflect.Type {
@@ -79,24 +94,29 @@ func (o LookupReplicationProtectedItemResultOutput) ToLookupReplicationProtected
 	return o
 }
 
+// Resource Id
 func (o LookupReplicationProtectedItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationProtectedItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupReplicationProtectedItemResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicationProtectedItemResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupReplicationProtectedItemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationProtectedItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The custom data.
 func (o LookupReplicationProtectedItemResultOutput) Properties() ReplicationProtectedItemPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupReplicationProtectedItemResult) ReplicationProtectedItemPropertiesResponse {
 		return v.Properties
 	}).(ReplicationProtectedItemPropertiesResponseOutput)
 }
 
+// Resource Type
 func (o LookupReplicationProtectedItemResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationProtectedItemResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,18 +22,26 @@ func LookupSolution(ctx *pulumi.Context, args *LookupSolutionArgs, opts ...pulum
 }
 
 type LookupSolutionArgs struct {
+	// Name of the Azure Migrate project.
 	MigrateProjectName string `pulumi:"migrateProjectName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	SolutionName       string `pulumi:"solutionName"`
+	// Name of the Azure Resource Group that migrate project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Unique name of a migration solution within a migrate project.
+	SolutionName string `pulumi:"solutionName"`
 }
 
 // Solution REST Resource.
 type LookupSolutionResult struct {
-	Etag       *string                    `pulumi:"etag"`
-	Id         string                     `pulumi:"id"`
-	Name       string                     `pulumi:"name"`
+	// Gets or sets the ETAG for optimistic concurrency control.
+	Etag *string `pulumi:"etag"`
+	// Gets the relative URL to get to this REST resource.
+	Id string `pulumi:"id"`
+	// Gets the name of this REST resource.
+	Name string `pulumi:"name"`
+	// Gets or sets the properties of the solution.
 	Properties SolutionPropertiesResponse `pulumi:"properties"`
-	Type       string                     `pulumi:"type"`
+	// Gets the type of this REST resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupSolutionOutput(ctx *pulumi.Context, args LookupSolutionOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionResultOutput {
@@ -50,9 +58,12 @@ func LookupSolutionOutput(ctx *pulumi.Context, args LookupSolutionOutputArgs, op
 }
 
 type LookupSolutionOutputArgs struct {
+	// Name of the Azure Migrate project.
 	MigrateProjectName pulumi.StringInput `pulumi:"migrateProjectName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	SolutionName       pulumi.StringInput `pulumi:"solutionName"`
+	// Name of the Azure Resource Group that migrate project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Unique name of a migration solution within a migrate project.
+	SolutionName pulumi.StringInput `pulumi:"solutionName"`
 }
 
 func (LookupSolutionOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx 
 	return o
 }
 
+// Gets or sets the ETAG for optimistic concurrency control.
 func (o LookupSolutionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSolutionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Gets the relative URL to get to this REST resource.
 func (o LookupSolutionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets the name of this REST resource.
 func (o LookupSolutionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the properties of the solution.
 func (o LookupSolutionResultOutput) Properties() SolutionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSolutionResult) SolutionPropertiesResponse { return v.Properties }).(SolutionPropertiesResponseOutput)
 }
 
+// Gets the type of this REST resource.
 func (o LookupSolutionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionResult) string { return v.Type }).(pulumi.StringOutput)
 }

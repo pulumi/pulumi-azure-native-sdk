@@ -22,19 +22,28 @@ func LookupGatewayCustomDomain(ctx *pulumi.Context, args *LookupGatewayCustomDom
 }
 
 type LookupGatewayCustomDomainArgs struct {
-	DomainName        string `pulumi:"domainName"`
-	GatewayName       string `pulumi:"gatewayName"`
+	// The name of the Spring Cloud Gateway custom domain.
+	DomainName string `pulumi:"domainName"`
+	// The name of Spring Cloud Gateway.
+	GatewayName string `pulumi:"gatewayName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Custom domain of the Spring Cloud Gateway
 type LookupGatewayCustomDomainResult struct {
-	Id         string                                `pulumi:"id"`
-	Name       string                                `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The properties of custom domain for Spring Cloud Gateway
 	Properties GatewayCustomDomainPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                    `pulumi:"systemData"`
-	Type       string                                `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupGatewayCustomDomainOutput(ctx *pulumi.Context, args LookupGatewayCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayCustomDomainResultOutput {
@@ -51,10 +60,14 @@ func LookupGatewayCustomDomainOutput(ctx *pulumi.Context, args LookupGatewayCust
 }
 
 type LookupGatewayCustomDomainOutputArgs struct {
-	DomainName        pulumi.StringInput `pulumi:"domainName"`
-	GatewayName       pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of the Spring Cloud Gateway custom domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of Spring Cloud Gateway.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupGatewayCustomDomainOutputArgs) ElementType() reflect.Type {
@@ -76,22 +89,27 @@ func (o LookupGatewayCustomDomainResultOutput) ToLookupGatewayCustomDomainResult
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupGatewayCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupGatewayCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of custom domain for Spring Cloud Gateway
 func (o LookupGatewayCustomDomainResultOutput) Properties() GatewayCustomDomainPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupGatewayCustomDomainResult) GatewayCustomDomainPropertiesResponse { return v.Properties }).(GatewayCustomDomainPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupGatewayCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupGatewayCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupGatewayCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

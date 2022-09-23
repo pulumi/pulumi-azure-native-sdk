@@ -21,18 +21,26 @@ func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulum
 }
 
 type LookupEndpointArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
+	// The name of the Endpoint resource.
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	StorageMoverName  string `pulumi:"storageMoverName"`
+	// The name of the Storage Mover resource.
+	StorageMoverName string `pulumi:"storageMoverName"`
 }
 
 // The Endpoint resource, which contains information about file sources and targets.
 type LookupEndpointResult struct {
-	Id         string             `pulumi:"id"`
-	Name       string             `pulumi:"name"`
-	Properties interface{}        `pulumi:"properties"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource specific properties for the Storage Mover resource.
+	Properties interface{} `pulumi:"properties"`
+	// Resource system metadata.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointResultOutput {
@@ -49,9 +57,12 @@ func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, op
 }
 
 type LookupEndpointOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the Endpoint resource.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	StorageMoverName  pulumi.StringInput `pulumi:"storageMoverName"`
+	// The name of the Storage Mover resource.
+	StorageMoverName pulumi.StringInput `pulumi:"storageMoverName"`
 }
 
 func (LookupEndpointOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupEndpointResultOutput) ToLookupEndpointResultOutputWithContext(ctx 
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource specific properties for the Storage Mover resource.
 func (o LookupEndpointResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupEndpointResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource system metadata.
 func (o LookupEndpointResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

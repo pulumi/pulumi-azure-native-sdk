@@ -23,19 +23,28 @@ func LookupTopicAuthorizationRule(ctx *pulumi.Context, args *LookupTopicAuthoriz
 }
 
 type LookupTopicAuthorizationRuleArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	TopicName             string `pulumi:"topicName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The topic name.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Description of a namespace authorization rule.
 type LookupTopicAuthorizationRuleResult struct {
-	Id       string   `pulumi:"id"`
-	Location *string  `pulumi:"location"`
-	Name     string   `pulumi:"name"`
-	Rights   []string `pulumi:"rights"`
-	Type     string   `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupTopicAuthorizationRuleOutput(ctx *pulumi.Context, args LookupTopicAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupTopicAuthorizationRuleResultOutput {
@@ -52,10 +61,14 @@ func LookupTopicAuthorizationRuleOutput(ctx *pulumi.Context, args LookupTopicAut
 }
 
 type LookupTopicAuthorizationRuleOutputArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName             pulumi.StringInput `pulumi:"topicName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The topic name.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (LookupTopicAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -77,22 +90,27 @@ func (o LookupTopicAuthorizationRuleResultOutput) ToLookupTopicAuthorizationRule
 	return o
 }
 
+// Resource Id
 func (o LookupTopicAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupTopicAuthorizationRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupTopicAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupTopicAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// Resource type
 func (o LookupTopicAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

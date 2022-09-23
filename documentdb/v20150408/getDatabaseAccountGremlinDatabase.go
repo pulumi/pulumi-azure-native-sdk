@@ -23,21 +23,32 @@ func LookupDatabaseAccountGremlinDatabase(ctx *pulumi.Context, args *LookupDatab
 }
 
 type LookupDatabaseAccountGremlinDatabaseArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DatabaseName      string `pulumi:"databaseName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Cosmos DB database name.
+	DatabaseName string `pulumi:"databaseName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure Cosmos DB Gremlin database.
 type LookupDatabaseAccountGremlinDatabaseResult struct {
-	Etag     *string           `pulumi:"etag"`
-	Id       string            `pulumi:"id"`
-	Location *string           `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Rid      *string           `pulumi:"rid"`
-	Tags     map[string]string `pulumi:"tags"`
-	Ts       interface{}       `pulumi:"ts"`
-	Type     string            `pulumi:"type"`
+	// A system generated property representing the resource etag required for optimistic concurrency control.
+	Etag *string `pulumi:"etag"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// A system generated property. A unique identifier.
+	Rid *string `pulumi:"rid"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// A system generated property that denotes the last updated timestamp of the resource.
+	Ts interface{} `pulumi:"ts"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupDatabaseAccountGremlinDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseAccountGremlinDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountGremlinDatabaseResultOutput {
@@ -54,8 +65,11 @@ func LookupDatabaseAccountGremlinDatabaseOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupDatabaseAccountGremlinDatabaseOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database name.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,34 +92,42 @@ func (o LookupDatabaseAccountGremlinDatabaseResultOutput) ToLookupDatabaseAccoun
 	return o
 }
 
+// A system generated property representing the resource etag required for optimistic concurrency control.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The unique resource identifier of the database account.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the database account.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A system generated property. A unique identifier.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Rid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) *string { return v.Rid }).(pulumi.StringPtrOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// A system generated property that denotes the last updated timestamp of the resource.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Ts() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) interface{} { return v.Ts }).(pulumi.AnyOutput)
 }
 
+// The type of Azure resource.
 func (o LookupDatabaseAccountGremlinDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountGremlinDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }

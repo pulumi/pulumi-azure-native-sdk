@@ -23,24 +23,38 @@ func LookupNetworkSecurityGroup(ctx *pulumi.Context, args *LookupNetworkSecurity
 }
 
 type LookupNetworkSecurityGroupArgs struct {
+	// The name of the network security group.
 	NetworkSecurityGroupName string `pulumi:"networkSecurityGroupName"`
-	ResourceGroupName        string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NetworkSecurityGroup resource
 type LookupNetworkSecurityGroupResult struct {
+	// Gets or sets Default security rules of network security group
 	DefaultSecurityRules []SecurityRuleResponse `pulumi:"defaultSecurityRules"`
-	Etag                 *string                `pulumi:"etag"`
-	Id                   string                 `pulumi:"id"`
-	Location             string                 `pulumi:"location"`
-	Name                 string                 `pulumi:"name"`
-	NetworkInterfaces    []SubResourceResponse  `pulumi:"networkInterfaces"`
-	ProvisioningState    *string                `pulumi:"provisioningState"`
-	ResourceGuid         *string                `pulumi:"resourceGuid"`
-	SecurityRules        []SecurityRuleResponse `pulumi:"securityRules"`
-	Subnets              []SubResourceResponse  `pulumi:"subnets"`
-	Tags                 map[string]string      `pulumi:"tags"`
-	Type                 string                 `pulumi:"type"`
+	// Gets a unique read-only string that changes whenever the resource is updated
+	Etag *string `pulumi:"etag"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Gets collection of references to Network Interfaces
+	NetworkInterfaces []SubResourceResponse `pulumi:"networkInterfaces"`
+	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets resource guid property of the network security group resource
+	ResourceGuid *string `pulumi:"resourceGuid"`
+	// Gets or sets Security rules of network security group
+	SecurityRules []SecurityRuleResponse `pulumi:"securityRules"`
+	// Gets collection of references to subnets
+	Subnets []SubResourceResponse `pulumi:"subnets"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupNetworkSecurityGroupOutput(ctx *pulumi.Context, args LookupNetworkSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkSecurityGroupResultOutput {
@@ -57,8 +71,10 @@ func LookupNetworkSecurityGroupOutput(ctx *pulumi.Context, args LookupNetworkSec
 }
 
 type LookupNetworkSecurityGroupOutputArgs struct {
+	// The name of the network security group.
 	NetworkSecurityGroupName pulumi.StringInput `pulumi:"networkSecurityGroupName"`
-	ResourceGroupName        pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNetworkSecurityGroupOutputArgs) ElementType() reflect.Type {
@@ -80,50 +96,62 @@ func (o LookupNetworkSecurityGroupResultOutput) ToLookupNetworkSecurityGroupResu
 	return o
 }
 
+// Gets or sets Default security rules of network security group
 func (o LookupNetworkSecurityGroupResultOutput) DefaultSecurityRules() SecurityRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SecurityRuleResponse { return v.DefaultSecurityRules }).(SecurityRuleResponseArrayOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated
 func (o LookupNetworkSecurityGroupResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupNetworkSecurityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupNetworkSecurityGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupNetworkSecurityGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets collection of references to Network Interfaces
 func (o LookupNetworkSecurityGroupResultOutput) NetworkInterfaces() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SubResourceResponse { return v.NetworkInterfaces }).(SubResourceResponseArrayOutput)
 }
 
+// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
 func (o LookupNetworkSecurityGroupResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets resource guid property of the network security group resource
 func (o LookupNetworkSecurityGroupResultOutput) ResourceGuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *string { return v.ResourceGuid }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets Security rules of network security group
 func (o LookupNetworkSecurityGroupResultOutput) SecurityRules() SecurityRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SecurityRuleResponse { return v.SecurityRules }).(SecurityRuleResponseArrayOutput)
 }
 
+// Gets collection of references to subnets
 func (o LookupNetworkSecurityGroupResultOutput) Subnets() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []SubResourceResponse { return v.Subnets }).(SubResourceResponseArrayOutput)
 }
 
+// Resource tags
 func (o LookupNetworkSecurityGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupNetworkSecurityGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

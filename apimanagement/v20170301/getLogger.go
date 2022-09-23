@@ -21,21 +21,33 @@ func LookupLogger(ctx *pulumi.Context, args *LookupLoggerArgs, opts ...pulumi.In
 }
 
 type LookupLoggerArgs struct {
-	Loggerid          string `pulumi:"loggerid"`
+	// Logger identifier. Must be unique in the API Management service instance.
+	Loggerid string `pulumi:"loggerid"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Logger details.
 type LookupLoggerResult struct {
-	Credentials map[string]string               `pulumi:"credentials"`
-	Description *string                         `pulumi:"description"`
-	Id          string                          `pulumi:"id"`
-	IsBuffered  *bool                           `pulumi:"isBuffered"`
-	LoggerType  string                          `pulumi:"loggerType"`
-	Name        string                          `pulumi:"name"`
-	Sampling    *LoggerSamplingContractResponse `pulumi:"sampling"`
-	Type        string                          `pulumi:"type"`
+	// The name and SendRule connection string of the event hub for azureEventHub logger.
+	// Instrumentation key for applicationInsights logger.
+	Credentials map[string]string `pulumi:"credentials"`
+	// Logger description.
+	Description *string `pulumi:"description"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Whether records are buffered in the logger before publishing. Default is assumed to be true.
+	IsBuffered *bool `pulumi:"isBuffered"`
+	// Logger type.
+	LoggerType string `pulumi:"loggerType"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Sampling settings for an ApplicationInsights logger.
+	Sampling *LoggerSamplingContractResponse `pulumi:"sampling"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupLoggerOutput(ctx *pulumi.Context, args LookupLoggerOutputArgs, opts ...pulumi.InvokeOption) LookupLoggerResultOutput {
@@ -52,9 +64,12 @@ func LookupLoggerOutput(ctx *pulumi.Context, args LookupLoggerOutputArgs, opts .
 }
 
 type LookupLoggerOutputArgs struct {
-	Loggerid          pulumi.StringInput `pulumi:"loggerid"`
+	// Logger identifier. Must be unique in the API Management service instance.
+	Loggerid pulumi.StringInput `pulumi:"loggerid"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupLoggerOutputArgs) ElementType() reflect.Type {
@@ -76,34 +91,43 @@ func (o LookupLoggerResultOutput) ToLookupLoggerResultOutputWithContext(ctx cont
 	return o
 }
 
+// The name and SendRule connection string of the event hub for azureEventHub logger.
+// Instrumentation key for applicationInsights logger.
 func (o LookupLoggerResultOutput) Credentials() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLoggerResult) map[string]string { return v.Credentials }).(pulumi.StringMapOutput)
 }
 
+// Logger description.
 func (o LookupLoggerResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoggerResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupLoggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether records are buffered in the logger before publishing. Default is assumed to be true.
 func (o LookupLoggerResultOutput) IsBuffered() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupLoggerResult) *bool { return v.IsBuffered }).(pulumi.BoolPtrOutput)
 }
 
+// Logger type.
 func (o LookupLoggerResultOutput) LoggerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoggerResult) string { return v.LoggerType }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupLoggerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoggerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sampling settings for an ApplicationInsights logger.
 func (o LookupLoggerResultOutput) Sampling() LoggerSamplingContractResponsePtrOutput {
 	return o.ApplyT(func(v LookupLoggerResult) *LoggerSamplingContractResponse { return v.Sampling }).(LoggerSamplingContractResponsePtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupLoggerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoggerResult) string { return v.Type }).(pulumi.StringOutput)
 }

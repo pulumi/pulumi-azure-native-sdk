@@ -23,20 +23,30 @@ func LookupPeeringServicePrefix(ctx *pulumi.Context, args *LookupPeeringServiceP
 }
 
 type LookupPeeringServicePrefixArgs struct {
+	// The peering service name.
 	PeeringServiceName string `pulumi:"peeringServiceName"`
-	PrefixName         string `pulumi:"prefixName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The prefix name.
+	PrefixName string `pulumi:"prefixName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The peering service prefix class.
 type LookupPeeringServicePrefixResult struct {
-	Id                    string  `pulumi:"id"`
-	LearnedType           *string `pulumi:"learnedType"`
-	Name                  string  `pulumi:"name"`
-	Prefix                *string `pulumi:"prefix"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The prefix learned type
+	LearnedType *string `pulumi:"learnedType"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Valid route prefix
+	Prefix *string `pulumi:"prefix"`
+	// The prefix validation state
 	PrefixValidationState *string `pulumi:"prefixValidationState"`
-	ProvisioningState     string  `pulumi:"provisioningState"`
-	Type                  string  `pulumi:"type"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPeeringServicePrefixOutput(ctx *pulumi.Context, args LookupPeeringServicePrefixOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringServicePrefixResultOutput {
@@ -53,9 +63,12 @@ func LookupPeeringServicePrefixOutput(ctx *pulumi.Context, args LookupPeeringSer
 }
 
 type LookupPeeringServicePrefixOutputArgs struct {
+	// The peering service name.
 	PeeringServiceName pulumi.StringInput `pulumi:"peeringServiceName"`
-	PrefixName         pulumi.StringInput `pulumi:"prefixName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The prefix name.
+	PrefixName pulumi.StringInput `pulumi:"prefixName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPeeringServicePrefixOutputArgs) ElementType() reflect.Type {
@@ -77,30 +90,37 @@ func (o LookupPeeringServicePrefixResultOutput) ToLookupPeeringServicePrefixResu
 	return o
 }
 
+// The ID of the resource.
 func (o LookupPeeringServicePrefixResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The prefix learned type
 func (o LookupPeeringServicePrefixResultOutput) LearnedType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) *string { return v.LearnedType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupPeeringServicePrefixResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Valid route prefix
 func (o LookupPeeringServicePrefixResultOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The prefix validation state
 func (o LookupPeeringServicePrefixResultOutput) PrefixValidationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) *string { return v.PrefixValidationState }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupPeeringServicePrefixResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupPeeringServicePrefixResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringServicePrefixResult) string { return v.Type }).(pulumi.StringOutput)
 }

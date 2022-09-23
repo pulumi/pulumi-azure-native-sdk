@@ -23,23 +23,36 @@ func LookupBlueprint(ctx *pulumi.Context, args *LookupBlueprintArgs, opts ...pul
 }
 
 type LookupBlueprintArgs struct {
-	BlueprintName       string `pulumi:"blueprintName"`
+	// name of the blueprint.
+	BlueprintName string `pulumi:"blueprintName"`
+	// ManagementGroup where blueprint stores.
 	ManagementGroupName string `pulumi:"managementGroupName"`
 }
 
 // Represents a Blueprint definition.
 type LookupBlueprintResult struct {
-	Description    *string                                    `pulumi:"description"`
-	DisplayName    *string                                    `pulumi:"displayName"`
-	Id             string                                     `pulumi:"id"`
-	Layout         interface{}                                `pulumi:"layout"`
-	Name           string                                     `pulumi:"name"`
-	Parameters     map[string]ParameterDefinitionResponse     `pulumi:"parameters"`
+	// Multi-line explain this resource.
+	Description *string `pulumi:"description"`
+	// One-liner string explain this resource.
+	DisplayName *string `pulumi:"displayName"`
+	// String Id used to locate any resource on Azure.
+	Id string `pulumi:"id"`
+	// Layout view of the blueprint, for UI reference.
+	Layout interface{} `pulumi:"layout"`
+	// Name of this resource.
+	Name string `pulumi:"name"`
+	// Parameters required by this Blueprint definition.
+	Parameters map[string]ParameterDefinitionResponse `pulumi:"parameters"`
+	// Resource group placeholders defined by this Blueprint definition.
 	ResourceGroups map[string]ResourceGroupDefinitionResponse `pulumi:"resourceGroups"`
-	Status         BlueprintStatusResponse                    `pulumi:"status"`
-	TargetScope    string                                     `pulumi:"targetScope"`
-	Type           string                                     `pulumi:"type"`
-	Versions       interface{}                                `pulumi:"versions"`
+	// Status of the Blueprint. This field is readonly.
+	Status BlueprintStatusResponse `pulumi:"status"`
+	// The scope where this Blueprint can be applied.
+	TargetScope string `pulumi:"targetScope"`
+	// Type of this resource.
+	Type string `pulumi:"type"`
+	// Published versions of this blueprint.
+	Versions interface{} `pulumi:"versions"`
 }
 
 func LookupBlueprintOutput(ctx *pulumi.Context, args LookupBlueprintOutputArgs, opts ...pulumi.InvokeOption) LookupBlueprintResultOutput {
@@ -56,7 +69,9 @@ func LookupBlueprintOutput(ctx *pulumi.Context, args LookupBlueprintOutputArgs, 
 }
 
 type LookupBlueprintOutputArgs struct {
-	BlueprintName       pulumi.StringInput `pulumi:"blueprintName"`
+	// name of the blueprint.
+	BlueprintName pulumi.StringInput `pulumi:"blueprintName"`
+	// ManagementGroup where blueprint stores.
 	ManagementGroupName pulumi.StringInput `pulumi:"managementGroupName"`
 }
 
@@ -79,46 +94,57 @@ func (o LookupBlueprintResultOutput) ToLookupBlueprintResultOutputWithContext(ct
 	return o
 }
 
+// Multi-line explain this resource.
 func (o LookupBlueprintResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// One-liner string explain this resource.
 func (o LookupBlueprintResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// String Id used to locate any resource on Azure.
 func (o LookupBlueprintResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Layout view of the blueprint, for UI reference.
 func (o LookupBlueprintResultOutput) Layout() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) interface{} { return v.Layout }).(pulumi.AnyOutput)
 }
 
+// Name of this resource.
 func (o LookupBlueprintResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Parameters required by this Blueprint definition.
 func (o LookupBlueprintResultOutput) Parameters() ParameterDefinitionResponseMapOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) map[string]ParameterDefinitionResponse { return v.Parameters }).(ParameterDefinitionResponseMapOutput)
 }
 
+// Resource group placeholders defined by this Blueprint definition.
 func (o LookupBlueprintResultOutput) ResourceGroups() ResourceGroupDefinitionResponseMapOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) map[string]ResourceGroupDefinitionResponse { return v.ResourceGroups }).(ResourceGroupDefinitionResponseMapOutput)
 }
 
+// Status of the Blueprint. This field is readonly.
 func (o LookupBlueprintResultOutput) Status() BlueprintStatusResponseOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) BlueprintStatusResponse { return v.Status }).(BlueprintStatusResponseOutput)
 }
 
+// The scope where this Blueprint can be applied.
 func (o LookupBlueprintResultOutput) TargetScope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) string { return v.TargetScope }).(pulumi.StringOutput)
 }
 
+// Type of this resource.
 func (o LookupBlueprintResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Published versions of this blueprint.
 func (o LookupBlueprintResultOutput) Versions() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupBlueprintResult) interface{} { return v.Versions }).(pulumi.AnyOutput)
 }

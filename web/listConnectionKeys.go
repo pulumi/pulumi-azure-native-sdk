@@ -21,19 +21,30 @@ func ListConnectionKeys(ctx *pulumi.Context, args *ListConnectionKeysArgs, opts 
 }
 
 type ListConnectionKeysArgs struct {
-	ConnectionName    string            `pulumi:"connectionName"`
-	Id                *string           `pulumi:"id"`
-	Kind              *string           `pulumi:"kind"`
-	Location          *string           `pulumi:"location"`
-	Name              *string           `pulumi:"name"`
-	ResourceGroupName string            `pulumi:"resourceGroupName"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              *string           `pulumi:"type"`
-	ValidityTimeSpan  *string           `pulumi:"validityTimeSpan"`
+	// The connection name.
+	ConnectionName string `pulumi:"connectionName"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
+	// time span for how long the keys will be valid
+	ValidityTimeSpan *string `pulumi:"validityTimeSpan"`
 }
 
 type ListConnectionKeysResult struct {
-	ConnectionKey   *string                `pulumi:"connectionKey"`
+	// Connection Key
+	ConnectionKey *string `pulumi:"connectionKey"`
+	// Tokens/Claim
 	ParameterValues map[string]interface{} `pulumi:"parameterValues"`
 }
 
@@ -51,15 +62,24 @@ func ListConnectionKeysOutput(ctx *pulumi.Context, args ListConnectionKeysOutput
 }
 
 type ListConnectionKeysOutputArgs struct {
-	ConnectionName    pulumi.StringInput    `pulumi:"connectionName"`
-	Id                pulumi.StringPtrInput `pulumi:"id"`
-	Kind              pulumi.StringPtrInput `pulumi:"kind"`
-	Location          pulumi.StringPtrInput `pulumi:"location"`
-	Name              pulumi.StringPtrInput `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	Tags              pulumi.StringMapInput `pulumi:"tags"`
-	Type              pulumi.StringPtrInput `pulumi:"type"`
-	ValidityTimeSpan  pulumi.StringPtrInput `pulumi:"validityTimeSpan"`
+	// The connection name.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// Resource Id
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Kind of resource
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Resource Location
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Resource Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Resource tags
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Resource type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// time span for how long the keys will be valid
+	ValidityTimeSpan pulumi.StringPtrInput `pulumi:"validityTimeSpan"`
 }
 
 func (ListConnectionKeysOutputArgs) ElementType() reflect.Type {
@@ -80,10 +100,12 @@ func (o ListConnectionKeysResultOutput) ToListConnectionKeysResultOutputWithCont
 	return o
 }
 
+// Connection Key
 func (o ListConnectionKeysResultOutput) ConnectionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListConnectionKeysResult) *string { return v.ConnectionKey }).(pulumi.StringPtrOutput)
 }
 
+// Tokens/Claim
 func (o ListConnectionKeysResultOutput) ParameterValues() pulumi.MapOutput {
 	return o.ApplyT(func(v ListConnectionKeysResult) map[string]interface{} { return v.ParameterValues }).(pulumi.MapOutput)
 }

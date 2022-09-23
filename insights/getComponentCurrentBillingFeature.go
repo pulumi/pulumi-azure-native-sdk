@@ -22,14 +22,18 @@ func LookupComponentCurrentBillingFeature(ctx *pulumi.Context, args *LookupCompo
 }
 
 type LookupComponentCurrentBillingFeatureArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // An Application Insights component billing features
 type LookupComponentCurrentBillingFeatureResult struct {
-	CurrentBillingFeatures []string                                           `pulumi:"currentBillingFeatures"`
-	DataVolumeCap          *ApplicationInsightsComponentDataVolumeCapResponse `pulumi:"dataVolumeCap"`
+	// Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
+	CurrentBillingFeatures []string `pulumi:"currentBillingFeatures"`
+	// An Application Insights component daily data volume cap
+	DataVolumeCap *ApplicationInsightsComponentDataVolumeCapResponse `pulumi:"dataVolumeCap"`
 }
 
 func LookupComponentCurrentBillingFeatureOutput(ctx *pulumi.Context, args LookupComponentCurrentBillingFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupComponentCurrentBillingFeatureResultOutput {
@@ -46,8 +50,10 @@ func LookupComponentCurrentBillingFeatureOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupComponentCurrentBillingFeatureOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupComponentCurrentBillingFeatureOutputArgs) ElementType() reflect.Type {
@@ -69,10 +75,12 @@ func (o LookupComponentCurrentBillingFeatureResultOutput) ToLookupComponentCurre
 	return o
 }
 
+// Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
 func (o LookupComponentCurrentBillingFeatureResultOutput) CurrentBillingFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComponentCurrentBillingFeatureResult) []string { return v.CurrentBillingFeatures }).(pulumi.StringArrayOutput)
 }
 
+// An Application Insights component daily data volume cap
 func (o LookupComponentCurrentBillingFeatureResultOutput) DataVolumeCap() ApplicationInsightsComponentDataVolumeCapResponsePtrOutput {
 	return o.ApplyT(func(v LookupComponentCurrentBillingFeatureResult) *ApplicationInsightsComponentDataVolumeCapResponse {
 		return v.DataVolumeCap

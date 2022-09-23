@@ -22,21 +22,34 @@ func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulum
 }
 
 type LookupScopeMapArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ScopeMapName      string `pulumi:"scopeMapName"`
+	// The name of the scope map.
+	ScopeMapName string `pulumi:"scopeMapName"`
 }
 
 // An object that represents a scope map for a container registry.
 type LookupScopeMapResult struct {
-	Actions           []string           `pulumi:"actions"`
-	CreationDate      string             `pulumi:"creationDate"`
-	Description       *string            `pulumi:"description"`
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// The list of scoped permissions for registry artifacts.
+	// E.g. repositories/repository-name/content/read,
+	// repositories/repository-name/metadata/write
+	Actions []string `pulumi:"actions"`
+	// The creation date of scope map.
+	CreationDate string `pulumi:"creationDate"`
+	// The user friendly description of the scope map.
+	Description *string `pulumi:"description"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupScopeMapOutput(ctx *pulumi.Context, args LookupScopeMapOutputArgs, opts ...pulumi.InvokeOption) LookupScopeMapResultOutput {
@@ -53,9 +66,12 @@ func LookupScopeMapOutput(ctx *pulumi.Context, args LookupScopeMapOutputArgs, op
 }
 
 type LookupScopeMapOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ScopeMapName      pulumi.StringInput `pulumi:"scopeMapName"`
+	// The name of the scope map.
+	ScopeMapName pulumi.StringInput `pulumi:"scopeMapName"`
 }
 
 func (LookupScopeMapOutputArgs) ElementType() reflect.Type {
@@ -77,34 +93,44 @@ func (o LookupScopeMapResultOutput) ToLookupScopeMapResultOutputWithContext(ctx 
 	return o
 }
 
+// The list of scoped permissions for registry artifacts.
+// E.g. repositories/repository-name/content/read,
+// repositories/repository-name/metadata/write
 func (o LookupScopeMapResultOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The creation date of scope map.
 func (o LookupScopeMapResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// The user friendly description of the scope map.
 func (o LookupScopeMapResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The resource ID.
 func (o LookupScopeMapResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupScopeMapResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupScopeMapResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupScopeMapResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupScopeMapResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,19 +22,28 @@ func LookupIpFirewallRule(ctx *pulumi.Context, args *LookupIpFirewallRuleArgs, o
 }
 
 type LookupIpFirewallRuleArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RuleName          string `pulumi:"ruleName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The IP firewall rule name
+	RuleName string `pulumi:"ruleName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // IP firewall rule
 type LookupIpFirewallRuleResult struct {
-	EndIpAddress      *string `pulumi:"endIpAddress"`
-	Id                string  `pulumi:"id"`
-	Name              string  `pulumi:"name"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	StartIpAddress    *string `pulumi:"startIpAddress"`
-	Type              string  `pulumi:"type"`
+	// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress
+	EndIpAddress *string `pulumi:"endIpAddress"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Resource provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The start IP address of the firewall rule. Must be IPv4 format
+	StartIpAddress *string `pulumi:"startIpAddress"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupIpFirewallRuleOutput(ctx *pulumi.Context, args LookupIpFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupIpFirewallRuleResultOutput {
@@ -51,9 +60,12 @@ func LookupIpFirewallRuleOutput(ctx *pulumi.Context, args LookupIpFirewallRuleOu
 }
 
 type LookupIpFirewallRuleOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleName          pulumi.StringInput `pulumi:"ruleName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The IP firewall rule name
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupIpFirewallRuleOutputArgs) ElementType() reflect.Type {
@@ -75,26 +87,32 @@ func (o LookupIpFirewallRuleResultOutput) ToLookupIpFirewallRuleResultOutputWith
 	return o
 }
 
+// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress
 func (o LookupIpFirewallRuleResultOutput) EndIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIpFirewallRuleResult) *string { return v.EndIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIpFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupIpFirewallRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpFirewallRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource provisioning state
 func (o LookupIpFirewallRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpFirewallRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The start IP address of the firewall rule. Must be IPv4 format
 func (o LookupIpFirewallRuleResultOutput) StartIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIpFirewallRuleResult) *string { return v.StartIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupIpFirewallRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpFirewallRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,13 +22,17 @@ func ListNamedValue(ctx *pulumi.Context, args *ListNamedValueArgs, opts ...pulum
 }
 
 type ListNamedValueArgs struct {
-	NamedValueId      string `pulumi:"namedValueId"`
+	// Identifier of the NamedValue.
+	NamedValueId string `pulumi:"namedValueId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 type ListNamedValueResult struct {
+	// This is secret value of the NamedValue entity.
 	Value *string `pulumi:"value"`
 }
 
@@ -46,9 +50,12 @@ func ListNamedValueOutput(ctx *pulumi.Context, args ListNamedValueOutputArgs, op
 }
 
 type ListNamedValueOutputArgs struct {
-	NamedValueId      pulumi.StringInput `pulumi:"namedValueId"`
+	// Identifier of the NamedValue.
+	NamedValueId pulumi.StringInput `pulumi:"namedValueId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListNamedValueOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o ListNamedValueResultOutput) ToListNamedValueResultOutputWithContext(ctx 
 	return o
 }
 
+// This is secret value of the NamedValue entity.
 func (o ListNamedValueResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNamedValueResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

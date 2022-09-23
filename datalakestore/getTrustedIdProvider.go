@@ -22,17 +22,24 @@ func LookupTrustedIdProvider(ctx *pulumi.Context, args *LookupTrustedIdProviderA
 }
 
 type LookupTrustedIdProviderArgs struct {
-	AccountName           string `pulumi:"accountName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the Data Lake Store account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the trusted identity provider to retrieve.
 	TrustedIdProviderName string `pulumi:"trustedIdProviderName"`
 }
 
 // Data Lake Store trusted identity provider information.
 type LookupTrustedIdProviderResult struct {
-	Id         string `pulumi:"id"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The URL of this trusted identity provider.
 	IdProvider string `pulumi:"idProvider"`
-	Name       string `pulumi:"name"`
-	Type       string `pulumi:"type"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupTrustedIdProviderOutput(ctx *pulumi.Context, args LookupTrustedIdProviderOutputArgs, opts ...pulumi.InvokeOption) LookupTrustedIdProviderResultOutput {
@@ -49,8 +56,11 @@ func LookupTrustedIdProviderOutput(ctx *pulumi.Context, args LookupTrustedIdProv
 }
 
 type LookupTrustedIdProviderOutputArgs struct {
-	AccountName           pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Data Lake Store account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the trusted identity provider to retrieve.
 	TrustedIdProviderName pulumi.StringInput `pulumi:"trustedIdProviderName"`
 }
 
@@ -73,18 +83,22 @@ func (o LookupTrustedIdProviderResultOutput) ToLookupTrustedIdProviderResultOutp
 	return o
 }
 
+// The resource identifier.
 func (o LookupTrustedIdProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedIdProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The URL of this trusted identity provider.
 func (o LookupTrustedIdProviderResultOutput) IdProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedIdProviderResult) string { return v.IdProvider }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupTrustedIdProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedIdProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource type.
 func (o LookupTrustedIdProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrustedIdProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }

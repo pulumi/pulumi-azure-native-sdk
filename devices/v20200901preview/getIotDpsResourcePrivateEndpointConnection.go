@@ -21,17 +21,24 @@ func LookupIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context, args *Lo
 }
 
 type LookupIotDpsResourcePrivateEndpointConnectionArgs struct {
+	// The name of the private endpoint connection
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
-	ResourceName                  string `pulumi:"resourceName"`
+	// The name of the resource group that contains the provisioning service.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the provisioning service.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The private endpoint connection of a provisioning service
 type LookupIotDpsResourcePrivateEndpointConnectionResult struct {
-	Id         string                                      `pulumi:"id"`
-	Name       string                                      `pulumi:"name"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The properties of a private endpoint connection
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	Type       string                                      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupIotDpsResourcePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupIotDpsResourcePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupIotDpsResourcePrivateEndpointConnectionResultOutput {
@@ -48,9 +55,12 @@ func LookupIotDpsResourcePrivateEndpointConnectionOutput(ctx *pulumi.Context, ar
 }
 
 type LookupIotDpsResourcePrivateEndpointConnectionOutputArgs struct {
+	// The name of the private endpoint connection
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                  pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource group that contains the provisioning service.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the provisioning service.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupIotDpsResourcePrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -72,20 +82,24 @@ func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) ToLookupIotDp
 	return o
 }
 
+// The resource identifier.
 func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotDpsResourcePrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotDpsResourcePrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of a private endpoint connection
 func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupIotDpsResourcePrivateEndpointConnectionResult) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
+// The resource type.
 func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIotDpsResourcePrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

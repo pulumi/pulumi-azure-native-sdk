@@ -23,20 +23,30 @@ func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespace
 }
 
 type LookupNamespaceAuthorizationRuleArgs struct {
+	// Authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a Namespace AuthorizationRules.
 type LookupNamespaceAuthorizationRuleResult struct {
-	Id       string            `pulumi:"id"`
-	Location string            `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Rights   []string          `pulumi:"rights"`
-	Sku      *SkuResponse      `pulumi:"sku"`
-	Tags     map[string]string `pulumi:"tags"`
-	Type     string            `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// The sku of the created namespace
+	Sku *SkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupNamespaceAuthorizationRuleOutput(ctx *pulumi.Context, args LookupNamespaceAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceAuthorizationRuleResultOutput {
@@ -53,9 +63,12 @@ func LookupNamespaceAuthorizationRuleOutput(ctx *pulumi.Context, args LookupName
 }
 
 type LookupNamespaceAuthorizationRuleOutputArgs struct {
+	// Authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNamespaceAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -77,30 +90,37 @@ func (o LookupNamespaceAuthorizationRuleResultOutput) ToLookupNamespaceAuthoriza
 	return o
 }
 
+// Resource Id
 func (o LookupNamespaceAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupNamespaceAuthorizationRuleResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupNamespaceAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupNamespaceAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// The sku of the created namespace
 func (o LookupNamespaceAuthorizationRuleResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupNamespaceAuthorizationRuleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupNamespaceAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

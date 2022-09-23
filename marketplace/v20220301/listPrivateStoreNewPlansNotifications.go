@@ -21,6 +21,7 @@ func ListPrivateStoreNewPlansNotifications(ctx *pulumi.Context, args *ListPrivat
 }
 
 type ListPrivateStoreNewPlansNotificationsArgs struct {
+	// The store ID - must use the tenant ID
 	PrivateStoreId string `pulumi:"privateStoreId"`
 }
 
@@ -43,6 +44,7 @@ func ListPrivateStoreNewPlansNotificationsOutput(ctx *pulumi.Context, args ListP
 }
 
 type ListPrivateStoreNewPlansNotificationsOutputArgs struct {
+	// The store ID - must use the tenant ID
 	PrivateStoreId pulumi.StringInput `pulumi:"privateStoreId"`
 }
 

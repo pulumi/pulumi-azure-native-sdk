@@ -22,20 +22,30 @@ func GetFactoryDataPlaneAccess(ctx *pulumi.Context, args *GetFactoryDataPlaneAcc
 }
 
 type GetFactoryDataPlaneAccessArgs struct {
+	// The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
 	AccessResourcePath *string `pulumi:"accessResourcePath"`
-	ExpireTime         *string `pulumi:"expireTime"`
-	FactoryName        string  `pulumi:"factoryName"`
-	Permissions        *string `pulumi:"permissions"`
-	ProfileName        *string `pulumi:"profileName"`
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
-	StartTime          *string `pulumi:"startTime"`
+	// Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours.
+	ExpireTime *string `pulumi:"expireTime"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
+	Permissions *string `pulumi:"permissions"`
+	// The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
+	ProfileName *string `pulumi:"profileName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Start time for the token. If not specified the current time will be used.
+	StartTime *string `pulumi:"startTime"`
 }
 
 // Get Data Plane read only token response definition.
 type GetFactoryDataPlaneAccessResult struct {
-	AccessToken  *string                   `pulumi:"accessToken"`
-	DataPlaneUrl *string                   `pulumi:"dataPlaneUrl"`
-	Policy       *UserAccessPolicyResponse `pulumi:"policy"`
+	// Data Plane read only access token.
+	AccessToken *string `pulumi:"accessToken"`
+	// Data Plane service base URL.
+	DataPlaneUrl *string `pulumi:"dataPlaneUrl"`
+	// The user access policy.
+	Policy *UserAccessPolicyResponse `pulumi:"policy"`
 }
 
 func GetFactoryDataPlaneAccessOutput(ctx *pulumi.Context, args GetFactoryDataPlaneAccessOutputArgs, opts ...pulumi.InvokeOption) GetFactoryDataPlaneAccessResultOutput {
@@ -52,13 +62,20 @@ func GetFactoryDataPlaneAccessOutput(ctx *pulumi.Context, args GetFactoryDataPla
 }
 
 type GetFactoryDataPlaneAccessOutputArgs struct {
+	// The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
 	AccessResourcePath pulumi.StringPtrInput `pulumi:"accessResourcePath"`
-	ExpireTime         pulumi.StringPtrInput `pulumi:"expireTime"`
-	FactoryName        pulumi.StringInput    `pulumi:"factoryName"`
-	Permissions        pulumi.StringPtrInput `pulumi:"permissions"`
-	ProfileName        pulumi.StringPtrInput `pulumi:"profileName"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	StartTime          pulumi.StringPtrInput `pulumi:"startTime"`
+	// Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+	// The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
+	ProfileName pulumi.StringPtrInput `pulumi:"profileName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Start time for the token. If not specified the current time will be used.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
 func (GetFactoryDataPlaneAccessOutputArgs) ElementType() reflect.Type {
@@ -80,14 +97,17 @@ func (o GetFactoryDataPlaneAccessResultOutput) ToGetFactoryDataPlaneAccessResult
 	return o
 }
 
+// Data Plane read only access token.
 func (o GetFactoryDataPlaneAccessResultOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFactoryDataPlaneAccessResult) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
+// Data Plane service base URL.
 func (o GetFactoryDataPlaneAccessResultOutput) DataPlaneUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFactoryDataPlaneAccessResult) *string { return v.DataPlaneUrl }).(pulumi.StringPtrOutput)
 }
 
+// The user access policy.
 func (o GetFactoryDataPlaneAccessResultOutput) Policy() UserAccessPolicyResponsePtrOutput {
 	return o.ApplyT(func(v GetFactoryDataPlaneAccessResult) *UserAccessPolicyResponse { return v.Policy }).(UserAccessPolicyResponsePtrOutput)
 }

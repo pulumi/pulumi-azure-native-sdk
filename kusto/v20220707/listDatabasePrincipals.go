@@ -21,13 +21,17 @@ func ListDatabasePrincipals(ctx *pulumi.Context, args *ListDatabasePrincipalsArg
 }
 
 type ListDatabasePrincipalsArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The list Kusto database principals operation response.
 type ListDatabasePrincipalsResult struct {
+	// The list of Kusto database principals.
 	Value []DatabasePrincipalResponse `pulumi:"value"`
 }
 
@@ -45,8 +49,11 @@ func ListDatabasePrincipalsOutput(ctx *pulumi.Context, args ListDatabasePrincipa
 }
 
 type ListDatabasePrincipalsOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,6 +76,7 @@ func (o ListDatabasePrincipalsResultOutput) ToListDatabasePrincipalsResultOutput
 	return o
 }
 
+// The list of Kusto database principals.
 func (o ListDatabasePrincipalsResultOutput) Value() DatabasePrincipalResponseArrayOutput {
 	return o.ApplyT(func(v ListDatabasePrincipalsResult) []DatabasePrincipalResponse { return v.Value }).(DatabasePrincipalResponseArrayOutput)
 }

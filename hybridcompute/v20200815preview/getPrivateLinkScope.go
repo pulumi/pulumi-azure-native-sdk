@@ -21,20 +21,30 @@ func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArg
 }
 
 type LookupPrivateLinkScopeArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ScopeName         string `pulumi:"scopeName"`
+	// The name of the Azure Arc PrivateLinkScope resource.
+	ScopeName string `pulumi:"scopeName"`
 }
 
 // An Azure Arc PrivateLinkScope definition.
 type LookupPrivateLinkScopeResult struct {
-	Id                         string                              `pulumi:"id"`
-	Location                   string                              `pulumi:"location"`
-	Name                       string                              `pulumi:"name"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	ProvisioningState          string                              `pulumi:"provisioningState"`
-	PublicNetworkAccess        *string                             `pulumi:"publicNetworkAccess"`
-	Tags                       map[string]string                   `pulumi:"tags"`
-	Type                       string                              `pulumi:"type"`
+	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateLinkScopeOutput(ctx *pulumi.Context, args LookupPrivateLinkScopeOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkScopeResultOutput {
@@ -51,8 +61,10 @@ func LookupPrivateLinkScopeOutput(ctx *pulumi.Context, args LookupPrivateLinkSco
 }
 
 type LookupPrivateLinkScopeOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ScopeName         pulumi.StringInput `pulumi:"scopeName"`
+	// The name of the Azure Arc PrivateLinkScope resource.
+	ScopeName pulumi.StringInput `pulumi:"scopeName"`
 }
 
 func (LookupPrivateLinkScopeOutputArgs) ElementType() reflect.Type {
@@ -74,36 +86,44 @@ func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutput
 	return o
 }
 
+// Azure resource Id
 func (o LookupPrivateLinkScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupPrivateLinkScopeResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupPrivateLinkScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
 func (o LookupPrivateLinkScopeResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
+// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
 func (o LookupPrivateLinkScopeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 func (o LookupPrivateLinkScopeResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupPrivateLinkScopeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type
 func (o LookupPrivateLinkScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

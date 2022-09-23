@@ -22,23 +22,36 @@ func LookupNspAssociation(ctx *pulumi.Context, args *LookupNspAssociationArgs, o
 }
 
 type LookupNspAssociationArgs struct {
-	AssociationName              string `pulumi:"associationName"`
+	// The name of the NSP association.
+	AssociationName string `pulumi:"associationName"`
+	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName string `pulumi:"networkSecurityPerimeterName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The NSP resource association resource
 type LookupNspAssociationResult struct {
-	AccessMode            *string              `pulumi:"accessMode"`
-	HasProvisioningIssues string               `pulumi:"hasProvisioningIssues"`
-	Id                    string               `pulumi:"id"`
-	Location              *string              `pulumi:"location"`
-	Name                  string               `pulumi:"name"`
-	PrivateLinkResource   *SubResourceResponse `pulumi:"privateLinkResource"`
-	Profile               *SubResourceResponse `pulumi:"profile"`
-	ProvisioningState     string               `pulumi:"provisioningState"`
-	Tags                  map[string]string    `pulumi:"tags"`
-	Type                  string               `pulumi:"type"`
+	// Access mode on the association.
+	AccessMode *string `pulumi:"accessMode"`
+	// Specifies if there are provisioning issues
+	HasProvisioningIssues string `pulumi:"hasProvisioningIssues"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The PaaS resource to be associated.
+	PrivateLinkResource *SubResourceResponse `pulumi:"privateLinkResource"`
+	// Profile id to which the PaaS resource is associated.
+	Profile *SubResourceResponse `pulumi:"profile"`
+	// The provisioning state of the resource  association resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupNspAssociationOutput(ctx *pulumi.Context, args LookupNspAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupNspAssociationResultOutput {
@@ -55,9 +68,12 @@ func LookupNspAssociationOutput(ctx *pulumi.Context, args LookupNspAssociationOu
 }
 
 type LookupNspAssociationOutputArgs struct {
-	AssociationName              pulumi.StringInput `pulumi:"associationName"`
+	// The name of the NSP association.
+	AssociationName pulumi.StringInput `pulumi:"associationName"`
+	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName pulumi.StringInput `pulumi:"networkSecurityPerimeterName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNspAssociationOutputArgs) ElementType() reflect.Type {
@@ -79,42 +95,52 @@ func (o LookupNspAssociationResultOutput) ToLookupNspAssociationResultOutputWith
 	return o
 }
 
+// Access mode on the association.
 func (o LookupNspAssociationResultOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
 }
 
+// Specifies if there are provisioning issues
 func (o LookupNspAssociationResultOutput) HasProvisioningIssues() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) string { return v.HasProvisioningIssues }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupNspAssociationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupNspAssociationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupNspAssociationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The PaaS resource to be associated.
 func (o LookupNspAssociationResultOutput) PrivateLinkResource() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) *SubResourceResponse { return v.PrivateLinkResource }).(SubResourceResponsePtrOutput)
 }
 
+// Profile id to which the PaaS resource is associated.
 func (o LookupNspAssociationResultOutput) Profile() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) *SubResourceResponse { return v.Profile }).(SubResourceResponsePtrOutput)
 }
 
+// The provisioning state of the resource  association resource.
 func (o LookupNspAssociationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupNspAssociationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupNspAssociationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) string { return v.Type }).(pulumi.StringOutput)
 }

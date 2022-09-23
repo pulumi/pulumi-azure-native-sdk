@@ -21,18 +21,26 @@ func LookupSkusNestedResourceTypeSecond(ctx *pulumi.Context, args *LookupSkusNes
 }
 
 type LookupSkusNestedResourceTypeSecondArgs struct {
-	NestedResourceTypeFirst  string `pulumi:"nestedResourceTypeFirst"`
+	// The first child resource type.
+	NestedResourceTypeFirst string `pulumi:"nestedResourceTypeFirst"`
+	// The second child resource type.
 	NestedResourceTypeSecond string `pulumi:"nestedResourceTypeSecond"`
-	ProviderNamespace        string `pulumi:"providerNamespace"`
-	ResourceType             string `pulumi:"resourceType"`
-	Sku                      string `pulumi:"sku"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace string `pulumi:"providerNamespace"`
+	// The resource type.
+	ResourceType string `pulumi:"resourceType"`
+	// The SKU.
+	Sku string `pulumi:"sku"`
 }
 
 type LookupSkusNestedResourceTypeSecondResult struct {
-	Id         string                        `pulumi:"id"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
 	Name       string                        `pulumi:"name"`
 	Properties SkuResourceResponseProperties `pulumi:"properties"`
-	Type       string                        `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSkusNestedResourceTypeSecondOutput(ctx *pulumi.Context, args LookupSkusNestedResourceTypeSecondOutputArgs, opts ...pulumi.InvokeOption) LookupSkusNestedResourceTypeSecondResultOutput {
@@ -49,11 +57,16 @@ func LookupSkusNestedResourceTypeSecondOutput(ctx *pulumi.Context, args LookupSk
 }
 
 type LookupSkusNestedResourceTypeSecondOutputArgs struct {
-	NestedResourceTypeFirst  pulumi.StringInput `pulumi:"nestedResourceTypeFirst"`
+	// The first child resource type.
+	NestedResourceTypeFirst pulumi.StringInput `pulumi:"nestedResourceTypeFirst"`
+	// The second child resource type.
 	NestedResourceTypeSecond pulumi.StringInput `pulumi:"nestedResourceTypeSecond"`
-	ProviderNamespace        pulumi.StringInput `pulumi:"providerNamespace"`
-	ResourceType             pulumi.StringInput `pulumi:"resourceType"`
-	Sku                      pulumi.StringInput `pulumi:"sku"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
+	// The resource type.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The SKU.
+	Sku pulumi.StringInput `pulumi:"sku"`
 }
 
 func (LookupSkusNestedResourceTypeSecondOutputArgs) ElementType() reflect.Type {
@@ -74,10 +87,12 @@ func (o LookupSkusNestedResourceTypeSecondResultOutput) ToLookupSkusNestedResour
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSkusNestedResourceTypeSecondResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeSecondResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSkusNestedResourceTypeSecondResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeSecondResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -86,6 +101,7 @@ func (o LookupSkusNestedResourceTypeSecondResultOutput) Properties() SkuResource
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeSecondResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSkusNestedResourceTypeSecondResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeSecondResult) string { return v.Type }).(pulumi.StringOutput)
 }

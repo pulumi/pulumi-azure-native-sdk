@@ -21,14 +21,19 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 }
 
 type ListAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the Maps Account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Azure Resource Group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption.
 type ListAccountKeysResult struct {
-	Id           string `pulumi:"id"`
-	PrimaryKey   string `pulumi:"primaryKey"`
+	// The full Azure resource identifier of the Maps Account.
+	Id string `pulumi:"id"`
+	// The primary key for accessing the Maps REST APIs.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// The secondary key for accessing the Maps REST APIs.
 	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
@@ -46,7 +51,9 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 }
 
 type ListAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Maps Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Azure Resource Group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,14 +76,17 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ct
 	return o
 }
 
+// The full Azure resource identifier of the Maps Account.
 func (o ListAccountKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The primary key for accessing the Maps REST APIs.
 func (o ListAccountKeysResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// The secondary key for accessing the Maps REST APIs.
 func (o ListAccountKeysResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }

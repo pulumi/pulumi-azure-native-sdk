@@ -23,20 +23,30 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 }
 
 type LookupEnvironmentArgs struct {
-	EnvironmentName   string  `pulumi:"environmentName"`
-	Expand            *string `pulumi:"expand"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+	Expand *string `pulumi:"expand"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource.
 type LookupEnvironmentResult struct {
-	Id       string            `pulumi:"id"`
-	Kind     string            `pulumi:"kind"`
-	Location string            `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Sku      SkuResponse       `pulumi:"sku"`
-	Tags     map[string]string `pulumi:"tags"`
-	Type     string            `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The kind of the environment.
+	Kind string `pulumi:"kind"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
+	Sku SkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -53,9 +63,12 @@ func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputAr
 }
 
 type LookupEnvironmentOutputArgs struct {
-	EnvironmentName   pulumi.StringInput    `pulumi:"environmentName"`
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -77,30 +90,37 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 	return o
 }
 
+// Resource Id
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the environment.
 func (o LookupEnvironmentResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupEnvironmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
 func (o LookupEnvironmentResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
+// Resource tags
 func (o LookupEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

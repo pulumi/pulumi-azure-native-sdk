@@ -21,20 +21,30 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 }
 
 type LookupSnapshotArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the managed cluster resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A node pool snapshot resource.
 type LookupSnapshotResult struct {
+	// CreationData to be used to specify the source agent pool resource ID to create this snapshot.
 	CreationData *CreationDataResponse `pulumi:"creationData"`
-	Id           string                `pulumi:"id"`
-	Location     string                `pulumi:"location"`
-	Name         string                `pulumi:"name"`
-	SnapshotType *string               `pulumi:"snapshotType"`
-	SystemData   SystemDataResponse    `pulumi:"systemData"`
-	Tags         map[string]string     `pulumi:"tags"`
-	Type         string                `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The type of a snapshot. The default is NodePool.
+	SnapshotType *string `pulumi:"snapshotType"`
+	// The system metadata relating to this snapshot.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSnapshotOutput(ctx *pulumi.Context, args LookupSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupSnapshotResultOutput {
@@ -51,8 +61,10 @@ func LookupSnapshotOutput(ctx *pulumi.Context, args LookupSnapshotOutputArgs, op
 }
 
 type LookupSnapshotOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the managed cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupSnapshotOutputArgs) ElementType() reflect.Type {
@@ -74,34 +86,42 @@ func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx 
 	return o
 }
 
+// CreationData to be used to specify the source agent pool resource ID to create this snapshot.
 func (o LookupSnapshotResultOutput) CreationData() CreationDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *CreationDataResponse { return v.CreationData }).(CreationDataResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupSnapshotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupSnapshotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupSnapshotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of a snapshot. The default is NodePool.
 func (o LookupSnapshotResultOutput) SnapshotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.SnapshotType }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to this snapshot.
 func (o LookupSnapshotResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags
 func (o LookupSnapshotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSnapshotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Type }).(pulumi.StringOutput)
 }

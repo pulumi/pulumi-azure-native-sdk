@@ -22,21 +22,30 @@ func LookupAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Cont
 }
 
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the App Service Environment.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Full view of the custom domain suffix configuration for ASEv3.
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult struct {
-	CertificateUrl            *string `pulumi:"certificateUrl"`
-	DnsSuffix                 *string `pulumi:"dnsSuffix"`
-	Id                        string  `pulumi:"id"`
+	// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
+	CertificateUrl *string `pulumi:"certificateUrl"`
+	// The default custom domain suffix to use for all sites deployed on the ASE.
+	DnsSuffix *string `pulumi:"dnsSuffix"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
 	KeyVaultReferenceIdentity *string `pulumi:"keyVaultReferenceIdentity"`
-	Kind                      *string `pulumi:"kind"`
-	Name                      string  `pulumi:"name"`
-	ProvisioningDetails       string  `pulumi:"provisioningDetails"`
-	ProvisioningState         string  `pulumi:"provisioningState"`
-	Type                      string  `pulumi:"type"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name                string `pulumi:"name"`
+	ProvisioningDetails string `pulumi:"provisioningDetails"`
+	ProvisioningState   string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput(ctx *pulumi.Context, args LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput {
@@ -53,7 +62,9 @@ func LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput(ctx *pulum
 }
 
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the App Service Environment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,30 +87,36 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 	return o
 }
 
+// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) *string {
 		return v.CertificateUrl
 	}).(pulumi.StringPtrOutput)
 }
 
+// The default custom domain suffix to use for all sites deployed on the ASE.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) DnsSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) *string { return v.DnsSuffix }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) KeyVaultReferenceIdentity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) *string {
 		return v.KeyVaultReferenceIdentity
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -116,6 +133,7 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 	}).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

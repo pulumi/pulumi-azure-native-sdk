@@ -21,18 +21,26 @@ func GetPredictionTrainingResults(ctx *pulumi.Context, args *GetPredictionTraini
 }
 
 type GetPredictionTrainingResultsArgs struct {
-	HubName           string `pulumi:"hubName"`
-	PredictionName    string `pulumi:"predictionName"`
+	// The name of the hub.
+	HubName string `pulumi:"hubName"`
+	// The name of the Prediction.
+	PredictionName string `pulumi:"predictionName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The training results of the prediction.
 type GetPredictionTrainingResultsResult struct {
-	CanonicalProfiles           []CanonicalProfileDefinitionResponse     `pulumi:"canonicalProfiles"`
-	PredictionDistribution      PredictionDistributionDefinitionResponse `pulumi:"predictionDistribution"`
-	PrimaryProfileInstanceCount float64                                  `pulumi:"primaryProfileInstanceCount"`
-	ScoreName                   string                                   `pulumi:"scoreName"`
-	TenantId                    string                                   `pulumi:"tenantId"`
+	// Canonical profiles.
+	CanonicalProfiles []CanonicalProfileDefinitionResponse `pulumi:"canonicalProfiles"`
+	// Prediction distribution.
+	PredictionDistribution PredictionDistributionDefinitionResponse `pulumi:"predictionDistribution"`
+	// Instance count of the primary profile.
+	PrimaryProfileInstanceCount float64 `pulumi:"primaryProfileInstanceCount"`
+	// Score name.
+	ScoreName string `pulumi:"scoreName"`
+	// The hub name.
+	TenantId string `pulumi:"tenantId"`
 }
 
 func GetPredictionTrainingResultsOutput(ctx *pulumi.Context, args GetPredictionTrainingResultsOutputArgs, opts ...pulumi.InvokeOption) GetPredictionTrainingResultsResultOutput {
@@ -49,8 +57,11 @@ func GetPredictionTrainingResultsOutput(ctx *pulumi.Context, args GetPredictionT
 }
 
 type GetPredictionTrainingResultsOutputArgs struct {
-	HubName           pulumi.StringInput `pulumi:"hubName"`
-	PredictionName    pulumi.StringInput `pulumi:"predictionName"`
+	// The name of the hub.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// The name of the Prediction.
+	PredictionName pulumi.StringInput `pulumi:"predictionName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,26 +84,31 @@ func (o GetPredictionTrainingResultsResultOutput) ToGetPredictionTrainingResults
 	return o
 }
 
+// Canonical profiles.
 func (o GetPredictionTrainingResultsResultOutput) CanonicalProfiles() CanonicalProfileDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v GetPredictionTrainingResultsResult) []CanonicalProfileDefinitionResponse {
 		return v.CanonicalProfiles
 	}).(CanonicalProfileDefinitionResponseArrayOutput)
 }
 
+// Prediction distribution.
 func (o GetPredictionTrainingResultsResultOutput) PredictionDistribution() PredictionDistributionDefinitionResponseOutput {
 	return o.ApplyT(func(v GetPredictionTrainingResultsResult) PredictionDistributionDefinitionResponse {
 		return v.PredictionDistribution
 	}).(PredictionDistributionDefinitionResponseOutput)
 }
 
+// Instance count of the primary profile.
 func (o GetPredictionTrainingResultsResultOutput) PrimaryProfileInstanceCount() pulumi.Float64Output {
 	return o.ApplyT(func(v GetPredictionTrainingResultsResult) float64 { return v.PrimaryProfileInstanceCount }).(pulumi.Float64Output)
 }
 
+// Score name.
 func (o GetPredictionTrainingResultsResultOutput) ScoreName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionTrainingResultsResult) string { return v.ScoreName }).(pulumi.StringOutput)
 }
 
+// The hub name.
 func (o GetPredictionTrainingResultsResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPredictionTrainingResultsResult) string { return v.TenantId }).(pulumi.StringOutput)
 }

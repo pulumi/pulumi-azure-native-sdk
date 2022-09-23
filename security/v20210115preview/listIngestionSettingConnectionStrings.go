@@ -21,11 +21,13 @@ func ListIngestionSettingConnectionStrings(ctx *pulumi.Context, args *ListIngest
 }
 
 type ListIngestionSettingConnectionStringsArgs struct {
+	// Name of the ingestion setting
 	IngestionSettingName string `pulumi:"ingestionSettingName"`
 }
 
 // Connection string for ingesting security data and logs
 type ListIngestionSettingConnectionStringsResult struct {
+	// Connection strings
 	Value []IngestionConnectionStringResponse `pulumi:"value"`
 }
 
@@ -43,6 +45,7 @@ func ListIngestionSettingConnectionStringsOutput(ctx *pulumi.Context, args ListI
 }
 
 type ListIngestionSettingConnectionStringsOutputArgs struct {
+	// Name of the ingestion setting
 	IngestionSettingName pulumi.StringInput `pulumi:"ingestionSettingName"`
 }
 
@@ -65,6 +68,7 @@ func (o ListIngestionSettingConnectionStringsResultOutput) ToListIngestionSettin
 	return o
 }
 
+// Connection strings
 func (o ListIngestionSettingConnectionStringsResultOutput) Value() IngestionConnectionStringResponseArrayOutput {
 	return o.ApplyT(func(v ListIngestionSettingConnectionStringsResult) []IngestionConnectionStringResponse {
 		return v.Value

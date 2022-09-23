@@ -21,30 +21,49 @@ func LookupSensitivityLabel(ctx *pulumi.Context, args *LookupSensitivityLabelArg
 }
 
 type LookupSensitivityLabelArgs struct {
-	ColumnName             string `pulumi:"columnName"`
-	DatabaseName           string `pulumi:"databaseName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	SchemaName             string `pulumi:"schemaName"`
+	// The name of the column.
+	ColumnName string `pulumi:"columnName"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the schema.
+	SchemaName string `pulumi:"schemaName"`
+	// The source of the sensitivity label.
 	SensitivityLabelSource string `pulumi:"sensitivityLabelSource"`
-	ServerName             string `pulumi:"serverName"`
-	TableName              string `pulumi:"tableName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the table.
+	TableName string `pulumi:"tableName"`
 }
 
 // A sensitivity label.
 type LookupSensitivityLabelResult struct {
-	ColumnName        string  `pulumi:"columnName"`
-	Id                string  `pulumi:"id"`
-	InformationType   *string `pulumi:"informationType"`
+	// The column name.
+	ColumnName string `pulumi:"columnName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The information type.
+	InformationType *string `pulumi:"informationType"`
+	// The information type ID.
 	InformationTypeId *string `pulumi:"informationTypeId"`
-	IsDisabled        bool    `pulumi:"isDisabled"`
-	LabelId           *string `pulumi:"labelId"`
-	LabelName         *string `pulumi:"labelName"`
-	ManagedBy         string  `pulumi:"managedBy"`
-	Name              string  `pulumi:"name"`
-	Rank              *string `pulumi:"rank"`
-	SchemaName        string  `pulumi:"schemaName"`
-	TableName         string  `pulumi:"tableName"`
-	Type              string  `pulumi:"type"`
+	// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
+	IsDisabled bool `pulumi:"isDisabled"`
+	// The label ID.
+	LabelId *string `pulumi:"labelId"`
+	// The label name.
+	LabelName *string `pulumi:"labelName"`
+	// Resource that manages the sensitivity label.
+	ManagedBy string `pulumi:"managedBy"`
+	// Resource name.
+	Name string  `pulumi:"name"`
+	Rank *string `pulumi:"rank"`
+	// The schema name.
+	SchemaName string `pulumi:"schemaName"`
+	// The table name.
+	TableName string `pulumi:"tableName"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSensitivityLabelOutput(ctx *pulumi.Context, args LookupSensitivityLabelOutputArgs, opts ...pulumi.InvokeOption) LookupSensitivityLabelResultOutput {
@@ -61,13 +80,20 @@ func LookupSensitivityLabelOutput(ctx *pulumi.Context, args LookupSensitivityLab
 }
 
 type LookupSensitivityLabelOutputArgs struct {
-	ColumnName             pulumi.StringInput `pulumi:"columnName"`
-	DatabaseName           pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	SchemaName             pulumi.StringInput `pulumi:"schemaName"`
+	// The name of the column.
+	ColumnName pulumi.StringInput `pulumi:"columnName"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the schema.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	// The source of the sensitivity label.
 	SensitivityLabelSource pulumi.StringInput `pulumi:"sensitivityLabelSource"`
-	ServerName             pulumi.StringInput `pulumi:"serverName"`
-	TableName              pulumi.StringInput `pulumi:"tableName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
 }
 
 func (LookupSensitivityLabelOutputArgs) ElementType() reflect.Type {
@@ -89,38 +115,47 @@ func (o LookupSensitivityLabelResultOutput) ToLookupSensitivityLabelResultOutput
 	return o
 }
 
+// The column name.
 func (o LookupSensitivityLabelResultOutput) ColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.ColumnName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSensitivityLabelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The information type.
 func (o LookupSensitivityLabelResultOutput) InformationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) *string { return v.InformationType }).(pulumi.StringPtrOutput)
 }
 
+// The information type ID.
 func (o LookupSensitivityLabelResultOutput) InformationTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) *string { return v.InformationTypeId }).(pulumi.StringPtrOutput)
 }
 
+// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
 func (o LookupSensitivityLabelResultOutput) IsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) bool { return v.IsDisabled }).(pulumi.BoolOutput)
 }
 
+// The label ID.
 func (o LookupSensitivityLabelResultOutput) LabelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) *string { return v.LabelId }).(pulumi.StringPtrOutput)
 }
 
+// The label name.
 func (o LookupSensitivityLabelResultOutput) LabelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) *string { return v.LabelName }).(pulumi.StringPtrOutput)
 }
 
+// Resource that manages the sensitivity label.
 func (o LookupSensitivityLabelResultOutput) ManagedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSensitivityLabelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -129,14 +164,17 @@ func (o LookupSensitivityLabelResultOutput) Rank() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) *string { return v.Rank }).(pulumi.StringPtrOutput)
 }
 
+// The schema name.
 func (o LookupSensitivityLabelResultOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
+// The table name.
 func (o LookupSensitivityLabelResultOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupSensitivityLabelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.Type }).(pulumi.StringOutput)
 }

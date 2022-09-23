@@ -21,14 +21,18 @@ func GetGitHubOAuth(ctx *pulumi.Context, args *GetGitHubOAuthArgs, opts ...pulum
 }
 
 type GetGitHubOAuthArgs struct {
-	Location    string  `pulumi:"location"`
+	// The name of Azure region.
+	Location string `pulumi:"location"`
+	// The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
 	RedirectUrl *string `pulumi:"redirectUrl"`
 }
 
 // URL used to authorize the Developer Hub GitHub App
 type GetGitHubOAuthResult struct {
+	// URL for authorizing the Developer Hub GitHub App
 	AuthURL *string `pulumi:"authURL"`
-	Token   *string `pulumi:"token"`
+	// OAuth token used to make calls to GitHub
+	Token *string `pulumi:"token"`
 }
 
 func GetGitHubOAuthOutput(ctx *pulumi.Context, args GetGitHubOAuthOutputArgs, opts ...pulumi.InvokeOption) GetGitHubOAuthResultOutput {
@@ -45,7 +49,9 @@ func GetGitHubOAuthOutput(ctx *pulumi.Context, args GetGitHubOAuthOutputArgs, op
 }
 
 type GetGitHubOAuthOutputArgs struct {
-	Location    pulumi.StringInput    `pulumi:"location"`
+	// The name of Azure region.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
 	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
 }
 
@@ -68,10 +74,12 @@ func (o GetGitHubOAuthResultOutput) ToGetGitHubOAuthResultOutputWithContext(ctx 
 	return o
 }
 
+// URL for authorizing the Developer Hub GitHub App
 func (o GetGitHubOAuthResultOutput) AuthURL() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitHubOAuthResult) *string { return v.AuthURL }).(pulumi.StringPtrOutput)
 }
 
+// OAuth token used to make calls to GitHub
 func (o GetGitHubOAuthResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitHubOAuthResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

@@ -22,19 +22,28 @@ func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ..
 }
 
 type LookupSuppressionArgs struct {
-	Name             string `pulumi:"name"`
+	// The name of the suppression.
+	Name string `pulumi:"name"`
+	// The recommendation ID.
 	RecommendationId string `pulumi:"recommendationId"`
-	ResourceUri      string `pulumi:"resourceUri"`
+	// The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 type LookupSuppressionResult struct {
-	ExpirationTimeStamp string  `pulumi:"expirationTimeStamp"`
-	Id                  string  `pulumi:"id"`
-	Name                string  `pulumi:"name"`
-	SuppressionId       *string `pulumi:"suppressionId"`
-	Ttl                 *string `pulumi:"ttl"`
-	Type                string  `pulumi:"type"`
+	// Gets or sets the expiration time stamp.
+	ExpirationTimeStamp string `pulumi:"expirationTimeStamp"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The GUID of the suppression.
+	SuppressionId *string `pulumi:"suppressionId"`
+	// The duration for which the suppression is valid.
+	Ttl *string `pulumi:"ttl"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupSuppressionOutput(ctx *pulumi.Context, args LookupSuppressionOutputArgs, opts ...pulumi.InvokeOption) LookupSuppressionResultOutput {
@@ -51,9 +60,12 @@ func LookupSuppressionOutput(ctx *pulumi.Context, args LookupSuppressionOutputAr
 }
 
 type LookupSuppressionOutputArgs struct {
-	Name             pulumi.StringInput `pulumi:"name"`
+	// The name of the suppression.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The recommendation ID.
 	RecommendationId pulumi.StringInput `pulumi:"recommendationId"`
-	ResourceUri      pulumi.StringInput `pulumi:"resourceUri"`
+	// The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
 func (LookupSuppressionOutputArgs) ElementType() reflect.Type {
@@ -75,26 +87,32 @@ func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutputWithContex
 	return o
 }
 
+// Gets or sets the expiration time stamp.
 func (o LookupSuppressionResultOutput) ExpirationTimeStamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.ExpirationTimeStamp }).(pulumi.StringOutput)
 }
 
+// The resource ID.
 func (o LookupSuppressionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupSuppressionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The GUID of the suppression.
 func (o LookupSuppressionResultOutput) SuppressionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) *string { return v.SuppressionId }).(pulumi.StringPtrOutput)
 }
 
+// The duration for which the suppression is valid.
 func (o LookupSuppressionResultOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) *string { return v.Ttl }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.
 func (o LookupSuppressionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,25 +22,40 @@ func LookupNspAccessRule(ctx *pulumi.Context, args *LookupNspAccessRuleArgs, opt
 }
 
 type LookupNspAccessRuleArgs struct {
-	AccessRuleName               string `pulumi:"accessRuleName"`
+	// The name of the NSP access rule.
+	AccessRuleName string `pulumi:"accessRuleName"`
+	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName string `pulumi:"networkSecurityPerimeterName"`
-	ProfileName                  string `pulumi:"profileName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
+	// The name of the NSP profile.
+	ProfileName string `pulumi:"profileName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The NSP access rule resource
 type LookupNspAccessRuleResult struct {
-	AddressPrefixes           []string                           `pulumi:"addressPrefixes"`
-	Direction                 *string                            `pulumi:"direction"`
-	FullyQualifiedDomainNames []string                           `pulumi:"fullyQualifiedDomainNames"`
-	Id                        string                             `pulumi:"id"`
-	Location                  *string                            `pulumi:"location"`
-	Name                      string                             `pulumi:"name"`
+	// Inbound address prefixes (IPv4/IPv6)
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// Direction that specifies whether the access rules is inbound/outbound.
+	Direction *string `pulumi:"direction"`
+	// Outbound rules fully qualified domain name format.
+	FullyQualifiedDomainNames []string `pulumi:"fullyQualifiedDomainNames"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Inbound rule specified by the perimeter id.
 	NetworkSecurityPerimeters []PerimeterBasedAccessRuleResponse `pulumi:"networkSecurityPerimeters"`
-	ProvisioningState         string                             `pulumi:"provisioningState"`
-	Subscriptions             []SubscriptionIdResponse           `pulumi:"subscriptions"`
-	Tags                      map[string]string                  `pulumi:"tags"`
-	Type                      string                             `pulumi:"type"`
+	// The provisioning state of the scope assignment resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of subscription ids
+	Subscriptions []SubscriptionIdResponse `pulumi:"subscriptions"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupNspAccessRuleOutput(ctx *pulumi.Context, args LookupNspAccessRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNspAccessRuleResultOutput {
@@ -57,10 +72,14 @@ func LookupNspAccessRuleOutput(ctx *pulumi.Context, args LookupNspAccessRuleOutp
 }
 
 type LookupNspAccessRuleOutputArgs struct {
-	AccessRuleName               pulumi.StringInput `pulumi:"accessRuleName"`
+	// The name of the NSP access rule.
+	AccessRuleName pulumi.StringInput `pulumi:"accessRuleName"`
+	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName pulumi.StringInput `pulumi:"networkSecurityPerimeterName"`
-	ProfileName                  pulumi.StringInput `pulumi:"profileName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the NSP profile.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNspAccessRuleOutputArgs) ElementType() reflect.Type {
@@ -82,48 +101,59 @@ func (o LookupNspAccessRuleResultOutput) ToLookupNspAccessRuleResultOutputWithCo
 	return o
 }
 
+// Inbound address prefixes (IPv4/IPv6)
 func (o LookupNspAccessRuleResultOutput) AddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
+// Direction that specifies whether the access rules is inbound/outbound.
 func (o LookupNspAccessRuleResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
+// Outbound rules fully qualified domain name format.
 func (o LookupNspAccessRuleResultOutput) FullyQualifiedDomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.FullyQualifiedDomainNames }).(pulumi.StringArrayOutput)
 }
 
+// Resource ID.
 func (o LookupNspAccessRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupNspAccessRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupNspAccessRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Inbound rule specified by the perimeter id.
 func (o LookupNspAccessRuleResultOutput) NetworkSecurityPerimeters() PerimeterBasedAccessRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []PerimeterBasedAccessRuleResponse {
 		return v.NetworkSecurityPerimeters
 	}).(PerimeterBasedAccessRuleResponseArrayOutput)
 }
 
+// The provisioning state of the scope assignment resource.
 func (o LookupNspAccessRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// List of subscription ids
 func (o LookupNspAccessRuleResultOutput) Subscriptions() SubscriptionIdResponseArrayOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []SubscriptionIdResponse { return v.Subscriptions }).(SubscriptionIdResponseArrayOutput)
 }
 
+// Resource tags.
 func (o LookupNspAccessRuleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupNspAccessRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

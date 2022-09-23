@@ -21,19 +21,26 @@ func ListWorkflowRunActionRepetitionExpressionTraces(ctx *pulumi.Context, args *
 }
 
 type ListWorkflowRunActionRepetitionExpressionTracesArgs struct {
-	ActionName        string `pulumi:"actionName"`
-	Name              string `pulumi:"name"`
-	RepetitionName    string `pulumi:"repetitionName"`
+	// The workflow action name.
+	ActionName string `pulumi:"actionName"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// The workflow repetition.
+	RepetitionName string `pulumi:"repetitionName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RunName           string `pulumi:"runName"`
-	WorkflowName      string `pulumi:"workflowName"`
+	// The workflow run name.
+	RunName string `pulumi:"runName"`
+	// The workflow name.
+	WorkflowName string `pulumi:"workflowName"`
 }
 
 // The expression traces.
 type ListWorkflowRunActionRepetitionExpressionTracesResult struct {
-	Inputs   []ExpressionRootResponse `pulumi:"inputs"`
-	NextLink *string                  `pulumi:"nextLink"`
-	Value    interface{}              `pulumi:"value"`
+	Inputs []ExpressionRootResponse `pulumi:"inputs"`
+	// The link used to get the next page of recommendations.
+	NextLink *string     `pulumi:"nextLink"`
+	Value    interface{} `pulumi:"value"`
 }
 
 func ListWorkflowRunActionRepetitionExpressionTracesOutput(ctx *pulumi.Context, args ListWorkflowRunActionRepetitionExpressionTracesOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowRunActionRepetitionExpressionTracesResultOutput {
@@ -50,12 +57,18 @@ func ListWorkflowRunActionRepetitionExpressionTracesOutput(ctx *pulumi.Context, 
 }
 
 type ListWorkflowRunActionRepetitionExpressionTracesOutputArgs struct {
-	ActionName        pulumi.StringInput `pulumi:"actionName"`
-	Name              pulumi.StringInput `pulumi:"name"`
-	RepetitionName    pulumi.StringInput `pulumi:"repetitionName"`
+	// The workflow action name.
+	ActionName pulumi.StringInput `pulumi:"actionName"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The workflow repetition.
+	RepetitionName pulumi.StringInput `pulumi:"repetitionName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RunName           pulumi.StringInput `pulumi:"runName"`
-	WorkflowName      pulumi.StringInput `pulumi:"workflowName"`
+	// The workflow run name.
+	RunName pulumi.StringInput `pulumi:"runName"`
+	// The workflow name.
+	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
 
 func (ListWorkflowRunActionRepetitionExpressionTracesOutputArgs) ElementType() reflect.Type {
@@ -83,6 +96,7 @@ func (o ListWorkflowRunActionRepetitionExpressionTracesResultOutput) Inputs() Ex
 	}).(ExpressionRootResponseArrayOutput)
 }
 
+// The link used to get the next page of recommendations.
 func (o ListWorkflowRunActionRepetitionExpressionTracesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkflowRunActionRepetitionExpressionTracesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }

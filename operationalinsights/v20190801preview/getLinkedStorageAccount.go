@@ -21,18 +21,26 @@ func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAc
 }
 
 type LookupLinkedStorageAccountArgs struct {
-	DataSourceType    string `pulumi:"dataSourceType"`
+	// Linked storage accounts type.
+	DataSourceType string `pulumi:"dataSourceType"`
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of the Log Analytics Workspace that will contain the resource.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Linked storage accounts top level resource container.
 type LookupLinkedStorageAccountResult struct {
-	DataSourceType    string   `pulumi:"dataSourceType"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
+	// Linked storage accounts type.
+	DataSourceType string `pulumi:"dataSourceType"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Linked storage accounts resources ids.
 	StorageAccountIds []string `pulumi:"storageAccountIds"`
-	Type              string   `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupLinkedStorageAccountOutput(ctx *pulumi.Context, args LookupLinkedStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedStorageAccountResultOutput {
@@ -49,9 +57,12 @@ func LookupLinkedStorageAccountOutput(ctx *pulumi.Context, args LookupLinkedStor
 }
 
 type LookupLinkedStorageAccountOutputArgs struct {
-	DataSourceType    pulumi.StringInput `pulumi:"dataSourceType"`
+	// Linked storage accounts type.
+	DataSourceType pulumi.StringInput `pulumi:"dataSourceType"`
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of the Log Analytics Workspace that will contain the resource.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupLinkedStorageAccountOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupLinkedStorageAccountResultOutput) ToLookupLinkedStorageAccountResu
 	return o
 }
 
+// Linked storage accounts type.
 func (o LookupLinkedStorageAccountResultOutput) DataSourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.DataSourceType }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupLinkedStorageAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupLinkedStorageAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Linked storage accounts resources ids.
 func (o LookupLinkedStorageAccountResultOutput) StorageAccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) []string { return v.StorageAccountIds }).(pulumi.StringArrayOutput)
 }
 
+// Resource type.
 func (o LookupLinkedStorageAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

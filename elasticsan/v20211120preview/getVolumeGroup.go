@@ -21,22 +21,34 @@ func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ..
 }
 
 type LookupVolumeGroupArgs struct {
-	ElasticSanName    string `pulumi:"elasticSanName"`
+	// The name of the ElasticSan.
+	ElasticSanName string `pulumi:"elasticSanName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VolumeGroupName   string `pulumi:"volumeGroupName"`
+	// The name of the VolumeGroup.
+	VolumeGroupName string `pulumi:"volumeGroupName"`
 }
 
 // Response for Volume Group request.
 type LookupVolumeGroupResult struct {
-	Encryption        *string                 `pulumi:"encryption"`
-	Id                string                  `pulumi:"id"`
-	Name              string                  `pulumi:"name"`
-	NetworkAcls       *NetworkRuleSetResponse `pulumi:"networkAcls"`
-	ProtocolType      *string                 `pulumi:"protocolType"`
-	ProvisioningState string                  `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse      `pulumi:"systemData"`
-	Tags              map[string]string       `pulumi:"tags"`
-	Type              string                  `pulumi:"type"`
+	// Type of encryption
+	Encryption *string `pulumi:"encryption"`
+	// Azure resource identifier.
+	Id string `pulumi:"id"`
+	// Azure resource name.
+	Name string `pulumi:"name"`
+	// A collection of rules governing the accessibility from specific network locations.
+	NetworkAcls *NetworkRuleSetResponse `pulumi:"networkAcls"`
+	// Type of storage target
+	ProtocolType *string `pulumi:"protocolType"`
+	// State of the operation on the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource metadata required by ARM RPC
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeGroupResultOutput {
@@ -53,9 +65,12 @@ func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputAr
 }
 
 type LookupVolumeGroupOutputArgs struct {
-	ElasticSanName    pulumi.StringInput `pulumi:"elasticSanName"`
+	// The name of the ElasticSan.
+	ElasticSanName pulumi.StringInput `pulumi:"elasticSanName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VolumeGroupName   pulumi.StringInput `pulumi:"volumeGroupName"`
+	// The name of the VolumeGroup.
+	VolumeGroupName pulumi.StringInput `pulumi:"volumeGroupName"`
 }
 
 func (LookupVolumeGroupOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutputWithContex
 	return o
 }
 
+// Type of encryption
 func (o LookupVolumeGroupResultOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource identifier.
 func (o LookupVolumeGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure resource name.
 func (o LookupVolumeGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A collection of rules governing the accessibility from specific network locations.
 func (o LookupVolumeGroupResultOutput) NetworkAcls() NetworkRuleSetResponsePtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *NetworkRuleSetResponse { return v.NetworkAcls }).(NetworkRuleSetResponsePtrOutput)
 }
 
+// Type of storage target
 func (o LookupVolumeGroupResultOutput) ProtocolType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *string { return v.ProtocolType }).(pulumi.StringPtrOutput)
 }
 
+// State of the operation on the resource.
 func (o LookupVolumeGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource metadata required by ARM RPC
 func (o LookupVolumeGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource tags.
 func (o LookupVolumeGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type.
 func (o LookupVolumeGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

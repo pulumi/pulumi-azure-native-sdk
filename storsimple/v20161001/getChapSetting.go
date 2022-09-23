@@ -23,18 +23,26 @@ func LookupChapSetting(ctx *pulumi.Context, args *LookupChapSettingArgs, opts ..
 }
 
 type LookupChapSettingArgs struct {
-	ChapUserName      string `pulumi:"chapUserName"`
-	DeviceName        string `pulumi:"deviceName"`
-	ManagerName       string `pulumi:"managerName"`
+	// The user name of chap to be fetched.
+	ChapUserName string `pulumi:"chapUserName"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Challenge-Handshake Authentication Protocol (CHAP) setting
 type LookupChapSettingResult struct {
-	Id       string                            `pulumi:"id"`
-	Name     string                            `pulumi:"name"`
+	// The identifier.
+	Id string `pulumi:"id"`
+	// The name.
+	Name string `pulumi:"name"`
+	// The chap password.
 	Password AsymmetricEncryptedSecretResponse `pulumi:"password"`
-	Type     string                            `pulumi:"type"`
+	// The type.
+	Type string `pulumi:"type"`
 }
 
 func LookupChapSettingOutput(ctx *pulumi.Context, args LookupChapSettingOutputArgs, opts ...pulumi.InvokeOption) LookupChapSettingResultOutput {
@@ -51,9 +59,13 @@ func LookupChapSettingOutput(ctx *pulumi.Context, args LookupChapSettingOutputAr
 }
 
 type LookupChapSettingOutputArgs struct {
-	ChapUserName      pulumi.StringInput `pulumi:"chapUserName"`
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The user name of chap to be fetched.
+	ChapUserName pulumi.StringInput `pulumi:"chapUserName"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,18 +88,22 @@ func (o LookupChapSettingResultOutput) ToLookupChapSettingResultOutputWithContex
 	return o
 }
 
+// The identifier.
 func (o LookupChapSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChapSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name.
 func (o LookupChapSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChapSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The chap password.
 func (o LookupChapSettingResultOutput) Password() AsymmetricEncryptedSecretResponseOutput {
 	return o.ApplyT(func(v LookupChapSettingResult) AsymmetricEncryptedSecretResponse { return v.Password }).(AsymmetricEncryptedSecretResponseOutput)
 }
 
+// The type.
 func (o LookupChapSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChapSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

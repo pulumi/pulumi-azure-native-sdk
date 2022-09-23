@@ -22,16 +22,22 @@ func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pul
 }
 
 type LookupConnectorArgs struct {
+	// Name of the cloud account connector
 	ConnectorName string `pulumi:"connectorName"`
 }
 
 // The connector setting
 type LookupConnectorResult struct {
-	AuthenticationDetails interface{}                              `pulumi:"authenticationDetails"`
+	// Settings for authentication management, these settings are relevant only for the cloud connector.
+	AuthenticationDetails interface{} `pulumi:"authenticationDetails"`
+	// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
 	HybridComputeSettings *HybridComputeSettingsPropertiesResponse `pulumi:"hybridComputeSettings"`
-	Id                    string                                   `pulumi:"id"`
-	Name                  string                                   `pulumi:"name"`
-	Type                  string                                   `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
@@ -48,6 +54,7 @@ func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, 
 }
 
 type LookupConnectorOutputArgs struct {
+	// Name of the cloud account connector
 	ConnectorName pulumi.StringInput `pulumi:"connectorName"`
 }
 
@@ -70,22 +77,27 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 	return o
 }
 
+// Settings for authentication management, these settings are relevant only for the cloud connector.
 func (o LookupConnectorResultOutput) AuthenticationDetails() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupConnectorResult) interface{} { return v.AuthenticationDetails }).(pulumi.AnyOutput)
 }
 
+// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
 func (o LookupConnectorResultOutput) HybridComputeSettings() HybridComputeSettingsPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *HybridComputeSettingsPropertiesResponse { return v.HybridComputeSettings }).(HybridComputeSettingsPropertiesResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,19 +21,28 @@ func LookupComponentVersion(ctx *pulumi.Context, args *LookupComponentVersionArg
 }
 
 type LookupComponentVersionArgs struct {
-	Name              string `pulumi:"name"`
+	// Container name.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Version           string `pulumi:"version"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Version identifier.
+	Version string `pulumi:"version"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupComponentVersionResult struct {
+	// [Required] Additional attributes of the entity.
 	ComponentVersionProperties ComponentVersionResponse `pulumi:"componentVersionProperties"`
-	Id                         string                   `pulumi:"id"`
-	Name                       string                   `pulumi:"name"`
-	SystemData                 SystemDataResponse       `pulumi:"systemData"`
-	Type                       string                   `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupComponentVersionResult
@@ -61,10 +70,14 @@ func LookupComponentVersionOutput(ctx *pulumi.Context, args LookupComponentVersi
 }
 
 type LookupComponentVersionOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Container name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Version           pulumi.StringInput `pulumi:"version"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Version identifier.
+	Version pulumi.StringInput `pulumi:"version"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupComponentVersionOutputArgs) ElementType() reflect.Type {
@@ -86,22 +99,27 @@ func (o LookupComponentVersionResultOutput) ToLookupComponentVersionResultOutput
 	return o
 }
 
+// [Required] Additional attributes of the entity.
 func (o LookupComponentVersionResultOutput) ComponentVersionProperties() ComponentVersionResponseOutput {
 	return o.ApplyT(func(v LookupComponentVersionResult) ComponentVersionResponse { return v.ComponentVersionProperties }).(ComponentVersionResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupComponentVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComponentVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupComponentVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComponentVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupComponentVersionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupComponentVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupComponentVersionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComponentVersionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,20 +21,30 @@ func LookupApplicationSecurityGroup(ctx *pulumi.Context, args *LookupApplication
 }
 
 type LookupApplicationSecurityGroupArgs struct {
+	// The name of the application security group.
 	ApplicationSecurityGroupName string `pulumi:"applicationSecurityGroupName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An application security group in a resource group.
 type LookupApplicationSecurityGroupResult struct {
-	Etag              string            `pulumi:"etag"`
-	Id                *string           `pulumi:"id"`
-	Location          *string           `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	ResourceGuid      string            `pulumi:"resourceGuid"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              string            `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the application security group resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the application security group resource. It uniquely identifies a resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationSecurityGroupOutput(ctx *pulumi.Context, args LookupApplicationSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSecurityGroupResultOutput {
@@ -51,8 +61,10 @@ func LookupApplicationSecurityGroupOutput(ctx *pulumi.Context, args LookupApplic
 }
 
 type LookupApplicationSecurityGroupOutputArgs struct {
+	// The name of the application security group.
 	ApplicationSecurityGroupName pulumi.StringInput `pulumi:"applicationSecurityGroupName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupApplicationSecurityGroupOutputArgs) ElementType() reflect.Type {
@@ -74,34 +86,42 @@ func (o LookupApplicationSecurityGroupResultOutput) ToLookupApplicationSecurityG
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupApplicationSecurityGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupApplicationSecurityGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupApplicationSecurityGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupApplicationSecurityGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the application security group resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
 func (o LookupApplicationSecurityGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource GUID property of the application security group resource. It uniquely identifies a resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
 func (o LookupApplicationSecurityGroupResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupApplicationSecurityGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupApplicationSecurityGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSecurityGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

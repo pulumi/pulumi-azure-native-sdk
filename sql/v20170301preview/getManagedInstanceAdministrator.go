@@ -21,20 +21,30 @@ func LookupManagedInstanceAdministrator(ctx *pulumi.Context, args *LookupManaged
 }
 
 type LookupManagedInstanceAdministratorArgs struct {
-	AdministratorName   string `pulumi:"administratorName"`
+	// The administrator name.
+	AdministratorName string `pulumi:"administratorName"`
+	// The name of the managed instance.
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure SQL managed instance administrator.
 type LookupManagedInstanceAdministratorResult struct {
-	AdministratorType string  `pulumi:"administratorType"`
-	Id                string  `pulumi:"id"`
-	Login             string  `pulumi:"login"`
-	Name              string  `pulumi:"name"`
-	Sid               string  `pulumi:"sid"`
-	TenantId          *string `pulumi:"tenantId"`
-	Type              string  `pulumi:"type"`
+	// Type of the managed instance administrator.
+	AdministratorType string `pulumi:"administratorType"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Login name of the managed instance administrator.
+	Login string `pulumi:"login"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// SID (object ID) of the managed instance administrator.
+	Sid string `pulumi:"sid"`
+	// Tenant ID of the managed instance administrator.
+	TenantId *string `pulumi:"tenantId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedInstanceAdministratorOutput(ctx *pulumi.Context, args LookupManagedInstanceAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceAdministratorResultOutput {
@@ -51,9 +61,12 @@ func LookupManagedInstanceAdministratorOutput(ctx *pulumi.Context, args LookupMa
 }
 
 type LookupManagedInstanceAdministratorOutputArgs struct {
-	AdministratorName   pulumi.StringInput `pulumi:"administratorName"`
+	// The administrator name.
+	AdministratorName pulumi.StringInput `pulumi:"administratorName"`
+	// The name of the managed instance.
 	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedInstanceAdministratorOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupManagedInstanceAdministratorResultOutput) ToLookupManagedInstanceA
 	return o
 }
 
+// Type of the managed instance administrator.
 func (o LookupManagedInstanceAdministratorResultOutput) AdministratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) string { return v.AdministratorType }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupManagedInstanceAdministratorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Login name of the managed instance administrator.
 func (o LookupManagedInstanceAdministratorResultOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) string { return v.Login }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupManagedInstanceAdministratorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SID (object ID) of the managed instance administrator.
 func (o LookupManagedInstanceAdministratorResultOutput) Sid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) string { return v.Sid }).(pulumi.StringOutput)
 }
 
+// Tenant ID of the managed instance administrator.
 func (o LookupManagedInstanceAdministratorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupManagedInstanceAdministratorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAdministratorResult) string { return v.Type }).(pulumi.StringOutput)
 }

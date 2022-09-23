@@ -21,23 +21,36 @@ func LookupGatewayHostnameConfiguration(ctx *pulumi.Context, args *LookupGateway
 }
 
 type LookupGatewayHostnameConfigurationArgs struct {
-	GatewayId         string `pulumi:"gatewayId"`
-	HcId              string `pulumi:"hcId"`
+	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
+	GatewayId string `pulumi:"gatewayId"`
+	// Gateway hostname configuration identifier. Must be unique in the scope of parent Gateway entity.
+	HcId string `pulumi:"hcId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Gateway hostname configuration details.
 type LookupGatewayHostnameConfigurationResult struct {
-	CertificateId              *string `pulumi:"certificateId"`
-	Hostname                   *string `pulumi:"hostname"`
-	Http2Enabled               *bool   `pulumi:"http2Enabled"`
-	Id                         string  `pulumi:"id"`
-	Name                       string  `pulumi:"name"`
-	NegotiateClientCertificate *bool   `pulumi:"negotiateClientCertificate"`
-	Tls10Enabled               *bool   `pulumi:"tls10Enabled"`
-	Tls11Enabled               *bool   `pulumi:"tls11Enabled"`
-	Type                       string  `pulumi:"type"`
+	// Identifier of Certificate entity that will be used for TLS connection establishment
+	CertificateId *string `pulumi:"certificateId"`
+	// Hostname value. Supports valid domain name, partial or full wildcard
+	Hostname *string `pulumi:"hostname"`
+	// Specifies if HTTP/2.0 is supported
+	Http2Enabled *bool `pulumi:"http2Enabled"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Determines whether gateway requests client certificate
+	NegotiateClientCertificate *bool `pulumi:"negotiateClientCertificate"`
+	// Specifies if TLS 1.0 is supported
+	Tls10Enabled *bool `pulumi:"tls10Enabled"`
+	// Specifies if TLS 1.1 is supported
+	Tls11Enabled *bool `pulumi:"tls11Enabled"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupGatewayHostnameConfigurationOutput(ctx *pulumi.Context, args LookupGatewayHostnameConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayHostnameConfigurationResultOutput {
@@ -54,10 +67,14 @@ func LookupGatewayHostnameConfigurationOutput(ctx *pulumi.Context, args LookupGa
 }
 
 type LookupGatewayHostnameConfigurationOutputArgs struct {
-	GatewayId         pulumi.StringInput `pulumi:"gatewayId"`
-	HcId              pulumi.StringInput `pulumi:"hcId"`
+	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// Gateway hostname configuration identifier. Must be unique in the scope of parent Gateway entity.
+	HcId pulumi.StringInput `pulumi:"hcId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupGatewayHostnameConfigurationOutputArgs) ElementType() reflect.Type {
@@ -79,38 +96,47 @@ func (o LookupGatewayHostnameConfigurationResultOutput) ToLookupGatewayHostnameC
 	return o
 }
 
+// Identifier of Certificate entity that will be used for TLS connection establishment
 func (o LookupGatewayHostnameConfigurationResultOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
+// Hostname value. Supports valid domain name, partial or full wildcard
 func (o LookupGatewayHostnameConfigurationResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// Specifies if HTTP/2.0 is supported
 func (o LookupGatewayHostnameConfigurationResultOutput) Http2Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) *bool { return v.Http2Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource ID.
 func (o LookupGatewayHostnameConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupGatewayHostnameConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Determines whether gateway requests client certificate
 func (o LookupGatewayHostnameConfigurationResultOutput) NegotiateClientCertificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) *bool { return v.NegotiateClientCertificate }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies if TLS 1.0 is supported
 func (o LookupGatewayHostnameConfigurationResultOutput) Tls10Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) *bool { return v.Tls10Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies if TLS 1.1 is supported
 func (o LookupGatewayHostnameConfigurationResultOutput) Tls11Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) *bool { return v.Tls11Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupGatewayHostnameConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

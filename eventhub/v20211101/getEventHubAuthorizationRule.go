@@ -21,20 +21,30 @@ func LookupEventHubAuthorizationRule(ctx *pulumi.Context, args *LookupEventHubAu
 }
 
 type LookupEventHubAuthorizationRuleArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	EventHubName          string `pulumi:"eventHubName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The Event Hub name
+	EventHubName string `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in a List or Get AuthorizationRule operation
 type LookupEventHubAuthorizationRuleResult struct {
-	Id         string             `pulumi:"id"`
-	Location   string             `pulumi:"location"`
-	Name       string             `pulumi:"name"`
-	Rights     []string           `pulumi:"rights"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	Type string `pulumi:"type"`
 }
 
 func LookupEventHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupEventHubAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubAuthorizationRuleResultOutput {
@@ -51,10 +61,14 @@ func LookupEventHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupEvent
 }
 
 type LookupEventHubAuthorizationRuleOutputArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	EventHubName          pulumi.StringInput `pulumi:"eventHubName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Event Hub name
+	EventHubName pulumi.StringInput `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupEventHubAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -76,26 +90,32 @@ func (o LookupEventHubAuthorizationRuleResultOutput) ToLookupEventHubAuthorizati
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEventHubAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupEventHubAuthorizationRuleResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEventHubAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupEventHubAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupEventHubAuthorizationRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o LookupEventHubAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

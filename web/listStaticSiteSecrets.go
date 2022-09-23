@@ -22,17 +22,24 @@ func ListStaticSiteSecrets(ctx *pulumi.Context, args *ListStaticSiteSecretsArgs,
 }
 
 type ListStaticSiteSecretsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the static site.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String dictionary resource.
 type ListStaticSiteSecretsResult struct {
-	Id         string            `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Name       string            `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
 	Properties map[string]string `pulumi:"properties"`
-	Type       string            `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListStaticSiteSecretsOutput(ctx *pulumi.Context, args ListStaticSiteSecretsOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteSecretsResultOutput {
@@ -49,7 +56,9 @@ func ListStaticSiteSecretsOutput(ctx *pulumi.Context, args ListStaticSiteSecrets
 }
 
 type ListStaticSiteSecretsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the static site.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,22 +81,27 @@ func (o ListStaticSiteSecretsResultOutput) ToListStaticSiteSecretsResultOutputWi
 	return o
 }
 
+// Resource Id.
 func (o ListStaticSiteSecretsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteSecretsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListStaticSiteSecretsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListStaticSiteSecretsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListStaticSiteSecretsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteSecretsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListStaticSiteSecretsResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListStaticSiteSecretsResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o ListStaticSiteSecretsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteSecretsResult) string { return v.Type }).(pulumi.StringOutput)
 }

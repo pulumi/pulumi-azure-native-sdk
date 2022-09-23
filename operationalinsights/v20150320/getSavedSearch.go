@@ -23,22 +23,34 @@ func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ..
 }
 
 type LookupSavedSearchArgs struct {
+	// The Resource Group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SavedSearchId     string `pulumi:"savedSearchId"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The id of the saved search.
+	SavedSearchId string `pulumi:"savedSearchId"`
+	// The Log Analytics Workspace name.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Value object for saved search results.
 type LookupSavedSearchResult struct {
-	Category    string        `pulumi:"category"`
-	DisplayName string        `pulumi:"displayName"`
-	ETag        *string       `pulumi:"eTag"`
-	Id          string        `pulumi:"id"`
-	Name        string        `pulumi:"name"`
-	Query       string        `pulumi:"query"`
-	Tags        []TagResponse `pulumi:"tags"`
-	Type        string        `pulumi:"type"`
-	Version     *float64      `pulumi:"version"`
+	// The category of the saved search. This helps the user to find a saved search faster.
+	Category string `pulumi:"category"`
+	// Saved search display name.
+	DisplayName string `pulumi:"displayName"`
+	// The ETag of the saved search.
+	ETag *string `pulumi:"eTag"`
+	// The id of the saved search.
+	Id string `pulumi:"id"`
+	// The name of the saved search.
+	Name string `pulumi:"name"`
+	// The query expression for the saved search. Please see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference for reference.
+	Query string `pulumi:"query"`
+	// The tags attached to the saved search.
+	Tags []TagResponse `pulumi:"tags"`
+	// The type of the saved search.
+	Type string `pulumi:"type"`
+	// The version number of the query language. The current version is 2 and is the default.
+	Version *float64 `pulumi:"version"`
 }
 
 func LookupSavedSearchOutput(ctx *pulumi.Context, args LookupSavedSearchOutputArgs, opts ...pulumi.InvokeOption) LookupSavedSearchResultOutput {
@@ -55,9 +67,12 @@ func LookupSavedSearchOutput(ctx *pulumi.Context, args LookupSavedSearchOutputAr
 }
 
 type LookupSavedSearchOutputArgs struct {
+	// The Resource Group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SavedSearchId     pulumi.StringInput `pulumi:"savedSearchId"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The id of the saved search.
+	SavedSearchId pulumi.StringInput `pulumi:"savedSearchId"`
+	// The Log Analytics Workspace name.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSavedSearchOutputArgs) ElementType() reflect.Type {
@@ -79,38 +94,47 @@ func (o LookupSavedSearchResultOutput) ToLookupSavedSearchResultOutputWithContex
 	return o
 }
 
+// The category of the saved search. This helps the user to find a saved search faster.
 func (o LookupSavedSearchResultOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// Saved search display name.
 func (o LookupSavedSearchResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The ETag of the saved search.
 func (o LookupSavedSearchResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// The id of the saved search.
 func (o LookupSavedSearchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the saved search.
 func (o LookupSavedSearchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The query expression for the saved search. Please see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference for reference.
 func (o LookupSavedSearchResultOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// The tags attached to the saved search.
 func (o LookupSavedSearchResultOutput) Tags() TagResponseArrayOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) []TagResponse { return v.Tags }).(TagResponseArrayOutput)
 }
 
+// The type of the saved search.
 func (o LookupSavedSearchResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The version number of the query language. The current version is 2 and is the default.
 func (o LookupSavedSearchResultOutput) Version() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupSavedSearchResult) *float64 { return v.Version }).(pulumi.Float64PtrOutput)
 }

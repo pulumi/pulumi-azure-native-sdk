@@ -21,27 +21,44 @@ func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pul
 }
 
 type LookupConnectorArgs struct {
-	ConnectorName     string `pulumi:"connectorName"`
-	HubName           string `pulumi:"hubName"`
+	// The name of the connector.
+	ConnectorName string `pulumi:"connectorName"`
+	// The name of the hub.
+	HubName string `pulumi:"hubName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The connector resource format.
 type LookupConnectorResult struct {
-	ConnectorId         int                    `pulumi:"connectorId"`
-	ConnectorName       *string                `pulumi:"connectorName"`
+	// ID of the connector.
+	ConnectorId int `pulumi:"connectorId"`
+	// Name of the connector.
+	ConnectorName *string `pulumi:"connectorName"`
+	// The connector properties.
 	ConnectorProperties map[string]interface{} `pulumi:"connectorProperties"`
-	ConnectorType       string                 `pulumi:"connectorType"`
-	Created             string                 `pulumi:"created"`
-	Description         *string                `pulumi:"description"`
-	DisplayName         *string                `pulumi:"displayName"`
-	Id                  string                 `pulumi:"id"`
-	IsInternal          *bool                  `pulumi:"isInternal"`
-	LastModified        string                 `pulumi:"lastModified"`
-	Name                string                 `pulumi:"name"`
-	State               string                 `pulumi:"state"`
-	TenantId            string                 `pulumi:"tenantId"`
-	Type                string                 `pulumi:"type"`
+	// Type of connector.
+	ConnectorType string `pulumi:"connectorType"`
+	// The created time.
+	Created string `pulumi:"created"`
+	// Description of the connector.
+	Description *string `pulumi:"description"`
+	// Display name of the connector.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// If this is an internal connector.
+	IsInternal *bool `pulumi:"isInternal"`
+	// The last modified time.
+	LastModified string `pulumi:"lastModified"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// State of connector.
+	State string `pulumi:"state"`
+	// The hub name.
+	TenantId string `pulumi:"tenantId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
@@ -58,8 +75,11 @@ func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, 
 }
 
 type LookupConnectorOutputArgs struct {
-	ConnectorName     pulumi.StringInput `pulumi:"connectorName"`
-	HubName           pulumi.StringInput `pulumi:"hubName"`
+	// The name of the connector.
+	ConnectorName pulumi.StringInput `pulumi:"connectorName"`
+	// The name of the hub.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,58 +102,72 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 	return o
 }
 
+// ID of the connector.
 func (o LookupConnectorResultOutput) ConnectorId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectorResult) int { return v.ConnectorId }).(pulumi.IntOutput)
 }
 
+// Name of the connector.
 func (o LookupConnectorResultOutput) ConnectorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *string { return v.ConnectorName }).(pulumi.StringPtrOutput)
 }
 
+// The connector properties.
 func (o LookupConnectorResultOutput) ConnectorProperties() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupConnectorResult) map[string]interface{} { return v.ConnectorProperties }).(pulumi.MapOutput)
 }
 
+// Type of connector.
 func (o LookupConnectorResultOutput) ConnectorType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.ConnectorType }).(pulumi.StringOutput)
 }
 
+// The created time.
 func (o LookupConnectorResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Description of the connector.
 func (o LookupConnectorResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Display name of the connector.
 func (o LookupConnectorResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If this is an internal connector.
 func (o LookupConnectorResultOutput) IsInternal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *bool { return v.IsInternal }).(pulumi.BoolPtrOutput)
 }
 
+// The last modified time.
 func (o LookupConnectorResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of connector.
 func (o LookupConnectorResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The hub name.
 func (o LookupConnectorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

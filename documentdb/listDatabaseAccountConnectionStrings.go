@@ -22,12 +22,15 @@ func ListDatabaseAccountConnectionStrings(ctx *pulumi.Context, args *ListDatabas
 }
 
 type ListDatabaseAccountConnectionStringsArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The connection strings for the given database account.
 type ListDatabaseAccountConnectionStringsResult struct {
+	// An array that contains the connection strings for the Cosmos DB account.
 	ConnectionStrings []DatabaseAccountConnectionStringResponse `pulumi:"connectionStrings"`
 }
 
@@ -45,7 +48,9 @@ func ListDatabaseAccountConnectionStringsOutput(ctx *pulumi.Context, args ListDa
 }
 
 type ListDatabaseAccountConnectionStringsOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListDatabaseAccountConnectionStringsResultOutput) ToListDatabaseAccountC
 	return o
 }
 
+// An array that contains the connection strings for the Cosmos DB account.
 func (o ListDatabaseAccountConnectionStringsResultOutput) ConnectionStrings() DatabaseAccountConnectionStringResponseArrayOutput {
 	return o.ApplyT(func(v ListDatabaseAccountConnectionStringsResult) []DatabaseAccountConnectionStringResponse {
 		return v.ConnectionStrings
