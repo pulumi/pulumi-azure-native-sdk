@@ -21,22 +21,35 @@ func LookupMTPDataConnector(ctx *pulumi.Context, args *LookupMTPDataConnectorArg
 }
 
 type LookupMTPDataConnectorArgs struct {
-	DataConnectorId                     string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents MTP (Microsoft Threat Protection) data connector.
 type LookupMTPDataConnectorResult struct {
-	DataTypes  MTPDataConnectorDataTypesResponse `pulumi:"dataTypes"`
-	Etag       *string                           `pulumi:"etag"`
-	Id         string                            `pulumi:"id"`
-	Kind       string                            `pulumi:"kind"`
-	Name       string                            `pulumi:"name"`
-	SystemData SystemDataResponse                `pulumi:"systemData"`
-	TenantId   string                            `pulumi:"tenantId"`
-	Type       string                            `pulumi:"type"`
+	// The available data types for the connector.
+	DataTypes MTPDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The kind of the data connector
+	// Expected value is 'MicrosoftThreatProtection'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tenant id to connect to, and get the data from.
+	TenantId string `pulumi:"tenantId"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupMTPDataConnectorOutput(ctx *pulumi.Context, args LookupMTPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMTPDataConnectorResultOutput {
@@ -53,10 +66,14 @@ func LookupMTPDataConnectorOutput(ctx *pulumi.Context, args LookupMTPDataConnect
 }
 
 type LookupMTPDataConnectorOutputArgs struct {
-	DataConnectorId                     pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupMTPDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -78,34 +95,43 @@ func (o LookupMTPDataConnectorResultOutput) ToLookupMTPDataConnectorResultOutput
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupMTPDataConnectorResultOutput) DataTypes() MTPDataConnectorDataTypesResponseOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) MTPDataConnectorDataTypesResponse { return v.DataTypes }).(MTPDataConnectorDataTypesResponseOutput)
 }
 
+// Etag of the azure resource
 func (o LookupMTPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupMTPDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the data connector
+// Expected value is 'MicrosoftThreatProtection'.
 func (o LookupMTPDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupMTPDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupMTPDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupMTPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupMTPDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

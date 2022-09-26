@@ -21,15 +21,20 @@ func GetAppResourceUploadUrl(ctx *pulumi.Context, args *GetAppResourceUploadUrlA
 }
 
 type GetAppResourceUploadUrlArgs struct {
-	AppName           string `pulumi:"appName"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Resource upload definition payload
 type GetAppResourceUploadUrlResult struct {
+	// Source relative path
 	RelativePath *string `pulumi:"relativePath"`
-	UploadUrl    *string `pulumi:"uploadUrl"`
+	// Upload URL
+	UploadUrl *string `pulumi:"uploadUrl"`
 }
 
 func GetAppResourceUploadUrlOutput(ctx *pulumi.Context, args GetAppResourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) GetAppResourceUploadUrlResultOutput {
@@ -46,9 +51,12 @@ func GetAppResourceUploadUrlOutput(ctx *pulumi.Context, args GetAppResourceUploa
 }
 
 type GetAppResourceUploadUrlOutputArgs struct {
-	AppName           pulumi.StringInput `pulumi:"appName"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetAppResourceUploadUrlOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o GetAppResourceUploadUrlResultOutput) ToGetAppResourceUploadUrlResultOutp
 	return o
 }
 
+// Source relative path
 func (o GetAppResourceUploadUrlResultOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppResourceUploadUrlResult) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }
 
+// Upload URL
 func (o GetAppResourceUploadUrlResultOutput) UploadUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppResourceUploadUrlResult) *string { return v.UploadUrl }).(pulumi.StringPtrOutput)
 }

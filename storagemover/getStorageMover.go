@@ -22,20 +22,30 @@ func LookupStorageMover(ctx *pulumi.Context, args *LookupStorageMoverArgs, opts 
 }
 
 type LookupStorageMoverArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	StorageMoverName  string `pulumi:"storageMoverName"`
+	// The name of the Storage Mover resource.
+	StorageMoverName string `pulumi:"storageMoverName"`
 }
 
 // The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
 type LookupStorageMoverResult struct {
-	Description       *string            `pulumi:"description"`
-	Id                string             `pulumi:"id"`
-	Location          string             `pulumi:"location"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	Type              string             `pulumi:"type"`
+	// A description for the Storage Mover.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of this resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource system metadata.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageMoverOutput(ctx *pulumi.Context, args LookupStorageMoverOutputArgs, opts ...pulumi.InvokeOption) LookupStorageMoverResultOutput {
@@ -52,8 +62,10 @@ func LookupStorageMoverOutput(ctx *pulumi.Context, args LookupStorageMoverOutput
 }
 
 type LookupStorageMoverOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	StorageMoverName  pulumi.StringInput `pulumi:"storageMoverName"`
+	// The name of the Storage Mover resource.
+	StorageMoverName pulumi.StringInput `pulumi:"storageMoverName"`
 }
 
 func (LookupStorageMoverOutputArgs) ElementType() reflect.Type {
@@ -75,34 +87,42 @@ func (o LookupStorageMoverResultOutput) ToLookupStorageMoverResultOutputWithCont
 	return o
 }
 
+// A description for the Storage Mover.
 func (o LookupStorageMoverResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupStorageMoverResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupStorageMoverResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupStorageMoverResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of this resource.
 func (o LookupStorageMoverResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource system metadata.
 func (o LookupStorageMoverResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupStorageMoverResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStorageMoverResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.Type }).(pulumi.StringOutput)
 }

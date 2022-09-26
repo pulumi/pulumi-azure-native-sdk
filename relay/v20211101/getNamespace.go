@@ -21,27 +21,44 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 }
 
 type LookupNamespaceArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a namespace resource.
 type LookupNamespaceResult struct {
-	CreatedAt                  string                              `pulumi:"createdAt"`
-	Id                         string                              `pulumi:"id"`
-	Location                   string                              `pulumi:"location"`
-	MetricId                   string                              `pulumi:"metricId"`
-	Name                       string                              `pulumi:"name"`
+	// The time the namespace was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Identifier for Azure Insights metrics.
+	MetricId string `pulumi:"metricId"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	ProvisioningState          string                              `pulumi:"provisioningState"`
-	PublicNetworkAccess        *string                             `pulumi:"publicNetworkAccess"`
-	ServiceBusEndpoint         string                              `pulumi:"serviceBusEndpoint"`
-	Sku                        *SkuResponse                        `pulumi:"sku"`
-	Status                     string                              `pulumi:"status"`
-	SystemData                 SystemDataResponse                  `pulumi:"systemData"`
-	Tags                       map[string]string                   `pulumi:"tags"`
-	Type                       string                              `pulumi:"type"`
-	UpdatedAt                  string                              `pulumi:"updatedAt"`
+	// Provisioning state of the Namespace.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// This determines if traffic is allowed over public network. By default it is enabled.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Endpoint you can use to perform Service Bus operations.
+	ServiceBusEndpoint string `pulumi:"serviceBusEndpoint"`
+	// SKU of the namespace.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Status of the Namespace.
+	Status string `pulumi:"status"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The time the namespace was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 // Defaults sets the appropriate defaults for LookupNamespaceResult
@@ -71,7 +88,9 @@ func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, 
 }
 
 type LookupNamespaceOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -94,62 +113,77 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 	return o
 }
 
+// The time the namespace was created.
 func (o LookupNamespaceResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupNamespaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Identifier for Azure Insights metrics.
 func (o LookupNamespaceResultOutput) MetricId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.MetricId }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
 func (o LookupNamespaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
+// Provisioning state of the Namespace.
 func (o LookupNamespaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// This determines if traffic is allowed over public network. By default it is enabled.
 func (o LookupNamespaceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// Endpoint you can use to perform Service Bus operations.
 func (o LookupNamespaceResultOutput) ServiceBusEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ServiceBusEndpoint }).(pulumi.StringOutput)
 }
 
+// SKU of the namespace.
 func (o LookupNamespaceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Status of the Namespace.
 func (o LookupNamespaceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupNamespaceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupNamespaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupNamespaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The time the namespace was updated.
 func (o LookupNamespaceResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

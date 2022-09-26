@@ -22,14 +22,19 @@ func ListDatabaseKeys(ctx *pulumi.Context, args *ListDatabaseKeysArgs, opts ...p
 }
 
 type ListDatabaseKeysArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the RedisEnterprise cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The secret access keys used for authenticating connections to redis
 type ListDatabaseKeysResult struct {
-	PrimaryKey   string `pulumi:"primaryKey"`
+	// The current primary key that clients can use to authenticate
+	PrimaryKey string `pulumi:"primaryKey"`
+	// The current secondary key that clients can use to authenticate
 	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
@@ -47,8 +52,11 @@ func ListDatabaseKeysOutput(ctx *pulumi.Context, args ListDatabaseKeysOutputArgs
 }
 
 type ListDatabaseKeysOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the RedisEnterprise cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,10 +79,12 @@ func (o ListDatabaseKeysResultOutput) ToListDatabaseKeysResultOutputWithContext(
 	return o
 }
 
+// The current primary key that clients can use to authenticate
 func (o ListDatabaseKeysResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatabaseKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// The current secondary key that clients can use to authenticate
 func (o ListDatabaseKeysResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDatabaseKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }

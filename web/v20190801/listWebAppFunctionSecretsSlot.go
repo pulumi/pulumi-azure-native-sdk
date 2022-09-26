@@ -21,20 +21,30 @@ func ListWebAppFunctionSecretsSlot(ctx *pulumi.Context, args *ListWebAppFunction
 }
 
 type ListWebAppFunctionSecretsSlotArgs struct {
-	FunctionName      string `pulumi:"functionName"`
-	Name              string `pulumi:"name"`
+	// Function name.
+	FunctionName string `pulumi:"functionName"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Function secrets.
 type ListWebAppFunctionSecretsSlotResult struct {
-	Id         string  `pulumi:"id"`
-	Key        *string `pulumi:"key"`
-	Kind       *string `pulumi:"kind"`
-	Name       string  `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Secret key.
+	Key *string `pulumi:"key"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Trigger URL.
 	TriggerUrl *string `pulumi:"triggerUrl"`
-	Type       string  `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppFunctionSecretsSlotOutput(ctx *pulumi.Context, args ListWebAppFunctionSecretsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppFunctionSecretsSlotResultOutput {
@@ -51,10 +61,14 @@ func ListWebAppFunctionSecretsSlotOutput(ctx *pulumi.Context, args ListWebAppFun
 }
 
 type ListWebAppFunctionSecretsSlotOutputArgs struct {
-	FunctionName      pulumi.StringInput `pulumi:"functionName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Function name.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppFunctionSecretsSlotOutputArgs) ElementType() reflect.Type {
@@ -76,26 +90,32 @@ func (o ListWebAppFunctionSecretsSlotResultOutput) ToListWebAppFunctionSecretsSl
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppFunctionSecretsSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Secret key.
 func (o ListWebAppFunctionSecretsSlotResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsSlotResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppFunctionSecretsSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppFunctionSecretsSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Trigger URL.
 func (o ListWebAppFunctionSecretsSlotResultOutput) TriggerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsSlotResult) *string { return v.TriggerUrl }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o ListWebAppFunctionSecretsSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppFunctionSecretsSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

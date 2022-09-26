@@ -22,6 +22,8 @@ type ListBotConnectionServiceProvidersArgs struct {
 
 // The list of bot service providers response.
 type ListBotConnectionServiceProvidersResult struct {
-	NextLink *string                   `pulumi:"nextLink"`
-	Value    []ServiceProviderResponse `pulumi:"value"`
+	// The link used to get the next page of bot service providers.
+	NextLink *string `pulumi:"nextLink"`
+	// Gets the list of bot service providers and their properties.
+	Value []ServiceProviderResponse `pulumi:"value"`
 }

@@ -21,8 +21,11 @@ func LookupServerCollector(ctx *pulumi.Context, args *LookupServerCollectorArgs,
 }
 
 type LookupServerCollectorArgs struct {
-	ProjectName         string `pulumi:"projectName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Unique name of a Server collector within a project.
 	ServerCollectorName string `pulumi:"serverCollectorName"`
 }
 
@@ -48,8 +51,11 @@ func LookupServerCollectorOutput(ctx *pulumi.Context, args LookupServerCollector
 }
 
 type LookupServerCollectorOutputArgs struct {
-	ProjectName         pulumi.StringInput `pulumi:"projectName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Unique name of a Server collector within a project.
 	ServerCollectorName pulumi.StringInput `pulumi:"serverCollectorName"`
 }
 

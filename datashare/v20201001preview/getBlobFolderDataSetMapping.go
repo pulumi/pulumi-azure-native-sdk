@@ -21,27 +21,45 @@ func LookupBlobFolderDataSetMapping(ctx *pulumi.Context, args *LookupBlobFolderD
 }
 
 type LookupBlobFolderDataSetMappingArgs struct {
-	AccountName           string `pulumi:"accountName"`
-	DataSetMappingName    string `pulumi:"dataSetMappingName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSetMapping.
+	DataSetMappingName string `pulumi:"dataSetMappingName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the shareSubscription.
 	ShareSubscriptionName string `pulumi:"shareSubscriptionName"`
 }
 
 // A Blob folder data set mapping.
 type LookupBlobFolderDataSetMappingResult struct {
-	ContainerName        string             `pulumi:"containerName"`
-	DataSetId            string             `pulumi:"dataSetId"`
-	DataSetMappingStatus string             `pulumi:"dataSetMappingStatus"`
-	Id                   string             `pulumi:"id"`
-	Kind                 string             `pulumi:"kind"`
-	Name                 string             `pulumi:"name"`
-	Prefix               string             `pulumi:"prefix"`
-	ProvisioningState    string             `pulumi:"provisioningState"`
-	ResourceGroup        string             `pulumi:"resourceGroup"`
-	StorageAccountName   string             `pulumi:"storageAccountName"`
-	SubscriptionId       string             `pulumi:"subscriptionId"`
-	SystemData           SystemDataResponse `pulumi:"systemData"`
-	Type                 string             `pulumi:"type"`
+	// Container that has the file path.
+	ContainerName string `pulumi:"containerName"`
+	// The id of the source data set.
+	DataSetId string `pulumi:"dataSetId"`
+	// Gets the status of the data set mapping.
+	DataSetMappingStatus string `pulumi:"dataSetMappingStatus"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set mapping.
+	// Expected value is 'BlobFolder'.
+	Kind string `pulumi:"kind"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// Prefix for blob folder
+	Prefix string `pulumi:"prefix"`
+	// Provisioning state of the data set mapping.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource group of storage account.
+	ResourceGroup string `pulumi:"resourceGroup"`
+	// Storage account name of the source data set.
+	StorageAccountName string `pulumi:"storageAccountName"`
+	// Subscription id of storage account.
+	SubscriptionId string `pulumi:"subscriptionId"`
+	// System Data of the Azure resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupBlobFolderDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobFolderDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobFolderDataSetMappingResultOutput {
@@ -58,9 +76,13 @@ func LookupBlobFolderDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobFo
 }
 
 type LookupBlobFolderDataSetMappingOutputArgs struct {
-	AccountName           pulumi.StringInput `pulumi:"accountName"`
-	DataSetMappingName    pulumi.StringInput `pulumi:"dataSetMappingName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSetMapping.
+	DataSetMappingName pulumi.StringInput `pulumi:"dataSetMappingName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the shareSubscription.
 	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
 }
 
@@ -83,54 +105,68 @@ func (o LookupBlobFolderDataSetMappingResultOutput) ToLookupBlobFolderDataSetMap
 	return o
 }
 
+// Container that has the file path.
 func (o LookupBlobFolderDataSetMappingResultOutput) ContainerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.ContainerName }).(pulumi.StringOutput)
 }
 
+// The id of the source data set.
 func (o LookupBlobFolderDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// Gets the status of the data set mapping.
 func (o LookupBlobFolderDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupBlobFolderDataSetMappingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set mapping.
+// Expected value is 'BlobFolder'.
 func (o LookupBlobFolderDataSetMappingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupBlobFolderDataSetMappingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Prefix for blob folder
 func (o LookupBlobFolderDataSetMappingResultOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the data set mapping.
 func (o LookupBlobFolderDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource group of storage account.
 func (o LookupBlobFolderDataSetMappingResultOutput) ResourceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
+// Storage account name of the source data set.
 func (o LookupBlobFolderDataSetMappingResultOutput) StorageAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
 }
 
+// Subscription id of storage account.
 func (o LookupBlobFolderDataSetMappingResultOutput) SubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
+// System Data of the Azure resource.
 func (o LookupBlobFolderDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the azure resource
 func (o LookupBlobFolderDataSetMappingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }

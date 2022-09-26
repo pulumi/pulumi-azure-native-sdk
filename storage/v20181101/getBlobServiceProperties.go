@@ -23,19 +23,28 @@ func LookupBlobServiceProperties(ctx *pulumi.Context, args *LookupBlobServicePro
 }
 
 type LookupBlobServicePropertiesArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	BlobServicesName  string `pulumi:"blobServicesName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+	BlobServicesName string `pulumi:"blobServicesName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of a storage account’s Blob service.
 type LookupBlobServicePropertiesResult struct {
-	Cors                  *CorsRulesResponse             `pulumi:"cors"`
-	DefaultServiceVersion *string                        `pulumi:"defaultServiceVersion"`
+	// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+	Cors *CorsRulesResponse `pulumi:"cors"`
+	// DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
+	DefaultServiceVersion *string `pulumi:"defaultServiceVersion"`
+	// The blob service properties for soft delete.
 	DeleteRetentionPolicy *DeleteRetentionPolicyResponse `pulumi:"deleteRetentionPolicy"`
-	Id                    string                         `pulumi:"id"`
-	Name                  string                         `pulumi:"name"`
-	Type                  string                         `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupBlobServicePropertiesOutput(ctx *pulumi.Context, args LookupBlobServicePropertiesOutputArgs, opts ...pulumi.InvokeOption) LookupBlobServicePropertiesResultOutput {
@@ -52,8 +61,11 @@ func LookupBlobServicePropertiesOutput(ctx *pulumi.Context, args LookupBlobServi
 }
 
 type LookupBlobServicePropertiesOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	BlobServicesName  pulumi.StringInput `pulumi:"blobServicesName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+	BlobServicesName pulumi.StringInput `pulumi:"blobServicesName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,28 +88,34 @@ func (o LookupBlobServicePropertiesResultOutput) ToLookupBlobServicePropertiesRe
 	return o
 }
 
+// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
 func (o LookupBlobServicePropertiesResultOutput) Cors() CorsRulesResponsePtrOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) *CorsRulesResponse { return v.Cors }).(CorsRulesResponsePtrOutput)
 }
 
+// DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
 func (o LookupBlobServicePropertiesResultOutput) DefaultServiceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) *string { return v.DefaultServiceVersion }).(pulumi.StringPtrOutput)
 }
 
+// The blob service properties for soft delete.
 func (o LookupBlobServicePropertiesResultOutput) DeleteRetentionPolicy() DeleteRetentionPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) *DeleteRetentionPolicyResponse {
 		return v.DeleteRetentionPolicy
 	}).(DeleteRetentionPolicyResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupBlobServicePropertiesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupBlobServicePropertiesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupBlobServicePropertiesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) string { return v.Type }).(pulumi.StringOutput)
 }

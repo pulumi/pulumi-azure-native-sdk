@@ -20,17 +20,25 @@ func LookupWorkflowAccessKey(ctx *pulumi.Context, args *LookupWorkflowAccessKeyA
 }
 
 type LookupWorkflowAccessKeyArgs struct {
-	AccessKeyName     string `pulumi:"accessKeyName"`
+	// The workflow access key name.
+	AccessKeyName string `pulumi:"accessKeyName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkflowName      string `pulumi:"workflowName"`
+	// The workflow name.
+	WorkflowName string `pulumi:"workflowName"`
 }
 
 type LookupWorkflowAccessKeyResult struct {
-	Id        *string `pulumi:"id"`
-	Name      string  `pulumi:"name"`
-	NotAfter  *string `pulumi:"notAfter"`
+	// Gets or sets the resource id.
+	Id *string `pulumi:"id"`
+	// Gets the workflow access key name.
+	Name string `pulumi:"name"`
+	// Gets or sets the not-after time.
+	NotAfter *string `pulumi:"notAfter"`
+	// Gets or sets the not-before time.
 	NotBefore *string `pulumi:"notBefore"`
-	Type      string  `pulumi:"type"`
+	// Gets the workflow access key type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkflowAccessKeyOutput(ctx *pulumi.Context, args LookupWorkflowAccessKeyOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowAccessKeyResultOutput {
@@ -47,9 +55,12 @@ func LookupWorkflowAccessKeyOutput(ctx *pulumi.Context, args LookupWorkflowAcces
 }
 
 type LookupWorkflowAccessKeyOutputArgs struct {
-	AccessKeyName     pulumi.StringInput `pulumi:"accessKeyName"`
+	// The workflow access key name.
+	AccessKeyName pulumi.StringInput `pulumi:"accessKeyName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkflowName      pulumi.StringInput `pulumi:"workflowName"`
+	// The workflow name.
+	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
 
 func (LookupWorkflowAccessKeyOutputArgs) ElementType() reflect.Type {
@@ -70,22 +81,27 @@ func (o LookupWorkflowAccessKeyResultOutput) ToLookupWorkflowAccessKeyResultOutp
 	return o
 }
 
+// Gets or sets the resource id.
 func (o LookupWorkflowAccessKeyResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowAccessKeyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets the workflow access key name.
 func (o LookupWorkflowAccessKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowAccessKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the not-after time.
 func (o LookupWorkflowAccessKeyResultOutput) NotAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowAccessKeyResult) *string { return v.NotAfter }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the not-before time.
 func (o LookupWorkflowAccessKeyResultOutput) NotBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowAccessKeyResult) *string { return v.NotBefore }).(pulumi.StringPtrOutput)
 }
 
+// Gets the workflow access key type.
 func (o LookupWorkflowAccessKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowAccessKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }

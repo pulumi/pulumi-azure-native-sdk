@@ -21,19 +21,28 @@ func GetNotificationHubPnsCredentials(ctx *pulumi.Context, args *GetNotification
 }
 
 type GetNotificationHubPnsCredentialsArgs struct {
-	NamespaceName       string `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The notification hub name.
 	NotificationHubName string `pulumi:"notificationHubName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a NotificationHub Resource.
 type GetNotificationHubPnsCredentialsResult struct {
-	Id         *string                           `pulumi:"id"`
-	Location   *string                           `pulumi:"location"`
-	Name       *string                           `pulumi:"name"`
+	// Gets or sets the id of the created NotificationHub.
+	Id *string `pulumi:"id"`
+	// Gets or sets datacenter location of the NotificationHub.
+	Location *string `pulumi:"location"`
+	// Gets or sets name of the NotificationHub.
+	Name *string `pulumi:"name"`
+	// Gets or sets properties of the NotificationHub.
 	Properties NotificationHubPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string                 `pulumi:"tags"`
-	Type       *string                           `pulumi:"type"`
+	// Gets or sets tags of the NotificationHub.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets or sets resource type of the NotificationHub.
+	Type *string `pulumi:"type"`
 }
 
 func GetNotificationHubPnsCredentialsOutput(ctx *pulumi.Context, args GetNotificationHubPnsCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNotificationHubPnsCredentialsResultOutput {
@@ -50,9 +59,12 @@ func GetNotificationHubPnsCredentialsOutput(ctx *pulumi.Context, args GetNotific
 }
 
 type GetNotificationHubPnsCredentialsOutputArgs struct {
-	NamespaceName       pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The notification hub name.
 	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetNotificationHubPnsCredentialsOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o GetNotificationHubPnsCredentialsResultOutput) ToGetNotificationHubPnsCre
 	return o
 }
 
+// Gets or sets the id of the created NotificationHub.
 func (o GetNotificationHubPnsCredentialsResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets datacenter location of the NotificationHub.
 func (o GetNotificationHubPnsCredentialsResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets name of the NotificationHub.
 func (o GetNotificationHubPnsCredentialsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets properties of the NotificationHub.
 func (o GetNotificationHubPnsCredentialsResultOutput) Properties() NotificationHubPropertiesResponseOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) NotificationHubPropertiesResponse { return v.Properties }).(NotificationHubPropertiesResponseOutput)
 }
 
+// Gets or sets tags of the NotificationHub.
 func (o GetNotificationHubPnsCredentialsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets or sets resource type of the NotificationHub.
 func (o GetNotificationHubPnsCredentialsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

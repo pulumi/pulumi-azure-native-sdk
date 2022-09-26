@@ -22,17 +22,24 @@ func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRul
 }
 
 type LookupVirtualNetworkRuleArgs struct {
-	AccountName            string `pulumi:"accountName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The name of the Data Lake Store account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual network rule to retrieve.
 	VirtualNetworkRuleName string `pulumi:"virtualNetworkRuleName"`
 }
 
 // Data Lake Store virtual network rule information.
 type LookupVirtualNetworkRuleResult struct {
-	Id       string `pulumi:"id"`
-	Name     string `pulumi:"name"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The resource identifier for the subnet.
 	SubnetId string `pulumi:"subnetId"`
-	Type     string `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetworkRuleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkRuleResultOutput {
@@ -49,8 +56,11 @@ func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetwo
 }
 
 type LookupVirtualNetworkRuleOutputArgs struct {
-	AccountName            pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Data Lake Store account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual network rule to retrieve.
 	VirtualNetworkRuleName pulumi.StringInput `pulumi:"virtualNetworkRuleName"`
 }
 
@@ -73,18 +83,22 @@ func (o LookupVirtualNetworkRuleResultOutput) ToLookupVirtualNetworkRuleResultOu
 	return o
 }
 
+// The resource identifier.
 func (o LookupVirtualNetworkRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupVirtualNetworkRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource identifier for the subnet.
 func (o LookupVirtualNetworkRuleResultOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
+// The resource type.
 func (o LookupVirtualNetworkRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

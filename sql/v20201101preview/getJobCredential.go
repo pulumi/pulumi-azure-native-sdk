@@ -21,17 +21,25 @@ func LookupJobCredential(ctx *pulumi.Context, args *LookupJobCredentialArgs, opt
 }
 
 type LookupJobCredentialArgs struct {
-	CredentialName    string `pulumi:"credentialName"`
-	JobAgentName      string `pulumi:"jobAgentName"`
+	// The name of the credential.
+	CredentialName string `pulumi:"credentialName"`
+	// The name of the job agent.
+	JobAgentName string `pulumi:"jobAgentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // A stored credential that can be used by a job to connect to target databases.
 type LookupJobCredentialResult struct {
-	Id       string `pulumi:"id"`
-	Name     string `pulumi:"name"`
-	Type     string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The credential user name.
 	Username string `pulumi:"username"`
 }
 
@@ -49,10 +57,14 @@ func LookupJobCredentialOutput(ctx *pulumi.Context, args LookupJobCredentialOutp
 }
 
 type LookupJobCredentialOutputArgs struct {
-	CredentialName    pulumi.StringInput `pulumi:"credentialName"`
-	JobAgentName      pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the credential.
+	CredentialName pulumi.StringInput `pulumi:"credentialName"`
+	// The name of the job agent.
+	JobAgentName pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupJobCredentialOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupJobCredentialResultOutput) ToLookupJobCredentialResultOutputWithCo
 	return o
 }
 
+// Resource ID.
 func (o LookupJobCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupJobCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupJobCredentialResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobCredentialResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The credential user name.
 func (o LookupJobCredentialResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobCredentialResult) string { return v.Username }).(pulumi.StringOutput)
 }

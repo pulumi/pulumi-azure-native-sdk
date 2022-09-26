@@ -22,20 +22,30 @@ func LookupMoveCollection(ctx *pulumi.Context, args *LookupMoveCollectionArgs, o
 }
 
 type LookupMoveCollectionArgs struct {
+	// The Move Collection Name.
 	MoveCollectionName string `pulumi:"moveCollectionName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The Resource Group Name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Define the move collection.
 type LookupMoveCollectionResult struct {
-	Etag       string                           `pulumi:"etag"`
-	Id         string                           `pulumi:"id"`
-	Identity   *IdentityResponse                `pulumi:"identity"`
-	Location   *string                          `pulumi:"location"`
-	Name       string                           `pulumi:"name"`
+	// The etag of the resource.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// Defines the MSI properties of the Move Collection.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Defines the move collection properties.
 	Properties MoveCollectionPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string                `pulumi:"tags"`
-	Type       string                           `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMoveCollectionOutput(ctx *pulumi.Context, args LookupMoveCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupMoveCollectionResultOutput {
@@ -52,8 +62,10 @@ func LookupMoveCollectionOutput(ctx *pulumi.Context, args LookupMoveCollectionOu
 }
 
 type LookupMoveCollectionOutputArgs struct {
+	// The Move Collection Name.
 	MoveCollectionName pulumi.StringInput `pulumi:"moveCollectionName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Resource Group Name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupMoveCollectionOutputArgs) ElementType() reflect.Type {
@@ -75,34 +87,42 @@ func (o LookupMoveCollectionResultOutput) ToLookupMoveCollectionResultOutputWith
 	return o
 }
 
+// The etag of the resource.
 func (o LookupMoveCollectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupMoveCollectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Defines the MSI properties of the Move Collection.
 func (o LookupMoveCollectionResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// The geo-location where the resource lives.
 func (o LookupMoveCollectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupMoveCollectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the move collection properties.
 func (o LookupMoveCollectionResultOutput) Properties() MoveCollectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) MoveCollectionPropertiesResponse { return v.Properties }).(MoveCollectionPropertiesResponseOutput)
 }
 
+// Resource tags.
 func (o LookupMoveCollectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupMoveCollectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveCollectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

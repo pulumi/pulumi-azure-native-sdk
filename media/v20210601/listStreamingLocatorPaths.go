@@ -21,14 +21,19 @@ func ListStreamingLocatorPaths(ctx *pulumi.Context, args *ListStreamingLocatorPa
 }
 
 type ListStreamingLocatorPathsArgs struct {
-	AccountName          string `pulumi:"accountName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Streaming Locator name.
 	StreamingLocatorName string `pulumi:"streamingLocatorName"`
 }
 
 // Class of response for listPaths action
 type ListStreamingLocatorPathsResult struct {
-	DownloadPaths  []string                `pulumi:"downloadPaths"`
+	// Download Paths supported by current Streaming Locator
+	DownloadPaths []string `pulumi:"downloadPaths"`
+	// Streaming Paths supported by current Streaming Locator
 	StreamingPaths []StreamingPathResponse `pulumi:"streamingPaths"`
 }
 
@@ -46,8 +51,11 @@ func ListStreamingLocatorPathsOutput(ctx *pulumi.Context, args ListStreamingLoca
 }
 
 type ListStreamingLocatorPathsOutputArgs struct {
-	AccountName          pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Streaming Locator name.
 	StreamingLocatorName pulumi.StringInput `pulumi:"streamingLocatorName"`
 }
 
@@ -70,10 +78,12 @@ func (o ListStreamingLocatorPathsResultOutput) ToListStreamingLocatorPathsResult
 	return o
 }
 
+// Download Paths supported by current Streaming Locator
 func (o ListStreamingLocatorPathsResultOutput) DownloadPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListStreamingLocatorPathsResult) []string { return v.DownloadPaths }).(pulumi.StringArrayOutput)
 }
 
+// Streaming Paths supported by current Streaming Locator
 func (o ListStreamingLocatorPathsResultOutput) StreamingPaths() StreamingPathResponseArrayOutput {
 	return o.ApplyT(func(v ListStreamingLocatorPathsResult) []StreamingPathResponse { return v.StreamingPaths }).(StreamingPathResponseArrayOutput)
 }

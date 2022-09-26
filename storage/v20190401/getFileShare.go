@@ -23,20 +23,30 @@ func LookupFileShare(ctx *pulumi.Context, args *LookupFileShareArgs, opts ...pul
 }
 
 type LookupFileShareArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+	ShareName string `pulumi:"shareName"`
 }
 
 // Properties of the file share, including Id, resource name, resource type, Etag.
 type LookupFileShareResult struct {
-	Etag             string            `pulumi:"etag"`
-	Id               string            `pulumi:"id"`
-	LastModifiedTime string            `pulumi:"lastModifiedTime"`
-	Metadata         map[string]string `pulumi:"metadata"`
-	Name             string            `pulumi:"name"`
-	ShareQuota       *int              `pulumi:"shareQuota"`
-	Type             string            `pulumi:"type"`
+	// Resource Etag.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Returns the date and time the share was last modified.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// A name-value pair to associate with the share as metadata.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120).
+	ShareQuota *int `pulumi:"shareQuota"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupFileShareOutput(ctx *pulumi.Context, args LookupFileShareOutputArgs, opts ...pulumi.InvokeOption) LookupFileShareResultOutput {
@@ -53,9 +63,12 @@ func LookupFileShareOutput(ctx *pulumi.Context, args LookupFileShareOutputArgs, 
 }
 
 type LookupFileShareOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupFileShareOutputArgs) ElementType() reflect.Type {
@@ -77,30 +90,37 @@ func (o LookupFileShareResultOutput) ToLookupFileShareResultOutputWithContext(ct
 	return o
 }
 
+// Resource Etag.
 func (o LookupFileShareResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFileShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Returns the date and time the share was last modified.
 func (o LookupFileShareResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// A name-value pair to associate with the share as metadata.
 func (o LookupFileShareResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFileShareResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// The name of the resource
 func (o LookupFileShareResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120).
 func (o LookupFileShareResultOutput) ShareQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupFileShareResult) *int { return v.ShareQuota }).(pulumi.IntPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFileShareResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Type }).(pulumi.StringOutput)
 }

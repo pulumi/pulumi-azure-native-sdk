@@ -21,23 +21,36 @@ func LookupVideo(ctx *pulumi.Context, args *LookupVideoArgs, opts ...pulumi.Invo
 }
 
 type LookupVideoArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The Azure Video Analyzer account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VideoName         string `pulumi:"videoName"`
+	// The Video name.
+	VideoName string `pulumi:"videoName"`
 }
 
 // Represents a video resource within Azure Video Analyzer. Videos can be ingested from RTSP cameras through live pipelines or can be created by exporting sequences from existing captured video through a pipeline job. Videos ingested through live pipelines can be streamed through Azure Video Analyzer Player Widget or compatible players. Exported videos can be downloaded as MP4 files.
 type LookupVideoResult struct {
-	Archival    *VideoArchivalResponse   `pulumi:"archival"`
+	// Video archival properties.
+	Archival *VideoArchivalResponse `pulumi:"archival"`
+	// Set of URLs to the video content.
 	ContentUrls VideoContentUrlsResponse `pulumi:"contentUrls"`
-	Description *string                  `pulumi:"description"`
-	Flags       VideoFlagsResponse       `pulumi:"flags"`
-	Id          string                   `pulumi:"id"`
-	MediaInfo   *VideoMediaInfoResponse  `pulumi:"mediaInfo"`
-	Name        string                   `pulumi:"name"`
-	SystemData  SystemDataResponse       `pulumi:"systemData"`
-	Title       *string                  `pulumi:"title"`
-	Type        string                   `pulumi:"type"`
+	// Optional video description provided by the user. Value can be up to 2048 characters long.
+	Description *string `pulumi:"description"`
+	// Video flags contain information about the available video actions and its dynamic properties based on the current video state.
+	Flags VideoFlagsResponse `pulumi:"flags"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Contains information about the video and audio content.
+	MediaInfo *VideoMediaInfoResponse `pulumi:"mediaInfo"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Optional video title provided by the user. Value can be up to 256 characters long.
+	Title *string `pulumi:"title"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupVideoOutput(ctx *pulumi.Context, args LookupVideoOutputArgs, opts ...pulumi.InvokeOption) LookupVideoResultOutput {
@@ -54,9 +67,12 @@ func LookupVideoOutput(ctx *pulumi.Context, args LookupVideoOutputArgs, opts ...
 }
 
 type LookupVideoOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Azure Video Analyzer account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VideoName         pulumi.StringInput `pulumi:"videoName"`
+	// The Video name.
+	VideoName pulumi.StringInput `pulumi:"videoName"`
 }
 
 func (LookupVideoOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupVideoResultOutput) ToLookupVideoResultOutputWithContext(ctx contex
 	return o
 }
 
+// Video archival properties.
 func (o LookupVideoResultOutput) Archival() VideoArchivalResponsePtrOutput {
 	return o.ApplyT(func(v LookupVideoResult) *VideoArchivalResponse { return v.Archival }).(VideoArchivalResponsePtrOutput)
 }
 
+// Set of URLs to the video content.
 func (o LookupVideoResultOutput) ContentUrls() VideoContentUrlsResponseOutput {
 	return o.ApplyT(func(v LookupVideoResult) VideoContentUrlsResponse { return v.ContentUrls }).(VideoContentUrlsResponseOutput)
 }
 
+// Optional video description provided by the user. Value can be up to 2048 characters long.
 func (o LookupVideoResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVideoResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Video flags contain information about the available video actions and its dynamic properties based on the current video state.
 func (o LookupVideoResultOutput) Flags() VideoFlagsResponseOutput {
 	return o.ApplyT(func(v LookupVideoResult) VideoFlagsResponse { return v.Flags }).(VideoFlagsResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVideoResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVideoResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Contains information about the video and audio content.
 func (o LookupVideoResultOutput) MediaInfo() VideoMediaInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupVideoResult) *VideoMediaInfoResponse { return v.MediaInfo }).(VideoMediaInfoResponsePtrOutput)
 }
 
+// The name of the resource
 func (o LookupVideoResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVideoResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupVideoResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVideoResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Optional video title provided by the user. Value can be up to 256 characters long.
 func (o LookupVideoResultOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVideoResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVideoResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVideoResult) string { return v.Type }).(pulumi.StringOutput)
 }

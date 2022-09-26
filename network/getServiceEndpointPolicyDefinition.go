@@ -22,20 +22,30 @@ func LookupServiceEndpointPolicyDefinition(ctx *pulumi.Context, args *LookupServ
 }
 
 type LookupServiceEndpointPolicyDefinitionArgs struct {
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the service endpoint policy definition name.
 	ServiceEndpointPolicyDefinitionName string `pulumi:"serviceEndpointPolicyDefinitionName"`
-	ServiceEndpointPolicyName           string `pulumi:"serviceEndpointPolicyName"`
+	// The name of the service endpoint policy name.
+	ServiceEndpointPolicyName string `pulumi:"serviceEndpointPolicyName"`
 }
 
 // Service Endpoint policy definitions.
 type LookupServiceEndpointPolicyDefinitionResult struct {
-	Description       *string  `pulumi:"description"`
-	Etag              string   `pulumi:"etag"`
-	Id                *string  `pulumi:"id"`
-	Name              *string  `pulumi:"name"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	Service           *string  `pulumi:"service"`
-	ServiceResources  []string `pulumi:"serviceResources"`
+	// A description for this rule. Restricted to 140 chars.
+	Description *string `pulumi:"description"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the service endpoint policy definition resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Service endpoint name.
+	Service *string `pulumi:"service"`
+	// A list of service resources.
+	ServiceResources []string `pulumi:"serviceResources"`
 }
 
 func LookupServiceEndpointPolicyDefinitionOutput(ctx *pulumi.Context, args LookupServiceEndpointPolicyDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupServiceEndpointPolicyDefinitionResultOutput {
@@ -52,9 +62,12 @@ func LookupServiceEndpointPolicyDefinitionOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupServiceEndpointPolicyDefinitionOutputArgs struct {
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the service endpoint policy definition name.
 	ServiceEndpointPolicyDefinitionName pulumi.StringInput `pulumi:"serviceEndpointPolicyDefinitionName"`
-	ServiceEndpointPolicyName           pulumi.StringInput `pulumi:"serviceEndpointPolicyName"`
+	// The name of the service endpoint policy name.
+	ServiceEndpointPolicyName pulumi.StringInput `pulumi:"serviceEndpointPolicyName"`
 }
 
 func (LookupServiceEndpointPolicyDefinitionOutputArgs) ElementType() reflect.Type {
@@ -76,30 +89,37 @@ func (o LookupServiceEndpointPolicyDefinitionResultOutput) ToLookupServiceEndpoi
 	return o
 }
 
+// A description for this rule. Restricted to 140 chars.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the service endpoint policy definition resource.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Service endpoint name.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
+// A list of service resources.
 func (o LookupServiceEndpointPolicyDefinitionResultOutput) ServiceResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyDefinitionResult) []string { return v.ServiceResources }).(pulumi.StringArrayOutput)
 }

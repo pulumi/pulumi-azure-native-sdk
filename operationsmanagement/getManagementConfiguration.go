@@ -22,17 +22,24 @@ func LookupManagementConfiguration(ctx *pulumi.Context, args *LookupManagementCo
 }
 
 type LookupManagementConfigurationArgs struct {
+	// User Management Configuration Name.
 	ManagementConfigurationName string `pulumi:"managementConfigurationName"`
-	ResourceGroupName           string `pulumi:"resourceGroupName"`
+	// The name of the resource group to get. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The container for solution.
 type LookupManagementConfigurationResult struct {
-	Id         string                                    `pulumi:"id"`
-	Location   *string                                   `pulumi:"location"`
-	Name       string                                    `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
 	Properties ManagementConfigurationPropertiesResponse `pulumi:"properties"`
-	Type       string                                    `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementConfigurationOutput(ctx *pulumi.Context, args LookupManagementConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupManagementConfigurationResultOutput {
@@ -49,8 +56,10 @@ func LookupManagementConfigurationOutput(ctx *pulumi.Context, args LookupManagem
 }
 
 type LookupManagementConfigurationOutputArgs struct {
+	// User Management Configuration Name.
 	ManagementConfigurationName pulumi.StringInput `pulumi:"managementConfigurationName"`
-	ResourceGroupName           pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group to get. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagementConfigurationOutputArgs) ElementType() reflect.Type {
@@ -72,24 +81,29 @@ func (o LookupManagementConfigurationResultOutput) ToLookupManagementConfigurati
 	return o
 }
 
+// Resource ID.
 func (o LookupManagementConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupManagementConfigurationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupManagementConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
 func (o LookupManagementConfigurationResultOutput) Properties() ManagementConfigurationPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupManagementConfigurationResult) ManagementConfigurationPropertiesResponse {
 		return v.Properties
 	}).(ManagementConfigurationPropertiesResponseOutput)
 }
 
+// Resource type.
 func (o LookupManagementConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

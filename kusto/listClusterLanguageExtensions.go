@@ -22,12 +22,15 @@ func ListClusterLanguageExtensions(ctx *pulumi.Context, args *ListClusterLanguag
 }
 
 type ListClusterLanguageExtensionsArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The list of language extension objects.
 type ListClusterLanguageExtensionsResult struct {
+	// The list of language extensions.
 	Value []LanguageExtensionResponse `pulumi:"value"`
 }
 
@@ -45,7 +48,9 @@ func ListClusterLanguageExtensionsOutput(ctx *pulumi.Context, args ListClusterLa
 }
 
 type ListClusterLanguageExtensionsOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListClusterLanguageExtensionsResultOutput) ToListClusterLanguageExtensio
 	return o
 }
 
+// The list of language extensions.
 func (o ListClusterLanguageExtensionsResultOutput) Value() LanguageExtensionResponseArrayOutput {
 	return o.ApplyT(func(v ListClusterLanguageExtensionsResult) []LanguageExtensionResponse { return v.Value }).(LanguageExtensionResponseArrayOutput)
 }

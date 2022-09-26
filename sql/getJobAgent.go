@@ -22,21 +22,32 @@ func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulum
 }
 
 type LookupJobAgentArgs struct {
-	JobAgentName      string `pulumi:"jobAgentName"`
+	// The name of the job agent to be retrieved.
+	JobAgentName string `pulumi:"jobAgentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // An Azure SQL job agent.
 type LookupJobAgentResult struct {
-	DatabaseId string            `pulumi:"databaseId"`
-	Id         string            `pulumi:"id"`
-	Location   string            `pulumi:"location"`
-	Name       string            `pulumi:"name"`
-	Sku        *SkuResponse      `pulumi:"sku"`
-	State      string            `pulumi:"state"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       string            `pulumi:"type"`
+	// Resource ID of the database to store job metadata in.
+	DatabaseId string `pulumi:"databaseId"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The name and tier of the SKU.
+	Sku *SkuResponse `pulumi:"sku"`
+	// The state of the job agent.
+	State string `pulumi:"state"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupJobAgentOutput(ctx *pulumi.Context, args LookupJobAgentOutputArgs, opts ...pulumi.InvokeOption) LookupJobAgentResultOutput {
@@ -53,9 +64,12 @@ func LookupJobAgentOutput(ctx *pulumi.Context, args LookupJobAgentOutputArgs, op
 }
 
 type LookupJobAgentOutputArgs struct {
-	JobAgentName      pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the job agent to be retrieved.
+	JobAgentName pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupJobAgentOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupJobAgentResultOutput) ToLookupJobAgentResultOutputWithContext(ctx 
 	return o
 }
 
+// Resource ID of the database to store job metadata in.
 func (o LookupJobAgentResultOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.DatabaseId }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupJobAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupJobAgentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupJobAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name and tier of the SKU.
 func (o LookupJobAgentResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// The state of the job agent.
 func (o LookupJobAgentResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupJobAgentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupJobAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.Type }).(pulumi.StringOutput)
 }

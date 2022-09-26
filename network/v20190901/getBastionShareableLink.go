@@ -21,15 +21,20 @@ func GetBastionShareableLink(ctx *pulumi.Context, args *GetBastionShareableLinkA
 }
 
 type GetBastionShareableLinkArgs struct {
-	BastionHostName   string                 `pulumi:"bastionHostName"`
-	ResourceGroupName string                 `pulumi:"resourceGroupName"`
-	Vms               []BastionShareableLink `pulumi:"vms"`
+	// The name of the Bastion Host.
+	BastionHostName string `pulumi:"bastionHostName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// List of VM references.
+	Vms []BastionShareableLink `pulumi:"vms"`
 }
 
 // Response for all the Bastion Shareable Link endpoints.
 type GetBastionShareableLinkResult struct {
-	NextLink *string                        `pulumi:"nextLink"`
-	Value    []BastionShareableLinkResponse `pulumi:"value"`
+	// Gets or sets the URL to get the next set of results.
+	NextLink *string `pulumi:"nextLink"`
+	// List of Bastion Shareable Links for the request.
+	Value []BastionShareableLinkResponse `pulumi:"value"`
 }
 
 func GetBastionShareableLinkOutput(ctx *pulumi.Context, args GetBastionShareableLinkOutputArgs, opts ...pulumi.InvokeOption) GetBastionShareableLinkResultOutput {
@@ -46,9 +51,12 @@ func GetBastionShareableLinkOutput(ctx *pulumi.Context, args GetBastionShareable
 }
 
 type GetBastionShareableLinkOutputArgs struct {
-	BastionHostName   pulumi.StringInput             `pulumi:"bastionHostName"`
-	ResourceGroupName pulumi.StringInput             `pulumi:"resourceGroupName"`
-	Vms               BastionShareableLinkArrayInput `pulumi:"vms"`
+	// The name of the Bastion Host.
+	BastionHostName pulumi.StringInput `pulumi:"bastionHostName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// List of VM references.
+	Vms BastionShareableLinkArrayInput `pulumi:"vms"`
 }
 
 func (GetBastionShareableLinkOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o GetBastionShareableLinkResultOutput) ToGetBastionShareableLinkResultOutp
 	return o
 }
 
+// Gets or sets the URL to get the next set of results.
 func (o GetBastionShareableLinkResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBastionShareableLinkResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of Bastion Shareable Links for the request.
 func (o GetBastionShareableLinkResultOutput) Value() BastionShareableLinkResponseArrayOutput {
 	return o.ApplyT(func(v GetBastionShareableLinkResult) []BastionShareableLinkResponse { return v.Value }).(BastionShareableLinkResponseArrayOutput)
 }

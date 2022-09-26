@@ -21,20 +21,31 @@ func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.Invoke
 }
 
 type LookupUebaArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SettingsName      string `pulumi:"settingsName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName string `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Settings with single toggle.
 type LookupUebaResult struct {
-	DataSources []string           `pulumi:"dataSources"`
-	Etag        *string            `pulumi:"etag"`
-	Id          string             `pulumi:"id"`
-	Kind        string             `pulumi:"kind"`
-	Name        string             `pulumi:"name"`
-	SystemData  SystemDataResponse `pulumi:"systemData"`
-	Type        string             `pulumi:"type"`
+	// The relevant data sources that enriched by ueba
+	DataSources []string `pulumi:"dataSources"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the setting
+	// Expected value is 'Ueba'.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupUebaOutput(ctx *pulumi.Context, args LookupUebaOutputArgs, opts ...pulumi.InvokeOption) LookupUebaResultOutput {
@@ -51,9 +62,12 @@ func LookupUebaOutput(ctx *pulumi.Context, args LookupUebaOutputArgs, opts ...pu
 }
 
 type LookupUebaOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SettingsName      pulumi.StringInput `pulumi:"settingsName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName pulumi.StringInput `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupUebaOutputArgs) ElementType() reflect.Type {
@@ -75,30 +89,38 @@ func (o LookupUebaResultOutput) ToLookupUebaResultOutputWithContext(ctx context.
 	return o
 }
 
+// The relevant data sources that enriched by ueba
 func (o LookupUebaResultOutput) DataSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUebaResult) []string { return v.DataSources }).(pulumi.StringArrayOutput)
 }
 
+// Etag of the azure resource
 func (o LookupUebaResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUebaResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupUebaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUebaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the setting
+// Expected value is 'Ueba'.
 func (o LookupUebaResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUebaResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupUebaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUebaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupUebaResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupUebaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupUebaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUebaResult) string { return v.Type }).(pulumi.StringOutput)
 }

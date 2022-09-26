@@ -21,19 +21,28 @@ func LookupSqlServerInstance(ctx *pulumi.Context, args *LookupSqlServerInstanceA
 }
 
 type LookupSqlServerInstanceArgs struct {
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the Azure resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of SQL Server Instance
 	SqlServerInstanceName string `pulumi:"sqlServerInstanceName"`
 }
 
 // A SqlServerInstance.
 type LookupSqlServerInstanceResult struct {
-	Id         string                              `pulumi:"id"`
-	Location   string                              `pulumi:"location"`
-	Name       string                              `pulumi:"name"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// null
 	Properties SqlServerInstancePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                  `pulumi:"systemData"`
-	Tags       map[string]string                   `pulumi:"tags"`
-	Type       string                              `pulumi:"type"`
+	// Read only system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlServerInstanceOutput(ctx *pulumi.Context, args LookupSqlServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerInstanceResultOutput {
@@ -50,7 +59,9 @@ func LookupSqlServerInstanceOutput(ctx *pulumi.Context, args LookupSqlServerInst
 }
 
 type LookupSqlServerInstanceOutputArgs struct {
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Azure resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of SQL Server Instance
 	SqlServerInstanceName pulumi.StringInput `pulumi:"sqlServerInstanceName"`
 }
 
@@ -73,30 +84,37 @@ func (o LookupSqlServerInstanceResultOutput) ToLookupSqlServerInstanceResultOutp
 	return o
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlServerInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSqlServerInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSqlServerInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// null
 func (o LookupSqlServerInstanceResultOutput) Properties() SqlServerInstancePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) SqlServerInstancePropertiesResponse { return v.Properties }).(SqlServerInstancePropertiesResponseOutput)
 }
 
+// Read only system data
 func (o LookupSqlServerInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSqlServerInstanceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupSqlServerInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

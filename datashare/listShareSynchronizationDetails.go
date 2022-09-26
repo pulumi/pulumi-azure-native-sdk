@@ -22,27 +22,44 @@ func ListShareSynchronizationDetails(ctx *pulumi.Context, args *ListShareSynchro
 }
 
 type ListShareSynchronizationDetailsArgs struct {
-	AccountName        string  `pulumi:"accountName"`
-	ConsumerEmail      *string `pulumi:"consumerEmail"`
-	ConsumerName       *string `pulumi:"consumerName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// Email of the user who created the synchronization
+	ConsumerEmail *string `pulumi:"consumerEmail"`
+	// Name of the user who created the synchronization
+	ConsumerName *string `pulumi:"consumerName"`
+	// Tenant name of the consumer who created the synchronization
 	ConsumerTenantName *string `pulumi:"consumerTenantName"`
-	DurationMs         *int    `pulumi:"durationMs"`
-	EndTime            *string `pulumi:"endTime"`
-	Filter             *string `pulumi:"filter"`
-	Message            *string `pulumi:"message"`
-	Orderby            *string `pulumi:"orderby"`
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
-	ShareName          string  `pulumi:"shareName"`
-	SkipToken          *string `pulumi:"skipToken"`
-	StartTime          *string `pulumi:"startTime"`
-	Status             *string `pulumi:"status"`
-	SynchronizationId  *string `pulumi:"synchronizationId"`
+	// synchronization duration
+	DurationMs *int `pulumi:"durationMs"`
+	// End time of synchronization
+	EndTime *string `pulumi:"endTime"`
+	// Filters the results using OData syntax.
+	Filter *string `pulumi:"filter"`
+	// message of synchronization
+	Message *string `pulumi:"message"`
+	// Sorts the results using OData syntax.
+	Orderby *string `pulumi:"orderby"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
+	// Continuation token
+	SkipToken *string `pulumi:"skipToken"`
+	// start time of synchronization
+	StartTime *string `pulumi:"startTime"`
+	// Raw Status
+	Status *string `pulumi:"status"`
+	// Synchronization id
+	SynchronizationId *string `pulumi:"synchronizationId"`
 }
 
 // details of synchronization
 type ListShareSynchronizationDetailsResult struct {
-	NextLink *string                          `pulumi:"nextLink"`
-	Value    []SynchronizationDetailsResponse `pulumi:"value"`
+	// The Url of next result page.
+	NextLink *string `pulumi:"nextLink"`
+	// Collection of items of type DataTransferObjects.
+	Value []SynchronizationDetailsResponse `pulumi:"value"`
 }
 
 func ListShareSynchronizationDetailsOutput(ctx *pulumi.Context, args ListShareSynchronizationDetailsOutputArgs, opts ...pulumi.InvokeOption) ListShareSynchronizationDetailsResultOutput {
@@ -59,21 +76,36 @@ func ListShareSynchronizationDetailsOutput(ctx *pulumi.Context, args ListShareSy
 }
 
 type ListShareSynchronizationDetailsOutputArgs struct {
-	AccountName        pulumi.StringInput    `pulumi:"accountName"`
-	ConsumerEmail      pulumi.StringPtrInput `pulumi:"consumerEmail"`
-	ConsumerName       pulumi.StringPtrInput `pulumi:"consumerName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Email of the user who created the synchronization
+	ConsumerEmail pulumi.StringPtrInput `pulumi:"consumerEmail"`
+	// Name of the user who created the synchronization
+	ConsumerName pulumi.StringPtrInput `pulumi:"consumerName"`
+	// Tenant name of the consumer who created the synchronization
 	ConsumerTenantName pulumi.StringPtrInput `pulumi:"consumerTenantName"`
-	DurationMs         pulumi.IntPtrInput    `pulumi:"durationMs"`
-	EndTime            pulumi.StringPtrInput `pulumi:"endTime"`
-	Filter             pulumi.StringPtrInput `pulumi:"filter"`
-	Message            pulumi.StringPtrInput `pulumi:"message"`
-	Orderby            pulumi.StringPtrInput `pulumi:"orderby"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ShareName          pulumi.StringInput    `pulumi:"shareName"`
-	SkipToken          pulumi.StringPtrInput `pulumi:"skipToken"`
-	StartTime          pulumi.StringPtrInput `pulumi:"startTime"`
-	Status             pulumi.StringPtrInput `pulumi:"status"`
-	SynchronizationId  pulumi.StringPtrInput `pulumi:"synchronizationId"`
+	// synchronization duration
+	DurationMs pulumi.IntPtrInput `pulumi:"durationMs"`
+	// End time of synchronization
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Filters the results using OData syntax.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// message of synchronization
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Sorts the results using OData syntax.
+	Orderby pulumi.StringPtrInput `pulumi:"orderby"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
+	// Continuation token
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
+	// start time of synchronization
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Raw Status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Synchronization id
+	SynchronizationId pulumi.StringPtrInput `pulumi:"synchronizationId"`
 }
 
 func (ListShareSynchronizationDetailsOutputArgs) ElementType() reflect.Type {
@@ -95,10 +127,12 @@ func (o ListShareSynchronizationDetailsResultOutput) ToListShareSynchronizationD
 	return o
 }
 
+// The Url of next result page.
 func (o ListShareSynchronizationDetailsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListShareSynchronizationDetailsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Collection of items of type DataTransferObjects.
 func (o ListShareSynchronizationDetailsResultOutput) Value() SynchronizationDetailsResponseArrayOutput {
 	return o.ApplyT(func(v ListShareSynchronizationDetailsResult) []SynchronizationDetailsResponse { return v.Value }).(SynchronizationDetailsResponseArrayOutput)
 }

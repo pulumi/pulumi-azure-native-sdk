@@ -21,16 +21,22 @@ func ListDeploymentInfo(ctx *pulumi.Context, args *ListDeploymentInfoArgs, opts 
 }
 
 type ListDeploymentInfoArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
 type ListDeploymentInfoResult struct {
-	DiskCapacity   string `pulumi:"diskCapacity"`
+	// Disk capacity of the elasticsearch in Elastic cloud deployment.
+	DiskCapacity string `pulumi:"diskCapacity"`
+	// RAM capacity of the elasticsearch in Elastic cloud deployment.
 	MemoryCapacity string `pulumi:"memoryCapacity"`
-	Status         string `pulumi:"status"`
-	Version        string `pulumi:"version"`
+	// The Elastic deployment status.
+	Status string `pulumi:"status"`
+	// Version of the elasticsearch in Elastic cloud deployment.
+	Version string `pulumi:"version"`
 }
 
 func ListDeploymentInfoOutput(ctx *pulumi.Context, args ListDeploymentInfoOutputArgs, opts ...pulumi.InvokeOption) ListDeploymentInfoResultOutput {
@@ -47,7 +53,9 @@ func ListDeploymentInfoOutput(ctx *pulumi.Context, args ListDeploymentInfoOutput
 }
 
 type ListDeploymentInfoOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,18 +78,22 @@ func (o ListDeploymentInfoResultOutput) ToListDeploymentInfoResultOutputWithCont
 	return o
 }
 
+// Disk capacity of the elasticsearch in Elastic cloud deployment.
 func (o ListDeploymentInfoResultOutput) DiskCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.DiskCapacity }).(pulumi.StringOutput)
 }
 
+// RAM capacity of the elasticsearch in Elastic cloud deployment.
 func (o ListDeploymentInfoResultOutput) MemoryCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.MemoryCapacity }).(pulumi.StringOutput)
 }
 
+// The Elastic deployment status.
 func (o ListDeploymentInfoResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Version of the elasticsearch in Elastic cloud deployment.
 func (o ListDeploymentInfoResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.Version }).(pulumi.StringOutput)
 }

@@ -21,18 +21,26 @@ func LookupVendorSkuPreview(ctx *pulumi.Context, args *LookupVendorSkuPreviewArg
 }
 
 type LookupVendorSkuPreviewArgs struct {
+	// Preview subscription ID.
 	PreviewSubscription string `pulumi:"previewSubscription"`
-	SkuName             string `pulumi:"skuName"`
-	VendorName          string `pulumi:"vendorName"`
+	// The name of the vendor sku.
+	SkuName string `pulumi:"skuName"`
+	// The name of the vendor.
+	VendorName string `pulumi:"vendorName"`
 }
 
 // Customer subscription which can use a sku.
 type LookupVendorSkuPreviewResult struct {
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// The ARM ID of the resource.
+	Id string `pulumi:"id"`
+	// The preview subscription ID.
+	Name string `pulumi:"name"`
+	// The provisioning state of the PreviewSubscription resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupVendorSkuPreviewOutput(ctx *pulumi.Context, args LookupVendorSkuPreviewOutputArgs, opts ...pulumi.InvokeOption) LookupVendorSkuPreviewResultOutput {
@@ -49,9 +57,12 @@ func LookupVendorSkuPreviewOutput(ctx *pulumi.Context, args LookupVendorSkuPrevi
 }
 
 type LookupVendorSkuPreviewOutputArgs struct {
+	// Preview subscription ID.
 	PreviewSubscription pulumi.StringInput `pulumi:"previewSubscription"`
-	SkuName             pulumi.StringInput `pulumi:"skuName"`
-	VendorName          pulumi.StringInput `pulumi:"vendorName"`
+	// The name of the vendor sku.
+	SkuName pulumi.StringInput `pulumi:"skuName"`
+	// The name of the vendor.
+	VendorName pulumi.StringInput `pulumi:"vendorName"`
 }
 
 func (LookupVendorSkuPreviewOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutput
 	return o
 }
 
+// The ARM ID of the resource.
 func (o LookupVendorSkuPreviewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The preview subscription ID.
 func (o LookupVendorSkuPreviewResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the PreviewSubscription resource.
 func (o LookupVendorSkuPreviewResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupVendorSkuPreviewResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupVendorSkuPreviewResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Type }).(pulumi.StringOutput)
 }

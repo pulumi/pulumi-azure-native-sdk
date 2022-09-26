@@ -21,14 +21,18 @@ func ListMonitorVMHosts(ctx *pulumi.Context, args *ListMonitorVMHostsArgs, opts 
 }
 
 type ListMonitorVMHostsArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list VM Host Update Operation.
 type ListMonitorVMHostsResult struct {
-	NextLink *string               `pulumi:"nextLink"`
-	Value    []VMResourcesResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Response of a list vm host update operation.
+	Value []VMResourcesResponse `pulumi:"value"`
 }
 
 func ListMonitorVMHostsOutput(ctx *pulumi.Context, args ListMonitorVMHostsOutputArgs, opts ...pulumi.InvokeOption) ListMonitorVMHostsResultOutput {
@@ -45,7 +49,9 @@ func ListMonitorVMHostsOutput(ctx *pulumi.Context, args ListMonitorVMHostsOutput
 }
 
 type ListMonitorVMHostsOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListMonitorVMHostsResultOutput) ToListMonitorVMHostsResultOutputWithCont
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitorVMHostsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitorVMHostsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Response of a list vm host update operation.
 func (o ListMonitorVMHostsResultOutput) Value() VMResourcesResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitorVMHostsResult) []VMResourcesResponse { return v.Value }).(VMResourcesResponseArrayOutput)
 }

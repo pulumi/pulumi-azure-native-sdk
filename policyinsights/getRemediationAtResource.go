@@ -22,23 +22,36 @@ func LookupRemediationAtResource(ctx *pulumi.Context, args *LookupRemediationAtR
 }
 
 type LookupRemediationAtResourceArgs struct {
+	// The name of the remediation.
 	RemediationName string `pulumi:"remediationName"`
-	ResourceId      string `pulumi:"resourceId"`
+	// Resource ID.
+	ResourceId string `pulumi:"resourceId"`
 }
 
 // The remediation definition.
 type LookupRemediationAtResourceResult struct {
-	CreatedOn                   string                               `pulumi:"createdOn"`
-	DeploymentStatus            RemediationDeploymentSummaryResponse `pulumi:"deploymentStatus"`
-	Filters                     *RemediationFiltersResponse          `pulumi:"filters"`
-	Id                          string                               `pulumi:"id"`
-	LastUpdatedOn               string                               `pulumi:"lastUpdatedOn"`
-	Name                        string                               `pulumi:"name"`
-	PolicyAssignmentId          *string                              `pulumi:"policyAssignmentId"`
-	PolicyDefinitionReferenceId *string                              `pulumi:"policyDefinitionReferenceId"`
-	ProvisioningState           string                               `pulumi:"provisioningState"`
-	ResourceDiscoveryMode       *string                              `pulumi:"resourceDiscoveryMode"`
-	Type                        string                               `pulumi:"type"`
+	// The time at which the remediation was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// The deployment status summary for all deployments created by the remediation.
+	DeploymentStatus RemediationDeploymentSummaryResponse `pulumi:"deploymentStatus"`
+	// The filters that will be applied to determine which resources to remediate.
+	Filters *RemediationFiltersResponse `pulumi:"filters"`
+	// The ID of the remediation.
+	Id string `pulumi:"id"`
+	// The time at which the remediation was last updated.
+	LastUpdatedOn string `pulumi:"lastUpdatedOn"`
+	// The name of the remediation.
+	Name string `pulumi:"name"`
+	// The resource ID of the policy assignment that should be remediated.
+	PolicyAssignmentId *string `pulumi:"policyAssignmentId"`
+	// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
+	PolicyDefinitionReferenceId *string `pulumi:"policyDefinitionReferenceId"`
+	// The status of the remediation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
+	ResourceDiscoveryMode *string `pulumi:"resourceDiscoveryMode"`
+	// The type of the remediation.
+	Type string `pulumi:"type"`
 }
 
 func LookupRemediationAtResourceOutput(ctx *pulumi.Context, args LookupRemediationAtResourceOutputArgs, opts ...pulumi.InvokeOption) LookupRemediationAtResourceResultOutput {
@@ -55,8 +68,10 @@ func LookupRemediationAtResourceOutput(ctx *pulumi.Context, args LookupRemediati
 }
 
 type LookupRemediationAtResourceOutputArgs struct {
+	// The name of the remediation.
 	RemediationName pulumi.StringInput `pulumi:"remediationName"`
-	ResourceId      pulumi.StringInput `pulumi:"resourceId"`
+	// Resource ID.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
 
 func (LookupRemediationAtResourceOutputArgs) ElementType() reflect.Type {
@@ -78,48 +93,59 @@ func (o LookupRemediationAtResourceResultOutput) ToLookupRemediationAtResourceRe
 	return o
 }
 
+// The time at which the remediation was created.
 func (o LookupRemediationAtResourceResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// The deployment status summary for all deployments created by the remediation.
 func (o LookupRemediationAtResourceResultOutput) DeploymentStatus() RemediationDeploymentSummaryResponseOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) RemediationDeploymentSummaryResponse {
 		return v.DeploymentStatus
 	}).(RemediationDeploymentSummaryResponseOutput)
 }
 
+// The filters that will be applied to determine which resources to remediate.
 func (o LookupRemediationAtResourceResultOutput) Filters() RemediationFiltersResponsePtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) *RemediationFiltersResponse { return v.Filters }).(RemediationFiltersResponsePtrOutput)
 }
 
+// The ID of the remediation.
 func (o LookupRemediationAtResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The time at which the remediation was last updated.
 func (o LookupRemediationAtResourceResultOutput) LastUpdatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.LastUpdatedOn }).(pulumi.StringOutput)
 }
 
+// The name of the remediation.
 func (o LookupRemediationAtResourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource ID of the policy assignment that should be remediated.
 func (o LookupRemediationAtResourceResultOutput) PolicyAssignmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) *string { return v.PolicyAssignmentId }).(pulumi.StringPtrOutput)
 }
 
+// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
 func (o LookupRemediationAtResourceResultOutput) PolicyDefinitionReferenceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) *string { return v.PolicyDefinitionReferenceId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the remediation.
 func (o LookupRemediationAtResourceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
 func (o LookupRemediationAtResourceResultOutput) ResourceDiscoveryMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) *string { return v.ResourceDiscoveryMode }).(pulumi.StringPtrOutput)
 }
 
+// The type of the remediation.
 func (o LookupRemediationAtResourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

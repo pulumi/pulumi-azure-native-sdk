@@ -21,24 +21,38 @@ func LookupSqlPoolWorkloadClassifier(ctx *pulumi.Context, args *LookupSqlPoolWor
 }
 
 type LookupSqlPoolWorkloadClassifierArgs struct {
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	SqlPoolName            string `pulumi:"sqlPoolName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// SQL pool name
+	SqlPoolName string `pulumi:"sqlPoolName"`
+	// The name of the workload classifier.
 	WorkloadClassifierName string `pulumi:"workloadClassifierName"`
-	WorkloadGroupName      string `pulumi:"workloadGroupName"`
-	WorkspaceName          string `pulumi:"workspaceName"`
+	// The name of the workload group.
+	WorkloadGroupName string `pulumi:"workloadGroupName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Workload classifier operations for a data warehouse
 type LookupSqlPoolWorkloadClassifierResult struct {
-	Context    *string `pulumi:"context"`
-	EndTime    *string `pulumi:"endTime"`
-	Id         string  `pulumi:"id"`
+	// The workload classifier context.
+	Context *string `pulumi:"context"`
+	// The workload classifier end time for classification.
+	EndTime *string `pulumi:"endTime"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The workload classifier importance.
 	Importance *string `pulumi:"importance"`
-	Label      *string `pulumi:"label"`
-	MemberName string  `pulumi:"memberName"`
-	Name       string  `pulumi:"name"`
-	StartTime  *string `pulumi:"startTime"`
-	Type       string  `pulumi:"type"`
+	// The workload classifier label.
+	Label *string `pulumi:"label"`
+	// The workload classifier member name.
+	MemberName string `pulumi:"memberName"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The workload classifier start time for classification.
+	StartTime *string `pulumi:"startTime"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlPoolWorkloadClassifierOutput(ctx *pulumi.Context, args LookupSqlPoolWorkloadClassifierOutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolWorkloadClassifierResultOutput {
@@ -55,11 +69,16 @@ func LookupSqlPoolWorkloadClassifierOutput(ctx *pulumi.Context, args LookupSqlPo
 }
 
 type LookupSqlPoolWorkloadClassifierOutputArgs struct {
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	SqlPoolName            pulumi.StringInput `pulumi:"sqlPoolName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// SQL pool name
+	SqlPoolName pulumi.StringInput `pulumi:"sqlPoolName"`
+	// The name of the workload classifier.
 	WorkloadClassifierName pulumi.StringInput `pulumi:"workloadClassifierName"`
-	WorkloadGroupName      pulumi.StringInput `pulumi:"workloadGroupName"`
-	WorkspaceName          pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workload group.
+	WorkloadGroupName pulumi.StringInput `pulumi:"workloadGroupName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSqlPoolWorkloadClassifierOutputArgs) ElementType() reflect.Type {
@@ -81,38 +100,47 @@ func (o LookupSqlPoolWorkloadClassifierResultOutput) ToLookupSqlPoolWorkloadClas
 	return o
 }
 
+// The workload classifier context.
 func (o LookupSqlPoolWorkloadClassifierResultOutput) Context() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) *string { return v.Context }).(pulumi.StringPtrOutput)
 }
 
+// The workload classifier end time for classification.
 func (o LookupSqlPoolWorkloadClassifierResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlPoolWorkloadClassifierResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The workload classifier importance.
 func (o LookupSqlPoolWorkloadClassifierResultOutput) Importance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) *string { return v.Importance }).(pulumi.StringPtrOutput)
 }
 
+// The workload classifier label.
 func (o LookupSqlPoolWorkloadClassifierResultOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// The workload classifier member name.
 func (o LookupSqlPoolWorkloadClassifierResultOutput) MemberName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) string { return v.MemberName }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSqlPoolWorkloadClassifierResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The workload classifier start time for classification.
 func (o LookupSqlPoolWorkloadClassifierResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSqlPoolWorkloadClassifierResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,12 +21,15 @@ func ListQueryKeyBySearchService(ctx *pulumi.Context, args *ListQueryKeyBySearch
 }
 
 type ListQueryKeyBySearchServiceArgs struct {
+	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Azure Cognitive Search service associated with the specified resource group.
 	SearchServiceName string `pulumi:"searchServiceName"`
 }
 
 // Response containing the query API keys for a given Azure Cognitive Search service.
 type ListQueryKeyBySearchServiceResult struct {
+	// The query keys for the Azure Cognitive Search service.
 	Value []QueryKeyResponse `pulumi:"value"`
 }
 
@@ -44,7 +47,9 @@ func ListQueryKeyBySearchServiceOutput(ctx *pulumi.Context, args ListQueryKeyByS
 }
 
 type ListQueryKeyBySearchServiceOutputArgs struct {
+	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Azure Cognitive Search service associated with the specified resource group.
 	SearchServiceName pulumi.StringInput `pulumi:"searchServiceName"`
 }
 
@@ -67,6 +72,7 @@ func (o ListQueryKeyBySearchServiceResultOutput) ToListQueryKeyBySearchServiceRe
 	return o
 }
 
+// The query keys for the Azure Cognitive Search service.
 func (o ListQueryKeyBySearchServiceResultOutput) Value() QueryKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListQueryKeyBySearchServiceResult) []QueryKeyResponse { return v.Value }).(QueryKeyResponseArrayOutput)
 }

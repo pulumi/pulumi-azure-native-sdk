@@ -21,18 +21,26 @@ func ListWebAppApplicationSettings(ctx *pulumi.Context, args *ListWebAppApplicat
 }
 
 type ListWebAppApplicationSettingsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String dictionary resource.
 type ListWebAppApplicationSettingsResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       *string            `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
-	Properties map[string]string  `pulumi:"properties"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
+	Properties map[string]string `pulumi:"properties"`
+	// The system metadata relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppApplicationSettingsOutput(ctx *pulumi.Context, args ListWebAppApplicationSettingsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppApplicationSettingsResultOutput {
@@ -49,7 +57,9 @@ func ListWebAppApplicationSettingsOutput(ctx *pulumi.Context, args ListWebAppApp
 }
 
 type ListWebAppApplicationSettingsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,26 +82,32 @@ func (o ListWebAppApplicationSettingsResultOutput) ToListWebAppApplicationSettin
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppApplicationSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppApplicationSettingsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppApplicationSettingsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListWebAppApplicationSettingsResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// The system metadata relating to this resource.
 func (o ListWebAppApplicationSettingsResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o ListWebAppApplicationSettingsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsResult) string { return v.Type }).(pulumi.StringOutput)
 }

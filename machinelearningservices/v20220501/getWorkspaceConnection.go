@@ -20,17 +20,24 @@ func LookupWorkspaceConnection(ctx *pulumi.Context, args *LookupWorkspaceConnect
 }
 
 type LookupWorkspaceConnectionArgs struct {
-	ConnectionName    string `pulumi:"connectionName"`
+	// Friendly name of the workspace connection
+	ConnectionName string `pulumi:"connectionName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 type LookupWorkspaceConnectionResult struct {
-	Id         string             `pulumi:"id"`
-	Name       string             `pulumi:"name"`
-	Properties interface{}        `pulumi:"properties"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name       string      `pulumi:"name"`
+	Properties interface{} `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkspaceConnectionOutput(ctx *pulumi.Context, args LookupWorkspaceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceConnectionResultOutput {
@@ -47,9 +54,12 @@ func LookupWorkspaceConnectionOutput(ctx *pulumi.Context, args LookupWorkspaceCo
 }
 
 type LookupWorkspaceConnectionOutputArgs struct {
-	ConnectionName    pulumi.StringInput `pulumi:"connectionName"`
+	// Friendly name of the workspace connection
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupWorkspaceConnectionOutputArgs) ElementType() reflect.Type {
@@ -70,10 +80,12 @@ func (o LookupWorkspaceConnectionResultOutput) ToLookupWorkspaceConnectionResult
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupWorkspaceConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -82,10 +94,12 @@ func (o LookupWorkspaceConnectionResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupWorkspaceConnectionResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupWorkspaceConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWorkspaceConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkspaceConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

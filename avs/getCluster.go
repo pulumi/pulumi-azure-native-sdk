@@ -22,21 +22,32 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the cluster in the private cloud
+	ClusterName string `pulumi:"clusterName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A cluster resource
 type LookupClusterResult struct {
-	ClusterId         int         `pulumi:"clusterId"`
-	ClusterSize       int         `pulumi:"clusterSize"`
-	Hosts             []string    `pulumi:"hosts"`
-	Id                string      `pulumi:"id"`
-	Name              string      `pulumi:"name"`
-	ProvisioningState string      `pulumi:"provisioningState"`
-	Sku               SkuResponse `pulumi:"sku"`
-	Type              string      `pulumi:"type"`
+	// The identity
+	ClusterId int `pulumi:"clusterId"`
+	// The cluster size
+	ClusterSize int `pulumi:"clusterSize"`
+	// The hosts
+	Hosts []string `pulumi:"hosts"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The state of the cluster provisioning
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The cluster SKU
+	Sku SkuResponse `pulumi:"sku"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -53,8 +64,11 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 }
 
 type LookupClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the cluster in the private cloud
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,34 +91,42 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The identity
 func (o LookupClusterResultOutput) ClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.ClusterId }).(pulumi.IntOutput)
 }
 
+// The cluster size
 func (o LookupClusterResultOutput) ClusterSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.ClusterSize }).(pulumi.IntOutput)
 }
 
+// The hosts
 func (o LookupClusterResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// Resource ID.
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The state of the cluster provisioning
 func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The cluster SKU
 func (o LookupClusterResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
+// Resource type.
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }

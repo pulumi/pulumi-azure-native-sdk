@@ -21,21 +21,32 @@ func ListWebAppPublishingCredentials(ctx *pulumi.Context, args *ListWebAppPublis
 }
 
 type ListWebAppPublishingCredentialsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // User credentials used for publishing activity.
 type ListWebAppPublishingCredentialsResult struct {
-	Id                         string  `pulumi:"id"`
-	Kind                       *string `pulumi:"kind"`
-	Name                       string  `pulumi:"name"`
-	PublishingPassword         *string `pulumi:"publishingPassword"`
-	PublishingPasswordHash     *string `pulumi:"publishingPasswordHash"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Password used for publishing.
+	PublishingPassword *string `pulumi:"publishingPassword"`
+	// Password hash used for publishing.
+	PublishingPasswordHash *string `pulumi:"publishingPasswordHash"`
+	// Password hash salt used for publishing.
 	PublishingPasswordHashSalt *string `pulumi:"publishingPasswordHashSalt"`
-	PublishingUserName         string  `pulumi:"publishingUserName"`
-	ScmUri                     *string `pulumi:"scmUri"`
-	Type                       string  `pulumi:"type"`
+	// Username used for publishing.
+	PublishingUserName string `pulumi:"publishingUserName"`
+	// Url of SCM site.
+	ScmUri *string `pulumi:"scmUri"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppPublishingCredentialsOutput(ctx *pulumi.Context, args ListWebAppPublishingCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppPublishingCredentialsResultOutput {
@@ -52,7 +63,9 @@ func ListWebAppPublishingCredentialsOutput(ctx *pulumi.Context, args ListWebAppP
 }
 
 type ListWebAppPublishingCredentialsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,38 +88,47 @@ func (o ListWebAppPublishingCredentialsResultOutput) ToListWebAppPublishingCrede
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppPublishingCredentialsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppPublishingCredentialsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppPublishingCredentialsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Password used for publishing.
 func (o ListWebAppPublishingCredentialsResultOutput) PublishingPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.PublishingPassword }).(pulumi.StringPtrOutput)
 }
 
+// Password hash used for publishing.
 func (o ListWebAppPublishingCredentialsResultOutput) PublishingPasswordHash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.PublishingPasswordHash }).(pulumi.StringPtrOutput)
 }
 
+// Password hash salt used for publishing.
 func (o ListWebAppPublishingCredentialsResultOutput) PublishingPasswordHashSalt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.PublishingPasswordHashSalt }).(pulumi.StringPtrOutput)
 }
 
+// Username used for publishing.
 func (o ListWebAppPublishingCredentialsResultOutput) PublishingUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.PublishingUserName }).(pulumi.StringOutput)
 }
 
+// Url of SCM site.
 func (o ListWebAppPublishingCredentialsResultOutput) ScmUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.ScmUri }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o ListWebAppPublishingCredentialsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.Type }).(pulumi.StringOutput)
 }

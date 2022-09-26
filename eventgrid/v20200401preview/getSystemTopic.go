@@ -21,22 +21,34 @@ func LookupSystemTopic(ctx *pulumi.Context, args *LookupSystemTopicArgs, opts ..
 }
 
 type LookupSystemTopicArgs struct {
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SystemTopicName   string `pulumi:"systemTopicName"`
+	// Name of the system topic.
+	SystemTopicName string `pulumi:"systemTopicName"`
 }
 
 // EventGrid System Topic.
 type LookupSystemTopicResult struct {
-	Id                string             `pulumi:"id"`
-	Location          string             `pulumi:"location"`
-	MetricResourceId  string             `pulumi:"metricResourceId"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	Source            *string            `pulumi:"source"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Tags              map[string]string  `pulumi:"tags"`
-	TopicType         *string            `pulumi:"topicType"`
-	Type              string             `pulumi:"type"`
+	// Fully qualified identifier of the resource.
+	Id string `pulumi:"id"`
+	// Location of the resource.
+	Location string `pulumi:"location"`
+	// Metric resource id for the system topic.
+	MetricResourceId string `pulumi:"metricResourceId"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the system topic.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Source for the system topic.
+	Source *string `pulumi:"source"`
+	// The system metadata relating to System Topic resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// TopicType for the system topic.
+	TopicType *string `pulumi:"topicType"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupSystemTopicOutput(ctx *pulumi.Context, args LookupSystemTopicOutputArgs, opts ...pulumi.InvokeOption) LookupSystemTopicResultOutput {
@@ -53,8 +65,10 @@ func LookupSystemTopicOutput(ctx *pulumi.Context, args LookupSystemTopicOutputAr
 }
 
 type LookupSystemTopicOutputArgs struct {
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SystemTopicName   pulumi.StringInput `pulumi:"systemTopicName"`
+	// Name of the system topic.
+	SystemTopicName pulumi.StringInput `pulumi:"systemTopicName"`
 }
 
 func (LookupSystemTopicOutputArgs) ElementType() reflect.Type {
@@ -76,42 +90,52 @@ func (o LookupSystemTopicResultOutput) ToLookupSystemTopicResultOutputWithContex
 	return o
 }
 
+// Fully qualified identifier of the resource.
 func (o LookupSystemTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the resource.
 func (o LookupSystemTopicResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Metric resource id for the system topic.
 func (o LookupSystemTopicResultOutput) MetricResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.MetricResourceId }).(pulumi.StringOutput)
 }
 
+// Name of the resource.
 func (o LookupSystemTopicResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the system topic.
 func (o LookupSystemTopicResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Source for the system topic.
 func (o LookupSystemTopicResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to System Topic resource.
 func (o LookupSystemTopicResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Tags of the resource.
 func (o LookupSystemTopicResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// TopicType for the system topic.
 func (o LookupSystemTopicResultOutput) TopicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) *string { return v.TopicType }).(pulumi.StringPtrOutput)
 }
 
+// Type of the resource.
 func (o LookupSystemTopicResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,27 +21,43 @@ func LookupVirtualWan(ctx *pulumi.Context, args *LookupVirtualWanArgs, opts ...p
 }
 
 type LookupVirtualWanArgs struct {
+	// The resource group name of the VirtualWan.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VirtualWANName    string `pulumi:"virtualWANName"`
+	// The name of the VirtualWAN being retrieved.
+	VirtualWANName string `pulumi:"virtualWANName"`
 }
 
 // VirtualWAN Resource.
 type LookupVirtualWanResult struct {
-	AllowBranchToBranchTraffic     *bool                               `pulumi:"allowBranchToBranchTraffic"`
-	AllowVnetToVnetTraffic         *bool                               `pulumi:"allowVnetToVnetTraffic"`
-	DisableVpnEncryption           *bool                               `pulumi:"disableVpnEncryption"`
-	Etag                           string                              `pulumi:"etag"`
-	Id                             *string                             `pulumi:"id"`
-	Location                       string                              `pulumi:"location"`
-	Name                           string                              `pulumi:"name"`
-	Office365LocalBreakoutCategory string                              `pulumi:"office365LocalBreakoutCategory"`
-	P2SVpnServerConfigurations     []P2SVpnServerConfigurationResponse `pulumi:"p2SVpnServerConfigurations"`
-	ProvisioningState              string                              `pulumi:"provisioningState"`
-	SecurityProviderName           *string                             `pulumi:"securityProviderName"`
-	Tags                           map[string]string                   `pulumi:"tags"`
-	Type                           string                              `pulumi:"type"`
-	VirtualHubs                    []SubResourceResponse               `pulumi:"virtualHubs"`
-	VpnSites                       []SubResourceResponse               `pulumi:"vpnSites"`
+	// True if branch to branch traffic is allowed.
+	AllowBranchToBranchTraffic *bool `pulumi:"allowBranchToBranchTraffic"`
+	// True if Vnet to Vnet traffic is allowed.
+	AllowVnetToVnetTraffic *bool `pulumi:"allowVnetToVnetTraffic"`
+	// Vpn encryption to be disabled or not.
+	DisableVpnEncryption *bool `pulumi:"disableVpnEncryption"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The office local breakout category.
+	Office365LocalBreakoutCategory string `pulumi:"office365LocalBreakoutCategory"`
+	// list of all P2SVpnServerConfigurations associated with the virtual wan.
+	P2SVpnServerConfigurations []P2SVpnServerConfigurationResponse `pulumi:"p2SVpnServerConfigurations"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The Security Provider name.
+	SecurityProviderName *string `pulumi:"securityProviderName"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// List of VirtualHubs in the VirtualWAN.
+	VirtualHubs []SubResourceResponse `pulumi:"virtualHubs"`
+	VpnSites    []SubResourceResponse `pulumi:"vpnSites"`
 }
 
 func LookupVirtualWanOutput(ctx *pulumi.Context, args LookupVirtualWanOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualWanResultOutput {
@@ -58,8 +74,10 @@ func LookupVirtualWanOutput(ctx *pulumi.Context, args LookupVirtualWanOutputArgs
 }
 
 type LookupVirtualWanOutputArgs struct {
+	// The resource group name of the VirtualWan.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VirtualWANName    pulumi.StringInput `pulumi:"virtualWANName"`
+	// The name of the VirtualWAN being retrieved.
+	VirtualWANName pulumi.StringInput `pulumi:"virtualWANName"`
 }
 
 func (LookupVirtualWanOutputArgs) ElementType() reflect.Type {
@@ -81,60 +99,74 @@ func (o LookupVirtualWanResultOutput) ToLookupVirtualWanResultOutputWithContext(
 	return o
 }
 
+// True if branch to branch traffic is allowed.
 func (o LookupVirtualWanResultOutput) AllowBranchToBranchTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *bool { return v.AllowBranchToBranchTraffic }).(pulumi.BoolPtrOutput)
 }
 
+// True if Vnet to Vnet traffic is allowed.
 func (o LookupVirtualWanResultOutput) AllowVnetToVnetTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *bool { return v.AllowVnetToVnetTraffic }).(pulumi.BoolPtrOutput)
 }
 
+// Vpn encryption to be disabled or not.
 func (o LookupVirtualWanResultOutput) DisableVpnEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *bool { return v.DisableVpnEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualWanResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualWanResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupVirtualWanResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupVirtualWanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The office local breakout category.
 func (o LookupVirtualWanResultOutput) Office365LocalBreakoutCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.Office365LocalBreakoutCategory }).(pulumi.StringOutput)
 }
 
+// list of all P2SVpnServerConfigurations associated with the virtual wan.
 func (o LookupVirtualWanResultOutput) P2SVpnServerConfigurations() P2SVpnServerConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) []P2SVpnServerConfigurationResponse {
 		return v.P2SVpnServerConfigurations
 	}).(P2SVpnServerConfigurationResponseArrayOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupVirtualWanResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The Security Provider name.
 func (o LookupVirtualWanResultOutput) SecurityProviderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *string { return v.SecurityProviderName }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupVirtualWanResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupVirtualWanResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List of VirtualHubs in the VirtualWAN.
 func (o LookupVirtualWanResultOutput) VirtualHubs() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) []SubResourceResponse { return v.VirtualHubs }).(SubResourceResponseArrayOutput)
 }

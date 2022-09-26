@@ -21,15 +21,20 @@ func ListWebAppHostKeys(ctx *pulumi.Context, args *ListWebAppHostKeysArgs, opts 
 }
 
 type ListWebAppHostKeysArgs struct {
-	Name              string `pulumi:"name"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Functions host level keys.
 type ListWebAppHostKeysResult struct {
+	// Host level function keys.
 	FunctionKeys map[string]string `pulumi:"functionKeys"`
-	MasterKey    *string           `pulumi:"masterKey"`
-	SystemKeys   map[string]string `pulumi:"systemKeys"`
+	// Secret key.
+	MasterKey *string `pulumi:"masterKey"`
+	// System keys.
+	SystemKeys map[string]string `pulumi:"systemKeys"`
 }
 
 func ListWebAppHostKeysOutput(ctx *pulumi.Context, args ListWebAppHostKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHostKeysResultOutput {
@@ -46,7 +51,9 @@ func ListWebAppHostKeysOutput(ctx *pulumi.Context, args ListWebAppHostKeysOutput
 }
 
 type ListWebAppHostKeysOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,14 +76,17 @@ func (o ListWebAppHostKeysResultOutput) ToListWebAppHostKeysResultOutputWithCont
 	return o
 }
 
+// Host level function keys.
 func (o ListWebAppHostKeysResultOutput) FunctionKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppHostKeysResult) map[string]string { return v.FunctionKeys }).(pulumi.StringMapOutput)
 }
 
+// Secret key.
 func (o ListWebAppHostKeysResultOutput) MasterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppHostKeysResult) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
 }
 
+// System keys.
 func (o ListWebAppHostKeysResultOutput) SystemKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppHostKeysResult) map[string]string { return v.SystemKeys }).(pulumi.StringMapOutput)
 }

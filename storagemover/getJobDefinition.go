@@ -22,32 +22,54 @@ func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opt
 }
 
 type LookupJobDefinitionArgs struct {
+	// The name of the Job Definition resource.
 	JobDefinitionName string `pulumi:"jobDefinitionName"`
-	ProjectName       string `pulumi:"projectName"`
+	// The name of the Project resource.
+	ProjectName string `pulumi:"projectName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	StorageMoverName  string `pulumi:"storageMoverName"`
+	// The name of the Storage Mover resource.
+	StorageMoverName string `pulumi:"storageMoverName"`
 }
 
 // The Job Definition resource.
 type LookupJobDefinitionResult struct {
-	AgentName              *string            `pulumi:"agentName"`
-	AgentResourceId        string             `pulumi:"agentResourceId"`
-	CopyMode               string             `pulumi:"copyMode"`
-	Description            *string            `pulumi:"description"`
-	Id                     string             `pulumi:"id"`
-	LatestJobRunName       string             `pulumi:"latestJobRunName"`
-	LatestJobRunResourceId string             `pulumi:"latestJobRunResourceId"`
-	LatestJobRunStatus     string             `pulumi:"latestJobRunStatus"`
-	Name                   string             `pulumi:"name"`
-	ProvisioningState      string             `pulumi:"provisioningState"`
-	SourceName             string             `pulumi:"sourceName"`
-	SourceResourceId       string             `pulumi:"sourceResourceId"`
-	SourceSubpath          *string            `pulumi:"sourceSubpath"`
-	SystemData             SystemDataResponse `pulumi:"systemData"`
-	TargetName             string             `pulumi:"targetName"`
-	TargetResourceId       string             `pulumi:"targetResourceId"`
-	TargetSubpath          *string            `pulumi:"targetSubpath"`
-	Type                   string             `pulumi:"type"`
+	// Name of the Agent to assign for new Job Runs of this Job Definition.
+	AgentName *string `pulumi:"agentName"`
+	// Fully qualified resource id of the Agent to assign for new Job Runs of this Job Definition.
+	AgentResourceId string `pulumi:"agentResourceId"`
+	// Strategy to use for copy.
+	CopyMode string `pulumi:"copyMode"`
+	// A description for the Job Definition.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the Job Run in a non-terminal state, if exists.
+	LatestJobRunName string `pulumi:"latestJobRunName"`
+	// The fully qualified resource ID of the Job Run in a non-terminal state, if exists.
+	LatestJobRunResourceId string `pulumi:"latestJobRunResourceId"`
+	// The current status of the Job Run in a non-terminal state, if exists.
+	LatestJobRunStatus string `pulumi:"latestJobRunStatus"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of this resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The name of the source Endpoint.
+	SourceName string `pulumi:"sourceName"`
+	// Fully qualified resource ID of the source Endpoint.
+	SourceResourceId string `pulumi:"sourceResourceId"`
+	// The subpath to use when reading from the source Endpoint.
+	SourceSubpath *string `pulumi:"sourceSubpath"`
+	// Resource system metadata.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The name of the target Endpoint.
+	TargetName string `pulumi:"targetName"`
+	// Fully qualified resource ID of the target Endpoint.
+	TargetResourceId string `pulumi:"targetResourceId"`
+	// The subpath to use when writing to the target Endpoint.
+	TargetSubpath *string `pulumi:"targetSubpath"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupJobDefinitionOutput(ctx *pulumi.Context, args LookupJobDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupJobDefinitionResultOutput {
@@ -64,10 +86,14 @@ func LookupJobDefinitionOutput(ctx *pulumi.Context, args LookupJobDefinitionOutp
 }
 
 type LookupJobDefinitionOutputArgs struct {
+	// The name of the Job Definition resource.
 	JobDefinitionName pulumi.StringInput `pulumi:"jobDefinitionName"`
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// The name of the Project resource.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	StorageMoverName  pulumi.StringInput `pulumi:"storageMoverName"`
+	// The name of the Storage Mover resource.
+	StorageMoverName pulumi.StringInput `pulumi:"storageMoverName"`
 }
 
 func (LookupJobDefinitionOutputArgs) ElementType() reflect.Type {
@@ -89,74 +115,92 @@ func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutputWithCo
 	return o
 }
 
+// Name of the Agent to assign for new Job Runs of this Job Definition.
 func (o LookupJobDefinitionResultOutput) AgentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) *string { return v.AgentName }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource id of the Agent to assign for new Job Runs of this Job Definition.
 func (o LookupJobDefinitionResultOutput) AgentResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.AgentResourceId }).(pulumi.StringOutput)
 }
 
+// Strategy to use for copy.
 func (o LookupJobDefinitionResultOutput) CopyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.CopyMode }).(pulumi.StringOutput)
 }
 
+// A description for the Job Definition.
 func (o LookupJobDefinitionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupJobDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the Job Run in a non-terminal state, if exists.
 func (o LookupJobDefinitionResultOutput) LatestJobRunName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.LatestJobRunName }).(pulumi.StringOutput)
 }
 
+// The fully qualified resource ID of the Job Run in a non-terminal state, if exists.
 func (o LookupJobDefinitionResultOutput) LatestJobRunResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.LatestJobRunResourceId }).(pulumi.StringOutput)
 }
 
+// The current status of the Job Run in a non-terminal state, if exists.
 func (o LookupJobDefinitionResultOutput) LatestJobRunStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.LatestJobRunStatus }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupJobDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of this resource.
 func (o LookupJobDefinitionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The name of the source Endpoint.
 func (o LookupJobDefinitionResultOutput) SourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.SourceName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID of the source Endpoint.
 func (o LookupJobDefinitionResultOutput) SourceResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.SourceResourceId }).(pulumi.StringOutput)
 }
 
+// The subpath to use when reading from the source Endpoint.
 func (o LookupJobDefinitionResultOutput) SourceSubpath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) *string { return v.SourceSubpath }).(pulumi.StringPtrOutput)
 }
 
+// Resource system metadata.
 func (o LookupJobDefinitionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The name of the target Endpoint.
 func (o LookupJobDefinitionResultOutput) TargetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.TargetName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID of the target Endpoint.
 func (o LookupJobDefinitionResultOutput) TargetResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.TargetResourceId }).(pulumi.StringOutput)
 }
 
+// The subpath to use when writing to the target Endpoint.
 func (o LookupJobDefinitionResultOutput) TargetSubpath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) *string { return v.TargetSubpath }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupJobDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

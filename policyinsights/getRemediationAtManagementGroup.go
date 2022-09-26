@@ -22,24 +22,38 @@ func LookupRemediationAtManagementGroup(ctx *pulumi.Context, args *LookupRemedia
 }
 
 type LookupRemediationAtManagementGroupArgs struct {
-	ManagementGroupId         string `pulumi:"managementGroupId"`
+	// Management group ID.
+	ManagementGroupId string `pulumi:"managementGroupId"`
+	// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
 	ManagementGroupsNamespace string `pulumi:"managementGroupsNamespace"`
-	RemediationName           string `pulumi:"remediationName"`
+	// The name of the remediation.
+	RemediationName string `pulumi:"remediationName"`
 }
 
 // The remediation definition.
 type LookupRemediationAtManagementGroupResult struct {
-	CreatedOn                   string                               `pulumi:"createdOn"`
-	DeploymentStatus            RemediationDeploymentSummaryResponse `pulumi:"deploymentStatus"`
-	Filters                     *RemediationFiltersResponse          `pulumi:"filters"`
-	Id                          string                               `pulumi:"id"`
-	LastUpdatedOn               string                               `pulumi:"lastUpdatedOn"`
-	Name                        string                               `pulumi:"name"`
-	PolicyAssignmentId          *string                              `pulumi:"policyAssignmentId"`
-	PolicyDefinitionReferenceId *string                              `pulumi:"policyDefinitionReferenceId"`
-	ProvisioningState           string                               `pulumi:"provisioningState"`
-	ResourceDiscoveryMode       *string                              `pulumi:"resourceDiscoveryMode"`
-	Type                        string                               `pulumi:"type"`
+	// The time at which the remediation was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// The deployment status summary for all deployments created by the remediation.
+	DeploymentStatus RemediationDeploymentSummaryResponse `pulumi:"deploymentStatus"`
+	// The filters that will be applied to determine which resources to remediate.
+	Filters *RemediationFiltersResponse `pulumi:"filters"`
+	// The ID of the remediation.
+	Id string `pulumi:"id"`
+	// The time at which the remediation was last updated.
+	LastUpdatedOn string `pulumi:"lastUpdatedOn"`
+	// The name of the remediation.
+	Name string `pulumi:"name"`
+	// The resource ID of the policy assignment that should be remediated.
+	PolicyAssignmentId *string `pulumi:"policyAssignmentId"`
+	// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
+	PolicyDefinitionReferenceId *string `pulumi:"policyDefinitionReferenceId"`
+	// The status of the remediation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
+	ResourceDiscoveryMode *string `pulumi:"resourceDiscoveryMode"`
+	// The type of the remediation.
+	Type string `pulumi:"type"`
 }
 
 func LookupRemediationAtManagementGroupOutput(ctx *pulumi.Context, args LookupRemediationAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRemediationAtManagementGroupResultOutput {
@@ -56,9 +70,12 @@ func LookupRemediationAtManagementGroupOutput(ctx *pulumi.Context, args LookupRe
 }
 
 type LookupRemediationAtManagementGroupOutputArgs struct {
-	ManagementGroupId         pulumi.StringInput `pulumi:"managementGroupId"`
+	// Management group ID.
+	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
+	// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
 	ManagementGroupsNamespace pulumi.StringInput `pulumi:"managementGroupsNamespace"`
-	RemediationName           pulumi.StringInput `pulumi:"remediationName"`
+	// The name of the remediation.
+	RemediationName pulumi.StringInput `pulumi:"remediationName"`
 }
 
 func (LookupRemediationAtManagementGroupOutputArgs) ElementType() reflect.Type {
@@ -80,48 +97,59 @@ func (o LookupRemediationAtManagementGroupResultOutput) ToLookupRemediationAtMan
 	return o
 }
 
+// The time at which the remediation was created.
 func (o LookupRemediationAtManagementGroupResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// The deployment status summary for all deployments created by the remediation.
 func (o LookupRemediationAtManagementGroupResultOutput) DeploymentStatus() RemediationDeploymentSummaryResponseOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) RemediationDeploymentSummaryResponse {
 		return v.DeploymentStatus
 	}).(RemediationDeploymentSummaryResponseOutput)
 }
 
+// The filters that will be applied to determine which resources to remediate.
 func (o LookupRemediationAtManagementGroupResultOutput) Filters() RemediationFiltersResponsePtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) *RemediationFiltersResponse { return v.Filters }).(RemediationFiltersResponsePtrOutput)
 }
 
+// The ID of the remediation.
 func (o LookupRemediationAtManagementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The time at which the remediation was last updated.
 func (o LookupRemediationAtManagementGroupResultOutput) LastUpdatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) string { return v.LastUpdatedOn }).(pulumi.StringOutput)
 }
 
+// The name of the remediation.
 func (o LookupRemediationAtManagementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource ID of the policy assignment that should be remediated.
 func (o LookupRemediationAtManagementGroupResultOutput) PolicyAssignmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) *string { return v.PolicyAssignmentId }).(pulumi.StringPtrOutput)
 }
 
+// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
 func (o LookupRemediationAtManagementGroupResultOutput) PolicyDefinitionReferenceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) *string { return v.PolicyDefinitionReferenceId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the remediation.
 func (o LookupRemediationAtManagementGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
 func (o LookupRemediationAtManagementGroupResultOutput) ResourceDiscoveryMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) *string { return v.ResourceDiscoveryMode }).(pulumi.StringPtrOutput)
 }
 
+// The type of the remediation.
 func (o LookupRemediationAtManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

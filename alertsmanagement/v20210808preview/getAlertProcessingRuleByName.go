@@ -21,19 +21,28 @@ func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProce
 }
 
 type LookupAlertProcessingRuleByNameArgs struct {
+	// The name of the alert processing rule that needs to be fetched.
 	AlertProcessingRuleName string `pulumi:"alertProcessingRuleName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Resource group name where the resource is created.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
 type LookupAlertProcessingRuleByNameResult struct {
-	Id         string                                `pulumi:"id"`
-	Location   string                                `pulumi:"location"`
-	Name       string                                `pulumi:"name"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Alert processing rule properties.
 	Properties AlertProcessingRulePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                    `pulumi:"systemData"`
-	Tags       map[string]string                     `pulumi:"tags"`
-	Type       string                                `pulumi:"type"`
+	// Alert processing rule system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupAlertProcessingRuleByNameResult
@@ -61,8 +70,10 @@ func LookupAlertProcessingRuleByNameOutput(ctx *pulumi.Context, args LookupAlert
 }
 
 type LookupAlertProcessingRuleByNameOutputArgs struct {
+	// The name of the alert processing rule that needs to be fetched.
 	AlertProcessingRuleName pulumi.StringInput `pulumi:"alertProcessingRuleName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Resource group name where the resource is created.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAlertProcessingRuleByNameOutputArgs) ElementType() reflect.Type {
@@ -84,32 +95,39 @@ func (o LookupAlertProcessingRuleByNameResultOutput) ToLookupAlertProcessingRule
 	return o
 }
 
+// Azure resource Id
 func (o LookupAlertProcessingRuleByNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupAlertProcessingRuleByNameResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupAlertProcessingRuleByNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Alert processing rule properties.
 func (o LookupAlertProcessingRuleByNameResultOutput) Properties() AlertProcessingRulePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) AlertProcessingRulePropertiesResponse {
 		return v.Properties
 	}).(AlertProcessingRulePropertiesResponseOutput)
 }
 
+// Alert processing rule system data.
 func (o LookupAlertProcessingRuleByNameResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags
 func (o LookupAlertProcessingRuleByNameResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type
 func (o LookupAlertProcessingRuleByNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

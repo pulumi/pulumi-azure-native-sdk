@@ -22,14 +22,19 @@ func ListWebAppSyncFunctionTriggersSlot(ctx *pulumi.Context, args *ListWebAppSyn
 }
 
 type ListWebAppSyncFunctionTriggersSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Function secrets.
 type ListWebAppSyncFunctionTriggersSlotResult struct {
-	Key        *string `pulumi:"key"`
+	// Secret key.
+	Key *string `pulumi:"key"`
+	// Trigger URL.
 	TriggerUrl *string `pulumi:"triggerUrl"`
 }
 
@@ -47,9 +52,12 @@ func ListWebAppSyncFunctionTriggersSlotOutput(ctx *pulumi.Context, args ListWebA
 }
 
 type ListWebAppSyncFunctionTriggersSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppSyncFunctionTriggersSlotOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListWebAppSyncFunctionTriggersSlotResultOutput) ToListWebAppSyncFunction
 	return o
 }
 
+// Secret key.
 func (o ListWebAppSyncFunctionTriggersSlotResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppSyncFunctionTriggersSlotResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Trigger URL.
 func (o ListWebAppSyncFunctionTriggersSlotResultOutput) TriggerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppSyncFunctionTriggersSlotResult) *string { return v.TriggerUrl }).(pulumi.StringPtrOutput)
 }

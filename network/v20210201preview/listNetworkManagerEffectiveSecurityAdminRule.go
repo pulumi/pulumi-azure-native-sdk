@@ -21,15 +21,20 @@ func ListNetworkManagerEffectiveSecurityAdminRule(ctx *pulumi.Context, args *Lis
 }
 
 type ListNetworkManagerEffectiveSecurityAdminRuleArgs struct {
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
-	SkipToken          *string `pulumi:"skipToken"`
-	VirtualNetworkName string  `pulumi:"virtualNetworkName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// The name of the virtual network.
+	VirtualNetworkName string `pulumi:"virtualNetworkName"`
 }
 
 // Result of the request to list networkManagerEffectiveSecurityAdminRules. It contains a list of groups and a skiptoken to get the next set of results.
 type ListNetworkManagerEffectiveSecurityAdminRuleResult struct {
-	SkipToken *string       `pulumi:"skipToken"`
-	Value     []interface{} `pulumi:"value"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// Gets a page of NetworkManagerEffectiveSecurityAdminRules
+	Value []interface{} `pulumi:"value"`
 }
 
 func ListNetworkManagerEffectiveSecurityAdminRuleOutput(ctx *pulumi.Context, args ListNetworkManagerEffectiveSecurityAdminRuleOutputArgs, opts ...pulumi.InvokeOption) ListNetworkManagerEffectiveSecurityAdminRuleResultOutput {
@@ -46,9 +51,12 @@ func ListNetworkManagerEffectiveSecurityAdminRuleOutput(ctx *pulumi.Context, arg
 }
 
 type ListNetworkManagerEffectiveSecurityAdminRuleOutputArgs struct {
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SkipToken          pulumi.StringPtrInput `pulumi:"skipToken"`
-	VirtualNetworkName pulumi.StringInput    `pulumi:"virtualNetworkName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
+	// The name of the virtual network.
+	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
 }
 
 func (ListNetworkManagerEffectiveSecurityAdminRuleOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListNetworkManagerEffectiveSecurityAdminRuleResultOutput) ToListNetworkM
 	return o
 }
 
+// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 func (o ListNetworkManagerEffectiveSecurityAdminRuleResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNetworkManagerEffectiveSecurityAdminRuleResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// Gets a page of NetworkManagerEffectiveSecurityAdminRules
 func (o ListNetworkManagerEffectiveSecurityAdminRuleResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ListNetworkManagerEffectiveSecurityAdminRuleResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

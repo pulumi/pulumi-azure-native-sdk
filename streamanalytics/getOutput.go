@@ -22,20 +22,30 @@ func LookupOutput(ctx *pulumi.Context, args *LookupOutputArgs, opts ...pulumi.In
 }
 
 type LookupOutputArgs struct {
-	JobName           string `pulumi:"jobName"`
-	OutputName        string `pulumi:"outputName"`
+	// The name of the streaming job.
+	JobName string `pulumi:"jobName"`
+	// The name of the output.
+	OutputName string `pulumi:"outputName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
 type LookupOutputResult struct {
-	Datasource    interface{}         `pulumi:"datasource"`
-	Diagnostics   DiagnosticsResponse `pulumi:"diagnostics"`
-	Etag          string              `pulumi:"etag"`
-	Id            string              `pulumi:"id"`
-	Name          *string             `pulumi:"name"`
-	Serialization interface{}         `pulumi:"serialization"`
-	Type          string              `pulumi:"type"`
+	// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
+	Datasource interface{} `pulumi:"datasource"`
+	// Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
+	Diagnostics DiagnosticsResponse `pulumi:"diagnostics"`
+	// The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
+	Etag string `pulumi:"etag"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name *string `pulumi:"name"`
+	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
+	Serialization interface{} `pulumi:"serialization"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupOutputOutput(ctx *pulumi.Context, args LookupOutputOutputArgs, opts ...pulumi.InvokeOption) LookupOutputResultOutput {
@@ -52,8 +62,11 @@ func LookupOutputOutput(ctx *pulumi.Context, args LookupOutputOutputArgs, opts .
 }
 
 type LookupOutputOutputArgs struct {
-	JobName           pulumi.StringInput `pulumi:"jobName"`
-	OutputName        pulumi.StringInput `pulumi:"outputName"`
+	// The name of the streaming job.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The name of the output.
+	OutputName pulumi.StringInput `pulumi:"outputName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,30 +89,37 @@ func (o LookupOutputResultOutput) ToLookupOutputResultOutputWithContext(ctx cont
 	return o
 }
 
+// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
 func (o LookupOutputResultOutput) Datasource() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupOutputResult) interface{} { return v.Datasource }).(pulumi.AnyOutput)
 }
 
+// Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
 func (o LookupOutputResultOutput) Diagnostics() DiagnosticsResponseOutput {
 	return o.ApplyT(func(v LookupOutputResult) DiagnosticsResponse { return v.Diagnostics }).(DiagnosticsResponseOutput)
 }
 
+// The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
 func (o LookupOutputResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutputResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupOutputResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutputResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupOutputResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOutputResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 func (o LookupOutputResultOutput) Serialization() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupOutputResult) interface{} { return v.Serialization }).(pulumi.AnyOutput)
 }
 
+// Resource type
 func (o LookupOutputResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOutputResult) string { return v.Type }).(pulumi.StringOutput)
 }

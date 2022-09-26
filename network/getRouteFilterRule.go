@@ -22,21 +22,32 @@ func LookupRouteFilterRule(ctx *pulumi.Context, args *LookupRouteFilterRuleArgs,
 }
 
 type LookupRouteFilterRuleArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RouteFilterName   string `pulumi:"routeFilterName"`
-	RuleName          string `pulumi:"ruleName"`
+	// The name of the route filter.
+	RouteFilterName string `pulumi:"routeFilterName"`
+	// The name of the rule.
+	RuleName string `pulumi:"ruleName"`
 }
 
 // Route Filter Rule Resource.
 type LookupRouteFilterRuleResult struct {
-	Access              string   `pulumi:"access"`
-	Communities         []string `pulumi:"communities"`
-	Etag                string   `pulumi:"etag"`
-	Id                  *string  `pulumi:"id"`
-	Location            *string  `pulumi:"location"`
-	Name                *string  `pulumi:"name"`
-	ProvisioningState   string   `pulumi:"provisioningState"`
-	RouteFilterRuleType string   `pulumi:"routeFilterRuleType"`
+	// The access type of the rule.
+	Access string `pulumi:"access"`
+	// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
+	Communities []string `pulumi:"communities"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the route filter rule resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The rule type of the rule.
+	RouteFilterRuleType string `pulumi:"routeFilterRuleType"`
 }
 
 func LookupRouteFilterRuleOutput(ctx *pulumi.Context, args LookupRouteFilterRuleOutputArgs, opts ...pulumi.InvokeOption) LookupRouteFilterRuleResultOutput {
@@ -53,9 +64,12 @@ func LookupRouteFilterRuleOutput(ctx *pulumi.Context, args LookupRouteFilterRule
 }
 
 type LookupRouteFilterRuleOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RouteFilterName   pulumi.StringInput `pulumi:"routeFilterName"`
-	RuleName          pulumi.StringInput `pulumi:"ruleName"`
+	// The name of the route filter.
+	RouteFilterName pulumi.StringInput `pulumi:"routeFilterName"`
+	// The name of the rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
 }
 
 func (LookupRouteFilterRuleOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupRouteFilterRuleResultOutput) ToLookupRouteFilterRuleResultOutputWi
 	return o
 }
 
+// The access type of the rule.
 func (o LookupRouteFilterRuleResultOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) string { return v.Access }).(pulumi.StringOutput)
 }
 
+// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
 func (o LookupRouteFilterRuleResultOutput) Communities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) []string { return v.Communities }).(pulumi.StringArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupRouteFilterRuleResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupRouteFilterRuleResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupRouteFilterRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupRouteFilterRuleResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the route filter rule resource.
 func (o LookupRouteFilterRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The rule type of the rule.
 func (o LookupRouteFilterRuleResultOutput) RouteFilterRuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) string { return v.RouteFilterRuleType }).(pulumi.StringOutput)
 }

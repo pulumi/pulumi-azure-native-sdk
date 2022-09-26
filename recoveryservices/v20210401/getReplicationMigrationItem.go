@@ -21,20 +21,30 @@ func LookupReplicationMigrationItem(ctx *pulumi.Context, args *LookupReplication
 }
 
 type LookupReplicationMigrationItemArgs struct {
-	FabricName              string `pulumi:"fabricName"`
-	MigrationItemName       string `pulumi:"migrationItemName"`
+	// Fabric unique name.
+	FabricName string `pulumi:"fabricName"`
+	// Migration item name.
+	MigrationItemName string `pulumi:"migrationItemName"`
+	// Protection container name.
 	ProtectionContainerName string `pulumi:"protectionContainerName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
-	ResourceName            string `pulumi:"resourceName"`
+	// The name of the resource group where the recovery services vault is present.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the recovery services vault.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Migration item.
 type LookupReplicationMigrationItemResult struct {
-	Id         string                          `pulumi:"id"`
-	Location   *string                         `pulumi:"location"`
-	Name       string                          `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// The migration item properties.
 	Properties MigrationItemPropertiesResponse `pulumi:"properties"`
-	Type       string                          `pulumi:"type"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationMigrationItemOutput(ctx *pulumi.Context, args LookupReplicationMigrationItemOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationMigrationItemResultOutput {
@@ -51,11 +61,16 @@ func LookupReplicationMigrationItemOutput(ctx *pulumi.Context, args LookupReplic
 }
 
 type LookupReplicationMigrationItemOutputArgs struct {
-	FabricName              pulumi.StringInput `pulumi:"fabricName"`
-	MigrationItemName       pulumi.StringInput `pulumi:"migrationItemName"`
+	// Fabric unique name.
+	FabricName pulumi.StringInput `pulumi:"fabricName"`
+	// Migration item name.
+	MigrationItemName pulumi.StringInput `pulumi:"migrationItemName"`
+	// Protection container name.
 	ProtectionContainerName pulumi.StringInput `pulumi:"protectionContainerName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName            pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource group where the recovery services vault is present.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the recovery services vault.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupReplicationMigrationItemOutputArgs) ElementType() reflect.Type {
@@ -77,22 +92,27 @@ func (o LookupReplicationMigrationItemResultOutput) ToLookupReplicationMigration
 	return o
 }
 
+// Resource Id
 func (o LookupReplicationMigrationItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationMigrationItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupReplicationMigrationItemResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicationMigrationItemResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupReplicationMigrationItemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationMigrationItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The migration item properties.
 func (o LookupReplicationMigrationItemResultOutput) Properties() MigrationItemPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupReplicationMigrationItemResult) MigrationItemPropertiesResponse { return v.Properties }).(MigrationItemPropertiesResponseOutput)
 }
 
+// Resource Type
 func (o LookupReplicationMigrationItemResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationMigrationItemResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,24 +22,38 @@ func LookupWorkloadClassifier(ctx *pulumi.Context, args *LookupWorkloadClassifie
 }
 
 type LookupWorkloadClassifierArgs struct {
-	DatabaseName           string `pulumi:"databaseName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	ServerName             string `pulumi:"serverName"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the workload classifier.
 	WorkloadClassifierName string `pulumi:"workloadClassifierName"`
-	WorkloadGroupName      string `pulumi:"workloadGroupName"`
+	// The name of the workload group from which to receive the classifier from.
+	WorkloadGroupName string `pulumi:"workloadGroupName"`
 }
 
 // Workload classifier operations for a data warehouse
 type LookupWorkloadClassifierResult struct {
-	Context    *string `pulumi:"context"`
-	EndTime    *string `pulumi:"endTime"`
-	Id         string  `pulumi:"id"`
+	// The workload classifier context.
+	Context *string `pulumi:"context"`
+	// The workload classifier end time for classification.
+	EndTime *string `pulumi:"endTime"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The workload classifier importance.
 	Importance *string `pulumi:"importance"`
-	Label      *string `pulumi:"label"`
-	MemberName string  `pulumi:"memberName"`
-	Name       string  `pulumi:"name"`
-	StartTime  *string `pulumi:"startTime"`
-	Type       string  `pulumi:"type"`
+	// The workload classifier label.
+	Label *string `pulumi:"label"`
+	// The workload classifier member name.
+	MemberName string `pulumi:"memberName"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The workload classifier start time for classification.
+	StartTime *string `pulumi:"startTime"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadClassifierOutput(ctx *pulumi.Context, args LookupWorkloadClassifierOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadClassifierResultOutput {
@@ -56,11 +70,16 @@ func LookupWorkloadClassifierOutput(ctx *pulumi.Context, args LookupWorkloadClas
 }
 
 type LookupWorkloadClassifierOutputArgs struct {
-	DatabaseName           pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName             pulumi.StringInput `pulumi:"serverName"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the workload classifier.
 	WorkloadClassifierName pulumi.StringInput `pulumi:"workloadClassifierName"`
-	WorkloadGroupName      pulumi.StringInput `pulumi:"workloadGroupName"`
+	// The name of the workload group from which to receive the classifier from.
+	WorkloadGroupName pulumi.StringInput `pulumi:"workloadGroupName"`
 }
 
 func (LookupWorkloadClassifierOutputArgs) ElementType() reflect.Type {
@@ -82,38 +101,47 @@ func (o LookupWorkloadClassifierResultOutput) ToLookupWorkloadClassifierResultOu
 	return o
 }
 
+// The workload classifier context.
 func (o LookupWorkloadClassifierResultOutput) Context() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) *string { return v.Context }).(pulumi.StringPtrOutput)
 }
 
+// The workload classifier end time for classification.
 func (o LookupWorkloadClassifierResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupWorkloadClassifierResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The workload classifier importance.
 func (o LookupWorkloadClassifierResultOutput) Importance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) *string { return v.Importance }).(pulumi.StringPtrOutput)
 }
 
+// The workload classifier label.
 func (o LookupWorkloadClassifierResultOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// The workload classifier member name.
 func (o LookupWorkloadClassifierResultOutput) MemberName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) string { return v.MemberName }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupWorkloadClassifierResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The workload classifier start time for classification.
 func (o LookupWorkloadClassifierResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadClassifierResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadClassifierResult) string { return v.Type }).(pulumi.StringOutput)
 }

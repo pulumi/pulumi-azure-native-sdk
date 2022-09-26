@@ -23,20 +23,30 @@ func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts 
 }
 
 type LookupCustomDomainArgs struct {
-	CustomDomainName  string `pulumi:"customDomainName"`
-	EndpointName      string `pulumi:"endpointName"`
-	ProfileName       string `pulumi:"profileName"`
+	// Name of the custom domain within an endpoint.
+	CustomDomainName string `pulumi:"customDomainName"`
+	// Name of the endpoint within the CDN profile.
+	EndpointName string `pulumi:"endpointName"`
+	// Name of the CDN profile within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // CDN CustomDomain represents a mapping between a user specified domain name and a CDN endpoint. This is to use custom domain names to represent the URLs for branding purposes.
 type LookupCustomDomainResult struct {
-	HostName          string `pulumi:"hostName"`
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
+	// The host name of the custom domain. Must be a domain name.
+	HostName string `pulumi:"hostName"`
+	// Resource ID
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Provisioning status of the custom domain.
 	ProvisioningState string `pulumi:"provisioningState"`
-	ResourceState     string `pulumi:"resourceState"`
-	Type              string `pulumi:"type"`
+	// Resource status of the custom domain.
+	ResourceState string `pulumi:"resourceState"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
@@ -53,9 +63,13 @@ func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutput
 }
 
 type LookupCustomDomainOutputArgs struct {
-	CustomDomainName  pulumi.StringInput `pulumi:"customDomainName"`
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
-	ProfileName       pulumi.StringInput `pulumi:"profileName"`
+	// Name of the custom domain within an endpoint.
+	CustomDomainName pulumi.StringInput `pulumi:"customDomainName"`
+	// Name of the endpoint within the CDN profile.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// Name of the CDN profile within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,26 +92,32 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithCont
 	return o
 }
 
+// The host name of the custom domain. Must be a domain name.
 func (o LookupCustomDomainResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// Resource ID
 func (o LookupCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning status of the custom domain.
 func (o LookupCustomDomainResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource status of the custom domain.
 func (o LookupCustomDomainResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

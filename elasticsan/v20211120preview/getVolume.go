@@ -21,23 +21,36 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 }
 
 type LookupVolumeArgs struct {
-	ElasticSanName    string `pulumi:"elasticSanName"`
+	// The name of the ElasticSan.
+	ElasticSanName string `pulumi:"elasticSanName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VolumeGroupName   string `pulumi:"volumeGroupName"`
-	VolumeName        string `pulumi:"volumeName"`
+	// The name of the VolumeGroup.
+	VolumeGroupName string `pulumi:"volumeGroupName"`
+	// The name of the Volume.
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // Response for Volume request.
 type LookupVolumeResult struct {
-	CreationData  *SourceCreationDataResponse `pulumi:"creationData"`
-	Id            string                      `pulumi:"id"`
-	Name          string                      `pulumi:"name"`
-	SizeGiB       *float64                    `pulumi:"sizeGiB"`
-	StorageTarget IscsiTargetInfoResponse     `pulumi:"storageTarget"`
-	SystemData    SystemDataResponse          `pulumi:"systemData"`
-	Tags          map[string]string           `pulumi:"tags"`
-	Type          string                      `pulumi:"type"`
-	VolumeId      string                      `pulumi:"volumeId"`
+	// State of the operation on the resource.
+	CreationData *SourceCreationDataResponse `pulumi:"creationData"`
+	// Azure resource identifier.
+	Id string `pulumi:"id"`
+	// Azure resource name.
+	Name string `pulumi:"name"`
+	// Volume size.
+	SizeGiB *float64 `pulumi:"sizeGiB"`
+	// Storage target information
+	StorageTarget IscsiTargetInfoResponse `pulumi:"storageTarget"`
+	// Resource metadata required by ARM RPC
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
+	// Unique Id of the volume in GUID format
+	VolumeId string `pulumi:"volumeId"`
 }
 
 func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
@@ -54,10 +67,14 @@ func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts .
 }
 
 type LookupVolumeOutputArgs struct {
-	ElasticSanName    pulumi.StringInput `pulumi:"elasticSanName"`
+	// The name of the ElasticSan.
+	ElasticSanName pulumi.StringInput `pulumi:"elasticSanName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VolumeGroupName   pulumi.StringInput `pulumi:"volumeGroupName"`
-	VolumeName        pulumi.StringInput `pulumi:"volumeName"`
+	// The name of the VolumeGroup.
+	VolumeGroupName pulumi.StringInput `pulumi:"volumeGroupName"`
+	// The name of the Volume.
+	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (LookupVolumeOutputArgs) ElementType() reflect.Type {
@@ -79,38 +96,47 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 	return o
 }
 
+// State of the operation on the resource.
 func (o LookupVolumeResultOutput) CreationData() SourceCreationDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *SourceCreationDataResponse { return v.CreationData }).(SourceCreationDataResponsePtrOutput)
 }
 
+// Azure resource identifier.
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure resource name.
 func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Volume size.
 func (o LookupVolumeResultOutput) SizeGiB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *float64 { return v.SizeGiB }).(pulumi.Float64PtrOutput)
 }
 
+// Storage target information
 func (o LookupVolumeResultOutput) StorageTarget() IscsiTargetInfoResponseOutput {
 	return o.ApplyT(func(v LookupVolumeResult) IscsiTargetInfoResponse { return v.StorageTarget }).(IscsiTargetInfoResponseOutput)
 }
 
+// Resource metadata required by ARM RPC
 func (o LookupVolumeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVolumeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource tags.
 func (o LookupVolumeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVolumeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type.
 func (o LookupVolumeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Unique Id of the volume in GUID format
 func (o LookupVolumeResultOutput) VolumeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.VolumeId }).(pulumi.StringOutput)
 }

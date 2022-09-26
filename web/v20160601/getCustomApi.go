@@ -21,20 +21,30 @@ func LookupCustomApi(ctx *pulumi.Context, args *LookupCustomApiArgs, opts ...pul
 }
 
 type LookupCustomApiArgs struct {
-	ApiName           string  `pulumi:"apiName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	SubscriptionId    *string `pulumi:"subscriptionId"`
+	// API name
+	ApiName string `pulumi:"apiName"`
+	// The resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Subscription Id
+	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // A custom API
 type LookupCustomApiResult struct {
-	Etag       *string                               `pulumi:"etag"`
-	Id         string                                `pulumi:"id"`
-	Location   *string                               `pulumi:"location"`
-	Name       string                                `pulumi:"name"`
+	// Resource ETag
+	Etag *string `pulumi:"etag"`
+	// Resource id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Custom API properties
 	Properties CustomApiPropertiesDefinitionResponse `pulumi:"properties"`
-	Tags       map[string]string                     `pulumi:"tags"`
-	Type       string                                `pulumi:"type"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupCustomApiOutput(ctx *pulumi.Context, args LookupCustomApiOutputArgs, opts ...pulumi.InvokeOption) LookupCustomApiResultOutput {
@@ -51,9 +61,12 @@ func LookupCustomApiOutput(ctx *pulumi.Context, args LookupCustomApiOutputArgs, 
 }
 
 type LookupCustomApiOutputArgs struct {
-	ApiName           pulumi.StringInput    `pulumi:"apiName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SubscriptionId    pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// API name
+	ApiName pulumi.StringInput `pulumi:"apiName"`
+	// The resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Subscription Id
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
 func (LookupCustomApiOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupCustomApiResultOutput) ToLookupCustomApiResultOutputWithContext(ct
 	return o
 }
 
+// Resource ETag
 func (o LookupCustomApiResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource id
 func (o LookupCustomApiResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupCustomApiResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupCustomApiResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Custom API properties
 func (o LookupCustomApiResultOutput) Properties() CustomApiPropertiesDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) CustomApiPropertiesDefinitionResponse { return v.Properties }).(CustomApiPropertiesDefinitionResponseOutput)
 }
 
+// Resource tags
 func (o LookupCustomApiResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupCustomApiResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomApiResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,20 +21,30 @@ func LookupIntegrationAccount(ctx *pulumi.Context, args *LookupIntegrationAccoun
 }
 
 type LookupIntegrationAccountArgs struct {
+	// The integration account name.
 	IntegrationAccountName string `pulumi:"integrationAccountName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The integration account.
 type LookupIntegrationAccountResult struct {
-	Id                            string                         `pulumi:"id"`
-	IntegrationServiceEnvironment *ResourceReferenceResponse     `pulumi:"integrationServiceEnvironment"`
-	Location                      *string                        `pulumi:"location"`
-	Name                          string                         `pulumi:"name"`
-	Sku                           *IntegrationAccountSkuResponse `pulumi:"sku"`
-	State                         *string                        `pulumi:"state"`
-	Tags                          map[string]string              `pulumi:"tags"`
-	Type                          string                         `pulumi:"type"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The integration service environment.
+	IntegrationServiceEnvironment *ResourceReferenceResponse `pulumi:"integrationServiceEnvironment"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The sku.
+	Sku *IntegrationAccountSkuResponse `pulumi:"sku"`
+	// The workflow state.
+	State *string `pulumi:"state"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupIntegrationAccountOutput(ctx *pulumi.Context, args LookupIntegrationAccountOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountResultOutput {
@@ -51,8 +61,10 @@ func LookupIntegrationAccountOutput(ctx *pulumi.Context, args LookupIntegrationA
 }
 
 type LookupIntegrationAccountOutputArgs struct {
+	// The integration account name.
 	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupIntegrationAccountOutputArgs) ElementType() reflect.Type {
@@ -74,36 +86,44 @@ func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOu
 	return o
 }
 
+// The resource id.
 func (o LookupIntegrationAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The integration service environment.
 func (o LookupIntegrationAccountResultOutput) IntegrationServiceEnvironment() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) *ResourceReferenceResponse {
 		return v.IntegrationServiceEnvironment
 	}).(ResourceReferenceResponsePtrOutput)
 }
 
+// The resource location.
 func (o LookupIntegrationAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the resource name.
 func (o LookupIntegrationAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The sku.
 func (o LookupIntegrationAccountResultOutput) Sku() IntegrationAccountSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) *IntegrationAccountSkuResponse { return v.Sku }).(IntegrationAccountSkuResponsePtrOutput)
 }
 
+// The workflow state.
 func (o LookupIntegrationAccountResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// The resource tags.
 func (o LookupIntegrationAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupIntegrationAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

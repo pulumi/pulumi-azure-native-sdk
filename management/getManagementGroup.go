@@ -22,21 +22,32 @@ func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs,
 }
 
 type LookupManagementGroupArgs struct {
-	Expand  *string `pulumi:"expand"`
-	Filter  *string `pulumi:"filter"`
-	GroupId string  `pulumi:"groupId"`
-	Recurse *bool   `pulumi:"recurse"`
+	// The $expand=children query string parameter allows clients to request inclusion of children in the response payload.  $expand=path includes the path from the root group to the current group.
+	Expand *string `pulumi:"expand"`
+	// A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
+	Filter *string `pulumi:"filter"`
+	// Management Group ID.
+	GroupId string `pulumi:"groupId"`
+	// The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that  $expand=children must be passed up if $recurse is set to true.
+	Recurse *bool `pulumi:"recurse"`
 }
 
 // The management group details.
 type LookupManagementGroupResult struct {
-	Children    []ManagementGroupChildInfoResponse `pulumi:"children"`
-	Details     *ManagementGroupDetailsResponse    `pulumi:"details"`
-	DisplayName *string                            `pulumi:"displayName"`
-	Id          string                             `pulumi:"id"`
-	Name        string                             `pulumi:"name"`
-	TenantId    *string                            `pulumi:"tenantId"`
-	Type        string                             `pulumi:"type"`
+	// The list of children.
+	Children []ManagementGroupChildInfoResponse `pulumi:"children"`
+	// The details of a management group.
+	Details *ManagementGroupDetailsResponse `pulumi:"details"`
+	// The friendly name of the management group.
+	DisplayName *string `pulumi:"displayName"`
+	// The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+	Id string `pulumi:"id"`
+	// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+	Name string `pulumi:"name"`
+	// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
+	TenantId *string `pulumi:"tenantId"`
+	// The type of the resource.  For example, Microsoft.Management/managementGroups
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementGroupOutput(ctx *pulumi.Context, args LookupManagementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupResultOutput {
@@ -53,10 +64,14 @@ func LookupManagementGroupOutput(ctx *pulumi.Context, args LookupManagementGroup
 }
 
 type LookupManagementGroupOutputArgs struct {
-	Expand  pulumi.StringPtrInput `pulumi:"expand"`
-	Filter  pulumi.StringPtrInput `pulumi:"filter"`
-	GroupId pulumi.StringInput    `pulumi:"groupId"`
-	Recurse pulumi.BoolPtrInput   `pulumi:"recurse"`
+	// The $expand=children query string parameter allows clients to request inclusion of children in the response payload.  $expand=path includes the path from the root group to the current group.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Management Group ID.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that  $expand=children must be passed up if $recurse is set to true.
+	Recurse pulumi.BoolPtrInput `pulumi:"recurse"`
 }
 
 func (LookupManagementGroupOutputArgs) ElementType() reflect.Type {
@@ -78,30 +93,37 @@ func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutputWi
 	return o
 }
 
+// The list of children.
 func (o LookupManagementGroupResultOutput) Children() ManagementGroupChildInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) []ManagementGroupChildInfoResponse { return v.Children }).(ManagementGroupChildInfoResponseArrayOutput)
 }
 
+// The details of a management group.
 func (o LookupManagementGroupResultOutput) Details() ManagementGroupDetailsResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) *ManagementGroupDetailsResponse { return v.Details }).(ManagementGroupDetailsResponsePtrOutput)
 }
 
+// The friendly name of the management group.
 func (o LookupManagementGroupResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 func (o LookupManagementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupManagementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupManagementGroupResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.  For example, Microsoft.Management/managementGroups
 func (o LookupManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

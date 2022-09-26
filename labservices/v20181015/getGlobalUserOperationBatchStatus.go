@@ -21,12 +21,15 @@ func GetGlobalUserOperationBatchStatus(ctx *pulumi.Context, args *GetGlobalUserO
 }
 
 type GetGlobalUserOperationBatchStatusArgs struct {
-	Urls     []string `pulumi:"urls"`
-	UserName string   `pulumi:"userName"`
+	// The operation url of long running operation
+	Urls []string `pulumi:"urls"`
+	// The name of the user.
+	UserName string `pulumi:"userName"`
 }
 
 // Status Details of the long running operation for an environment
 type GetGlobalUserOperationBatchStatusResult struct {
+	// Gets a collection of items that contain the operation url and status.
 	Items []OperationBatchStatusResponseItemResponse `pulumi:"items"`
 }
 
@@ -44,8 +47,10 @@ func GetGlobalUserOperationBatchStatusOutput(ctx *pulumi.Context, args GetGlobal
 }
 
 type GetGlobalUserOperationBatchStatusOutputArgs struct {
-	Urls     pulumi.StringArrayInput `pulumi:"urls"`
-	UserName pulumi.StringInput      `pulumi:"userName"`
+	// The operation url of long running operation
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+	// The name of the user.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (GetGlobalUserOperationBatchStatusOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o GetGlobalUserOperationBatchStatusResultOutput) ToGetGlobalUserOperationB
 	return o
 }
 
+// Gets a collection of items that contain the operation url and status.
 func (o GetGlobalUserOperationBatchStatusResultOutput) Items() OperationBatchStatusResponseItemResponseArrayOutput {
 	return o.ApplyT(func(v GetGlobalUserOperationBatchStatusResult) []OperationBatchStatusResponseItemResponse {
 		return v.Items

@@ -21,15 +21,21 @@ func LookupVendorSkuPreview(ctx *pulumi.Context, args *LookupVendorSkuPreviewArg
 }
 
 type LookupVendorSkuPreviewArgs struct {
+	// Preview subscription ID.
 	PreviewSubscription string `pulumi:"previewSubscription"`
-	SkuName             string `pulumi:"skuName"`
-	VendorName          string `pulumi:"vendorName"`
+	// The name of the vendor sku.
+	SkuName string `pulumi:"skuName"`
+	// The name of the vendor.
+	VendorName string `pulumi:"vendorName"`
 }
 
 // Customer subscription which can use a sku.
 type LookupVendorSkuPreviewResult struct {
-	Id   string `pulumi:"id"`
+	// The ARM ID of the resource.
+	Id string `pulumi:"id"`
+	// The preview subscription ID.
 	Name string `pulumi:"name"`
+	// The type of the resource.
 	Type string `pulumi:"type"`
 }
 
@@ -47,9 +53,12 @@ func LookupVendorSkuPreviewOutput(ctx *pulumi.Context, args LookupVendorSkuPrevi
 }
 
 type LookupVendorSkuPreviewOutputArgs struct {
+	// Preview subscription ID.
 	PreviewSubscription pulumi.StringInput `pulumi:"previewSubscription"`
-	SkuName             pulumi.StringInput `pulumi:"skuName"`
-	VendorName          pulumi.StringInput `pulumi:"vendorName"`
+	// The name of the vendor sku.
+	SkuName pulumi.StringInput `pulumi:"skuName"`
+	// The name of the vendor.
+	VendorName pulumi.StringInput `pulumi:"vendorName"`
 }
 
 func (LookupVendorSkuPreviewOutputArgs) ElementType() reflect.Type {
@@ -71,14 +80,17 @@ func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutput
 	return o
 }
 
+// The ARM ID of the resource.
 func (o LookupVendorSkuPreviewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The preview subscription ID.
 func (o LookupVendorSkuPreviewResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupVendorSkuPreviewResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Type }).(pulumi.StringOutput)
 }

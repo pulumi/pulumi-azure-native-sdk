@@ -21,17 +21,24 @@ func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.Invo
 }
 
 type LookupAddonArgs struct {
-	AddonName         string `pulumi:"addonName"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the addon for the private cloud
+	AddonName string `pulumi:"addonName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An addon resource
 type LookupAddonResult struct {
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The properties of an addon resource
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...pulumi.InvokeOption) LookupAddonResultOutput {
@@ -48,8 +55,11 @@ func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...
 }
 
 type LookupAddonOutputArgs struct {
-	AddonName         pulumi.StringInput `pulumi:"addonName"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the addon for the private cloud
+	AddonName pulumi.StringInput `pulumi:"addonName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,18 +82,22 @@ func (o LookupAddonResultOutput) ToLookupAddonResultOutputWithContext(ctx contex
 	return o
 }
 
+// Resource ID.
 func (o LookupAddonResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupAddonResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of an addon resource
 func (o LookupAddonResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAddonResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource type.
 func (o LookupAddonResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Type }).(pulumi.StringOutput)
 }

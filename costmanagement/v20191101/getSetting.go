@@ -21,18 +21,26 @@ func LookupSetting(ctx *pulumi.Context, args *LookupSettingArgs, opts ...pulumi.
 }
 
 type LookupSettingArgs struct {
+	// Name of the setting. Allowed values: myscope
 	SettingName string `pulumi:"settingName"`
 }
 
 // State of the myscope setting.
 type LookupSettingResult struct {
-	Cache   []SettingsPropertiesResponseCache `pulumi:"cache"`
-	Id      string                            `pulumi:"id"`
-	Kind    string                            `pulumi:"kind"`
-	Name    string                            `pulumi:"name"`
-	Scope   string                            `pulumi:"scope"`
-	StartOn *string                           `pulumi:"startOn"`
-	Type    string                            `pulumi:"type"`
+	// Array of scopes with additional details used by Cost Management in the Azure portal.
+	Cache []SettingsPropertiesResponseCache `pulumi:"cache"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource kind.
+	Kind string `pulumi:"kind"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
+	Scope string `pulumi:"scope"`
+	// Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
+	StartOn *string `pulumi:"startOn"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSettingOutput(ctx *pulumi.Context, args LookupSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSettingResultOutput {
@@ -49,6 +57,7 @@ func LookupSettingOutput(ctx *pulumi.Context, args LookupSettingOutputArgs, opts
 }
 
 type LookupSettingOutputArgs struct {
+	// Name of the setting. Allowed values: myscope
 	SettingName pulumi.StringInput `pulumi:"settingName"`
 }
 
@@ -71,30 +80,37 @@ func (o LookupSettingResultOutput) ToLookupSettingResultOutputWithContext(ctx co
 	return o
 }
 
+// Array of scopes with additional details used by Cost Management in the Azure portal.
 func (o LookupSettingResultOutput) Cache() SettingsPropertiesResponseCacheArrayOutput {
 	return o.ApplyT(func(v LookupSettingResult) []SettingsPropertiesResponseCache { return v.Cache }).(SettingsPropertiesResponseCacheArrayOutput)
 }
 
+// Resource Id.
 func (o LookupSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource kind.
 func (o LookupSettingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
 func (o LookupSettingResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSettingResult) string { return v.Scope }).(pulumi.StringOutput)
 }
 
+// Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
 func (o LookupSettingResultOutput) StartOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSettingResult) *string { return v.StartOn }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

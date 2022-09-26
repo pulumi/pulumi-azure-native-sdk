@@ -22,7 +22,7 @@ type Device struct {
 	// The Data Box Edge/Gateway device culture.
 	Culture pulumi.StringOutput `pulumi:"culture"`
 	// The status of the Data Box Edge/Gateway device.
-	DataBoxEdgeDeviceStatus pulumi.StringPtrOutput `pulumi:"dataBoxEdgeDeviceStatus"`
+	DataBoxEdgeDeviceStatus pulumi.StringOutput `pulumi:"dataBoxEdgeDeviceStatus"`
 	// The details of data-residency related properties for this resource
 	DataResidency DataResidencyResponsePtrOutput `pulumi:"dataResidency"`
 	// The Description of the Data Box Edge/Gateway device.
@@ -40,13 +40,13 @@ type Device struct {
 	// The details of Edge Profile for this resource
 	EdgeProfile EdgeProfileResponseOutput `pulumi:"edgeProfile"`
 	// The etag for the devices.
-	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The Data Box Edge/Gateway device name.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
 	// Msi identity of the resource
-	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ResourceIdentityResponseOutput `pulumi:"identity"`
 	// The kind of the device.
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Type of Kubernetes Platform
 	KubernetesPlatform pulumi.StringOutput `pulumi:"kubernetesPlatform"`
 	// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
@@ -157,16 +157,10 @@ func (DeviceState) ElementType() reflect.Type {
 }
 
 type deviceArgs struct {
-	// The status of the Data Box Edge/Gateway device.
-	DataBoxEdgeDeviceStatus *string `pulumi:"dataBoxEdgeDeviceStatus"`
 	// The details of data-residency related properties for this resource
 	DataResidency *DataResidency `pulumi:"dataResidency"`
 	// The device name.
 	DeviceName *string `pulumi:"deviceName"`
-	// Msi identity of the resource
-	Identity *ResourceIdentity `pulumi:"identity"`
-	// The kind of the device.
-	Kind *string `pulumi:"kind"`
 	// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
 	Location *string `pulumi:"location"`
 	// The resource group name.
@@ -179,16 +173,10 @@ type deviceArgs struct {
 
 // The set of arguments for constructing a Device resource.
 type DeviceArgs struct {
-	// The status of the Data Box Edge/Gateway device.
-	DataBoxEdgeDeviceStatus pulumi.StringPtrInput
 	// The details of data-residency related properties for this resource
 	DataResidency DataResidencyPtrInput
 	// The device name.
 	DeviceName pulumi.StringPtrInput
-	// Msi identity of the resource
-	Identity ResourceIdentityPtrInput
-	// The kind of the device.
-	Kind pulumi.StringPtrInput
 	// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
 	Location pulumi.StringPtrInput
 	// The resource group name.
@@ -252,8 +240,8 @@ func (o DeviceOutput) Culture() pulumi.StringOutput {
 }
 
 // The status of the Data Box Edge/Gateway device.
-func (o DeviceOutput) DataBoxEdgeDeviceStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.DataBoxEdgeDeviceStatus }).(pulumi.StringPtrOutput)
+func (o DeviceOutput) DataBoxEdgeDeviceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DataBoxEdgeDeviceStatus }).(pulumi.StringOutput)
 }
 
 // The details of data-residency related properties for this resource
@@ -297,8 +285,8 @@ func (o DeviceOutput) EdgeProfile() EdgeProfileResponseOutput {
 }
 
 // The etag for the devices.
-func (o DeviceOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+func (o DeviceOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The Data Box Edge/Gateway device name.
@@ -307,13 +295,13 @@ func (o DeviceOutput) FriendlyName() pulumi.StringOutput {
 }
 
 // Msi identity of the resource
-func (o DeviceOutput) Identity() ResourceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Device) ResourceIdentityResponsePtrOutput { return v.Identity }).(ResourceIdentityResponsePtrOutput)
+func (o DeviceOutput) Identity() ResourceIdentityResponseOutput {
+	return o.ApplyT(func(v *Device) ResourceIdentityResponseOutput { return v.Identity }).(ResourceIdentityResponseOutput)
 }
 
 // The kind of the device.
-func (o DeviceOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+func (o DeviceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Type of Kubernetes Platform

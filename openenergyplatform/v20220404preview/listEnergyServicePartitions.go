@@ -21,12 +21,15 @@ func ListEnergyServicePartitions(ctx *pulumi.Context, args *ListEnergyServicePar
 }
 
 type ListEnergyServicePartitionsArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The resource name.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // List of data partitions.
 type ListEnergyServicePartitionsResult struct {
+	// List of data partitions along with their properties in a given OEP resource.
 	DataPartitionInfo []DataPartitionPropertiesResponse `pulumi:"dataPartitionInfo"`
 }
 
@@ -44,8 +47,10 @@ func ListEnergyServicePartitionsOutput(ctx *pulumi.Context, args ListEnergyServi
 }
 
 type ListEnergyServicePartitionsOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The resource name.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListEnergyServicePartitionsOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o ListEnergyServicePartitionsResultOutput) ToListEnergyServicePartitionsRe
 	return o
 }
 
+// List of data partitions along with their properties in a given OEP resource.
 func (o ListEnergyServicePartitionsResultOutput) DataPartitionInfo() DataPartitionPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v ListEnergyServicePartitionsResult) []DataPartitionPropertiesResponse {
 		return v.DataPartitionInfo

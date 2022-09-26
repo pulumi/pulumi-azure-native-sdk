@@ -23,22 +23,34 @@ func LookupStorageInsight(ctx *pulumi.Context, args *LookupStorageInsightArgs, o
 }
 
 type LookupStorageInsightArgs struct {
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The Resource Group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the storageInsightsConfigs resource
 	StorageInsightName string `pulumi:"storageInsightName"`
-	WorkspaceName      string `pulumi:"workspaceName"`
+	// The Log Analytics Workspace name.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The top level storage insight resource container.
 type LookupStorageInsightResult struct {
-	Containers     []string                     `pulumi:"containers"`
-	ETag           *string                      `pulumi:"eTag"`
-	Id             string                       `pulumi:"id"`
-	Name           string                       `pulumi:"name"`
-	Status         StorageInsightStatusResponse `pulumi:"status"`
-	StorageAccount StorageAccountResponse       `pulumi:"storageAccount"`
-	Tables         []string                     `pulumi:"tables"`
-	Tags           map[string]string            `pulumi:"tags"`
-	Type           string                       `pulumi:"type"`
+	// The names of the blob containers that the workspace should read
+	Containers []string `pulumi:"containers"`
+	// The ETag of the storage insight.
+	ETag *string `pulumi:"eTag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The status of the storage insight
+	Status StorageInsightStatusResponse `pulumi:"status"`
+	// The storage account connection details
+	StorageAccount StorageAccountResponse `pulumi:"storageAccount"`
+	// The names of the Azure tables that the workspace should read
+	Tables []string `pulumi:"tables"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageInsightOutput(ctx *pulumi.Context, args LookupStorageInsightOutputArgs, opts ...pulumi.InvokeOption) LookupStorageInsightResultOutput {
@@ -55,9 +67,12 @@ func LookupStorageInsightOutput(ctx *pulumi.Context, args LookupStorageInsightOu
 }
 
 type LookupStorageInsightOutputArgs struct {
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Resource Group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the storageInsightsConfigs resource
 	StorageInsightName pulumi.StringInput `pulumi:"storageInsightName"`
-	WorkspaceName      pulumi.StringInput `pulumi:"workspaceName"`
+	// The Log Analytics Workspace name.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupStorageInsightOutputArgs) ElementType() reflect.Type {
@@ -79,38 +94,47 @@ func (o LookupStorageInsightResultOutput) ToLookupStorageInsightResultOutputWith
 	return o
 }
 
+// The names of the blob containers that the workspace should read
 func (o LookupStorageInsightResultOutput) Containers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) []string { return v.Containers }).(pulumi.StringArrayOutput)
 }
 
+// The ETag of the storage insight.
 func (o LookupStorageInsightResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupStorageInsightResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupStorageInsightResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the storage insight
 func (o LookupStorageInsightResultOutput) Status() StorageInsightStatusResponseOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) StorageInsightStatusResponse { return v.Status }).(StorageInsightStatusResponseOutput)
 }
 
+// The storage account connection details
 func (o LookupStorageInsightResultOutput) StorageAccount() StorageAccountResponseOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) StorageAccountResponse { return v.StorageAccount }).(StorageAccountResponseOutput)
 }
 
+// The names of the Azure tables that the workspace should read
 func (o LookupStorageInsightResultOutput) Tables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) []string { return v.Tables }).(pulumi.StringArrayOutput)
 }
 
+// Resource tags
 func (o LookupStorageInsightResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupStorageInsightResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageInsightResult) string { return v.Type }).(pulumi.StringOutput)
 }

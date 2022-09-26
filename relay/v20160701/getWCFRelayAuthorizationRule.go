@@ -23,18 +23,26 @@ func LookupWCFRelayAuthorizationRule(ctx *pulumi.Context, args *LookupWCFRelayAu
 }
 
 type LookupWCFRelayAuthorizationRuleArgs struct {
+	// The authorizationRule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	RelayName             string `pulumi:"relayName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The Namespace Name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The relay name
+	RelayName string `pulumi:"relayName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a Namespace AuthorizationRules.
 type LookupWCFRelayAuthorizationRuleResult struct {
-	Id     string   `pulumi:"id"`
-	Name   string   `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
 	Rights []string `pulumi:"rights"`
-	Type   string   `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupWCFRelayAuthorizationRuleOutput(ctx *pulumi.Context, args LookupWCFRelayAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupWCFRelayAuthorizationRuleResultOutput {
@@ -51,10 +59,14 @@ func LookupWCFRelayAuthorizationRuleOutput(ctx *pulumi.Context, args LookupWCFRe
 }
 
 type LookupWCFRelayAuthorizationRuleOutputArgs struct {
+	// The authorizationRule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	RelayName             pulumi.StringInput `pulumi:"relayName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Namespace Name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The relay name
+	RelayName pulumi.StringInput `pulumi:"relayName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupWCFRelayAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -76,18 +88,22 @@ func (o LookupWCFRelayAuthorizationRuleResultOutput) ToLookupWCFRelayAuthorizati
 	return o
 }
 
+// Resource Id
 func (o LookupWCFRelayAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupWCFRelayAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupWCFRelayAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWCFRelayAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// Resource type
 func (o LookupWCFRelayAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

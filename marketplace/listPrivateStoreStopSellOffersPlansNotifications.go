@@ -22,6 +22,7 @@ func ListPrivateStoreStopSellOffersPlansNotifications(ctx *pulumi.Context, args 
 }
 
 type ListPrivateStoreStopSellOffersPlansNotificationsArgs struct {
+	// The store ID - must use the tenant ID
 	PrivateStoreId string   `pulumi:"privateStoreId"`
 	Subscriptions  []string `pulumi:"subscriptions"`
 }
@@ -45,6 +46,7 @@ func ListPrivateStoreStopSellOffersPlansNotificationsOutput(ctx *pulumi.Context,
 }
 
 type ListPrivateStoreStopSellOffersPlansNotificationsOutputArgs struct {
+	// The store ID - must use the tenant ID
 	PrivateStoreId pulumi.StringInput      `pulumi:"privateStoreId"`
 	Subscriptions  pulumi.StringArrayInput `pulumi:"subscriptions"`
 }

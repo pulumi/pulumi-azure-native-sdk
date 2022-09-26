@@ -21,14 +21,19 @@ func ListNamespaceKeys(ctx *pulumi.Context, args *ListNamespaceKeysArgs, opts ..
 }
 
 type ListNamespaceKeysArgs struct {
+	// The connection string of the namespace for the specified authorizationRule.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Namespace/NotificationHub Connection String
 type ListNamespaceKeysResult struct {
-	PrimaryConnectionString   *string `pulumi:"primaryConnectionString"`
+	// Gets or sets the primaryConnectionString of the created Namespace AuthorizationRule.
+	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
+	// Gets or sets the secondaryConnectionString of the created Namespace AuthorizationRule
 	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
 }
 
@@ -46,9 +51,12 @@ func ListNamespaceKeysOutput(ctx *pulumi.Context, args ListNamespaceKeysOutputAr
 }
 
 type ListNamespaceKeysOutputArgs struct {
+	// The connection string of the namespace for the specified authorizationRule.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListNamespaceKeysOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListNamespaceKeysResultOutput) ToListNamespaceKeysResultOutputWithContex
 	return o
 }
 
+// Gets or sets the primaryConnectionString of the created Namespace AuthorizationRule.
 func (o ListNamespaceKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the secondaryConnectionString of the created Namespace AuthorizationRule
 func (o ListNamespaceKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
 }

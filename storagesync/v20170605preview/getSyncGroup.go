@@ -23,18 +23,26 @@ func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pul
 }
 
 type LookupSyncGroupArgs struct {
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName string `pulumi:"storageSyncServiceName"`
-	SyncGroupName          string `pulumi:"syncGroupName"`
+	// Name of Sync Group resource.
+	SyncGroupName string `pulumi:"syncGroupName"`
 }
 
 // Sync Group object.
 type LookupSyncGroupResult struct {
-	Id              string  `pulumi:"id"`
-	Name            string  `pulumi:"name"`
-	SyncGroupStatus string  `pulumi:"syncGroupStatus"`
-	Type            string  `pulumi:"type"`
-	UniqueId        *string `pulumi:"uniqueId"`
+	// The id of the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Sync group status
+	SyncGroupStatus string `pulumi:"syncGroupStatus"`
+	// The type of the resource
+	Type string `pulumi:"type"`
+	// Unique Id
+	UniqueId *string `pulumi:"uniqueId"`
 }
 
 func LookupSyncGroupOutput(ctx *pulumi.Context, args LookupSyncGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSyncGroupResultOutput {
@@ -51,9 +59,12 @@ func LookupSyncGroupOutput(ctx *pulumi.Context, args LookupSyncGroupOutputArgs, 
 }
 
 type LookupSyncGroupOutputArgs struct {
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName pulumi.StringInput `pulumi:"storageSyncServiceName"`
-	SyncGroupName          pulumi.StringInput `pulumi:"syncGroupName"`
+	// Name of Sync Group resource.
+	SyncGroupName pulumi.StringInput `pulumi:"syncGroupName"`
 }
 
 func (LookupSyncGroupOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutputWithContext(ct
 	return o
 }
 
+// The id of the resource.
 func (o LookupSyncGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupSyncGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sync group status
 func (o LookupSyncGroupResultOutput) SyncGroupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.SyncGroupStatus }).(pulumi.StringOutput)
 }
 
+// The type of the resource
 func (o LookupSyncGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Unique Id
 func (o LookupSyncGroupResultOutput) UniqueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncGroupResult) *string { return v.UniqueId }).(pulumi.StringPtrOutput)
 }

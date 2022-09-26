@@ -22,12 +22,15 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 }
 
 type ListAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The list of the EngagementFabric account keys
 type ListAccountKeysResult struct {
+	// Account keys
 	Value []KeyDescriptionResponse `pulumi:"value"`
 }
 
@@ -45,7 +48,9 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 }
 
 type ListAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Resource Group Name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ct
 	return o
 }
 
+// Account keys
 func (o ListAccountKeysResultOutput) Value() KeyDescriptionResponseArrayOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) []KeyDescriptionResponse { return v.Value }).(KeyDescriptionResponseArrayOutput)
 }

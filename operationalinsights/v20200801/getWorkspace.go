@@ -21,30 +21,50 @@ func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pul
 }
 
 type LookupWorkspaceArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The top level Workspace resource container.
 type LookupWorkspaceResult struct {
-	CreatedDate                     string                              `pulumi:"createdDate"`
-	CustomerId                      string                              `pulumi:"customerId"`
-	ETag                            *string                             `pulumi:"eTag"`
-	Features                        interface{}                         `pulumi:"features"`
-	ForceCmkForQuery                *bool                               `pulumi:"forceCmkForQuery"`
-	Id                              string                              `pulumi:"id"`
-	Location                        string                              `pulumi:"location"`
-	ModifiedDate                    string                              `pulumi:"modifiedDate"`
-	Name                            string                              `pulumi:"name"`
-	PrivateLinkScopedResources      []PrivateLinkScopedResourceResponse `pulumi:"privateLinkScopedResources"`
-	ProvisioningState               *string                             `pulumi:"provisioningState"`
-	PublicNetworkAccessForIngestion *string                             `pulumi:"publicNetworkAccessForIngestion"`
-	PublicNetworkAccessForQuery     *string                             `pulumi:"publicNetworkAccessForQuery"`
-	RetentionInDays                 *int                                `pulumi:"retentionInDays"`
-	Sku                             *WorkspaceSkuResponse               `pulumi:"sku"`
-	Tags                            map[string]string                   `pulumi:"tags"`
-	Type                            string                              `pulumi:"type"`
-	WorkspaceCapping                *WorkspaceCappingResponse           `pulumi:"workspaceCapping"`
+	// Workspace creation date.
+	CreatedDate string `pulumi:"createdDate"`
+	// This is a read-only property. Represents the ID associated with the workspace.
+	CustomerId string `pulumi:"customerId"`
+	// The ETag of the workspace.
+	ETag *string `pulumi:"eTag"`
+	// Workspace features.
+	Features interface{} `pulumi:"features"`
+	// Indicates whether customer managed storage is mandatory for query management.
+	ForceCmkForQuery *bool `pulumi:"forceCmkForQuery"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// Workspace modification date.
+	ModifiedDate string `pulumi:"modifiedDate"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// List of linked private link scope resources.
+	PrivateLinkScopedResources []PrivateLinkScopedResourceResponse `pulumi:"privateLinkScopedResources"`
+	// The provisioning state of the workspace.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The network access type for accessing Log Analytics ingestion.
+	PublicNetworkAccessForIngestion *string `pulumi:"publicNetworkAccessForIngestion"`
+	// The network access type for accessing Log Analytics query.
+	PublicNetworkAccessForQuery *string `pulumi:"publicNetworkAccessForQuery"`
+	// The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details.
+	RetentionInDays *int `pulumi:"retentionInDays"`
+	// The SKU of the workspace.
+	Sku *WorkspaceSkuResponse `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The daily volume cap for ingestion.
+	WorkspaceCapping *WorkspaceCappingResponse `pulumi:"workspaceCapping"`
 }
 
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
@@ -61,8 +81,10 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 }
 
 type LookupWorkspaceOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupWorkspaceOutputArgs) ElementType() reflect.Type {
@@ -84,74 +106,92 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
+// Workspace creation date.
 func (o LookupWorkspaceResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.CreatedDate }).(pulumi.StringOutput)
 }
 
+// This is a read-only property. Represents the ID associated with the workspace.
 func (o LookupWorkspaceResultOutput) CustomerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.CustomerId }).(pulumi.StringOutput)
 }
 
+// The ETag of the workspace.
 func (o LookupWorkspaceResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Workspace features.
 func (o LookupWorkspaceResultOutput) Features() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) interface{} { return v.Features }).(pulumi.AnyOutput)
 }
 
+// Indicates whether customer managed storage is mandatory for query management.
 func (o LookupWorkspaceResultOutput) ForceCmkForQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *bool { return v.ForceCmkForQuery }).(pulumi.BoolPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupWorkspaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Workspace modification date.
 func (o LookupWorkspaceResultOutput) ModifiedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ModifiedDate }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of linked private link scope resources.
 func (o LookupWorkspaceResultOutput) PrivateLinkScopedResources() PrivateLinkScopedResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []PrivateLinkScopedResourceResponse { return v.PrivateLinkScopedResources }).(PrivateLinkScopedResourceResponseArrayOutput)
 }
 
+// The provisioning state of the workspace.
 func (o LookupWorkspaceResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// The network access type for accessing Log Analytics ingestion.
 func (o LookupWorkspaceResultOutput) PublicNetworkAccessForIngestion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.PublicNetworkAccessForIngestion }).(pulumi.StringPtrOutput)
 }
 
+// The network access type for accessing Log Analytics query.
 func (o LookupWorkspaceResultOutput) PublicNetworkAccessForQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.PublicNetworkAccessForQuery }).(pulumi.StringPtrOutput)
 }
 
+// The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details.
 func (o LookupWorkspaceResultOutput) RetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *int { return v.RetentionInDays }).(pulumi.IntPtrOutput)
 }
 
+// The SKU of the workspace.
 func (o LookupWorkspaceResultOutput) Sku() WorkspaceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *WorkspaceSkuResponse { return v.Sku }).(WorkspaceSkuResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkspaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The daily volume cap for ingestion.
 func (o LookupWorkspaceResultOutput) WorkspaceCapping() WorkspaceCappingResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *WorkspaceCappingResponse { return v.WorkspaceCapping }).(WorkspaceCappingResponsePtrOutput)
 }

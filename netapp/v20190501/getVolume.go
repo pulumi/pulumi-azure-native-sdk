@@ -23,30 +23,50 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 }
 
 type LookupVolumeArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VolumeName        string `pulumi:"volumeName"`
+	// The name of the volume
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // Volume resource
 type LookupVolumeResult struct {
-	BaremetalTenantId string                                `pulumi:"baremetalTenantId"`
-	CreationToken     string                                `pulumi:"creationToken"`
-	ExportPolicy      *VolumePropertiesResponseExportPolicy `pulumi:"exportPolicy"`
-	FileSystemId      string                                `pulumi:"fileSystemId"`
-	Id                string                                `pulumi:"id"`
-	Location          string                                `pulumi:"location"`
-	MountTargets      []MountTargetPropertiesResponse       `pulumi:"mountTargets"`
-	Name              string                                `pulumi:"name"`
-	ProtocolTypes     []string                              `pulumi:"protocolTypes"`
-	ProvisioningState string                                `pulumi:"provisioningState"`
-	ServiceLevel      *string                               `pulumi:"serviceLevel"`
-	SnapshotId        *string                               `pulumi:"snapshotId"`
-	SubnetId          string                                `pulumi:"subnetId"`
-	Tags              interface{}                           `pulumi:"tags"`
-	Type              string                                `pulumi:"type"`
-	UsageThreshold    float64                               `pulumi:"usageThreshold"`
+	// Unique Baremetal Tenant Identifier.
+	BaremetalTenantId string `pulumi:"baremetalTenantId"`
+	// A unique file path for the volume. Used when creating mount targets
+	CreationToken string `pulumi:"creationToken"`
+	// Set of export policy rules
+	ExportPolicy *VolumePropertiesResponseExportPolicy `pulumi:"exportPolicy"`
+	// Unique FileSystem Identifier.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// List of mount targets
+	MountTargets []MountTargetPropertiesResponse `pulumi:"mountTargets"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Set of protocol types
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The service level of the file system
+	ServiceLevel *string `pulumi:"serviceLevel"`
+	// UUID v4 used to identify the Snapshot
+	SnapshotId *string `pulumi:"snapshotId"`
+	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
+	SubnetId string `pulumi:"subnetId"`
+	// Resource tags
+	Tags interface{} `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+	UsageThreshold float64 `pulumi:"usageThreshold"`
 }
 
 // Defaults sets the appropriate defaults for LookupVolumeResult
@@ -79,10 +99,14 @@ func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts .
 }
 
 type LookupVolumeOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VolumeName        pulumi.StringInput `pulumi:"volumeName"`
+	// The name of the volume
+	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (LookupVolumeOutputArgs) ElementType() reflect.Type {
@@ -104,66 +128,82 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 	return o
 }
 
+// Unique Baremetal Tenant Identifier.
 func (o LookupVolumeResultOutput) BaremetalTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.BaremetalTenantId }).(pulumi.StringOutput)
 }
 
+// A unique file path for the volume. Used when creating mount targets
 func (o LookupVolumeResultOutput) CreationToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.CreationToken }).(pulumi.StringOutput)
 }
 
+// Set of export policy rules
 func (o LookupVolumeResultOutput) ExportPolicy() VolumePropertiesResponseExportPolicyPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *VolumePropertiesResponseExportPolicy { return v.ExportPolicy }).(VolumePropertiesResponseExportPolicyPtrOutput)
 }
 
+// Unique FileSystem Identifier.
 func (o LookupVolumeResultOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.FileSystemId }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupVolumeResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// List of mount targets
 func (o LookupVolumeResultOutput) MountTargets() MountTargetPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupVolumeResult) []MountTargetPropertiesResponse { return v.MountTargets }).(MountTargetPropertiesResponseArrayOutput)
 }
 
+// Resource name
 func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Set of protocol types
 func (o LookupVolumeResultOutput) ProtocolTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVolumeResult) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
 }
 
+// Azure lifecycle management
 func (o LookupVolumeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The service level of the file system
 func (o LookupVolumeResultOutput) ServiceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
+// UUID v4 used to identify the Snapshot
 func (o LookupVolumeResultOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
 func (o LookupVolumeResultOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupVolumeResultOutput) Tags() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupVolumeResult) interface{} { return v.Tags }).(pulumi.AnyOutput)
 }
 
+// Resource type
 func (o LookupVolumeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
 func (o LookupVolumeResultOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupVolumeResult) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }

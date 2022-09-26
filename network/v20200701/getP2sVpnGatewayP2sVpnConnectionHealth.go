@@ -21,26 +21,42 @@ func GetP2sVpnGatewayP2sVpnConnectionHealth(ctx *pulumi.Context, args *GetP2sVpn
 }
 
 type GetP2sVpnGatewayP2sVpnConnectionHealthArgs struct {
-	GatewayName       string `pulumi:"gatewayName"`
+	// The name of the P2SVpnGateway.
+	GatewayName string `pulumi:"gatewayName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // P2SVpnGateway Resource.
 type GetP2sVpnGatewayP2sVpnConnectionHealthResult struct {
-	CustomDnsServers            []string                             `pulumi:"customDnsServers"`
-	Etag                        string                               `pulumi:"etag"`
-	Id                          *string                              `pulumi:"id"`
-	IsRoutingPreferenceInternet *bool                                `pulumi:"isRoutingPreferenceInternet"`
-	Location                    string                               `pulumi:"location"`
-	Name                        string                               `pulumi:"name"`
+	// List of all customer specified DNS servers IP addresses.
+	CustomDnsServers []string `pulumi:"customDnsServers"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
+	IsRoutingPreferenceInternet *bool `pulumi:"isRoutingPreferenceInternet"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// List of all p2s connection configurations of the gateway.
 	P2SConnectionConfigurations []P2SConnectionConfigurationResponse `pulumi:"p2SConnectionConfigurations"`
-	ProvisioningState           string                               `pulumi:"provisioningState"`
-	Tags                        map[string]string                    `pulumi:"tags"`
-	Type                        string                               `pulumi:"type"`
-	VirtualHub                  *SubResourceResponse                 `pulumi:"virtualHub"`
-	VpnClientConnectionHealth   VpnClientConnectionHealthResponse    `pulumi:"vpnClientConnectionHealth"`
-	VpnGatewayScaleUnit         *int                                 `pulumi:"vpnGatewayScaleUnit"`
-	VpnServerConfiguration      *SubResourceResponse                 `pulumi:"vpnServerConfiguration"`
+	// The provisioning state of the P2S VPN gateway resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The VirtualHub to which the gateway belongs.
+	VirtualHub *SubResourceResponse `pulumi:"virtualHub"`
+	// All P2S VPN clients' connection health status.
+	VpnClientConnectionHealth VpnClientConnectionHealthResponse `pulumi:"vpnClientConnectionHealth"`
+	// The scale unit for this p2s vpn gateway.
+	VpnGatewayScaleUnit *int `pulumi:"vpnGatewayScaleUnit"`
+	// The VpnServerConfiguration to which the p2sVpnGateway is attached to.
+	VpnServerConfiguration *SubResourceResponse `pulumi:"vpnServerConfiguration"`
 }
 
 func GetP2sVpnGatewayP2sVpnConnectionHealthOutput(ctx *pulumi.Context, args GetP2sVpnGatewayP2sVpnConnectionHealthOutputArgs, opts ...pulumi.InvokeOption) GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput {
@@ -57,7 +73,9 @@ func GetP2sVpnGatewayP2sVpnConnectionHealthOutput(ctx *pulumi.Context, args GetP
 }
 
 type GetP2sVpnGatewayP2sVpnConnectionHealthOutputArgs struct {
-	GatewayName       pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of the P2SVpnGateway.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,62 +98,76 @@ func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) ToGetP2sVpnGatewayP2
 	return o
 }
 
+// List of all customer specified DNS servers IP addresses.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) CustomDnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) []string { return v.CustomDnsServers }).(pulumi.StringArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) IsRoutingPreferenceInternet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) *bool { return v.IsRoutingPreferenceInternet }).(pulumi.BoolPtrOutput)
 }
 
+// Resource location.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of all p2s connection configurations of the gateway.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) P2SConnectionConfigurations() P2SConnectionConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) []P2SConnectionConfigurationResponse {
 		return v.P2SConnectionConfigurations
 	}).(P2SConnectionConfigurationResponseArrayOutput)
 }
 
+// The provisioning state of the P2S VPN gateway resource.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The VirtualHub to which the gateway belongs.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) VirtualHub() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) *SubResourceResponse { return v.VirtualHub }).(SubResourceResponsePtrOutput)
 }
 
+// All P2S VPN clients' connection health status.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) VpnClientConnectionHealth() VpnClientConnectionHealthResponseOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) VpnClientConnectionHealthResponse {
 		return v.VpnClientConnectionHealth
 	}).(VpnClientConnectionHealthResponseOutput)
 }
 
+// The scale unit for this p2s vpn gateway.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) VpnGatewayScaleUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) *int { return v.VpnGatewayScaleUnit }).(pulumi.IntPtrOutput)
 }
 
+// The VpnServerConfiguration to which the p2sVpnGateway is attached to.
 func (o GetP2sVpnGatewayP2sVpnConnectionHealthResultOutput) VpnServerConfiguration() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v GetP2sVpnGatewayP2sVpnConnectionHealthResult) *SubResourceResponse {
 		return v.VpnServerConfiguration

@@ -22,16 +22,22 @@ func ListEffectiveVirtualNetworkByNetworkGroup(ctx *pulumi.Context, args *ListEf
 }
 
 type ListEffectiveVirtualNetworkByNetworkGroupArgs struct {
-	NetworkGroupName   string  `pulumi:"networkGroupName"`
-	NetworkManagerName string  `pulumi:"networkManagerName"`
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
-	SkipToken          *string `pulumi:"skipToken"`
+	// The name of the network group to get.
+	NetworkGroupName string `pulumi:"networkGroupName"`
+	// The name of the network manager.
+	NetworkManagerName string `pulumi:"networkManagerName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // Result of the request to list Effective Virtual Network. It contains a list of groups and a URL link to get the next set of results.
 type ListEffectiveVirtualNetworkByNetworkGroupResult struct {
-	SkipToken *string                           `pulumi:"skipToken"`
-	Value     []EffectiveVirtualNetworkResponse `pulumi:"value"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// Gets a page of EffectiveVirtualNetwork
+	Value []EffectiveVirtualNetworkResponse `pulumi:"value"`
 }
 
 func ListEffectiveVirtualNetworkByNetworkGroupOutput(ctx *pulumi.Context, args ListEffectiveVirtualNetworkByNetworkGroupOutputArgs, opts ...pulumi.InvokeOption) ListEffectiveVirtualNetworkByNetworkGroupResultOutput {
@@ -48,10 +54,14 @@ func ListEffectiveVirtualNetworkByNetworkGroupOutput(ctx *pulumi.Context, args L
 }
 
 type ListEffectiveVirtualNetworkByNetworkGroupOutputArgs struct {
-	NetworkGroupName   pulumi.StringInput    `pulumi:"networkGroupName"`
-	NetworkManagerName pulumi.StringInput    `pulumi:"networkManagerName"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SkipToken          pulumi.StringPtrInput `pulumi:"skipToken"`
+	// The name of the network group to get.
+	NetworkGroupName pulumi.StringInput `pulumi:"networkGroupName"`
+	// The name of the network manager.
+	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListEffectiveVirtualNetworkByNetworkGroupOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o ListEffectiveVirtualNetworkByNetworkGroupResultOutput) ToListEffectiveVi
 	return o
 }
 
+// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 func (o ListEffectiveVirtualNetworkByNetworkGroupResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListEffectiveVirtualNetworkByNetworkGroupResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// Gets a page of EffectiveVirtualNetwork
 func (o ListEffectiveVirtualNetworkByNetworkGroupResultOutput) Value() EffectiveVirtualNetworkResponseArrayOutput {
 	return o.ApplyT(func(v ListEffectiveVirtualNetworkByNetworkGroupResult) []EffectiveVirtualNetworkResponse {
 		return v.Value

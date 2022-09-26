@@ -21,23 +21,36 @@ func LookupConnectionMonitorTest(ctx *pulumi.Context, args *LookupConnectionMoni
 }
 
 type LookupConnectionMonitorTestArgs struct {
+	// The name of the connection monitor test
 	ConnectionMonitorTestName string `pulumi:"connectionMonitorTestName"`
-	PeeringServiceName        string `pulumi:"peeringServiceName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the peering service.
+	PeeringServiceName string `pulumi:"peeringServiceName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Connection Monitor Test class.
 type LookupConnectionMonitorTestResult struct {
-	Destination        *string  `pulumi:"destination"`
-	DestinationPort    *int     `pulumi:"destinationPort"`
-	Id                 string   `pulumi:"id"`
-	IsTestSuccessful   bool     `pulumi:"isTestSuccessful"`
-	Name               string   `pulumi:"name"`
-	Path               []string `pulumi:"path"`
-	ProvisioningState  string   `pulumi:"provisioningState"`
-	SourceAgent        *string  `pulumi:"sourceAgent"`
-	TestFrequencyInSec *int     `pulumi:"testFrequencyInSec"`
-	Type               string   `pulumi:"type"`
+	// The Connection Monitor test destination
+	Destination *string `pulumi:"destination"`
+	// The Connection Monitor test destination port
+	DestinationPort *int `pulumi:"destinationPort"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The flag that indicates if the Connection Monitor test is successful or not.
+	IsTestSuccessful bool `pulumi:"isTestSuccessful"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The path representing the Connection Monitor test.
+	Path []string `pulumi:"path"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The Connection Monitor test source agent
+	SourceAgent *string `pulumi:"sourceAgent"`
+	// The Connection Monitor test frequency in seconds
+	TestFrequencyInSec *int `pulumi:"testFrequencyInSec"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupConnectionMonitorTestOutput(ctx *pulumi.Context, args LookupConnectionMonitorTestOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionMonitorTestResultOutput {
@@ -54,9 +67,12 @@ func LookupConnectionMonitorTestOutput(ctx *pulumi.Context, args LookupConnectio
 }
 
 type LookupConnectionMonitorTestOutputArgs struct {
+	// The name of the connection monitor test
 	ConnectionMonitorTestName pulumi.StringInput `pulumi:"connectionMonitorTestName"`
-	PeeringServiceName        pulumi.StringInput `pulumi:"peeringServiceName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the peering service.
+	PeeringServiceName pulumi.StringInput `pulumi:"peeringServiceName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupConnectionMonitorTestOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupConnectionMonitorTestResultOutput) ToLookupConnectionMonitorTestRe
 	return o
 }
 
+// The Connection Monitor test destination
 func (o LookupConnectionMonitorTestResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
+// The Connection Monitor test destination port
 func (o LookupConnectionMonitorTestResultOutput) DestinationPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) *int { return v.DestinationPort }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the resource.
 func (o LookupConnectionMonitorTestResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The flag that indicates if the Connection Monitor test is successful or not.
 func (o LookupConnectionMonitorTestResultOutput) IsTestSuccessful() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) bool { return v.IsTestSuccessful }).(pulumi.BoolOutput)
 }
 
+// The name of the resource.
 func (o LookupConnectionMonitorTestResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The path representing the Connection Monitor test.
 func (o LookupConnectionMonitorTestResultOutput) Path() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) []string { return v.Path }).(pulumi.StringArrayOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupConnectionMonitorTestResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The Connection Monitor test source agent
 func (o LookupConnectionMonitorTestResultOutput) SourceAgent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) *string { return v.SourceAgent }).(pulumi.StringPtrOutput)
 }
 
+// The Connection Monitor test frequency in seconds
 func (o LookupConnectionMonitorTestResultOutput) TestFrequencyInSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) *int { return v.TestFrequencyInSec }).(pulumi.IntPtrOutput)
 }
 
+// The type of the resource.
 func (o LookupConnectionMonitorTestResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorTestResult) string { return v.Type }).(pulumi.StringOutput)
 }

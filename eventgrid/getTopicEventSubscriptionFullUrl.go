@@ -22,13 +22,17 @@ func GetTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetTopicEventSu
 }
 
 type GetTopicEventSubscriptionFullUrlArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	TopicName             string `pulumi:"topicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the domain topic.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Full endpoint url of an event subscription
 type GetTopicEventSubscriptionFullUrlResult struct {
+	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
 }
 
@@ -46,9 +50,12 @@ func GetTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetTopicEv
 }
 
 type GetTopicEventSubscriptionFullUrlOutputArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName             pulumi.StringInput `pulumi:"topicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the domain topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (GetTopicEventSubscriptionFullUrlOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o GetTopicEventSubscriptionFullUrlResultOutput) ToGetTopicEventSubscriptio
 	return o
 }
 
+// The URL that represents the endpoint of the destination of an event subscription.
 func (o GetTopicEventSubscriptionFullUrlResultOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTopicEventSubscriptionFullUrlResult) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
 }

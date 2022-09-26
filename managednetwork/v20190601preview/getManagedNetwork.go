@@ -21,21 +21,32 @@ func LookupManagedNetwork(ctx *pulumi.Context, args *LookupManagedNetworkArgs, o
 }
 
 type LookupManagedNetworkArgs struct {
+	// The name of the Managed Network.
 	ManagedNetworkName string `pulumi:"managedNetworkName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Managed Network resource
 type LookupManagedNetworkResult struct {
-	Connectivity      ConnectivityCollectionResponse `pulumi:"connectivity"`
-	Etag              string                         `pulumi:"etag"`
-	Id                string                         `pulumi:"id"`
-	Location          string                         `pulumi:"location"`
-	Name              string                         `pulumi:"name"`
-	ProvisioningState string                         `pulumi:"provisioningState"`
-	Scope             *ScopeResponse                 `pulumi:"scope"`
-	Tags              map[string]string              `pulumi:"tags"`
-	Type              string                         `pulumi:"type"`
+	// The collection of groups and policies concerned with connectivity
+	Connectivity ConnectivityCollectionResponse `pulumi:"connectivity"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Provisioning state of the ManagedNetwork resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
+	Scope *ScopeResponse `pulumi:"scope"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedNetworkOutput(ctx *pulumi.Context, args LookupManagedNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkResultOutput {
@@ -52,8 +63,10 @@ func LookupManagedNetworkOutput(ctx *pulumi.Context, args LookupManagedNetworkOu
 }
 
 type LookupManagedNetworkOutputArgs struct {
+	// The name of the Managed Network.
 	ManagedNetworkName pulumi.StringInput `pulumi:"managedNetworkName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedNetworkOutputArgs) ElementType() reflect.Type {
@@ -75,38 +88,47 @@ func (o LookupManagedNetworkResultOutput) ToLookupManagedNetworkResultOutputWith
 	return o
 }
 
+// The collection of groups and policies concerned with connectivity
 func (o LookupManagedNetworkResultOutput) Connectivity() ConnectivityCollectionResponseOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) ConnectivityCollectionResponse { return v.Connectivity }).(ConnectivityCollectionResponseOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupManagedNetworkResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagedNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupManagedNetworkResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupManagedNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the ManagedNetwork resource.
 func (o LookupManagedNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
 func (o LookupManagedNetworkResultOutput) Scope() ScopeResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupManagedNetworkResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupManagedNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }

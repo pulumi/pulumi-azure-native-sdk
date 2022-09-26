@@ -21,21 +21,32 @@ func LookupSession(ctx *pulumi.Context, args *LookupSessionArgs, opts ...pulumi.
 }
 
 type LookupSessionArgs struct {
+	// The integration account name.
 	IntegrationAccountName string `pulumi:"integrationAccountName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	SessionName            string `pulumi:"sessionName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The integration account session name.
+	SessionName string `pulumi:"sessionName"`
 }
 
 // The integration account session.
 type LookupSessionResult struct {
-	ChangedTime string            `pulumi:"changedTime"`
-	Content     interface{}       `pulumi:"content"`
-	CreatedTime string            `pulumi:"createdTime"`
-	Id          string            `pulumi:"id"`
-	Location    *string           `pulumi:"location"`
-	Name        string            `pulumi:"name"`
-	Tags        map[string]string `pulumi:"tags"`
-	Type        string            `pulumi:"type"`
+	// The changed time.
+	ChangedTime string `pulumi:"changedTime"`
+	// The session content.
+	Content interface{} `pulumi:"content"`
+	// The created time.
+	CreatedTime string `pulumi:"createdTime"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSessionOutput(ctx *pulumi.Context, args LookupSessionOutputArgs, opts ...pulumi.InvokeOption) LookupSessionResultOutput {
@@ -52,9 +63,12 @@ func LookupSessionOutput(ctx *pulumi.Context, args LookupSessionOutputArgs, opts
 }
 
 type LookupSessionOutputArgs struct {
+	// The integration account name.
 	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	SessionName            pulumi.StringInput `pulumi:"sessionName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The integration account session name.
+	SessionName pulumi.StringInput `pulumi:"sessionName"`
 }
 
 func (LookupSessionOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupSessionResultOutput) ToLookupSessionResultOutputWithContext(ctx co
 	return o
 }
 
+// The changed time.
 func (o LookupSessionResultOutput) ChangedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSessionResult) string { return v.ChangedTime }).(pulumi.StringOutput)
 }
 
+// The session content.
 func (o LookupSessionResultOutput) Content() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupSessionResult) interface{} { return v.Content }).(pulumi.AnyOutput)
 }
 
+// The created time.
 func (o LookupSessionResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSessionResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
+// The resource id.
 func (o LookupSessionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSessionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupSessionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSessionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the resource name.
 func (o LookupSessionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSessionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupSessionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSessionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupSessionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSessionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,14 +21,18 @@ func GetmanagedAzResiliencyStatus(ctx *pulumi.Context, args *GetmanagedAzResilie
 }
 
 type GetmanagedAzResiliencyStatusArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster resource.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Describes the result of the request to list Managed VM Sizes for Service Fabric Managed Clusters.
 type GetmanagedAzResiliencyStatusResult struct {
-	BaseResourceStatus     []ResourceAzStatusResponse `pulumi:"baseResourceStatus"`
-	IsClusterZoneResilient bool                       `pulumi:"isClusterZoneResilient"`
+	// List of Managed VM Sizes for Service Fabric Managed Clusters.
+	BaseResourceStatus []ResourceAzStatusResponse `pulumi:"baseResourceStatus"`
+	// URL to get the next set of Managed VM Sizes if there are any.
+	IsClusterZoneResilient bool `pulumi:"isClusterZoneResilient"`
 }
 
 func GetmanagedAzResiliencyStatusOutput(ctx *pulumi.Context, args GetmanagedAzResiliencyStatusOutputArgs, opts ...pulumi.InvokeOption) GetmanagedAzResiliencyStatusResultOutput {
@@ -45,7 +49,9 @@ func GetmanagedAzResiliencyStatusOutput(ctx *pulumi.Context, args GetmanagedAzRe
 }
 
 type GetmanagedAzResiliencyStatusOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster resource.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o GetmanagedAzResiliencyStatusResultOutput) ToGetmanagedAzResiliencyStatus
 	return o
 }
 
+// List of Managed VM Sizes for Service Fabric Managed Clusters.
 func (o GetmanagedAzResiliencyStatusResultOutput) BaseResourceStatus() ResourceAzStatusResponseArrayOutput {
 	return o.ApplyT(func(v GetmanagedAzResiliencyStatusResult) []ResourceAzStatusResponse { return v.BaseResourceStatus }).(ResourceAzStatusResponseArrayOutput)
 }
 
+// URL to get the next set of Managed VM Sizes if there are any.
 func (o GetmanagedAzResiliencyStatusResultOutput) IsClusterZoneResilient() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetmanagedAzResiliencyStatusResult) bool { return v.IsClusterZoneResilient }).(pulumi.BoolOutput)
 }

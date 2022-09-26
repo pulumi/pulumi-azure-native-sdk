@@ -23,16 +23,22 @@ func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, o
 }
 
 type LookupRoleAssignmentArgs struct {
+	// The name of the role assignment to get.
 	RoleAssignmentName string `pulumi:"roleAssignmentName"`
-	Scope              string `pulumi:"scope"`
+	// The scope of the role assignment.
+	Scope string `pulumi:"scope"`
 }
 
 // Role Assignments
 type LookupRoleAssignmentResult struct {
-	Id         string                                    `pulumi:"id"`
-	Name       string                                    `pulumi:"name"`
+	// The role assignment ID.
+	Id string `pulumi:"id"`
+	// The role assignment name.
+	Name string `pulumi:"name"`
+	// Role assignment properties.
 	Properties RoleAssignmentPropertiesWithScopeResponse `pulumi:"properties"`
-	Type       string                                    `pulumi:"type"`
+	// The role assignment type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentResultOutput {
@@ -49,8 +55,10 @@ func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOu
 }
 
 type LookupRoleAssignmentOutputArgs struct {
+	// The name of the role assignment to get.
 	RoleAssignmentName pulumi.StringInput `pulumi:"roleAssignmentName"`
-	Scope              pulumi.StringInput `pulumi:"scope"`
+	// The scope of the role assignment.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRoleAssignmentOutputArgs) ElementType() reflect.Type {
@@ -72,18 +80,22 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWith
 	return o
 }
 
+// The role assignment ID.
 func (o LookupRoleAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role assignment name.
 func (o LookupRoleAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Role assignment properties.
 func (o LookupRoleAssignmentResultOutput) Properties() RoleAssignmentPropertiesWithScopeResponseOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) RoleAssignmentPropertiesWithScopeResponse { return v.Properties }).(RoleAssignmentPropertiesWithScopeResponseOutput)
 }
 
+// The role assignment type.
 func (o LookupRoleAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

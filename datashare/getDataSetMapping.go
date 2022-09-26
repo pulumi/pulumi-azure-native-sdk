@@ -24,19 +24,28 @@ func LookupDataSetMapping(ctx *pulumi.Context, args *LookupDataSetMappingArgs, o
 }
 
 type LookupDataSetMappingArgs struct {
-	AccountName           string `pulumi:"accountName"`
-	DataSetMappingName    string `pulumi:"dataSetMappingName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSetMapping.
+	DataSetMappingName string `pulumi:"dataSetMappingName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the shareSubscription.
 	ShareSubscriptionName string `pulumi:"shareSubscriptionName"`
 }
 
 // A data set mapping data transfer object.
 type LookupDataSetMappingResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set mapping.
+	Kind string `pulumi:"kind"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// System Data of the Azure resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupDataSetMappingOutput(ctx *pulumi.Context, args LookupDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupDataSetMappingResultOutput {
@@ -53,9 +62,13 @@ func LookupDataSetMappingOutput(ctx *pulumi.Context, args LookupDataSetMappingOu
 }
 
 type LookupDataSetMappingOutputArgs struct {
-	AccountName           pulumi.StringInput `pulumi:"accountName"`
-	DataSetMappingName    pulumi.StringInput `pulumi:"dataSetMappingName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSetMapping.
+	DataSetMappingName pulumi.StringInput `pulumi:"dataSetMappingName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the shareSubscription.
 	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
 }
 
@@ -78,22 +91,27 @@ func (o LookupDataSetMappingResultOutput) ToLookupDataSetMappingResultOutputWith
 	return o
 }
 
+// The resource id of the azure resource
 func (o LookupDataSetMappingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set mapping.
 func (o LookupDataSetMappingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupDataSetMappingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// System Data of the Azure resource.
 func (o LookupDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the azure resource
 func (o LookupDataSetMappingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }

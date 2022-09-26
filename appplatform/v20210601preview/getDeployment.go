@@ -21,19 +21,28 @@ func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...p
 }
 
 type LookupDeploymentArgs struct {
-	AppName           string `pulumi:"appName"`
-	DeploymentName    string `pulumi:"deploymentName"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the Deployment resource.
+	DeploymentName string `pulumi:"deploymentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Deployment resource payload
 type LookupDeploymentResult struct {
-	Id         string                               `pulumi:"id"`
-	Name       string                               `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of the Deployment resource
 	Properties DeploymentResourcePropertiesResponse `pulumi:"properties"`
-	Sku        *SkuResponse                         `pulumi:"sku"`
-	Type       string                               `pulumi:"type"`
+	// Sku of the Deployment resource
+	Sku *SkuResponse `pulumi:"sku"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupDeploymentResult
@@ -63,10 +72,14 @@ func LookupDeploymentOutput(ctx *pulumi.Context, args LookupDeploymentOutputArgs
 }
 
 type LookupDeploymentOutputArgs struct {
-	AppName           pulumi.StringInput `pulumi:"appName"`
-	DeploymentName    pulumi.StringInput `pulumi:"deploymentName"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the Deployment resource.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupDeploymentOutputArgs) ElementType() reflect.Type {
@@ -88,22 +101,27 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the Deployment resource
 func (o LookupDeploymentResultOutput) Properties() DeploymentResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) DeploymentResourcePropertiesResponse { return v.Properties }).(DeploymentResourcePropertiesResponseOutput)
 }
 
+// Sku of the Deployment resource
 func (o LookupDeploymentResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// The type of the resource.
 func (o LookupDeploymentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.Type }).(pulumi.StringOutput)
 }

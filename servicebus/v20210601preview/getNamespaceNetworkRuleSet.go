@@ -21,21 +21,32 @@ func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNet
 }
 
 type LookupNamespaceNetworkRuleSetArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of NetworkRuleSet resource.
 type LookupNamespaceNetworkRuleSetResult struct {
-	DefaultAction               *string                                `pulumi:"defaultAction"`
-	Id                          string                                 `pulumi:"id"`
-	IpRules                     []NWRuleSetIpRulesResponse             `pulumi:"ipRules"`
-	Name                        string                                 `pulumi:"name"`
-	PublicNetworkAccess         *string                                `pulumi:"publicNetworkAccess"`
-	SystemData                  SystemDataResponse                     `pulumi:"systemData"`
-	TrustedServiceAccessEnabled *bool                                  `pulumi:"trustedServiceAccessEnabled"`
-	Type                        string                                 `pulumi:"type"`
-	VirtualNetworkRules         []NWRuleSetVirtualNetworkRulesResponse `pulumi:"virtualNetworkRules"`
+	// Default Action for Network Rule Set
+	DefaultAction *string `pulumi:"defaultAction"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// List of IpRules
+	IpRules []NWRuleSetIpRulesResponse `pulumi:"ipRules"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// This determines if traffic is allowed over public network. By default it is enabled.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Value that indicates whether Trusted Service Access is Enabled or not.
+	TrustedServiceAccessEnabled *bool `pulumi:"trustedServiceAccessEnabled"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// List VirtualNetwork Rules
+	VirtualNetworkRules []NWRuleSetVirtualNetworkRulesResponse `pulumi:"virtualNetworkRules"`
 }
 
 // Defaults sets the appropriate defaults for LookupNamespaceNetworkRuleSetResult
@@ -65,7 +76,9 @@ func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespa
 }
 
 type LookupNamespaceNetworkRuleSetOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -88,38 +101,47 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleS
 	return o
 }
 
+// Default Action for Network Rule Set
 func (o LookupNamespaceNetworkRuleSetResultOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupNamespaceNetworkRuleSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of IpRules
 func (o LookupNamespaceNetworkRuleSetResultOutput) IpRules() NWRuleSetIpRulesResponseArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) []NWRuleSetIpRulesResponse { return v.IpRules }).(NWRuleSetIpRulesResponseArrayOutput)
 }
 
+// Resource name
 func (o LookupNamespaceNetworkRuleSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// This determines if traffic is allowed over public network. By default it is enabled.
 func (o LookupNamespaceNetworkRuleSetResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupNamespaceNetworkRuleSetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Value that indicates whether Trusted Service Access is Enabled or not.
 func (o LookupNamespaceNetworkRuleSetResultOutput) TrustedServiceAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *bool { return v.TrustedServiceAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource type
 func (o LookupNamespaceNetworkRuleSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List VirtualNetwork Rules
 func (o LookupNamespaceNetworkRuleSetResultOutput) VirtualNetworkRules() NWRuleSetVirtualNetworkRulesResponseArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) []NWRuleSetVirtualNetworkRulesResponse {
 		return v.VirtualNetworkRules

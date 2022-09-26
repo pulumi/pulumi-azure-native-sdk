@@ -22,19 +22,28 @@ func LookupBandwidthSetting(ctx *pulumi.Context, args *LookupBandwidthSettingArg
 }
 
 type LookupBandwidthSettingArgs struct {
+	// The name of bandwidth setting to be fetched.
 	BandwidthSettingName string `pulumi:"bandwidthSettingName"`
-	ManagerName          string `pulumi:"managerName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The bandwidth setting.
 type LookupBandwidthSettingResult struct {
-	Id          string                      `pulumi:"id"`
-	Kind        *string                     `pulumi:"kind"`
-	Name        string                      `pulumi:"name"`
-	Schedules   []BandwidthScheduleResponse `pulumi:"schedules"`
-	Type        string                      `pulumi:"type"`
-	VolumeCount int                         `pulumi:"volumeCount"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The Kind of the object. Currently only Series8000 is supported
+	Kind *string `pulumi:"kind"`
+	// The name of the object.
+	Name string `pulumi:"name"`
+	// The schedules.
+	Schedules []BandwidthScheduleResponse `pulumi:"schedules"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
+	// The number of volumes that uses the bandwidth setting.
+	VolumeCount int `pulumi:"volumeCount"`
 }
 
 func LookupBandwidthSettingOutput(ctx *pulumi.Context, args LookupBandwidthSettingOutputArgs, opts ...pulumi.InvokeOption) LookupBandwidthSettingResultOutput {
@@ -51,9 +60,12 @@ func LookupBandwidthSettingOutput(ctx *pulumi.Context, args LookupBandwidthSetti
 }
 
 type LookupBandwidthSettingOutputArgs struct {
+	// The name of bandwidth setting to be fetched.
 	BandwidthSettingName pulumi.StringInput `pulumi:"bandwidthSettingName"`
-	ManagerName          pulumi.StringInput `pulumi:"managerName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupBandwidthSettingOutputArgs) ElementType() reflect.Type {
@@ -75,26 +87,32 @@ func (o LookupBandwidthSettingResultOutput) ToLookupBandwidthSettingResultOutput
 	return o
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupBandwidthSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBandwidthSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Kind of the object. Currently only Series8000 is supported
 func (o LookupBandwidthSettingResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBandwidthSettingResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The name of the object.
 func (o LookupBandwidthSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBandwidthSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The schedules.
 func (o LookupBandwidthSettingResultOutput) Schedules() BandwidthScheduleResponseArrayOutput {
 	return o.ApplyT(func(v LookupBandwidthSettingResult) []BandwidthScheduleResponse { return v.Schedules }).(BandwidthScheduleResponseArrayOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupBandwidthSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBandwidthSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The number of volumes that uses the bandwidth setting.
 func (o LookupBandwidthSettingResultOutput) VolumeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBandwidthSettingResult) int { return v.VolumeCount }).(pulumi.IntOutput)
 }

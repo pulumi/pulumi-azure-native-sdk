@@ -22,16 +22,22 @@ func GetExposureControlFeatureValueByFactory(ctx *pulumi.Context, args *GetExpos
 }
 
 type GetExposureControlFeatureValueByFactoryArgs struct {
-	FactoryName       string  `pulumi:"factoryName"`
-	FeatureName       *string `pulumi:"featureName"`
-	FeatureType       *string `pulumi:"featureType"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The feature name.
+	FeatureName *string `pulumi:"featureName"`
+	// The feature type.
+	FeatureType *string `pulumi:"featureType"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The exposure control response.
 type GetExposureControlFeatureValueByFactoryResult struct {
+	// The feature name.
 	FeatureName string `pulumi:"featureName"`
-	Value       string `pulumi:"value"`
+	// The feature value.
+	Value string `pulumi:"value"`
 }
 
 func GetExposureControlFeatureValueByFactoryOutput(ctx *pulumi.Context, args GetExposureControlFeatureValueByFactoryOutputArgs, opts ...pulumi.InvokeOption) GetExposureControlFeatureValueByFactoryResultOutput {
@@ -48,10 +54,14 @@ func GetExposureControlFeatureValueByFactoryOutput(ctx *pulumi.Context, args Get
 }
 
 type GetExposureControlFeatureValueByFactoryOutputArgs struct {
-	FactoryName       pulumi.StringInput    `pulumi:"factoryName"`
-	FeatureName       pulumi.StringPtrInput `pulumi:"featureName"`
-	FeatureType       pulumi.StringPtrInput `pulumi:"featureType"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The feature name.
+	FeatureName pulumi.StringPtrInput `pulumi:"featureName"`
+	// The feature type.
+	FeatureType pulumi.StringPtrInput `pulumi:"featureType"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetExposureControlFeatureValueByFactoryOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o GetExposureControlFeatureValueByFactoryResultOutput) ToGetExposureContro
 	return o
 }
 
+// The feature name.
 func (o GetExposureControlFeatureValueByFactoryResultOutput) FeatureName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExposureControlFeatureValueByFactoryResult) string { return v.FeatureName }).(pulumi.StringOutput)
 }
 
+// The feature value.
 func (o GetExposureControlFeatureValueByFactoryResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExposureControlFeatureValueByFactoryResult) string { return v.Value }).(pulumi.StringOutput)
 }

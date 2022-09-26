@@ -22,21 +22,32 @@ func LookupScopeConnection(ctx *pulumi.Context, args *LookupScopeConnectionArgs,
 }
 
 type LookupScopeConnectionArgs struct {
-	NetworkManagerName  string `pulumi:"networkManagerName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the network manager.
+	NetworkManagerName string `pulumi:"networkManagerName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name for the cross-tenant connection.
 	ScopeConnectionName string `pulumi:"scopeConnectionName"`
 }
 
 // The Scope Connections resource
 type LookupScopeConnectionResult struct {
-	Description *string            `pulumi:"description"`
-	Etag        string             `pulumi:"etag"`
-	Id          string             `pulumi:"id"`
-	Name        string             `pulumi:"name"`
-	ResourceId  *string            `pulumi:"resourceId"`
-	SystemData  SystemDataResponse `pulumi:"systemData"`
-	TenantId    *string            `pulumi:"tenantId"`
-	Type        string             `pulumi:"type"`
+	// A description of the scope connection.
+	Description *string `pulumi:"description"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource ID.
+	ResourceId *string `pulumi:"resourceId"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Tenant ID.
+	TenantId *string `pulumi:"tenantId"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupScopeConnectionOutput(ctx *pulumi.Context, args LookupScopeConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupScopeConnectionResultOutput {
@@ -53,8 +64,11 @@ func LookupScopeConnectionOutput(ctx *pulumi.Context, args LookupScopeConnection
 }
 
 type LookupScopeConnectionOutputArgs struct {
-	NetworkManagerName  pulumi.StringInput `pulumi:"networkManagerName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the network manager.
+	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name for the cross-tenant connection.
 	ScopeConnectionName pulumi.StringInput `pulumi:"scopeConnectionName"`
 }
 
@@ -77,34 +91,42 @@ func (o LookupScopeConnectionResultOutput) ToLookupScopeConnectionResultOutputWi
 	return o
 }
 
+// A description of the scope connection.
 func (o LookupScopeConnectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupScopeConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupScopeConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupScopeConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupScopeConnectionResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupScopeConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Tenant ID.
 func (o LookupScopeConnectionResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupScopeConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,14 +21,22 @@ func ListAccountSas(ctx *pulumi.Context, args *ListAccountSasArgs, opts ...pulum
 }
 
 type ListAccountSasArgs struct {
-	AccountName       string   `pulumi:"accountName"`
-	Expiry            string   `pulumi:"expiry"`
-	MaxRatePerSecond  int      `pulumi:"maxRatePerSecond"`
-	PrincipalId       string   `pulumi:"principalId"`
-	Regions           []string `pulumi:"regions"`
-	ResourceGroupName string   `pulumi:"resourceGroupName"`
-	SigningKey        string   `pulumi:"signingKey"`
-	Start             string   `pulumi:"start"`
+	// The name of the Maps Account.
+	AccountName string `pulumi:"accountName"`
+	// The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z"
+	Expiry string `pulumi:"expiry"`
+	// Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement.
+	MaxRatePerSecond int `pulumi:"maxRatePerSecond"`
+	// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
+	PrincipalId string `pulumi:"principalId"`
+	// Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible.
+	Regions []string `pulumi:"regions"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Map account key to use for signing.
+	SigningKey string `pulumi:"signingKey"`
+	// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z".
+	Start string `pulumi:"start"`
 }
 
 // Defaults sets the appropriate defaults for ListAccountSasArgs
@@ -45,6 +53,7 @@ func (val *ListAccountSasArgs) Defaults() *ListAccountSasArgs {
 
 // A new Sas token which can be used to access the Maps REST APIs and is controlled by the specified Managed identity permissions on Azure (IAM) Role Based Access Control.
 type ListAccountSasResult struct {
+	// The shared access signature access token.
 	AccountSasToken string `pulumi:"accountSasToken"`
 }
 
@@ -62,14 +71,22 @@ func ListAccountSasOutput(ctx *pulumi.Context, args ListAccountSasOutputArgs, op
 }
 
 type ListAccountSasOutputArgs struct {
-	AccountName       pulumi.StringInput      `pulumi:"accountName"`
-	Expiry            pulumi.StringInput      `pulumi:"expiry"`
-	MaxRatePerSecond  pulumi.IntInput         `pulumi:"maxRatePerSecond"`
-	PrincipalId       pulumi.StringInput      `pulumi:"principalId"`
-	Regions           pulumi.StringArrayInput `pulumi:"regions"`
-	ResourceGroupName pulumi.StringInput      `pulumi:"resourceGroupName"`
-	SigningKey        pulumi.StringInput      `pulumi:"signingKey"`
-	Start             pulumi.StringInput      `pulumi:"start"`
+	// The name of the Maps Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z"
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement.
+	MaxRatePerSecond pulumi.IntInput `pulumi:"maxRatePerSecond"`
+	// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Map account key to use for signing.
+	SigningKey pulumi.StringInput `pulumi:"signingKey"`
+	// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z".
+	Start pulumi.StringInput `pulumi:"start"`
 }
 
 func (ListAccountSasOutputArgs) ElementType() reflect.Type {
@@ -91,6 +108,7 @@ func (o ListAccountSasResultOutput) ToListAccountSasResultOutputWithContext(ctx 
 	return o
 }
 
+// The shared access signature access token.
 func (o ListAccountSasResultOutput) AccountSasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountSasResult) string { return v.AccountSasToken }).(pulumi.StringOutput)
 }

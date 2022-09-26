@@ -21,17 +21,25 @@ func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opt
 }
 
 type LookupLinkedServiceArgs struct {
+	// Name of the linked service.
 	LinkedServiceName string `pulumi:"linkedServiceName"`
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of the Log Analytics Workspace that contains the linkedServices resource
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The top level Linked service resource container.
 type LookupLinkedServiceResult struct {
-	Id                    string  `pulumi:"id"`
-	Name                  string  `pulumi:"name"`
-	ResourceId            *string `pulumi:"resourceId"`
-	Type                  string  `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
+	ResourceId *string `pulumi:"resourceId"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
 	WriteAccessResourceId *string `pulumi:"writeAccessResourceId"`
 }
 
@@ -49,9 +57,12 @@ func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutp
 }
 
 type LookupLinkedServiceOutputArgs struct {
+	// Name of the linked service.
 	LinkedServiceName pulumi.StringInput `pulumi:"linkedServiceName"`
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of the Log Analytics Workspace that contains the linkedServices resource
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupLinkedServiceOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithCo
 	return o
 }
 
+// Resource ID.
 func (o LookupLinkedServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupLinkedServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
 func (o LookupLinkedServiceResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupLinkedServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
 func (o LookupLinkedServiceResultOutput) WriteAccessResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *string { return v.WriteAccessResourceId }).(pulumi.StringPtrOutput)
 }

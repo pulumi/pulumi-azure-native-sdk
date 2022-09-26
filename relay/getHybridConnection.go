@@ -22,21 +22,32 @@ func LookupHybridConnection(ctx *pulumi.Context, args *LookupHybridConnectionArg
 }
 
 type LookupHybridConnectionArgs struct {
+	// The hybrid connection name.
 	HybridConnectionName string `pulumi:"hybridConnectionName"`
-	NamespaceName        string `pulumi:"namespaceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of hybrid connection resource.
 type LookupHybridConnectionResult struct {
-	CreatedAt                   string  `pulumi:"createdAt"`
-	Id                          string  `pulumi:"id"`
-	ListenerCount               int     `pulumi:"listenerCount"`
-	Name                        string  `pulumi:"name"`
-	RequiresClientAuthorization *bool   `pulumi:"requiresClientAuthorization"`
-	Type                        string  `pulumi:"type"`
-	UpdatedAt                   string  `pulumi:"updatedAt"`
-	UserMetadata                *string `pulumi:"userMetadata"`
+	// The time the hybrid connection was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The number of listeners for this hybrid connection. Note that min : 1 and max:25 are supported.
+	ListenerCount int `pulumi:"listenerCount"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
+	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The time the namespace was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 func LookupHybridConnectionOutput(ctx *pulumi.Context, args LookupHybridConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupHybridConnectionResultOutput {
@@ -53,9 +64,12 @@ func LookupHybridConnectionOutput(ctx *pulumi.Context, args LookupHybridConnecti
 }
 
 type LookupHybridConnectionOutputArgs struct {
+	// The hybrid connection name.
 	HybridConnectionName pulumi.StringInput `pulumi:"hybridConnectionName"`
-	NamespaceName        pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupHybridConnectionOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutput
 	return o
 }
 
+// The time the hybrid connection was created.
 func (o LookupHybridConnectionResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupHybridConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The number of listeners for this hybrid connection. Note that min : 1 and max:25 are supported.
 func (o LookupHybridConnectionResultOutput) ListenerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) int { return v.ListenerCount }).(pulumi.IntOutput)
 }
 
+// Resource name.
 func (o LookupHybridConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
 func (o LookupHybridConnectionResultOutput) RequiresClientAuthorization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) *bool { return v.RequiresClientAuthorization }).(pulumi.BoolPtrOutput)
 }
 
+// Resource type.
 func (o LookupHybridConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The time the namespace was updated.
 func (o LookupHybridConnectionResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
 func (o LookupHybridConnectionResultOutput) UserMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) *string { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }

@@ -22,18 +22,24 @@ func ListWorkflowRunActionExpressionTraces(ctx *pulumi.Context, args *ListWorkfl
 }
 
 type ListWorkflowRunActionExpressionTracesArgs struct {
-	ActionName        string `pulumi:"actionName"`
-	Name              string `pulumi:"name"`
+	// The workflow action name.
+	ActionName string `pulumi:"actionName"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RunName           string `pulumi:"runName"`
-	WorkflowName      string `pulumi:"workflowName"`
+	// The workflow run name.
+	RunName string `pulumi:"runName"`
+	// The workflow name.
+	WorkflowName string `pulumi:"workflowName"`
 }
 
 // The expression traces.
 type ListWorkflowRunActionExpressionTracesResult struct {
-	Inputs   []ExpressionRootResponse `pulumi:"inputs"`
-	NextLink *string                  `pulumi:"nextLink"`
-	Value    interface{}              `pulumi:"value"`
+	Inputs []ExpressionRootResponse `pulumi:"inputs"`
+	// The link used to get the next page of recommendations.
+	NextLink *string     `pulumi:"nextLink"`
+	Value    interface{} `pulumi:"value"`
 }
 
 func ListWorkflowRunActionExpressionTracesOutput(ctx *pulumi.Context, args ListWorkflowRunActionExpressionTracesOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowRunActionExpressionTracesResultOutput {
@@ -50,11 +56,16 @@ func ListWorkflowRunActionExpressionTracesOutput(ctx *pulumi.Context, args ListW
 }
 
 type ListWorkflowRunActionExpressionTracesOutputArgs struct {
-	ActionName        pulumi.StringInput `pulumi:"actionName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The workflow action name.
+	ActionName pulumi.StringInput `pulumi:"actionName"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RunName           pulumi.StringInput `pulumi:"runName"`
-	WorkflowName      pulumi.StringInput `pulumi:"workflowName"`
+	// The workflow run name.
+	RunName pulumi.StringInput `pulumi:"runName"`
+	// The workflow name.
+	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
 
 func (ListWorkflowRunActionExpressionTracesOutputArgs) ElementType() reflect.Type {
@@ -80,6 +91,7 @@ func (o ListWorkflowRunActionExpressionTracesResultOutput) Inputs() ExpressionRo
 	return o.ApplyT(func(v ListWorkflowRunActionExpressionTracesResult) []ExpressionRootResponse { return v.Inputs }).(ExpressionRootResponseArrayOutput)
 }
 
+// The link used to get the next page of recommendations.
 func (o ListWorkflowRunActionExpressionTracesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkflowRunActionExpressionTracesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }

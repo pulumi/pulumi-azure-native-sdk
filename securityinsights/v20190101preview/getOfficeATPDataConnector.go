@@ -21,21 +21,32 @@ func LookupOfficeATPDataConnector(ctx *pulumi.Context, args *LookupOfficeATPData
 }
 
 type LookupOfficeATPDataConnectorArgs struct {
-	DataConnectorId                     string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents OfficeATP (Office 365 Advanced Threat Protection) data connector.
 type LookupOfficeATPDataConnectorResult struct {
+	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
-	Etag      *string                                `pulumi:"etag"`
-	Id        string                                 `pulumi:"id"`
-	Kind      string                                 `pulumi:"kind"`
-	Name      string                                 `pulumi:"name"`
-	TenantId  string                                 `pulumi:"tenantId"`
-	Type      string                                 `pulumi:"type"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Expected value is 'OfficeATP'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The tenant id to connect to, and get the data from.
+	TenantId string `pulumi:"tenantId"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupOfficeATPDataConnectorOutput(ctx *pulumi.Context, args LookupOfficeATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficeATPDataConnectorResultOutput {
@@ -52,10 +63,14 @@ func LookupOfficeATPDataConnectorOutput(ctx *pulumi.Context, args LookupOfficeAT
 }
 
 type LookupOfficeATPDataConnectorOutputArgs struct {
-	DataConnectorId                     pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupOfficeATPDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -77,30 +92,37 @@ func (o LookupOfficeATPDataConnectorResultOutput) ToLookupOfficeATPDataConnector
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupOfficeATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupOfficeATPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupOfficeATPDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Expected value is 'OfficeATP'.
 func (o LookupOfficeATPDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupOfficeATPDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupOfficeATPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupOfficeATPDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOfficeATPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

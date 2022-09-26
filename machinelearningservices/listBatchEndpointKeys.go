@@ -22,14 +22,19 @@ func ListBatchEndpointKeys(ctx *pulumi.Context, args *ListBatchEndpointKeysArgs,
 }
 
 type ListBatchEndpointKeysArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
+	// Inference Endpoint name.
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Keys for endpoint authentication.
 type ListBatchEndpointKeysResult struct {
-	PrimaryKey   *string `pulumi:"primaryKey"`
+	// The primary key.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// The secondary key.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
@@ -47,9 +52,12 @@ func ListBatchEndpointKeysOutput(ctx *pulumi.Context, args ListBatchEndpointKeys
 }
 
 type ListBatchEndpointKeysOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
+	// Inference Endpoint name.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListBatchEndpointKeysOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListBatchEndpointKeysResultOutput) ToListBatchEndpointKeysResultOutputWi
 	return o
 }
 
+// The primary key.
 func (o ListBatchEndpointKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBatchEndpointKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// The secondary key.
 func (o ListBatchEndpointKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBatchEndpointKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

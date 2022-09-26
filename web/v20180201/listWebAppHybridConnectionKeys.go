@@ -21,20 +21,30 @@ func ListWebAppHybridConnectionKeys(ctx *pulumi.Context, args *ListWebAppHybridC
 }
 
 type ListWebAppHybridConnectionKeysArgs struct {
-	Name              string `pulumi:"name"`
-	NamespaceName     string `pulumi:"namespaceName"`
-	RelayName         string `pulumi:"relayName"`
+	// The name of the web app.
+	Name string `pulumi:"name"`
+	// The namespace for this hybrid connection.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The relay name for this hybrid connection.
+	RelayName string `pulumi:"relayName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Hybrid Connection key contract. This has the send key name and value for a Hybrid Connection.
 type ListWebAppHybridConnectionKeysResult struct {
-	Id           string  `pulumi:"id"`
-	Kind         *string `pulumi:"kind"`
-	Name         string  `pulumi:"name"`
-	SendKeyName  string  `pulumi:"sendKeyName"`
-	SendKeyValue string  `pulumi:"sendKeyValue"`
-	Type         string  `pulumi:"type"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// The name of the send key.
+	SendKeyName string `pulumi:"sendKeyName"`
+	// The value of the send key.
+	SendKeyValue string `pulumi:"sendKeyValue"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppHybridConnectionKeysOutput(ctx *pulumi.Context, args ListWebAppHybridConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHybridConnectionKeysResultOutput {
@@ -51,9 +61,13 @@ func ListWebAppHybridConnectionKeysOutput(ctx *pulumi.Context, args ListWebAppHy
 }
 
 type ListWebAppHybridConnectionKeysOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
-	RelayName         pulumi.StringInput `pulumi:"relayName"`
+	// The name of the web app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace for this hybrid connection.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The relay name for this hybrid connection.
+	RelayName pulumi.StringInput `pulumi:"relayName"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,26 +90,32 @@ func (o ListWebAppHybridConnectionKeysResultOutput) ToListWebAppHybridConnection
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppHybridConnectionKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppHybridConnectionKeysResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppHybridConnectionKeysResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the send key.
 func (o ListWebAppHybridConnectionKeysResultOutput) SendKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysResult) string { return v.SendKeyName }).(pulumi.StringOutput)
 }
 
+// The value of the send key.
 func (o ListWebAppHybridConnectionKeysResultOutput) SendKeyValue() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysResult) string { return v.SendKeyValue }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o ListWebAppHybridConnectionKeysResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppHybridConnectionKeysResult) string { return v.Type }).(pulumi.StringOutput)
 }

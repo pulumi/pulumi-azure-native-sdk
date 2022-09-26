@@ -22,22 +22,34 @@ func LookupConfigurationPolicyGroup(ctx *pulumi.Context, args *LookupConfigurati
 }
 
 type LookupConfigurationPolicyGroupArgs struct {
+	// The name of the ConfigurationPolicyGroup being retrieved.
 	ConfigurationPolicyGroupName string `pulumi:"configurationPolicyGroupName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
-	VpnServerConfigurationName   string `pulumi:"vpnServerConfigurationName"`
+	// The resource group name of the VpnServerConfiguration.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the VpnServerConfiguration.
+	VpnServerConfigurationName string `pulumi:"vpnServerConfigurationName"`
 }
 
 // VpnServerConfigurationPolicyGroup Resource.
 type LookupConfigurationPolicyGroupResult struct {
-	Etag                        string                                            `pulumi:"etag"`
-	Id                          *string                                           `pulumi:"id"`
-	IsDefault                   *bool                                             `pulumi:"isDefault"`
-	Name                        *string                                           `pulumi:"name"`
-	P2SConnectionConfigurations []SubResourceResponse                             `pulumi:"p2SConnectionConfigurations"`
-	PolicyMembers               []VpnServerConfigurationPolicyGroupMemberResponse `pulumi:"policyMembers"`
-	Priority                    *int                                              `pulumi:"priority"`
-	ProvisioningState           string                                            `pulumi:"provisioningState"`
-	Type                        string                                            `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
+	IsDefault *bool `pulumi:"isDefault"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// List of references to P2SConnectionConfigurations.
+	P2SConnectionConfigurations []SubResourceResponse `pulumi:"p2SConnectionConfigurations"`
+	// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
+	PolicyMembers []VpnServerConfigurationPolicyGroupMemberResponse `pulumi:"policyMembers"`
+	// Priority for VpnServerConfigurationPolicyGroup.
+	Priority *int `pulumi:"priority"`
+	// The provisioning state of the VpnServerConfigurationPolicyGroup resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationPolicyGroupOutput(ctx *pulumi.Context, args LookupConfigurationPolicyGroupOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationPolicyGroupResultOutput {
@@ -54,9 +66,12 @@ func LookupConfigurationPolicyGroupOutput(ctx *pulumi.Context, args LookupConfig
 }
 
 type LookupConfigurationPolicyGroupOutputArgs struct {
+	// The name of the ConfigurationPolicyGroup being retrieved.
 	ConfigurationPolicyGroupName pulumi.StringInput `pulumi:"configurationPolicyGroupName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
-	VpnServerConfigurationName   pulumi.StringInput `pulumi:"vpnServerConfigurationName"`
+	// The resource group name of the VpnServerConfiguration.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the VpnServerConfiguration.
+	VpnServerConfigurationName pulumi.StringInput `pulumi:"vpnServerConfigurationName"`
 }
 
 func (LookupConfigurationPolicyGroupOutputArgs) ElementType() reflect.Type {
@@ -78,42 +93,51 @@ func (o LookupConfigurationPolicyGroupResultOutput) ToLookupConfigurationPolicyG
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupConfigurationPolicyGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupConfigurationPolicyGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
 func (o LookupConfigurationPolicyGroupResultOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupConfigurationPolicyGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// List of references to P2SConnectionConfigurations.
 func (o LookupConfigurationPolicyGroupResultOutput) P2SConnectionConfigurations() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) []SubResourceResponse {
 		return v.P2SConnectionConfigurations
 	}).(SubResourceResponseArrayOutput)
 }
 
+// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
 func (o LookupConfigurationPolicyGroupResultOutput) PolicyMembers() VpnServerConfigurationPolicyGroupMemberResponseArrayOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) []VpnServerConfigurationPolicyGroupMemberResponse {
 		return v.PolicyMembers
 	}).(VpnServerConfigurationPolicyGroupMemberResponseArrayOutput)
 }
 
+// Priority for VpnServerConfigurationPolicyGroup.
 func (o LookupConfigurationPolicyGroupResultOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The provisioning state of the VpnServerConfigurationPolicyGroup resource.
 func (o LookupConfigurationPolicyGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupConfigurationPolicyGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationPolicyGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

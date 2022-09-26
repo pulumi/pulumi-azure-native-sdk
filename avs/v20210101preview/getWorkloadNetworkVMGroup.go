@@ -21,21 +21,32 @@ func LookupWorkloadNetworkVMGroup(ctx *pulumi.Context, args *LookupWorkloadNetwo
 }
 
 type LookupWorkloadNetworkVMGroupArgs struct {
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VmGroupId         string `pulumi:"vmGroupId"`
+	// NSX VM Group identifier. Generally the same as the VM Group's display name
+	VmGroupId string `pulumi:"vmGroupId"`
 }
 
 // NSX VM Group
 type LookupWorkloadNetworkVMGroupResult struct {
-	DisplayName       *string  `pulumi:"displayName"`
-	Id                string   `pulumi:"id"`
-	Members           []string `pulumi:"members"`
-	Name              string   `pulumi:"name"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	Revision          *float64 `pulumi:"revision"`
-	Status            string   `pulumi:"status"`
-	Type              string   `pulumi:"type"`
+	// Display name of the VM group.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Virtual machine members of this group.
+	Members []string `pulumi:"members"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// NSX revision number.
+	Revision *float64 `pulumi:"revision"`
+	// VM Group status.
+	Status string `pulumi:"status"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadNetworkVMGroupOutput(ctx *pulumi.Context, args LookupWorkloadNetworkVMGroupOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkVMGroupResultOutput {
@@ -52,9 +63,12 @@ func LookupWorkloadNetworkVMGroupOutput(ctx *pulumi.Context, args LookupWorkload
 }
 
 type LookupWorkloadNetworkVMGroupOutputArgs struct {
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VmGroupId         pulumi.StringInput `pulumi:"vmGroupId"`
+	// NSX VM Group identifier. Generally the same as the VM Group's display name
+	VmGroupId pulumi.StringInput `pulumi:"vmGroupId"`
 }
 
 func (LookupWorkloadNetworkVMGroupOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupWorkloadNetworkVMGroupResultOutput) ToLookupWorkloadNetworkVMGroup
 	return o
 }
 
+// Display name of the VM group.
 func (o LookupWorkloadNetworkVMGroupResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupWorkloadNetworkVMGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Virtual machine members of this group.
 func (o LookupWorkloadNetworkVMGroupResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// Resource name.
 func (o LookupWorkloadNetworkVMGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state
 func (o LookupWorkloadNetworkVMGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// NSX revision number.
 func (o LookupWorkloadNetworkVMGroupResultOutput) Revision() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
 }
 
+// VM Group status.
 func (o LookupWorkloadNetworkVMGroupResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadNetworkVMGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkVMGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
