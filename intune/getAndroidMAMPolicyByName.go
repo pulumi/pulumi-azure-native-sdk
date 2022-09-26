@@ -22,38 +22,46 @@ func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPol
 }
 
 type LookupAndroidMAMPolicyByNameArgs struct {
-	HostName   string  `pulumi:"hostName"`
-	PolicyName string  `pulumi:"policyName"`
-	Select     *string `pulumi:"select"`
+	// Location hostName for the tenant
+	HostName string `pulumi:"hostName"`
+	// Unique name for the policy
+	PolicyName string `pulumi:"policyName"`
+	// select specific fields in entity.
+	Select *string `pulumi:"select"`
 }
 
 // Android Policy entity for Intune MAM.
 type LookupAndroidMAMPolicyByNameResult struct {
-	AccessRecheckOfflineTimeout *string           `pulumi:"accessRecheckOfflineTimeout"`
-	AccessRecheckOnlineTimeout  *string           `pulumi:"accessRecheckOnlineTimeout"`
-	AppSharingFromLevel         *string           `pulumi:"appSharingFromLevel"`
-	AppSharingToLevel           *string           `pulumi:"appSharingToLevel"`
-	Authentication              *string           `pulumi:"authentication"`
-	ClipboardSharingLevel       *string           `pulumi:"clipboardSharingLevel"`
-	DataBackup                  *string           `pulumi:"dataBackup"`
-	Description                 *string           `pulumi:"description"`
-	DeviceCompliance            *string           `pulumi:"deviceCompliance"`
-	FileEncryption              *string           `pulumi:"fileEncryption"`
-	FileSharingSaveAs           *string           `pulumi:"fileSharingSaveAs"`
-	FriendlyName                string            `pulumi:"friendlyName"`
-	GroupStatus                 string            `pulumi:"groupStatus"`
-	Id                          string            `pulumi:"id"`
-	LastModifiedTime            string            `pulumi:"lastModifiedTime"`
-	Location                    *string           `pulumi:"location"`
-	ManagedBrowser              *string           `pulumi:"managedBrowser"`
-	Name                        string            `pulumi:"name"`
-	NumOfApps                   int               `pulumi:"numOfApps"`
-	OfflineWipeTimeout          *string           `pulumi:"offlineWipeTimeout"`
-	Pin                         *string           `pulumi:"pin"`
-	PinNumRetry                 *int              `pulumi:"pinNumRetry"`
-	ScreenCapture               *string           `pulumi:"screenCapture"`
-	Tags                        map[string]string `pulumi:"tags"`
-	Type                        string            `pulumi:"type"`
+	AccessRecheckOfflineTimeout *string `pulumi:"accessRecheckOfflineTimeout"`
+	AccessRecheckOnlineTimeout  *string `pulumi:"accessRecheckOnlineTimeout"`
+	AppSharingFromLevel         *string `pulumi:"appSharingFromLevel"`
+	AppSharingToLevel           *string `pulumi:"appSharingToLevel"`
+	Authentication              *string `pulumi:"authentication"`
+	ClipboardSharingLevel       *string `pulumi:"clipboardSharingLevel"`
+	DataBackup                  *string `pulumi:"dataBackup"`
+	Description                 *string `pulumi:"description"`
+	DeviceCompliance            *string `pulumi:"deviceCompliance"`
+	FileEncryption              *string `pulumi:"fileEncryption"`
+	FileSharingSaveAs           *string `pulumi:"fileSharingSaveAs"`
+	FriendlyName                string  `pulumi:"friendlyName"`
+	GroupStatus                 string  `pulumi:"groupStatus"`
+	// Resource Id
+	Id               string `pulumi:"id"`
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// Resource Location
+	Location       *string `pulumi:"location"`
+	ManagedBrowser *string `pulumi:"managedBrowser"`
+	// Resource name
+	Name               string  `pulumi:"name"`
+	NumOfApps          int     `pulumi:"numOfApps"`
+	OfflineWipeTimeout *string `pulumi:"offlineWipeTimeout"`
+	Pin                *string `pulumi:"pin"`
+	PinNumRetry        *int    `pulumi:"pinNumRetry"`
+	ScreenCapture      *string `pulumi:"screenCapture"`
+	// Resource Tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupAndroidMAMPolicyByNameResult
@@ -126,9 +134,12 @@ func LookupAndroidMAMPolicyByNameOutput(ctx *pulumi.Context, args LookupAndroidM
 }
 
 type LookupAndroidMAMPolicyByNameOutputArgs struct {
-	HostName   pulumi.StringInput    `pulumi:"hostName"`
-	PolicyName pulumi.StringInput    `pulumi:"policyName"`
-	Select     pulumi.StringPtrInput `pulumi:"select"`
+	// Location hostName for the tenant
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Unique name for the policy
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// select specific fields in entity.
+	Select pulumi.StringPtrInput `pulumi:"select"`
 }
 
 func (LookupAndroidMAMPolicyByNameOutputArgs) ElementType() reflect.Type {
@@ -202,6 +213,7 @@ func (o LookupAndroidMAMPolicyByNameResultOutput) GroupStatus() pulumi.StringOut
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) string { return v.GroupStatus }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupAndroidMAMPolicyByNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -210,6 +222,7 @@ func (o LookupAndroidMAMPolicyByNameResultOutput) LastModifiedTime() pulumi.Stri
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupAndroidMAMPolicyByNameResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -218,6 +231,7 @@ func (o LookupAndroidMAMPolicyByNameResultOutput) ManagedBrowser() pulumi.String
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) *string { return v.ManagedBrowser }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupAndroidMAMPolicyByNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -242,10 +256,12 @@ func (o LookupAndroidMAMPolicyByNameResultOutput) ScreenCapture() pulumi.StringP
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) *string { return v.ScreenCapture }).(pulumi.StringPtrOutput)
 }
 
+// Resource Tags
 func (o LookupAndroidMAMPolicyByNameResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupAndroidMAMPolicyByNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

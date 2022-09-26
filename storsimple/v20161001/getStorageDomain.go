@@ -23,19 +23,28 @@ func LookupStorageDomain(ctx *pulumi.Context, args *LookupStorageDomainArgs, opt
 }
 
 type LookupStorageDomainArgs struct {
-	ManagerName       string `pulumi:"managerName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The storage domain name.
 	StorageDomainName string `pulumi:"storageDomainName"`
 }
 
 // The storage domain.
 type LookupStorageDomainResult struct {
-	EncryptionKey               *AsymmetricEncryptedSecretResponse `pulumi:"encryptionKey"`
-	EncryptionStatus            string                             `pulumi:"encryptionStatus"`
-	Id                          string                             `pulumi:"id"`
-	Name                        string                             `pulumi:"name"`
-	StorageAccountCredentialIds []string                           `pulumi:"storageAccountCredentialIds"`
-	Type                        string                             `pulumi:"type"`
+	// The encryption key used to encrypt the data. This is a user secret.
+	EncryptionKey *AsymmetricEncryptedSecretResponse `pulumi:"encryptionKey"`
+	// The encryption status "Enabled | Disabled".
+	EncryptionStatus string `pulumi:"encryptionStatus"`
+	// The identifier.
+	Id string `pulumi:"id"`
+	// The name.
+	Name string `pulumi:"name"`
+	// The storage account credentials.
+	StorageAccountCredentialIds []string `pulumi:"storageAccountCredentialIds"`
+	// The type.
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageDomainOutput(ctx *pulumi.Context, args LookupStorageDomainOutputArgs, opts ...pulumi.InvokeOption) LookupStorageDomainResultOutput {
@@ -52,8 +61,11 @@ func LookupStorageDomainOutput(ctx *pulumi.Context, args LookupStorageDomainOutp
 }
 
 type LookupStorageDomainOutputArgs struct {
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The storage domain name.
 	StorageDomainName pulumi.StringInput `pulumi:"storageDomainName"`
 }
 
@@ -76,26 +88,32 @@ func (o LookupStorageDomainResultOutput) ToLookupStorageDomainResultOutputWithCo
 	return o
 }
 
+// The encryption key used to encrypt the data. This is a user secret.
 func (o LookupStorageDomainResultOutput) EncryptionKey() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageDomainResult) *AsymmetricEncryptedSecretResponse { return v.EncryptionKey }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
+// The encryption status "Enabled | Disabled".
 func (o LookupStorageDomainResultOutput) EncryptionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageDomainResult) string { return v.EncryptionStatus }).(pulumi.StringOutput)
 }
 
+// The identifier.
 func (o LookupStorageDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name.
 func (o LookupStorageDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The storage account credentials.
 func (o LookupStorageDomainResultOutput) StorageAccountCredentialIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStorageDomainResult) []string { return v.StorageAccountCredentialIds }).(pulumi.StringArrayOutput)
 }
 
+// The type.
 func (o LookupStorageDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

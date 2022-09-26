@@ -21,14 +21,18 @@ func ListMonitorApiKeys(ctx *pulumi.Context, args *ListMonitorApiKeysArgs, opts 
 }
 
 type ListMonitorApiKeysArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group to which the Datadog resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list operation.
 type ListMonitorApiKeysResult struct {
-	NextLink *string                 `pulumi:"nextLink"`
-	Value    []DatadogApiKeyResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of a list operation.
+	Value []DatadogApiKeyResponse `pulumi:"value"`
 }
 
 func ListMonitorApiKeysOutput(ctx *pulumi.Context, args ListMonitorApiKeysOutputArgs, opts ...pulumi.InvokeOption) ListMonitorApiKeysResultOutput {
@@ -45,7 +49,9 @@ func ListMonitorApiKeysOutput(ctx *pulumi.Context, args ListMonitorApiKeysOutput
 }
 
 type ListMonitorApiKeysOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group to which the Datadog resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListMonitorApiKeysResultOutput) ToListMonitorApiKeysResultOutputWithCont
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitorApiKeysResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitorApiKeysResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of a list operation.
 func (o ListMonitorApiKeysResultOutput) Value() DatadogApiKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitorApiKeysResult) []DatadogApiKeyResponse { return v.Value }).(DatadogApiKeyResponseArrayOutput)
 }

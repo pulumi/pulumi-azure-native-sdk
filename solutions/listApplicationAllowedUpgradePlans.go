@@ -22,12 +22,15 @@ func ListApplicationAllowedUpgradePlans(ctx *pulumi.Context, args *ListApplicati
 }
 
 type ListApplicationAllowedUpgradePlansArgs struct {
-	ApplicationName   string `pulumi:"applicationName"`
+	// The name of the managed application.
+	ApplicationName string `pulumi:"applicationName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The array of plan.
 type ListApplicationAllowedUpgradePlansResult struct {
+	// The array of plans.
 	Value []PlanResponse `pulumi:"value"`
 }
 
@@ -45,7 +48,9 @@ func ListApplicationAllowedUpgradePlansOutput(ctx *pulumi.Context, args ListAppl
 }
 
 type ListApplicationAllowedUpgradePlansOutputArgs struct {
-	ApplicationName   pulumi.StringInput `pulumi:"applicationName"`
+	// The name of the managed application.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListApplicationAllowedUpgradePlansResultOutput) ToListApplicationAllowed
 	return o
 }
 
+// The array of plans.
 func (o ListApplicationAllowedUpgradePlansResultOutput) Value() PlanResponseArrayOutput {
 	return o.ApplyT(func(v ListApplicationAllowedUpgradePlansResult) []PlanResponse { return v.Value }).(PlanResponseArrayOutput)
 }

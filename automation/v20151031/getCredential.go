@@ -21,20 +21,30 @@ func LookupCredential(ctx *pulumi.Context, args *LookupCredentialArgs, opts ...p
 }
 
 type LookupCredentialArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	CredentialName        string `pulumi:"credentialName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of credential.
+	CredentialName string `pulumi:"credentialName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the credential.
 type LookupCredentialResult struct {
-	CreationTime     string  `pulumi:"creationTime"`
-	Description      *string `pulumi:"description"`
-	Id               string  `pulumi:"id"`
-	LastModifiedTime string  `pulumi:"lastModifiedTime"`
-	Name             string  `pulumi:"name"`
-	Type             string  `pulumi:"type"`
-	UserName         string  `pulumi:"userName"`
+	// Gets the creation time.
+	CreationTime string `pulumi:"creationTime"`
+	// Gets or sets the description.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// Gets the last modified time.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// Gets the user name of the credential.
+	UserName string `pulumi:"userName"`
 }
 
 func LookupCredentialOutput(ctx *pulumi.Context, args LookupCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupCredentialResultOutput {
@@ -51,9 +61,12 @@ func LookupCredentialOutput(ctx *pulumi.Context, args LookupCredentialOutputArgs
 }
 
 type LookupCredentialOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	CredentialName        pulumi.StringInput `pulumi:"credentialName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of credential.
+	CredentialName pulumi.StringInput `pulumi:"credentialName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupCredentialOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupCredentialResultOutput) ToLookupCredentialResultOutputWithContext(
 	return o
 }
 
+// Gets the creation time.
 func (o LookupCredentialResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Gets or sets the description.
 func (o LookupCredentialResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCredentialResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets the last modified time.
 func (o LookupCredentialResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupCredentialResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Gets the user name of the credential.
 func (o LookupCredentialResultOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.UserName }).(pulumi.StringOutput)
 }

@@ -22,15 +22,20 @@ func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.Invo
 }
 
 type GetProductsArgs struct {
-	ProductName      string `pulumi:"productName"`
+	// Name of the product.
+	ProductName string `pulumi:"productName"`
+	// Name of the Azure Stack registration.
 	RegistrationName string `pulumi:"registrationName"`
-	ResourceGroup    string `pulumi:"resourceGroup"`
+	// Name of the resource group.
+	ResourceGroup string `pulumi:"resourceGroup"`
 }
 
 // Pageable list of products.
 type GetProductsResult struct {
-	NextLink *string           `pulumi:"nextLink"`
-	Value    []ProductResponse `pulumi:"value"`
+	// URI to the next page.
+	NextLink *string `pulumi:"nextLink"`
+	// List of products.
+	Value []ProductResponse `pulumi:"value"`
 }
 
 func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...pulumi.InvokeOption) GetProductsResultOutput {
@@ -47,9 +52,12 @@ func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...
 }
 
 type GetProductsOutputArgs struct {
-	ProductName      pulumi.StringInput `pulumi:"productName"`
+	// Name of the product.
+	ProductName pulumi.StringInput `pulumi:"productName"`
+	// Name of the Azure Stack registration.
 	RegistrationName pulumi.StringInput `pulumi:"registrationName"`
-	ResourceGroup    pulumi.StringInput `pulumi:"resourceGroup"`
+	// Name of the resource group.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
 }
 
 func (GetProductsOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o GetProductsResultOutput) ToGetProductsResultOutputWithContext(ctx contex
 	return o
 }
 
+// URI to the next page.
 func (o GetProductsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProductsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of products.
 func (o GetProductsResultOutput) Value() ProductResponseArrayOutput {
 	return o.ApplyT(func(v GetProductsResult) []ProductResponse { return v.Value }).(ProductResponseArrayOutput)
 }

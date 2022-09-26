@@ -22,18 +22,26 @@ func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntim
 }
 
 type LookupIntegrationRuntimeArgs struct {
-	FactoryName            string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The integration runtime name.
 	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Integration runtime resource type.
 type LookupIntegrationRuntimeResult struct {
-	Etag       string      `pulumi:"etag"`
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Etag identifies change in the resource.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Integration runtime properties.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupIntegrationRuntimeOutput(ctx *pulumi.Context, args LookupIntegrationRuntimeOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationRuntimeResultOutput {
@@ -50,9 +58,12 @@ func LookupIntegrationRuntimeOutput(ctx *pulumi.Context, args LookupIntegrationR
 }
 
 type LookupIntegrationRuntimeOutputArgs struct {
-	FactoryName            pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The integration runtime name.
 	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupIntegrationRuntimeOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o LookupIntegrationRuntimeResultOutput) ToLookupIntegrationRuntimeResultOu
 	return o
 }
 
+// Etag identifies change in the resource.
 func (o LookupIntegrationRuntimeResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupIntegrationRuntimeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupIntegrationRuntimeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Integration runtime properties.
 func (o LookupIntegrationRuntimeResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The resource type.
 func (o LookupIntegrationRuntimeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,20 +22,30 @@ func LookupManagementAssociation(ctx *pulumi.Context, args *LookupManagementAsso
 }
 
 type LookupManagementAssociationArgs struct {
+	// User ManagementAssociation Name.
 	ManagementAssociationName string `pulumi:"managementAssociationName"`
-	ProviderName              string `pulumi:"providerName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
-	ResourceName              string `pulumi:"resourceName"`
-	ResourceType              string `pulumi:"resourceType"`
+	// Provider name for the parent resource.
+	ProviderName string `pulumi:"providerName"`
+	// The name of the resource group to get. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parent resource name.
+	ResourceName string `pulumi:"resourceName"`
+	// Resource type for the parent resource
+	ResourceType string `pulumi:"resourceType"`
 }
 
 // The container for solution.
 type LookupManagementAssociationResult struct {
-	Id         string                                  `pulumi:"id"`
-	Location   *string                                 `pulumi:"location"`
-	Name       string                                  `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
 	Properties ManagementAssociationPropertiesResponse `pulumi:"properties"`
-	Type       string                                  `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementAssociationOutput(ctx *pulumi.Context, args LookupManagementAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupManagementAssociationResultOutput {
@@ -52,11 +62,16 @@ func LookupManagementAssociationOutput(ctx *pulumi.Context, args LookupManagemen
 }
 
 type LookupManagementAssociationOutputArgs struct {
+	// User ManagementAssociation Name.
 	ManagementAssociationName pulumi.StringInput `pulumi:"managementAssociationName"`
-	ProviderName              pulumi.StringInput `pulumi:"providerName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName              pulumi.StringInput `pulumi:"resourceName"`
-	ResourceType              pulumi.StringInput `pulumi:"resourceType"`
+	// Provider name for the parent resource.
+	ProviderName pulumi.StringInput `pulumi:"providerName"`
+	// The name of the resource group to get. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Parent resource name.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Resource type for the parent resource
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (LookupManagementAssociationOutputArgs) ElementType() reflect.Type {
@@ -78,22 +93,27 @@ func (o LookupManagementAssociationResultOutput) ToLookupManagementAssociationRe
 	return o
 }
 
+// Resource ID.
 func (o LookupManagementAssociationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementAssociationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupManagementAssociationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementAssociationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupManagementAssociationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementAssociationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
 func (o LookupManagementAssociationResultOutput) Properties() ManagementAssociationPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupManagementAssociationResult) ManagementAssociationPropertiesResponse { return v.Properties }).(ManagementAssociationPropertiesResponseOutput)
 }
 
+// Resource type.
 func (o LookupManagementAssociationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementAssociationResult) string { return v.Type }).(pulumi.StringOutput)
 }

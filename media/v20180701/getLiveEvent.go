@@ -21,29 +21,48 @@ func LookupLiveEvent(ctx *pulumi.Context, args *LookupLiveEventArgs, opts ...pul
 }
 
 type LookupLiveEventArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	LiveEventName     string `pulumi:"liveEventName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Live Event.
+	LiveEventName string `pulumi:"liveEventName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Live Event.
 type LookupLiveEventResult struct {
-	Created                 string                           `pulumi:"created"`
+	// The exact time the Live Event was created.
+	Created string `pulumi:"created"`
+	// The Live Event access policies.
 	CrossSiteAccessPolicies *CrossSiteAccessPoliciesResponse `pulumi:"crossSiteAccessPolicies"`
-	Description             *string                          `pulumi:"description"`
-	Encoding                *LiveEventEncodingResponse       `pulumi:"encoding"`
-	Id                      string                           `pulumi:"id"`
-	Input                   LiveEventInputResponse           `pulumi:"input"`
-	LastModified            string                           `pulumi:"lastModified"`
-	Location                *string                          `pulumi:"location"`
-	Name                    string                           `pulumi:"name"`
-	Preview                 *LiveEventPreviewResponse        `pulumi:"preview"`
-	ProvisioningState       string                           `pulumi:"provisioningState"`
-	ResourceState           string                           `pulumi:"resourceState"`
-	StreamOptions           []string                         `pulumi:"streamOptions"`
-	Tags                    map[string]string                `pulumi:"tags"`
-	Type                    string                           `pulumi:"type"`
-	VanityUrl               *bool                            `pulumi:"vanityUrl"`
+	// The Live Event description.
+	Description *string `pulumi:"description"`
+	// The Live Event encoding.
+	Encoding *LiveEventEncodingResponse `pulumi:"encoding"`
+	// Fully qualified resource ID for the resource.
+	Id string `pulumi:"id"`
+	// The Live Event input.
+	Input LiveEventInputResponse `pulumi:"input"`
+	// The exact time the Live Event was last modified.
+	LastModified string `pulumi:"lastModified"`
+	// The Azure Region of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The Live Event preview.
+	Preview *LiveEventPreviewResponse `pulumi:"preview"`
+	// The provisioning state of the Live Event.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource state of the Live Event.
+	ResourceState string `pulumi:"resourceState"`
+	// The options to use for the LiveEvent.  This value is specified at creation time and cannot be updated.
+	StreamOptions []string `pulumi:"streamOptions"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// Specifies whether to use a vanity url with the Live Event.  This value is specified at creation time and cannot be updated.
+	VanityUrl *bool `pulumi:"vanityUrl"`
 }
 
 func LookupLiveEventOutput(ctx *pulumi.Context, args LookupLiveEventOutputArgs, opts ...pulumi.InvokeOption) LookupLiveEventResultOutput {
@@ -60,8 +79,11 @@ func LookupLiveEventOutput(ctx *pulumi.Context, args LookupLiveEventOutputArgs, 
 }
 
 type LookupLiveEventOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	LiveEventName     pulumi.StringInput `pulumi:"liveEventName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Live Event.
+	LiveEventName pulumi.StringInput `pulumi:"liveEventName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,66 +106,82 @@ func (o LookupLiveEventResultOutput) ToLookupLiveEventResultOutputWithContext(ct
 	return o
 }
 
+// The exact time the Live Event was created.
 func (o LookupLiveEventResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The Live Event access policies.
 func (o LookupLiveEventResultOutput) CrossSiteAccessPolicies() CrossSiteAccessPoliciesResponsePtrOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) *CrossSiteAccessPoliciesResponse { return v.CrossSiteAccessPolicies }).(CrossSiteAccessPoliciesResponsePtrOutput)
 }
 
+// The Live Event description.
 func (o LookupLiveEventResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The Live Event encoding.
 func (o LookupLiveEventResultOutput) Encoding() LiveEventEncodingResponsePtrOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) *LiveEventEncodingResponse { return v.Encoding }).(LiveEventEncodingResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource.
 func (o LookupLiveEventResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Live Event input.
 func (o LookupLiveEventResultOutput) Input() LiveEventInputResponseOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) LiveEventInputResponse { return v.Input }).(LiveEventInputResponseOutput)
 }
 
+// The exact time the Live Event was last modified.
 func (o LookupLiveEventResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// The Azure Region of the resource.
 func (o LookupLiveEventResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupLiveEventResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Live Event preview.
 func (o LookupLiveEventResultOutput) Preview() LiveEventPreviewResponsePtrOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) *LiveEventPreviewResponse { return v.Preview }).(LiveEventPreviewResponsePtrOutput)
 }
 
+// The provisioning state of the Live Event.
 func (o LookupLiveEventResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource state of the Live Event.
 func (o LookupLiveEventResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// The options to use for the LiveEvent.  This value is specified at creation time and cannot be updated.
 func (o LookupLiveEventResultOutput) StreamOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) []string { return v.StreamOptions }).(pulumi.StringArrayOutput)
 }
 
+// Resource tags.
 func (o LookupLiveEventResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupLiveEventResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Specifies whether to use a vanity url with the Live Event.  This value is specified at creation time and cannot be updated.
 func (o LookupLiveEventResultOutput) VanityUrl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupLiveEventResult) *bool { return v.VanityUrl }).(pulumi.BoolPtrOutput)
 }

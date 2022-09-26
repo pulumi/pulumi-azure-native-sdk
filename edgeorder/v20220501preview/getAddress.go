@@ -21,21 +21,32 @@ func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.
 }
 
 type LookupAddressArgs struct {
-	AddressName       string `pulumi:"addressName"`
+	// The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
+	AddressName string `pulumi:"addressName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Address Resource.
 type LookupAddressResult struct {
-	AddressValidationStatus string                   `pulumi:"addressValidationStatus"`
-	ContactDetails          ContactDetailsResponse   `pulumi:"contactDetails"`
-	Id                      string                   `pulumi:"id"`
-	Location                string                   `pulumi:"location"`
-	Name                    string                   `pulumi:"name"`
-	ShippingAddress         *ShippingAddressResponse `pulumi:"shippingAddress"`
-	SystemData              SystemDataResponse       `pulumi:"systemData"`
-	Tags                    map[string]string        `pulumi:"tags"`
-	Type                    string                   `pulumi:"type"`
+	// Status of address validation.
+	AddressValidationStatus string `pulumi:"addressValidationStatus"`
+	// Contact details for the address.
+	ContactDetails ContactDetailsResponse `pulumi:"contactDetails"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Shipping details for the address.
+	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
+	// Represents resource creation and update time.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts ...pulumi.InvokeOption) LookupAddressResultOutput {
@@ -52,7 +63,9 @@ func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts
 }
 
 type LookupAddressOutputArgs struct {
-	AddressName       pulumi.StringInput `pulumi:"addressName"`
+	// The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
+	AddressName pulumi.StringInput `pulumi:"addressName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,38 +88,47 @@ func (o LookupAddressResultOutput) ToLookupAddressResultOutputWithContext(ctx co
 	return o
 }
 
+// Status of address validation.
 func (o LookupAddressResultOutput) AddressValidationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.AddressValidationStatus }).(pulumi.StringOutput)
 }
 
+// Contact details for the address.
 func (o LookupAddressResultOutput) ContactDetails() ContactDetailsResponseOutput {
 	return o.ApplyT(func(v LookupAddressResult) ContactDetailsResponse { return v.ContactDetails }).(ContactDetailsResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAddressResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupAddressResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAddressResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Shipping details for the address.
 func (o LookupAddressResultOutput) ShippingAddress() ShippingAddressResponsePtrOutput {
 	return o.ApplyT(func(v LookupAddressResult) *ShippingAddressResponse { return v.ShippingAddress }).(ShippingAddressResponsePtrOutput)
 }
 
+// Represents resource creation and update time.
 func (o LookupAddressResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAddressResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupAddressResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAddressResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAddressResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Type }).(pulumi.StringOutput)
 }

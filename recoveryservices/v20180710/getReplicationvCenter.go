@@ -21,19 +21,28 @@ func LookupReplicationvCenter(ctx *pulumi.Context, args *LookupReplicationvCente
 }
 
 type LookupReplicationvCenterArgs struct {
-	FabricName        string `pulumi:"fabricName"`
+	// Fabric name.
+	FabricName string `pulumi:"fabricName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
-	VCenterName       string `pulumi:"vCenterName"`
+	// The name of the recovery services vault.
+	ResourceName string `pulumi:"resourceName"`
+	// vCenter name.
+	VCenterName string `pulumi:"vCenterName"`
 }
 
 // vCenter definition.
 type LookupReplicationvCenterResult struct {
-	Id         string                    `pulumi:"id"`
-	Location   *string                   `pulumi:"location"`
-	Name       string                    `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// VCenter related data.
 	Properties VCenterPropertiesResponse `pulumi:"properties"`
-	Type       string                    `pulumi:"type"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationvCenterOutput(ctx *pulumi.Context, args LookupReplicationvCenterOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationvCenterResultOutput {
@@ -50,10 +59,14 @@ func LookupReplicationvCenterOutput(ctx *pulumi.Context, args LookupReplicationv
 }
 
 type LookupReplicationvCenterOutputArgs struct {
-	FabricName        pulumi.StringInput `pulumi:"fabricName"`
+	// Fabric name.
+	FabricName pulumi.StringInput `pulumi:"fabricName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
-	VCenterName       pulumi.StringInput `pulumi:"vCenterName"`
+	// The name of the recovery services vault.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// vCenter name.
+	VCenterName pulumi.StringInput `pulumi:"vCenterName"`
 }
 
 func (LookupReplicationvCenterOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupReplicationvCenterResultOutput) ToLookupReplicationvCenterResultOu
 	return o
 }
 
+// Resource Id
 func (o LookupReplicationvCenterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationvCenterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupReplicationvCenterResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicationvCenterResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupReplicationvCenterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationvCenterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// VCenter related data.
 func (o LookupReplicationvCenterResultOutput) Properties() VCenterPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupReplicationvCenterResult) VCenterPropertiesResponse { return v.Properties }).(VCenterPropertiesResponseOutput)
 }
 
+// Resource Type
 func (o LookupReplicationvCenterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationvCenterResult) string { return v.Type }).(pulumi.StringOutput)
 }

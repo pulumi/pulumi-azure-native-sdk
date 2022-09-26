@@ -21,21 +21,32 @@ func LookupAvailabilityGroupListener(ctx *pulumi.Context, args *LookupAvailabili
 }
 
 type LookupAvailabilityGroupListenerArgs struct {
+	// Name of the availability group listener.
 	AvailabilityGroupListenerName string `pulumi:"availabilityGroupListenerName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
-	SqlVirtualMachineGroupName    string `pulumi:"sqlVirtualMachineGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL virtual machine group.
+	SqlVirtualMachineGroupName string `pulumi:"sqlVirtualMachineGroupName"`
 }
 
 // A SQL Server availability group listener.
 type LookupAvailabilityGroupListenerResult struct {
-	AvailabilityGroupName                    *string                             `pulumi:"availabilityGroupName"`
-	CreateDefaultAvailabilityGroupIfNotExist *bool                               `pulumi:"createDefaultAvailabilityGroupIfNotExist"`
-	Id                                       string                              `pulumi:"id"`
-	LoadBalancerConfigurations               []LoadBalancerConfigurationResponse `pulumi:"loadBalancerConfigurations"`
-	Name                                     string                              `pulumi:"name"`
-	Port                                     *int                                `pulumi:"port"`
-	ProvisioningState                        string                              `pulumi:"provisioningState"`
-	Type                                     string                              `pulumi:"type"`
+	// Name of the availability group.
+	AvailabilityGroupName *string `pulumi:"availabilityGroupName"`
+	// Create a default availability group if it does not exist.
+	CreateDefaultAvailabilityGroupIfNotExist *bool `pulumi:"createDefaultAvailabilityGroupIfNotExist"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// List of load balancer configurations for an availability group listener.
+	LoadBalancerConfigurations []LoadBalancerConfigurationResponse `pulumi:"loadBalancerConfigurations"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Listener port.
+	Port *int `pulumi:"port"`
+	// Provisioning state to track the async operation status.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAvailabilityGroupListenerOutput(ctx *pulumi.Context, args LookupAvailabilityGroupListenerOutputArgs, opts ...pulumi.InvokeOption) LookupAvailabilityGroupListenerResultOutput {
@@ -52,9 +63,12 @@ func LookupAvailabilityGroupListenerOutput(ctx *pulumi.Context, args LookupAvail
 }
 
 type LookupAvailabilityGroupListenerOutputArgs struct {
+	// Name of the availability group listener.
 	AvailabilityGroupListenerName pulumi.StringInput `pulumi:"availabilityGroupListenerName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
-	SqlVirtualMachineGroupName    pulumi.StringInput `pulumi:"sqlVirtualMachineGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL virtual machine group.
+	SqlVirtualMachineGroupName pulumi.StringInput `pulumi:"sqlVirtualMachineGroupName"`
 }
 
 func (LookupAvailabilityGroupListenerOutputArgs) ElementType() reflect.Type {
@@ -76,36 +90,44 @@ func (o LookupAvailabilityGroupListenerResultOutput) ToLookupAvailabilityGroupLi
 	return o
 }
 
+// Name of the availability group.
 func (o LookupAvailabilityGroupListenerResultOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) *string { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
 }
 
+// Create a default availability group if it does not exist.
 func (o LookupAvailabilityGroupListenerResultOutput) CreateDefaultAvailabilityGroupIfNotExist() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) *bool { return v.CreateDefaultAvailabilityGroupIfNotExist }).(pulumi.BoolPtrOutput)
 }
 
+// Resource ID.
 func (o LookupAvailabilityGroupListenerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of load balancer configurations for an availability group listener.
 func (o LookupAvailabilityGroupListenerResultOutput) LoadBalancerConfigurations() LoadBalancerConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) []LoadBalancerConfigurationResponse {
 		return v.LoadBalancerConfigurations
 	}).(LoadBalancerConfigurationResponseArrayOutput)
 }
 
+// Resource name.
 func (o LookupAvailabilityGroupListenerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Listener port.
 func (o LookupAvailabilityGroupListenerResultOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// Provisioning state to track the async operation status.
 func (o LookupAvailabilityGroupListenerResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupAvailabilityGroupListenerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.Type }).(pulumi.StringOutput)
 }

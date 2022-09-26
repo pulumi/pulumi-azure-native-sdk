@@ -22,14 +22,19 @@ func ListNotebookWorkspaceConnectionInfo(ctx *pulumi.Context, args *ListNotebook
 }
 
 type ListNotebookWorkspaceConnectionInfoArgs struct {
-	AccountName           string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the notebook workspace resource.
 	NotebookWorkspaceName string `pulumi:"notebookWorkspaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The connection info for the given notebook workspace
 type ListNotebookWorkspaceConnectionInfoResult struct {
-	AuthToken              string `pulumi:"authToken"`
+	// Specifies auth token used for connecting to Notebook server (uses token-based auth).
+	AuthToken string `pulumi:"authToken"`
+	// Specifies the endpoint of Notebook server.
 	NotebookServerEndpoint string `pulumi:"notebookServerEndpoint"`
 }
 
@@ -47,9 +52,12 @@ func ListNotebookWorkspaceConnectionInfoOutput(ctx *pulumi.Context, args ListNot
 }
 
 type ListNotebookWorkspaceConnectionInfoOutputArgs struct {
-	AccountName           pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the notebook workspace resource.
 	NotebookWorkspaceName pulumi.StringInput `pulumi:"notebookWorkspaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListNotebookWorkspaceConnectionInfoOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListNotebookWorkspaceConnectionInfoResultOutput) ToListNotebookWorkspace
 	return o
 }
 
+// Specifies auth token used for connecting to Notebook server (uses token-based auth).
 func (o ListNotebookWorkspaceConnectionInfoResultOutput) AuthToken() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNotebookWorkspaceConnectionInfoResult) string { return v.AuthToken }).(pulumi.StringOutput)
 }
 
+// Specifies the endpoint of Notebook server.
 func (o ListNotebookWorkspaceConnectionInfoResultOutput) NotebookServerEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNotebookWorkspaceConnectionInfoResult) string { return v.NotebookServerEndpoint }).(pulumi.StringOutput)
 }

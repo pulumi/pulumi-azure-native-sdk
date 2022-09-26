@@ -21,11 +21,13 @@ func ListGlobalUserLabs(ctx *pulumi.Context, args *ListGlobalUserLabsArgs, opts 
 }
 
 type ListGlobalUserLabsArgs struct {
+	// The name of the user.
 	UserName string `pulumi:"userName"`
 }
 
 // Lists the labs owned by a user
 type ListGlobalUserLabsResult struct {
+	// List of all the labs
 	Labs []LabDetailsResponse `pulumi:"labs"`
 }
 
@@ -43,6 +45,7 @@ func ListGlobalUserLabsOutput(ctx *pulumi.Context, args ListGlobalUserLabsOutput
 }
 
 type ListGlobalUserLabsOutputArgs struct {
+	// The name of the user.
 	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
@@ -65,6 +68,7 @@ func (o ListGlobalUserLabsResultOutput) ToListGlobalUserLabsResultOutputWithCont
 	return o
 }
 
+// List of all the labs
 func (o ListGlobalUserLabsResultOutput) Labs() LabDetailsResponseArrayOutput {
 	return o.ApplyT(func(v ListGlobalUserLabsResult) []LabDetailsResponse { return v.Labs }).(LabDetailsResponseArrayOutput)
 }

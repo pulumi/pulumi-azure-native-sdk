@@ -21,24 +21,38 @@ func LookupStreamingLocator(ctx *pulumi.Context, args *LookupStreamingLocatorArg
 }
 
 type LookupStreamingLocatorArgs struct {
-	AccountName          string `pulumi:"accountName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Streaming Locator name.
 	StreamingLocatorName string `pulumi:"streamingLocatorName"`
 }
 
 // A Streaming Locator resource
 type LookupStreamingLocatorResult struct {
-	AssetName                   string                                          `pulumi:"assetName"`
-	ContentKeys                 []StreamingLocatorUserDefinedContentKeyResponse `pulumi:"contentKeys"`
-	Created                     string                                          `pulumi:"created"`
-	DefaultContentKeyPolicyName *string                                         `pulumi:"defaultContentKeyPolicyName"`
-	EndTime                     *string                                         `pulumi:"endTime"`
-	Id                          string                                          `pulumi:"id"`
-	Name                        string                                          `pulumi:"name"`
-	StartTime                   *string                                         `pulumi:"startTime"`
-	StreamingLocatorId          *string                                         `pulumi:"streamingLocatorId"`
-	StreamingPolicyName         string                                          `pulumi:"streamingPolicyName"`
-	Type                        string                                          `pulumi:"type"`
+	// Asset Name
+	AssetName string `pulumi:"assetName"`
+	// ContentKeys used by this Streaming Locator
+	ContentKeys []StreamingLocatorUserDefinedContentKeyResponse `pulumi:"contentKeys"`
+	// Creation time of Streaming Locator
+	Created string `pulumi:"created"`
+	// Default ContentKeyPolicy used by this Streaming Locator
+	DefaultContentKeyPolicyName *string `pulumi:"defaultContentKeyPolicyName"`
+	// EndTime of Streaming Locator
+	EndTime *string `pulumi:"endTime"`
+	// Fully qualified resource ID for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// StartTime of Streaming Locator
+	StartTime *string `pulumi:"startTime"`
+	// StreamingLocatorId of Streaming Locator
+	StreamingLocatorId *string `pulumi:"streamingLocatorId"`
+	// Streaming policy name used by this streaming locator. Either specify the name of streaming policy you created or use one of the predefined streaming polices. The predefined streaming policies available are: 'Predefined_DownloadOnly', 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey', 'Predefined_SecureStreaming' and 'Predefined_SecureStreamingWithFairPlay'
+	StreamingPolicyName string `pulumi:"streamingPolicyName"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupStreamingLocatorOutput(ctx *pulumi.Context, args LookupStreamingLocatorOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingLocatorResultOutput {
@@ -55,8 +69,11 @@ func LookupStreamingLocatorOutput(ctx *pulumi.Context, args LookupStreamingLocat
 }
 
 type LookupStreamingLocatorOutputArgs struct {
-	AccountName          pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Streaming Locator name.
 	StreamingLocatorName pulumi.StringInput `pulumi:"streamingLocatorName"`
 }
 
@@ -79,48 +96,59 @@ func (o LookupStreamingLocatorResultOutput) ToLookupStreamingLocatorResultOutput
 	return o
 }
 
+// Asset Name
 func (o LookupStreamingLocatorResultOutput) AssetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.AssetName }).(pulumi.StringOutput)
 }
 
+// ContentKeys used by this Streaming Locator
 func (o LookupStreamingLocatorResultOutput) ContentKeys() StreamingLocatorUserDefinedContentKeyResponseArrayOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) []StreamingLocatorUserDefinedContentKeyResponse {
 		return v.ContentKeys
 	}).(StreamingLocatorUserDefinedContentKeyResponseArrayOutput)
 }
 
+// Creation time of Streaming Locator
 func (o LookupStreamingLocatorResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Default ContentKeyPolicy used by this Streaming Locator
 func (o LookupStreamingLocatorResultOutput) DefaultContentKeyPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) *string { return v.DefaultContentKeyPolicyName }).(pulumi.StringPtrOutput)
 }
 
+// EndTime of Streaming Locator
 func (o LookupStreamingLocatorResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource.
 func (o LookupStreamingLocatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupStreamingLocatorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// StartTime of Streaming Locator
 func (o LookupStreamingLocatorResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// StreamingLocatorId of Streaming Locator
 func (o LookupStreamingLocatorResultOutput) StreamingLocatorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) *string { return v.StreamingLocatorId }).(pulumi.StringPtrOutput)
 }
 
+// Streaming policy name used by this streaming locator. Either specify the name of streaming policy you created or use one of the predefined streaming polices. The predefined streaming policies available are: 'Predefined_DownloadOnly', 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey', 'Predefined_SecureStreaming' and 'Predefined_SecureStreamingWithFairPlay'
 func (o LookupStreamingLocatorResultOutput) StreamingPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.StreamingPolicyName }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupStreamingLocatorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.Type }).(pulumi.StringOutput)
 }

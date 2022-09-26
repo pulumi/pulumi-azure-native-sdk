@@ -23,18 +23,26 @@ func LookupStorageAccountManagementPolicies(ctx *pulumi.Context, args *LookupSto
 }
 
 type LookupStorageAccountManagementPoliciesArgs struct {
-	AccountName          string `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Storage Account Management Policy. It should always be 'default'
 	ManagementPolicyName string `pulumi:"managementPolicyName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Get Storage Account ManagementPolicies operation response.
 type LookupStorageAccountManagementPoliciesResult struct {
-	Id               string      `pulumi:"id"`
-	LastModifiedTime string      `pulumi:"lastModifiedTime"`
-	Name             string      `pulumi:"name"`
-	Policy           interface{} `pulumi:"policy"`
-	Type             string      `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Returns the date and time the ManagementPolicies was last modified.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	Policy interface{} `pulumi:"policy"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupStorageAccountManagementPoliciesOutput(ctx *pulumi.Context, args LookupStorageAccountManagementPoliciesOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountManagementPoliciesResultOutput {
@@ -51,9 +59,12 @@ func LookupStorageAccountManagementPoliciesOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupStorageAccountManagementPoliciesOutputArgs struct {
-	AccountName          pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Storage Account Management Policy. It should always be 'default'
 	ManagementPolicyName pulumi.StringInput `pulumi:"managementPolicyName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupStorageAccountManagementPoliciesOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupStorageAccountManagementPoliciesResultOutput) ToLookupStorageAccou
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupStorageAccountManagementPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountManagementPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Returns the date and time the ManagementPolicies was last modified.
 func (o LookupStorageAccountManagementPoliciesResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountManagementPoliciesResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupStorageAccountManagementPoliciesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountManagementPoliciesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
 func (o LookupStorageAccountManagementPoliciesResultOutput) Policy() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupStorageAccountManagementPoliciesResult) interface{} { return v.Policy }).(pulumi.AnyOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStorageAccountManagementPoliciesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountManagementPoliciesResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,19 +21,28 @@ func LookupConfigurationProfileHCRPAssignment(ctx *pulumi.Context, args *LookupC
 }
 
 type LookupConfigurationProfileHCRPAssignmentArgs struct {
+	// The configuration profile assignment name.
 	ConfigurationProfileAssignmentName string `pulumi:"configurationProfileAssignmentName"`
-	MachineName                        string `pulumi:"machineName"`
-	ResourceGroupName                  string `pulumi:"resourceGroupName"`
+	// The name of the Arc machine.
+	MachineName string `pulumi:"machineName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
 type LookupConfigurationProfileHCRPAssignmentResult struct {
-	Id         string                                           `pulumi:"id"`
-	ManagedBy  string                                           `pulumi:"managedBy"`
-	Name       string                                           `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Azure resource id. Indicates if this resource is managed by another Azure resource.
+	ManagedBy string `pulumi:"managedBy"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Properties of the configuration profile assignment.
 	Properties ConfigurationProfileAssignmentPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                               `pulumi:"systemData"`
-	Type       string                                           `pulumi:"type"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationProfileHCRPAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileHCRPAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileHCRPAssignmentResultOutput {
@@ -50,9 +59,12 @@ func LookupConfigurationProfileHCRPAssignmentOutput(ctx *pulumi.Context, args Lo
 }
 
 type LookupConfigurationProfileHCRPAssignmentOutputArgs struct {
+	// The configuration profile assignment name.
 	ConfigurationProfileAssignmentName pulumi.StringInput `pulumi:"configurationProfileAssignmentName"`
-	MachineName                        pulumi.StringInput `pulumi:"machineName"`
-	ResourceGroupName                  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Arc machine.
+	MachineName pulumi.StringInput `pulumi:"machineName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupConfigurationProfileHCRPAssignmentOutputArgs) ElementType() reflect.Type {
@@ -74,28 +86,34 @@ func (o LookupConfigurationProfileHCRPAssignmentResultOutput) ToLookupConfigurat
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationProfileHCRPAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCRPAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure resource id. Indicates if this resource is managed by another Azure resource.
 func (o LookupConfigurationProfileHCRPAssignmentResultOutput) ManagedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCRPAssignmentResult) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupConfigurationProfileHCRPAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCRPAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the configuration profile assignment.
 func (o LookupConfigurationProfileHCRPAssignmentResultOutput) Properties() ConfigurationProfileAssignmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCRPAssignmentResult) ConfigurationProfileAssignmentPropertiesResponse {
 		return v.Properties
 	}).(ConfigurationProfileAssignmentPropertiesResponseOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupConfigurationProfileHCRPAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCRPAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationProfileHCRPAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCRPAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

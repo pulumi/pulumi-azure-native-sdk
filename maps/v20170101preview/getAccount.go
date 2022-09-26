@@ -23,19 +23,28 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 }
 
 type LookupAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the Maps Account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Azure Resource Group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure resource which represents access to a suite of Maps REST APIs.
 type LookupAccountResult struct {
-	Id         string                        `pulumi:"id"`
-	Location   string                        `pulumi:"location"`
-	Name       string                        `pulumi:"name"`
+	// The fully qualified Maps Account resource identifier.
+	Id string `pulumi:"id"`
+	// The location of the resource.
+	Location string `pulumi:"location"`
+	// The name of the Maps Account, which is unique within a Resource Group.
+	Name string `pulumi:"name"`
+	// The map account properties.
 	Properties MapsAccountPropertiesResponse `pulumi:"properties"`
-	Sku        SkuResponse                   `pulumi:"sku"`
-	Tags       map[string]string             `pulumi:"tags"`
-	Type       string                        `pulumi:"type"`
+	// The SKU of this account.
+	Sku SkuResponse `pulumi:"sku"`
+	// Gets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
@@ -52,7 +61,9 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 }
 
 type LookupAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Maps Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Azure Resource Group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +86,37 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// The fully qualified Maps Account resource identifier.
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the Maps Account, which is unique within a Resource Group.
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The map account properties.
 func (o LookupAccountResultOutput) Properties() MapsAccountPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAccountResult) MapsAccountPropertiesResponse { return v.Properties }).(MapsAccountPropertiesResponseOutput)
 }
 
+// The SKU of this account.
 func (o LookupAccountResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupAccountResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
+// Gets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
 func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type.
 func (o LookupAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

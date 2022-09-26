@@ -21,19 +21,28 @@ func LookupRoleManagementPolicyAssignment(ctx *pulumi.Context, args *LookupRoleM
 }
 
 type LookupRoleManagementPolicyAssignmentArgs struct {
+	// The name of format {guid_guid} the role management policy assignment to get.
 	RoleManagementPolicyAssignmentName string `pulumi:"roleManagementPolicyAssignmentName"`
-	Scope                              string `pulumi:"scope"`
+	// The scope of the role management policy.
+	Scope string `pulumi:"scope"`
 }
 
 // Role management policy
 type LookupRoleManagementPolicyAssignmentResult struct {
-	Id                         string                             `pulumi:"id"`
-	Name                       string                             `pulumi:"name"`
+	// The role management policy Id.
+	Id string `pulumi:"id"`
+	// The role management policy name.
+	Name string `pulumi:"name"`
+	// Additional properties of scope, role definition and policy
 	PolicyAssignmentProperties PolicyAssignmentPropertiesResponse `pulumi:"policyAssignmentProperties"`
-	PolicyId                   *string                            `pulumi:"policyId"`
-	RoleDefinitionId           *string                            `pulumi:"roleDefinitionId"`
-	Scope                      *string                            `pulumi:"scope"`
-	Type                       string                             `pulumi:"type"`
+	// The policy id role management policy assignment.
+	PolicyId *string `pulumi:"policyId"`
+	// The role definition of management policy assignment.
+	RoleDefinitionId *string `pulumi:"roleDefinitionId"`
+	// The role management policy scope.
+	Scope *string `pulumi:"scope"`
+	// The role management policy type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRoleManagementPolicyAssignmentOutput(ctx *pulumi.Context, args LookupRoleManagementPolicyAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRoleManagementPolicyAssignmentResultOutput {
@@ -50,8 +59,10 @@ func LookupRoleManagementPolicyAssignmentOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupRoleManagementPolicyAssignmentOutputArgs struct {
+	// The name of format {guid_guid} the role management policy assignment to get.
 	RoleManagementPolicyAssignmentName pulumi.StringInput `pulumi:"roleManagementPolicyAssignmentName"`
-	Scope                              pulumi.StringInput `pulumi:"scope"`
+	// The scope of the role management policy.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRoleManagementPolicyAssignmentOutputArgs) ElementType() reflect.Type {
@@ -73,32 +84,39 @@ func (o LookupRoleManagementPolicyAssignmentResultOutput) ToLookupRoleManagement
 	return o
 }
 
+// The role management policy Id.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role management policy name.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Additional properties of scope, role definition and policy
 func (o LookupRoleManagementPolicyAssignmentResultOutput) PolicyAssignmentProperties() PolicyAssignmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) PolicyAssignmentPropertiesResponse {
 		return v.PolicyAssignmentProperties
 	}).(PolicyAssignmentPropertiesResponseOutput)
 }
 
+// The policy id role management policy assignment.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The role definition of management policy assignment.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) RoleDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) *string { return v.RoleDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// The role management policy scope.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// The role management policy type.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

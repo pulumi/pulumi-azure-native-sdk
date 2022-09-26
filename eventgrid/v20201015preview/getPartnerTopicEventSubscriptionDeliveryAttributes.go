@@ -21,13 +21,17 @@ func GetPartnerTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, arg
 }
 
 type GetPartnerTopicEventSubscriptionDeliveryAttributesArgs struct {
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	PartnerTopicName      string `pulumi:"partnerTopicName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// Name of the partner topic.
+	PartnerTopicName string `pulumi:"partnerTopicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Result of the Get delivery attributes operation.
 type GetPartnerTopicEventSubscriptionDeliveryAttributesResult struct {
+	// A collection of DeliveryAttributeMapping
 	Value []interface{} `pulumi:"value"`
 }
 
@@ -45,9 +49,12 @@ func GetPartnerTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Contex
 }
 
 type GetPartnerTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	PartnerTopicName      pulumi.StringInput `pulumi:"partnerTopicName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the partner topic.
+	PartnerTopicName pulumi.StringInput `pulumi:"partnerTopicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetPartnerTopicEventSubscriptionDeliveryAttributesOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput) ToGetPar
 	return o
 }
 
+// A collection of DeliveryAttributeMapping
 func (o GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetPartnerTopicEventSubscriptionDeliveryAttributesResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

@@ -21,15 +21,20 @@ func ListDnsForwardingRulesetByVirtualNetwork(ctx *pulumi.Context, args *ListDns
 }
 
 type ListDnsForwardingRulesetByVirtualNetworkArgs struct {
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	Top                *int   `pulumi:"top"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The maximum number of results to return. If not specified, returns up to 100 results.
+	Top *int `pulumi:"top"`
+	// The name of the virtual network.
 	VirtualNetworkName string `pulumi:"virtualNetworkName"`
 }
 
 // The response to an enumeration operation on Virtual Network DNS Forwarding Ruleset.
 type ListDnsForwardingRulesetByVirtualNetworkResult struct {
-	NextLink string                                       `pulumi:"nextLink"`
-	Value    []VirtualNetworkDnsForwardingRulesetResponse `pulumi:"value"`
+	// The continuation token for the next page of results.
+	NextLink string `pulumi:"nextLink"`
+	// Enumeration of the Virtual Network DNS Forwarding Ruleset.
+	Value []VirtualNetworkDnsForwardingRulesetResponse `pulumi:"value"`
 }
 
 func ListDnsForwardingRulesetByVirtualNetworkOutput(ctx *pulumi.Context, args ListDnsForwardingRulesetByVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) ListDnsForwardingRulesetByVirtualNetworkResultOutput {
@@ -46,8 +51,11 @@ func ListDnsForwardingRulesetByVirtualNetworkOutput(ctx *pulumi.Context, args Li
 }
 
 type ListDnsForwardingRulesetByVirtualNetworkOutputArgs struct {
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	Top                pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The maximum number of results to return. If not specified, returns up to 100 results.
+	Top pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the virtual network.
 	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
 }
 
@@ -70,10 +78,12 @@ func (o ListDnsForwardingRulesetByVirtualNetworkResultOutput) ToListDnsForwardin
 	return o
 }
 
+// The continuation token for the next page of results.
 func (o ListDnsForwardingRulesetByVirtualNetworkResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDnsForwardingRulesetByVirtualNetworkResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Enumeration of the Virtual Network DNS Forwarding Ruleset.
 func (o ListDnsForwardingRulesetByVirtualNetworkResultOutput) Value() VirtualNetworkDnsForwardingRulesetResponseArrayOutput {
 	return o.ApplyT(func(v ListDnsForwardingRulesetByVirtualNetworkResult) []VirtualNetworkDnsForwardingRulesetResponse {
 		return v.Value

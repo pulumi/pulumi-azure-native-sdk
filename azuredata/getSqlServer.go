@@ -22,22 +22,34 @@ func LookupSqlServer(ctx *pulumi.Context, args *LookupSqlServerArgs, opts ...pul
 }
 
 type LookupSqlServerArgs struct {
-	Expand                    *string `pulumi:"expand"`
-	ResourceGroupName         string  `pulumi:"resourceGroupName"`
-	SqlServerName             string  `pulumi:"sqlServerName"`
-	SqlServerRegistrationName string  `pulumi:"sqlServerRegistrationName"`
+	// The child resources to include in the response.
+	Expand *string `pulumi:"expand"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL Server.
+	SqlServerName string `pulumi:"sqlServerName"`
+	// Name of the SQL Server registration.
+	SqlServerRegistrationName string `pulumi:"sqlServerRegistrationName"`
 }
 
 // A SQL server.
 type LookupSqlServerResult struct {
-	Cores          *int    `pulumi:"cores"`
-	Edition        *string `pulumi:"edition"`
-	Id             string  `pulumi:"id"`
-	Name           string  `pulumi:"name"`
-	PropertyBag    *string `pulumi:"propertyBag"`
+	// Cores of the Sql Server.
+	Cores *int `pulumi:"cores"`
+	// Sql Server Edition.
+	Edition *string `pulumi:"edition"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Sql Server Json Property Bag.
+	PropertyBag *string `pulumi:"propertyBag"`
+	// ID for Parent Sql Server Registration.
 	RegistrationID *string `pulumi:"registrationID"`
-	Type           string  `pulumi:"type"`
-	Version        *string `pulumi:"version"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
+	// Version of the Sql Server.
+	Version *string `pulumi:"version"`
 }
 
 func LookupSqlServerOutput(ctx *pulumi.Context, args LookupSqlServerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerResultOutput {
@@ -54,10 +66,14 @@ func LookupSqlServerOutput(ctx *pulumi.Context, args LookupSqlServerOutputArgs, 
 }
 
 type LookupSqlServerOutputArgs struct {
-	Expand                    pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName         pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SqlServerName             pulumi.StringInput    `pulumi:"sqlServerName"`
-	SqlServerRegistrationName pulumi.StringInput    `pulumi:"sqlServerRegistrationName"`
+	// The child resources to include in the response.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL Server.
+	SqlServerName pulumi.StringInput `pulumi:"sqlServerName"`
+	// Name of the SQL Server registration.
+	SqlServerRegistrationName pulumi.StringInput `pulumi:"sqlServerRegistrationName"`
 }
 
 func (LookupSqlServerOutputArgs) ElementType() reflect.Type {
@@ -79,34 +95,42 @@ func (o LookupSqlServerResultOutput) ToLookupSqlServerResultOutputWithContext(ct
 	return o
 }
 
+// Cores of the Sql Server.
 func (o LookupSqlServerResultOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
 
+// Sql Server Edition.
 func (o LookupSqlServerResultOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) *string { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSqlServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Sql Server Json Property Bag.
 func (o LookupSqlServerResultOutput) PropertyBag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) *string { return v.PropertyBag }).(pulumi.StringPtrOutput)
 }
 
+// ID for Parent Sql Server Registration.
 func (o LookupSqlServerResultOutput) RegistrationID() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) *string { return v.RegistrationID }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupSqlServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the Sql Server.
 func (o LookupSqlServerResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

@@ -22,18 +22,26 @@ func LookupWebPubSubHub(ctx *pulumi.Context, args *LookupWebPubSubHubArgs, opts 
 }
 
 type LookupWebPubSubHubArgs struct {
-	HubName           string `pulumi:"hubName"`
+	// The hub name.
+	HubName string `pulumi:"hubName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A hub setting
 type LookupWebPubSubHubResult struct {
-	Id         string                         `pulumi:"id"`
-	Name       string                         `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of a hub.
 	Properties WebPubSubHubPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse             `pulumi:"systemData"`
-	Type       string                         `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupWebPubSubHubResult
@@ -61,9 +69,12 @@ func LookupWebPubSubHubOutput(ctx *pulumi.Context, args LookupWebPubSubHubOutput
 }
 
 type LookupWebPubSubHubOutputArgs struct {
-	HubName           pulumi.StringInput `pulumi:"hubName"`
+	// The hub name.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupWebPubSubHubOutputArgs) ElementType() reflect.Type {
@@ -85,22 +96,27 @@ func (o LookupWebPubSubHubResultOutput) ToLookupWebPubSubHubResultOutputWithCont
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupWebPubSubHubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubHubResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupWebPubSubHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of a hub.
 func (o LookupWebPubSubHubResultOutput) Properties() WebPubSubHubPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupWebPubSubHubResult) WebPubSubHubPropertiesResponse { return v.Properties }).(WebPubSubHubPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupWebPubSubHubResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWebPubSubHubResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 func (o LookupWebPubSubHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubHubResult) string { return v.Type }).(pulumi.StringOutput)
 }

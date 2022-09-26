@@ -21,20 +21,30 @@ func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDom
 }
 
 type LookupSignalRCustomDomainArgs struct {
-	Name              string `pulumi:"name"`
+	// Custom domain name.
+	Name string `pulumi:"name"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A custom domain
 type LookupSignalRCustomDomainResult struct {
+	// Reference to a resource.
 	CustomCertificate ResourceReferenceResponse `pulumi:"customCertificate"`
-	DomainName        string                    `pulumi:"domainName"`
-	Id                string                    `pulumi:"id"`
-	Name              string                    `pulumi:"name"`
-	ProvisioningState string                    `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse        `pulumi:"systemData"`
-	Type              string                    `pulumi:"type"`
+	// The custom domain name.
+	DomainName string `pulumi:"domainName"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	Type string `pulumi:"type"`
 }
 
 func LookupSignalRCustomDomainOutput(ctx *pulumi.Context, args LookupSignalRCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRCustomDomainResultOutput {
@@ -51,9 +61,12 @@ func LookupSignalRCustomDomainOutput(ctx *pulumi.Context, args LookupSignalRCust
 }
 
 type LookupSignalRCustomDomainOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Custom domain name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupSignalRCustomDomainOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupSignalRCustomDomainResultOutput) ToLookupSignalRCustomDomainResult
 	return o
 }
 
+// Reference to a resource.
 func (o LookupSignalRCustomDomainResultOutput) CustomCertificate() ResourceReferenceResponseOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) ResourceReferenceResponse { return v.CustomCertificate }).(ResourceReferenceResponseOutput)
 }
 
+// The custom domain name.
 func (o LookupSignalRCustomDomainResultOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupSignalRCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupSignalRCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the resource.
 func (o LookupSignalRCustomDomainResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupSignalRCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 func (o LookupSignalRCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

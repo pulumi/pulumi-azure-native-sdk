@@ -22,19 +22,28 @@ func LookupNamespaceIpFilterRule(ctx *pulumi.Context, args *LookupNamespaceIpFil
 }
 
 type LookupNamespaceIpFilterRuleArgs struct {
-	IpFilterRuleName  string `pulumi:"ipFilterRuleName"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The IP Filter Rule name.
+	IpFilterRuleName string `pulumi:"ipFilterRuleName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in a List or Get IpFilterRules operation
 type LookupNamespaceIpFilterRuleResult struct {
-	Action     *string `pulumi:"action"`
+	// The IP Filter Action
+	Action *string `pulumi:"action"`
+	// IP Filter name
 	FilterName *string `pulumi:"filterName"`
-	Id         string  `pulumi:"id"`
-	IpMask     *string `pulumi:"ipMask"`
-	Name       string  `pulumi:"name"`
-	Type       string  `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// IP Mask
+	IpMask *string `pulumi:"ipMask"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupNamespaceIpFilterRuleOutput(ctx *pulumi.Context, args LookupNamespaceIpFilterRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceIpFilterRuleResultOutput {
@@ -51,8 +60,11 @@ func LookupNamespaceIpFilterRuleOutput(ctx *pulumi.Context, args LookupNamespace
 }
 
 type LookupNamespaceIpFilterRuleOutputArgs struct {
-	IpFilterRuleName  pulumi.StringInput `pulumi:"ipFilterRuleName"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The IP Filter Rule name.
+	IpFilterRuleName pulumi.StringInput `pulumi:"ipFilterRuleName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,26 +87,32 @@ func (o LookupNamespaceIpFilterRuleResultOutput) ToLookupNamespaceIpFilterRuleRe
 	return o
 }
 
+// The IP Filter Action
 func (o LookupNamespaceIpFilterRuleResultOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// IP Filter name
 func (o LookupNamespaceIpFilterRuleResultOutput) FilterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) *string { return v.FilterName }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupNamespaceIpFilterRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// IP Mask
 func (o LookupNamespaceIpFilterRuleResultOutput) IpMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) *string { return v.IpMask }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupNamespaceIpFilterRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupNamespaceIpFilterRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

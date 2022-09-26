@@ -22,13 +22,17 @@ func ListTopicSharedAccessKeys(ctx *pulumi.Context, args *ListTopicSharedAccessK
 }
 
 type ListTopicSharedAccessKeysArgs struct {
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TopicName         string `pulumi:"topicName"`
+	// Name of the topic.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Shared access keys of the Topic
 type ListTopicSharedAccessKeysResult struct {
+	// Shared access key1 for the topic.
 	Key1 *string `pulumi:"key1"`
+	// Shared access key2 for the topic.
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -46,8 +50,10 @@ func ListTopicSharedAccessKeysOutput(ctx *pulumi.Context, args ListTopicSharedAc
 }
 
 type ListTopicSharedAccessKeysOutputArgs struct {
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName         pulumi.StringInput `pulumi:"topicName"`
+	// Name of the topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (ListTopicSharedAccessKeysOutputArgs) ElementType() reflect.Type {
@@ -69,10 +75,12 @@ func (o ListTopicSharedAccessKeysResultOutput) ToListTopicSharedAccessKeysResult
 	return o
 }
 
+// Shared access key1 for the topic.
 func (o ListTopicSharedAccessKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTopicSharedAccessKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Shared access key2 for the topic.
 func (o ListTopicSharedAccessKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTopicSharedAccessKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

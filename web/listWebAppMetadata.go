@@ -22,17 +22,24 @@ func ListWebAppMetadata(ctx *pulumi.Context, args *ListWebAppMetadataArgs, opts 
 }
 
 type ListWebAppMetadataArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String dictionary resource.
 type ListWebAppMetadataResult struct {
-	Id         string            `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Name       string            `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
 	Properties map[string]string `pulumi:"properties"`
-	Type       string            `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppMetadataOutput(ctx *pulumi.Context, args ListWebAppMetadataOutputArgs, opts ...pulumi.InvokeOption) ListWebAppMetadataResultOutput {
@@ -49,7 +56,9 @@ func ListWebAppMetadataOutput(ctx *pulumi.Context, args ListWebAppMetadataOutput
 }
 
 type ListWebAppMetadataOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,22 +81,27 @@ func (o ListWebAppMetadataResultOutput) ToListWebAppMetadataResultOutputWithCont
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppMetadataResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppMetadataResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppMetadataResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppMetadataResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListWebAppMetadataResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppMetadataResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o ListWebAppMetadataResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppMetadataResult) string { return v.Type }).(pulumi.StringOutput)
 }

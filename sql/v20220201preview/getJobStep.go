@@ -21,24 +21,38 @@ func LookupJobStep(ctx *pulumi.Context, args *LookupJobStepArgs, opts ...pulumi.
 }
 
 type LookupJobStepArgs struct {
-	JobAgentName      string `pulumi:"jobAgentName"`
-	JobName           string `pulumi:"jobName"`
+	// The name of the job agent.
+	JobAgentName string `pulumi:"jobAgentName"`
+	// The name of the job.
+	JobName string `pulumi:"jobName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
-	StepName          string `pulumi:"stepName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the job step.
+	StepName string `pulumi:"stepName"`
 }
 
 // A job step.
 type LookupJobStepResult struct {
-	Action           JobStepActionResponse            `pulumi:"action"`
-	Credential       string                           `pulumi:"credential"`
+	// The action payload of the job step.
+	Action JobStepActionResponse `pulumi:"action"`
+	// The resource ID of the job credential that will be used to connect to the targets.
+	Credential string `pulumi:"credential"`
+	// Execution options for the job step.
 	ExecutionOptions *JobStepExecutionOptionsResponse `pulumi:"executionOptions"`
-	Id               string                           `pulumi:"id"`
-	Name             string                           `pulumi:"name"`
-	Output           *JobStepOutputResponse           `pulumi:"output"`
-	StepId           *int                             `pulumi:"stepId"`
-	TargetGroup      string                           `pulumi:"targetGroup"`
-	Type             string                           `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Output destination properties of the job step.
+	Output *JobStepOutputResponse `pulumi:"output"`
+	// The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
+	StepId *int `pulumi:"stepId"`
+	// The resource ID of the target group that the job step will be executed on.
+	TargetGroup string `pulumi:"targetGroup"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupJobStepResult
@@ -70,11 +84,16 @@ func LookupJobStepOutput(ctx *pulumi.Context, args LookupJobStepOutputArgs, opts
 }
 
 type LookupJobStepOutputArgs struct {
-	JobAgentName      pulumi.StringInput `pulumi:"jobAgentName"`
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the job agent.
+	JobAgentName pulumi.StringInput `pulumi:"jobAgentName"`
+	// The name of the job.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
-	StepName          pulumi.StringInput `pulumi:"stepName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the job step.
+	StepName pulumi.StringInput `pulumi:"stepName"`
 }
 
 func (LookupJobStepOutputArgs) ElementType() reflect.Type {
@@ -96,38 +115,47 @@ func (o LookupJobStepResultOutput) ToLookupJobStepResultOutputWithContext(ctx co
 	return o
 }
 
+// The action payload of the job step.
 func (o LookupJobStepResultOutput) Action() JobStepActionResponseOutput {
 	return o.ApplyT(func(v LookupJobStepResult) JobStepActionResponse { return v.Action }).(JobStepActionResponseOutput)
 }
 
+// The resource ID of the job credential that will be used to connect to the targets.
 func (o LookupJobStepResultOutput) Credential() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobStepResult) string { return v.Credential }).(pulumi.StringOutput)
 }
 
+// Execution options for the job step.
 func (o LookupJobStepResultOutput) ExecutionOptions() JobStepExecutionOptionsResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobStepResult) *JobStepExecutionOptionsResponse { return v.ExecutionOptions }).(JobStepExecutionOptionsResponsePtrOutput)
 }
 
+// Resource ID.
 func (o LookupJobStepResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobStepResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupJobStepResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobStepResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Output destination properties of the job step.
 func (o LookupJobStepResultOutput) Output() JobStepOutputResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobStepResult) *JobStepOutputResponse { return v.Output }).(JobStepOutputResponsePtrOutput)
 }
 
+// The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
 func (o LookupJobStepResultOutput) StepId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupJobStepResult) *int { return v.StepId }).(pulumi.IntPtrOutput)
 }
 
+// The resource ID of the target group that the job step will be executed on.
 func (o LookupJobStepResultOutput) TargetGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobStepResult) string { return v.TargetGroup }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupJobStepResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobStepResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,22 +21,34 @@ func LookupTemplateSpec(ctx *pulumi.Context, args *LookupTemplateSpecArgs, opts 
 }
 
 type LookupTemplateSpecArgs struct {
-	Expand            *string `pulumi:"expand"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	TemplateSpecName  string  `pulumi:"templateSpecName"`
+	// Allows for expansion of additional Template Spec details in the response. Optional.
+	Expand *string `pulumi:"expand"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the Template Spec.
+	TemplateSpecName string `pulumi:"templateSpecName"`
 }
 
 // Template Spec object.
 type LookupTemplateSpecResult struct {
-	Description *string                                    `pulumi:"description"`
-	DisplayName *string                                    `pulumi:"displayName"`
-	Id          string                                     `pulumi:"id"`
-	Location    string                                     `pulumi:"location"`
-	Name        string                                     `pulumi:"name"`
-	SystemData  SystemDataResponse                         `pulumi:"systemData"`
-	Tags        map[string]string                          `pulumi:"tags"`
-	Type        string                                     `pulumi:"type"`
-	Versions    map[string]TemplateSpecVersionInfoResponse `pulumi:"versions"`
+	// Template Spec description.
+	Description *string `pulumi:"description"`
+	// Template Spec display name.
+	DisplayName *string `pulumi:"displayName"`
+	// String Id used to locate any resource on Azure.
+	Id string `pulumi:"id"`
+	// The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.
+	Location string `pulumi:"location"`
+	// Name of this resource.
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Type of this resource.
+	Type string `pulumi:"type"`
+	// High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
+	Versions map[string]TemplateSpecVersionInfoResponse `pulumi:"versions"`
 }
 
 func LookupTemplateSpecOutput(ctx *pulumi.Context, args LookupTemplateSpecOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateSpecResultOutput {
@@ -53,9 +65,12 @@ func LookupTemplateSpecOutput(ctx *pulumi.Context, args LookupTemplateSpecOutput
 }
 
 type LookupTemplateSpecOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	TemplateSpecName  pulumi.StringInput    `pulumi:"templateSpecName"`
+	// Allows for expansion of additional Template Spec details in the response. Optional.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Template Spec.
+	TemplateSpecName pulumi.StringInput `pulumi:"templateSpecName"`
 }
 
 func (LookupTemplateSpecOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupTemplateSpecResultOutput) ToLookupTemplateSpecResultOutputWithCont
 	return o
 }
 
+// Template Spec description.
 func (o LookupTemplateSpecResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Template Spec display name.
 func (o LookupTemplateSpecResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// String Id used to locate any resource on Azure.
 func (o LookupTemplateSpecResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.
 func (o LookupTemplateSpecResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of this resource.
 func (o LookupTemplateSpecResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupTemplateSpecResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupTemplateSpecResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Type of this resource.
 func (o LookupTemplateSpecResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
 func (o LookupTemplateSpecResultOutput) Versions() TemplateSpecVersionInfoResponseMapOutput {
 	return o.ApplyT(func(v LookupTemplateSpecResult) map[string]TemplateSpecVersionInfoResponse { return v.Versions }).(TemplateSpecVersionInfoResponseMapOutput)
 }

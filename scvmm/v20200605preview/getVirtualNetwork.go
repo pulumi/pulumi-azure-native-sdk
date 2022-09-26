@@ -21,24 +21,38 @@ func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, o
 }
 
 type LookupVirtualNetworkArgs struct {
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the VirtualNetwork.
 	VirtualNetworkName string `pulumi:"virtualNetworkName"`
 }
 
 // The VirtualNetworks resource definition.
 type LookupVirtualNetworkResult struct {
-	ExtendedLocation  ExtendedLocationResponse `pulumi:"extendedLocation"`
-	Id                string                   `pulumi:"id"`
-	InventoryItemId   *string                  `pulumi:"inventoryItemId"`
-	Location          string                   `pulumi:"location"`
-	Name              string                   `pulumi:"name"`
-	NetworkName       string                   `pulumi:"networkName"`
-	ProvisioningState string                   `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse       `pulumi:"systemData"`
-	Tags              map[string]string        `pulumi:"tags"`
-	Type              string                   `pulumi:"type"`
-	Uuid              *string                  `pulumi:"uuid"`
-	VmmServerId       *string                  `pulumi:"vmmServerId"`
+	// The extended location.
+	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Gets or sets the inventory Item ID for the resource.
+	InventoryItemId *string `pulumi:"inventoryItemId"`
+	// Gets or sets the location.
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// Name of the virtual network in vmmServer.
+	NetworkName string `pulumi:"networkName"`
+	// Gets or sets the provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource Type
+	Type string `pulumi:"type"`
+	// Unique ID of the virtual network.
+	Uuid *string `pulumi:"uuid"`
+	// ARM Id of the vmmServer resource in which this resource resides.
+	VmmServerId *string `pulumi:"vmmServerId"`
 }
 
 func LookupVirtualNetworkOutput(ctx *pulumi.Context, args LookupVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkResultOutput {
@@ -55,7 +69,9 @@ func LookupVirtualNetworkOutput(ctx *pulumi.Context, args LookupVirtualNetworkOu
 }
 
 type LookupVirtualNetworkOutputArgs struct {
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the VirtualNetwork.
 	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
 }
 
@@ -78,50 +94,62 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWith
 	return o
 }
 
+// The extended location.
 func (o LookupVirtualNetworkResultOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
+// Resource Id
 func (o LookupVirtualNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the inventory Item ID for the resource.
 func (o LookupVirtualNetworkResultOutput) InventoryItemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) *string { return v.InventoryItemId }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the location.
 func (o LookupVirtualNetworkResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o LookupVirtualNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Name of the virtual network in vmmServer.
 func (o LookupVirtualNetworkResultOutput) NetworkName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.NetworkName }).(pulumi.StringOutput)
 }
 
+// Gets or sets the provisioning state.
 func (o LookupVirtualNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system data.
 func (o LookupVirtualNetworkResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags
 func (o LookupVirtualNetworkResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource Type
 func (o LookupVirtualNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Unique ID of the virtual network.
 func (o LookupVirtualNetworkResultOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
+// ARM Id of the vmmServer resource in which this resource resides.
 func (o LookupVirtualNetworkResultOutput) VmmServerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) *string { return v.VmmServerId }).(pulumi.StringPtrOutput)
 }

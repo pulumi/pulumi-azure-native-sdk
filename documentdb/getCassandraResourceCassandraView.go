@@ -22,22 +22,32 @@ func LookupCassandraResourceCassandraView(ctx *pulumi.Context, args *LookupCassa
 }
 
 type LookupCassandraResourceCassandraViewArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	KeyspaceName      string `pulumi:"keyspaceName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Cosmos DB keyspace name.
+	KeyspaceName string `pulumi:"keyspaceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ViewName          string `pulumi:"viewName"`
+	// Cosmos DB view name.
+	ViewName string `pulumi:"viewName"`
 }
 
 // An Azure Cosmos DB Cassandra view.
 type LookupCassandraResourceCassandraViewResult struct {
-	Id       string                                      `pulumi:"id"`
-	Identity *ManagedServiceIdentityResponse             `pulumi:"identity"`
-	Location *string                                     `pulumi:"location"`
+	// The unique resource identifier of the ARM resource.
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the ARM resource.
 	Name     string                                      `pulumi:"name"`
 	Options  *CassandraViewGetPropertiesResponseOptions  `pulumi:"options"`
 	Resource *CassandraViewGetPropertiesResponseResource `pulumi:"resource"`
-	Tags     map[string]string                           `pulumi:"tags"`
-	Type     string                                      `pulumi:"type"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCassandraResourceCassandraViewOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraViewOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraViewResultOutput {
@@ -54,10 +64,14 @@ func LookupCassandraResourceCassandraViewOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupCassandraResourceCassandraViewOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	KeyspaceName      pulumi.StringInput `pulumi:"keyspaceName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB keyspace name.
+	KeyspaceName pulumi.StringInput `pulumi:"keyspaceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ViewName          pulumi.StringInput `pulumi:"viewName"`
+	// Cosmos DB view name.
+	ViewName pulumi.StringInput `pulumi:"viewName"`
 }
 
 func (LookupCassandraResourceCassandraViewOutputArgs) ElementType() reflect.Type {
@@ -79,18 +93,22 @@ func (o LookupCassandraResourceCassandraViewResultOutput) ToLookupCassandraResou
 	return o
 }
 
+// The unique resource identifier of the ARM resource.
 func (o LookupCassandraResourceCassandraViewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResourceCassandraViewResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupCassandraResourceCassandraViewResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupCassandraResourceCassandraViewResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupCassandraResourceCassandraViewResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCassandraResourceCassandraViewResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the ARM resource.
 func (o LookupCassandraResourceCassandraViewResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResourceCassandraViewResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -107,10 +125,12 @@ func (o LookupCassandraResourceCassandraViewResultOutput) Resource() CassandraVi
 	}).(CassandraViewGetPropertiesResponseResourcePtrOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupCassandraResourceCassandraViewResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCassandraResourceCassandraViewResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of Azure resource.
 func (o LookupCassandraResourceCassandraViewResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResourceCassandraViewResult) string { return v.Type }).(pulumi.StringOutput)
 }

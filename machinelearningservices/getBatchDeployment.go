@@ -21,22 +21,35 @@ func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs,
 }
 
 type LookupBatchDeploymentArgs struct {
-	DeploymentName    string `pulumi:"deploymentName"`
-	EndpointName      string `pulumi:"endpointName"`
+	// The identifier for the Batch deployments.
+	DeploymentName string `pulumi:"deploymentName"`
+	// Endpoint name
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 type LookupBatchDeploymentResult struct {
-	Id         string                    `pulumi:"id"`
-	Identity   *ResourceIdentityResponse `pulumi:"identity"`
-	Kind       *string                   `pulumi:"kind"`
-	Location   string                    `pulumi:"location"`
-	Name       string                    `pulumi:"name"`
-	Properties BatchDeploymentResponse   `pulumi:"properties"`
-	SystemData SystemDataResponse        `pulumi:"systemData"`
-	Tags       map[string]string         `pulumi:"tags"`
-	Type       string                    `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Service identity associated with a resource.
+	Identity *ResourceIdentityResponse `pulumi:"identity"`
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+	Kind *string `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties BatchDeploymentResponse `pulumi:"properties"`
+	// System data associated with resource provider
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupBatchDeploymentOutput(ctx *pulumi.Context, args LookupBatchDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupBatchDeploymentResultOutput {
@@ -53,10 +66,14 @@ func LookupBatchDeploymentOutput(ctx *pulumi.Context, args LookupBatchDeployment
 }
 
 type LookupBatchDeploymentOutputArgs struct {
-	DeploymentName    pulumi.StringInput `pulumi:"deploymentName"`
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
+	// The identifier for the Batch deployments.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// Endpoint name
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupBatchDeploymentOutputArgs) ElementType() reflect.Type {
@@ -77,38 +94,47 @@ func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutputWi
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupBatchDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Service identity associated with a resource.
 func (o LookupBatchDeploymentResultOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 func (o LookupBatchDeploymentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupBatchDeploymentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupBatchDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
 func (o LookupBatchDeploymentResultOutput) Properties() BatchDeploymentResponseOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) BatchDeploymentResponse { return v.Properties }).(BatchDeploymentResponseOutput)
 }
 
+// System data associated with resource provider
 func (o LookupBatchDeploymentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupBatchDeploymentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupBatchDeploymentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.Type }).(pulumi.StringOutput)
 }

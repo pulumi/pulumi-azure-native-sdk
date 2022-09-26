@@ -23,22 +23,34 @@ func LookupVirtualHub(ctx *pulumi.Context, args *LookupVirtualHubArgs, opts ...p
 }
 
 type LookupVirtualHubArgs struct {
+	// The resource group name of the VirtualHub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VirtualHubName    string `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName string `pulumi:"virtualHubName"`
 }
 
 // VirtualHub Resource.
 type LookupVirtualHubResult struct {
-	AddressPrefix                *string                               `pulumi:"addressPrefix"`
-	Etag                         string                                `pulumi:"etag"`
+	// Address-prefix for this VirtualHub.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// list of all vnet connections with this VirtualHub.
 	HubVirtualNetworkConnections []HubVirtualNetworkConnectionResponse `pulumi:"hubVirtualNetworkConnections"`
-	Id                           *string                               `pulumi:"id"`
-	Location                     string                                `pulumi:"location"`
-	Name                         string                                `pulumi:"name"`
-	ProvisioningState            string                                `pulumi:"provisioningState"`
-	Tags                         map[string]string                     `pulumi:"tags"`
-	Type                         string                                `pulumi:"type"`
-	VirtualWan                   *SubResourceResponse                  `pulumi:"virtualWan"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The VirtualWAN to which the VirtualHub belongs
+	VirtualWan *SubResourceResponse `pulumi:"virtualWan"`
 }
 
 func LookupVirtualHubOutput(ctx *pulumi.Context, args LookupVirtualHubOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualHubResultOutput {
@@ -55,8 +67,10 @@ func LookupVirtualHubOutput(ctx *pulumi.Context, args LookupVirtualHubOutputArgs
 }
 
 type LookupVirtualHubOutputArgs struct {
+	// The resource group name of the VirtualHub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VirtualHubName    pulumi.StringInput `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName pulumi.StringInput `pulumi:"virtualHubName"`
 }
 
 func (LookupVirtualHubOutputArgs) ElementType() reflect.Type {
@@ -78,44 +92,54 @@ func (o LookupVirtualHubResultOutput) ToLookupVirtualHubResultOutputWithContext(
 	return o
 }
 
+// Address-prefix for this VirtualHub.
 func (o LookupVirtualHubResultOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualHubResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// list of all vnet connections with this VirtualHub.
 func (o LookupVirtualHubResultOutput) HubVirtualNetworkConnections() HubVirtualNetworkConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) []HubVirtualNetworkConnectionResponse {
 		return v.HubVirtualNetworkConnections
 	}).(HubVirtualNetworkConnectionResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualHubResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupVirtualHubResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupVirtualHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupVirtualHubResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupVirtualHubResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupVirtualHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The VirtualWAN to which the VirtualHub belongs
 func (o LookupVirtualHubResultOutput) VirtualWan() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubResult) *SubResourceResponse { return v.VirtualWan }).(SubResourceResponsePtrOutput)
 }

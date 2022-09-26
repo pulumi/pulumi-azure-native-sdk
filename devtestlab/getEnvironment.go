@@ -22,26 +22,42 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 }
 
 type LookupEnvironmentArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LabName           string  `pulumi:"labName"`
-	Name              string  `pulumi:"name"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	UserName          string  `pulumi:"userName"`
+	// Specify the $expand query. Example: 'properties($select=deploymentProperties)'
+	Expand *string `pulumi:"expand"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the environment.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the user profile.
+	UserName string `pulumi:"userName"`
 }
 
 // An environment, which is essentially an ARM template deployment.
 type LookupEnvironmentResult struct {
-	ArmTemplateDisplayName *string                                  `pulumi:"armTemplateDisplayName"`
-	CreatedByUser          string                                   `pulumi:"createdByUser"`
-	DeploymentProperties   *EnvironmentDeploymentPropertiesResponse `pulumi:"deploymentProperties"`
-	Id                     string                                   `pulumi:"id"`
-	Location               *string                                  `pulumi:"location"`
-	Name                   string                                   `pulumi:"name"`
-	ProvisioningState      string                                   `pulumi:"provisioningState"`
-	ResourceGroupId        string                                   `pulumi:"resourceGroupId"`
-	Tags                   map[string]string                        `pulumi:"tags"`
-	Type                   string                                   `pulumi:"type"`
-	UniqueIdentifier       string                                   `pulumi:"uniqueIdentifier"`
+	// The display name of the Azure Resource Manager template that produced the environment.
+	ArmTemplateDisplayName *string `pulumi:"armTemplateDisplayName"`
+	// The creator of the environment.
+	CreatedByUser string `pulumi:"createdByUser"`
+	// The deployment properties of the environment.
+	DeploymentProperties *EnvironmentDeploymentPropertiesResponse `pulumi:"deploymentProperties"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning status of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The identifier of the resource group containing the environment's resources.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The unique immutable identifier of a resource (Guid).
+	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -58,11 +74,16 @@ func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputAr
 }
 
 type LookupEnvironmentOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LabName           pulumi.StringInput    `pulumi:"labName"`
-	Name              pulumi.StringInput    `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	UserName          pulumi.StringInput    `pulumi:"userName"`
+	// Specify the $expand query. Example: 'properties($select=deploymentProperties)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the environment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the user profile.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -84,48 +105,59 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 	return o
 }
 
+// The display name of the Azure Resource Manager template that produced the environment.
 func (o LookupEnvironmentResultOutput) ArmTemplateDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.ArmTemplateDisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The creator of the environment.
 func (o LookupEnvironmentResultOutput) CreatedByUser() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.CreatedByUser }).(pulumi.StringOutput)
 }
 
+// The deployment properties of the environment.
 func (o LookupEnvironmentResultOutput) DeploymentProperties() EnvironmentDeploymentPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *EnvironmentDeploymentPropertiesResponse {
 		return v.DeploymentProperties
 	}).(EnvironmentDeploymentPropertiesResponsePtrOutput)
 }
 
+// The identifier of the resource.
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupEnvironmentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupEnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The identifier of the resource group containing the environment's resources.
 func (o LookupEnvironmentResultOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The tags of the resource.
 func (o LookupEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique immutable identifier of a resource (Guid).
 func (o LookupEnvironmentResultOutput) UniqueIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.UniqueIdentifier }).(pulumi.StringOutput)
 }

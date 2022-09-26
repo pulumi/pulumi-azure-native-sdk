@@ -21,18 +21,26 @@ func LookupGuestConfigurationHCRPAssignment(ctx *pulumi.Context, args *LookupGue
 }
 
 type LookupGuestConfigurationHCRPAssignmentArgs struct {
+	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName string `pulumi:"guestConfigurationAssignmentName"`
-	MachineName                      string `pulumi:"machineName"`
-	ResourceGroupName                string `pulumi:"resourceGroupName"`
+	// The name of the ARC machine.
+	MachineName string `pulumi:"machineName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Guest configuration assignment is an association between a machine and guest configuration.
 type LookupGuestConfigurationHCRPAssignmentResult struct {
-	Id         string                                         `pulumi:"id"`
-	Location   *string                                        `pulumi:"location"`
-	Name       *string                                        `pulumi:"name"`
+	// ARM resource id of the guest configuration assignment.
+	Id string `pulumi:"id"`
+	// Region where the VM is located.
+	Location *string `pulumi:"location"`
+	// Name of the guest configuration assignment.
+	Name *string `pulumi:"name"`
+	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponse `pulumi:"properties"`
-	Type       string                                         `pulumi:"type"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupGuestConfigurationHCRPAssignmentResult
@@ -60,9 +68,12 @@ func LookupGuestConfigurationHCRPAssignmentOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupGuestConfigurationHCRPAssignmentOutputArgs struct {
+	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName pulumi.StringInput `pulumi:"guestConfigurationAssignmentName"`
-	MachineName                      pulumi.StringInput `pulumi:"machineName"`
-	ResourceGroupName                pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the ARC machine.
+	MachineName pulumi.StringInput `pulumi:"machineName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupGuestConfigurationHCRPAssignmentOutputArgs) ElementType() reflect.Type {
@@ -84,24 +95,29 @@ func (o LookupGuestConfigurationHCRPAssignmentResultOutput) ToLookupGuestConfigu
 	return o
 }
 
+// ARM resource id of the guest configuration assignment.
 func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Region where the VM is located.
 func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the guest configuration assignment.
 func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Properties of the Guest configuration assignment.
 func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Properties() GuestConfigurationAssignmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) GuestConfigurationAssignmentPropertiesResponse {
 		return v.Properties
 	}).(GuestConfigurationAssignmentPropertiesResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

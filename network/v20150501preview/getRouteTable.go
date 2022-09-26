@@ -23,21 +23,32 @@ func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...p
 }
 
 type LookupRouteTableArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RouteTableName    string `pulumi:"routeTableName"`
+	// The name of the route table.
+	RouteTableName string `pulumi:"routeTableName"`
 }
 
 // RouteTable resource
 type LookupRouteTableResult struct {
-	Etag              *string               `pulumi:"etag"`
-	Id                string                `pulumi:"id"`
-	Location          string                `pulumi:"location"`
-	Name              string                `pulumi:"name"`
-	ProvisioningState *string               `pulumi:"provisioningState"`
-	Routes            []RouteResponse       `pulumi:"routes"`
-	Subnets           []SubResourceResponse `pulumi:"subnets"`
-	Tags              map[string]string     `pulumi:"tags"`
-	Type              string                `pulumi:"type"`
+	// Gets a unique read-only string that changes whenever the resource is updated
+	Etag *string `pulumi:"etag"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Gets or sets Provisioning state of the resource Updating/Deleting/Failed
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets Routes in a Route Table
+	Routes []RouteResponse `pulumi:"routes"`
+	// Gets collection of references to subnets
+	Subnets []SubResourceResponse `pulumi:"subnets"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupRouteTableOutput(ctx *pulumi.Context, args LookupRouteTableOutputArgs, opts ...pulumi.InvokeOption) LookupRouteTableResultOutput {
@@ -54,8 +65,10 @@ func LookupRouteTableOutput(ctx *pulumi.Context, args LookupRouteTableOutputArgs
 }
 
 type LookupRouteTableOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RouteTableName    pulumi.StringInput `pulumi:"routeTableName"`
+	// The name of the route table.
+	RouteTableName pulumi.StringInput `pulumi:"routeTableName"`
 }
 
 func (LookupRouteTableOutputArgs) ElementType() reflect.Type {
@@ -77,38 +90,47 @@ func (o LookupRouteTableResultOutput) ToLookupRouteTableResultOutputWithContext(
 	return o
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated
 func (o LookupRouteTableResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupRouteTableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupRouteTableResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupRouteTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets Provisioning state of the resource Updating/Deleting/Failed
 func (o LookupRouteTableResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets Routes in a Route Table
 func (o LookupRouteTableResultOutput) Routes() RouteResponseArrayOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) []RouteResponse { return v.Routes }).(RouteResponseArrayOutput)
 }
 
+// Gets collection of references to subnets
 func (o LookupRouteTableResultOutput) Subnets() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) []SubResourceResponse { return v.Subnets }).(SubResourceResponseArrayOutput)
 }
 
+// Resource tags
 func (o LookupRouteTableResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupRouteTableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Type }).(pulumi.StringOutput)
 }

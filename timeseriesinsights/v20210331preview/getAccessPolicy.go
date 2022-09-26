@@ -21,19 +21,28 @@ func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts 
 }
 
 type LookupAccessPolicyArgs struct {
-	AccessPolicyName  string `pulumi:"accessPolicyName"`
-	EnvironmentName   string `pulumi:"environmentName"`
+	// The name of the Time Series Insights access policy associated with the specified environment.
+	AccessPolicyName string `pulumi:"accessPolicyName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// Name of an Azure Resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
 type LookupAccessPolicyResult struct {
-	Description       *string  `pulumi:"description"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
-	PrincipalObjectId *string  `pulumi:"principalObjectId"`
-	Roles             []string `pulumi:"roles"`
-	Type              string   `pulumi:"type"`
+	// An description of the access policy.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The objectId of the principal in Azure Active Directory.
+	PrincipalObjectId *string `pulumi:"principalObjectId"`
+	// The list of roles the principal is assigned on the environment.
+	Roles []string `pulumi:"roles"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyResultOutput {
@@ -50,8 +59,11 @@ func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutput
 }
 
 type LookupAccessPolicyOutputArgs struct {
-	AccessPolicyName  pulumi.StringInput `pulumi:"accessPolicyName"`
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the Time Series Insights access policy associated with the specified environment.
+	AccessPolicyName pulumi.StringInput `pulumi:"accessPolicyName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Name of an Azure Resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,26 +86,32 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithCont
 	return o
 }
 
+// An description of the access policy.
 func (o LookupAccessPolicyResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccessPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAccessPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The objectId of the principal in Azure Active Directory.
 func (o LookupAccessPolicyResultOutput) PrincipalObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *string { return v.PrincipalObjectId }).(pulumi.StringPtrOutput)
 }
 
+// The list of roles the principal is assigned on the environment.
 func (o LookupAccessPolicyResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAccessPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

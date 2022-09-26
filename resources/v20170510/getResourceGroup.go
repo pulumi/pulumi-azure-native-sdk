@@ -23,17 +23,24 @@ func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opt
 }
 
 type LookupResourceGroupArgs struct {
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Resource group information.
 type LookupResourceGroupResult struct {
-	Id         string                          `pulumi:"id"`
-	Location   string                          `pulumi:"location"`
-	ManagedBy  *string                         `pulumi:"managedBy"`
-	Name       *string                         `pulumi:"name"`
+	// The ID of the resource group.
+	Id string `pulumi:"id"`
+	// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
+	Location string `pulumi:"location"`
+	// The ID of the resource that manages this resource group.
+	ManagedBy *string `pulumi:"managedBy"`
+	// The name of the resource group.
+	Name *string `pulumi:"name"`
+	// The resource group properties.
 	Properties ResourceGroupPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string               `pulumi:"tags"`
+	// The tags attached to the resource group.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupResourceGroupOutput(ctx *pulumi.Context, args LookupResourceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGroupResultOutput {
@@ -50,6 +57,7 @@ func LookupResourceGroupOutput(ctx *pulumi.Context, args LookupResourceGroupOutp
 }
 
 type LookupResourceGroupOutputArgs struct {
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,26 +80,32 @@ func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutputWithCo
 	return o
 }
 
+// The ID of the resource group.
 func (o LookupResourceGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
 func (o LookupResourceGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The ID of the resource that manages this resource group.
 func (o LookupResourceGroupResultOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource group.
 func (o LookupResourceGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The resource group properties.
 func (o LookupResourceGroupResultOutput) Properties() ResourceGroupPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) ResourceGroupPropertiesResponse { return v.Properties }).(ResourceGroupPropertiesResponseOutput)
 }
 
+// The tags attached to the resource group.
 func (o LookupResourceGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -21,20 +21,30 @@ func LookupReplication(ctx *pulumi.Context, args *LookupReplicationArgs, opts ..
 }
 
 type LookupReplicationArgs struct {
-	RegistryName      string `pulumi:"registryName"`
-	ReplicationName   string `pulumi:"replicationName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the replication.
+	ReplicationName string `pulumi:"replicationName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An object that represents a replication for a container registry.
 type LookupReplicationResult struct {
-	Id                string            `pulumi:"id"`
-	Location          string            `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	Status            StatusResponse    `pulumi:"status"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              string            `pulumi:"type"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The location of the resource. This cannot be changed after the resource is created.
+	Location string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning state of the replication at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The status of the replication at the time the operation was called.
+	Status StatusResponse `pulumi:"status"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationOutput(ctx *pulumi.Context, args LookupReplicationOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationResultOutput {
@@ -51,8 +61,11 @@ func LookupReplicationOutput(ctx *pulumi.Context, args LookupReplicationOutputAr
 }
 
 type LookupReplicationOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
-	ReplicationName   pulumi.StringInput `pulumi:"replicationName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the replication.
+	ReplicationName pulumi.StringInput `pulumi:"replicationName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupReplicationResultOutput) ToLookupReplicationResultOutputWithContex
 	return o
 }
 
+// The resource ID.
 func (o LookupReplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource. This cannot be changed after the resource is created.
 func (o LookupReplicationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupReplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the replication at the time the operation was called.
 func (o LookupReplicationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The status of the replication at the time the operation was called.
 func (o LookupReplicationResultOutput) Status() StatusResponseOutput {
 	return o.ApplyT(func(v LookupReplicationResult) StatusResponse { return v.Status }).(StatusResponseOutput)
 }
 
+// The tags of the resource.
 func (o LookupReplicationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReplicationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupReplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

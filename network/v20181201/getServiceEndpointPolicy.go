@@ -21,23 +21,36 @@ func LookupServiceEndpointPolicy(ctx *pulumi.Context, args *LookupServiceEndpoin
 }
 
 type LookupServiceEndpointPolicyArgs struct {
-	Expand                    *string `pulumi:"expand"`
-	ResourceGroupName         string  `pulumi:"resourceGroupName"`
-	ServiceEndpointPolicyName string  `pulumi:"serviceEndpointPolicyName"`
+	// Expands referenced resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the service endpoint policy.
+	ServiceEndpointPolicyName string `pulumi:"serviceEndpointPolicyName"`
 }
 
 // Service End point policy resource.
 type LookupServiceEndpointPolicyResult struct {
-	Etag                             *string                                   `pulumi:"etag"`
-	Id                               *string                                   `pulumi:"id"`
-	Location                         *string                                   `pulumi:"location"`
-	Name                             string                                    `pulumi:"name"`
-	ProvisioningState                string                                    `pulumi:"provisioningState"`
-	ResourceGuid                     string                                    `pulumi:"resourceGuid"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the service endpoint policy resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// A collection of service endpoint policy definitions of the service endpoint policy.
 	ServiceEndpointPolicyDefinitions []ServiceEndpointPolicyDefinitionResponse `pulumi:"serviceEndpointPolicyDefinitions"`
-	Subnets                          []SubnetResponse                          `pulumi:"subnets"`
-	Tags                             map[string]string                         `pulumi:"tags"`
-	Type                             string                                    `pulumi:"type"`
+	// A collection of references to subnets.
+	Subnets []SubnetResponse `pulumi:"subnets"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceEndpointPolicyOutput(ctx *pulumi.Context, args LookupServiceEndpointPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupServiceEndpointPolicyResultOutput {
@@ -54,9 +67,12 @@ func LookupServiceEndpointPolicyOutput(ctx *pulumi.Context, args LookupServiceEn
 }
 
 type LookupServiceEndpointPolicyOutputArgs struct {
-	Expand                    pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName         pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ServiceEndpointPolicyName pulumi.StringInput    `pulumi:"serviceEndpointPolicyName"`
+	// Expands referenced resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the service endpoint policy.
+	ServiceEndpointPolicyName pulumi.StringInput `pulumi:"serviceEndpointPolicyName"`
 }
 
 func (LookupServiceEndpointPolicyOutputArgs) ElementType() reflect.Type {
@@ -78,44 +94,54 @@ func (o LookupServiceEndpointPolicyResultOutput) ToLookupServiceEndpointPolicyRe
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupServiceEndpointPolicyResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupServiceEndpointPolicyResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupServiceEndpointPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupServiceEndpointPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 func (o LookupServiceEndpointPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource GUID property of the service endpoint policy resource.
 func (o LookupServiceEndpointPolicyResultOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
+// A collection of service endpoint policy definitions of the service endpoint policy.
 func (o LookupServiceEndpointPolicyResultOutput) ServiceEndpointPolicyDefinitions() ServiceEndpointPolicyDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) []ServiceEndpointPolicyDefinitionResponse {
 		return v.ServiceEndpointPolicyDefinitions
 	}).(ServiceEndpointPolicyDefinitionResponseArrayOutput)
 }
 
+// A collection of references to subnets.
 func (o LookupServiceEndpointPolicyResultOutput) Subnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) []SubnetResponse { return v.Subnets }).(SubnetResponseArrayOutput)
 }
 
+// Resource tags.
 func (o LookupServiceEndpointPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupServiceEndpointPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

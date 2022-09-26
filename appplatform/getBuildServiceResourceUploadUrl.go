@@ -22,15 +22,20 @@ func GetBuildServiceResourceUploadUrl(ctx *pulumi.Context, args *GetBuildService
 }
 
 type GetBuildServiceResourceUploadUrlArgs struct {
-	BuildServiceName  string `pulumi:"buildServiceName"`
+	// The name of the build service resource.
+	BuildServiceName string `pulumi:"buildServiceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Resource upload definition payload
 type GetBuildServiceResourceUploadUrlResult struct {
+	// Source relative path
 	RelativePath *string `pulumi:"relativePath"`
-	UploadUrl    *string `pulumi:"uploadUrl"`
+	// Upload URL
+	UploadUrl *string `pulumi:"uploadUrl"`
 }
 
 func GetBuildServiceResourceUploadUrlOutput(ctx *pulumi.Context, args GetBuildServiceResourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) GetBuildServiceResourceUploadUrlResultOutput {
@@ -47,9 +52,12 @@ func GetBuildServiceResourceUploadUrlOutput(ctx *pulumi.Context, args GetBuildSe
 }
 
 type GetBuildServiceResourceUploadUrlOutputArgs struct {
-	BuildServiceName  pulumi.StringInput `pulumi:"buildServiceName"`
+	// The name of the build service resource.
+	BuildServiceName pulumi.StringInput `pulumi:"buildServiceName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetBuildServiceResourceUploadUrlOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o GetBuildServiceResourceUploadUrlResultOutput) ToGetBuildServiceResourceU
 	return o
 }
 
+// Source relative path
 func (o GetBuildServiceResourceUploadUrlResultOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBuildServiceResourceUploadUrlResult) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }
 
+// Upload URL
 func (o GetBuildServiceResourceUploadUrlResultOutput) UploadUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBuildServiceResourceUploadUrlResult) *string { return v.UploadUrl }).(pulumi.StringPtrOutput)
 }

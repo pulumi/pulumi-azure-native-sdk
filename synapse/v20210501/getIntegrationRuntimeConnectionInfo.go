@@ -21,19 +21,28 @@ func GetIntegrationRuntimeConnectionInfo(ctx *pulumi.Context, args *GetIntegrati
 }
 
 type GetIntegrationRuntimeConnectionInfoArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	WorkspaceName          string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Connection information for encrypting the on-premises data source credentials.
 type GetIntegrationRuntimeConnectionInfoResult struct {
-	HostServiceUri         string `pulumi:"hostServiceUri"`
+	// The on-premises integration runtime host URL.
+	HostServiceUri string `pulumi:"hostServiceUri"`
+	// The integration runtime SSL certificate thumbprint. Click-Once application uses it to do server validation.
 	IdentityCertThumbprint string `pulumi:"identityCertThumbprint"`
-	IsIdentityCertExprired bool   `pulumi:"isIdentityCertExprired"`
-	PublicKey              string `pulumi:"publicKey"`
-	ServiceToken           string `pulumi:"serviceToken"`
-	Version                string `pulumi:"version"`
+	// Whether the identity certificate is expired.
+	IsIdentityCertExprired bool `pulumi:"isIdentityCertExprired"`
+	// The public key for encrypting a credential when transferring the credential to the integration runtime.
+	PublicKey string `pulumi:"publicKey"`
+	// The token generated in service. Callers use this token to authenticate to integration runtime.
+	ServiceToken string `pulumi:"serviceToken"`
+	// The integration runtime version.
+	Version string `pulumi:"version"`
 }
 
 func GetIntegrationRuntimeConnectionInfoOutput(ctx *pulumi.Context, args GetIntegrationRuntimeConnectionInfoOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeConnectionInfoResultOutput {
@@ -50,9 +59,12 @@ func GetIntegrationRuntimeConnectionInfoOutput(ctx *pulumi.Context, args GetInte
 }
 
 type GetIntegrationRuntimeConnectionInfoOutputArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName          pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetIntegrationRuntimeConnectionInfoOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o GetIntegrationRuntimeConnectionInfoResultOutput) ToGetIntegrationRuntime
 	return o
 }
 
+// The on-premises integration runtime host URL.
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) HostServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeConnectionInfoResult) string { return v.HostServiceUri }).(pulumi.StringOutput)
 }
 
+// The integration runtime SSL certificate thumbprint. Click-Once application uses it to do server validation.
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) IdentityCertThumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeConnectionInfoResult) string { return v.IdentityCertThumbprint }).(pulumi.StringOutput)
 }
 
+// Whether the identity certificate is expired.
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) IsIdentityCertExprired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeConnectionInfoResult) bool { return v.IsIdentityCertExprired }).(pulumi.BoolOutput)
 }
 
+// The public key for encrypting a credential when transferring the credential to the integration runtime.
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeConnectionInfoResult) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
+// The token generated in service. Callers use this token to authenticate to integration runtime.
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) ServiceToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeConnectionInfoResult) string { return v.ServiceToken }).(pulumi.StringOutput)
 }
 
+// The integration runtime version.
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeConnectionInfoResult) string { return v.Version }).(pulumi.StringOutput)
 }

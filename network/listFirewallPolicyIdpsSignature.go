@@ -22,19 +22,28 @@ func ListFirewallPolicyIdpsSignature(ctx *pulumi.Context, args *ListFirewallPoli
 }
 
 type ListFirewallPolicyIdpsSignatureArgs struct {
-	Filters            []FilterItems `pulumi:"filters"`
-	FirewallPolicyName string        `pulumi:"firewallPolicyName"`
-	OrderBy            *OrderBy      `pulumi:"orderBy"`
-	ResourceGroupName  string        `pulumi:"resourceGroupName"`
-	ResultsPerPage     *int          `pulumi:"resultsPerPage"`
-	Search             *string       `pulumi:"search"`
-	Skip               *int          `pulumi:"skip"`
+	// Contain all filters names and values
+	Filters []FilterItems `pulumi:"filters"`
+	// The name of the Firewall Policy.
+	FirewallPolicyName string `pulumi:"firewallPolicyName"`
+	// Column to sort response by
+	OrderBy *OrderBy `pulumi:"orderBy"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The number of the results to return in each page
+	ResultsPerPage *int `pulumi:"resultsPerPage"`
+	// Search term in all columns
+	Search *string `pulumi:"search"`
+	// The number of records matching the filter to skip
+	Skip *int `pulumi:"skip"`
 }
 
 // Query result
 type ListFirewallPolicyIdpsSignatureResult struct {
-	MatchingRecordsCount *float64                    `pulumi:"matchingRecordsCount"`
-	Signatures           []SingleQueryResultResponse `pulumi:"signatures"`
+	// Number of total records matching the query.
+	MatchingRecordsCount *float64 `pulumi:"matchingRecordsCount"`
+	// Array containing the results of the query
+	Signatures []SingleQueryResultResponse `pulumi:"signatures"`
 }
 
 func ListFirewallPolicyIdpsSignatureOutput(ctx *pulumi.Context, args ListFirewallPolicyIdpsSignatureOutputArgs, opts ...pulumi.InvokeOption) ListFirewallPolicyIdpsSignatureResultOutput {
@@ -51,13 +60,20 @@ func ListFirewallPolicyIdpsSignatureOutput(ctx *pulumi.Context, args ListFirewal
 }
 
 type ListFirewallPolicyIdpsSignatureOutputArgs struct {
-	Filters            FilterItemsArrayInput `pulumi:"filters"`
-	FirewallPolicyName pulumi.StringInput    `pulumi:"firewallPolicyName"`
-	OrderBy            OrderByPtrInput       `pulumi:"orderBy"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResultsPerPage     pulumi.IntPtrInput    `pulumi:"resultsPerPage"`
-	Search             pulumi.StringPtrInput `pulumi:"search"`
-	Skip               pulumi.IntPtrInput    `pulumi:"skip"`
+	// Contain all filters names and values
+	Filters FilterItemsArrayInput `pulumi:"filters"`
+	// The name of the Firewall Policy.
+	FirewallPolicyName pulumi.StringInput `pulumi:"firewallPolicyName"`
+	// Column to sort response by
+	OrderBy OrderByPtrInput `pulumi:"orderBy"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The number of the results to return in each page
+	ResultsPerPage pulumi.IntPtrInput `pulumi:"resultsPerPage"`
+	// Search term in all columns
+	Search pulumi.StringPtrInput `pulumi:"search"`
+	// The number of records matching the filter to skip
+	Skip pulumi.IntPtrInput `pulumi:"skip"`
 }
 
 func (ListFirewallPolicyIdpsSignatureOutputArgs) ElementType() reflect.Type {
@@ -79,10 +95,12 @@ func (o ListFirewallPolicyIdpsSignatureResultOutput) ToListFirewallPolicyIdpsSig
 	return o
 }
 
+// Number of total records matching the query.
 func (o ListFirewallPolicyIdpsSignatureResultOutput) MatchingRecordsCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListFirewallPolicyIdpsSignatureResult) *float64 { return v.MatchingRecordsCount }).(pulumi.Float64PtrOutput)
 }
 
+// Array containing the results of the query
 func (o ListFirewallPolicyIdpsSignatureResultOutput) Signatures() SingleQueryResultResponseArrayOutput {
 	return o.ApplyT(func(v ListFirewallPolicyIdpsSignatureResult) []SingleQueryResultResponse { return v.Signatures }).(SingleQueryResultResponseArrayOutput)
 }

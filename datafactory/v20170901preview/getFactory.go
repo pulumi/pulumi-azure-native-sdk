@@ -23,21 +23,33 @@ func LookupFactory(ctx *pulumi.Context, args *LookupFactoryArgs, opts ...pulumi.
 }
 
 type LookupFactoryArgs struct {
-	FactoryName       string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Factory resource type.
 type LookupFactoryResult struct {
-	CreateTime        string                            `pulumi:"createTime"`
-	Id                string                            `pulumi:"id"`
-	Identity          *FactoryIdentityResponse          `pulumi:"identity"`
-	Location          *string                           `pulumi:"location"`
-	Name              string                            `pulumi:"name"`
-	ProvisioningState string                            `pulumi:"provisioningState"`
-	Tags              map[string]string                 `pulumi:"tags"`
-	Type              string                            `pulumi:"type"`
-	Version           string                            `pulumi:"version"`
+	// Time the factory was created in ISO8601 format.
+	CreateTime string `pulumi:"createTime"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// Managed service identity of the factory.
+	Identity *FactoryIdentityResponse `pulumi:"identity"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Factory provisioning state, example Succeeded.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The resource type.
+	Type string `pulumi:"type"`
+	// Version of the factory.
+	Version string `pulumi:"version"`
+	// VSTS repo information of the factory.
 	VstsConfiguration *FactoryVSTSConfigurationResponse `pulumi:"vstsConfiguration"`
 }
 
@@ -55,7 +67,9 @@ func LookupFactoryOutput(ctx *pulumi.Context, args LookupFactoryOutputArgs, opts
 }
 
 type LookupFactoryOutputArgs struct {
-	FactoryName       pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +92,52 @@ func (o LookupFactoryResultOutput) ToLookupFactoryResultOutputWithContext(ctx co
 	return o
 }
 
+// Time the factory was created in ISO8601 format.
 func (o LookupFactoryResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupFactoryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed service identity of the factory.
 func (o LookupFactoryResultOutput) Identity() FactoryIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupFactoryResult) *FactoryIdentityResponse { return v.Identity }).(FactoryIdentityResponsePtrOutput)
 }
 
+// The resource location.
 func (o LookupFactoryResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFactoryResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The resource name.
 func (o LookupFactoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Factory provisioning state, example Succeeded.
 func (o LookupFactoryResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupFactoryResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFactoryResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The resource type.
 func (o LookupFactoryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the factory.
 func (o LookupFactoryResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
+// VSTS repo information of the factory.
 func (o LookupFactoryResultOutput) VstsConfiguration() FactoryVSTSConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupFactoryResult) *FactoryVSTSConfigurationResponse { return v.VstsConfiguration }).(FactoryVSTSConfigurationResponsePtrOutput)
 }

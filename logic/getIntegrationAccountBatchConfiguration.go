@@ -22,19 +22,28 @@ func LookupIntegrationAccountBatchConfiguration(ctx *pulumi.Context, args *Looku
 }
 
 type LookupIntegrationAccountBatchConfigurationArgs struct {
+	// The batch configuration name.
 	BatchConfigurationName string `pulumi:"batchConfigurationName"`
+	// The integration account name.
 	IntegrationAccountName string `pulumi:"integrationAccountName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The batch configuration resource definition.
 type LookupIntegrationAccountBatchConfigurationResult struct {
-	Id         string                               `pulumi:"id"`
-	Location   *string                              `pulumi:"location"`
-	Name       string                               `pulumi:"name"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The batch configuration properties.
 	Properties BatchConfigurationPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string                    `pulumi:"tags"`
-	Type       string                               `pulumi:"type"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupIntegrationAccountBatchConfigurationOutput(ctx *pulumi.Context, args LookupIntegrationAccountBatchConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountBatchConfigurationResultOutput {
@@ -51,9 +60,12 @@ func LookupIntegrationAccountBatchConfigurationOutput(ctx *pulumi.Context, args 
 }
 
 type LookupIntegrationAccountBatchConfigurationOutputArgs struct {
+	// The batch configuration name.
 	BatchConfigurationName pulumi.StringInput `pulumi:"batchConfigurationName"`
+	// The integration account name.
 	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupIntegrationAccountBatchConfigurationOutputArgs) ElementType() reflect.Type {
@@ -75,28 +87,34 @@ func (o LookupIntegrationAccountBatchConfigurationResultOutput) ToLookupIntegrat
 	return o
 }
 
+// The resource id.
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the resource name.
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The batch configuration properties.
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) Properties() BatchConfigurationPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) BatchConfigurationPropertiesResponse {
 		return v.Properties
 	}).(BatchConfigurationPropertiesResponseOutput)
 }
 
+// The resource tags.
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

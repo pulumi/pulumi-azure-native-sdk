@@ -22,11 +22,13 @@ func LookupConsole(ctx *pulumi.Context, args *LookupConsoleArgs, opts ...pulumi.
 }
 
 type LookupConsoleArgs struct {
+	// The name of the console
 	ConsoleName string `pulumi:"consoleName"`
 }
 
 // Cloud shell console
 type LookupConsoleResult struct {
+	// Cloud shell console properties.
 	Properties ConsolePropertiesResponse `pulumi:"properties"`
 }
 
@@ -44,6 +46,7 @@ func LookupConsoleOutput(ctx *pulumi.Context, args LookupConsoleOutputArgs, opts
 }
 
 type LookupConsoleOutputArgs struct {
+	// The name of the console
 	ConsoleName pulumi.StringInput `pulumi:"consoleName"`
 }
 
@@ -66,6 +69,7 @@ func (o LookupConsoleResultOutput) ToLookupConsoleResultOutputWithContext(ctx co
 	return o
 }
 
+// Cloud shell console properties.
 func (o LookupConsoleResultOutput) Properties() ConsolePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConsoleResult) ConsolePropertiesResponse { return v.Properties }).(ConsolePropertiesResponseOutput)
 }

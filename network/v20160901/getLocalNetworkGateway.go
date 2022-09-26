@@ -23,23 +23,36 @@ func LookupLocalNetworkGateway(ctx *pulumi.Context, args *LookupLocalNetworkGate
 }
 
 type LookupLocalNetworkGatewayArgs struct {
+	// The name of the local network gateway.
 	LocalNetworkGatewayName string `pulumi:"localNetworkGatewayName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A common class for general resource information
 type LookupLocalNetworkGatewayResult struct {
-	BgpSettings              *BgpSettingsResponse `pulumi:"bgpSettings"`
-	Etag                     *string              `pulumi:"etag"`
-	GatewayIpAddress         *string              `pulumi:"gatewayIpAddress"`
-	Id                       *string              `pulumi:"id"`
+	// Local network gateway's BGP speaker settings.
+	BgpSettings *BgpSettingsResponse `pulumi:"bgpSettings"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// IP address of local network gateway.
+	GatewayIpAddress *string `pulumi:"gatewayIpAddress"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Local network site address space.
 	LocalNetworkAddressSpace AddressSpaceResponse `pulumi:"localNetworkAddressSpace"`
-	Location                 *string              `pulumi:"location"`
-	Name                     string               `pulumi:"name"`
-	ProvisioningState        string               `pulumi:"provisioningState"`
-	ResourceGuid             *string              `pulumi:"resourceGuid"`
-	Tags                     map[string]string    `pulumi:"tags"`
-	Type                     string               `pulumi:"type"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the LocalNetworkGateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the LocalNetworkGateway resource.
+	ResourceGuid *string `pulumi:"resourceGuid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupLocalNetworkGatewayOutput(ctx *pulumi.Context, args LookupLocalNetworkGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupLocalNetworkGatewayResultOutput {
@@ -56,8 +69,10 @@ func LookupLocalNetworkGatewayOutput(ctx *pulumi.Context, args LookupLocalNetwor
 }
 
 type LookupLocalNetworkGatewayOutputArgs struct {
+	// The name of the local network gateway.
 	LocalNetworkGatewayName pulumi.StringInput `pulumi:"localNetworkGatewayName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupLocalNetworkGatewayOutputArgs) ElementType() reflect.Type {
@@ -79,46 +94,57 @@ func (o LookupLocalNetworkGatewayResultOutput) ToLookupLocalNetworkGatewayResult
 	return o
 }
 
+// Local network gateway's BGP speaker settings.
 func (o LookupLocalNetworkGatewayResultOutput) BgpSettings() BgpSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) *BgpSettingsResponse { return v.BgpSettings }).(BgpSettingsResponsePtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupLocalNetworkGatewayResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// IP address of local network gateway.
 func (o LookupLocalNetworkGatewayResultOutput) GatewayIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) *string { return v.GatewayIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupLocalNetworkGatewayResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Local network site address space.
 func (o LookupLocalNetworkGatewayResultOutput) LocalNetworkAddressSpace() AddressSpaceResponseOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) AddressSpaceResponse { return v.LocalNetworkAddressSpace }).(AddressSpaceResponseOutput)
 }
 
+// Resource location.
 func (o LookupLocalNetworkGatewayResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupLocalNetworkGatewayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the LocalNetworkGateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 func (o LookupLocalNetworkGatewayResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The resource GUID property of the LocalNetworkGateway resource.
 func (o LookupLocalNetworkGatewayResultOutput) ResourceGuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) *string { return v.ResourceGuid }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupLocalNetworkGatewayResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupLocalNetworkGatewayResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLocalNetworkGatewayResult) string { return v.Type }).(pulumi.StringOutput)
 }

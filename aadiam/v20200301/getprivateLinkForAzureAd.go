@@ -21,22 +21,34 @@ func GetprivateLinkForAzureAd(ctx *pulumi.Context, args *GetprivateLinkForAzureA
 }
 
 type GetprivateLinkForAzureAdArgs struct {
-	PolicyName        string `pulumi:"policyName"`
+	// The name of the private link policy in Azure AD.
+	PolicyName string `pulumi:"policyName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // PrivateLink Policy configuration object.
 type GetprivateLinkForAzureAdResult struct {
-	AllTenants     *bool             `pulumi:"allTenants"`
-	Id             string            `pulumi:"id"`
-	Name           *string           `pulumi:"name"`
-	OwnerTenantId  *string           `pulumi:"ownerTenantId"`
-	ResourceGroup  *string           `pulumi:"resourceGroup"`
-	ResourceName   *string           `pulumi:"resourceName"`
-	SubscriptionId *string           `pulumi:"subscriptionId"`
-	Tags           map[string]string `pulumi:"tags"`
-	Tenants        []string          `pulumi:"tenants"`
-	Type           string            `pulumi:"type"`
+	// Flag indicating whether all tenants are allowed
+	AllTenants *bool `pulumi:"allTenants"`
+	// String Id used to locate any resource on Azure.
+	Id string `pulumi:"id"`
+	// Name of this resource.
+	Name *string `pulumi:"name"`
+	// Guid of the owner tenant
+	OwnerTenantId *string `pulumi:"ownerTenantId"`
+	// Name of the resource group
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Name of the private link policy resource
+	ResourceName *string `pulumi:"resourceName"`
+	// Subscription Identifier
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The list of tenantIds.
+	Tenants []string `pulumi:"tenants"`
+	// Type of this resource.
+	Type string `pulumi:"type"`
 }
 
 func GetprivateLinkForAzureAdOutput(ctx *pulumi.Context, args GetprivateLinkForAzureAdOutputArgs, opts ...pulumi.InvokeOption) GetprivateLinkForAzureAdResultOutput {
@@ -53,7 +65,9 @@ func GetprivateLinkForAzureAdOutput(ctx *pulumi.Context, args GetprivateLinkForA
 }
 
 type GetprivateLinkForAzureAdOutputArgs struct {
-	PolicyName        pulumi.StringInput `pulumi:"policyName"`
+	// The name of the private link policy in Azure AD.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,42 +90,52 @@ func (o GetprivateLinkForAzureAdResultOutput) ToGetprivateLinkForAzureAdResultOu
 	return o
 }
 
+// Flag indicating whether all tenants are allowed
 func (o GetprivateLinkForAzureAdResultOutput) AllTenants() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) *bool { return v.AllTenants }).(pulumi.BoolPtrOutput)
 }
 
+// String Id used to locate any resource on Azure.
 func (o GetprivateLinkForAzureAdResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of this resource.
 func (o GetprivateLinkForAzureAdResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Guid of the owner tenant
 func (o GetprivateLinkForAzureAdResultOutput) OwnerTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) *string { return v.OwnerTenantId }).(pulumi.StringPtrOutput)
 }
 
+// Name of the resource group
 func (o GetprivateLinkForAzureAdResultOutput) ResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
 }
 
+// Name of the private link policy resource
 func (o GetprivateLinkForAzureAdResultOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Subscription Identifier
 func (o GetprivateLinkForAzureAdResultOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o GetprivateLinkForAzureAdResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The list of tenantIds.
 func (o GetprivateLinkForAzureAdResultOutput) Tenants() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) []string { return v.Tenants }).(pulumi.StringArrayOutput)
 }
 
+// Type of this resource.
 func (o GetprivateLinkForAzureAdResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkForAzureAdResult) string { return v.Type }).(pulumi.StringOutput)
 }

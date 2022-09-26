@@ -22,20 +22,30 @@ func LookupReportByResourceGroupName(ctx *pulumi.Context, args *LookupReportByRe
 }
 
 type LookupReportByResourceGroupNameArgs struct {
-	ReportName        string `pulumi:"reportName"`
+	// Report Name.
+	ReportName string `pulumi:"reportName"`
+	// Azure Resource Group Name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A report resource.
 type LookupReportByResourceGroupNameResult struct {
-	Definition   ReportDefinitionResponse   `pulumi:"definition"`
+	// Has definition for the report.
+	Definition ReportDefinitionResponse `pulumi:"definition"`
+	// Has delivery information for the report.
 	DeliveryInfo ReportDeliveryInfoResponse `pulumi:"deliveryInfo"`
-	Format       *string                    `pulumi:"format"`
-	Id           string                     `pulumi:"id"`
-	Name         string                     `pulumi:"name"`
-	Schedule     *ReportScheduleResponse    `pulumi:"schedule"`
-	Tags         map[string]string          `pulumi:"tags"`
-	Type         string                     `pulumi:"type"`
+	// The format of the report being delivered.
+	Format *string `pulumi:"format"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Has schedule information for the report.
+	Schedule *ReportScheduleResponse `pulumi:"schedule"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupReportByResourceGroupNameOutput(ctx *pulumi.Context, args LookupReportByResourceGroupNameOutputArgs, opts ...pulumi.InvokeOption) LookupReportByResourceGroupNameResultOutput {
@@ -52,7 +62,9 @@ func LookupReportByResourceGroupNameOutput(ctx *pulumi.Context, args LookupRepor
 }
 
 type LookupReportByResourceGroupNameOutputArgs struct {
-	ReportName        pulumi.StringInput `pulumi:"reportName"`
+	// Report Name.
+	ReportName pulumi.StringInput `pulumi:"reportName"`
+	// Azure Resource Group Name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,34 +87,42 @@ func (o LookupReportByResourceGroupNameResultOutput) ToLookupReportByResourceGro
 	return o
 }
 
+// Has definition for the report.
 func (o LookupReportByResourceGroupNameResultOutput) Definition() ReportDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) ReportDefinitionResponse { return v.Definition }).(ReportDefinitionResponseOutput)
 }
 
+// Has delivery information for the report.
 func (o LookupReportByResourceGroupNameResultOutput) DeliveryInfo() ReportDeliveryInfoResponseOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) ReportDeliveryInfoResponse { return v.DeliveryInfo }).(ReportDeliveryInfoResponseOutput)
 }
 
+// The format of the report being delivered.
 func (o LookupReportByResourceGroupNameResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupReportByResourceGroupNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupReportByResourceGroupNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Has schedule information for the report.
 func (o LookupReportByResourceGroupNameResultOutput) Schedule() ReportScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) *ReportScheduleResponse { return v.Schedule }).(ReportScheduleResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupReportByResourceGroupNameResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupReportByResourceGroupNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportByResourceGroupNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

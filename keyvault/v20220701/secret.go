@@ -112,7 +112,7 @@ type secretArgs struct {
 	Properties SecretProperties `pulumi:"properties"`
 	// The name of the Resource Group to which the vault belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the secret
+	// Name of the secret. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	SecretName *string `pulumi:"secretName"`
 	// The tags that will be assigned to the secret.
 	Tags map[string]string `pulumi:"tags"`
@@ -126,7 +126,7 @@ type SecretArgs struct {
 	Properties SecretPropertiesInput
 	// The name of the Resource Group to which the vault belongs.
 	ResourceGroupName pulumi.StringInput
-	// Name of the secret
+	// Name of the secret. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	SecretName pulumi.StringPtrInput
 	// The tags that will be assigned to the secret.
 	Tags pulumi.StringMapInput

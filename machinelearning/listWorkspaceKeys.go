@@ -22,13 +22,17 @@ func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ..
 }
 
 type ListWorkspaceKeysArgs struct {
+	// The name of the resource group to which the machine learning workspace belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the machine learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Workspace authorization keys for a workspace.
 type ListWorkspaceKeysResult struct {
-	PrimaryToken   *string `pulumi:"primaryToken"`
+	// Primary authorization key for this workspace.
+	PrimaryToken *string `pulumi:"primaryToken"`
+	// Secondary authorization key for this workspace.
 	SecondaryToken *string `pulumi:"secondaryToken"`
 }
 
@@ -46,8 +50,10 @@ func ListWorkspaceKeysOutput(ctx *pulumi.Context, args ListWorkspaceKeysOutputAr
 }
 
 type ListWorkspaceKeysOutputArgs struct {
+	// The name of the resource group to which the machine learning workspace belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the machine learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListWorkspaceKeysOutputArgs) ElementType() reflect.Type {
@@ -69,10 +75,12 @@ func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutputWithContex
 	return o
 }
 
+// Primary authorization key for this workspace.
 func (o ListWorkspaceKeysResultOutput) PrimaryToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkspaceKeysResult) *string { return v.PrimaryToken }).(pulumi.StringPtrOutput)
 }
 
+// Secondary authorization key for this workspace.
 func (o ListWorkspaceKeysResultOutput) SecondaryToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkspaceKeysResult) *string { return v.SecondaryToken }).(pulumi.StringPtrOutput)
 }

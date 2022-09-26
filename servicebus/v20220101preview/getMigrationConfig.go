@@ -21,23 +21,36 @@ func LookupMigrationConfig(ctx *pulumi.Context, args *LookupMigrationConfigArgs,
 }
 
 type LookupMigrationConfigArgs struct {
-	ConfigName        string `pulumi:"configName"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The configuration name. Should always be "$default".
+	ConfigName string `pulumi:"configName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Migration Config operation
 type LookupMigrationConfigResult struct {
-	Id                                string             `pulumi:"id"`
-	Location                          string             `pulumi:"location"`
-	MigrationState                    string             `pulumi:"migrationState"`
-	Name                              string             `pulumi:"name"`
-	PendingReplicationOperationsCount float64            `pulumi:"pendingReplicationOperationsCount"`
-	PostMigrationName                 string             `pulumi:"postMigrationName"`
-	ProvisioningState                 string             `pulumi:"provisioningState"`
-	SystemData                        SystemDataResponse `pulumi:"systemData"`
-	TargetNamespace                   string             `pulumi:"targetNamespace"`
-	Type                              string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
+	MigrationState string `pulumi:"migrationState"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Number of entities pending to be replicated.
+	PendingReplicationOperationsCount float64 `pulumi:"pendingReplicationOperationsCount"`
+	// Name to access Standard Namespace after migration
+	PostMigrationName string `pulumi:"postMigrationName"`
+	// Provisioning state of Migration Configuration
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
+	TargetNamespace string `pulumi:"targetNamespace"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	Type string `pulumi:"type"`
 }
 
 func LookupMigrationConfigOutput(ctx *pulumi.Context, args LookupMigrationConfigOutputArgs, opts ...pulumi.InvokeOption) LookupMigrationConfigResultOutput {
@@ -54,8 +67,11 @@ func LookupMigrationConfigOutput(ctx *pulumi.Context, args LookupMigrationConfig
 }
 
 type LookupMigrationConfigOutputArgs struct {
-	ConfigName        pulumi.StringInput `pulumi:"configName"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The configuration name. Should always be "$default".
+	ConfigName pulumi.StringInput `pulumi:"configName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +94,52 @@ func (o LookupMigrationConfigResultOutput) ToLookupMigrationConfigResultOutputWi
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMigrationConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupMigrationConfigResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
 func (o LookupMigrationConfigResultOutput) MigrationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.MigrationState }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupMigrationConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Number of entities pending to be replicated.
 func (o LookupMigrationConfigResultOutput) PendingReplicationOperationsCount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupMigrationConfigResult) float64 { return v.PendingReplicationOperationsCount }).(pulumi.Float64Output)
 }
 
+// Name to access Standard Namespace after migration
 func (o LookupMigrationConfigResultOutput) PostMigrationName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.PostMigrationName }).(pulumi.StringOutput)
 }
 
+// Provisioning state of Migration Configuration
 func (o LookupMigrationConfigResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupMigrationConfigResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 func (o LookupMigrationConfigResultOutput) TargetNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.TargetNamespace }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o LookupMigrationConfigResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,15 +22,20 @@ func ListWebhookEvents(ctx *pulumi.Context, args *ListWebhookEventsArgs, opts ..
 }
 
 type ListWebhookEventsArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WebhookName       string `pulumi:"webhookName"`
+	// The name of the webhook.
+	WebhookName string `pulumi:"webhookName"`
 }
 
 // The result of a request to list events for a webhook.
 type ListWebhookEventsResult struct {
-	NextLink *string         `pulumi:"nextLink"`
-	Value    []EventResponse `pulumi:"value"`
+	// The URI that can be used to request the next list of events.
+	NextLink *string `pulumi:"nextLink"`
+	// The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events.
+	Value []EventResponse `pulumi:"value"`
 }
 
 func ListWebhookEventsOutput(ctx *pulumi.Context, args ListWebhookEventsOutputArgs, opts ...pulumi.InvokeOption) ListWebhookEventsResultOutput {
@@ -47,9 +52,12 @@ func ListWebhookEventsOutput(ctx *pulumi.Context, args ListWebhookEventsOutputAr
 }
 
 type ListWebhookEventsOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WebhookName       pulumi.StringInput `pulumi:"webhookName"`
+	// The name of the webhook.
+	WebhookName pulumi.StringInput `pulumi:"webhookName"`
 }
 
 func (ListWebhookEventsOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListWebhookEventsResultOutput) ToListWebhookEventsResultOutputWithContex
 	return o
 }
 
+// The URI that can be used to request the next list of events.
 func (o ListWebhookEventsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebhookEventsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events.
 func (o ListWebhookEventsResultOutput) Value() EventResponseArrayOutput {
 	return o.ApplyT(func(v ListWebhookEventsResult) []EventResponse { return v.Value }).(EventResponseArrayOutput)
 }

@@ -21,21 +21,32 @@ func LookupPrivateEndpointConnectionProxy(ctx *pulumi.Context, args *LookupPriva
 }
 
 type LookupPrivateEndpointConnectionProxyArgs struct {
-	AccountName                      string `pulumi:"accountName"`
+	// Account name.
+	AccountName string `pulumi:"accountName"`
+	// The ID of the private endpoint connection proxy object.
 	PrivateEndpointConnectionProxyId string `pulumi:"privateEndpointConnectionProxyId"`
-	ResourceGroupName                string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Private endpoint connection proxy details.
 type LookupPrivateEndpointConnectionProxyResult struct {
-	ETag                  string                         `pulumi:"eTag"`
-	Id                    string                         `pulumi:"id"`
-	Name                  string                         `pulumi:"name"`
-	ProvisioningState     string                         `pulumi:"provisioningState"`
+	// ETag from NRP.
+	ETag string `pulumi:"eTag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the private endpoint connection proxy resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Remote private endpoint details.
 	RemotePrivateEndpoint *RemotePrivateEndpointResponse `pulumi:"remotePrivateEndpoint"`
-	Status                *string                        `pulumi:"status"`
-	SystemData            SystemDataResponse             `pulumi:"systemData"`
-	Type                  string                         `pulumi:"type"`
+	// Operation status.
+	Status *string `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionProxyOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionProxyOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionProxyResultOutput {
@@ -52,9 +63,12 @@ func LookupPrivateEndpointConnectionProxyOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupPrivateEndpointConnectionProxyOutputArgs struct {
-	AccountName                      pulumi.StringInput `pulumi:"accountName"`
+	// Account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The ID of the private endpoint connection proxy object.
 	PrivateEndpointConnectionProxyId pulumi.StringInput `pulumi:"privateEndpointConnectionProxyId"`
-	ResourceGroupName                pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateEndpointConnectionProxyOutputArgs) ElementType() reflect.Type {
@@ -76,36 +90,44 @@ func (o LookupPrivateEndpointConnectionProxyResultOutput) ToLookupPrivateEndpoin
 	return o
 }
 
+// ETag from NRP.
 func (o LookupPrivateEndpointConnectionProxyResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.ETag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateEndpointConnectionProxyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPrivateEndpointConnectionProxyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the private endpoint connection proxy resource.
 func (o LookupPrivateEndpointConnectionProxyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Remote private endpoint details.
 func (o LookupPrivateEndpointConnectionProxyResultOutput) RemotePrivateEndpoint() RemotePrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) *RemotePrivateEndpointResponse {
 		return v.RemotePrivateEndpoint
 	}).(RemotePrivateEndpointResponsePtrOutput)
 }
 
+// Operation status.
 func (o LookupPrivateEndpointConnectionProxyResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPrivateEndpointConnectionProxyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateEndpointConnectionProxyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.Type }).(pulumi.StringOutput)
 }

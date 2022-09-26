@@ -21,19 +21,28 @@ func ListSiteAppSettings(ctx *pulumi.Context, args *ListSiteAppSettingsArgs, opt
 }
 
 type ListSiteAppSettingsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String dictionary resource
 type ListSiteAppSettingsResult struct {
-	Id         *string           `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Location   string            `pulumi:"location"`
-	Name       *string           `pulumi:"name"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// Settings
 	Properties map[string]string `pulumi:"properties"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       *string           `pulumi:"type"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func ListSiteAppSettingsOutput(ctx *pulumi.Context, args ListSiteAppSettingsOutputArgs, opts ...pulumi.InvokeOption) ListSiteAppSettingsResultOutput {
@@ -50,7 +59,9 @@ func ListSiteAppSettingsOutput(ctx *pulumi.Context, args ListSiteAppSettingsOutp
 }
 
 type ListSiteAppSettingsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,30 +84,37 @@ func (o ListSiteAppSettingsResultOutput) ToListSiteAppSettingsResultOutputWithCo
 	return o
 }
 
+// Resource Id
 func (o ListSiteAppSettingsResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o ListSiteAppSettingsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o ListSiteAppSettingsResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o ListSiteAppSettingsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Settings
 func (o ListSiteAppSettingsResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource tags
 func (o ListSiteAppSettingsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o ListSiteAppSettingsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSiteAppSettingsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

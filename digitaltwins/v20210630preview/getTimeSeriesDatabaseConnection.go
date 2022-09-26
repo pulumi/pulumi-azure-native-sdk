@@ -21,18 +21,26 @@ func LookupTimeSeriesDatabaseConnection(ctx *pulumi.Context, args *LookupTimeSer
 }
 
 type LookupTimeSeriesDatabaseConnectionArgs struct {
-	ResourceGroupName                string `pulumi:"resourceGroupName"`
-	ResourceName                     string `pulumi:"resourceName"`
+	// The name of the resource group that contains the DigitalTwinsInstance.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the DigitalTwinsInstance.
+	ResourceName string `pulumi:"resourceName"`
+	// Name of time series database connection.
 	TimeSeriesDatabaseConnectionName string `pulumi:"timeSeriesDatabaseConnectionName"`
 }
 
 // Describes a time series database connection resource.
 type LookupTimeSeriesDatabaseConnectionResult struct {
-	Id         string                                        `pulumi:"id"`
-	Name       string                                        `pulumi:"name"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// Extension resource name.
+	Name string `pulumi:"name"`
+	// Properties of a specific time series database connection.
 	Properties AzureDataExplorerConnectionPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                            `pulumi:"systemData"`
-	Type       string                                        `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupTimeSeriesDatabaseConnectionOutput(ctx *pulumi.Context, args LookupTimeSeriesDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupTimeSeriesDatabaseConnectionResultOutput {
@@ -49,8 +57,11 @@ func LookupTimeSeriesDatabaseConnectionOutput(ctx *pulumi.Context, args LookupTi
 }
 
 type LookupTimeSeriesDatabaseConnectionOutputArgs struct {
-	ResourceGroupName                pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                     pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource group that contains the DigitalTwinsInstance.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the DigitalTwinsInstance.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Name of time series database connection.
 	TimeSeriesDatabaseConnectionName pulumi.StringInput `pulumi:"timeSeriesDatabaseConnectionName"`
 }
 
@@ -73,24 +84,29 @@ func (o LookupTimeSeriesDatabaseConnectionResultOutput) ToLookupTimeSeriesDataba
 	return o
 }
 
+// The resource identifier.
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeSeriesDatabaseConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Extension resource name.
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeSeriesDatabaseConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of a specific time series database connection.
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) Properties() AzureDataExplorerConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupTimeSeriesDatabaseConnectionResult) AzureDataExplorerConnectionPropertiesResponse {
 		return v.Properties
 	}).(AzureDataExplorerConnectionPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTimeSeriesDatabaseConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The resource type.
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTimeSeriesDatabaseConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,22 +23,34 @@ func LookupSiteLogsConfig(ctx *pulumi.Context, args *LookupSiteLogsConfigArgs, o
 }
 
 type LookupSiteLogsConfigArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Configuration of Azure web site
 type LookupSiteLogsConfigResult struct {
-	ApplicationLogs       *ApplicationLogsConfigResponse `pulumi:"applicationLogs"`
-	DetailedErrorMessages *EnabledConfigResponse         `pulumi:"detailedErrorMessages"`
-	FailedRequestsTracing *EnabledConfigResponse         `pulumi:"failedRequestsTracing"`
-	HttpLogs              *HttpLogsConfigResponse        `pulumi:"httpLogs"`
-	Id                    *string                        `pulumi:"id"`
-	Kind                  *string                        `pulumi:"kind"`
-	Location              string                         `pulumi:"location"`
-	Name                  *string                        `pulumi:"name"`
-	Tags                  map[string]string              `pulumi:"tags"`
-	Type                  *string                        `pulumi:"type"`
+	// Application logs configuration
+	ApplicationLogs *ApplicationLogsConfigResponse `pulumi:"applicationLogs"`
+	// Detailed error messages configuration
+	DetailedErrorMessages *EnabledConfigResponse `pulumi:"detailedErrorMessages"`
+	// Failed requests tracing configuration
+	FailedRequestsTracing *EnabledConfigResponse `pulumi:"failedRequestsTracing"`
+	// Http logs configuration
+	HttpLogs *HttpLogsConfigResponse `pulumi:"httpLogs"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func LookupSiteLogsConfigOutput(ctx *pulumi.Context, args LookupSiteLogsConfigOutputArgs, opts ...pulumi.InvokeOption) LookupSiteLogsConfigResultOutput {
@@ -55,7 +67,9 @@ func LookupSiteLogsConfigOutput(ctx *pulumi.Context, args LookupSiteLogsConfigOu
 }
 
 type LookupSiteLogsConfigOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +92,52 @@ func (o LookupSiteLogsConfigResultOutput) ToLookupSiteLogsConfigResultOutputWith
 	return o
 }
 
+// Application logs configuration
 func (o LookupSiteLogsConfigResultOutput) ApplicationLogs() ApplicationLogsConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *ApplicationLogsConfigResponse { return v.ApplicationLogs }).(ApplicationLogsConfigResponsePtrOutput)
 }
 
+// Detailed error messages configuration
 func (o LookupSiteLogsConfigResultOutput) DetailedErrorMessages() EnabledConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *EnabledConfigResponse { return v.DetailedErrorMessages }).(EnabledConfigResponsePtrOutput)
 }
 
+// Failed requests tracing configuration
 func (o LookupSiteLogsConfigResultOutput) FailedRequestsTracing() EnabledConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *EnabledConfigResponse { return v.FailedRequestsTracing }).(EnabledConfigResponsePtrOutput)
 }
 
+// Http logs configuration
 func (o LookupSiteLogsConfigResultOutput) HttpLogs() HttpLogsConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *HttpLogsConfigResponse { return v.HttpLogs }).(HttpLogsConfigResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupSiteLogsConfigResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o LookupSiteLogsConfigResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o LookupSiteLogsConfigResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o LookupSiteLogsConfigResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupSiteLogsConfigResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSiteLogsConfigResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteLogsConfigResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

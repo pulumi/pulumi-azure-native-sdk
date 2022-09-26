@@ -22,13 +22,16 @@ func ListSaasResourceAccessToken(ctx *pulumi.Context, args *ListSaasResourceAcce
 }
 
 type ListSaasResourceAccessTokenArgs struct {
+	// The Saas resource ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 	ResourceId string `pulumi:"resourceId"`
 }
 
 // the ISV access token result response.
 type ListSaasResourceAccessTokenResult struct {
+	// The Publisher Offer Base Uri
 	PublisherOfferBaseUri *string `pulumi:"publisherOfferBaseUri"`
-	Token                 *string `pulumi:"token"`
+	// The generated token
+	Token *string `pulumi:"token"`
 }
 
 func ListSaasResourceAccessTokenOutput(ctx *pulumi.Context, args ListSaasResourceAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListSaasResourceAccessTokenResultOutput {
@@ -45,6 +48,7 @@ func ListSaasResourceAccessTokenOutput(ctx *pulumi.Context, args ListSaasResourc
 }
 
 type ListSaasResourceAccessTokenOutputArgs struct {
+	// The Saas resource ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
 
@@ -67,10 +71,12 @@ func (o ListSaasResourceAccessTokenResultOutput) ToListSaasResourceAccessTokenRe
 	return o
 }
 
+// The Publisher Offer Base Uri
 func (o ListSaasResourceAccessTokenResultOutput) PublisherOfferBaseUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSaasResourceAccessTokenResult) *string { return v.PublisherOfferBaseUri }).(pulumi.StringPtrOutput)
 }
 
+// The generated token
 func (o ListSaasResourceAccessTokenResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSaasResourceAccessTokenResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

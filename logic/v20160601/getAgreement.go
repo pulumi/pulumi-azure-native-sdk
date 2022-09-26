@@ -21,27 +21,44 @@ func LookupAgreement(ctx *pulumi.Context, args *LookupAgreementArgs, opts ...pul
 }
 
 type LookupAgreementArgs struct {
-	AgreementName          string `pulumi:"agreementName"`
+	// The integration account agreement name.
+	AgreementName string `pulumi:"agreementName"`
+	// The integration account name.
 	IntegrationAccountName string `pulumi:"integrationAccountName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The integration account agreement.
 type LookupAgreementResult struct {
-	AgreementType string                   `pulumi:"agreementType"`
-	ChangedTime   string                   `pulumi:"changedTime"`
-	Content       AgreementContentResponse `pulumi:"content"`
-	CreatedTime   string                   `pulumi:"createdTime"`
+	// The agreement type.
+	AgreementType string `pulumi:"agreementType"`
+	// The changed time.
+	ChangedTime string `pulumi:"changedTime"`
+	// The agreement content.
+	Content AgreementContentResponse `pulumi:"content"`
+	// The created time.
+	CreatedTime string `pulumi:"createdTime"`
+	// The business identity of the guest partner.
 	GuestIdentity BusinessIdentityResponse `pulumi:"guestIdentity"`
-	GuestPartner  string                   `pulumi:"guestPartner"`
-	HostIdentity  BusinessIdentityResponse `pulumi:"hostIdentity"`
-	HostPartner   string                   `pulumi:"hostPartner"`
-	Id            string                   `pulumi:"id"`
-	Location      *string                  `pulumi:"location"`
-	Metadata      interface{}              `pulumi:"metadata"`
-	Name          string                   `pulumi:"name"`
-	Tags          map[string]string        `pulumi:"tags"`
-	Type          string                   `pulumi:"type"`
+	// The integration account partner that is set as guest partner for this agreement.
+	GuestPartner string `pulumi:"guestPartner"`
+	// The business identity of the host partner.
+	HostIdentity BusinessIdentityResponse `pulumi:"hostIdentity"`
+	// The integration account partner that is set as host partner for this agreement.
+	HostPartner string `pulumi:"hostPartner"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// The metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAgreementOutput(ctx *pulumi.Context, args LookupAgreementOutputArgs, opts ...pulumi.InvokeOption) LookupAgreementResultOutput {
@@ -58,9 +75,12 @@ func LookupAgreementOutput(ctx *pulumi.Context, args LookupAgreementOutputArgs, 
 }
 
 type LookupAgreementOutputArgs struct {
-	AgreementName          pulumi.StringInput `pulumi:"agreementName"`
+	// The integration account agreement name.
+	AgreementName pulumi.StringInput `pulumi:"agreementName"`
+	// The integration account name.
 	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAgreementOutputArgs) ElementType() reflect.Type {
@@ -82,58 +102,72 @@ func (o LookupAgreementResultOutput) ToLookupAgreementResultOutputWithContext(ct
 	return o
 }
 
+// The agreement type.
 func (o LookupAgreementResultOutput) AgreementType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.AgreementType }).(pulumi.StringOutput)
 }
 
+// The changed time.
 func (o LookupAgreementResultOutput) ChangedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.ChangedTime }).(pulumi.StringOutput)
 }
 
+// The agreement content.
 func (o LookupAgreementResultOutput) Content() AgreementContentResponseOutput {
 	return o.ApplyT(func(v LookupAgreementResult) AgreementContentResponse { return v.Content }).(AgreementContentResponseOutput)
 }
 
+// The created time.
 func (o LookupAgreementResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
+// The business identity of the guest partner.
 func (o LookupAgreementResultOutput) GuestIdentity() BusinessIdentityResponseOutput {
 	return o.ApplyT(func(v LookupAgreementResult) BusinessIdentityResponse { return v.GuestIdentity }).(BusinessIdentityResponseOutput)
 }
 
+// The integration account partner that is set as guest partner for this agreement.
 func (o LookupAgreementResultOutput) GuestPartner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.GuestPartner }).(pulumi.StringOutput)
 }
 
+// The business identity of the host partner.
 func (o LookupAgreementResultOutput) HostIdentity() BusinessIdentityResponseOutput {
 	return o.ApplyT(func(v LookupAgreementResult) BusinessIdentityResponse { return v.HostIdentity }).(BusinessIdentityResponseOutput)
 }
 
+// The integration account partner that is set as host partner for this agreement.
 func (o LookupAgreementResultOutput) HostPartner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.HostPartner }).(pulumi.StringOutput)
 }
 
+// The resource id.
 func (o LookupAgreementResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupAgreementResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgreementResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The metadata.
 func (o LookupAgreementResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAgreementResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
+// Gets the resource name.
 func (o LookupAgreementResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource tags.
 func (o LookupAgreementResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAgreementResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupAgreementResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgreementResult) string { return v.Type }).(pulumi.StringOutput)
 }

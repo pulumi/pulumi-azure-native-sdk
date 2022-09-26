@@ -21,24 +21,38 @@ func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, o
 }
 
 type LookupGovernanceRuleArgs struct {
+	// The security GovernanceRule key - unique key for the standard GovernanceRule
 	RuleId string `pulumi:"ruleId"`
 }
 
 // Security GovernanceRule over a given scope
 type LookupGovernanceRuleResult struct {
-	Description                 *string                                  `pulumi:"description"`
-	DisplayName                 string                                   `pulumi:"displayName"`
+	// description of the governanceRule
+	Description *string `pulumi:"description"`
+	// display name of the governanceRule
+	DisplayName string `pulumi:"displayName"`
+	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceRuleEmailNotificationResponse `pulumi:"governanceEmailNotification"`
-	Id                          string                                   `pulumi:"id"`
-	IsDisabled                  *bool                                    `pulumi:"isDisabled"`
-	IsGracePeriod               *bool                                    `pulumi:"isGracePeriod"`
-	Name                        string                                   `pulumi:"name"`
-	OwnerSource                 GovernanceRuleOwnerSourceResponse        `pulumi:"ownerSource"`
-	RemediationTimeframe        *string                                  `pulumi:"remediationTimeframe"`
-	RulePriority                int                                      `pulumi:"rulePriority"`
-	RuleType                    string                                   `pulumi:"ruleType"`
-	SourceResourceType          string                                   `pulumi:"sourceResourceType"`
-	Type                        string                                   `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Defines whether the rule is active/inactive
+	IsDisabled *bool `pulumi:"isDisabled"`
+	// Defines whether there is a grace period on the governance rule
+	IsGracePeriod *bool `pulumi:"isGracePeriod"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+	OwnerSource GovernanceRuleOwnerSourceResponse `pulumi:"ownerSource"`
+	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
+	RemediationTimeframe *string `pulumi:"remediationTimeframe"`
+	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+	RulePriority int `pulumi:"rulePriority"`
+	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
+	RuleType string `pulumi:"ruleType"`
+	// The governance rule source, what the rule affects, e.g. Assessments
+	SourceResourceType string `pulumi:"sourceResourceType"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGovernanceRuleResultOutput {
@@ -55,6 +69,7 @@ func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOu
 }
 
 type LookupGovernanceRuleOutputArgs struct {
+	// The security GovernanceRule key - unique key for the standard GovernanceRule
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
 
@@ -77,56 +92,69 @@ func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutputWith
 	return o
 }
 
+// description of the governanceRule
 func (o LookupGovernanceRuleResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// display name of the governanceRule
 func (o LookupGovernanceRuleResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 func (o LookupGovernanceRuleResultOutput) GovernanceEmailNotification() GovernanceRuleEmailNotificationResponsePtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *GovernanceRuleEmailNotificationResponse {
 		return v.GovernanceEmailNotification
 	}).(GovernanceRuleEmailNotificationResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupGovernanceRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Defines whether the rule is active/inactive
 func (o LookupGovernanceRuleResultOutput) IsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *bool { return v.IsDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// Defines whether there is a grace period on the governance rule
 func (o LookupGovernanceRuleResultOutput) IsGracePeriod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *bool { return v.IsGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
+// Resource name
 func (o LookupGovernanceRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 func (o LookupGovernanceRuleResultOutput) OwnerSource() GovernanceRuleOwnerSourceResponseOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) GovernanceRuleOwnerSourceResponse { return v.OwnerSource }).(GovernanceRuleOwnerSourceResponseOutput)
 }
 
+// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 func (o LookupGovernanceRuleResultOutput) RemediationTimeframe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *string { return v.RemediationTimeframe }).(pulumi.StringPtrOutput)
 }
 
+// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
 func (o LookupGovernanceRuleResultOutput) RulePriority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) int { return v.RulePriority }).(pulumi.IntOutput)
 }
 
+// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 func (o LookupGovernanceRuleResultOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.RuleType }).(pulumi.StringOutput)
 }
 
+// The governance rule source, what the rule affects, e.g. Assessments
 func (o LookupGovernanceRuleResultOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupGovernanceRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

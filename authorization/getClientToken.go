@@ -21,11 +21,13 @@ func GetClientToken(ctx *pulumi.Context, args *GetClientTokenArgs, opts ...pulum
 }
 
 type GetClientTokenArgs struct {
+	// Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
 // Configuration values returned by getClientToken.
 type GetClientTokenResult struct {
+	// OAuth token for Azure Management API and SDK authentication.
 	Token string `pulumi:"token"`
 }
 
@@ -43,6 +45,7 @@ func GetClientTokenOutput(ctx *pulumi.Context, args GetClientTokenOutputArgs, op
 }
 
 type GetClientTokenOutputArgs struct {
+	// Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -65,6 +68,7 @@ func (o GetClientTokenResultOutput) ToGetClientTokenResultOutputWithContext(ctx 
 	return o
 }
 
+// OAuth token for Azure Management API and SDK authentication.
 func (o GetClientTokenResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientTokenResult) string { return v.Token }).(pulumi.StringOutput)
 }

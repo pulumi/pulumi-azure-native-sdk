@@ -22,19 +22,28 @@ func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.In
 }
 
 type LookupReportArgs struct {
+	// Report Name.
 	ReportName string `pulumi:"reportName"`
 }
 
 // A report resource.
 type LookupReportResult struct {
-	Definition   ReportDefinitionResponse   `pulumi:"definition"`
+	// Has definition for the report.
+	Definition ReportDefinitionResponse `pulumi:"definition"`
+	// Has delivery information for the report.
 	DeliveryInfo ReportDeliveryInfoResponse `pulumi:"deliveryInfo"`
-	Format       *string                    `pulumi:"format"`
-	Id           string                     `pulumi:"id"`
-	Name         string                     `pulumi:"name"`
-	Schedule     *ReportScheduleResponse    `pulumi:"schedule"`
-	Tags         map[string]string          `pulumi:"tags"`
-	Type         string                     `pulumi:"type"`
+	// The format of the report being delivered.
+	Format *string `pulumi:"format"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Has schedule information for the report.
+	Schedule *ReportScheduleResponse `pulumi:"schedule"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupReportOutput(ctx *pulumi.Context, args LookupReportOutputArgs, opts ...pulumi.InvokeOption) LookupReportResultOutput {
@@ -51,6 +60,7 @@ func LookupReportOutput(ctx *pulumi.Context, args LookupReportOutputArgs, opts .
 }
 
 type LookupReportOutputArgs struct {
+	// Report Name.
 	ReportName pulumi.StringInput `pulumi:"reportName"`
 }
 
@@ -73,34 +83,42 @@ func (o LookupReportResultOutput) ToLookupReportResultOutputWithContext(ctx cont
 	return o
 }
 
+// Has definition for the report.
 func (o LookupReportResultOutput) Definition() ReportDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupReportResult) ReportDefinitionResponse { return v.Definition }).(ReportDefinitionResponseOutput)
 }
 
+// Has delivery information for the report.
 func (o LookupReportResultOutput) DeliveryInfo() ReportDeliveryInfoResponseOutput {
 	return o.ApplyT(func(v LookupReportResult) ReportDeliveryInfoResponse { return v.DeliveryInfo }).(ReportDeliveryInfoResponseOutput)
 }
 
+// The format of the report being delivered.
 func (o LookupReportResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReportResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupReportResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupReportResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Has schedule information for the report.
 func (o LookupReportResultOutput) Schedule() ReportScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupReportResult) *ReportScheduleResponse { return v.Schedule }).(ReportScheduleResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupReportResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReportResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupReportResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportResult) string { return v.Type }).(pulumi.StringOutput)
 }

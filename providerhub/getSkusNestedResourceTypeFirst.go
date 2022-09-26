@@ -21,17 +21,24 @@ func LookupSkusNestedResourceTypeFirst(ctx *pulumi.Context, args *LookupSkusNest
 }
 
 type LookupSkusNestedResourceTypeFirstArgs struct {
+	// The first child resource type.
 	NestedResourceTypeFirst string `pulumi:"nestedResourceTypeFirst"`
-	ProviderNamespace       string `pulumi:"providerNamespace"`
-	ResourceType            string `pulumi:"resourceType"`
-	Sku                     string `pulumi:"sku"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace string `pulumi:"providerNamespace"`
+	// The resource type.
+	ResourceType string `pulumi:"resourceType"`
+	// The SKU.
+	Sku string `pulumi:"sku"`
 }
 
 type LookupSkusNestedResourceTypeFirstResult struct {
-	Id         string                        `pulumi:"id"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
 	Name       string                        `pulumi:"name"`
 	Properties SkuResourceResponseProperties `pulumi:"properties"`
-	Type       string                        `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSkusNestedResourceTypeFirstOutput(ctx *pulumi.Context, args LookupSkusNestedResourceTypeFirstOutputArgs, opts ...pulumi.InvokeOption) LookupSkusNestedResourceTypeFirstResultOutput {
@@ -48,10 +55,14 @@ func LookupSkusNestedResourceTypeFirstOutput(ctx *pulumi.Context, args LookupSku
 }
 
 type LookupSkusNestedResourceTypeFirstOutputArgs struct {
+	// The first child resource type.
 	NestedResourceTypeFirst pulumi.StringInput `pulumi:"nestedResourceTypeFirst"`
-	ProviderNamespace       pulumi.StringInput `pulumi:"providerNamespace"`
-	ResourceType            pulumi.StringInput `pulumi:"resourceType"`
-	Sku                     pulumi.StringInput `pulumi:"sku"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
+	// The resource type.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The SKU.
+	Sku pulumi.StringInput `pulumi:"sku"`
 }
 
 func (LookupSkusNestedResourceTypeFirstOutputArgs) ElementType() reflect.Type {
@@ -72,10 +83,12 @@ func (o LookupSkusNestedResourceTypeFirstResultOutput) ToLookupSkusNestedResourc
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSkusNestedResourceTypeFirstResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSkusNestedResourceTypeFirstResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -84,6 +97,7 @@ func (o LookupSkusNestedResourceTypeFirstResultOutput) Properties() SkuResourceR
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSkusNestedResourceTypeFirstResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.Type }).(pulumi.StringOutput)
 }

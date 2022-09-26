@@ -21,22 +21,34 @@ func LookupGovernanceAssignment(ctx *pulumi.Context, args *LookupGovernanceAssig
 }
 
 type LookupGovernanceAssignmentArgs struct {
+	// The Assessment Key - Unique key for the assessment type
 	AssessmentName string `pulumi:"assessmentName"`
-	AssignmentKey  string `pulumi:"assignmentKey"`
-	Scope          string `pulumi:"scope"`
+	// The security governance assignment key - the assessment key of the required governance assignment
+	AssignmentKey string `pulumi:"assignmentKey"`
+	// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+	Scope string `pulumi:"scope"`
 }
 
 // Security GovernanceAssignment over a given scope
 type LookupGovernanceAssignmentResult struct {
-	AdditionalData              *GovernanceAssignmentAdditionalDataResponse `pulumi:"additionalData"`
-	GovernanceEmailNotification *GovernanceEmailNotificationResponse        `pulumi:"governanceEmailNotification"`
-	Id                          string                                      `pulumi:"id"`
-	IsGracePeriod               *bool                                       `pulumi:"isGracePeriod"`
-	Name                        string                                      `pulumi:"name"`
-	Owner                       *string                                     `pulumi:"owner"`
-	RemediationDueDate          string                                      `pulumi:"remediationDueDate"`
-	RemediationEta              *RemediationEtaResponse                     `pulumi:"remediationEta"`
-	Type                        string                                      `pulumi:"type"`
+	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
+	AdditionalData *GovernanceAssignmentAdditionalDataResponse `pulumi:"additionalData"`
+	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
+	GovernanceEmailNotification *GovernanceEmailNotificationResponse `pulumi:"governanceEmailNotification"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Defines whether there is a grace period on the governance assignment
+	IsGracePeriod *bool `pulumi:"isGracePeriod"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The Owner for the governance assignment - e.g. user@contoso.com - see example
+	Owner *string `pulumi:"owner"`
+	// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
+	RemediationDueDate string `pulumi:"remediationDueDate"`
+	// The ETA (estimated time of arrival) for remediation (optional), see example
+	RemediationEta *RemediationEtaResponse `pulumi:"remediationEta"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupGovernanceAssignmentOutput(ctx *pulumi.Context, args LookupGovernanceAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGovernanceAssignmentResultOutput {
@@ -53,9 +65,12 @@ func LookupGovernanceAssignmentOutput(ctx *pulumi.Context, args LookupGovernance
 }
 
 type LookupGovernanceAssignmentOutputArgs struct {
+	// The Assessment Key - Unique key for the assessment type
 	AssessmentName pulumi.StringInput `pulumi:"assessmentName"`
-	AssignmentKey  pulumi.StringInput `pulumi:"assignmentKey"`
-	Scope          pulumi.StringInput `pulumi:"scope"`
+	// The security governance assignment key - the assessment key of the required governance assignment
+	AssignmentKey pulumi.StringInput `pulumi:"assignmentKey"`
+	// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupGovernanceAssignmentOutputArgs) ElementType() reflect.Type {
@@ -77,42 +92,51 @@ func (o LookupGovernanceAssignmentResultOutput) ToLookupGovernanceAssignmentResu
 	return o
 }
 
+// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 func (o LookupGovernanceAssignmentResultOutput) AdditionalData() GovernanceAssignmentAdditionalDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) *GovernanceAssignmentAdditionalDataResponse {
 		return v.AdditionalData
 	}).(GovernanceAssignmentAdditionalDataResponsePtrOutput)
 }
 
+// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 func (o LookupGovernanceAssignmentResultOutput) GovernanceEmailNotification() GovernanceEmailNotificationResponsePtrOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) *GovernanceEmailNotificationResponse {
 		return v.GovernanceEmailNotification
 	}).(GovernanceEmailNotificationResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupGovernanceAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Defines whether there is a grace period on the governance assignment
 func (o LookupGovernanceAssignmentResultOutput) IsGracePeriod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) *bool { return v.IsGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
+// Resource name
 func (o LookupGovernanceAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Owner for the governance assignment - e.g. user@contoso.com - see example
 func (o LookupGovernanceAssignmentResultOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
 func (o LookupGovernanceAssignmentResultOutput) RemediationDueDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) string { return v.RemediationDueDate }).(pulumi.StringOutput)
 }
 
+// The ETA (estimated time of arrival) for remediation (optional), see example
 func (o LookupGovernanceAssignmentResultOutput) RemediationEta() RemediationEtaResponsePtrOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) *RemediationEtaResponse { return v.RemediationEta }).(RemediationEtaResponsePtrOutput)
 }
 
+// Resource type
 func (o LookupGovernanceAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

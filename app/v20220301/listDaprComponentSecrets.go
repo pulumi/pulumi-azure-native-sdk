@@ -21,13 +21,17 @@ func ListDaprComponentSecrets(ctx *pulumi.Context, args *ListDaprComponentSecret
 }
 
 type ListDaprComponentSecretsArgs struct {
-	ComponentName     string `pulumi:"componentName"`
-	EnvironmentName   string `pulumi:"environmentName"`
+	// Name of the Dapr Component.
+	ComponentName string `pulumi:"componentName"`
+	// Name of the Managed Environment.
+	EnvironmentName string `pulumi:"environmentName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Dapr component Secrets Collection ARM resource.
 type ListDaprComponentSecretsResult struct {
+	// Collection of secrets used by a Dapr component
 	Value []SecretResponse `pulumi:"value"`
 }
 
@@ -45,8 +49,11 @@ func ListDaprComponentSecretsOutput(ctx *pulumi.Context, args ListDaprComponentS
 }
 
 type ListDaprComponentSecretsOutputArgs struct {
-	ComponentName     pulumi.StringInput `pulumi:"componentName"`
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
+	// Name of the Dapr Component.
+	ComponentName pulumi.StringInput `pulumi:"componentName"`
+	// Name of the Managed Environment.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,6 +76,7 @@ func (o ListDaprComponentSecretsResultOutput) ToListDaprComponentSecretsResultOu
 	return o
 }
 
+// Collection of secrets used by a Dapr component
 func (o ListDaprComponentSecretsResultOutput) Value() SecretResponseArrayOutput {
 	return o.ApplyT(func(v ListDaprComponentSecretsResult) []SecretResponse { return v.Value }).(SecretResponseArrayOutput)
 }

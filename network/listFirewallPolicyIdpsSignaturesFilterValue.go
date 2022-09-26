@@ -22,13 +22,17 @@ func ListFirewallPolicyIdpsSignaturesFilterValue(ctx *pulumi.Context, args *List
 }
 
 type ListFirewallPolicyIdpsSignaturesFilterValueArgs struct {
-	FilterName         *string `pulumi:"filterName"`
-	FirewallPolicyName string  `pulumi:"firewallPolicyName"`
-	ResourceGroupName  string  `pulumi:"resourceGroupName"`
+	// Describes the name of the column which values will be returned
+	FilterName *string `pulumi:"filterName"`
+	// The name of the Firewall Policy.
+	FirewallPolicyName string `pulumi:"firewallPolicyName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Describes the list of all possible values for a specific filter value
 type ListFirewallPolicyIdpsSignaturesFilterValueResult struct {
+	// Describes the possible values
 	FilterValues []string `pulumi:"filterValues"`
 }
 
@@ -46,9 +50,12 @@ func ListFirewallPolicyIdpsSignaturesFilterValueOutput(ctx *pulumi.Context, args
 }
 
 type ListFirewallPolicyIdpsSignaturesFilterValueOutputArgs struct {
-	FilterName         pulumi.StringPtrInput `pulumi:"filterName"`
-	FirewallPolicyName pulumi.StringInput    `pulumi:"firewallPolicyName"`
-	ResourceGroupName  pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Describes the name of the column which values will be returned
+	FilterName pulumi.StringPtrInput `pulumi:"filterName"`
+	// The name of the Firewall Policy.
+	FirewallPolicyName pulumi.StringInput `pulumi:"firewallPolicyName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListFirewallPolicyIdpsSignaturesFilterValueOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o ListFirewallPolicyIdpsSignaturesFilterValueResultOutput) ToListFirewallP
 	return o
 }
 
+// Describes the possible values
 func (o ListFirewallPolicyIdpsSignaturesFilterValueResultOutput) FilterValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListFirewallPolicyIdpsSignaturesFilterValueResult) []string { return v.FilterValues }).(pulumi.StringArrayOutput)
 }

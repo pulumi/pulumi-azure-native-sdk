@@ -21,22 +21,34 @@ func LookupConfigurationAssignment(ctx *pulumi.Context, args *LookupConfiguratio
 }
 
 type LookupConfigurationAssignmentArgs struct {
+	// Configuration assignment name
 	ConfigurationAssignmentName string `pulumi:"configurationAssignmentName"`
-	ProviderName                string `pulumi:"providerName"`
-	ResourceGroupName           string `pulumi:"resourceGroupName"`
-	ResourceName                string `pulumi:"resourceName"`
-	ResourceType                string `pulumi:"resourceType"`
+	// Resource provider name
+	ProviderName string `pulumi:"providerName"`
+	// Resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Resource identifier
+	ResourceName string `pulumi:"resourceName"`
+	// Resource type
+	ResourceType string `pulumi:"resourceType"`
 }
 
 // Configuration Assignment
 type LookupConfigurationAssignmentResult struct {
-	Id                         string             `pulumi:"id"`
-	Location                   *string            `pulumi:"location"`
-	MaintenanceConfigurationId *string            `pulumi:"maintenanceConfigurationId"`
-	Name                       string             `pulumi:"name"`
-	ResourceId                 *string            `pulumi:"resourceId"`
-	SystemData                 SystemDataResponse `pulumi:"systemData"`
-	Type                       string             `pulumi:"type"`
+	// Fully qualified identifier of the resource
+	Id string `pulumi:"id"`
+	// Location of the resource
+	Location *string `pulumi:"location"`
+	// The maintenance configuration Id
+	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
+	// Name of the resource
+	Name string `pulumi:"name"`
+	// The unique resourceId
+	ResourceId *string `pulumi:"resourceId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Type of the resource
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentResultOutput {
@@ -53,11 +65,16 @@ func LookupConfigurationAssignmentOutput(ctx *pulumi.Context, args LookupConfigu
 }
 
 type LookupConfigurationAssignmentOutputArgs struct {
+	// Configuration assignment name
 	ConfigurationAssignmentName pulumi.StringInput `pulumi:"configurationAssignmentName"`
-	ProviderName                pulumi.StringInput `pulumi:"providerName"`
-	ResourceGroupName           pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                pulumi.StringInput `pulumi:"resourceName"`
-	ResourceType                pulumi.StringInput `pulumi:"resourceType"`
+	// Resource provider name
+	ProviderName pulumi.StringInput `pulumi:"providerName"`
+	// Resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Resource identifier
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Resource type
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (LookupConfigurationAssignmentOutputArgs) ElementType() reflect.Type {
@@ -79,30 +96,37 @@ func (o LookupConfigurationAssignmentResultOutput) ToLookupConfigurationAssignme
 	return o
 }
 
+// Fully qualified identifier of the resource
 func (o LookupConfigurationAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the resource
 func (o LookupConfigurationAssignmentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The maintenance configuration Id
 func (o LookupConfigurationAssignmentResultOutput) MaintenanceConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) *string { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
+// Name of the resource
 func (o LookupConfigurationAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The unique resourceId
 func (o LookupConfigurationAssignmentResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupConfigurationAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the resource
 func (o LookupConfigurationAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

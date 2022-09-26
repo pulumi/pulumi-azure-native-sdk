@@ -21,12 +21,15 @@ func ListDelegationSettingSecrets(ctx *pulumi.Context, args *ListDelegationSetti
 }
 
 type ListDelegationSettingSecretsArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 type ListDelegationSettingSecretsResult struct {
+	// This is secret value of the validation key in portal settings.
 	ValidationKey *string `pulumi:"validationKey"`
 }
 
@@ -44,8 +47,10 @@ func ListDelegationSettingSecretsOutput(ctx *pulumi.Context, args ListDelegation
 }
 
 type ListDelegationSettingSecretsOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListDelegationSettingSecretsOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o ListDelegationSettingSecretsResultOutput) ToListDelegationSettingSecrets
 	return o
 }
 
+// This is secret value of the validation key in portal settings.
 func (o ListDelegationSettingSecretsResultOutput) ValidationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListDelegationSettingSecretsResult) *string { return v.ValidationKey }).(pulumi.StringPtrOutput)
 }

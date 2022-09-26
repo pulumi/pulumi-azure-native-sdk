@@ -21,24 +21,38 @@ func LookupFavorite(ctx *pulumi.Context, args *LookupFavoriteArgs, opts ...pulum
 }
 
 type LookupFavoriteArgs struct {
-	FavoriteId        string `pulumi:"favoriteId"`
+	// The Id of a specific favorite defined in the Application Insights component
+	FavoriteId string `pulumi:"favoriteId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Properties that define a favorite that is associated to an Application Insights component.
 type LookupFavoriteResult struct {
-	Category                *string  `pulumi:"category"`
-	Config                  *string  `pulumi:"config"`
-	FavoriteId              string   `pulumi:"favoriteId"`
-	FavoriteType            *string  `pulumi:"favoriteType"`
-	IsGeneratedFromTemplate *bool    `pulumi:"isGeneratedFromTemplate"`
-	Name                    *string  `pulumi:"name"`
-	SourceType              *string  `pulumi:"sourceType"`
-	Tags                    []string `pulumi:"tags"`
-	TimeModified            string   `pulumi:"timeModified"`
-	UserId                  string   `pulumi:"userId"`
-	Version                 *string  `pulumi:"version"`
+	// Favorite category, as defined by the user at creation time.
+	Category *string `pulumi:"category"`
+	// Configuration of this particular favorite, which are driven by the Azure portal UX. Configuration data is a string containing valid JSON
+	Config *string `pulumi:"config"`
+	// Internally assigned unique id of the favorite definition.
+	FavoriteId string `pulumi:"favoriteId"`
+	// Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
+	FavoriteType *string `pulumi:"favoriteType"`
+	// Flag denoting wether or not this favorite was generated from a template.
+	IsGeneratedFromTemplate *bool `pulumi:"isGeneratedFromTemplate"`
+	// The user-defined name of the favorite.
+	Name *string `pulumi:"name"`
+	// The source of the favorite definition.
+	SourceType *string `pulumi:"sourceType"`
+	// A list of 0 or more tags that are associated with this favorite definition
+	Tags []string `pulumi:"tags"`
+	// Date and time in UTC of the last modification that was made to this favorite definition.
+	TimeModified string `pulumi:"timeModified"`
+	// Unique user id of the specific user that owns this favorite.
+	UserId string `pulumi:"userId"`
+	// This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
+	Version *string `pulumi:"version"`
 }
 
 func LookupFavoriteOutput(ctx *pulumi.Context, args LookupFavoriteOutputArgs, opts ...pulumi.InvokeOption) LookupFavoriteResultOutput {
@@ -55,9 +69,12 @@ func LookupFavoriteOutput(ctx *pulumi.Context, args LookupFavoriteOutputArgs, op
 }
 
 type LookupFavoriteOutputArgs struct {
-	FavoriteId        pulumi.StringInput `pulumi:"favoriteId"`
+	// The Id of a specific favorite defined in the Application Insights component
+	FavoriteId pulumi.StringInput `pulumi:"favoriteId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupFavoriteOutputArgs) ElementType() reflect.Type {
@@ -79,46 +96,57 @@ func (o LookupFavoriteResultOutput) ToLookupFavoriteResultOutputWithContext(ctx 
 	return o
 }
 
+// Favorite category, as defined by the user at creation time.
 func (o LookupFavoriteResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// Configuration of this particular favorite, which are driven by the Azure portal UX. Configuration data is a string containing valid JSON
 func (o LookupFavoriteResultOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// Internally assigned unique id of the favorite definition.
 func (o LookupFavoriteResultOutput) FavoriteId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) string { return v.FavoriteId }).(pulumi.StringOutput)
 }
 
+// Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 func (o LookupFavoriteResultOutput) FavoriteType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *string { return v.FavoriteType }).(pulumi.StringPtrOutput)
 }
 
+// Flag denoting wether or not this favorite was generated from a template.
 func (o LookupFavoriteResultOutput) IsGeneratedFromTemplate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *bool { return v.IsGeneratedFromTemplate }).(pulumi.BoolPtrOutput)
 }
 
+// The user-defined name of the favorite.
 func (o LookupFavoriteResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The source of the favorite definition.
 func (o LookupFavoriteResultOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *string { return v.SourceType }).(pulumi.StringPtrOutput)
 }
 
+// A list of 0 or more tags that are associated with this favorite definition
 func (o LookupFavoriteResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Date and time in UTC of the last modification that was made to this favorite definition.
 func (o LookupFavoriteResultOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) string { return v.TimeModified }).(pulumi.StringOutput)
 }
 
+// Unique user id of the specific user that owns this favorite.
 func (o LookupFavoriteResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) string { return v.UserId }).(pulumi.StringOutput)
 }
 
+// This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
 func (o LookupFavoriteResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFavoriteResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

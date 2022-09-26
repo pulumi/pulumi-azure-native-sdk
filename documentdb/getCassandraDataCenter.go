@@ -22,17 +22,24 @@ func LookupCassandraDataCenter(ctx *pulumi.Context, args *LookupCassandraDataCen
 }
 
 type LookupCassandraDataCenterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	DataCenterName    string `pulumi:"dataCenterName"`
+	// Managed Cassandra cluster name.
+	ClusterName string `pulumi:"clusterName"`
+	// Data center name in a managed Cassandra cluster.
+	DataCenterName string `pulumi:"dataCenterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A managed Cassandra data center.
 type LookupCassandraDataCenterResult struct {
-	Id         string                               `pulumi:"id"`
-	Name       string                               `pulumi:"name"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// Properties of a managed Cassandra data center.
 	Properties DataCenterResourceResponseProperties `pulumi:"properties"`
-	Type       string                               `pulumi:"type"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCassandraDataCenterOutput(ctx *pulumi.Context, args LookupCassandraDataCenterOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraDataCenterResultOutput {
@@ -49,8 +56,11 @@ func LookupCassandraDataCenterOutput(ctx *pulumi.Context, args LookupCassandraDa
 }
 
 type LookupCassandraDataCenterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	DataCenterName    pulumi.StringInput `pulumi:"dataCenterName"`
+	// Managed Cassandra cluster name.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Data center name in a managed Cassandra cluster.
+	DataCenterName pulumi.StringInput `pulumi:"dataCenterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,18 +83,22 @@ func (o LookupCassandraDataCenterResultOutput) ToLookupCassandraDataCenterResult
 	return o
 }
 
+// The unique resource identifier of the database account.
 func (o LookupCassandraDataCenterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraDataCenterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the database account.
 func (o LookupCassandraDataCenterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraDataCenterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of a managed Cassandra data center.
 func (o LookupCassandraDataCenterResultOutput) Properties() DataCenterResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupCassandraDataCenterResult) DataCenterResourceResponseProperties { return v.Properties }).(DataCenterResourceResponsePropertiesOutput)
 }
 
+// The type of Azure resource.
 func (o LookupCassandraDataCenterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraDataCenterResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,17 +23,24 @@ func LookupAccessControlRecord(ctx *pulumi.Context, args *LookupAccessControlRec
 }
 
 type LookupAccessControlRecordArgs struct {
+	// Name of access control record to be fetched.
 	AccessControlRecordName string `pulumi:"accessControlRecordName"`
-	ManagerName             string `pulumi:"managerName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The access control record
 type LookupAccessControlRecordResult struct {
-	Id            string `pulumi:"id"`
+	// The identifier.
+	Id string `pulumi:"id"`
+	// The Iscsi initiator name (IQN)
 	InitiatorName string `pulumi:"initiatorName"`
-	Name          string `pulumi:"name"`
-	Type          string `pulumi:"type"`
+	// The name.
+	Name string `pulumi:"name"`
+	// The type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAccessControlRecordOutput(ctx *pulumi.Context, args LookupAccessControlRecordOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlRecordResultOutput {
@@ -50,9 +57,12 @@ func LookupAccessControlRecordOutput(ctx *pulumi.Context, args LookupAccessContr
 }
 
 type LookupAccessControlRecordOutputArgs struct {
+	// Name of access control record to be fetched.
 	AccessControlRecordName pulumi.StringInput `pulumi:"accessControlRecordName"`
-	ManagerName             pulumi.StringInput `pulumi:"managerName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAccessControlRecordOutputArgs) ElementType() reflect.Type {
@@ -74,18 +84,22 @@ func (o LookupAccessControlRecordResultOutput) ToLookupAccessControlRecordResult
 	return o
 }
 
+// The identifier.
 func (o LookupAccessControlRecordResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Iscsi initiator name (IQN)
 func (o LookupAccessControlRecordResultOutput) InitiatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.InitiatorName }).(pulumi.StringOutput)
 }
 
+// The name.
 func (o LookupAccessControlRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type.
 func (o LookupAccessControlRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,20 +23,30 @@ func LookupDataConnector(ctx *pulumi.Context, args *LookupDataConnectorArgs, opt
 }
 
 type LookupDataConnectorArgs struct {
-	DataConnectorId                     string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Data connector
 type LookupDataConnectorResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The data connector kind
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDataConnectorOutput(ctx *pulumi.Context, args LookupDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDataConnectorResultOutput {
@@ -53,10 +63,14 @@ func LookupDataConnectorOutput(ctx *pulumi.Context, args LookupDataConnectorOutp
 }
 
 type LookupDataConnectorOutputArgs struct {
-	DataConnectorId                     pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -78,26 +92,32 @@ func (o LookupDataConnectorResultOutput) ToLookupDataConnectorResultOutputWithCo
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The data connector kind
 func (o LookupDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource type
 func (o LookupDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

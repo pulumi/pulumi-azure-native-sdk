@@ -21,22 +21,34 @@ func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecov
 }
 
 type LookupDisasterRecoveryConfigArgs struct {
-	Alias             string `pulumi:"alias"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The Disaster Recovery configuration name
+	Alias string `pulumi:"alias"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
 type LookupDisasterRecoveryConfigResult struct {
-	AlternateName                     *string            `pulumi:"alternateName"`
-	Id                                string             `pulumi:"id"`
-	Name                              string             `pulumi:"name"`
-	PartnerNamespace                  *string            `pulumi:"partnerNamespace"`
-	PendingReplicationOperationsCount float64            `pulumi:"pendingReplicationOperationsCount"`
-	ProvisioningState                 string             `pulumi:"provisioningState"`
-	Role                              string             `pulumi:"role"`
-	SystemData                        SystemDataResponse `pulumi:"systemData"`
-	Type                              string             `pulumi:"type"`
+	// Alternate name specified when alias and namespace names are same.
+	AlternateName *string `pulumi:"alternateName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+	PartnerNamespace *string `pulumi:"partnerNamespace"`
+	// Number of entities pending to be replicated.
+	PendingReplicationOperationsCount float64 `pulumi:"pendingReplicationOperationsCount"`
+	// Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed'
+	ProvisioningState string `pulumi:"provisioningState"`
+	// role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'
+	Role string `pulumi:"role"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDisasterRecoveryConfigOutput(ctx *pulumi.Context, args LookupDisasterRecoveryConfigOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryConfigResultOutput {
@@ -53,8 +65,11 @@ func LookupDisasterRecoveryConfigOutput(ctx *pulumi.Context, args LookupDisaster
 }
 
 type LookupDisasterRecoveryConfigOutputArgs struct {
-	Alias             pulumi.StringInput `pulumi:"alias"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The Disaster Recovery configuration name
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,38 +92,47 @@ func (o LookupDisasterRecoveryConfigResultOutput) ToLookupDisasterRecoveryConfig
 	return o
 }
 
+// Alternate name specified when alias and namespace names are same.
 func (o LookupDisasterRecoveryConfigResultOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) *string { return v.AlternateName }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDisasterRecoveryConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDisasterRecoveryConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 func (o LookupDisasterRecoveryConfigResultOutput) PartnerNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) *string { return v.PartnerNamespace }).(pulumi.StringPtrOutput)
 }
 
+// Number of entities pending to be replicated.
 func (o LookupDisasterRecoveryConfigResultOutput) PendingReplicationOperationsCount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) float64 { return v.PendingReplicationOperationsCount }).(pulumi.Float64Output)
 }
 
+// Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed'
 func (o LookupDisasterRecoveryConfigResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'
 func (o LookupDisasterRecoveryConfigResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupDisasterRecoveryConfigResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDisasterRecoveryConfigResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.Type }).(pulumi.StringOutput)
 }

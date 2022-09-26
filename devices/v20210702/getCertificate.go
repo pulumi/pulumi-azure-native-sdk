@@ -21,18 +21,26 @@ func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ..
 }
 
 type LookupCertificateArgs struct {
-	CertificateName   string `pulumi:"certificateName"`
+	// The name of the certificate
+	CertificateName string `pulumi:"certificateName"`
+	// The name of the resource group that contains the IoT hub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the IoT hub.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The X509 Certificate.
 type LookupCertificateResult struct {
-	Etag       string                        `pulumi:"etag"`
-	Id         string                        `pulumi:"id"`
-	Name       string                        `pulumi:"name"`
+	// The entity tag.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The name of the certificate.
+	Name string `pulumi:"name"`
+	// The description of an X509 CA Certificate.
 	Properties CertificatePropertiesResponse `pulumi:"properties"`
-	Type       string                        `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
@@ -49,9 +57,12 @@ func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputAr
 }
 
 type LookupCertificateOutputArgs struct {
-	CertificateName   pulumi.StringInput `pulumi:"certificateName"`
+	// The name of the certificate
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// The name of the resource group that contains the IoT hub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the IoT hub.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupCertificateOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 	return o
 }
 
+// The entity tag.
 func (o LookupCertificateResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the certificate.
 func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The description of an X509 CA Certificate.
 func (o LookupCertificateResultOutput) Properties() CertificatePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCertificateResult) CertificatePropertiesResponse { return v.Properties }).(CertificatePropertiesResponseOutput)
 }
 
+// The resource type.
 func (o LookupCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,14 +21,19 @@ func GetIntegrationRuntimeStatus(ctx *pulumi.Context, args *GetIntegrationRuntim
 }
 
 type GetIntegrationRuntimeStatusArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	WorkspaceName          string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Integration runtime status response.
 type GetIntegrationRuntimeStatusResult struct {
-	Name       string      `pulumi:"name"`
+	// The integration runtime name.
+	Name string `pulumi:"name"`
+	// Integration runtime properties.
 	Properties interface{} `pulumi:"properties"`
 }
 
@@ -46,9 +51,12 @@ func GetIntegrationRuntimeStatusOutput(ctx *pulumi.Context, args GetIntegrationR
 }
 
 type GetIntegrationRuntimeStatusOutputArgs struct {
+	// Integration runtime name
 	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName          pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetIntegrationRuntimeStatusOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o GetIntegrationRuntimeStatusResultOutput) ToGetIntegrationRuntimeStatusRe
 	return o
 }
 
+// The integration runtime name.
 func (o GetIntegrationRuntimeStatusResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeStatusResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Integration runtime properties.
 func (o GetIntegrationRuntimeStatusResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeStatusResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }

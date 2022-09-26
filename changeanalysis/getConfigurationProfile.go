@@ -22,18 +22,26 @@ func LookupConfigurationProfile(ctx *pulumi.Context, args *LookupConfigurationPr
 }
 
 type LookupConfigurationProfileArgs struct {
+	// The name of the configuration profile. The profile name should be set to 'default', all other names will be overwritten.
 	ProfileName string `pulumi:"profileName"`
 }
 
 // A profile object that contains change analysis configuration, such as notification settings, for this subscription
 type LookupConfigurationProfileResult struct {
-	Id         string                                         `pulumi:"id"`
-	Identity   *ResourceIdentityResponse                      `pulumi:"identity"`
-	Location   *string                                        `pulumi:"location"`
-	Name       string                                         `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity block returned by ARM resource that supports managed identity.
+	Identity *ResourceIdentityResponse `pulumi:"identity"`
+	// The location where the resource is to be deployed.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties of a configuration profile.
 	Properties ConfigurationProfileResourcePropertiesResponse `pulumi:"properties"`
-	SystemData *SystemDataResponse                            `pulumi:"systemData"`
-	Type       string                                         `pulumi:"type"`
+	// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
+	SystemData *SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationProfileOutput(ctx *pulumi.Context, args LookupConfigurationProfileOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileResultOutput {
@@ -50,6 +58,7 @@ func LookupConfigurationProfileOutput(ctx *pulumi.Context, args LookupConfigurat
 }
 
 type LookupConfigurationProfileOutputArgs struct {
+	// The name of the configuration profile. The profile name should be set to 'default', all other names will be overwritten.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
 }
 
@@ -72,32 +81,39 @@ func (o LookupConfigurationProfileResultOutput) ToLookupConfigurationProfileResu
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity block returned by ARM resource that supports managed identity.
 func (o LookupConfigurationProfileResultOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
+// The location where the resource is to be deployed.
 func (o LookupConfigurationProfileResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupConfigurationProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of a configuration profile.
 func (o LookupConfigurationProfileResultOutput) Properties() ConfigurationProfileResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) ConfigurationProfileResourcePropertiesResponse {
 		return v.Properties
 	}).(ConfigurationProfileResourcePropertiesResponseOutput)
 }
 
+// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
 func (o LookupConfigurationProfileResultOutput) SystemData() SystemDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

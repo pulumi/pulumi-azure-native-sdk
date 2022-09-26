@@ -21,21 +21,32 @@ func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPu
 }
 
 type LookupWebAppPublicCertificateSlotArgs struct {
-	Name                  string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Public certificate name.
 	PublicCertificateName string `pulumi:"publicCertificateName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	Slot                  string `pulumi:"slot"`
+	// Name of the resource group to which the resource belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Public certificate object
 type LookupWebAppPublicCertificateSlotResult struct {
-	Blob                      *string `pulumi:"blob"`
-	Id                        string  `pulumi:"id"`
-	Kind                      *string `pulumi:"kind"`
-	Name                      string  `pulumi:"name"`
+	// Public Certificate byte array
+	Blob *string `pulumi:"blob"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Public Certificate Location
 	PublicCertificateLocation *string `pulumi:"publicCertificateLocation"`
-	Thumbprint                string  `pulumi:"thumbprint"`
-	Type                      string  `pulumi:"type"`
+	// Certificate Thumbprint
+	Thumbprint string `pulumi:"thumbprint"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppPublicCertificateSlotOutput(ctx *pulumi.Context, args LookupWebAppPublicCertificateSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPublicCertificateSlotResultOutput {
@@ -52,10 +63,14 @@ func LookupWebAppPublicCertificateSlotOutput(ctx *pulumi.Context, args LookupWeb
 }
 
 type LookupWebAppPublicCertificateSlotOutputArgs struct {
-	Name                  pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Public certificate name.
 	PublicCertificateName pulumi.StringInput `pulumi:"publicCertificateName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot                  pulumi.StringInput `pulumi:"slot"`
+	// Name of the resource group to which the resource belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupWebAppPublicCertificateSlotOutputArgs) ElementType() reflect.Type {
@@ -77,30 +92,37 @@ func (o LookupWebAppPublicCertificateSlotResultOutput) ToLookupWebAppPublicCerti
 	return o
 }
 
+// Public Certificate byte array
 func (o LookupWebAppPublicCertificateSlotResultOutput) Blob() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) *string { return v.Blob }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppPublicCertificateSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppPublicCertificateSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppPublicCertificateSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Public Certificate Location
 func (o LookupWebAppPublicCertificateSlotResultOutput) PublicCertificateLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) *string { return v.PublicCertificateLocation }).(pulumi.StringPtrOutput)
 }
 
+// Certificate Thumbprint
 func (o LookupWebAppPublicCertificateSlotResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWebAppPublicCertificateSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }
