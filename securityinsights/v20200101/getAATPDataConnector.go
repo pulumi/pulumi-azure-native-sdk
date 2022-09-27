@@ -21,20 +21,31 @@ func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorA
 }
 
 type LookupAATPDataConnectorArgs struct {
-	DataConnectorId   string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
 type LookupAATPDataConnectorResult struct {
+	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
-	Etag      *string                                `pulumi:"etag"`
-	Id        string                                 `pulumi:"id"`
-	Kind      string                                 `pulumi:"kind"`
-	Name      string                                 `pulumi:"name"`
-	TenantId  *string                                `pulumi:"tenantId"`
-	Type      string                                 `pulumi:"type"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The kind of the data connector
+	// Expected value is 'AzureAdvancedThreatProtection'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The tenant id to connect to, and get the data from.
+	TenantId *string `pulumi:"tenantId"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAATPDataConnectorOutput(ctx *pulumi.Context, args LookupAATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAATPDataConnectorResultOutput {
@@ -51,9 +62,12 @@ func LookupAATPDataConnectorOutput(ctx *pulumi.Context, args LookupAATPDataConne
 }
 
 type LookupAATPDataConnectorOutputArgs struct {
-	DataConnectorId   pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupAATPDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -75,30 +89,38 @@ func (o LookupAATPDataConnectorResultOutput) ToLookupAATPDataConnectorResultOutp
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupAATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupAATPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupAATPDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the data connector
+// Expected value is 'AzureAdvancedThreatProtection'.
 func (o LookupAATPDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupAATPDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupAATPDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource type
 func (o LookupAATPDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,24 +22,38 @@ func LookupDisasterRecoveryConfiguration(ctx *pulumi.Context, args *LookupDisast
 }
 
 type LookupDisasterRecoveryConfigurationArgs struct {
+	// The name of the disaster recovery configuration.
 	DisasterRecoveryConfigurationName string `pulumi:"disasterRecoveryConfigurationName"`
-	ResourceGroupName                 string `pulumi:"resourceGroupName"`
-	ServerName                        string `pulumi:"serverName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents a disaster recovery configuration.
 type LookupDisasterRecoveryConfigurationResult struct {
-	AutoFailover             string `pulumi:"autoFailover"`
-	FailoverPolicy           string `pulumi:"failoverPolicy"`
-	Id                       string `pulumi:"id"`
-	Location                 string `pulumi:"location"`
-	LogicalServerName        string `pulumi:"logicalServerName"`
-	Name                     string `pulumi:"name"`
+	// Whether or not failover can be done automatically.
+	AutoFailover string `pulumi:"autoFailover"`
+	// How aggressive the automatic failover should be.
+	FailoverPolicy string `pulumi:"failoverPolicy"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Location of the server that contains this disaster recovery configuration.
+	Location string `pulumi:"location"`
+	// Logical name of the server.
+	LogicalServerName string `pulumi:"logicalServerName"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Logical name of the partner server.
 	PartnerLogicalServerName string `pulumi:"partnerLogicalServerName"`
-	PartnerServerId          string `pulumi:"partnerServerId"`
-	Role                     string `pulumi:"role"`
-	Status                   string `pulumi:"status"`
-	Type                     string `pulumi:"type"`
+	// Id of the partner server.
+	PartnerServerId string `pulumi:"partnerServerId"`
+	// The role of the current server in the disaster recovery configuration.
+	Role string `pulumi:"role"`
+	// The status of the disaster recovery configuration.
+	Status string `pulumi:"status"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDisasterRecoveryConfigurationOutput(ctx *pulumi.Context, args LookupDisasterRecoveryConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryConfigurationResultOutput {
@@ -56,9 +70,12 @@ func LookupDisasterRecoveryConfigurationOutput(ctx *pulumi.Context, args LookupD
 }
 
 type LookupDisasterRecoveryConfigurationOutputArgs struct {
+	// The name of the disaster recovery configuration.
 	DisasterRecoveryConfigurationName pulumi.StringInput `pulumi:"disasterRecoveryConfigurationName"`
-	ResourceGroupName                 pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName                        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupDisasterRecoveryConfigurationOutputArgs) ElementType() reflect.Type {
@@ -80,46 +97,57 @@ func (o LookupDisasterRecoveryConfigurationResultOutput) ToLookupDisasterRecover
 	return o
 }
 
+// Whether or not failover can be done automatically.
 func (o LookupDisasterRecoveryConfigurationResultOutput) AutoFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.AutoFailover }).(pulumi.StringOutput)
 }
 
+// How aggressive the automatic failover should be.
 func (o LookupDisasterRecoveryConfigurationResultOutput) FailoverPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.FailoverPolicy }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupDisasterRecoveryConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the server that contains this disaster recovery configuration.
 func (o LookupDisasterRecoveryConfigurationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Logical name of the server.
 func (o LookupDisasterRecoveryConfigurationResultOutput) LogicalServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.LogicalServerName }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupDisasterRecoveryConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Logical name of the partner server.
 func (o LookupDisasterRecoveryConfigurationResultOutput) PartnerLogicalServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.PartnerLogicalServerName }).(pulumi.StringOutput)
 }
 
+// Id of the partner server.
 func (o LookupDisasterRecoveryConfigurationResultOutput) PartnerServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.PartnerServerId }).(pulumi.StringOutput)
 }
 
+// The role of the current server in the disaster recovery configuration.
 func (o LookupDisasterRecoveryConfigurationResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// The status of the disaster recovery configuration.
 func (o LookupDisasterRecoveryConfigurationResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupDisasterRecoveryConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,18 +21,26 @@ func LookupNotebookWorkspace(ctx *pulumi.Context, args *LookupNotebookWorkspaceA
 }
 
 type LookupNotebookWorkspaceArgs struct {
-	AccountName           string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the notebook workspace resource.
 	NotebookWorkspaceName string `pulumi:"notebookWorkspaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A notebook workspace resource
 type LookupNotebookWorkspaceResult struct {
-	Id                     string `pulumi:"id"`
-	Name                   string `pulumi:"name"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// Specifies the endpoint of Notebook server.
 	NotebookServerEndpoint string `pulumi:"notebookServerEndpoint"`
-	Status                 string `pulumi:"status"`
-	Type                   string `pulumi:"type"`
+	// Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
+	Status string `pulumi:"status"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupNotebookWorkspaceOutput(ctx *pulumi.Context, args LookupNotebookWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupNotebookWorkspaceResultOutput {
@@ -49,9 +57,12 @@ func LookupNotebookWorkspaceOutput(ctx *pulumi.Context, args LookupNotebookWorks
 }
 
 type LookupNotebookWorkspaceOutputArgs struct {
-	AccountName           pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the notebook workspace resource.
 	NotebookWorkspaceName pulumi.StringInput `pulumi:"notebookWorkspaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNotebookWorkspaceOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupNotebookWorkspaceResultOutput) ToLookupNotebookWorkspaceResultOutp
 	return o
 }
 
+// The unique resource identifier of the database account.
 func (o LookupNotebookWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the database account.
 func (o LookupNotebookWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies the endpoint of Notebook server.
 func (o LookupNotebookWorkspaceResultOutput) NotebookServerEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookWorkspaceResult) string { return v.NotebookServerEndpoint }).(pulumi.StringOutput)
 }
 
+// Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
 func (o LookupNotebookWorkspaceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookWorkspaceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The type of Azure resource.
 func (o LookupNotebookWorkspaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookWorkspaceResult) string { return v.Type }).(pulumi.StringOutput)
 }

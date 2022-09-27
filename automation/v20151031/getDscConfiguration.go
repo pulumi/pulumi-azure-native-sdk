@@ -21,29 +21,48 @@ func LookupDscConfiguration(ctx *pulumi.Context, args *LookupDscConfigurationArg
 }
 
 type LookupDscConfigurationArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	ConfigurationName     string `pulumi:"configurationName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The configuration name.
+	ConfigurationName string `pulumi:"configurationName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the configuration type.
 type LookupDscConfigurationResult struct {
-	CreationTime           *string                                      `pulumi:"creationTime"`
-	Description            *string                                      `pulumi:"description"`
-	Etag                   *string                                      `pulumi:"etag"`
-	Id                     string                                       `pulumi:"id"`
-	JobCount               *int                                         `pulumi:"jobCount"`
-	LastModifiedTime       *string                                      `pulumi:"lastModifiedTime"`
-	Location               *string                                      `pulumi:"location"`
-	LogVerbose             *bool                                        `pulumi:"logVerbose"`
-	Name                   string                                       `pulumi:"name"`
-	NodeConfigurationCount *int                                         `pulumi:"nodeConfigurationCount"`
-	Parameters             map[string]DscConfigurationParameterResponse `pulumi:"parameters"`
-	ProvisioningState      *string                                      `pulumi:"provisioningState"`
-	Source                 *ContentSourceResponse                       `pulumi:"source"`
-	State                  *string                                      `pulumi:"state"`
-	Tags                   map[string]string                            `pulumi:"tags"`
-	Type                   string                                       `pulumi:"type"`
+	// Gets or sets the creation time.
+	CreationTime *string `pulumi:"creationTime"`
+	// Gets or sets the description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the etag of the resource.
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// Gets or sets the job count of the configuration.
+	JobCount *int `pulumi:"jobCount"`
+	// Gets or sets the last modified time.
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
+	// The Azure Region where the resource lives
+	Location *string `pulumi:"location"`
+	// Gets or sets verbose log option.
+	LogVerbose *bool `pulumi:"logVerbose"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets the number of compiled node configurations.
+	NodeConfigurationCount *int `pulumi:"nodeConfigurationCount"`
+	// Gets or sets the configuration parameters.
+	Parameters map[string]DscConfigurationParameterResponse `pulumi:"parameters"`
+	// Gets or sets the provisioning state of the configuration.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets the source.
+	Source *ContentSourceResponse `pulumi:"source"`
+	// Gets or sets the state of the configuration.
+	State *string `pulumi:"state"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupDscConfigurationOutput(ctx *pulumi.Context, args LookupDscConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDscConfigurationResultOutput {
@@ -60,9 +79,12 @@ func LookupDscConfigurationOutput(ctx *pulumi.Context, args LookupDscConfigurati
 }
 
 type LookupDscConfigurationOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	ConfigurationName     pulumi.StringInput `pulumi:"configurationName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The configuration name.
+	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDscConfigurationOutputArgs) ElementType() reflect.Type {
@@ -84,66 +106,82 @@ func (o LookupDscConfigurationResultOutput) ToLookupDscConfigurationResultOutput
 	return o
 }
 
+// Gets or sets the creation time.
 func (o LookupDscConfigurationResultOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the description.
 func (o LookupDscConfigurationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the etag of the resource.
 func (o LookupDscConfigurationResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupDscConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the job count of the configuration.
 func (o LookupDscConfigurationResultOutput) JobCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *int { return v.JobCount }).(pulumi.IntPtrOutput)
 }
 
+// Gets or sets the last modified time.
 func (o LookupDscConfigurationResultOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
 
+// The Azure Region where the resource lives
 func (o LookupDscConfigurationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets verbose log option.
 func (o LookupDscConfigurationResultOutput) LogVerbose() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *bool { return v.LogVerbose }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the resource
 func (o LookupDscConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets the number of compiled node configurations.
 func (o LookupDscConfigurationResultOutput) NodeConfigurationCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *int { return v.NodeConfigurationCount }).(pulumi.IntPtrOutput)
 }
 
+// Gets or sets the configuration parameters.
 func (o LookupDscConfigurationResultOutput) Parameters() DscConfigurationParameterResponseMapOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) map[string]DscConfigurationParameterResponse { return v.Parameters }).(DscConfigurationParameterResponseMapOutput)
 }
 
+// Gets or sets the provisioning state of the configuration.
 func (o LookupDscConfigurationResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the source.
 func (o LookupDscConfigurationResultOutput) Source() ContentSourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *ContentSourceResponse { return v.Source }).(ContentSourceResponsePtrOutput)
 }
 
+// Gets or sets the state of the configuration.
 func (o LookupDscConfigurationResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupDscConfigurationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupDscConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,15 +21,20 @@ func ListConfigurations(ctx *pulumi.Context, args *ListConfigurationsArgs, opts 
 }
 
 type ListConfigurationsArgs struct {
-	ConfigurationFilters        []ConfigurationFilters       `pulumi:"configurationFilters"`
+	// Holds details about product hierarchy information and filterable property.
+	ConfigurationFilters []ConfigurationFilters `pulumi:"configurationFilters"`
+	// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
 	CustomerSubscriptionDetails *CustomerSubscriptionDetails `pulumi:"customerSubscriptionDetails"`
-	SkipToken                   *string                      `pulumi:"skipToken"`
+	// $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // The list of configurations.
 type ListConfigurationsResult struct {
-	NextLink *string                 `pulumi:"nextLink"`
-	Value    []ConfigurationResponse `pulumi:"value"`
+	// Link for the next set of configurations.
+	NextLink *string `pulumi:"nextLink"`
+	// List of configurations.
+	Value []ConfigurationResponse `pulumi:"value"`
 }
 
 func ListConfigurationsOutput(ctx *pulumi.Context, args ListConfigurationsOutputArgs, opts ...pulumi.InvokeOption) ListConfigurationsResultOutput {
@@ -46,9 +51,12 @@ func ListConfigurationsOutput(ctx *pulumi.Context, args ListConfigurationsOutput
 }
 
 type ListConfigurationsOutputArgs struct {
-	ConfigurationFilters        ConfigurationFiltersArrayInput      `pulumi:"configurationFilters"`
+	// Holds details about product hierarchy information and filterable property.
+	ConfigurationFilters ConfigurationFiltersArrayInput `pulumi:"configurationFilters"`
+	// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
 	CustomerSubscriptionDetails CustomerSubscriptionDetailsPtrInput `pulumi:"customerSubscriptionDetails"`
-	SkipToken                   pulumi.StringPtrInput               `pulumi:"skipToken"`
+	// $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListConfigurationsOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListConfigurationsResultOutput) ToListConfigurationsResultOutputWithCont
 	return o
 }
 
+// Link for the next set of configurations.
 func (o ListConfigurationsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListConfigurationsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of configurations.
 func (o ListConfigurationsResultOutput) Value() ConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ListConfigurationsResult) []ConfigurationResponse { return v.Value }).(ConfigurationResponseArrayOutput)
 }

@@ -21,22 +21,34 @@ func LookupRouteFilter(ctx *pulumi.Context, args *LookupRouteFilterArgs, opts ..
 }
 
 type LookupRouteFilterArgs struct {
-	Expand            *string `pulumi:"expand"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	RouteFilterName   string  `pulumi:"routeFilterName"`
+	// Expands referenced express route bgp peering resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the route filter.
+	RouteFilterName string `pulumi:"routeFilterName"`
 }
 
 // Route Filter Resource.
 type LookupRouteFilterResult struct {
-	Etag              string                               `pulumi:"etag"`
-	Id                *string                              `pulumi:"id"`
-	Location          string                               `pulumi:"location"`
-	Name              string                               `pulumi:"name"`
-	Peerings          []ExpressRouteCircuitPeeringResponse `pulumi:"peerings"`
-	ProvisioningState string                               `pulumi:"provisioningState"`
-	Rules             []RouteFilterRuleResponse            `pulumi:"rules"`
-	Tags              map[string]string                    `pulumi:"tags"`
-	Type              string                               `pulumi:"type"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// A collection of references to express route circuit peerings.
+	Peerings []ExpressRouteCircuitPeeringResponse `pulumi:"peerings"`
+	// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Collection of RouteFilterRules contained within a route filter.
+	Rules []RouteFilterRuleResponse `pulumi:"rules"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRouteFilterOutput(ctx *pulumi.Context, args LookupRouteFilterOutputArgs, opts ...pulumi.InvokeOption) LookupRouteFilterResultOutput {
@@ -53,9 +65,12 @@ func LookupRouteFilterOutput(ctx *pulumi.Context, args LookupRouteFilterOutputAr
 }
 
 type LookupRouteFilterOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	RouteFilterName   pulumi.StringInput    `pulumi:"routeFilterName"`
+	// Expands referenced express route bgp peering resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the route filter.
+	RouteFilterName pulumi.StringInput `pulumi:"routeFilterName"`
 }
 
 func (LookupRouteFilterOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupRouteFilterResultOutput) ToLookupRouteFilterResultOutputWithContex
 	return o
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated.
 func (o LookupRouteFilterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupRouteFilterResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupRouteFilterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupRouteFilterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A collection of references to express route circuit peerings.
 func (o LookupRouteFilterResultOutput) Peerings() ExpressRouteCircuitPeeringResponseArrayOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) []ExpressRouteCircuitPeeringResponse { return v.Peerings }).(ExpressRouteCircuitPeeringResponseArrayOutput)
 }
 
+// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
 func (o LookupRouteFilterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Collection of RouteFilterRules contained within a route filter.
 func (o LookupRouteFilterResultOutput) Rules() RouteFilterRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) []RouteFilterRuleResponse { return v.Rules }).(RouteFilterRuleResponseArrayOutput)
 }
 
+// Resource tags.
 func (o LookupRouteFilterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupRouteFilterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Type }).(pulumi.StringOutput)
 }

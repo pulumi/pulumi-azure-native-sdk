@@ -21,22 +21,34 @@ func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs,
 }
 
 type LookupAvailabilitySetArgs struct {
+	// Name of the AvailabilitySet.
 	AvailabilitySetName string `pulumi:"availabilitySetName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The AvailabilitySets resource definition.
 type LookupAvailabilitySetResult struct {
-	AvailabilitySetName *string                   `pulumi:"availabilitySetName"`
-	ExtendedLocation    *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	Id                  string                    `pulumi:"id"`
-	Location            *string                   `pulumi:"location"`
-	Name                string                    `pulumi:"name"`
-	ProvisioningState   string                    `pulumi:"provisioningState"`
-	SystemData          SystemDataResponse        `pulumi:"systemData"`
-	Tags                map[string]string         `pulumi:"tags"`
-	Type                string                    `pulumi:"type"`
-	VmmServerId         *string                   `pulumi:"vmmServerId"`
+	// Name of the availability set.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The extended location.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Gets or sets the location.
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// Gets or sets the provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource Type
+	Type string `pulumi:"type"`
+	// ARM Id of the vmmServer resource in which this resource resides.
+	VmmServerId *string `pulumi:"vmmServerId"`
 }
 
 func LookupAvailabilitySetOutput(ctx *pulumi.Context, args LookupAvailabilitySetOutputArgs, opts ...pulumi.InvokeOption) LookupAvailabilitySetResultOutput {
@@ -53,8 +65,10 @@ func LookupAvailabilitySetOutput(ctx *pulumi.Context, args LookupAvailabilitySet
 }
 
 type LookupAvailabilitySetOutputArgs struct {
+	// Name of the AvailabilitySet.
 	AvailabilitySetName pulumi.StringInput `pulumi:"availabilitySetName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAvailabilitySetOutputArgs) ElementType() reflect.Type {
@@ -76,42 +90,52 @@ func (o LookupAvailabilitySetResultOutput) ToLookupAvailabilitySetResultOutputWi
 	return o
 }
 
+// Name of the availability set.
 func (o LookupAvailabilitySetResultOutput) AvailabilitySetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
 }
 
+// The extended location.
 func (o LookupAvailabilitySetResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupAvailabilitySetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the location.
 func (o LookupAvailabilitySetResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupAvailabilitySetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the provisioning state.
 func (o LookupAvailabilitySetResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system data.
 func (o LookupAvailabilitySetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags
 func (o LookupAvailabilitySetResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource Type
 func (o LookupAvailabilitySetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// ARM Id of the vmmServer resource in which this resource resides.
 func (o LookupAvailabilitySetResultOutput) VmmServerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) *string { return v.VmmServerId }).(pulumi.StringPtrOutput)
 }

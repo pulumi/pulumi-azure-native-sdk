@@ -22,16 +22,22 @@ func ListEndpointManagedProxyDetails(ctx *pulumi.Context, args *ListEndpointMana
 }
 
 type ListEndpointManagedProxyDetailsArgs struct {
-	EndpointName string  `pulumi:"endpointName"`
-	Hostname     *string `pulumi:"hostname"`
-	ResourceUri  string  `pulumi:"resourceUri"`
-	Service      string  `pulumi:"service"`
+	// The endpoint name.
+	EndpointName string `pulumi:"endpointName"`
+	// The target host name.
+	Hostname *string `pulumi:"hostname"`
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	ResourceUri string `pulumi:"resourceUri"`
+	// The name of the service.
+	Service string `pulumi:"service"`
 }
 
 // Managed Proxy
 type ListEndpointManagedProxyDetailsResult struct {
+	// The expiration time of short lived proxy name in unix epoch.
 	ExpiresOn float64 `pulumi:"expiresOn"`
-	Proxy     string  `pulumi:"proxy"`
+	// The short lived proxy name.
+	Proxy string `pulumi:"proxy"`
 }
 
 func ListEndpointManagedProxyDetailsOutput(ctx *pulumi.Context, args ListEndpointManagedProxyDetailsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointManagedProxyDetailsResultOutput {
@@ -48,10 +54,14 @@ func ListEndpointManagedProxyDetailsOutput(ctx *pulumi.Context, args ListEndpoin
 }
 
 type ListEndpointManagedProxyDetailsOutputArgs struct {
-	EndpointName pulumi.StringInput    `pulumi:"endpointName"`
-	Hostname     pulumi.StringPtrInput `pulumi:"hostname"`
-	ResourceUri  pulumi.StringInput    `pulumi:"resourceUri"`
-	Service      pulumi.StringInput    `pulumi:"service"`
+	// The endpoint name.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The target host name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
+	// The name of the service.
+	Service pulumi.StringInput `pulumi:"service"`
 }
 
 func (ListEndpointManagedProxyDetailsOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o ListEndpointManagedProxyDetailsResultOutput) ToListEndpointManagedProxyD
 	return o
 }
 
+// The expiration time of short lived proxy name in unix epoch.
 func (o ListEndpointManagedProxyDetailsResultOutput) ExpiresOn() pulumi.Float64Output {
 	return o.ApplyT(func(v ListEndpointManagedProxyDetailsResult) float64 { return v.ExpiresOn }).(pulumi.Float64Output)
 }
 
+// The short lived proxy name.
 func (o ListEndpointManagedProxyDetailsResultOutput) Proxy() pulumi.StringOutput {
 	return o.ApplyT(func(v ListEndpointManagedProxyDetailsResult) string { return v.Proxy }).(pulumi.StringOutput)
 }

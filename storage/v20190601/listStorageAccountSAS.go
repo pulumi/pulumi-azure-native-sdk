@@ -21,20 +21,31 @@ func ListStorageAccountSAS(ctx *pulumi.Context, args *ListStorageAccountSASArgs,
 }
 
 type ListStorageAccountSASArgs struct {
-	AccountName            string        `pulumi:"accountName"`
-	IPAddressOrRange       *string       `pulumi:"iPAddressOrRange"`
-	KeyToSign              *string       `pulumi:"keyToSign"`
-	Permissions            string        `pulumi:"permissions"`
-	Protocols              *HttpProtocol `pulumi:"protocols"`
-	ResourceGroupName      string        `pulumi:"resourceGroupName"`
-	ResourceTypes          string        `pulumi:"resourceTypes"`
-	Services               string        `pulumi:"services"`
-	SharedAccessExpiryTime string        `pulumi:"sharedAccessExpiryTime"`
-	SharedAccessStartTime  *string       `pulumi:"sharedAccessStartTime"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// An IP address or a range of IP addresses from which to accept requests.
+	IPAddressOrRange *string `pulumi:"iPAddressOrRange"`
+	// The key to sign the account SAS token with.
+	KeyToSign *string `pulumi:"keyToSign"`
+	// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
+	Permissions string `pulumi:"permissions"`
+	// The protocol permitted for a request made with the account SAS.
+	Protocols *HttpProtocol `pulumi:"protocols"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
+	ResourceTypes string `pulumi:"resourceTypes"`
+	// The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
+	Services string `pulumi:"services"`
+	// The time at which the shared access signature becomes invalid.
+	SharedAccessExpiryTime string `pulumi:"sharedAccessExpiryTime"`
+	// The time at which the SAS becomes valid.
+	SharedAccessStartTime *string `pulumi:"sharedAccessStartTime"`
 }
 
 // The List SAS credentials operation response.
 type ListStorageAccountSASResult struct {
+	// List SAS credentials of storage account.
 	AccountSasToken string `pulumi:"accountSasToken"`
 }
 
@@ -52,16 +63,26 @@ func ListStorageAccountSASOutput(ctx *pulumi.Context, args ListStorageAccountSAS
 }
 
 type ListStorageAccountSASOutputArgs struct {
-	AccountName            pulumi.StringInput    `pulumi:"accountName"`
-	IPAddressOrRange       pulumi.StringPtrInput `pulumi:"iPAddressOrRange"`
-	KeyToSign              pulumi.StringPtrInput `pulumi:"keyToSign"`
-	Permissions            pulumi.StringInput    `pulumi:"permissions"`
-	Protocols              HttpProtocolPtrInput  `pulumi:"protocols"`
-	ResourceGroupName      pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResourceTypes          pulumi.StringInput    `pulumi:"resourceTypes"`
-	Services               pulumi.StringInput    `pulumi:"services"`
-	SharedAccessExpiryTime pulumi.StringInput    `pulumi:"sharedAccessExpiryTime"`
-	SharedAccessStartTime  pulumi.StringPtrInput `pulumi:"sharedAccessStartTime"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// An IP address or a range of IP addresses from which to accept requests.
+	IPAddressOrRange pulumi.StringPtrInput `pulumi:"iPAddressOrRange"`
+	// The key to sign the account SAS token with.
+	KeyToSign pulumi.StringPtrInput `pulumi:"keyToSign"`
+	// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+	// The protocol permitted for a request made with the account SAS.
+	Protocols HttpProtocolPtrInput `pulumi:"protocols"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
+	ResourceTypes pulumi.StringInput `pulumi:"resourceTypes"`
+	// The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
+	Services pulumi.StringInput `pulumi:"services"`
+	// The time at which the shared access signature becomes invalid.
+	SharedAccessExpiryTime pulumi.StringInput `pulumi:"sharedAccessExpiryTime"`
+	// The time at which the SAS becomes valid.
+	SharedAccessStartTime pulumi.StringPtrInput `pulumi:"sharedAccessStartTime"`
 }
 
 func (ListStorageAccountSASOutputArgs) ElementType() reflect.Type {
@@ -83,6 +104,7 @@ func (o ListStorageAccountSASResultOutput) ToListStorageAccountSASResultOutputWi
 	return o
 }
 
+// List SAS credentials of storage account.
 func (o ListStorageAccountSASResultOutput) AccountSasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStorageAccountSASResult) string { return v.AccountSasToken }).(pulumi.StringOutput)
 }

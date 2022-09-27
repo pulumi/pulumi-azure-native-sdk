@@ -21,20 +21,30 @@ func LookupReplicationNetworkMapping(ctx *pulumi.Context, args *LookupReplicatio
 }
 
 type LookupReplicationNetworkMappingArgs struct {
-	FabricName         string `pulumi:"fabricName"`
+	// Primary fabric name.
+	FabricName string `pulumi:"fabricName"`
+	// Network mapping name.
 	NetworkMappingName string `pulumi:"networkMappingName"`
-	NetworkName        string `pulumi:"networkName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	ResourceName       string `pulumi:"resourceName"`
+	// Primary network name.
+	NetworkName string `pulumi:"networkName"`
+	// The name of the resource group where the recovery services vault is present.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the recovery services vault.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
 type LookupReplicationNetworkMappingResult struct {
-	Id         string                           `pulumi:"id"`
-	Location   *string                          `pulumi:"location"`
-	Name       string                           `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// The Network Mapping Properties.
 	Properties NetworkMappingPropertiesResponse `pulumi:"properties"`
-	Type       string                           `pulumi:"type"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationNetworkMappingOutput(ctx *pulumi.Context, args LookupReplicationNetworkMappingOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationNetworkMappingResultOutput {
@@ -51,11 +61,16 @@ func LookupReplicationNetworkMappingOutput(ctx *pulumi.Context, args LookupRepli
 }
 
 type LookupReplicationNetworkMappingOutputArgs struct {
-	FabricName         pulumi.StringInput `pulumi:"fabricName"`
+	// Primary fabric name.
+	FabricName pulumi.StringInput `pulumi:"fabricName"`
+	// Network mapping name.
 	NetworkMappingName pulumi.StringInput `pulumi:"networkMappingName"`
-	NetworkName        pulumi.StringInput `pulumi:"networkName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName       pulumi.StringInput `pulumi:"resourceName"`
+	// Primary network name.
+	NetworkName pulumi.StringInput `pulumi:"networkName"`
+	// The name of the resource group where the recovery services vault is present.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the recovery services vault.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupReplicationNetworkMappingOutputArgs) ElementType() reflect.Type {
@@ -77,22 +92,27 @@ func (o LookupReplicationNetworkMappingResultOutput) ToLookupReplicationNetworkM
 	return o
 }
 
+// Resource Id
 func (o LookupReplicationNetworkMappingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationNetworkMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupReplicationNetworkMappingResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicationNetworkMappingResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupReplicationNetworkMappingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationNetworkMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Network Mapping Properties.
 func (o LookupReplicationNetworkMappingResultOutput) Properties() NetworkMappingPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupReplicationNetworkMappingResult) NetworkMappingPropertiesResponse { return v.Properties }).(NetworkMappingPropertiesResponseOutput)
 }
 
+// Resource Type
 func (o LookupReplicationNetworkMappingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationNetworkMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }

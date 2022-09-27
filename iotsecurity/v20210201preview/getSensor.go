@@ -21,26 +21,42 @@ func LookupSensor(ctx *pulumi.Context, args *LookupSensorArgs, opts ...pulumi.In
 }
 
 type LookupSensorArgs struct {
-	Scope      string `pulumi:"scope"`
+	// Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
+	Scope string `pulumi:"scope"`
+	// Name of the IoT sensor
 	SensorName string `pulumi:"sensorName"`
 }
 
 // IoT sensor model
 type LookupSensorResult struct {
-	ConnectivityTime   string             `pulumi:"connectivityTime"`
-	DynamicLearning    bool               `pulumi:"dynamicLearning"`
-	Id                 string             `pulumi:"id"`
-	LearningMode       bool               `pulumi:"learningMode"`
-	Name               string             `pulumi:"name"`
-	SensorStatus       string             `pulumi:"sensorStatus"`
-	SensorType         *string            `pulumi:"sensorType"`
-	SensorVersion      string             `pulumi:"sensorVersion"`
-	SystemData         SystemDataResponse `pulumi:"systemData"`
-	TiAutomaticUpdates *bool              `pulumi:"tiAutomaticUpdates"`
-	TiStatus           string             `pulumi:"tiStatus"`
-	TiVersion          string             `pulumi:"tiVersion"`
-	Type               string             `pulumi:"type"`
-	Zone               *string            `pulumi:"zone"`
+	// Last connectivity time of the IoT sensor
+	ConnectivityTime string `pulumi:"connectivityTime"`
+	// Dynamic mode status of the IoT sensor
+	DynamicLearning bool `pulumi:"dynamicLearning"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Learning mode status of the IoT sensor
+	LearningMode bool `pulumi:"learningMode"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Status of the IoT sensor
+	SensorStatus string `pulumi:"sensorStatus"`
+	// Type of sensor
+	SensorType *string `pulumi:"sensorType"`
+	// Version of the IoT sensor
+	SensorVersion string `pulumi:"sensorVersion"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// TI Automatic mode status of the IoT sensor
+	TiAutomaticUpdates *bool `pulumi:"tiAutomaticUpdates"`
+	// TI Status of the IoT sensor
+	TiStatus string `pulumi:"tiStatus"`
+	// TI Version of the IoT sensor
+	TiVersion string `pulumi:"tiVersion"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Zone of the IoT sensor
+	Zone *string `pulumi:"zone"`
 }
 
 func LookupSensorOutput(ctx *pulumi.Context, args LookupSensorOutputArgs, opts ...pulumi.InvokeOption) LookupSensorResultOutput {
@@ -57,7 +73,9 @@ func LookupSensorOutput(ctx *pulumi.Context, args LookupSensorOutputArgs, opts .
 }
 
 type LookupSensorOutputArgs struct {
-	Scope      pulumi.StringInput `pulumi:"scope"`
+	// Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Name of the IoT sensor
 	SensorName pulumi.StringInput `pulumi:"sensorName"`
 }
 
@@ -80,58 +98,72 @@ func (o LookupSensorResultOutput) ToLookupSensorResultOutputWithContext(ctx cont
 	return o
 }
 
+// Last connectivity time of the IoT sensor
 func (o LookupSensorResultOutput) ConnectivityTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.ConnectivityTime }).(pulumi.StringOutput)
 }
 
+// Dynamic mode status of the IoT sensor
 func (o LookupSensorResultOutput) DynamicLearning() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSensorResult) bool { return v.DynamicLearning }).(pulumi.BoolOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSensorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Learning mode status of the IoT sensor
 func (o LookupSensorResultOutput) LearningMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSensorResult) bool { return v.LearningMode }).(pulumi.BoolOutput)
 }
 
+// The name of the resource
 func (o LookupSensorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Status of the IoT sensor
 func (o LookupSensorResultOutput) SensorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.SensorStatus }).(pulumi.StringOutput)
 }
 
+// Type of sensor
 func (o LookupSensorResultOutput) SensorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensorResult) *string { return v.SensorType }).(pulumi.StringPtrOutput)
 }
 
+// Version of the IoT sensor
 func (o LookupSensorResultOutput) SensorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.SensorVersion }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSensorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSensorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// TI Automatic mode status of the IoT sensor
 func (o LookupSensorResultOutput) TiAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSensorResult) *bool { return v.TiAutomaticUpdates }).(pulumi.BoolPtrOutput)
 }
 
+// TI Status of the IoT sensor
 func (o LookupSensorResultOutput) TiStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.TiStatus }).(pulumi.StringOutput)
 }
 
+// TI Version of the IoT sensor
 func (o LookupSensorResultOutput) TiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.TiVersion }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSensorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSensorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Zone of the IoT sensor
 func (o LookupSensorResultOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSensorResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }

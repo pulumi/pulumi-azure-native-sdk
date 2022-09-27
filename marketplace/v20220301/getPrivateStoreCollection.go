@@ -21,25 +21,40 @@ func LookupPrivateStoreCollection(ctx *pulumi.Context, args *LookupPrivateStoreC
 }
 
 type LookupPrivateStoreCollectionArgs struct {
-	CollectionId   string `pulumi:"collectionId"`
+	// The collection ID
+	CollectionId string `pulumi:"collectionId"`
+	// The store ID - must use the tenant ID
 	PrivateStoreId string `pulumi:"privateStoreId"`
 }
 
 // The Collection data structure.
 type LookupPrivateStoreCollectionResult struct {
-	AllSubscriptions          *bool              `pulumi:"allSubscriptions"`
-	ApproveAllItems           bool               `pulumi:"approveAllItems"`
-	ApproveAllItemsModifiedAt string             `pulumi:"approveAllItemsModifiedAt"`
-	Claim                     *string            `pulumi:"claim"`
-	CollectionId              string             `pulumi:"collectionId"`
-	CollectionName            *string            `pulumi:"collectionName"`
-	Enabled                   *bool              `pulumi:"enabled"`
-	Id                        string             `pulumi:"id"`
-	Name                      string             `pulumi:"name"`
-	NumberOfOffers            float64            `pulumi:"numberOfOffers"`
-	SubscriptionsList         []string           `pulumi:"subscriptionsList"`
-	SystemData                SystemDataResponse `pulumi:"systemData"`
-	Type                      string             `pulumi:"type"`
+	// Indicating whether all subscriptions are selected (=true) or not (=false).
+	AllSubscriptions *bool `pulumi:"allSubscriptions"`
+	// Indicating whether all items are approved for this collection (=true) or not (=false).
+	ApproveAllItems bool `pulumi:"approveAllItems"`
+	// Gets the modified date of all items approved.
+	ApproveAllItemsModifiedAt string `pulumi:"approveAllItemsModifiedAt"`
+	// Gets or sets the association with Commercial's Billing Account.
+	Claim *string `pulumi:"claim"`
+	// Gets collection Id.
+	CollectionId string `pulumi:"collectionId"`
+	// Gets or sets collection name.
+	CollectionName *string `pulumi:"collectionName"`
+	// Indicating whether the collection is enabled or disabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Gets the number of offers associated with the collection.
+	NumberOfOffers float64 `pulumi:"numberOfOffers"`
+	// Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
+	SubscriptionsList []string `pulumi:"subscriptionsList"`
+	// Metadata pertaining to creation and last modification of the resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateStoreCollectionOutput(ctx *pulumi.Context, args LookupPrivateStoreCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateStoreCollectionResultOutput {
@@ -56,7 +71,9 @@ func LookupPrivateStoreCollectionOutput(ctx *pulumi.Context, args LookupPrivateS
 }
 
 type LookupPrivateStoreCollectionOutputArgs struct {
-	CollectionId   pulumi.StringInput `pulumi:"collectionId"`
+	// The collection ID
+	CollectionId pulumi.StringInput `pulumi:"collectionId"`
+	// The store ID - must use the tenant ID
 	PrivateStoreId pulumi.StringInput `pulumi:"privateStoreId"`
 }
 
@@ -79,54 +96,67 @@ func (o LookupPrivateStoreCollectionResultOutput) ToLookupPrivateStoreCollection
 	return o
 }
 
+// Indicating whether all subscriptions are selected (=true) or not (=false).
 func (o LookupPrivateStoreCollectionResultOutput) AllSubscriptions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) *bool { return v.AllSubscriptions }).(pulumi.BoolPtrOutput)
 }
 
+// Indicating whether all items are approved for this collection (=true) or not (=false).
 func (o LookupPrivateStoreCollectionResultOutput) ApproveAllItems() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) bool { return v.ApproveAllItems }).(pulumi.BoolOutput)
 }
 
+// Gets the modified date of all items approved.
 func (o LookupPrivateStoreCollectionResultOutput) ApproveAllItemsModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.ApproveAllItemsModifiedAt }).(pulumi.StringOutput)
 }
 
+// Gets or sets the association with Commercial's Billing Account.
 func (o LookupPrivateStoreCollectionResultOutput) Claim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) *string { return v.Claim }).(pulumi.StringPtrOutput)
 }
 
+// Gets collection Id.
 func (o LookupPrivateStoreCollectionResultOutput) CollectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.CollectionId }).(pulumi.StringOutput)
 }
 
+// Gets or sets collection name.
 func (o LookupPrivateStoreCollectionResultOutput) CollectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) *string { return v.CollectionName }).(pulumi.StringPtrOutput)
 }
 
+// Indicating whether the collection is enabled or disabled.
 func (o LookupPrivateStoreCollectionResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The resource ID.
 func (o LookupPrivateStoreCollectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupPrivateStoreCollectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets the number of offers associated with the collection.
 func (o LookupPrivateStoreCollectionResultOutput) NumberOfOffers() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) float64 { return v.NumberOfOffers }).(pulumi.Float64Output)
 }
 
+// Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
 func (o LookupPrivateStoreCollectionResultOutput) SubscriptionsList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) []string { return v.SubscriptionsList }).(pulumi.StringArrayOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource
 func (o LookupPrivateStoreCollectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupPrivateStoreCollectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,21 +21,32 @@ func LookupExpressRoutePortAuthorization(ctx *pulumi.Context, args *LookupExpres
 }
 
 type LookupExpressRoutePortAuthorizationArgs struct {
-	AuthorizationName    string `pulumi:"authorizationName"`
+	// The name of the authorization.
+	AuthorizationName string `pulumi:"authorizationName"`
+	// The name of the express route port.
 	ExpressRoutePortName string `pulumi:"expressRoutePortName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRoutePort Authorization resource definition.
 type LookupExpressRoutePortAuthorizationResult struct {
-	AuthorizationKey       string  `pulumi:"authorizationKey"`
-	AuthorizationUseStatus string  `pulumi:"authorizationUseStatus"`
-	CircuitResourceUri     string  `pulumi:"circuitResourceUri"`
-	Etag                   string  `pulumi:"etag"`
-	Id                     *string `pulumi:"id"`
-	Name                   *string `pulumi:"name"`
-	ProvisioningState      string  `pulumi:"provisioningState"`
-	Type                   string  `pulumi:"type"`
+	// The authorization key.
+	AuthorizationKey string `pulumi:"authorizationKey"`
+	// The authorization use status.
+	AuthorizationUseStatus string `pulumi:"authorizationUseStatus"`
+	// The reference to the ExpressRoute circuit resource using the authorization.
+	CircuitResourceUri string `pulumi:"circuitResourceUri"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the authorization resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupExpressRoutePortAuthorizationOutput(ctx *pulumi.Context, args LookupExpressRoutePortAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRoutePortAuthorizationResultOutput {
@@ -52,9 +63,12 @@ func LookupExpressRoutePortAuthorizationOutput(ctx *pulumi.Context, args LookupE
 }
 
 type LookupExpressRoutePortAuthorizationOutputArgs struct {
-	AuthorizationName    pulumi.StringInput `pulumi:"authorizationName"`
+	// The name of the authorization.
+	AuthorizationName pulumi.StringInput `pulumi:"authorizationName"`
+	// The name of the express route port.
 	ExpressRoutePortName pulumi.StringInput `pulumi:"expressRoutePortName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExpressRoutePortAuthorizationOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupExpressRoutePortAuthorizationResultOutput) ToLookupExpressRoutePor
 	return o
 }
 
+// The authorization key.
 func (o LookupExpressRoutePortAuthorizationResultOutput) AuthorizationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.AuthorizationKey }).(pulumi.StringOutput)
 }
 
+// The authorization use status.
 func (o LookupExpressRoutePortAuthorizationResultOutput) AuthorizationUseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.AuthorizationUseStatus }).(pulumi.StringOutput)
 }
 
+// The reference to the ExpressRoute circuit resource using the authorization.
 func (o LookupExpressRoutePortAuthorizationResultOutput) CircuitResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.CircuitResourceUri }).(pulumi.StringOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupExpressRoutePortAuthorizationResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupExpressRoutePortAuthorizationResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupExpressRoutePortAuthorizationResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the authorization resource.
 func (o LookupExpressRoutePortAuthorizationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Type of the resource.
 func (o LookupExpressRoutePortAuthorizationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.Type }).(pulumi.StringOutput)
 }

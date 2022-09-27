@@ -21,20 +21,30 @@ func LookupProductPolicy(ctx *pulumi.Context, args *LookupProductPolicyArgs, opt
 }
 
 type LookupProductPolicyArgs struct {
-	Format            *string `pulumi:"format"`
-	PolicyId          string  `pulumi:"policyId"`
-	ProductId         string  `pulumi:"productId"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ServiceName       string  `pulumi:"serviceName"`
+	// Policy Export Format.
+	Format *string `pulumi:"format"`
+	// The identifier of the Policy.
+	PolicyId string `pulumi:"policyId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId string `pulumi:"productId"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Policy Contract details.
 type LookupProductPolicyResult struct {
+	// Format of the policyContent.
 	Format *string `pulumi:"format"`
-	Id     string  `pulumi:"id"`
-	Name   string  `pulumi:"name"`
-	Type   string  `pulumi:"type"`
-	Value  string  `pulumi:"value"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Contents of the Policy as defined by the format.
+	Value string `pulumi:"value"`
 }
 
 // Defaults sets the appropriate defaults for LookupProductPolicyResult
@@ -64,11 +74,16 @@ func LookupProductPolicyOutput(ctx *pulumi.Context, args LookupProductPolicyOutp
 }
 
 type LookupProductPolicyOutputArgs struct {
-	Format            pulumi.StringPtrInput `pulumi:"format"`
-	PolicyId          pulumi.StringInput    `pulumi:"policyId"`
-	ProductId         pulumi.StringInput    `pulumi:"productId"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput    `pulumi:"serviceName"`
+	// Policy Export Format.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The identifier of the Policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// Product identifier. Must be unique in the current API Management service instance.
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupProductPolicyOutputArgs) ElementType() reflect.Type {
@@ -90,22 +105,27 @@ func (o LookupProductPolicyResultOutput) ToLookupProductPolicyResultOutputWithCo
 	return o
 }
 
+// Format of the policyContent.
 func (o LookupProductPolicyResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProductPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupProductPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProductPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Contents of the Policy as defined by the format.
 func (o LookupProductPolicyResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductPolicyResult) string { return v.Value }).(pulumi.StringOutput)
 }

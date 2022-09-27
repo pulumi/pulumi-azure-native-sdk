@@ -21,19 +21,28 @@ func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederate
 }
 
 type LookupFederatedIdentityCredentialArgs struct {
+	// The name of the federated identity credential resource.
 	FederatedIdentityCredentialResourceName string `pulumi:"federatedIdentityCredentialResourceName"`
-	ResourceGroupName                       string `pulumi:"resourceGroupName"`
-	ResourceName                            string `pulumi:"resourceName"`
+	// The name of the Resource Group to which the identity belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the identity resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Describes a federated identity credential.
 type LookupFederatedIdentityCredentialResult struct {
+	// The list of audiences that can appear in the issued token.
 	Audiences []string `pulumi:"audiences"`
-	Id        string   `pulumi:"id"`
-	Issuer    string   `pulumi:"issuer"`
-	Name      string   `pulumi:"name"`
-	Subject   string   `pulumi:"subject"`
-	Type      string   `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The URL of the issuer to be trusted.
+	Issuer string `pulumi:"issuer"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The identifier of the external identity.
+	Subject string `pulumi:"subject"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupFederatedIdentityCredentialOutput(ctx *pulumi.Context, args LookupFederatedIdentityCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupFederatedIdentityCredentialResultOutput {
@@ -50,9 +59,12 @@ func LookupFederatedIdentityCredentialOutput(ctx *pulumi.Context, args LookupFed
 }
 
 type LookupFederatedIdentityCredentialOutputArgs struct {
+	// The name of the federated identity credential resource.
 	FederatedIdentityCredentialResourceName pulumi.StringInput `pulumi:"federatedIdentityCredentialResourceName"`
-	ResourceGroupName                       pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                            pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Resource Group to which the identity belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the identity resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupFederatedIdentityCredentialOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupFederatedIdentityCredentialResultOutput) ToLookupFederatedIdentity
 	return o
 }
 
+// The list of audiences that can appear in the issued token.
 func (o LookupFederatedIdentityCredentialResultOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFederatedIdentityCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The URL of the issuer to be trusted.
 func (o LookupFederatedIdentityCredentialResultOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupFederatedIdentityCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The identifier of the external identity.
 func (o LookupFederatedIdentityCredentialResultOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Subject }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFederatedIdentityCredentialResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Type }).(pulumi.StringOutput)
 }

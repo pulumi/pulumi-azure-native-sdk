@@ -21,28 +21,40 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 }
 
 type LookupProjectArgs struct {
-	GroupName   string `pulumi:"groupName"`
+	// Name of the resource group
+	GroupName string `pulumi:"groupName"`
+	// Name of the project
 	ProjectName string `pulumi:"projectName"`
+	// Name of the service
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A project resource
 type LookupProjectResult struct {
-	AzureAuthenticationInfo *string                `pulumi:"azureAuthenticationInfo"`
-	CreationTime            string                 `pulumi:"creationTime"`
-	DatabasesInfo           []DatabaseInfoResponse `pulumi:"databasesInfo"`
-	ETag                    *string                `pulumi:"eTag"`
-	Id                      string                 `pulumi:"id"`
-	Location                *string                `pulumi:"location"`
-	Name                    string                 `pulumi:"name"`
-	ProvisioningState       string                 `pulumi:"provisioningState"`
-	SourceConnectionInfo    interface{}            `pulumi:"sourceConnectionInfo"`
-	SourcePlatform          string                 `pulumi:"sourcePlatform"`
-	SystemData              SystemDataResponse     `pulumi:"systemData"`
-	Tags                    map[string]string      `pulumi:"tags"`
-	TargetConnectionInfo    interface{}            `pulumi:"targetConnectionInfo"`
-	TargetPlatform          string                 `pulumi:"targetPlatform"`
-	Type                    string                 `pulumi:"type"`
+	// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+	AzureAuthenticationInfo *string `pulumi:"azureAuthenticationInfo"`
+	// UTC Date and time when project was created
+	CreationTime string `pulumi:"creationTime"`
+	// List of DatabaseInfo
+	DatabasesInfo []DatabaseInfoResponse `pulumi:"databasesInfo"`
+	// HTTP strong entity tag value. This is ignored if submitted.
+	ETag     *string `pulumi:"eTag"`
+	Id       string  `pulumi:"id"`
+	Location *string `pulumi:"location"`
+	Name     string  `pulumi:"name"`
+	// The project's provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Information for connecting to source
+	SourceConnectionInfo interface{} `pulumi:"sourceConnectionInfo"`
+	// Source platform for the project
+	SourcePlatform string             `pulumi:"sourcePlatform"`
+	SystemData     SystemDataResponse `pulumi:"systemData"`
+	Tags           map[string]string  `pulumi:"tags"`
+	// Information for connecting to target
+	TargetConnectionInfo interface{} `pulumi:"targetConnectionInfo"`
+	// Target platform for the project
+	TargetPlatform string `pulumi:"targetPlatform"`
+	Type           string `pulumi:"type"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -59,8 +71,11 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 }
 
 type LookupProjectOutputArgs struct {
-	GroupName   pulumi.StringInput `pulumi:"groupName"`
+	// Name of the resource group
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the project
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the service
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -83,18 +98,22 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// Field that defines the Azure active directory application info, used to connect to the target Azure resource
 func (o LookupProjectResultOutput) AzureAuthenticationInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.AzureAuthenticationInfo }).(pulumi.StringPtrOutput)
 }
 
+// UTC Date and time when project was created
 func (o LookupProjectResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// List of DatabaseInfo
 func (o LookupProjectResultOutput) DatabasesInfo() DatabaseInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []DatabaseInfoResponse { return v.DatabasesInfo }).(DatabaseInfoResponseArrayOutput)
 }
 
+// HTTP strong entity tag value. This is ignored if submitted.
 func (o LookupProjectResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
@@ -111,14 +130,17 @@ func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The project's provisioning state
 func (o LookupProjectResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Information for connecting to source
 func (o LookupProjectResultOutput) SourceConnectionInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProjectResult) interface{} { return v.SourceConnectionInfo }).(pulumi.AnyOutput)
 }
 
+// Source platform for the project
 func (o LookupProjectResultOutput) SourcePlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SourcePlatform }).(pulumi.StringOutput)
 }
@@ -131,10 +153,12 @@ func (o LookupProjectResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Information for connecting to target
 func (o LookupProjectResultOutput) TargetConnectionInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProjectResult) interface{} { return v.TargetConnectionInfo }).(pulumi.AnyOutput)
 }
 
+// Target platform for the project
 func (o LookupProjectResultOutput) TargetPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.TargetPlatform }).(pulumi.StringOutput)
 }

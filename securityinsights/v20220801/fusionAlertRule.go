@@ -155,8 +155,6 @@ type fusionAlertRuleArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
 	RuleId *string `pulumi:"ruleId"`
-	// The techniques of the alert rule
-	Techniques []string `pulumi:"techniques"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -174,8 +172,6 @@ type FusionAlertRuleArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Alert rule ID
 	RuleId pulumi.StringPtrInput
-	// The techniques of the alert rule
-	Techniques pulumi.StringArrayInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }

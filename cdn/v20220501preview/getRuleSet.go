@@ -21,20 +21,29 @@ func LookupRuleSet(ctx *pulumi.Context, args *LookupRuleSetArgs, opts ...pulumi.
 }
 
 type LookupRuleSetArgs struct {
-	ProfileName       string `pulumi:"profileName"`
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RuleSetName       string `pulumi:"ruleSetName"`
+	// Name of the rule set under the profile which is unique globally.
+	RuleSetName string `pulumi:"ruleSetName"`
 }
 
 // Friendly RuleSet name mapping to the any RuleSet or secret related information.
 type LookupRuleSetResult struct {
-	DeploymentStatus  string             `pulumi:"deploymentStatus"`
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProfileName       string             `pulumi:"profileName"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	DeploymentStatus string `pulumi:"deploymentStatus"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The name of the profile which holds the rule set.
+	ProfileName string `pulumi:"profileName"`
+	// Provisioning status
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Read only system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRuleSetOutput(ctx *pulumi.Context, args LookupRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupRuleSetResultOutput {
@@ -51,9 +60,12 @@ func LookupRuleSetOutput(ctx *pulumi.Context, args LookupRuleSetOutputArgs, opts
 }
 
 type LookupRuleSetOutputArgs struct {
-	ProfileName       pulumi.StringInput `pulumi:"profileName"`
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleSetName       pulumi.StringInput `pulumi:"ruleSetName"`
+	// Name of the rule set under the profile which is unique globally.
+	RuleSetName pulumi.StringInput `pulumi:"ruleSetName"`
 }
 
 func (LookupRuleSetOutputArgs) ElementType() reflect.Type {
@@ -79,26 +91,32 @@ func (o LookupRuleSetResultOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) string { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupRuleSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupRuleSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the profile which holds the rule set.
 func (o LookupRuleSetResultOutput) ProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) string { return v.ProfileName }).(pulumi.StringOutput)
 }
 
+// Provisioning status
 func (o LookupRuleSetResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Read only system data
 func (o LookupRuleSetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupRuleSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

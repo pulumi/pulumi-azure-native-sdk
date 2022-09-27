@@ -22,10 +22,14 @@ func ListWorkflowRunActionExpressionTraces(ctx *pulumi.Context, args *ListWorkfl
 }
 
 type ListWorkflowRunActionExpressionTracesArgs struct {
-	ActionName        string `pulumi:"actionName"`
+	// The workflow action name.
+	ActionName string `pulumi:"actionName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RunName           string `pulumi:"runName"`
-	WorkflowName      string `pulumi:"workflowName"`
+	// The workflow run name.
+	RunName string `pulumi:"runName"`
+	// The workflow name.
+	WorkflowName string `pulumi:"workflowName"`
 }
 
 // The expression traces.
@@ -47,10 +51,14 @@ func ListWorkflowRunActionExpressionTracesOutput(ctx *pulumi.Context, args ListW
 }
 
 type ListWorkflowRunActionExpressionTracesOutputArgs struct {
-	ActionName        pulumi.StringInput `pulumi:"actionName"`
+	// The workflow action name.
+	ActionName pulumi.StringInput `pulumi:"actionName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RunName           pulumi.StringInput `pulumi:"runName"`
-	WorkflowName      pulumi.StringInput `pulumi:"workflowName"`
+	// The workflow run name.
+	RunName pulumi.StringInput `pulumi:"runName"`
+	// The workflow name.
+	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
 
 func (ListWorkflowRunActionExpressionTracesOutputArgs) ElementType() reflect.Type {

@@ -21,21 +21,32 @@ func LookupVirtualNetworkLink(ctx *pulumi.Context, args *LookupVirtualNetworkLin
 }
 
 type LookupVirtualNetworkLinkArgs struct {
+	// The name of the DNS forwarding ruleset.
 	DnsForwardingRulesetName string `pulumi:"dnsForwardingRulesetName"`
-	ResourceGroupName        string `pulumi:"resourceGroupName"`
-	VirtualNetworkLinkName   string `pulumi:"virtualNetworkLinkName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual network link.
+	VirtualNetworkLinkName string `pulumi:"virtualNetworkLinkName"`
 }
 
 // Describes a virtual network link.
 type LookupVirtualNetworkLinkResult struct {
-	Etag              string               `pulumi:"etag"`
-	Id                string               `pulumi:"id"`
-	Metadata          map[string]string    `pulumi:"metadata"`
-	Name              string               `pulumi:"name"`
-	ProvisioningState string               `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse   `pulumi:"systemData"`
-	Type              string               `pulumi:"type"`
-	VirtualNetwork    *SubResourceResponse `pulumi:"virtualNetwork"`
+	// ETag of the virtual network link.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Metadata attached to the virtual network link.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The current provisioning state of the virtual network link. This is a read-only property and any attempt to set this value will be ignored.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The reference to the virtual network. This cannot be changed after creation.
+	VirtualNetwork *SubResourceResponse `pulumi:"virtualNetwork"`
 }
 
 func LookupVirtualNetworkLinkOutput(ctx *pulumi.Context, args LookupVirtualNetworkLinkOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkLinkResultOutput {
@@ -52,9 +63,12 @@ func LookupVirtualNetworkLinkOutput(ctx *pulumi.Context, args LookupVirtualNetwo
 }
 
 type LookupVirtualNetworkLinkOutputArgs struct {
+	// The name of the DNS forwarding ruleset.
 	DnsForwardingRulesetName pulumi.StringInput `pulumi:"dnsForwardingRulesetName"`
-	ResourceGroupName        pulumi.StringInput `pulumi:"resourceGroupName"`
-	VirtualNetworkLinkName   pulumi.StringInput `pulumi:"virtualNetworkLinkName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual network link.
+	VirtualNetworkLinkName pulumi.StringInput `pulumi:"virtualNetworkLinkName"`
 }
 
 func (LookupVirtualNetworkLinkOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupVirtualNetworkLinkResultOutput) ToLookupVirtualNetworkLinkResultOu
 	return o
 }
 
+// ETag of the virtual network link.
 func (o LookupVirtualNetworkLinkResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVirtualNetworkLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Metadata attached to the virtual network link.
 func (o LookupVirtualNetworkLinkResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// The name of the resource
 func (o LookupVirtualNetworkLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current provisioning state of the virtual network link. This is a read-only property and any attempt to set this value will be ignored.
 func (o LookupVirtualNetworkLinkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupVirtualNetworkLinkResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVirtualNetworkLinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The reference to the virtual network. This cannot be changed after creation.
 func (o LookupVirtualNetworkLinkResultOutput) VirtualNetwork() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) *SubResourceResponse { return v.VirtualNetwork }).(SubResourceResponsePtrOutput)
 }

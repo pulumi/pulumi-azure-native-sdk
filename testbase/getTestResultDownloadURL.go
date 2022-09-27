@@ -22,15 +22,21 @@ func GetTestResultDownloadURL(ctx *pulumi.Context, args *GetTestResultDownloadUR
 }
 
 type GetTestResultDownloadURLArgs struct {
-	PackageName         string `pulumi:"packageName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Package.
+	PackageName string `pulumi:"packageName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
-	TestResultName      string `pulumi:"testResultName"`
+	// The Test Result Name. It equals to TestResult-{TestResultId} string.
+	TestResultName string `pulumi:"testResultName"`
 }
 
 // The response of getting a download URL.
 type GetTestResultDownloadURLResult struct {
-	DownloadUrl    string `pulumi:"downloadUrl"`
+	// The download URL.
+	DownloadUrl string `pulumi:"downloadUrl"`
+	// Expiry date of the download URL.
 	ExpirationTime string `pulumi:"expirationTime"`
 }
 
@@ -48,10 +54,14 @@ func GetTestResultDownloadURLOutput(ctx *pulumi.Context, args GetTestResultDownl
 }
 
 type GetTestResultDownloadURLOutputArgs struct {
-	PackageName         pulumi.StringInput `pulumi:"packageName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Package.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
-	TestResultName      pulumi.StringInput `pulumi:"testResultName"`
+	// The Test Result Name. It equals to TestResult-{TestResultId} string.
+	TestResultName pulumi.StringInput `pulumi:"testResultName"`
 }
 
 func (GetTestResultDownloadURLOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o GetTestResultDownloadURLResultOutput) ToGetTestResultDownloadURLResultOu
 	return o
 }
 
+// The download URL.
 func (o GetTestResultDownloadURLResultOutput) DownloadUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestResultDownloadURLResult) string { return v.DownloadUrl }).(pulumi.StringOutput)
 }
 
+// Expiry date of the download URL.
 func (o GetTestResultDownloadURLResultOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestResultDownloadURLResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }

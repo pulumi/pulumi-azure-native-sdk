@@ -21,23 +21,36 @@ func LookupCollectorPolicy(ctx *pulumi.Context, args *LookupCollectorPolicyArgs,
 }
 
 type LookupCollectorPolicyArgs struct {
+	// Azure Traffic Collector name
 	AzureTrafficCollectorName string `pulumi:"azureTrafficCollectorName"`
-	CollectorPolicyName       string `pulumi:"collectorPolicyName"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// Collector Policy Name
+	CollectorPolicyName string `pulumi:"collectorPolicyName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Collector policy resource.
 type LookupCollectorPolicyResult struct {
-	EmissionPolicies  []EmissionPoliciesPropertiesFormatResponse `pulumi:"emissionPolicies"`
-	Etag              string                                     `pulumi:"etag"`
-	Id                string                                     `pulumi:"id"`
-	IngestionPolicy   *IngestionPolicyPropertiesFormatResponse   `pulumi:"ingestionPolicy"`
-	Location          *string                                    `pulumi:"location"`
-	Name              string                                     `pulumi:"name"`
-	ProvisioningState string                                     `pulumi:"provisioningState"`
-	SystemData        TrackedResourceResponseSystemData          `pulumi:"systemData"`
-	Tags              map[string]string                          `pulumi:"tags"`
-	Type              string                                     `pulumi:"type"`
+	// Emission policies.
+	EmissionPolicies []EmissionPoliciesPropertiesFormatResponse `pulumi:"emissionPolicies"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Ingestion policies.
+	IngestionPolicy *IngestionPolicyPropertiesFormatResponse `pulumi:"ingestionPolicy"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData TrackedResourceResponseSystemData `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupCollectorPolicyOutput(ctx *pulumi.Context, args LookupCollectorPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCollectorPolicyResultOutput {
@@ -54,9 +67,12 @@ func LookupCollectorPolicyOutput(ctx *pulumi.Context, args LookupCollectorPolicy
 }
 
 type LookupCollectorPolicyOutputArgs struct {
+	// Azure Traffic Collector name
 	AzureTrafficCollectorName pulumi.StringInput `pulumi:"azureTrafficCollectorName"`
-	CollectorPolicyName       pulumi.StringInput `pulumi:"collectorPolicyName"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Collector Policy Name
+	CollectorPolicyName pulumi.StringInput `pulumi:"collectorPolicyName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupCollectorPolicyOutputArgs) ElementType() reflect.Type {
@@ -78,44 +94,54 @@ func (o LookupCollectorPolicyResultOutput) ToLookupCollectorPolicyResultOutputWi
 	return o
 }
 
+// Emission policies.
 func (o LookupCollectorPolicyResultOutput) EmissionPolicies() EmissionPoliciesPropertiesFormatResponseArrayOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) []EmissionPoliciesPropertiesFormatResponse {
 		return v.EmissionPolicies
 	}).(EmissionPoliciesPropertiesFormatResponseArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupCollectorPolicyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupCollectorPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Ingestion policies.
 func (o LookupCollectorPolicyResultOutput) IngestionPolicy() IngestionPolicyPropertiesFormatResponsePtrOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) *IngestionPolicyPropertiesFormatResponse { return v.IngestionPolicy }).(IngestionPolicyPropertiesFormatResponsePtrOutput)
 }
 
+// Resource location.
 func (o LookupCollectorPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupCollectorPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state.
 func (o LookupCollectorPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupCollectorPolicyResultOutput) SystemData() TrackedResourceResponseSystemDataOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) TrackedResourceResponseSystemData { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
 }
 
+// Resource tags.
 func (o LookupCollectorPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupCollectorPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

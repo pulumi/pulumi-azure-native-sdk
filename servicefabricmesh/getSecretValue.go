@@ -22,20 +22,30 @@ func LookupSecretValue(ctx *pulumi.Context, args *LookupSecretValueArgs, opts ..
 }
 
 type LookupSecretValueArgs struct {
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
-	SecretResourceName      string `pulumi:"secretResourceName"`
+	// Azure resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the secret resource.
+	SecretResourceName string `pulumi:"secretResourceName"`
+	// The name of the secret resource value which is typically the version identifier for the value.
 	SecretValueResourceName string `pulumi:"secretValueResourceName"`
 }
 
 // This type describes a value of a secret resource. The name of this resource is the version identifier corresponding to this secret value.
 type LookupSecretValueResult struct {
-	Id                string            `pulumi:"id"`
-	Location          string            `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              string            `pulumi:"type"`
-	Value             *string           `pulumi:"value"`
+	// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// State of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
+	// The actual value of the secret.
+	Value *string `pulumi:"value"`
 }
 
 func LookupSecretValueOutput(ctx *pulumi.Context, args LookupSecretValueOutputArgs, opts ...pulumi.InvokeOption) LookupSecretValueResultOutput {
@@ -52,8 +62,11 @@ func LookupSecretValueOutput(ctx *pulumi.Context, args LookupSecretValueOutputAr
 }
 
 type LookupSecretValueOutputArgs struct {
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
-	SecretResourceName      pulumi.StringInput `pulumi:"secretResourceName"`
+	// Azure resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the secret resource.
+	SecretResourceName pulumi.StringInput `pulumi:"secretResourceName"`
+	// The name of the secret resource value which is typically the version identifier for the value.
 	SecretValueResourceName pulumi.StringInput `pulumi:"secretValueResourceName"`
 }
 
@@ -76,30 +89,37 @@ func (o LookupSecretValueResultOutput) ToLookupSecretValueResultOutputWithContex
 	return o
 }
 
+// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSecretValueResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSecretValueResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSecretValueResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of the resource.
 func (o LookupSecretValueResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupSecretValueResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupSecretValueResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The actual value of the secret.
 func (o LookupSecretValueResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretValueResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

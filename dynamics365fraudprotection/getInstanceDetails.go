@@ -22,20 +22,30 @@ func LookupInstanceDetails(ctx *pulumi.Context, args *LookupInstanceDetailsArgs,
 }
 
 type LookupInstanceDetailsArgs struct {
-	InstanceName      string `pulumi:"instanceName"`
+	// The name of the instance. It must be a minimum of 3 characters, and a maximum of 63.
+	InstanceName string `pulumi:"instanceName"`
+	// The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents an instance of a DFP instance resource.
 type LookupInstanceDetailsResult struct {
-	Administration    *DFPInstanceAdministratorsResponse `pulumi:"administration"`
-	Id                string                             `pulumi:"id"`
-	Location          string                             `pulumi:"location"`
-	Name              string                             `pulumi:"name"`
-	ProvisioningState string                             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse                 `pulumi:"systemData"`
-	Tags              map[string]string                  `pulumi:"tags"`
-	Type              string                             `pulumi:"type"`
+	// A collection of DFP instance administrators
+	Administration *DFPInstanceAdministratorsResponse `pulumi:"administration"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Location of the DFP resource.
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The current deployment state of DFP resource. The provisioningState is to indicate states for resource provisioning.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Key-value pairs of additional resource provisioning properties.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupInstanceDetailsOutput(ctx *pulumi.Context, args LookupInstanceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceDetailsResultOutput {
@@ -52,7 +62,9 @@ func LookupInstanceDetailsOutput(ctx *pulumi.Context, args LookupInstanceDetails
 }
 
 type LookupInstanceDetailsOutputArgs struct {
-	InstanceName      pulumi.StringInput `pulumi:"instanceName"`
+	// The name of the instance. It must be a minimum of 3 characters, and a maximum of 63.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,34 +87,42 @@ func (o LookupInstanceDetailsResultOutput) ToLookupInstanceDetailsResultOutputWi
 	return o
 }
 
+// A collection of DFP instance administrators
 func (o LookupInstanceDetailsResultOutput) Administration() DFPInstanceAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) *DFPInstanceAdministratorsResponse { return v.Administration }).(DFPInstanceAdministratorsResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupInstanceDetailsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the DFP resource.
 func (o LookupInstanceDetailsResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupInstanceDetailsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current deployment state of DFP resource. The provisioningState is to indicate states for resource provisioning.
 func (o LookupInstanceDetailsResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupInstanceDetailsResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Key-value pairs of additional resource provisioning properties.
 func (o LookupInstanceDetailsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupInstanceDetailsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) string { return v.Type }).(pulumi.StringOutput)
 }

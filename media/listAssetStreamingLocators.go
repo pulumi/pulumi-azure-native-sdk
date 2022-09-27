@@ -22,13 +22,17 @@ func ListAssetStreamingLocators(ctx *pulumi.Context, args *ListAssetStreamingLoc
 }
 
 type ListAssetStreamingLocatorsArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	AssetName         string `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Asset name.
+	AssetName string `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Streaming Locators associated with this Asset.
 type ListAssetStreamingLocatorsResult struct {
+	// The list of Streaming Locators.
 	StreamingLocators []AssetStreamingLocatorResponse `pulumi:"streamingLocators"`
 }
 
@@ -46,8 +50,11 @@ func ListAssetStreamingLocatorsOutput(ctx *pulumi.Context, args ListAssetStreami
 }
 
 type ListAssetStreamingLocatorsOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	AssetName         pulumi.StringInput `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Asset name.
+	AssetName pulumi.StringInput `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,6 +77,7 @@ func (o ListAssetStreamingLocatorsResultOutput) ToListAssetStreamingLocatorsResu
 	return o
 }
 
+// The list of Streaming Locators.
 func (o ListAssetStreamingLocatorsResultOutput) StreamingLocators() AssetStreamingLocatorResponseArrayOutput {
 	return o.ApplyT(func(v ListAssetStreamingLocatorsResult) []AssetStreamingLocatorResponse { return v.StreamingLocators }).(AssetStreamingLocatorResponseArrayOutput)
 }

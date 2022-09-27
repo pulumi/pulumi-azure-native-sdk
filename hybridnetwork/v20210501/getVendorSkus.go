@@ -21,24 +21,38 @@ func LookupVendorSkus(ctx *pulumi.Context, args *LookupVendorSkusArgs, opts ...p
 }
 
 type LookupVendorSkusArgs struct {
-	SkuName    string `pulumi:"skuName"`
+	// The name of the sku.
+	SkuName string `pulumi:"skuName"`
+	// The name of the vendor.
 	VendorName string `pulumi:"vendorName"`
 }
 
 // Sku sub resource.
 type LookupVendorSkusResult struct {
-	DeploymentMode               *string                          `pulumi:"deploymentMode"`
-	Id                           string                           `pulumi:"id"`
-	ManagedApplicationParameters interface{}                      `pulumi:"managedApplicationParameters"`
-	ManagedApplicationTemplate   interface{}                      `pulumi:"managedApplicationTemplate"`
-	Name                         string                           `pulumi:"name"`
-	NetworkFunctionTemplate      *NetworkFunctionTemplateResponse `pulumi:"networkFunctionTemplate"`
-	NetworkFunctionType          *string                          `pulumi:"networkFunctionType"`
-	Preview                      *bool                            `pulumi:"preview"`
-	ProvisioningState            string                           `pulumi:"provisioningState"`
-	SkuType                      *string                          `pulumi:"skuType"`
-	SystemData                   SystemDataResponse               `pulumi:"systemData"`
-	Type                         string                           `pulumi:"type"`
+	// The sku deployment mode.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The parameters for the managed application to be supplied by the vendor.
+	ManagedApplicationParameters interface{} `pulumi:"managedApplicationParameters"`
+	// The template for the managed application deployment.
+	ManagedApplicationTemplate interface{} `pulumi:"managedApplicationTemplate"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The template definition of the network function.
+	NetworkFunctionTemplate *NetworkFunctionTemplateResponse `pulumi:"networkFunctionTemplate"`
+	// The network function type.
+	NetworkFunctionType *string `pulumi:"networkFunctionType"`
+	// Indicates if the vendor sku is in preview mode.
+	Preview *bool `pulumi:"preview"`
+	// The provisioning state of the vendor sku sub resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The sku type.
+	SkuType *string `pulumi:"skuType"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupVendorSkusOutput(ctx *pulumi.Context, args LookupVendorSkusOutputArgs, opts ...pulumi.InvokeOption) LookupVendorSkusResultOutput {
@@ -55,7 +69,9 @@ func LookupVendorSkusOutput(ctx *pulumi.Context, args LookupVendorSkusOutputArgs
 }
 
 type LookupVendorSkusOutputArgs struct {
-	SkuName    pulumi.StringInput `pulumi:"skuName"`
+	// The name of the sku.
+	SkuName pulumi.StringInput `pulumi:"skuName"`
+	// The name of the vendor.
 	VendorName pulumi.StringInput `pulumi:"vendorName"`
 }
 
@@ -78,50 +94,62 @@ func (o LookupVendorSkusResultOutput) ToLookupVendorSkusResultOutputWithContext(
 	return o
 }
 
+// The sku deployment mode.
 func (o LookupVendorSkusResultOutput) DeploymentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVendorSkusResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The parameters for the managed application to be supplied by the vendor.
 func (o LookupVendorSkusResultOutput) ManagedApplicationParameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) interface{} { return v.ManagedApplicationParameters }).(pulumi.AnyOutput)
 }
 
+// The template for the managed application deployment.
 func (o LookupVendorSkusResultOutput) ManagedApplicationTemplate() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) interface{} { return v.ManagedApplicationTemplate }).(pulumi.AnyOutput)
 }
 
+// The name of the resource
 func (o LookupVendorSkusResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The template definition of the network function.
 func (o LookupVendorSkusResultOutput) NetworkFunctionTemplate() NetworkFunctionTemplateResponsePtrOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) *NetworkFunctionTemplateResponse { return v.NetworkFunctionTemplate }).(NetworkFunctionTemplateResponsePtrOutput)
 }
 
+// The network function type.
 func (o LookupVendorSkusResultOutput) NetworkFunctionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) *string { return v.NetworkFunctionType }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the vendor sku is in preview mode.
 func (o LookupVendorSkusResultOutput) Preview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) *bool { return v.Preview }).(pulumi.BoolPtrOutput)
 }
 
+// The provisioning state of the vendor sku sub resource.
 func (o LookupVendorSkusResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sku type.
 func (o LookupVendorSkusResultOutput) SkuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) *string { return v.SkuType }).(pulumi.StringPtrOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupVendorSkusResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVendorSkusResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkusResult) string { return v.Type }).(pulumi.StringOutput)
 }

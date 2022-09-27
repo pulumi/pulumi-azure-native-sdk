@@ -23,20 +23,30 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupJobArgs struct {
-	JobName           string `pulumi:"jobName"`
+	// The name of the import/export job.
+	JobName string `pulumi:"jobName"`
+	// The resource group name uniquely identifies the resource group within the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Contains the job information.
 type LookupJobResult struct {
-	Id         string                   `pulumi:"id"`
-	Identity   *IdentityDetailsResponse `pulumi:"identity"`
-	Location   *string                  `pulumi:"location"`
-	Name       string                   `pulumi:"name"`
-	Properties JobDetailsResponse       `pulumi:"properties"`
-	SystemData SystemDataResponse       `pulumi:"systemData"`
-	Tags       interface{}              `pulumi:"tags"`
-	Type       string                   `pulumi:"type"`
+	// Specifies the resource identifier of the job.
+	Id string `pulumi:"id"`
+	// Specifies the job identity details
+	Identity *IdentityDetailsResponse `pulumi:"identity"`
+	// Specifies the Azure location where the job is created.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the job.
+	Name string `pulumi:"name"`
+	// Specifies the job properties
+	Properties JobDetailsResponse `pulumi:"properties"`
+	// SystemData of ImportExport Jobs.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Specifies the tags that are assigned to the job.
+	Tags interface{} `pulumi:"tags"`
+	// Specifies the type of the job resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupJobResult
@@ -66,7 +76,9 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 }
 
 type LookupJobOutputArgs struct {
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the import/export job.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The resource group name uniquely identifies the resource group within the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -89,34 +101,42 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Specifies the resource identifier of the job.
 func (o LookupJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies the job identity details
 func (o LookupJobResultOutput) Identity() IdentityDetailsResponsePtrOutput {
 	return o.ApplyT(func(v LookupJobResult) *IdentityDetailsResponse { return v.Identity }).(IdentityDetailsResponsePtrOutput)
 }
 
+// Specifies the Azure location where the job is created.
 func (o LookupJobResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the job.
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies the job properties
 func (o LookupJobResultOutput) Properties() JobDetailsResponseOutput {
 	return o.ApplyT(func(v LookupJobResult) JobDetailsResponse { return v.Properties }).(JobDetailsResponseOutput)
 }
 
+// SystemData of ImportExport Jobs.
 func (o LookupJobResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupJobResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Specifies the tags that are assigned to the job.
 func (o LookupJobResultOutput) Tags() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupJobResult) interface{} { return v.Tags }).(pulumi.AnyOutput)
 }
 
+// Specifies the type of the job resource.
 func (o LookupJobResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,13 +21,17 @@ func ListOpenShiftClusterCredentials(ctx *pulumi.Context, args *ListOpenShiftClu
 }
 
 type ListOpenShiftClusterCredentialsArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the OpenShift cluster resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // OpenShiftClusterCredentials represents an OpenShift cluster's credentials.
 type ListOpenShiftClusterCredentialsResult struct {
+	// The password for the kubeadmin user.
 	KubeadminPassword *string `pulumi:"kubeadminPassword"`
+	// The username for the kubeadmin user.
 	KubeadminUsername *string `pulumi:"kubeadminUsername"`
 }
 
@@ -45,8 +49,10 @@ func ListOpenShiftClusterCredentialsOutput(ctx *pulumi.Context, args ListOpenShi
 }
 
 type ListOpenShiftClusterCredentialsOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the OpenShift cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListOpenShiftClusterCredentialsOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListOpenShiftClusterCredentialsResultOutput) ToListOpenShiftClusterCrede
 	return o
 }
 
+// The password for the kubeadmin user.
 func (o ListOpenShiftClusterCredentialsResultOutput) KubeadminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListOpenShiftClusterCredentialsResult) *string { return v.KubeadminPassword }).(pulumi.StringPtrOutput)
 }
 
+// The username for the kubeadmin user.
 func (o ListOpenShiftClusterCredentialsResultOutput) KubeadminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListOpenShiftClusterCredentialsResult) *string { return v.KubeadminUsername }).(pulumi.StringPtrOutput)
 }

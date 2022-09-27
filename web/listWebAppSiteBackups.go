@@ -22,14 +22,18 @@ func ListWebAppSiteBackups(ctx *pulumi.Context, args *ListWebAppSiteBackupsArgs,
 }
 
 type ListWebAppSiteBackupsArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Collection of backup items.
 type ListWebAppSiteBackupsResult struct {
-	NextLink string               `pulumi:"nextLink"`
-	Value    []BackupItemResponse `pulumi:"value"`
+	// Link to next page of resources.
+	NextLink string `pulumi:"nextLink"`
+	// Collection of resources.
+	Value []BackupItemResponse `pulumi:"value"`
 }
 
 func ListWebAppSiteBackupsOutput(ctx *pulumi.Context, args ListWebAppSiteBackupsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSiteBackupsResultOutput {
@@ -46,7 +50,9 @@ func ListWebAppSiteBackupsOutput(ctx *pulumi.Context, args ListWebAppSiteBackups
 }
 
 type ListWebAppSiteBackupsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListWebAppSiteBackupsResultOutput) ToListWebAppSiteBackupsResultOutputWi
 	return o
 }
 
+// Link to next page of resources.
 func (o ListWebAppSiteBackupsResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppSiteBackupsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Collection of resources.
 func (o ListWebAppSiteBackupsResultOutput) Value() BackupItemResponseArrayOutput {
 	return o.ApplyT(func(v ListWebAppSiteBackupsResult) []BackupItemResponse { return v.Value }).(BackupItemResponseArrayOutput)
 }

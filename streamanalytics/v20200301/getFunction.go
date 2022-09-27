@@ -21,17 +21,24 @@ func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulum
 }
 
 type LookupFunctionArgs struct {
-	FunctionName      string `pulumi:"functionName"`
-	JobName           string `pulumi:"jobName"`
+	// The name of the function.
+	FunctionName string `pulumi:"functionName"`
+	// The name of the streaming job.
+	JobName string `pulumi:"jobName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
 type LookupFunctionResult struct {
-	Id         string      `pulumi:"id"`
-	Name       *string     `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name *string `pulumi:"name"`
+	// The properties that are associated with a function.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionResultOutput {
@@ -48,8 +55,11 @@ func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, op
 }
 
 type LookupFunctionOutputArgs struct {
-	FunctionName      pulumi.StringInput `pulumi:"functionName"`
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the function.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// The name of the streaming job.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,18 +82,22 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx 
 	return o
 }
 
+// Resource Id
 func (o LookupFunctionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupFunctionResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFunctionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The properties that are associated with a function.
 func (o LookupFunctionResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupFunctionResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource type
 func (o LookupFunctionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Type }).(pulumi.StringOutput)
 }

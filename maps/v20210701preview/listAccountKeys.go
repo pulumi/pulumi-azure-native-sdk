@@ -21,15 +21,21 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 }
 
 type ListAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the Maps Account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption.
 type ListAccountKeysResult struct {
-	PrimaryKey              string `pulumi:"primaryKey"`
-	PrimaryKeyLastUpdated   string `pulumi:"primaryKeyLastUpdated"`
-	SecondaryKey            string `pulumi:"secondaryKey"`
+	// The primary key for accessing the Maps REST APIs.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// The last updated date and time of the primary key.
+	PrimaryKeyLastUpdated string `pulumi:"primaryKeyLastUpdated"`
+	// The secondary key for accessing the Maps REST APIs.
+	SecondaryKey string `pulumi:"secondaryKey"`
+	// The last updated date and time of the secondary key.
 	SecondaryKeyLastUpdated string `pulumi:"secondaryKeyLastUpdated"`
 }
 
@@ -47,7 +53,9 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 }
 
 type ListAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Maps Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,18 +78,22 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ct
 	return o
 }
 
+// The primary key for accessing the Maps REST APIs.
 func (o ListAccountKeysResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// The last updated date and time of the primary key.
 func (o ListAccountKeysResultOutput) PrimaryKeyLastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.PrimaryKeyLastUpdated }).(pulumi.StringOutput)
 }
 
+// The secondary key for accessing the Maps REST APIs.
 func (o ListAccountKeysResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }
 
+// The last updated date and time of the secondary key.
 func (o ListAccountKeysResultOutput) SecondaryKeyLastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) string { return v.SecondaryKeyLastUpdated }).(pulumi.StringOutput)
 }

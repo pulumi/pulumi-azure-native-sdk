@@ -21,18 +21,26 @@ func LookupMonitoringConfig(ctx *pulumi.Context, args *LookupMonitoringConfigArg
 }
 
 type LookupMonitoringConfigArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RoleName          string `pulumi:"roleName"`
+	// The role name.
+	RoleName string `pulumi:"roleName"`
 }
 
 // The metric setting details for the role
 type LookupMonitoringConfigResult struct {
-	Id                   string                        `pulumi:"id"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The metrics configuration details
 	MetricConfigurations []MetricConfigurationResponse `pulumi:"metricConfigurations"`
-	Name                 string                        `pulumi:"name"`
-	SystemData           SystemDataResponse            `pulumi:"systemData"`
-	Type                 string                        `pulumi:"type"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Metadata pertaining to creation and last modification of MonitoringConfiguration
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupMonitoringConfigOutput(ctx *pulumi.Context, args LookupMonitoringConfigOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoringConfigResultOutput {
@@ -49,9 +57,12 @@ func LookupMonitoringConfigOutput(ctx *pulumi.Context, args LookupMonitoringConf
 }
 
 type LookupMonitoringConfigOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RoleName          pulumi.StringInput `pulumi:"roleName"`
+	// The role name.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
 }
 
 func (LookupMonitoringConfigOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutput
 	return o
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupMonitoringConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMonitoringConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The metrics configuration details
 func (o LookupMonitoringConfigResultOutput) MetricConfigurations() MetricConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupMonitoringConfigResult) []MetricConfigurationResponse { return v.MetricConfigurations }).(MetricConfigurationResponseArrayOutput)
 }
 
+// The object name.
 func (o LookupMonitoringConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMonitoringConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of MonitoringConfiguration
 func (o LookupMonitoringConfigResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMonitoringConfigResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupMonitoringConfigResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMonitoringConfigResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,12 +22,15 @@ func GetLabAccountRegionalAvailability(ctx *pulumi.Context, args *GetLabAccountR
 }
 
 type GetLabAccountRegionalAvailabilityArgs struct {
-	LabAccountName    string `pulumi:"labAccountName"`
+	// The name of the lab Account.
+	LabAccountName string `pulumi:"labAccountName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response model from the GetRegionalAvailability action
 type GetLabAccountRegionalAvailabilityResult struct {
+	// Availability information for different size categories per region
 	RegionalAvailability []RegionalAvailabilityResponse `pulumi:"regionalAvailability"`
 }
 
@@ -45,7 +48,9 @@ func GetLabAccountRegionalAvailabilityOutput(ctx *pulumi.Context, args GetLabAcc
 }
 
 type GetLabAccountRegionalAvailabilityOutputArgs struct {
-	LabAccountName    pulumi.StringInput `pulumi:"labAccountName"`
+	// The name of the lab Account.
+	LabAccountName pulumi.StringInput `pulumi:"labAccountName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o GetLabAccountRegionalAvailabilityResultOutput) ToGetLabAccountRegionalAv
 	return o
 }
 
+// Availability information for different size categories per region
 func (o GetLabAccountRegionalAvailabilityResultOutput) RegionalAvailability() RegionalAvailabilityResponseArrayOutput {
 	return o.ApplyT(func(v GetLabAccountRegionalAvailabilityResult) []RegionalAvailabilityResponse {
 		return v.RegionalAvailability

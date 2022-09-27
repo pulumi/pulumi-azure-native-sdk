@@ -22,13 +22,17 @@ func ListStreamingLocatorContentKeys(ctx *pulumi.Context, args *ListStreamingLoc
 }
 
 type ListStreamingLocatorContentKeysArgs struct {
-	AccountName          string `pulumi:"accountName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Streaming Locator name.
 	StreamingLocatorName string `pulumi:"streamingLocatorName"`
 }
 
 // Class of response for listContentKeys action
 type ListStreamingLocatorContentKeysResult struct {
+	// ContentKeys used by current Streaming Locator
 	ContentKeys []StreamingLocatorContentKeyResponse `pulumi:"contentKeys"`
 }
 
@@ -46,8 +50,11 @@ func ListStreamingLocatorContentKeysOutput(ctx *pulumi.Context, args ListStreami
 }
 
 type ListStreamingLocatorContentKeysOutputArgs struct {
-	AccountName          pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Streaming Locator name.
 	StreamingLocatorName pulumi.StringInput `pulumi:"streamingLocatorName"`
 }
 
@@ -70,6 +77,7 @@ func (o ListStreamingLocatorContentKeysResultOutput) ToListStreamingLocatorConte
 	return o
 }
 
+// ContentKeys used by current Streaming Locator
 func (o ListStreamingLocatorContentKeysResultOutput) ContentKeys() StreamingLocatorContentKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListStreamingLocatorContentKeysResult) []StreamingLocatorContentKeyResponse {
 		return v.ContentKeys

@@ -21,19 +21,28 @@ func ListWebAppMetadataSlot(ctx *pulumi.Context, args *ListWebAppMetadataSlotArg
 }
 
 type ListWebAppMetadataSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the metadata for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // String dictionary resource.
 type ListWebAppMetadataSlotResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       *string            `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
-	Properties map[string]string  `pulumi:"properties"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
+	Properties map[string]string `pulumi:"properties"`
+	// The system metadata relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppMetadataSlotOutput(ctx *pulumi.Context, args ListWebAppMetadataSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppMetadataSlotResultOutput {
@@ -50,9 +59,12 @@ func ListWebAppMetadataSlotOutput(ctx *pulumi.Context, args ListWebAppMetadataSl
 }
 
 type ListWebAppMetadataSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the metadata for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppMetadataSlotOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o ListWebAppMetadataSlotResultOutput) ToListWebAppMetadataSlotResultOutput
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppMetadataSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppMetadataSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppMetadataSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppMetadataSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppMetadataSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppMetadataSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListWebAppMetadataSlotResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppMetadataSlotResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// The system metadata relating to this resource.
 func (o ListWebAppMetadataSlotResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v ListWebAppMetadataSlotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o ListWebAppMetadataSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppMetadataSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

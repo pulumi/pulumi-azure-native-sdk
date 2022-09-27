@@ -22,23 +22,36 @@ func LookupAdminRuleCollection(ctx *pulumi.Context, args *LookupAdminRuleCollect
 }
 
 type LookupAdminRuleCollectionArgs struct {
-	ConfigurationName  string `pulumi:"configurationName"`
+	// The name of the network manager security Configuration.
+	ConfigurationName string `pulumi:"configurationName"`
+	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the network manager security Configuration rule collection.
 	RuleCollectionName string `pulumi:"ruleCollectionName"`
 }
 
 // Defines the rule collection.
 type LookupAdminRuleCollectionResult struct {
-	AppliesToGroups   []NetworkManagerSecurityGroupItemResponse `pulumi:"appliesToGroups"`
-	Description       *string                                   `pulumi:"description"`
-	DisplayName       *string                                   `pulumi:"displayName"`
-	Etag              string                                    `pulumi:"etag"`
-	Id                string                                    `pulumi:"id"`
-	Name              string                                    `pulumi:"name"`
-	ProvisioningState string                                    `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse                        `pulumi:"systemData"`
-	Type              string                                    `pulumi:"type"`
+	// Groups for configuration
+	AppliesToGroups []NetworkManagerSecurityGroupItemResponse `pulumi:"appliesToGroups"`
+	// A description of the rule collection.
+	Description *string `pulumi:"description"`
+	// A display name of the rule collection.
+	DisplayName *string `pulumi:"displayName"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupAdminRuleCollectionOutput(ctx *pulumi.Context, args LookupAdminRuleCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupAdminRuleCollectionResultOutput {
@@ -55,9 +68,13 @@ func LookupAdminRuleCollectionOutput(ctx *pulumi.Context, args LookupAdminRuleCo
 }
 
 type LookupAdminRuleCollectionOutputArgs struct {
-	ConfigurationName  pulumi.StringInput `pulumi:"configurationName"`
+	// The name of the network manager security Configuration.
+	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
+	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the network manager security Configuration rule collection.
 	RuleCollectionName pulumi.StringInput `pulumi:"ruleCollectionName"`
 }
 
@@ -80,40 +97,49 @@ func (o LookupAdminRuleCollectionResultOutput) ToLookupAdminRuleCollectionResult
 	return o
 }
 
+// Groups for configuration
 func (o LookupAdminRuleCollectionResultOutput) AppliesToGroups() NetworkManagerSecurityGroupItemResponseArrayOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) []NetworkManagerSecurityGroupItemResponse {
 		return v.AppliesToGroups
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
 }
 
+// A description of the rule collection.
 func (o LookupAdminRuleCollectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// A display name of the rule collection.
 func (o LookupAdminRuleCollectionResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupAdminRuleCollectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupAdminRuleCollectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupAdminRuleCollectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupAdminRuleCollectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupAdminRuleCollectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupAdminRuleCollectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleCollectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

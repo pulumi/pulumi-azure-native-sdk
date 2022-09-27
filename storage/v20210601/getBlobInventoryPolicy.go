@@ -21,19 +21,28 @@ func LookupBlobInventoryPolicy(ctx *pulumi.Context, args *LookupBlobInventoryPol
 }
 
 type LookupBlobInventoryPolicyArgs struct {
-	AccountName             string `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the storage account blob inventory policy. It should always be 'default'
 	BlobInventoryPolicyName string `pulumi:"blobInventoryPolicyName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The storage account blob inventory policy.
 type LookupBlobInventoryPolicyResult struct {
-	Id               string                            `pulumi:"id"`
-	LastModifiedTime string                            `pulumi:"lastModifiedTime"`
-	Name             string                            `pulumi:"name"`
-	Policy           BlobInventoryPolicySchemaResponse `pulumi:"policy"`
-	SystemData       SystemDataResponse                `pulumi:"systemData"`
-	Type             string                            `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Returns the last modified date and time of the blob inventory policy.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The storage account blob inventory policy object. It is composed of policy rules.
+	Policy BlobInventoryPolicySchemaResponse `pulumi:"policy"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupBlobInventoryPolicyOutput(ctx *pulumi.Context, args LookupBlobInventoryPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBlobInventoryPolicyResultOutput {
@@ -50,9 +59,12 @@ func LookupBlobInventoryPolicyOutput(ctx *pulumi.Context, args LookupBlobInvento
 }
 
 type LookupBlobInventoryPolicyOutputArgs struct {
-	AccountName             pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the storage account blob inventory policy. It should always be 'default'
 	BlobInventoryPolicyName pulumi.StringInput `pulumi:"blobInventoryPolicyName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupBlobInventoryPolicyOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupBlobInventoryPolicyResultOutput) ToLookupBlobInventoryPolicyResult
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupBlobInventoryPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobInventoryPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Returns the last modified date and time of the blob inventory policy.
 func (o LookupBlobInventoryPolicyResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobInventoryPolicyResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupBlobInventoryPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobInventoryPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The storage account blob inventory policy object. It is composed of policy rules.
 func (o LookupBlobInventoryPolicyResultOutput) Policy() BlobInventoryPolicySchemaResponseOutput {
 	return o.ApplyT(func(v LookupBlobInventoryPolicyResult) BlobInventoryPolicySchemaResponse { return v.Policy }).(BlobInventoryPolicySchemaResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupBlobInventoryPolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBlobInventoryPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupBlobInventoryPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlobInventoryPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

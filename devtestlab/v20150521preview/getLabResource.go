@@ -23,25 +23,40 @@ func LookupLabResource(ctx *pulumi.Context, args *LookupLabResourceArgs, opts ..
 }
 
 type LookupLabResourceArgs struct {
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A lab.
 type LookupLabResourceResult struct {
-	ArtifactsStorageAccount *string           `pulumi:"artifactsStorageAccount"`
-	CreatedDate             *string           `pulumi:"createdDate"`
-	DefaultStorageAccount   *string           `pulumi:"defaultStorageAccount"`
-	DefaultVirtualNetworkId *string           `pulumi:"defaultVirtualNetworkId"`
-	Id                      *string           `pulumi:"id"`
-	LabStorageType          *string           `pulumi:"labStorageType"`
-	Location                *string           `pulumi:"location"`
-	Name                    *string           `pulumi:"name"`
-	ProvisioningState       *string           `pulumi:"provisioningState"`
-	StorageAccounts         []string          `pulumi:"storageAccounts"`
-	Tags                    map[string]string `pulumi:"tags"`
-	Type                    *string           `pulumi:"type"`
-	VaultName               *string           `pulumi:"vaultName"`
+	// The artifact storage account of the lab.
+	ArtifactsStorageAccount *string `pulumi:"artifactsStorageAccount"`
+	// The creation date of the lab.
+	CreatedDate *string `pulumi:"createdDate"`
+	// The lab's default storage account.
+	DefaultStorageAccount *string `pulumi:"defaultStorageAccount"`
+	// The default virtual network identifier of the lab.
+	DefaultVirtualNetworkId *string `pulumi:"defaultVirtualNetworkId"`
+	// The identifier of the resource.
+	Id *string `pulumi:"id"`
+	// The type of the lab storage.
+	LabStorageType *string `pulumi:"labStorageType"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning status of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The storage accounts of the lab.
+	StorageAccounts []string `pulumi:"storageAccounts"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type *string `pulumi:"type"`
+	// The name of the key vault of the lab.
+	VaultName *string `pulumi:"vaultName"`
 }
 
 func LookupLabResourceOutput(ctx *pulumi.Context, args LookupLabResourceOutputArgs, opts ...pulumi.InvokeOption) LookupLabResourceResultOutput {
@@ -58,7 +73,9 @@ func LookupLabResourceOutput(ctx *pulumi.Context, args LookupLabResourceOutputAr
 }
 
 type LookupLabResourceOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -81,54 +98,67 @@ func (o LookupLabResourceResultOutput) ToLookupLabResourceResultOutputWithContex
 	return o
 }
 
+// The artifact storage account of the lab.
 func (o LookupLabResourceResultOutput) ArtifactsStorageAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.ArtifactsStorageAccount }).(pulumi.StringPtrOutput)
 }
 
+// The creation date of the lab.
 func (o LookupLabResourceResultOutput) CreatedDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.CreatedDate }).(pulumi.StringPtrOutput)
 }
 
+// The lab's default storage account.
 func (o LookupLabResourceResultOutput) DefaultStorageAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.DefaultStorageAccount }).(pulumi.StringPtrOutput)
 }
 
+// The default virtual network identifier of the lab.
 func (o LookupLabResourceResultOutput) DefaultVirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.DefaultVirtualNetworkId }).(pulumi.StringPtrOutput)
 }
 
+// The identifier of the resource.
 func (o LookupLabResourceResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The type of the lab storage.
 func (o LookupLabResourceResultOutput) LabStorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.LabStorageType }).(pulumi.StringPtrOutput)
 }
 
+// The location of the resource.
 func (o LookupLabResourceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupLabResourceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupLabResourceResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// The storage accounts of the lab.
 func (o LookupLabResourceResultOutput) StorageAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) []string { return v.StorageAccounts }).(pulumi.StringArrayOutput)
 }
 
+// The tags of the resource.
 func (o LookupLabResourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupLabResourceResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The name of the key vault of the lab.
 func (o LookupLabResourceResultOutput) VaultName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResourceResult) *string { return v.VaultName }).(pulumi.StringPtrOutput)
 }

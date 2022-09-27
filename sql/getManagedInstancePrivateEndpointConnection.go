@@ -22,19 +22,28 @@ func LookupManagedInstancePrivateEndpointConnection(ctx *pulumi.Context, args *L
 }
 
 type LookupManagedInstancePrivateEndpointConnectionArgs struct {
-	ManagedInstanceName           string `pulumi:"managedInstanceName"`
+	// The name of the managed instance.
+	ManagedInstanceName string `pulumi:"managedInstanceName"`
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A private endpoint connection
 type LookupManagedInstancePrivateEndpointConnectionResult struct {
-	Id                                string                                                            `pulumi:"id"`
-	Name                              string                                                            `pulumi:"name"`
-	PrivateEndpoint                   *ManagedInstancePrivateEndpointPropertyResponse                   `pulumi:"privateEndpoint"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Private endpoint which the connection belongs to.
+	PrivateEndpoint *ManagedInstancePrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
+	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState *ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                                            `pulumi:"provisioningState"`
-	Type                              string                                                            `pulumi:"type"`
+	// State of the Private Endpoint Connection.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedInstancePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupManagedInstancePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstancePrivateEndpointConnectionResultOutput {
@@ -51,9 +60,12 @@ func LookupManagedInstancePrivateEndpointConnectionOutput(ctx *pulumi.Context, a
 }
 
 type LookupManagedInstancePrivateEndpointConnectionOutputArgs struct {
-	ManagedInstanceName           pulumi.StringInput `pulumi:"managedInstanceName"`
+	// The name of the managed instance.
+	ManagedInstanceName pulumi.StringInput `pulumi:"managedInstanceName"`
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedInstancePrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -75,30 +87,36 @@ func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) ToLookupMana
 	return o
 }
 
+// Resource ID.
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Private endpoint which the connection belongs to.
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) PrivateEndpoint() ManagedInstancePrivateEndpointPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) *ManagedInstancePrivateEndpointPropertyResponse {
 		return v.PrivateEndpoint
 	}).(ManagedInstancePrivateEndpointPropertyResponsePtrOutput)
 }
 
+// Connection State of the Private Endpoint Connection.
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) *ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutput)
 }
 
+// State of the Private Endpoint Connection.
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

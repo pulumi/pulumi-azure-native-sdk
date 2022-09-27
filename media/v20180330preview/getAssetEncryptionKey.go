@@ -21,13 +21,17 @@ func GetAssetEncryptionKey(ctx *pulumi.Context, args *GetAssetEncryptionKeyArgs,
 }
 
 type GetAssetEncryptionKeyArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	AssetName         string `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Asset name.
+	AssetName string `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Asset Storage encryption key.
 type GetAssetEncryptionKeyResult struct {
+	// The Asset storage encryption key.
 	StorageEncryptionKey *string `pulumi:"storageEncryptionKey"`
 }
 
@@ -45,8 +49,11 @@ func GetAssetEncryptionKeyOutput(ctx *pulumi.Context, args GetAssetEncryptionKey
 }
 
 type GetAssetEncryptionKeyOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	AssetName         pulumi.StringInput `pulumi:"assetName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Asset name.
+	AssetName pulumi.StringInput `pulumi:"assetName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,6 +76,7 @@ func (o GetAssetEncryptionKeyResultOutput) ToGetAssetEncryptionKeyResultOutputWi
 	return o
 }
 
+// The Asset storage encryption key.
 func (o GetAssetEncryptionKeyResultOutput) StorageEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAssetEncryptionKeyResult) *string { return v.StorageEncryptionKey }).(pulumi.StringPtrOutput)
 }

@@ -23,22 +23,34 @@ func LookupCognitiveServicesAccount(ctx *pulumi.Context, args *LookupCognitiveSe
 }
 
 type LookupCognitiveServicesAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the cognitive services account within the specified resource group. Cognitive Services account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Cognitive Services Account is an Azure resource representing the provisioned account, its type, location and SKU.
 type LookupCognitiveServicesAccountResult struct {
-	Endpoint          *string           `pulumi:"endpoint"`
-	Etag              *string           `pulumi:"etag"`
-	Id                *string           `pulumi:"id"`
-	Kind              *string           `pulumi:"kind"`
-	Location          *string           `pulumi:"location"`
-	Name              *string           `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	Sku               *SkuResponse      `pulumi:"sku"`
-	Tags              map[string]string `pulumi:"tags"`
-	Type              *string           `pulumi:"type"`
+	// Endpoint of the created account
+	Endpoint *string `pulumi:"endpoint"`
+	// Entity Tag
+	Etag *string `pulumi:"etag"`
+	// The id of the created account
+	Id *string `pulumi:"id"`
+	// Type of cognitive service account.
+	Kind *string `pulumi:"kind"`
+	// The location of the resource
+	Location *string `pulumi:"location"`
+	// The name of the created account
+	Name *string `pulumi:"name"`
+	// Gets the status of the cognitive services account at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU of the cognitive services account.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func LookupCognitiveServicesAccountOutput(ctx *pulumi.Context, args LookupCognitiveServicesAccountOutputArgs, opts ...pulumi.InvokeOption) LookupCognitiveServicesAccountResultOutput {
@@ -55,7 +67,9 @@ func LookupCognitiveServicesAccountOutput(ctx *pulumi.Context, args LookupCognit
 }
 
 type LookupCognitiveServicesAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the cognitive services account within the specified resource group. Cognitive Services account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +92,52 @@ func (o LookupCognitiveServicesAccountResultOutput) ToLookupCognitiveServicesAcc
 	return o
 }
 
+// Endpoint of the created account
 func (o LookupCognitiveServicesAccountResultOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
+// Entity Tag
 func (o LookupCognitiveServicesAccountResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The id of the created account
 func (o LookupCognitiveServicesAccountResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Type of cognitive service account.
 func (o LookupCognitiveServicesAccountResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The location of the resource
 func (o LookupCognitiveServicesAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the created account
 func (o LookupCognitiveServicesAccountResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets the status of the cognitive services account at the time the operation was called.
 func (o LookupCognitiveServicesAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU of the cognitive services account.
 func (o LookupCognitiveServicesAccountResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
 func (o LookupCognitiveServicesAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupCognitiveServicesAccountResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCognitiveServicesAccountResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

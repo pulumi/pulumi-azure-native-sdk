@@ -21,21 +21,32 @@ func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulum
 }
 
 type LookupVariableArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	VariableName          string `pulumi:"variableName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of variable.
+	VariableName string `pulumi:"variableName"`
 }
 
 // Definition of the variable.
 type LookupVariableResult struct {
-	CreationTime     *string `pulumi:"creationTime"`
-	Description      *string `pulumi:"description"`
-	Id               string  `pulumi:"id"`
-	IsEncrypted      *bool   `pulumi:"isEncrypted"`
+	// Gets or sets the creation time.
+	CreationTime *string `pulumi:"creationTime"`
+	// Gets or sets the description.
+	Description *string `pulumi:"description"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// Gets or sets the encrypted flag of the variable.
+	IsEncrypted *bool `pulumi:"isEncrypted"`
+	// Gets or sets the last modified time.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
-	Name             string  `pulumi:"name"`
-	Type             string  `pulumi:"type"`
-	Value            *string `pulumi:"value"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// Gets or sets the value of the variable.
+	Value *string `pulumi:"value"`
 }
 
 func LookupVariableOutput(ctx *pulumi.Context, args LookupVariableOutputArgs, opts ...pulumi.InvokeOption) LookupVariableResultOutput {
@@ -52,9 +63,12 @@ func LookupVariableOutput(ctx *pulumi.Context, args LookupVariableOutputArgs, op
 }
 
 type LookupVariableOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	VariableName          pulumi.StringInput `pulumi:"variableName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of variable.
+	VariableName pulumi.StringInput `pulumi:"variableName"`
 }
 
 func (LookupVariableOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx 
 	return o
 }
 
+// Gets or sets the creation time.
 func (o LookupVariableResultOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the description.
 func (o LookupVariableResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the encrypted flag of the variable.
 func (o LookupVariableResultOutput) IsEncrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *bool { return v.IsEncrypted }).(pulumi.BoolPtrOutput)
 }
 
+// Gets or sets the last modified time.
 func (o LookupVariableResultOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *string { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupVariableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupVariableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Gets or sets the value of the variable.
 func (o LookupVariableResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

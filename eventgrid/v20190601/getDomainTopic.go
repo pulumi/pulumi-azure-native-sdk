@@ -23,17 +23,24 @@ func LookupDomainTopic(ctx *pulumi.Context, args *LookupDomainTopicArgs, opts ..
 }
 
 type LookupDomainTopicArgs struct {
-	DomainName        string `pulumi:"domainName"`
-	DomainTopicName   string `pulumi:"domainTopicName"`
+	// Name of the domain.
+	DomainName string `pulumi:"domainName"`
+	// Name of the topic.
+	DomainTopicName string `pulumi:"domainTopicName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Domain Topic.
 type LookupDomainTopicResult struct {
-	Id                string  `pulumi:"id"`
-	Name              string  `pulumi:"name"`
+	// Fully qualified identifier of the resource.
+	Id string `pulumi:"id"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the domain topic.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	Type              string  `pulumi:"type"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupDomainTopicOutput(ctx *pulumi.Context, args LookupDomainTopicOutputArgs, opts ...pulumi.InvokeOption) LookupDomainTopicResultOutput {
@@ -50,8 +57,11 @@ func LookupDomainTopicOutput(ctx *pulumi.Context, args LookupDomainTopicOutputAr
 }
 
 type LookupDomainTopicOutputArgs struct {
-	DomainName        pulumi.StringInput `pulumi:"domainName"`
-	DomainTopicName   pulumi.StringInput `pulumi:"domainTopicName"`
+	// Name of the domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Name of the topic.
+	DomainTopicName pulumi.StringInput `pulumi:"domainTopicName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,18 +84,22 @@ func (o LookupDomainTopicResultOutput) ToLookupDomainTopicResultOutputWithContex
 	return o
 }
 
+// Fully qualified identifier of the resource.
 func (o LookupDomainTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the resource.
 func (o LookupDomainTopicResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the domain topic.
 func (o LookupDomainTopicResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Type of the resource.
 func (o LookupDomainTopicResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,29 +23,48 @@ func LookupSiteDeploymentSlot(ctx *pulumi.Context, args *LookupSiteDeploymentSlo
 }
 
 type LookupSiteDeploymentSlotArgs struct {
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
+	// Id of the deployment
+	Id string `pulumi:"id"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Represents user credentials used for publishing activity
 type LookupSiteDeploymentSlotResult struct {
-	Active      *bool             `pulumi:"active"`
-	Author      *string           `pulumi:"author"`
-	AuthorEmail *string           `pulumi:"authorEmail"`
-	Deployer    *string           `pulumi:"deployer"`
-	Details     *string           `pulumi:"details"`
-	EndTime     *string           `pulumi:"endTime"`
-	Id          *string           `pulumi:"id"`
-	Kind        *string           `pulumi:"kind"`
-	Location    string            `pulumi:"location"`
-	Message     *string           `pulumi:"message"`
-	Name        *string           `pulumi:"name"`
-	StartTime   *string           `pulumi:"startTime"`
-	Status      *int              `pulumi:"status"`
-	Tags        map[string]string `pulumi:"tags"`
-	Type        *string           `pulumi:"type"`
+	// Active
+	Active *bool `pulumi:"active"`
+	// Author
+	Author *string `pulumi:"author"`
+	// AuthorEmail
+	AuthorEmail *string `pulumi:"authorEmail"`
+	// Deployer
+	Deployer *string `pulumi:"deployer"`
+	// Detail
+	Details *string `pulumi:"details"`
+	// EndTime
+	EndTime *string `pulumi:"endTime"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Message
+	Message *string `pulumi:"message"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// StartTime
+	StartTime *string `pulumi:"startTime"`
+	// Status
+	Status *int `pulumi:"status"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func LookupSiteDeploymentSlotOutput(ctx *pulumi.Context, args LookupSiteDeploymentSlotOutputArgs, opts ...pulumi.InvokeOption) LookupSiteDeploymentSlotResultOutput {
@@ -62,10 +81,14 @@ func LookupSiteDeploymentSlotOutput(ctx *pulumi.Context, args LookupSiteDeployme
 }
 
 type LookupSiteDeploymentSlotOutputArgs struct {
-	Id                pulumi.StringInput `pulumi:"id"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Id of the deployment
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupSiteDeploymentSlotOutputArgs) ElementType() reflect.Type {
@@ -87,62 +110,77 @@ func (o LookupSiteDeploymentSlotResultOutput) ToLookupSiteDeploymentSlotResultOu
 	return o
 }
 
+// Active
 func (o LookupSiteDeploymentSlotResultOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
+// Author
 func (o LookupSiteDeploymentSlotResultOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Author }).(pulumi.StringPtrOutput)
 }
 
+// AuthorEmail
 func (o LookupSiteDeploymentSlotResultOutput) AuthorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
 }
 
+// Deployer
 func (o LookupSiteDeploymentSlotResultOutput) Deployer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Deployer }).(pulumi.StringPtrOutput)
 }
 
+// Detail
 func (o LookupSiteDeploymentSlotResultOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
+// EndTime
 func (o LookupSiteDeploymentSlotResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSiteDeploymentSlotResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Kind of resource
 func (o LookupSiteDeploymentSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o LookupSiteDeploymentSlotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Message
 func (o LookupSiteDeploymentSlotResultOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupSiteDeploymentSlotResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// StartTime
 func (o LookupSiteDeploymentSlotResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// Status
 func (o LookupSiteDeploymentSlotResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }
 
+// Resource tags
 func (o LookupSiteDeploymentSlotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSiteDeploymentSlotResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteDeploymentSlotResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

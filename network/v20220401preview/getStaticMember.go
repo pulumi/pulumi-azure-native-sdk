@@ -21,22 +21,34 @@ func LookupStaticMember(ctx *pulumi.Context, args *LookupStaticMemberArgs, opts 
 }
 
 type LookupStaticMemberArgs struct {
-	NetworkGroupName   string `pulumi:"networkGroupName"`
+	// The name of the network group.
+	NetworkGroupName string `pulumi:"networkGroupName"`
+	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	StaticMemberName   string `pulumi:"staticMemberName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the static member.
+	StaticMemberName string `pulumi:"staticMemberName"`
 }
 
 // StaticMember Item.
 type LookupStaticMemberResult struct {
-	Etag              string             `pulumi:"etag"`
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	Region            string             `pulumi:"region"`
-	ResourceId        *string            `pulumi:"resourceId"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the scope assignment resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource region.
+	Region string `pulumi:"region"`
+	// Resource Id.
+	ResourceId *string `pulumi:"resourceId"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupStaticMemberOutput(ctx *pulumi.Context, args LookupStaticMemberOutputArgs, opts ...pulumi.InvokeOption) LookupStaticMemberResultOutput {
@@ -53,10 +65,14 @@ func LookupStaticMemberOutput(ctx *pulumi.Context, args LookupStaticMemberOutput
 }
 
 type LookupStaticMemberOutputArgs struct {
-	NetworkGroupName   pulumi.StringInput `pulumi:"networkGroupName"`
+	// The name of the network group.
+	NetworkGroupName pulumi.StringInput `pulumi:"networkGroupName"`
+	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	StaticMemberName   pulumi.StringInput `pulumi:"staticMemberName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the static member.
+	StaticMemberName pulumi.StringInput `pulumi:"staticMemberName"`
 }
 
 func (LookupStaticMemberOutputArgs) ElementType() reflect.Type {
@@ -78,34 +94,42 @@ func (o LookupStaticMemberResultOutput) ToLookupStaticMemberResultOutputWithCont
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupStaticMemberResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupStaticMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupStaticMemberResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the scope assignment resource.
 func (o LookupStaticMemberResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource region.
 func (o LookupStaticMemberResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Resource Id.
 func (o LookupStaticMemberResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupStaticMemberResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupStaticMemberResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticMemberResult) string { return v.Type }).(pulumi.StringOutput)
 }

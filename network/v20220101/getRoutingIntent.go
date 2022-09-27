@@ -21,19 +21,28 @@ func LookupRoutingIntent(ctx *pulumi.Context, args *LookupRoutingIntentArgs, opt
 }
 
 type LookupRoutingIntentArgs struct {
+	// The resource group name of the RoutingIntent.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the RoutingIntent.
 	RoutingIntentName string `pulumi:"routingIntentName"`
-	VirtualHubName    string `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName string `pulumi:"virtualHubName"`
 }
 
 // The routing intent child resource of a Virtual hub.
 type LookupRoutingIntentResult struct {
-	Etag              string                  `pulumi:"etag"`
-	Id                *string                 `pulumi:"id"`
-	Name              *string                 `pulumi:"name"`
-	ProvisioningState string                  `pulumi:"provisioningState"`
-	RoutingPolicies   []RoutingPolicyResponse `pulumi:"routingPolicies"`
-	Type              string                  `pulumi:"type"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the RoutingIntent resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of routing policies.
+	RoutingPolicies []RoutingPolicyResponse `pulumi:"routingPolicies"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRoutingIntentOutput(ctx *pulumi.Context, args LookupRoutingIntentOutputArgs, opts ...pulumi.InvokeOption) LookupRoutingIntentResultOutput {
@@ -50,9 +59,12 @@ func LookupRoutingIntentOutput(ctx *pulumi.Context, args LookupRoutingIntentOutp
 }
 
 type LookupRoutingIntentOutputArgs struct {
+	// The resource group name of the RoutingIntent.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the RoutingIntent.
 	RoutingIntentName pulumi.StringInput `pulumi:"routingIntentName"`
-	VirtualHubName    pulumi.StringInput `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName pulumi.StringInput `pulumi:"virtualHubName"`
 }
 
 func (LookupRoutingIntentOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupRoutingIntentResultOutput) ToLookupRoutingIntentResultOutputWithCo
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupRoutingIntentResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutingIntentResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupRoutingIntentResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoutingIntentResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupRoutingIntentResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoutingIntentResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the RoutingIntent resource.
 func (o LookupRoutingIntentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutingIntentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// List of routing policies.
 func (o LookupRoutingIntentResultOutput) RoutingPolicies() RoutingPolicyResponseArrayOutput {
 	return o.ApplyT(func(v LookupRoutingIntentResult) []RoutingPolicyResponse { return v.RoutingPolicies }).(RoutingPolicyResponseArrayOutput)
 }
 
+// Resource type.
 func (o LookupRoutingIntentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutingIntentResult) string { return v.Type }).(pulumi.StringOutput)
 }

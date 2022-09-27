@@ -22,13 +22,17 @@ func GetBuildLogLink(ctx *pulumi.Context, args *GetBuildLogLinkArgs, opts ...pul
 }
 
 type GetBuildLogLinkArgs struct {
-	BuildId           string `pulumi:"buildId"`
-	RegistryName      string `pulumi:"registryName"`
+	// The build ID.
+	BuildId string `pulumi:"buildId"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The result of get log link operation.
 type GetBuildLogLinkResult struct {
+	// The link to logs for a azure container registry build.
 	LogLink *string `pulumi:"logLink"`
 }
 
@@ -46,8 +50,11 @@ func GetBuildLogLinkOutput(ctx *pulumi.Context, args GetBuildLogLinkOutputArgs, 
 }
 
 type GetBuildLogLinkOutputArgs struct {
-	BuildId           pulumi.StringInput `pulumi:"buildId"`
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The build ID.
+	BuildId pulumi.StringInput `pulumi:"buildId"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,6 +77,7 @@ func (o GetBuildLogLinkResultOutput) ToGetBuildLogLinkResultOutputWithContext(ct
 	return o
 }
 
+// The link to logs for a azure container registry build.
 func (o GetBuildLogLinkResultOutput) LogLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBuildLogLinkResult) *string { return v.LogLink }).(pulumi.StringPtrOutput)
 }

@@ -21,18 +21,26 @@ func LookupRegistrationAssignment(ctx *pulumi.Context, args *LookupRegistrationA
 }
 
 type LookupRegistrationAssignmentArgs struct {
-	ExpandRegistrationDefinition *bool  `pulumi:"expandRegistrationDefinition"`
-	RegistrationAssignmentId     string `pulumi:"registrationAssignmentId"`
-	Scope                        string `pulumi:"scope"`
+	// The flag indicating whether to return the registration definition details along with the registration assignment details.
+	ExpandRegistrationDefinition *bool `pulumi:"expandRegistrationDefinition"`
+	// The GUID of the registration assignment.
+	RegistrationAssignmentId string `pulumi:"registrationAssignmentId"`
+	// The scope of the resource.
+	Scope string `pulumi:"scope"`
 }
 
 // The registration assignment.
 type LookupRegistrationAssignmentResult struct {
-	Id         string                                   `pulumi:"id"`
-	Name       string                                   `pulumi:"name"`
+	// The fully qualified path of the registration assignment.
+	Id string `pulumi:"id"`
+	// The name of the registration assignment.
+	Name string `pulumi:"name"`
+	// The properties of a registration assignment.
 	Properties RegistrationAssignmentPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                       `pulumi:"systemData"`
-	Type       string                                   `pulumi:"type"`
+	// The metadata for the registration assignment resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
+	Type string `pulumi:"type"`
 }
 
 func LookupRegistrationAssignmentOutput(ctx *pulumi.Context, args LookupRegistrationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationAssignmentResultOutput {
@@ -49,9 +57,12 @@ func LookupRegistrationAssignmentOutput(ctx *pulumi.Context, args LookupRegistra
 }
 
 type LookupRegistrationAssignmentOutputArgs struct {
+	// The flag indicating whether to return the registration definition details along with the registration assignment details.
 	ExpandRegistrationDefinition pulumi.BoolPtrInput `pulumi:"expandRegistrationDefinition"`
-	RegistrationAssignmentId     pulumi.StringInput  `pulumi:"registrationAssignmentId"`
-	Scope                        pulumi.StringInput  `pulumi:"scope"`
+	// The GUID of the registration assignment.
+	RegistrationAssignmentId pulumi.StringInput `pulumi:"registrationAssignmentId"`
+	// The scope of the resource.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRegistrationAssignmentOutputArgs) ElementType() reflect.Type {
@@ -73,24 +84,29 @@ func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignment
 	return o
 }
 
+// The fully qualified path of the registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of a registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Properties() RegistrationAssignmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) RegistrationAssignmentPropertiesResponse {
 		return v.Properties
 	}).(RegistrationAssignmentPropertiesResponseOutput)
 }
 
+// The metadata for the registration assignment resource.
 func (o LookupRegistrationAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
 func (o LookupRegistrationAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

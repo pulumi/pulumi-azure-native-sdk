@@ -21,24 +21,38 @@ func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountA
 }
 
 type LookupAutomationAccountArgs struct {
+	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the automation account type.
 type LookupAutomationAccountResult struct {
-	CreationTime     string            `pulumi:"creationTime"`
-	Description      *string           `pulumi:"description"`
-	Etag             *string           `pulumi:"etag"`
-	Id               string            `pulumi:"id"`
-	LastModifiedBy   *string           `pulumi:"lastModifiedBy"`
-	LastModifiedTime string            `pulumi:"lastModifiedTime"`
-	Location         *string           `pulumi:"location"`
-	Name             string            `pulumi:"name"`
-	Sku              *SkuResponse      `pulumi:"sku"`
-	State            string            `pulumi:"state"`
-	Tags             map[string]string `pulumi:"tags"`
-	Type             string            `pulumi:"type"`
+	// Gets the creation time.
+	CreationTime string `pulumi:"creationTime"`
+	// Gets or sets the description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the etag of the resource.
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource Id for the resource
+	Id string `pulumi:"id"`
+	// Gets or sets the last modified by.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// Gets the last modified time.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The Azure Region where the resource lives
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets the SKU of account.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Gets status of account.
+	State string `pulumi:"state"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupAutomationAccountOutput(ctx *pulumi.Context, args LookupAutomationAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAutomationAccountResultOutput {
@@ -55,8 +69,10 @@ func LookupAutomationAccountOutput(ctx *pulumi.Context, args LookupAutomationAcc
 }
 
 type LookupAutomationAccountOutputArgs struct {
+	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of an Azure Resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAutomationAccountOutputArgs) ElementType() reflect.Type {
@@ -78,50 +94,62 @@ func (o LookupAutomationAccountResultOutput) ToLookupAutomationAccountResultOutp
 	return o
 }
 
+// Gets the creation time.
 func (o LookupAutomationAccountResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Gets or sets the description.
 func (o LookupAutomationAccountResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the etag of the resource.
 func (o LookupAutomationAccountResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource Id for the resource
 func (o LookupAutomationAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the last modified by.
 func (o LookupAutomationAccountResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
 }
 
+// Gets the last modified time.
 func (o LookupAutomationAccountResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+// The Azure Region where the resource lives
 func (o LookupAutomationAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupAutomationAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the SKU of account.
 func (o LookupAutomationAccountResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Gets status of account.
 func (o LookupAutomationAccountResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupAutomationAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupAutomationAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

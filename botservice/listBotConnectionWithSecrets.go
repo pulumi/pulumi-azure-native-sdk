@@ -22,23 +22,36 @@ func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWi
 }
 
 type ListBotConnectionWithSecretsArgs struct {
-	ConnectionName    string `pulumi:"connectionName"`
+	// The name of the Bot Service Connection Setting resource.
+	ConnectionName string `pulumi:"connectionName"`
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Bot channel resource definition
 type ListBotConnectionWithSecretsResult struct {
-	Etag       *string                             `pulumi:"etag"`
-	Id         string                              `pulumi:"id"`
-	Kind       *string                             `pulumi:"kind"`
-	Location   *string                             `pulumi:"location"`
-	Name       string                              `pulumi:"name"`
+	// Entity Tag
+	Etag *string `pulumi:"etag"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// Required. Gets or sets the Kind of the resource.
+	Kind *string `pulumi:"kind"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// The set of properties specific to bot channel resource
 	Properties ConnectionSettingPropertiesResponse `pulumi:"properties"`
-	Sku        *SkuResponse                        `pulumi:"sku"`
-	Tags       map[string]string                   `pulumi:"tags"`
-	Type       string                              `pulumi:"type"`
-	Zones      []string                            `pulumi:"zones"`
+	// Gets or sets the SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
+	// Entity zones
+	Zones []string `pulumi:"zones"`
 }
 
 func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnectionWithSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotConnectionWithSecretsResultOutput {
@@ -55,9 +68,12 @@ func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnect
 }
 
 type ListBotConnectionWithSecretsOutputArgs struct {
-	ConnectionName    pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the Bot Service Connection Setting resource.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListBotConnectionWithSecretsOutputArgs) ElementType() reflect.Type {
@@ -79,42 +95,52 @@ func (o ListBotConnectionWithSecretsResultOutput) ToListBotConnectionWithSecrets
 	return o
 }
 
+// Entity Tag
 func (o ListBotConnectionWithSecretsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the resource ID.
 func (o ListBotConnectionWithSecretsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Required. Gets or sets the Kind of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The set of properties specific to bot channel resource
 func (o ListBotConnectionWithSecretsResultOutput) Properties() ConnectionSettingPropertiesResponseOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) ConnectionSettingPropertiesResponse { return v.Properties }).(ConnectionSettingPropertiesResponseOutput)
 }
 
+// Gets or sets the SKU of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o ListBotConnectionWithSecretsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Entity zones
 func (o ListBotConnectionWithSecretsResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

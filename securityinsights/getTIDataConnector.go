@@ -22,21 +22,33 @@ func LookupTIDataConnector(ctx *pulumi.Context, args *LookupTIDataConnectorArgs,
 }
 
 type LookupTIDataConnectorArgs struct {
-	DataConnectorId   string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents threat intelligence data connector.
 type LookupTIDataConnectorResult struct {
-	DataTypes         *TIDataConnectorDataTypesResponse `pulumi:"dataTypes"`
-	Etag              *string                           `pulumi:"etag"`
-	Id                string                            `pulumi:"id"`
-	Kind              string                            `pulumi:"kind"`
-	Name              string                            `pulumi:"name"`
-	TenantId          *string                           `pulumi:"tenantId"`
-	TipLookbackPeriod *string                           `pulumi:"tipLookbackPeriod"`
-	Type              string                            `pulumi:"type"`
+	// The available data types for the connector.
+	DataTypes *TIDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The kind of the data connector
+	// Expected value is 'ThreatIntelligence'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The tenant id to connect to, and get the data from.
+	TenantId *string `pulumi:"tenantId"`
+	// The lookback period for the feed to be imported.
+	TipLookbackPeriod *string `pulumi:"tipLookbackPeriod"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupTIDataConnectorOutput(ctx *pulumi.Context, args LookupTIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTIDataConnectorResultOutput {
@@ -53,9 +65,12 @@ func LookupTIDataConnectorOutput(ctx *pulumi.Context, args LookupTIDataConnector
 }
 
 type LookupTIDataConnectorOutputArgs struct {
-	DataConnectorId   pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupTIDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -77,34 +92,43 @@ func (o LookupTIDataConnectorResultOutput) ToLookupTIDataConnectorResultOutputWi
 	return o
 }
 
+// The available data types for the connector.
 func (o LookupTIDataConnectorResultOutput) DataTypes() TIDataConnectorDataTypesResponsePtrOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) *TIDataConnectorDataTypesResponse { return v.DataTypes }).(TIDataConnectorDataTypesResponsePtrOutput)
 }
 
+// Etag of the azure resource
 func (o LookupTIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupTIDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the data connector
+// Expected value is 'ThreatIntelligence'.
 func (o LookupTIDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupTIDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tenant id to connect to, and get the data from.
 func (o LookupTIDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The lookback period for the feed to be imported.
 func (o LookupTIDataConnectorResultOutput) TipLookbackPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) *string { return v.TipLookbackPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource type
 func (o LookupTIDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

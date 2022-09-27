@@ -21,19 +21,28 @@ func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ..
 }
 
 type LookupContentTypeArgs struct {
-	ContentTypeId     string `pulumi:"contentTypeId"`
+	// Content type identifier.
+	ContentTypeId string `pulumi:"contentTypeId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Content type contract details.
 type LookupContentTypeResult struct {
-	Description *string     `pulumi:"description"`
-	Id          string      `pulumi:"id"`
-	Name        string      `pulumi:"name"`
-	Schema      interface{} `pulumi:"schema"`
-	Type        string      `pulumi:"type"`
-	Version     *string     `pulumi:"version"`
+	// Content type description.
+	Description *string `pulumi:"description"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Content type schema.
+	Schema interface{} `pulumi:"schema"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// Content type version.
+	Version *string `pulumi:"version"`
 }
 
 func LookupContentTypeOutput(ctx *pulumi.Context, args LookupContentTypeOutputArgs, opts ...pulumi.InvokeOption) LookupContentTypeResultOutput {
@@ -50,9 +59,12 @@ func LookupContentTypeOutput(ctx *pulumi.Context, args LookupContentTypeOutputAr
 }
 
 type LookupContentTypeOutputArgs struct {
-	ContentTypeId     pulumi.StringInput `pulumi:"contentTypeId"`
+	// Content type identifier.
+	ContentTypeId pulumi.StringInput `pulumi:"contentTypeId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupContentTypeOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupContentTypeResultOutput) ToLookupContentTypeResultOutputWithContex
 	return o
 }
 
+// Content type description.
 func (o LookupContentTypeResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupContentTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupContentTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Content type schema.
 func (o LookupContentTypeResultOutput) Schema() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) interface{} { return v.Schema }).(pulumi.AnyOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupContentTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Content type version.
 func (o LookupContentTypeResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

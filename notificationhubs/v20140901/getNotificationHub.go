@@ -23,19 +23,28 @@ func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs,
 }
 
 type LookupNotificationHubArgs struct {
-	NamespaceName       string `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The notification hub name.
 	NotificationHubName string `pulumi:"notificationHubName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a NotificationHub Resource.
 type LookupNotificationHubResult struct {
-	Id         *string                           `pulumi:"id"`
-	Location   *string                           `pulumi:"location"`
-	Name       *string                           `pulumi:"name"`
+	// Gets or sets the id of the created NotificationHub.
+	Id *string `pulumi:"id"`
+	// Gets or sets datacenter location of the NotificationHub.
+	Location *string `pulumi:"location"`
+	// Gets or sets name of the NotificationHub.
+	Name *string `pulumi:"name"`
+	// Gets or sets properties of the NotificationHub.
 	Properties NotificationHubPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string                 `pulumi:"tags"`
-	Type       *string                           `pulumi:"type"`
+	// Gets or sets tags of the NotificationHub.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets or sets resource type of the NotificationHub.
+	Type *string `pulumi:"type"`
 }
 
 func LookupNotificationHubOutput(ctx *pulumi.Context, args LookupNotificationHubOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubResultOutput {
@@ -52,9 +61,12 @@ func LookupNotificationHubOutput(ctx *pulumi.Context, args LookupNotificationHub
 }
 
 type LookupNotificationHubOutputArgs struct {
-	NamespaceName       pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The notification hub name.
 	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNotificationHubOutputArgs) ElementType() reflect.Type {
@@ -76,26 +88,32 @@ func (o LookupNotificationHubResultOutput) ToLookupNotificationHubResultOutputWi
 	return o
 }
 
+// Gets or sets the id of the created NotificationHub.
 func (o LookupNotificationHubResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets datacenter location of the NotificationHub.
 func (o LookupNotificationHubResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets name of the NotificationHub.
 func (o LookupNotificationHubResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets properties of the NotificationHub.
 func (o LookupNotificationHubResultOutput) Properties() NotificationHubPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) NotificationHubPropertiesResponse { return v.Properties }).(NotificationHubPropertiesResponseOutput)
 }
 
+// Gets or sets tags of the NotificationHub.
 func (o LookupNotificationHubResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets or sets resource type of the NotificationHub.
 func (o LookupNotificationHubResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

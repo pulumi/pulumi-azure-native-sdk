@@ -22,15 +22,20 @@ func ListBatchAccountKeys(ctx *pulumi.Context, args *ListBatchAccountKeysArgs, o
 }
 
 type ListBatchAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the Batch account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A set of Azure Batch account keys.
 type ListBatchAccountKeysResult struct {
+	// The Batch account name.
 	AccountName string `pulumi:"accountName"`
-	Primary     string `pulumi:"primary"`
-	Secondary   string `pulumi:"secondary"`
+	// The primary key associated with the account.
+	Primary string `pulumi:"primary"`
+	// The secondary key associated with the account.
+	Secondary string `pulumi:"secondary"`
 }
 
 func ListBatchAccountKeysOutput(ctx *pulumi.Context, args ListBatchAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListBatchAccountKeysResultOutput {
@@ -47,7 +52,9 @@ func ListBatchAccountKeysOutput(ctx *pulumi.Context, args ListBatchAccountKeysOu
 }
 
 type ListBatchAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Batch account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,14 +77,17 @@ func (o ListBatchAccountKeysResultOutput) ToListBatchAccountKeysResultOutputWith
 	return o
 }
 
+// The Batch account name.
 func (o ListBatchAccountKeysResultOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBatchAccountKeysResult) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
+// The primary key associated with the account.
 func (o ListBatchAccountKeysResultOutput) Primary() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBatchAccountKeysResult) string { return v.Primary }).(pulumi.StringOutput)
 }
 
+// The secondary key associated with the account.
 func (o ListBatchAccountKeysResultOutput) Secondary() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBatchAccountKeysResult) string { return v.Secondary }).(pulumi.StringOutput)
 }

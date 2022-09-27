@@ -21,21 +21,31 @@ func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, o
 }
 
 type LookupSecurityPolicyArgs struct {
-	ProfileName        string `pulumi:"profileName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the security policy under the profile.
 	SecurityPolicyName string `pulumi:"securityPolicyName"`
 }
 
 // SecurityPolicy association for AzureFrontDoor profile
 type LookupSecurityPolicyResult struct {
-	DeploymentStatus  string                                                  `pulumi:"deploymentStatus"`
-	Id                string                                                  `pulumi:"id"`
-	Name              string                                                  `pulumi:"name"`
-	Parameters        *SecurityPolicyWebApplicationFirewallParametersResponse `pulumi:"parameters"`
-	ProfileName       string                                                  `pulumi:"profileName"`
-	ProvisioningState string                                                  `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse                                      `pulumi:"systemData"`
-	Type              string                                                  `pulumi:"type"`
+	DeploymentStatus string `pulumi:"deploymentStatus"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// object which contains security policy parameters
+	Parameters *SecurityPolicyWebApplicationFirewallParametersResponse `pulumi:"parameters"`
+	// The name of the profile which holds the security policy.
+	ProfileName string `pulumi:"profileName"`
+	// Provisioning status
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Read only system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityPolicyOutput(ctx *pulumi.Context, args LookupSecurityPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityPolicyResultOutput {
@@ -52,8 +62,11 @@ func LookupSecurityPolicyOutput(ctx *pulumi.Context, args LookupSecurityPolicyOu
 }
 
 type LookupSecurityPolicyOutputArgs struct {
-	ProfileName        pulumi.StringInput `pulumi:"profileName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the security policy under the profile.
 	SecurityPolicyName pulumi.StringInput `pulumi:"securityPolicyName"`
 }
 
@@ -80,32 +93,39 @@ func (o LookupSecurityPolicyResultOutput) DeploymentStatus() pulumi.StringOutput
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSecurityPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSecurityPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// object which contains security policy parameters
 func (o LookupSecurityPolicyResultOutput) Parameters() SecurityPolicyWebApplicationFirewallParametersResponsePtrOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) *SecurityPolicyWebApplicationFirewallParametersResponse {
 		return v.Parameters
 	}).(SecurityPolicyWebApplicationFirewallParametersResponsePtrOutput)
 }
 
+// The name of the profile which holds the security policy.
 func (o LookupSecurityPolicyResultOutput) ProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.ProfileName }).(pulumi.StringOutput)
 }
 
+// Provisioning status
 func (o LookupSecurityPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Read only system data
 func (o LookupSecurityPolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupSecurityPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

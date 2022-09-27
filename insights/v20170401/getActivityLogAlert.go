@@ -21,22 +21,34 @@ func LookupActivityLogAlert(ctx *pulumi.Context, args *LookupActivityLogAlertArg
 }
 
 type LookupActivityLogAlertArgs struct {
+	// The name of the activity log alert.
 	ActivityLogAlertName string `pulumi:"activityLogAlertName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An activity log alert resource.
 type LookupActivityLogAlertResult struct {
-	Actions     ActivityLogAlertActionListResponse     `pulumi:"actions"`
-	Condition   ActivityLogAlertAllOfConditionResponse `pulumi:"condition"`
-	Description *string                                `pulumi:"description"`
-	Enabled     *bool                                  `pulumi:"enabled"`
-	Id          string                                 `pulumi:"id"`
-	Location    string                                 `pulumi:"location"`
-	Name        string                                 `pulumi:"name"`
-	Scopes      []string                               `pulumi:"scopes"`
-	Tags        map[string]string                      `pulumi:"tags"`
-	Type        string                                 `pulumi:"type"`
+	// The actions that will activate when the condition is met.
+	Actions ActivityLogAlertActionListResponse `pulumi:"actions"`
+	// The condition that will cause this alert to activate.
+	Condition ActivityLogAlertAllOfConditionResponse `pulumi:"condition"`
+	// A description of this activity log alert.
+	Description *string `pulumi:"description"`
+	// Indicates whether this activity log alert is enabled. If an activity log alert is not enabled, then none of its actions will be activated.
+	Enabled *bool `pulumi:"enabled"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// A list of resourceIds that will be used as prefixes. The alert will only apply to activityLogs with resourceIds that fall under one of these prefixes. This list must include at least one item.
+	Scopes []string `pulumi:"scopes"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupActivityLogAlertResult
@@ -66,8 +78,10 @@ func LookupActivityLogAlertOutput(ctx *pulumi.Context, args LookupActivityLogAle
 }
 
 type LookupActivityLogAlertOutputArgs struct {
+	// The name of the activity log alert.
 	ActivityLogAlertName pulumi.StringInput `pulumi:"activityLogAlertName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupActivityLogAlertOutputArgs) ElementType() reflect.Type {
@@ -89,42 +103,52 @@ func (o LookupActivityLogAlertResultOutput) ToLookupActivityLogAlertResultOutput
 	return o
 }
 
+// The actions that will activate when the condition is met.
 func (o LookupActivityLogAlertResultOutput) Actions() ActivityLogAlertActionListResponseOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) ActivityLogAlertActionListResponse { return v.Actions }).(ActivityLogAlertActionListResponseOutput)
 }
 
+// The condition that will cause this alert to activate.
 func (o LookupActivityLogAlertResultOutput) Condition() ActivityLogAlertAllOfConditionResponseOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) ActivityLogAlertAllOfConditionResponse { return v.Condition }).(ActivityLogAlertAllOfConditionResponseOutput)
 }
 
+// A description of this activity log alert.
 func (o LookupActivityLogAlertResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether this activity log alert is enabled. If an activity log alert is not enabled, then none of its actions will be activated.
 func (o LookupActivityLogAlertResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupActivityLogAlertResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupActivityLogAlertResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupActivityLogAlertResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of resourceIds that will be used as prefixes. The alert will only apply to activityLogs with resourceIds that fall under one of these prefixes. This list must include at least one item.
 func (o LookupActivityLogAlertResultOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// Resource tags
 func (o LookupActivityLogAlertResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Azure resource type
 func (o LookupActivityLogAlertResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) string { return v.Type }).(pulumi.StringOutput)
 }

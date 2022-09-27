@@ -22,14 +22,18 @@ func ListIotHubResourceKeys(ctx *pulumi.Context, args *ListIotHubResourceKeysArg
 }
 
 type ListIotHubResourceKeysArgs struct {
+	// The name of the resource group that contains the IoT hub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the IoT hub.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The list of shared access policies with a next link.
 type ListIotHubResourceKeysResult struct {
-	NextLink string                                           `pulumi:"nextLink"`
-	Value    []SharedAccessSignatureAuthorizationRuleResponse `pulumi:"value"`
+	// The next link.
+	NextLink string `pulumi:"nextLink"`
+	// The list of shared access policies.
+	Value []SharedAccessSignatureAuthorizationRuleResponse `pulumi:"value"`
 }
 
 func ListIotHubResourceKeysOutput(ctx *pulumi.Context, args ListIotHubResourceKeysOutputArgs, opts ...pulumi.InvokeOption) ListIotHubResourceKeysResultOutput {
@@ -46,8 +50,10 @@ func ListIotHubResourceKeysOutput(ctx *pulumi.Context, args ListIotHubResourceKe
 }
 
 type ListIotHubResourceKeysOutputArgs struct {
+	// The name of the resource group that contains the IoT hub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the IoT hub.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListIotHubResourceKeysOutputArgs) ElementType() reflect.Type {
@@ -69,10 +75,12 @@ func (o ListIotHubResourceKeysResultOutput) ToListIotHubResourceKeysResultOutput
 	return o
 }
 
+// The next link.
 func (o ListIotHubResourceKeysResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListIotHubResourceKeysResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// The list of shared access policies.
 func (o ListIotHubResourceKeysResultOutput) Value() SharedAccessSignatureAuthorizationRuleResponseArrayOutput {
 	return o.ApplyT(func(v ListIotHubResourceKeysResult) []SharedAccessSignatureAuthorizationRuleResponse { return v.Value }).(SharedAccessSignatureAuthorizationRuleResponseArrayOutput)
 }

@@ -21,28 +21,46 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// Name of the Log Analytics Cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The top level Log Analytics cluster resource container.
 type LookupClusterResult struct {
-	AssociatedWorkspaces          []AssociatedWorkspaceResponse          `pulumi:"associatedWorkspaces"`
-	BillingType                   *string                                `pulumi:"billingType"`
+	// The list of Log Analytics workspaces associated with the cluster
+	AssociatedWorkspaces []AssociatedWorkspaceResponse `pulumi:"associatedWorkspaces"`
+	// The cluster's billing type.
+	BillingType *string `pulumi:"billingType"`
+	// Additional properties for capacity reservation
 	CapacityReservationProperties *CapacityReservationPropertiesResponse `pulumi:"capacityReservationProperties"`
-	ClusterId                     string                                 `pulumi:"clusterId"`
-	CreatedDate                   string                                 `pulumi:"createdDate"`
-	Id                            string                                 `pulumi:"id"`
-	Identity                      *IdentityResponse                      `pulumi:"identity"`
-	IsAvailabilityZonesEnabled    *bool                                  `pulumi:"isAvailabilityZonesEnabled"`
-	KeyVaultProperties            *KeyVaultPropertiesResponse            `pulumi:"keyVaultProperties"`
-	LastModifiedDate              string                                 `pulumi:"lastModifiedDate"`
-	Location                      string                                 `pulumi:"location"`
-	Name                          string                                 `pulumi:"name"`
-	ProvisioningState             string                                 `pulumi:"provisioningState"`
-	Sku                           *ClusterSkuResponse                    `pulumi:"sku"`
-	Tags                          map[string]string                      `pulumi:"tags"`
-	Type                          string                                 `pulumi:"type"`
+	// The ID associated with the cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The cluster creation time
+	CreatedDate string `pulumi:"createdDate"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
+	IsAvailabilityZonesEnabled *bool `pulumi:"isAvailabilityZonesEnabled"`
+	// The associated key properties.
+	KeyVaultProperties *KeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+	// The last time the cluster was updated.
+	LastModifiedDate string `pulumi:"lastModifiedDate"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the cluster.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The sku properties.
+	Sku *ClusterSkuResponse `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -59,7 +77,9 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 }
 
 type LookupClusterOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// Name of the Log Analytics Cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,68 +102,84 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The list of Log Analytics workspaces associated with the cluster
 func (o LookupClusterResultOutput) AssociatedWorkspaces() AssociatedWorkspaceResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []AssociatedWorkspaceResponse { return v.AssociatedWorkspaces }).(AssociatedWorkspaceResponseArrayOutput)
 }
 
+// The cluster's billing type.
 func (o LookupClusterResultOutput) BillingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.BillingType }).(pulumi.StringPtrOutput)
 }
 
+// Additional properties for capacity reservation
 func (o LookupClusterResultOutput) CapacityReservationProperties() CapacityReservationPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *CapacityReservationPropertiesResponse {
 		return v.CapacityReservationProperties
 	}).(CapacityReservationPropertiesResponsePtrOutput)
 }
 
+// The ID associated with the cluster.
 func (o LookupClusterResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The cluster creation time
 func (o LookupClusterResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.CreatedDate }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupClusterResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
 func (o LookupClusterResultOutput) IsAvailabilityZonesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *bool { return v.IsAvailabilityZonesEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The associated key properties.
 func (o LookupClusterResultOutput) KeyVaultProperties() KeyVaultPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *KeyVaultPropertiesResponse { return v.KeyVaultProperties }).(KeyVaultPropertiesResponsePtrOutput)
 }
 
+// The last time the cluster was updated.
 func (o LookupClusterResultOutput) LastModifiedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.LastModifiedDate }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the cluster.
 func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sku properties.
 func (o LookupClusterResultOutput) Sku() ClusterSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *ClusterSkuResponse { return v.Sku }).(ClusterSkuResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }

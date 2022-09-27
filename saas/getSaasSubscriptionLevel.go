@@ -22,17 +22,24 @@ func LookupSaasSubscriptionLevel(ctx *pulumi.Context, args *LookupSaasSubscripti
 }
 
 type LookupSaasSubscriptionLevelArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // SaaS REST API resource definition.
 type LookupSaasSubscriptionLevelResult struct {
-	Id         string                         `pulumi:"id"`
-	Name       string                         `pulumi:"name"`
+	// The resource uri
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// saas properties
 	Properties SaasResourceResponseProperties `pulumi:"properties"`
-	Tags       map[string]string              `pulumi:"tags"`
-	Type       string                         `pulumi:"type"`
+	// the resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSaasSubscriptionLevelOutput(ctx *pulumi.Context, args LookupSaasSubscriptionLevelOutputArgs, opts ...pulumi.InvokeOption) LookupSaasSubscriptionLevelResultOutput {
@@ -49,8 +56,10 @@ func LookupSaasSubscriptionLevelOutput(ctx *pulumi.Context, args LookupSaasSubsc
 }
 
 type LookupSaasSubscriptionLevelOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupSaasSubscriptionLevelOutputArgs) ElementType() reflect.Type {
@@ -72,22 +81,27 @@ func (o LookupSaasSubscriptionLevelResultOutput) ToLookupSaasSubscriptionLevelRe
 	return o
 }
 
+// The resource uri
 func (o LookupSaasSubscriptionLevelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSaasSubscriptionLevelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSaasSubscriptionLevelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSaasSubscriptionLevelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// saas properties
 func (o LookupSaasSubscriptionLevelResultOutput) Properties() SaasResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupSaasSubscriptionLevelResult) SaasResourceResponseProperties { return v.Properties }).(SaasResourceResponsePropertiesOutput)
 }
 
+// the resource tags.
 func (o LookupSaasSubscriptionLevelResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSaasSubscriptionLevelResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupSaasSubscriptionLevelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSaasSubscriptionLevelResult) string { return v.Type }).(pulumi.StringOutput)
 }

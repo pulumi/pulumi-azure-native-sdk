@@ -23,28 +23,46 @@ func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts 
 }
 
 type LookupLoadBalancerArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LoadBalancerName  string  `pulumi:"loadBalancerName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// expand references resources.
+	Expand *string `pulumi:"expand"`
+	// The name of the loadBalancer.
+	LoadBalancerName string `pulumi:"loadBalancerName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // LoadBalancer resource
 type LookupLoadBalancerResult struct {
-	BackendAddressPools      []BackendAddressPoolResponse      `pulumi:"backendAddressPools"`
-	Etag                     *string                           `pulumi:"etag"`
+	// Gets or sets Pools of backend IP addresses
+	BackendAddressPools []BackendAddressPoolResponse `pulumi:"backendAddressPools"`
+	// Gets a unique read-only string that changes whenever the resource is updated
+	Etag *string `pulumi:"etag"`
+	// Gets or sets frontend IP addresses of the load balancer
 	FrontendIPConfigurations []FrontendIPConfigurationResponse `pulumi:"frontendIPConfigurations"`
-	Id                       *string                           `pulumi:"id"`
-	InboundNatPools          []InboundNatPoolResponse          `pulumi:"inboundNatPools"`
-	InboundNatRules          []InboundNatRuleResponse          `pulumi:"inboundNatRules"`
-	LoadBalancingRules       []LoadBalancingRuleResponse       `pulumi:"loadBalancingRules"`
-	Location                 *string                           `pulumi:"location"`
-	Name                     string                            `pulumi:"name"`
-	OutboundNatRules         []OutboundNatRuleResponse         `pulumi:"outboundNatRules"`
-	Probes                   []ProbeResponse                   `pulumi:"probes"`
-	ProvisioningState        *string                           `pulumi:"provisioningState"`
-	ResourceGuid             *string                           `pulumi:"resourceGuid"`
-	Tags                     map[string]string                 `pulumi:"tags"`
-	Type                     string                            `pulumi:"type"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Gets or sets inbound NAT pools
+	InboundNatPools []InboundNatPoolResponse `pulumi:"inboundNatPools"`
+	// Gets or sets list of inbound rules
+	InboundNatRules []InboundNatRuleResponse `pulumi:"inboundNatRules"`
+	// Gets or sets load balancing rules
+	LoadBalancingRules []LoadBalancingRuleResponse `pulumi:"loadBalancingRules"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Gets or sets outbound NAT rules
+	OutboundNatRules []OutboundNatRuleResponse `pulumi:"outboundNatRules"`
+	// Gets or sets list of Load balancer probes
+	Probes []ProbeResponse `pulumi:"probes"`
+	// Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets resource guid property of the Load balancer resource
+	ResourceGuid *string `pulumi:"resourceGuid"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
@@ -61,9 +79,12 @@ func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutput
 }
 
 type LookupLoadBalancerOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LoadBalancerName  pulumi.StringInput    `pulumi:"loadBalancerName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// expand references resources.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the loadBalancer.
+	LoadBalancerName pulumi.StringInput `pulumi:"loadBalancerName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
@@ -85,62 +106,77 @@ func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithCont
 	return o
 }
 
+// Gets or sets Pools of backend IP addresses
 func (o LookupLoadBalancerResultOutput) BackendAddressPools() BackendAddressPoolResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []BackendAddressPoolResponse { return v.BackendAddressPools }).(BackendAddressPoolResponseArrayOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated
 func (o LookupLoadBalancerResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets frontend IP addresses of the load balancer
 func (o LookupLoadBalancerResultOutput) FrontendIPConfigurations() FrontendIPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []FrontendIPConfigurationResponse { return v.FrontendIPConfigurations }).(FrontendIPConfigurationResponseArrayOutput)
 }
 
+// Resource Id
 func (o LookupLoadBalancerResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets inbound NAT pools
 func (o LookupLoadBalancerResultOutput) InboundNatPools() InboundNatPoolResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []InboundNatPoolResponse { return v.InboundNatPools }).(InboundNatPoolResponseArrayOutput)
 }
 
+// Gets or sets list of inbound rules
 func (o LookupLoadBalancerResultOutput) InboundNatRules() InboundNatRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []InboundNatRuleResponse { return v.InboundNatRules }).(InboundNatRuleResponseArrayOutput)
 }
 
+// Gets or sets load balancing rules
 func (o LookupLoadBalancerResultOutput) LoadBalancingRules() LoadBalancingRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []LoadBalancingRuleResponse { return v.LoadBalancingRules }).(LoadBalancingRuleResponseArrayOutput)
 }
 
+// Resource location
 func (o LookupLoadBalancerResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupLoadBalancerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets outbound NAT rules
 func (o LookupLoadBalancerResultOutput) OutboundNatRules() OutboundNatRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []OutboundNatRuleResponse { return v.OutboundNatRules }).(OutboundNatRuleResponseArrayOutput)
 }
 
+// Gets or sets list of Load balancer probes
 func (o LookupLoadBalancerResultOutput) Probes() ProbeResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []ProbeResponse { return v.Probes }).(ProbeResponseArrayOutput)
 }
 
+// Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
 func (o LookupLoadBalancerResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets resource guid property of the Load balancer resource
 func (o LookupLoadBalancerResultOutput) ResourceGuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.ResourceGuid }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupLoadBalancerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupLoadBalancerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,27 +22,44 @@ func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChan
 }
 
 type LookupNotificationChannelArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LabName           string  `pulumi:"labName"`
-	Name              string  `pulumi:"name"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($select=webHookUrl)'
+	Expand *string `pulumi:"expand"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the notification channel.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A notification.
 type LookupNotificationChannelResult struct {
-	CreatedDate        string            `pulumi:"createdDate"`
-	Description        *string           `pulumi:"description"`
-	EmailRecipient     *string           `pulumi:"emailRecipient"`
-	Events             []EventResponse   `pulumi:"events"`
-	Id                 string            `pulumi:"id"`
-	Location           *string           `pulumi:"location"`
-	Name               string            `pulumi:"name"`
-	NotificationLocale *string           `pulumi:"notificationLocale"`
-	ProvisioningState  string            `pulumi:"provisioningState"`
-	Tags               map[string]string `pulumi:"tags"`
-	Type               string            `pulumi:"type"`
-	UniqueIdentifier   string            `pulumi:"uniqueIdentifier"`
-	WebHookUrl         *string           `pulumi:"webHookUrl"`
+	// The creation date of the notification channel.
+	CreatedDate string `pulumi:"createdDate"`
+	// Description of notification.
+	Description *string `pulumi:"description"`
+	// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
+	EmailRecipient *string `pulumi:"emailRecipient"`
+	// The list of event for which this notification is enabled.
+	Events []EventResponse `pulumi:"events"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The locale to use when sending a notification (fallback for unsupported languages is EN).
+	NotificationLocale *string `pulumi:"notificationLocale"`
+	// The provisioning status of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The unique immutable identifier of a resource (Guid).
+	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
+	// The webhook URL to send notifications to.
+	WebHookUrl *string `pulumi:"webHookUrl"`
 }
 
 func LookupNotificationChannelOutput(ctx *pulumi.Context, args LookupNotificationChannelOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationChannelResultOutput {
@@ -59,10 +76,14 @@ func LookupNotificationChannelOutput(ctx *pulumi.Context, args LookupNotificatio
 }
 
 type LookupNotificationChannelOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LabName           pulumi.StringInput    `pulumi:"labName"`
-	Name              pulumi.StringInput    `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($select=webHookUrl)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the notification channel.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNotificationChannelOutputArgs) ElementType() reflect.Type {
@@ -84,54 +105,67 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 	return o
 }
 
+// The creation date of the notification channel.
 func (o LookupNotificationChannelResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.CreatedDate }).(pulumi.StringOutput)
 }
 
+// Description of notification.
 func (o LookupNotificationChannelResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
 func (o LookupNotificationChannelResultOutput) EmailRecipient() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.EmailRecipient }).(pulumi.StringPtrOutput)
 }
 
+// The list of event for which this notification is enabled.
 func (o LookupNotificationChannelResultOutput) Events() EventResponseArrayOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) []EventResponse { return v.Events }).(EventResponseArrayOutput)
 }
 
+// The identifier of the resource.
 func (o LookupNotificationChannelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupNotificationChannelResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupNotificationChannelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The locale to use when sending a notification (fallback for unsupported languages is EN).
 func (o LookupNotificationChannelResultOutput) NotificationLocale() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.NotificationLocale }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupNotificationChannelResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The tags of the resource.
 func (o LookupNotificationChannelResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupNotificationChannelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique immutable identifier of a resource (Guid).
 func (o LookupNotificationChannelResultOutput) UniqueIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.UniqueIdentifier }).(pulumi.StringOutput)
 }
 
+// The webhook URL to send notifications to.
 func (o LookupNotificationChannelResultOutput) WebHookUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.WebHookUrl }).(pulumi.StringPtrOutput)
 }

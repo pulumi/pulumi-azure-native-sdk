@@ -21,29 +21,48 @@ func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pul
 }
 
 type LookupWorkspaceArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Information about workspace.
 type LookupWorkspaceResult struct {
-	Authorizations         []WorkspaceProviderAuthorizationResponse `pulumi:"authorizations"`
-	CreatedBy              *CreatedByResponse                       `pulumi:"createdBy"`
-	CreatedDateTime        string                                   `pulumi:"createdDateTime"`
-	Id                     string                                   `pulumi:"id"`
-	Location               string                                   `pulumi:"location"`
-	ManagedResourceGroupId string                                   `pulumi:"managedResourceGroupId"`
-	Name                   string                                   `pulumi:"name"`
-	Parameters             *WorkspaceCustomParametersResponse       `pulumi:"parameters"`
-	ProvisioningState      string                                   `pulumi:"provisioningState"`
-	Sku                    *SkuResponse                             `pulumi:"sku"`
-	StorageAccountIdentity *ManagedIdentityConfigurationResponse    `pulumi:"storageAccountIdentity"`
-	Tags                   map[string]string                        `pulumi:"tags"`
-	Type                   string                                   `pulumi:"type"`
-	UiDefinitionUri        *string                                  `pulumi:"uiDefinitionUri"`
-	UpdatedBy              *CreatedByResponse                       `pulumi:"updatedBy"`
-	WorkspaceId            string                                   `pulumi:"workspaceId"`
-	WorkspaceUrl           string                                   `pulumi:"workspaceUrl"`
+	// The workspace provider authorizations.
+	Authorizations []WorkspaceProviderAuthorizationResponse `pulumi:"authorizations"`
+	// Indicates the Object ID, PUID and Application ID of entity that created the workspace.
+	CreatedBy *CreatedByResponse `pulumi:"createdBy"`
+	// Specifies the date and time when the workspace is created.
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The managed resource group Id.
+	ManagedResourceGroupId string `pulumi:"managedResourceGroupId"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The workspace's custom parameters.
+	Parameters *WorkspaceCustomParametersResponse `pulumi:"parameters"`
+	// The workspace provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// The details of Managed Identity of Storage Account
+	StorageAccountIdentity *ManagedIdentityConfigurationResponse `pulumi:"storageAccountIdentity"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
+	// The blob URI where the UI definition file is located.
+	UiDefinitionUri *string `pulumi:"uiDefinitionUri"`
+	// Indicates the Object ID, PUID and Application ID of entity that last updated the workspace.
+	UpdatedBy *CreatedByResponse `pulumi:"updatedBy"`
+	// The unique identifier of the databricks workspace in databricks control plane.
+	WorkspaceId string `pulumi:"workspaceId"`
+	// The workspace URL which is of the format 'adb-{workspaceId}.{random}.azuredatabricks.net'
+	WorkspaceUrl string `pulumi:"workspaceUrl"`
 }
 
 // Defaults sets the appropriate defaults for LookupWorkspaceResult
@@ -71,8 +90,10 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 }
 
 type LookupWorkspaceOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupWorkspaceOutputArgs) ElementType() reflect.Type {
@@ -94,70 +115,87 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
+// The workspace provider authorizations.
 func (o LookupWorkspaceResultOutput) Authorizations() WorkspaceProviderAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []WorkspaceProviderAuthorizationResponse { return v.Authorizations }).(WorkspaceProviderAuthorizationResponseArrayOutput)
 }
 
+// Indicates the Object ID, PUID and Application ID of entity that created the workspace.
 func (o LookupWorkspaceResultOutput) CreatedBy() CreatedByResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *CreatedByResponse { return v.CreatedBy }).(CreatedByResponsePtrOutput)
 }
 
+// Specifies the date and time when the workspace is created.
 func (o LookupWorkspaceResultOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupWorkspaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The managed resource group Id.
 func (o LookupWorkspaceResultOutput) ManagedResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ManagedResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The workspace's custom parameters.
 func (o LookupWorkspaceResultOutput) Parameters() WorkspaceCustomParametersResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *WorkspaceCustomParametersResponse { return v.Parameters }).(WorkspaceCustomParametersResponsePtrOutput)
 }
 
+// The workspace provisioning state.
 func (o LookupWorkspaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU of the resource.
 func (o LookupWorkspaceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// The details of Managed Identity of Storage Account
 func (o LookupWorkspaceResultOutput) StorageAccountIdentity() ManagedIdentityConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *ManagedIdentityConfigurationResponse { return v.StorageAccountIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupWorkspaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The blob URI where the UI definition file is located.
 func (o LookupWorkspaceResultOutput) UiDefinitionUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.UiDefinitionUri }).(pulumi.StringPtrOutput)
 }
 
+// Indicates the Object ID, PUID and Application ID of entity that last updated the workspace.
 func (o LookupWorkspaceResultOutput) UpdatedBy() CreatedByResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *CreatedByResponse { return v.UpdatedBy }).(CreatedByResponsePtrOutput)
 }
 
+// The unique identifier of the databricks workspace in databricks control plane.
 func (o LookupWorkspaceResultOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
+// The workspace URL which is of the format 'adb-{workspaceId}.{random}.azuredatabricks.net'
 func (o LookupWorkspaceResultOutput) WorkspaceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.WorkspaceUrl }).(pulumi.StringOutput)
 }

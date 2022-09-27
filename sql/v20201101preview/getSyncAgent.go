@@ -21,22 +21,34 @@ func LookupSyncAgent(ctx *pulumi.Context, args *LookupSyncAgentArgs, opts ...pul
 }
 
 type LookupSyncAgentArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
-	SyncAgentName     string `pulumi:"syncAgentName"`
+	// The name of the server on which the sync agent is hosted.
+	ServerName string `pulumi:"serverName"`
+	// The name of the sync agent.
+	SyncAgentName string `pulumi:"syncAgentName"`
 }
 
 // An Azure SQL Database sync agent.
 type LookupSyncAgentResult struct {
-	ExpiryTime     string  `pulumi:"expiryTime"`
-	Id             string  `pulumi:"id"`
-	IsUpToDate     bool    `pulumi:"isUpToDate"`
-	LastAliveTime  string  `pulumi:"lastAliveTime"`
-	Name           string  `pulumi:"name"`
-	State          string  `pulumi:"state"`
+	// Expiration time of the sync agent version.
+	ExpiryTime string `pulumi:"expiryTime"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// If the sync agent version is up to date.
+	IsUpToDate bool `pulumi:"isUpToDate"`
+	// Last alive time of the sync agent.
+	LastAliveTime string `pulumi:"lastAliveTime"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// State of the sync agent.
+	State string `pulumi:"state"`
+	// ARM resource id of the sync database in the sync agent.
 	SyncDatabaseId *string `pulumi:"syncDatabaseId"`
-	Type           string  `pulumi:"type"`
-	Version        string  `pulumi:"version"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Version of the sync agent.
+	Version string `pulumi:"version"`
 }
 
 func LookupSyncAgentOutput(ctx *pulumi.Context, args LookupSyncAgentOutputArgs, opts ...pulumi.InvokeOption) LookupSyncAgentResultOutput {
@@ -53,9 +65,12 @@ func LookupSyncAgentOutput(ctx *pulumi.Context, args LookupSyncAgentOutputArgs, 
 }
 
 type LookupSyncAgentOutputArgs struct {
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
-	SyncAgentName     pulumi.StringInput `pulumi:"syncAgentName"`
+	// The name of the server on which the sync agent is hosted.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the sync agent.
+	SyncAgentName pulumi.StringInput `pulumi:"syncAgentName"`
 }
 
 func (LookupSyncAgentOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupSyncAgentResultOutput) ToLookupSyncAgentResultOutputWithContext(ct
 	return o
 }
 
+// Expiration time of the sync agent version.
 func (o LookupSyncAgentResultOutput) ExpiryTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.ExpiryTime }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSyncAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If the sync agent version is up to date.
 func (o LookupSyncAgentResultOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) bool { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
+// Last alive time of the sync agent.
 func (o LookupSyncAgentResultOutput) LastAliveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.LastAliveTime }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSyncAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of the sync agent.
 func (o LookupSyncAgentResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// ARM resource id of the sync database in the sync agent.
 func (o LookupSyncAgentResultOutput) SyncDatabaseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) *string { return v.SyncDatabaseId }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupSyncAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the sync agent.
 func (o LookupSyncAgentResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.Version }).(pulumi.StringOutput)
 }

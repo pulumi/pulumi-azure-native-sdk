@@ -21,13 +21,17 @@ func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorization
 }
 
 type ListAuthorizationServerSecretsArgs struct {
-	Authsid           string `pulumi:"authsid"`
+	// Identifier of the authorization server.
+	Authsid string `pulumi:"authsid"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 type ListAuthorizationServerSecretsResult struct {
+	// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 	ClientSecret *string `pulumi:"clientSecret"`
 }
 
@@ -45,9 +49,12 @@ func ListAuthorizationServerSecretsOutput(ctx *pulumi.Context, args ListAuthoriz
 }
 
 type ListAuthorizationServerSecretsOutputArgs struct {
-	Authsid           pulumi.StringInput `pulumi:"authsid"`
+	// Identifier of the authorization server.
+	Authsid pulumi.StringInput `pulumi:"authsid"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListAuthorizationServerSecretsOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListAuthorizationServerSecretsResultOutput) ToListAuthorizationServerSec
 	return o
 }
 
+// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
 func (o ListAuthorizationServerSecretsResultOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAuthorizationServerSecretsResult) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }

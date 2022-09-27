@@ -21,14 +21,18 @@ func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.Invo
 }
 
 type ListLabVhdsArgs struct {
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response of a list operation.
 type ListLabVhdsResult struct {
-	NextLink *string          `pulumi:"nextLink"`
-	Value    []LabVhdResponse `pulumi:"value"`
+	// Link for next set of results.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of the list operation.
+	Value []LabVhdResponse `pulumi:"value"`
 }
 
 func ListLabVhdsOutput(ctx *pulumi.Context, args ListLabVhdsOutputArgs, opts ...pulumi.InvokeOption) ListLabVhdsResultOutput {
@@ -45,7 +49,9 @@ func ListLabVhdsOutput(ctx *pulumi.Context, args ListLabVhdsOutputArgs, opts ...
 }
 
 type ListLabVhdsOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListLabVhdsResultOutput) ToListLabVhdsResultOutputWithContext(ctx contex
 	return o
 }
 
+// Link for next set of results.
 func (o ListLabVhdsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListLabVhdsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of the list operation.
 func (o ListLabVhdsResultOutput) Value() LabVhdResponseArrayOutput {
 	return o.ApplyT(func(v ListLabVhdsResult) []LabVhdResponse { return v.Value }).(LabVhdResponseArrayOutput)
 }

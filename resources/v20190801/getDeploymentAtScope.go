@@ -21,17 +21,24 @@ func LookupDeploymentAtScope(ctx *pulumi.Context, args *LookupDeploymentAtScopeA
 }
 
 type LookupDeploymentAtScopeArgs struct {
+	// The name of the deployment.
 	DeploymentName string `pulumi:"deploymentName"`
-	Scope          string `pulumi:"scope"`
+	// The scope of a deployment.
+	Scope string `pulumi:"scope"`
 }
 
 // Deployment information.
 type LookupDeploymentAtScopeResult struct {
-	Id         string                               `pulumi:"id"`
-	Location   *string                              `pulumi:"location"`
-	Name       string                               `pulumi:"name"`
+	// The ID of the deployment.
+	Id string `pulumi:"id"`
+	// the location of the deployment.
+	Location *string `pulumi:"location"`
+	// The name of the deployment.
+	Name string `pulumi:"name"`
+	// Deployment properties.
 	Properties DeploymentPropertiesExtendedResponse `pulumi:"properties"`
-	Type       string                               `pulumi:"type"`
+	// The type of the deployment.
+	Type string `pulumi:"type"`
 }
 
 func LookupDeploymentAtScopeOutput(ctx *pulumi.Context, args LookupDeploymentAtScopeOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentAtScopeResultOutput {
@@ -48,8 +55,10 @@ func LookupDeploymentAtScopeOutput(ctx *pulumi.Context, args LookupDeploymentAtS
 }
 
 type LookupDeploymentAtScopeOutputArgs struct {
+	// The name of the deployment.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
-	Scope          pulumi.StringInput `pulumi:"scope"`
+	// The scope of a deployment.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupDeploymentAtScopeOutputArgs) ElementType() reflect.Type {
@@ -71,22 +80,27 @@ func (o LookupDeploymentAtScopeResultOutput) ToLookupDeploymentAtScopeResultOutp
 	return o
 }
 
+// The ID of the deployment.
 func (o LookupDeploymentAtScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentAtScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// the location of the deployment.
 func (o LookupDeploymentAtScopeResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDeploymentAtScopeResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the deployment.
 func (o LookupDeploymentAtScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentAtScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Deployment properties.
 func (o LookupDeploymentAtScopeResultOutput) Properties() DeploymentPropertiesExtendedResponseOutput {
 	return o.ApplyT(func(v LookupDeploymentAtScopeResult) DeploymentPropertiesExtendedResponse { return v.Properties }).(DeploymentPropertiesExtendedResponseOutput)
 }
 
+// The type of the deployment.
 func (o LookupDeploymentAtScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentAtScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

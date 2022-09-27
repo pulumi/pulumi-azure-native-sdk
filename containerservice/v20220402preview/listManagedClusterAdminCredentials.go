@@ -21,13 +21,17 @@ func ListManagedClusterAdminCredentials(ctx *pulumi.Context, args *ListManagedCl
 }
 
 type ListManagedClusterAdminCredentialsArgs struct {
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ResourceName      string  `pulumi:"resourceName"`
-	ServerFqdn        *string `pulumi:"serverFqdn"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName string `pulumi:"resourceName"`
+	// server fqdn type for credentials to be returned
+	ServerFqdn *string `pulumi:"serverFqdn"`
 }
 
 // The list credential result response.
 type ListManagedClusterAdminCredentialsResult struct {
+	// Base64-encoded Kubernetes configuration file.
 	Kubeconfigs []CredentialResultResponse `pulumi:"kubeconfigs"`
 }
 
@@ -45,9 +49,12 @@ func ListManagedClusterAdminCredentialsOutput(ctx *pulumi.Context, args ListMana
 }
 
 type ListManagedClusterAdminCredentialsOutputArgs struct {
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput    `pulumi:"resourceName"`
-	ServerFqdn        pulumi.StringPtrInput `pulumi:"serverFqdn"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the managed cluster resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// server fqdn type for credentials to be returned
+	ServerFqdn pulumi.StringPtrInput `pulumi:"serverFqdn"`
 }
 
 func (ListManagedClusterAdminCredentialsOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o ListManagedClusterAdminCredentialsResultOutput) ToListManagedClusterAdmi
 	return o
 }
 
+// Base64-encoded Kubernetes configuration file.
 func (o ListManagedClusterAdminCredentialsResultOutput) Kubeconfigs() CredentialResultResponseArrayOutput {
 	return o.ApplyT(func(v ListManagedClusterAdminCredentialsResult) []CredentialResultResponse { return v.Kubeconfigs }).(CredentialResultResponseArrayOutput)
 }

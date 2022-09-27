@@ -21,19 +21,28 @@ func LookupDpsCertificate(ctx *pulumi.Context, args *LookupDpsCertificateArgs, o
 }
 
 type LookupDpsCertificateArgs struct {
-	CertificateName         string `pulumi:"certificateName"`
+	// Name of the certificate to retrieve.
+	CertificateName string `pulumi:"certificateName"`
+	// Name of the provisioning service the certificate is associated with.
 	ProvisioningServiceName string `pulumi:"provisioningServiceName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Resource group identifier.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The X509 Certificate.
 type LookupDpsCertificateResult struct {
-	Etag       string                        `pulumi:"etag"`
-	Id         string                        `pulumi:"id"`
-	Name       string                        `pulumi:"name"`
+	// The entity tag.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The name of the certificate.
+	Name string `pulumi:"name"`
+	// properties of a certificate
 	Properties CertificatePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse            `pulumi:"systemData"`
-	Type       string                        `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDpsCertificateOutput(ctx *pulumi.Context, args LookupDpsCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupDpsCertificateResultOutput {
@@ -50,9 +59,12 @@ func LookupDpsCertificateOutput(ctx *pulumi.Context, args LookupDpsCertificateOu
 }
 
 type LookupDpsCertificateOutputArgs struct {
-	CertificateName         pulumi.StringInput `pulumi:"certificateName"`
+	// Name of the certificate to retrieve.
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// Name of the provisioning service the certificate is associated with.
 	ProvisioningServiceName pulumi.StringInput `pulumi:"provisioningServiceName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Resource group identifier.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDpsCertificateOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupDpsCertificateResultOutput) ToLookupDpsCertificateResultOutputWith
 	return o
 }
 
+// The entity tag.
 func (o LookupDpsCertificateResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDpsCertificateResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupDpsCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDpsCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the certificate.
 func (o LookupDpsCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDpsCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// properties of a certificate
 func (o LookupDpsCertificateResultOutput) Properties() CertificatePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupDpsCertificateResult) CertificatePropertiesResponse { return v.Properties }).(CertificatePropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupDpsCertificateResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDpsCertificateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The resource type.
 func (o LookupDpsCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDpsCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

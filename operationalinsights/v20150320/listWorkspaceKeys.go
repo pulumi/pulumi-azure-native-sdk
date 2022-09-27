@@ -21,13 +21,17 @@ func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ..
 }
 
 type ListWorkspaceKeysArgs struct {
+	// The Resource Group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The Log Analytics Workspace name.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The shared keys for a workspace.
 type ListWorkspaceKeysResult struct {
-	PrimarySharedKey   *string `pulumi:"primarySharedKey"`
+	// The primary shared key of a workspace.
+	PrimarySharedKey *string `pulumi:"primarySharedKey"`
+	// The secondary shared key of a workspace.
 	SecondarySharedKey *string `pulumi:"secondarySharedKey"`
 }
 
@@ -45,8 +49,10 @@ func ListWorkspaceKeysOutput(ctx *pulumi.Context, args ListWorkspaceKeysOutputAr
 }
 
 type ListWorkspaceKeysOutputArgs struct {
+	// The Resource Group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The Log Analytics Workspace name.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListWorkspaceKeysOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutputWithContex
 	return o
 }
 
+// The primary shared key of a workspace.
 func (o ListWorkspaceKeysResultOutput) PrimarySharedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkspaceKeysResult) *string { return v.PrimarySharedKey }).(pulumi.StringPtrOutput)
 }
 
+// The secondary shared key of a workspace.
 func (o ListWorkspaceKeysResultOutput) SecondarySharedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWorkspaceKeysResult) *string { return v.SecondarySharedKey }).(pulumi.StringPtrOutput)
 }

@@ -21,31 +21,52 @@ func LookupWebAppInstanceFunctionSlot(ctx *pulumi.Context, args *LookupWebAppIns
 }
 
 type LookupWebAppInstanceFunctionSlotArgs struct {
-	FunctionName      string `pulumi:"functionName"`
-	Name              string `pulumi:"name"`
+	// Function name.
+	FunctionName string `pulumi:"functionName"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Function information.
 type LookupWebAppInstanceFunctionSlotResult struct {
-	Config             interface{}       `pulumi:"config"`
-	ConfigHref         *string           `pulumi:"configHref"`
-	Files              map[string]string `pulumi:"files"`
-	FunctionAppId      *string           `pulumi:"functionAppId"`
-	Href               *string           `pulumi:"href"`
-	Id                 string            `pulumi:"id"`
-	InvokeUrlTemplate  *string           `pulumi:"invokeUrlTemplate"`
-	IsDisabled         *bool             `pulumi:"isDisabled"`
-	Kind               *string           `pulumi:"kind"`
-	Language           *string           `pulumi:"language"`
-	Name               string            `pulumi:"name"`
-	ScriptHref         *string           `pulumi:"scriptHref"`
-	ScriptRootPathHref *string           `pulumi:"scriptRootPathHref"`
-	SecretsFileHref    *string           `pulumi:"secretsFileHref"`
-	TestData           *string           `pulumi:"testData"`
-	TestDataHref       *string           `pulumi:"testDataHref"`
-	Type               string            `pulumi:"type"`
+	// Config information.
+	Config interface{} `pulumi:"config"`
+	// Config URI.
+	ConfigHref *string `pulumi:"configHref"`
+	// File list.
+	Files map[string]string `pulumi:"files"`
+	// Function App ID.
+	FunctionAppId *string `pulumi:"functionAppId"`
+	// Function URI.
+	Href *string `pulumi:"href"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// The invocation URL
+	InvokeUrlTemplate *string `pulumi:"invokeUrlTemplate"`
+	// Value indicating whether the function is disabled
+	IsDisabled *bool `pulumi:"isDisabled"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// The function language
+	Language *string `pulumi:"language"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Script URI.
+	ScriptHref *string `pulumi:"scriptHref"`
+	// Script root path URI.
+	ScriptRootPathHref *string `pulumi:"scriptRootPathHref"`
+	// Secrets file URI.
+	SecretsFileHref *string `pulumi:"secretsFileHref"`
+	// Test data used when testing via the Azure Portal.
+	TestData *string `pulumi:"testData"`
+	// Test data URI.
+	TestDataHref *string `pulumi:"testDataHref"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppInstanceFunctionSlotOutput(ctx *pulumi.Context, args LookupWebAppInstanceFunctionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppInstanceFunctionSlotResultOutput {
@@ -62,10 +83,14 @@ func LookupWebAppInstanceFunctionSlotOutput(ctx *pulumi.Context, args LookupWebA
 }
 
 type LookupWebAppInstanceFunctionSlotOutputArgs struct {
-	FunctionName      pulumi.StringInput `pulumi:"functionName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Function name.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupWebAppInstanceFunctionSlotOutputArgs) ElementType() reflect.Type {
@@ -87,70 +112,87 @@ func (o LookupWebAppInstanceFunctionSlotResultOutput) ToLookupWebAppInstanceFunc
 	return o
 }
 
+// Config information.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Config() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) interface{} { return v.Config }).(pulumi.AnyOutput)
 }
 
+// Config URI.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) ConfigHref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.ConfigHref }).(pulumi.StringPtrOutput)
 }
 
+// File list.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Files() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) map[string]string { return v.Files }).(pulumi.StringMapOutput)
 }
 
+// Function App ID.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) FunctionAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.FunctionAppId }).(pulumi.StringPtrOutput)
 }
 
+// Function URI.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The invocation URL
 func (o LookupWebAppInstanceFunctionSlotResultOutput) InvokeUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.InvokeUrlTemplate }).(pulumi.StringPtrOutput)
 }
 
+// Value indicating whether the function is disabled
 func (o LookupWebAppInstanceFunctionSlotResultOutput) IsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *bool { return v.IsDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The function language
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.Language }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Script URI.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) ScriptHref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.ScriptHref }).(pulumi.StringPtrOutput)
 }
 
+// Script root path URI.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) ScriptRootPathHref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.ScriptRootPathHref }).(pulumi.StringPtrOutput)
 }
 
+// Secrets file URI.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) SecretsFileHref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.SecretsFileHref }).(pulumi.StringPtrOutput)
 }
 
+// Test data used when testing via the Azure Portal.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) TestData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.TestData }).(pulumi.StringPtrOutput)
 }
 
+// Test data URI.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) TestDataHref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) *string { return v.TestDataHref }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppInstanceFunctionSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

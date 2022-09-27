@@ -22,23 +22,37 @@ func LookupPolicyAssignmentArtifact(ctx *pulumi.Context, args *LookupPolicyAssig
 }
 
 type LookupPolicyAssignmentArtifactArgs struct {
-	ArtifactName  string `pulumi:"artifactName"`
+	// Name of the blueprint artifact.
+	ArtifactName string `pulumi:"artifactName"`
+	// Name of the blueprint definition.
 	BlueprintName string `pulumi:"blueprintName"`
+	// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
 	ResourceScope string `pulumi:"resourceScope"`
 }
 
 // Blueprint artifact that applies a Policy assignment.
 type LookupPolicyAssignmentArtifactResult struct {
-	DependsOn          []string                          `pulumi:"dependsOn"`
-	Description        *string                           `pulumi:"description"`
-	DisplayName        *string                           `pulumi:"displayName"`
-	Id                 string                            `pulumi:"id"`
-	Kind               string                            `pulumi:"kind"`
-	Name               string                            `pulumi:"name"`
-	Parameters         map[string]ParameterValueResponse `pulumi:"parameters"`
-	PolicyDefinitionId string                            `pulumi:"policyDefinitionId"`
-	ResourceGroup      *string                           `pulumi:"resourceGroup"`
-	Type               string                            `pulumi:"type"`
+	// Artifacts which need to be deployed before the specified artifact.
+	DependsOn []string `pulumi:"dependsOn"`
+	// Multi-line explain this resource.
+	Description *string `pulumi:"description"`
+	// One-liner string explain this resource.
+	DisplayName *string `pulumi:"displayName"`
+	// String Id used to locate any resource on Azure.
+	Id string `pulumi:"id"`
+	// Specifies the kind of blueprint artifact.
+	// Expected value is 'policyAssignment'.
+	Kind string `pulumi:"kind"`
+	// Name of this resource.
+	Name string `pulumi:"name"`
+	// Parameter values for the policy definition.
+	Parameters map[string]ParameterValueResponse `pulumi:"parameters"`
+	// Azure resource ID of the policy definition.
+	PolicyDefinitionId string `pulumi:"policyDefinitionId"`
+	// Name of the resource group placeholder to which the policy will be assigned.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Type of this resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPolicyAssignmentArtifactOutput(ctx *pulumi.Context, args LookupPolicyAssignmentArtifactOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyAssignmentArtifactResultOutput {
@@ -55,8 +69,11 @@ func LookupPolicyAssignmentArtifactOutput(ctx *pulumi.Context, args LookupPolicy
 }
 
 type LookupPolicyAssignmentArtifactOutputArgs struct {
-	ArtifactName  pulumi.StringInput `pulumi:"artifactName"`
+	// Name of the blueprint artifact.
+	ArtifactName pulumi.StringInput `pulumi:"artifactName"`
+	// Name of the blueprint definition.
 	BlueprintName pulumi.StringInput `pulumi:"blueprintName"`
+	// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
 	ResourceScope pulumi.StringInput `pulumi:"resourceScope"`
 }
 
@@ -79,42 +96,53 @@ func (o LookupPolicyAssignmentArtifactResultOutput) ToLookupPolicyAssignmentArti
 	return o
 }
 
+// Artifacts which need to be deployed before the specified artifact.
 func (o LookupPolicyAssignmentArtifactResultOutput) DependsOn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) []string { return v.DependsOn }).(pulumi.StringArrayOutput)
 }
 
+// Multi-line explain this resource.
 func (o LookupPolicyAssignmentArtifactResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// One-liner string explain this resource.
 func (o LookupPolicyAssignmentArtifactResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// String Id used to locate any resource on Azure.
 func (o LookupPolicyAssignmentArtifactResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies the kind of blueprint artifact.
+// Expected value is 'policyAssignment'.
 func (o LookupPolicyAssignmentArtifactResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Name of this resource.
 func (o LookupPolicyAssignmentArtifactResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Parameter values for the policy definition.
 func (o LookupPolicyAssignmentArtifactResultOutput) Parameters() ParameterValueResponseMapOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) map[string]ParameterValueResponse { return v.Parameters }).(ParameterValueResponseMapOutput)
 }
 
+// Azure resource ID of the policy definition.
 func (o LookupPolicyAssignmentArtifactResultOutput) PolicyDefinitionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) string { return v.PolicyDefinitionId }).(pulumi.StringOutput)
 }
 
+// Name of the resource group placeholder to which the policy will be assigned.
 func (o LookupPolicyAssignmentArtifactResultOutput) ResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
 }
 
+// Type of this resource.
 func (o LookupPolicyAssignmentArtifactResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) string { return v.Type }).(pulumi.StringOutput)
 }

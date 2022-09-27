@@ -23,16 +23,23 @@ func LookupIotHubResourceEventHubConsumerGroup(ctx *pulumi.Context, args *Lookup
 }
 
 type LookupIotHubResourceEventHubConsumerGroupArgs struct {
+	// The name of the Event Hub-compatible endpoint in the IoT hub.
 	EventHubEndpointName string `pulumi:"eventHubEndpointName"`
-	Name                 string `pulumi:"name"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
-	ResourceName         string `pulumi:"resourceName"`
+	// The name of the consumer group to retrieve.
+	Name string `pulumi:"name"`
+	// The name of the resource group that contains the IoT hub.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the IoT hub.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The properties of the EventHubConsumerGroupInfo object.
 type LookupIotHubResourceEventHubConsumerGroupResult struct {
-	Id   *string           `pulumi:"id"`
-	Name *string           `pulumi:"name"`
+	// The Event Hub-compatible consumer group identifier.
+	Id *string `pulumi:"id"`
+	// The Event Hub-compatible consumer group name.
+	Name *string `pulumi:"name"`
+	// The tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -50,10 +57,14 @@ func LookupIotHubResourceEventHubConsumerGroupOutput(ctx *pulumi.Context, args L
 }
 
 type LookupIotHubResourceEventHubConsumerGroupOutputArgs struct {
+	// The name of the Event Hub-compatible endpoint in the IoT hub.
 	EventHubEndpointName pulumi.StringInput `pulumi:"eventHubEndpointName"`
-	Name                 pulumi.StringInput `pulumi:"name"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName         pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the consumer group to retrieve.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group that contains the IoT hub.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the IoT hub.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupIotHubResourceEventHubConsumerGroupOutputArgs) ElementType() reflect.Type {
@@ -75,14 +86,17 @@ func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) ToLookupIotHubRes
 	return o
 }
 
+// The Event Hub-compatible consumer group identifier.
 func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubResourceEventHubConsumerGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The Event Hub-compatible consumer group name.
 func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIotHubResourceEventHubConsumerGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The tags.
 func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIotHubResourceEventHubConsumerGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -21,22 +21,34 @@ func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opt
 }
 
 type LookupConfigurationArgs struct {
+	// The name of the server configuration.
 	ConfigurationName string `pulumi:"configurationName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents a Configuration.
 type LookupConfigurationResult struct {
-	AllowedValues string  `pulumi:"allowedValues"`
-	DataType      string  `pulumi:"dataType"`
-	DefaultValue  string  `pulumi:"defaultValue"`
-	Description   string  `pulumi:"description"`
-	Id            string  `pulumi:"id"`
-	Name          string  `pulumi:"name"`
-	Source        *string `pulumi:"source"`
-	Type          string  `pulumi:"type"`
-	Value         *string `pulumi:"value"`
+	// Allowed values of the configuration.
+	AllowedValues string `pulumi:"allowedValues"`
+	// Data type of the configuration.
+	DataType string `pulumi:"dataType"`
+	// Default value of the configuration.
+	DefaultValue string `pulumi:"defaultValue"`
+	// Description of the configuration.
+	Description string `pulumi:"description"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Source of the configuration.
+	Source *string `pulumi:"source"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Value of the configuration.
+	Value *string `pulumi:"value"`
 }
 
 func LookupConfigurationOutput(ctx *pulumi.Context, args LookupConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationResultOutput {
@@ -53,9 +65,12 @@ func LookupConfigurationOutput(ctx *pulumi.Context, args LookupConfigurationOutp
 }
 
 type LookupConfigurationOutputArgs struct {
+	// The name of the server configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupConfigurationOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupConfigurationResultOutput) ToLookupConfigurationResultOutputWithCo
 	return o
 }
 
+// Allowed values of the configuration.
 func (o LookupConfigurationResultOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AllowedValues }).(pulumi.StringOutput)
 }
 
+// Data type of the configuration.
 func (o LookupConfigurationResultOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DataType }).(pulumi.StringOutput)
 }
 
+// Default value of the configuration.
 func (o LookupConfigurationResultOutput) DefaultValue() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DefaultValue }).(pulumi.StringOutput)
 }
 
+// Description of the configuration.
 func (o LookupConfigurationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Source of the configuration.
 func (o LookupConfigurationResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Value of the configuration.
 func (o LookupConfigurationResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

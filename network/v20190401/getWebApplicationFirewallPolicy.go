@@ -21,23 +21,36 @@ func LookupWebApplicationFirewallPolicy(ctx *pulumi.Context, args *LookupWebAppl
 }
 
 type LookupWebApplicationFirewallPolicyArgs struct {
-	PolicyName        string `pulumi:"policyName"`
+	// The name of the policy.
+	PolicyName string `pulumi:"policyName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Defines web application firewall policy.
 type LookupWebApplicationFirewallPolicyResult struct {
-	ApplicationGateways []ApplicationGatewayResponse               `pulumi:"applicationGateways"`
-	CustomRules         []WebApplicationFirewallCustomRuleResponse `pulumi:"customRules"`
-	Etag                *string                                    `pulumi:"etag"`
-	Id                  *string                                    `pulumi:"id"`
-	Location            *string                                    `pulumi:"location"`
-	Name                string                                     `pulumi:"name"`
-	PolicySettings      *PolicySettingsResponse                    `pulumi:"policySettings"`
-	ProvisioningState   string                                     `pulumi:"provisioningState"`
-	ResourceState       string                                     `pulumi:"resourceState"`
-	Tags                map[string]string                          `pulumi:"tags"`
-	Type                string                                     `pulumi:"type"`
+	// A collection of references to application gateways.
+	ApplicationGateways []ApplicationGatewayResponse `pulumi:"applicationGateways"`
+	// Describes custom rules inside the policy.
+	CustomRules []WebApplicationFirewallCustomRuleResponse `pulumi:"customRules"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Describes policySettings for policy.
+	PolicySettings *PolicySettingsResponse `pulumi:"policySettings"`
+	// Provisioning state of the WebApplicationFirewallPolicy.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource status of the policy.
+	ResourceState string `pulumi:"resourceState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebApplicationFirewallPolicyOutput(ctx *pulumi.Context, args LookupWebApplicationFirewallPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebApplicationFirewallPolicyResultOutput {
@@ -54,7 +67,9 @@ func LookupWebApplicationFirewallPolicyOutput(ctx *pulumi.Context, args LookupWe
 }
 
 type LookupWebApplicationFirewallPolicyOutputArgs struct {
-	PolicyName        pulumi.StringInput `pulumi:"policyName"`
+	// The name of the policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,50 +92,61 @@ func (o LookupWebApplicationFirewallPolicyResultOutput) ToLookupWebApplicationFi
 	return o
 }
 
+// A collection of references to application gateways.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ApplicationGateways() ApplicationGatewayResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []ApplicationGatewayResponse {
 		return v.ApplicationGateways
 	}).(ApplicationGatewayResponseArrayOutput)
 }
 
+// Describes custom rules inside the policy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) CustomRules() WebApplicationFirewallCustomRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []WebApplicationFirewallCustomRuleResponse {
 		return v.CustomRules
 	}).(WebApplicationFirewallCustomRuleResponseArrayOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Describes policySettings for policy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) PolicySettings() PolicySettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) *PolicySettingsResponse { return v.PolicySettings }).(PolicySettingsResponsePtrOutput)
 }
 
+// Provisioning state of the WebApplicationFirewallPolicy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource status of the policy.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupWebApplicationFirewallPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

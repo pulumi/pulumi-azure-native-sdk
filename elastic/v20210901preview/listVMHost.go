@@ -21,14 +21,18 @@ func ListVMHost(ctx *pulumi.Context, args *ListVMHostArgs, opts ...pulumi.Invoke
 }
 
 type ListVMHostArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list operation.
 type ListVMHostResult struct {
-	NextLink *string               `pulumi:"nextLink"`
-	Value    []VMResourcesResponse `pulumi:"value"`
+	// Link to the next Vm resource Id, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of a list operation.
+	Value []VMResourcesResponse `pulumi:"value"`
 }
 
 func ListVMHostOutput(ctx *pulumi.Context, args ListVMHostOutputArgs, opts ...pulumi.InvokeOption) ListVMHostResultOutput {
@@ -45,7 +49,9 @@ func ListVMHostOutput(ctx *pulumi.Context, args ListVMHostOutputArgs, opts ...pu
 }
 
 type ListVMHostOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListVMHostResultOutput) ToListVMHostResultOutputWithContext(ctx context.
 	return o
 }
 
+// Link to the next Vm resource Id, if any.
 func (o ListVMHostResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListVMHostResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of a list operation.
 func (o ListVMHostResultOutput) Value() VMResourcesResponseArrayOutput {
 	return o.ApplyT(func(v ListVMHostResult) []VMResourcesResponse { return v.Value }).(VMResourcesResponseArrayOutput)
 }

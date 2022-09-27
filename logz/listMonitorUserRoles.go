@@ -22,15 +22,20 @@ func ListMonitorUserRoles(ctx *pulumi.Context, args *ListMonitorUserRolesArgs, o
 }
 
 type ListMonitorUserRolesArgs struct {
-	EmailAddress      *string `pulumi:"emailAddress"`
-	MonitorName       string  `pulumi:"monitorName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// Email of the user used by Logz for contacting them if needed
+	EmailAddress *string `pulumi:"emailAddress"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response for list of user's role for Logz.io account.
 type ListMonitorUserRolesResult struct {
-	NextLink *string                    `pulumi:"nextLink"`
-	Value    []UserRoleResponseResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// List of user roles for Logz.io account.
+	Value []UserRoleResponseResponse `pulumi:"value"`
 }
 
 func ListMonitorUserRolesOutput(ctx *pulumi.Context, args ListMonitorUserRolesOutputArgs, opts ...pulumi.InvokeOption) ListMonitorUserRolesResultOutput {
@@ -47,9 +52,12 @@ func ListMonitorUserRolesOutput(ctx *pulumi.Context, args ListMonitorUserRolesOu
 }
 
 type ListMonitorUserRolesOutputArgs struct {
-	EmailAddress      pulumi.StringPtrInput `pulumi:"emailAddress"`
-	MonitorName       pulumi.StringInput    `pulumi:"monitorName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Email of the user used by Logz for contacting them if needed
+	EmailAddress pulumi.StringPtrInput `pulumi:"emailAddress"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListMonitorUserRolesOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListMonitorUserRolesResultOutput) ToListMonitorUserRolesResultOutputWith
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitorUserRolesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitorUserRolesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of user roles for Logz.io account.
 func (o ListMonitorUserRolesResultOutput) Value() UserRoleResponseResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitorUserRolesResult) []UserRoleResponseResponse { return v.Value }).(UserRoleResponseResponseArrayOutput)
 }

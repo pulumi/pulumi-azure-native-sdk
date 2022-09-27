@@ -22,18 +22,26 @@ func LookupManagementLockByScope(ctx *pulumi.Context, args *LookupManagementLock
 }
 
 type LookupManagementLockByScopeArgs struct {
+	// The name of lock.
 	LockName string `pulumi:"lockName"`
-	Scope    string `pulumi:"scope"`
+	// The scope for the lock.
+	Scope string `pulumi:"scope"`
 }
 
 // The lock information.
 type LookupManagementLockByScopeResult struct {
-	Id     string                        `pulumi:"id"`
-	Level  string                        `pulumi:"level"`
-	Name   string                        `pulumi:"name"`
-	Notes  *string                       `pulumi:"notes"`
+	// The resource ID of the lock.
+	Id string `pulumi:"id"`
+	// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
+	Level string `pulumi:"level"`
+	// The name of the lock.
+	Name string `pulumi:"name"`
+	// Notes about the lock. Maximum of 512 characters.
+	Notes *string `pulumi:"notes"`
+	// The owners of the lock.
 	Owners []ManagementLockOwnerResponse `pulumi:"owners"`
-	Type   string                        `pulumi:"type"`
+	// The resource type of the lock - Microsoft.Authorization/locks.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementLockByScopeOutput(ctx *pulumi.Context, args LookupManagementLockByScopeOutputArgs, opts ...pulumi.InvokeOption) LookupManagementLockByScopeResultOutput {
@@ -50,8 +58,10 @@ func LookupManagementLockByScopeOutput(ctx *pulumi.Context, args LookupManagemen
 }
 
 type LookupManagementLockByScopeOutputArgs struct {
+	// The name of lock.
 	LockName pulumi.StringInput `pulumi:"lockName"`
-	Scope    pulumi.StringInput `pulumi:"scope"`
+	// The scope for the lock.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupManagementLockByScopeOutputArgs) ElementType() reflect.Type {
@@ -73,26 +83,32 @@ func (o LookupManagementLockByScopeResultOutput) ToLookupManagementLockByScopeRe
 	return o
 }
 
+// The resource ID of the lock.
 func (o LookupManagementLockByScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockByScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
 func (o LookupManagementLockByScopeResultOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockByScopeResult) string { return v.Level }).(pulumi.StringOutput)
 }
 
+// The name of the lock.
 func (o LookupManagementLockByScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockByScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Notes about the lock. Maximum of 512 characters.
 func (o LookupManagementLockByScopeResultOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementLockByScopeResult) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// The owners of the lock.
 func (o LookupManagementLockByScopeResultOutput) Owners() ManagementLockOwnerResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagementLockByScopeResult) []ManagementLockOwnerResponse { return v.Owners }).(ManagementLockOwnerResponseArrayOutput)
 }
 
+// The resource type of the lock - Microsoft.Authorization/locks.
 func (o LookupManagementLockByScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockByScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

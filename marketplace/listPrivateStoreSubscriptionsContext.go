@@ -22,6 +22,7 @@ func ListPrivateStoreSubscriptionsContext(ctx *pulumi.Context, args *ListPrivate
 }
 
 type ListPrivateStoreSubscriptionsContextArgs struct {
+	// The store ID - must use the tenant ID
 	PrivateStoreId string `pulumi:"privateStoreId"`
 }
 
@@ -44,6 +45,7 @@ func ListPrivateStoreSubscriptionsContextOutput(ctx *pulumi.Context, args ListPr
 }
 
 type ListPrivateStoreSubscriptionsContextOutputArgs struct {
+	// The store ID - must use the tenant ID
 	PrivateStoreId pulumi.StringInput `pulumi:"privateStoreId"`
 }
 

@@ -22,13 +22,17 @@ func GetVirtualMachineRdpFileContents(ctx *pulumi.Context, args *GetVirtualMachi
 }
 
 type GetVirtualMachineRdpFileContentsArgs struct {
-	LabName           string `pulumi:"labName"`
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the virtual machine.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a .rdp file
 type GetVirtualMachineRdpFileContentsResult struct {
+	// The contents of the .rdp file
 	Contents *string `pulumi:"contents"`
 }
 
@@ -46,8 +50,11 @@ func GetVirtualMachineRdpFileContentsOutput(ctx *pulumi.Context, args GetVirtual
 }
 
 type GetVirtualMachineRdpFileContentsOutputArgs struct {
-	LabName           pulumi.StringInput `pulumi:"labName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the virtual machine.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,6 +77,7 @@ func (o GetVirtualMachineRdpFileContentsResultOutput) ToGetVirtualMachineRdpFile
 	return o
 }
 
+// The contents of the .rdp file
 func (o GetVirtualMachineRdpFileContentsResultOutput) Contents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachineRdpFileContentsResult) *string { return v.Contents }).(pulumi.StringPtrOutput)
 }

@@ -21,19 +21,28 @@ func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pul
 }
 
 type LookupDashboardArgs struct {
-	DashboardName     string `pulumi:"dashboardName"`
+	// The name of the dashboard.
+	DashboardName string `pulumi:"dashboardName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The shared dashboard resource definition.
 type LookupDashboardResult struct {
-	Id       string                           `pulumi:"id"`
-	Lenses   map[string]DashboardLensResponse `pulumi:"lenses"`
-	Location string                           `pulumi:"location"`
-	Metadata map[string]interface{}           `pulumi:"metadata"`
-	Name     string                           `pulumi:"name"`
-	Tags     map[string]string                `pulumi:"tags"`
-	Type     string                           `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The dashboard lenses.
+	Lenses map[string]DashboardLensResponse `pulumi:"lenses"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// The dashboard metadata.
+	Metadata map[string]interface{} `pulumi:"metadata"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDashboardOutput(ctx *pulumi.Context, args LookupDashboardOutputArgs, opts ...pulumi.InvokeOption) LookupDashboardResultOutput {
@@ -50,7 +59,9 @@ func LookupDashboardOutput(ctx *pulumi.Context, args LookupDashboardOutputArgs, 
 }
 
 type LookupDashboardOutputArgs struct {
-	DashboardName     pulumi.StringInput `pulumi:"dashboardName"`
+	// The name of the dashboard.
+	DashboardName pulumi.StringInput `pulumi:"dashboardName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,30 +84,37 @@ func (o LookupDashboardResultOutput) ToLookupDashboardResultOutputWithContext(ct
 	return o
 }
 
+// Resource Id
 func (o LookupDashboardResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The dashboard lenses.
 func (o LookupDashboardResultOutput) Lenses() DashboardLensResponseMapOutput {
 	return o.ApplyT(func(v LookupDashboardResult) map[string]DashboardLensResponse { return v.Lenses }).(DashboardLensResponseMapOutput)
 }
 
+// Resource location
 func (o LookupDashboardResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The dashboard metadata.
 func (o LookupDashboardResultOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupDashboardResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
 
+// Resource name
 func (o LookupDashboardResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupDashboardResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDashboardResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupDashboardResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Type }).(pulumi.StringOutput)
 }

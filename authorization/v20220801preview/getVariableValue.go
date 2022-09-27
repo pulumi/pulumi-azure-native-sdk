@@ -21,17 +21,24 @@ func LookupVariableValue(ctx *pulumi.Context, args *LookupVariableValueArgs, opt
 }
 
 type LookupVariableValueArgs struct {
-	VariableName      string `pulumi:"variableName"`
+	// The name of the variable to operate on.
+	VariableName string `pulumi:"variableName"`
+	// The name of the variable value to operate on.
 	VariableValueName string `pulumi:"variableValueName"`
 }
 
 // The variable value.
 type LookupVariableValueResult struct {
-	Id         string                                   `pulumi:"id"`
-	Name       string                                   `pulumi:"name"`
-	SystemData SystemDataResponse                       `pulumi:"systemData"`
-	Type       string                                   `pulumi:"type"`
-	Values     []PolicyVariableValueColumnValueResponse `pulumi:"values"`
+	// The ID of the variable.
+	Id string `pulumi:"id"`
+	// The name of the variable.
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource (Microsoft.Authorization/variables/values).
+	Type string `pulumi:"type"`
+	// Variable value column value array.
+	Values []PolicyVariableValueColumnValueResponse `pulumi:"values"`
 }
 
 func LookupVariableValueOutput(ctx *pulumi.Context, args LookupVariableValueOutputArgs, opts ...pulumi.InvokeOption) LookupVariableValueResultOutput {
@@ -48,7 +55,9 @@ func LookupVariableValueOutput(ctx *pulumi.Context, args LookupVariableValueOutp
 }
 
 type LookupVariableValueOutputArgs struct {
-	VariableName      pulumi.StringInput `pulumi:"variableName"`
+	// The name of the variable to operate on.
+	VariableName pulumi.StringInput `pulumi:"variableName"`
+	// The name of the variable value to operate on.
 	VariableValueName pulumi.StringInput `pulumi:"variableValueName"`
 }
 
@@ -71,22 +80,27 @@ func (o LookupVariableValueResultOutput) ToLookupVariableValueResultOutputWithCo
 	return o
 }
 
+// The ID of the variable.
 func (o LookupVariableValueResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableValueResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the variable.
 func (o LookupVariableValueResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableValueResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupVariableValueResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVariableValueResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource (Microsoft.Authorization/variables/values).
 func (o LookupVariableValueResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableValueResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Variable value column value array.
 func (o LookupVariableValueResultOutput) Values() PolicyVariableValueColumnValueResponseArrayOutput {
 	return o.ApplyT(func(v LookupVariableValueResult) []PolicyVariableValueColumnValueResponse { return v.Values }).(PolicyVariableValueColumnValueResponseArrayOutput)
 }

@@ -22,18 +22,25 @@ func GetazureADMetric(ctx *pulumi.Context, args *GetazureADMetricArgs, opts ...p
 }
 
 type GetazureADMetricArgs struct {
+	// Name of the azureADMetrics instance.
 	AzureADMetricsName string `pulumi:"azureADMetricsName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// Name of an Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // AzureADMetrics resource.
 type GetazureADMetricResult struct {
-	Id         string                                 `pulumi:"id"`
-	Location   string                                 `pulumi:"location"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
 	Name       string                                 `pulumi:"name"`
 	Properties AzureADMetricsPropertiesFormatResponse `pulumi:"properties"`
-	Tags       map[string]string                      `pulumi:"tags"`
-	Type       string                                 `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func GetazureADMetricOutput(ctx *pulumi.Context, args GetazureADMetricOutputArgs, opts ...pulumi.InvokeOption) GetazureADMetricResultOutput {
@@ -50,8 +57,10 @@ func GetazureADMetricOutput(ctx *pulumi.Context, args GetazureADMetricOutputArgs
 }
 
 type GetazureADMetricOutputArgs struct {
+	// Name of the azureADMetrics instance.
 	AzureADMetricsName pulumi.StringInput `pulumi:"azureADMetricsName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of an Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetazureADMetricOutputArgs) ElementType() reflect.Type {
@@ -73,14 +82,17 @@ func (o GetazureADMetricResultOutput) ToGetazureADMetricResultOutputWithContext(
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o GetazureADMetricResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetazureADMetricResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o GetazureADMetricResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetazureADMetricResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o GetazureADMetricResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetazureADMetricResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -89,10 +101,12 @@ func (o GetazureADMetricResultOutput) Properties() AzureADMetricsPropertiesForma
 	return o.ApplyT(func(v GetazureADMetricResult) AzureADMetricsPropertiesFormatResponse { return v.Properties }).(AzureADMetricsPropertiesFormatResponseOutput)
 }
 
+// Resource tags.
 func (o GetazureADMetricResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetazureADMetricResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GetazureADMetricResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetazureADMetricResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,19 +22,28 @@ func LookupPrivateLinkHub(ctx *pulumi.Context, args *LookupPrivateLinkHubArgs, o
 }
 
 type LookupPrivateLinkHubArgs struct {
+	// Name of the privateLinkHub
 	PrivateLinkHubName string `pulumi:"privateLinkHubName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A privateLinkHub
 type LookupPrivateLinkHubResult struct {
-	Id                         string                                                    `pulumi:"id"`
-	Location                   string                                                    `pulumi:"location"`
-	Name                       string                                                    `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// List of private endpoint connections
 	PrivateEndpointConnections []PrivateEndpointConnectionForPrivateLinkHubBasicResponse `pulumi:"privateEndpointConnections"`
-	ProvisioningState          *string                                                   `pulumi:"provisioningState"`
-	Tags                       map[string]string                                         `pulumi:"tags"`
-	Type                       string                                                    `pulumi:"type"`
+	// PrivateLinkHub provisioning state
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateLinkHubOutput(ctx *pulumi.Context, args LookupPrivateLinkHubOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkHubResultOutput {
@@ -51,8 +60,10 @@ func LookupPrivateLinkHubOutput(ctx *pulumi.Context, args LookupPrivateLinkHubOu
 }
 
 type LookupPrivateLinkHubOutputArgs struct {
+	// Name of the privateLinkHub
 	PrivateLinkHubName pulumi.StringInput `pulumi:"privateLinkHubName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateLinkHubOutputArgs) ElementType() reflect.Type {
@@ -74,32 +85,39 @@ func (o LookupPrivateLinkHubResultOutput) ToLookupPrivateLinkHubResultOutputWith
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateLinkHubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupPrivateLinkHubResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPrivateLinkHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections
 func (o LookupPrivateLinkHubResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) []PrivateEndpointConnectionForPrivateLinkHubBasicResponse {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput)
 }
 
+// PrivateLinkHub provisioning state
 func (o LookupPrivateLinkHubResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupPrivateLinkHubResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateLinkHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkHubResult) string { return v.Type }).(pulumi.StringOutput)
 }
