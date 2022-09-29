@@ -23,25 +23,40 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 }
 
 type LookupProjectArgs struct {
-	GroupName   string `pulumi:"groupName"`
+	// Name of the resource group
+	GroupName string `pulumi:"groupName"`
+	// Name of the project
 	ProjectName string `pulumi:"projectName"`
+	// Name of the service
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A project resource
 type LookupProjectResult struct {
-	CreationTime         string                     `pulumi:"creationTime"`
-	DatabasesInfo        []DatabaseInfoResponse     `pulumi:"databasesInfo"`
-	Id                   string                     `pulumi:"id"`
-	Location             string                     `pulumi:"location"`
-	Name                 string                     `pulumi:"name"`
-	ProvisioningState    string                     `pulumi:"provisioningState"`
+	// UTC Date and time when project was created
+	CreationTime string `pulumi:"creationTime"`
+	// List of DatabaseInfo
+	DatabasesInfo []DatabaseInfoResponse `pulumi:"databasesInfo"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The project's provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Information for connecting to source
 	SourceConnectionInfo *SqlConnectionInfoResponse `pulumi:"sourceConnectionInfo"`
-	SourcePlatform       string                     `pulumi:"sourcePlatform"`
-	Tags                 map[string]string          `pulumi:"tags"`
+	// Source platform for the project
+	SourcePlatform string `pulumi:"sourcePlatform"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Information for connecting to target
 	TargetConnectionInfo *SqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
-	TargetPlatform       string                     `pulumi:"targetPlatform"`
-	Type                 string                     `pulumi:"type"`
+	// Target platform for the project
+	TargetPlatform string `pulumi:"targetPlatform"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupProjectResult
@@ -71,8 +86,11 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 }
 
 type LookupProjectOutputArgs struct {
-	GroupName   pulumi.StringInput `pulumi:"groupName"`
+	// Name of the resource group
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the project
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the service
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -95,50 +113,62 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// UTC Date and time when project was created
 func (o LookupProjectResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// List of DatabaseInfo
 func (o LookupProjectResultOutput) DatabasesInfo() DatabaseInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []DatabaseInfoResponse { return v.DatabasesInfo }).(DatabaseInfoResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupProjectResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The project's provisioning state
 func (o LookupProjectResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Information for connecting to source
 func (o LookupProjectResultOutput) SourceConnectionInfo() SqlConnectionInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *SqlConnectionInfoResponse { return v.SourceConnectionInfo }).(SqlConnectionInfoResponsePtrOutput)
 }
 
+// Source platform for the project
 func (o LookupProjectResultOutput) SourcePlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SourcePlatform }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupProjectResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Information for connecting to target
 func (o LookupProjectResultOutput) TargetConnectionInfo() SqlConnectionInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *SqlConnectionInfoResponse { return v.TargetConnectionInfo }).(SqlConnectionInfoResponsePtrOutput)
 }
 
+// Target platform for the project
 func (o LookupProjectResultOutput) TargetPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.TargetPlatform }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,21 +22,32 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
-	ClusterName                   string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A private endpoint connection
 type LookupPrivateEndpointConnectionResult struct {
-	GroupId                           string                                            `pulumi:"groupId"`
-	Id                                string                                            `pulumi:"id"`
-	Name                              string                                            `pulumi:"name"`
-	PrivateEndpoint                   PrivateEndpointPropertyResponse                   `pulumi:"privateEndpoint"`
+	// Group id of the private endpoint.
+	GroupId string `pulumi:"groupId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Private endpoint which the connection belongs to.
+	PrivateEndpoint PrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
+	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePropertyResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                            `pulumi:"provisioningState"`
-	SystemData                        SystemDataResponse                                `pulumi:"systemData"`
-	Type                              string                                            `pulumi:"type"`
+	// Provisioning state of the private endpoint.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
@@ -53,9 +64,12 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
-	ClusterName                   pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -77,38 +91,46 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 	return o
 }
 
+// Group id of the private endpoint.
 func (o LookupPrivateEndpointConnectionResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Private endpoint which the connection belongs to.
 func (o LookupPrivateEndpointConnectionResultOutput) PrivateEndpoint() PrivateEndpointPropertyResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) PrivateEndpointPropertyResponse {
 		return v.PrivateEndpoint
 	}).(PrivateEndpointPropertyResponseOutput)
 }
 
+// Connection State of the Private Endpoint Connection.
 func (o LookupPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePropertyResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) PrivateLinkServiceConnectionStatePropertyResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStatePropertyResponseOutput)
 }
 
+// Provisioning state of the private endpoint.
 func (o LookupPrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

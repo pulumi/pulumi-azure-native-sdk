@@ -22,25 +22,40 @@ func LookupServiceFabric(ctx *pulumi.Context, args *LookupServiceFabricArgs, opt
 }
 
 type LookupServiceFabricArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LabName           string  `pulumi:"labName"`
-	Name              string  `pulumi:"name"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	UserName          string  `pulumi:"userName"`
+	// Specify the $expand query. Example: 'properties($expand=applicableSchedule)'
+	Expand *string `pulumi:"expand"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the service fabric.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the user profile.
+	UserName string `pulumi:"userName"`
 }
 
 // A Service Fabric.
 type LookupServiceFabricResult struct {
-	ApplicableSchedule      ApplicableScheduleResponse `pulumi:"applicableSchedule"`
-	EnvironmentId           *string                    `pulumi:"environmentId"`
-	ExternalServiceFabricId *string                    `pulumi:"externalServiceFabricId"`
-	Id                      string                     `pulumi:"id"`
-	Location                *string                    `pulumi:"location"`
-	Name                    string                     `pulumi:"name"`
-	ProvisioningState       string                     `pulumi:"provisioningState"`
-	Tags                    map[string]string          `pulumi:"tags"`
-	Type                    string                     `pulumi:"type"`
-	UniqueIdentifier        string                     `pulumi:"uniqueIdentifier"`
+	// The applicable schedule for the virtual machine.
+	ApplicableSchedule ApplicableScheduleResponse `pulumi:"applicableSchedule"`
+	// The resource id of the environment under which the service fabric resource is present
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The backing service fabric resource's id
+	ExternalServiceFabricId *string `pulumi:"externalServiceFabricId"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning status of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The unique immutable identifier of a resource (Guid).
+	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
 }
 
 // Defaults sets the appropriate defaults for LookupServiceFabricResult
@@ -68,11 +83,16 @@ func LookupServiceFabricOutput(ctx *pulumi.Context, args LookupServiceFabricOutp
 }
 
 type LookupServiceFabricOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LabName           pulumi.StringInput    `pulumi:"labName"`
-	Name              pulumi.StringInput    `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	UserName          pulumi.StringInput    `pulumi:"userName"`
+	// Specify the $expand query. Example: 'properties($expand=applicableSchedule)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the service fabric.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the user profile.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (LookupServiceFabricOutputArgs) ElementType() reflect.Type {
@@ -94,42 +114,52 @@ func (o LookupServiceFabricResultOutput) ToLookupServiceFabricResultOutputWithCo
 	return o
 }
 
+// The applicable schedule for the virtual machine.
 func (o LookupServiceFabricResultOutput) ApplicableSchedule() ApplicableScheduleResponseOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) ApplicableScheduleResponse { return v.ApplicableSchedule }).(ApplicableScheduleResponseOutput)
 }
 
+// The resource id of the environment under which the service fabric resource is present
 func (o LookupServiceFabricResultOutput) EnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
 }
 
+// The backing service fabric resource's id
 func (o LookupServiceFabricResultOutput) ExternalServiceFabricId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) *string { return v.ExternalServiceFabricId }).(pulumi.StringPtrOutput)
 }
 
+// The identifier of the resource.
 func (o LookupServiceFabricResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupServiceFabricResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupServiceFabricResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupServiceFabricResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The tags of the resource.
 func (o LookupServiceFabricResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupServiceFabricResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique immutable identifier of a resource (Guid).
 func (o LookupServiceFabricResultOutput) UniqueIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.UniqueIdentifier }).(pulumi.StringOutput)
 }

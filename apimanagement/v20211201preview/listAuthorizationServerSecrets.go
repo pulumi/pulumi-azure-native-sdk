@@ -21,15 +21,21 @@ func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorization
 }
 
 type ListAuthorizationServerSecretsArgs struct {
-	Authsid           string `pulumi:"authsid"`
+	// Identifier of the authorization server.
+	Authsid string `pulumi:"authsid"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // OAuth Server Secrets Contract.
 type ListAuthorizationServerSecretsResult struct {
-	ClientSecret          *string `pulumi:"clientSecret"`
+	// oAuth Authorization Server Secrets.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
 	ResourceOwnerPassword *string `pulumi:"resourceOwnerPassword"`
+	// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner username.
 	ResourceOwnerUsername *string `pulumi:"resourceOwnerUsername"`
 }
 
@@ -47,9 +53,12 @@ func ListAuthorizationServerSecretsOutput(ctx *pulumi.Context, args ListAuthoriz
 }
 
 type ListAuthorizationServerSecretsOutputArgs struct {
-	Authsid           pulumi.StringInput `pulumi:"authsid"`
+	// Identifier of the authorization server.
+	Authsid pulumi.StringInput `pulumi:"authsid"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListAuthorizationServerSecretsOutputArgs) ElementType() reflect.Type {
@@ -71,14 +80,17 @@ func (o ListAuthorizationServerSecretsResultOutput) ToListAuthorizationServerSec
 	return o
 }
 
+// oAuth Authorization Server Secrets.
 func (o ListAuthorizationServerSecretsResultOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAuthorizationServerSecretsResult) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
 func (o ListAuthorizationServerSecretsResultOutput) ResourceOwnerPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAuthorizationServerSecretsResult) *string { return v.ResourceOwnerPassword }).(pulumi.StringPtrOutput)
 }
 
+// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner username.
 func (o ListAuthorizationServerSecretsResultOutput) ResourceOwnerUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAuthorizationServerSecretsResult) *string { return v.ResourceOwnerUsername }).(pulumi.StringPtrOutput)
 }

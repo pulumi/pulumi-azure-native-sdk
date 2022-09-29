@@ -23,18 +23,26 @@ func LookupRedisFirewallRule(ctx *pulumi.Context, args *LookupRedisFirewallRuleA
 }
 
 type LookupRedisFirewallRuleArgs struct {
-	CacheName         string `pulumi:"cacheName"`
+	// The name of the Redis cache.
+	CacheName string `pulumi:"cacheName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RuleName          string `pulumi:"ruleName"`
+	// The name of the firewall rule.
+	RuleName string `pulumi:"ruleName"`
 }
 
 // A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
 type LookupRedisFirewallRuleResult struct {
-	EndIP   string `pulumi:"endIP"`
-	Id      string `pulumi:"id"`
-	Name    string `pulumi:"name"`
+	// highest IP address included in the range
+	EndIP string `pulumi:"endIP"`
+	// resource ID (of the firewall rule)
+	Id string `pulumi:"id"`
+	// name of the firewall rule
+	Name string `pulumi:"name"`
+	// lowest IP address included in the range
 	StartIP string `pulumi:"startIP"`
-	Type    string `pulumi:"type"`
+	// type (of the firewall rule resource = 'Microsoft.Cache/redis/firewallRule')
+	Type string `pulumi:"type"`
 }
 
 func LookupRedisFirewallRuleOutput(ctx *pulumi.Context, args LookupRedisFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupRedisFirewallRuleResultOutput {
@@ -51,9 +59,12 @@ func LookupRedisFirewallRuleOutput(ctx *pulumi.Context, args LookupRedisFirewall
 }
 
 type LookupRedisFirewallRuleOutputArgs struct {
-	CacheName         pulumi.StringInput `pulumi:"cacheName"`
+	// The name of the Redis cache.
+	CacheName pulumi.StringInput `pulumi:"cacheName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleName          pulumi.StringInput `pulumi:"ruleName"`
+	// The name of the firewall rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
 }
 
 func (LookupRedisFirewallRuleOutputArgs) ElementType() reflect.Type {
@@ -75,22 +86,27 @@ func (o LookupRedisFirewallRuleResultOutput) ToLookupRedisFirewallRuleResultOutp
 	return o
 }
 
+// highest IP address included in the range
 func (o LookupRedisFirewallRuleResultOutput) EndIP() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisFirewallRuleResult) string { return v.EndIP }).(pulumi.StringOutput)
 }
 
+// resource ID (of the firewall rule)
 func (o LookupRedisFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// name of the firewall rule
 func (o LookupRedisFirewallRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisFirewallRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// lowest IP address included in the range
 func (o LookupRedisFirewallRuleResultOutput) StartIP() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisFirewallRuleResult) string { return v.StartIP }).(pulumi.StringOutput)
 }
 
+// type (of the firewall rule resource = 'Microsoft.Cache/redis/firewallRule')
 func (o LookupRedisFirewallRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisFirewallRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,15 +22,21 @@ func GetTestResultVideoDownloadURL(ctx *pulumi.Context, args *GetTestResultVideo
 }
 
 type GetTestResultVideoDownloadURLArgs struct {
-	PackageName         string `pulumi:"packageName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Package.
+	PackageName string `pulumi:"packageName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
-	TestResultName      string `pulumi:"testResultName"`
+	// The Test Result Name. It equals to TestResult-{TestResultId} string.
+	TestResultName string `pulumi:"testResultName"`
 }
 
 // The response of getting a download URL.
 type GetTestResultVideoDownloadURLResult struct {
-	DownloadUrl    string `pulumi:"downloadUrl"`
+	// The download URL.
+	DownloadUrl string `pulumi:"downloadUrl"`
+	// Expiry date of the download URL.
 	ExpirationTime string `pulumi:"expirationTime"`
 }
 
@@ -48,10 +54,14 @@ func GetTestResultVideoDownloadURLOutput(ctx *pulumi.Context, args GetTestResult
 }
 
 type GetTestResultVideoDownloadURLOutputArgs struct {
-	PackageName         pulumi.StringInput `pulumi:"packageName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Package.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
-	TestResultName      pulumi.StringInput `pulumi:"testResultName"`
+	// The Test Result Name. It equals to TestResult-{TestResultId} string.
+	TestResultName pulumi.StringInput `pulumi:"testResultName"`
 }
 
 func (GetTestResultVideoDownloadURLOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o GetTestResultVideoDownloadURLResultOutput) ToGetTestResultVideoDownloadU
 	return o
 }
 
+// The download URL.
 func (o GetTestResultVideoDownloadURLResultOutput) DownloadUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestResultVideoDownloadURLResult) string { return v.DownloadUrl }).(pulumi.StringOutput)
 }
 
+// Expiry date of the download URL.
 func (o GetTestResultVideoDownloadURLResultOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestResultVideoDownloadURLResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }

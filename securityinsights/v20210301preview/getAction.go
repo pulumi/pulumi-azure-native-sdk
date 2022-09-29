@@ -21,22 +21,34 @@ func LookupAction(ctx *pulumi.Context, args *LookupActionArgs, opts ...pulumi.In
 }
 
 type LookupActionArgs struct {
-	ActionId                            string `pulumi:"actionId"`
+	// Action ID
+	ActionId string `pulumi:"actionId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	RuleId                              string `pulumi:"ruleId"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Alert rule ID
+	RuleId string `pulumi:"ruleId"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Action for alert rule.
 type LookupActionResult struct {
-	Etag               *string            `pulumi:"etag"`
-	Id                 string             `pulumi:"id"`
-	LogicAppResourceId string             `pulumi:"logicAppResourceId"`
-	Name               string             `pulumi:"name"`
-	SystemData         SystemDataResponse `pulumi:"systemData"`
-	Type               string             `pulumi:"type"`
-	WorkflowId         *string            `pulumi:"workflowId"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
+	LogicAppResourceId string `pulumi:"logicAppResourceId"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource type
+	Type string `pulumi:"type"`
+	// The name of the logic app's workflow.
+	WorkflowId *string `pulumi:"workflowId"`
 }
 
 func LookupActionOutput(ctx *pulumi.Context, args LookupActionOutputArgs, opts ...pulumi.InvokeOption) LookupActionResultOutput {
@@ -53,11 +65,16 @@ func LookupActionOutput(ctx *pulumi.Context, args LookupActionOutputArgs, opts .
 }
 
 type LookupActionOutputArgs struct {
-	ActionId                            pulumi.StringInput `pulumi:"actionId"`
+	// Action ID
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleId                              pulumi.StringInput `pulumi:"ruleId"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Alert rule ID
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupActionOutputArgs) ElementType() reflect.Type {
@@ -79,30 +96,37 @@ func (o LookupActionResultOutput) ToLookupActionResultOutputWithContext(ctx cont
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupActionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupActionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
 func (o LookupActionResultOutput) LogicAppResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.LogicAppResourceId }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupActionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupActionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupActionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource type
 func (o LookupActionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The name of the logic app's workflow.
 func (o LookupActionResultOutput) WorkflowId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActionResult) *string { return v.WorkflowId }).(pulumi.StringPtrOutput)
 }

@@ -23,19 +23,28 @@ func LookupProductSetting(ctx *pulumi.Context, args *LookupProductSettingArgs, o
 }
 
 type LookupProductSettingArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SettingsName      string `pulumi:"settingsName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName string `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The Setting.
 type LookupProductSettingResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The kind of the setting
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupProductSettingOutput(ctx *pulumi.Context, args LookupProductSettingOutputArgs, opts ...pulumi.InvokeOption) LookupProductSettingResultOutput {
@@ -52,9 +61,12 @@ func LookupProductSettingOutput(ctx *pulumi.Context, args LookupProductSettingOu
 }
 
 type LookupProductSettingOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SettingsName      pulumi.StringInput `pulumi:"settingsName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+	SettingsName pulumi.StringInput `pulumi:"settingsName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupProductSettingOutputArgs) ElementType() reflect.Type {
@@ -76,26 +88,32 @@ func (o LookupProductSettingResultOutput) ToLookupProductSettingResultOutputWith
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupProductSettingResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProductSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the setting
 func (o LookupProductSettingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupProductSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupProductSettingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProductSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

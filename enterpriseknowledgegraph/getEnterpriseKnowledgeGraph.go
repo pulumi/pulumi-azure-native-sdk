@@ -22,19 +22,28 @@ func LookupEnterpriseKnowledgeGraph(ctx *pulumi.Context, args *LookupEnterpriseK
 }
 
 type LookupEnterpriseKnowledgeGraphArgs struct {
+	// The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the EnterpriseKnowledgeGraph resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // EnterpriseKnowledgeGraph resource definition
 type LookupEnterpriseKnowledgeGraphResult struct {
-	Id         string                                     `pulumi:"id"`
-	Location   *string                                    `pulumi:"location"`
-	Name       string                                     `pulumi:"name"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// The set of properties specific to EnterpriseKnowledgeGraph resource
 	Properties EnterpriseKnowledgeGraphPropertiesResponse `pulumi:"properties"`
-	Sku        *SkuResponse                               `pulumi:"sku"`
-	Tags       map[string]string                          `pulumi:"tags"`
-	Type       string                                     `pulumi:"type"`
+	// Gets or sets the SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupEnterpriseKnowledgeGraphOutput(ctx *pulumi.Context, args LookupEnterpriseKnowledgeGraphOutputArgs, opts ...pulumi.InvokeOption) LookupEnterpriseKnowledgeGraphResultOutput {
@@ -51,8 +60,10 @@ func LookupEnterpriseKnowledgeGraphOutput(ctx *pulumi.Context, args LookupEnterp
 }
 
 type LookupEnterpriseKnowledgeGraphOutputArgs struct {
+	// The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the EnterpriseKnowledgeGraph resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupEnterpriseKnowledgeGraphOutputArgs) ElementType() reflect.Type {
@@ -74,32 +85,39 @@ func (o LookupEnterpriseKnowledgeGraphResultOutput) ToLookupEnterpriseKnowledgeG
 	return o
 }
 
+// Specifies the resource ID.
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The set of properties specific to EnterpriseKnowledgeGraph resource
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Properties() EnterpriseKnowledgeGraphPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) EnterpriseKnowledgeGraphPropertiesResponse {
 		return v.Properties
 	}).(EnterpriseKnowledgeGraphPropertiesResponseOutput)
 }
 
+// Gets or sets the SKU of the resource.
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupEnterpriseKnowledgeGraphResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,24 +21,38 @@ func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulum
 }
 
 type LookupScheduleArgs struct {
-	PoolName          string `pulumi:"poolName"`
-	ProjectName       string `pulumi:"projectName"`
+	// Name of the pool.
+	PoolName string `pulumi:"poolName"`
+	// The name of the project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ScheduleName      string `pulumi:"scheduleName"`
-	Top               *int   `pulumi:"top"`
+	// The name of the schedule that uniquely identifies it.
+	ScheduleName string `pulumi:"scheduleName"`
+	// The maximum number of resources to return from the operation. Example: '$top=10'.
+	Top *int `pulumi:"top"`
 }
 
 // Represents a Schedule to execute a task.
 type LookupScheduleResult struct {
-	Frequency         string             `pulumi:"frequency"`
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	State             *string            `pulumi:"state"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Time              string             `pulumi:"time"`
-	TimeZone          string             `pulumi:"timeZone"`
-	Type              string             `pulumi:"type"`
+	// The frequency of this scheduled task.
+	Frequency string `pulumi:"frequency"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Indicates whether or not this scheduled task is enabled.
+	State *string `pulumi:"state"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The target time to trigger the action. The format is HH:MM.
+	Time string `pulumi:"time"`
+	// The IANA timezone id at which the schedule should execute.
+	TimeZone string `pulumi:"timeZone"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupScheduleOutput(ctx *pulumi.Context, args LookupScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupScheduleResultOutput {
@@ -55,11 +69,16 @@ func LookupScheduleOutput(ctx *pulumi.Context, args LookupScheduleOutputArgs, op
 }
 
 type LookupScheduleOutputArgs struct {
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Name of the pool.
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ScheduleName      pulumi.StringInput `pulumi:"scheduleName"`
-	Top               pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the schedule that uniquely identifies it.
+	ScheduleName pulumi.StringInput `pulumi:"scheduleName"`
+	// The maximum number of resources to return from the operation. Example: '$top=10'.
+	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
 func (LookupScheduleOutputArgs) ElementType() reflect.Type {
@@ -81,38 +100,47 @@ func (o LookupScheduleResultOutput) ToLookupScheduleResultOutputWithContext(ctx 
 	return o
 }
 
+// The frequency of this scheduled task.
 func (o LookupScheduleResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupScheduleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Indicates whether or not this scheduled task is enabled.
 func (o LookupScheduleResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduleResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupScheduleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The target time to trigger the action. The format is HH:MM.
 func (o LookupScheduleResultOutput) Time() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Time }).(pulumi.StringOutput)
 }
 
+// The IANA timezone id at which the schedule should execute.
 func (o LookupScheduleResultOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

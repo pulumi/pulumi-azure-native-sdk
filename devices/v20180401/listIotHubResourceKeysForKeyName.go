@@ -21,16 +21,23 @@ func ListIotHubResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotHubResou
 }
 
 type ListIotHubResourceKeysForKeyNameArgs struct {
-	KeyName           string `pulumi:"keyName"`
+	// The name of the shared access policy.
+	KeyName string `pulumi:"keyName"`
+	// The name of the resource group that contains the IoT hub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the IoT hub.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The properties of an IoT hub shared access policy.
 type ListIotHubResourceKeysForKeyNameResult struct {
-	KeyName      string  `pulumi:"keyName"`
-	PrimaryKey   *string `pulumi:"primaryKey"`
-	Rights       string  `pulumi:"rights"`
+	// The name of the shared access policy.
+	KeyName string `pulumi:"keyName"`
+	// The primary key.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// The permissions assigned to the shared access policy.
+	Rights string `pulumi:"rights"`
+	// The secondary key.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
@@ -48,9 +55,12 @@ func ListIotHubResourceKeysForKeyNameOutput(ctx *pulumi.Context, args ListIotHub
 }
 
 type ListIotHubResourceKeysForKeyNameOutputArgs struct {
-	KeyName           pulumi.StringInput `pulumi:"keyName"`
+	// The name of the shared access policy.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the resource group that contains the IoT hub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the IoT hub.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListIotHubResourceKeysForKeyNameOutputArgs) ElementType() reflect.Type {
@@ -72,18 +82,22 @@ func (o ListIotHubResourceKeysForKeyNameResultOutput) ToListIotHubResourceKeysFo
 	return o
 }
 
+// The name of the shared access policy.
 func (o ListIotHubResourceKeysForKeyNameResultOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListIotHubResourceKeysForKeyNameResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// The primary key.
 func (o ListIotHubResourceKeysForKeyNameResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIotHubResourceKeysForKeyNameResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// The permissions assigned to the shared access policy.
 func (o ListIotHubResourceKeysForKeyNameResultOutput) Rights() pulumi.StringOutput {
 	return o.ApplyT(func(v ListIotHubResourceKeysForKeyNameResult) string { return v.Rights }).(pulumi.StringOutput)
 }
 
+// The secondary key.
 func (o ListIotHubResourceKeysForKeyNameResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIotHubResourceKeysForKeyNameResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

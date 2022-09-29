@@ -21,26 +21,42 @@ func LookupSyncMember(ctx *pulumi.Context, args *LookupSyncMemberArgs, opts ...p
 }
 
 type LookupSyncMemberArgs struct {
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the database on which the sync group is hosted.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
-	SyncGroupName     string `pulumi:"syncGroupName"`
-	SyncMemberName    string `pulumi:"syncMemberName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the sync group on which the sync member is hosted.
+	SyncGroupName string `pulumi:"syncGroupName"`
+	// The name of the sync member.
+	SyncMemberName string `pulumi:"syncMemberName"`
 }
 
 // An Azure SQL Database sync member.
 type LookupSyncMemberResult struct {
-	DatabaseName        *string `pulumi:"databaseName"`
-	DatabaseType        *string `pulumi:"databaseType"`
-	Id                  string  `pulumi:"id"`
-	Name                string  `pulumi:"name"`
-	ServerName          *string `pulumi:"serverName"`
+	// Database name of the member database in the sync member.
+	DatabaseName *string `pulumi:"databaseName"`
+	// Database type of the sync member.
+	DatabaseType *string `pulumi:"databaseType"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Server name of the member database in the sync member
+	ServerName *string `pulumi:"serverName"`
+	// SQL Server database id of the sync member.
 	SqlServerDatabaseId *string `pulumi:"sqlServerDatabaseId"`
-	SyncAgentId         *string `pulumi:"syncAgentId"`
-	SyncDirection       *string `pulumi:"syncDirection"`
-	SyncState           string  `pulumi:"syncState"`
-	Type                string  `pulumi:"type"`
-	UserName            *string `pulumi:"userName"`
+	// ARM resource id of the sync agent in the sync member.
+	SyncAgentId *string `pulumi:"syncAgentId"`
+	// Sync direction of the sync member.
+	SyncDirection *string `pulumi:"syncDirection"`
+	// Sync state of the sync member.
+	SyncState string `pulumi:"syncState"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// User name of the member database in the sync member.
+	UserName *string `pulumi:"userName"`
 }
 
 func LookupSyncMemberOutput(ctx *pulumi.Context, args LookupSyncMemberOutputArgs, opts ...pulumi.InvokeOption) LookupSyncMemberResultOutput {
@@ -57,11 +73,16 @@ func LookupSyncMemberOutput(ctx *pulumi.Context, args LookupSyncMemberOutputArgs
 }
 
 type LookupSyncMemberOutputArgs struct {
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the database on which the sync group is hosted.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
-	SyncGroupName     pulumi.StringInput `pulumi:"syncGroupName"`
-	SyncMemberName    pulumi.StringInput `pulumi:"syncMemberName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the sync group on which the sync member is hosted.
+	SyncGroupName pulumi.StringInput `pulumi:"syncGroupName"`
+	// The name of the sync member.
+	SyncMemberName pulumi.StringInput `pulumi:"syncMemberName"`
 }
 
 func (LookupSyncMemberOutputArgs) ElementType() reflect.Type {
@@ -83,46 +104,57 @@ func (o LookupSyncMemberResultOutput) ToLookupSyncMemberResultOutputWithContext(
 	return o
 }
 
+// Database name of the member database in the sync member.
 func (o LookupSyncMemberResultOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
 
+// Database type of the sync member.
 func (o LookupSyncMemberResultOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupSyncMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSyncMemberResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Server name of the member database in the sync member
 func (o LookupSyncMemberResultOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
 
+// SQL Server database id of the sync member.
 func (o LookupSyncMemberResultOutput) SqlServerDatabaseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.SqlServerDatabaseId }).(pulumi.StringPtrOutput)
 }
 
+// ARM resource id of the sync agent in the sync member.
 func (o LookupSyncMemberResultOutput) SyncAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.SyncAgentId }).(pulumi.StringPtrOutput)
 }
 
+// Sync direction of the sync member.
 func (o LookupSyncMemberResultOutput) SyncDirection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.SyncDirection }).(pulumi.StringPtrOutput)
 }
 
+// Sync state of the sync member.
 func (o LookupSyncMemberResultOutput) SyncState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) string { return v.SyncState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupSyncMemberResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// User name of the member database in the sync member.
 func (o LookupSyncMemberResultOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSyncMemberResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }

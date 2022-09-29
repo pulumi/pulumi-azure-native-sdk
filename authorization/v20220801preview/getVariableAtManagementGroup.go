@@ -21,17 +21,24 @@ func LookupVariableAtManagementGroup(ctx *pulumi.Context, args *LookupVariableAt
 }
 
 type LookupVariableAtManagementGroupArgs struct {
+	// The ID of the management group.
 	ManagementGroupId string `pulumi:"managementGroupId"`
-	VariableName      string `pulumi:"variableName"`
+	// The name of the variable to operate on.
+	VariableName string `pulumi:"variableName"`
 }
 
 // The variable.
 type LookupVariableAtManagementGroupResult struct {
-	Columns    []PolicyVariableColumnResponse `pulumi:"columns"`
-	Id         string                         `pulumi:"id"`
-	Name       string                         `pulumi:"name"`
-	SystemData SystemDataResponse             `pulumi:"systemData"`
-	Type       string                         `pulumi:"type"`
+	// Variable column definitions.
+	Columns []PolicyVariableColumnResponse `pulumi:"columns"`
+	// The ID of the variable.
+	Id string `pulumi:"id"`
+	// The name of the variable.
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource (Microsoft.Authorization/variables).
+	Type string `pulumi:"type"`
 }
 
 func LookupVariableAtManagementGroupOutput(ctx *pulumi.Context, args LookupVariableAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupVariableAtManagementGroupResultOutput {
@@ -48,8 +55,10 @@ func LookupVariableAtManagementGroupOutput(ctx *pulumi.Context, args LookupVaria
 }
 
 type LookupVariableAtManagementGroupOutputArgs struct {
+	// The ID of the management group.
 	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
-	VariableName      pulumi.StringInput `pulumi:"variableName"`
+	// The name of the variable to operate on.
+	VariableName pulumi.StringInput `pulumi:"variableName"`
 }
 
 func (LookupVariableAtManagementGroupOutputArgs) ElementType() reflect.Type {
@@ -71,22 +80,27 @@ func (o LookupVariableAtManagementGroupResultOutput) ToLookupVariableAtManagemen
 	return o
 }
 
+// Variable column definitions.
 func (o LookupVariableAtManagementGroupResultOutput) Columns() PolicyVariableColumnResponseArrayOutput {
 	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) []PolicyVariableColumnResponse { return v.Columns }).(PolicyVariableColumnResponseArrayOutput)
 }
 
+// The ID of the variable.
 func (o LookupVariableAtManagementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the variable.
 func (o LookupVariableAtManagementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupVariableAtManagementGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource (Microsoft.Authorization/variables).
 func (o LookupVariableAtManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

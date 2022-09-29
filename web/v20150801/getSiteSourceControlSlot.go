@@ -23,24 +23,38 @@ func LookupSiteSourceControlSlot(ctx *pulumi.Context, args *LookupSiteSourceCont
 }
 
 type LookupSiteSourceControlSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of web app
+	Name string `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Describes the source control configuration for web app
 type LookupSiteSourceControlSlotResult struct {
-	Branch                    *string           `pulumi:"branch"`
-	DeploymentRollbackEnabled *bool             `pulumi:"deploymentRollbackEnabled"`
-	Id                        *string           `pulumi:"id"`
-	IsManualIntegration       *bool             `pulumi:"isManualIntegration"`
-	IsMercurial               *bool             `pulumi:"isMercurial"`
-	Kind                      *string           `pulumi:"kind"`
-	Location                  string            `pulumi:"location"`
-	Name                      *string           `pulumi:"name"`
-	RepoUrl                   *string           `pulumi:"repoUrl"`
-	Tags                      map[string]string `pulumi:"tags"`
-	Type                      *string           `pulumi:"type"`
+	// Name of branch to use for deployment
+	Branch *string `pulumi:"branch"`
+	// Whether to manual or continuous integration
+	DeploymentRollbackEnabled *bool `pulumi:"deploymentRollbackEnabled"`
+	// Resource Id
+	Id *string `pulumi:"id"`
+	// Whether to manual or continuous integration
+	IsManualIntegration *bool `pulumi:"isManualIntegration"`
+	// Mercurial or Git repository type
+	IsMercurial *bool `pulumi:"isMercurial"`
+	// Kind of resource
+	Kind *string `pulumi:"kind"`
+	// Resource Location
+	Location string `pulumi:"location"`
+	// Resource Name
+	Name *string `pulumi:"name"`
+	// Repository or source control url
+	RepoUrl *string `pulumi:"repoUrl"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type *string `pulumi:"type"`
 }
 
 func LookupSiteSourceControlSlotOutput(ctx *pulumi.Context, args LookupSiteSourceControlSlotOutputArgs, opts ...pulumi.InvokeOption) LookupSiteSourceControlSlotResultOutput {
@@ -57,9 +71,12 @@ func LookupSiteSourceControlSlotOutput(ctx *pulumi.Context, args LookupSiteSourc
 }
 
 type LookupSiteSourceControlSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of web app
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of resource group
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of web app slot. If not specified then will default to production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (LookupSiteSourceControlSlotOutputArgs) ElementType() reflect.Type {
@@ -81,46 +98,57 @@ func (o LookupSiteSourceControlSlotResultOutput) ToLookupSiteSourceControlSlotRe
 	return o
 }
 
+// Name of branch to use for deployment
 func (o LookupSiteSourceControlSlotResultOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// Whether to manual or continuous integration
 func (o LookupSiteSourceControlSlotResultOutput) DeploymentRollbackEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *bool { return v.DeploymentRollbackEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource Id
 func (o LookupSiteSourceControlSlotResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Whether to manual or continuous integration
 func (o LookupSiteSourceControlSlotResultOutput) IsManualIntegration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *bool { return v.IsManualIntegration }).(pulumi.BoolPtrOutput)
 }
 
+// Mercurial or Git repository type
 func (o LookupSiteSourceControlSlotResultOutput) IsMercurial() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *bool { return v.IsMercurial }).(pulumi.BoolPtrOutput)
 }
 
+// Kind of resource
 func (o LookupSiteSourceControlSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Location
 func (o LookupSiteSourceControlSlotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name
 func (o LookupSiteSourceControlSlotResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Repository or source control url
 func (o LookupSiteSourceControlSlotResultOutput) RepoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *string { return v.RepoUrl }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupSiteSourceControlSlotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupSiteSourceControlSlotResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteSourceControlSlotResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

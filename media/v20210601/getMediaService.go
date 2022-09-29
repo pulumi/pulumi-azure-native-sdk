@@ -21,25 +21,39 @@ func LookupMediaService(ctx *pulumi.Context, args *LookupMediaServiceArgs, opts 
 }
 
 type LookupMediaServiceArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Media Services account.
 type LookupMediaServiceResult struct {
-	Encryption            *AccountEncryptionResponse    `pulumi:"encryption"`
-	Id                    string                        `pulumi:"id"`
-	Identity              *MediaServiceIdentityResponse `pulumi:"identity"`
-	KeyDelivery           *KeyDeliveryResponse          `pulumi:"keyDelivery"`
-	Location              string                        `pulumi:"location"`
-	MediaServiceId        string                        `pulumi:"mediaServiceId"`
-	Name                  string                        `pulumi:"name"`
-	PublicNetworkAccess   *string                       `pulumi:"publicNetworkAccess"`
-	StorageAccounts       []StorageAccountResponse      `pulumi:"storageAccounts"`
-	StorageAuthentication *string                       `pulumi:"storageAuthentication"`
-	SystemData            SystemDataResponse            `pulumi:"systemData"`
-	Tags                  map[string]string             `pulumi:"tags"`
-	Type                  string                        `pulumi:"type"`
+	// The account encryption properties.
+	Encryption *AccountEncryptionResponse `pulumi:"encryption"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The Managed Identity for the Media Services account.
+	Identity *MediaServiceIdentityResponse `pulumi:"identity"`
+	// The Key Delivery properties for Media Services account.
+	KeyDelivery *KeyDeliveryResponse `pulumi:"keyDelivery"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The Media Services account ID.
+	MediaServiceId string `pulumi:"mediaServiceId"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Whether or not public network access is allowed for resources under the Media Services account.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// The storage accounts for this resource.
+	StorageAccounts       []StorageAccountResponse `pulumi:"storageAccounts"`
+	StorageAuthentication *string                  `pulumi:"storageAuthentication"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupMediaServiceOutput(ctx *pulumi.Context, args LookupMediaServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMediaServiceResultOutput {
@@ -56,7 +70,9 @@ func LookupMediaServiceOutput(ctx *pulumi.Context, args LookupMediaServiceOutput
 }
 
 type LookupMediaServiceOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,38 +95,47 @@ func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutputWithCont
 	return o
 }
 
+// The account encryption properties.
 func (o LookupMediaServiceResultOutput) Encryption() AccountEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) *AccountEncryptionResponse { return v.Encryption }).(AccountEncryptionResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMediaServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Managed Identity for the Media Services account.
 func (o LookupMediaServiceResultOutput) Identity() MediaServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) *MediaServiceIdentityResponse { return v.Identity }).(MediaServiceIdentityResponsePtrOutput)
 }
 
+// The Key Delivery properties for Media Services account.
 func (o LookupMediaServiceResultOutput) KeyDelivery() KeyDeliveryResponsePtrOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) *KeyDeliveryResponse { return v.KeyDelivery }).(KeyDeliveryResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupMediaServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The Media Services account ID.
 func (o LookupMediaServiceResultOutput) MediaServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.MediaServiceId }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupMediaServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Whether or not public network access is allowed for resources under the Media Services account.
 func (o LookupMediaServiceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// The storage accounts for this resource.
 func (o LookupMediaServiceResultOutput) StorageAccounts() StorageAccountResponseArrayOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) []StorageAccountResponse { return v.StorageAccounts }).(StorageAccountResponseArrayOutput)
 }
@@ -119,14 +144,17 @@ func (o LookupMediaServiceResultOutput) StorageAuthentication() pulumi.StringPtr
 	return o.ApplyT(func(v LookupMediaServiceResult) *string { return v.StorageAuthentication }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupMediaServiceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupMediaServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupMediaServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

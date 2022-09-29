@@ -23,23 +23,36 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 }
 
 type LookupSnapshotArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	PoolName          string `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName string `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SnapshotName      string `pulumi:"snapshotName"`
-	VolumeName        string `pulumi:"volumeName"`
+	// The name of the snapshot
+	SnapshotName string `pulumi:"snapshotName"`
+	// The name of the volume
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // Snapshot of a Volume
 type LookupSnapshotResult struct {
-	Created           string  `pulumi:"created"`
-	FileSystemId      *string `pulumi:"fileSystemId"`
-	Id                string  `pulumi:"id"`
-	Location          string  `pulumi:"location"`
-	Name              string  `pulumi:"name"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	SnapshotId        string  `pulumi:"snapshotId"`
-	Type              string  `pulumi:"type"`
+	// The creation date of the snapshot
+	Created string `pulumi:"created"`
+	// UUID v4 used to identify the FileSystem
+	FileSystemId *string `pulumi:"fileSystemId"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// UUID v4 used to identify the Snapshot
+	SnapshotId string `pulumi:"snapshotId"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSnapshotOutput(ctx *pulumi.Context, args LookupSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupSnapshotResultOutput {
@@ -56,11 +69,16 @@ func LookupSnapshotOutput(ctx *pulumi.Context, args LookupSnapshotOutputArgs, op
 }
 
 type LookupSnapshotOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	PoolName          pulumi.StringInput `pulumi:"poolName"`
+	// The name of the NetApp account
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the capacity pool
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SnapshotName      pulumi.StringInput `pulumi:"snapshotName"`
-	VolumeName        pulumi.StringInput `pulumi:"volumeName"`
+	// The name of the snapshot
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// The name of the volume
+	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (LookupSnapshotOutputArgs) ElementType() reflect.Type {
@@ -82,34 +100,42 @@ func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx 
 	return o
 }
 
+// The creation date of the snapshot
 func (o LookupSnapshotResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// UUID v4 used to identify the FileSystem
 func (o LookupSnapshotResultOutput) FileSystemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.FileSystemId }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSnapshotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupSnapshotResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupSnapshotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure lifecycle management
 func (o LookupSnapshotResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// UUID v4 used to identify the Snapshot
 func (o LookupSnapshotResultOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupSnapshotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Type }).(pulumi.StringOutput)
 }

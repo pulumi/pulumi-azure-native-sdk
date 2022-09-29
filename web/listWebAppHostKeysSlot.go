@@ -22,16 +22,22 @@ func ListWebAppHostKeysSlot(ctx *pulumi.Context, args *ListWebAppHostKeysSlotArg
 }
 
 type ListWebAppHostKeysSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Site name.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot string `pulumi:"slot"`
 }
 
 // Functions host level keys.
 type ListWebAppHostKeysSlotResult struct {
+	// Host level function keys.
 	FunctionKeys map[string]string `pulumi:"functionKeys"`
-	MasterKey    *string           `pulumi:"masterKey"`
-	SystemKeys   map[string]string `pulumi:"systemKeys"`
+	// Secret key.
+	MasterKey *string `pulumi:"masterKey"`
+	// System keys.
+	SystemKeys map[string]string `pulumi:"systemKeys"`
 }
 
 func ListWebAppHostKeysSlotOutput(ctx *pulumi.Context, args ListWebAppHostKeysSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHostKeysSlotResultOutput {
@@ -48,9 +54,12 @@ func ListWebAppHostKeysSlotOutput(ctx *pulumi.Context, args ListWebAppHostKeysSl
 }
 
 type ListWebAppHostKeysSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Site name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppHostKeysSlotOutputArgs) ElementType() reflect.Type {
@@ -72,14 +81,17 @@ func (o ListWebAppHostKeysSlotResultOutput) ToListWebAppHostKeysSlotResultOutput
 	return o
 }
 
+// Host level function keys.
 func (o ListWebAppHostKeysSlotResultOutput) FunctionKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppHostKeysSlotResult) map[string]string { return v.FunctionKeys }).(pulumi.StringMapOutput)
 }
 
+// Secret key.
 func (o ListWebAppHostKeysSlotResultOutput) MasterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppHostKeysSlotResult) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
 }
 
+// System keys.
 func (o ListWebAppHostKeysSlotResultOutput) SystemKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppHostKeysSlotResult) map[string]string { return v.SystemKeys }).(pulumi.StringMapOutput)
 }

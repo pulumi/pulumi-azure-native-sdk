@@ -21,18 +21,26 @@ func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirec
 }
 
 type LookupActiveDirectoryConnectorArgs struct {
+	// The name of the Active Directory connector instance
 	ActiveDirectoryConnectorName string `pulumi:"activeDirectoryConnectorName"`
-	DataControllerName           string `pulumi:"dataControllerName"`
-	ResourceGroupName            string `pulumi:"resourceGroupName"`
+	// The name of the data controller
+	DataControllerName string `pulumi:"dataControllerName"`
+	// The name of the Azure resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Active directory connector resource
 type LookupActiveDirectoryConnectorResult struct {
-	Id         string                                     `pulumi:"id"`
-	Name       string                                     `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// null
 	Properties ActiveDirectoryConnectorPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                         `pulumi:"systemData"`
-	Type       string                                     `pulumi:"type"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupActiveDirectoryConnectorResult
@@ -60,9 +68,12 @@ func LookupActiveDirectoryConnectorOutput(ctx *pulumi.Context, args LookupActive
 }
 
 type LookupActiveDirectoryConnectorOutputArgs struct {
+	// The name of the Active Directory connector instance
 	ActiveDirectoryConnectorName pulumi.StringInput `pulumi:"activeDirectoryConnectorName"`
-	DataControllerName           pulumi.StringInput `pulumi:"dataControllerName"`
-	ResourceGroupName            pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the data controller
+	DataControllerName pulumi.StringInput `pulumi:"dataControllerName"`
+	// The name of the Azure resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupActiveDirectoryConnectorOutputArgs) ElementType() reflect.Type {
@@ -84,24 +95,29 @@ func (o LookupActiveDirectoryConnectorResultOutput) ToLookupActiveDirectoryConne
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupActiveDirectoryConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupActiveDirectoryConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// null
 func (o LookupActiveDirectoryConnectorResultOutput) Properties() ActiveDirectoryConnectorPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) ActiveDirectoryConnectorPropertiesResponse {
 		return v.Properties
 	}).(ActiveDirectoryConnectorPropertiesResponseOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupActiveDirectoryConnectorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupActiveDirectoryConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

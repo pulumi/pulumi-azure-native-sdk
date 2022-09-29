@@ -21,17 +21,24 @@ func ListVendorSkusCredential(ctx *pulumi.Context, args *ListVendorSkusCredentia
 }
 
 type ListVendorSkusCredentialArgs struct {
-	SkuName    string `pulumi:"skuName"`
+	// The name of the sku.
+	SkuName string `pulumi:"skuName"`
+	// The name of the vendor.
 	VendorName string `pulumi:"vendorName"`
 }
 
 // The Sku credential definition.
 type ListVendorSkusCredentialResult struct {
-	AcrServerUrl *string  `pulumi:"acrServerUrl"`
-	AcrToken     *string  `pulumi:"acrToken"`
-	Expiry       *string  `pulumi:"expiry"`
+	// The Acr server url
+	AcrServerUrl *string `pulumi:"acrServerUrl"`
+	// The credential value.
+	AcrToken *string `pulumi:"acrToken"`
+	// The UTC time when credential will expire.
+	Expiry *string `pulumi:"expiry"`
+	// The repositories that could be accessed using the current credential.
 	Repositories []string `pulumi:"repositories"`
-	Username     *string  `pulumi:"username"`
+	// The username of the sku credential.
+	Username *string `pulumi:"username"`
 }
 
 func ListVendorSkusCredentialOutput(ctx *pulumi.Context, args ListVendorSkusCredentialOutputArgs, opts ...pulumi.InvokeOption) ListVendorSkusCredentialResultOutput {
@@ -48,7 +55,9 @@ func ListVendorSkusCredentialOutput(ctx *pulumi.Context, args ListVendorSkusCred
 }
 
 type ListVendorSkusCredentialOutputArgs struct {
-	SkuName    pulumi.StringInput `pulumi:"skuName"`
+	// The name of the sku.
+	SkuName pulumi.StringInput `pulumi:"skuName"`
+	// The name of the vendor.
 	VendorName pulumi.StringInput `pulumi:"vendorName"`
 }
 
@@ -71,22 +80,27 @@ func (o ListVendorSkusCredentialResultOutput) ToListVendorSkusCredentialResultOu
 	return o
 }
 
+// The Acr server url
 func (o ListVendorSkusCredentialResultOutput) AcrServerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListVendorSkusCredentialResult) *string { return v.AcrServerUrl }).(pulumi.StringPtrOutput)
 }
 
+// The credential value.
 func (o ListVendorSkusCredentialResultOutput) AcrToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListVendorSkusCredentialResult) *string { return v.AcrToken }).(pulumi.StringPtrOutput)
 }
 
+// The UTC time when credential will expire.
 func (o ListVendorSkusCredentialResultOutput) Expiry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListVendorSkusCredentialResult) *string { return v.Expiry }).(pulumi.StringPtrOutput)
 }
 
+// The repositories that could be accessed using the current credential.
 func (o ListVendorSkusCredentialResultOutput) Repositories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListVendorSkusCredentialResult) []string { return v.Repositories }).(pulumi.StringArrayOutput)
 }
 
+// The username of the sku credential.
 func (o ListVendorSkusCredentialResultOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListVendorSkusCredentialResult) *string { return v.Username }).(pulumi.StringPtrOutput)
 }

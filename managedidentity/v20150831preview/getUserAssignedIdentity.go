@@ -23,21 +23,32 @@ func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIde
 }
 
 type LookupUserAssignedIdentityArgs struct {
+	// The name of the Resource Group to which the identity belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the identity resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Describes an identity resource.
 type LookupUserAssignedIdentityResult struct {
-	ClientId        string            `pulumi:"clientId"`
-	ClientSecretUrl string            `pulumi:"clientSecretUrl"`
-	Id              string            `pulumi:"id"`
-	Location        string            `pulumi:"location"`
-	Name            string            `pulumi:"name"`
-	PrincipalId     string            `pulumi:"principalId"`
-	Tags            map[string]string `pulumi:"tags"`
-	TenantId        string            `pulumi:"tenantId"`
-	Type            string            `pulumi:"type"`
+	// The id of the app associated with the identity. This is a random generated UUID by MSI.
+	ClientId string `pulumi:"clientId"`
+	//  The ManagedServiceIdentity DataPlane URL that can be queried to obtain the identity credentials.
+	ClientSecretUrl string `pulumi:"clientSecretUrl"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The id of the service principal object associated with the created identity.
+	PrincipalId string `pulumi:"principalId"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The id of the tenant which the identity belongs to.
+	TenantId string `pulumi:"tenantId"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupUserAssignedIdentityOutput(ctx *pulumi.Context, args LookupUserAssignedIdentityOutputArgs, opts ...pulumi.InvokeOption) LookupUserAssignedIdentityResultOutput {
@@ -54,8 +65,10 @@ func LookupUserAssignedIdentityOutput(ctx *pulumi.Context, args LookupUserAssign
 }
 
 type LookupUserAssignedIdentityOutputArgs struct {
+	// The name of the Resource Group to which the identity belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the identity resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupUserAssignedIdentityOutputArgs) ElementType() reflect.Type {
@@ -77,38 +90,47 @@ func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResu
 	return o
 }
 
+// The id of the app associated with the identity. This is a random generated UUID by MSI.
 func (o LookupUserAssignedIdentityResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// The ManagedServiceIdentity DataPlane URL that can be queried to obtain the identity credentials.
 func (o LookupUserAssignedIdentityResultOutput) ClientSecretUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.ClientSecretUrl }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupUserAssignedIdentityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupUserAssignedIdentityResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupUserAssignedIdentityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The id of the service principal object associated with the created identity.
 func (o LookupUserAssignedIdentityResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupUserAssignedIdentityResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The id of the tenant which the identity belongs to.
 func (o LookupUserAssignedIdentityResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupUserAssignedIdentityResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Type }).(pulumi.StringOutput)
 }

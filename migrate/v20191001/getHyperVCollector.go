@@ -20,9 +20,12 @@ func LookupHyperVCollector(ctx *pulumi.Context, args *LookupHyperVCollectorArgs,
 }
 
 type LookupHyperVCollectorArgs struct {
+	// Unique name of a Hyper-V collector within a project.
 	HyperVCollectorName string `pulumi:"hyperVCollectorName"`
-	ProjectName         string `pulumi:"projectName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type LookupHyperVCollectorResult struct {
@@ -47,9 +50,12 @@ func LookupHyperVCollectorOutput(ctx *pulumi.Context, args LookupHyperVCollector
 }
 
 type LookupHyperVCollectorOutputArgs struct {
+	// Unique name of a Hyper-V collector within a project.
 	HyperVCollectorName pulumi.StringInput `pulumi:"hyperVCollectorName"`
-	ProjectName         pulumi.StringInput `pulumi:"projectName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupHyperVCollectorOutputArgs) ElementType() reflect.Type {

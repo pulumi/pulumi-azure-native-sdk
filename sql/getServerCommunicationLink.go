@@ -22,20 +22,30 @@ func LookupServerCommunicationLink(ctx *pulumi.Context, args *LookupServerCommun
 }
 
 type LookupServerCommunicationLinkArgs struct {
+	// The name of the server communication link.
 	CommunicationLinkName string `pulumi:"communicationLinkName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	ServerName            string `pulumi:"serverName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Server communication link.
 type LookupServerCommunicationLinkResult struct {
-	Id            string `pulumi:"id"`
-	Kind          string `pulumi:"kind"`
-	Location      string `pulumi:"location"`
-	Name          string `pulumi:"name"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Communication link kind.  This property is used for Azure Portal metadata.
+	Kind string `pulumi:"kind"`
+	// Communication link location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The name of the partner server.
 	PartnerServer string `pulumi:"partnerServer"`
-	State         string `pulumi:"state"`
-	Type          string `pulumi:"type"`
+	// The state.
+	State string `pulumi:"state"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerCommunicationLinkOutput(ctx *pulumi.Context, args LookupServerCommunicationLinkOutputArgs, opts ...pulumi.InvokeOption) LookupServerCommunicationLinkResultOutput {
@@ -52,9 +62,12 @@ func LookupServerCommunicationLinkOutput(ctx *pulumi.Context, args LookupServerC
 }
 
 type LookupServerCommunicationLinkOutputArgs struct {
+	// The name of the server communication link.
 	CommunicationLinkName pulumi.StringInput `pulumi:"communicationLinkName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName            pulumi.StringInput `pulumi:"serverName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerCommunicationLinkOutputArgs) ElementType() reflect.Type {
@@ -76,30 +89,37 @@ func (o LookupServerCommunicationLinkResultOutput) ToLookupServerCommunicationLi
 	return o
 }
 
+// Resource ID.
 func (o LookupServerCommunicationLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Communication link kind.  This property is used for Azure Portal metadata.
 func (o LookupServerCommunicationLinkResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Communication link location.
 func (o LookupServerCommunicationLinkResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerCommunicationLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the partner server.
 func (o LookupServerCommunicationLinkResultOutput) PartnerServer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.PartnerServer }).(pulumi.StringOutput)
 }
 
+// The state.
 func (o LookupServerCommunicationLinkResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupServerCommunicationLinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.Type }).(pulumi.StringOutput)
 }

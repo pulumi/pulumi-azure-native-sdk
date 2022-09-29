@@ -21,18 +21,26 @@ func LookupBuildStep(ctx *pulumi.Context, args *LookupBuildStepArgs, opts ...pul
 }
 
 type LookupBuildStepArgs struct {
-	BuildTaskName     string `pulumi:"buildTaskName"`
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry build task.
+	BuildTaskName string `pulumi:"buildTaskName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	StepName          string `pulumi:"stepName"`
+	// The name of a build step for a container registry build task.
+	StepName string `pulumi:"stepName"`
 }
 
 // Build step resource properties
 type LookupBuildStepResult struct {
-	Id         string                  `pulumi:"id"`
-	Name       string                  `pulumi:"name"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The properties of a build step.
 	Properties DockerBuildStepResponse `pulumi:"properties"`
-	Type       string                  `pulumi:"type"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupBuildStepResult
@@ -60,10 +68,14 @@ func LookupBuildStepOutput(ctx *pulumi.Context, args LookupBuildStepOutputArgs, 
 }
 
 type LookupBuildStepOutputArgs struct {
-	BuildTaskName     pulumi.StringInput `pulumi:"buildTaskName"`
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry build task.
+	BuildTaskName pulumi.StringInput `pulumi:"buildTaskName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	StepName          pulumi.StringInput `pulumi:"stepName"`
+	// The name of a build step for a container registry build task.
+	StepName pulumi.StringInput `pulumi:"stepName"`
 }
 
 func (LookupBuildStepOutputArgs) ElementType() reflect.Type {
@@ -85,18 +97,22 @@ func (o LookupBuildStepResultOutput) ToLookupBuildStepResultOutputWithContext(ct
 	return o
 }
 
+// The resource ID.
 func (o LookupBuildStepResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildStepResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupBuildStepResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildStepResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of a build step.
 func (o LookupBuildStepResultOutput) Properties() DockerBuildStepResponseOutput {
 	return o.ApplyT(func(v LookupBuildStepResult) DockerBuildStepResponse { return v.Properties }).(DockerBuildStepResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupBuildStepResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildStepResult) string { return v.Type }).(pulumi.StringOutput)
 }

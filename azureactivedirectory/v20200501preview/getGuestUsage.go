@@ -21,18 +21,26 @@ func LookupGuestUsage(ctx *pulumi.Context, args *LookupGuestUsageArgs, opts ...p
 }
 
 type LookupGuestUsageArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The initial domain name of the AAD tenant.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Guest Usages Resource
 type LookupGuestUsageResult struct {
-	Id       string            `pulumi:"id"`
-	Location *string           `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Tags     map[string]string `pulumi:"tags"`
-	TenantId *string           `pulumi:"tenantId"`
-	Type     string            `pulumi:"type"`
+	// An identifier that represents the Guest Usages resource.
+	Id string `pulumi:"id"`
+	// Location of the Guest Usages resource.
+	Location *string `pulumi:"location"`
+	// The name of the Guest Usages resource.
+	Name string `pulumi:"name"`
+	// Key-value pairs of additional resource provisioning properties.
+	Tags map[string]string `pulumi:"tags"`
+	// An identifier for the tenant for which the resource is being created
+	TenantId *string `pulumi:"tenantId"`
+	// The type of the Guest Usages resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupGuestUsageOutput(ctx *pulumi.Context, args LookupGuestUsageOutputArgs, opts ...pulumi.InvokeOption) LookupGuestUsageResultOutput {
@@ -49,8 +57,10 @@ func LookupGuestUsageOutput(ctx *pulumi.Context, args LookupGuestUsageOutputArgs
 }
 
 type LookupGuestUsageOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The initial domain name of the AAD tenant.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupGuestUsageOutputArgs) ElementType() reflect.Type {
@@ -72,26 +82,32 @@ func (o LookupGuestUsageResultOutput) ToLookupGuestUsageResultOutputWithContext(
 	return o
 }
 
+// An identifier that represents the Guest Usages resource.
 func (o LookupGuestUsageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the Guest Usages resource.
 func (o LookupGuestUsageResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Guest Usages resource.
 func (o LookupGuestUsageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Key-value pairs of additional resource provisioning properties.
 func (o LookupGuestUsageResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// An identifier for the tenant for which the resource is being created
 func (o LookupGuestUsageResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the Guest Usages resource.
 func (o LookupGuestUsageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) string { return v.Type }).(pulumi.StringOutput)
 }

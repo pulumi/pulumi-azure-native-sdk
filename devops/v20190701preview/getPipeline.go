@@ -23,21 +23,32 @@ func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulum
 }
 
 type LookupPipelineArgs struct {
-	PipelineName      string `pulumi:"pipelineName"`
+	// The name of the Azure Pipeline resource in ARM.
+	PipelineName string `pulumi:"pipelineName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure DevOps Pipeline used to configure Continuous Integration (CI) & Continuous Delivery (CD) for Azure resources.
 type LookupPipelineResult struct {
+	// Configuration used to bootstrap the Pipeline.
 	BootstrapConfiguration BootstrapConfigurationResponse `pulumi:"bootstrapConfiguration"`
-	Id                     string                         `pulumi:"id"`
-	Location               *string                        `pulumi:"location"`
-	Name                   string                         `pulumi:"name"`
-	Organization           OrganizationReferenceResponse  `pulumi:"organization"`
-	PipelineId             int                            `pulumi:"pipelineId"`
-	Project                ProjectReferenceResponse       `pulumi:"project"`
-	Tags                   map[string]string              `pulumi:"tags"`
-	Type                   string                         `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// Reference to the Azure DevOps Organization containing the Pipeline.
+	Organization OrganizationReferenceResponse `pulumi:"organization"`
+	// Unique identifier of the Azure Pipeline within the Azure DevOps Project.
+	PipelineId int `pulumi:"pipelineId"`
+	// Reference to the Azure DevOps Project containing the Pipeline.
+	Project ProjectReferenceResponse `pulumi:"project"`
+	// Resource Tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupPipelineOutput(ctx *pulumi.Context, args LookupPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineResultOutput {
@@ -54,7 +65,9 @@ func LookupPipelineOutput(ctx *pulumi.Context, args LookupPipelineOutputArgs, op
 }
 
 type LookupPipelineOutputArgs struct {
-	PipelineName      pulumi.StringInput `pulumi:"pipelineName"`
+	// The name of the Azure Pipeline resource in ARM.
+	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,38 +90,47 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx 
 	return o
 }
 
+// Configuration used to bootstrap the Pipeline.
 func (o LookupPipelineResultOutput) BootstrapConfiguration() BootstrapConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupPipelineResult) BootstrapConfigurationResponse { return v.BootstrapConfiguration }).(BootstrapConfigurationResponseOutput)
 }
 
+// Resource Id
 func (o LookupPipelineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupPipelineResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupPipelineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Reference to the Azure DevOps Organization containing the Pipeline.
 func (o LookupPipelineResultOutput) Organization() OrganizationReferenceResponseOutput {
 	return o.ApplyT(func(v LookupPipelineResult) OrganizationReferenceResponse { return v.Organization }).(OrganizationReferenceResponseOutput)
 }
 
+// Unique identifier of the Azure Pipeline within the Azure DevOps Project.
 func (o LookupPipelineResultOutput) PipelineId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPipelineResult) int { return v.PipelineId }).(pulumi.IntOutput)
 }
 
+// Reference to the Azure DevOps Project containing the Pipeline.
 func (o LookupPipelineResultOutput) Project() ProjectReferenceResponseOutput {
 	return o.ApplyT(func(v LookupPipelineResult) ProjectReferenceResponse { return v.Project }).(ProjectReferenceResponseOutput)
 }
 
+// Resource Tags
 func (o LookupPipelineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPipelineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource Type
 func (o LookupPipelineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Type }).(pulumi.StringOutput)
 }

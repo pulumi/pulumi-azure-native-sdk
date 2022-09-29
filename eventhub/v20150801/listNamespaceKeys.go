@@ -21,18 +21,26 @@ func ListNamespaceKeys(ctx *pulumi.Context, args *ListNamespaceKeysArgs, opts ..
 }
 
 type ListNamespaceKeysArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Namespace/EventHub Connection String
 type ListNamespaceKeysResult struct {
-	KeyName                   string `pulumi:"keyName"`
-	PrimaryConnectionString   string `pulumi:"primaryConnectionString"`
-	PrimaryKey                string `pulumi:"primaryKey"`
+	// A string that describes the AuthorizationRule.
+	KeyName string `pulumi:"keyName"`
+	// Primary connection string of the created Namespace AuthorizationRule.
+	PrimaryConnectionString string `pulumi:"primaryConnectionString"`
+	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// Secondary connection string of the created Namespace AuthorizationRule.
 	SecondaryConnectionString string `pulumi:"secondaryConnectionString"`
-	SecondaryKey              string `pulumi:"secondaryKey"`
+	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
+	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
 func ListNamespaceKeysOutput(ctx *pulumi.Context, args ListNamespaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListNamespaceKeysResultOutput {
@@ -49,9 +57,12 @@ func ListNamespaceKeysOutput(ctx *pulumi.Context, args ListNamespaceKeysOutputAr
 }
 
 type ListNamespaceKeysOutputArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListNamespaceKeysOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o ListNamespaceKeysResultOutput) ToListNamespaceKeysResultOutputWithContex
 	return o
 }
 
+// A string that describes the AuthorizationRule.
 func (o ListNamespaceKeysResultOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// Primary connection string of the created Namespace AuthorizationRule.
 func (o ListNamespaceKeysResultOutput) PrimaryConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) string { return v.PrimaryConnectionString }).(pulumi.StringOutput)
 }
 
+// A base64-encoded 256-bit primary key for signing and validating the SAS token.
 func (o ListNamespaceKeysResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// Secondary connection string of the created Namespace AuthorizationRule.
 func (o ListNamespaceKeysResultOutput) SecondaryConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) string { return v.SecondaryConnectionString }).(pulumi.StringOutput)
 }
 
+// A base64-encoded 256-bit primary key for signing and validating the SAS token.
 func (o ListNamespaceKeysResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListNamespaceKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }

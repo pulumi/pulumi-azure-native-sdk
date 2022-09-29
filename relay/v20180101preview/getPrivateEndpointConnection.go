@@ -21,21 +21,32 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
-	NamespaceName                 string `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The PrivateEndpointConnection name.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Private endpoint connection resource.
 type LookupPrivateEndpointConnectionResult struct {
-	Id                                string                                     `pulumi:"id"`
-	Location                          string                                     `pulumi:"location"`
-	Name                              string                                     `pulumi:"name"`
-	PrivateEndpoint                   *PrivateEndpointResponse                   `pulumi:"privateEndpoint"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Properties of the private endpoint object.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// Approval state of the private link connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                     `pulumi:"provisioningState"`
-	Tags                              map[string]string                          `pulumi:"tags"`
-	Type                              string                                     `pulumi:"type"`
+	// Provisioning state of the private endpoint connection.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
@@ -52,9 +63,12 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
-	NamespaceName                 pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The PrivateEndpointConnection name.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -76,36 +90,44 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 	return o
 }
 
+// Resource ID.
 func (o LookupPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupPrivateEndpointConnectionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the private endpoint object.
 func (o LookupPrivateEndpointConnectionResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
 
+// Approval state of the private link connection.
 func (o LookupPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) *PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
+// Provisioning state of the private endpoint connection.
 func (o LookupPrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupPrivateEndpointConnectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

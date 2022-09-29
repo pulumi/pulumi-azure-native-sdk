@@ -21,19 +21,28 @@ func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRul
 }
 
 type LookupVirtualNetworkRuleArgs struct {
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	ServerName             string `pulumi:"serverName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the virtual network rule.
 	VirtualNetworkRuleName string `pulumi:"virtualNetworkRuleName"`
 }
 
 // A virtual network rule.
 type LookupVirtualNetworkRuleResult struct {
-	Id                               string `pulumi:"id"`
-	IgnoreMissingVnetServiceEndpoint *bool  `pulumi:"ignoreMissingVnetServiceEndpoint"`
-	Name                             string `pulumi:"name"`
-	State                            string `pulumi:"state"`
-	Type                             string `pulumi:"type"`
-	VirtualNetworkSubnetId           string `pulumi:"virtualNetworkSubnetId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Create firewall rule before the virtual network has vnet service endpoint enabled.
+	IgnoreMissingVnetServiceEndpoint *bool `pulumi:"ignoreMissingVnetServiceEndpoint"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Virtual Network Rule State
+	State string `pulumi:"state"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The ARM resource id of the virtual network subnet.
+	VirtualNetworkSubnetId string `pulumi:"virtualNetworkSubnetId"`
 }
 
 func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetworkRuleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkRuleResultOutput {
@@ -50,8 +59,11 @@ func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetwo
 }
 
 type LookupVirtualNetworkRuleOutputArgs struct {
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName             pulumi.StringInput `pulumi:"serverName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the virtual network rule.
 	VirtualNetworkRuleName pulumi.StringInput `pulumi:"virtualNetworkRuleName"`
 }
 
@@ -74,26 +86,32 @@ func (o LookupVirtualNetworkRuleResultOutput) ToLookupVirtualNetworkRuleResultOu
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVirtualNetworkRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Create firewall rule before the virtual network has vnet service endpoint enabled.
 func (o LookupVirtualNetworkRuleResultOutput) IgnoreMissingVnetServiceEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) *bool { return v.IgnoreMissingVnetServiceEndpoint }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the resource
 func (o LookupVirtualNetworkRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Virtual Network Rule State
 func (o LookupVirtualNetworkRuleResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVirtualNetworkRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The ARM resource id of the virtual network subnet.
 func (o LookupVirtualNetworkRuleResultOutput) VirtualNetworkSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.VirtualNetworkSubnetId }).(pulumi.StringOutput)
 }

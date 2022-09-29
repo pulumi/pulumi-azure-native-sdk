@@ -22,24 +22,31 @@ func LookupWebAppRelayServiceConnection(ctx *pulumi.Context, args *LookupWebAppR
 }
 
 type LookupWebAppRelayServiceConnectionArgs struct {
-	EntityName        string `pulumi:"entityName"`
-	Name              string `pulumi:"name"`
+	// Name of the hybrid connection.
+	EntityName string `pulumi:"entityName"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Hybrid Connection for an App Service app.
 type LookupWebAppRelayServiceConnectionResult struct {
-	BiztalkUri               *string `pulumi:"biztalkUri"`
-	EntityConnectionString   *string `pulumi:"entityConnectionString"`
-	EntityName               *string `pulumi:"entityName"`
-	Hostname                 *string `pulumi:"hostname"`
-	Id                       string  `pulumi:"id"`
-	Kind                     *string `pulumi:"kind"`
+	BiztalkUri             *string `pulumi:"biztalkUri"`
+	EntityConnectionString *string `pulumi:"entityConnectionString"`
+	EntityName             *string `pulumi:"entityName"`
+	Hostname               *string `pulumi:"hostname"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
 	Name                     string  `pulumi:"name"`
 	Port                     *int    `pulumi:"port"`
 	ResourceConnectionString *string `pulumi:"resourceConnectionString"`
 	ResourceType             *string `pulumi:"resourceType"`
-	Type                     string  `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWebAppRelayServiceConnectionOutput(ctx *pulumi.Context, args LookupWebAppRelayServiceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppRelayServiceConnectionResultOutput {
@@ -56,8 +63,11 @@ func LookupWebAppRelayServiceConnectionOutput(ctx *pulumi.Context, args LookupWe
 }
 
 type LookupWebAppRelayServiceConnectionOutputArgs struct {
-	EntityName        pulumi.StringInput `pulumi:"entityName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the hybrid connection.
+	EntityName pulumi.StringInput `pulumi:"entityName"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,14 +106,17 @@ func (o LookupWebAppRelayServiceConnectionResultOutput) Hostname() pulumi.String
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppRelayServiceConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppRelayServiceConnectionResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppRelayServiceConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -120,6 +133,7 @@ func (o LookupWebAppRelayServiceConnectionResultOutput) ResourceType() pulumi.St
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppRelayServiceConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

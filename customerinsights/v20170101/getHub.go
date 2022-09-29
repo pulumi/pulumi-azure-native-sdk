@@ -23,22 +23,34 @@ func LookupHub(ctx *pulumi.Context, args *LookupHubArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupHubArgs struct {
-	HubName           string `pulumi:"hubName"`
+	// The name of the hub.
+	HubName string `pulumi:"hubName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Hub resource.
 type LookupHubResult struct {
-	ApiEndpoint       string                        `pulumi:"apiEndpoint"`
-	HubBillingInfo    *HubBillingInfoFormatResponse `pulumi:"hubBillingInfo"`
-	Id                string                        `pulumi:"id"`
-	Location          *string                       `pulumi:"location"`
-	Name              string                        `pulumi:"name"`
-	ProvisioningState string                        `pulumi:"provisioningState"`
-	Tags              map[string]string             `pulumi:"tags"`
-	TenantFeatures    *int                          `pulumi:"tenantFeatures"`
-	Type              string                        `pulumi:"type"`
-	WebEndpoint       string                        `pulumi:"webEndpoint"`
+	// API endpoint URL of the hub.
+	ApiEndpoint string `pulumi:"apiEndpoint"`
+	// Billing settings of the hub.
+	HubBillingInfo *HubBillingInfoFormatResponse `pulumi:"hubBillingInfo"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Provisioning state of the hub.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
+	TenantFeatures *int `pulumi:"tenantFeatures"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Web endpoint URL of the hub.
+	WebEndpoint string `pulumi:"webEndpoint"`
 }
 
 func LookupHubOutput(ctx *pulumi.Context, args LookupHubOutputArgs, opts ...pulumi.InvokeOption) LookupHubResultOutput {
@@ -55,7 +67,9 @@ func LookupHubOutput(ctx *pulumi.Context, args LookupHubOutputArgs, opts ...pulu
 }
 
 type LookupHubOutputArgs struct {
-	HubName           pulumi.StringInput `pulumi:"hubName"`
+	// The name of the hub.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +92,52 @@ func (o LookupHubResultOutput) ToLookupHubResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// API endpoint URL of the hub.
 func (o LookupHubResultOutput) ApiEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.ApiEndpoint }).(pulumi.StringOutput)
 }
 
+// Billing settings of the hub.
 func (o LookupHubResultOutput) HubBillingInfo() HubBillingInfoFormatResponsePtrOutput {
 	return o.ApplyT(func(v LookupHubResult) *HubBillingInfoFormatResponse { return v.HubBillingInfo }).(HubBillingInfoFormatResponsePtrOutput)
 }
 
+// Resource ID.
 func (o LookupHubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupHubResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHubResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the hub.
 func (o LookupHubResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupHubResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
 func (o LookupHubResultOutput) TenantFeatures() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupHubResult) *int { return v.TenantFeatures }).(pulumi.IntPtrOutput)
 }
 
+// Resource type.
 func (o LookupHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Web endpoint URL of the hub.
 func (o LookupHubResultOutput) WebEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.WebEndpoint }).(pulumi.StringOutput)
 }

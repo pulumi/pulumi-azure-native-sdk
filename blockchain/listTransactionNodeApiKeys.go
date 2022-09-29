@@ -22,13 +22,17 @@ func ListTransactionNodeApiKeys(ctx *pulumi.Context, args *ListTransactionNodeAp
 }
 
 type ListTransactionNodeApiKeysArgs struct {
+	// Blockchain member name.
 	BlockchainMemberName string `pulumi:"blockchainMemberName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
-	TransactionNodeName  string `pulumi:"transactionNodeName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Transaction node name.
+	TransactionNodeName string `pulumi:"transactionNodeName"`
 }
 
 // Collection of the API key payload which is exposed in the response of the resource provider.
 type ListTransactionNodeApiKeysResult struct {
+	// Gets or sets the collection of API key.
 	Keys []ApiKeyResponse `pulumi:"keys"`
 }
 
@@ -46,9 +50,12 @@ func ListTransactionNodeApiKeysOutput(ctx *pulumi.Context, args ListTransactionN
 }
 
 type ListTransactionNodeApiKeysOutputArgs struct {
+	// Blockchain member name.
 	BlockchainMemberName pulumi.StringInput `pulumi:"blockchainMemberName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
-	TransactionNodeName  pulumi.StringInput `pulumi:"transactionNodeName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Transaction node name.
+	TransactionNodeName pulumi.StringInput `pulumi:"transactionNodeName"`
 }
 
 func (ListTransactionNodeApiKeysOutputArgs) ElementType() reflect.Type {
@@ -70,6 +77,7 @@ func (o ListTransactionNodeApiKeysResultOutput) ToListTransactionNodeApiKeysResu
 	return o
 }
 
+// Gets or sets the collection of API key.
 func (o ListTransactionNodeApiKeysResultOutput) Keys() ApiKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListTransactionNodeApiKeysResult) []ApiKeyResponse { return v.Keys }).(ApiKeyResponseArrayOutput)
 }

@@ -22,14 +22,19 @@ func ListSubscriptionSecrets(ctx *pulumi.Context, args *ListSubscriptionSecretsA
 }
 
 type ListSubscriptionSecretsArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	Sid               string `pulumi:"sid"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
+	Sid string `pulumi:"sid"`
 }
 
 // Subscription keys.
 type ListSubscriptionSecretsResult struct {
-	PrimaryKey   *string `pulumi:"primaryKey"`
+	// Subscription primary key.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Subscription secondary key.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
@@ -47,9 +52,12 @@ func ListSubscriptionSecretsOutput(ctx *pulumi.Context, args ListSubscriptionSec
 }
 
 type ListSubscriptionSecretsOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	Sid               pulumi.StringInput `pulumi:"sid"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
+	Sid pulumi.StringInput `pulumi:"sid"`
 }
 
 func (ListSubscriptionSecretsOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListSubscriptionSecretsResultOutput) ToListSubscriptionSecretsResultOutp
 	return o
 }
 
+// Subscription primary key.
 func (o ListSubscriptionSecretsResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSubscriptionSecretsResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Subscription secondary key.
 func (o ListSubscriptionSecretsResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSubscriptionSecretsResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

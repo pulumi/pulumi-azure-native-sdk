@@ -21,19 +21,28 @@ func LookupSkusNestedResourceTypeThird(ctx *pulumi.Context, args *LookupSkusNest
 }
 
 type LookupSkusNestedResourceTypeThirdArgs struct {
-	NestedResourceTypeFirst  string `pulumi:"nestedResourceTypeFirst"`
+	// The first child resource type.
+	NestedResourceTypeFirst string `pulumi:"nestedResourceTypeFirst"`
+	// The second child resource type.
 	NestedResourceTypeSecond string `pulumi:"nestedResourceTypeSecond"`
-	NestedResourceTypeThird  string `pulumi:"nestedResourceTypeThird"`
-	ProviderNamespace        string `pulumi:"providerNamespace"`
-	ResourceType             string `pulumi:"resourceType"`
-	Sku                      string `pulumi:"sku"`
+	// The third child resource type.
+	NestedResourceTypeThird string `pulumi:"nestedResourceTypeThird"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace string `pulumi:"providerNamespace"`
+	// The resource type.
+	ResourceType string `pulumi:"resourceType"`
+	// The SKU.
+	Sku string `pulumi:"sku"`
 }
 
 type LookupSkusNestedResourceTypeThirdResult struct {
-	Id         string                        `pulumi:"id"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
 	Name       string                        `pulumi:"name"`
 	Properties SkuResourceResponseProperties `pulumi:"properties"`
-	Type       string                        `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSkusNestedResourceTypeThirdOutput(ctx *pulumi.Context, args LookupSkusNestedResourceTypeThirdOutputArgs, opts ...pulumi.InvokeOption) LookupSkusNestedResourceTypeThirdResultOutput {
@@ -50,12 +59,18 @@ func LookupSkusNestedResourceTypeThirdOutput(ctx *pulumi.Context, args LookupSku
 }
 
 type LookupSkusNestedResourceTypeThirdOutputArgs struct {
-	NestedResourceTypeFirst  pulumi.StringInput `pulumi:"nestedResourceTypeFirst"`
+	// The first child resource type.
+	NestedResourceTypeFirst pulumi.StringInput `pulumi:"nestedResourceTypeFirst"`
+	// The second child resource type.
 	NestedResourceTypeSecond pulumi.StringInput `pulumi:"nestedResourceTypeSecond"`
-	NestedResourceTypeThird  pulumi.StringInput `pulumi:"nestedResourceTypeThird"`
-	ProviderNamespace        pulumi.StringInput `pulumi:"providerNamespace"`
-	ResourceType             pulumi.StringInput `pulumi:"resourceType"`
-	Sku                      pulumi.StringInput `pulumi:"sku"`
+	// The third child resource type.
+	NestedResourceTypeThird pulumi.StringInput `pulumi:"nestedResourceTypeThird"`
+	// The name of the resource provider hosted within ProviderHub.
+	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
+	// The resource type.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The SKU.
+	Sku pulumi.StringInput `pulumi:"sku"`
 }
 
 func (LookupSkusNestedResourceTypeThirdOutputArgs) ElementType() reflect.Type {
@@ -76,10 +91,12 @@ func (o LookupSkusNestedResourceTypeThirdResultOutput) ToLookupSkusNestedResourc
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSkusNestedResourceTypeThirdResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeThirdResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSkusNestedResourceTypeThirdResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeThirdResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -88,6 +105,7 @@ func (o LookupSkusNestedResourceTypeThirdResultOutput) Properties() SkuResourceR
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeThirdResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSkusNestedResourceTypeThirdResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeThirdResult) string { return v.Type }).(pulumi.StringOutput)
 }

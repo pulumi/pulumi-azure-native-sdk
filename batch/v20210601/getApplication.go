@@ -21,20 +21,30 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 }
 
 type LookupApplicationArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	ApplicationName   string `pulumi:"applicationName"`
+	// The name of the Batch account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the application. This must be unique within the account.
+	ApplicationName string `pulumi:"applicationName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Contains information about an application in a Batch account.
 type LookupApplicationResult struct {
-	AllowUpdates   *bool   `pulumi:"allowUpdates"`
+	// A value indicating whether packages within the application may be overwritten using the same version string.
+	AllowUpdates *bool `pulumi:"allowUpdates"`
+	// The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
 	DefaultVersion *string `pulumi:"defaultVersion"`
-	DisplayName    *string `pulumi:"displayName"`
-	Etag           string  `pulumi:"etag"`
-	Id             string  `pulumi:"id"`
-	Name           string  `pulumi:"name"`
-	Type           string  `pulumi:"type"`
+	// The display name for the application.
+	DisplayName *string `pulumi:"displayName"`
+	// The ETag of the resource, used for concurrency statements.
+	Etag string `pulumi:"etag"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationResultOutput {
@@ -51,8 +61,11 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 }
 
 type LookupApplicationOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	ApplicationName   pulumi.StringInput `pulumi:"applicationName"`
+	// The name of the Batch account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the application. This must be unique within the account.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContex
 	return o
 }
 
+// A value indicating whether packages within the application may be overwritten using the same version string.
 func (o LookupApplicationResultOutput) AllowUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *bool { return v.AllowUpdates }).(pulumi.BoolPtrOutput)
 }
 
+// The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
 func (o LookupApplicationResultOutput) DefaultVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.DefaultVersion }).(pulumi.StringPtrOutput)
 }
 
+// The display name for the application.
 func (o LookupApplicationResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The ETag of the resource, used for concurrency statements.
 func (o LookupApplicationResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The ID of the resource.
 func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

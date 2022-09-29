@@ -21,15 +21,20 @@ func ListVideoContentToken(ctx *pulumi.Context, args *ListVideoContentTokenArgs,
 }
 
 type ListVideoContentTokenArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The Azure Video Analyzer account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VideoName         string `pulumi:"videoName"`
+	// The Video name.
+	VideoName string `pulumi:"videoName"`
 }
 
 // "Video content token grants access to the video content URLs."
 type ListVideoContentTokenResult struct {
+	// The content token expiration date in ISO8601 format (eg. 2021-01-01T00:00:00Z).
 	ExpirationDate string `pulumi:"expirationDate"`
-	Token          string `pulumi:"token"`
+	// The content token value to be added to the video content URL as the value for the "token" query string parameter. The token is specific to a single video.
+	Token string `pulumi:"token"`
 }
 
 func ListVideoContentTokenOutput(ctx *pulumi.Context, args ListVideoContentTokenOutputArgs, opts ...pulumi.InvokeOption) ListVideoContentTokenResultOutput {
@@ -46,9 +51,12 @@ func ListVideoContentTokenOutput(ctx *pulumi.Context, args ListVideoContentToken
 }
 
 type ListVideoContentTokenOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Azure Video Analyzer account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VideoName         pulumi.StringInput `pulumi:"videoName"`
+	// The Video name.
+	VideoName pulumi.StringInput `pulumi:"videoName"`
 }
 
 func (ListVideoContentTokenOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListVideoContentTokenResultOutput) ToListVideoContentTokenResultOutputWi
 	return o
 }
 
+// The content token expiration date in ISO8601 format (eg. 2021-01-01T00:00:00Z).
 func (o ListVideoContentTokenResultOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVideoContentTokenResult) string { return v.ExpirationDate }).(pulumi.StringOutput)
 }
 
+// The content token value to be added to the video content URL as the value for the "token" query string parameter. The token is specific to a single video.
 func (o ListVideoContentTokenResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVideoContentTokenResult) string { return v.Token }).(pulumi.StringOutput)
 }

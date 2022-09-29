@@ -21,19 +21,28 @@ func LookupReplicationRecoveryServicesProvider(ctx *pulumi.Context, args *Lookup
 }
 
 type LookupReplicationRecoveryServicesProviderArgs struct {
-	FabricName        string `pulumi:"fabricName"`
-	ProviderName      string `pulumi:"providerName"`
+	// Fabric name.
+	FabricName string `pulumi:"fabricName"`
+	// Recovery services provider name
+	ProviderName string `pulumi:"providerName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the recovery services vault.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Provider details.
 type LookupReplicationRecoveryServicesProviderResult struct {
-	Id         string                                     `pulumi:"id"`
-	Location   *string                                    `pulumi:"location"`
-	Name       string                                     `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// Provider properties.
 	Properties RecoveryServicesProviderPropertiesResponse `pulumi:"properties"`
-	Type       string                                     `pulumi:"type"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupReplicationRecoveryServicesProviderOutput(ctx *pulumi.Context, args LookupReplicationRecoveryServicesProviderOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationRecoveryServicesProviderResultOutput {
@@ -50,10 +59,14 @@ func LookupReplicationRecoveryServicesProviderOutput(ctx *pulumi.Context, args L
 }
 
 type LookupReplicationRecoveryServicesProviderOutputArgs struct {
-	FabricName        pulumi.StringInput `pulumi:"fabricName"`
-	ProviderName      pulumi.StringInput `pulumi:"providerName"`
+	// Fabric name.
+	FabricName pulumi.StringInput `pulumi:"fabricName"`
+	// Recovery services provider name
+	ProviderName pulumi.StringInput `pulumi:"providerName"`
+	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the recovery services vault.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupReplicationRecoveryServicesProviderOutputArgs) ElementType() reflect.Type {
@@ -75,24 +88,29 @@ func (o LookupReplicationRecoveryServicesProviderResultOutput) ToLookupReplicati
 	return o
 }
 
+// Resource Id
 func (o LookupReplicationRecoveryServicesProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryServicesProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupReplicationRecoveryServicesProviderResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryServicesProviderResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupReplicationRecoveryServicesProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryServicesProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provider properties.
 func (o LookupReplicationRecoveryServicesProviderResultOutput) Properties() RecoveryServicesProviderPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryServicesProviderResult) RecoveryServicesProviderPropertiesResponse {
 		return v.Properties
 	}).(RecoveryServicesProviderPropertiesResponseOutput)
 }
 
+// Resource Type
 func (o LookupReplicationRecoveryServicesProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicationRecoveryServicesProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }

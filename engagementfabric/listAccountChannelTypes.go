@@ -22,12 +22,15 @@ func ListAccountChannelTypes(ctx *pulumi.Context, args *ListAccountChannelTypesA
 }
 
 type ListAccountChannelTypesArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // List of the EngagementFabric channel descriptions
 type ListAccountChannelTypesResult struct {
+	// Channel descriptions
 	Value []ChannelTypeDescriptionResponse `pulumi:"value"`
 }
 
@@ -45,7 +48,9 @@ func ListAccountChannelTypesOutput(ctx *pulumi.Context, args ListAccountChannelT
 }
 
 type ListAccountChannelTypesOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Resource Group Name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,6 +73,7 @@ func (o ListAccountChannelTypesResultOutput) ToListAccountChannelTypesResultOutp
 	return o
 }
 
+// Channel descriptions
 func (o ListAccountChannelTypesResultOutput) Value() ChannelTypeDescriptionResponseArrayOutput {
 	return o.ApplyT(func(v ListAccountChannelTypesResult) []ChannelTypeDescriptionResponse { return v.Value }).(ChannelTypeDescriptionResponseArrayOutput)
 }

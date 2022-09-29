@@ -21,22 +21,34 @@ func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.Invoke
 }
 
 type LookupRuleArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RuleName          string `pulumi:"ruleName"`
-	SubscriptionName  string `pulumi:"subscriptionName"`
-	TopicName         string `pulumi:"topicName"`
+	// The rule name.
+	RuleName string `pulumi:"ruleName"`
+	// The subscription name.
+	SubscriptionName string `pulumi:"subscriptionName"`
+	// The topic name.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Description of Rule Resource.
 type LookupRuleResult struct {
-	Action            *ActionResponse            `pulumi:"action"`
+	// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
+	Action *ActionResponse `pulumi:"action"`
+	// Properties of correlationFilter
 	CorrelationFilter *CorrelationFilterResponse `pulumi:"correlationFilter"`
-	FilterType        *string                    `pulumi:"filterType"`
-	Id                string                     `pulumi:"id"`
-	Name              string                     `pulumi:"name"`
-	SqlFilter         *SqlFilterResponse         `pulumi:"sqlFilter"`
-	Type              string                     `pulumi:"type"`
+	// Filter type that is evaluated against a BrokeredMessage.
+	FilterType *string `pulumi:"filterType"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Properties of sqlFilter
+	SqlFilter *SqlFilterResponse `pulumi:"sqlFilter"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupRuleResult
@@ -68,11 +80,16 @@ func LookupRuleOutput(ctx *pulumi.Context, args LookupRuleOutputArgs, opts ...pu
 }
 
 type LookupRuleOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleName          pulumi.StringInput `pulumi:"ruleName"`
-	SubscriptionName  pulumi.StringInput `pulumi:"subscriptionName"`
-	TopicName         pulumi.StringInput `pulumi:"topicName"`
+	// The rule name.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The subscription name.
+	SubscriptionName pulumi.StringInput `pulumi:"subscriptionName"`
+	// The topic name.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (LookupRuleOutputArgs) ElementType() reflect.Type {
@@ -94,30 +111,37 @@ func (o LookupRuleResultOutput) ToLookupRuleResultOutputWithContext(ctx context.
 	return o
 }
 
+// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 func (o LookupRuleResultOutput) Action() ActionResponsePtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *ActionResponse { return v.Action }).(ActionResponsePtrOutput)
 }
 
+// Properties of correlationFilter
 func (o LookupRuleResultOutput) CorrelationFilter() CorrelationFilterResponsePtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *CorrelationFilterResponse { return v.CorrelationFilter }).(CorrelationFilterResponsePtrOutput)
 }
 
+// Filter type that is evaluated against a BrokeredMessage.
 func (o LookupRuleResultOutput) FilterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *string { return v.FilterType }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of sqlFilter
 func (o LookupRuleResultOutput) SqlFilter() SqlFilterResponsePtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *SqlFilterResponse { return v.SqlFilter }).(SqlFilterResponsePtrOutput)
 }
 
+// Resource type
 func (o LookupRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

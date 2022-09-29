@@ -21,18 +21,26 @@ func LookupGlobalParameter(ctx *pulumi.Context, args *LookupGlobalParameterArgs,
 }
 
 type LookupGlobalParameterArgs struct {
-	FactoryName         string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The global parameter name.
 	GlobalParameterName string `pulumi:"globalParameterName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Global parameters resource type.
 type LookupGlobalParameterResult struct {
-	Etag       string                                          `pulumi:"etag"`
-	Id         string                                          `pulumi:"id"`
-	Name       string                                          `pulumi:"name"`
+	// Etag identifies change in the resource.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Properties of the global parameter.
 	Properties map[string]GlobalParameterSpecificationResponse `pulumi:"properties"`
-	Type       string                                          `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupGlobalParameterOutput(ctx *pulumi.Context, args LookupGlobalParameterOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalParameterResultOutput {
@@ -49,9 +57,12 @@ func LookupGlobalParameterOutput(ctx *pulumi.Context, args LookupGlobalParameter
 }
 
 type LookupGlobalParameterOutputArgs struct {
-	FactoryName         pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The global parameter name.
 	GlobalParameterName pulumi.StringInput `pulumi:"globalParameterName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupGlobalParameterOutputArgs) ElementType() reflect.Type {
@@ -73,24 +84,29 @@ func (o LookupGlobalParameterResultOutput) ToLookupGlobalParameterResultOutputWi
 	return o
 }
 
+// Etag identifies change in the resource.
 func (o LookupGlobalParameterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalParameterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupGlobalParameterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalParameterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupGlobalParameterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalParameterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the global parameter.
 func (o LookupGlobalParameterResultOutput) Properties() GlobalParameterSpecificationResponseMapOutput {
 	return o.ApplyT(func(v LookupGlobalParameterResult) map[string]GlobalParameterSpecificationResponse {
 		return v.Properties
 	}).(GlobalParameterSpecificationResponseMapOutput)
 }
 
+// The resource type.
 func (o LookupGlobalParameterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalParameterResult) string { return v.Type }).(pulumi.StringOutput)
 }

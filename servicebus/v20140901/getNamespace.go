@@ -23,25 +23,40 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 }
 
 type LookupNamespaceArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a namespace resource.
 type LookupNamespaceResult struct {
-	CreateACSNamespace *bool             `pulumi:"createACSNamespace"`
-	CreatedAt          string            `pulumi:"createdAt"`
-	Enabled            *bool             `pulumi:"enabled"`
-	Id                 string            `pulumi:"id"`
-	Location           string            `pulumi:"location"`
-	Name               string            `pulumi:"name"`
-	ProvisioningState  string            `pulumi:"provisioningState"`
-	ServiceBusEndpoint string            `pulumi:"serviceBusEndpoint"`
-	Sku                *SkuResponse      `pulumi:"sku"`
-	Status             *string           `pulumi:"status"`
-	Tags               map[string]string `pulumi:"tags"`
-	Type               string            `pulumi:"type"`
-	UpdatedAt          string            `pulumi:"updatedAt"`
+	// Indicates whether to create an ACS namespace.
+	CreateACSNamespace *bool `pulumi:"createACSNamespace"`
+	// The time the namespace was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Specifies whether this instance is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Provisioning state of the namespace.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Endpoint you can use to perform Service Bus operations.
+	ServiceBusEndpoint string `pulumi:"serviceBusEndpoint"`
+	// SKU of the namespace.
+	Sku *SkuResponse `pulumi:"sku"`
+	// State of the namespace.
+	Status *string `pulumi:"status"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The time the namespace was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
@@ -58,7 +73,9 @@ func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, 
 }
 
 type LookupNamespaceOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -81,54 +98,67 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 	return o
 }
 
+// Indicates whether to create an ACS namespace.
 func (o LookupNamespaceResultOutput) CreateACSNamespace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *bool { return v.CreateACSNamespace }).(pulumi.BoolPtrOutput)
 }
 
+// The time the namespace was created.
 func (o LookupNamespaceResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Specifies whether this instance is enabled.
 func (o LookupNamespaceResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Resource Id
 func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupNamespaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the namespace.
 func (o LookupNamespaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Endpoint you can use to perform Service Bus operations.
 func (o LookupNamespaceResultOutput) ServiceBusEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ServiceBusEndpoint }).(pulumi.StringOutput)
 }
 
+// SKU of the namespace.
 func (o LookupNamespaceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// State of the namespace.
 func (o LookupNamespaceResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags
 func (o LookupNamespaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupNamespaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The time the namespace was updated.
 func (o LookupNamespaceResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

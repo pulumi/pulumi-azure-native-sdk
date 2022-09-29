@@ -21,23 +21,36 @@ func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.
 }
 
 type LookupChannelArgs struct {
-	ChannelName       string `pulumi:"channelName"`
+	// The name of the Bot resource.
+	ChannelName string `pulumi:"channelName"`
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Bot channel resource definition
 type LookupChannelResult struct {
-	Etag       *string           `pulumi:"etag"`
-	Id         string            `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Location   *string           `pulumi:"location"`
-	Name       string            `pulumi:"name"`
-	Properties interface{}       `pulumi:"properties"`
-	Sku        *SkuResponse      `pulumi:"sku"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       string            `pulumi:"type"`
-	Zones      []string          `pulumi:"zones"`
+	// Entity Tag
+	Etag *string `pulumi:"etag"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// Required. Gets or sets the Kind of the resource.
+	Kind *string `pulumi:"kind"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// The set of properties specific to bot channel resource
+	Properties interface{} `pulumi:"properties"`
+	// Gets or sets the SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
+	// Entity zones
+	Zones []string `pulumi:"zones"`
 }
 
 func LookupChannelOutput(ctx *pulumi.Context, args LookupChannelOutputArgs, opts ...pulumi.InvokeOption) LookupChannelResultOutput {
@@ -54,9 +67,12 @@ func LookupChannelOutput(ctx *pulumi.Context, args LookupChannelOutputArgs, opts
 }
 
 type LookupChannelOutputArgs struct {
-	ChannelName       pulumi.StringInput `pulumi:"channelName"`
+	// The name of the Bot resource.
+	ChannelName pulumi.StringInput `pulumi:"channelName"`
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupChannelOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupChannelResultOutput) ToLookupChannelResultOutputWithContext(ctx co
 	return o
 }
 
+// Entity Tag
 func (o LookupChannelResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupChannelResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the resource ID.
 func (o LookupChannelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Required. Gets or sets the Kind of the resource.
 func (o LookupChannelResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupChannelResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupChannelResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupChannelResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupChannelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The set of properties specific to bot channel resource
 func (o LookupChannelResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupChannelResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Gets or sets the SKU of the resource.
 func (o LookupChannelResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupChannelResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupChannelResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupChannelResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupChannelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Entity zones
 func (o LookupChannelResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupChannelResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

@@ -23,22 +23,34 @@ func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.In
 }
 
 type LookupOriginArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
-	OriginName        string `pulumi:"originName"`
-	ProfileName       string `pulumi:"profileName"`
+	// Name of the endpoint within the CDN profile.
+	EndpointName string `pulumi:"endpointName"`
+	// Name of the origin, an arbitrary value but it needs to be unique under endpoint
+	OriginName string `pulumi:"originName"`
+	// Name of the CDN profile within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 type LookupOriginResult struct {
-	HostName          string `pulumi:"hostName"`
-	HttpPort          *int   `pulumi:"httpPort"`
-	HttpsPort         *int   `pulumi:"httpsPort"`
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
+	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.
+	HostName string `pulumi:"hostName"`
+	// The value of the HTTP port. Must be between 1 and 65535.
+	HttpPort *int `pulumi:"httpPort"`
+	// The value of the https port. Must be between 1 and 65535.
+	HttpsPort *int `pulumi:"httpsPort"`
+	// Resource ID
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Provisioning status of the origin.
 	ProvisioningState string `pulumi:"provisioningState"`
-	ResourceState     string `pulumi:"resourceState"`
-	Type              string `pulumi:"type"`
+	// Resource status of the origin.
+	ResourceState string `pulumi:"resourceState"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupOriginOutput(ctx *pulumi.Context, args LookupOriginOutputArgs, opts ...pulumi.InvokeOption) LookupOriginResultOutput {
@@ -55,9 +67,13 @@ func LookupOriginOutput(ctx *pulumi.Context, args LookupOriginOutputArgs, opts .
 }
 
 type LookupOriginOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
-	OriginName        pulumi.StringInput `pulumi:"originName"`
-	ProfileName       pulumi.StringInput `pulumi:"profileName"`
+	// Name of the endpoint within the CDN profile.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// Name of the origin, an arbitrary value but it needs to be unique under endpoint
+	OriginName pulumi.StringInput `pulumi:"originName"`
+	// Name of the CDN profile within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,34 +96,42 @@ func (o LookupOriginResultOutput) ToLookupOriginResultOutputWithContext(ctx cont
 	return o
 }
 
+// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.
 func (o LookupOriginResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// The value of the HTTP port. Must be between 1 and 65535.
 func (o LookupOriginResultOutput) HttpPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.HttpPort }).(pulumi.IntPtrOutput)
 }
 
+// The value of the https port. Must be between 1 and 65535.
 func (o LookupOriginResultOutput) HttpsPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.HttpsPort }).(pulumi.IntPtrOutput)
 }
 
+// Resource ID
 func (o LookupOriginResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupOriginResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning status of the origin.
 func (o LookupOriginResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource status of the origin.
 func (o LookupOriginResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupOriginResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,37 +21,53 @@ func LookupMigration(ctx *pulumi.Context, args *LookupMigrationArgs, opts ...pul
 }
 
 type LookupMigrationArgs struct {
-	MigrationName                   string `pulumi:"migrationName"`
-	TargetDBServerName              string `pulumi:"targetDBServerName"`
+	// The name of the migration.
+	MigrationName string `pulumi:"migrationName"`
+	// The name of the target database server.
+	TargetDBServerName string `pulumi:"targetDBServerName"`
+	// The resource group name of the target database server.
 	TargetDBServerResourceGroupName string `pulumi:"targetDBServerResourceGroupName"`
-	TargetDBServerSubscriptionId    string `pulumi:"targetDBServerSubscriptionId"`
+	// The subscription ID of the target database server.
+	TargetDBServerSubscriptionId string `pulumi:"targetDBServerSubscriptionId"`
 }
 
 // Represents a migration resource.
 type LookupMigrationResult struct {
-	CurrentStatus                             MigrationStatusResponse            `pulumi:"currentStatus"`
-	DBsToMigrate                              []string                           `pulumi:"dBsToMigrate"`
-	Id                                        string                             `pulumi:"id"`
-	Location                                  string                             `pulumi:"location"`
-	MigrationDetailsLevel                     string                             `pulumi:"migrationDetailsLevel"`
-	MigrationId                               string                             `pulumi:"migrationId"`
-	MigrationName                             string                             `pulumi:"migrationName"`
-	MigrationResourceGroup                    *MigrationResourceGroupResponse    `pulumi:"migrationResourceGroup"`
-	MigrationWindowStartTimeInUtc             *string                            `pulumi:"migrationWindowStartTimeInUtc"`
-	Name                                      string                             `pulumi:"name"`
-	OverwriteDBsInTarget                      *bool                              `pulumi:"overwriteDBsInTarget"`
+	// Migration status.
+	CurrentStatus MigrationStatusResponse `pulumi:"currentStatus"`
+	DBsToMigrate  []string                `pulumi:"dBsToMigrate"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// Migration details level.
+	MigrationDetailsLevel string `pulumi:"migrationDetailsLevel"`
+	MigrationId           string `pulumi:"migrationId"`
+	MigrationName         string `pulumi:"migrationName"`
+	// Migration resource group.
+	MigrationResourceGroup        *MigrationResourceGroupResponse `pulumi:"migrationResourceGroup"`
+	MigrationWindowStartTimeInUtc *string                         `pulumi:"migrationWindowStartTimeInUtc"`
+	// The name of the resource
+	Name                 string `pulumi:"name"`
+	OverwriteDBsInTarget *bool  `pulumi:"overwriteDBsInTarget"`
+	// Migration secret parameters.
 	SecretParameters                          *MigrationSecretParametersResponse `pulumi:"secretParameters"`
 	SetupLogicalReplicationOnSourceDBIfNeeded *bool                              `pulumi:"setupLogicalReplicationOnSourceDBIfNeeded"`
-	SourceDBServerMetadata                    DBServerMetadataResponse           `pulumi:"sourceDBServerMetadata"`
-	SourceDBServerResourceId                  *string                            `pulumi:"sourceDBServerResourceId"`
-	StartDataMigration                        *bool                              `pulumi:"startDataMigration"`
-	SystemData                                SystemDataResponse                 `pulumi:"systemData"`
-	Tags                                      map[string]string                  `pulumi:"tags"`
-	TargetDBServerMetadata                    DBServerMetadataResponse           `pulumi:"targetDBServerMetadata"`
-	TargetDBServerResourceId                  string                             `pulumi:"targetDBServerResourceId"`
-	TriggerCutover                            *bool                              `pulumi:"triggerCutover"`
-	Type                                      string                             `pulumi:"type"`
-	UserAssignedIdentityResourceId            *string                            `pulumi:"userAssignedIdentityResourceId"`
+	// Database server metadata.
+	SourceDBServerMetadata   DBServerMetadataResponse `pulumi:"sourceDBServerMetadata"`
+	SourceDBServerResourceId *string                  `pulumi:"sourceDBServerResourceId"`
+	StartDataMigration       *bool                    `pulumi:"startDataMigration"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Database server metadata.
+	TargetDBServerMetadata   DBServerMetadataResponse `pulumi:"targetDBServerMetadata"`
+	TargetDBServerResourceId string                   `pulumi:"targetDBServerResourceId"`
+	TriggerCutover           *bool                    `pulumi:"triggerCutover"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type                           string  `pulumi:"type"`
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
 }
 
 func LookupMigrationOutput(ctx *pulumi.Context, args LookupMigrationOutputArgs, opts ...pulumi.InvokeOption) LookupMigrationResultOutput {
@@ -68,10 +84,14 @@ func LookupMigrationOutput(ctx *pulumi.Context, args LookupMigrationOutputArgs, 
 }
 
 type LookupMigrationOutputArgs struct {
-	MigrationName                   pulumi.StringInput `pulumi:"migrationName"`
-	TargetDBServerName              pulumi.StringInput `pulumi:"targetDBServerName"`
+	// The name of the migration.
+	MigrationName pulumi.StringInput `pulumi:"migrationName"`
+	// The name of the target database server.
+	TargetDBServerName pulumi.StringInput `pulumi:"targetDBServerName"`
+	// The resource group name of the target database server.
 	TargetDBServerResourceGroupName pulumi.StringInput `pulumi:"targetDBServerResourceGroupName"`
-	TargetDBServerSubscriptionId    pulumi.StringInput `pulumi:"targetDBServerSubscriptionId"`
+	// The subscription ID of the target database server.
+	TargetDBServerSubscriptionId pulumi.StringInput `pulumi:"targetDBServerSubscriptionId"`
 }
 
 func (LookupMigrationOutputArgs) ElementType() reflect.Type {
@@ -93,6 +113,7 @@ func (o LookupMigrationResultOutput) ToLookupMigrationResultOutputWithContext(ct
 	return o
 }
 
+// Migration status.
 func (o LookupMigrationResultOutput) CurrentStatus() MigrationStatusResponseOutput {
 	return o.ApplyT(func(v LookupMigrationResult) MigrationStatusResponse { return v.CurrentStatus }).(MigrationStatusResponseOutput)
 }
@@ -101,14 +122,17 @@ func (o LookupMigrationResultOutput) DBsToMigrate() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMigrationResult) []string { return v.DBsToMigrate }).(pulumi.StringArrayOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMigrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupMigrationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Migration details level.
 func (o LookupMigrationResultOutput) MigrationDetailsLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.MigrationDetailsLevel }).(pulumi.StringOutput)
 }
@@ -121,6 +145,7 @@ func (o LookupMigrationResultOutput) MigrationName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.MigrationName }).(pulumi.StringOutput)
 }
 
+// Migration resource group.
 func (o LookupMigrationResultOutput) MigrationResourceGroup() MigrationResourceGroupResponsePtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *MigrationResourceGroupResponse { return v.MigrationResourceGroup }).(MigrationResourceGroupResponsePtrOutput)
 }
@@ -129,6 +154,7 @@ func (o LookupMigrationResultOutput) MigrationWindowStartTimeInUtc() pulumi.Stri
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.MigrationWindowStartTimeInUtc }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupMigrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -137,6 +163,7 @@ func (o LookupMigrationResultOutput) OverwriteDBsInTarget() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v LookupMigrationResult) *bool { return v.OverwriteDBsInTarget }).(pulumi.BoolPtrOutput)
 }
 
+// Migration secret parameters.
 func (o LookupMigrationResultOutput) SecretParameters() MigrationSecretParametersResponsePtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *MigrationSecretParametersResponse { return v.SecretParameters }).(MigrationSecretParametersResponsePtrOutput)
 }
@@ -145,6 +172,7 @@ func (o LookupMigrationResultOutput) SetupLogicalReplicationOnSourceDBIfNeeded()
 	return o.ApplyT(func(v LookupMigrationResult) *bool { return v.SetupLogicalReplicationOnSourceDBIfNeeded }).(pulumi.BoolPtrOutput)
 }
 
+// Database server metadata.
 func (o LookupMigrationResultOutput) SourceDBServerMetadata() DBServerMetadataResponseOutput {
 	return o.ApplyT(func(v LookupMigrationResult) DBServerMetadataResponse { return v.SourceDBServerMetadata }).(DBServerMetadataResponseOutput)
 }
@@ -157,14 +185,17 @@ func (o LookupMigrationResultOutput) StartDataMigration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *bool { return v.StartDataMigration }).(pulumi.BoolPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupMigrationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMigrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupMigrationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMigrationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Database server metadata.
 func (o LookupMigrationResultOutput) TargetDBServerMetadata() DBServerMetadataResponseOutput {
 	return o.ApplyT(func(v LookupMigrationResult) DBServerMetadataResponse { return v.TargetDBServerMetadata }).(DBServerMetadataResponseOutput)
 }
@@ -177,6 +208,7 @@ func (o LookupMigrationResultOutput) TriggerCutover() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *bool { return v.TriggerCutover }).(pulumi.BoolPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupMigrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

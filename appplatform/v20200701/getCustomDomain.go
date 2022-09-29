@@ -21,18 +21,26 @@ func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts 
 }
 
 type LookupCustomDomainArgs struct {
-	AppName           string `pulumi:"appName"`
-	DomainName        string `pulumi:"domainName"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the custom domain resource.
+	DomainName string `pulumi:"domainName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Custom domain resource payload.
 type LookupCustomDomainResult struct {
-	Id         string                         `pulumi:"id"`
-	Name       string                         `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of the custom domain resource.
 	Properties CustomDomainPropertiesResponse `pulumi:"properties"`
-	Type       string                         `pulumi:"type"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
@@ -49,10 +57,14 @@ func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutput
 }
 
 type LookupCustomDomainOutputArgs struct {
-	AppName           pulumi.StringInput `pulumi:"appName"`
-	DomainName        pulumi.StringInput `pulumi:"domainName"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the custom domain resource.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupCustomDomainOutputArgs) ElementType() reflect.Type {
@@ -74,18 +86,22 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithCont
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the custom domain resource.
 func (o LookupCustomDomainResultOutput) Properties() CustomDomainPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) CustomDomainPropertiesResponse { return v.Properties }).(CustomDomainPropertiesResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

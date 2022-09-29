@@ -21,24 +21,38 @@ func LookupADCCatalog(ctx *pulumi.Context, args *LookupADCCatalogArgs, opts ...p
 }
 
 type LookupADCCatalogArgs struct {
-	CatalogName       string `pulumi:"catalogName"`
+	// The name of the data catalog in the specified subscription and resource group.
+	CatalogName string `pulumi:"catalogName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure Data Catalog.
 type LookupADCCatalogResult struct {
-	Admins                        []PrincipalsResponse `pulumi:"admins"`
-	EnableAutomaticUnitAdjustment *bool                `pulumi:"enableAutomaticUnitAdjustment"`
-	Etag                          *string              `pulumi:"etag"`
-	Id                            string               `pulumi:"id"`
-	Location                      *string              `pulumi:"location"`
-	Name                          string               `pulumi:"name"`
-	Sku                           *string              `pulumi:"sku"`
-	SuccessfullyProvisioned       *bool                `pulumi:"successfullyProvisioned"`
-	Tags                          map[string]string    `pulumi:"tags"`
-	Type                          string               `pulumi:"type"`
-	Units                         *int                 `pulumi:"units"`
-	Users                         []PrincipalsResponse `pulumi:"users"`
+	// Azure data catalog admin list.
+	Admins []PrincipalsResponse `pulumi:"admins"`
+	// Automatic unit adjustment enabled or not.
+	EnableAutomaticUnitAdjustment *bool `pulumi:"enableAutomaticUnitAdjustment"`
+	// Resource etag
+	Etag *string `pulumi:"etag"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Azure data catalog SKU.
+	Sku *string `pulumi:"sku"`
+	// Azure data catalog provision status.
+	SuccessfullyProvisioned *bool `pulumi:"successfullyProvisioned"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// Azure data catalog units.
+	Units *int `pulumi:"units"`
+	// Azure data catalog user list.
+	Users []PrincipalsResponse `pulumi:"users"`
 }
 
 func LookupADCCatalogOutput(ctx *pulumi.Context, args LookupADCCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupADCCatalogResultOutput {
@@ -55,7 +69,9 @@ func LookupADCCatalogOutput(ctx *pulumi.Context, args LookupADCCatalogOutputArgs
 }
 
 type LookupADCCatalogOutputArgs struct {
-	CatalogName       pulumi.StringInput `pulumi:"catalogName"`
+	// The name of the data catalog in the specified subscription and resource group.
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,50 +94,62 @@ func (o LookupADCCatalogResultOutput) ToLookupADCCatalogResultOutputWithContext(
 	return o
 }
 
+// Azure data catalog admin list.
 func (o LookupADCCatalogResultOutput) Admins() PrincipalsResponseArrayOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) []PrincipalsResponse { return v.Admins }).(PrincipalsResponseArrayOutput)
 }
 
+// Automatic unit adjustment enabled or not.
 func (o LookupADCCatalogResultOutput) EnableAutomaticUnitAdjustment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) *bool { return v.EnableAutomaticUnitAdjustment }).(pulumi.BoolPtrOutput)
 }
 
+// Resource etag
 func (o LookupADCCatalogResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupADCCatalogResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupADCCatalogResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupADCCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure data catalog SKU.
 func (o LookupADCCatalogResultOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// Azure data catalog provision status.
 func (o LookupADCCatalogResultOutput) SuccessfullyProvisioned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) *bool { return v.SuccessfullyProvisioned }).(pulumi.BoolPtrOutput)
 }
 
+// Resource tags
 func (o LookupADCCatalogResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupADCCatalogResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Azure data catalog units.
 func (o LookupADCCatalogResultOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) *int { return v.Units }).(pulumi.IntPtrOutput)
 }
 
+// Azure data catalog user list.
 func (o LookupADCCatalogResultOutput) Users() PrincipalsResponseArrayOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) []PrincipalsResponse { return v.Users }).(PrincipalsResponseArrayOutput)
 }

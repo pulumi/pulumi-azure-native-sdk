@@ -23,28 +23,46 @@ func LookupSqlPoolsV3(ctx *pulumi.Context, args *LookupSqlPoolsV3Args, opts ...p
 }
 
 type LookupSqlPoolsV3Args struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SqlPoolName       string `pulumi:"sqlPoolName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the sql pool.
+	SqlPoolName string `pulumi:"sqlPoolName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // A sql pool resource.
 type LookupSqlPoolsV3Result struct {
-	AutoPauseTimer                *int               `pulumi:"autoPauseTimer"`
-	AutoResume                    *bool              `pulumi:"autoResume"`
-	CurrentServiceObjectiveName   string             `pulumi:"currentServiceObjectiveName"`
-	Id                            string             `pulumi:"id"`
-	Kind                          string             `pulumi:"kind"`
-	Location                      string             `pulumi:"location"`
-	MaxServiceObjectiveName       *string            `pulumi:"maxServiceObjectiveName"`
-	Name                          string             `pulumi:"name"`
-	RequestedServiceObjectiveName string             `pulumi:"requestedServiceObjectiveName"`
-	Sku                           *SkuV3Response     `pulumi:"sku"`
-	SqlPoolGuid                   string             `pulumi:"sqlPoolGuid"`
-	Status                        string             `pulumi:"status"`
-	SystemData                    SystemDataResponse `pulumi:"systemData"`
-	Tags                          map[string]string  `pulumi:"tags"`
-	Type                          string             `pulumi:"type"`
+	// The period of inactivity in minutes before automatically pausing the sql pool.
+	AutoPauseTimer *int `pulumi:"autoPauseTimer"`
+	// Indicates whether the sql pool can automatically resume when connection attempts are made.
+	AutoResume *bool `pulumi:"autoResume"`
+	// The current service level objective name of the sql pool.
+	CurrentServiceObjectiveName string `pulumi:"currentServiceObjectiveName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Kind of SqlPool.
+	Kind string `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The max service level objective name of the sql pool.
+	MaxServiceObjectiveName *string `pulumi:"maxServiceObjectiveName"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The requested service level objective name of the sql pool.
+	RequestedServiceObjectiveName string `pulumi:"requestedServiceObjectiveName"`
+	// The sql pool SKU. The list of SKUs may vary by region and support offer.
+	Sku *SkuV3Response `pulumi:"sku"`
+	// The Guid of the sql pool.
+	SqlPoolGuid string `pulumi:"sqlPoolGuid"`
+	// The status of the sql pool.
+	Status string `pulumi:"status"`
+	// SystemData of SqlPool.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlPoolsV3Output(ctx *pulumi.Context, args LookupSqlPoolsV3OutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolsV3ResultOutput {
@@ -61,9 +79,12 @@ func LookupSqlPoolsV3Output(ctx *pulumi.Context, args LookupSqlPoolsV3OutputArgs
 }
 
 type LookupSqlPoolsV3OutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SqlPoolName       pulumi.StringInput `pulumi:"sqlPoolName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the sql pool.
+	SqlPoolName pulumi.StringInput `pulumi:"sqlPoolName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSqlPoolsV3OutputArgs) ElementType() reflect.Type {
@@ -85,62 +106,77 @@ func (o LookupSqlPoolsV3ResultOutput) ToLookupSqlPoolsV3ResultOutputWithContext(
 	return o
 }
 
+// The period of inactivity in minutes before automatically pausing the sql pool.
 func (o LookupSqlPoolsV3ResultOutput) AutoPauseTimer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) *int { return v.AutoPauseTimer }).(pulumi.IntPtrOutput)
 }
 
+// Indicates whether the sql pool can automatically resume when connection attempts are made.
 func (o LookupSqlPoolsV3ResultOutput) AutoResume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) *bool { return v.AutoResume }).(pulumi.BoolPtrOutput)
 }
 
+// The current service level objective name of the sql pool.
 func (o LookupSqlPoolsV3ResultOutput) CurrentServiceObjectiveName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.CurrentServiceObjectiveName }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlPoolsV3ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of SqlPool.
 func (o LookupSqlPoolsV3ResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSqlPoolsV3ResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The max service level objective name of the sql pool.
 func (o LookupSqlPoolsV3ResultOutput) MaxServiceObjectiveName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) *string { return v.MaxServiceObjectiveName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupSqlPoolsV3ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The requested service level objective name of the sql pool.
 func (o LookupSqlPoolsV3ResultOutput) RequestedServiceObjectiveName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.RequestedServiceObjectiveName }).(pulumi.StringOutput)
 }
 
+// The sql pool SKU. The list of SKUs may vary by region and support offer.
 func (o LookupSqlPoolsV3ResultOutput) Sku() SkuV3ResponsePtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) *SkuV3Response { return v.Sku }).(SkuV3ResponsePtrOutput)
 }
 
+// The Guid of the sql pool.
 func (o LookupSqlPoolsV3ResultOutput) SqlPoolGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.SqlPoolGuid }).(pulumi.StringOutput)
 }
 
+// The status of the sql pool.
 func (o LookupSqlPoolsV3ResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// SystemData of SqlPool.
 func (o LookupSqlPoolsV3ResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSqlPoolsV3ResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSqlPoolsV3ResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolsV3Result) string { return v.Type }).(pulumi.StringOutput)
 }

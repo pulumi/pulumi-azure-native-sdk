@@ -21,19 +21,28 @@ func LookupFile(ctx *pulumi.Context, args *LookupFileArgs, opts ...pulumi.Invoke
 }
 
 type LookupFileArgs struct {
-	FileName    string `pulumi:"fileName"`
-	GroupName   string `pulumi:"groupName"`
+	// Name of the File
+	FileName string `pulumi:"fileName"`
+	// Name of the resource group
+	GroupName string `pulumi:"groupName"`
+	// Name of the project
 	ProjectName string `pulumi:"projectName"`
+	// Name of the service
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A file resource
 type LookupFileResult struct {
-	Etag       *string                       `pulumi:"etag"`
-	Id         string                        `pulumi:"id"`
-	Name       string                        `pulumi:"name"`
+	// HTTP strong entity tag value. This is ignored if submitted.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Custom file properties
 	Properties ProjectFilePropertiesResponse `pulumi:"properties"`
-	Type       string                        `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupFileOutput(ctx *pulumi.Context, args LookupFileOutputArgs, opts ...pulumi.InvokeOption) LookupFileResultOutput {
@@ -50,9 +59,13 @@ func LookupFileOutput(ctx *pulumi.Context, args LookupFileOutputArgs, opts ...pu
 }
 
 type LookupFileOutputArgs struct {
-	FileName    pulumi.StringInput `pulumi:"fileName"`
-	GroupName   pulumi.StringInput `pulumi:"groupName"`
+	// Name of the File
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Name of the resource group
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the project
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the service
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -75,22 +88,27 @@ func (o LookupFileResultOutput) ToLookupFileResultOutputWithContext(ctx context.
 	return o
 }
 
+// HTTP strong entity tag value. This is ignored if submitted.
 func (o LookupFileResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFileResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupFileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupFileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Custom file properties
 func (o LookupFileResultOutput) Properties() ProjectFilePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupFileResult) ProjectFilePropertiesResponse { return v.Properties }).(ProjectFilePropertiesResponseOutput)
 }
 
+// Resource type.
 func (o LookupFileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileResult) string { return v.Type }).(pulumi.StringOutput)
 }

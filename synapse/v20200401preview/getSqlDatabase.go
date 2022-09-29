@@ -23,24 +23,38 @@ func LookupSqlDatabase(ctx *pulumi.Context, args *LookupSqlDatabaseArgs, opts ..
 }
 
 type LookupSqlDatabaseArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SqlDatabaseName   string `pulumi:"sqlDatabaseName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the sql database.
+	SqlDatabaseName string `pulumi:"sqlDatabaseName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // A sql database resource.
 type LookupSqlDatabaseResult struct {
-	Collation         *string                           `pulumi:"collation"`
-	DataRetention     *SqlDatabaseDataRetentionResponse `pulumi:"dataRetention"`
-	DatabaseGuid      string                            `pulumi:"databaseGuid"`
-	Id                string                            `pulumi:"id"`
-	Location          string                            `pulumi:"location"`
-	Name              string                            `pulumi:"name"`
-	Status            string                            `pulumi:"status"`
-	StorageRedundancy *string                           `pulumi:"storageRedundancy"`
-	SystemData        SystemDataResponse                `pulumi:"systemData"`
-	Tags              map[string]string                 `pulumi:"tags"`
-	Type              string                            `pulumi:"type"`
+	// The collation of the database.
+	Collation *string `pulumi:"collation"`
+	// Sql database data retention.
+	DataRetention *SqlDatabaseDataRetentionResponse `pulumi:"dataRetention"`
+	// The Guid of the database.
+	DatabaseGuid string `pulumi:"databaseGuid"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The status of the database.
+	Status string `pulumi:"status"`
+	// The storage redundancy of the database.
+	StorageRedundancy *string `pulumi:"storageRedundancy"`
+	// SystemData of SqlDatabase.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlDatabaseOutput(ctx *pulumi.Context, args LookupSqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDatabaseResultOutput {
@@ -57,9 +71,12 @@ func LookupSqlDatabaseOutput(ctx *pulumi.Context, args LookupSqlDatabaseOutputAr
 }
 
 type LookupSqlDatabaseOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SqlDatabaseName   pulumi.StringInput `pulumi:"sqlDatabaseName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the sql database.
+	SqlDatabaseName pulumi.StringInput `pulumi:"sqlDatabaseName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSqlDatabaseOutputArgs) ElementType() reflect.Type {
@@ -81,46 +98,57 @@ func (o LookupSqlDatabaseResultOutput) ToLookupSqlDatabaseResultOutputWithContex
 	return o
 }
 
+// The collation of the database.
 func (o LookupSqlDatabaseResultOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
+// Sql database data retention.
 func (o LookupSqlDatabaseResultOutput) DataRetention() SqlDatabaseDataRetentionResponsePtrOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) *SqlDatabaseDataRetentionResponse { return v.DataRetention }).(SqlDatabaseDataRetentionResponsePtrOutput)
 }
 
+// The Guid of the database.
 func (o LookupSqlDatabaseResultOutput) DatabaseGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) string { return v.DatabaseGuid }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSqlDatabaseResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSqlDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the database.
 func (o LookupSqlDatabaseResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The storage redundancy of the database.
 func (o LookupSqlDatabaseResultOutput) StorageRedundancy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) *string { return v.StorageRedundancy }).(pulumi.StringPtrOutput)
 }
 
+// SystemData of SqlDatabase.
 func (o LookupSqlDatabaseResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSqlDatabaseResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSqlDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }

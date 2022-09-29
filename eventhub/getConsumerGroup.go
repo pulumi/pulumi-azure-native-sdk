@@ -22,19 +22,29 @@ func LookupConsumerGroup(ctx *pulumi.Context, args *LookupConsumerGroupArgs, opt
 }
 
 type LookupConsumerGroupArgs struct {
+	// The consumer group name
 	ConsumerGroupName string `pulumi:"consumerGroupName"`
-	EventHubName      string `pulumi:"eventHubName"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The Event Hub name
+	EventHubName string `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Consumer group operation
 type LookupConsumerGroupResult struct {
-	CreatedAt    string  `pulumi:"createdAt"`
-	Id           string  `pulumi:"id"`
-	Name         string  `pulumi:"name"`
-	Type         string  `pulumi:"type"`
-	UpdatedAt    string  `pulumi:"updatedAt"`
+	// Exact time the message was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The exact time the message was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 	UserMetadata *string `pulumi:"userMetadata"`
 }
 
@@ -52,9 +62,13 @@ func LookupConsumerGroupOutput(ctx *pulumi.Context, args LookupConsumerGroupOutp
 }
 
 type LookupConsumerGroupOutputArgs struct {
+	// The consumer group name
 	ConsumerGroupName pulumi.StringInput `pulumi:"consumerGroupName"`
-	EventHubName      pulumi.StringInput `pulumi:"eventHubName"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The Event Hub name
+	EventHubName pulumi.StringInput `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,26 +91,32 @@ func (o LookupConsumerGroupResultOutput) ToLookupConsumerGroupResultOutputWithCo
 	return o
 }
 
+// Exact time the message was created.
 func (o LookupConsumerGroupResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConsumerGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupConsumerGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConsumerGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The exact time the message was updated.
 func (o LookupConsumerGroupResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 func (o LookupConsumerGroupResultOutput) UserMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) *string { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }

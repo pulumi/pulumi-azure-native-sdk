@@ -22,14 +22,19 @@ func GetDomainTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetDomain
 }
 
 type GetDomainTopicEventSubscriptionFullUrlArgs struct {
-	DomainName            string `pulumi:"domainName"`
+	// Name of the top level domain.
+	DomainName string `pulumi:"domainName"`
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	TopicName             string `pulumi:"topicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the domain topic.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Full endpoint url of an event subscription
 type GetDomainTopicEventSubscriptionFullUrlResult struct {
+	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
 }
 
@@ -47,10 +52,14 @@ func GetDomainTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetD
 }
 
 type GetDomainTopicEventSubscriptionFullUrlOutputArgs struct {
-	DomainName            pulumi.StringInput `pulumi:"domainName"`
+	// Name of the top level domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName             pulumi.StringInput `pulumi:"topicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the domain topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (GetDomainTopicEventSubscriptionFullUrlOutputArgs) ElementType() reflect.Type {
@@ -72,6 +81,7 @@ func (o GetDomainTopicEventSubscriptionFullUrlResultOutput) ToGetDomainTopicEven
 	return o
 }
 
+// The URL that represents the endpoint of the destination of an event subscription.
 func (o GetDomainTopicEventSubscriptionFullUrlResultOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainTopicEventSubscriptionFullUrlResult) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
 }

@@ -21,25 +21,40 @@ func LookupSapMonitor(ctx *pulumi.Context, args *LookupSapMonitorArgs, opts ...p
 }
 
 type LookupSapMonitorArgs struct {
+	// Name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SapMonitorName    string `pulumi:"sapMonitorName"`
+	// Name of the SAP monitor resource.
+	SapMonitorName string `pulumi:"sapMonitorName"`
 }
 
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
 type LookupSapMonitorResult struct {
-	EnableCustomerAnalytics        *bool             `pulumi:"enableCustomerAnalytics"`
-	Id                             string            `pulumi:"id"`
-	Location                       string            `pulumi:"location"`
-	LogAnalyticsWorkspaceArmId     *string           `pulumi:"logAnalyticsWorkspaceArmId"`
-	LogAnalyticsWorkspaceId        *string           `pulumi:"logAnalyticsWorkspaceId"`
-	LogAnalyticsWorkspaceSharedKey *string           `pulumi:"logAnalyticsWorkspaceSharedKey"`
-	ManagedResourceGroupName       string            `pulumi:"managedResourceGroupName"`
-	MonitorSubnet                  *string           `pulumi:"monitorSubnet"`
-	Name                           string            `pulumi:"name"`
-	ProvisioningState              string            `pulumi:"provisioningState"`
-	SapMonitorCollectorVersion     string            `pulumi:"sapMonitorCollectorVersion"`
-	Tags                           map[string]string `pulumi:"tags"`
-	Type                           string            `pulumi:"type"`
+	// The value indicating whether to send analytics to Microsoft
+	EnableCustomerAnalytics *bool `pulumi:"enableCustomerAnalytics"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The ARM ID of the Log Analytics Workspace that is used for monitoring
+	LogAnalyticsWorkspaceArmId *string `pulumi:"logAnalyticsWorkspaceArmId"`
+	// The workspace ID of the log analytics workspace to be used for monitoring
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+	// The shared key of the log analytics workspace that is used for monitoring
+	LogAnalyticsWorkspaceSharedKey *string `pulumi:"logAnalyticsWorkspaceSharedKey"`
+	// The name of the resource group the SAP Monitor resources get deployed into.
+	ManagedResourceGroupName string `pulumi:"managedResourceGroupName"`
+	// The subnet which the SAP monitor will be deployed in
+	MonitorSubnet *string `pulumi:"monitorSubnet"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// State of provisioning of the HanaInstance
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The version of the payload running in the Collector VM
+	SapMonitorCollectorVersion string `pulumi:"sapMonitorCollectorVersion"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSapMonitorOutput(ctx *pulumi.Context, args LookupSapMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupSapMonitorResultOutput {
@@ -56,8 +71,10 @@ func LookupSapMonitorOutput(ctx *pulumi.Context, args LookupSapMonitorOutputArgs
 }
 
 type LookupSapMonitorOutputArgs struct {
+	// Name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SapMonitorName    pulumi.StringInput `pulumi:"sapMonitorName"`
+	// Name of the SAP monitor resource.
+	SapMonitorName pulumi.StringInput `pulumi:"sapMonitorName"`
 }
 
 func (LookupSapMonitorOutputArgs) ElementType() reflect.Type {
@@ -79,54 +96,67 @@ func (o LookupSapMonitorResultOutput) ToLookupSapMonitorResultOutputWithContext(
 	return o
 }
 
+// The value indicating whether to send analytics to Microsoft
 func (o LookupSapMonitorResultOutput) EnableCustomerAnalytics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) *bool { return v.EnableCustomerAnalytics }).(pulumi.BoolPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSapMonitorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSapMonitorResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The ARM ID of the Log Analytics Workspace that is used for monitoring
 func (o LookupSapMonitorResultOutput) LogAnalyticsWorkspaceArmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) *string { return v.LogAnalyticsWorkspaceArmId }).(pulumi.StringPtrOutput)
 }
 
+// The workspace ID of the log analytics workspace to be used for monitoring
 func (o LookupSapMonitorResultOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) *string { return v.LogAnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
 }
 
+// The shared key of the log analytics workspace that is used for monitoring
 func (o LookupSapMonitorResultOutput) LogAnalyticsWorkspaceSharedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) *string { return v.LogAnalyticsWorkspaceSharedKey }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource group the SAP Monitor resources get deployed into.
 func (o LookupSapMonitorResultOutput) ManagedResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.ManagedResourceGroupName }).(pulumi.StringOutput)
 }
 
+// The subnet which the SAP monitor will be deployed in
 func (o LookupSapMonitorResultOutput) MonitorSubnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) *string { return v.MonitorSubnet }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupSapMonitorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of provisioning of the HanaInstance
 func (o LookupSapMonitorResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The version of the payload running in the Collector VM
 func (o LookupSapMonitorResultOutput) SapMonitorCollectorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.SapMonitorCollectorVersion }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupSapMonitorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSapMonitorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapMonitorResult) string { return v.Type }).(pulumi.StringOutput)
 }

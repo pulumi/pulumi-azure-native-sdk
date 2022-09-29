@@ -22,19 +22,28 @@ func LookupSerialPort(ctx *pulumi.Context, args *LookupSerialPortArgs, opts ...p
 }
 
 type LookupSerialPortArgs struct {
-	ParentResource            string `pulumi:"parentResource"`
-	ParentResourceType        string `pulumi:"parentResourceType"`
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The resource name, or subordinate path, for the parent of the serial port. For example: the name of the virtual machine.
+	ParentResource string `pulumi:"parentResource"`
+	// The resource type of the parent resource.  For example: 'virtualMachines' or 'virtualMachineScaleSets'
+	ParentResourceType string `pulumi:"parentResourceType"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The namespace of the resource provider.
 	ResourceProviderNamespace string `pulumi:"resourceProviderNamespace"`
-	SerialPort                string `pulumi:"serialPort"`
+	// The name of the serial port to connect to.
+	SerialPort string `pulumi:"serialPort"`
 }
 
 // Represents the serial port of the parent resource.
 type LookupSerialPortResult struct {
-	Id    string  `pulumi:"id"`
-	Name  string  `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Specifies whether the port is enabled for a serial console connection.
 	State *string `pulumi:"state"`
-	Type  string  `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSerialPortOutput(ctx *pulumi.Context, args LookupSerialPortOutputArgs, opts ...pulumi.InvokeOption) LookupSerialPortResultOutput {
@@ -51,11 +60,16 @@ func LookupSerialPortOutput(ctx *pulumi.Context, args LookupSerialPortOutputArgs
 }
 
 type LookupSerialPortOutputArgs struct {
-	ParentResource            pulumi.StringInput `pulumi:"parentResource"`
-	ParentResourceType        pulumi.StringInput `pulumi:"parentResourceType"`
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name, or subordinate path, for the parent of the serial port. For example: the name of the virtual machine.
+	ParentResource pulumi.StringInput `pulumi:"parentResource"`
+	// The resource type of the parent resource.  For example: 'virtualMachines' or 'virtualMachineScaleSets'
+	ParentResourceType pulumi.StringInput `pulumi:"parentResourceType"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace of the resource provider.
 	ResourceProviderNamespace pulumi.StringInput `pulumi:"resourceProviderNamespace"`
-	SerialPort                pulumi.StringInput `pulumi:"serialPort"`
+	// The name of the serial port to connect to.
+	SerialPort pulumi.StringInput `pulumi:"serialPort"`
 }
 
 func (LookupSerialPortOutputArgs) ElementType() reflect.Type {
@@ -77,18 +91,22 @@ func (o LookupSerialPortResultOutput) ToLookupSerialPortResultOutputWithContext(
 	return o
 }
 
+// Resource Id
 func (o LookupSerialPortResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSerialPortResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupSerialPortResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSerialPortResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies whether the port is enabled for a serial console connection.
 func (o LookupSerialPortResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSerialPortResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Resource type
 func (o LookupSerialPortResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSerialPortResult) string { return v.Type }).(pulumi.StringOutput)
 }

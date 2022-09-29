@@ -21,17 +21,25 @@ func GetImageUploadUrlForEntityType(ctx *pulumi.Context, args *GetImageUploadUrl
 }
 
 type GetImageUploadUrlForEntityTypeArgs struct {
-	EntityType        *string `pulumi:"entityType"`
-	EntityTypeName    *string `pulumi:"entityTypeName"`
-	HubName           string  `pulumi:"hubName"`
-	RelativePath      *string `pulumi:"relativePath"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// Type of entity. Can be Profile or Interaction.
+	EntityType *string `pulumi:"entityType"`
+	// Name of the entity type.
+	EntityTypeName *string `pulumi:"entityTypeName"`
+	// The name of the hub.
+	HubName string `pulumi:"hubName"`
+	// Relative path of the image.
+	RelativePath *string `pulumi:"relativePath"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The image definition.
 type GetImageUploadUrlForEntityTypeResult struct {
-	ContentUrl   *string `pulumi:"contentUrl"`
-	ImageExists  *bool   `pulumi:"imageExists"`
+	// Content URL for the image blob.
+	ContentUrl *string `pulumi:"contentUrl"`
+	// Whether image exists already.
+	ImageExists *bool `pulumi:"imageExists"`
+	// Relative path of the image.
 	RelativePath *string `pulumi:"relativePath"`
 }
 
@@ -49,11 +57,16 @@ func GetImageUploadUrlForEntityTypeOutput(ctx *pulumi.Context, args GetImageUplo
 }
 
 type GetImageUploadUrlForEntityTypeOutputArgs struct {
-	EntityType        pulumi.StringPtrInput `pulumi:"entityType"`
-	EntityTypeName    pulumi.StringPtrInput `pulumi:"entityTypeName"`
-	HubName           pulumi.StringInput    `pulumi:"hubName"`
-	RelativePath      pulumi.StringPtrInput `pulumi:"relativePath"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Type of entity. Can be Profile or Interaction.
+	EntityType pulumi.StringPtrInput `pulumi:"entityType"`
+	// Name of the entity type.
+	EntityTypeName pulumi.StringPtrInput `pulumi:"entityTypeName"`
+	// The name of the hub.
+	HubName pulumi.StringInput `pulumi:"hubName"`
+	// Relative path of the image.
+	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetImageUploadUrlForEntityTypeOutputArgs) ElementType() reflect.Type {
@@ -75,14 +88,17 @@ func (o GetImageUploadUrlForEntityTypeResultOutput) ToGetImageUploadUrlForEntity
 	return o
 }
 
+// Content URL for the image blob.
 func (o GetImageUploadUrlForEntityTypeResultOutput) ContentUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImageUploadUrlForEntityTypeResult) *string { return v.ContentUrl }).(pulumi.StringPtrOutput)
 }
 
+// Whether image exists already.
 func (o GetImageUploadUrlForEntityTypeResultOutput) ImageExists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetImageUploadUrlForEntityTypeResult) *bool { return v.ImageExists }).(pulumi.BoolPtrOutput)
 }
 
+// Relative path of the image.
 func (o GetImageUploadUrlForEntityTypeResultOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImageUploadUrlForEntityTypeResult) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }

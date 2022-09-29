@@ -23,27 +23,44 @@ func LookupExpressRouteCircuit(ctx *pulumi.Context, args *LookupExpressRouteCirc
 }
 
 type LookupExpressRouteCircuitArgs struct {
-	CircuitName       string `pulumi:"circuitName"`
+	// The name of the circuit.
+	CircuitName string `pulumi:"circuitName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRouteCircuit resource
 type LookupExpressRouteCircuitResult struct {
-	Authorizations                   []ExpressRouteCircuitAuthorizationResponse            `pulumi:"authorizations"`
-	CircuitProvisioningState         *string                                               `pulumi:"circuitProvisioningState"`
-	Etag                             *string                                               `pulumi:"etag"`
-	Id                               string                                                `pulumi:"id"`
-	Location                         string                                                `pulumi:"location"`
-	Name                             string                                                `pulumi:"name"`
-	Peerings                         []ExpressRouteCircuitPeeringResponse                  `pulumi:"peerings"`
-	ProvisioningState                *string                                               `pulumi:"provisioningState"`
-	ServiceKey                       *string                                               `pulumi:"serviceKey"`
-	ServiceProviderNotes             *string                                               `pulumi:"serviceProviderNotes"`
-	ServiceProviderProperties        *ExpressRouteCircuitServiceProviderPropertiesResponse `pulumi:"serviceProviderProperties"`
-	ServiceProviderProvisioningState *string                                               `pulumi:"serviceProviderProvisioningState"`
-	Sku                              *ExpressRouteCircuitSkuResponse                       `pulumi:"sku"`
-	Tags                             map[string]string                                     `pulumi:"tags"`
-	Type                             string                                                `pulumi:"type"`
+	// Gets or sets list of authorizations
+	Authorizations []ExpressRouteCircuitAuthorizationResponse `pulumi:"authorizations"`
+	// Gets or sets CircuitProvisioningState state of the resource
+	CircuitProvisioningState *string `pulumi:"circuitProvisioningState"`
+	// Gets a unique read-only string that changes whenever the resource is updated
+	Etag *string `pulumi:"etag"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Gets or sets list of peerings
+	Peerings []ExpressRouteCircuitPeeringResponse `pulumi:"peerings"`
+	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets ServiceKey
+	ServiceKey *string `pulumi:"serviceKey"`
+	// Gets or sets ServiceProviderNotes
+	ServiceProviderNotes *string `pulumi:"serviceProviderNotes"`
+	// Gets or sets ServiceProviderProperties
+	ServiceProviderProperties *ExpressRouteCircuitServiceProviderPropertiesResponse `pulumi:"serviceProviderProperties"`
+	// Gets or sets ServiceProviderProvisioningState state of the resource
+	ServiceProviderProvisioningState *string `pulumi:"serviceProviderProvisioningState"`
+	// Gets or sets sku
+	Sku *ExpressRouteCircuitSkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupExpressRouteCircuitOutput(ctx *pulumi.Context, args LookupExpressRouteCircuitOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteCircuitResultOutput {
@@ -60,7 +77,9 @@ func LookupExpressRouteCircuitOutput(ctx *pulumi.Context, args LookupExpressRout
 }
 
 type LookupExpressRouteCircuitOutputArgs struct {
-	CircuitName       pulumi.StringInput `pulumi:"circuitName"`
+	// The name of the circuit.
+	CircuitName pulumi.StringInput `pulumi:"circuitName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -83,66 +102,81 @@ func (o LookupExpressRouteCircuitResultOutput) ToLookupExpressRouteCircuitResult
 	return o
 }
 
+// Gets or sets list of authorizations
 func (o LookupExpressRouteCircuitResultOutput) Authorizations() ExpressRouteCircuitAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) []ExpressRouteCircuitAuthorizationResponse {
 		return v.Authorizations
 	}).(ExpressRouteCircuitAuthorizationResponseArrayOutput)
 }
 
+// Gets or sets CircuitProvisioningState state of the resource
 func (o LookupExpressRouteCircuitResultOutput) CircuitProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.CircuitProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets a unique read-only string that changes whenever the resource is updated
 func (o LookupExpressRouteCircuitResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupExpressRouteCircuitResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupExpressRouteCircuitResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupExpressRouteCircuitResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets list of peerings
 func (o LookupExpressRouteCircuitResultOutput) Peerings() ExpressRouteCircuitPeeringResponseArrayOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) []ExpressRouteCircuitPeeringResponse { return v.Peerings }).(ExpressRouteCircuitPeeringResponseArrayOutput)
 }
 
+// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
 func (o LookupExpressRouteCircuitResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets ServiceKey
 func (o LookupExpressRouteCircuitResultOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets ServiceProviderNotes
 func (o LookupExpressRouteCircuitResultOutput) ServiceProviderNotes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.ServiceProviderNotes }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets ServiceProviderProperties
 func (o LookupExpressRouteCircuitResultOutput) ServiceProviderProperties() ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *ExpressRouteCircuitServiceProviderPropertiesResponse {
 		return v.ServiceProviderProperties
 	}).(ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput)
 }
 
+// Gets or sets ServiceProviderProvisioningState state of the resource
 func (o LookupExpressRouteCircuitResultOutput) ServiceProviderProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.ServiceProviderProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets sku
 func (o LookupExpressRouteCircuitResultOutput) Sku() ExpressRouteCircuitSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *ExpressRouteCircuitSkuResponse { return v.Sku }).(ExpressRouteCircuitSkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupExpressRouteCircuitResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupExpressRouteCircuitResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,18 +22,26 @@ func LookupCustomEntityStoreAssignment(ctx *pulumi.Context, args *LookupCustomEn
 }
 
 type LookupCustomEntityStoreAssignmentArgs struct {
+	// Name of the custom entity store assignment. Generated name is GUID.
 	CustomEntityStoreAssignmentName string `pulumi:"customEntityStoreAssignmentName"`
-	ResourceGroupName               string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Custom entity store assignment
 type LookupCustomEntityStoreAssignmentResult struct {
-	EntityStoreDatabaseLink *string            `pulumi:"entityStoreDatabaseLink"`
-	Id                      string             `pulumi:"id"`
-	Name                    string             `pulumi:"name"`
-	Principal               *string            `pulumi:"principal"`
-	SystemData              SystemDataResponse `pulumi:"systemData"`
-	Type                    string             `pulumi:"type"`
+	// The link to entity store database.
+	EntityStoreDatabaseLink *string `pulumi:"entityStoreDatabaseLink"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The principal assigned with entity store. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
+	Principal *string `pulumi:"principal"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupCustomEntityStoreAssignmentOutput(ctx *pulumi.Context, args LookupCustomEntityStoreAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupCustomEntityStoreAssignmentResultOutput {
@@ -50,8 +58,10 @@ func LookupCustomEntityStoreAssignmentOutput(ctx *pulumi.Context, args LookupCus
 }
 
 type LookupCustomEntityStoreAssignmentOutputArgs struct {
+	// Name of the custom entity store assignment. Generated name is GUID.
 	CustomEntityStoreAssignmentName pulumi.StringInput `pulumi:"customEntityStoreAssignmentName"`
-	ResourceGroupName               pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupCustomEntityStoreAssignmentOutputArgs) ElementType() reflect.Type {
@@ -73,26 +83,32 @@ func (o LookupCustomEntityStoreAssignmentResultOutput) ToLookupCustomEntityStore
 	return o
 }
 
+// The link to entity store database.
 func (o LookupCustomEntityStoreAssignmentResultOutput) EntityStoreDatabaseLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomEntityStoreAssignmentResult) *string { return v.EntityStoreDatabaseLink }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupCustomEntityStoreAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomEntityStoreAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupCustomEntityStoreAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomEntityStoreAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The principal assigned with entity store. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
 func (o LookupCustomEntityStoreAssignmentResultOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomEntityStoreAssignmentResult) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupCustomEntityStoreAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCustomEntityStoreAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type
 func (o LookupCustomEntityStoreAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomEntityStoreAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

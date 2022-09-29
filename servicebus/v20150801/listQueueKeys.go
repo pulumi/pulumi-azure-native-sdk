@@ -21,19 +21,28 @@ func ListQueueKeys(ctx *pulumi.Context, args *ListQueueKeysArgs, opts ...pulumi.
 }
 
 type ListQueueKeysArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	QueueName             string `pulumi:"queueName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The queue name.
+	QueueName string `pulumi:"queueName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Namespace/ServiceBus Connection String
 type ListQueueKeysResult struct {
-	KeyName                   *string `pulumi:"keyName"`
-	PrimaryConnectionString   *string `pulumi:"primaryConnectionString"`
-	PrimaryKey                *string `pulumi:"primaryKey"`
+	// A string that describes the authorization rule.
+	KeyName *string `pulumi:"keyName"`
+	// Primary connection string of the created namespace authorization rule.
+	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
+	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Secondary connection string of the created namespace authorization rule.
 	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
-	SecondaryKey              *string `pulumi:"secondaryKey"`
+	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
+	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
 func ListQueueKeysOutput(ctx *pulumi.Context, args ListQueueKeysOutputArgs, opts ...pulumi.InvokeOption) ListQueueKeysResultOutput {
@@ -50,10 +59,14 @@ func ListQueueKeysOutput(ctx *pulumi.Context, args ListQueueKeysOutputArgs, opts
 }
 
 type ListQueueKeysOutputArgs struct {
+	// The authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	QueueName             pulumi.StringInput `pulumi:"queueName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The queue name.
+	QueueName pulumi.StringInput `pulumi:"queueName"`
+	// Name of the Resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListQueueKeysOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o ListQueueKeysResultOutput) ToListQueueKeysResultOutputWithContext(ctx co
 	return o
 }
 
+// A string that describes the authorization rule.
 func (o ListQueueKeysResultOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQueueKeysResult) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
+// Primary connection string of the created namespace authorization rule.
 func (o ListQueueKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQueueKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// A base64-encoded 256-bit primary key for signing and validating the SAS token.
 func (o ListQueueKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQueueKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Secondary connection string of the created namespace authorization rule.
 func (o ListQueueKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQueueKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
 }
 
+// A base64-encoded 256-bit primary key for signing and validating the SAS token.
 func (o ListQueueKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListQueueKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

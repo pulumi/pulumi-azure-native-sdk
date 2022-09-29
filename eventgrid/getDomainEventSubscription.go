@@ -22,28 +22,50 @@ func LookupDomainEventSubscription(ctx *pulumi.Context, args *LookupDomainEventS
 }
 
 type LookupDomainEventSubscriptionArgs struct {
-	DomainName            string `pulumi:"domainName"`
+	// Name of the partner topic.
+	DomainName string `pulumi:"domainName"`
+	// Name of the event subscription to be found. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Event Subscription
 type LookupDomainEventSubscriptionResult struct {
-	DeadLetterDestination          *StorageBlobDeadLetterDestinationResponse `pulumi:"deadLetterDestination"`
-	DeadLetterWithResourceIdentity *DeadLetterWithResourceIdentityResponse   `pulumi:"deadLetterWithResourceIdentity"`
-	DeliveryWithResourceIdentity   *DeliveryWithResourceIdentityResponse     `pulumi:"deliveryWithResourceIdentity"`
-	Destination                    interface{}                               `pulumi:"destination"`
-	EventDeliverySchema            *string                                   `pulumi:"eventDeliverySchema"`
-	ExpirationTimeUtc              *string                                   `pulumi:"expirationTimeUtc"`
-	Filter                         *EventSubscriptionFilterResponse          `pulumi:"filter"`
-	Id                             string                                    `pulumi:"id"`
-	Labels                         []string                                  `pulumi:"labels"`
-	Name                           string                                    `pulumi:"name"`
-	ProvisioningState              string                                    `pulumi:"provisioningState"`
-	RetryPolicy                    *RetryPolicyResponse                      `pulumi:"retryPolicy"`
-	SystemData                     SystemDataResponse                        `pulumi:"systemData"`
-	Topic                          string                                    `pulumi:"topic"`
-	Type                           string                                    `pulumi:"type"`
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+	DeadLetterDestination *StorageBlobDeadLetterDestinationResponse `pulumi:"deadLetterDestination"`
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+	DeadLetterWithResourceIdentity *DeadLetterWithResourceIdentityResponse `pulumi:"deadLetterWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+	DeliveryWithResourceIdentity *DeliveryWithResourceIdentityResponse `pulumi:"deliveryWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+	Destination interface{} `pulumi:"destination"`
+	// The event delivery schema for the event subscription.
+	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
+	// Expiration time of the event subscription.
+	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
+	// Information about the filter for the event subscription.
+	Filter *EventSubscriptionFilterResponse `pulumi:"filter"`
+	// Fully qualified identifier of the resource.
+	Id string `pulumi:"id"`
+	// List of user defined labels.
+	Labels []string `pulumi:"labels"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the event subscription.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
+	RetryPolicy *RetryPolicyResponse `pulumi:"retryPolicy"`
+	// The system metadata relating to Event Subscription resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Name of the topic of the event subscription.
+	Topic string `pulumi:"topic"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupDomainEventSubscriptionResult
@@ -77,9 +99,12 @@ func LookupDomainEventSubscriptionOutput(ctx *pulumi.Context, args LookupDomainE
 }
 
 type LookupDomainEventSubscriptionOutputArgs struct {
-	DomainName            pulumi.StringInput `pulumi:"domainName"`
+	// Name of the partner topic.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Name of the event subscription to be found. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDomainEventSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -101,68 +126,87 @@ func (o LookupDomainEventSubscriptionResultOutput) ToLookupDomainEventSubscripti
 	return o
 }
 
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
 func (o LookupDomainEventSubscriptionResultOutput) DeadLetterDestination() StorageBlobDeadLetterDestinationResponsePtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *StorageBlobDeadLetterDestinationResponse {
 		return v.DeadLetterDestination
 	}).(StorageBlobDeadLetterDestinationResponsePtrOutput)
 }
 
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
 func (o LookupDomainEventSubscriptionResultOutput) DeadLetterWithResourceIdentity() DeadLetterWithResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *DeadLetterWithResourceIdentityResponse {
 		return v.DeadLetterWithResourceIdentity
 	}).(DeadLetterWithResourceIdentityResponsePtrOutput)
 }
 
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
 func (o LookupDomainEventSubscriptionResultOutput) DeliveryWithResourceIdentity() DeliveryWithResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *DeliveryWithResourceIdentityResponse {
 		return v.DeliveryWithResourceIdentity
 	}).(DeliveryWithResourceIdentityResponsePtrOutput)
 }
 
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
 func (o LookupDomainEventSubscriptionResultOutput) Destination() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) interface{} { return v.Destination }).(pulumi.AnyOutput)
 }
 
+// The event delivery schema for the event subscription.
 func (o LookupDomainEventSubscriptionResultOutput) EventDeliverySchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *string { return v.EventDeliverySchema }).(pulumi.StringPtrOutput)
 }
 
+// Expiration time of the event subscription.
 func (o LookupDomainEventSubscriptionResultOutput) ExpirationTimeUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *string { return v.ExpirationTimeUtc }).(pulumi.StringPtrOutput)
 }
 
+// Information about the filter for the event subscription.
 func (o LookupDomainEventSubscriptionResultOutput) Filter() EventSubscriptionFilterResponsePtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *EventSubscriptionFilterResponse { return v.Filter }).(EventSubscriptionFilterResponsePtrOutput)
 }
 
+// Fully qualified identifier of the resource.
 func (o LookupDomainEventSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of user defined labels.
 func (o LookupDomainEventSubscriptionResultOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
+// Name of the resource.
 func (o LookupDomainEventSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the event subscription.
 func (o LookupDomainEventSubscriptionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 func (o LookupDomainEventSubscriptionResultOutput) RetryPolicy() RetryPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) *RetryPolicyResponse { return v.RetryPolicy }).(RetryPolicyResponsePtrOutput)
 }
 
+// The system metadata relating to Event Subscription resource.
 func (o LookupDomainEventSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Name of the topic of the event subscription.
 func (o LookupDomainEventSubscriptionResultOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) string { return v.Topic }).(pulumi.StringOutput)
 }
 
+// Type of the resource.
 func (o LookupDomainEventSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainEventSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

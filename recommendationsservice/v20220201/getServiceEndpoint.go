@@ -21,20 +21,30 @@ func LookupServiceEndpoint(ctx *pulumi.Context, args *LookupServiceEndpointArgs,
 }
 
 type LookupServiceEndpointArgs struct {
-	AccountName         string `pulumi:"accountName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the RecommendationsService Account resource.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the ServiceEndpoint resource.
 	ServiceEndpointName string `pulumi:"serviceEndpointName"`
 }
 
 // ServiceEndpoint resource details.
 type LookupServiceEndpointResult struct {
-	Id         string                                    `pulumi:"id"`
-	Location   string                                    `pulumi:"location"`
-	Name       string                                    `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// ServiceEndpoint resource properties.
 	Properties ServiceEndpointResourceResponseProperties `pulumi:"properties"`
-	SystemData SystemDataResponse                        `pulumi:"systemData"`
-	Tags       map[string]string                         `pulumi:"tags"`
-	Type       string                                    `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceEndpointOutput(ctx *pulumi.Context, args LookupServiceEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServiceEndpointResultOutput {
@@ -51,8 +61,11 @@ func LookupServiceEndpointOutput(ctx *pulumi.Context, args LookupServiceEndpoint
 }
 
 type LookupServiceEndpointOutputArgs struct {
-	AccountName         pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the RecommendationsService Account resource.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the ServiceEndpoint resource.
 	ServiceEndpointName pulumi.StringInput `pulumi:"serviceEndpointName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupServiceEndpointResultOutput) ToLookupServiceEndpointResultOutputWi
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServiceEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupServiceEndpointResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupServiceEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ServiceEndpoint resource properties.
 func (o LookupServiceEndpointResultOutput) Properties() ServiceEndpointResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) ServiceEndpointResourceResponseProperties { return v.Properties }).(ServiceEndpointResourceResponsePropertiesOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupServiceEndpointResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupServiceEndpointResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServiceEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

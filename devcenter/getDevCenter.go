@@ -22,20 +22,30 @@ func LookupDevCenter(ctx *pulumi.Context, args *LookupDevCenterArgs, opts ...pul
 }
 
 type LookupDevCenterArgs struct {
-	DevCenterName     string `pulumi:"devCenterName"`
+	// The name of the devcenter.
+	DevCenterName string `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a devcenter resource.
 type LookupDevCenterResult struct {
-	Id                string                          `pulumi:"id"`
-	Identity          *ManagedServiceIdentityResponse `pulumi:"identity"`
-	Location          string                          `pulumi:"location"`
-	Name              string                          `pulumi:"name"`
-	ProvisioningState string                          `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse              `pulumi:"systemData"`
-	Tags              map[string]string               `pulumi:"tags"`
-	Type              string                          `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Managed identity properties
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDevCenterOutput(ctx *pulumi.Context, args LookupDevCenterOutputArgs, opts ...pulumi.InvokeOption) LookupDevCenterResultOutput {
@@ -52,7 +62,9 @@ func LookupDevCenterOutput(ctx *pulumi.Context, args LookupDevCenterOutputArgs, 
 }
 
 type LookupDevCenterOutputArgs struct {
-	DevCenterName     pulumi.StringInput `pulumi:"devCenterName"`
+	// The name of the devcenter.
+	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,34 +87,42 @@ func (o LookupDevCenterResultOutput) ToLookupDevCenterResultOutputWithContext(ct
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDevCenterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed identity properties
 func (o LookupDevCenterResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupDevCenterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDevCenterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupDevCenterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDevCenterResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupDevCenterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDevCenterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevCenterResult) string { return v.Type }).(pulumi.StringOutput)
 }

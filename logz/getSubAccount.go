@@ -21,20 +21,28 @@ func LookupSubAccount(ctx *pulumi.Context, args *LookupSubAccountArgs, opts ...p
 }
 
 type LookupSubAccountArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SubAccountName    string `pulumi:"subAccountName"`
+	// Sub Account resource name
+	SubAccountName string `pulumi:"subAccountName"`
 }
 
 type LookupSubAccountResult struct {
-	Id         string                      `pulumi:"id"`
-	Identity   *IdentityPropertiesResponse `pulumi:"identity"`
-	Location   string                      `pulumi:"location"`
-	Name       string                      `pulumi:"name"`
-	Properties MonitorPropertiesResponse   `pulumi:"properties"`
-	SystemData SystemDataResponse          `pulumi:"systemData"`
-	Tags       map[string]string           `pulumi:"tags"`
-	Type       string                      `pulumi:"type"`
+	// ARM id of the monitor resource.
+	Id       string                      `pulumi:"id"`
+	Identity *IdentityPropertiesResponse `pulumi:"identity"`
+	Location string                      `pulumi:"location"`
+	// Name of the monitor resource.
+	Name string `pulumi:"name"`
+	// Properties specific to the monitor resource.
+	Properties MonitorPropertiesResponse `pulumi:"properties"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Tags       map[string]string  `pulumi:"tags"`
+	// The type of the monitor resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupSubAccountOutput(ctx *pulumi.Context, args LookupSubAccountOutputArgs, opts ...pulumi.InvokeOption) LookupSubAccountResultOutput {
@@ -51,9 +59,12 @@ func LookupSubAccountOutput(ctx *pulumi.Context, args LookupSubAccountOutputArgs
 }
 
 type LookupSubAccountOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SubAccountName    pulumi.StringInput `pulumi:"subAccountName"`
+	// Sub Account resource name
+	SubAccountName pulumi.StringInput `pulumi:"subAccountName"`
 }
 
 func (LookupSubAccountOutputArgs) ElementType() reflect.Type {
@@ -74,6 +85,7 @@ func (o LookupSubAccountResultOutput) ToLookupSubAccountResultOutputWithContext(
 	return o
 }
 
+// ARM id of the monitor resource.
 func (o LookupSubAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -86,14 +98,17 @@ func (o LookupSubAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the monitor resource.
 func (o LookupSubAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties specific to the monitor resource.
 func (o LookupSubAccountResultOutput) Properties() MonitorPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) MonitorPropertiesResponse { return v.Properties }).(MonitorPropertiesResponseOutput)
 }
 
+// The system metadata relating to this resource
 func (o LookupSubAccountResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -102,6 +117,7 @@ func (o LookupSubAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the monitor resource.
 func (o LookupSubAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

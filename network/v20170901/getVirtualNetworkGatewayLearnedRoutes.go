@@ -21,12 +21,15 @@ func GetVirtualNetworkGatewayLearnedRoutes(ctx *pulumi.Context, args *GetVirtual
 }
 
 type GetVirtualNetworkGatewayLearnedRoutesArgs struct {
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName string `pulumi:"virtualNetworkGatewayName"`
 }
 
 // List of virtual network gateway routes
 type GetVirtualNetworkGatewayLearnedRoutesResult struct {
+	// List of gateway routes
 	Value []GatewayRouteResponse `pulumi:"value"`
 }
 
@@ -44,7 +47,9 @@ func GetVirtualNetworkGatewayLearnedRoutesOutput(ctx *pulumi.Context, args GetVi
 }
 
 type GetVirtualNetworkGatewayLearnedRoutesOutputArgs struct {
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName pulumi.StringInput `pulumi:"virtualNetworkGatewayName"`
 }
 
@@ -67,6 +72,7 @@ func (o GetVirtualNetworkGatewayLearnedRoutesResultOutput) ToGetVirtualNetworkGa
 	return o
 }
 
+// List of gateway routes
 func (o GetVirtualNetworkGatewayLearnedRoutesResultOutput) Value() GatewayRouteResponseArrayOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayLearnedRoutesResult) []GatewayRouteResponse { return v.Value }).(GatewayRouteResponseArrayOutput)
 }

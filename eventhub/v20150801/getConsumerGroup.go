@@ -23,21 +23,33 @@ func LookupConsumerGroup(ctx *pulumi.Context, args *LookupConsumerGroupArgs, opt
 }
 
 type LookupConsumerGroupArgs struct {
+	// The consumer group name
 	ConsumerGroupName string `pulumi:"consumerGroupName"`
-	EventHubName      string `pulumi:"eventHubName"`
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The Event Hub name
+	EventHubName string `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Consumer group operation
 type LookupConsumerGroupResult struct {
-	CreatedAt    string  `pulumi:"createdAt"`
-	EventHubPath string  `pulumi:"eventHubPath"`
-	Id           string  `pulumi:"id"`
-	Location     *string `pulumi:"location"`
-	Name         string  `pulumi:"name"`
-	Type         string  `pulumi:"type"`
-	UpdatedAt    string  `pulumi:"updatedAt"`
+	// Exact time the message was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The path of the Event Hub.
+	EventHubPath string `pulumi:"eventHubPath"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The exact time the message was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The user metadata.
 	UserMetadata *string `pulumi:"userMetadata"`
 }
 
@@ -55,9 +67,13 @@ func LookupConsumerGroupOutput(ctx *pulumi.Context, args LookupConsumerGroupOutp
 }
 
 type LookupConsumerGroupOutputArgs struct {
+	// The consumer group name
 	ConsumerGroupName pulumi.StringInput `pulumi:"consumerGroupName"`
-	EventHubName      pulumi.StringInput `pulumi:"eventHubName"`
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The Event Hub name
+	EventHubName pulumi.StringInput `pulumi:"eventHubName"`
+	// The Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Name of the resource group within the azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -80,34 +96,42 @@ func (o LookupConsumerGroupResultOutput) ToLookupConsumerGroupResultOutputWithCo
 	return o
 }
 
+// Exact time the message was created.
 func (o LookupConsumerGroupResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The path of the Event Hub.
 func (o LookupConsumerGroupResultOutput) EventHubPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.EventHubPath }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupConsumerGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupConsumerGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupConsumerGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupConsumerGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The exact time the message was updated.
 func (o LookupConsumerGroupResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// The user metadata.
 func (o LookupConsumerGroupResultOutput) UserMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConsumerGroupResult) *string { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }

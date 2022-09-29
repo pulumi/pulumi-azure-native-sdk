@@ -21,24 +21,38 @@ func LookupDaprComponent(ctx *pulumi.Context, args *LookupDaprComponentArgs, opt
 }
 
 type LookupDaprComponentArgs struct {
-	ComponentName     string `pulumi:"componentName"`
-	EnvironmentName   string `pulumi:"environmentName"`
+	// Name of the Dapr Component.
+	ComponentName string `pulumi:"componentName"`
+	// Name of the Managed Environment.
+	EnvironmentName string `pulumi:"environmentName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Dapr Component.
 type LookupDaprComponentResult struct {
-	ComponentType *string                `pulumi:"componentType"`
-	Id            string                 `pulumi:"id"`
-	IgnoreErrors  *bool                  `pulumi:"ignoreErrors"`
-	InitTimeout   *string                `pulumi:"initTimeout"`
-	Metadata      []DaprMetadataResponse `pulumi:"metadata"`
-	Name          string                 `pulumi:"name"`
-	Scopes        []string               `pulumi:"scopes"`
-	Secrets       []SecretResponse       `pulumi:"secrets"`
-	SystemData    SystemDataResponse     `pulumi:"systemData"`
-	Type          string                 `pulumi:"type"`
-	Version       *string                `pulumi:"version"`
+	// Component type
+	ComponentType *string `pulumi:"componentType"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Boolean describing if the component errors are ignores
+	IgnoreErrors *bool `pulumi:"ignoreErrors"`
+	// Initialization timeout
+	InitTimeout *string `pulumi:"initTimeout"`
+	// Component metadata
+	Metadata []DaprMetadataResponse `pulumi:"metadata"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Names of container apps that can use this Dapr component
+	Scopes []string `pulumi:"scopes"`
+	// Collection of secrets used by a Dapr component
+	Secrets []SecretResponse `pulumi:"secrets"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Component version
+	Version *string `pulumi:"version"`
 }
 
 func LookupDaprComponentOutput(ctx *pulumi.Context, args LookupDaprComponentOutputArgs, opts ...pulumi.InvokeOption) LookupDaprComponentResultOutput {
@@ -55,8 +69,11 @@ func LookupDaprComponentOutput(ctx *pulumi.Context, args LookupDaprComponentOutp
 }
 
 type LookupDaprComponentOutputArgs struct {
-	ComponentName     pulumi.StringInput `pulumi:"componentName"`
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
+	// Name of the Dapr Component.
+	ComponentName pulumi.StringInput `pulumi:"componentName"`
+	// Name of the Managed Environment.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,46 +96,57 @@ func (o LookupDaprComponentResultOutput) ToLookupDaprComponentResultOutputWithCo
 	return o
 }
 
+// Component type
 func (o LookupDaprComponentResultOutput) ComponentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDaprComponentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Boolean describing if the component errors are ignores
 func (o LookupDaprComponentResultOutput) IgnoreErrors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) *bool { return v.IgnoreErrors }).(pulumi.BoolPtrOutput)
 }
 
+// Initialization timeout
 func (o LookupDaprComponentResultOutput) InitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) *string { return v.InitTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Component metadata
 func (o LookupDaprComponentResultOutput) Metadata() DaprMetadataResponseArrayOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) []DaprMetadataResponse { return v.Metadata }).(DaprMetadataResponseArrayOutput)
 }
 
+// The name of the resource
 func (o LookupDaprComponentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Names of container apps that can use this Dapr component
 func (o LookupDaprComponentResultOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// Collection of secrets used by a Dapr component
 func (o LookupDaprComponentResultOutput) Secrets() SecretResponseArrayOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) []SecretResponse { return v.Secrets }).(SecretResponseArrayOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDaprComponentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDaprComponentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Component version
 func (o LookupDaprComponentResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

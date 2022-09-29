@@ -22,21 +22,32 @@ func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulum
 }
 
 type LookupPipelineArgs struct {
-	PipelineName      string `pulumi:"pipelineName"`
+	// The name of the Pipeline resource in ARM.
+	PipelineName string `pulumi:"pipelineName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Pipeline used to configure Continuous Integration (CI) & Continuous Delivery (CD) for Azure resources.
 type LookupPipelineResult struct {
+	// Configuration used to bootstrap the Pipeline.
 	BootstrapConfiguration BootstrapConfigurationResponse `pulumi:"bootstrapConfiguration"`
-	Id                     string                         `pulumi:"id"`
-	Location               *string                        `pulumi:"location"`
-	Name                   string                         `pulumi:"name"`
-	PipelineId             int                            `pulumi:"pipelineId"`
-	PipelineType           string                         `pulumi:"pipelineType"`
-	SystemData             SystemDataResponse             `pulumi:"systemData"`
-	Tags                   map[string]string              `pulumi:"tags"`
-	Type                   string                         `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource Location
+	Location *string `pulumi:"location"`
+	// Resource Name
+	Name string `pulumi:"name"`
+	// Unique identifier of the Pipeline
+	PipelineId int `pulumi:"pipelineId"`
+	// Specifies which CI/CD provider to use. Valid options are 'azurePipeline', 'githubWorkflow'.
+	PipelineType string `pulumi:"pipelineType"`
+	// The system metadata pertaining to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource Tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource Type
+	Type string `pulumi:"type"`
 }
 
 func LookupPipelineOutput(ctx *pulumi.Context, args LookupPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineResultOutput {
@@ -53,7 +64,9 @@ func LookupPipelineOutput(ctx *pulumi.Context, args LookupPipelineOutputArgs, op
 }
 
 type LookupPipelineOutputArgs struct {
-	PipelineName      pulumi.StringInput `pulumi:"pipelineName"`
+	// The name of the Pipeline resource in ARM.
+	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,38 +89,47 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx 
 	return o
 }
 
+// Configuration used to bootstrap the Pipeline.
 func (o LookupPipelineResultOutput) BootstrapConfiguration() BootstrapConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupPipelineResult) BootstrapConfigurationResponse { return v.BootstrapConfiguration }).(BootstrapConfigurationResponseOutput)
 }
 
+// Resource Id
 func (o LookupPipelineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Location
 func (o LookupPipelineResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name
 func (o LookupPipelineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the Pipeline
 func (o LookupPipelineResultOutput) PipelineId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPipelineResult) int { return v.PipelineId }).(pulumi.IntOutput)
 }
 
+// Specifies which CI/CD provider to use. Valid options are 'azurePipeline', 'githubWorkflow'.
 func (o LookupPipelineResultOutput) PipelineType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.PipelineType }).(pulumi.StringOutput)
 }
 
+// The system metadata pertaining to this resource.
 func (o LookupPipelineResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPipelineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource Tags
 func (o LookupPipelineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPipelineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource Type
 func (o LookupPipelineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Type }).(pulumi.StringOutput)
 }

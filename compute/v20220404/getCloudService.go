@@ -21,19 +21,28 @@ func LookupCloudService(ctx *pulumi.Context, args *LookupCloudServiceArgs, opts 
 }
 
 type LookupCloudServiceArgs struct {
-	CloudServiceName  string `pulumi:"cloudServiceName"`
+	// Name of the cloud service.
+	CloudServiceName string `pulumi:"cloudServiceName"`
+	// Name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Describes the cloud service.
 type LookupCloudServiceResult struct {
-	Id         string                         `pulumi:"id"`
-	Location   string                         `pulumi:"location"`
-	Name       string                         `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Cloud service properties
 	Properties CloudServicePropertiesResponse `pulumi:"properties"`
-	SystemData *SystemDataResponse            `pulumi:"systemData"`
-	Tags       map[string]string              `pulumi:"tags"`
-	Type       string                         `pulumi:"type"`
+	// The system meta data relating to this resource.
+	SystemData *SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupCloudServiceOutput(ctx *pulumi.Context, args LookupCloudServiceOutputArgs, opts ...pulumi.InvokeOption) LookupCloudServiceResultOutput {
@@ -50,7 +59,9 @@ func LookupCloudServiceOutput(ctx *pulumi.Context, args LookupCloudServiceOutput
 }
 
 type LookupCloudServiceOutputArgs struct {
-	CloudServiceName  pulumi.StringInput `pulumi:"cloudServiceName"`
+	// Name of the cloud service.
+	CloudServiceName pulumi.StringInput `pulumi:"cloudServiceName"`
+	// Name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,30 +84,37 @@ func (o LookupCloudServiceResultOutput) ToLookupCloudServiceResultOutputWithCont
 	return o
 }
 
+// Resource Id.
 func (o LookupCloudServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupCloudServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupCloudServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Cloud service properties
 func (o LookupCloudServiceResultOutput) Properties() CloudServicePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) CloudServicePropertiesResponse { return v.Properties }).(CloudServicePropertiesResponseOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupCloudServiceResultOutput) SystemData() SystemDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
 }
 
+// Resource tags.
 func (o LookupCloudServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupCloudServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

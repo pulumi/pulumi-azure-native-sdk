@@ -21,18 +21,26 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
+	// Unique name of a private endpoint connection within a project.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ProjectName                   string `pulumi:"projectName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A private endpoint connection for a project.
 type LookupPrivateEndpointConnectionResult struct {
-	ETag       *string                                     `pulumi:"eTag"`
-	Id         string                                      `pulumi:"id"`
-	Name       string                                      `pulumi:"name"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+	Id string `pulumi:"id"`
+	// Name of the private endpoint endpoint connection.
+	Name string `pulumi:"name"`
+	// Properties of the private endpoint endpoint connection.
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	Type       string                                      `pulumi:"type"`
+	// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
@@ -49,9 +57,12 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
+	// Unique name of a private endpoint connection within a project.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ProjectName                   pulumi.StringInput `pulumi:"projectName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -73,24 +84,29 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 	return o
 }
 
+// For optimistic concurrency control.
 func (o LookupPrivateEndpointConnectionResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
 func (o LookupPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the private endpoint endpoint connection.
 func (o LookupPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the private endpoint endpoint connection.
 func (o LookupPrivateEndpointConnectionResultOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

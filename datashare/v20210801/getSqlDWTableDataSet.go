@@ -21,24 +21,39 @@ func LookupSqlDWTableDataSet(ctx *pulumi.Context, args *LookupSqlDWTableDataSetA
 }
 
 type LookupSqlDWTableDataSetArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	DataSetName       string `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName string `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ShareName         string `pulumi:"shareName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
 }
 
 // A SQL DW table data set.
 type LookupSqlDWTableDataSetResult struct {
-	DataSetId           string             `pulumi:"dataSetId"`
-	DataWarehouseName   string             `pulumi:"dataWarehouseName"`
-	Id                  string             `pulumi:"id"`
-	Kind                string             `pulumi:"kind"`
-	Name                string             `pulumi:"name"`
-	SchemaName          string             `pulumi:"schemaName"`
-	SqlServerResourceId string             `pulumi:"sqlServerResourceId"`
-	SystemData          SystemDataResponse `pulumi:"systemData"`
-	TableName           string             `pulumi:"tableName"`
-	Type                string             `pulumi:"type"`
+	// Unique id for identifying a data set resource
+	DataSetId string `pulumi:"dataSetId"`
+	// DataWarehouse name of the source data set
+	DataWarehouseName string `pulumi:"dataWarehouseName"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of data set.
+	// Expected value is 'SqlDWTable'.
+	Kind string `pulumi:"kind"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// Schema of the table. Default value is dbo.
+	SchemaName string `pulumi:"schemaName"`
+	// Resource id of SQL server
+	SqlServerResourceId string `pulumi:"sqlServerResourceId"`
+	// System Data of the Azure resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// SQL DW table name.
+	TableName string `pulumi:"tableName"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlDWTableDataSetOutput(ctx *pulumi.Context, args LookupSqlDWTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDWTableDataSetResultOutput {
@@ -55,10 +70,14 @@ func LookupSqlDWTableDataSetOutput(ctx *pulumi.Context, args LookupSqlDWTableDat
 }
 
 type LookupSqlDWTableDataSetOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	DataSetName       pulumi.StringInput `pulumi:"dataSetName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the dataSet.
+	DataSetName pulumi.StringInput `pulumi:"dataSetName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName         pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
 func (LookupSqlDWTableDataSetOutputArgs) ElementType() reflect.Type {
@@ -80,42 +99,53 @@ func (o LookupSqlDWTableDataSetResultOutput) ToLookupSqlDWTableDataSetResultOutp
 	return o
 }
 
+// Unique id for identifying a data set resource
 func (o LookupSqlDWTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// DataWarehouse name of the source data set
 func (o LookupSqlDWTableDataSetResultOutput) DataWarehouseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.DataWarehouseName }).(pulumi.StringOutput)
 }
 
+// The resource id of the azure resource
 func (o LookupSqlDWTableDataSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of data set.
+// Expected value is 'SqlDWTable'.
 func (o LookupSqlDWTableDataSetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupSqlDWTableDataSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Schema of the table. Default value is dbo.
 func (o LookupSqlDWTableDataSetResultOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
+// Resource id of SQL server
 func (o LookupSqlDWTableDataSetResultOutput) SqlServerResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
 }
 
+// System Data of the Azure resource.
 func (o LookupSqlDWTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// SQL DW table name.
 func (o LookupSqlDWTableDataSetResultOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
+// Type of the azure resource
 func (o LookupSqlDWTableDataSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

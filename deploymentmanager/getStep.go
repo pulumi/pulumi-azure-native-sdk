@@ -22,18 +22,26 @@ func LookupStep(ctx *pulumi.Context, args *LookupStepArgs, opts ...pulumi.Invoke
 }
 
 type LookupStepArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	StepName          string `pulumi:"stepName"`
+	// The name of the deployment step.
+	StepName string `pulumi:"stepName"`
 }
 
 // The resource representation of a rollout step.
 type LookupStepResult struct {
-	Id         string            `pulumi:"id"`
-	Location   string            `pulumi:"location"`
-	Name       string            `pulumi:"name"`
-	Properties interface{}       `pulumi:"properties"`
-	Tags       map[string]string `pulumi:"tags"`
-	Type       string            `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties that define the step.
+	Properties interface{} `pulumi:"properties"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupStepOutput(ctx *pulumi.Context, args LookupStepOutputArgs, opts ...pulumi.InvokeOption) LookupStepResultOutput {
@@ -50,8 +58,10 @@ func LookupStepOutput(ctx *pulumi.Context, args LookupStepOutputArgs, opts ...pu
 }
 
 type LookupStepOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	StepName          pulumi.StringInput `pulumi:"stepName"`
+	// The name of the deployment step.
+	StepName pulumi.StringInput `pulumi:"stepName"`
 }
 
 func (LookupStepOutputArgs) ElementType() reflect.Type {
@@ -73,26 +83,32 @@ func (o LookupStepResultOutput) ToLookupStepResultOutputWithContext(ctx context.
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupStepResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStepResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupStepResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStepResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupStepResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStepResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties that define the step.
 func (o LookupStepResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupStepResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource tags.
 func (o LookupStepResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStepResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStepResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStepResult) string { return v.Type }).(pulumi.StringOutput)
 }

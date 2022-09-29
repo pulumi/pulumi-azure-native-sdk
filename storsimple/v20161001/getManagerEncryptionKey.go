@@ -21,14 +21,19 @@ func GetManagerEncryptionKey(ctx *pulumi.Context, args *GetManagerEncryptionKeyA
 }
 
 type GetManagerEncryptionKeyArgs struct {
-	ManagerName       string `pulumi:"managerName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // This class can be used as the Type for any secret entity represented as Value, ValueCertificateThumbprint, EncryptionAlgorithm. In this case, "Value" is a secret and the "valueThumbprint" represents the certificate thumbprint of the value. The algorithm field is mainly for future usage to potentially allow different entities encrypted using different algorithms.
 type GetManagerEncryptionKeyResult struct {
-	EncryptionAlgorithm        string  `pulumi:"encryptionAlgorithm"`
-	Value                      string  `pulumi:"value"`
+	// Algorithm used to encrypt "Value"
+	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
+	// The value of the secret itself. If the secret is in plaintext or null then EncryptionAlgorithm will be none
+	Value string `pulumi:"value"`
+	// Thumbprint cert that was used to encrypt "Value"
 	ValueCertificateThumbprint *string `pulumi:"valueCertificateThumbprint"`
 }
 
@@ -46,7 +51,9 @@ func GetManagerEncryptionKeyOutput(ctx *pulumi.Context, args GetManagerEncryptio
 }
 
 type GetManagerEncryptionKeyOutputArgs struct {
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,14 +76,17 @@ func (o GetManagerEncryptionKeyResultOutput) ToGetManagerEncryptionKeyResultOutp
 	return o
 }
 
+// Algorithm used to encrypt "Value"
 func (o GetManagerEncryptionKeyResultOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagerEncryptionKeyResult) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
 }
 
+// The value of the secret itself. If the secret is in plaintext or null then EncryptionAlgorithm will be none
 func (o GetManagerEncryptionKeyResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagerEncryptionKeyResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// Thumbprint cert that was used to encrypt "Value"
 func (o GetManagerEncryptionKeyResultOutput) ValueCertificateThumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetManagerEncryptionKeyResult) *string { return v.ValueCertificateThumbprint }).(pulumi.StringPtrOutput)
 }

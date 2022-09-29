@@ -21,18 +21,26 @@ func ListWebAppApplicationSettingsSlot(ctx *pulumi.Context, args *ListWebAppAppl
 }
 
 type ListWebAppApplicationSettingsSlotArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Slot              string `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the application settings for the production slot.
+	Slot string `pulumi:"slot"`
 }
 
 // String dictionary resource.
 type ListWebAppApplicationSettingsSlotResult struct {
-	Id         string            `pulumi:"id"`
-	Kind       *string           `pulumi:"kind"`
-	Name       string            `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Settings.
 	Properties map[string]string `pulumi:"properties"`
-	Type       string            `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListWebAppApplicationSettingsSlotOutput(ctx *pulumi.Context, args ListWebAppApplicationSettingsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppApplicationSettingsSlotResultOutput {
@@ -49,9 +57,12 @@ func ListWebAppApplicationSettingsSlotOutput(ctx *pulumi.Context, args ListWebAp
 }
 
 type ListWebAppApplicationSettingsSlotOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Slot              pulumi.StringInput `pulumi:"slot"`
+	// Name of the deployment slot. If a slot is not specified, the API will get the application settings for the production slot.
+	Slot pulumi.StringInput `pulumi:"slot"`
 }
 
 func (ListWebAppApplicationSettingsSlotOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o ListWebAppApplicationSettingsSlotResultOutput) ToListWebAppApplicationSe
 	return o
 }
 
+// Resource Id.
 func (o ListWebAppApplicationSettingsSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListWebAppApplicationSettingsSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListWebAppApplicationSettingsSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings.
 func (o ListWebAppApplicationSettingsSlotResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsSlotResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o ListWebAppApplicationSettingsSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppApplicationSettingsSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

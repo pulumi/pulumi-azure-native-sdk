@@ -21,19 +21,28 @@ func LookupRegisteredAsn(ctx *pulumi.Context, args *LookupRegisteredAsnArgs, opt
 }
 
 type LookupRegisteredAsnArgs struct {
-	PeeringName       string `pulumi:"peeringName"`
+	// The name of the peering.
+	PeeringName string `pulumi:"peeringName"`
+	// The name of the registered ASN.
 	RegisteredAsnName string `pulumi:"registeredAsnName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The customer's ASN that is registered by the peering service provider.
 type LookupRegisteredAsnResult struct {
-	Asn                     *int   `pulumi:"asn"`
-	Id                      string `pulumi:"id"`
-	Name                    string `pulumi:"name"`
+	// The customer's ASN from which traffic originates.
+	Asn *int `pulumi:"asn"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The peering service prefix key that is to be shared with the customer.
 	PeeringServicePrefixKey string `pulumi:"peeringServicePrefixKey"`
-	ProvisioningState       string `pulumi:"provisioningState"`
-	Type                    string `pulumi:"type"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupRegisteredAsnOutput(ctx *pulumi.Context, args LookupRegisteredAsnOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredAsnResultOutput {
@@ -50,8 +59,11 @@ func LookupRegisteredAsnOutput(ctx *pulumi.Context, args LookupRegisteredAsnOutp
 }
 
 type LookupRegisteredAsnOutputArgs struct {
-	PeeringName       pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the peering.
+	PeeringName pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the registered ASN.
 	RegisteredAsnName pulumi.StringInput `pulumi:"registeredAsnName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,26 +86,32 @@ func (o LookupRegisteredAsnResultOutput) ToLookupRegisteredAsnResultOutputWithCo
 	return o
 }
 
+// The customer's ASN from which traffic originates.
 func (o LookupRegisteredAsnResultOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) *int { return v.Asn }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the resource.
 func (o LookupRegisteredAsnResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupRegisteredAsnResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The peering service prefix key that is to be shared with the customer.
 func (o LookupRegisteredAsnResultOutput) PeeringServicePrefixKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) string { return v.PeeringServicePrefixKey }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupRegisteredAsnResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The type of the resource.
 func (o LookupRegisteredAsnResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,19 +23,28 @@ func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts 
 }
 
 type LookupAccessPolicyArgs struct {
-	AccessPolicyName  string `pulumi:"accessPolicyName"`
-	EnvironmentName   string `pulumi:"environmentName"`
+	// The name of the Time Series Insights access policy associated with the specified environment.
+	AccessPolicyName string `pulumi:"accessPolicyName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// Name of an Azure Resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
 type LookupAccessPolicyResult struct {
-	Description       *string  `pulumi:"description"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
-	PrincipalObjectId *string  `pulumi:"principalObjectId"`
-	Roles             []string `pulumi:"roles"`
-	Type              string   `pulumi:"type"`
+	// An description of the access policy.
+	Description *string `pulumi:"description"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The objectId of the principal in Azure Active Directory.
+	PrincipalObjectId *string `pulumi:"principalObjectId"`
+	// The list of roles the principal is assigned on the environment.
+	Roles []string `pulumi:"roles"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyResultOutput {
@@ -52,8 +61,11 @@ func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutput
 }
 
 type LookupAccessPolicyOutputArgs struct {
-	AccessPolicyName  pulumi.StringInput `pulumi:"accessPolicyName"`
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the Time Series Insights access policy associated with the specified environment.
+	AccessPolicyName pulumi.StringInput `pulumi:"accessPolicyName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// Name of an Azure Resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,26 +88,32 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithCont
 	return o
 }
 
+// An description of the access policy.
 func (o LookupAccessPolicyResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupAccessPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupAccessPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The objectId of the principal in Azure Active Directory.
 func (o LookupAccessPolicyResultOutput) PrincipalObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *string { return v.PrincipalObjectId }).(pulumi.StringPtrOutput)
 }
 
+// The list of roles the principal is assigned on the environment.
 func (o LookupAccessPolicyResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// Resource type
 func (o LookupAccessPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

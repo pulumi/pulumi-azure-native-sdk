@@ -21,15 +21,20 @@ func GetClusterGatewaySettings(ctx *pulumi.Context, args *GetClusterGatewaySetti
 }
 
 type GetClusterGatewaySettingsArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Gateway settings.
 type GetClusterGatewaySettingsResult struct {
+	// Indicates whether or not the gateway settings based authorization is enabled.
 	IsCredentialEnabled string `pulumi:"isCredentialEnabled"`
-	Password            string `pulumi:"password"`
-	UserName            string `pulumi:"userName"`
+	// The gateway settings user password.
+	Password string `pulumi:"password"`
+	// The gateway settings user name.
+	UserName string `pulumi:"userName"`
 }
 
 func GetClusterGatewaySettingsOutput(ctx *pulumi.Context, args GetClusterGatewaySettingsOutputArgs, opts ...pulumi.InvokeOption) GetClusterGatewaySettingsResultOutput {
@@ -46,7 +51,9 @@ func GetClusterGatewaySettingsOutput(ctx *pulumi.Context, args GetClusterGateway
 }
 
 type GetClusterGatewaySettingsOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,14 +76,17 @@ func (o GetClusterGatewaySettingsResultOutput) ToGetClusterGatewaySettingsResult
 	return o
 }
 
+// Indicates whether or not the gateway settings based authorization is enabled.
 func (o GetClusterGatewaySettingsResultOutput) IsCredentialEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterGatewaySettingsResult) string { return v.IsCredentialEnabled }).(pulumi.StringOutput)
 }
 
+// The gateway settings user password.
 func (o GetClusterGatewaySettingsResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterGatewaySettingsResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// The gateway settings user name.
 func (o GetClusterGatewaySettingsResultOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterGatewaySettingsResult) string { return v.UserName }).(pulumi.StringOutput)
 }

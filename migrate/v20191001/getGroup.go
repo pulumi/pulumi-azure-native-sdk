@@ -21,18 +21,26 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 }
 
 type LookupGroupArgs struct {
-	GroupName         string `pulumi:"groupName"`
-	ProjectName       string `pulumi:"projectName"`
+	// Unique name of a group within a project.
+	GroupName string `pulumi:"groupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A group created in a Migration project.
 type LookupGroupResult struct {
-	ETag       *string                 `pulumi:"eTag"`
-	Id         string                  `pulumi:"id"`
-	Name       string                  `pulumi:"name"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this group. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}
+	Id string `pulumi:"id"`
+	// Name of the group.
+	Name string `pulumi:"name"`
+	// Properties of the group.
 	Properties GroupPropertiesResponse `pulumi:"properties"`
-	Type       string                  `pulumi:"type"`
+	// Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
+	Type string `pulumi:"type"`
 }
 
 func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
@@ -49,8 +57,11 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 }
 
 type LookupGroupOutputArgs struct {
-	GroupName         pulumi.StringInput `pulumi:"groupName"`
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Unique name of a group within a project.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,22 +84,27 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx contex
 	return o
 }
 
+// For optimistic concurrency control.
 func (o LookupGroupResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this group. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the group.
 func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the group.
 func (o LookupGroupResultOutput) Properties() GroupPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupGroupResult) GroupPropertiesResponse { return v.Properties }).(GroupPropertiesResponseOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
 func (o LookupGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

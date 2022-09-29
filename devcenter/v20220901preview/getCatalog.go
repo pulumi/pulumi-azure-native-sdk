@@ -21,21 +21,32 @@ func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.
 }
 
 type LookupCatalogArgs struct {
-	CatalogName       string `pulumi:"catalogName"`
-	DevCenterName     string `pulumi:"devCenterName"`
+	// The name of the Catalog.
+	CatalogName string `pulumi:"catalogName"`
+	// The name of the devcenter.
+	DevCenterName string `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a catalog.
 type LookupCatalogResult struct {
-	AdoGit            *GitCatalogResponse `pulumi:"adoGit"`
-	GitHub            *GitCatalogResponse `pulumi:"gitHub"`
-	Id                string              `pulumi:"id"`
-	LastSyncTime      string              `pulumi:"lastSyncTime"`
-	Name              string              `pulumi:"name"`
-	ProvisioningState string              `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse  `pulumi:"systemData"`
-	Type              string              `pulumi:"type"`
+	// Properties for an Azure DevOps catalog type.
+	AdoGit *GitCatalogResponse `pulumi:"adoGit"`
+	// Properties for a GitHub catalog type.
+	GitHub *GitCatalogResponse `pulumi:"gitHub"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// When the catalog was last synced.
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogResultOutput {
@@ -52,8 +63,11 @@ func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts
 }
 
 type LookupCatalogOutputArgs struct {
-	CatalogName       pulumi.StringInput `pulumi:"catalogName"`
-	DevCenterName     pulumi.StringInput `pulumi:"devCenterName"`
+	// The name of the Catalog.
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// The name of the devcenter.
+	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
+	// Name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,34 +90,42 @@ func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx co
 	return o
 }
 
+// Properties for an Azure DevOps catalog type.
 func (o LookupCatalogResultOutput) AdoGit() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v LookupCatalogResult) *GitCatalogResponse { return v.AdoGit }).(GitCatalogResponsePtrOutput)
 }
 
+// Properties for a GitHub catalog type.
 func (o LookupCatalogResultOutput) GitHub() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v LookupCatalogResult) *GitCatalogResponse { return v.GitHub }).(GitCatalogResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCatalogResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// When the catalog was last synced.
 func (o LookupCatalogResultOutput) LastSyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.LastSyncTime }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupCatalogResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupCatalogResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCatalogResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCatalogResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Type }).(pulumi.StringOutput)
 }

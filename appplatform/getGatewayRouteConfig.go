@@ -22,19 +22,28 @@ func LookupGatewayRouteConfig(ctx *pulumi.Context, args *LookupGatewayRouteConfi
 }
 
 type LookupGatewayRouteConfigArgs struct {
-	GatewayName       string `pulumi:"gatewayName"`
+	// The name of Spring Cloud Gateway.
+	GatewayName string `pulumi:"gatewayName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RouteConfigName   string `pulumi:"routeConfigName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Spring Cloud Gateway route config.
+	RouteConfigName string `pulumi:"routeConfigName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Spring Cloud Gateway route config resource
 type LookupGatewayRouteConfigResult struct {
-	Id         string                               `pulumi:"id"`
-	Name       string                               `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// API route config of the Spring Cloud Gateway
 	Properties GatewayRouteConfigPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                   `pulumi:"systemData"`
-	Type       string                               `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupGatewayRouteConfigOutput(ctx *pulumi.Context, args LookupGatewayRouteConfigOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayRouteConfigResultOutput {
@@ -51,10 +60,14 @@ func LookupGatewayRouteConfigOutput(ctx *pulumi.Context, args LookupGatewayRoute
 }
 
 type LookupGatewayRouteConfigOutputArgs struct {
-	GatewayName       pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of Spring Cloud Gateway.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RouteConfigName   pulumi.StringInput `pulumi:"routeConfigName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Spring Cloud Gateway route config.
+	RouteConfigName pulumi.StringInput `pulumi:"routeConfigName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupGatewayRouteConfigOutputArgs) ElementType() reflect.Type {
@@ -76,22 +89,27 @@ func (o LookupGatewayRouteConfigResultOutput) ToLookupGatewayRouteConfigResultOu
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupGatewayRouteConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayRouteConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupGatewayRouteConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayRouteConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// API route config of the Spring Cloud Gateway
 func (o LookupGatewayRouteConfigResultOutput) Properties() GatewayRouteConfigPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupGatewayRouteConfigResult) GatewayRouteConfigPropertiesResponse { return v.Properties }).(GatewayRouteConfigPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupGatewayRouteConfigResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupGatewayRouteConfigResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupGatewayRouteConfigResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayRouteConfigResult) string { return v.Type }).(pulumi.StringOutput)
 }

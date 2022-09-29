@@ -23,21 +23,32 @@ func LookupDiskEncryptionSet(ctx *pulumi.Context, args *LookupDiskEncryptionSetA
 }
 
 type LookupDiskEncryptionSetArgs struct {
+	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
 	DiskEncryptionSetName string `pulumi:"diskEncryptionSetName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // disk encryption set resource.
 type LookupDiskEncryptionSetResult struct {
-	ActiveKey         *KeyVaultAndKeyReferenceResponse  `pulumi:"activeKey"`
-	Id                string                            `pulumi:"id"`
-	Identity          *EncryptionSetIdentityResponse    `pulumi:"identity"`
-	Location          string                            `pulumi:"location"`
-	Name              string                            `pulumi:"name"`
-	PreviousKeys      []KeyVaultAndKeyReferenceResponse `pulumi:"previousKeys"`
-	ProvisioningState string                            `pulumi:"provisioningState"`
-	Tags              map[string]string                 `pulumi:"tags"`
-	Type              string                            `pulumi:"type"`
+	// The key vault key which is currently used by this disk encryption set.
+	ActiveKey *KeyVaultAndKeyReferenceResponse `pulumi:"activeKey"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
+	Identity *EncryptionSetIdentityResponse `pulumi:"identity"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.
+	PreviousKeys []KeyVaultAndKeyReferenceResponse `pulumi:"previousKeys"`
+	// The disk encryption set provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupDiskEncryptionSetOutput(ctx *pulumi.Context, args LookupDiskEncryptionSetOutputArgs, opts ...pulumi.InvokeOption) LookupDiskEncryptionSetResultOutput {
@@ -54,8 +65,10 @@ func LookupDiskEncryptionSetOutput(ctx *pulumi.Context, args LookupDiskEncryptio
 }
 
 type LookupDiskEncryptionSetOutputArgs struct {
+	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
 	DiskEncryptionSetName pulumi.StringInput `pulumi:"diskEncryptionSetName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDiskEncryptionSetOutputArgs) ElementType() reflect.Type {
@@ -77,38 +90,47 @@ func (o LookupDiskEncryptionSetResultOutput) ToLookupDiskEncryptionSetResultOutp
 	return o
 }
 
+// The key vault key which is currently used by this disk encryption set.
 func (o LookupDiskEncryptionSetResultOutput) ActiveKey() KeyVaultAndKeyReferenceResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) *KeyVaultAndKeyReferenceResponse { return v.ActiveKey }).(KeyVaultAndKeyReferenceResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupDiskEncryptionSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
 func (o LookupDiskEncryptionSetResultOutput) Identity() EncryptionSetIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) *EncryptionSetIdentityResponse { return v.Identity }).(EncryptionSetIdentityResponsePtrOutput)
 }
 
+// Resource location
 func (o LookupDiskEncryptionSetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupDiskEncryptionSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.
 func (o LookupDiskEncryptionSetResultOutput) PreviousKeys() KeyVaultAndKeyReferenceResponseArrayOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) []KeyVaultAndKeyReferenceResponse { return v.PreviousKeys }).(KeyVaultAndKeyReferenceResponseArrayOutput)
 }
 
+// The disk encryption set provisioning state.
 func (o LookupDiskEncryptionSetResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupDiskEncryptionSetResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupDiskEncryptionSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,21 +22,32 @@ func LookupProviderInstance(ctx *pulumi.Context, args *LookupProviderInstanceArg
 }
 
 type LookupProviderInstanceArgs struct {
-	MonitorName          string `pulumi:"monitorName"`
+	// Name of the SAP monitor resource.
+	MonitorName string `pulumi:"monitorName"`
+	// Name of the provider instance.
 	ProviderInstanceName string `pulumi:"providerInstanceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A provider instance associated with SAP monitor.
 type LookupProviderInstanceResult struct {
-	Errors            ProviderInstancePropertiesResponseErrors `pulumi:"errors"`
-	Id                string                                   `pulumi:"id"`
-	Identity          *UserAssignedServiceIdentityResponse     `pulumi:"identity"`
-	Name              string                                   `pulumi:"name"`
-	ProviderSettings  interface{}                              `pulumi:"providerSettings"`
-	ProvisioningState string                                   `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse                       `pulumi:"systemData"`
-	Type              string                                   `pulumi:"type"`
+	// Defines the provider instance errors.
+	Errors ProviderInstancePropertiesResponseErrors `pulumi:"errors"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Managed service identity (user assigned identities)
+	Identity *UserAssignedServiceIdentityResponse `pulumi:"identity"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Defines the provider instance errors.
+	ProviderSettings interface{} `pulumi:"providerSettings"`
+	// State of provisioning of the provider instance
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupProviderInstanceOutput(ctx *pulumi.Context, args LookupProviderInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupProviderInstanceResultOutput {
@@ -53,9 +64,12 @@ func LookupProviderInstanceOutput(ctx *pulumi.Context, args LookupProviderInstan
 }
 
 type LookupProviderInstanceOutputArgs struct {
-	MonitorName          pulumi.StringInput `pulumi:"monitorName"`
+	// Name of the SAP monitor resource.
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// Name of the provider instance.
 	ProviderInstanceName pulumi.StringInput `pulumi:"providerInstanceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupProviderInstanceOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupProviderInstanceResultOutput) ToLookupProviderInstanceResultOutput
 	return o
 }
 
+// Defines the provider instance errors.
 func (o LookupProviderInstanceResultOutput) Errors() ProviderInstancePropertiesResponseErrorsOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) ProviderInstancePropertiesResponseErrors { return v.Errors }).(ProviderInstancePropertiesResponseErrorsOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProviderInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed service identity (user assigned identities)
 func (o LookupProviderInstanceResultOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) *UserAssignedServiceIdentityResponse { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }
 
+// The name of the resource
 func (o LookupProviderInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the provider instance errors.
 func (o LookupProviderInstanceResultOutput) ProviderSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) interface{} { return v.ProviderSettings }).(pulumi.AnyOutput)
 }
 
+// State of provisioning of the provider instance
 func (o LookupProviderInstanceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupProviderInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupProviderInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,19 +22,28 @@ func LookupSecurityConnectorApplication(ctx *pulumi.Context, args *LookupSecurit
 }
 
 type LookupSecurityConnectorApplicationArgs struct {
-	ApplicationId         string `pulumi:"applicationId"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The security Application key - unique key for the standard application
+	ApplicationId string `pulumi:"applicationId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The security connector name.
 	SecurityConnectorName string `pulumi:"securityConnectorName"`
 }
 
 // Security Application over a given scope
 type LookupSecurityConnectorApplicationResult struct {
-	Description        *string `pulumi:"description"`
-	DisplayName        *string `pulumi:"displayName"`
-	Id                 string  `pulumi:"id"`
-	Name               string  `pulumi:"name"`
-	SourceResourceType string  `pulumi:"sourceResourceType"`
-	Type               string  `pulumi:"type"`
+	// description of the application
+	Description *string `pulumi:"description"`
+	// display name of the application
+	DisplayName *string `pulumi:"displayName"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The application source, what it affects, e.g. Assessments
+	SourceResourceType string `pulumi:"sourceResourceType"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityConnectorApplicationOutput(ctx *pulumi.Context, args LookupSecurityConnectorApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityConnectorApplicationResultOutput {
@@ -51,8 +60,11 @@ func LookupSecurityConnectorApplicationOutput(ctx *pulumi.Context, args LookupSe
 }
 
 type LookupSecurityConnectorApplicationOutputArgs struct {
-	ApplicationId         pulumi.StringInput `pulumi:"applicationId"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The security Application key - unique key for the standard application
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The security connector name.
 	SecurityConnectorName pulumi.StringInput `pulumi:"securityConnectorName"`
 }
 
@@ -75,26 +87,32 @@ func (o LookupSecurityConnectorApplicationResultOutput) ToLookupSecurityConnecto
 	return o
 }
 
+// description of the application
 func (o LookupSecurityConnectorApplicationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// display name of the application
 func (o LookupSecurityConnectorApplicationResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupSecurityConnectorApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupSecurityConnectorApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The application source, what it affects, e.g. Assessments
 func (o LookupSecurityConnectorApplicationResultOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupSecurityConnectorApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,20 +23,30 @@ func LookupArtifactSource(ctx *pulumi.Context, args *LookupArtifactSourceArgs, o
 }
 
 type LookupArtifactSourceArgs struct {
+	// The name of the artifact source.
 	ArtifactSourceName string `pulumi:"artifactSourceName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The resource that defines the source location where the artifacts are located.
 type LookupArtifactSourceResult struct {
-	ArtifactRoot   *string                   `pulumi:"artifactRoot"`
+	// The path from the location that the 'authentication' property [say, a SAS URI to the blob container] refers to, to the location of the artifacts. This can be used to differentiate different versions of the artifacts. Or, different types of artifacts like binaries or templates. The location referenced by the authentication property concatenated with this optional artifactRoot path forms the artifact source location where the artifacts are expected to be found.
+	ArtifactRoot *string `pulumi:"artifactRoot"`
+	// The authentication method to use to access the artifact source.
 	Authentication SasAuthenticationResponse `pulumi:"authentication"`
-	Id             string                    `pulumi:"id"`
-	Location       string                    `pulumi:"location"`
-	Name           string                    `pulumi:"name"`
-	SourceType     string                    `pulumi:"sourceType"`
-	Tags           map[string]string         `pulumi:"tags"`
-	Type           string                    `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of artifact source used.
+	SourceType string `pulumi:"sourceType"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupArtifactSourceOutput(ctx *pulumi.Context, args LookupArtifactSourceOutputArgs, opts ...pulumi.InvokeOption) LookupArtifactSourceResultOutput {
@@ -53,8 +63,10 @@ func LookupArtifactSourceOutput(ctx *pulumi.Context, args LookupArtifactSourceOu
 }
 
 type LookupArtifactSourceOutputArgs struct {
+	// The name of the artifact source.
 	ArtifactSourceName pulumi.StringInput `pulumi:"artifactSourceName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupArtifactSourceOutputArgs) ElementType() reflect.Type {
@@ -76,34 +88,42 @@ func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutputWith
 	return o
 }
 
+// The path from the location that the 'authentication' property [say, a SAS URI to the blob container] refers to, to the location of the artifacts. This can be used to differentiate different versions of the artifacts. Or, different types of artifacts like binaries or templates. The location referenced by the authentication property concatenated with this optional artifactRoot path forms the artifact source location where the artifacts are expected to be found.
 func (o LookupArtifactSourceResultOutput) ArtifactRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.ArtifactRoot }).(pulumi.StringPtrOutput)
 }
 
+// The authentication method to use to access the artifact source.
 func (o LookupArtifactSourceResultOutput) Authentication() SasAuthenticationResponseOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) SasAuthenticationResponse { return v.Authentication }).(SasAuthenticationResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupArtifactSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupArtifactSourceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupArtifactSourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of artifact source used.
 func (o LookupArtifactSourceResultOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupArtifactSourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupArtifactSourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,16 +23,22 @@ func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opt
 }
 
 type LookupResourceGroupArgs struct {
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Resource group information.
 type LookupResourceGroupResult struct {
-	Id         string                          `pulumi:"id"`
-	Location   string                          `pulumi:"location"`
-	Name       *string                         `pulumi:"name"`
+	// Gets the ID of the resource group.
+	Id string `pulumi:"id"`
+	// Gets or sets the location of the resource group. It cannot be changed after the resource group has been created. Has to be one of the supported Azure Locations, such as West US, East US, West Europe, East Asia, etc.
+	Location string `pulumi:"location"`
+	// Gets or sets the Name of the resource group.
+	Name *string `pulumi:"name"`
+	// The resource group properties.
 	Properties ResourceGroupPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string               `pulumi:"tags"`
+	// Gets or sets the tags attached to the resource group.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupResourceGroupOutput(ctx *pulumi.Context, args LookupResourceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGroupResultOutput {
@@ -49,6 +55,7 @@ func LookupResourceGroupOutput(ctx *pulumi.Context, args LookupResourceGroupOutp
 }
 
 type LookupResourceGroupOutputArgs struct {
+	// The name of the resource group to get. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,22 +78,27 @@ func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutputWithCo
 	return o
 }
 
+// Gets the ID of the resource group.
 func (o LookupResourceGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the location of the resource group. It cannot be changed after the resource group has been created. Has to be one of the supported Azure Locations, such as West US, East US, West Europe, East Asia, etc.
 func (o LookupResourceGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Gets or sets the Name of the resource group.
 func (o LookupResourceGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The resource group properties.
 func (o LookupResourceGroupResultOutput) Properties() ResourceGroupPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) ResourceGroupPropertiesResponse { return v.Properties }).(ResourceGroupPropertiesResponseOutput)
 }
 
+// Gets or sets the tags attached to the resource group.
 func (o LookupResourceGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

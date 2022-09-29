@@ -21,14 +21,18 @@ func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlR
 }
 
 type ListSourceControlRepositoriesArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // List all the source controls.
 type ListSourceControlRepositoriesResult struct {
-	NextLink string         `pulumi:"nextLink"`
-	Value    []RepoResponse `pulumi:"value"`
+	// URL to fetch the next set of repositories.
+	NextLink string `pulumi:"nextLink"`
+	// Array of repositories.
+	Value []RepoResponse `pulumi:"value"`
 }
 
 func ListSourceControlRepositoriesOutput(ctx *pulumi.Context, args ListSourceControlRepositoriesOutputArgs, opts ...pulumi.InvokeOption) ListSourceControlRepositoriesResultOutput {
@@ -45,8 +49,10 @@ func ListSourceControlRepositoriesOutput(ctx *pulumi.Context, args ListSourceCon
 }
 
 type ListSourceControlRepositoriesOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListSourceControlRepositoriesOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListSourceControlRepositoriesResultOutput) ToListSourceControlRepositori
 	return o
 }
 
+// URL to fetch the next set of repositories.
 func (o ListSourceControlRepositoriesResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSourceControlRepositoriesResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Array of repositories.
 func (o ListSourceControlRepositoriesResultOutput) Value() RepoResponseArrayOutput {
 	return o.ApplyT(func(v ListSourceControlRepositoriesResult) []RepoResponse { return v.Value }).(RepoResponseArrayOutput)
 }

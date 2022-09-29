@@ -22,22 +22,34 @@ func LookupExpressRouteGateway(ctx *pulumi.Context, args *LookupExpressRouteGate
 }
 
 type LookupExpressRouteGatewayArgs struct {
+	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName string `pulumi:"expressRouteGatewayName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRoute gateway resource.
 type LookupExpressRouteGatewayResult struct {
-	AutoScaleConfiguration  *ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration `pulumi:"autoScaleConfiguration"`
-	Etag                    string                                                       `pulumi:"etag"`
-	ExpressRouteConnections []ExpressRouteConnectionResponse                             `pulumi:"expressRouteConnections"`
-	Id                      *string                                                      `pulumi:"id"`
-	Location                *string                                                      `pulumi:"location"`
-	Name                    string                                                       `pulumi:"name"`
-	ProvisioningState       string                                                       `pulumi:"provisioningState"`
-	Tags                    map[string]string                                            `pulumi:"tags"`
-	Type                    string                                                       `pulumi:"type"`
-	VirtualHub              VirtualHubIdResponse                                         `pulumi:"virtualHub"`
+	// Configuration for auto scaling.
+	AutoScaleConfiguration *ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration `pulumi:"autoScaleConfiguration"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// List of ExpressRoute connections to the ExpressRoute gateway.
+	ExpressRouteConnections []ExpressRouteConnectionResponse `pulumi:"expressRouteConnections"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the express route gateway resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The Virtual Hub where the ExpressRoute gateway is or will be deployed.
+	VirtualHub VirtualHubIdResponse `pulumi:"virtualHub"`
 }
 
 func LookupExpressRouteGatewayOutput(ctx *pulumi.Context, args LookupExpressRouteGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteGatewayResultOutput {
@@ -54,8 +66,10 @@ func LookupExpressRouteGatewayOutput(ctx *pulumi.Context, args LookupExpressRout
 }
 
 type LookupExpressRouteGatewayOutputArgs struct {
+	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName pulumi.StringInput `pulumi:"expressRouteGatewayName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExpressRouteGatewayOutputArgs) ElementType() reflect.Type {
@@ -77,46 +91,56 @@ func (o LookupExpressRouteGatewayResultOutput) ToLookupExpressRouteGatewayResult
 	return o
 }
 
+// Configuration for auto scaling.
 func (o LookupExpressRouteGatewayResultOutput) AutoScaleConfiguration() ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) *ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration {
 		return v.AutoScaleConfiguration
 	}).(ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupExpressRouteGatewayResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// List of ExpressRoute connections to the ExpressRoute gateway.
 func (o LookupExpressRouteGatewayResultOutput) ExpressRouteConnections() ExpressRouteConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) []ExpressRouteConnectionResponse {
 		return v.ExpressRouteConnections
 	}).(ExpressRouteConnectionResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupExpressRouteGatewayResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupExpressRouteGatewayResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupExpressRouteGatewayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the express route gateway resource.
 func (o LookupExpressRouteGatewayResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupExpressRouteGatewayResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupExpressRouteGatewayResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The Virtual Hub where the ExpressRoute gateway is or will be deployed.
 func (o LookupExpressRouteGatewayResultOutput) VirtualHub() VirtualHubIdResponseOutput {
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) VirtualHubIdResponse { return v.VirtualHub }).(VirtualHubIdResponseOutput)
 }

@@ -21,15 +21,21 @@ func GetGetCachedServerNameExecute(ctx *pulumi.Context, args *GetGetCachedServer
 }
 
 type GetGetCachedServerNameExecuteArgs struct {
-	LocationName      string  `pulumi:"locationName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	Sku               Sku     `pulumi:"sku"`
-	Storage           Storage `pulumi:"storage"`
-	Version           string  `pulumi:"version"`
+	// The name of the location.
+	LocationName string `pulumi:"locationName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The SKU (pricing tier) of the server.
+	Sku Sku `pulumi:"sku"`
+	// Storage properties of a server.
+	Storage Storage `pulumi:"storage"`
+	// PostgreSQL Server version.
+	Version string `pulumi:"version"`
 }
 
 // Represents a resource name of a cached server
 type GetGetCachedServerNameExecuteResult struct {
+	// The name of available cached server
 	Name string `pulumi:"name"`
 }
 
@@ -47,11 +53,16 @@ func GetGetCachedServerNameExecuteOutput(ctx *pulumi.Context, args GetGetCachedS
 }
 
 type GetGetCachedServerNameExecuteOutputArgs struct {
-	LocationName      pulumi.StringInput `pulumi:"locationName"`
+	// The name of the location.
+	LocationName pulumi.StringInput `pulumi:"locationName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Sku               SkuInput           `pulumi:"sku"`
-	Storage           StorageInput       `pulumi:"storage"`
-	Version           pulumi.StringInput `pulumi:"version"`
+	// The SKU (pricing tier) of the server.
+	Sku SkuInput `pulumi:"sku"`
+	// Storage properties of a server.
+	Storage StorageInput `pulumi:"storage"`
+	// PostgreSQL Server version.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetGetCachedServerNameExecuteOutputArgs) ElementType() reflect.Type {
@@ -73,6 +84,7 @@ func (o GetGetCachedServerNameExecuteResultOutput) ToGetGetCachedServerNameExecu
 	return o
 }
 
+// The name of available cached server
 func (o GetGetCachedServerNameExecuteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGetCachedServerNameExecuteResult) string { return v.Name }).(pulumi.StringOutput)
 }

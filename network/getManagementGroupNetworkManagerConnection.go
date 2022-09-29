@@ -22,19 +22,28 @@ func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *Lo
 }
 
 type LookupManagementGroupNetworkManagerConnectionArgs struct {
-	ManagementGroupId            string `pulumi:"managementGroupId"`
+	// The management group Id which uniquely identify the Microsoft Azure management group.
+	ManagementGroupId string `pulumi:"managementGroupId"`
+	// Name for the network manager connection.
 	NetworkManagerConnectionName string `pulumi:"networkManagerConnectionName"`
 }
 
 // The Network Manager Connection resource
 type LookupManagementGroupNetworkManagerConnectionResult struct {
-	Description      *string            `pulumi:"description"`
-	Etag             string             `pulumi:"etag"`
-	Id               string             `pulumi:"id"`
-	Name             string             `pulumi:"name"`
-	NetworkManagerId *string            `pulumi:"networkManagerId"`
-	SystemData       SystemDataResponse `pulumi:"systemData"`
-	Type             string             `pulumi:"type"`
+	// A description of the scope connection.
+	Description *string `pulumi:"description"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Network Manager Id.
+	NetworkManagerId *string `pulumi:"networkManagerId"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementGroupNetworkManagerConnectionOutput(ctx *pulumi.Context, args LookupManagementGroupNetworkManagerConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupNetworkManagerConnectionResultOutput {
@@ -51,7 +60,9 @@ func LookupManagementGroupNetworkManagerConnectionOutput(ctx *pulumi.Context, ar
 }
 
 type LookupManagementGroupNetworkManagerConnectionOutputArgs struct {
-	ManagementGroupId            pulumi.StringInput `pulumi:"managementGroupId"`
+	// The management group Id which uniquely identify the Microsoft Azure management group.
+	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
+	// Name for the network manager connection.
 	NetworkManagerConnectionName pulumi.StringInput `pulumi:"networkManagerConnectionName"`
 }
 
@@ -74,30 +85,37 @@ func (o LookupManagementGroupNetworkManagerConnectionResultOutput) ToLookupManag
 	return o
 }
 
+// A description of the scope connection.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Network Manager Id.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) NetworkManagerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) *string { return v.NetworkManagerId }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }
