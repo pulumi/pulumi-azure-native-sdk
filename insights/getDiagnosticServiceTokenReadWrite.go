@@ -22,11 +22,13 @@ func GetDiagnosticServiceTokenReadWrite(ctx *pulumi.Context, args *GetDiagnostic
 }
 
 type GetDiagnosticServiceTokenReadWriteArgs struct {
+	// The identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // The response to a diagnostic services token query.
 type GetDiagnosticServiceTokenReadWriteResult struct {
+	// JWT token for accessing application insights diagnostic service data.
 	Token *string `pulumi:"token"`
 }
 
@@ -44,6 +46,7 @@ func GetDiagnosticServiceTokenReadWriteOutput(ctx *pulumi.Context, args GetDiagn
 }
 
 type GetDiagnosticServiceTokenReadWriteOutputArgs struct {
+	// The identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -66,6 +69,7 @@ func (o GetDiagnosticServiceTokenReadWriteResultOutput) ToGetDiagnosticServiceTo
 	return o
 }
 
+// JWT token for accessing application insights diagnostic service data.
 func (o GetDiagnosticServiceTokenReadWriteResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDiagnosticServiceTokenReadWriteResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

@@ -22,18 +22,26 @@ func ListEndpointCredentials(ctx *pulumi.Context, args *ListEndpointCredentialsA
 }
 
 type ListEndpointCredentialsArgs struct {
+	// The endpoint name.
 	EndpointName string `pulumi:"endpointName"`
-	Expiresin    *int   `pulumi:"expiresin"`
-	ResourceUri  string `pulumi:"resourceUri"`
+	// The is how long the endpoint access token is valid (in seconds).
+	Expiresin *int `pulumi:"expiresin"`
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // The endpoint access for the target resource.
 type ListEndpointCredentialsResult struct {
-	AccessKey            string   `pulumi:"accessKey"`
-	ExpiresOn            *float64 `pulumi:"expiresOn"`
-	HybridConnectionName string   `pulumi:"hybridConnectionName"`
-	NamespaceName        string   `pulumi:"namespaceName"`
-	NamespaceNameSuffix  string   `pulumi:"namespaceNameSuffix"`
+	// Access key for hybrid connection.
+	AccessKey string `pulumi:"accessKey"`
+	// The expiration of access key in unix time.
+	ExpiresOn *float64 `pulumi:"expiresOn"`
+	// Azure Relay hybrid connection name for the resource.
+	HybridConnectionName string `pulumi:"hybridConnectionName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The suffix domain name of relay namespace.
+	NamespaceNameSuffix string `pulumi:"namespaceNameSuffix"`
 }
 
 func ListEndpointCredentialsOutput(ctx *pulumi.Context, args ListEndpointCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointCredentialsResultOutput {
@@ -50,9 +58,12 @@ func ListEndpointCredentialsOutput(ctx *pulumi.Context, args ListEndpointCredent
 }
 
 type ListEndpointCredentialsOutputArgs struct {
+	// The endpoint name.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	Expiresin    pulumi.IntPtrInput `pulumi:"expiresin"`
-	ResourceUri  pulumi.StringInput `pulumi:"resourceUri"`
+	// The is how long the endpoint access token is valid (in seconds).
+	Expiresin pulumi.IntPtrInput `pulumi:"expiresin"`
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
 func (ListEndpointCredentialsOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o ListEndpointCredentialsResultOutput) ToListEndpointCredentialsResultOutp
 	return o
 }
 
+// Access key for hybrid connection.
 func (o ListEndpointCredentialsResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListEndpointCredentialsResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
+// The expiration of access key in unix time.
 func (o ListEndpointCredentialsResultOutput) ExpiresOn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListEndpointCredentialsResult) *float64 { return v.ExpiresOn }).(pulumi.Float64PtrOutput)
 }
 
+// Azure Relay hybrid connection name for the resource.
 func (o ListEndpointCredentialsResultOutput) HybridConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListEndpointCredentialsResult) string { return v.HybridConnectionName }).(pulumi.StringOutput)
 }
 
+// The namespace name.
 func (o ListEndpointCredentialsResultOutput) NamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ListEndpointCredentialsResult) string { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
+// The suffix domain name of relay namespace.
 func (o ListEndpointCredentialsResultOutput) NamespaceNameSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v ListEndpointCredentialsResult) string { return v.NamespaceNameSuffix }).(pulumi.StringOutput)
 }

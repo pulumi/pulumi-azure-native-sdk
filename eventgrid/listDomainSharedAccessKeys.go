@@ -22,13 +22,17 @@ func ListDomainSharedAccessKeys(ctx *pulumi.Context, args *ListDomainSharedAcces
 }
 
 type ListDomainSharedAccessKeysArgs struct {
-	DomainName        string `pulumi:"domainName"`
+	// Name of the domain.
+	DomainName string `pulumi:"domainName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Shared access keys of the Domain.
 type ListDomainSharedAccessKeysResult struct {
+	// Shared access key1 for the domain.
 	Key1 *string `pulumi:"key1"`
+	// Shared access key2 for the domain.
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -46,7 +50,9 @@ func ListDomainSharedAccessKeysOutput(ctx *pulumi.Context, args ListDomainShared
 }
 
 type ListDomainSharedAccessKeysOutputArgs struct {
-	DomainName        pulumi.StringInput `pulumi:"domainName"`
+	// Name of the domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListDomainSharedAccessKeysResultOutput) ToListDomainSharedAccessKeysResu
 	return o
 }
 
+// Shared access key1 for the domain.
 func (o ListDomainSharedAccessKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListDomainSharedAccessKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Shared access key2 for the domain.
 func (o ListDomainSharedAccessKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListDomainSharedAccessKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

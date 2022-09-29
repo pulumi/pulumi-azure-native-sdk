@@ -21,24 +21,38 @@ func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts 
 }
 
 type LookupContainerAppArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the Container App.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Container App.
 type LookupContainerAppResult struct {
-	Configuration      *ConfigurationResponse `pulumi:"configuration"`
-	Id                 string                 `pulumi:"id"`
-	Kind               *string                `pulumi:"kind"`
-	KubeEnvironmentId  *string                `pulumi:"kubeEnvironmentId"`
-	LatestRevisionFqdn string                 `pulumi:"latestRevisionFqdn"`
-	LatestRevisionName string                 `pulumi:"latestRevisionName"`
-	Location           string                 `pulumi:"location"`
-	Name               string                 `pulumi:"name"`
-	ProvisioningState  string                 `pulumi:"provisioningState"`
-	Tags               map[string]string      `pulumi:"tags"`
-	Template           *TemplateResponse      `pulumi:"template"`
-	Type               string                 `pulumi:"type"`
+	// Non versioned Container App configuration properties.
+	Configuration *ConfigurationResponse `pulumi:"configuration"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource ID of the Container App's KubeEnvironment.
+	KubeEnvironmentId *string `pulumi:"kubeEnvironmentId"`
+	// Fully Qualified Domain Name of the latest revision of the Container App.
+	LatestRevisionFqdn string `pulumi:"latestRevisionFqdn"`
+	// Name of the latest revision of the Container App.
+	LatestRevisionName string `pulumi:"latestRevisionName"`
+	// Resource Location.
+	Location string `pulumi:"location"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Provisioning state of the Container App.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Container App versioned application definition.
+	Template *TemplateResponse `pulumi:"template"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupContainerAppResult
@@ -66,7 +80,9 @@ func LookupContainerAppOutput(ctx *pulumi.Context, args LookupContainerAppOutput
 }
 
 type LookupContainerAppOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the Container App.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -89,50 +105,62 @@ func (o LookupContainerAppResultOutput) ToLookupContainerAppResultOutputWithCont
 	return o
 }
 
+// Non versioned Container App configuration properties.
 func (o LookupContainerAppResultOutput) Configuration() ConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *ConfigurationResponse { return v.Configuration }).(ConfigurationResponsePtrOutput)
 }
 
+// Resource Id.
 func (o LookupContainerAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupContainerAppResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID of the Container App's KubeEnvironment.
 func (o LookupContainerAppResultOutput) KubeEnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.KubeEnvironmentId }).(pulumi.StringPtrOutput)
 }
 
+// Fully Qualified Domain Name of the latest revision of the Container App.
 func (o LookupContainerAppResultOutput) LatestRevisionFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.LatestRevisionFqdn }).(pulumi.StringOutput)
 }
 
+// Name of the latest revision of the Container App.
 func (o LookupContainerAppResultOutput) LatestRevisionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.LatestRevisionName }).(pulumi.StringOutput)
 }
 
+// Resource Location.
 func (o LookupContainerAppResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource Name.
 func (o LookupContainerAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the Container App.
 func (o LookupContainerAppResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupContainerAppResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Container App versioned application definition.
 func (o LookupContainerAppResultOutput) Template() TemplateResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *TemplateResponse { return v.Template }).(TemplateResponsePtrOutput)
 }
 
+// Resource type.
 func (o LookupContainerAppResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,19 +22,28 @@ func LookupSqlPoolTransparentDataEncryption(ctx *pulumi.Context, args *LookupSql
 }
 
 type LookupSqlPoolTransparentDataEncryptionArgs struct {
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
-	SqlPoolName                   string `pulumi:"sqlPoolName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// SQL pool name
+	SqlPoolName string `pulumi:"sqlPoolName"`
+	// The name of the transparent data encryption configuration.
 	TransparentDataEncryptionName string `pulumi:"transparentDataEncryptionName"`
-	WorkspaceName                 string `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents a Sql pool transparent data encryption configuration.
 type LookupSqlPoolTransparentDataEncryptionResult struct {
-	Id       string  `pulumi:"id"`
-	Location string  `pulumi:"location"`
-	Name     string  `pulumi:"name"`
-	Status   *string `pulumi:"status"`
-	Type     string  `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The status of the database transparent data encryption.
+	Status *string `pulumi:"status"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlPoolTransparentDataEncryptionOutput(ctx *pulumi.Context, args LookupSqlPoolTransparentDataEncryptionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolTransparentDataEncryptionResultOutput {
@@ -51,10 +60,14 @@ func LookupSqlPoolTransparentDataEncryptionOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupSqlPoolTransparentDataEncryptionOutputArgs struct {
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
-	SqlPoolName                   pulumi.StringInput `pulumi:"sqlPoolName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// SQL pool name
+	SqlPoolName pulumi.StringInput `pulumi:"sqlPoolName"`
+	// The name of the transparent data encryption configuration.
 	TransparentDataEncryptionName pulumi.StringInput `pulumi:"transparentDataEncryptionName"`
-	WorkspaceName                 pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSqlPoolTransparentDataEncryptionOutputArgs) ElementType() reflect.Type {
@@ -76,22 +89,27 @@ func (o LookupSqlPoolTransparentDataEncryptionResultOutput) ToLookupSqlPoolTrans
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlPoolTransparentDataEncryptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolTransparentDataEncryptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupSqlPoolTransparentDataEncryptionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolTransparentDataEncryptionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSqlPoolTransparentDataEncryptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolTransparentDataEncryptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the database transparent data encryption.
 func (o LookupSqlPoolTransparentDataEncryptionResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlPoolTransparentDataEncryptionResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSqlPoolTransparentDataEncryptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlPoolTransparentDataEncryptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

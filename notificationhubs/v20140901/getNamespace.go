@@ -23,18 +23,26 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 }
 
 type LookupNamespaceArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a Namespace resource.
 type LookupNamespaceResult struct {
-	Id         *string                     `pulumi:"id"`
-	Location   *string                     `pulumi:"location"`
-	Name       *string                     `pulumi:"name"`
+	// Gets or sets the id of the created Namespace.
+	Id *string `pulumi:"id"`
+	// Gets or sets datacenter location of the Namespace.
+	Location *string `pulumi:"location"`
+	// Gets or sets name of the Namespace.
+	Name *string `pulumi:"name"`
+	// Gets or sets properties of the Namespace.
 	Properties NamespacePropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string           `pulumi:"tags"`
-	Type       *string                     `pulumi:"type"`
+	// Gets or sets tags of the Namespace.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets or sets resource type of the Namespace.
+	Type *string `pulumi:"type"`
 }
 
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
@@ -51,7 +59,9 @@ func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, 
 }
 
 type LookupNamespaceOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	// The namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,26 +84,32 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 	return o
 }
 
+// Gets or sets the id of the created Namespace.
 func (o LookupNamespaceResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets datacenter location of the Namespace.
 func (o LookupNamespaceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets name of the Namespace.
 func (o LookupNamespaceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets properties of the Namespace.
 func (o LookupNamespaceResultOutput) Properties() NamespacePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) NamespacePropertiesResponse { return v.Properties }).(NamespacePropertiesResponseOutput)
 }
 
+// Gets or sets tags of the Namespace.
 func (o LookupNamespaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets or sets resource type of the Namespace.
 func (o LookupNamespaceResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

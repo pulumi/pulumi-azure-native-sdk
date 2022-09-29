@@ -23,20 +23,30 @@ func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.
 }
 
 type LookupGalleryArgs struct {
-	GalleryName       string `pulumi:"galleryName"`
+	// The name of the Shared Image Gallery.
+	GalleryName string `pulumi:"galleryName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Specifies information about the Shared Image Gallery that you want to create or update.
 type LookupGalleryResult struct {
-	Description       *string                    `pulumi:"description"`
-	Id                string                     `pulumi:"id"`
-	Identifier        *GalleryIdentifierResponse `pulumi:"identifier"`
-	Location          string                     `pulumi:"location"`
-	Name              string                     `pulumi:"name"`
-	ProvisioningState string                     `pulumi:"provisioningState"`
-	Tags              map[string]string          `pulumi:"tags"`
-	Type              string                     `pulumi:"type"`
+	// The description of this Shared Image Gallery resource. This property is updatable.
+	Description *string `pulumi:"description"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Describes the gallery unique name.
+	Identifier *GalleryIdentifierResponse `pulumi:"identifier"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The provisioning state, which only appears in the response.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupGalleryOutput(ctx *pulumi.Context, args LookupGalleryOutputArgs, opts ...pulumi.InvokeOption) LookupGalleryResultOutput {
@@ -53,7 +63,9 @@ func LookupGalleryOutput(ctx *pulumi.Context, args LookupGalleryOutputArgs, opts
 }
 
 type LookupGalleryOutputArgs struct {
-	GalleryName       pulumi.StringInput `pulumi:"galleryName"`
+	// The name of the Shared Image Gallery.
+	GalleryName pulumi.StringInput `pulumi:"galleryName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,34 +88,42 @@ func (o LookupGalleryResultOutput) ToLookupGalleryResultOutputWithContext(ctx co
 	return o
 }
 
+// The description of this Shared Image Gallery resource. This property is updatable.
 func (o LookupGalleryResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGalleryResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupGalleryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Describes the gallery unique name.
 func (o LookupGalleryResultOutput) Identifier() GalleryIdentifierResponsePtrOutput {
 	return o.ApplyT(func(v LookupGalleryResult) *GalleryIdentifierResponse { return v.Identifier }).(GalleryIdentifierResponsePtrOutput)
 }
 
+// Resource location
 func (o LookupGalleryResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupGalleryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state, which only appears in the response.
 func (o LookupGalleryResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupGalleryResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGalleryResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupGalleryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryResult) string { return v.Type }).(pulumi.StringOutput)
 }

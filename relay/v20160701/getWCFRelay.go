@@ -23,24 +23,38 @@ func LookupWCFRelay(ctx *pulumi.Context, args *LookupWCFRelayArgs, opts ...pulum
 }
 
 type LookupWCFRelayArgs struct {
-	NamespaceName     string `pulumi:"namespaceName"`
-	RelayName         string `pulumi:"relayName"`
+	// The Namespace Name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The relay name
+	RelayName string `pulumi:"relayName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of WcfRelays Resource.
 type LookupWCFRelayResult struct {
-	CreatedAt                   string  `pulumi:"createdAt"`
-	Id                          string  `pulumi:"id"`
-	IsDynamic                   bool    `pulumi:"isDynamic"`
-	ListenerCount               int     `pulumi:"listenerCount"`
-	Name                        string  `pulumi:"name"`
-	RelayType                   *string `pulumi:"relayType"`
-	RequiresClientAuthorization *bool   `pulumi:"requiresClientAuthorization"`
-	RequiresTransportSecurity   *bool   `pulumi:"requiresTransportSecurity"`
-	Type                        string  `pulumi:"type"`
-	UpdatedAt                   string  `pulumi:"updatedAt"`
-	UserMetadata                *string `pulumi:"userMetadata"`
+	// The time the WCFRelay was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// true if the relay is dynamic; otherwise, false.
+	IsDynamic bool `pulumi:"isDynamic"`
+	// The number of listeners for this relay. min : 1 and max:25 supported
+	ListenerCount int `pulumi:"listenerCount"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// WCFRelay Type.
+	RelayType *string `pulumi:"relayType"`
+	// true if client authorization is needed for this relay; otherwise, false.
+	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
+	// true if transport security is needed for this relay; otherwise, false.
+	RequiresTransportSecurity *bool `pulumi:"requiresTransportSecurity"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The time the namespace was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 func LookupWCFRelayOutput(ctx *pulumi.Context, args LookupWCFRelayOutputArgs, opts ...pulumi.InvokeOption) LookupWCFRelayResultOutput {
@@ -57,8 +71,11 @@ func LookupWCFRelayOutput(ctx *pulumi.Context, args LookupWCFRelayOutputArgs, op
 }
 
 type LookupWCFRelayOutputArgs struct {
-	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
-	RelayName         pulumi.StringInput `pulumi:"relayName"`
+	// The Namespace Name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The relay name
+	RelayName pulumi.StringInput `pulumi:"relayName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -81,46 +98,57 @@ func (o LookupWCFRelayResultOutput) ToLookupWCFRelayResultOutputWithContext(ctx 
 	return o
 }
 
+// The time the WCFRelay was created.
 func (o LookupWCFRelayResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupWCFRelayResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// true if the relay is dynamic; otherwise, false.
 func (o LookupWCFRelayResultOutput) IsDynamic() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) bool { return v.IsDynamic }).(pulumi.BoolOutput)
 }
 
+// The number of listeners for this relay. min : 1 and max:25 supported
 func (o LookupWCFRelayResultOutput) ListenerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) int { return v.ListenerCount }).(pulumi.IntOutput)
 }
 
+// Resource name
 func (o LookupWCFRelayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// WCFRelay Type.
 func (o LookupWCFRelayResultOutput) RelayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) *string { return v.RelayType }).(pulumi.StringPtrOutput)
 }
 
+// true if client authorization is needed for this relay; otherwise, false.
 func (o LookupWCFRelayResultOutput) RequiresClientAuthorization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) *bool { return v.RequiresClientAuthorization }).(pulumi.BoolPtrOutput)
 }
 
+// true if transport security is needed for this relay; otherwise, false.
 func (o LookupWCFRelayResultOutput) RequiresTransportSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) *bool { return v.RequiresTransportSecurity }).(pulumi.BoolPtrOutput)
 }
 
+// Resource type
 func (o LookupWCFRelayResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The time the namespace was updated.
 func (o LookupWCFRelayResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 func (o LookupWCFRelayResultOutput) UserMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) *string { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }

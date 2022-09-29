@@ -22,25 +22,39 @@ func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pul
 }
 
 type LookupAgentPoolArgs struct {
-	AgentPoolName     string `pulumi:"agentPoolName"`
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the agent pool.
+	AgentPoolName string `pulumi:"agentPoolName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The agentpool that has the ARM resource and properties.
 // The agentpool will have all information to create an agent pool.
 type LookupAgentPoolResult struct {
-	Count                          *int               `pulumi:"count"`
-	Id                             string             `pulumi:"id"`
-	Location                       string             `pulumi:"location"`
-	Name                           string             `pulumi:"name"`
-	Os                             *string            `pulumi:"os"`
-	ProvisioningState              string             `pulumi:"provisioningState"`
-	SystemData                     SystemDataResponse `pulumi:"systemData"`
-	Tags                           map[string]string  `pulumi:"tags"`
-	Tier                           *string            `pulumi:"tier"`
-	Type                           string             `pulumi:"type"`
-	VirtualNetworkSubnetResourceId *string            `pulumi:"virtualNetworkSubnetResourceId"`
+	// The count of agent machine
+	Count *int `pulumi:"count"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The location of the resource. This cannot be changed after the resource is created.
+	Location string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The OS of agent machine
+	Os *string `pulumi:"os"`
+	// The provisioning state of this agent pool
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The Tier of agent machine
+	Tier *string `pulumi:"tier"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The Virtual Network Subnet Resource Id of the agent machine
+	VirtualNetworkSubnetResourceId *string `pulumi:"virtualNetworkSubnetResourceId"`
 }
 
 func LookupAgentPoolOutput(ctx *pulumi.Context, args LookupAgentPoolOutputArgs, opts ...pulumi.InvokeOption) LookupAgentPoolResultOutput {
@@ -57,8 +71,11 @@ func LookupAgentPoolOutput(ctx *pulumi.Context, args LookupAgentPoolOutputArgs, 
 }
 
 type LookupAgentPoolOutputArgs struct {
-	AgentPoolName     pulumi.StringInput `pulumi:"agentPoolName"`
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the agent pool.
+	AgentPoolName pulumi.StringInput `pulumi:"agentPoolName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,46 +99,57 @@ func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutputWithContext(ct
 	return o
 }
 
+// The count of agent machine
 func (o LookupAgentPoolResultOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
+// The resource ID.
 func (o LookupAgentPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource. This cannot be changed after the resource is created.
 func (o LookupAgentPoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupAgentPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The OS of agent machine
 func (o LookupAgentPoolResultOutput) Os() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.Os }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of this agent pool
 func (o LookupAgentPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupAgentPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tags of the resource.
 func (o LookupAgentPoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The Tier of agent machine
 func (o LookupAgentPoolResultOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
+// The type of the resource.
 func (o LookupAgentPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The Virtual Network Subnet Resource Id of the agent machine
 func (o LookupAgentPoolResultOutput) VirtualNetworkSubnetResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.VirtualNetworkSubnetResourceId }).(pulumi.StringPtrOutput)
 }

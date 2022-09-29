@@ -21,19 +21,28 @@ func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, o
 }
 
 type LookupRoleAssignmentArgs struct {
+	// The name of the role assignment to get.
 	RoleAssignmentName string `pulumi:"roleAssignmentName"`
-	Scope              string `pulumi:"scope"`
+	// The scope of the role assignment.
+	Scope string `pulumi:"scope"`
 }
 
 // Role Assignments
 type LookupRoleAssignmentResult struct {
-	CanDelegate      *bool   `pulumi:"canDelegate"`
-	Id               string  `pulumi:"id"`
-	Name             string  `pulumi:"name"`
-	PrincipalId      *string `pulumi:"principalId"`
+	// The Delegation flag for the role assignment
+	CanDelegate *bool `pulumi:"canDelegate"`
+	// The role assignment ID.
+	Id string `pulumi:"id"`
+	// The role assignment name.
+	Name string `pulumi:"name"`
+	// The principal ID.
+	PrincipalId *string `pulumi:"principalId"`
+	// The role definition ID.
 	RoleDefinitionId *string `pulumi:"roleDefinitionId"`
-	Scope            *string `pulumi:"scope"`
-	Type             string  `pulumi:"type"`
+	// The role assignment scope.
+	Scope *string `pulumi:"scope"`
+	// The role assignment type.
+	Type string `pulumi:"type"`
 }
 
 func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentResultOutput {
@@ -50,8 +59,10 @@ func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOu
 }
 
 type LookupRoleAssignmentOutputArgs struct {
+	// The name of the role assignment to get.
 	RoleAssignmentName pulumi.StringInput `pulumi:"roleAssignmentName"`
-	Scope              pulumi.StringInput `pulumi:"scope"`
+	// The scope of the role assignment.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupRoleAssignmentOutputArgs) ElementType() reflect.Type {
@@ -73,30 +84,37 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWith
 	return o
 }
 
+// The Delegation flag for the role assignment
 func (o LookupRoleAssignmentResultOutput) CanDelegate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *bool { return v.CanDelegate }).(pulumi.BoolPtrOutput)
 }
 
+// The role assignment ID.
 func (o LookupRoleAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role assignment name.
 func (o LookupRoleAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The principal ID.
 func (o LookupRoleAssignmentResultOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
+// The role definition ID.
 func (o LookupRoleAssignmentResultOutput) RoleDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.RoleDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// The role assignment scope.
 func (o LookupRoleAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// The role assignment type.
 func (o LookupRoleAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

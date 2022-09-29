@@ -21,22 +21,34 @@ func LookupScript(ctx *pulumi.Context, args *LookupScriptArgs, opts ...pulumi.In
 }
 
 type LookupScriptArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ScriptName        string `pulumi:"scriptName"`
+	// The name of the Kusto database script.
+	ScriptName string `pulumi:"scriptName"`
 }
 
 // Class representing a database script.
 type LookupScriptResult struct {
-	ContinueOnErrors  *bool              `pulumi:"continueOnErrors"`
-	ForceUpdateTag    *string            `pulumi:"forceUpdateTag"`
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	ScriptUrl         *string            `pulumi:"scriptUrl"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// Flag that indicates whether to continue if one of the command fails.
+	ContinueOnErrors *bool `pulumi:"continueOnErrors"`
+	// A unique string. If changed the script will be applied again.
+	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The url to the KQL script blob file. Must not be used together with scriptContent property
+	ScriptUrl *string `pulumi:"scriptUrl"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupScriptResult
@@ -66,10 +78,14 @@ func LookupScriptOutput(ctx *pulumi.Context, args LookupScriptOutputArgs, opts .
 }
 
 type LookupScriptOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the database in the Kusto cluster.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ScriptName        pulumi.StringInput `pulumi:"scriptName"`
+	// The name of the Kusto database script.
+	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
 
 func (LookupScriptOutputArgs) ElementType() reflect.Type {
@@ -91,34 +107,42 @@ func (o LookupScriptResultOutput) ToLookupScriptResultOutputWithContext(ctx cont
 	return o
 }
 
+// Flag that indicates whether to continue if one of the command fails.
 func (o LookupScriptResultOutput) ContinueOnErrors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupScriptResult) *bool { return v.ContinueOnErrors }).(pulumi.BoolPtrOutput)
 }
 
+// A unique string. If changed the script will be applied again.
 func (o LookupScriptResultOutput) ForceUpdateTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScriptResult) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScriptResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupScriptResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupScriptResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The url to the KQL script blob file. Must not be used together with scriptContent property
 func (o LookupScriptResultOutput) ScriptUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScriptResult) *string { return v.ScriptUrl }).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupScriptResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScriptResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupScriptResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptResult) string { return v.Type }).(pulumi.StringOutput)
 }

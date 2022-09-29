@@ -21,17 +21,24 @@ func LookupInput(ctx *pulumi.Context, args *LookupInputArgs, opts ...pulumi.Invo
 }
 
 type LookupInputArgs struct {
-	InputName         string `pulumi:"inputName"`
-	JobName           string `pulumi:"jobName"`
+	// The name of the input.
+	InputName string `pulumi:"inputName"`
+	// The name of the streaming job.
+	JobName string `pulumi:"jobName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
 type LookupInputResult struct {
-	Id         string      `pulumi:"id"`
-	Name       *string     `pulumi:"name"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name *string `pulumi:"name"`
+	// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupInputOutput(ctx *pulumi.Context, args LookupInputOutputArgs, opts ...pulumi.InvokeOption) LookupInputResultOutput {
@@ -48,8 +55,11 @@ func LookupInputOutput(ctx *pulumi.Context, args LookupInputOutputArgs, opts ...
 }
 
 type LookupInputOutputArgs struct {
-	InputName         pulumi.StringInput `pulumi:"inputName"`
-	JobName           pulumi.StringInput `pulumi:"jobName"`
+	// The name of the input.
+	InputName pulumi.StringInput `pulumi:"inputName"`
+	// The name of the streaming job.
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,18 +82,22 @@ func (o LookupInputResultOutput) ToLookupInputResultOutputWithContext(ctx contex
 	return o
 }
 
+// Resource Id
 func (o LookupInputResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupInputResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInputResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
 func (o LookupInputResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupInputResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// Resource type
 func (o LookupInputResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputResult) string { return v.Type }).(pulumi.StringOutput)
 }

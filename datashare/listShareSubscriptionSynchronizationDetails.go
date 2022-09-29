@@ -22,19 +22,28 @@ func ListShareSubscriptionSynchronizationDetails(ctx *pulumi.Context, args *List
 }
 
 type ListShareSubscriptionSynchronizationDetailsArgs struct {
-	AccountName           string  `pulumi:"accountName"`
-	Filter                *string `pulumi:"filter"`
-	Orderby               *string `pulumi:"orderby"`
-	ResourceGroupName     string  `pulumi:"resourceGroupName"`
-	ShareSubscriptionName string  `pulumi:"shareSubscriptionName"`
-	SkipToken             *string `pulumi:"skipToken"`
-	SynchronizationId     string  `pulumi:"synchronizationId"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// Filters the results using OData syntax.
+	Filter *string `pulumi:"filter"`
+	// Sorts the results using OData syntax.
+	Orderby *string `pulumi:"orderby"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the share subscription.
+	ShareSubscriptionName string `pulumi:"shareSubscriptionName"`
+	// Continuation token
+	SkipToken *string `pulumi:"skipToken"`
+	// Synchronization id
+	SynchronizationId string `pulumi:"synchronizationId"`
 }
 
 // details of synchronization
 type ListShareSubscriptionSynchronizationDetailsResult struct {
-	NextLink *string                          `pulumi:"nextLink"`
-	Value    []SynchronizationDetailsResponse `pulumi:"value"`
+	// The Url of next result page.
+	NextLink *string `pulumi:"nextLink"`
+	// Collection of items of type DataTransferObjects.
+	Value []SynchronizationDetailsResponse `pulumi:"value"`
 }
 
 func ListShareSubscriptionSynchronizationDetailsOutput(ctx *pulumi.Context, args ListShareSubscriptionSynchronizationDetailsOutputArgs, opts ...pulumi.InvokeOption) ListShareSubscriptionSynchronizationDetailsResultOutput {
@@ -51,13 +60,20 @@ func ListShareSubscriptionSynchronizationDetailsOutput(ctx *pulumi.Context, args
 }
 
 type ListShareSubscriptionSynchronizationDetailsOutputArgs struct {
-	AccountName           pulumi.StringInput    `pulumi:"accountName"`
-	Filter                pulumi.StringPtrInput `pulumi:"filter"`
-	Orderby               pulumi.StringPtrInput `pulumi:"orderby"`
-	ResourceGroupName     pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ShareSubscriptionName pulumi.StringInput    `pulumi:"shareSubscriptionName"`
-	SkipToken             pulumi.StringPtrInput `pulumi:"skipToken"`
-	SynchronizationId     pulumi.StringInput    `pulumi:"synchronizationId"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Filters the results using OData syntax.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Sorts the results using OData syntax.
+	Orderby pulumi.StringPtrInput `pulumi:"orderby"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the share subscription.
+	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
+	// Continuation token
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
+	// Synchronization id
+	SynchronizationId pulumi.StringInput `pulumi:"synchronizationId"`
 }
 
 func (ListShareSubscriptionSynchronizationDetailsOutputArgs) ElementType() reflect.Type {
@@ -79,10 +95,12 @@ func (o ListShareSubscriptionSynchronizationDetailsResultOutput) ToListShareSubs
 	return o
 }
 
+// The Url of next result page.
 func (o ListShareSubscriptionSynchronizationDetailsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListShareSubscriptionSynchronizationDetailsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Collection of items of type DataTransferObjects.
 func (o ListShareSubscriptionSynchronizationDetailsResultOutput) Value() SynchronizationDetailsResponseArrayOutput {
 	return o.ApplyT(func(v ListShareSubscriptionSynchronizationDetailsResult) []SynchronizationDetailsResponse {
 		return v.Value

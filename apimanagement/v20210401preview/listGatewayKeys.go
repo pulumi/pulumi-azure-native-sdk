@@ -21,14 +21,19 @@ func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pul
 }
 
 type ListGatewayKeysArgs struct {
-	GatewayId         string `pulumi:"gatewayId"`
+	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
+	GatewayId string `pulumi:"gatewayId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Gateway authentication keys.
 type ListGatewayKeysResult struct {
-	Primary   *string `pulumi:"primary"`
+	// Primary gateway key.
+	Primary *string `pulumi:"primary"`
+	// Secondary gateway key.
 	Secondary *string `pulumi:"secondary"`
 }
 
@@ -46,9 +51,12 @@ func ListGatewayKeysOutput(ctx *pulumi.Context, args ListGatewayKeysOutputArgs, 
 }
 
 type ListGatewayKeysOutputArgs struct {
-	GatewayId         pulumi.StringInput `pulumi:"gatewayId"`
+	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListGatewayKeysOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListGatewayKeysResultOutput) ToListGatewayKeysResultOutputWithContext(ct
 	return o
 }
 
+// Primary gateway key.
 func (o ListGatewayKeysResultOutput) Primary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListGatewayKeysResult) *string { return v.Primary }).(pulumi.StringPtrOutput)
 }
 
+// Secondary gateway key.
 func (o ListGatewayKeysResultOutput) Secondary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListGatewayKeysResult) *string { return v.Secondary }).(pulumi.StringPtrOutput)
 }

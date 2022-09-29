@@ -22,18 +22,26 @@ func LookupServiceTopology(ctx *pulumi.Context, args *LookupServiceTopologyArgs,
 }
 
 type LookupServiceTopologyArgs struct {
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the service topology .
 	ServiceTopologyName string `pulumi:"serviceTopologyName"`
 }
 
 // The resource representation of a service topology.
 type LookupServiceTopologyResult struct {
-	ArtifactSourceId *string           `pulumi:"artifactSourceId"`
-	Id               string            `pulumi:"id"`
-	Location         string            `pulumi:"location"`
-	Name             string            `pulumi:"name"`
-	Tags             map[string]string `pulumi:"tags"`
-	Type             string            `pulumi:"type"`
+	// The resource Id of the artifact source that contains the artifacts that can be referenced in the service units.
+	ArtifactSourceId *string `pulumi:"artifactSourceId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceTopologyOutput(ctx *pulumi.Context, args LookupServiceTopologyOutputArgs, opts ...pulumi.InvokeOption) LookupServiceTopologyResultOutput {
@@ -50,7 +58,9 @@ func LookupServiceTopologyOutput(ctx *pulumi.Context, args LookupServiceTopology
 }
 
 type LookupServiceTopologyOutputArgs struct {
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the service topology .
 	ServiceTopologyName pulumi.StringInput `pulumi:"serviceTopologyName"`
 }
 
@@ -73,26 +83,32 @@ func (o LookupServiceTopologyResultOutput) ToLookupServiceTopologyResultOutputWi
 	return o
 }
 
+// The resource Id of the artifact source that contains the artifacts that can be referenced in the service units.
 func (o LookupServiceTopologyResultOutput) ArtifactSourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceTopologyResult) *string { return v.ArtifactSourceId }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServiceTopologyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTopologyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupServiceTopologyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTopologyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupServiceTopologyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTopologyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupServiceTopologyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceTopologyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServiceTopologyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceTopologyResult) string { return v.Type }).(pulumi.StringOutput)
 }

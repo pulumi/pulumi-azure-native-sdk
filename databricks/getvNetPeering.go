@@ -22,26 +22,42 @@ func GetvNetPeering(ctx *pulumi.Context, args *GetvNetPeeringArgs, opts ...pulum
 }
 
 type GetvNetPeeringArgs struct {
-	PeeringName       string `pulumi:"peeringName"`
+	// The name of the workspace vNet peering.
+	PeeringName string `pulumi:"peeringName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Peerings in a VirtualNetwork resource
 type GetvNetPeeringResult struct {
-	AllowForwardedTraffic     *bool                                                                  `pulumi:"allowForwardedTraffic"`
-	AllowGatewayTransit       *bool                                                                  `pulumi:"allowGatewayTransit"`
-	AllowVirtualNetworkAccess *bool                                                                  `pulumi:"allowVirtualNetworkAccess"`
-	DatabricksAddressSpace    *AddressSpaceResponse                                                  `pulumi:"databricksAddressSpace"`
-	DatabricksVirtualNetwork  *VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork `pulumi:"databricksVirtualNetwork"`
-	Id                        string                                                                 `pulumi:"id"`
-	Name                      string                                                                 `pulumi:"name"`
-	PeeringState              string                                                                 `pulumi:"peeringState"`
-	ProvisioningState         string                                                                 `pulumi:"provisioningState"`
-	RemoteAddressSpace        *AddressSpaceResponse                                                  `pulumi:"remoteAddressSpace"`
-	RemoteVirtualNetwork      VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork      `pulumi:"remoteVirtualNetwork"`
-	Type                      string                                                                 `pulumi:"type"`
-	UseRemoteGateways         *bool                                                                  `pulumi:"useRemoteGateways"`
+	// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
+	AllowForwardedTraffic *bool `pulumi:"allowForwardedTraffic"`
+	// If gateway links can be used in remote virtual networking to link to this virtual network.
+	AllowGatewayTransit *bool `pulumi:"allowGatewayTransit"`
+	// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
+	// The reference to the databricks virtual network address space.
+	DatabricksAddressSpace *AddressSpaceResponse `pulumi:"databricksAddressSpace"`
+	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	DatabricksVirtualNetwork *VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork `pulumi:"databricksVirtualNetwork"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Name of the virtual network peering resource
+	Name string `pulumi:"name"`
+	// The status of the virtual network peering.
+	PeeringState string `pulumi:"peeringState"`
+	// The provisioning state of the virtual network peering resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The reference to the remote virtual network address space.
+	RemoteAddressSpace *AddressSpaceResponse `pulumi:"remoteAddressSpace"`
+	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	RemoteVirtualNetwork VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork `pulumi:"remoteVirtualNetwork"`
+	// type of the virtual network peering resource
+	Type string `pulumi:"type"`
+	// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
+	UseRemoteGateways *bool `pulumi:"useRemoteGateways"`
 }
 
 func GetvNetPeeringOutput(ctx *pulumi.Context, args GetvNetPeeringOutputArgs, opts ...pulumi.InvokeOption) GetvNetPeeringResultOutput {
@@ -58,9 +74,12 @@ func GetvNetPeeringOutput(ctx *pulumi.Context, args GetvNetPeeringOutputArgs, op
 }
 
 type GetvNetPeeringOutputArgs struct {
-	PeeringName       pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the workspace vNet peering.
+	PeeringName pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetvNetPeeringOutputArgs) ElementType() reflect.Type {
@@ -82,58 +101,71 @@ func (o GetvNetPeeringResultOutput) ToGetvNetPeeringResultOutputWithContext(ctx 
 	return o
 }
 
+// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
 func (o GetvNetPeeringResultOutput) AllowForwardedTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *bool { return v.AllowForwardedTraffic }).(pulumi.BoolPtrOutput)
 }
 
+// If gateway links can be used in remote virtual networking to link to this virtual network.
 func (o GetvNetPeeringResultOutput) AllowGatewayTransit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *bool { return v.AllowGatewayTransit }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 func (o GetvNetPeeringResultOutput) AllowVirtualNetworkAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *bool { return v.AllowVirtualNetworkAccess }).(pulumi.BoolPtrOutput)
 }
 
+// The reference to the databricks virtual network address space.
 func (o GetvNetPeeringResultOutput) DatabricksAddressSpace() AddressSpaceResponsePtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *AddressSpaceResponse { return v.DatabricksAddressSpace }).(AddressSpaceResponsePtrOutput)
 }
 
+// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 func (o GetvNetPeeringResultOutput) DatabricksVirtualNetwork() VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork {
 		return v.DatabricksVirtualNetwork
 	}).(VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput)
 }
 
+// Resource ID.
 func (o GetvNetPeeringResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the virtual network peering resource
 func (o GetvNetPeeringResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the virtual network peering.
 func (o GetvNetPeeringResultOutput) PeeringState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) string { return v.PeeringState }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the virtual network peering resource.
 func (o GetvNetPeeringResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The reference to the remote virtual network address space.
 func (o GetvNetPeeringResultOutput) RemoteAddressSpace() AddressSpaceResponsePtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *AddressSpaceResponse { return v.RemoteAddressSpace }).(AddressSpaceResponsePtrOutput)
 }
 
+// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 func (o GetvNetPeeringResultOutput) RemoteVirtualNetwork() VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork {
 		return v.RemoteVirtualNetwork
 	}).(VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput)
 }
 
+// type of the virtual network peering resource
 func (o GetvNetPeeringResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
 func (o GetvNetPeeringResultOutput) UseRemoteGateways() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetvNetPeeringResult) *bool { return v.UseRemoteGateways }).(pulumi.BoolPtrOutput)
 }

@@ -21,22 +21,34 @@ func LookupExpressRouteConnection(ctx *pulumi.Context, args *LookupExpressRouteC
 }
 
 type LookupExpressRouteConnectionArgs struct {
-	ConnectionName          string `pulumi:"connectionName"`
+	// The name of the ExpressRoute connection.
+	ConnectionName string `pulumi:"connectionName"`
+	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName string `pulumi:"expressRouteGatewayName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // ExpressRouteConnection resource.
 type LookupExpressRouteConnectionResult struct {
-	AuthorizationKey           *string                              `pulumi:"authorizationKey"`
-	EnableInternetSecurity     *bool                                `pulumi:"enableInternetSecurity"`
+	// Authorization key to establish the connection.
+	AuthorizationKey *string `pulumi:"authorizationKey"`
+	// Enable internet security.
+	EnableInternetSecurity *bool `pulumi:"enableInternetSecurity"`
+	// The ExpressRoute circuit peering.
 	ExpressRouteCircuitPeering ExpressRouteCircuitPeeringIdResponse `pulumi:"expressRouteCircuitPeering"`
-	ExpressRouteGatewayBypass  *bool                                `pulumi:"expressRouteGatewayBypass"`
-	Id                         *string                              `pulumi:"id"`
-	Name                       string                               `pulumi:"name"`
-	ProvisioningState          string                               `pulumi:"provisioningState"`
-	RoutingConfiguration       *RoutingConfigurationResponse        `pulumi:"routingConfiguration"`
-	RoutingWeight              *int                                 `pulumi:"routingWeight"`
+	// Enable FastPath to vWan Firewall hub.
+	ExpressRouteGatewayBypass *bool `pulumi:"expressRouteGatewayBypass"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning state of the express route connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The Routing Configuration indicating the associated and propagated route tables on this connection.
+	RoutingConfiguration *RoutingConfigurationResponse `pulumi:"routingConfiguration"`
+	// The routing weight associated to the connection.
+	RoutingWeight *int `pulumi:"routingWeight"`
 }
 
 func LookupExpressRouteConnectionOutput(ctx *pulumi.Context, args LookupExpressRouteConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteConnectionResultOutput {
@@ -53,9 +65,12 @@ func LookupExpressRouteConnectionOutput(ctx *pulumi.Context, args LookupExpressR
 }
 
 type LookupExpressRouteConnectionOutputArgs struct {
-	ConnectionName          pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the ExpressRoute connection.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName pulumi.StringInput `pulumi:"expressRouteGatewayName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExpressRouteConnectionOutputArgs) ElementType() reflect.Type {
@@ -77,42 +92,51 @@ func (o LookupExpressRouteConnectionResultOutput) ToLookupExpressRouteConnection
 	return o
 }
 
+// Authorization key to establish the connection.
 func (o LookupExpressRouteConnectionResultOutput) AuthorizationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
 }
 
+// Enable internet security.
 func (o LookupExpressRouteConnectionResultOutput) EnableInternetSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *bool { return v.EnableInternetSecurity }).(pulumi.BoolPtrOutput)
 }
 
+// The ExpressRoute circuit peering.
 func (o LookupExpressRouteConnectionResultOutput) ExpressRouteCircuitPeering() ExpressRouteCircuitPeeringIdResponseOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) ExpressRouteCircuitPeeringIdResponse {
 		return v.ExpressRouteCircuitPeering
 	}).(ExpressRouteCircuitPeeringIdResponseOutput)
 }
 
+// Enable FastPath to vWan Firewall hub.
 func (o LookupExpressRouteConnectionResultOutput) ExpressRouteGatewayBypass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *bool { return v.ExpressRouteGatewayBypass }).(pulumi.BoolPtrOutput)
 }
 
+// Resource ID.
 func (o LookupExpressRouteConnectionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupExpressRouteConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the express route connection resource.
 func (o LookupExpressRouteConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The Routing Configuration indicating the associated and propagated route tables on this connection.
 func (o LookupExpressRouteConnectionResultOutput) RoutingConfiguration() RoutingConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *RoutingConfigurationResponse {
 		return v.RoutingConfiguration
 	}).(RoutingConfigurationResponsePtrOutput)
 }
 
+// The routing weight associated to the connection.
 func (o LookupExpressRouteConnectionResultOutput) RoutingWeight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *int { return v.RoutingWeight }).(pulumi.IntPtrOutput)
 }

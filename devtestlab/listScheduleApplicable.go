@@ -22,15 +22,20 @@ func ListScheduleApplicable(ctx *pulumi.Context, args *ListScheduleApplicableArg
 }
 
 type ListScheduleApplicableArgs struct {
-	LabName           string `pulumi:"labName"`
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the schedule.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response of a list operation.
 type ListScheduleApplicableResult struct {
-	NextLink *string            `pulumi:"nextLink"`
-	Value    []ScheduleResponse `pulumi:"value"`
+	// Link for next set of results.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of the list operation.
+	Value []ScheduleResponse `pulumi:"value"`
 }
 
 func ListScheduleApplicableOutput(ctx *pulumi.Context, args ListScheduleApplicableOutputArgs, opts ...pulumi.InvokeOption) ListScheduleApplicableResultOutput {
@@ -47,8 +52,11 @@ func ListScheduleApplicableOutput(ctx *pulumi.Context, args ListScheduleApplicab
 }
 
 type ListScheduleApplicableOutputArgs struct {
-	LabName           pulumi.StringInput `pulumi:"labName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the schedule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -71,10 +79,12 @@ func (o ListScheduleApplicableResultOutput) ToListScheduleApplicableResultOutput
 	return o
 }
 
+// Link for next set of results.
 func (o ListScheduleApplicableResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListScheduleApplicableResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of the list operation.
 func (o ListScheduleApplicableResultOutput) Value() ScheduleResponseArrayOutput {
 	return o.ApplyT(func(v ListScheduleApplicableResult) []ScheduleResponse { return v.Value }).(ScheduleResponseArrayOutput)
 }

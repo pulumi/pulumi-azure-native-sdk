@@ -23,19 +23,28 @@ func LookupCustomerEvent(ctx *pulumi.Context, args *LookupCustomerEventArgs, opt
 }
 
 type LookupCustomerEventArgs struct {
-	CustomerEventName   string `pulumi:"customerEventName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Customer event.
+	CustomerEventName string `pulumi:"customerEventName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
 
 // The Customer Notification Event resource.
 type LookupCustomerEventResult struct {
-	EventName  string                              `pulumi:"eventName"`
-	Id         string                              `pulumi:"id"`
-	Name       string                              `pulumi:"name"`
-	Receivers  []NotificationEventReceiverResponse `pulumi:"receivers"`
-	SystemData SystemDataResponse                  `pulumi:"systemData"`
-	Type       string                              `pulumi:"type"`
+	// The name of the event subscribed to.
+	EventName string `pulumi:"eventName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The notification event receivers.
+	Receivers []NotificationEventReceiverResponse `pulumi:"receivers"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupCustomerEventOutput(ctx *pulumi.Context, args LookupCustomerEventOutputArgs, opts ...pulumi.InvokeOption) LookupCustomerEventResultOutput {
@@ -52,8 +61,11 @@ func LookupCustomerEventOutput(ctx *pulumi.Context, args LookupCustomerEventOutp
 }
 
 type LookupCustomerEventOutputArgs struct {
-	CustomerEventName   pulumi.StringInput `pulumi:"customerEventName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Customer event.
+	CustomerEventName pulumi.StringInput `pulumi:"customerEventName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }
 
@@ -76,26 +88,32 @@ func (o LookupCustomerEventResultOutput) ToLookupCustomerEventResultOutputWithCo
 	return o
 }
 
+// The name of the event subscribed to.
 func (o LookupCustomerEventResultOutput) EventName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.EventName }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupCustomerEventResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupCustomerEventResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The notification event receivers.
 func (o LookupCustomerEventResultOutput) Receivers() NotificationEventReceiverResponseArrayOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) []NotificationEventReceiverResponse { return v.Receivers }).(NotificationEventReceiverResponseArrayOutput)
 }
 
+// The system metadata relating to this resource
 func (o LookupCustomerEventResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type.
 func (o LookupCustomerEventResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.Type }).(pulumi.StringOutput)
 }

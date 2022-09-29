@@ -21,17 +21,24 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 }
 
 type LookupApplicationArgs struct {
+	// The security Application key - unique key for the standard application
 	ApplicationId string `pulumi:"applicationId"`
 }
 
 // Security Application over a given scope
 type LookupApplicationResult struct {
-	Description        *string `pulumi:"description"`
-	DisplayName        *string `pulumi:"displayName"`
-	Id                 string  `pulumi:"id"`
-	Name               string  `pulumi:"name"`
-	SourceResourceType string  `pulumi:"sourceResourceType"`
-	Type               string  `pulumi:"type"`
+	// description of the application
+	Description *string `pulumi:"description"`
+	// display name of the application
+	DisplayName *string `pulumi:"displayName"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The application source, what it affects, e.g. Assessments
+	SourceResourceType string `pulumi:"sourceResourceType"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationResultOutput {
@@ -48,6 +55,7 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 }
 
 type LookupApplicationOutputArgs struct {
+	// The security Application key - unique key for the standard application
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 }
 
@@ -70,26 +78,32 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContex
 	return o
 }
 
+// description of the application
 func (o LookupApplicationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// display name of the application
 func (o LookupApplicationResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id
 func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The application source, what it affects, e.g. Assessments
 func (o LookupApplicationResultOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

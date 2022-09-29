@@ -21,30 +21,44 @@ func LookupAssessmentMetadataInSubscription(ctx *pulumi.Context, args *LookupAss
 }
 
 type LookupAssessmentMetadataInSubscriptionArgs struct {
+	// The Assessment Key - Unique key for the assessment type
 	AssessmentMetadataName string `pulumi:"assessmentMetadataName"`
 }
 
 // Security assessment metadata response
 type LookupAssessmentMetadataInSubscriptionResult struct {
-	AssessmentType         string                                                            `pulumi:"assessmentType"`
-	Categories             []string                                                          `pulumi:"categories"`
-	Description            *string                                                           `pulumi:"description"`
-	DisplayName            string                                                            `pulumi:"displayName"`
-	Id                     string                                                            `pulumi:"id"`
-	ImplementationEffort   *string                                                           `pulumi:"implementationEffort"`
-	Name                   string                                                            `pulumi:"name"`
-	PartnerData            *SecurityAssessmentMetadataPartnerDataResponse                    `pulumi:"partnerData"`
-	PlannedDeprecationDate *string                                                           `pulumi:"plannedDeprecationDate"`
-	PolicyDefinitionId     string                                                            `pulumi:"policyDefinitionId"`
-	Preview                *bool                                                             `pulumi:"preview"`
-	PublishDates           *SecurityAssessmentMetadataPropertiesResponseResponsePublishDates `pulumi:"publishDates"`
-	RemediationDescription *string                                                           `pulumi:"remediationDescription"`
-	Severity               string                                                            `pulumi:"severity"`
-	Tactics                []string                                                          `pulumi:"tactics"`
-	Techniques             []string                                                          `pulumi:"techniques"`
-	Threats                []string                                                          `pulumi:"threats"`
-	Type                   string                                                            `pulumi:"type"`
-	UserImpact             *string                                                           `pulumi:"userImpact"`
+	// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
+	AssessmentType string   `pulumi:"assessmentType"`
+	Categories     []string `pulumi:"categories"`
+	// Human readable description of the assessment
+	Description *string `pulumi:"description"`
+	// User friendly display name of the assessment
+	DisplayName string `pulumi:"displayName"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The implementation effort required to remediate this assessment
+	ImplementationEffort *string `pulumi:"implementationEffort"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Describes the partner that created the assessment
+	PartnerData            *SecurityAssessmentMetadataPartnerDataResponse `pulumi:"partnerData"`
+	PlannedDeprecationDate *string                                        `pulumi:"plannedDeprecationDate"`
+	// Azure resource ID of the policy definition that turns this assessment calculation on
+	PolicyDefinitionId string `pulumi:"policyDefinitionId"`
+	// True if this assessment is in preview release status
+	Preview      *bool                                                             `pulumi:"preview"`
+	PublishDates *SecurityAssessmentMetadataPropertiesResponseResponsePublishDates `pulumi:"publishDates"`
+	// Human readable description of what you should do to mitigate this security issue
+	RemediationDescription *string `pulumi:"remediationDescription"`
+	// The severity level of the assessment
+	Severity   string   `pulumi:"severity"`
+	Tactics    []string `pulumi:"tactics"`
+	Techniques []string `pulumi:"techniques"`
+	Threats    []string `pulumi:"threats"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The user impact of the assessment
+	UserImpact *string `pulumi:"userImpact"`
 }
 
 func LookupAssessmentMetadataInSubscriptionOutput(ctx *pulumi.Context, args LookupAssessmentMetadataInSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentMetadataInSubscriptionResultOutput {
@@ -61,6 +75,7 @@ func LookupAssessmentMetadataInSubscriptionOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupAssessmentMetadataInSubscriptionOutputArgs struct {
+	// The Assessment Key - Unique key for the assessment type
 	AssessmentMetadataName pulumi.StringInput `pulumi:"assessmentMetadataName"`
 }
 
@@ -83,6 +98,7 @@ func (o LookupAssessmentMetadataInSubscriptionResultOutput) ToLookupAssessmentMe
 	return o
 }
 
+// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.AssessmentType }).(pulumi.StringOutput)
 }
@@ -91,26 +107,32 @@ func (o LookupAssessmentMetadataInSubscriptionResultOutput) Categories() pulumi.
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
+// Human readable description of the assessment
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// User friendly display name of the assessment
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The implementation effort required to remediate this assessment
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) ImplementationEffort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *string { return v.ImplementationEffort }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Describes the partner that created the assessment
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) PartnerData() SecurityAssessmentMetadataPartnerDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *SecurityAssessmentMetadataPartnerDataResponse {
 		return v.PartnerData
@@ -121,10 +143,12 @@ func (o LookupAssessmentMetadataInSubscriptionResultOutput) PlannedDeprecationDa
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *string { return v.PlannedDeprecationDate }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource ID of the policy definition that turns this assessment calculation on
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) PolicyDefinitionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.PolicyDefinitionId }).(pulumi.StringOutput)
 }
 
+// True if this assessment is in preview release status
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) Preview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *bool { return v.Preview }).(pulumi.BoolPtrOutput)
 }
@@ -135,10 +159,12 @@ func (o LookupAssessmentMetadataInSubscriptionResultOutput) PublishDates() Secur
 	}).(SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput)
 }
 
+// Human readable description of what you should do to mitigate this security issue
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) RemediationDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *string { return v.RemediationDescription }).(pulumi.StringPtrOutput)
 }
 
+// The severity level of the assessment
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.Severity }).(pulumi.StringOutput)
 }
@@ -155,10 +181,12 @@ func (o LookupAssessmentMetadataInSubscriptionResultOutput) Threats() pulumi.Str
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) []string { return v.Threats }).(pulumi.StringArrayOutput)
 }
 
+// Resource type
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The user impact of the assessment
 func (o LookupAssessmentMetadataInSubscriptionResultOutput) UserImpact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssessmentMetadataInSubscriptionResult) *string { return v.UserImpact }).(pulumi.StringPtrOutput)
 }

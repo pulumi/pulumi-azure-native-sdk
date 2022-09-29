@@ -24,19 +24,28 @@ func LookupEventSource(ctx *pulumi.Context, args *LookupEventSourceArgs, opts ..
 }
 
 type LookupEventSourceArgs struct {
-	EnvironmentName   string `pulumi:"environmentName"`
-	EventSourceName   string `pulumi:"eventSourceName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName string `pulumi:"environmentName"`
+	// The name of the Time Series Insights event source associated with the specified environment.
+	EventSourceName string `pulumi:"eventSourceName"`
+	// Name of an Azure Resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An environment receives data from one or more event sources. Each event source has associated connection info that allows the Time Series Insights ingress pipeline to connect to and pull data from the event source
 type LookupEventSourceResult struct {
-	Id       string            `pulumi:"id"`
-	Kind     string            `pulumi:"kind"`
-	Location string            `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Tags     map[string]string `pulumi:"tags"`
-	Type     string            `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The kind of the event source.
+	Kind string `pulumi:"kind"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupEventSourceOutput(ctx *pulumi.Context, args LookupEventSourceOutputArgs, opts ...pulumi.InvokeOption) LookupEventSourceResultOutput {
@@ -53,8 +62,11 @@ func LookupEventSourceOutput(ctx *pulumi.Context, args LookupEventSourceOutputAr
 }
 
 type LookupEventSourceOutputArgs struct {
-	EnvironmentName   pulumi.StringInput `pulumi:"environmentName"`
-	EventSourceName   pulumi.StringInput `pulumi:"eventSourceName"`
+	// The name of the Time Series Insights environment associated with the specified resource group.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// The name of the Time Series Insights event source associated with the specified environment.
+	EventSourceName pulumi.StringInput `pulumi:"eventSourceName"`
+	// Name of an Azure Resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -77,26 +89,32 @@ func (o LookupEventSourceResultOutput) ToLookupEventSourceResultOutputWithContex
 	return o
 }
 
+// Resource Id
 func (o LookupEventSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the event source.
 func (o LookupEventSourceResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSourceResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupEventSourceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSourceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupEventSourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupEventSourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEventSourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupEventSourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

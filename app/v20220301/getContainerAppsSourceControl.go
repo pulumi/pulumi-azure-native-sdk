@@ -21,21 +21,34 @@ func LookupContainerAppsSourceControl(ctx *pulumi.Context, args *LookupContainer
 }
 
 type LookupContainerAppsSourceControlArgs struct {
-	ContainerAppName  string `pulumi:"containerAppName"`
+	// Name of the Container App.
+	ContainerAppName string `pulumi:"containerAppName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the Container App SourceControl.
 	SourceControlName string `pulumi:"sourceControlName"`
 }
 
 // Container App SourceControl.
 type LookupContainerAppsSourceControlResult struct {
-	Branch                    *string                            `pulumi:"branch"`
+	// The branch which will trigger the auto deployment
+	Branch *string `pulumi:"branch"`
+	// Container App Revision Template with all possible settings and the
+	// defaults if user did not provide them. The defaults are populated
+	// as they were at the creation time
 	GithubActionConfiguration *GithubActionConfigurationResponse `pulumi:"githubActionConfiguration"`
-	Id                        string                             `pulumi:"id"`
-	Name                      string                             `pulumi:"name"`
-	OperationState            string                             `pulumi:"operationState"`
-	RepoUrl                   *string                            `pulumi:"repoUrl"`
-	SystemData                SystemDataResponse                 `pulumi:"systemData"`
-	Type                      string                             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Current provisioning State of the operation
+	OperationState string `pulumi:"operationState"`
+	// The repo url which will be integrated to ContainerApp.
+	RepoUrl *string `pulumi:"repoUrl"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupContainerAppsSourceControlOutput(ctx *pulumi.Context, args LookupContainerAppsSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppsSourceControlResultOutput {
@@ -52,8 +65,11 @@ func LookupContainerAppsSourceControlOutput(ctx *pulumi.Context, args LookupCont
 }
 
 type LookupContainerAppsSourceControlOutputArgs struct {
-	ContainerAppName  pulumi.StringInput `pulumi:"containerAppName"`
+	// Name of the Container App.
+	ContainerAppName pulumi.StringInput `pulumi:"containerAppName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Container App SourceControl.
 	SourceControlName pulumi.StringInput `pulumi:"sourceControlName"`
 }
 
@@ -76,36 +92,46 @@ func (o LookupContainerAppsSourceControlResultOutput) ToLookupContainerAppsSourc
 	return o
 }
 
+// The branch which will trigger the auto deployment
 func (o LookupContainerAppsSourceControlResultOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// Container App Revision Template with all possible settings and the
+// defaults if user did not provide them. The defaults are populated
+// as they were at the creation time
 func (o LookupContainerAppsSourceControlResultOutput) GithubActionConfiguration() GithubActionConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) *GithubActionConfigurationResponse {
 		return v.GithubActionConfiguration
 	}).(GithubActionConfigurationResponsePtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupContainerAppsSourceControlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupContainerAppsSourceControlResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Current provisioning State of the operation
 func (o LookupContainerAppsSourceControlResultOutput) OperationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) string { return v.OperationState }).(pulumi.StringOutput)
 }
 
+// The repo url which will be integrated to ContainerApp.
 func (o LookupContainerAppsSourceControlResultOutput) RepoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) *string { return v.RepoUrl }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupContainerAppsSourceControlResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupContainerAppsSourceControlResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppsSourceControlResult) string { return v.Type }).(pulumi.StringOutput)
 }

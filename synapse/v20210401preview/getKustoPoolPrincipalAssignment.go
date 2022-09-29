@@ -21,25 +21,40 @@ func LookupKustoPoolPrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPo
 }
 
 type LookupKustoPoolPrincipalAssignmentArgs struct {
-	KustoPoolName           string `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName string `pulumi:"kustoPoolName"`
+	// The name of the Kusto principalAssignment.
 	PrincipalAssignmentName string `pulumi:"principalAssignmentName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
-	WorkspaceName           string `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Class representing a cluster principal assignment.
 type LookupKustoPoolPrincipalAssignmentResult struct {
-	Id                string             `pulumi:"id"`
-	Name              string             `pulumi:"name"`
-	PrincipalId       string             `pulumi:"principalId"`
-	PrincipalName     string             `pulumi:"principalName"`
-	PrincipalType     string             `pulumi:"principalType"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	Role              string             `pulumi:"role"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	TenantId          *string            `pulumi:"tenantId"`
-	TenantName        string             `pulumi:"tenantName"`
-	Type              string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
+	PrincipalId string `pulumi:"principalId"`
+	// The principal name
+	PrincipalName string `pulumi:"principalName"`
+	// Principal type.
+	PrincipalType string `pulumi:"principalType"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Cluster principal role.
+	Role string `pulumi:"role"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The tenant id of the principal
+	TenantId *string `pulumi:"tenantId"`
+	// The tenant name of the principal
+	TenantName string `pulumi:"tenantName"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupKustoPoolPrincipalAssignmentOutput(ctx *pulumi.Context, args LookupKustoPoolPrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolPrincipalAssignmentResultOutput {
@@ -56,10 +71,14 @@ func LookupKustoPoolPrincipalAssignmentOutput(ctx *pulumi.Context, args LookupKu
 }
 
 type LookupKustoPoolPrincipalAssignmentOutputArgs struct {
-	KustoPoolName           pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the Kusto principalAssignment.
 	PrincipalAssignmentName pulumi.StringInput `pulumi:"principalAssignmentName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName           pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupKustoPoolPrincipalAssignmentOutputArgs) ElementType() reflect.Type {
@@ -81,46 +100,57 @@ func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToLookupKustoPoolPrincip
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
+// The principal name
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) PrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.PrincipalName }).(pulumi.StringOutput)
 }
 
+// Principal type.
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.PrincipalType }).(pulumi.StringOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Cluster principal role.
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The tenant id of the principal
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// The tenant name of the principal
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) TenantName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.TenantName }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

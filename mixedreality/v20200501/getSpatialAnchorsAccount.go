@@ -23,25 +23,40 @@ func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchors
 }
 
 type LookupSpatialAnchorsAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Name of an Mixed Reality Account.
+	AccountName string `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // SpatialAnchorsAccount Response.
 type LookupSpatialAnchorsAccountResult struct {
-	AccountDomain      string             `pulumi:"accountDomain"`
-	AccountId          string             `pulumi:"accountId"`
-	Id                 string             `pulumi:"id"`
-	Identity           *IdentityResponse  `pulumi:"identity"`
-	Kind               *SkuResponse       `pulumi:"kind"`
-	Location           string             `pulumi:"location"`
-	Name               string             `pulumi:"name"`
-	Plan               *IdentityResponse  `pulumi:"plan"`
-	Sku                *SkuResponse       `pulumi:"sku"`
-	StorageAccountName *string            `pulumi:"storageAccountName"`
-	SystemData         SystemDataResponse `pulumi:"systemData"`
-	Tags               map[string]string  `pulumi:"tags"`
-	Type               string             `pulumi:"type"`
+	// Correspond domain name of certain Spatial Anchors Account
+	AccountDomain string `pulumi:"accountDomain"`
+	// unique id of certain account.
+	AccountId string `pulumi:"accountId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity associated with this account
+	Identity *IdentityResponse `pulumi:"identity"`
+	// The kind of account, if supported
+	Kind *SkuResponse `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The plan associated with this account
+	Plan *IdentityResponse `pulumi:"plan"`
+	// The sku associated with this account
+	Sku *SkuResponse `pulumi:"sku"`
+	// The name of the storage account associated with this accountId
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// System metadata for this account
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupSpatialAnchorsAccountOutput(ctx *pulumi.Context, args LookupSpatialAnchorsAccountOutputArgs, opts ...pulumi.InvokeOption) LookupSpatialAnchorsAccountResultOutput {
@@ -58,7 +73,9 @@ func LookupSpatialAnchorsAccountOutput(ctx *pulumi.Context, args LookupSpatialAn
 }
 
 type LookupSpatialAnchorsAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Name of an Mixed Reality Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -81,54 +98,67 @@ func (o LookupSpatialAnchorsAccountResultOutput) ToLookupSpatialAnchorsAccountRe
 	return o
 }
 
+// Correspond domain name of certain Spatial Anchors Account
 func (o LookupSpatialAnchorsAccountResultOutput) AccountDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.AccountDomain }).(pulumi.StringOutput)
 }
 
+// unique id of certain account.
 func (o LookupSpatialAnchorsAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSpatialAnchorsAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity associated with this account
 func (o LookupSpatialAnchorsAccountResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// The kind of account, if supported
 func (o LookupSpatialAnchorsAccountResultOutput) Kind() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) *SkuResponse { return v.Kind }).(SkuResponsePtrOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSpatialAnchorsAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSpatialAnchorsAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The plan associated with this account
 func (o LookupSpatialAnchorsAccountResultOutput) Plan() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) *IdentityResponse { return v.Plan }).(IdentityResponsePtrOutput)
 }
 
+// The sku associated with this account
 func (o LookupSpatialAnchorsAccountResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// The name of the storage account associated with this accountId
 func (o LookupSpatialAnchorsAccountResultOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
 }
 
+// System metadata for this account
 func (o LookupSpatialAnchorsAccountResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSpatialAnchorsAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSpatialAnchorsAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

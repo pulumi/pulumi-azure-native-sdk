@@ -22,19 +22,28 @@ func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opt
 }
 
 type LookupServiceRunnerArgs struct {
-	LabName           string `pulumi:"labName"`
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the service runner.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A container for a managed identity to execute DevTest lab services.
 type LookupServiceRunnerResult struct {
-	Id       string                      `pulumi:"id"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The identity of the resource.
 	Identity *IdentityPropertiesResponse `pulumi:"identity"`
-	Location *string                     `pulumi:"location"`
-	Name     string                      `pulumi:"name"`
-	Tags     map[string]string           `pulumi:"tags"`
-	Type     string                      `pulumi:"type"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceRunnerOutput(ctx *pulumi.Context, args LookupServiceRunnerOutputArgs, opts ...pulumi.InvokeOption) LookupServiceRunnerResultOutput {
@@ -51,8 +60,11 @@ func LookupServiceRunnerOutput(ctx *pulumi.Context, args LookupServiceRunnerOutp
 }
 
 type LookupServiceRunnerOutputArgs struct {
-	LabName           pulumi.StringInput `pulumi:"labName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the service runner.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,26 +87,32 @@ func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutputWithCo
 	return o
 }
 
+// The identifier of the resource.
 func (o LookupServiceRunnerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupServiceRunnerResultOutput) Identity() IdentityPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) *IdentityPropertiesResponse { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
+// The location of the resource.
 func (o LookupServiceRunnerResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupServiceRunnerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tags of the resource.
 func (o LookupServiceRunnerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupServiceRunnerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.Type }).(pulumi.StringOutput)
 }

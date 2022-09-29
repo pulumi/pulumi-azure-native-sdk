@@ -21,21 +21,32 @@ func LookupSubscriptionDiagnosticSetting(ctx *pulumi.Context, args *LookupSubscr
 }
 
 type LookupSubscriptionDiagnosticSettingArgs struct {
+	// The name of the diagnostic setting.
 	Name string `pulumi:"name"`
 }
 
 // The subscription diagnostic setting resource.
 type LookupSubscriptionDiagnosticSettingResult struct {
-	EventHubAuthorizationRuleId *string                           `pulumi:"eventHubAuthorizationRuleId"`
-	EventHubName                *string                           `pulumi:"eventHubName"`
-	Id                          string                            `pulumi:"id"`
-	Location                    *string                           `pulumi:"location"`
-	Logs                        []SubscriptionLogSettingsResponse `pulumi:"logs"`
-	Name                        string                            `pulumi:"name"`
-	ServiceBusRuleId            *string                           `pulumi:"serviceBusRuleId"`
-	StorageAccountId            *string                           `pulumi:"storageAccountId"`
-	Type                        string                            `pulumi:"type"`
-	WorkspaceId                 *string                           `pulumi:"workspaceId"`
+	// The resource Id for the event hub authorization rule.
+	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
+	// The name of the event hub. If none is specified, the default event hub will be selected.
+	EventHubName *string `pulumi:"eventHubName"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Location of the resource
+	Location *string `pulumi:"location"`
+	// The list of logs settings.
+	Logs []SubscriptionLogSettingsResponse `pulumi:"logs"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
+	ServiceBusRuleId *string `pulumi:"serviceBusRuleId"`
+	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
+	StorageAccountId *string `pulumi:"storageAccountId"`
+	// Azure resource type
+	Type string `pulumi:"type"`
+	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupSubscriptionDiagnosticSettingOutput(ctx *pulumi.Context, args LookupSubscriptionDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionDiagnosticSettingResultOutput {
@@ -52,6 +63,7 @@ func LookupSubscriptionDiagnosticSettingOutput(ctx *pulumi.Context, args LookupS
 }
 
 type LookupSubscriptionDiagnosticSettingOutputArgs struct {
+	// The name of the diagnostic setting.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -74,42 +86,52 @@ func (o LookupSubscriptionDiagnosticSettingResultOutput) ToLookupSubscriptionDia
 	return o
 }
 
+// The resource Id for the event hub authorization rule.
 func (o LookupSubscriptionDiagnosticSettingResultOutput) EventHubAuthorizationRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.EventHubAuthorizationRuleId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the event hub. If none is specified, the default event hub will be selected.
 func (o LookupSubscriptionDiagnosticSettingResultOutput) EventHubName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the resource
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The list of logs settings.
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Logs() SubscriptionLogSettingsResponseArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) []SubscriptionLogSettingsResponse { return v.Logs }).(SubscriptionLogSettingsResponseArrayOutput)
 }
 
+// Azure resource name
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 func (o LookupSubscriptionDiagnosticSettingResultOutput) ServiceBusRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.ServiceBusRuleId }).(pulumi.StringPtrOutput)
 }
 
+// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 func (o LookupSubscriptionDiagnosticSettingResultOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource type
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 func (o LookupSubscriptionDiagnosticSettingResultOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }

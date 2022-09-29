@@ -23,31 +23,52 @@ func LookupServerEndpoint(ctx *pulumi.Context, args *LookupServerEndpointArgs, o
 }
 
 type LookupServerEndpointArgs struct {
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
-	ServerEndpointName     string `pulumi:"serverEndpointName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of Server Endpoint object.
+	ServerEndpointName string `pulumi:"serverEndpointName"`
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName string `pulumi:"storageSyncServiceName"`
-	SyncGroupName          string `pulumi:"syncGroupName"`
+	// Name of Sync Group resource.
+	SyncGroupName string `pulumi:"syncGroupName"`
 }
 
 // Server Endpoint object.
 type LookupServerEndpointResult struct {
-	CloudTiering                                *string                       `pulumi:"cloudTiering"`
-	FriendlyName                                *string                       `pulumi:"friendlyName"`
-	Id                                          string                        `pulumi:"id"`
-	LastOperationName                           *string                       `pulumi:"lastOperationName"`
-	LastWorkflowId                              *string                       `pulumi:"lastWorkflowId"`
-	Name                                        string                        `pulumi:"name"`
-	OfflineDataTransfer                         *string                       `pulumi:"offlineDataTransfer"`
-	OfflineDataTransferShareName                *string                       `pulumi:"offlineDataTransferShareName"`
-	OfflineDataTransferStorageAccountResourceId string                        `pulumi:"offlineDataTransferStorageAccountResourceId"`
-	OfflineDataTransferStorageAccountTenantId   string                        `pulumi:"offlineDataTransferStorageAccountTenantId"`
-	ProvisioningState                           *string                       `pulumi:"provisioningState"`
-	ServerLocalPath                             *string                       `pulumi:"serverLocalPath"`
-	ServerResourceId                            *string                       `pulumi:"serverResourceId"`
-	SyncStatus                                  *ServerEndpointHealthResponse `pulumi:"syncStatus"`
-	TierFilesOlderThanDays                      *int                          `pulumi:"tierFilesOlderThanDays"`
-	Type                                        string                        `pulumi:"type"`
-	VolumeFreeSpacePercent                      *int                          `pulumi:"volumeFreeSpacePercent"`
+	// Cloud Tiering.
+	CloudTiering *string `pulumi:"cloudTiering"`
+	// Friendly Name
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Resource Last Operation Name
+	LastOperationName *string `pulumi:"lastOperationName"`
+	// ServerEndpoint lastWorkflowId
+	LastWorkflowId *string `pulumi:"lastWorkflowId"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Offline data transfer
+	OfflineDataTransfer *string `pulumi:"offlineDataTransfer"`
+	// Offline data transfer share name
+	OfflineDataTransferShareName *string `pulumi:"offlineDataTransferShareName"`
+	// Offline data transfer storage account resource ID
+	OfflineDataTransferStorageAccountResourceId string `pulumi:"offlineDataTransferStorageAccountResourceId"`
+	// Offline data transfer storage account tenant ID
+	OfflineDataTransferStorageAccountTenantId string `pulumi:"offlineDataTransferStorageAccountTenantId"`
+	// ServerEndpoint Provisioning State
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Server Local path.
+	ServerLocalPath *string `pulumi:"serverLocalPath"`
+	// Server Resource Id.
+	ServerResourceId *string `pulumi:"serverResourceId"`
+	// Server Endpoint properties.
+	SyncStatus *ServerEndpointHealthResponse `pulumi:"syncStatus"`
+	// Tier files older than days.
+	TierFilesOlderThanDays *int `pulumi:"tierFilesOlderThanDays"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Level of free space to be maintained by Cloud Tiering if it is enabled.
+	VolumeFreeSpacePercent *int `pulumi:"volumeFreeSpacePercent"`
 }
 
 func LookupServerEndpointOutput(ctx *pulumi.Context, args LookupServerEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServerEndpointResultOutput {
@@ -64,10 +85,14 @@ func LookupServerEndpointOutput(ctx *pulumi.Context, args LookupServerEndpointOu
 }
 
 type LookupServerEndpointOutputArgs struct {
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerEndpointName     pulumi.StringInput `pulumi:"serverEndpointName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of Server Endpoint object.
+	ServerEndpointName pulumi.StringInput `pulumi:"serverEndpointName"`
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName pulumi.StringInput `pulumi:"storageSyncServiceName"`
-	SyncGroupName          pulumi.StringInput `pulumi:"syncGroupName"`
+	// Name of Sync Group resource.
+	SyncGroupName pulumi.StringInput `pulumi:"syncGroupName"`
 }
 
 func (LookupServerEndpointOutputArgs) ElementType() reflect.Type {
@@ -89,70 +114,87 @@ func (o LookupServerEndpointResultOutput) ToLookupServerEndpointResultOutputWith
 	return o
 }
 
+// Cloud Tiering.
 func (o LookupServerEndpointResultOutput) CloudTiering() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.CloudTiering }).(pulumi.StringPtrOutput)
 }
 
+// Friendly Name
 func (o LookupServerEndpointResultOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServerEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource Last Operation Name
 func (o LookupServerEndpointResultOutput) LastOperationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.LastOperationName }).(pulumi.StringPtrOutput)
 }
 
+// ServerEndpoint lastWorkflowId
 func (o LookupServerEndpointResultOutput) LastWorkflowId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.LastWorkflowId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupServerEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Offline data transfer
 func (o LookupServerEndpointResultOutput) OfflineDataTransfer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.OfflineDataTransfer }).(pulumi.StringPtrOutput)
 }
 
+// Offline data transfer share name
 func (o LookupServerEndpointResultOutput) OfflineDataTransferShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.OfflineDataTransferShareName }).(pulumi.StringPtrOutput)
 }
 
+// Offline data transfer storage account resource ID
 func (o LookupServerEndpointResultOutput) OfflineDataTransferStorageAccountResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.OfflineDataTransferStorageAccountResourceId }).(pulumi.StringOutput)
 }
 
+// Offline data transfer storage account tenant ID
 func (o LookupServerEndpointResultOutput) OfflineDataTransferStorageAccountTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.OfflineDataTransferStorageAccountTenantId }).(pulumi.StringOutput)
 }
 
+// ServerEndpoint Provisioning State
 func (o LookupServerEndpointResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Server Local path.
 func (o LookupServerEndpointResultOutput) ServerLocalPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.ServerLocalPath }).(pulumi.StringPtrOutput)
 }
 
+// Server Resource Id.
 func (o LookupServerEndpointResultOutput) ServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.ServerResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Server Endpoint properties.
 func (o LookupServerEndpointResultOutput) SyncStatus() ServerEndpointHealthResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *ServerEndpointHealthResponse { return v.SyncStatus }).(ServerEndpointHealthResponsePtrOutput)
 }
 
+// Tier files older than days.
 func (o LookupServerEndpointResultOutput) TierFilesOlderThanDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *int { return v.TierFilesOlderThanDays }).(pulumi.IntPtrOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServerEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Level of free space to be maintained by Cloud Tiering if it is enabled.
 func (o LookupServerEndpointResultOutput) VolumeFreeSpacePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *int { return v.VolumeFreeSpacePercent }).(pulumi.IntPtrOutput)
 }

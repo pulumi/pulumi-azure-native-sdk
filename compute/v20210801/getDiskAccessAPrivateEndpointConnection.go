@@ -21,19 +21,28 @@ func LookupDiskAccessAPrivateEndpointConnection(ctx *pulumi.Context, args *Looku
 }
 
 type LookupDiskAccessAPrivateEndpointConnectionArgs struct {
-	DiskAccessName                string `pulumi:"diskAccessName"`
+	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+	DiskAccessName string `pulumi:"diskAccessName"`
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Private Endpoint Connection resource.
 type LookupDiskAccessAPrivateEndpointConnectionResult struct {
-	Id                                string                                    `pulumi:"id"`
-	Name                              string                                    `pulumi:"name"`
-	PrivateEndpoint                   PrivateEndpointResponse                   `pulumi:"privateEndpoint"`
+	// private endpoint connection Id
+	Id string `pulumi:"id"`
+	// private endpoint connection name
+	Name string `pulumi:"name"`
+	// The resource of private end point.
+	PrivateEndpoint PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                    `pulumi:"provisioningState"`
-	Type                              string                                    `pulumi:"type"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// private endpoint connection type
+	Type string `pulumi:"type"`
 }
 
 func LookupDiskAccessAPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupDiskAccessAPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupDiskAccessAPrivateEndpointConnectionResultOutput {
@@ -50,9 +59,12 @@ func LookupDiskAccessAPrivateEndpointConnectionOutput(ctx *pulumi.Context, args 
 }
 
 type LookupDiskAccessAPrivateEndpointConnectionOutputArgs struct {
-	DiskAccessName                pulumi.StringInput `pulumi:"diskAccessName"`
+	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+	DiskAccessName pulumi.StringInput `pulumi:"diskAccessName"`
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupDiskAccessAPrivateEndpointConnectionOutputArgs) ElementType() reflect.Type {
@@ -74,30 +86,36 @@ func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) ToLookupDiskAcce
 	return o
 }
 
+// private endpoint connection Id
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// private endpoint connection name
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource of private end point.
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) PrivateEndpoint() PrivateEndpointResponseOutput {
 	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) PrivateEndpointResponse {
 		return v.PrivateEndpoint
 	}).(PrivateEndpointResponseOutput)
 }
 
+// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
 	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
+// The provisioning state of the private endpoint connection resource.
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// private endpoint connection type
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

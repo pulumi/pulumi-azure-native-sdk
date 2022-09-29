@@ -23,21 +23,32 @@ func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupBotArgs struct {
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Bot resource definition
 type LookupBotResult struct {
-	Etag       *string               `pulumi:"etag"`
-	Id         string                `pulumi:"id"`
-	Kind       *string               `pulumi:"kind"`
-	Location   *string               `pulumi:"location"`
-	Name       string                `pulumi:"name"`
+	// Entity Tag
+	Etag *string `pulumi:"etag"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// Required. Gets or sets the Kind of the resource.
+	Kind *string `pulumi:"kind"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// The set of properties specific to bot resource
 	Properties BotPropertiesResponse `pulumi:"properties"`
-	Sku        *SkuResponse          `pulumi:"sku"`
-	Tags       map[string]string     `pulumi:"tags"`
-	Type       string                `pulumi:"type"`
+	// Gets or sets the SKU of the resource.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupBotOutput(ctx *pulumi.Context, args LookupBotOutputArgs, opts ...pulumi.InvokeOption) LookupBotResultOutput {
@@ -54,8 +65,10 @@ func LookupBotOutput(ctx *pulumi.Context, args LookupBotOutputArgs, opts ...pulu
 }
 
 type LookupBotOutputArgs struct {
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Bot resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupBotOutputArgs) ElementType() reflect.Type {
@@ -77,38 +90,47 @@ func (o LookupBotResultOutput) ToLookupBotResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Entity Tag
 func (o LookupBotResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the resource ID.
 func (o LookupBotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Required. Gets or sets the Kind of the resource.
 func (o LookupBotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupBotResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupBotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The set of properties specific to bot resource
 func (o LookupBotResultOutput) Properties() BotPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupBotResult) BotPropertiesResponse { return v.Properties }).(BotPropertiesResponseOutput)
 }
 
+// Gets or sets the SKU of the resource.
 func (o LookupBotResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupBotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupBotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotResult) string { return v.Type }).(pulumi.StringOutput)
 }

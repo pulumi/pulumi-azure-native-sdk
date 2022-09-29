@@ -21,27 +21,44 @@ func LookupWebAppHostNameBinding(ctx *pulumi.Context, args *LookupWebAppHostName
 }
 
 type LookupWebAppHostNameBindingArgs struct {
-	HostName          string `pulumi:"hostName"`
-	Name              string `pulumi:"name"`
+	// Hostname in the hostname binding.
+	HostName string `pulumi:"hostName"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A hostname binding object.
 type LookupWebAppHostNameBindingResult struct {
-	AzureResourceName           *string            `pulumi:"azureResourceName"`
-	AzureResourceType           *string            `pulumi:"azureResourceType"`
-	CustomHostNameDnsRecordType *string            `pulumi:"customHostNameDnsRecordType"`
-	DomainId                    *string            `pulumi:"domainId"`
-	HostNameType                *string            `pulumi:"hostNameType"`
-	Id                          string             `pulumi:"id"`
-	Kind                        *string            `pulumi:"kind"`
-	Name                        string             `pulumi:"name"`
-	SiteName                    *string            `pulumi:"siteName"`
-	SslState                    *string            `pulumi:"sslState"`
-	SystemData                  SystemDataResponse `pulumi:"systemData"`
-	Thumbprint                  *string            `pulumi:"thumbprint"`
-	Type                        string             `pulumi:"type"`
-	VirtualIP                   string             `pulumi:"virtualIP"`
+	// Azure resource name.
+	AzureResourceName *string `pulumi:"azureResourceName"`
+	// Azure resource type.
+	AzureResourceType *string `pulumi:"azureResourceType"`
+	// Custom DNS record type.
+	CustomHostNameDnsRecordType *string `pulumi:"customHostNameDnsRecordType"`
+	// Fully qualified ARM domain resource URI.
+	DomainId *string `pulumi:"domainId"`
+	// Hostname type.
+	HostNameType *string `pulumi:"hostNameType"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// App Service app name.
+	SiteName *string `pulumi:"siteName"`
+	// SSL type
+	SslState *string `pulumi:"sslState"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// SSL certificate thumbprint
+	Thumbprint *string `pulumi:"thumbprint"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Virtual IP address assigned to the hostname if IP based SSL is enabled.
+	VirtualIP string `pulumi:"virtualIP"`
 }
 
 func LookupWebAppHostNameBindingOutput(ctx *pulumi.Context, args LookupWebAppHostNameBindingOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHostNameBindingResultOutput {
@@ -58,8 +75,11 @@ func LookupWebAppHostNameBindingOutput(ctx *pulumi.Context, args LookupWebAppHos
 }
 
 type LookupWebAppHostNameBindingOutputArgs struct {
-	HostName          pulumi.StringInput `pulumi:"hostName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Hostname in the hostname binding.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,58 +102,72 @@ func (o LookupWebAppHostNameBindingResultOutput) ToLookupWebAppHostNameBindingRe
 	return o
 }
 
+// Azure resource name.
 func (o LookupWebAppHostNameBindingResultOutput) AzureResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.AzureResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource type.
 func (o LookupWebAppHostNameBindingResultOutput) AzureResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.AzureResourceType }).(pulumi.StringPtrOutput)
 }
 
+// Custom DNS record type.
 func (o LookupWebAppHostNameBindingResultOutput) CustomHostNameDnsRecordType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.CustomHostNameDnsRecordType }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified ARM domain resource URI.
 func (o LookupWebAppHostNameBindingResultOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.DomainId }).(pulumi.StringPtrOutput)
 }
 
+// Hostname type.
 func (o LookupWebAppHostNameBindingResultOutput) HostNameType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.HostNameType }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupWebAppHostNameBindingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppHostNameBindingResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppHostNameBindingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// App Service app name.
 func (o LookupWebAppHostNameBindingResultOutput) SiteName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.SiteName }).(pulumi.StringPtrOutput)
 }
 
+// SSL type
 func (o LookupWebAppHostNameBindingResultOutput) SslState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.SslState }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata relating to this resource.
 func (o LookupWebAppHostNameBindingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// SSL certificate thumbprint
 func (o LookupWebAppHostNameBindingResultOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWebAppHostNameBindingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Virtual IP address assigned to the hostname if IP based SSL is enabled.
 func (o LookupWebAppHostNameBindingResultOutput) VirtualIP() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.VirtualIP }).(pulumi.StringOutput)
 }

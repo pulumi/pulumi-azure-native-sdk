@@ -22,12 +22,15 @@ func ListBlockchainMemberApiKeys(ctx *pulumi.Context, args *ListBlockchainMember
 }
 
 type ListBlockchainMemberApiKeysArgs struct {
+	// Blockchain member name.
 	BlockchainMemberName string `pulumi:"blockchainMemberName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Collection of the API key payload which is exposed in the response of the resource provider.
 type ListBlockchainMemberApiKeysResult struct {
+	// Gets or sets the collection of API key.
 	Keys []ApiKeyResponse `pulumi:"keys"`
 }
 
@@ -45,8 +48,10 @@ func ListBlockchainMemberApiKeysOutput(ctx *pulumi.Context, args ListBlockchainM
 }
 
 type ListBlockchainMemberApiKeysOutputArgs struct {
+	// Blockchain member name.
 	BlockchainMemberName pulumi.StringInput `pulumi:"blockchainMemberName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListBlockchainMemberApiKeysOutputArgs) ElementType() reflect.Type {
@@ -68,6 +73,7 @@ func (o ListBlockchainMemberApiKeysResultOutput) ToListBlockchainMemberApiKeysRe
 	return o
 }
 
+// Gets or sets the collection of API key.
 func (o ListBlockchainMemberApiKeysResultOutput) Keys() ApiKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListBlockchainMemberApiKeysResult) []ApiKeyResponse { return v.Keys }).(ApiKeyResponseArrayOutput)
 }

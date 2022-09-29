@@ -21,13 +21,16 @@ func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission(ctx *pulumi
 }
 
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs struct {
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
 }
 
 // The list of invoice section properties with create subscription permission.
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult struct {
-	NextLink string                                          `pulumi:"nextLink"`
-	Value    []InvoiceSectionWithCreateSubPermissionResponse `pulumi:"value"`
+	// The link (url) to the next page of results.
+	NextLink string `pulumi:"nextLink"`
+	// The list of invoice section properties with create subscription permission.
+	Value []InvoiceSectionWithCreateSubPermissionResponse `pulumi:"value"`
 }
 
 func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutput(ctx *pulumi.Context, args ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutputArgs, opts ...pulumi.InvokeOption) ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput {
@@ -44,6 +47,7 @@ func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutput(ctx *
 }
 
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutputArgs struct {
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
 }
 
@@ -66,12 +70,14 @@ func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOut
 	return o
 }
 
+// The link (url) to the next page of results.
 func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult) string {
 		return v.NextLink
 	}).(pulumi.StringOutput)
 }
 
+// The list of invoice section properties with create subscription permission.
 func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput) Value() InvoiceSectionWithCreateSubPermissionResponseArrayOutput {
 	return o.ApplyT(func(v ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult) []InvoiceSectionWithCreateSubPermissionResponse {
 		return v.Value

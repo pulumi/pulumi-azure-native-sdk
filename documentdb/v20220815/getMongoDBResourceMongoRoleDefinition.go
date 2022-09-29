@@ -21,20 +21,30 @@ func LookupMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context, args *LookupM
 }
 
 type LookupMongoDBResourceMongoRoleDefinitionArgs struct {
-	AccountName           string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// The ID for the Role Definition {dbName.roleName}.
 	MongoRoleDefinitionId string `pulumi:"mongoRoleDefinitionId"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Azure Cosmos DB Mongo Role Definition.
 type LookupMongoDBResourceMongoRoleDefinitionResult struct {
-	DatabaseName *string             `pulumi:"databaseName"`
-	Id           string              `pulumi:"id"`
-	Name         string              `pulumi:"name"`
-	Privileges   []PrivilegeResponse `pulumi:"privileges"`
-	RoleName     *string             `pulumi:"roleName"`
-	Roles        []RoleResponse      `pulumi:"roles"`
-	Type         string              `pulumi:"type"`
+	// The database name for which access is being granted for this Role Definition.
+	DatabaseName *string `pulumi:"databaseName"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
+	Privileges []PrivilegeResponse `pulumi:"privileges"`
+	// A user-friendly name for the Role Definition. Must be unique for the database account.
+	RoleName *string `pulumi:"roleName"`
+	// The set of roles inherited by this Role Definition.
+	Roles []RoleResponse `pulumi:"roles"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMongoDBResourceMongoRoleDefinitionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoRoleDefinitionResultOutput {
@@ -51,9 +61,12 @@ func LookupMongoDBResourceMongoRoleDefinitionOutput(ctx *pulumi.Context, args Lo
 }
 
 type LookupMongoDBResourceMongoRoleDefinitionOutputArgs struct {
-	AccountName           pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The ID for the Role Definition {dbName.roleName}.
 	MongoRoleDefinitionId pulumi.StringInput `pulumi:"mongoRoleDefinitionId"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupMongoDBResourceMongoRoleDefinitionOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) ToLookupMongoDBRes
 	return o
 }
 
+// The database name for which access is being granted for this Role Definition.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
 
+// The unique resource identifier of the database account.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the database account.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) Privileges() PrivilegeResponseArrayOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) []PrivilegeResponse { return v.Privileges }).(PrivilegeResponseArrayOutput)
 }
 
+// A user-friendly name for the Role Definition. Must be unique for the database account.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) *string { return v.RoleName }).(pulumi.StringPtrOutput)
 }
 
+// The set of roles inherited by this Role Definition.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) Roles() RoleResponseArrayOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) []RoleResponse { return v.Roles }).(RoleResponseArrayOutput)
 }
 
+// The type of Azure resource.
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoDBResourceMongoRoleDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
 }

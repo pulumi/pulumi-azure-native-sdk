@@ -23,21 +23,32 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 }
 
 type LookupServiceArgs struct {
+	// The name of the resource group that contains the service instance.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the service instance.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The description of the service.
 type LookupServiceResult struct {
-	Etag       *string                           `pulumi:"etag"`
-	Id         string                            `pulumi:"id"`
-	Identity   *ServicesResourceResponseIdentity `pulumi:"identity"`
-	Kind       string                            `pulumi:"kind"`
-	Location   string                            `pulumi:"location"`
-	Name       string                            `pulumi:"name"`
-	Properties ServicesPropertiesResponse        `pulumi:"properties"`
-	Tags       map[string]string                 `pulumi:"tags"`
-	Type       string                            `pulumi:"type"`
+	// An etag associated with the resource, used for optimistic concurrency when editing it.
+	Etag *string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// Setting indicating whether the service has a managed identity associated with it.
+	Identity *ServicesResourceResponseIdentity `pulumi:"identity"`
+	// The kind of the service.
+	Kind string `pulumi:"kind"`
+	// The resource location.
+	Location string `pulumi:"location"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The common properties of a service.
+	Properties ServicesPropertiesResponse `pulumi:"properties"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -54,8 +65,10 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 }
 
 type LookupServiceOutputArgs struct {
+	// The name of the resource group that contains the service instance.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the service instance.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupServiceOutputArgs) ElementType() reflect.Type {
@@ -77,38 +90,47 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 	return o
 }
 
+// An etag associated with the resource, used for optimistic concurrency when editing it.
 func (o LookupServiceResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The resource identifier.
 func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Setting indicating whether the service has a managed identity associated with it.
 func (o LookupServiceResultOutput) Identity() ServicesResourceResponseIdentityPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *ServicesResourceResponseIdentity { return v.Identity }).(ServicesResourceResponseIdentityPtrOutput)
 }
 
+// The kind of the service.
 func (o LookupServiceResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o LookupServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The common properties of a service.
 func (o LookupServiceResultOutput) Properties() ServicesPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) ServicesPropertiesResponse { return v.Properties }).(ServicesPropertiesResponseOutput)
 }
 
+// The resource tags.
 func (o LookupServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The resource type.
 func (o LookupServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,19 +21,28 @@ func LookupSqlResourceSqlRoleAssignment(ctx *pulumi.Context, args *LookupSqlReso
 }
 
 type LookupSqlResourceSqlRoleAssignmentArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RoleAssignmentId  string `pulumi:"roleAssignmentId"`
+	// The GUID for the Role Assignment.
+	RoleAssignmentId string `pulumi:"roleAssignmentId"`
 }
 
 // An Azure Cosmos DB Role Assignment
 type LookupSqlResourceSqlRoleAssignmentResult struct {
-	Id               string  `pulumi:"id"`
-	Name             string  `pulumi:"name"`
-	PrincipalId      *string `pulumi:"principalId"`
+	// The unique resource identifier of the database account.
+	Id string `pulumi:"id"`
+	// The name of the database account.
+	Name string `pulumi:"name"`
+	// The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription.
+	PrincipalId *string `pulumi:"principalId"`
+	// The unique identifier for the associated Role Definition.
 	RoleDefinitionId *string `pulumi:"roleDefinitionId"`
-	Scope            *string `pulumi:"scope"`
-	Type             string  `pulumi:"type"`
+	// The data plane resource path for which access is being granted through this Role Assignment.
+	Scope *string `pulumi:"scope"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlResourceSqlRoleAssignmentOutput(ctx *pulumi.Context, args LookupSqlResourceSqlRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlRoleAssignmentResultOutput {
@@ -50,9 +59,12 @@ func LookupSqlResourceSqlRoleAssignmentOutput(ctx *pulumi.Context, args LookupSq
 }
 
 type LookupSqlResourceSqlRoleAssignmentOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RoleAssignmentId  pulumi.StringInput `pulumi:"roleAssignmentId"`
+	// The GUID for the Role Assignment.
+	RoleAssignmentId pulumi.StringInput `pulumi:"roleAssignmentId"`
 }
 
 func (LookupSqlResourceSqlRoleAssignmentOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupSqlResourceSqlRoleAssignmentResultOutput) ToLookupSqlResourceSqlRo
 	return o
 }
 
+// The unique resource identifier of the database account.
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlRoleAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the database account.
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlRoleAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription.
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlRoleAssignmentResult) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
+// The unique identifier for the associated Role Definition.
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) RoleDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlRoleAssignmentResult) *string { return v.RoleDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// The data plane resource path for which access is being granted through this Role Assignment.
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlRoleAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// The type of Azure resource.
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlRoleAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

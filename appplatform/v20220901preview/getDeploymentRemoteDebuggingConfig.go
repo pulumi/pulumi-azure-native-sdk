@@ -21,16 +21,22 @@ func GetDeploymentRemoteDebuggingConfig(ctx *pulumi.Context, args *GetDeployment
 }
 
 type GetDeploymentRemoteDebuggingConfigArgs struct {
-	AppName           string `pulumi:"appName"`
-	DeploymentName    string `pulumi:"deploymentName"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the Deployment resource.
+	DeploymentName string `pulumi:"deploymentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Remote debugging config.
 type GetDeploymentRemoteDebuggingConfigResult struct {
+	// Indicate if remote debugging is enabled
 	Enabled *bool `pulumi:"enabled"`
-	Port    *int  `pulumi:"port"`
+	// Application debugging port
+	Port *int `pulumi:"port"`
 }
 
 func GetDeploymentRemoteDebuggingConfigOutput(ctx *pulumi.Context, args GetDeploymentRemoteDebuggingConfigOutputArgs, opts ...pulumi.InvokeOption) GetDeploymentRemoteDebuggingConfigResultOutput {
@@ -47,10 +53,14 @@ func GetDeploymentRemoteDebuggingConfigOutput(ctx *pulumi.Context, args GetDeplo
 }
 
 type GetDeploymentRemoteDebuggingConfigOutputArgs struct {
-	AppName           pulumi.StringInput `pulumi:"appName"`
-	DeploymentName    pulumi.StringInput `pulumi:"deploymentName"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the Deployment resource.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetDeploymentRemoteDebuggingConfigOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o GetDeploymentRemoteDebuggingConfigResultOutput) ToGetDeploymentRemoteDeb
 	return o
 }
 
+// Indicate if remote debugging is enabled
 func (o GetDeploymentRemoteDebuggingConfigResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDeploymentRemoteDebuggingConfigResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Application debugging port
 func (o GetDeploymentRemoteDebuggingConfigResultOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDeploymentRemoteDebuggingConfigResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }

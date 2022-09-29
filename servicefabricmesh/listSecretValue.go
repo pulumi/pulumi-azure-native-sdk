@@ -22,13 +22,17 @@ func ListSecretValue(ctx *pulumi.Context, args *ListSecretValueArgs, opts ...pul
 }
 
 type ListSecretValueArgs struct {
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
-	SecretResourceName      string `pulumi:"secretResourceName"`
+	// Azure resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the secret resource.
+	SecretResourceName string `pulumi:"secretResourceName"`
+	// The name of the secret resource value which is typically the version identifier for the value.
 	SecretValueResourceName string `pulumi:"secretValueResourceName"`
 }
 
 // This type represents the unencrypted value of the secret.
 type ListSecretValueResult struct {
+	// The actual value of the secret.
 	Value *string `pulumi:"value"`
 }
 
@@ -46,8 +50,11 @@ func ListSecretValueOutput(ctx *pulumi.Context, args ListSecretValueOutputArgs, 
 }
 
 type ListSecretValueOutputArgs struct {
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
-	SecretResourceName      pulumi.StringInput `pulumi:"secretResourceName"`
+	// Azure resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the secret resource.
+	SecretResourceName pulumi.StringInput `pulumi:"secretResourceName"`
+	// The name of the secret resource value which is typically the version identifier for the value.
 	SecretValueResourceName pulumi.StringInput `pulumi:"secretValueResourceName"`
 }
 
@@ -70,6 +77,7 @@ func (o ListSecretValueResultOutput) ToListSecretValueResultOutputWithContext(ct
 	return o
 }
 
+// The actual value of the secret.
 func (o ListSecretValueResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSecretValueResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

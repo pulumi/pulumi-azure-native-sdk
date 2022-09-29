@@ -21,22 +21,34 @@ func LookupWorkbookTemplate(ctx *pulumi.Context, args *LookupWorkbookTemplateArg
 }
 
 type LookupWorkbookTemplateArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // An Application Insights workbook template definition.
 type LookupWorkbookTemplateResult struct {
-	Author       *string                                               `pulumi:"author"`
-	Galleries    []WorkbookTemplateGalleryResponse                     `pulumi:"galleries"`
-	Id           string                                                `pulumi:"id"`
-	Localized    map[string][]WorkbookTemplateLocalizedGalleryResponse `pulumi:"localized"`
-	Location     string                                                `pulumi:"location"`
-	Name         string                                                `pulumi:"name"`
-	Priority     *int                                                  `pulumi:"priority"`
-	Tags         map[string]string                                     `pulumi:"tags"`
-	TemplateData interface{}                                           `pulumi:"templateData"`
-	Type         string                                                `pulumi:"type"`
+	// Information about the author of the workbook template.
+	Author *string `pulumi:"author"`
+	// Workbook galleries supported by the template.
+	Galleries []WorkbookTemplateGalleryResponse `pulumi:"galleries"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
+	Localized map[string][]WorkbookTemplateLocalizedGalleryResponse `pulumi:"localized"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Azure resource name.
+	Name string `pulumi:"name"`
+	// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
+	Priority *int `pulumi:"priority"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Valid JSON object containing workbook template payload.
+	TemplateData interface{} `pulumi:"templateData"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkbookTemplateOutput(ctx *pulumi.Context, args LookupWorkbookTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupWorkbookTemplateResultOutput {
@@ -53,8 +65,10 @@ func LookupWorkbookTemplateOutput(ctx *pulumi.Context, args LookupWorkbookTempla
 }
 
 type LookupWorkbookTemplateOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupWorkbookTemplateOutputArgs) ElementType() reflect.Type {
@@ -76,44 +90,54 @@ func (o LookupWorkbookTemplateResultOutput) ToLookupWorkbookTemplateResultOutput
 	return o
 }
 
+// Information about the author of the workbook template.
 func (o LookupWorkbookTemplateResultOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) *string { return v.Author }).(pulumi.StringPtrOutput)
 }
 
+// Workbook galleries supported by the template.
 func (o LookupWorkbookTemplateResultOutput) Galleries() WorkbookTemplateGalleryResponseArrayOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) []WorkbookTemplateGalleryResponse { return v.Galleries }).(WorkbookTemplateGalleryResponseArrayOutput)
 }
 
+// Azure resource Id
 func (o LookupWorkbookTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
 func (o LookupWorkbookTemplateResultOutput) Localized() WorkbookTemplateLocalizedGalleryResponseArrayMapOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) map[string][]WorkbookTemplateLocalizedGalleryResponse {
 		return v.Localized
 	}).(WorkbookTemplateLocalizedGalleryResponseArrayMapOutput)
 }
 
+// Resource location
 func (o LookupWorkbookTemplateResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure resource name.
 func (o LookupWorkbookTemplateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
 func (o LookupWorkbookTemplateResultOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// Resource tags
 func (o LookupWorkbookTemplateResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Valid JSON object containing workbook template payload.
 func (o LookupWorkbookTemplateResultOutput) TemplateData() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) interface{} { return v.TemplateData }).(pulumi.AnyOutput)
 }
 
+// Azure resource type
 func (o LookupWorkbookTemplateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) string { return v.Type }).(pulumi.StringOutput)
 }

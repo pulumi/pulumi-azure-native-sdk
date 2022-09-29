@@ -21,23 +21,36 @@ func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opt
 }
 
 type LookupInventoryItemArgs struct {
+	// Name of the inventoryItem.
 	InventoryItemName string `pulumi:"inventoryItemName"`
+	// The Resource Group Name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VcenterName       string `pulumi:"vcenterName"`
+	// Name of the vCenter.
+	VcenterName string `pulumi:"vcenterName"`
 }
 
 // Defines the inventory item.
 type LookupInventoryItemResult struct {
-	Id                string             `pulumi:"id"`
-	InventoryType     string             `pulumi:"inventoryType"`
-	Kind              *string            `pulumi:"kind"`
-	ManagedResourceId *string            `pulumi:"managedResourceId"`
-	MoName            *string            `pulumi:"moName"`
-	MoRefId           *string            `pulumi:"moRefId"`
-	Name              string             `pulumi:"name"`
-	ProvisioningState string             `pulumi:"provisioningState"`
-	SystemData        SystemDataResponse `pulumi:"systemData"`
-	Type              string             `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// They inventory type.
+	InventoryType string `pulumi:"inventoryType"`
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	Kind *string `pulumi:"kind"`
+	// Gets or sets the tracked resource id corresponding to the inventory resource.
+	ManagedResourceId *string `pulumi:"managedResourceId"`
+	// Gets or sets the vCenter Managed Object name for the inventory item.
+	MoName *string `pulumi:"moName"`
+	// Gets or sets the MoRef (Managed Object Reference) ID for the inventory item.
+	MoRefId *string `pulumi:"moRefId"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets the provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The system data.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupInventoryItemOutput(ctx *pulumi.Context, args LookupInventoryItemOutputArgs, opts ...pulumi.InvokeOption) LookupInventoryItemResultOutput {
@@ -54,9 +67,12 @@ func LookupInventoryItemOutput(ctx *pulumi.Context, args LookupInventoryItemOutp
 }
 
 type LookupInventoryItemOutputArgs struct {
+	// Name of the inventoryItem.
 	InventoryItemName pulumi.StringInput `pulumi:"inventoryItemName"`
+	// The Resource Group Name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VcenterName       pulumi.StringInput `pulumi:"vcenterName"`
+	// Name of the vCenter.
+	VcenterName pulumi.StringInput `pulumi:"vcenterName"`
 }
 
 func (LookupInventoryItemOutputArgs) ElementType() reflect.Type {
@@ -78,42 +94,52 @@ func (o LookupInventoryItemResultOutput) ToLookupInventoryItemResultOutputWithCo
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupInventoryItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// They inventory type.
 func (o LookupInventoryItemResultOutput) InventoryType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.InventoryType }).(pulumi.StringOutput)
 }
 
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o LookupInventoryItemResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the tracked resource id corresponding to the inventory resource.
 func (o LookupInventoryItemResultOutput) ManagedResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) *string { return v.ManagedResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the vCenter Managed Object name for the inventory item.
 func (o LookupInventoryItemResultOutput) MoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) *string { return v.MoName }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the MoRef (Managed Object Reference) ID for the inventory item.
 func (o LookupInventoryItemResultOutput) MoRefId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) *string { return v.MoRefId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupInventoryItemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the provisioning state.
 func (o LookupInventoryItemResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system data.
 func (o LookupInventoryItemResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupInventoryItemResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Type }).(pulumi.StringOutput)
 }

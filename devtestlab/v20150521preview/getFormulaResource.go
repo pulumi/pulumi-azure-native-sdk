@@ -23,25 +23,40 @@ func LookupFormulaResource(ctx *pulumi.Context, args *LookupFormulaResourceArgs,
 }
 
 type LookupFormulaResourceArgs struct {
-	LabName           string `pulumi:"labName"`
-	Name              string `pulumi:"name"`
+	// The name of the lab.
+	LabName string `pulumi:"labName"`
+	// The name of the formula.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A formula.
 type LookupFormulaResourceResult struct {
-	Author            *string                          `pulumi:"author"`
-	CreationDate      *string                          `pulumi:"creationDate"`
-	Description       *string                          `pulumi:"description"`
-	FormulaContent    *LabVirtualMachineResponse       `pulumi:"formulaContent"`
-	Id                *string                          `pulumi:"id"`
-	Location          *string                          `pulumi:"location"`
-	Name              *string                          `pulumi:"name"`
-	OsType            *string                          `pulumi:"osType"`
-	ProvisioningState *string                          `pulumi:"provisioningState"`
-	Tags              map[string]string                `pulumi:"tags"`
-	Type              *string                          `pulumi:"type"`
-	Vm                *FormulaPropertiesFromVmResponse `pulumi:"vm"`
+	// The author of the formula.
+	Author *string `pulumi:"author"`
+	// The creation date of the formula.
+	CreationDate *string `pulumi:"creationDate"`
+	// The description of the formula.
+	Description *string `pulumi:"description"`
+	// The content of the formula.
+	FormulaContent *LabVirtualMachineResponse `pulumi:"formulaContent"`
+	// The identifier of the resource.
+	Id *string `pulumi:"id"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name *string `pulumi:"name"`
+	// The OS type of the formula.
+	OsType *string `pulumi:"osType"`
+	// The provisioning status of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type *string `pulumi:"type"`
+	// Information about a VM from which a formula is to be created.
+	Vm *FormulaPropertiesFromVmResponse `pulumi:"vm"`
 }
 
 func LookupFormulaResourceOutput(ctx *pulumi.Context, args LookupFormulaResourceOutputArgs, opts ...pulumi.InvokeOption) LookupFormulaResourceResultOutput {
@@ -58,8 +73,11 @@ func LookupFormulaResourceOutput(ctx *pulumi.Context, args LookupFormulaResource
 }
 
 type LookupFormulaResourceOutputArgs struct {
-	LabName           pulumi.StringInput `pulumi:"labName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// The name of the formula.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,50 +100,62 @@ func (o LookupFormulaResourceResultOutput) ToLookupFormulaResourceResultOutputWi
 	return o
 }
 
+// The author of the formula.
 func (o LookupFormulaResourceResultOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.Author }).(pulumi.StringPtrOutput)
 }
 
+// The creation date of the formula.
 func (o LookupFormulaResourceResultOutput) CreationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.CreationDate }).(pulumi.StringPtrOutput)
 }
 
+// The description of the formula.
 func (o LookupFormulaResourceResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The content of the formula.
 func (o LookupFormulaResourceResultOutput) FormulaContent() LabVirtualMachineResponsePtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *LabVirtualMachineResponse { return v.FormulaContent }).(LabVirtualMachineResponsePtrOutput)
 }
 
+// The identifier of the resource.
 func (o LookupFormulaResourceResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The location of the resource.
 func (o LookupFormulaResourceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupFormulaResourceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The OS type of the formula.
 func (o LookupFormulaResourceResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupFormulaResourceResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the resource.
 func (o LookupFormulaResourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupFormulaResourceResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Information about a VM from which a formula is to be created.
 func (o LookupFormulaResourceResultOutput) Vm() FormulaPropertiesFromVmResponsePtrOutput {
 	return o.ApplyT(func(v LookupFormulaResourceResult) *FormulaPropertiesFromVmResponse { return v.Vm }).(FormulaPropertiesFromVmResponsePtrOutput)
 }

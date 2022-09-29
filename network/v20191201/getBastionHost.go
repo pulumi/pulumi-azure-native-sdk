@@ -21,21 +21,32 @@ func LookupBastionHost(ctx *pulumi.Context, args *LookupBastionHostArgs, opts ..
 }
 
 type LookupBastionHostArgs struct {
-	BastionHostName   string `pulumi:"bastionHostName"`
+	// The name of the Bastion Host.
+	BastionHostName string `pulumi:"bastionHostName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Bastion Host resource.
 type LookupBastionHostResult struct {
-	DnsName           *string                              `pulumi:"dnsName"`
-	Etag              string                               `pulumi:"etag"`
-	Id                *string                              `pulumi:"id"`
-	IpConfigurations  []BastionHostIPConfigurationResponse `pulumi:"ipConfigurations"`
-	Location          *string                              `pulumi:"location"`
-	Name              string                               `pulumi:"name"`
-	ProvisioningState string                               `pulumi:"provisioningState"`
-	Tags              map[string]string                    `pulumi:"tags"`
-	Type              string                               `pulumi:"type"`
+	// FQDN for the endpoint on which bastion host is accessible.
+	DnsName *string `pulumi:"dnsName"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// IP configuration of the Bastion Host resource.
+	IpConfigurations []BastionHostIPConfigurationResponse `pulumi:"ipConfigurations"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the bastion host resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupBastionHostOutput(ctx *pulumi.Context, args LookupBastionHostOutputArgs, opts ...pulumi.InvokeOption) LookupBastionHostResultOutput {
@@ -52,7 +63,9 @@ func LookupBastionHostOutput(ctx *pulumi.Context, args LookupBastionHostOutputAr
 }
 
 type LookupBastionHostOutputArgs struct {
-	BastionHostName   pulumi.StringInput `pulumi:"bastionHostName"`
+	// The name of the Bastion Host.
+	BastionHostName pulumi.StringInput `pulumi:"bastionHostName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,38 +88,47 @@ func (o LookupBastionHostResultOutput) ToLookupBastionHostResultOutputWithContex
 	return o
 }
 
+// FQDN for the endpoint on which bastion host is accessible.
 func (o LookupBastionHostResultOutput) DnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) *string { return v.DnsName }).(pulumi.StringPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupBastionHostResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupBastionHostResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// IP configuration of the Bastion Host resource.
 func (o LookupBastionHostResultOutput) IpConfigurations() BastionHostIPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) []BastionHostIPConfigurationResponse { return v.IpConfigurations }).(BastionHostIPConfigurationResponseArrayOutput)
 }
 
+// Resource location.
 func (o LookupBastionHostResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupBastionHostResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the bastion host resource.
 func (o LookupBastionHostResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupBastionHostResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupBastionHostResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBastionHostResult) string { return v.Type }).(pulumi.StringOutput)
 }

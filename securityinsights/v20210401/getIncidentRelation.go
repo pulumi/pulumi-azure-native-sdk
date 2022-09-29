@@ -21,23 +21,36 @@ func LookupIncidentRelation(ctx *pulumi.Context, args *LookupIncidentRelationArg
 }
 
 type LookupIncidentRelationArgs struct {
-	IncidentId        string `pulumi:"incidentId"`
-	RelationName      string `pulumi:"relationName"`
+	// Incident ID
+	IncidentId string `pulumi:"incidentId"`
+	// Relation Name
+	RelationName string `pulumi:"relationName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents a relation between two resources
 type LookupIncidentRelationResult struct {
-	Etag                *string            `pulumi:"etag"`
-	Id                  string             `pulumi:"id"`
-	Name                string             `pulumi:"name"`
-	RelatedResourceId   string             `pulumi:"relatedResourceId"`
-	RelatedResourceKind string             `pulumi:"relatedResourceKind"`
-	RelatedResourceName string             `pulumi:"relatedResourceName"`
-	RelatedResourceType string             `pulumi:"relatedResourceType"`
-	SystemData          SystemDataResponse `pulumi:"systemData"`
-	Type                string             `pulumi:"type"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// The resource ID of the related resource
+	RelatedResourceId string `pulumi:"relatedResourceId"`
+	// The resource kind of the related resource
+	RelatedResourceKind string `pulumi:"relatedResourceKind"`
+	// The name of the related resource
+	RelatedResourceName string `pulumi:"relatedResourceName"`
+	// The resource type of the related resource
+	RelatedResourceType string `pulumi:"relatedResourceType"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupIncidentRelationOutput(ctx *pulumi.Context, args LookupIncidentRelationOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentRelationResultOutput {
@@ -54,10 +67,14 @@ func LookupIncidentRelationOutput(ctx *pulumi.Context, args LookupIncidentRelati
 }
 
 type LookupIncidentRelationOutputArgs struct {
-	IncidentId        pulumi.StringInput `pulumi:"incidentId"`
-	RelationName      pulumi.StringInput `pulumi:"relationName"`
+	// Incident ID
+	IncidentId pulumi.StringInput `pulumi:"incidentId"`
+	// Relation Name
+	RelationName pulumi.StringInput `pulumi:"relationName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupIncidentRelationOutputArgs) ElementType() reflect.Type {
@@ -79,38 +96,47 @@ func (o LookupIncidentRelationResultOutput) ToLookupIncidentRelationResultOutput
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupIncidentRelationResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupIncidentRelationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupIncidentRelationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource ID of the related resource
 func (o LookupIncidentRelationResultOutput) RelatedResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.RelatedResourceId }).(pulumi.StringOutput)
 }
 
+// The resource kind of the related resource
 func (o LookupIncidentRelationResultOutput) RelatedResourceKind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.RelatedResourceKind }).(pulumi.StringOutput)
 }
 
+// The name of the related resource
 func (o LookupIncidentRelationResultOutput) RelatedResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.RelatedResourceName }).(pulumi.StringOutput)
 }
 
+// The resource type of the related resource
 func (o LookupIncidentRelationResultOutput) RelatedResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.RelatedResourceType }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupIncidentRelationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Azure resource type
 func (o LookupIncidentRelationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.Type }).(pulumi.StringOutput)
 }

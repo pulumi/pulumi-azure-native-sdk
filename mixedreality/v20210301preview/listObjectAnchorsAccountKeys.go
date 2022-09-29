@@ -21,13 +21,17 @@ func ListObjectAnchorsAccountKeys(ctx *pulumi.Context, args *ListObjectAnchorsAc
 }
 
 type ListObjectAnchorsAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Name of an Mixed Reality Account.
+	AccountName string `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Developer Keys of account
 type ListObjectAnchorsAccountKeysResult struct {
-	PrimaryKey   string `pulumi:"primaryKey"`
+	// value of primary key.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// value of secondary key.
 	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
@@ -45,7 +49,9 @@ func ListObjectAnchorsAccountKeysOutput(ctx *pulumi.Context, args ListObjectAnch
 }
 
 type ListObjectAnchorsAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Name of an Mixed Reality Account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Name of an Azure resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListObjectAnchorsAccountKeysResultOutput) ToListObjectAnchorsAccountKeys
 	return o
 }
 
+// value of primary key.
 func (o ListObjectAnchorsAccountKeysResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListObjectAnchorsAccountKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
+// value of secondary key.
 func (o ListObjectAnchorsAccountKeysResultOutput) SecondaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListObjectAnchorsAccountKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }

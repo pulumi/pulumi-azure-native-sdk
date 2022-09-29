@@ -23,23 +23,36 @@ func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.
 }
 
 type LookupPeeringArgs struct {
-	PeeringName       string `pulumi:"peeringName"`
+	// The name of the peering.
+	PeeringName string `pulumi:"peeringName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
 type LookupPeeringResult struct {
-	Direct            *PeeringPropertiesDirectResponse   `pulumi:"direct"`
-	Exchange          *PeeringPropertiesExchangeResponse `pulumi:"exchange"`
-	Id                string                             `pulumi:"id"`
-	Kind              string                             `pulumi:"kind"`
-	Location          string                             `pulumi:"location"`
-	Name              string                             `pulumi:"name"`
-	PeeringLocation   *string                            `pulumi:"peeringLocation"`
-	ProvisioningState string                             `pulumi:"provisioningState"`
-	Sku               PeeringSkuResponse                 `pulumi:"sku"`
-	Tags              map[string]string                  `pulumi:"tags"`
-	Type              string                             `pulumi:"type"`
+	// The properties that define a direct peering.
+	Direct *PeeringPropertiesDirectResponse `pulumi:"direct"`
+	// The properties that define an exchange peering.
+	Exchange *PeeringPropertiesExchangeResponse `pulumi:"exchange"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// The kind of the peering.
+	Kind string `pulumi:"kind"`
+	// The location of the resource.
+	Location string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The location of the peering.
+	PeeringLocation *string `pulumi:"peeringLocation"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU that defines the tier and kind of the peering.
+	Sku PeeringSkuResponse `pulumi:"sku"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupPeeringOutput(ctx *pulumi.Context, args LookupPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringResultOutput {
@@ -56,7 +69,9 @@ func LookupPeeringOutput(ctx *pulumi.Context, args LookupPeeringOutputArgs, opts
 }
 
 type LookupPeeringOutputArgs struct {
-	PeeringName       pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the peering.
+	PeeringName pulumi.StringInput `pulumi:"peeringName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,46 +94,57 @@ func (o LookupPeeringResultOutput) ToLookupPeeringResultOutputWithContext(ctx co
 	return o
 }
 
+// The properties that define a direct peering.
 func (o LookupPeeringResultOutput) Direct() PeeringPropertiesDirectResponsePtrOutput {
 	return o.ApplyT(func(v LookupPeeringResult) *PeeringPropertiesDirectResponse { return v.Direct }).(PeeringPropertiesDirectResponsePtrOutput)
 }
 
+// The properties that define an exchange peering.
 func (o LookupPeeringResultOutput) Exchange() PeeringPropertiesExchangeResponsePtrOutput {
 	return o.ApplyT(func(v LookupPeeringResult) *PeeringPropertiesExchangeResponse { return v.Exchange }).(PeeringPropertiesExchangeResponsePtrOutput)
 }
 
+// The ID of the resource.
 func (o LookupPeeringResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of the peering.
 func (o LookupPeeringResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The location of the resource.
 func (o LookupPeeringResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupPeeringResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The location of the peering.
 func (o LookupPeeringResultOutput) PeeringLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPeeringResult) *string { return v.PeeringLocation }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupPeeringResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU that defines the tier and kind of the peering.
 func (o LookupPeeringResultOutput) Sku() PeeringSkuResponseOutput {
 	return o.ApplyT(func(v LookupPeeringResult) PeeringSkuResponse { return v.Sku }).(PeeringSkuResponseOutput)
 }
 
+// The resource tags.
 func (o LookupPeeringResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPeeringResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupPeeringResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPeeringResult) string { return v.Type }).(pulumi.StringOutput)
 }

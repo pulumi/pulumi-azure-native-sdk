@@ -22,21 +22,32 @@ func LookupQueryPack(ctx *pulumi.Context, args *LookupQueryPackArgs, opts ...pul
 }
 
 type LookupQueryPackArgs struct {
-	QueryPackName     string `pulumi:"queryPackName"`
+	// The name of the Log Analytics QueryPack resource.
+	QueryPackName string `pulumi:"queryPackName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An Log Analytics QueryPack definition.
 type LookupQueryPackResult struct {
-	Id                string            `pulumi:"id"`
-	Location          string            `pulumi:"location"`
-	Name              string            `pulumi:"name"`
-	ProvisioningState string            `pulumi:"provisioningState"`
-	QueryPackId       string            `pulumi:"queryPackId"`
-	Tags              map[string]string `pulumi:"tags"`
-	TimeCreated       string            `pulumi:"timeCreated"`
-	TimeModified      string            `pulumi:"timeModified"`
-	Type              string            `pulumi:"type"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Current state of this QueryPack: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The unique ID of your application. This field cannot be changed.
+	QueryPackId string `pulumi:"queryPackId"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Creation Date for the Log Analytics QueryPack, in ISO 8601 format.
+	TimeCreated string `pulumi:"timeCreated"`
+	// Last modified date of the Log Analytics QueryPack, in ISO 8601 format.
+	TimeModified string `pulumi:"timeModified"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupQueryPackOutput(ctx *pulumi.Context, args LookupQueryPackOutputArgs, opts ...pulumi.InvokeOption) LookupQueryPackResultOutput {
@@ -53,7 +64,9 @@ func LookupQueryPackOutput(ctx *pulumi.Context, args LookupQueryPackOutputArgs, 
 }
 
 type LookupQueryPackOutputArgs struct {
-	QueryPackName     pulumi.StringInput `pulumi:"queryPackName"`
+	// The name of the Log Analytics QueryPack resource.
+	QueryPackName pulumi.StringInput `pulumi:"queryPackName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,38 +89,47 @@ func (o LookupQueryPackResultOutput) ToLookupQueryPackResultOutputWithContext(ct
 	return o
 }
 
+// Azure resource Id
 func (o LookupQueryPackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupQueryPackResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupQueryPackResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Current state of this QueryPack: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
 func (o LookupQueryPackResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The unique ID of your application. This field cannot be changed.
 func (o LookupQueryPackResultOutput) QueryPackId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.QueryPackId }).(pulumi.StringOutput)
 }
 
+// Resource tags
 func (o LookupQueryPackResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Creation Date for the Log Analytics QueryPack, in ISO 8601 format.
 func (o LookupQueryPackResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
+// Last modified date of the Log Analytics QueryPack, in ISO 8601 format.
 func (o LookupQueryPackResultOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.TimeModified }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupQueryPackResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Type }).(pulumi.StringOutput)
 }

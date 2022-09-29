@@ -23,23 +23,36 @@ func LookupBatchAccount(ctx *pulumi.Context, args *LookupBatchAccountArgs, opts 
 }
 
 type LookupBatchAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of the account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Contains information about an Azure Batch account.
 type LookupBatchAccountResult struct {
-	AccountEndpoint              string                         `pulumi:"accountEndpoint"`
-	ActiveJobAndJobScheduleQuota int                            `pulumi:"activeJobAndJobScheduleQuota"`
-	AutoStorage                  *AutoStoragePropertiesResponse `pulumi:"autoStorage"`
-	CoreQuota                    int                            `pulumi:"coreQuota"`
-	Id                           string                         `pulumi:"id"`
-	Location                     *string                        `pulumi:"location"`
-	Name                         string                         `pulumi:"name"`
-	PoolQuota                    int                            `pulumi:"poolQuota"`
-	ProvisioningState            *string                        `pulumi:"provisioningState"`
-	Tags                         map[string]string              `pulumi:"tags"`
-	Type                         string                         `pulumi:"type"`
+	// The endpoint used by this account to interact with the Batch services.
+	AccountEndpoint string `pulumi:"accountEndpoint"`
+	// The active job and job schedule quota for this Batch account.
+	ActiveJobAndJobScheduleQuota int `pulumi:"activeJobAndJobScheduleQuota"`
+	// The properties and status of any auto storage account associated with the account.
+	AutoStorage *AutoStoragePropertiesResponse `pulumi:"autoStorage"`
+	// The core quota for this Batch account.
+	CoreQuota int `pulumi:"coreQuota"`
+	// The ID of the resource
+	Id string `pulumi:"id"`
+	// The location of the resource
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The pool quota for this Batch account.
+	PoolQuota int `pulumi:"poolQuota"`
+	// The provisioned state of the resource
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The tags of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource
+	Type string `pulumi:"type"`
 }
 
 func LookupBatchAccountOutput(ctx *pulumi.Context, args LookupBatchAccountOutputArgs, opts ...pulumi.InvokeOption) LookupBatchAccountResultOutput {
@@ -56,7 +69,9 @@ func LookupBatchAccountOutput(ctx *pulumi.Context, args LookupBatchAccountOutput
 }
 
 type LookupBatchAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of the account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -79,46 +94,57 @@ func (o LookupBatchAccountResultOutput) ToLookupBatchAccountResultOutputWithCont
 	return o
 }
 
+// The endpoint used by this account to interact with the Batch services.
 func (o LookupBatchAccountResultOutput) AccountEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.AccountEndpoint }).(pulumi.StringOutput)
 }
 
+// The active job and job schedule quota for this Batch account.
 func (o LookupBatchAccountResultOutput) ActiveJobAndJobScheduleQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.ActiveJobAndJobScheduleQuota }).(pulumi.IntOutput)
 }
 
+// The properties and status of any auto storage account associated with the account.
 func (o LookupBatchAccountResultOutput) AutoStorage() AutoStoragePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) *AutoStoragePropertiesResponse { return v.AutoStorage }).(AutoStoragePropertiesResponsePtrOutput)
 }
 
+// The core quota for this Batch account.
 func (o LookupBatchAccountResultOutput) CoreQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.CoreQuota }).(pulumi.IntOutput)
 }
 
+// The ID of the resource
 func (o LookupBatchAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource
 func (o LookupBatchAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupBatchAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The pool quota for this Batch account.
 func (o LookupBatchAccountResultOutput) PoolQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) int { return v.PoolQuota }).(pulumi.IntOutput)
 }
 
+// The provisioned state of the resource
 func (o LookupBatchAccountResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the resource
 func (o LookupBatchAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource
 func (o LookupBatchAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,19 +23,28 @@ func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.Invoke
 }
 
 type LookupZoneArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ZoneName          string `pulumi:"zoneName"`
+	// The name of the zone without a terminating dot.
+	ZoneName string `pulumi:"zoneName"`
 }
 
 // Describes a DNS zone.
 type LookupZoneResult struct {
-	Etag       *string                `pulumi:"etag"`
-	Id         string                 `pulumi:"id"`
-	Location   string                 `pulumi:"location"`
-	Name       string                 `pulumi:"name"`
+	// Gets or sets the ETag of the zone that is being updated, as received from a Get operation.
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets the properties of the zone.
 	Properties ZonePropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string      `pulumi:"tags"`
-	Type       string                 `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
@@ -52,8 +61,10 @@ func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pu
 }
 
 type LookupZoneOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ZoneName          pulumi.StringInput `pulumi:"zoneName"`
+	// The name of the zone without a terminating dot.
+	ZoneName pulumi.StringInput `pulumi:"zoneName"`
 }
 
 func (LookupZoneOutputArgs) ElementType() reflect.Type {
@@ -75,30 +86,37 @@ func (o LookupZoneResultOutput) ToLookupZoneResultOutputWithContext(ctx context.
 	return o
 }
 
+// Gets or sets the ETag of the zone that is being updated, as received from a Get operation.
 func (o LookupZoneResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZoneResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupZoneResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupZoneResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets the properties of the zone.
 func (o LookupZoneResultOutput) Properties() ZonePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupZoneResult) ZonePropertiesResponse { return v.Properties }).(ZonePropertiesResponseOutput)
 }
 
+// Resource tags.
 func (o LookupZoneResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupZoneResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupZoneResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Type }).(pulumi.StringOutput)
 }

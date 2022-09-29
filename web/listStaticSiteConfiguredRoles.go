@@ -22,17 +22,24 @@ func ListStaticSiteConfiguredRoles(ctx *pulumi.Context, args *ListStaticSiteConf
 }
 
 type ListStaticSiteConfiguredRolesArgs struct {
-	Name              string `pulumi:"name"`
+	// Name of the static site.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // String list resource.
 type ListStaticSiteConfiguredRolesResult struct {
-	Id         string   `pulumi:"id"`
-	Kind       *string  `pulumi:"kind"`
-	Name       string   `pulumi:"name"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// List of string resources.
 	Properties []string `pulumi:"properties"`
-	Type       string   `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func ListStaticSiteConfiguredRolesOutput(ctx *pulumi.Context, args ListStaticSiteConfiguredRolesOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteConfiguredRolesResultOutput {
@@ -49,7 +56,9 @@ func ListStaticSiteConfiguredRolesOutput(ctx *pulumi.Context, args ListStaticSit
 }
 
 type ListStaticSiteConfiguredRolesOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Name of the static site.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,22 +81,27 @@ func (o ListStaticSiteConfiguredRolesResultOutput) ToListStaticSiteConfiguredRol
 	return o
 }
 
+// Resource Id.
 func (o ListStaticSiteConfiguredRolesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteConfiguredRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o ListStaticSiteConfiguredRolesResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListStaticSiteConfiguredRolesResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o ListStaticSiteConfiguredRolesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteConfiguredRolesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of string resources.
 func (o ListStaticSiteConfiguredRolesResultOutput) Properties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListStaticSiteConfiguredRolesResult) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
+// Resource type.
 func (o ListStaticSiteConfiguredRolesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListStaticSiteConfiguredRolesResult) string { return v.Type }).(pulumi.StringOutput)
 }

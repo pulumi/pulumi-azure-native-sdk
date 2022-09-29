@@ -21,13 +21,17 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 }
 
 type ListAccountKeysArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The name of Cognitive Services account.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The access keys for the cognitive services account.
 type ListAccountKeysResult struct {
+	// Gets the value of key 1.
 	Key1 *string `pulumi:"key1"`
+	// Gets the value of key 2.
 	Key2 *string `pulumi:"key2"`
 }
 
@@ -45,7 +49,9 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 }
 
 type ListAccountKeysOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The name of Cognitive Services account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ct
 	return o
 }
 
+// Gets the value of key 1.
 func (o ListAccountKeysResultOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
 
+// Gets the value of key 2.
 func (o ListAccountKeysResultOutput) Key2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAccountKeysResult) *string { return v.Key2 }).(pulumi.StringPtrOutput)
 }

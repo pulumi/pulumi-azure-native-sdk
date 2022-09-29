@@ -22,20 +22,30 @@ func GetVirtualNetworkGatewayVpnclientIpsecParameters(ctx *pulumi.Context, args 
 }
 
 type GetVirtualNetworkGatewayVpnclientIpsecParametersArgs struct {
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The virtual network gateway name.
 	VirtualNetworkGatewayName string `pulumi:"virtualNetworkGatewayName"`
 }
 
 // An IPSec parameters for a virtual network gateway P2S connection.
 type GetVirtualNetworkGatewayVpnclientIpsecParametersResult struct {
-	DhGroup             string `pulumi:"dhGroup"`
-	IkeEncryption       string `pulumi:"ikeEncryption"`
-	IkeIntegrity        string `pulumi:"ikeIntegrity"`
-	IpsecEncryption     string `pulumi:"ipsecEncryption"`
-	IpsecIntegrity      string `pulumi:"ipsecIntegrity"`
-	PfsGroup            string `pulumi:"pfsGroup"`
-	SaDataSizeKilobytes int    `pulumi:"saDataSizeKilobytes"`
-	SaLifeTimeSeconds   int    `pulumi:"saLifeTimeSeconds"`
+	// The DH Group used in IKE Phase 1 for initial SA.
+	DhGroup string `pulumi:"dhGroup"`
+	// The IKE encryption algorithm (IKE phase 2).
+	IkeEncryption string `pulumi:"ikeEncryption"`
+	// The IKE integrity algorithm (IKE phase 2).
+	IkeIntegrity string `pulumi:"ikeIntegrity"`
+	// The IPSec encryption algorithm (IKE phase 1).
+	IpsecEncryption string `pulumi:"ipsecEncryption"`
+	// The IPSec integrity algorithm (IKE phase 1).
+	IpsecIntegrity string `pulumi:"ipsecIntegrity"`
+	// The Pfs Group used in IKE Phase 2 for new child SA.
+	PfsGroup string `pulumi:"pfsGroup"`
+	// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
+	SaDataSizeKilobytes int `pulumi:"saDataSizeKilobytes"`
+	// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
+	SaLifeTimeSeconds int `pulumi:"saLifeTimeSeconds"`
 }
 
 func GetVirtualNetworkGatewayVpnclientIpsecParametersOutput(ctx *pulumi.Context, args GetVirtualNetworkGatewayVpnclientIpsecParametersOutputArgs, opts ...pulumi.InvokeOption) GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput {
@@ -52,7 +62,9 @@ func GetVirtualNetworkGatewayVpnclientIpsecParametersOutput(ctx *pulumi.Context,
 }
 
 type GetVirtualNetworkGatewayVpnclientIpsecParametersOutputArgs struct {
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The virtual network gateway name.
 	VirtualNetworkGatewayName pulumi.StringInput `pulumi:"virtualNetworkGatewayName"`
 }
 
@@ -75,34 +87,42 @@ func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) ToGetVirtu
 	return o
 }
 
+// The DH Group used in IKE Phase 1 for initial SA.
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) DhGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) string { return v.DhGroup }).(pulumi.StringOutput)
 }
 
+// The IKE encryption algorithm (IKE phase 2).
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) IkeEncryption() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) string { return v.IkeEncryption }).(pulumi.StringOutput)
 }
 
+// The IKE integrity algorithm (IKE phase 2).
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) IkeIntegrity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) string { return v.IkeIntegrity }).(pulumi.StringOutput)
 }
 
+// The IPSec encryption algorithm (IKE phase 1).
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) IpsecEncryption() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) string { return v.IpsecEncryption }).(pulumi.StringOutput)
 }
 
+// The IPSec integrity algorithm (IKE phase 1).
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) IpsecIntegrity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) string { return v.IpsecIntegrity }).(pulumi.StringOutput)
 }
 
+// The Pfs Group used in IKE Phase 2 for new child SA.
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) PfsGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) string { return v.PfsGroup }).(pulumi.StringOutput)
 }
 
+// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) SaDataSizeKilobytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) int { return v.SaDataSizeKilobytes }).(pulumi.IntOutput)
 }
 
+// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
 func (o GetVirtualNetworkGatewayVpnclientIpsecParametersResultOutput) SaLifeTimeSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayVpnclientIpsecParametersResult) int { return v.SaLifeTimeSeconds }).(pulumi.IntOutput)
 }

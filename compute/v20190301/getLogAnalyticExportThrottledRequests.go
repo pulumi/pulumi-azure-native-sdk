@@ -21,17 +21,25 @@ func GetLogAnalyticExportThrottledRequests(ctx *pulumi.Context, args *GetLogAnal
 }
 
 type GetLogAnalyticExportThrottledRequestsArgs struct {
-	BlobContainerSasUri   string `pulumi:"blobContainerSasUri"`
-	FromTime              string `pulumi:"fromTime"`
-	GroupByOperationName  *bool  `pulumi:"groupByOperationName"`
-	GroupByResourceName   *bool  `pulumi:"groupByResourceName"`
-	GroupByThrottlePolicy *bool  `pulumi:"groupByThrottlePolicy"`
-	Location              string `pulumi:"location"`
-	ToTime                string `pulumi:"toTime"`
+	// SAS Uri of the logging blob container to which LogAnalytics Api writes output logs to.
+	BlobContainerSasUri string `pulumi:"blobContainerSasUri"`
+	// From time of the query
+	FromTime string `pulumi:"fromTime"`
+	// Group query result by Operation Name.
+	GroupByOperationName *bool `pulumi:"groupByOperationName"`
+	// Group query result by Resource Name.
+	GroupByResourceName *bool `pulumi:"groupByResourceName"`
+	// Group query result by Throttle Policy applied.
+	GroupByThrottlePolicy *bool `pulumi:"groupByThrottlePolicy"`
+	// The location upon which virtual-machine-sizes is queried.
+	Location string `pulumi:"location"`
+	// To time of the query
+	ToTime string `pulumi:"toTime"`
 }
 
 // LogAnalytics operation status response
 type GetLogAnalyticExportThrottledRequestsResult struct {
+	// LogAnalyticsOutput
 	Properties LogAnalyticsOutputResponse `pulumi:"properties"`
 }
 
@@ -49,13 +57,20 @@ func GetLogAnalyticExportThrottledRequestsOutput(ctx *pulumi.Context, args GetLo
 }
 
 type GetLogAnalyticExportThrottledRequestsOutputArgs struct {
-	BlobContainerSasUri   pulumi.StringInput  `pulumi:"blobContainerSasUri"`
-	FromTime              pulumi.StringInput  `pulumi:"fromTime"`
-	GroupByOperationName  pulumi.BoolPtrInput `pulumi:"groupByOperationName"`
-	GroupByResourceName   pulumi.BoolPtrInput `pulumi:"groupByResourceName"`
+	// SAS Uri of the logging blob container to which LogAnalytics Api writes output logs to.
+	BlobContainerSasUri pulumi.StringInput `pulumi:"blobContainerSasUri"`
+	// From time of the query
+	FromTime pulumi.StringInput `pulumi:"fromTime"`
+	// Group query result by Operation Name.
+	GroupByOperationName pulumi.BoolPtrInput `pulumi:"groupByOperationName"`
+	// Group query result by Resource Name.
+	GroupByResourceName pulumi.BoolPtrInput `pulumi:"groupByResourceName"`
+	// Group query result by Throttle Policy applied.
 	GroupByThrottlePolicy pulumi.BoolPtrInput `pulumi:"groupByThrottlePolicy"`
-	Location              pulumi.StringInput  `pulumi:"location"`
-	ToTime                pulumi.StringInput  `pulumi:"toTime"`
+	// The location upon which virtual-machine-sizes is queried.
+	Location pulumi.StringInput `pulumi:"location"`
+	// To time of the query
+	ToTime pulumi.StringInput `pulumi:"toTime"`
 }
 
 func (GetLogAnalyticExportThrottledRequestsOutputArgs) ElementType() reflect.Type {
@@ -77,6 +92,7 @@ func (o GetLogAnalyticExportThrottledRequestsResultOutput) ToGetLogAnalyticExpor
 	return o
 }
 
+// LogAnalyticsOutput
 func (o GetLogAnalyticExportThrottledRequestsResultOutput) Properties() LogAnalyticsOutputResponseOutput {
 	return o.ApplyT(func(v GetLogAnalyticExportThrottledRequestsResult) LogAnalyticsOutputResponse { return v.Properties }).(LogAnalyticsOutputResponseOutput)
 }

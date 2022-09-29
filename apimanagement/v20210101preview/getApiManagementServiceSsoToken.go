@@ -21,12 +21,15 @@ func GetApiManagementServiceSsoToken(ctx *pulumi.Context, args *GetApiManagement
 }
 
 type GetApiManagementServiceSsoTokenArgs struct {
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The response of the GetSsoToken operation.
 type GetApiManagementServiceSsoTokenResult struct {
+	// Redirect URL to the Publisher Portal containing the SSO token.
 	RedirectUri *string `pulumi:"redirectUri"`
 }
 
@@ -44,8 +47,10 @@ func GetApiManagementServiceSsoTokenOutput(ctx *pulumi.Context, args GetApiManag
 }
 
 type GetApiManagementServiceSsoTokenOutputArgs struct {
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetApiManagementServiceSsoTokenOutputArgs) ElementType() reflect.Type {
@@ -67,6 +72,7 @@ func (o GetApiManagementServiceSsoTokenResultOutput) ToGetApiManagementServiceSs
 	return o
 }
 
+// Redirect URL to the Publisher Portal containing the SSO token.
 func (o GetApiManagementServiceSsoTokenResultOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApiManagementServiceSsoTokenResult) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
 }

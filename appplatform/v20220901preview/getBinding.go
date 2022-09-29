@@ -21,19 +21,28 @@ func LookupBinding(ctx *pulumi.Context, args *LookupBindingArgs, opts ...pulumi.
 }
 
 type LookupBindingArgs struct {
-	AppName           string `pulumi:"appName"`
-	BindingName       string `pulumi:"bindingName"`
+	// The name of the App resource.
+	AppName string `pulumi:"appName"`
+	// The name of the Binding resource.
+	BindingName string `pulumi:"bindingName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Binding resource payload
 type LookupBindingResult struct {
-	Id         string                            `pulumi:"id"`
-	Name       string                            `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Properties of the Binding resource
 	Properties BindingResourcePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                `pulumi:"systemData"`
-	Type       string                            `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupBindingOutput(ctx *pulumi.Context, args LookupBindingOutputArgs, opts ...pulumi.InvokeOption) LookupBindingResultOutput {
@@ -50,10 +59,14 @@ func LookupBindingOutput(ctx *pulumi.Context, args LookupBindingOutputArgs, opts
 }
 
 type LookupBindingOutputArgs struct {
-	AppName           pulumi.StringInput `pulumi:"appName"`
-	BindingName       pulumi.StringInput `pulumi:"bindingName"`
+	// The name of the App resource.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The name of the Binding resource.
+	BindingName pulumi.StringInput `pulumi:"bindingName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupBindingOutputArgs) ElementType() reflect.Type {
@@ -75,22 +88,27 @@ func (o LookupBindingResultOutput) ToLookupBindingResultOutputWithContext(ctx co
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupBindingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBindingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupBindingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBindingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the Binding resource
 func (o LookupBindingResultOutput) Properties() BindingResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupBindingResult) BindingResourcePropertiesResponse { return v.Properties }).(BindingResourcePropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupBindingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBindingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupBindingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBindingResult) string { return v.Type }).(pulumi.StringOutput)
 }

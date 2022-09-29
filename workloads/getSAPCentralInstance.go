@@ -22,32 +22,54 @@ func LookupSAPCentralInstance(ctx *pulumi.Context, args *LookupSAPCentralInstanc
 }
 
 type LookupSAPCentralInstanceArgs struct {
-	CentralInstanceName    string `pulumi:"centralInstanceName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+	CentralInstanceName string `pulumi:"centralInstanceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Virtual Instances for SAP solutions resource
 	SapVirtualInstanceName string `pulumi:"sapVirtualInstanceName"`
 }
 
 // Define the SAP Central Services Instance resource.
 type LookupSAPCentralInstanceResult struct {
+	// Defines the SAP Enqueue Replication Server (ERS) properties.
 	EnqueueReplicationServerProperties *EnqueueReplicationServerPropertiesResponse `pulumi:"enqueueReplicationServerProperties"`
-	EnqueueServerProperties            *EnqueueServerPropertiesResponse            `pulumi:"enqueueServerProperties"`
-	Errors                             SAPVirtualInstanceErrorResponse             `pulumi:"errors"`
-	GatewayServerProperties            *GatewayServerPropertiesResponse            `pulumi:"gatewayServerProperties"`
-	Health                             string                                      `pulumi:"health"`
-	Id                                 string                                      `pulumi:"id"`
-	InstanceNo                         string                                      `pulumi:"instanceNo"`
-	KernelPatch                        string                                      `pulumi:"kernelPatch"`
-	KernelVersion                      string                                      `pulumi:"kernelVersion"`
-	Location                           string                                      `pulumi:"location"`
-	MessageServerProperties            *MessageServerPropertiesResponse            `pulumi:"messageServerProperties"`
-	Name                               string                                      `pulumi:"name"`
-	ProvisioningState                  string                                      `pulumi:"provisioningState"`
-	Status                             string                                      `pulumi:"status"`
-	Subnet                             string                                      `pulumi:"subnet"`
-	SystemData                         SystemDataResponse                          `pulumi:"systemData"`
-	Tags                               map[string]string                           `pulumi:"tags"`
-	Type                               string                                      `pulumi:"type"`
-	VmDetails                          []CentralServerVmDetailsResponse            `pulumi:"vmDetails"`
+	// Defines the SAP Enqueue Server properties.
+	EnqueueServerProperties *EnqueueServerPropertiesResponse `pulumi:"enqueueServerProperties"`
+	// Defines the errors related to SAP Central Services Instance resource.
+	Errors SAPVirtualInstanceErrorResponse `pulumi:"errors"`
+	// Defines the SAP Gateway Server properties.
+	GatewayServerProperties *GatewayServerPropertiesResponse `pulumi:"gatewayServerProperties"`
+	// Defines the health of SAP Instances.
+	Health string `pulumi:"health"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The central services instance number.
+	InstanceNo string `pulumi:"instanceNo"`
+	// The central services instance Kernel Patch level.
+	KernelPatch string `pulumi:"kernelPatch"`
+	// The central services instance Kernel Version.
+	KernelVersion string `pulumi:"kernelVersion"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// Defines the SAP Message Server properties.
+	MessageServerProperties *MessageServerPropertiesResponse `pulumi:"messageServerProperties"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Defines the provisioning states.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Defines the SAP Instance status.
+	Status string `pulumi:"status"`
+	// The central services instance subnet.
+	Subnet string `pulumi:"subnet"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The list of virtual machines corresponding to the Central Services instance.
+	VmDetails []CentralServerVmDetailsResponse `pulumi:"vmDetails"`
 }
 
 func LookupSAPCentralInstanceOutput(ctx *pulumi.Context, args LookupSAPCentralInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSAPCentralInstanceResultOutput {
@@ -64,8 +86,11 @@ func LookupSAPCentralInstanceOutput(ctx *pulumi.Context, args LookupSAPCentralIn
 }
 
 type LookupSAPCentralInstanceOutputArgs struct {
-	CentralInstanceName    pulumi.StringInput `pulumi:"centralInstanceName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+	CentralInstanceName pulumi.StringInput `pulumi:"centralInstanceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Virtual Instances for SAP solutions resource
 	SapVirtualInstanceName pulumi.StringInput `pulumi:"sapVirtualInstanceName"`
 }
 
@@ -88,86 +113,105 @@ func (o LookupSAPCentralInstanceResultOutput) ToLookupSAPCentralInstanceResultOu
 	return o
 }
 
+// Defines the SAP Enqueue Replication Server (ERS) properties.
 func (o LookupSAPCentralInstanceResultOutput) EnqueueReplicationServerProperties() EnqueueReplicationServerPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) *EnqueueReplicationServerPropertiesResponse {
 		return v.EnqueueReplicationServerProperties
 	}).(EnqueueReplicationServerPropertiesResponsePtrOutput)
 }
 
+// Defines the SAP Enqueue Server properties.
 func (o LookupSAPCentralInstanceResultOutput) EnqueueServerProperties() EnqueueServerPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) *EnqueueServerPropertiesResponse {
 		return v.EnqueueServerProperties
 	}).(EnqueueServerPropertiesResponsePtrOutput)
 }
 
+// Defines the errors related to SAP Central Services Instance resource.
 func (o LookupSAPCentralInstanceResultOutput) Errors() SAPVirtualInstanceErrorResponseOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) SAPVirtualInstanceErrorResponse { return v.Errors }).(SAPVirtualInstanceErrorResponseOutput)
 }
 
+// Defines the SAP Gateway Server properties.
 func (o LookupSAPCentralInstanceResultOutput) GatewayServerProperties() GatewayServerPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) *GatewayServerPropertiesResponse {
 		return v.GatewayServerProperties
 	}).(GatewayServerPropertiesResponsePtrOutput)
 }
 
+// Defines the health of SAP Instances.
 func (o LookupSAPCentralInstanceResultOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Health }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSAPCentralInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The central services instance number.
 func (o LookupSAPCentralInstanceResultOutput) InstanceNo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.InstanceNo }).(pulumi.StringOutput)
 }
 
+// The central services instance Kernel Patch level.
 func (o LookupSAPCentralInstanceResultOutput) KernelPatch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.KernelPatch }).(pulumi.StringOutput)
 }
 
+// The central services instance Kernel Version.
 func (o LookupSAPCentralInstanceResultOutput) KernelVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.KernelVersion }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSAPCentralInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Defines the SAP Message Server properties.
 func (o LookupSAPCentralInstanceResultOutput) MessageServerProperties() MessageServerPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) *MessageServerPropertiesResponse {
 		return v.MessageServerProperties
 	}).(MessageServerPropertiesResponsePtrOutput)
 }
 
+// The name of the resource
 func (o LookupSAPCentralInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the provisioning states.
 func (o LookupSAPCentralInstanceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Defines the SAP Instance status.
 func (o LookupSAPCentralInstanceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The central services instance subnet.
 func (o LookupSAPCentralInstanceResultOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Subnet }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSAPCentralInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSAPCentralInstanceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSAPCentralInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The list of virtual machines corresponding to the Central Services instance.
 func (o LookupSAPCentralInstanceResultOutput) VmDetails() CentralServerVmDetailsResponseArrayOutput {
 	return o.ApplyT(func(v LookupSAPCentralInstanceResult) []CentralServerVmDetailsResponse { return v.VmDetails }).(CentralServerVmDetailsResponseArrayOutput)
 }

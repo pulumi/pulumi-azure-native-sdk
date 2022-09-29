@@ -23,21 +23,32 @@ func LookupNotificationHubAuthorizationRule(ctx *pulumi.Context, args *LookupNot
 }
 
 type LookupNotificationHubAuthorizationRuleArgs struct {
+	// authorization rule name.
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	NamespaceName         string `pulumi:"namespaceName"`
-	NotificationHubName   string `pulumi:"notificationHubName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// The notification hub name.
+	NotificationHubName string `pulumi:"notificationHubName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a Namespace AuthorizationRules.
 type LookupNotificationHubAuthorizationRuleResult struct {
-	Id       string            `pulumi:"id"`
-	Location string            `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Rights   []string          `pulumi:"rights"`
-	Sku      *SkuResponse      `pulumi:"sku"`
-	Tags     map[string]string `pulumi:"tags"`
-	Type     string            `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// The sku of the created namespace
+	Sku *SkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupNotificationHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupNotificationHubAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubAuthorizationRuleResultOutput {
@@ -54,10 +65,14 @@ func LookupNotificationHubAuthorizationRuleOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupNotificationHubAuthorizationRuleOutputArgs struct {
+	// authorization rule name.
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	NamespaceName         pulumi.StringInput `pulumi:"namespaceName"`
-	NotificationHubName   pulumi.StringInput `pulumi:"notificationHubName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The notification hub name.
+	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupNotificationHubAuthorizationRuleOutputArgs) ElementType() reflect.Type {
@@ -79,30 +94,37 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) ToLookupNotification
 	return o
 }
 
+// Resource Id
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rights associated with the rule.
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
+// The sku of the created namespace
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

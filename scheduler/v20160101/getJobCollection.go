@@ -21,17 +21,25 @@ func LookupJobCollection(ctx *pulumi.Context, args *LookupJobCollectionArgs, opt
 }
 
 type LookupJobCollectionArgs struct {
+	// The job collection name.
 	JobCollectionName string `pulumi:"jobCollectionName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type LookupJobCollectionResult struct {
-	Id         string                          `pulumi:"id"`
-	Location   *string                         `pulumi:"location"`
-	Name       *string                         `pulumi:"name"`
+	// Gets the job collection resource identifier.
+	Id string `pulumi:"id"`
+	// Gets or sets the storage account location.
+	Location *string `pulumi:"location"`
+	// Gets or sets the job collection resource name.
+	Name *string `pulumi:"name"`
+	// Gets or sets the job collection properties.
 	Properties JobCollectionPropertiesResponse `pulumi:"properties"`
-	Tags       map[string]string               `pulumi:"tags"`
-	Type       string                          `pulumi:"type"`
+	// Gets or sets the tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the job collection resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupJobCollectionOutput(ctx *pulumi.Context, args LookupJobCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupJobCollectionResultOutput {
@@ -48,7 +56,9 @@ func LookupJobCollectionOutput(ctx *pulumi.Context, args LookupJobCollectionOutp
 }
 
 type LookupJobCollectionOutputArgs struct {
+	// The job collection name.
 	JobCollectionName pulumi.StringInput `pulumi:"jobCollectionName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -70,26 +80,32 @@ func (o LookupJobCollectionResultOutput) ToLookupJobCollectionResultOutputWithCo
 	return o
 }
 
+// Gets the job collection resource identifier.
 func (o LookupJobCollectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobCollectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets the storage account location.
 func (o LookupJobCollectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobCollectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the job collection resource name.
 func (o LookupJobCollectionResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobCollectionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the job collection properties.
 func (o LookupJobCollectionResultOutput) Properties() JobCollectionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupJobCollectionResult) JobCollectionPropertiesResponse { return v.Properties }).(JobCollectionPropertiesResponseOutput)
 }
 
+// Gets or sets the tags.
 func (o LookupJobCollectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupJobCollectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the job collection resource type.
 func (o LookupJobCollectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobCollectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

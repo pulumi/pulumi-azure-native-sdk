@@ -21,16 +21,23 @@ func GetFactoryGitHubAccessToken(ctx *pulumi.Context, args *GetFactoryGitHubAcce
 }
 
 type GetFactoryGitHubAccessTokenArgs struct {
-	FactoryName              string              `pulumi:"factoryName"`
-	GitHubAccessCode         string              `pulumi:"gitHubAccessCode"`
-	GitHubAccessTokenBaseUrl string              `pulumi:"gitHubAccessTokenBaseUrl"`
-	GitHubClientId           *string             `pulumi:"gitHubClientId"`
-	GitHubClientSecret       *GitHubClientSecret `pulumi:"gitHubClientSecret"`
-	ResourceGroupName        string              `pulumi:"resourceGroupName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// GitHub access code.
+	GitHubAccessCode string `pulumi:"gitHubAccessCode"`
+	// GitHub access token base URL.
+	GitHubAccessTokenBaseUrl string `pulumi:"gitHubAccessTokenBaseUrl"`
+	// GitHub application client ID.
+	GitHubClientId *string `pulumi:"gitHubClientId"`
+	// GitHub bring your own app client secret information.
+	GitHubClientSecret *GitHubClientSecret `pulumi:"gitHubClientSecret"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Get GitHub access token response definition.
 type GetFactoryGitHubAccessTokenResult struct {
+	// GitHub access token.
 	GitHubAccessToken *string `pulumi:"gitHubAccessToken"`
 }
 
@@ -48,12 +55,18 @@ func GetFactoryGitHubAccessTokenOutput(ctx *pulumi.Context, args GetFactoryGitHu
 }
 
 type GetFactoryGitHubAccessTokenOutputArgs struct {
-	FactoryName              pulumi.StringInput         `pulumi:"factoryName"`
-	GitHubAccessCode         pulumi.StringInput         `pulumi:"gitHubAccessCode"`
-	GitHubAccessTokenBaseUrl pulumi.StringInput         `pulumi:"gitHubAccessTokenBaseUrl"`
-	GitHubClientId           pulumi.StringPtrInput      `pulumi:"gitHubClientId"`
-	GitHubClientSecret       GitHubClientSecretPtrInput `pulumi:"gitHubClientSecret"`
-	ResourceGroupName        pulumi.StringInput         `pulumi:"resourceGroupName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// GitHub access code.
+	GitHubAccessCode pulumi.StringInput `pulumi:"gitHubAccessCode"`
+	// GitHub access token base URL.
+	GitHubAccessTokenBaseUrl pulumi.StringInput `pulumi:"gitHubAccessTokenBaseUrl"`
+	// GitHub application client ID.
+	GitHubClientId pulumi.StringPtrInput `pulumi:"gitHubClientId"`
+	// GitHub bring your own app client secret information.
+	GitHubClientSecret GitHubClientSecretPtrInput `pulumi:"gitHubClientSecret"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetFactoryGitHubAccessTokenOutputArgs) ElementType() reflect.Type {
@@ -75,6 +88,7 @@ func (o GetFactoryGitHubAccessTokenResultOutput) ToGetFactoryGitHubAccessTokenRe
 	return o
 }
 
+// GitHub access token.
 func (o GetFactoryGitHubAccessTokenResultOutput) GitHubAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFactoryGitHubAccessTokenResult) *string { return v.GitHubAccessToken }).(pulumi.StringPtrOutput)
 }

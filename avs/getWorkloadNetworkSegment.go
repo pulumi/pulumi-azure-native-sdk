@@ -22,23 +22,36 @@ func LookupWorkloadNetworkSegment(ctx *pulumi.Context, args *LookupWorkloadNetwo
 }
 
 type LookupWorkloadNetworkSegmentArgs struct {
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SegmentId         string `pulumi:"segmentId"`
+	// NSX Segment identifier. Generally the same as the Segment's display name
+	SegmentId string `pulumi:"segmentId"`
 }
 
 // NSX Segment
 type LookupWorkloadNetworkSegmentResult struct {
-	ConnectedGateway  *string                                 `pulumi:"connectedGateway"`
-	DisplayName       *string                                 `pulumi:"displayName"`
-	Id                string                                  `pulumi:"id"`
-	Name              string                                  `pulumi:"name"`
-	PortVif           []WorkloadNetworkSegmentPortVifResponse `pulumi:"portVif"`
-	ProvisioningState string                                  `pulumi:"provisioningState"`
-	Revision          *float64                                `pulumi:"revision"`
-	Status            string                                  `pulumi:"status"`
-	Subnet            *WorkloadNetworkSegmentSubnetResponse   `pulumi:"subnet"`
-	Type              string                                  `pulumi:"type"`
+	// Gateway which to connect segment to.
+	ConnectedGateway *string `pulumi:"connectedGateway"`
+	// Display name of the segment.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Port Vif which segment is associated with.
+	PortVif []WorkloadNetworkSegmentPortVifResponse `pulumi:"portVif"`
+	// The provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// NSX revision number.
+	Revision *float64 `pulumi:"revision"`
+	// Segment status.
+	Status string `pulumi:"status"`
+	// Subnet which to connect segment to.
+	Subnet *WorkloadNetworkSegmentSubnetResponse `pulumi:"subnet"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadNetworkSegmentOutput(ctx *pulumi.Context, args LookupWorkloadNetworkSegmentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkSegmentResultOutput {
@@ -55,9 +68,12 @@ func LookupWorkloadNetworkSegmentOutput(ctx *pulumi.Context, args LookupWorkload
 }
 
 type LookupWorkloadNetworkSegmentOutputArgs struct {
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SegmentId         pulumi.StringInput `pulumi:"segmentId"`
+	// NSX Segment identifier. Generally the same as the Segment's display name
+	SegmentId pulumi.StringInput `pulumi:"segmentId"`
 }
 
 func (LookupWorkloadNetworkSegmentOutputArgs) ElementType() reflect.Type {
@@ -79,42 +95,52 @@ func (o LookupWorkloadNetworkSegmentResultOutput) ToLookupWorkloadNetworkSegment
 	return o
 }
 
+// Gateway which to connect segment to.
 func (o LookupWorkloadNetworkSegmentResultOutput) ConnectedGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) *string { return v.ConnectedGateway }).(pulumi.StringPtrOutput)
 }
 
+// Display name of the segment.
 func (o LookupWorkloadNetworkSegmentResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupWorkloadNetworkSegmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupWorkloadNetworkSegmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Port Vif which segment is associated with.
 func (o LookupWorkloadNetworkSegmentResultOutput) PortVif() WorkloadNetworkSegmentPortVifResponseArrayOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) []WorkloadNetworkSegmentPortVifResponse { return v.PortVif }).(WorkloadNetworkSegmentPortVifResponseArrayOutput)
 }
 
+// The provisioning state
 func (o LookupWorkloadNetworkSegmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// NSX revision number.
 func (o LookupWorkloadNetworkSegmentResultOutput) Revision() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
 }
 
+// Segment status.
 func (o LookupWorkloadNetworkSegmentResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Subnet which to connect segment to.
 func (o LookupWorkloadNetworkSegmentResultOutput) Subnet() WorkloadNetworkSegmentSubnetResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) *WorkloadNetworkSegmentSubnetResponse { return v.Subnet }).(WorkloadNetworkSegmentSubnetResponsePtrOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadNetworkSegmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,11 +21,13 @@ func GetBillingHubServiceUsage(ctx *pulumi.Context, args *GetBillingHubServiceUs
 }
 
 type GetBillingHubServiceUsageArgs struct {
-	EndTimeStamp        string `pulumi:"endTimeStamp"`
-	PageIndex           *int   `pulumi:"pageIndex"`
-	PageSize            *int   `pulumi:"pageSize"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
-	StartTimeStamp      string `pulumi:"startTimeStamp"`
+	EndTimeStamp string `pulumi:"endTimeStamp"`
+	PageIndex    *int   `pulumi:"pageIndex"`
+	PageSize     *int   `pulumi:"pageSize"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	StartTimeStamp    string `pulumi:"startTimeStamp"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
 
@@ -51,11 +53,13 @@ func GetBillingHubServiceUsageOutput(ctx *pulumi.Context, args GetBillingHubServ
 }
 
 type GetBillingHubServiceUsageOutputArgs struct {
-	EndTimeStamp        pulumi.StringInput `pulumi:"endTimeStamp"`
-	PageIndex           pulumi.IntPtrInput `pulumi:"pageIndex"`
-	PageSize            pulumi.IntPtrInput `pulumi:"pageSize"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
-	StartTimeStamp      pulumi.StringInput `pulumi:"startTimeStamp"`
+	EndTimeStamp pulumi.StringInput `pulumi:"endTimeStamp"`
+	PageIndex    pulumi.IntPtrInput `pulumi:"pageIndex"`
+	PageSize     pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	StartTimeStamp    pulumi.StringInput `pulumi:"startTimeStamp"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }
 

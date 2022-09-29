@@ -22,27 +22,44 @@ func LookupSAPDatabaseInstance(ctx *pulumi.Context, args *LookupSAPDatabaseInsta
 }
 
 type LookupSAPDatabaseInstanceArgs struct {
-	DatabaseInstanceName   string `pulumi:"databaseInstanceName"`
-	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	// Database resource name string modeled as parameter for auto generation to work correctly.
+	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Virtual Instances for SAP solutions resource
 	SapVirtualInstanceName string `pulumi:"sapVirtualInstanceName"`
 }
 
 // Define the Database resource.
 type LookupSAPDatabaseInstanceResult struct {
-	DatabaseSid       string                          `pulumi:"databaseSid"`
-	DatabaseType      string                          `pulumi:"databaseType"`
-	Errors            SAPVirtualInstanceErrorResponse `pulumi:"errors"`
-	Id                string                          `pulumi:"id"`
-	IpAddress         string                          `pulumi:"ipAddress"`
-	Location          string                          `pulumi:"location"`
-	Name              string                          `pulumi:"name"`
-	ProvisioningState string                          `pulumi:"provisioningState"`
-	Status            string                          `pulumi:"status"`
-	Subnet            string                          `pulumi:"subnet"`
-	SystemData        SystemDataResponse              `pulumi:"systemData"`
-	Tags              map[string]string               `pulumi:"tags"`
-	Type              string                          `pulumi:"type"`
-	VmDetails         []DatabaseVmDetailsResponse     `pulumi:"vmDetails"`
+	// Database SID name.
+	DatabaseSid string `pulumi:"databaseSid"`
+	// Database type, that is if the DB is HANA, DB2, Oracle, SAP ASE, Max DB or MS SQL Server.
+	DatabaseType string `pulumi:"databaseType"`
+	// Defines the errors related to Database resource.
+	Errors SAPVirtualInstanceErrorResponse `pulumi:"errors"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Database IP Address.
+	IpAddress string `pulumi:"ipAddress"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Defines the provisioning states.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Defines the SAP Instance status.
+	Status string `pulumi:"status"`
+	// Database subnet.
+	Subnet string `pulumi:"subnet"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The list of virtual machines corresponding to the Database resource.
+	VmDetails []DatabaseVmDetailsResponse `pulumi:"vmDetails"`
 }
 
 func LookupSAPDatabaseInstanceOutput(ctx *pulumi.Context, args LookupSAPDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSAPDatabaseInstanceResultOutput {
@@ -59,8 +76,11 @@ func LookupSAPDatabaseInstanceOutput(ctx *pulumi.Context, args LookupSAPDatabase
 }
 
 type LookupSAPDatabaseInstanceOutputArgs struct {
-	DatabaseInstanceName   pulumi.StringInput `pulumi:"databaseInstanceName"`
-	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Database resource name string modeled as parameter for auto generation to work correctly.
+	DatabaseInstanceName pulumi.StringInput `pulumi:"databaseInstanceName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Virtual Instances for SAP solutions resource
 	SapVirtualInstanceName pulumi.StringInput `pulumi:"sapVirtualInstanceName"`
 }
 
@@ -83,58 +103,72 @@ func (o LookupSAPDatabaseInstanceResultOutput) ToLookupSAPDatabaseInstanceResult
 	return o
 }
 
+// Database SID name.
 func (o LookupSAPDatabaseInstanceResultOutput) DatabaseSid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.DatabaseSid }).(pulumi.StringOutput)
 }
 
+// Database type, that is if the DB is HANA, DB2, Oracle, SAP ASE, Max DB or MS SQL Server.
 func (o LookupSAPDatabaseInstanceResultOutput) DatabaseType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.DatabaseType }).(pulumi.StringOutput)
 }
 
+// Defines the errors related to Database resource.
 func (o LookupSAPDatabaseInstanceResultOutput) Errors() SAPVirtualInstanceErrorResponseOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) SAPVirtualInstanceErrorResponse { return v.Errors }).(SAPVirtualInstanceErrorResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSAPDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Database IP Address.
 func (o LookupSAPDatabaseInstanceResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupSAPDatabaseInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupSAPDatabaseInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the provisioning states.
 func (o LookupSAPDatabaseInstanceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Defines the SAP Instance status.
 func (o LookupSAPDatabaseInstanceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Database subnet.
 func (o LookupSAPDatabaseInstanceResultOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.Subnet }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSAPDatabaseInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupSAPDatabaseInstanceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSAPDatabaseInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The list of virtual machines corresponding to the Database resource.
 func (o LookupSAPDatabaseInstanceResultOutput) VmDetails() DatabaseVmDetailsResponseArrayOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) []DatabaseVmDetailsResponse { return v.VmDetails }).(DatabaseVmDetailsResponseArrayOutput)
 }

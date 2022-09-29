@@ -21,8 +21,10 @@ func ListIotDpsResourceKeys(ctx *pulumi.Context, args *ListIotDpsResourceKeysArg
 }
 
 type ListIotDpsResourceKeysArgs struct {
+	// The provisioning service name to get the shared access keys for.
 	ProvisioningServiceName string `pulumi:"provisioningServiceName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // List of shared access keys.
@@ -45,8 +47,10 @@ func ListIotDpsResourceKeysOutput(ctx *pulumi.Context, args ListIotDpsResourceKe
 }
 
 type ListIotDpsResourceKeysOutputArgs struct {
+	// The provisioning service name to get the shared access keys for.
 	ProvisioningServiceName pulumi.StringInput `pulumi:"provisioningServiceName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListIotDpsResourceKeysOutputArgs) ElementType() reflect.Type {

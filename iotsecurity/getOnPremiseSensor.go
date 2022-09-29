@@ -22,15 +22,20 @@ func LookupOnPremiseSensor(ctx *pulumi.Context, args *LookupOnPremiseSensorArgs,
 }
 
 type LookupOnPremiseSensorArgs struct {
+	// Name of the on-premise IoT sensor
 	OnPremiseSensorName string `pulumi:"onPremiseSensorName"`
 }
 
 // On-premise IoT sensor
 type LookupOnPremiseSensorResult struct {
-	Id         string             `pulumi:"id"`
-	Name       string             `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupOnPremiseSensorOutput(ctx *pulumi.Context, args LookupOnPremiseSensorOutputArgs, opts ...pulumi.InvokeOption) LookupOnPremiseSensorResultOutput {
@@ -47,6 +52,7 @@ func LookupOnPremiseSensorOutput(ctx *pulumi.Context, args LookupOnPremiseSensor
 }
 
 type LookupOnPremiseSensorOutputArgs struct {
+	// Name of the on-premise IoT sensor
 	OnPremiseSensorName pulumi.StringInput `pulumi:"onPremiseSensorName"`
 }
 
@@ -69,18 +75,22 @@ func (o LookupOnPremiseSensorResultOutput) ToLookupOnPremiseSensorResultOutputWi
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupOnPremiseSensorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnPremiseSensorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupOnPremiseSensorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnPremiseSensorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupOnPremiseSensorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOnPremiseSensorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupOnPremiseSensorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnPremiseSensorResult) string { return v.Type }).(pulumi.StringOutput)
 }

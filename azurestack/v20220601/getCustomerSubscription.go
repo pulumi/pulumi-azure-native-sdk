@@ -21,18 +21,26 @@ func LookupCustomerSubscription(ctx *pulumi.Context, args *LookupCustomerSubscri
 }
 
 type LookupCustomerSubscriptionArgs struct {
+	// Name of the product.
 	CustomerSubscriptionName string `pulumi:"customerSubscriptionName"`
-	RegistrationName         string `pulumi:"registrationName"`
-	ResourceGroup            string `pulumi:"resourceGroup"`
+	// Name of the Azure Stack registration.
+	RegistrationName string `pulumi:"registrationName"`
+	// Name of the resource group.
+	ResourceGroup string `pulumi:"resourceGroup"`
 }
 
 // Customer subscription.
 type LookupCustomerSubscriptionResult struct {
-	Etag     *string `pulumi:"etag"`
-	Id       string  `pulumi:"id"`
-	Name     string  `pulumi:"name"`
+	// The entity tag used for optimistic concurrency when modifying the resource.
+	Etag *string `pulumi:"etag"`
+	// ID of the resource.
+	Id string `pulumi:"id"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// Tenant Id.
 	TenantId *string `pulumi:"tenantId"`
-	Type     string  `pulumi:"type"`
+	// Type of Resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupCustomerSubscriptionOutput(ctx *pulumi.Context, args LookupCustomerSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupCustomerSubscriptionResultOutput {
@@ -49,9 +57,12 @@ func LookupCustomerSubscriptionOutput(ctx *pulumi.Context, args LookupCustomerSu
 }
 
 type LookupCustomerSubscriptionOutputArgs struct {
+	// Name of the product.
 	CustomerSubscriptionName pulumi.StringInput `pulumi:"customerSubscriptionName"`
-	RegistrationName         pulumi.StringInput `pulumi:"registrationName"`
-	ResourceGroup            pulumi.StringInput `pulumi:"resourceGroup"`
+	// Name of the Azure Stack registration.
+	RegistrationName pulumi.StringInput `pulumi:"registrationName"`
+	// Name of the resource group.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
 }
 
 func (LookupCustomerSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupCustomerSubscriptionResultOutput) ToLookupCustomerSubscriptionResu
 	return o
 }
 
+// The entity tag used for optimistic concurrency when modifying the resource.
 func (o LookupCustomerSubscriptionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomerSubscriptionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// ID of the resource.
 func (o LookupCustomerSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the resource.
 func (o LookupCustomerSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Tenant Id.
 func (o LookupCustomerSubscriptionResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomerSubscriptionResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
+// Type of Resource.
 func (o LookupCustomerSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

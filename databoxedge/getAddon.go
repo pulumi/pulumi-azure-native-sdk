@@ -24,19 +24,28 @@ func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.Invo
 }
 
 type LookupAddonArgs struct {
-	AddonName         string `pulumi:"addonName"`
-	DeviceName        string `pulumi:"deviceName"`
+	// The addon name.
+	AddonName string `pulumi:"addonName"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RoleName          string `pulumi:"roleName"`
+	// The role name.
+	RoleName string `pulumi:"roleName"`
 }
 
 // Role Addon
 type LookupAddonResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// Addon type.
+	Kind string `pulumi:"kind"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// Addon type
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...pulumi.InvokeOption) LookupAddonResultOutput {
@@ -53,10 +62,14 @@ func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...
 }
 
 type LookupAddonOutputArgs struct {
-	AddonName         pulumi.StringInput `pulumi:"addonName"`
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The addon name.
+	AddonName pulumi.StringInput `pulumi:"addonName"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RoleName          pulumi.StringInput `pulumi:"roleName"`
+	// The role name.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
 }
 
 func (LookupAddonOutputArgs) ElementType() reflect.Type {
@@ -78,22 +91,27 @@ func (o LookupAddonResultOutput) ToLookupAddonResultOutputWithContext(ctx contex
 	return o
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupAddonResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Addon type.
 func (o LookupAddonResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupAddonResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Addon type
 func (o LookupAddonResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAddonResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupAddonResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Type }).(pulumi.StringOutput)
 }

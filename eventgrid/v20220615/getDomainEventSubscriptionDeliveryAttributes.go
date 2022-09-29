@@ -21,13 +21,17 @@ func GetDomainEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *Get
 }
 
 type GetDomainEventSubscriptionDeliveryAttributesArgs struct {
-	DomainName            string `pulumi:"domainName"`
+	// Name of the domain topic.
+	DomainName string `pulumi:"domainName"`
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Result of the Get delivery attributes operation.
 type GetDomainEventSubscriptionDeliveryAttributesResult struct {
+	// A collection of DeliveryAttributeMapping
 	Value []interface{} `pulumi:"value"`
 }
 
@@ -45,9 +49,12 @@ func GetDomainEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, arg
 }
 
 type GetDomainEventSubscriptionDeliveryAttributesOutputArgs struct {
-	DomainName            pulumi.StringInput `pulumi:"domainName"`
+	// Name of the domain topic.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetDomainEventSubscriptionDeliveryAttributesOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o GetDomainEventSubscriptionDeliveryAttributesResultOutput) ToGetDomainEve
 	return o
 }
 
+// A collection of DeliveryAttributeMapping
 func (o GetDomainEventSubscriptionDeliveryAttributesResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetDomainEventSubscriptionDeliveryAttributesResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

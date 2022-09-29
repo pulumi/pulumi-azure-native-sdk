@@ -22,18 +22,25 @@ func LookupTagRule(ctx *pulumi.Context, args *LookupTagRuleArgs, opts ...pulumi.
 }
 
 type LookupTagRuleArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	RuleSetName       string `pulumi:"ruleSetName"`
 }
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 type LookupTagRuleResult struct {
-	Id         string                               `pulumi:"id"`
-	Name       string                               `pulumi:"name"`
+	// The id of the rule set.
+	Id string `pulumi:"id"`
+	// Name of the rule set.
+	Name string `pulumi:"name"`
+	// Definition of the properties for a TagRules resource.
 	Properties MonitoringTagRulesPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                   `pulumi:"systemData"`
-	Type       string                               `pulumi:"type"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the rule set.
+	Type string `pulumi:"type"`
 }
 
 func LookupTagRuleOutput(ctx *pulumi.Context, args LookupTagRuleOutputArgs, opts ...pulumi.InvokeOption) LookupTagRuleResultOutput {
@@ -50,7 +57,9 @@ func LookupTagRuleOutput(ctx *pulumi.Context, args LookupTagRuleOutputArgs, opts
 }
 
 type LookupTagRuleOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	RuleSetName       pulumi.StringInput `pulumi:"ruleSetName"`
 }
@@ -74,22 +83,27 @@ func (o LookupTagRuleResultOutput) ToLookupTagRuleResultOutputWithContext(ctx co
 	return o
 }
 
+// The id of the rule set.
 func (o LookupTagRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the rule set.
 func (o LookupTagRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Definition of the properties for a TagRules resource.
 func (o LookupTagRuleResultOutput) Properties() MonitoringTagRulesPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupTagRuleResult) MonitoringTagRulesPropertiesResponse { return v.Properties }).(MonitoringTagRulesPropertiesResponseOutput)
 }
 
+// The system metadata relating to this resource
 func (o LookupTagRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTagRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the rule set.
 func (o LookupTagRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

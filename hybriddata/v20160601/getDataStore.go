@@ -23,21 +23,32 @@ func LookupDataStore(ctx *pulumi.Context, args *LookupDataStoreArgs, opts ...pul
 }
 
 type LookupDataStoreArgs struct {
-	DataManagerName   string `pulumi:"dataManagerName"`
-	DataStoreName     string `pulumi:"dataStoreName"`
+	// The name of the DataManager Resource within the specified resource group. DataManager names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
+	DataManagerName string `pulumi:"dataManagerName"`
+	// The data store/repository name queried.
+	DataStoreName string `pulumi:"dataStoreName"`
+	// The Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Data store.
 type LookupDataStoreResult struct {
-	CustomerSecrets    []CustomerSecretResponse `pulumi:"customerSecrets"`
-	DataStoreTypeId    string                   `pulumi:"dataStoreTypeId"`
-	ExtendedProperties interface{}              `pulumi:"extendedProperties"`
-	Id                 string                   `pulumi:"id"`
-	Name               string                   `pulumi:"name"`
-	RepositoryId       *string                  `pulumi:"repositoryId"`
-	State              string                   `pulumi:"state"`
-	Type               string                   `pulumi:"type"`
+	// List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
+	CustomerSecrets []CustomerSecretResponse `pulumi:"customerSecrets"`
+	// The arm id of the data store type.
+	DataStoreTypeId string `pulumi:"dataStoreTypeId"`
+	// A generic json used differently by each data source type.
+	ExtendedProperties interface{} `pulumi:"extendedProperties"`
+	// Id of the object.
+	Id string `pulumi:"id"`
+	// Name of the object.
+	Name string `pulumi:"name"`
+	// Arm Id for the manager resource to which the data source is associated. This is optional.
+	RepositoryId *string `pulumi:"repositoryId"`
+	// State of the data source.
+	State string `pulumi:"state"`
+	// Type of the object.
+	Type string `pulumi:"type"`
 }
 
 func LookupDataStoreOutput(ctx *pulumi.Context, args LookupDataStoreOutputArgs, opts ...pulumi.InvokeOption) LookupDataStoreResultOutput {
@@ -54,8 +65,11 @@ func LookupDataStoreOutput(ctx *pulumi.Context, args LookupDataStoreOutputArgs, 
 }
 
 type LookupDataStoreOutputArgs struct {
-	DataManagerName   pulumi.StringInput `pulumi:"dataManagerName"`
-	DataStoreName     pulumi.StringInput `pulumi:"dataStoreName"`
+	// The name of the DataManager Resource within the specified resource group. DataManager names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
+	DataManagerName pulumi.StringInput `pulumi:"dataManagerName"`
+	// The data store/repository name queried.
+	DataStoreName pulumi.StringInput `pulumi:"dataStoreName"`
+	// The Resource Group Name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,34 +92,42 @@ func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutputWithContext(ct
 	return o
 }
 
+// List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
 func (o LookupDataStoreResultOutput) CustomerSecrets() CustomerSecretResponseArrayOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) []CustomerSecretResponse { return v.CustomerSecrets }).(CustomerSecretResponseArrayOutput)
 }
 
+// The arm id of the data store type.
 func (o LookupDataStoreResultOutput) DataStoreTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) string { return v.DataStoreTypeId }).(pulumi.StringOutput)
 }
 
+// A generic json used differently by each data source type.
 func (o LookupDataStoreResultOutput) ExtendedProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) interface{} { return v.ExtendedProperties }).(pulumi.AnyOutput)
 }
 
+// Id of the object.
 func (o LookupDataStoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the object.
 func (o LookupDataStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Arm Id for the manager resource to which the data source is associated. This is optional.
 func (o LookupDataStoreResultOutput) RepositoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) *string { return v.RepositoryId }).(pulumi.StringPtrOutput)
 }
 
+// State of the data source.
 func (o LookupDataStoreResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Type of the object.
 func (o LookupDataStoreResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) string { return v.Type }).(pulumi.StringOutput)
 }

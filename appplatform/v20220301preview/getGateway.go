@@ -21,19 +21,28 @@ func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.
 }
 
 type LookupGatewayArgs struct {
-	GatewayName       string `pulumi:"gatewayName"`
+	// The name of Spring Cloud Gateway.
+	GatewayName string `pulumi:"gatewayName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Spring Cloud Gateway resource
 type LookupGatewayResult struct {
-	Id         string                    `pulumi:"id"`
-	Name       string                    `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// Spring Cloud Gateway properties payload
 	Properties GatewayPropertiesResponse `pulumi:"properties"`
-	Sku        *SkuResponse              `pulumi:"sku"`
-	SystemData SystemDataResponse        `pulumi:"systemData"`
-	Type       string                    `pulumi:"type"`
+	// Sku of the Spring Cloud Gateway resource
+	Sku *SkuResponse `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupGatewayResult
@@ -63,9 +72,12 @@ func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts
 }
 
 type LookupGatewayOutputArgs struct {
-	GatewayName       pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of Spring Cloud Gateway.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupGatewayOutputArgs) ElementType() reflect.Type {
@@ -87,26 +99,32 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx co
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupGatewayResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupGatewayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Spring Cloud Gateway properties payload
 func (o LookupGatewayResultOutput) Properties() GatewayPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupGatewayResult) GatewayPropertiesResponse { return v.Properties }).(GatewayPropertiesResponseOutput)
 }
 
+// Sku of the Spring Cloud Gateway resource
 func (o LookupGatewayResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupGatewayResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupGatewayResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupGatewayResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupGatewayResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Type }).(pulumi.StringOutput)
 }

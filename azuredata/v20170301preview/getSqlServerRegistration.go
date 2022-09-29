@@ -23,20 +23,30 @@ func LookupSqlServerRegistration(ctx *pulumi.Context, args *LookupSqlServerRegis
 }
 
 type LookupSqlServerRegistrationArgs struct {
-	ResourceGroupName         string `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL Server registration.
 	SqlServerRegistrationName string `pulumi:"sqlServerRegistrationName"`
 }
 
 // A SQL server registration.
 type LookupSqlServerRegistrationResult struct {
-	Id             string            `pulumi:"id"`
-	Location       string            `pulumi:"location"`
-	Name           string            `pulumi:"name"`
-	PropertyBag    *string           `pulumi:"propertyBag"`
-	ResourceGroup  *string           `pulumi:"resourceGroup"`
-	SubscriptionId *string           `pulumi:"subscriptionId"`
-	Tags           map[string]string `pulumi:"tags"`
-	Type           string            `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Optional Properties as JSON string
+	PropertyBag *string `pulumi:"propertyBag"`
+	// Resource Group Name
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Subscription Id
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlServerRegistrationOutput(ctx *pulumi.Context, args LookupSqlServerRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerRegistrationResultOutput {
@@ -53,7 +63,9 @@ func LookupSqlServerRegistrationOutput(ctx *pulumi.Context, args LookupSqlServer
 }
 
 type LookupSqlServerRegistrationOutputArgs struct {
-	ResourceGroupName         pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL Server registration.
 	SqlServerRegistrationName pulumi.StringInput `pulumi:"sqlServerRegistrationName"`
 }
 
@@ -76,34 +88,42 @@ func (o LookupSqlServerRegistrationResultOutput) ToLookupSqlServerRegistrationRe
 	return o
 }
 
+// Resource ID.
 func (o LookupSqlServerRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupSqlServerRegistrationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupSqlServerRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional Properties as JSON string
 func (o LookupSqlServerRegistrationResultOutput) PropertyBag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) *string { return v.PropertyBag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Group Name
 func (o LookupSqlServerRegistrationResultOutput) ResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
 }
 
+// Subscription Id
 func (o LookupSqlServerRegistrationResultOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupSqlServerRegistrationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupSqlServerRegistrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerRegistrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

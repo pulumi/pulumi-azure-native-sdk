@@ -115,7 +115,7 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
-	// The name of the key to be created.
+	// The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	KeyName *string `pulumi:"keyName"`
 	// The properties of the key to be created.
 	Properties KeyProperties `pulumi:"properties"`
@@ -129,7 +129,7 @@ type keyArgs struct {
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
-	// The name of the key to be created.
+	// The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	KeyName pulumi.StringPtrInput
 	// The properties of the key to be created.
 	Properties KeyPropertiesInput

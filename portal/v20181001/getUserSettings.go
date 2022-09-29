@@ -21,11 +21,13 @@ func LookupUserSettings(ctx *pulumi.Context, args *LookupUserSettingsArgs, opts 
 }
 
 type LookupUserSettingsArgs struct {
+	// The name of the user settings
 	UserSettingsName string `pulumi:"userSettingsName"`
 }
 
 // Response to get user settings
 type LookupUserSettingsResult struct {
+	// The cloud shell user settings properties.
 	Properties UserPropertiesResponse `pulumi:"properties"`
 }
 
@@ -43,6 +45,7 @@ func LookupUserSettingsOutput(ctx *pulumi.Context, args LookupUserSettingsOutput
 }
 
 type LookupUserSettingsOutputArgs struct {
+	// The name of the user settings
 	UserSettingsName pulumi.StringInput `pulumi:"userSettingsName"`
 }
 
@@ -65,6 +68,7 @@ func (o LookupUserSettingsResultOutput) ToLookupUserSettingsResultOutputWithCont
 	return o
 }
 
+// The cloud shell user settings properties.
 func (o LookupUserSettingsResultOutput) Properties() UserPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupUserSettingsResult) UserPropertiesResponse { return v.Properties }).(UserPropertiesResponseOutput)
 }

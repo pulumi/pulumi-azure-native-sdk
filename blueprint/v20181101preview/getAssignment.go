@@ -21,26 +21,42 @@ func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...p
 }
 
 type LookupAssignmentArgs struct {
+	// Name of the blueprint assignment.
 	AssignmentName string `pulumi:"assignmentName"`
-	ResourceScope  string `pulumi:"resourceScope"`
+	// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
+	ResourceScope string `pulumi:"resourceScope"`
 }
 
 // Represents a blueprint assignment.
 type LookupAssignmentResult struct {
-	BlueprintId       *string                               `pulumi:"blueprintId"`
-	Description       *string                               `pulumi:"description"`
-	DisplayName       *string                               `pulumi:"displayName"`
-	Id                string                                `pulumi:"id"`
-	Identity          ManagedServiceIdentityResponse        `pulumi:"identity"`
-	Location          string                                `pulumi:"location"`
-	Locks             *AssignmentLockSettingsResponse       `pulumi:"locks"`
-	Name              string                                `pulumi:"name"`
-	Parameters        map[string]ParameterValueResponse     `pulumi:"parameters"`
-	ProvisioningState string                                `pulumi:"provisioningState"`
-	ResourceGroups    map[string]ResourceGroupValueResponse `pulumi:"resourceGroups"`
-	Scope             *string                               `pulumi:"scope"`
-	Status            AssignmentStatusResponse              `pulumi:"status"`
-	Type              string                                `pulumi:"type"`
+	// ID of the published version of a blueprint definition.
+	BlueprintId *string `pulumi:"blueprintId"`
+	// Multi-line explain this resource.
+	Description *string `pulumi:"description"`
+	// One-liner string explain this resource.
+	DisplayName *string `pulumi:"displayName"`
+	// String Id used to locate any resource on Azure.
+	Id string `pulumi:"id"`
+	// Managed identity for this blueprint assignment.
+	Identity ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The location of this blueprint assignment.
+	Location string `pulumi:"location"`
+	// Defines how resources deployed by a blueprint assignment are locked.
+	Locks *AssignmentLockSettingsResponse `pulumi:"locks"`
+	// Name of this resource.
+	Name string `pulumi:"name"`
+	// Blueprint assignment parameter values.
+	Parameters map[string]ParameterValueResponse `pulumi:"parameters"`
+	// State of the blueprint assignment.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Names and locations of resource group placeholders.
+	ResourceGroups map[string]ResourceGroupValueResponse `pulumi:"resourceGroups"`
+	// The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
+	Scope *string `pulumi:"scope"`
+	// Status of blueprint assignment. This field is readonly.
+	Status AssignmentStatusResponse `pulumi:"status"`
+	// Type of this resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssignmentResultOutput {
@@ -57,8 +73,10 @@ func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs
 }
 
 type LookupAssignmentOutputArgs struct {
+	// Name of the blueprint assignment.
 	AssignmentName pulumi.StringInput `pulumi:"assignmentName"`
-	ResourceScope  pulumi.StringInput `pulumi:"resourceScope"`
+	// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
+	ResourceScope pulumi.StringInput `pulumi:"resourceScope"`
 }
 
 func (LookupAssignmentOutputArgs) ElementType() reflect.Type {
@@ -80,58 +98,72 @@ func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutputWithContext(
 	return o
 }
 
+// ID of the published version of a blueprint definition.
 func (o LookupAssignmentResultOutput) BlueprintId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.BlueprintId }).(pulumi.StringPtrOutput)
 }
 
+// Multi-line explain this resource.
 func (o LookupAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// One-liner string explain this resource.
 func (o LookupAssignmentResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// String Id used to locate any resource on Azure.
 func (o LookupAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed identity for this blueprint assignment.
 func (o LookupAssignmentResultOutput) Identity() ManagedServiceIdentityResponseOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponseOutput)
 }
 
+// The location of this blueprint assignment.
 func (o LookupAssignmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Defines how resources deployed by a blueprint assignment are locked.
 func (o LookupAssignmentResultOutput) Locks() AssignmentLockSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignmentLockSettingsResponse { return v.Locks }).(AssignmentLockSettingsResponsePtrOutput)
 }
 
+// Name of this resource.
 func (o LookupAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Blueprint assignment parameter values.
 func (o LookupAssignmentResultOutput) Parameters() ParameterValueResponseMapOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) map[string]ParameterValueResponse { return v.Parameters }).(ParameterValueResponseMapOutput)
 }
 
+// State of the blueprint assignment.
 func (o LookupAssignmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Names and locations of resource group placeholders.
 func (o LookupAssignmentResultOutput) ResourceGroups() ResourceGroupValueResponseMapOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) map[string]ResourceGroupValueResponse { return v.ResourceGroups }).(ResourceGroupValueResponseMapOutput)
 }
 
+// The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
 func (o LookupAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// Status of blueprint assignment. This field is readonly.
 func (o LookupAssignmentResultOutput) Status() AssignmentStatusResponseOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) AssignmentStatusResponse { return v.Status }).(AssignmentStatusResponseOutput)
 }
 
+// Type of this resource.
 func (o LookupAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

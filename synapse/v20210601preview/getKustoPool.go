@@ -21,31 +21,52 @@ func LookupKustoPool(ctx *pulumi.Context, args *LookupKustoPoolArgs, opts ...pul
 }
 
 type LookupKustoPoolArgs struct {
-	KustoPoolName     string `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName string `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Class representing a Kusto kusto pool.
 type LookupKustoPoolResult struct {
-	DataIngestionUri      string                         `pulumi:"dataIngestionUri"`
-	EnablePurge           *bool                          `pulumi:"enablePurge"`
-	EnableStreamingIngest *bool                          `pulumi:"enableStreamingIngest"`
-	Etag                  string                         `pulumi:"etag"`
-	Id                    string                         `pulumi:"id"`
-	LanguageExtensions    LanguageExtensionsListResponse `pulumi:"languageExtensions"`
-	Location              string                         `pulumi:"location"`
-	Name                  string                         `pulumi:"name"`
-	OptimizedAutoscale    *OptimizedAutoscaleResponse    `pulumi:"optimizedAutoscale"`
-	ProvisioningState     string                         `pulumi:"provisioningState"`
-	Sku                   AzureSkuResponse               `pulumi:"sku"`
-	State                 string                         `pulumi:"state"`
-	StateReason           string                         `pulumi:"stateReason"`
-	SystemData            SystemDataResponse             `pulumi:"systemData"`
-	Tags                  map[string]string              `pulumi:"tags"`
-	Type                  string                         `pulumi:"type"`
-	Uri                   string                         `pulumi:"uri"`
-	WorkspaceUID          *string                        `pulumi:"workspaceUID"`
+	// The Kusto Pool data ingestion URI.
+	DataIngestionUri string `pulumi:"dataIngestionUri"`
+	// A boolean value that indicates if the purge operations are enabled.
+	EnablePurge *bool `pulumi:"enablePurge"`
+	// A boolean value that indicates if the streaming ingest is enabled.
+	EnableStreamingIngest *bool `pulumi:"enableStreamingIngest"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// List of the Kusto Pool's language extensions.
+	LanguageExtensions LanguageExtensionsListResponse `pulumi:"languageExtensions"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Optimized auto scale definition.
+	OptimizedAutoscale *OptimizedAutoscaleResponse `pulumi:"optimizedAutoscale"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SKU of the kusto pool.
+	Sku AzureSkuResponse `pulumi:"sku"`
+	// The state of the resource.
+	State string `pulumi:"state"`
+	// The reason for the Kusto Pool's current state.
+	StateReason string `pulumi:"stateReason"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The Kusto Pool URI.
+	Uri string `pulumi:"uri"`
+	// The workspace unique identifier.
+	WorkspaceUID *string `pulumi:"workspaceUID"`
 }
 
 // Defaults sets the appropriate defaults for LookupKustoPoolResult
@@ -79,9 +100,12 @@ func LookupKustoPoolOutput(ctx *pulumi.Context, args LookupKustoPoolOutputArgs, 
 }
 
 type LookupKustoPoolOutputArgs struct {
-	KustoPoolName     pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the Kusto pool.
+	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupKustoPoolOutputArgs) ElementType() reflect.Type {
@@ -103,74 +127,92 @@ func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutputWithContext(ct
 	return o
 }
 
+// The Kusto Pool data ingestion URI.
 func (o LookupKustoPoolResultOutput) DataIngestionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.DataIngestionUri }).(pulumi.StringOutput)
 }
 
+// A boolean value that indicates if the purge operations are enabled.
 func (o LookupKustoPoolResultOutput) EnablePurge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) *bool { return v.EnablePurge }).(pulumi.BoolPtrOutput)
 }
 
+// A boolean value that indicates if the streaming ingest is enabled.
 func (o LookupKustoPoolResultOutput) EnableStreamingIngest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) *bool { return v.EnableStreamingIngest }).(pulumi.BoolPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupKustoPoolResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupKustoPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of the Kusto Pool's language extensions.
 func (o LookupKustoPoolResultOutput) LanguageExtensions() LanguageExtensionsListResponseOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) LanguageExtensionsListResponse { return v.LanguageExtensions }).(LanguageExtensionsListResponseOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupKustoPoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupKustoPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optimized auto scale definition.
 func (o LookupKustoPoolResultOutput) OptimizedAutoscale() OptimizedAutoscaleResponsePtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) *OptimizedAutoscaleResponse { return v.OptimizedAutoscale }).(OptimizedAutoscaleResponsePtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupKustoPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SKU of the kusto pool.
 func (o LookupKustoPoolResultOutput) Sku() AzureSkuResponseOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) AzureSkuResponse { return v.Sku }).(AzureSkuResponseOutput)
 }
 
+// The state of the resource.
 func (o LookupKustoPoolResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The reason for the Kusto Pool's current state.
 func (o LookupKustoPoolResultOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.StateReason }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupKustoPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupKustoPoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupKustoPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The Kusto Pool URI.
 func (o LookupKustoPoolResultOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.Uri }).(pulumi.StringOutput)
 }
 
+// The workspace unique identifier.
 func (o LookupKustoPoolResultOutput) WorkspaceUID() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKustoPoolResult) *string { return v.WorkspaceUID }).(pulumi.StringPtrOutput)
 }

@@ -22,23 +22,36 @@ func LookupLabAccount(ctx *pulumi.Context, args *LookupLabAccountArgs, opts ...p
 }
 
 type LookupLabAccountArgs struct {
-	Expand            *string `pulumi:"expand"`
-	LabAccountName    string  `pulumi:"labAccountName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($expand=sizeConfiguration)'
+	Expand *string `pulumi:"expand"`
+	// The name of the lab Account.
+	LabAccountName string `pulumi:"labAccountName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a lab account.
 type LookupLabAccountResult struct {
-	EnabledRegionSelection *bool                               `pulumi:"enabledRegionSelection"`
-	Id                     string                              `pulumi:"id"`
-	LatestOperationResult  LatestOperationResultResponse       `pulumi:"latestOperationResult"`
-	Location               *string                             `pulumi:"location"`
-	Name                   string                              `pulumi:"name"`
-	ProvisioningState      *string                             `pulumi:"provisioningState"`
-	SizeConfiguration      SizeConfigurationPropertiesResponse `pulumi:"sizeConfiguration"`
-	Tags                   map[string]string                   `pulumi:"tags"`
-	Type                   string                              `pulumi:"type"`
-	UniqueIdentifier       *string                             `pulumi:"uniqueIdentifier"`
+	// Represents if region selection is enabled
+	EnabledRegionSelection *bool `pulumi:"enabledRegionSelection"`
+	// The identifier of the resource.
+	Id string `pulumi:"id"`
+	// The details of the latest operation. ex: status, error
+	LatestOperationResult LatestOperationResultResponse `pulumi:"latestOperationResult"`
+	// The location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The provisioning status of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Represents the size configuration under the lab account
+	SizeConfiguration SizeConfigurationPropertiesResponse `pulumi:"sizeConfiguration"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
+	// The unique immutable identifier of a resource (Guid).
+	UniqueIdentifier *string `pulumi:"uniqueIdentifier"`
 }
 
 func LookupLabAccountOutput(ctx *pulumi.Context, args LookupLabAccountOutputArgs, opts ...pulumi.InvokeOption) LookupLabAccountResultOutput {
@@ -55,9 +68,12 @@ func LookupLabAccountOutput(ctx *pulumi.Context, args LookupLabAccountOutputArgs
 }
 
 type LookupLabAccountOutputArgs struct {
-	Expand            pulumi.StringPtrInput `pulumi:"expand"`
-	LabAccountName    pulumi.StringInput    `pulumi:"labAccountName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// Specify the $expand query. Example: 'properties($expand=sizeConfiguration)'
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The name of the lab Account.
+	LabAccountName pulumi.StringInput `pulumi:"labAccountName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupLabAccountOutputArgs) ElementType() reflect.Type {
@@ -79,42 +95,52 @@ func (o LookupLabAccountResultOutput) ToLookupLabAccountResultOutputWithContext(
 	return o
 }
 
+// Represents if region selection is enabled
 func (o LookupLabAccountResultOutput) EnabledRegionSelection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) *bool { return v.EnabledRegionSelection }).(pulumi.BoolPtrOutput)
 }
 
+// The identifier of the resource.
 func (o LookupLabAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The details of the latest operation. ex: status, error
 func (o LookupLabAccountResultOutput) LatestOperationResult() LatestOperationResultResponseOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) LatestOperationResultResponse { return v.LatestOperationResult }).(LatestOperationResultResponseOutput)
 }
 
+// The location of the resource.
 func (o LookupLabAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o LookupLabAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning status of the resource.
 func (o LookupLabAccountResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Represents the size configuration under the lab account
 func (o LookupLabAccountResultOutput) SizeConfiguration() SizeConfigurationPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) SizeConfigurationPropertiesResponse { return v.SizeConfiguration }).(SizeConfigurationPropertiesResponseOutput)
 }
 
+// The tags of the resource.
 func (o LookupLabAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupLabAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The unique immutable identifier of a resource (Guid).
 func (o LookupLabAccountResultOutput) UniqueIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabAccountResult) *string { return v.UniqueIdentifier }).(pulumi.StringPtrOutput)
 }

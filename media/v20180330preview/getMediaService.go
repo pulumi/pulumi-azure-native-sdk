@@ -21,19 +21,28 @@ func LookupMediaService(ctx *pulumi.Context, args *LookupMediaServiceArgs, opts 
 }
 
 type LookupMediaServiceArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Media Services account.
 type LookupMediaServiceResult struct {
-	Id              string                   `pulumi:"id"`
-	Location        *string                  `pulumi:"location"`
-	MediaServiceId  string                   `pulumi:"mediaServiceId"`
-	Name            string                   `pulumi:"name"`
+	// Fully qualified resource ID for the resource.
+	Id string `pulumi:"id"`
+	// The Azure Region of the resource.
+	Location *string `pulumi:"location"`
+	// The Media Services account ID.
+	MediaServiceId string `pulumi:"mediaServiceId"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The storage accounts for this resource.
 	StorageAccounts []StorageAccountResponse `pulumi:"storageAccounts"`
-	Tags            map[string]string        `pulumi:"tags"`
-	Type            string                   `pulumi:"type"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMediaServiceOutput(ctx *pulumi.Context, args LookupMediaServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMediaServiceResultOutput {
@@ -50,7 +59,9 @@ func LookupMediaServiceOutput(ctx *pulumi.Context, args LookupMediaServiceOutput
 }
 
 type LookupMediaServiceOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,30 +84,37 @@ func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutputWithCont
 	return o
 }
 
+// Fully qualified resource ID for the resource.
 func (o LookupMediaServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Azure Region of the resource.
 func (o LookupMediaServiceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The Media Services account ID.
 func (o LookupMediaServiceResultOutput) MediaServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.MediaServiceId }).(pulumi.StringOutput)
 }
 
+// The name of the resource.
 func (o LookupMediaServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The storage accounts for this resource.
 func (o LookupMediaServiceResultOutput) StorageAccounts() StorageAccountResponseArrayOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) []StorageAccountResponse { return v.StorageAccounts }).(StorageAccountResponseArrayOutput)
 }
 
+// Resource tags.
 func (o LookupMediaServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupMediaServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

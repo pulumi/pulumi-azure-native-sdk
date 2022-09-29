@@ -23,21 +23,31 @@ func LookupSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context, args *LookupSq
 }
 
 type LookupSqlResourceSqlUserDefinedFunctionArgs struct {
-	AccountName             string `pulumi:"accountName"`
-	ContainerName           string `pulumi:"containerName"`
-	DatabaseName            string `pulumi:"databaseName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Cosmos DB database account name.
+	AccountName string `pulumi:"accountName"`
+	// Cosmos DB container name.
+	ContainerName string `pulumi:"containerName"`
+	// Cosmos DB database name.
+	DatabaseName string `pulumi:"databaseName"`
+	// Name of an Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Cosmos DB userDefinedFunction name.
 	UserDefinedFunctionName string `pulumi:"userDefinedFunctionName"`
 }
 
 // An Azure Cosmos DB userDefinedFunction.
 type LookupSqlResourceSqlUserDefinedFunctionResult struct {
-	Id       string                                               `pulumi:"id"`
-	Location *string                                              `pulumi:"location"`
+	// The unique resource identifier of the ARM resource.
+	Id string `pulumi:"id"`
+	// The location of the resource group to which the resource belongs.
+	Location *string `pulumi:"location"`
+	// The name of the ARM resource.
 	Name     string                                               `pulumi:"name"`
 	Resource *SqlUserDefinedFunctionGetPropertiesResponseResource `pulumi:"resource"`
-	Tags     map[string]string                                    `pulumi:"tags"`
-	Type     string                                               `pulumi:"type"`
+	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
+	Tags map[string]string `pulumi:"tags"`
+	// The type of Azure resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupSqlResourceSqlUserDefinedFunctionOutput(ctx *pulumi.Context, args LookupSqlResourceSqlUserDefinedFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlUserDefinedFunctionResultOutput {
@@ -54,10 +64,15 @@ func LookupSqlResourceSqlUserDefinedFunctionOutput(ctx *pulumi.Context, args Loo
 }
 
 type LookupSqlResourceSqlUserDefinedFunctionOutputArgs struct {
-	AccountName             pulumi.StringInput `pulumi:"accountName"`
-	ContainerName           pulumi.StringInput `pulumi:"containerName"`
-	DatabaseName            pulumi.StringInput `pulumi:"databaseName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Cosmos DB database account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Cosmos DB container name.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// Cosmos DB database name.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// Name of an Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Cosmos DB userDefinedFunction name.
 	UserDefinedFunctionName pulumi.StringInput `pulumi:"userDefinedFunctionName"`
 }
 
@@ -80,14 +95,17 @@ func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) ToLookupSqlResource
 	return o
 }
 
+// The unique resource identifier of the ARM resource.
 func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlUserDefinedFunctionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource group to which the resource belongs.
 func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlUserDefinedFunctionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the ARM resource.
 func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlUserDefinedFunctionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -98,10 +116,12 @@ func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) Resource() SqlUserD
 	}).(SqlUserDefinedFunctionGetPropertiesResponseResourcePtrOutput)
 }
 
+// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlUserDefinedFunctionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of Azure resource.
 func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlResourceSqlUserDefinedFunctionResult) string { return v.Type }).(pulumi.StringOutput)
 }

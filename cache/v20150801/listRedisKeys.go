@@ -21,13 +21,17 @@ func ListRedisKeys(ctx *pulumi.Context, args *ListRedisKeysArgs, opts ...pulumi.
 }
 
 type ListRedisKeysArgs struct {
-	Name              string `pulumi:"name"`
+	// The name of the Redis cache.
+	Name string `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response of Redis list keys operation.
 type ListRedisKeysResult struct {
-	PrimaryKey   *string `pulumi:"primaryKey"`
+	// The current primary key that clients can use to authenticate with Redis cache.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// The current secondary key that clients can use to authenticate with Redis cache.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
@@ -45,7 +49,9 @@ func ListRedisKeysOutput(ctx *pulumi.Context, args ListRedisKeysOutputArgs, opts
 }
 
 type ListRedisKeysOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the Redis cache.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListRedisKeysResultOutput) ToListRedisKeysResultOutputWithContext(ctx co
 	return o
 }
 
+// The current primary key that clients can use to authenticate with Redis cache.
 func (o ListRedisKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListRedisKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// The current secondary key that clients can use to authenticate with Redis cache.
 func (o ListRedisKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListRedisKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

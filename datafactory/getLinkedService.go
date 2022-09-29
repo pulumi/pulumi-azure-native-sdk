@@ -22,18 +22,26 @@ func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opt
 }
 
 type LookupLinkedServiceArgs struct {
-	FactoryName       string `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The linked service name.
 	LinkedServiceName string `pulumi:"linkedServiceName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Linked service resource type.
 type LookupLinkedServiceResult struct {
-	Etag       string      `pulumi:"etag"`
-	Id         string      `pulumi:"id"`
-	Name       string      `pulumi:"name"`
+	// Etag identifies change in the resource.
+	Etag string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Properties of linked service.
 	Properties interface{} `pulumi:"properties"`
-	Type       string      `pulumi:"type"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServiceResultOutput {
@@ -50,8 +58,11 @@ func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutp
 }
 
 type LookupLinkedServiceOutputArgs struct {
-	FactoryName       pulumi.StringInput `pulumi:"factoryName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The linked service name.
 	LinkedServiceName pulumi.StringInput `pulumi:"linkedServiceName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,22 +85,27 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithCo
 	return o
 }
 
+// Etag identifies change in the resource.
 func (o LookupLinkedServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The resource identifier.
 func (o LookupLinkedServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupLinkedServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of linked service.
 func (o LookupLinkedServiceResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The resource type.
 func (o LookupLinkedServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,22 +21,34 @@ func LookupServerAdvisor(ctx *pulumi.Context, args *LookupServerAdvisorArgs, opt
 }
 
 type LookupServerAdvisorArgs struct {
-	AdvisorName       string `pulumi:"advisorName"`
+	// The name of the Server Advisor.
+	AdvisorName string `pulumi:"advisorName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Database Advisor.
 type LookupServerAdvisorResult struct {
-	AdvisorStatus         string `pulumi:"advisorStatus"`
-	AutoExecuteValue      string `pulumi:"autoExecuteValue"`
-	Id                    string `pulumi:"id"`
-	Kind                  string `pulumi:"kind"`
-	LastChecked           string `pulumi:"lastChecked"`
-	Location              string `pulumi:"location"`
-	Name                  string `pulumi:"name"`
+	// Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.
+	AdvisorStatus string `pulumi:"advisorStatus"`
+	// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
+	AutoExecuteValue string `pulumi:"autoExecuteValue"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource kind.
+	Kind string `pulumi:"kind"`
+	// Gets the time when the current resource was analyzed for recommendations by this advisor.
+	LastChecked string `pulumi:"lastChecked"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Gets that status of recommendations for this advisor and reason for not having any recommendations. Possible values include, but are not limited to, 'Ok' (Recommendations available), LowActivity (not enough workload to analyze), 'DbSeemsTuned' (Database is doing well), etc.
 	RecommendationsStatus string `pulumi:"recommendationsStatus"`
-	Type                  string `pulumi:"type"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerAdvisorOutput(ctx *pulumi.Context, args LookupServerAdvisorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAdvisorResultOutput {
@@ -53,9 +65,12 @@ func LookupServerAdvisorOutput(ctx *pulumi.Context, args LookupServerAdvisorOutp
 }
 
 type LookupServerAdvisorOutputArgs struct {
-	AdvisorName       pulumi.StringInput `pulumi:"advisorName"`
+	// The name of the Server Advisor.
+	AdvisorName pulumi.StringInput `pulumi:"advisorName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerAdvisorOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupServerAdvisorResultOutput) ToLookupServerAdvisorResultOutputWithCo
 	return o
 }
 
+// Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.
 func (o LookupServerAdvisorResultOutput) AdvisorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.AdvisorStatus }).(pulumi.StringOutput)
 }
 
+// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
 func (o LookupServerAdvisorResultOutput) AutoExecuteValue() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.AutoExecuteValue }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupServerAdvisorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource kind.
 func (o LookupServerAdvisorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Gets the time when the current resource was analyzed for recommendations by this advisor.
 func (o LookupServerAdvisorResultOutput) LastChecked() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.LastChecked }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupServerAdvisorResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerAdvisorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets that status of recommendations for this advisor and reason for not having any recommendations. Possible values include, but are not limited to, 'Ok' (Recommendations available), LowActivity (not enough workload to analyze), 'DbSeemsTuned' (Database is doing well), etc.
 func (o LookupServerAdvisorResultOutput) RecommendationsStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.RecommendationsStatus }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupServerAdvisorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.Type }).(pulumi.StringOutput)
 }

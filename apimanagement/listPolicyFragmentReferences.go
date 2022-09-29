@@ -22,18 +22,26 @@ func ListPolicyFragmentReferences(ctx *pulumi.Context, args *ListPolicyFragmentR
 }
 
 type ListPolicyFragmentReferencesArgs struct {
-	Id                string `pulumi:"id"`
+	// A resource identifier.
+	Id string `pulumi:"id"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
-	Skip              *int   `pulumi:"skip"`
-	Top               *int   `pulumi:"top"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// Number of records to skip.
+	Skip *int `pulumi:"skip"`
+	// Number of records to return.
+	Top *int `pulumi:"top"`
 }
 
 // A collection of resources.
 type ListPolicyFragmentReferencesResult struct {
-	Count    *float64                          `pulumi:"count"`
-	NextLink *string                           `pulumi:"nextLink"`
-	Value    []ResourceCollectionResponseValue `pulumi:"value"`
+	// Total record count number.
+	Count *float64 `pulumi:"count"`
+	// Next page link if any.
+	NextLink *string `pulumi:"nextLink"`
+	// A collection of resources.
+	Value []ResourceCollectionResponseValue `pulumi:"value"`
 }
 
 func ListPolicyFragmentReferencesOutput(ctx *pulumi.Context, args ListPolicyFragmentReferencesOutputArgs, opts ...pulumi.InvokeOption) ListPolicyFragmentReferencesResultOutput {
@@ -50,11 +58,16 @@ func ListPolicyFragmentReferencesOutput(ctx *pulumi.Context, args ListPolicyFrag
 }
 
 type ListPolicyFragmentReferencesOutputArgs struct {
-	Id                pulumi.StringInput `pulumi:"id"`
+	// A resource identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	Skip              pulumi.IntPtrInput `pulumi:"skip"`
-	Top               pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Number of records to skip.
+	Skip pulumi.IntPtrInput `pulumi:"skip"`
+	// Number of records to return.
+	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
 func (ListPolicyFragmentReferencesOutputArgs) ElementType() reflect.Type {
@@ -76,14 +89,17 @@ func (o ListPolicyFragmentReferencesResultOutput) ToListPolicyFragmentReferences
 	return o
 }
 
+// Total record count number.
 func (o ListPolicyFragmentReferencesResultOutput) Count() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListPolicyFragmentReferencesResult) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
 }
 
+// Next page link if any.
 func (o ListPolicyFragmentReferencesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListPolicyFragmentReferencesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// A collection of resources.
 func (o ListPolicyFragmentReferencesResultOutput) Value() ResourceCollectionResponseValueArrayOutput {
 	return o.ApplyT(func(v ListPolicyFragmentReferencesResult) []ResourceCollectionResponseValue { return v.Value }).(ResourceCollectionResponseValueArrayOutput)
 }

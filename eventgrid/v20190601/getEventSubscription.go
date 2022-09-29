@@ -23,23 +23,36 @@ func LookupEventSubscription(ctx *pulumi.Context, args *LookupEventSubscriptionA
 }
 
 type LookupEventSubscriptionArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	Scope                 string `pulumi:"scope"`
+	// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+	Scope string `pulumi:"scope"`
 }
 
 // Event Subscription
 type LookupEventSubscriptionResult struct {
+	// The DeadLetter destination of the event subscription.
 	DeadLetterDestination *StorageBlobDeadLetterDestinationResponse `pulumi:"deadLetterDestination"`
-	Destination           interface{}                               `pulumi:"destination"`
-	ExpirationTimeUtc     *string                                   `pulumi:"expirationTimeUtc"`
-	Filter                *EventSubscriptionFilterResponse          `pulumi:"filter"`
-	Id                    string                                    `pulumi:"id"`
-	Labels                []string                                  `pulumi:"labels"`
-	Name                  string                                    `pulumi:"name"`
-	ProvisioningState     string                                    `pulumi:"provisioningState"`
-	RetryPolicy           *RetryPolicyResponse                      `pulumi:"retryPolicy"`
-	Topic                 string                                    `pulumi:"topic"`
-	Type                  string                                    `pulumi:"type"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	Destination interface{} `pulumi:"destination"`
+	// Expiration time of the event subscription.
+	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
+	// Information about the filter for the event subscription.
+	Filter *EventSubscriptionFilterResponse `pulumi:"filter"`
+	// Fully qualified identifier of the resource.
+	Id string `pulumi:"id"`
+	// List of user defined labels.
+	Labels []string `pulumi:"labels"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+	// Provisioning state of the event subscription.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
+	RetryPolicy *RetryPolicyResponse `pulumi:"retryPolicy"`
+	// Name of the topic of the event subscription.
+	Topic string `pulumi:"topic"`
+	// Type of the resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupEventSubscriptionResult
@@ -67,8 +80,10 @@ func LookupEventSubscriptionOutput(ctx *pulumi.Context, args LookupEventSubscrip
 }
 
 type LookupEventSubscriptionOutputArgs struct {
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	Scope                 pulumi.StringInput `pulumi:"scope"`
+	// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupEventSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -90,48 +105,59 @@ func (o LookupEventSubscriptionResultOutput) ToLookupEventSubscriptionResultOutp
 	return o
 }
 
+// The DeadLetter destination of the event subscription.
 func (o LookupEventSubscriptionResultOutput) DeadLetterDestination() StorageBlobDeadLetterDestinationResponsePtrOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) *StorageBlobDeadLetterDestinationResponse {
 		return v.DeadLetterDestination
 	}).(StorageBlobDeadLetterDestinationResponsePtrOutput)
 }
 
+// Information about the destination where events have to be delivered for the event subscription.
 func (o LookupEventSubscriptionResultOutput) Destination() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) interface{} { return v.Destination }).(pulumi.AnyOutput)
 }
 
+// Expiration time of the event subscription.
 func (o LookupEventSubscriptionResultOutput) ExpirationTimeUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) *string { return v.ExpirationTimeUtc }).(pulumi.StringPtrOutput)
 }
 
+// Information about the filter for the event subscription.
 func (o LookupEventSubscriptionResultOutput) Filter() EventSubscriptionFilterResponsePtrOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) *EventSubscriptionFilterResponse { return v.Filter }).(EventSubscriptionFilterResponsePtrOutput)
 }
 
+// Fully qualified identifier of the resource.
 func (o LookupEventSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of user defined labels.
 func (o LookupEventSubscriptionResultOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
+// Name of the resource.
 func (o LookupEventSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the event subscription.
 func (o LookupEventSubscriptionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 func (o LookupEventSubscriptionResultOutput) RetryPolicy() RetryPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) *RetryPolicyResponse { return v.RetryPolicy }).(RetryPolicyResponsePtrOutput)
 }
 
+// Name of the topic of the event subscription.
 func (o LookupEventSubscriptionResultOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) string { return v.Topic }).(pulumi.StringOutput)
 }
 
+// Type of the resource.
 func (o LookupEventSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

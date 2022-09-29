@@ -21,20 +21,30 @@ func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opt
 }
 
 type LookupLinkedServiceArgs struct {
+	// Name of the linked service.
 	LinkedServiceName string `pulumi:"linkedServiceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The top level Linked service resource container.
 type LookupLinkedServiceResult struct {
-	Id                    string            `pulumi:"id"`
-	Name                  string            `pulumi:"name"`
-	ProvisioningState     *string           `pulumi:"provisioningState"`
-	ResourceId            *string           `pulumi:"resourceId"`
-	Tags                  map[string]string `pulumi:"tags"`
-	Type                  string            `pulumi:"type"`
-	WriteAccessResourceId *string           `pulumi:"writeAccessResourceId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the linked service.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
+	ResourceId *string `pulumi:"resourceId"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
+	WriteAccessResourceId *string `pulumi:"writeAccessResourceId"`
 }
 
 func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServiceResultOutput {
@@ -51,9 +61,12 @@ func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutp
 }
 
 type LookupLinkedServiceOutputArgs struct {
+	// Name of the linked service.
 	LinkedServiceName pulumi.StringInput `pulumi:"linkedServiceName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupLinkedServiceOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithCo
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLinkedServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupLinkedServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the linked service.
 func (o LookupLinkedServiceResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
 func (o LookupLinkedServiceResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupLinkedServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupLinkedServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
 func (o LookupLinkedServiceResultOutput) WriteAccessResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *string { return v.WriteAccessResourceId }).(pulumi.StringPtrOutput)
 }

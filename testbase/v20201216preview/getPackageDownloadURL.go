@@ -21,14 +21,19 @@ func GetPackageDownloadURL(ctx *pulumi.Context, args *GetPackageDownloadURLArgs,
 }
 
 type GetPackageDownloadURLArgs struct {
-	PackageName         string `pulumi:"packageName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Package.
+	PackageName string `pulumi:"packageName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
 
 // The response of getting a download URL.
 type GetPackageDownloadURLResult struct {
-	DownloadUrl    string `pulumi:"downloadUrl"`
+	// The download URL.
+	DownloadUrl string `pulumi:"downloadUrl"`
+	// Expiry date of the download URL.
 	ExpirationTime string `pulumi:"expirationTime"`
 }
 
@@ -46,8 +51,11 @@ func GetPackageDownloadURLOutput(ctx *pulumi.Context, args GetPackageDownloadURL
 }
 
 type GetPackageDownloadURLOutputArgs struct {
-	PackageName         pulumi.StringInput `pulumi:"packageName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Package.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The name of the resource group that contains the resource.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }
 
@@ -70,10 +78,12 @@ func (o GetPackageDownloadURLResultOutput) ToGetPackageDownloadURLResultOutputWi
 	return o
 }
 
+// The download URL.
 func (o GetPackageDownloadURLResultOutput) DownloadUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPackageDownloadURLResult) string { return v.DownloadUrl }).(pulumi.StringOutput)
 }
 
+// Expiry date of the download URL.
 func (o GetPackageDownloadURLResultOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPackageDownloadURLResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }

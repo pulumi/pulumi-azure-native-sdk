@@ -22,20 +22,29 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 }
 
 type LookupConnectionArgs struct {
-	ConnectionName    string  `pulumi:"connectionName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	SubscriptionId    *string `pulumi:"subscriptionId"`
+	// Connection name
+	ConnectionName string `pulumi:"connectionName"`
+	// The resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Subscription Id
+	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // API connection
 type LookupConnectionResult struct {
-	Etag       *string                                   `pulumi:"etag"`
-	Id         string                                    `pulumi:"id"`
-	Location   *string                                   `pulumi:"location"`
+	// Resource ETag
+	Etag *string `pulumi:"etag"`
+	// Resource id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Resource name
 	Name       string                                    `pulumi:"name"`
 	Properties ApiConnectionDefinitionResponseProperties `pulumi:"properties"`
-	Tags       map[string]string                         `pulumi:"tags"`
-	Type       string                                    `pulumi:"type"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
@@ -52,9 +61,12 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 }
 
 type LookupConnectionOutputArgs struct {
-	ConnectionName    pulumi.StringInput    `pulumi:"connectionName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	SubscriptionId    pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Connection name
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Subscription Id
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
 func (LookupConnectionOutputArgs) ElementType() reflect.Type {
@@ -76,18 +88,22 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(
 	return o
 }
 
+// Resource ETag
 func (o LookupConnectionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Resource id
 func (o LookupConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupConnectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name
 func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -96,10 +112,12 @@ func (o LookupConnectionResultOutput) Properties() ApiConnectionDefinitionRespon
 	return o.ApplyT(func(v LookupConnectionResult) ApiConnectionDefinitionResponseProperties { return v.Properties }).(ApiConnectionDefinitionResponsePropertiesOutput)
 }
 
+// Resource tags
 func (o LookupConnectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConnectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type
 func (o LookupConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

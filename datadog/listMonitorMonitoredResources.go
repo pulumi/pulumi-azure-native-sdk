@@ -22,14 +22,18 @@ func ListMonitorMonitoredResources(ctx *pulumi.Context, args *ListMonitorMonitor
 }
 
 type ListMonitorMonitoredResourcesArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list operation.
 type ListMonitorMonitoredResourcesResult struct {
-	NextLink *string                     `pulumi:"nextLink"`
-	Value    []MonitoredResourceResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of a list operation.
+	Value []MonitoredResourceResponse `pulumi:"value"`
 }
 
 func ListMonitorMonitoredResourcesOutput(ctx *pulumi.Context, args ListMonitorMonitoredResourcesOutputArgs, opts ...pulumi.InvokeOption) ListMonitorMonitoredResourcesResultOutput {
@@ -46,7 +50,9 @@ func ListMonitorMonitoredResourcesOutput(ctx *pulumi.Context, args ListMonitorMo
 }
 
 type ListMonitorMonitoredResourcesOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListMonitorMonitoredResourcesResultOutput) ToListMonitorMonitoredResourc
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitorMonitoredResourcesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitorMonitoredResourcesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of a list operation.
 func (o ListMonitorMonitoredResourcesResultOutput) Value() MonitoredResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitorMonitoredResourcesResult) []MonitoredResourceResponse { return v.Value }).(MonitoredResourceResponseArrayOutput)
 }
