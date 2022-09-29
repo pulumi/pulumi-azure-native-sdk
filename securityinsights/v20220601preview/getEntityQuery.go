@@ -23,19 +23,28 @@ func LookupEntityQuery(ctx *pulumi.Context, args *LookupEntityQueryArgs, opts ..
 }
 
 type LookupEntityQueryArgs struct {
-	EntityQueryId     string `pulumi:"entityQueryId"`
+	// entity query ID
+	EntityQueryId string `pulumi:"entityQueryId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Specific entity query.
 type LookupEntityQueryResult struct {
-	Etag       *string            `pulumi:"etag"`
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// the entity query kind
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupEntityQueryOutput(ctx *pulumi.Context, args LookupEntityQueryOutputArgs, opts ...pulumi.InvokeOption) LookupEntityQueryResultOutput {
@@ -52,9 +61,12 @@ func LookupEntityQueryOutput(ctx *pulumi.Context, args LookupEntityQueryOutputAr
 }
 
 type LookupEntityQueryOutputArgs struct {
-	EntityQueryId     pulumi.StringInput `pulumi:"entityQueryId"`
+	// entity query ID
+	EntityQueryId pulumi.StringInput `pulumi:"entityQueryId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupEntityQueryOutputArgs) ElementType() reflect.Type {
@@ -76,26 +88,32 @@ func (o LookupEntityQueryResultOutput) ToLookupEntityQueryResultOutputWithContex
 	return o
 }
 
+// Etag of the azure resource
 func (o LookupEntityQueryResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEntityQueryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// the entity query kind
 func (o LookupEntityQueryResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEntityQueryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEntityQueryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityQueryResult) string { return v.Type }).(pulumi.StringOutput)
 }

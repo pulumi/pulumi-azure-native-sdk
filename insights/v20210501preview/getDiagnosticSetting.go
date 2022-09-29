@@ -21,25 +21,40 @@ func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingA
 }
 
 type LookupDiagnosticSettingArgs struct {
-	Name        string `pulumi:"name"`
+	// The name of the diagnostic setting.
+	Name string `pulumi:"name"`
+	// The identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // The diagnostic setting resource.
 type LookupDiagnosticSettingResult struct {
-	EventHubAuthorizationRuleId *string                  `pulumi:"eventHubAuthorizationRuleId"`
-	EventHubName                *string                  `pulumi:"eventHubName"`
-	Id                          string                   `pulumi:"id"`
-	LogAnalyticsDestinationType *string                  `pulumi:"logAnalyticsDestinationType"`
-	Logs                        []LogSettingsResponse    `pulumi:"logs"`
-	MarketplacePartnerId        *string                  `pulumi:"marketplacePartnerId"`
-	Metrics                     []MetricSettingsResponse `pulumi:"metrics"`
-	Name                        string                   `pulumi:"name"`
-	ServiceBusRuleId            *string                  `pulumi:"serviceBusRuleId"`
-	StorageAccountId            *string                  `pulumi:"storageAccountId"`
-	SystemData                  SystemDataResponse       `pulumi:"systemData"`
-	Type                        string                   `pulumi:"type"`
-	WorkspaceId                 *string                  `pulumi:"workspaceId"`
+	// The resource Id for the event hub authorization rule.
+	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
+	// The name of the event hub. If none is specified, the default event hub will be selected.
+	EventHubName *string `pulumi:"eventHubName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
+	LogAnalyticsDestinationType *string `pulumi:"logAnalyticsDestinationType"`
+	// The list of logs settings.
+	Logs []LogSettingsResponse `pulumi:"logs"`
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
+	// The list of metric settings.
+	Metrics []MetricSettingsResponse `pulumi:"metrics"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
+	ServiceBusRuleId *string `pulumi:"serviceBusRuleId"`
+	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
+	StorageAccountId *string `pulumi:"storageAccountId"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupDiagnosticSettingOutput(ctx *pulumi.Context, args LookupDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupDiagnosticSettingResultOutput {
@@ -56,7 +71,9 @@ func LookupDiagnosticSettingOutput(ctx *pulumi.Context, args LookupDiagnosticSet
 }
 
 type LookupDiagnosticSettingOutputArgs struct {
-	Name        pulumi.StringInput `pulumi:"name"`
+	// The name of the diagnostic setting.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -79,54 +96,67 @@ func (o LookupDiagnosticSettingResultOutput) ToLookupDiagnosticSettingResultOutp
 	return o
 }
 
+// The resource Id for the event hub authorization rule.
 func (o LookupDiagnosticSettingResultOutput) EventHubAuthorizationRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.EventHubAuthorizationRuleId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the event hub. If none is specified, the default event hub will be selected.
 func (o LookupDiagnosticSettingResultOutput) EventHubName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDiagnosticSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
 func (o LookupDiagnosticSettingResultOutput) LogAnalyticsDestinationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.LogAnalyticsDestinationType }).(pulumi.StringPtrOutput)
 }
 
+// The list of logs settings.
 func (o LookupDiagnosticSettingResultOutput) Logs() LogSettingsResponseArrayOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) []LogSettingsResponse { return v.Logs }).(LogSettingsResponseArrayOutput)
 }
 
+// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
 func (o LookupDiagnosticSettingResultOutput) MarketplacePartnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.MarketplacePartnerId }).(pulumi.StringPtrOutput)
 }
 
+// The list of metric settings.
 func (o LookupDiagnosticSettingResultOutput) Metrics() MetricSettingsResponseArrayOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) []MetricSettingsResponse { return v.Metrics }).(MetricSettingsResponseArrayOutput)
 }
 
+// The name of the resource
 func (o LookupDiagnosticSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 func (o LookupDiagnosticSettingResultOutput) ServiceBusRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.ServiceBusRuleId }).(pulumi.StringPtrOutput)
 }
 
+// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 func (o LookupDiagnosticSettingResultOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
+// The system metadata related to this resource.
 func (o LookupDiagnosticSettingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDiagnosticSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 func (o LookupDiagnosticSettingResultOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }

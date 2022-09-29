@@ -21,20 +21,30 @@ func LookupPrivateEndpointConnectionsForSCCPowershell(ctx *pulumi.Context, args 
 }
 
 type LookupPrivateEndpointConnectionsForSCCPowershellArgs struct {
+	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
-	ResourceName                  string `pulumi:"resourceName"`
+	// The name of the resource group that contains the service instance.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the service instance.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionsForSCCPowershellResult struct {
-	Id                                string                                    `pulumi:"id"`
-	Name                              string                                    `pulumi:"name"`
-	PrivateEndpoint                   *PrivateEndpointResponse                  `pulumi:"privateEndpoint"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource of private end point.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                    `pulumi:"provisioningState"`
-	SystemData                        SystemDataResponse                        `pulumi:"systemData"`
-	Type                              string                                    `pulumi:"type"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Required property for system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateEndpointConnectionsForSCCPowershellOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionsForSCCPowershellOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionsForSCCPowershellResultOutput {
@@ -51,9 +61,12 @@ func LookupPrivateEndpointConnectionsForSCCPowershellOutput(ctx *pulumi.Context,
 }
 
 type LookupPrivateEndpointConnectionsForSCCPowershellOutputArgs struct {
+	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName                  pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the resource group that contains the service instance.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the service instance.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupPrivateEndpointConnectionsForSCCPowershellOutputArgs) ElementType() reflect.Type {
@@ -75,34 +88,41 @@ func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) ToLookupPr
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource of private end point.
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) *PrivateEndpointResponse {
 		return v.PrivateEndpoint
 	}).(PrivateEndpointResponsePtrOutput)
 }
 
+// A collection of information about the state of the connection between service consumer and provider.
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
+// The provisioning state of the private endpoint connection resource.
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Required property for system data
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateEndpointConnectionsForSCCPowershellResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForSCCPowershellResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,14 +21,19 @@ func ListOnlineEndpointKeys(ctx *pulumi.Context, args *ListOnlineEndpointKeysArg
 }
 
 type ListOnlineEndpointKeysArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
+	// Online Endpoint name.
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Keys for endpoint authentication.
 type ListOnlineEndpointKeysResult struct {
-	PrimaryKey   *string `pulumi:"primaryKey"`
+	// The primary key.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// The secondary key.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
@@ -46,9 +51,12 @@ func ListOnlineEndpointKeysOutput(ctx *pulumi.Context, args ListOnlineEndpointKe
 }
 
 type ListOnlineEndpointKeysOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
+	// Online Endpoint name.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (ListOnlineEndpointKeysOutputArgs) ElementType() reflect.Type {
@@ -70,10 +78,12 @@ func (o ListOnlineEndpointKeysResultOutput) ToListOnlineEndpointKeysResultOutput
 	return o
 }
 
+// The primary key.
 func (o ListOnlineEndpointKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListOnlineEndpointKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// The secondary key.
 func (o ListOnlineEndpointKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListOnlineEndpointKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

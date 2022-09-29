@@ -21,23 +21,36 @@ func LookupWorkloadGroup(ctx *pulumi.Context, args *LookupWorkloadGroupArgs, opt
 }
 
 type LookupWorkloadGroupArgs struct {
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// The name of the workload group.
 	WorkloadGroupName string `pulumi:"workloadGroupName"`
 }
 
 // Workload group operations for a data warehouse
 type LookupWorkloadGroupResult struct {
-	Id                           string   `pulumi:"id"`
-	Importance                   *string  `pulumi:"importance"`
-	MaxResourcePercent           int      `pulumi:"maxResourcePercent"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// The workload group importance level.
+	Importance *string `pulumi:"importance"`
+	// The workload group cap percentage resource.
+	MaxResourcePercent int `pulumi:"maxResourcePercent"`
+	// The workload group request maximum grant percentage.
 	MaxResourcePercentPerRequest *float64 `pulumi:"maxResourcePercentPerRequest"`
-	MinResourcePercent           int      `pulumi:"minResourcePercent"`
-	MinResourcePercentPerRequest float64  `pulumi:"minResourcePercentPerRequest"`
-	Name                         string   `pulumi:"name"`
-	QueryExecutionTimeout        *int     `pulumi:"queryExecutionTimeout"`
-	Type                         string   `pulumi:"type"`
+	// The workload group minimum percentage resource.
+	MinResourcePercent int `pulumi:"minResourcePercent"`
+	// The workload group request minimum grant percentage.
+	MinResourcePercentPerRequest float64 `pulumi:"minResourcePercentPerRequest"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The workload group query execution timeout.
+	QueryExecutionTimeout *int `pulumi:"queryExecutionTimeout"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadGroupOutput(ctx *pulumi.Context, args LookupWorkloadGroupOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadGroupResultOutput {
@@ -54,9 +67,13 @@ func LookupWorkloadGroupOutput(ctx *pulumi.Context, args LookupWorkloadGroupOutp
 }
 
 type LookupWorkloadGroupOutputArgs struct {
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// The name of the workload group.
 	WorkloadGroupName pulumi.StringInput `pulumi:"workloadGroupName"`
 }
 
@@ -79,38 +96,47 @@ func (o LookupWorkloadGroupResultOutput) ToLookupWorkloadGroupResultOutputWithCo
 	return o
 }
 
+// Resource ID.
 func (o LookupWorkloadGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The workload group importance level.
 func (o LookupWorkloadGroupResultOutput) Importance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) *string { return v.Importance }).(pulumi.StringPtrOutput)
 }
 
+// The workload group cap percentage resource.
 func (o LookupWorkloadGroupResultOutput) MaxResourcePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) int { return v.MaxResourcePercent }).(pulumi.IntOutput)
 }
 
+// The workload group request maximum grant percentage.
 func (o LookupWorkloadGroupResultOutput) MaxResourcePercentPerRequest() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) *float64 { return v.MaxResourcePercentPerRequest }).(pulumi.Float64PtrOutput)
 }
 
+// The workload group minimum percentage resource.
 func (o LookupWorkloadGroupResultOutput) MinResourcePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) int { return v.MinResourcePercent }).(pulumi.IntOutput)
 }
 
+// The workload group request minimum grant percentage.
 func (o LookupWorkloadGroupResultOutput) MinResourcePercentPerRequest() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) float64 { return v.MinResourcePercentPerRequest }).(pulumi.Float64Output)
 }
 
+// Resource name.
 func (o LookupWorkloadGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The workload group query execution timeout.
 func (o LookupWorkloadGroupResultOutput) QueryExecutionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) *int { return v.QueryExecutionTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,19 +22,28 @@ func LookupAccessControlRecord(ctx *pulumi.Context, args *LookupAccessControlRec
 }
 
 type LookupAccessControlRecordArgs struct {
+	// Name of access control record to be fetched.
 	AccessControlRecordName string `pulumi:"accessControlRecordName"`
-	ManagerName             string `pulumi:"managerName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The access control record.
 type LookupAccessControlRecordResult struct {
-	Id            string  `pulumi:"id"`
-	InitiatorName string  `pulumi:"initiatorName"`
-	Kind          *string `pulumi:"kind"`
-	Name          string  `pulumi:"name"`
-	Type          string  `pulumi:"type"`
-	VolumeCount   int     `pulumi:"volumeCount"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The iSCSI initiator name (IQN).
+	InitiatorName string `pulumi:"initiatorName"`
+	// The Kind of the object. Currently only Series8000 is supported
+	Kind *string `pulumi:"kind"`
+	// The name of the object.
+	Name string `pulumi:"name"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
+	// The number of volumes using the access control record.
+	VolumeCount int `pulumi:"volumeCount"`
 }
 
 func LookupAccessControlRecordOutput(ctx *pulumi.Context, args LookupAccessControlRecordOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlRecordResultOutput {
@@ -51,9 +60,12 @@ func LookupAccessControlRecordOutput(ctx *pulumi.Context, args LookupAccessContr
 }
 
 type LookupAccessControlRecordOutputArgs struct {
+	// Name of access control record to be fetched.
 	AccessControlRecordName pulumi.StringInput `pulumi:"accessControlRecordName"`
-	ManagerName             pulumi.StringInput `pulumi:"managerName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupAccessControlRecordOutputArgs) ElementType() reflect.Type {
@@ -75,26 +87,32 @@ func (o LookupAccessControlRecordResultOutput) ToLookupAccessControlRecordResult
 	return o
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupAccessControlRecordResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The iSCSI initiator name (IQN).
 func (o LookupAccessControlRecordResultOutput) InitiatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.InitiatorName }).(pulumi.StringOutput)
 }
 
+// The Kind of the object. Currently only Series8000 is supported
 func (o LookupAccessControlRecordResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The name of the object.
 func (o LookupAccessControlRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupAccessControlRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The number of volumes using the access control record.
 func (o LookupAccessControlRecordResultOutput) VolumeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAccessControlRecordResult) int { return v.VolumeCount }).(pulumi.IntOutput)
 }

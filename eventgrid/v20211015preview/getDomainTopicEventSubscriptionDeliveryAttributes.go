@@ -21,14 +21,19 @@ func GetDomainTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args
 }
 
 type GetDomainTopicEventSubscriptionDeliveryAttributesArgs struct {
-	DomainName            string `pulumi:"domainName"`
+	// Name of the top level domain.
+	DomainName string `pulumi:"domainName"`
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	TopicName             string `pulumi:"topicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the domain topic.
+	TopicName string `pulumi:"topicName"`
 }
 
 // Result of the Get delivery attributes operation.
 type GetDomainTopicEventSubscriptionDeliveryAttributesResult struct {
+	// A collection of DeliveryAttributeMapping
 	Value []interface{} `pulumi:"value"`
 }
 
@@ -46,10 +51,14 @@ func GetDomainTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context
 }
 
 type GetDomainTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
-	DomainName            pulumi.StringInput `pulumi:"domainName"`
+	// Name of the top level domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName             pulumi.StringInput `pulumi:"topicName"`
+	// The name of the resource group within the user's subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the domain topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (GetDomainTopicEventSubscriptionDeliveryAttributesOutputArgs) ElementType() reflect.Type {
@@ -71,6 +80,7 @@ func (o GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput) ToGetDoma
 	return o
 }
 
+// A collection of DeliveryAttributeMapping
 func (o GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetDomainTopicEventSubscriptionDeliveryAttributesResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

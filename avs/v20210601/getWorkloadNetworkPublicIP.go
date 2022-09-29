@@ -21,20 +21,30 @@ func LookupWorkloadNetworkPublicIP(ctx *pulumi.Context, args *LookupWorkloadNetw
 }
 
 type LookupWorkloadNetworkPublicIPArgs struct {
-	PrivateCloudName  string `pulumi:"privateCloudName"`
-	PublicIPId        string `pulumi:"publicIPId"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+	PublicIPId string `pulumi:"publicIPId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NSX Public IP Block
 type LookupWorkloadNetworkPublicIPResult struct {
-	DisplayName       *string  `pulumi:"displayName"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
+	// Display name of the Public IP Block.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Number of Public IPs requested.
 	NumberOfPublicIPs *float64 `pulumi:"numberOfPublicIPs"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	PublicIPBlock     string   `pulumi:"publicIPBlock"`
-	Type              string   `pulumi:"type"`
+	// The provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// CIDR Block of the Public IP Block.
+	PublicIPBlock string `pulumi:"publicIPBlock"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadNetworkPublicIPOutput(ctx *pulumi.Context, args LookupWorkloadNetworkPublicIPOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkPublicIPResultOutput {
@@ -51,8 +61,11 @@ func LookupWorkloadNetworkPublicIPOutput(ctx *pulumi.Context, args LookupWorkloa
 }
 
 type LookupWorkloadNetworkPublicIPOutputArgs struct {
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
-	PublicIPId        pulumi.StringInput `pulumi:"publicIPId"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+	PublicIPId pulumi.StringInput `pulumi:"publicIPId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupWorkloadNetworkPublicIPResultOutput) ToLookupWorkloadNetworkPublic
 	return o
 }
 
+// Display name of the Public IP Block.
 func (o LookupWorkloadNetworkPublicIPResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupWorkloadNetworkPublicIPResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupWorkloadNetworkPublicIPResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Number of Public IPs requested.
 func (o LookupWorkloadNetworkPublicIPResultOutput) NumberOfPublicIPs() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) *float64 { return v.NumberOfPublicIPs }).(pulumi.Float64PtrOutput)
 }
 
+// The provisioning state
 func (o LookupWorkloadNetworkPublicIPResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// CIDR Block of the Public IP Block.
 func (o LookupWorkloadNetworkPublicIPResultOutput) PublicIPBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.PublicIPBlock }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadNetworkPublicIPResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.Type }).(pulumi.StringOutput)
 }

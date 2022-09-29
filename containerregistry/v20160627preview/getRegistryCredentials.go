@@ -21,13 +21,17 @@ func GetRegistryCredentials(ctx *pulumi.Context, args *GetRegistryCredentialsArg
 }
 
 type GetRegistryCredentialsArgs struct {
-	RegistryName      string `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName string `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The result of a request to get the administrator login credentials for a container registry.
 type GetRegistryCredentialsResult struct {
+	// The administrator password.
 	Password *string `pulumi:"password"`
+	// The administrator username.
 	Username *string `pulumi:"username"`
 }
 
@@ -45,7 +49,9 @@ func GetRegistryCredentialsOutput(ctx *pulumi.Context, args GetRegistryCredentia
 }
 
 type GetRegistryCredentialsOutputArgs struct {
-	RegistryName      pulumi.StringInput `pulumi:"registryName"`
+	// The name of the container registry.
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The name of the resource group to which the container registry belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o GetRegistryCredentialsResultOutput) ToGetRegistryCredentialsResultOutput
 	return o
 }
 
+// The administrator password.
 func (o GetRegistryCredentialsResultOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryCredentialsResult) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The administrator username.
 func (o GetRegistryCredentialsResultOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryCredentialsResult) *string { return v.Username }).(pulumi.StringPtrOutput)
 }

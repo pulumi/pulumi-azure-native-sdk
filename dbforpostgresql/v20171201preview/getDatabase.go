@@ -21,18 +21,26 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	DatabaseName      string `pulumi:"databaseName"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents a Database.
 type LookupDatabaseResult struct {
-	Charset   *string `pulumi:"charset"`
+	// The charset of the database.
+	Charset *string `pulumi:"charset"`
+	// The collation of the database.
 	Collation *string `pulumi:"collation"`
-	Id        string  `pulumi:"id"`
-	Name      string  `pulumi:"name"`
-	Type      string  `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
@@ -49,9 +57,12 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 }
 
 type LookupDatabaseOutputArgs struct {
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupDatabaseOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 	return o
 }
 
+// The charset of the database.
 func (o LookupDatabaseResultOutput) Charset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
+// The collation of the database.
 func (o LookupDatabaseResultOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }

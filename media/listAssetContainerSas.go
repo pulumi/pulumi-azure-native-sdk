@@ -22,15 +22,21 @@ func ListAssetContainerSas(ctx *pulumi.Context, args *ListAssetContainerSasArgs,
 }
 
 type ListAssetContainerSasArgs struct {
-	AccountName       string  `pulumi:"accountName"`
-	AssetName         string  `pulumi:"assetName"`
-	ExpiryTime        *string `pulumi:"expiryTime"`
-	Permissions       *string `pulumi:"permissions"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Asset name.
+	AssetName string `pulumi:"assetName"`
+	// The SAS URL expiration time.  This must be less than 24 hours from the current time.
+	ExpiryTime *string `pulumi:"expiryTime"`
+	// The permissions to set on the SAS URL.
+	Permissions *string `pulumi:"permissions"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The Asset Storage container SAS URLs.
 type ListAssetContainerSasResult struct {
+	// The list of Asset container SAS URLs.
 	AssetContainerSasUrls []string `pulumi:"assetContainerSasUrls"`
 }
 
@@ -48,11 +54,16 @@ func ListAssetContainerSasOutput(ctx *pulumi.Context, args ListAssetContainerSas
 }
 
 type ListAssetContainerSasOutputArgs struct {
-	AccountName       pulumi.StringInput    `pulumi:"accountName"`
-	AssetName         pulumi.StringInput    `pulumi:"assetName"`
-	ExpiryTime        pulumi.StringPtrInput `pulumi:"expiryTime"`
-	Permissions       pulumi.StringPtrInput `pulumi:"permissions"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Asset name.
+	AssetName pulumi.StringInput `pulumi:"assetName"`
+	// The SAS URL expiration time.  This must be less than 24 hours from the current time.
+	ExpiryTime pulumi.StringPtrInput `pulumi:"expiryTime"`
+	// The permissions to set on the SAS URL.
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (ListAssetContainerSasOutputArgs) ElementType() reflect.Type {
@@ -74,6 +85,7 @@ func (o ListAssetContainerSasResultOutput) ToListAssetContainerSasResultOutputWi
 	return o
 }
 
+// The list of Asset container SAS URLs.
 func (o ListAssetContainerSasResultOutput) AssetContainerSasUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListAssetContainerSasResult) []string { return v.AssetContainerSasUrls }).(pulumi.StringArrayOutput)
 }

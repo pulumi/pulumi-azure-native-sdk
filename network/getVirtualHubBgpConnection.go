@@ -22,21 +22,32 @@ func LookupVirtualHubBgpConnection(ctx *pulumi.Context, args *LookupVirtualHubBg
 }
 
 type LookupVirtualHubBgpConnectionArgs struct {
-	ConnectionName    string `pulumi:"connectionName"`
+	// The name of the connection.
+	ConnectionName string `pulumi:"connectionName"`
+	// The resource group name of the VirtualHub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VirtualHubName    string `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName string `pulumi:"virtualHubName"`
 }
 
 // Virtual Appliance Site resource.
 type LookupVirtualHubBgpConnectionResult struct {
-	ConnectionState   string   `pulumi:"connectionState"`
-	Etag              string   `pulumi:"etag"`
-	Id                *string  `pulumi:"id"`
-	Name              *string  `pulumi:"name"`
-	PeerAsn           *float64 `pulumi:"peerAsn"`
-	PeerIp            *string  `pulumi:"peerIp"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	Type              string   `pulumi:"type"`
+	// The current state of the VirtualHub to Peer.
+	ConnectionState string `pulumi:"connectionState"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Name of the connection.
+	Name *string `pulumi:"name"`
+	// Peer ASN.
+	PeerAsn *float64 `pulumi:"peerAsn"`
+	// Peer IP.
+	PeerIp *string `pulumi:"peerIp"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Connection type.
+	Type string `pulumi:"type"`
 }
 
 func LookupVirtualHubBgpConnectionOutput(ctx *pulumi.Context, args LookupVirtualHubBgpConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualHubBgpConnectionResultOutput {
@@ -53,9 +64,12 @@ func LookupVirtualHubBgpConnectionOutput(ctx *pulumi.Context, args LookupVirtual
 }
 
 type LookupVirtualHubBgpConnectionOutputArgs struct {
-	ConnectionName    pulumi.StringInput `pulumi:"connectionName"`
+	// The name of the connection.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The resource group name of the VirtualHub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VirtualHubName    pulumi.StringInput `pulumi:"virtualHubName"`
+	// The name of the VirtualHub.
+	VirtualHubName pulumi.StringInput `pulumi:"virtualHubName"`
 }
 
 func (LookupVirtualHubBgpConnectionOutputArgs) ElementType() reflect.Type {
@@ -77,34 +91,42 @@ func (o LookupVirtualHubBgpConnectionResultOutput) ToLookupVirtualHubBgpConnecti
 	return o
 }
 
+// The current state of the VirtualHub to Peer.
 func (o LookupVirtualHubBgpConnectionResultOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) string { return v.ConnectionState }).(pulumi.StringOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupVirtualHubBgpConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupVirtualHubBgpConnectionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Name of the connection.
 func (o LookupVirtualHubBgpConnectionResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Peer ASN.
 func (o LookupVirtualHubBgpConnectionResultOutput) PeerAsn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) *float64 { return v.PeerAsn }).(pulumi.Float64PtrOutput)
 }
 
+// Peer IP.
 func (o LookupVirtualHubBgpConnectionResultOutput) PeerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) *string { return v.PeerIp }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupVirtualHubBgpConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Connection type.
 func (o LookupVirtualHubBgpConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

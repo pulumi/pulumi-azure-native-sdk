@@ -22,19 +22,28 @@ func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.In
 }
 
 type LookupLedgerArgs struct {
-	LedgerName        string `pulumi:"ledgerName"`
+	// Name of the Confidential Ledger
+	LedgerName string `pulumi:"ledgerName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
 type LookupLedgerResult struct {
-	Id         string                   `pulumi:"id"`
-	Location   *string                  `pulumi:"location"`
-	Name       string                   `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The Azure location where the Confidential Ledger is running.
+	Location *string `pulumi:"location"`
+	// Name of the Resource.
+	Name string `pulumi:"name"`
+	// Properties of Confidential Ledger Resource.
 	Properties LedgerPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse       `pulumi:"systemData"`
-	Tags       map[string]string        `pulumi:"tags"`
-	Type       string                   `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Additional tags for Confidential Ledger
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupLedgerOutput(ctx *pulumi.Context, args LookupLedgerOutputArgs, opts ...pulumi.InvokeOption) LookupLedgerResultOutput {
@@ -51,7 +60,9 @@ func LookupLedgerOutput(ctx *pulumi.Context, args LookupLedgerOutputArgs, opts .
 }
 
 type LookupLedgerOutputArgs struct {
-	LedgerName        pulumi.StringInput `pulumi:"ledgerName"`
+	// Name of the Confidential Ledger
+	LedgerName pulumi.StringInput `pulumi:"ledgerName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,30 +85,37 @@ func (o LookupLedgerResultOutput) ToLookupLedgerResultOutputWithContext(ctx cont
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupLedgerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLedgerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Azure location where the Confidential Ledger is running.
 func (o LookupLedgerResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLedgerResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Resource.
 func (o LookupLedgerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLedgerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of Confidential Ledger Resource.
 func (o LookupLedgerResultOutput) Properties() LedgerPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupLedgerResult) LedgerPropertiesResponse { return v.Properties }).(LedgerPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource
 func (o LookupLedgerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupLedgerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Additional tags for Confidential Ledger
 func (o LookupLedgerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLedgerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource.
 func (o LookupLedgerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLedgerResult) string { return v.Type }).(pulumi.StringOutput)
 }

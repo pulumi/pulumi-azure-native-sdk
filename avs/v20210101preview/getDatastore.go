@@ -21,20 +21,30 @@ func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pul
 }
 
 type LookupDatastoreArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
-	DatastoreName     string `pulumi:"datastoreName"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// Name of the cluster in the private cloud
+	ClusterName string `pulumi:"clusterName"`
+	// Name of the datastore in the private cloud cluster
+	DatastoreName string `pulumi:"datastoreName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A datastore resource
 type LookupDatastoreResult struct {
-	DiskPoolVolume    *DiskPoolVolumeResponse `pulumi:"diskPoolVolume"`
-	Id                string                  `pulumi:"id"`
-	Name              string                  `pulumi:"name"`
-	NetAppVolume      *NetAppVolumeResponse   `pulumi:"netAppVolume"`
-	ProvisioningState string                  `pulumi:"provisioningState"`
-	Type              string                  `pulumi:"type"`
+	// An iSCSI volume
+	DiskPoolVolume *DiskPoolVolumeResponse `pulumi:"diskPoolVolume"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// An Azure NetApp Files volume
+	NetAppVolume *NetAppVolumeResponse `pulumi:"netAppVolume"`
+	// The state of the datastore provisioning
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreResultOutput {
@@ -51,9 +61,13 @@ func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, 
 }
 
 type LookupDatastoreOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
-	DatastoreName     pulumi.StringInput `pulumi:"datastoreName"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// Name of the cluster in the private cloud
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Name of the datastore in the private cloud cluster
+	DatastoreName pulumi.StringInput `pulumi:"datastoreName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,26 +90,32 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ct
 	return o
 }
 
+// An iSCSI volume
 func (o LookupDatastoreResultOutput) DiskPoolVolume() DiskPoolVolumeResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) *DiskPoolVolumeResponse { return v.DiskPoolVolume }).(DiskPoolVolumeResponsePtrOutput)
 }
 
+// Resource ID.
 func (o LookupDatastoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupDatastoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An Azure NetApp Files volume
 func (o LookupDatastoreResultOutput) NetAppVolume() NetAppVolumeResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) *NetAppVolumeResponse { return v.NetAppVolume }).(NetAppVolumeResponsePtrOutput)
 }
 
+// The state of the datastore provisioning
 func (o LookupDatastoreResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupDatastoreResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Type }).(pulumi.StringOutput)
 }

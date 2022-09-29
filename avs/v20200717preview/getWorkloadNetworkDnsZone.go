@@ -21,23 +21,36 @@ func LookupWorkloadNetworkDnsZone(ctx *pulumi.Context, args *LookupWorkloadNetwo
 }
 
 type LookupWorkloadNetworkDnsZoneArgs struct {
-	DnsZoneId         string `pulumi:"dnsZoneId"`
-	PrivateCloudName  string `pulumi:"privateCloudName"`
+	// NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+	DnsZoneId string `pulumi:"dnsZoneId"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // NSX DNS Zone
 type LookupWorkloadNetworkDnsZoneResult struct {
-	DisplayName       *string  `pulumi:"displayName"`
-	DnsServerIps      []string `pulumi:"dnsServerIps"`
-	DnsServices       *float64 `pulumi:"dnsServices"`
-	Domain            []string `pulumi:"domain"`
-	Id                string   `pulumi:"id"`
-	Name              string   `pulumi:"name"`
-	ProvisioningState string   `pulumi:"provisioningState"`
-	Revision          *float64 `pulumi:"revision"`
-	SourceIp          *string  `pulumi:"sourceIp"`
-	Type              string   `pulumi:"type"`
+	// Display name of the DNS Zone.
+	DisplayName *string `pulumi:"displayName"`
+	// DNS Server IP array of the DNS Zone.
+	DnsServerIps []string `pulumi:"dnsServerIps"`
+	// Number of DNS Services using the DNS zone.
+	DnsServices *float64 `pulumi:"dnsServices"`
+	// Domain names of the DNS Zone.
+	Domain []string `pulumi:"domain"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// NSX revision number.
+	Revision *float64 `pulumi:"revision"`
+	// Source IP of the DNS Zone.
+	SourceIp *string `pulumi:"sourceIp"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupWorkloadNetworkDnsZoneOutput(ctx *pulumi.Context, args LookupWorkloadNetworkDnsZoneOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkDnsZoneResultOutput {
@@ -54,8 +67,11 @@ func LookupWorkloadNetworkDnsZoneOutput(ctx *pulumi.Context, args LookupWorkload
 }
 
 type LookupWorkloadNetworkDnsZoneOutputArgs struct {
-	DnsZoneId         pulumi.StringInput `pulumi:"dnsZoneId"`
-	PrivateCloudName  pulumi.StringInput `pulumi:"privateCloudName"`
+	// NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,42 +94,52 @@ func (o LookupWorkloadNetworkDnsZoneResultOutput) ToLookupWorkloadNetworkDnsZone
 	return o
 }
 
+// Display name of the DNS Zone.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// DNS Server IP array of the DNS Zone.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) DnsServerIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) []string { return v.DnsServerIps }).(pulumi.StringArrayOutput)
 }
 
+// Number of DNS Services using the DNS zone.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) DnsServices() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) *float64 { return v.DnsServices }).(pulumi.Float64PtrOutput)
 }
 
+// Domain names of the DNS Zone.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) Domain() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) []string { return v.Domain }).(pulumi.StringArrayOutput)
 }
 
+// Resource ID.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state
 func (o LookupWorkloadNetworkDnsZoneResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// NSX revision number.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) Revision() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
 }
 
+// Source IP of the DNS Zone.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) SourceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) *string { return v.SourceIp }).(pulumi.StringPtrOutput)
 }
 
+// Resource type.
 func (o LookupWorkloadNetworkDnsZoneResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) string { return v.Type }).(pulumi.StringOutput)
 }

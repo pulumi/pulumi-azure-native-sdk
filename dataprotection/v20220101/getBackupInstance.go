@@ -21,18 +21,26 @@ func LookupBackupInstance(ctx *pulumi.Context, args *LookupBackupInstanceArgs, o
 }
 
 type LookupBackupInstanceArgs struct {
+	// The name of the backup instance
 	BackupInstanceName string `pulumi:"backupInstanceName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	VaultName          string `pulumi:"vaultName"`
+	// The name of the resource group where the backup vault is present.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the backup vault.
+	VaultName string `pulumi:"vaultName"`
 }
 
 // BackupInstance Resource
 type LookupBackupInstanceResult struct {
-	Id         string                 `pulumi:"id"`
-	Name       string                 `pulumi:"name"`
+	// Resource Id represents the complete path to the resource.
+	Id string `pulumi:"id"`
+	// Resource name associated with the resource.
+	Name string `pulumi:"name"`
+	// BackupInstanceResource properties
 	Properties BackupInstanceResponse `pulumi:"properties"`
-	SystemData SystemDataResponse     `pulumi:"systemData"`
-	Type       string                 `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+	Type string `pulumi:"type"`
 }
 
 func LookupBackupInstanceOutput(ctx *pulumi.Context, args LookupBackupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupBackupInstanceResultOutput {
@@ -49,9 +57,12 @@ func LookupBackupInstanceOutput(ctx *pulumi.Context, args LookupBackupInstanceOu
 }
 
 type LookupBackupInstanceOutputArgs struct {
+	// The name of the backup instance
 	BackupInstanceName pulumi.StringInput `pulumi:"backupInstanceName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	VaultName          pulumi.StringInput `pulumi:"vaultName"`
+	// The name of the resource group where the backup vault is present.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the backup vault.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupBackupInstanceOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupBackupInstanceResultOutput) ToLookupBackupInstanceResultOutputWith
 	return o
 }
 
+// Resource Id represents the complete path to the resource.
 func (o LookupBackupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name associated with the resource.
 func (o LookupBackupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// BackupInstanceResource properties
 func (o LookupBackupInstanceResultOutput) Properties() BackupInstanceResponseOutput {
 	return o.ApplyT(func(v LookupBackupInstanceResult) BackupInstanceResponse { return v.Properties }).(BackupInstanceResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupBackupInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBackupInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 func (o LookupBackupInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

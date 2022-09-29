@@ -22,16 +22,22 @@ func LookupDefaultRollout(ctx *pulumi.Context, args *LookupDefaultRolloutArgs, o
 }
 
 type LookupDefaultRolloutArgs struct {
+	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace string `pulumi:"providerNamespace"`
-	RolloutName       string `pulumi:"rolloutName"`
+	// The rollout name.
+	RolloutName string `pulumi:"rolloutName"`
 }
 
 // Default rollout definition.
 type LookupDefaultRolloutResult struct {
-	Id         string                           `pulumi:"id"`
-	Name       string                           `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Properties of the rollout.
 	Properties DefaultRolloutResponseProperties `pulumi:"properties"`
-	Type       string                           `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDefaultRolloutOutput(ctx *pulumi.Context, args LookupDefaultRolloutOutputArgs, opts ...pulumi.InvokeOption) LookupDefaultRolloutResultOutput {
@@ -48,8 +54,10 @@ func LookupDefaultRolloutOutput(ctx *pulumi.Context, args LookupDefaultRolloutOu
 }
 
 type LookupDefaultRolloutOutputArgs struct {
+	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace pulumi.StringInput `pulumi:"providerNamespace"`
-	RolloutName       pulumi.StringInput `pulumi:"rolloutName"`
+	// The rollout name.
+	RolloutName pulumi.StringInput `pulumi:"rolloutName"`
 }
 
 func (LookupDefaultRolloutOutputArgs) ElementType() reflect.Type {
@@ -71,18 +79,22 @@ func (o LookupDefaultRolloutResultOutput) ToLookupDefaultRolloutResultOutputWith
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDefaultRolloutResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultRolloutResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupDefaultRolloutResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultRolloutResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the rollout.
 func (o LookupDefaultRolloutResultOutput) Properties() DefaultRolloutResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupDefaultRolloutResult) DefaultRolloutResponseProperties { return v.Properties }).(DefaultRolloutResponsePropertiesOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDefaultRolloutResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultRolloutResult) string { return v.Type }).(pulumi.StringOutput)
 }

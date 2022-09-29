@@ -22,18 +22,26 @@ func LookupServerTrustGroup(ctx *pulumi.Context, args *LookupServerTrustGroupArg
 }
 
 type LookupServerTrustGroupArgs struct {
-	LocationName         string `pulumi:"locationName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the region where the resource is located.
+	LocationName string `pulumi:"locationName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the server trust group.
 	ServerTrustGroupName string `pulumi:"serverTrustGroupName"`
 }
 
 // A server trust group.
 type LookupServerTrustGroupResult struct {
+	// Group members information for the server trust group.
 	GroupMembers []ServerInfoResponse `pulumi:"groupMembers"`
-	Id           string               `pulumi:"id"`
-	Name         string               `pulumi:"name"`
-	TrustScopes  []string             `pulumi:"trustScopes"`
-	Type         string               `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Trust scope of the server trust group.
+	TrustScopes []string `pulumi:"trustScopes"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupServerTrustGroupOutput(ctx *pulumi.Context, args LookupServerTrustGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServerTrustGroupResultOutput {
@@ -50,8 +58,11 @@ func LookupServerTrustGroupOutput(ctx *pulumi.Context, args LookupServerTrustGro
 }
 
 type LookupServerTrustGroupOutputArgs struct {
-	LocationName         pulumi.StringInput `pulumi:"locationName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the region where the resource is located.
+	LocationName pulumi.StringInput `pulumi:"locationName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the server trust group.
 	ServerTrustGroupName pulumi.StringInput `pulumi:"serverTrustGroupName"`
 }
 
@@ -74,22 +85,27 @@ func (o LookupServerTrustGroupResultOutput) ToLookupServerTrustGroupResultOutput
 	return o
 }
 
+// Group members information for the server trust group.
 func (o LookupServerTrustGroupResultOutput) GroupMembers() ServerInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupServerTrustGroupResult) []ServerInfoResponse { return v.GroupMembers }).(ServerInfoResponseArrayOutput)
 }
 
+// Resource ID.
 func (o LookupServerTrustGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupServerTrustGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Trust scope of the server trust group.
 func (o LookupServerTrustGroupResultOutput) TrustScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServerTrustGroupResult) []string { return v.TrustScopes }).(pulumi.StringArrayOutput)
 }
 
+// Resource type.
 func (o LookupServerTrustGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerTrustGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

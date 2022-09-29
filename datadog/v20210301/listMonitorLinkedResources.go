@@ -21,14 +21,18 @@ func ListMonitorLinkedResources(ctx *pulumi.Context, args *ListMonitorLinkedReso
 }
 
 type ListMonitorLinkedResourcesArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list operation.
 type ListMonitorLinkedResourcesResult struct {
-	NextLink *string                  `pulumi:"nextLink"`
-	Value    []LinkedResourceResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of a list operation.
+	Value []LinkedResourceResponse `pulumi:"value"`
 }
 
 func ListMonitorLinkedResourcesOutput(ctx *pulumi.Context, args ListMonitorLinkedResourcesOutputArgs, opts ...pulumi.InvokeOption) ListMonitorLinkedResourcesResultOutput {
@@ -45,7 +49,9 @@ func ListMonitorLinkedResourcesOutput(ctx *pulumi.Context, args ListMonitorLinke
 }
 
 type ListMonitorLinkedResourcesOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListMonitorLinkedResourcesResultOutput) ToListMonitorLinkedResourcesResu
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitorLinkedResourcesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitorLinkedResourcesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of a list operation.
 func (o ListMonitorLinkedResourcesResultOutput) Value() LinkedResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitorLinkedResourcesResult) []LinkedResourceResponse { return v.Value }).(LinkedResourceResponseArrayOutput)
 }

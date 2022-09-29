@@ -23,22 +23,34 @@ func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.Invo
 }
 
 type LookupTopicArgs struct {
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	TopicName         string `pulumi:"topicName"`
+	// Name of the topic
+	TopicName string `pulumi:"topicName"`
 }
 
 // EventGrid Topic
 type LookupTopicResult struct {
-	Endpoint           string                          `pulumi:"endpoint"`
-	Id                 string                          `pulumi:"id"`
-	InputSchema        *string                         `pulumi:"inputSchema"`
+	// Endpoint for the topic.
+	Endpoint string `pulumi:"endpoint"`
+	// Fully qualified identifier of the resource
+	Id string `pulumi:"id"`
+	// This determines the format that Event Grid should expect for incoming events published to the topic.
+	InputSchema *string `pulumi:"inputSchema"`
+	// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
 	InputSchemaMapping *JsonInputSchemaMappingResponse `pulumi:"inputSchemaMapping"`
-	Location           string                          `pulumi:"location"`
-	MetricResourceId   string                          `pulumi:"metricResourceId"`
-	Name               string                          `pulumi:"name"`
-	ProvisioningState  string                          `pulumi:"provisioningState"`
-	Tags               map[string]string               `pulumi:"tags"`
-	Type               string                          `pulumi:"type"`
+	// Location of the resource
+	Location string `pulumi:"location"`
+	// Metric resource id for the topic.
+	MetricResourceId string `pulumi:"metricResourceId"`
+	// Name of the resource
+	Name string `pulumi:"name"`
+	// Provisioning state of the topic.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Tags of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// Type of the resource
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupTopicResult
@@ -68,8 +80,10 @@ func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...
 }
 
 type LookupTopicOutputArgs struct {
+	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	TopicName         pulumi.StringInput `pulumi:"topicName"`
+	// Name of the topic
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (LookupTopicOutputArgs) ElementType() reflect.Type {
@@ -91,42 +105,52 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx contex
 	return o
 }
 
+// Endpoint for the topic.
 func (o LookupTopicResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// Fully qualified identifier of the resource
 func (o LookupTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// This determines the format that Event Grid should expect for incoming events published to the topic.
 func (o LookupTopicResultOutput) InputSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *string { return v.InputSchema }).(pulumi.StringPtrOutput)
 }
 
+// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
 func (o LookupTopicResultOutput) InputSchemaMapping() JsonInputSchemaMappingResponsePtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *JsonInputSchemaMappingResponse { return v.InputSchemaMapping }).(JsonInputSchemaMappingResponsePtrOutput)
 }
 
+// Location of the resource
 func (o LookupTopicResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Metric resource id for the topic.
 func (o LookupTopicResultOutput) MetricResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.MetricResourceId }).(pulumi.StringOutput)
 }
 
+// Name of the resource
 func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state of the topic.
 func (o LookupTopicResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Tags of the resource
 func (o LookupTopicResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Type of the resource
 func (o LookupTopicResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Type }).(pulumi.StringOutput)
 }

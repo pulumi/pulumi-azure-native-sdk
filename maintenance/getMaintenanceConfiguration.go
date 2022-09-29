@@ -22,20 +22,30 @@ func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenance
 }
 
 type LookupMaintenanceConfigurationArgs struct {
+	// Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// Resource Identifier
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Maintenance configuration record type
 type LookupMaintenanceConfigurationResult struct {
+	// Gets or sets extensionProperties of the maintenanceConfiguration. This is for future use only and would be a set of key value pairs for additional information e.g. whether to follow SDP etc.
 	ExtensionProperties map[string]string `pulumi:"extensionProperties"`
-	Id                  string            `pulumi:"id"`
-	Location            *string           `pulumi:"location"`
-	MaintenanceScope    *string           `pulumi:"maintenanceScope"`
-	Name                string            `pulumi:"name"`
-	Namespace           *string           `pulumi:"namespace"`
-	Tags                map[string]string `pulumi:"tags"`
-	Type                string            `pulumi:"type"`
+	// Fully qualified identifier of the resource
+	Id string `pulumi:"id"`
+	// Gets or sets location of the resource
+	Location *string `pulumi:"location"`
+	// Gets or sets maintenanceScope of the configuration. It represent the impact area of the maintenance
+	MaintenanceScope *string `pulumi:"maintenanceScope"`
+	// Name of the resource
+	Name string `pulumi:"name"`
+	// Gets or sets namespace of the resource e.g. Microsoft.Maintenance or Microsoft.Sql
+	Namespace *string `pulumi:"namespace"`
+	// Gets or sets tags of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// Type of the resource
+	Type string `pulumi:"type"`
 }
 
 func LookupMaintenanceConfigurationOutput(ctx *pulumi.Context, args LookupMaintenanceConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupMaintenanceConfigurationResultOutput {
@@ -52,8 +62,10 @@ func LookupMaintenanceConfigurationOutput(ctx *pulumi.Context, args LookupMainte
 }
 
 type LookupMaintenanceConfigurationOutputArgs struct {
+	// Resource Group Name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// Resource Identifier
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupMaintenanceConfigurationOutputArgs) ElementType() reflect.Type {
@@ -75,34 +87,42 @@ func (o LookupMaintenanceConfigurationResultOutput) ToLookupMaintenanceConfigura
 	return o
 }
 
+// Gets or sets extensionProperties of the maintenanceConfiguration. This is for future use only and would be a set of key value pairs for additional information e.g. whether to follow SDP etc.
 func (o LookupMaintenanceConfigurationResultOutput) ExtensionProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) map[string]string { return v.ExtensionProperties }).(pulumi.StringMapOutput)
 }
 
+// Fully qualified identifier of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Gets or sets location of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets maintenanceScope of the configuration. It represent the impact area of the maintenance
 func (o LookupMaintenanceConfigurationResultOutput) MaintenanceScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.MaintenanceScope }).(pulumi.StringPtrOutput)
 }
 
+// Name of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gets or sets namespace of the resource e.g. Microsoft.Maintenance or Microsoft.Sql
 func (o LookupMaintenanceConfigurationResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets tags of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Type of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,25 +22,39 @@ func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupKeyArgs struct {
-	KeyName           string `pulumi:"keyName"`
+	// The name of the key to be retrieved.
+	KeyName string `pulumi:"keyName"`
+	// The name of the resource group which contains the specified key vault.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VaultName         string `pulumi:"vaultName"`
+	// The name of the vault which contains the key to be retrieved.
+	VaultName string `pulumi:"vaultName"`
 }
 
 // The key resource.
 type LookupKeyResult struct {
-	Attributes        *KeyAttributesResponse `pulumi:"attributes"`
-	CurveName         *string                `pulumi:"curveName"`
-	Id                string                 `pulumi:"id"`
-	KeyOps            []string               `pulumi:"keyOps"`
-	KeySize           *int                   `pulumi:"keySize"`
-	KeyUri            string                 `pulumi:"keyUri"`
-	KeyUriWithVersion string                 `pulumi:"keyUriWithVersion"`
-	Kty               *string                `pulumi:"kty"`
-	Location          string                 `pulumi:"location"`
-	Name              string                 `pulumi:"name"`
-	Tags              map[string]string      `pulumi:"tags"`
-	Type              string                 `pulumi:"type"`
+	// The attributes of the key.
+	Attributes *KeyAttributesResponse `pulumi:"attributes"`
+	// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+	CurveName *string `pulumi:"curveName"`
+	// Fully qualified identifier of the key vault resource.
+	Id     string   `pulumi:"id"`
+	KeyOps []string `pulumi:"keyOps"`
+	// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+	KeySize *int `pulumi:"keySize"`
+	// The URI to retrieve the current version of the key.
+	KeyUri string `pulumi:"keyUri"`
+	// The URI to retrieve the specific version of the key.
+	KeyUriWithVersion string `pulumi:"keyUriWithVersion"`
+	// The type of the key. For valid values, see JsonWebKeyType.
+	Kty *string `pulumi:"kty"`
+	// Azure location of the key vault resource.
+	Location string `pulumi:"location"`
+	// Name of the key vault resource.
+	Name string `pulumi:"name"`
+	// Tags assigned to the key vault resource.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type of the key vault resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKeyResultOutput {
@@ -57,9 +71,12 @@ func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulu
 }
 
 type LookupKeyOutputArgs struct {
-	KeyName           pulumi.StringInput `pulumi:"keyName"`
+	// The name of the key to be retrieved.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the resource group which contains the specified key vault.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VaultName         pulumi.StringInput `pulumi:"vaultName"`
+	// The name of the vault which contains the key to be retrieved.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupKeyOutputArgs) ElementType() reflect.Type {
@@ -81,14 +98,17 @@ func (o LookupKeyResultOutput) ToLookupKeyResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// The attributes of the key.
 func (o LookupKeyResultOutput) Attributes() KeyAttributesResponsePtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *KeyAttributesResponse { return v.Attributes }).(KeyAttributesResponsePtrOutput)
 }
 
+// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
 func (o LookupKeyResultOutput) CurveName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *string { return v.CurveName }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified identifier of the key vault resource.
 func (o LookupKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -97,34 +117,42 @@ func (o LookupKeyResultOutput) KeyOps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKeyResult) []string { return v.KeyOps }).(pulumi.StringArrayOutput)
 }
 
+// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
 func (o LookupKeyResultOutput) KeySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *int { return v.KeySize }).(pulumi.IntPtrOutput)
 }
 
+// The URI to retrieve the current version of the key.
 func (o LookupKeyResultOutput) KeyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.KeyUri }).(pulumi.StringOutput)
 }
 
+// The URI to retrieve the specific version of the key.
 func (o LookupKeyResultOutput) KeyUriWithVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.KeyUriWithVersion }).(pulumi.StringOutput)
 }
 
+// The type of the key. For valid values, see JsonWebKeyType.
 func (o LookupKeyResultOutput) Kty() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *string { return v.Kty }).(pulumi.StringPtrOutput)
 }
 
+// Azure location of the key vault resource.
 func (o LookupKeyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the key vault resource.
 func (o LookupKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Tags assigned to the key vault resource.
 func (o LookupKeyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupKeyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type of the key vault resource.
 func (o LookupKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }

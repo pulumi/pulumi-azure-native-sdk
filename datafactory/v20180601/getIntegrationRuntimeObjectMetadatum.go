@@ -21,16 +21,22 @@ func GetIntegrationRuntimeObjectMetadatum(ctx *pulumi.Context, args *GetIntegrat
 }
 
 type GetIntegrationRuntimeObjectMetadatumArgs struct {
-	FactoryName            string  `pulumi:"factoryName"`
-	IntegrationRuntimeName string  `pulumi:"integrationRuntimeName"`
-	MetadataPath           *string `pulumi:"metadataPath"`
-	ResourceGroupName      string  `pulumi:"resourceGroupName"`
+	// The factory name.
+	FactoryName string `pulumi:"factoryName"`
+	// The integration runtime name.
+	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
+	// Metadata path.
+	MetadataPath *string `pulumi:"metadataPath"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A list of SSIS object metadata.
 type GetIntegrationRuntimeObjectMetadatumResult struct {
-	NextLink *string       `pulumi:"nextLink"`
-	Value    []interface{} `pulumi:"value"`
+	// The link to the next page of results, if any remaining results exist.
+	NextLink *string `pulumi:"nextLink"`
+	// List of SSIS object metadata.
+	Value []interface{} `pulumi:"value"`
 }
 
 func GetIntegrationRuntimeObjectMetadatumOutput(ctx *pulumi.Context, args GetIntegrationRuntimeObjectMetadatumOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeObjectMetadatumResultOutput {
@@ -47,10 +53,14 @@ func GetIntegrationRuntimeObjectMetadatumOutput(ctx *pulumi.Context, args GetInt
 }
 
 type GetIntegrationRuntimeObjectMetadatumOutputArgs struct {
-	FactoryName            pulumi.StringInput    `pulumi:"factoryName"`
-	IntegrationRuntimeName pulumi.StringInput    `pulumi:"integrationRuntimeName"`
-	MetadataPath           pulumi.StringPtrInput `pulumi:"metadataPath"`
-	ResourceGroupName      pulumi.StringInput    `pulumi:"resourceGroupName"`
+	// The factory name.
+	FactoryName pulumi.StringInput `pulumi:"factoryName"`
+	// The integration runtime name.
+	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
+	// Metadata path.
+	MetadataPath pulumi.StringPtrInput `pulumi:"metadataPath"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetIntegrationRuntimeObjectMetadatumOutputArgs) ElementType() reflect.Type {
@@ -72,10 +82,12 @@ func (o GetIntegrationRuntimeObjectMetadatumResultOutput) ToGetIntegrationRuntim
 	return o
 }
 
+// The link to the next page of results, if any remaining results exist.
 func (o GetIntegrationRuntimeObjectMetadatumResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeObjectMetadatumResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// List of SSIS object metadata.
 func (o GetIntegrationRuntimeObjectMetadatumResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeObjectMetadatumResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

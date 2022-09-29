@@ -23,25 +23,40 @@ func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opt
 }
 
 type LookupServerDetailsArgs struct {
+	// The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
+	ServerName string `pulumi:"serverName"`
 }
 
 // Represents an instance of an Analysis Services resource.
 type LookupServerDetailsResult struct {
-	AsAdministrators       *ServerAdministratorsResponse `pulumi:"asAdministrators"`
-	BackupBlobContainerUri *string                       `pulumi:"backupBlobContainerUri"`
-	Id                     string                        `pulumi:"id"`
-	Location               string                        `pulumi:"location"`
-	ManagedMode            *int                          `pulumi:"managedMode"`
-	Name                   string                        `pulumi:"name"`
-	ProvisioningState      string                        `pulumi:"provisioningState"`
-	ServerFullName         string                        `pulumi:"serverFullName"`
-	ServerMonitorMode      *int                          `pulumi:"serverMonitorMode"`
-	Sku                    ResourceSkuResponse           `pulumi:"sku"`
-	State                  string                        `pulumi:"state"`
-	Tags                   map[string]string             `pulumi:"tags"`
-	Type                   string                        `pulumi:"type"`
+	// A collection of AS server administrators
+	AsAdministrators *ServerAdministratorsResponse `pulumi:"asAdministrators"`
+	// The container URI of backup blob.
+	BackupBlobContainerUri *string `pulumi:"backupBlobContainerUri"`
+	// An identifier that represents the Analysis Services resource.
+	Id string `pulumi:"id"`
+	// Location of the Analysis Services resource.
+	Location string `pulumi:"location"`
+	// The managed mode of the server (0 = not managed, 1 = managed).
+	ManagedMode *int `pulumi:"managedMode"`
+	// The name of the Analysis Services resource.
+	Name string `pulumi:"name"`
+	// The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The full name of the Analysis Services resource.
+	ServerFullName string `pulumi:"serverFullName"`
+	// The server monitor mode for AS server
+	ServerMonitorMode *int `pulumi:"serverMonitorMode"`
+	// The SKU of the Analysis Services resource.
+	Sku ResourceSkuResponse `pulumi:"sku"`
+	// The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
+	State string `pulumi:"state"`
+	// Key-value pairs of additional resource provisioning properties.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the Analysis Services resource.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupServerDetailsResult
@@ -77,8 +92,10 @@ func LookupServerDetailsOutput(ctx *pulumi.Context, args LookupServerDetailsOutp
 }
 
 type LookupServerDetailsOutputArgs struct {
+	// The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerDetailsOutputArgs) ElementType() reflect.Type {
@@ -100,54 +117,67 @@ func (o LookupServerDetailsResultOutput) ToLookupServerDetailsResultOutputWithCo
 	return o
 }
 
+// A collection of AS server administrators
 func (o LookupServerDetailsResultOutput) AsAdministrators() ServerAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) *ServerAdministratorsResponse { return v.AsAdministrators }).(ServerAdministratorsResponsePtrOutput)
 }
 
+// The container URI of backup blob.
 func (o LookupServerDetailsResultOutput) BackupBlobContainerUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) *string { return v.BackupBlobContainerUri }).(pulumi.StringPtrOutput)
 }
 
+// An identifier that represents the Analysis Services resource.
 func (o LookupServerDetailsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the Analysis Services resource.
 func (o LookupServerDetailsResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The managed mode of the server (0 = not managed, 1 = managed).
 func (o LookupServerDetailsResultOutput) ManagedMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) *int { return v.ManagedMode }).(pulumi.IntPtrOutput)
 }
 
+// The name of the Analysis Services resource.
 func (o LookupServerDetailsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning.
 func (o LookupServerDetailsResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The full name of the Analysis Services resource.
 func (o LookupServerDetailsResultOutput) ServerFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.ServerFullName }).(pulumi.StringOutput)
 }
 
+// The server monitor mode for AS server
 func (o LookupServerDetailsResultOutput) ServerMonitorMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) *int { return v.ServerMonitorMode }).(pulumi.IntPtrOutput)
 }
 
+// The SKU of the Analysis Services resource.
 func (o LookupServerDetailsResultOutput) Sku() ResourceSkuResponseOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) ResourceSkuResponse { return v.Sku }).(ResourceSkuResponseOutput)
 }
 
+// The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
 func (o LookupServerDetailsResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Key-value pairs of additional resource provisioning properties.
 func (o LookupServerDetailsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the Analysis Services resource.
 func (o LookupServerDetailsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -23,28 +23,46 @@ func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.Invoke
 }
 
 type LookupDiskArgs struct {
-	DiskName          string `pulumi:"diskName"`
+	// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	DiskName string `pulumi:"diskName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Disk resource.
 type LookupDiskResult struct {
-	CreationData       CreationDataResponse        `pulumi:"creationData"`
-	DiskIOPSReadWrite  *float64                    `pulumi:"diskIOPSReadWrite"`
-	DiskMBpsReadWrite  *int                        `pulumi:"diskMBpsReadWrite"`
-	DiskSizeGB         *int                        `pulumi:"diskSizeGB"`
+	// Disk source information. CreationData information cannot be changed after the disk has been created.
+	CreationData CreationDataResponse `pulumi:"creationData"`
+	// The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes. For a description of the range of values you can set, see [Ultra SSD Managed Disk Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+	DiskIOPSReadWrite *float64 `pulumi:"diskIOPSReadWrite"`
+	// The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10. For a description of the range of values you can set, see [Ultra SSD Managed Disk Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+	DiskMBpsReadWrite *int `pulumi:"diskMBpsReadWrite"`
+	// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
+	DiskSizeGB *int `pulumi:"diskSizeGB"`
+	// Encryption settings for disk or snapshot
 	EncryptionSettings *EncryptionSettingsResponse `pulumi:"encryptionSettings"`
-	Id                 string                      `pulumi:"id"`
-	Location           string                      `pulumi:"location"`
-	ManagedBy          string                      `pulumi:"managedBy"`
-	Name               string                      `pulumi:"name"`
-	OsType             *string                     `pulumi:"osType"`
-	ProvisioningState  string                      `pulumi:"provisioningState"`
-	Sku                *DiskSkuResponse            `pulumi:"sku"`
-	Tags               map[string]string           `pulumi:"tags"`
-	TimeCreated        string                      `pulumi:"timeCreated"`
-	Type               string                      `pulumi:"type"`
-	Zones              []string                    `pulumi:"zones"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource location
+	Location string `pulumi:"location"`
+	// A relative URI containing the ID of the VM that has the disk attached.
+	ManagedBy string `pulumi:"managedBy"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The Operating System type.
+	OsType *string `pulumi:"osType"`
+	// The disk provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, or UltraSSD_LRS.
+	Sku *DiskSkuResponse `pulumi:"sku"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
+	// The time when the disk was created.
+	TimeCreated string `pulumi:"timeCreated"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The Logical zone list for Disk.
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for LookupDiskResult
@@ -72,7 +90,9 @@ func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pu
 }
 
 type LookupDiskOutputArgs struct {
-	DiskName          pulumi.StringInput `pulumi:"diskName"`
+	// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -95,66 +115,82 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.
 	return o
 }
 
+// Disk source information. CreationData information cannot be changed after the disk has been created.
 func (o LookupDiskResultOutput) CreationData() CreationDataResponseOutput {
 	return o.ApplyT(func(v LookupDiskResult) CreationDataResponse { return v.CreationData }).(CreationDataResponseOutput)
 }
 
+// The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes. For a description of the range of values you can set, see [Ultra SSD Managed Disk Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
 func (o LookupDiskResultOutput) DiskIOPSReadWrite() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *float64 { return v.DiskIOPSReadWrite }).(pulumi.Float64PtrOutput)
 }
 
+// The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10. For a description of the range of values you can set, see [Ultra SSD Managed Disk Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
 func (o LookupDiskResultOutput) DiskMBpsReadWrite() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *int { return v.DiskMBpsReadWrite }).(pulumi.IntPtrOutput)
 }
 
+// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
 func (o LookupDiskResultOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
 }
 
+// Encryption settings for disk or snapshot
 func (o LookupDiskResultOutput) EncryptionSettings() EncryptionSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *EncryptionSettingsResponse { return v.EncryptionSettings }).(EncryptionSettingsResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupDiskResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// A relative URI containing the ID of the VM that has the disk attached.
 func (o LookupDiskResultOutput) ManagedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Operating System type.
 func (o LookupDiskResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
+// The disk provisioning state.
 func (o LookupDiskResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, or UltraSSD_LRS.
 func (o LookupDiskResultOutput) Sku() DiskSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *DiskSkuResponse { return v.Sku }).(DiskSkuResponsePtrOutput)
 }
 
+// Resource tags
 func (o LookupDiskResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The time when the disk was created.
 func (o LookupDiskResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupDiskResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The Logical zone list for Disk.
 func (o LookupDiskResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

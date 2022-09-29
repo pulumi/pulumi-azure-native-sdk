@@ -21,18 +21,26 @@ func GetContentKeyPolicyPropertiesWithSecrets(ctx *pulumi.Context, args *GetCont
 }
 
 type GetContentKeyPolicyPropertiesWithSecretsArgs struct {
-	AccountName          string `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName string `pulumi:"accountName"`
+	// The Content Key Policy name.
 	ContentKeyPolicyName string `pulumi:"contentKeyPolicyName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The properties of the Content Key Policy.
 type GetContentKeyPolicyPropertiesWithSecretsResult struct {
-	Created      string                           `pulumi:"created"`
-	Description  *string                          `pulumi:"description"`
-	LastModified string                           `pulumi:"lastModified"`
-	Options      []ContentKeyPolicyOptionResponse `pulumi:"options"`
-	PolicyId     string                           `pulumi:"policyId"`
+	// The creation date of the Policy
+	Created string `pulumi:"created"`
+	// A description for the Policy.
+	Description *string `pulumi:"description"`
+	// The last modified date of the Policy
+	LastModified string `pulumi:"lastModified"`
+	// The Key Policy options.
+	Options []ContentKeyPolicyOptionResponse `pulumi:"options"`
+	// The legacy Policy ID.
+	PolicyId string `pulumi:"policyId"`
 }
 
 func GetContentKeyPolicyPropertiesWithSecretsOutput(ctx *pulumi.Context, args GetContentKeyPolicyPropertiesWithSecretsOutputArgs, opts ...pulumi.InvokeOption) GetContentKeyPolicyPropertiesWithSecretsResultOutput {
@@ -49,9 +57,12 @@ func GetContentKeyPolicyPropertiesWithSecretsOutput(ctx *pulumi.Context, args Ge
 }
 
 type GetContentKeyPolicyPropertiesWithSecretsOutputArgs struct {
-	AccountName          pulumi.StringInput `pulumi:"accountName"`
+	// The Media Services account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The Content Key Policy name.
 	ContentKeyPolicyName pulumi.StringInput `pulumi:"contentKeyPolicyName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (GetContentKeyPolicyPropertiesWithSecretsOutputArgs) ElementType() reflect.Type {
@@ -73,24 +84,29 @@ func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) ToGetContentKeyPol
 	return o
 }
 
+// The creation date of the Policy
 func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContentKeyPolicyPropertiesWithSecretsResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// A description for the Policy.
 func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContentKeyPolicyPropertiesWithSecretsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The last modified date of the Policy
 func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContentKeyPolicyPropertiesWithSecretsResult) string { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// The Key Policy options.
 func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) Options() ContentKeyPolicyOptionResponseArrayOutput {
 	return o.ApplyT(func(v GetContentKeyPolicyPropertiesWithSecretsResult) []ContentKeyPolicyOptionResponse {
 		return v.Options
 	}).(ContentKeyPolicyOptionResponseArrayOutput)
 }
 
+// The legacy Policy ID.
 func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContentKeyPolicyPropertiesWithSecretsResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }

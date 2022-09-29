@@ -21,20 +21,30 @@ func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pul
 }
 
 type LookupServerKeyArgs struct {
-	KeyName           string `pulumi:"keyName"`
+	// The name of the PostgreSQL Server key to be retrieved.
+	KeyName string `pulumi:"keyName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
 // A PostgreSQL Server key.
 type LookupServerKeyResult struct {
-	CreationDate  string  `pulumi:"creationDate"`
-	Id            string  `pulumi:"id"`
-	Kind          string  `pulumi:"kind"`
-	Name          string  `pulumi:"name"`
-	ServerKeyType string  `pulumi:"serverKeyType"`
-	Type          string  `pulumi:"type"`
-	Uri           *string `pulumi:"uri"`
+	// The key creation date.
+	CreationDate string `pulumi:"creationDate"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Kind of encryption protector. This is metadata used for the Azure portal experience.
+	Kind string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The key type like 'AzureKeyVault'.
+	ServerKeyType string `pulumi:"serverKeyType"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The URI of the key.
+	Uri *string `pulumi:"uri"`
 }
 
 func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, opts ...pulumi.InvokeOption) LookupServerKeyResultOutput {
@@ -51,9 +61,12 @@ func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, 
 }
 
 type LookupServerKeyOutputArgs struct {
-	KeyName           pulumi.StringInput `pulumi:"keyName"`
+	// The name of the PostgreSQL Server key to be retrieved.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupServerKeyOutputArgs) ElementType() reflect.Type {
@@ -75,30 +88,37 @@ func (o LookupServerKeyResultOutput) ToLookupServerKeyResultOutputWithContext(ct
 	return o
 }
 
+// The key creation date.
 func (o LookupServerKeyResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServerKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of encryption protector. This is metadata used for the Azure portal experience.
 func (o LookupServerKeyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupServerKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The key type like 'AzureKeyVault'.
 func (o LookupServerKeyResultOutput) ServerKeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.ServerKeyType }).(pulumi.StringOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServerKeyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The URI of the key.
 func (o LookupServerKeyResultOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }

@@ -22,21 +22,32 @@ func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...p
 }
 
 type LookupCapabilityArgs struct {
-	CapabilityName          string `pulumi:"capabilityName"`
+	// String that represents a Capability resource name.
+	CapabilityName string `pulumi:"capabilityName"`
+	// String that represents a resource provider namespace.
 	ParentProviderNamespace string `pulumi:"parentProviderNamespace"`
-	ParentResourceName      string `pulumi:"parentResourceName"`
-	ParentResourceType      string `pulumi:"parentResourceType"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
-	TargetName              string `pulumi:"targetName"`
+	// String that represents a resource name.
+	ParentResourceName string `pulumi:"parentResourceName"`
+	// String that represents a resource type.
+	ParentResourceType string `pulumi:"parentResourceType"`
+	// String that represents an Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// String that represents a Target resource name.
+	TargetName string `pulumi:"targetName"`
 }
 
 // Model that represents a Capability resource.
 type LookupCapabilityResult struct {
-	Id         string                       `pulumi:"id"`
-	Name       string                       `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties of a capability resource.
 	Properties CapabilityPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse           `pulumi:"systemData"`
-	Type       string                       `pulumi:"type"`
+	// The standard system metadata of a resource type.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupCapabilityOutput(ctx *pulumi.Context, args LookupCapabilityOutputArgs, opts ...pulumi.InvokeOption) LookupCapabilityResultOutput {
@@ -53,12 +64,18 @@ func LookupCapabilityOutput(ctx *pulumi.Context, args LookupCapabilityOutputArgs
 }
 
 type LookupCapabilityOutputArgs struct {
-	CapabilityName          pulumi.StringInput `pulumi:"capabilityName"`
+	// String that represents a Capability resource name.
+	CapabilityName pulumi.StringInput `pulumi:"capabilityName"`
+	// String that represents a resource provider namespace.
 	ParentProviderNamespace pulumi.StringInput `pulumi:"parentProviderNamespace"`
-	ParentResourceName      pulumi.StringInput `pulumi:"parentResourceName"`
-	ParentResourceType      pulumi.StringInput `pulumi:"parentResourceType"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
-	TargetName              pulumi.StringInput `pulumi:"targetName"`
+	// String that represents a resource name.
+	ParentResourceName pulumi.StringInput `pulumi:"parentResourceName"`
+	// String that represents a resource type.
+	ParentResourceType pulumi.StringInput `pulumi:"parentResourceType"`
+	// String that represents an Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// String that represents a Target resource name.
+	TargetName pulumi.StringInput `pulumi:"targetName"`
 }
 
 func (LookupCapabilityOutputArgs) ElementType() reflect.Type {
@@ -80,22 +97,27 @@ func (o LookupCapabilityResultOutput) ToLookupCapabilityResultOutputWithContext(
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCapabilityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupCapabilityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of a capability resource.
 func (o LookupCapabilityResultOutput) Properties() CapabilityPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) CapabilityPropertiesResponse { return v.Properties }).(CapabilityPropertiesResponseOutput)
 }
 
+// The standard system metadata of a resource type.
 func (o LookupCapabilityResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCapabilityResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) string { return v.Type }).(pulumi.StringOutput)
 }

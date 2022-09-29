@@ -22,15 +22,20 @@ func ListDnsResolverByVirtualNetwork(ctx *pulumi.Context, args *ListDnsResolverB
 }
 
 type ListDnsResolverByVirtualNetworkArgs struct {
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	Top                *int   `pulumi:"top"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The maximum number of results to return. If not specified, returns up to 100 results.
+	Top *int `pulumi:"top"`
+	// The name of the virtual network.
 	VirtualNetworkName string `pulumi:"virtualNetworkName"`
 }
 
 // The response to an enumeration operation on sub-resources.
 type ListDnsResolverByVirtualNetworkResult struct {
-	NextLink string                `pulumi:"nextLink"`
-	Value    []SubResourceResponse `pulumi:"value"`
+	// The continuation token for the next page of results.
+	NextLink string `pulumi:"nextLink"`
+	// Enumeration of the sub-resources.
+	Value []SubResourceResponse `pulumi:"value"`
 }
 
 func ListDnsResolverByVirtualNetworkOutput(ctx *pulumi.Context, args ListDnsResolverByVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) ListDnsResolverByVirtualNetworkResultOutput {
@@ -47,8 +52,11 @@ func ListDnsResolverByVirtualNetworkOutput(ctx *pulumi.Context, args ListDnsReso
 }
 
 type ListDnsResolverByVirtualNetworkOutputArgs struct {
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	Top                pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The maximum number of results to return. If not specified, returns up to 100 results.
+	Top pulumi.IntPtrInput `pulumi:"top"`
+	// The name of the virtual network.
 	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
 }
 
@@ -71,10 +79,12 @@ func (o ListDnsResolverByVirtualNetworkResultOutput) ToListDnsResolverByVirtualN
 	return o
 }
 
+// The continuation token for the next page of results.
 func (o ListDnsResolverByVirtualNetworkResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDnsResolverByVirtualNetworkResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Enumeration of the sub-resources.
 func (o ListDnsResolverByVirtualNetworkResultOutput) Value() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListDnsResolverByVirtualNetworkResult) []SubResourceResponse { return v.Value }).(SubResourceResponseArrayOutput)
 }

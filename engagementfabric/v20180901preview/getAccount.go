@@ -21,18 +21,26 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 }
 
 type LookupAccountArgs struct {
-	AccountName       string `pulumi:"accountName"`
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The EngagementFabric account
 type LookupAccountResult struct {
-	Id       string            `pulumi:"id"`
-	Location string            `pulumi:"location"`
-	Name     string            `pulumi:"name"`
-	Sku      SKUResponse       `pulumi:"sku"`
-	Tags     map[string]string `pulumi:"tags"`
-	Type     string            `pulumi:"type"`
+	// The ID of the resource
+	Id string `pulumi:"id"`
+	// The location of the resource
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The SKU of the resource
+	Sku SKUResponse `pulumi:"sku"`
+	// The tags of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// The fully qualified type of the resource
+	Type string `pulumi:"type"`
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
@@ -49,7 +57,9 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 }
 
 type LookupAccountOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Resource Group Name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,26 +82,32 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// The ID of the resource
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The location of the resource
 func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The SKU of the resource
 func (o LookupAccountResultOutput) Sku() SKUResponseOutput {
 	return o.ApplyT(func(v LookupAccountResult) SKUResponse { return v.Sku }).(SKUResponseOutput)
 }
 
+// The tags of the resource
 func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The fully qualified type of the resource
 func (o LookupAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

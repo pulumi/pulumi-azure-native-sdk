@@ -22,14 +22,18 @@ func ListApplianceClusterUserCredential(ctx *pulumi.Context, args *ListAppliance
 }
 
 type ListApplianceClusterUserCredentialArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// Appliances name.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The List Cluster User Credential appliance.
 type ListApplianceClusterUserCredentialResult struct {
-	HybridConnectionConfig HybridConnectionConfigResponse          `pulumi:"hybridConnectionConfig"`
-	Kubeconfigs            []ApplianceCredentialKubeconfigResponse `pulumi:"kubeconfigs"`
+	// Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
+	HybridConnectionConfig HybridConnectionConfigResponse `pulumi:"hybridConnectionConfig"`
+	// The list of appliance kubeconfigs.
+	Kubeconfigs []ApplianceCredentialKubeconfigResponse `pulumi:"kubeconfigs"`
 }
 
 func ListApplianceClusterUserCredentialOutput(ctx *pulumi.Context, args ListApplianceClusterUserCredentialOutputArgs, opts ...pulumi.InvokeOption) ListApplianceClusterUserCredentialResultOutput {
@@ -46,8 +50,10 @@ func ListApplianceClusterUserCredentialOutput(ctx *pulumi.Context, args ListAppl
 }
 
 type ListApplianceClusterUserCredentialOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// Appliances name.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (ListApplianceClusterUserCredentialOutputArgs) ElementType() reflect.Type {
@@ -69,12 +75,14 @@ func (o ListApplianceClusterUserCredentialResultOutput) ToListApplianceClusterUs
 	return o
 }
 
+// Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
 func (o ListApplianceClusterUserCredentialResultOutput) HybridConnectionConfig() HybridConnectionConfigResponseOutput {
 	return o.ApplyT(func(v ListApplianceClusterUserCredentialResult) HybridConnectionConfigResponse {
 		return v.HybridConnectionConfig
 	}).(HybridConnectionConfigResponseOutput)
 }
 
+// The list of appliance kubeconfigs.
 func (o ListApplianceClusterUserCredentialResultOutput) Kubeconfigs() ApplianceCredentialKubeconfigResponseArrayOutput {
 	return o.ApplyT(func(v ListApplianceClusterUserCredentialResult) []ApplianceCredentialKubeconfigResponse {
 		return v.Kubeconfigs

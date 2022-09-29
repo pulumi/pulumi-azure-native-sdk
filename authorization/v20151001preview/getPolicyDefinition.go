@@ -23,17 +23,24 @@ func LookupPolicyDefinition(ctx *pulumi.Context, args *LookupPolicyDefinitionArg
 }
 
 type LookupPolicyDefinitionArgs struct {
+	// The name of the policy definition to get.
 	PolicyDefinitionName string `pulumi:"policyDefinitionName"`
 }
 
 // The policy definition.
 type LookupPolicyDefinitionResult struct {
-	Description *string     `pulumi:"description"`
-	DisplayName *string     `pulumi:"displayName"`
-	Id          string      `pulumi:"id"`
-	Name        *string     `pulumi:"name"`
-	PolicyRule  interface{} `pulumi:"policyRule"`
-	PolicyType  *string     `pulumi:"policyType"`
+	// The policy definition description.
+	Description *string `pulumi:"description"`
+	// The display name of the policy definition.
+	DisplayName *string `pulumi:"displayName"`
+	// The ID of the policy definition.
+	Id string `pulumi:"id"`
+	// The name of the policy definition. If you do not specify a value for name, the value is inferred from the name value in the request URI.
+	Name *string `pulumi:"name"`
+	// The policy rule.
+	PolicyRule interface{} `pulumi:"policyRule"`
+	// The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
+	PolicyType *string `pulumi:"policyType"`
 }
 
 func LookupPolicyDefinitionOutput(ctx *pulumi.Context, args LookupPolicyDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyDefinitionResultOutput {
@@ -50,6 +57,7 @@ func LookupPolicyDefinitionOutput(ctx *pulumi.Context, args LookupPolicyDefiniti
 }
 
 type LookupPolicyDefinitionOutputArgs struct {
+	// The name of the policy definition to get.
 	PolicyDefinitionName pulumi.StringInput `pulumi:"policyDefinitionName"`
 }
 
@@ -72,26 +80,32 @@ func (o LookupPolicyDefinitionResultOutput) ToLookupPolicyDefinitionResultOutput
 	return o
 }
 
+// The policy definition description.
 func (o LookupPolicyDefinitionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The display name of the policy definition.
 func (o LookupPolicyDefinitionResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the policy definition.
 func (o LookupPolicyDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the policy definition. If you do not specify a value for name, the value is inferred from the name value in the request URI.
 func (o LookupPolicyDefinitionResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The policy rule.
 func (o LookupPolicyDefinitionResultOutput) PolicyRule() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) interface{} { return v.PolicyRule }).(pulumi.AnyOutput)
 }
 
+// The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
 func (o LookupPolicyDefinitionResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }

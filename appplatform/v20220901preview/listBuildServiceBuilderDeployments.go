@@ -21,14 +21,19 @@ func ListBuildServiceBuilderDeployments(ctx *pulumi.Context, args *ListBuildServ
 }
 
 type ListBuildServiceBuilderDeploymentsArgs struct {
-	BuildServiceName  string `pulumi:"buildServiceName"`
-	BuilderName       string `pulumi:"builderName"`
+	// The name of the build service resource.
+	BuildServiceName string `pulumi:"buildServiceName"`
+	// The name of the builder resource.
+	BuilderName string `pulumi:"builderName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A list of deployments resource ids.
 type ListBuildServiceBuilderDeploymentsResult struct {
+	// A list of deployment resource ids.
 	Deployments []string `pulumi:"deployments"`
 }
 
@@ -46,10 +51,14 @@ func ListBuildServiceBuilderDeploymentsOutput(ctx *pulumi.Context, args ListBuil
 }
 
 type ListBuildServiceBuilderDeploymentsOutputArgs struct {
-	BuildServiceName  pulumi.StringInput `pulumi:"buildServiceName"`
-	BuilderName       pulumi.StringInput `pulumi:"builderName"`
+	// The name of the build service resource.
+	BuildServiceName pulumi.StringInput `pulumi:"buildServiceName"`
+	// The name of the builder resource.
+	BuilderName pulumi.StringInput `pulumi:"builderName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the Service resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListBuildServiceBuilderDeploymentsOutputArgs) ElementType() reflect.Type {
@@ -71,6 +80,7 @@ func (o ListBuildServiceBuilderDeploymentsResultOutput) ToListBuildServiceBuilde
 	return o
 }
 
+// A list of deployment resource ids.
 func (o ListBuildServiceBuilderDeploymentsResultOutput) Deployments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListBuildServiceBuilderDeploymentsResult) []string { return v.Deployments }).(pulumi.StringArrayOutput)
 }

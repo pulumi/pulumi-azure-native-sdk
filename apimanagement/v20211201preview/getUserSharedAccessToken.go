@@ -21,11 +21,16 @@ func GetUserSharedAccessToken(ctx *pulumi.Context, args *GetUserSharedAccessToke
 }
 
 type GetUserSharedAccessTokenArgs struct {
-	Expiry            string  `pulumi:"expiry"`
-	KeyType           KeyType `pulumi:"keyType"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ServiceName       string  `pulumi:"serviceName"`
-	UserId            string  `pulumi:"userId"`
+	// The Expiry time of the Token. Maximum token expiry time is set to 30 days. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	Expiry string `pulumi:"expiry"`
+	// The Key to be used to generate token for user.
+	KeyType KeyType `pulumi:"keyType"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
+	// User identifier. Must be unique in the current API Management service instance.
+	UserId string `pulumi:"userId"`
 }
 
 // Defaults sets the appropriate defaults for GetUserSharedAccessTokenArgs
@@ -42,6 +47,7 @@ func (val *GetUserSharedAccessTokenArgs) Defaults() *GetUserSharedAccessTokenArg
 
 // Get User Token response details.
 type GetUserSharedAccessTokenResult struct {
+	// Shared Access Authorization token for the User.
 	Value *string `pulumi:"value"`
 }
 
@@ -59,11 +65,16 @@ func GetUserSharedAccessTokenOutput(ctx *pulumi.Context, args GetUserSharedAcces
 }
 
 type GetUserSharedAccessTokenOutputArgs struct {
-	Expiry            pulumi.StringInput `pulumi:"expiry"`
-	KeyType           KeyTypeInput       `pulumi:"keyType"`
+	// The Expiry time of the Token. Maximum token expiry time is set to 30 days. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// The Key to be used to generate token for user.
+	KeyType KeyTypeInput `pulumi:"keyType"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
-	UserId            pulumi.StringInput `pulumi:"userId"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// User identifier. Must be unique in the current API Management service instance.
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (GetUserSharedAccessTokenOutputArgs) ElementType() reflect.Type {
@@ -85,6 +96,7 @@ func (o GetUserSharedAccessTokenResultOutput) ToGetUserSharedAccessTokenResultOu
 	return o
 }
 
+// Shared Access Authorization token for the User.
 func (o GetUserSharedAccessTokenResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUserSharedAccessTokenResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

@@ -21,20 +21,30 @@ func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArg
 }
 
 type LookupMachineExtensionArgs struct {
-	ExtensionName     string `pulumi:"extensionName"`
-	MachineName       string `pulumi:"machineName"`
+	// The name of the machine extension.
+	ExtensionName string `pulumi:"extensionName"`
+	// The name of the machine containing the extension.
+	MachineName string `pulumi:"machineName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Describes a Machine Extension.
 type LookupMachineExtensionResult struct {
-	Id         string                             `pulumi:"id"`
-	Location   string                             `pulumi:"location"`
-	Name       string                             `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Describes Machine Extension Properties.
 	Properties MachineExtensionPropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse                 `pulumi:"systemData"`
-	Tags       map[string]string                  `pulumi:"tags"`
-	Type       string                             `pulumi:"type"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupMachineExtensionResultOutput {
@@ -51,8 +61,11 @@ func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensi
 }
 
 type LookupMachineExtensionOutputArgs struct {
-	ExtensionName     pulumi.StringInput `pulumi:"extensionName"`
-	MachineName       pulumi.StringInput `pulumi:"machineName"`
+	// The name of the machine extension.
+	ExtensionName pulumi.StringInput `pulumi:"extensionName"`
+	// The name of the machine containing the extension.
+	MachineName pulumi.StringInput `pulumi:"machineName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupMachineExtensionResultOutput) ToLookupMachineExtensionResultOutput
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMachineExtensionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupMachineExtensionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupMachineExtensionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Describes Machine Extension Properties.
 func (o LookupMachineExtensionResultOutput) Properties() MachineExtensionPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) MachineExtensionPropertiesResponse { return v.Properties }).(MachineExtensionPropertiesResponseOutput)
 }
 
+// The system meta data relating to this resource.
 func (o LookupMachineExtensionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupMachineExtensionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupMachineExtensionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Type }).(pulumi.StringOutput)
 }

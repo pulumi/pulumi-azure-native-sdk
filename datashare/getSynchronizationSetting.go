@@ -24,19 +24,28 @@ func LookupSynchronizationSetting(ctx *pulumi.Context, args *LookupSynchronizati
 }
 
 type LookupSynchronizationSettingArgs struct {
-	AccountName                string `pulumi:"accountName"`
-	ResourceGroupName          string `pulumi:"resourceGroupName"`
-	ShareName                  string `pulumi:"shareName"`
+	// The name of the share account.
+	AccountName string `pulumi:"accountName"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the share.
+	ShareName string `pulumi:"shareName"`
+	// The name of the synchronizationSetting.
 	SynchronizationSettingName string `pulumi:"synchronizationSettingName"`
 }
 
 // A Synchronization Setting data transfer object.
 type LookupSynchronizationSettingResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Name       string             `pulumi:"name"`
+	// The resource id of the azure resource
+	Id string `pulumi:"id"`
+	// Kind of synchronization setting.
+	Kind string `pulumi:"kind"`
+	// Name of the azure resource
+	Name string `pulumi:"name"`
+	// System Data of the Azure resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// Type of the azure resource
+	Type string `pulumi:"type"`
 }
 
 func LookupSynchronizationSettingOutput(ctx *pulumi.Context, args LookupSynchronizationSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSynchronizationSettingResultOutput {
@@ -53,9 +62,13 @@ func LookupSynchronizationSettingOutput(ctx *pulumi.Context, args LookupSynchron
 }
 
 type LookupSynchronizationSettingOutputArgs struct {
-	AccountName                pulumi.StringInput `pulumi:"accountName"`
-	ResourceGroupName          pulumi.StringInput `pulumi:"resourceGroupName"`
-	ShareName                  pulumi.StringInput `pulumi:"shareName"`
+	// The name of the share account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the share.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
+	// The name of the synchronizationSetting.
 	SynchronizationSettingName pulumi.StringInput `pulumi:"synchronizationSettingName"`
 }
 
@@ -78,22 +91,27 @@ func (o LookupSynchronizationSettingResultOutput) ToLookupSynchronizationSetting
 	return o
 }
 
+// The resource id of the azure resource
 func (o LookupSynchronizationSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSynchronizationSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of synchronization setting.
 func (o LookupSynchronizationSettingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSynchronizationSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Name of the azure resource
 func (o LookupSynchronizationSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSynchronizationSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// System Data of the Azure resource.
 func (o LookupSynchronizationSettingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSynchronizationSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Type of the azure resource
 func (o LookupSynchronizationSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSynchronizationSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -22,15 +22,21 @@ func LookupWorkspaceSetting(ctx *pulumi.Context, args *LookupWorkspaceSettingArg
 }
 
 type LookupWorkspaceSettingArgs struct {
+	// Name of the security setting
 	WorkspaceSettingName string `pulumi:"workspaceSettingName"`
 }
 
 // Configures where to store the OMS agent data for workspaces under a scope
 type LookupWorkspaceSettingResult struct {
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	Scope       string `pulumi:"scope"`
-	Type        string `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
+	Scope string `pulumi:"scope"`
+	// Resource type
+	Type string `pulumi:"type"`
+	// The full Azure ID of the workspace to save the data in
 	WorkspaceId string `pulumi:"workspaceId"`
 }
 
@@ -48,6 +54,7 @@ func LookupWorkspaceSettingOutput(ctx *pulumi.Context, args LookupWorkspaceSetti
 }
 
 type LookupWorkspaceSettingOutputArgs struct {
+	// Name of the security setting
 	WorkspaceSettingName pulumi.StringInput `pulumi:"workspaceSettingName"`
 }
 
@@ -70,22 +77,27 @@ func (o LookupWorkspaceSettingResultOutput) ToLookupWorkspaceSettingResultOutput
 	return o
 }
 
+// Resource Id
 func (o LookupWorkspaceSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name
 func (o LookupWorkspaceSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
 func (o LookupWorkspaceSettingResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Scope }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupWorkspaceSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The full Azure ID of the workspace to save the data in
 func (o LookupWorkspaceSettingResultOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }

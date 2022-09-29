@@ -21,21 +21,32 @@ func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...p
 }
 
 type LookupAssessmentArgs struct {
-	AssessmentName string  `pulumi:"assessmentName"`
-	Expand         *string `pulumi:"expand"`
-	ResourceId     string  `pulumi:"resourceId"`
+	// The Assessment Key - Unique key for the assessment type
+	AssessmentName string `pulumi:"assessmentName"`
+	// OData expand. Optional.
+	Expand *string `pulumi:"expand"`
+	// The identifier of the resource.
+	ResourceId string `pulumi:"resourceId"`
 }
 
 // Security assessment on a resource
 type LookupAssessmentResult struct {
-	AdditionalData  map[string]string        `pulumi:"additionalData"`
-	DisplayName     string                   `pulumi:"displayName"`
-	Id              string                   `pulumi:"id"`
-	Links           AssessmentLinksResponse  `pulumi:"links"`
-	Name            string                   `pulumi:"name"`
-	ResourceDetails interface{}              `pulumi:"resourceDetails"`
-	Status          AssessmentStatusResponse `pulumi:"status"`
-	Type            string                   `pulumi:"type"`
+	// Additional data regarding the assessment
+	AdditionalData map[string]string `pulumi:"additionalData"`
+	// User friendly display name of the assessment
+	DisplayName string `pulumi:"displayName"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Links relevant to the assessment
+	Links AssessmentLinksResponse `pulumi:"links"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// Details of the resource that was assessed
+	ResourceDetails interface{} `pulumi:"resourceDetails"`
+	// The result of the assessment
+	Status AssessmentStatusResponse `pulumi:"status"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAssessmentOutput(ctx *pulumi.Context, args LookupAssessmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentResultOutput {
@@ -52,9 +63,12 @@ func LookupAssessmentOutput(ctx *pulumi.Context, args LookupAssessmentOutputArgs
 }
 
 type LookupAssessmentOutputArgs struct {
-	AssessmentName pulumi.StringInput    `pulumi:"assessmentName"`
-	Expand         pulumi.StringPtrInput `pulumi:"expand"`
-	ResourceId     pulumi.StringInput    `pulumi:"resourceId"`
+	// The Assessment Key - Unique key for the assessment type
+	AssessmentName pulumi.StringInput `pulumi:"assessmentName"`
+	// OData expand. Optional.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
+	// The identifier of the resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
 
 func (LookupAssessmentOutputArgs) ElementType() reflect.Type {
@@ -76,34 +90,42 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(
 	return o
 }
 
+// Additional data regarding the assessment
 func (o LookupAssessmentResultOutput) AdditionalData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) map[string]string { return v.AdditionalData }).(pulumi.StringMapOutput)
 }
 
+// User friendly display name of the assessment
 func (o LookupAssessmentResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource Id
 func (o LookupAssessmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Links relevant to the assessment
 func (o LookupAssessmentResultOutput) Links() AssessmentLinksResponseOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) AssessmentLinksResponse { return v.Links }).(AssessmentLinksResponseOutput)
 }
 
+// Resource name
 func (o LookupAssessmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Details of the resource that was assessed
 func (o LookupAssessmentResultOutput) ResourceDetails() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) interface{} { return v.ResourceDetails }).(pulumi.AnyOutput)
 }
 
+// The result of the assessment
 func (o LookupAssessmentResultOutput) Status() AssessmentStatusResponseOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) AssessmentStatusResponse { return v.Status }).(AssessmentStatusResponseOutput)
 }
 
+// Resource type
 func (o LookupAssessmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

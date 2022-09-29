@@ -21,18 +21,27 @@ func GetTestResultFile(ctx *pulumi.Context, args *GetTestResultFileArgs, opts ..
 }
 
 type GetTestResultFileArgs struct {
-	ContinuationToken      *string `pulumi:"continuationToken"`
-	DownloadAs             string  `pulumi:"downloadAs"`
-	GeoLocationId          string  `pulumi:"geoLocationId"`
-	ResourceGroupName      string  `pulumi:"resourceGroupName"`
-	TestSuccessfulCriteria *bool   `pulumi:"testSuccessfulCriteria"`
-	TimeStamp              int     `pulumi:"timeStamp"`
-	WebTestName            string  `pulumi:"webTestName"`
+	// The continuation token.
+	ContinuationToken *string `pulumi:"continuationToken"`
+	// The format to use when returning the webtest result.
+	DownloadAs string `pulumi:"downloadAs"`
+	// The location ID where the webtest was physically run.
+	GeoLocationId string `pulumi:"geoLocationId"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The success state criteria for the webtest result.
+	TestSuccessfulCriteria *bool `pulumi:"testSuccessfulCriteria"`
+	// The posix (epoch) time stamp for the webtest result.
+	TimeStamp int `pulumi:"timeStamp"`
+	// The name of the Application Insights webtest resource.
+	WebTestName string `pulumi:"webTestName"`
 }
 
 // Test result.
 type GetTestResultFileResult struct {
-	Data     *string `pulumi:"data"`
+	// File contents.
+	Data *string `pulumi:"data"`
+	// The URI that can be used to request the next section of the result file in the event the file is too large for a single request.
 	NextLink *string `pulumi:"nextLink"`
 }
 
@@ -50,13 +59,20 @@ func GetTestResultFileOutput(ctx *pulumi.Context, args GetTestResultFileOutputAr
 }
 
 type GetTestResultFileOutputArgs struct {
-	ContinuationToken      pulumi.StringPtrInput `pulumi:"continuationToken"`
-	DownloadAs             pulumi.StringInput    `pulumi:"downloadAs"`
-	GeoLocationId          pulumi.StringInput    `pulumi:"geoLocationId"`
-	ResourceGroupName      pulumi.StringInput    `pulumi:"resourceGroupName"`
-	TestSuccessfulCriteria pulumi.BoolPtrInput   `pulumi:"testSuccessfulCriteria"`
-	TimeStamp              pulumi.IntInput       `pulumi:"timeStamp"`
-	WebTestName            pulumi.StringInput    `pulumi:"webTestName"`
+	// The continuation token.
+	ContinuationToken pulumi.StringPtrInput `pulumi:"continuationToken"`
+	// The format to use when returning the webtest result.
+	DownloadAs pulumi.StringInput `pulumi:"downloadAs"`
+	// The location ID where the webtest was physically run.
+	GeoLocationId pulumi.StringInput `pulumi:"geoLocationId"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The success state criteria for the webtest result.
+	TestSuccessfulCriteria pulumi.BoolPtrInput `pulumi:"testSuccessfulCriteria"`
+	// The posix (epoch) time stamp for the webtest result.
+	TimeStamp pulumi.IntInput `pulumi:"timeStamp"`
+	// The name of the Application Insights webtest resource.
+	WebTestName pulumi.StringInput `pulumi:"webTestName"`
 }
 
 func (GetTestResultFileOutputArgs) ElementType() reflect.Type {
@@ -78,10 +94,12 @@ func (o GetTestResultFileResultOutput) ToGetTestResultFileResultOutputWithContex
 	return o
 }
 
+// File contents.
 func (o GetTestResultFileResultOutput) Data() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTestResultFileResult) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
+// The URI that can be used to request the next section of the result file in the event the file is too large for a single request.
 func (o GetTestResultFileResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTestResultFileResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }

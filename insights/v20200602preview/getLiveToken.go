@@ -21,11 +21,13 @@ func GetLiveToken(ctx *pulumi.Context, args *GetLiveTokenArgs, opts ...pulumi.In
 }
 
 type GetLiveTokenArgs struct {
+	// The identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // The response to a live token query.
 type GetLiveTokenResult struct {
+	// JWT token for accessing live metrics stream data.
 	LiveToken string `pulumi:"liveToken"`
 }
 
@@ -43,6 +45,7 @@ func GetLiveTokenOutput(ctx *pulumi.Context, args GetLiveTokenOutputArgs, opts .
 }
 
 type GetLiveTokenOutputArgs struct {
+	// The identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -65,6 +68,7 @@ func (o GetLiveTokenResultOutput) ToGetLiveTokenResultOutputWithContext(ctx cont
 	return o
 }
 
+// JWT token for accessing live metrics stream data.
 func (o GetLiveTokenResultOutput) LiveToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLiveTokenResult) string { return v.LiveToken }).(pulumi.StringOutput)
 }

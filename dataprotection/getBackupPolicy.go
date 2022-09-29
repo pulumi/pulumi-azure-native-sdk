@@ -22,18 +22,25 @@ func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts 
 }
 
 type LookupBackupPolicyArgs struct {
-	BackupPolicyName  string `pulumi:"backupPolicyName"`
+	BackupPolicyName string `pulumi:"backupPolicyName"`
+	// The name of the resource group where the backup vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	VaultName         string `pulumi:"vaultName"`
+	// The name of the backup vault.
+	VaultName string `pulumi:"vaultName"`
 }
 
 // BaseBackupPolicy resource
 type LookupBackupPolicyResult struct {
-	Id         string               `pulumi:"id"`
-	Name       string               `pulumi:"name"`
+	// Resource Id represents the complete path to the resource.
+	Id string `pulumi:"id"`
+	// Resource name associated with the resource.
+	Name string `pulumi:"name"`
+	// BaseBackupPolicyResource properties
 	Properties BackupPolicyResponse `pulumi:"properties"`
-	SystemData SystemDataResponse   `pulumi:"systemData"`
-	Type       string               `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+	Type string `pulumi:"type"`
 }
 
 func LookupBackupPolicyOutput(ctx *pulumi.Context, args LookupBackupPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackupPolicyResultOutput {
@@ -50,9 +57,11 @@ func LookupBackupPolicyOutput(ctx *pulumi.Context, args LookupBackupPolicyOutput
 }
 
 type LookupBackupPolicyOutputArgs struct {
-	BackupPolicyName  pulumi.StringInput `pulumi:"backupPolicyName"`
+	BackupPolicyName pulumi.StringInput `pulumi:"backupPolicyName"`
+	// The name of the resource group where the backup vault is present.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	VaultName         pulumi.StringInput `pulumi:"vaultName"`
+	// The name of the backup vault.
+	VaultName pulumi.StringInput `pulumi:"vaultName"`
 }
 
 func (LookupBackupPolicyOutputArgs) ElementType() reflect.Type {
@@ -74,22 +83,27 @@ func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutputWithCont
 	return o
 }
 
+// Resource Id represents the complete path to the resource.
 func (o LookupBackupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name associated with the resource.
 func (o LookupBackupPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// BaseBackupPolicyResource properties
 func (o LookupBackupPolicyResultOutput) Properties() BackupPolicyResponseOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) BackupPolicyResponse { return v.Properties }).(BackupPolicyResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupBackupPolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 func (o LookupBackupPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

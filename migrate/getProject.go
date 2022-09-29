@@ -22,19 +22,28 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 }
 
 type LookupProjectArgs struct {
-	ProjectName       string `pulumi:"projectName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure Migrate Project.
 type LookupProjectResult struct {
-	ETag       *string                   `pulumi:"eTag"`
-	Id         string                    `pulumi:"id"`
-	Location   *string                   `pulumi:"location"`
-	Name       string                    `pulumi:"name"`
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}
+	Id string `pulumi:"id"`
+	// Azure location in which project is created.
+	Location *string `pulumi:"location"`
+	// Name of the project.
+	Name string `pulumi:"name"`
+	// Properties of the project.
 	Properties ProjectPropertiesResponse `pulumi:"properties"`
-	Tags       interface{}               `pulumi:"tags"`
-	Type       string                    `pulumi:"type"`
+	// Tags provided by Azure Tagging service.
+	Tags interface{} `pulumi:"tags"`
+	// Type of the object = [Microsoft.Migrate/assessmentProjects].
+	Type string `pulumi:"type"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -51,7 +60,9 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 }
 
 type LookupProjectOutputArgs struct {
-	ProjectName       pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,30 +85,37 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// For optimistic concurrency control.
 func (o LookupProjectResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure location in which project is created.
 func (o LookupProjectResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the project.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the project.
 func (o LookupProjectResultOutput) Properties() ProjectPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupProjectResult) ProjectPropertiesResponse { return v.Properties }).(ProjectPropertiesResponseOutput)
 }
 
+// Tags provided by Azure Tagging service.
 func (o LookupProjectResultOutput) Tags() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProjectResult) interface{} { return v.Tags }).(pulumi.AnyOutput)
 }
 
+// Type of the object = [Microsoft.Migrate/assessmentProjects].
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

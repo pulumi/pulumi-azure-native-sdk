@@ -22,13 +22,17 @@ func ListSqlMigrationServiceAuthKeys(ctx *pulumi.Context, args *ListSqlMigration
 }
 
 type ListSqlMigrationServiceAuthKeysArgs struct {
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the SQL Migration Service.
 	SqlMigrationServiceName string `pulumi:"sqlMigrationServiceName"`
 }
 
 // An authentication key.
 type ListSqlMigrationServiceAuthKeysResult struct {
+	// The first authentication key.
 	AuthKey1 *string `pulumi:"authKey1"`
+	// The second authentication key.
 	AuthKey2 *string `pulumi:"authKey2"`
 }
 
@@ -46,7 +50,9 @@ func ListSqlMigrationServiceAuthKeysOutput(ctx *pulumi.Context, args ListSqlMigr
 }
 
 type ListSqlMigrationServiceAuthKeysOutputArgs struct {
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the SQL Migration Service.
 	SqlMigrationServiceName pulumi.StringInput `pulumi:"sqlMigrationServiceName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListSqlMigrationServiceAuthKeysResultOutput) ToListSqlMigrationServiceAu
 	return o
 }
 
+// The first authentication key.
 func (o ListSqlMigrationServiceAuthKeysResultOutput) AuthKey1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSqlMigrationServiceAuthKeysResult) *string { return v.AuthKey1 }).(pulumi.StringPtrOutput)
 }
 
+// The second authentication key.
 func (o ListSqlMigrationServiceAuthKeysResultOutput) AuthKey2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSqlMigrationServiceAuthKeysResult) *string { return v.AuthKey2 }).(pulumi.StringPtrOutput)
 }

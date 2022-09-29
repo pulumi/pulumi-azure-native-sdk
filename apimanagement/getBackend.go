@@ -22,25 +22,40 @@ func LookupBackend(ctx *pulumi.Context, args *LookupBackendArgs, opts ...pulumi.
 }
 
 type LookupBackendArgs struct {
-	BackendId         string `pulumi:"backendId"`
+	// Identifier of the Backend entity. Must be unique in the current API Management service instance.
+	BackendId string `pulumi:"backendId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Backend details.
 type LookupBackendResult struct {
+	// Backend Credentials Contract Properties
 	Credentials *BackendCredentialsContractResponse `pulumi:"credentials"`
-	Description *string                             `pulumi:"description"`
-	Id          string                              `pulumi:"id"`
-	Name        string                              `pulumi:"name"`
-	Properties  BackendPropertiesResponse           `pulumi:"properties"`
-	Protocol    string                              `pulumi:"protocol"`
-	Proxy       *BackendProxyContractResponse       `pulumi:"proxy"`
-	ResourceId  *string                             `pulumi:"resourceId"`
-	Title       *string                             `pulumi:"title"`
-	Tls         *BackendTlsPropertiesResponse       `pulumi:"tls"`
-	Type        string                              `pulumi:"type"`
-	Url         string                              `pulumi:"url"`
+	// Backend Description.
+	Description *string `pulumi:"description"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Backend Properties contract
+	Properties BackendPropertiesResponse `pulumi:"properties"`
+	// Backend communication protocol.
+	Protocol string `pulumi:"protocol"`
+	// Backend Proxy Contract Properties
+	Proxy *BackendProxyContractResponse `pulumi:"proxy"`
+	// Management Uri of the Resource in External System. This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps.
+	ResourceId *string `pulumi:"resourceId"`
+	// Backend Title.
+	Title *string `pulumi:"title"`
+	// Backend TLS Properties
+	Tls *BackendTlsPropertiesResponse `pulumi:"tls"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// Runtime Url of the Backend.
+	Url string `pulumi:"url"`
 }
 
 // Defaults sets the appropriate defaults for LookupBackendResult
@@ -68,9 +83,12 @@ func LookupBackendOutput(ctx *pulumi.Context, args LookupBackendOutputArgs, opts
 }
 
 type LookupBackendOutputArgs struct {
-	BackendId         pulumi.StringInput `pulumi:"backendId"`
+	// Identifier of the Backend entity. Must be unique in the current API Management service instance.
+	BackendId pulumi.StringInput `pulumi:"backendId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupBackendOutputArgs) ElementType() reflect.Type {
@@ -92,50 +110,62 @@ func (o LookupBackendResultOutput) ToLookupBackendResultOutputWithContext(ctx co
 	return o
 }
 
+// Backend Credentials Contract Properties
 func (o LookupBackendResultOutput) Credentials() BackendCredentialsContractResponsePtrOutput {
 	return o.ApplyT(func(v LookupBackendResult) *BackendCredentialsContractResponse { return v.Credentials }).(BackendCredentialsContractResponsePtrOutput)
 }
 
+// Backend Description.
 func (o LookupBackendResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackendResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupBackendResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupBackendResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Backend Properties contract
 func (o LookupBackendResultOutput) Properties() BackendPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupBackendResult) BackendPropertiesResponse { return v.Properties }).(BackendPropertiesResponseOutput)
 }
 
+// Backend communication protocol.
 func (o LookupBackendResultOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendResult) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// Backend Proxy Contract Properties
 func (o LookupBackendResultOutput) Proxy() BackendProxyContractResponsePtrOutput {
 	return o.ApplyT(func(v LookupBackendResult) *BackendProxyContractResponse { return v.Proxy }).(BackendProxyContractResponsePtrOutput)
 }
 
+// Management Uri of the Resource in External System. This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps.
 func (o LookupBackendResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackendResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Backend Title.
 func (o LookupBackendResultOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackendResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// Backend TLS Properties
 func (o LookupBackendResultOutput) Tls() BackendTlsPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupBackendResult) *BackendTlsPropertiesResponse { return v.Tls }).(BackendTlsPropertiesResponsePtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupBackendResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Runtime Url of the Backend.
 func (o LookupBackendResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendResult) string { return v.Url }).(pulumi.StringOutput)
 }

@@ -21,21 +21,32 @@ func LookupManager(ctx *pulumi.Context, args *LookupManagerArgs, opts ...pulumi.
 }
 
 type LookupManagerArgs struct {
-	ManagerName       string `pulumi:"managerName"`
+	// The manager name
+	ManagerName string `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The StorSimple Manager.
 type LookupManagerResult struct {
+	// Represents the type of StorSimple Manager.
 	CisIntrinsicSettings *ManagerIntrinsicSettingsResponse `pulumi:"cisIntrinsicSettings"`
-	Etag                 *string                           `pulumi:"etag"`
-	Id                   string                            `pulumi:"id"`
-	Location             string                            `pulumi:"location"`
-	Name                 string                            `pulumi:"name"`
-	ProvisioningState    *string                           `pulumi:"provisioningState"`
-	Sku                  *ManagerSkuResponse               `pulumi:"sku"`
-	Tags                 map[string]string                 `pulumi:"tags"`
-	Type                 string                            `pulumi:"type"`
+	// The etag of the manager.
+	Etag *string `pulumi:"etag"`
+	// The resource ID.
+	Id string `pulumi:"id"`
+	// The geo location of the resource.
+	Location string `pulumi:"location"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// Specifies the state of the resource as it is getting provisioned. Value of "Succeeded" means the Manager was successfully created.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Specifies the Sku.
+	Sku *ManagerSkuResponse `pulumi:"sku"`
+	// The tags attached to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagerOutput(ctx *pulumi.Context, args LookupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupManagerResultOutput {
@@ -52,7 +63,9 @@ func LookupManagerOutput(ctx *pulumi.Context, args LookupManagerOutputArgs, opts
 }
 
 type LookupManagerOutputArgs struct {
-	ManagerName       pulumi.StringInput `pulumi:"managerName"`
+	// The manager name
+	ManagerName pulumi.StringInput `pulumi:"managerName"`
+	// The resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,38 +88,47 @@ func (o LookupManagerResultOutput) ToLookupManagerResultOutputWithContext(ctx co
 	return o
 }
 
+// Represents the type of StorSimple Manager.
 func (o LookupManagerResultOutput) CisIntrinsicSettings() ManagerIntrinsicSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagerResult) *ManagerIntrinsicSettingsResponse { return v.CisIntrinsicSettings }).(ManagerIntrinsicSettingsResponsePtrOutput)
 }
 
+// The etag of the manager.
 func (o LookupManagerResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The resource ID.
 func (o LookupManagerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo location of the resource.
 func (o LookupManagerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o LookupManagerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies the state of the resource as it is getting provisioned. Value of "Succeeded" means the Manager was successfully created.
 func (o LookupManagerResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagerResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the Sku.
 func (o LookupManagerResultOutput) Sku() ManagerSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagerResult) *ManagerSkuResponse { return v.Sku }).(ManagerSkuResponsePtrOutput)
 }
 
+// The tags attached to the resource.
 func (o LookupManagerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupManagerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The resource type.
 func (o LookupManagerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerResult) string { return v.Type }).(pulumi.StringOutput)
 }

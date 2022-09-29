@@ -21,12 +21,15 @@ func ListOrderDCAccessCode(ctx *pulumi.Context, args *ListOrderDCAccessCodeArgs,
 }
 
 type ListOrderDCAccessCodeArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
+	// The device name
+	DeviceName string `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // DC Access code in the case of Self Managed Shipping.
 type ListOrderDCAccessCodeResult struct {
+	// DCAccess Code for the Self Managed shipment.
 	AuthCode *string `pulumi:"authCode"`
 }
 
@@ -44,7 +47,9 @@ func ListOrderDCAccessCodeOutput(ctx *pulumi.Context, args ListOrderDCAccessCode
 }
 
 type ListOrderDCAccessCodeOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
+	// The device name
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -67,6 +72,7 @@ func (o ListOrderDCAccessCodeResultOutput) ToListOrderDCAccessCodeResultOutputWi
 	return o
 }
 
+// DCAccess Code for the Self Managed shipment.
 func (o ListOrderDCAccessCodeResultOutput) AuthCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListOrderDCAccessCodeResult) *string { return v.AuthCode }).(pulumi.StringPtrOutput)
 }

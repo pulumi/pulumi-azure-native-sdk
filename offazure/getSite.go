@@ -22,19 +22,27 @@ func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.Invoke
 }
 
 type LookupSiteArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SiteName          string `pulumi:"siteName"`
+	// Site name.
+	SiteName string `pulumi:"siteName"`
 }
 
 // Site REST Resource.
 type LookupSiteResult struct {
-	ETag       *string                `pulumi:"eTag"`
-	Id         string                 `pulumi:"id"`
-	Location   *string                `pulumi:"location"`
-	Name       *string                `pulumi:"name"`
+	// eTag for concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Azure location in which Sites is created.
+	Location *string `pulumi:"location"`
+	// Name of the VMware site.
+	Name *string `pulumi:"name"`
+	// Nested properties of VMWare site.
 	Properties SitePropertiesResponse `pulumi:"properties"`
 	Tags       map[string]string      `pulumi:"tags"`
-	Type       string                 `pulumi:"type"`
+	// Type of resource. Type = Microsoft.OffAzure/VMWareSites.
+	Type string `pulumi:"type"`
 }
 
 func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pulumi.InvokeOption) LookupSiteResultOutput {
@@ -51,8 +59,10 @@ func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pu
 }
 
 type LookupSiteOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SiteName          pulumi.StringInput `pulumi:"siteName"`
+	// Site name.
+	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 
 func (LookupSiteOutputArgs) ElementType() reflect.Type {
@@ -74,22 +84,27 @@ func (o LookupSiteResultOutput) ToLookupSiteResultOutputWithContext(ctx context.
 	return o
 }
 
+// eTag for concurrency control.
 func (o LookupSiteResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
+// Resource Id.
 func (o LookupSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Azure location in which Sites is created.
 func (o LookupSiteResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Name of the VMware site.
 func (o LookupSiteResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSiteResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Nested properties of VMWare site.
 func (o LookupSiteResultOutput) Properties() SitePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupSiteResult) SitePropertiesResponse { return v.Properties }).(SitePropertiesResponseOutput)
 }
@@ -98,6 +113,7 @@ func (o LookupSiteResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSiteResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Type of resource. Type = Microsoft.OffAzure/VMWareSites.
 func (o LookupSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

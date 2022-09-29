@@ -22,18 +22,26 @@ func LookupPrivateLinkScopedResource(ctx *pulumi.Context, args *LookupPrivateLin
 }
 
 type LookupPrivateLinkScopedResourceArgs struct {
-	Name              string `pulumi:"name"`
+	// The name of the scoped resource object.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ScopeName         string `pulumi:"scopeName"`
+	// The name of the Azure Monitor PrivateLinkScope resource.
+	ScopeName string `pulumi:"scopeName"`
 }
 
 // A private link scoped resource
 type LookupPrivateLinkScopedResourceResult struct {
-	Id                string  `pulumi:"id"`
-	LinkedResourceId  *string `pulumi:"linkedResourceId"`
-	Name              string  `pulumi:"name"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	Type              string  `pulumi:"type"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The resource id of the scoped Azure monitor resource.
+	LinkedResourceId *string `pulumi:"linkedResourceId"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// State of the private endpoint connection.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupPrivateLinkScopedResourceOutput(ctx *pulumi.Context, args LookupPrivateLinkScopedResourceOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkScopedResourceResultOutput {
@@ -50,9 +58,12 @@ func LookupPrivateLinkScopedResourceOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateLinkScopedResourceOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The name of the scoped resource object.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ScopeName         pulumi.StringInput `pulumi:"scopeName"`
+	// The name of the Azure Monitor PrivateLinkScope resource.
+	ScopeName pulumi.StringInput `pulumi:"scopeName"`
 }
 
 func (LookupPrivateLinkScopedResourceOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o LookupPrivateLinkScopedResourceResultOutput) ToLookupPrivateLinkScopedRe
 	return o
 }
 
+// Azure resource Id
 func (o LookupPrivateLinkScopedResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopedResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource id of the scoped Azure monitor resource.
 func (o LookupPrivateLinkScopedResourceResultOutput) LinkedResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopedResourceResult) *string { return v.LinkedResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource name
 func (o LookupPrivateLinkScopedResourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopedResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of the private endpoint connection.
 func (o LookupPrivateLinkScopedResourceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopedResourceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupPrivateLinkScopedResourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopedResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

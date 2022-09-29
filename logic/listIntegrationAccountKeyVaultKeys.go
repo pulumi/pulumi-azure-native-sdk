@@ -22,16 +22,22 @@ func ListIntegrationAccountKeyVaultKeys(ctx *pulumi.Context, args *ListIntegrati
 }
 
 type ListIntegrationAccountKeyVaultKeysArgs struct {
-	IntegrationAccountName string            `pulumi:"integrationAccountName"`
-	KeyVault               KeyVaultReference `pulumi:"keyVault"`
-	ResourceGroupName      string            `pulumi:"resourceGroupName"`
-	SkipToken              *string           `pulumi:"skipToken"`
+	// The integration account name.
+	IntegrationAccountName string `pulumi:"integrationAccountName"`
+	// The key vault reference.
+	KeyVault KeyVaultReference `pulumi:"keyVault"`
+	// The resource group name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The skip token.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // Collection of key vault keys.
 type ListIntegrationAccountKeyVaultKeysResult struct {
-	SkipToken *string               `pulumi:"skipToken"`
-	Value     []KeyVaultKeyResponse `pulumi:"value"`
+	// The skip token.
+	SkipToken *string `pulumi:"skipToken"`
+	// The key vault keys.
+	Value []KeyVaultKeyResponse `pulumi:"value"`
 }
 
 func ListIntegrationAccountKeyVaultKeysOutput(ctx *pulumi.Context, args ListIntegrationAccountKeyVaultKeysOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountKeyVaultKeysResultOutput {
@@ -48,10 +54,14 @@ func ListIntegrationAccountKeyVaultKeysOutput(ctx *pulumi.Context, args ListInte
 }
 
 type ListIntegrationAccountKeyVaultKeysOutputArgs struct {
-	IntegrationAccountName pulumi.StringInput     `pulumi:"integrationAccountName"`
-	KeyVault               KeyVaultReferenceInput `pulumi:"keyVault"`
-	ResourceGroupName      pulumi.StringInput     `pulumi:"resourceGroupName"`
-	SkipToken              pulumi.StringPtrInput  `pulumi:"skipToken"`
+	// The integration account name.
+	IntegrationAccountName pulumi.StringInput `pulumi:"integrationAccountName"`
+	// The key vault reference.
+	KeyVault KeyVaultReferenceInput `pulumi:"keyVault"`
+	// The resource group name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The skip token.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListIntegrationAccountKeyVaultKeysOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o ListIntegrationAccountKeyVaultKeysResultOutput) ToListIntegrationAccount
 	return o
 }
 
+// The skip token.
 func (o ListIntegrationAccountKeyVaultKeysResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListIntegrationAccountKeyVaultKeysResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// The key vault keys.
 func (o ListIntegrationAccountKeyVaultKeysResultOutput) Value() KeyVaultKeyResponseArrayOutput {
 	return o.ApplyT(func(v ListIntegrationAccountKeyVaultKeysResult) []KeyVaultKeyResponse { return v.Value }).(KeyVaultKeyResponseArrayOutput)
 }

@@ -22,14 +22,18 @@ func ListClusterStreamingJobs(ctx *pulumi.Context, args *ListClusterStreamingJob
 }
 
 type ListClusterStreamingJobsArgs struct {
-	ClusterName       string `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A list of streaming jobs. Populated by a List operation.
 type ListClusterStreamingJobsResult struct {
-	NextLink string               `pulumi:"nextLink"`
-	Value    []ClusterJobResponse `pulumi:"value"`
+	// The URL to fetch the next set of streaming jobs.
+	NextLink string `pulumi:"nextLink"`
+	// A list of streaming jobs.
+	Value []ClusterJobResponse `pulumi:"value"`
 }
 
 func ListClusterStreamingJobsOutput(ctx *pulumi.Context, args ListClusterStreamingJobsOutputArgs, opts ...pulumi.InvokeOption) ListClusterStreamingJobsResultOutput {
@@ -46,7 +50,9 @@ func ListClusterStreamingJobsOutput(ctx *pulumi.Context, args ListClusterStreami
 }
 
 type ListClusterStreamingJobsOutputArgs struct {
-	ClusterName       pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListClusterStreamingJobsResultOutput) ToListClusterStreamingJobsResultOu
 	return o
 }
 
+// The URL to fetch the next set of streaming jobs.
 func (o ListClusterStreamingJobsResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListClusterStreamingJobsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// A list of streaming jobs.
 func (o ListClusterStreamingJobsResultOutput) Value() ClusterJobResponseArrayOutput {
 	return o.ApplyT(func(v ListClusterStreamingJobsResult) []ClusterJobResponse { return v.Value }).(ClusterJobResponseArrayOutput)
 }

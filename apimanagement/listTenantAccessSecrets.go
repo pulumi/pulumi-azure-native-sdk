@@ -22,17 +22,25 @@ func ListTenantAccessSecrets(ctx *pulumi.Context, args *ListTenantAccessSecretsA
 }
 
 type ListTenantAccessSecretsArgs struct {
-	AccessName        string `pulumi:"accessName"`
+	// The identifier of the Access configuration.
+	AccessName string `pulumi:"accessName"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Tenant access information contract of the API Management service.
 type ListTenantAccessSecretsResult struct {
-	Enabled      *bool   `pulumi:"enabled"`
-	Id           *string `pulumi:"id"`
-	PrimaryKey   *string `pulumi:"primaryKey"`
-	PrincipalId  *string `pulumi:"principalId"`
+	// Determines whether direct access is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Access Information type ('access' or 'gitAccess')
+	Id *string `pulumi:"id"`
+	// Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Principal (User) Identifier.
+	PrincipalId *string `pulumi:"principalId"`
+	// Secondary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 }
 
@@ -50,9 +58,12 @@ func ListTenantAccessSecretsOutput(ctx *pulumi.Context, args ListTenantAccessSec
 }
 
 type ListTenantAccessSecretsOutputArgs struct {
-	AccessName        pulumi.StringInput `pulumi:"accessName"`
+	// The identifier of the Access configuration.
+	AccessName pulumi.StringInput `pulumi:"accessName"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ListTenantAccessSecretsOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o ListTenantAccessSecretsResultOutput) ToListTenantAccessSecretsResultOutp
 	return o
 }
 
+// Determines whether direct access is enabled.
 func (o ListTenantAccessSecretsResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListTenantAccessSecretsResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Access Information type ('access' or 'gitAccess')
 func (o ListTenantAccessSecretsResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTenantAccessSecretsResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 func (o ListTenantAccessSecretsResultOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTenantAccessSecretsResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Principal (User) Identifier.
 func (o ListTenantAccessSecretsResultOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTenantAccessSecretsResult) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
+// Secondary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 func (o ListTenantAccessSecretsResultOutput) SecondaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListTenantAccessSecretsResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }

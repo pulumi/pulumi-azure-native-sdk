@@ -23,28 +23,46 @@ func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pul
 }
 
 type LookupWorkspaceArgs struct {
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // An object that represents a machine learning workspace.
 type LookupWorkspaceResult struct {
-	ApplicationInsights *string           `pulumi:"applicationInsights"`
-	ContainerRegistry   *string           `pulumi:"containerRegistry"`
-	CreationTime        string            `pulumi:"creationTime"`
-	Description         *string           `pulumi:"description"`
-	DiscoveryUrl        *string           `pulumi:"discoveryUrl"`
-	FriendlyName        *string           `pulumi:"friendlyName"`
-	Id                  string            `pulumi:"id"`
-	Identity            *IdentityResponse `pulumi:"identity"`
-	KeyVault            *string           `pulumi:"keyVault"`
-	Location            *string           `pulumi:"location"`
-	Name                string            `pulumi:"name"`
-	ProvisioningState   string            `pulumi:"provisioningState"`
-	StorageAccount      *string           `pulumi:"storageAccount"`
-	Tags                map[string]string `pulumi:"tags"`
-	Type                string            `pulumi:"type"`
-	WorkspaceId         string            `pulumi:"workspaceId"`
+	// ARM id of the application insights associated with this workspace. This cannot be changed once the workspace has been created
+	ApplicationInsights *string `pulumi:"applicationInsights"`
+	// ARM id of the container registry associated with this workspace. This cannot be changed once the workspace has been created
+	ContainerRegistry *string `pulumi:"containerRegistry"`
+	// The creation time of the machine learning workspace in ISO8601 format.
+	CreationTime string `pulumi:"creationTime"`
+	// The description of this workspace.
+	Description *string `pulumi:"description"`
+	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
+	DiscoveryUrl *string `pulumi:"discoveryUrl"`
+	// The friendly name for this workspace. This name in mutable
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Specifies the resource ID.
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
+	KeyVault *string `pulumi:"keyVault"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Specifies the name of the resource.
+	Name string `pulumi:"name"`
+	// The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
+	StorageAccount *string `pulumi:"storageAccount"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Specifies the type of the resource.
+	Type string `pulumi:"type"`
+	// The immutable id associated with this workspace.
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
@@ -61,8 +79,10 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 }
 
 type LookupWorkspaceOutputArgs struct {
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupWorkspaceOutputArgs) ElementType() reflect.Type {
@@ -84,66 +104,82 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
+// ARM id of the application insights associated with this workspace. This cannot be changed once the workspace has been created
 func (o LookupWorkspaceResultOutput) ApplicationInsights() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.ApplicationInsights }).(pulumi.StringPtrOutput)
 }
 
+// ARM id of the container registry associated with this workspace. This cannot be changed once the workspace has been created
 func (o LookupWorkspaceResultOutput) ContainerRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.ContainerRegistry }).(pulumi.StringPtrOutput)
 }
 
+// The creation time of the machine learning workspace in ISO8601 format.
 func (o LookupWorkspaceResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// The description of this workspace.
 func (o LookupWorkspaceResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Url for the discovery service to identify regional endpoints for machine learning experimentation services
 func (o LookupWorkspaceResultOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
+// The friendly name for this workspace. This name in mutable
 func (o LookupWorkspaceResultOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the resource ID.
 func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupWorkspaceResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 func (o LookupWorkspaceResultOutput) KeyVault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.KeyVault }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupWorkspaceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the name of the resource.
 func (o LookupWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
 func (o LookupWorkspaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 func (o LookupWorkspaceResultOutput) StorageAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the type of the resource.
 func (o LookupWorkspaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The immutable id associated with this workspace.
 func (o LookupWorkspaceResultOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }

@@ -22,14 +22,19 @@ func GetSAPAvailabilityZoneDetails(ctx *pulumi.Context, args *GetSAPAvailability
 }
 
 type GetSAPAvailabilityZoneDetailsArgs struct {
-	AppLocation  string `pulumi:"appLocation"`
+	// The geo-location where the SAP resources will be created.
+	AppLocation string `pulumi:"appLocation"`
+	// The database type. Eg: HANA, DB2, etc
 	DatabaseType string `pulumi:"databaseType"`
-	Location     string `pulumi:"location"`
-	SapProduct   string `pulumi:"sapProduct"`
+	// The name of Azure region.
+	Location string `pulumi:"location"`
+	// Defines the SAP Product type.
+	SapProduct string `pulumi:"sapProduct"`
 }
 
 // The list of supported availability zone pairs which are part of SAP HA deployment.
 type GetSAPAvailabilityZoneDetailsResult struct {
+	// Gets the list of availability zone pairs.
 	AvailabilityZonePairs []SAPAvailabilityZonePairResponse `pulumi:"availabilityZonePairs"`
 }
 
@@ -47,10 +52,14 @@ func GetSAPAvailabilityZoneDetailsOutput(ctx *pulumi.Context, args GetSAPAvailab
 }
 
 type GetSAPAvailabilityZoneDetailsOutputArgs struct {
-	AppLocation  pulumi.StringInput `pulumi:"appLocation"`
+	// The geo-location where the SAP resources will be created.
+	AppLocation pulumi.StringInput `pulumi:"appLocation"`
+	// The database type. Eg: HANA, DB2, etc
 	DatabaseType pulumi.StringInput `pulumi:"databaseType"`
-	Location     pulumi.StringInput `pulumi:"location"`
-	SapProduct   pulumi.StringInput `pulumi:"sapProduct"`
+	// The name of Azure region.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Defines the SAP Product type.
+	SapProduct pulumi.StringInput `pulumi:"sapProduct"`
 }
 
 func (GetSAPAvailabilityZoneDetailsOutputArgs) ElementType() reflect.Type {
@@ -72,6 +81,7 @@ func (o GetSAPAvailabilityZoneDetailsResultOutput) ToGetSAPAvailabilityZoneDetai
 	return o
 }
 
+// Gets the list of availability zone pairs.
 func (o GetSAPAvailabilityZoneDetailsResultOutput) AvailabilityZonePairs() SAPAvailabilityZonePairResponseArrayOutput {
 	return o.ApplyT(func(v GetSAPAvailabilityZoneDetailsResult) []SAPAvailabilityZonePairResponse {
 		return v.AvailabilityZonePairs

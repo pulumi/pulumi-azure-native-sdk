@@ -22,22 +22,34 @@ func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivat
 }
 
 type LookupManagedPrivateEndpointArgs struct {
-	ClusterName                string `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The name of the managed private endpoint.
 	ManagedPrivateEndpointName string `pulumi:"managedPrivateEndpointName"`
-	ResourceGroupName          string `pulumi:"resourceGroupName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a managed private endpoint.
 type LookupManagedPrivateEndpointResult struct {
-	GroupId                   string             `pulumi:"groupId"`
-	Id                        string             `pulumi:"id"`
-	Name                      string             `pulumi:"name"`
-	PrivateLinkResourceId     string             `pulumi:"privateLinkResourceId"`
-	PrivateLinkResourceRegion *string            `pulumi:"privateLinkResourceRegion"`
-	ProvisioningState         string             `pulumi:"provisioningState"`
-	RequestMessage            *string            `pulumi:"requestMessage"`
-	SystemData                SystemDataResponse `pulumi:"systemData"`
-	Type                      string             `pulumi:"type"`
+	// The groupId in which the managed private endpoint is created.
+	GroupId string `pulumi:"groupId"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The ARM resource ID of the resource for which the managed private endpoint is created.
+	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
+	// The region of the resource to which the managed private endpoint is created.
+	PrivateLinkResourceRegion *string `pulumi:"privateLinkResourceRegion"`
+	// The provisioned state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The user request message.
+	RequestMessage *string `pulumi:"requestMessage"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupManagedPrivateEndpointOutput(ctx *pulumi.Context, args LookupManagedPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupManagedPrivateEndpointResultOutput {
@@ -54,9 +66,12 @@ func LookupManagedPrivateEndpointOutput(ctx *pulumi.Context, args LookupManagedP
 }
 
 type LookupManagedPrivateEndpointOutputArgs struct {
-	ClusterName                pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Kusto cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the managed private endpoint.
 	ManagedPrivateEndpointName pulumi.StringInput `pulumi:"managedPrivateEndpointName"`
-	ResourceGroupName          pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group containing the Kusto cluster.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupManagedPrivateEndpointOutputArgs) ElementType() reflect.Type {
@@ -78,38 +93,47 @@ func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpoint
 	return o
 }
 
+// The groupId in which the managed private endpoint is created.
 func (o LookupManagedPrivateEndpointResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagedPrivateEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupManagedPrivateEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ARM resource ID of the resource for which the managed private endpoint is created.
 func (o LookupManagedPrivateEndpointResultOutput) PrivateLinkResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.PrivateLinkResourceId }).(pulumi.StringOutput)
 }
 
+// The region of the resource to which the managed private endpoint is created.
 func (o LookupManagedPrivateEndpointResultOutput) PrivateLinkResourceRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) *string { return v.PrivateLinkResourceRegion }).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o LookupManagedPrivateEndpointResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The user request message.
 func (o LookupManagedPrivateEndpointResultOutput) RequestMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupManagedPrivateEndpointResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupManagedPrivateEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }

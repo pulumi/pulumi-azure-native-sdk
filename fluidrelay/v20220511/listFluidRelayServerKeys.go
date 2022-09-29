@@ -21,13 +21,17 @@ func ListFluidRelayServerKeys(ctx *pulumi.Context, args *ListFluidRelayServerKey
 }
 
 type ListFluidRelayServerKeysArgs struct {
+	// The Fluid Relay server resource name.
 	FluidRelayServerName string `pulumi:"fluidRelayServerName"`
-	ResourceGroup        string `pulumi:"resourceGroup"`
+	// The resource group containing the resource.
+	ResourceGroup string `pulumi:"resourceGroup"`
 }
 
 // The set of available keys for this server.
 type ListFluidRelayServerKeysResult struct {
+	// The primary key for this server
 	Key1 string `pulumi:"key1"`
+	// The secondary key for this server
 	Key2 string `pulumi:"key2"`
 }
 
@@ -45,8 +49,10 @@ func ListFluidRelayServerKeysOutput(ctx *pulumi.Context, args ListFluidRelayServ
 }
 
 type ListFluidRelayServerKeysOutputArgs struct {
+	// The Fluid Relay server resource name.
 	FluidRelayServerName pulumi.StringInput `pulumi:"fluidRelayServerName"`
-	ResourceGroup        pulumi.StringInput `pulumi:"resourceGroup"`
+	// The resource group containing the resource.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
 }
 
 func (ListFluidRelayServerKeysOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListFluidRelayServerKeysResultOutput) ToListFluidRelayServerKeysResultOu
 	return o
 }
 
+// The primary key for this server
 func (o ListFluidRelayServerKeysResultOutput) Key1() pulumi.StringOutput {
 	return o.ApplyT(func(v ListFluidRelayServerKeysResult) string { return v.Key1 }).(pulumi.StringOutput)
 }
 
+// The secondary key for this server
 func (o ListFluidRelayServerKeysResultOutput) Key2() pulumi.StringOutput {
 	return o.ApplyT(func(v ListFluidRelayServerKeysResult) string { return v.Key2 }).(pulumi.StringOutput)
 }

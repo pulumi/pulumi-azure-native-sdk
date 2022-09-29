@@ -21,14 +21,18 @@ func ListMonitoredResource(ctx *pulumi.Context, args *ListMonitoredResourceArgs,
 }
 
 type ListMonitoredResourceArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response of a list operation.
 type ListMonitoredResourceResult struct {
-	NextLink *string                     `pulumi:"nextLink"`
-	Value    []MonitoredResourceResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Results of a list operation.
+	Value []MonitoredResourceResponse `pulumi:"value"`
 }
 
 func ListMonitoredResourceOutput(ctx *pulumi.Context, args ListMonitoredResourceOutputArgs, opts ...pulumi.InvokeOption) ListMonitoredResourceResultOutput {
@@ -45,7 +49,9 @@ func ListMonitoredResourceOutput(ctx *pulumi.Context, args ListMonitoredResource
 }
 
 type ListMonitoredResourceOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group to which the Elastic resource belongs.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -68,10 +74,12 @@ func (o ListMonitoredResourceResultOutput) ToListMonitoredResourceResultOutputWi
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListMonitoredResourceResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMonitoredResourceResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Results of a list operation.
 func (o ListMonitoredResourceResultOutput) Value() MonitoredResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListMonitoredResourceResult) []MonitoredResourceResponse { return v.Value }).(MonitoredResourceResponseArrayOutput)
 }

@@ -21,18 +21,26 @@ func LookupPrivateDnsZoneGroup(ctx *pulumi.Context, args *LookupPrivateDnsZoneGr
 }
 
 type LookupPrivateDnsZoneGroupArgs struct {
+	// The name of the private dns zone group.
 	PrivateDnsZoneGroupName string `pulumi:"privateDnsZoneGroupName"`
-	PrivateEndpointName     string `pulumi:"privateEndpointName"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
+	// The name of the private endpoint.
+	PrivateEndpointName string `pulumi:"privateEndpointName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Private dns zone group resource.
 type LookupPrivateDnsZoneGroupResult struct {
-	Etag                  string                         `pulumi:"etag"`
-	Id                    *string                        `pulumi:"id"`
-	Name                  *string                        `pulumi:"name"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// A collection of private dns zone configurations of the private dns zone group.
 	PrivateDnsZoneConfigs []PrivateDnsZoneConfigResponse `pulumi:"privateDnsZoneConfigs"`
-	ProvisioningState     string                         `pulumi:"provisioningState"`
+	// The provisioning state of the private dns zone group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 }
 
 func LookupPrivateDnsZoneGroupOutput(ctx *pulumi.Context, args LookupPrivateDnsZoneGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDnsZoneGroupResultOutput {
@@ -49,9 +57,12 @@ func LookupPrivateDnsZoneGroupOutput(ctx *pulumi.Context, args LookupPrivateDnsZ
 }
 
 type LookupPrivateDnsZoneGroupOutputArgs struct {
+	// The name of the private dns zone group.
 	PrivateDnsZoneGroupName pulumi.StringInput `pulumi:"privateDnsZoneGroupName"`
-	PrivateEndpointName     pulumi.StringInput `pulumi:"privateEndpointName"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the private endpoint.
+	PrivateEndpointName pulumi.StringInput `pulumi:"privateEndpointName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPrivateDnsZoneGroupOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupPrivateDnsZoneGroupResultOutput) ToLookupPrivateDnsZoneGroupResult
 	return o
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupPrivateDnsZoneGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDnsZoneGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupPrivateDnsZoneGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateDnsZoneGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupPrivateDnsZoneGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateDnsZoneGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A collection of private dns zone configurations of the private dns zone group.
 func (o LookupPrivateDnsZoneGroupResultOutput) PrivateDnsZoneConfigs() PrivateDnsZoneConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateDnsZoneGroupResult) []PrivateDnsZoneConfigResponse { return v.PrivateDnsZoneConfigs }).(PrivateDnsZoneConfigResponseArrayOutput)
 }
 
+// The provisioning state of the private dns zone group resource.
 func (o LookupPrivateDnsZoneGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDnsZoneGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

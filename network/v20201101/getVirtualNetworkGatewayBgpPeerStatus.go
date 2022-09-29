@@ -21,13 +21,17 @@ func GetVirtualNetworkGatewayBgpPeerStatus(ctx *pulumi.Context, args *GetVirtual
 }
 
 type GetVirtualNetworkGatewayBgpPeerStatusArgs struct {
-	Peer                      *string `pulumi:"peer"`
-	ResourceGroupName         string  `pulumi:"resourceGroupName"`
-	VirtualNetworkGatewayName string  `pulumi:"virtualNetworkGatewayName"`
+	// The IP address of the peer to retrieve the status of.
+	Peer *string `pulumi:"peer"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
+	VirtualNetworkGatewayName string `pulumi:"virtualNetworkGatewayName"`
 }
 
 // Response for list BGP peer status API service call.
 type GetVirtualNetworkGatewayBgpPeerStatusResult struct {
+	// List of BGP peers.
 	Value []BgpPeerStatusResponse `pulumi:"value"`
 }
 
@@ -45,9 +49,12 @@ func GetVirtualNetworkGatewayBgpPeerStatusOutput(ctx *pulumi.Context, args GetVi
 }
 
 type GetVirtualNetworkGatewayBgpPeerStatusOutputArgs struct {
-	Peer                      pulumi.StringPtrInput `pulumi:"peer"`
-	ResourceGroupName         pulumi.StringInput    `pulumi:"resourceGroupName"`
-	VirtualNetworkGatewayName pulumi.StringInput    `pulumi:"virtualNetworkGatewayName"`
+	// The IP address of the peer to retrieve the status of.
+	Peer pulumi.StringPtrInput `pulumi:"peer"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual network gateway.
+	VirtualNetworkGatewayName pulumi.StringInput `pulumi:"virtualNetworkGatewayName"`
 }
 
 func (GetVirtualNetworkGatewayBgpPeerStatusOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,7 @@ func (o GetVirtualNetworkGatewayBgpPeerStatusResultOutput) ToGetVirtualNetworkGa
 	return o
 }
 
+// List of BGP peers.
 func (o GetVirtualNetworkGatewayBgpPeerStatusResultOutput) Value() BgpPeerStatusResponseArrayOutput {
 	return o.ApplyT(func(v GetVirtualNetworkGatewayBgpPeerStatusResult) []BgpPeerStatusResponse { return v.Value }).(BgpPeerStatusResponseArrayOutput)
 }

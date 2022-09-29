@@ -21,21 +21,32 @@ func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.In
 }
 
 type LookupTargetArgs struct {
+	// String that represents a resource provider namespace.
 	ParentProviderNamespace string `pulumi:"parentProviderNamespace"`
-	ParentResourceName      string `pulumi:"parentResourceName"`
-	ParentResourceType      string `pulumi:"parentResourceType"`
-	ResourceGroupName       string `pulumi:"resourceGroupName"`
-	TargetName              string `pulumi:"targetName"`
+	// String that represents a resource name.
+	ParentResourceName string `pulumi:"parentResourceName"`
+	// String that represents a resource type.
+	ParentResourceType string `pulumi:"parentResourceType"`
+	// String that represents an Azure resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// String that represents a Target resource name.
+	TargetName string `pulumi:"targetName"`
 }
 
 // Model that represents a Target resource.
 type LookupTargetResult struct {
-	Id         string             `pulumi:"id"`
-	Location   *string            `pulumi:"location"`
-	Name       string             `pulumi:"name"`
-	Properties interface{}        `pulumi:"properties"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Location of the target resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The properties of the target resource.
+	Properties interface{} `pulumi:"properties"`
+	// The system metadata of the target resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupTargetOutput(ctx *pulumi.Context, args LookupTargetOutputArgs, opts ...pulumi.InvokeOption) LookupTargetResultOutput {
@@ -52,11 +63,16 @@ func LookupTargetOutput(ctx *pulumi.Context, args LookupTargetOutputArgs, opts .
 }
 
 type LookupTargetOutputArgs struct {
+	// String that represents a resource provider namespace.
 	ParentProviderNamespace pulumi.StringInput `pulumi:"parentProviderNamespace"`
-	ParentResourceName      pulumi.StringInput `pulumi:"parentResourceName"`
-	ParentResourceType      pulumi.StringInput `pulumi:"parentResourceType"`
-	ResourceGroupName       pulumi.StringInput `pulumi:"resourceGroupName"`
-	TargetName              pulumi.StringInput `pulumi:"targetName"`
+	// String that represents a resource name.
+	ParentResourceName pulumi.StringInput `pulumi:"parentResourceName"`
+	// String that represents a resource type.
+	ParentResourceType pulumi.StringInput `pulumi:"parentResourceType"`
+	// String that represents an Azure resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// String that represents a Target resource name.
+	TargetName pulumi.StringInput `pulumi:"targetName"`
 }
 
 func (LookupTargetOutputArgs) ElementType() reflect.Type {
@@ -78,26 +94,32 @@ func (o LookupTargetResultOutput) ToLookupTargetResultOutputWithContext(ctx cont
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTargetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the target resource.
 func (o LookupTargetResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTargetResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupTargetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The properties of the target resource.
 func (o LookupTargetResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupTargetResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The system metadata of the target resource.
 func (o LookupTargetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTargetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTargetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Type }).(pulumi.StringOutput)
 }

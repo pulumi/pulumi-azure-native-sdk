@@ -21,11 +21,13 @@ func ListContainerAppSecrets(ctx *pulumi.Context, args *ListContainerAppSecretsA
 }
 
 type ListContainerAppSecretsArgs struct {
+	// Name of the Container App.
 	Name string `pulumi:"name"`
 }
 
 // Container App Secrets Collection ARM resource.
 type ListContainerAppSecretsResult struct {
+	// Collection of resources.
 	Value []ContainerAppSecretResponse `pulumi:"value"`
 }
 
@@ -43,6 +45,7 @@ func ListContainerAppSecretsOutput(ctx *pulumi.Context, args ListContainerAppSec
 }
 
 type ListContainerAppSecretsOutputArgs struct {
+	// Name of the Container App.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -65,6 +68,7 @@ func (o ListContainerAppSecretsResultOutput) ToListContainerAppSecretsResultOutp
 	return o
 }
 
+// Collection of resources.
 func (o ListContainerAppSecretsResultOutput) Value() ContainerAppSecretResponseArrayOutput {
 	return o.ApplyT(func(v ListContainerAppSecretsResult) []ContainerAppSecretResponse { return v.Value }).(ContainerAppSecretResponseArrayOutput)
 }

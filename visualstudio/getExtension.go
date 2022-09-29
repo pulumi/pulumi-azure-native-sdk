@@ -22,20 +22,30 @@ func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pul
 }
 
 type LookupExtensionArgs struct {
-	AccountResourceName   string `pulumi:"accountResourceName"`
+	// The name of the Visual Studio Team Services account resource.
+	AccountResourceName string `pulumi:"accountResourceName"`
+	// The name of the extension.
 	ExtensionResourceName string `pulumi:"extensionResourceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response to an extension resource GET request.
 type LookupExtensionResult struct {
-	Id         string                         `pulumi:"id"`
-	Location   *string                        `pulumi:"location"`
-	Name       string                         `pulumi:"name"`
-	Plan       *ExtensionResourcePlanResponse `pulumi:"plan"`
-	Properties map[string]string              `pulumi:"properties"`
-	Tags       map[string]string              `pulumi:"tags"`
-	Type       string                         `pulumi:"type"`
+	// Unique identifier of the resource.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The extension plan that was purchased.
+	Plan *ExtensionResourcePlanResponse `pulumi:"plan"`
+	// Resource properties.
+	Properties map[string]string `pulumi:"properties"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupExtensionOutput(ctx *pulumi.Context, args LookupExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupExtensionResultOutput {
@@ -52,9 +62,12 @@ func LookupExtensionOutput(ctx *pulumi.Context, args LookupExtensionOutputArgs, 
 }
 
 type LookupExtensionOutputArgs struct {
-	AccountResourceName   pulumi.StringInput `pulumi:"accountResourceName"`
+	// The name of the Visual Studio Team Services account resource.
+	AccountResourceName pulumi.StringInput `pulumi:"accountResourceName"`
+	// The name of the extension.
 	ExtensionResourceName pulumi.StringInput `pulumi:"extensionResourceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the resource group within the Azure subscription.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupExtensionOutputArgs) ElementType() reflect.Type {
@@ -76,30 +89,37 @@ func (o LookupExtensionResultOutput) ToLookupExtensionResultOutputWithContext(ct
 	return o
 }
 
+// Unique identifier of the resource.
 func (o LookupExtensionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupExtensionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExtensionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupExtensionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The extension plan that was purchased.
 func (o LookupExtensionResultOutput) Plan() ExtensionResourcePlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupExtensionResult) *ExtensionResourcePlanResponse { return v.Plan }).(ExtensionResourcePlanResponsePtrOutput)
 }
 
+// Resource properties.
 func (o LookupExtensionResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExtensionResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Resource tags.
 func (o LookupExtensionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExtensionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupExtensionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Type }).(pulumi.StringOutput)
 }

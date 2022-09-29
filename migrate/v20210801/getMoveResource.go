@@ -21,18 +21,26 @@ func LookupMoveResource(ctx *pulumi.Context, args *LookupMoveResourceArgs, opts 
 }
 
 type LookupMoveResourceArgs struct {
+	// The Move Collection Name.
 	MoveCollectionName string `pulumi:"moveCollectionName"`
-	MoveResourceName   string `pulumi:"moveResourceName"`
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
+	// The Move Resource Name.
+	MoveResourceName string `pulumi:"moveResourceName"`
+	// The Resource Group Name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Defines the move resource.
 type LookupMoveResourceResult struct {
-	Id         string                         `pulumi:"id"`
-	Name       string                         `pulumi:"name"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Defines the move resource properties.
 	Properties MoveResourcePropertiesResponse `pulumi:"properties"`
-	SystemData SystemDataResponse             `pulumi:"systemData"`
-	Type       string                         `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMoveResourceOutput(ctx *pulumi.Context, args LookupMoveResourceOutputArgs, opts ...pulumi.InvokeOption) LookupMoveResourceResultOutput {
@@ -49,9 +57,12 @@ func LookupMoveResourceOutput(ctx *pulumi.Context, args LookupMoveResourceOutput
 }
 
 type LookupMoveResourceOutputArgs struct {
+	// The Move Collection Name.
 	MoveCollectionName pulumi.StringInput `pulumi:"moveCollectionName"`
-	MoveResourceName   pulumi.StringInput `pulumi:"moveResourceName"`
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Move Resource Name.
+	MoveResourceName pulumi.StringInput `pulumi:"moveResourceName"`
+	// The Resource Group Name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupMoveResourceOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupMoveResourceResultOutput) ToLookupMoveResourceResultOutputWithCont
 	return o
 }
 
+// Fully qualified resource Id for the resource.
 func (o LookupMoveResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupMoveResourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the move resource properties.
 func (o LookupMoveResourceResultOutput) Properties() MoveResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMoveResourceResult) MoveResourcePropertiesResponse { return v.Properties }).(MoveResourcePropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupMoveResourceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMoveResourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource.
 func (o LookupMoveResourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMoveResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

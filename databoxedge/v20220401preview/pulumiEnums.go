@@ -37,29 +37,6 @@ const (
 	ClientPermissionTypeReadWrite = ClientPermissionType("ReadWrite")
 )
 
-// The kind of the device.
-type DataBoxEdgeDeviceKind string
-
-const (
-	DataBoxEdgeDeviceKindAzureDataBoxGateway    = DataBoxEdgeDeviceKind("AzureDataBoxGateway")
-	DataBoxEdgeDeviceKindAzureStackEdge         = DataBoxEdgeDeviceKind("AzureStackEdge")
-	DataBoxEdgeDeviceKindAzureStackHub          = DataBoxEdgeDeviceKind("AzureStackHub")
-	DataBoxEdgeDeviceKindAzureModularDataCentre = DataBoxEdgeDeviceKind("AzureModularDataCentre")
-)
-
-// The status of the Data Box Edge/Gateway device.
-type DataBoxEdgeDeviceStatus string
-
-const (
-	DataBoxEdgeDeviceStatusReadyToSetup          = DataBoxEdgeDeviceStatus("ReadyToSetup")
-	DataBoxEdgeDeviceStatusOnline                = DataBoxEdgeDeviceStatus("Online")
-	DataBoxEdgeDeviceStatusOffline               = DataBoxEdgeDeviceStatus("Offline")
-	DataBoxEdgeDeviceStatusNeedsAttention        = DataBoxEdgeDeviceStatus("NeedsAttention")
-	DataBoxEdgeDeviceStatusDisconnected          = DataBoxEdgeDeviceStatus("Disconnected")
-	DataBoxEdgeDeviceStatusPartiallyDisconnected = DataBoxEdgeDeviceStatus("PartiallyDisconnected")
-	DataBoxEdgeDeviceStatusMaintenance           = DataBoxEdgeDeviceStatus("Maintenance")
-)
-
 // Data policy of the storage Account.
 type DataPolicy string
 
@@ -103,15 +80,6 @@ type MonitoringStatus string
 const (
 	MonitoringStatusEnabled  = MonitoringStatus("Enabled")
 	MonitoringStatusDisabled = MonitoringStatus("Disabled")
-)
-
-// Identity type
-type MsiIdentityType string
-
-const (
-	MsiIdentityTypeNone           = MsiIdentityType("None")
-	MsiIdentityTypeSystemAssigned = MsiIdentityType("SystemAssigned")
-	MsiIdentityTypeUserAssigned   = MsiIdentityType("UserAssigned")
 )
 
 // Host OS supported by the Kubernetes role.

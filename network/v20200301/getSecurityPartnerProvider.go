@@ -21,22 +21,34 @@ func LookupSecurityPartnerProvider(ctx *pulumi.Context, args *LookupSecurityPart
 }
 
 type LookupSecurityPartnerProviderArgs struct {
-	ResourceGroupName           string `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the Security Partner Provider.
 	SecurityPartnerProviderName string `pulumi:"securityPartnerProviderName"`
 }
 
 // Security Partner Provider resource.
 type LookupSecurityPartnerProviderResult struct {
-	ConnectionStatus     string               `pulumi:"connectionStatus"`
-	Etag                 string               `pulumi:"etag"`
-	Id                   *string              `pulumi:"id"`
-	Location             *string              `pulumi:"location"`
-	Name                 string               `pulumi:"name"`
-	ProvisioningState    string               `pulumi:"provisioningState"`
-	SecurityProviderName *string              `pulumi:"securityProviderName"`
-	Tags                 map[string]string    `pulumi:"tags"`
-	Type                 string               `pulumi:"type"`
-	VirtualHub           *SubResourceResponse `pulumi:"virtualHub"`
+	// The connection status with the Security Partner Provider.
+	ConnectionStatus string `pulumi:"connectionStatus"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the Security Partner Provider resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The security provider name.
+	SecurityProviderName *string `pulumi:"securityProviderName"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The virtualHub to which the Security Partner Provider belongs.
+	VirtualHub *SubResourceResponse `pulumi:"virtualHub"`
 }
 
 func LookupSecurityPartnerProviderOutput(ctx *pulumi.Context, args LookupSecurityPartnerProviderOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityPartnerProviderResultOutput {
@@ -53,7 +65,9 @@ func LookupSecurityPartnerProviderOutput(ctx *pulumi.Context, args LookupSecurit
 }
 
 type LookupSecurityPartnerProviderOutputArgs struct {
-	ResourceGroupName           pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Security Partner Provider.
 	SecurityPartnerProviderName pulumi.StringInput `pulumi:"securityPartnerProviderName"`
 }
 
@@ -76,42 +90,52 @@ func (o LookupSecurityPartnerProviderResultOutput) ToLookupSecurityPartnerProvid
 	return o
 }
 
+// The connection status with the Security Partner Provider.
 func (o LookupSecurityPartnerProviderResultOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) string { return v.ConnectionStatus }).(pulumi.StringOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupSecurityPartnerProviderResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupSecurityPartnerProviderResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Resource location.
 func (o LookupSecurityPartnerProviderResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Resource name.
 func (o LookupSecurityPartnerProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the Security Partner Provider resource.
 func (o LookupSecurityPartnerProviderResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The security provider name.
 func (o LookupSecurityPartnerProviderResultOutput) SecurityProviderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) *string { return v.SecurityProviderName }).(pulumi.StringPtrOutput)
 }
 
+// Resource tags.
 func (o LookupSecurityPartnerProviderResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupSecurityPartnerProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The virtualHub to which the Security Partner Provider belongs.
 func (o LookupSecurityPartnerProviderResultOutput) VirtualHub() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) *SubResourceResponse { return v.VirtualHub }).(SubResourceResponsePtrOutput)
 }

@@ -22,16 +22,22 @@ func ListActiveSecurityUserRule(ctx *pulumi.Context, args *ListActiveSecurityUse
 }
 
 type ListActiveSecurityUserRuleArgs struct {
-	NetworkManagerName string   `pulumi:"networkManagerName"`
-	Regions            []string `pulumi:"regions"`
-	ResourceGroupName  string   `pulumi:"resourceGroupName"`
-	SkipToken          *string  `pulumi:"skipToken"`
+	// The name of the network manager.
+	NetworkManagerName string `pulumi:"networkManagerName"`
+	// List of regions.
+	Regions []string `pulumi:"regions"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // Result of the request to list active security user rules. It contains a list of active security user rules and a skiptoken to get the next set of results.
 type ListActiveSecurityUserRuleResult struct {
-	SkipToken *string       `pulumi:"skipToken"`
-	Value     []interface{} `pulumi:"value"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// Gets a page of active security user rules.
+	Value []interface{} `pulumi:"value"`
 }
 
 func ListActiveSecurityUserRuleOutput(ctx *pulumi.Context, args ListActiveSecurityUserRuleOutputArgs, opts ...pulumi.InvokeOption) ListActiveSecurityUserRuleResultOutput {
@@ -48,10 +54,14 @@ func ListActiveSecurityUserRuleOutput(ctx *pulumi.Context, args ListActiveSecuri
 }
 
 type ListActiveSecurityUserRuleOutputArgs struct {
-	NetworkManagerName pulumi.StringInput      `pulumi:"networkManagerName"`
-	Regions            pulumi.StringArrayInput `pulumi:"regions"`
-	ResourceGroupName  pulumi.StringInput      `pulumi:"resourceGroupName"`
-	SkipToken          pulumi.StringPtrInput   `pulumi:"skipToken"`
+	// The name of the network manager.
+	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
+	// List of regions.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListActiveSecurityUserRuleOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o ListActiveSecurityUserRuleResultOutput) ToListActiveSecurityUserRuleResu
 	return o
 }
 
+// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 func (o ListActiveSecurityUserRuleResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListActiveSecurityUserRuleResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// Gets a page of active security user rules.
 func (o ListActiveSecurityUserRuleResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ListActiveSecurityUserRuleResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

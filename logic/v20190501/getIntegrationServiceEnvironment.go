@@ -21,20 +21,30 @@ func LookupIntegrationServiceEnvironment(ctx *pulumi.Context, args *LookupIntegr
 }
 
 type LookupIntegrationServiceEnvironmentArgs struct {
+	// The integration service environment name.
 	IntegrationServiceEnvironmentName string `pulumi:"integrationServiceEnvironmentName"`
-	ResourceGroup                     string `pulumi:"resourceGroup"`
+	// The resource group.
+	ResourceGroup string `pulumi:"resourceGroup"`
 }
 
 // The integration service environment.
 type LookupIntegrationServiceEnvironmentResult struct {
-	Id         string                                          `pulumi:"id"`
-	Identity   *ManagedServiceIdentityResponse                 `pulumi:"identity"`
-	Location   *string                                         `pulumi:"location"`
-	Name       string                                          `pulumi:"name"`
+	// The resource id.
+	Id string `pulumi:"id"`
+	// Managed service identity properties.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The resource location.
+	Location *string `pulumi:"location"`
+	// Gets the resource name.
+	Name string `pulumi:"name"`
+	// The integration service environment properties.
 	Properties IntegrationServiceEnvironmentPropertiesResponse `pulumi:"properties"`
-	Sku        *IntegrationServiceEnvironmentSkuResponse       `pulumi:"sku"`
-	Tags       map[string]string                               `pulumi:"tags"`
-	Type       string                                          `pulumi:"type"`
+	// The sku.
+	Sku *IntegrationServiceEnvironmentSkuResponse `pulumi:"sku"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupIntegrationServiceEnvironmentOutput(ctx *pulumi.Context, args LookupIntegrationServiceEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationServiceEnvironmentResultOutput {
@@ -51,8 +61,10 @@ func LookupIntegrationServiceEnvironmentOutput(ctx *pulumi.Context, args LookupI
 }
 
 type LookupIntegrationServiceEnvironmentOutputArgs struct {
+	// The integration service environment name.
 	IntegrationServiceEnvironmentName pulumi.StringInput `pulumi:"integrationServiceEnvironmentName"`
-	ResourceGroup                     pulumi.StringInput `pulumi:"resourceGroup"`
+	// The resource group.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
 }
 
 func (LookupIntegrationServiceEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -74,38 +86,46 @@ func (o LookupIntegrationServiceEnvironmentResultOutput) ToLookupIntegrationServ
 	return o
 }
 
+// The resource id.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed service identity properties.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// The resource location.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the resource name.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The integration service environment properties.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Properties() IntegrationServiceEnvironmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) IntegrationServiceEnvironmentPropertiesResponse {
 		return v.Properties
 	}).(IntegrationServiceEnvironmentPropertiesResponseOutput)
 }
 
+// The sku.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Sku() IntegrationServiceEnvironmentSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) *IntegrationServiceEnvironmentSkuResponse {
 		return v.Sku
 	}).(IntegrationServiceEnvironmentSkuResponsePtrOutput)
 }
 
+// The resource tags.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the resource type.
 func (o LookupIntegrationServiceEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

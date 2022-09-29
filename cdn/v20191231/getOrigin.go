@@ -23,26 +23,42 @@ func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.In
 }
 
 type LookupOriginArgs struct {
-	EndpointName      string `pulumi:"endpointName"`
-	OriginName        string `pulumi:"originName"`
-	ProfileName       string `pulumi:"profileName"`
+	// Name of the endpoint under the profile which is unique globally.
+	EndpointName string `pulumi:"endpointName"`
+	// Name of the origin which is unique within the endpoint.
+	OriginName string `pulumi:"originName"`
+	// Name of the CDN profile which is unique within the resource group.
+	ProfileName string `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 type LookupOriginResult struct {
-	Enabled           *bool   `pulumi:"enabled"`
-	HostName          string  `pulumi:"hostName"`
-	HttpPort          *int    `pulumi:"httpPort"`
-	HttpsPort         *int    `pulumi:"httpsPort"`
-	Id                string  `pulumi:"id"`
-	Name              string  `pulumi:"name"`
-	OriginHostHeader  *string `pulumi:"originHostHeader"`
-	Priority          *int    `pulumi:"priority"`
-	ProvisioningState string  `pulumi:"provisioningState"`
-	ResourceState     string  `pulumi:"resourceState"`
-	Type              string  `pulumi:"type"`
-	Weight            *int    `pulumi:"weight"`
+	// Origin is enabled for load balancing or not
+	Enabled *bool `pulumi:"enabled"`
+	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
+	HostName string `pulumi:"hostName"`
+	// The value of the HTTP port. Must be between 1 and 65535.
+	HttpPort *int `pulumi:"httpPort"`
+	// The value of the HTTPS port. Must be between 1 and 65535.
+	HttpsPort *int `pulumi:"httpsPort"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. If endpoint uses multiple origins for load balancing, then the host header at endpoint is ignored and this one is considered.
+	OriginHostHeader *string `pulumi:"originHostHeader"`
+	// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
+	Priority *int `pulumi:"priority"`
+	// Provisioning status of the origin.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource status of the origin.
+	ResourceState string `pulumi:"resourceState"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
+	Weight *int `pulumi:"weight"`
 }
 
 func LookupOriginOutput(ctx *pulumi.Context, args LookupOriginOutputArgs, opts ...pulumi.InvokeOption) LookupOriginResultOutput {
@@ -59,9 +75,13 @@ func LookupOriginOutput(ctx *pulumi.Context, args LookupOriginOutputArgs, opts .
 }
 
 type LookupOriginOutputArgs struct {
-	EndpointName      pulumi.StringInput `pulumi:"endpointName"`
-	OriginName        pulumi.StringInput `pulumi:"originName"`
-	ProfileName       pulumi.StringInput `pulumi:"profileName"`
+	// Name of the endpoint under the profile which is unique globally.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// Name of the origin which is unique within the endpoint.
+	OriginName pulumi.StringInput `pulumi:"originName"`
+	// Name of the CDN profile which is unique within the resource group.
+	ProfileName pulumi.StringInput `pulumi:"profileName"`
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,50 +104,62 @@ func (o LookupOriginResultOutput) ToLookupOriginResultOutputWithContext(ctx cont
 	return o
 }
 
+// Origin is enabled for load balancing or not
 func (o LookupOriginResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
 func (o LookupOriginResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// The value of the HTTP port. Must be between 1 and 65535.
 func (o LookupOriginResultOutput) HttpPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.HttpPort }).(pulumi.IntPtrOutput)
 }
 
+// The value of the HTTPS port. Must be between 1 and 65535.
 func (o LookupOriginResultOutput) HttpsPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.HttpsPort }).(pulumi.IntPtrOutput)
 }
 
+// Resource ID.
 func (o LookupOriginResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupOriginResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. If endpoint uses multiple origins for load balancing, then the host header at endpoint is ignored and this one is considered.
 func (o LookupOriginResultOutput) OriginHostHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *string { return v.OriginHostHeader }).(pulumi.StringPtrOutput)
 }
 
+// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
 func (o LookupOriginResultOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// Provisioning status of the origin.
 func (o LookupOriginResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Resource status of the origin.
 func (o LookupOriginResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupOriginResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 func (o LookupOriginResultOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

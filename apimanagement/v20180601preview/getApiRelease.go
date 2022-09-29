@@ -21,21 +21,32 @@ func LookupApiRelease(ctx *pulumi.Context, args *LookupApiReleaseArgs, opts ...p
 }
 
 type LookupApiReleaseArgs struct {
-	ApiId             string `pulumi:"apiId"`
-	ReleaseId         string `pulumi:"releaseId"`
+	// API identifier. Must be unique in the current API Management service instance.
+	ApiId string `pulumi:"apiId"`
+	// Release identifier within an API. Must be unique in the current API Management service instance.
+	ReleaseId string `pulumi:"releaseId"`
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServiceName       string `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Api Release details.
 type LookupApiReleaseResult struct {
-	ApiId           *string `pulumi:"apiId"`
-	CreatedDateTime string  `pulumi:"createdDateTime"`
-	Id              string  `pulumi:"id"`
-	Name            string  `pulumi:"name"`
-	Notes           *string `pulumi:"notes"`
-	Type            string  `pulumi:"type"`
-	UpdatedDateTime string  `pulumi:"updatedDateTime"`
+	// Identifier of the API the release belongs to.
+	ApiId *string `pulumi:"apiId"`
+	// The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Release Notes
+	Notes *string `pulumi:"notes"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// The time the API release was updated.
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
 }
 
 func LookupApiReleaseOutput(ctx *pulumi.Context, args LookupApiReleaseOutputArgs, opts ...pulumi.InvokeOption) LookupApiReleaseResultOutput {
@@ -52,10 +63,14 @@ func LookupApiReleaseOutput(ctx *pulumi.Context, args LookupApiReleaseOutputArgs
 }
 
 type LookupApiReleaseOutputArgs struct {
-	ApiId             pulumi.StringInput `pulumi:"apiId"`
-	ReleaseId         pulumi.StringInput `pulumi:"releaseId"`
+	// API identifier. Must be unique in the current API Management service instance.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// Release identifier within an API. Must be unique in the current API Management service instance.
+	ReleaseId pulumi.StringInput `pulumi:"releaseId"`
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput `pulumi:"serviceName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupApiReleaseOutputArgs) ElementType() reflect.Type {
@@ -77,30 +92,37 @@ func (o LookupApiReleaseResultOutput) ToLookupApiReleaseResultOutputWithContext(
 	return o
 }
 
+// Identifier of the API the release belongs to.
 func (o LookupApiReleaseResultOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) *string { return v.ApiId }).(pulumi.StringPtrOutput)
 }
 
+// The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
 func (o LookupApiReleaseResultOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupApiReleaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupApiReleaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Release Notes
 func (o LookupApiReleaseResultOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupApiReleaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The time the API release was updated.
 func (o LookupApiReleaseResultOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
 }

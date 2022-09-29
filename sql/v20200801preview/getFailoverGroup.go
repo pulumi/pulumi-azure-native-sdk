@@ -21,24 +21,38 @@ func LookupFailoverGroup(ctx *pulumi.Context, args *LookupFailoverGroupArgs, opt
 }
 
 type LookupFailoverGroupArgs struct {
+	// The name of the failover group.
 	FailoverGroupName string `pulumi:"failoverGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ServerName        string `pulumi:"serverName"`
+	// The name of the server containing the failover group.
+	ServerName string `pulumi:"serverName"`
 }
 
 // A failover group.
 type LookupFailoverGroupResult struct {
-	Databases         []string                               `pulumi:"databases"`
-	Id                string                                 `pulumi:"id"`
-	Location          string                                 `pulumi:"location"`
-	Name              string                                 `pulumi:"name"`
-	PartnerServers    []PartnerInfoResponse                  `pulumi:"partnerServers"`
-	ReadOnlyEndpoint  *FailoverGroupReadOnlyEndpointResponse `pulumi:"readOnlyEndpoint"`
+	// List of databases in the failover group.
+	Databases []string `pulumi:"databases"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource location.
+	Location string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// List of partner server information for the failover group.
+	PartnerServers []PartnerInfoResponse `pulumi:"partnerServers"`
+	// Read-only endpoint of the failover group instance.
+	ReadOnlyEndpoint *FailoverGroupReadOnlyEndpointResponse `pulumi:"readOnlyEndpoint"`
+	// Read-write endpoint of the failover group instance.
 	ReadWriteEndpoint FailoverGroupReadWriteEndpointResponse `pulumi:"readWriteEndpoint"`
-	ReplicationRole   string                                 `pulumi:"replicationRole"`
-	ReplicationState  string                                 `pulumi:"replicationState"`
-	Tags              map[string]string                      `pulumi:"tags"`
-	Type              string                                 `pulumi:"type"`
+	// Local replication role of the failover group instance.
+	ReplicationRole string `pulumi:"replicationRole"`
+	// Replication state of the failover group instance.
+	ReplicationState string `pulumi:"replicationState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupFailoverGroupOutput(ctx *pulumi.Context, args LookupFailoverGroupOutputArgs, opts ...pulumi.InvokeOption) LookupFailoverGroupResultOutput {
@@ -55,9 +69,12 @@ func LookupFailoverGroupOutput(ctx *pulumi.Context, args LookupFailoverGroupOutp
 }
 
 type LookupFailoverGroupOutputArgs struct {
+	// The name of the failover group.
 	FailoverGroupName pulumi.StringInput `pulumi:"failoverGroupName"`
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ServerName        pulumi.StringInput `pulumi:"serverName"`
+	// The name of the server containing the failover group.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupFailoverGroupOutputArgs) ElementType() reflect.Type {
@@ -79,46 +96,57 @@ func (o LookupFailoverGroupResultOutput) ToLookupFailoverGroupResultOutputWithCo
 	return o
 }
 
+// List of databases in the failover group.
 func (o LookupFailoverGroupResultOutput) Databases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) []string { return v.Databases }).(pulumi.StringArrayOutput)
 }
 
+// Resource ID.
 func (o LookupFailoverGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupFailoverGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupFailoverGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of partner server information for the failover group.
 func (o LookupFailoverGroupResultOutput) PartnerServers() PartnerInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) []PartnerInfoResponse { return v.PartnerServers }).(PartnerInfoResponseArrayOutput)
 }
 
+// Read-only endpoint of the failover group instance.
 func (o LookupFailoverGroupResultOutput) ReadOnlyEndpoint() FailoverGroupReadOnlyEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) *FailoverGroupReadOnlyEndpointResponse { return v.ReadOnlyEndpoint }).(FailoverGroupReadOnlyEndpointResponsePtrOutput)
 }
 
+// Read-write endpoint of the failover group instance.
 func (o LookupFailoverGroupResultOutput) ReadWriteEndpoint() FailoverGroupReadWriteEndpointResponseOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) FailoverGroupReadWriteEndpointResponse { return v.ReadWriteEndpoint }).(FailoverGroupReadWriteEndpointResponseOutput)
 }
 
+// Local replication role of the failover group instance.
 func (o LookupFailoverGroupResultOutput) ReplicationRole() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.ReplicationRole }).(pulumi.StringOutput)
 }
 
+// Replication state of the failover group instance.
 func (o LookupFailoverGroupResultOutput) ReplicationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.ReplicationState }).(pulumi.StringOutput)
 }
 
+// Resource tags.
 func (o LookupFailoverGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Resource type.
 func (o LookupFailoverGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,19 +21,28 @@ func LookupEnvironmentVersion(ctx *pulumi.Context, args *LookupEnvironmentVersio
 }
 
 type LookupEnvironmentVersionArgs struct {
-	Name              string `pulumi:"name"`
+	// Container name. This is case-sensitive.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Version           string `pulumi:"version"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Version identifier. This is case-sensitive.
+	Version string `pulumi:"version"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupEnvironmentVersionResult struct {
+	// [Required] Additional attributes of the entity.
 	EnvironmentVersionProperties EnvironmentVersionResponse `pulumi:"environmentVersionProperties"`
-	Id                           string                     `pulumi:"id"`
-	Name                         string                     `pulumi:"name"`
-	SystemData                   SystemDataResponse         `pulumi:"systemData"`
-	Type                         string                     `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupEnvironmentVersionResult
@@ -61,10 +70,14 @@ func LookupEnvironmentVersionOutput(ctx *pulumi.Context, args LookupEnvironmentV
 }
 
 type LookupEnvironmentVersionOutputArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
+	// Container name. This is case-sensitive.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	Version           pulumi.StringInput `pulumi:"version"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Version identifier. This is case-sensitive.
+	Version pulumi.StringInput `pulumi:"version"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupEnvironmentVersionOutputArgs) ElementType() reflect.Type {
@@ -86,24 +99,29 @@ func (o LookupEnvironmentVersionResultOutput) ToLookupEnvironmentVersionResultOu
 	return o
 }
 
+// [Required] Additional attributes of the entity.
 func (o LookupEnvironmentVersionResultOutput) EnvironmentVersionProperties() EnvironmentVersionResponseOutput {
 	return o.ApplyT(func(v LookupEnvironmentVersionResult) EnvironmentVersionResponse {
 		return v.EnvironmentVersionProperties
 	}).(EnvironmentVersionResponseOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEnvironmentVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupEnvironmentVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEnvironmentVersionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEnvironmentVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEnvironmentVersionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentVersionResult) string { return v.Type }).(pulumi.StringOutput)
 }

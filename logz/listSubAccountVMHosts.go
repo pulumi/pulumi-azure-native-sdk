@@ -22,15 +22,20 @@ func ListSubAccountVMHosts(ctx *pulumi.Context, args *ListSubAccountVMHostsArgs,
 }
 
 type ListSubAccountVMHostsArgs struct {
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SubAccountName    string `pulumi:"subAccountName"`
+	// Sub Account resource name
+	SubAccountName string `pulumi:"subAccountName"`
 }
 
 // Response of a list VM Host Update Operation.
 type ListSubAccountVMHostsResult struct {
-	NextLink *string               `pulumi:"nextLink"`
-	Value    []VMResourcesResponse `pulumi:"value"`
+	// Link to the next set of results, if any.
+	NextLink *string `pulumi:"nextLink"`
+	// Response of a list vm host update operation.
+	Value []VMResourcesResponse `pulumi:"value"`
 }
 
 func ListSubAccountVMHostsOutput(ctx *pulumi.Context, args ListSubAccountVMHostsOutputArgs, opts ...pulumi.InvokeOption) ListSubAccountVMHostsResultOutput {
@@ -47,9 +52,12 @@ func ListSubAccountVMHostsOutput(ctx *pulumi.Context, args ListSubAccountVMHosts
 }
 
 type ListSubAccountVMHostsOutputArgs struct {
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SubAccountName    pulumi.StringInput `pulumi:"subAccountName"`
+	// Sub Account resource name
+	SubAccountName pulumi.StringInput `pulumi:"subAccountName"`
 }
 
 func (ListSubAccountVMHostsOutputArgs) ElementType() reflect.Type {
@@ -71,10 +79,12 @@ func (o ListSubAccountVMHostsResultOutput) ToListSubAccountVMHostsResultOutputWi
 	return o
 }
 
+// Link to the next set of results, if any.
 func (o ListSubAccountVMHostsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListSubAccountVMHostsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
+// Response of a list vm host update operation.
 func (o ListSubAccountVMHostsResultOutput) Value() VMResourcesResponseArrayOutput {
 	return o.ApplyT(func(v ListSubAccountVMHostsResult) []VMResourcesResponse { return v.Value }).(VMResourcesResponseArrayOutput)
 }

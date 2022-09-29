@@ -22,16 +22,22 @@ func ListActiveConnectivityConfiguration(ctx *pulumi.Context, args *ListActiveCo
 }
 
 type ListActiveConnectivityConfigurationArgs struct {
-	NetworkManagerName string   `pulumi:"networkManagerName"`
-	Regions            []string `pulumi:"regions"`
-	ResourceGroupName  string   `pulumi:"resourceGroupName"`
-	SkipToken          *string  `pulumi:"skipToken"`
+	// The name of the network manager.
+	NetworkManagerName string `pulumi:"networkManagerName"`
+	// List of regions.
+	Regions []string `pulumi:"regions"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
 }
 
 // Result of the request to list active connectivity configurations. It contains a list of active connectivity configurations and a skiptoken to get the next set of results.
 type ListActiveConnectivityConfigurationResult struct {
-	SkipToken *string                                   `pulumi:"skipToken"`
-	Value     []ActiveConnectivityConfigurationResponse `pulumi:"value"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken *string `pulumi:"skipToken"`
+	// Gets a page of active connectivity configurations.
+	Value []ActiveConnectivityConfigurationResponse `pulumi:"value"`
 }
 
 func ListActiveConnectivityConfigurationOutput(ctx *pulumi.Context, args ListActiveConnectivityConfigurationOutputArgs, opts ...pulumi.InvokeOption) ListActiveConnectivityConfigurationResultOutput {
@@ -48,10 +54,14 @@ func ListActiveConnectivityConfigurationOutput(ctx *pulumi.Context, args ListAct
 }
 
 type ListActiveConnectivityConfigurationOutputArgs struct {
-	NetworkManagerName pulumi.StringInput      `pulumi:"networkManagerName"`
-	Regions            pulumi.StringArrayInput `pulumi:"regions"`
-	ResourceGroupName  pulumi.StringInput      `pulumi:"resourceGroupName"`
-	SkipToken          pulumi.StringPtrInput   `pulumi:"skipToken"`
+	// The name of the network manager.
+	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
+	// List of regions.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
+	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
 }
 
 func (ListActiveConnectivityConfigurationOutputArgs) ElementType() reflect.Type {
@@ -73,10 +83,12 @@ func (o ListActiveConnectivityConfigurationResultOutput) ToListActiveConnectivit
 	return o
 }
 
+// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 func (o ListActiveConnectivityConfigurationResultOutput) SkipToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListActiveConnectivityConfigurationResult) *string { return v.SkipToken }).(pulumi.StringPtrOutput)
 }
 
+// Gets a page of active connectivity configurations.
 func (o ListActiveConnectivityConfigurationResultOutput) Value() ActiveConnectivityConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ListActiveConnectivityConfigurationResult) []ActiveConnectivityConfigurationResponse {
 		return v.Value

@@ -22,24 +22,39 @@ func LookupMachineGroup(ctx *pulumi.Context, args *LookupMachineGroupArgs, opts 
 }
 
 type LookupMachineGroupArgs struct {
-	EndTime           *string `pulumi:"endTime"`
-	MachineGroupName  string  `pulumi:"machineGroupName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	StartTime         *string `pulumi:"startTime"`
-	WorkspaceName     string  `pulumi:"workspaceName"`
+	// UTC date and time specifying the end time of an interval. When not specified the service uses DateTime.UtcNow
+	EndTime *string `pulumi:"endTime"`
+	// Machine Group resource name.
+	MachineGroupName string `pulumi:"machineGroupName"`
+	// Resource group name within the specified subscriptionId.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// UTC date and time specifying the start time of an interval. When not specified the service uses DateTime.UtcNow - 10m
+	StartTime *string `pulumi:"startTime"`
+	// OMS workspace containing the resources of interest.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // A user-defined logical grouping of machines.
 type LookupMachineGroupResult struct {
-	Count       *int                                `pulumi:"count"`
-	DisplayName string                              `pulumi:"displayName"`
-	Etag        *string                             `pulumi:"etag"`
-	GroupType   *string                             `pulumi:"groupType"`
-	Id          string                              `pulumi:"id"`
-	Kind        string                              `pulumi:"kind"`
-	Machines    []MachineReferenceWithHintsResponse `pulumi:"machines"`
-	Name        string                              `pulumi:"name"`
-	Type        string                              `pulumi:"type"`
+	// Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
+	Count *int `pulumi:"count"`
+	// User defined name for the group
+	DisplayName string `pulumi:"displayName"`
+	// Resource ETAG.
+	Etag *string `pulumi:"etag"`
+	// Type of the machine group
+	GroupType *string `pulumi:"groupType"`
+	// Resource identifier.
+	Id string `pulumi:"id"`
+	// Additional resource type qualifier.
+	// Expected value is 'machineGroup'.
+	Kind string `pulumi:"kind"`
+	// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
+	Machines []MachineReferenceWithHintsResponse `pulumi:"machines"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupMachineGroupOutput(ctx *pulumi.Context, args LookupMachineGroupOutputArgs, opts ...pulumi.InvokeOption) LookupMachineGroupResultOutput {
@@ -56,11 +71,16 @@ func LookupMachineGroupOutput(ctx *pulumi.Context, args LookupMachineGroupOutput
 }
 
 type LookupMachineGroupOutputArgs struct {
-	EndTime           pulumi.StringPtrInput `pulumi:"endTime"`
-	MachineGroupName  pulumi.StringInput    `pulumi:"machineGroupName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	StartTime         pulumi.StringPtrInput `pulumi:"startTime"`
-	WorkspaceName     pulumi.StringInput    `pulumi:"workspaceName"`
+	// UTC date and time specifying the end time of an interval. When not specified the service uses DateTime.UtcNow
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Machine Group resource name.
+	MachineGroupName pulumi.StringInput `pulumi:"machineGroupName"`
+	// Resource group name within the specified subscriptionId.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// UTC date and time specifying the start time of an interval. When not specified the service uses DateTime.UtcNow - 10m
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// OMS workspace containing the resources of interest.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupMachineGroupOutputArgs) ElementType() reflect.Type {
@@ -82,38 +102,48 @@ func (o LookupMachineGroupResultOutput) ToLookupMachineGroupResultOutputWithCont
 	return o
 }
 
+// Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
 func (o LookupMachineGroupResultOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
+// User defined name for the group
 func (o LookupMachineGroupResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Resource ETAG.
 func (o LookupMachineGroupResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Type of the machine group
 func (o LookupMachineGroupResultOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) *string { return v.GroupType }).(pulumi.StringPtrOutput)
 }
 
+// Resource identifier.
 func (o LookupMachineGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Additional resource type qualifier.
+// Expected value is 'machineGroup'.
 func (o LookupMachineGroupResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
 func (o LookupMachineGroupResultOutput) Machines() MachineReferenceWithHintsResponseArrayOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) []MachineReferenceWithHintsResponse { return v.Machines }).(MachineReferenceWithHintsResponseArrayOutput)
 }
 
+// Resource name.
 func (o LookupMachineGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupMachineGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

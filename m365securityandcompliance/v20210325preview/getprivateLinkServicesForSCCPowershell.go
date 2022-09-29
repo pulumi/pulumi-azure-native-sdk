@@ -21,22 +21,34 @@ func GetprivateLinkServicesForSCCPowershell(ctx *pulumi.Context, args *Getprivat
 }
 
 type GetprivateLinkServicesForSCCPowershellArgs struct {
+	// The name of the resource group that contains the service instance.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the service instance.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The description of the service.
 type GetprivateLinkServicesForSCCPowershellResult struct {
-	Etag       *string                           `pulumi:"etag"`
-	Id         string                            `pulumi:"id"`
-	Identity   *ServicesResourceResponseIdentity `pulumi:"identity"`
-	Kind       string                            `pulumi:"kind"`
-	Location   string                            `pulumi:"location"`
-	Name       string                            `pulumi:"name"`
-	Properties ServicesPropertiesResponse        `pulumi:"properties"`
-	SystemData SystemDataResponse                `pulumi:"systemData"`
-	Tags       map[string]string                 `pulumi:"tags"`
-	Type       string                            `pulumi:"type"`
+	// An etag associated with the resource, used for optimistic concurrency when editing it.
+	Etag *string `pulumi:"etag"`
+	// The resource identifier.
+	Id string `pulumi:"id"`
+	// Setting indicating whether the service has a managed identity associated with it.
+	Identity *ServicesResourceResponseIdentity `pulumi:"identity"`
+	// The kind of the service.
+	Kind string `pulumi:"kind"`
+	// The resource location.
+	Location string `pulumi:"location"`
+	// The resource name.
+	Name string `pulumi:"name"`
+	// The common properties of a service.
+	Properties ServicesPropertiesResponse `pulumi:"properties"`
+	// Required property for system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The resource type.
+	Type string `pulumi:"type"`
 }
 
 func GetprivateLinkServicesForSCCPowershellOutput(ctx *pulumi.Context, args GetprivateLinkServicesForSCCPowershellOutputArgs, opts ...pulumi.InvokeOption) GetprivateLinkServicesForSCCPowershellResultOutput {
@@ -53,8 +65,10 @@ func GetprivateLinkServicesForSCCPowershellOutput(ctx *pulumi.Context, args Getp
 }
 
 type GetprivateLinkServicesForSCCPowershellOutputArgs struct {
+	// The name of the resource group that contains the service instance.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the service instance.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (GetprivateLinkServicesForSCCPowershellOutputArgs) ElementType() reflect.Type {
@@ -76,44 +90,54 @@ func (o GetprivateLinkServicesForSCCPowershellResultOutput) ToGetprivateLinkServ
 	return o
 }
 
+// An etag associated with the resource, used for optimistic concurrency when editing it.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The resource identifier.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Setting indicating whether the service has a managed identity associated with it.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Identity() ServicesResourceResponseIdentityPtrOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) *ServicesResourceResponseIdentity {
 		return v.Identity
 	}).(ServicesResourceResponseIdentityPtrOutput)
 }
 
+// The kind of the service.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The resource location.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The resource name.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The common properties of a service.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Properties() ServicesPropertiesResponseOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) ServicesPropertiesResponse { return v.Properties }).(ServicesPropertiesResponseOutput)
 }
 
+// Required property for system data
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The resource tags.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The resource type.
 func (o GetprivateLinkServicesForSCCPowershellResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetprivateLinkServicesForSCCPowershellResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,26 +21,42 @@ func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opt
 }
 
 type LookupSourceControlArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	SourceControlId   string `pulumi:"sourceControlId"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Source control Id
+	SourceControlId string `pulumi:"sourceControlId"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents a SourceControl in Azure Security Insights.
 type LookupSourceControlResult struct {
-	ContentTypes           []string                        `pulumi:"contentTypes"`
-	Description            *string                         `pulumi:"description"`
-	DisplayName            string                          `pulumi:"displayName"`
-	Etag                   *string                         `pulumi:"etag"`
-	Id                     string                          `pulumi:"id"`
-	LastDeploymentInfo     *DeploymentInfoResponse         `pulumi:"lastDeploymentInfo"`
-	Name                   string                          `pulumi:"name"`
-	RepoType               string                          `pulumi:"repoType"`
-	Repository             RepositoryResponse              `pulumi:"repository"`
+	// Array of source control content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// A description of the source control
+	Description *string `pulumi:"description"`
+	// The display name of the source control
+	DisplayName string `pulumi:"displayName"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Information regarding the latest deployment for the source control.
+	LastDeploymentInfo *DeploymentInfoResponse `pulumi:"lastDeploymentInfo"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The repository type of the source control
+	RepoType string `pulumi:"repoType"`
+	// Repository metadata.
+	Repository RepositoryResponse `pulumi:"repository"`
+	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo *RepositoryResourceInfoResponse `pulumi:"repositoryResourceInfo"`
-	SystemData             SystemDataResponse              `pulumi:"systemData"`
-	Type                   string                          `pulumi:"type"`
-	Version                *string                         `pulumi:"version"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// The version number associated with the source control
+	Version *string `pulumi:"version"`
 }
 
 func LookupSourceControlOutput(ctx *pulumi.Context, args LookupSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupSourceControlResultOutput {
@@ -57,9 +73,12 @@ func LookupSourceControlOutput(ctx *pulumi.Context, args LookupSourceControlOutp
 }
 
 type LookupSourceControlOutputArgs struct {
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	SourceControlId   pulumi.StringInput `pulumi:"sourceControlId"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Source control Id
+	SourceControlId pulumi.StringInput `pulumi:"sourceControlId"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupSourceControlOutputArgs) ElementType() reflect.Type {
@@ -81,54 +100,67 @@ func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutputWithCo
 	return o
 }
 
+// Array of source control content types.
 func (o LookupSourceControlResultOutput) ContentTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
 }
 
+// A description of the source control
 func (o LookupSourceControlResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The display name of the source control
 func (o LookupSourceControlResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Etag of the azure resource
 func (o LookupSourceControlResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSourceControlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Information regarding the latest deployment for the source control.
 func (o LookupSourceControlResultOutput) LastDeploymentInfo() DeploymentInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *DeploymentInfoResponse { return v.LastDeploymentInfo }).(DeploymentInfoResponsePtrOutput)
 }
 
+// The name of the resource
 func (o LookupSourceControlResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The repository type of the source control
 func (o LookupSourceControlResultOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
+// Repository metadata.
 func (o LookupSourceControlResultOutput) Repository() RepositoryResponseOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) RepositoryResponse { return v.Repository }).(RepositoryResponseOutput)
 }
 
+// Information regarding the resources created in user's repository.
 func (o LookupSourceControlResultOutput) RepositoryResourceInfo() RepositoryResourceInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *RepositoryResourceInfoResponse { return v.RepositoryResourceInfo }).(RepositoryResourceInfoResponsePtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSourceControlResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSourceControlResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The version number associated with the source control
 func (o LookupSourceControlResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

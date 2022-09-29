@@ -21,21 +21,32 @@ func LookupAwsCloudTrailDataConnector(ctx *pulumi.Context, args *LookupAwsCloudT
 }
 
 type LookupAwsCloudTrailDataConnectorArgs struct {
-	DataConnectorId                     string `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId string `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   string `pulumi:"resourceGroupName"`
-	WorkspaceName                       string `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Represents Amazon Web Services CloudTrail data connector.
 type LookupAwsCloudTrailDataConnectorResult struct {
-	AwsRoleArn *string                                     `pulumi:"awsRoleArn"`
-	DataTypes  AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
-	Etag       *string                                     `pulumi:"etag"`
-	Id         string                                      `pulumi:"id"`
-	Kind       string                                      `pulumi:"kind"`
-	Name       string                                      `pulumi:"name"`
-	Type       string                                      `pulumi:"type"`
+	// The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
+	AwsRoleArn *string `pulumi:"awsRoleArn"`
+	// The available data types for the connector.
+	DataTypes AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	// Etag of the azure resource
+	Etag *string `pulumi:"etag"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Expected value is 'AmazonWebServicesCloudTrail'.
+	Kind string `pulumi:"kind"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupAwsCloudTrailDataConnectorOutput(ctx *pulumi.Context, args LookupAwsCloudTrailDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsCloudTrailDataConnectorResultOutput {
@@ -52,10 +63,14 @@ func LookupAwsCloudTrailDataConnectorOutput(ctx *pulumi.Context, args LookupAwsC
 }
 
 type LookupAwsCloudTrailDataConnectorOutputArgs struct {
-	DataConnectorId                     pulumi.StringInput `pulumi:"dataConnectorId"`
+	// Connector ID
+	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
+	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	ResourceGroupName                   pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName                       pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupAwsCloudTrailDataConnectorOutputArgs) ElementType() reflect.Type {
@@ -77,32 +92,39 @@ func (o LookupAwsCloudTrailDataConnectorResultOutput) ToLookupAwsCloudTrailDataC
 	return o
 }
 
+// The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
 func (o LookupAwsCloudTrailDataConnectorResultOutput) AwsRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) *string { return v.AwsRoleArn }).(pulumi.StringPtrOutput)
 }
 
+// The available data types for the connector.
 func (o LookupAwsCloudTrailDataConnectorResultOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponseOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) AwsCloudTrailDataConnectorDataTypesResponse {
 		return v.DataTypes
 	}).(AwsCloudTrailDataConnectorDataTypesResponseOutput)
 }
 
+// Etag of the azure resource
 func (o LookupAwsCloudTrailDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupAwsCloudTrailDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Expected value is 'AmazonWebServicesCloudTrail'.
 func (o LookupAwsCloudTrailDataConnectorResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Azure resource name
 func (o LookupAwsCloudTrailDataConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure resource type
 func (o LookupAwsCloudTrailDataConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

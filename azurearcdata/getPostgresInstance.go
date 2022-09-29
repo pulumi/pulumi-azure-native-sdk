@@ -22,21 +22,32 @@ func LookupPostgresInstance(ctx *pulumi.Context, args *LookupPostgresInstanceArg
 }
 
 type LookupPostgresInstanceArgs struct {
+	// Name of Postgres Instance
 	PostgresInstanceName string `pulumi:"postgresInstanceName"`
-	ResourceGroupName    string `pulumi:"resourceGroupName"`
+	// The name of the Azure resource group
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Postgres Instance.
 type LookupPostgresInstanceResult struct {
-	ExtendedLocation *ExtendedLocationResponse          `pulumi:"extendedLocation"`
-	Id               string                             `pulumi:"id"`
-	Location         string                             `pulumi:"location"`
-	Name             string                             `pulumi:"name"`
-	Properties       PostgresInstancePropertiesResponse `pulumi:"properties"`
-	Sku              *PostgresInstanceSkuResponse       `pulumi:"sku"`
-	SystemData       SystemDataResponse                 `pulumi:"systemData"`
-	Tags             map[string]string                  `pulumi:"tags"`
-	Type             string                             `pulumi:"type"`
+	// The extendedLocation of the resource.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// null
+	Properties PostgresInstancePropertiesResponse `pulumi:"properties"`
+	// Resource sku.
+	Sku *PostgresInstanceSkuResponse `pulumi:"sku"`
+	// Read only system data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for LookupPostgresInstanceResult
@@ -64,8 +75,10 @@ func LookupPostgresInstanceOutput(ctx *pulumi.Context, args LookupPostgresInstan
 }
 
 type LookupPostgresInstanceOutputArgs struct {
+	// Name of Postgres Instance
 	PostgresInstanceName pulumi.StringInput `pulumi:"postgresInstanceName"`
-	ResourceGroupName    pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Azure resource group
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupPostgresInstanceOutputArgs) ElementType() reflect.Type {
@@ -87,38 +100,47 @@ func (o LookupPostgresInstanceResultOutput) ToLookupPostgresInstanceResultOutput
 	return o
 }
 
+// The extendedLocation of the resource.
 func (o LookupPostgresInstanceResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
+// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPostgresInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupPostgresInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupPostgresInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// null
 func (o LookupPostgresInstanceResultOutput) Properties() PostgresInstancePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) PostgresInstancePropertiesResponse { return v.Properties }).(PostgresInstancePropertiesResponseOutput)
 }
 
+// Resource sku.
 func (o LookupPostgresInstanceResultOutput) Sku() PostgresInstanceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) *PostgresInstanceSkuResponse { return v.Sku }).(PostgresInstanceSkuResponsePtrOutput)
 }
 
+// Read only system data
 func (o LookupPostgresInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupPostgresInstanceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
 func (o LookupPostgresInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

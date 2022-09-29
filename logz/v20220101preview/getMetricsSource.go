@@ -20,20 +20,28 @@ func LookupMetricsSource(ctx *pulumi.Context, args *LookupMetricsSourceArgs, opt
 }
 
 type LookupMetricsSourceArgs struct {
+	// Metrics Account resource name
 	MetricsSourceName string `pulumi:"metricsSourceName"`
-	MonitorName       string `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName string `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type LookupMetricsSourceResult struct {
-	Id         string                      `pulumi:"id"`
-	Identity   *IdentityPropertiesResponse `pulumi:"identity"`
-	Location   string                      `pulumi:"location"`
-	Name       string                      `pulumi:"name"`
-	Properties MonitorPropertiesResponse   `pulumi:"properties"`
-	SystemData SystemDataResponse          `pulumi:"systemData"`
-	Tags       map[string]string           `pulumi:"tags"`
-	Type       string                      `pulumi:"type"`
+	// ARM id of the monitor resource.
+	Id       string                      `pulumi:"id"`
+	Identity *IdentityPropertiesResponse `pulumi:"identity"`
+	Location string                      `pulumi:"location"`
+	// Name of the monitor resource.
+	Name string `pulumi:"name"`
+	// Properties specific to the monitor resource.
+	Properties MonitorPropertiesResponse `pulumi:"properties"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Tags       map[string]string  `pulumi:"tags"`
+	// The type of the monitor resource.
+	Type string `pulumi:"type"`
 }
 
 func LookupMetricsSourceOutput(ctx *pulumi.Context, args LookupMetricsSourceOutputArgs, opts ...pulumi.InvokeOption) LookupMetricsSourceResultOutput {
@@ -50,8 +58,11 @@ func LookupMetricsSourceOutput(ctx *pulumi.Context, args LookupMetricsSourceOutp
 }
 
 type LookupMetricsSourceOutputArgs struct {
+	// Metrics Account resource name
 	MetricsSourceName pulumi.StringInput `pulumi:"metricsSourceName"`
-	MonitorName       pulumi.StringInput `pulumi:"monitorName"`
+	// Monitor resource name
+	MonitorName pulumi.StringInput `pulumi:"monitorName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,6 +84,7 @@ func (o LookupMetricsSourceResultOutput) ToLookupMetricsSourceResultOutputWithCo
 	return o
 }
 
+// ARM id of the monitor resource.
 func (o LookupMetricsSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -85,14 +97,17 @@ func (o LookupMetricsSourceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the monitor resource.
 func (o LookupMetricsSourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties specific to the monitor resource.
 func (o LookupMetricsSourceResultOutput) Properties() MonitorPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) MonitorPropertiesResponse { return v.Properties }).(MonitorPropertiesResponseOutput)
 }
 
+// The system metadata relating to this resource
 func (o LookupMetricsSourceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -101,6 +116,7 @@ func (o LookupMetricsSourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the monitor resource.
 func (o LookupMetricsSourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsSourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,24 +21,38 @@ func LookupFarmBeatsModel(ctx *pulumi.Context, args *LookupFarmBeatsModelArgs, o
 }
 
 type LookupFarmBeatsModelArgs struct {
+	// FarmBeats resource name.
 	FarmBeatsResourceName string `pulumi:"farmBeatsResourceName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // FarmBeats ARM Resource.
 type LookupFarmBeatsModelResult struct {
-	Id                         string                            `pulumi:"id"`
-	Identity                   *IdentityResponse                 `pulumi:"identity"`
-	InstanceUri                string                            `pulumi:"instanceUri"`
-	Location                   string                            `pulumi:"location"`
-	Name                       string                            `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// Uri of the FarmBeats instance.
+	InstanceUri string `pulumi:"instanceUri"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Private Endpoint Connection resource.
 	PrivateEndpointConnections PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	ProvisioningState          string                            `pulumi:"provisioningState"`
-	PublicNetworkAccess        *string                           `pulumi:"publicNetworkAccess"`
-	SensorIntegration          *SensorIntegrationResponse        `pulumi:"sensorIntegration"`
-	SystemData                 SystemDataResponse                `pulumi:"systemData"`
-	Tags                       map[string]string                 `pulumi:"tags"`
-	Type                       string                            `pulumi:"type"`
+	// FarmBeats instance provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Property to allow or block public traffic for an Azure FarmBeats resource.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Sensor integration request model.
+	SensorIntegration *SensorIntegrationResponse `pulumi:"sensorIntegration"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupFarmBeatsModelOutput(ctx *pulumi.Context, args LookupFarmBeatsModelOutputArgs, opts ...pulumi.InvokeOption) LookupFarmBeatsModelResultOutput {
@@ -55,8 +69,10 @@ func LookupFarmBeatsModelOutput(ctx *pulumi.Context, args LookupFarmBeatsModelOu
 }
 
 type LookupFarmBeatsModelOutputArgs struct {
+	// FarmBeats resource name.
 	FarmBeatsResourceName pulumi.StringInput `pulumi:"farmBeatsResourceName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupFarmBeatsModelOutputArgs) ElementType() reflect.Type {
@@ -78,52 +94,64 @@ func (o LookupFarmBeatsModelResultOutput) ToLookupFarmBeatsModelResultOutputWith
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFarmBeatsModelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupFarmBeatsModelResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// Uri of the FarmBeats instance.
 func (o LookupFarmBeatsModelResultOutput) InstanceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.InstanceUri }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupFarmBeatsModelResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupFarmBeatsModelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Private Endpoint Connection resource.
 func (o LookupFarmBeatsModelResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionResponseOutput)
 }
 
+// FarmBeats instance provisioning state.
 func (o LookupFarmBeatsModelResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Property to allow or block public traffic for an Azure FarmBeats resource.
 func (o LookupFarmBeatsModelResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// Sensor integration request model.
 func (o LookupFarmBeatsModelResultOutput) SensorIntegration() SensorIntegrationResponsePtrOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) *SensorIntegrationResponse { return v.SensorIntegration }).(SensorIntegrationResponsePtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupFarmBeatsModelResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupFarmBeatsModelResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFarmBeatsModelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.Type }).(pulumi.StringOutput)
 }

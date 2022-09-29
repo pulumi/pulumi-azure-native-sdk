@@ -21,26 +21,42 @@ func LookupSecurityConnectorGovernanceRule(ctx *pulumi.Context, args *LookupSecu
 }
 
 type LookupSecurityConnectorGovernanceRuleArgs struct {
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
-	RuleId                string `pulumi:"ruleId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The security GovernanceRule key - unique key for the standard GovernanceRule
+	RuleId string `pulumi:"ruleId"`
+	// The security connector name.
 	SecurityConnectorName string `pulumi:"securityConnectorName"`
 }
 
 // Security GovernanceRule over a given scope
 type LookupSecurityConnectorGovernanceRuleResult struct {
-	Description                 *string                                  `pulumi:"description"`
-	DisplayName                 string                                   `pulumi:"displayName"`
+	// description of the governanceRule
+	Description *string `pulumi:"description"`
+	// display name of the governanceRule
+	DisplayName string `pulumi:"displayName"`
+	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceRuleEmailNotificationResponse `pulumi:"governanceEmailNotification"`
-	Id                          string                                   `pulumi:"id"`
-	IsDisabled                  *bool                                    `pulumi:"isDisabled"`
-	IsGracePeriod               *bool                                    `pulumi:"isGracePeriod"`
-	Name                        string                                   `pulumi:"name"`
-	OwnerSource                 GovernanceRuleOwnerSourceResponse        `pulumi:"ownerSource"`
-	RemediationTimeframe        *string                                  `pulumi:"remediationTimeframe"`
-	RulePriority                int                                      `pulumi:"rulePriority"`
-	RuleType                    string                                   `pulumi:"ruleType"`
-	SourceResourceType          string                                   `pulumi:"sourceResourceType"`
-	Type                        string                                   `pulumi:"type"`
+	// Resource Id
+	Id string `pulumi:"id"`
+	// Defines whether the rule is active/inactive
+	IsDisabled *bool `pulumi:"isDisabled"`
+	// Defines whether there is a grace period on the governance rule
+	IsGracePeriod *bool `pulumi:"isGracePeriod"`
+	// Resource name
+	Name string `pulumi:"name"`
+	// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+	OwnerSource GovernanceRuleOwnerSourceResponse `pulumi:"ownerSource"`
+	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
+	RemediationTimeframe *string `pulumi:"remediationTimeframe"`
+	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+	RulePriority int `pulumi:"rulePriority"`
+	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
+	RuleType string `pulumi:"ruleType"`
+	// The governance rule source, what the rule affects, e.g. Assessments
+	SourceResourceType string `pulumi:"sourceResourceType"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupSecurityConnectorGovernanceRuleOutput(ctx *pulumi.Context, args LookupSecurityConnectorGovernanceRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityConnectorGovernanceRuleResultOutput {
@@ -57,8 +73,11 @@ func LookupSecurityConnectorGovernanceRuleOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupSecurityConnectorGovernanceRuleOutputArgs struct {
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
-	RuleId                pulumi.StringInput `pulumi:"ruleId"`
+	// The name of the resource group within the user's subscription. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The security GovernanceRule key - unique key for the standard GovernanceRule
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The security connector name.
 	SecurityConnectorName pulumi.StringInput `pulumi:"securityConnectorName"`
 }
 
@@ -81,58 +100,71 @@ func (o LookupSecurityConnectorGovernanceRuleResultOutput) ToLookupSecurityConne
 	return o
 }
 
+// description of the governanceRule
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// display name of the governanceRule
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) GovernanceEmailNotification() GovernanceRuleEmailNotificationResponsePtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) *GovernanceRuleEmailNotificationResponse {
 		return v.GovernanceEmailNotification
 	}).(GovernanceRuleEmailNotificationResponsePtrOutput)
 }
 
+// Resource Id
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Defines whether the rule is active/inactive
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) IsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) *bool { return v.IsDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// Defines whether there is a grace period on the governance rule
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) IsGracePeriod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) *bool { return v.IsGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
+// Resource name
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) OwnerSource() GovernanceRuleOwnerSourceResponseOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) GovernanceRuleOwnerSourceResponse {
 		return v.OwnerSource
 	}).(GovernanceRuleOwnerSourceResponseOutput)
 }
 
+// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) RemediationTimeframe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) *string { return v.RemediationTimeframe }).(pulumi.StringPtrOutput)
 }
 
+// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) RulePriority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) int { return v.RulePriority }).(pulumi.IntOutput)
 }
 
+// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) string { return v.RuleType }).(pulumi.StringOutput)
 }
 
+// The governance rule source, what the rule affects, e.g. Assessments
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
+// Resource type
 func (o LookupSecurityConnectorGovernanceRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorGovernanceRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

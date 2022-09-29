@@ -21,22 +21,34 @@ func LookupProactiveDetectionConfiguration(ctx *pulumi.Context, args *LookupProa
 }
 
 type LookupProactiveDetectionConfigurationArgs struct {
-	ConfigurationId   string `pulumi:"configurationId"`
+	// The ProactiveDetection configuration ID. This is unique within a Application Insights component.
+	ConfigurationId string `pulumi:"configurationId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	ResourceName      string `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // A ProactiveDetection configuration definition.
 type LookupProactiveDetectionConfigurationResult struct {
-	CustomEmails                   []string                                                                                      `pulumi:"customEmails"`
-	Enabled                        *bool                                                                                         `pulumi:"enabled"`
-	Id                             string                                                                                        `pulumi:"id"`
-	LastUpdatedTime                string                                                                                        `pulumi:"lastUpdatedTime"`
-	Location                       *string                                                                                       `pulumi:"location"`
-	Name                           string                                                                                        `pulumi:"name"`
-	RuleDefinitions                *ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions `pulumi:"ruleDefinitions"`
-	SendEmailsToSubscriptionOwners *bool                                                                                         `pulumi:"sendEmailsToSubscriptionOwners"`
-	Type                           string                                                                                        `pulumi:"type"`
+	// Custom email addresses for this rule notifications
+	CustomEmails []string `pulumi:"customEmails"`
+	// A flag that indicates whether this rule is enabled by the user
+	Enabled *bool `pulumi:"enabled"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// The last time this rule was updated
+	LastUpdatedTime string `pulumi:"lastUpdatedTime"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// The rule name
+	Name string `pulumi:"name"`
+	// Static definitions of the ProactiveDetection configuration rule (same values for all components).
+	RuleDefinitions *ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions `pulumi:"ruleDefinitions"`
+	// A flag that indicated whether notifications on this rule should be sent to subscription owners
+	SendEmailsToSubscriptionOwners *bool `pulumi:"sendEmailsToSubscriptionOwners"`
+	// Azure resource type
+	Type string `pulumi:"type"`
 }
 
 func LookupProactiveDetectionConfigurationOutput(ctx *pulumi.Context, args LookupProactiveDetectionConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupProactiveDetectionConfigurationResultOutput {
@@ -53,9 +65,12 @@ func LookupProactiveDetectionConfigurationOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupProactiveDetectionConfigurationOutputArgs struct {
-	ConfigurationId   pulumi.StringInput `pulumi:"configurationId"`
+	// The ProactiveDetection configuration ID. This is unique within a Application Insights component.
+	ConfigurationId pulumi.StringInput `pulumi:"configurationId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput `pulumi:"resourceName"`
+	// The name of the Application Insights component resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupProactiveDetectionConfigurationOutputArgs) ElementType() reflect.Type {
@@ -77,40 +92,49 @@ func (o LookupProactiveDetectionConfigurationResultOutput) ToLookupProactiveDete
 	return o
 }
 
+// Custom email addresses for this rule notifications
 func (o LookupProactiveDetectionConfigurationResultOutput) CustomEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) []string { return v.CustomEmails }).(pulumi.StringArrayOutput)
 }
 
+// A flag that indicates whether this rule is enabled by the user
 func (o LookupProactiveDetectionConfigurationResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Azure resource Id
 func (o LookupProactiveDetectionConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The last time this rule was updated
 func (o LookupProactiveDetectionConfigurationResultOutput) LastUpdatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) string { return v.LastUpdatedTime }).(pulumi.StringOutput)
 }
 
+// Resource location
 func (o LookupProactiveDetectionConfigurationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The rule name
 func (o LookupProactiveDetectionConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Static definitions of the ProactiveDetection configuration rule (same values for all components).
 func (o LookupProactiveDetectionConfigurationResultOutput) RuleDefinitions() ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) *ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions {
 		return v.RuleDefinitions
 	}).(ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput)
 }
 
+// A flag that indicated whether notifications on this rule should be sent to subscription owners
 func (o LookupProactiveDetectionConfigurationResultOutput) SendEmailsToSubscriptionOwners() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) *bool { return v.SendEmailsToSubscriptionOwners }).(pulumi.BoolPtrOutput)
 }
 
+// Azure resource type
 func (o LookupProactiveDetectionConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProactiveDetectionConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

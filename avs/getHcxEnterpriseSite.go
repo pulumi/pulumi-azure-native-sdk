@@ -22,18 +22,26 @@ func LookupHcxEnterpriseSite(ctx *pulumi.Context, args *LookupHcxEnterpriseSiteA
 }
 
 type LookupHcxEnterpriseSiteArgs struct {
+	// Name of the HCX Enterprise Site in the private cloud
 	HcxEnterpriseSiteName string `pulumi:"hcxEnterpriseSiteName"`
-	PrivateCloudName      string `pulumi:"privateCloudName"`
-	ResourceGroupName     string `pulumi:"resourceGroupName"`
+	// Name of the private cloud
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // An HCX Enterprise Site resource
 type LookupHcxEnterpriseSiteResult struct {
+	// The activation key
 	ActivationKey string `pulumi:"activationKey"`
-	Id            string `pulumi:"id"`
-	Name          string `pulumi:"name"`
-	Status        string `pulumi:"status"`
-	Type          string `pulumi:"type"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The status of the HCX Enterprise Site
+	Status string `pulumi:"status"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupHcxEnterpriseSiteOutput(ctx *pulumi.Context, args LookupHcxEnterpriseSiteOutputArgs, opts ...pulumi.InvokeOption) LookupHcxEnterpriseSiteResultOutput {
@@ -50,9 +58,12 @@ func LookupHcxEnterpriseSiteOutput(ctx *pulumi.Context, args LookupHcxEnterprise
 }
 
 type LookupHcxEnterpriseSiteOutputArgs struct {
+	// Name of the HCX Enterprise Site in the private cloud
 	HcxEnterpriseSiteName pulumi.StringInput `pulumi:"hcxEnterpriseSiteName"`
-	PrivateCloudName      pulumi.StringInput `pulumi:"privateCloudName"`
-	ResourceGroupName     pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the private cloud
+	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupHcxEnterpriseSiteOutputArgs) ElementType() reflect.Type {
@@ -74,22 +85,27 @@ func (o LookupHcxEnterpriseSiteResultOutput) ToLookupHcxEnterpriseSiteResultOutp
 	return o
 }
 
+// The activation key
 func (o LookupHcxEnterpriseSiteResultOutput) ActivationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.ActivationKey }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupHcxEnterpriseSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupHcxEnterpriseSiteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the HCX Enterprise Site
 func (o LookupHcxEnterpriseSiteResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupHcxEnterpriseSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

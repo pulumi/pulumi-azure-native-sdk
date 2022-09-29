@@ -23,16 +23,22 @@ func LookupManagementLock(ctx *pulumi.Context, args *LookupManagementLockArgs, o
 }
 
 type LookupManagementLockArgs struct {
+	// Name of the management lock.
 	LockName string `pulumi:"lockName"`
 }
 
 // Management lock information.
 type LookupManagementLockResult struct {
-	Id    string  `pulumi:"id"`
+	// The Id of the lock.
+	Id string `pulumi:"id"`
+	// The lock level of the management lock.
 	Level *string `pulumi:"level"`
-	Name  *string `pulumi:"name"`
+	// The name of the lock.
+	Name *string `pulumi:"name"`
+	// The notes of the management lock.
 	Notes *string `pulumi:"notes"`
-	Type  string  `pulumi:"type"`
+	// The type of the lock.
+	Type string `pulumi:"type"`
 }
 
 func LookupManagementLockOutput(ctx *pulumi.Context, args LookupManagementLockOutputArgs, opts ...pulumi.InvokeOption) LookupManagementLockResultOutput {
@@ -49,6 +55,7 @@ func LookupManagementLockOutput(ctx *pulumi.Context, args LookupManagementLockOu
 }
 
 type LookupManagementLockOutputArgs struct {
+	// Name of the management lock.
 	LockName pulumi.StringInput `pulumi:"lockName"`
 }
 
@@ -71,22 +78,27 @@ func (o LookupManagementLockResultOutput) ToLookupManagementLockResultOutputWith
 	return o
 }
 
+// The Id of the lock.
 func (o LookupManagementLockResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The lock level of the management lock.
 func (o LookupManagementLockResultOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementLockResult) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
+// The name of the lock.
 func (o LookupManagementLockResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementLockResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The notes of the management lock.
 func (o LookupManagementLockResultOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementLockResult) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// The type of the lock.
 func (o LookupManagementLockResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockResult) string { return v.Type }).(pulumi.StringOutput)
 }

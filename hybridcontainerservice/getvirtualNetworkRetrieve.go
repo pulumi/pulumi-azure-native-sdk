@@ -22,20 +22,29 @@ func GetvirtualNetworkRetrieve(ctx *pulumi.Context, args *GetvirtualNetworkRetri
 }
 
 type GetvirtualNetworkRetrieveArgs struct {
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the virtual network
 	VirtualNetworksName string `pulumi:"virtualNetworksName"`
 }
 
 // The virtualNetworks resource definition.
 type GetvirtualNetworkRetrieveResult struct {
 	ExtendedLocation *VirtualNetworksResponseExtendedLocation `pulumi:"extendedLocation"`
-	Id               string                                   `pulumi:"id"`
-	Location         string                                   `pulumi:"location"`
-	Name             string                                   `pulumi:"name"`
-	Properties       VirtualNetworksPropertiesResponse        `pulumi:"properties"`
-	SystemData       SystemDataResponse                       `pulumi:"systemData"`
-	Tags             map[string]string                        `pulumi:"tags"`
-	Type             string                                   `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
+	Properties VirtualNetworksPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func GetvirtualNetworkRetrieveOutput(ctx *pulumi.Context, args GetvirtualNetworkRetrieveOutputArgs, opts ...pulumi.InvokeOption) GetvirtualNetworkRetrieveResultOutput {
@@ -52,7 +61,9 @@ func GetvirtualNetworkRetrieveOutput(ctx *pulumi.Context, args GetvirtualNetwork
 }
 
 type GetvirtualNetworkRetrieveOutputArgs struct {
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Parameter for the name of the virtual network
 	VirtualNetworksName pulumi.StringInput `pulumi:"virtualNetworksName"`
 }
 
@@ -81,30 +92,37 @@ func (o GetvirtualNetworkRetrieveResultOutput) ExtendedLocation() VirtualNetwork
 	}).(VirtualNetworksResponseExtendedLocationPtrOutput)
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o GetvirtualNetworkRetrieveResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o GetvirtualNetworkRetrieveResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o GetvirtualNetworkRetrieveResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
 func (o GetvirtualNetworkRetrieveResultOutput) Properties() VirtualNetworksPropertiesResponseOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) VirtualNetworksPropertiesResponse { return v.Properties }).(VirtualNetworksPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o GetvirtualNetworkRetrieveResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o GetvirtualNetworkRetrieveResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GetvirtualNetworkRetrieveResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetvirtualNetworkRetrieveResult) string { return v.Type }).(pulumi.StringOutput)
 }

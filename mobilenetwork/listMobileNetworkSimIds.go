@@ -22,14 +22,18 @@ func ListMobileNetworkSimIds(ctx *pulumi.Context, args *ListMobileNetworkSimIdsA
 }
 
 type ListMobileNetworkSimIdsArgs struct {
+	// The name of the mobile network.
 	MobileNetworkName string `pulumi:"mobileNetworkName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Response for list SIM IDs API service call.
 type ListMobileNetworkSimIdsResult struct {
-	NextLink string                `pulumi:"nextLink"`
-	Value    []SubResourceResponse `pulumi:"value"`
+	// The URL to get the next set of results.
+	NextLink string `pulumi:"nextLink"`
+	// A list of SIM IDs.
+	Value []SubResourceResponse `pulumi:"value"`
 }
 
 func ListMobileNetworkSimIdsOutput(ctx *pulumi.Context, args ListMobileNetworkSimIdsOutputArgs, opts ...pulumi.InvokeOption) ListMobileNetworkSimIdsResultOutput {
@@ -46,7 +50,9 @@ func ListMobileNetworkSimIdsOutput(ctx *pulumi.Context, args ListMobileNetworkSi
 }
 
 type ListMobileNetworkSimIdsOutputArgs struct {
+	// The name of the mobile network.
 	MobileNetworkName pulumi.StringInput `pulumi:"mobileNetworkName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -69,10 +75,12 @@ func (o ListMobileNetworkSimIdsResultOutput) ToListMobileNetworkSimIdsResultOutp
 	return o
 }
 
+// The URL to get the next set of results.
 func (o ListMobileNetworkSimIdsResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListMobileNetworkSimIdsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// A list of SIM IDs.
 func (o ListMobileNetworkSimIdsResultOutput) Value() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListMobileNetworkSimIdsResult) []SubResourceResponse { return v.Value }).(SubResourceResponseArrayOutput)
 }

@@ -22,22 +22,34 @@ func LookupHubRouteTable(ctx *pulumi.Context, args *LookupHubRouteTableArgs, opt
 }
 
 type LookupHubRouteTableArgs struct {
+	// The resource group name of the VirtualHub.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	RouteTableName    string `pulumi:"routeTableName"`
-	VirtualHubName    string `pulumi:"virtualHubName"`
+	// The name of the RouteTable.
+	RouteTableName string `pulumi:"routeTableName"`
+	// The name of the VirtualHub.
+	VirtualHubName string `pulumi:"virtualHubName"`
 }
 
 // RouteTable resource in a virtual hub.
 type LookupHubRouteTableResult struct {
-	AssociatedConnections  []string           `pulumi:"associatedConnections"`
-	Etag                   string             `pulumi:"etag"`
-	Id                     *string            `pulumi:"id"`
-	Labels                 []string           `pulumi:"labels"`
-	Name                   *string            `pulumi:"name"`
-	PropagatingConnections []string           `pulumi:"propagatingConnections"`
-	ProvisioningState      string             `pulumi:"provisioningState"`
-	Routes                 []HubRouteResponse `pulumi:"routes"`
-	Type                   string             `pulumi:"type"`
+	// List of all connections associated with this route table.
+	AssociatedConnections []string `pulumi:"associatedConnections"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// List of labels associated with this route table.
+	Labels []string `pulumi:"labels"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// List of all connections that advertise to this route table.
+	PropagatingConnections []string `pulumi:"propagatingConnections"`
+	// The provisioning state of the RouteTable resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of all routes.
+	Routes []HubRouteResponse `pulumi:"routes"`
+	// Resource type.
+	Type string `pulumi:"type"`
 }
 
 func LookupHubRouteTableOutput(ctx *pulumi.Context, args LookupHubRouteTableOutputArgs, opts ...pulumi.InvokeOption) LookupHubRouteTableResultOutput {
@@ -54,9 +66,12 @@ func LookupHubRouteTableOutput(ctx *pulumi.Context, args LookupHubRouteTableOutp
 }
 
 type LookupHubRouteTableOutputArgs struct {
+	// The resource group name of the VirtualHub.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	RouteTableName    pulumi.StringInput `pulumi:"routeTableName"`
-	VirtualHubName    pulumi.StringInput `pulumi:"virtualHubName"`
+	// The name of the RouteTable.
+	RouteTableName pulumi.StringInput `pulumi:"routeTableName"`
+	// The name of the VirtualHub.
+	VirtualHubName pulumi.StringInput `pulumi:"virtualHubName"`
 }
 
 func (LookupHubRouteTableOutputArgs) ElementType() reflect.Type {
@@ -78,38 +93,47 @@ func (o LookupHubRouteTableResultOutput) ToLookupHubRouteTableResultOutputWithCo
 	return o
 }
 
+// List of all connections associated with this route table.
 func (o LookupHubRouteTableResultOutput) AssociatedConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) []string { return v.AssociatedConnections }).(pulumi.StringArrayOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
 func (o LookupHubRouteTableResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Resource ID.
 func (o LookupHubRouteTableResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// List of labels associated with this route table.
 func (o LookupHubRouteTableResultOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupHubRouteTableResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// List of all connections that advertise to this route table.
 func (o LookupHubRouteTableResultOutput) PropagatingConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) []string { return v.PropagatingConnections }).(pulumi.StringArrayOutput)
 }
 
+// The provisioning state of the RouteTable resource.
 func (o LookupHubRouteTableResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// List of all routes.
 func (o LookupHubRouteTableResultOutput) Routes() HubRouteResponseArrayOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) []HubRouteResponse { return v.Routes }).(HubRouteResponseArrayOutput)
 }
 
+// Resource type.
 func (o LookupHubRouteTableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubRouteTableResult) string { return v.Type }).(pulumi.StringOutput)
 }

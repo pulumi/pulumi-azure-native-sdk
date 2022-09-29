@@ -21,17 +21,24 @@ func LookupConfigurationProfileAssignment(ctx *pulumi.Context, args *LookupConfi
 }
 
 type LookupConfigurationProfileAssignmentArgs struct {
+	// The configuration profile assignment name.
 	ConfigurationProfileAssignmentName string `pulumi:"configurationProfileAssignmentName"`
-	ResourceGroupName                  string `pulumi:"resourceGroupName"`
-	VmName                             string `pulumi:"vmName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the virtual machine.
+	VmName string `pulumi:"vmName"`
 }
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
 type LookupConfigurationProfileAssignmentResult struct {
-	Id         string                                           `pulumi:"id"`
-	Name       string                                           `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Properties of the configuration profile assignment.
 	Properties ConfigurationProfileAssignmentPropertiesResponse `pulumi:"properties"`
-	Type       string                                           `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupConfigurationProfileAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileAssignmentResultOutput {
@@ -48,9 +55,12 @@ func LookupConfigurationProfileAssignmentOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupConfigurationProfileAssignmentOutputArgs struct {
+	// The configuration profile assignment name.
 	ConfigurationProfileAssignmentName pulumi.StringInput `pulumi:"configurationProfileAssignmentName"`
-	ResourceGroupName                  pulumi.StringInput `pulumi:"resourceGroupName"`
-	VmName                             pulumi.StringInput `pulumi:"vmName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the virtual machine.
+	VmName pulumi.StringInput `pulumi:"vmName"`
 }
 
 func (LookupConfigurationProfileAssignmentOutputArgs) ElementType() reflect.Type {
@@ -72,20 +82,24 @@ func (o LookupConfigurationProfileAssignmentResultOutput) ToLookupConfigurationP
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationProfileAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupConfigurationProfileAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Properties of the configuration profile assignment.
 func (o LookupConfigurationProfileAssignmentResultOutput) Properties() ConfigurationProfileAssignmentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileAssignmentResult) ConfigurationProfileAssignmentPropertiesResponse {
 		return v.Properties
 	}).(ConfigurationProfileAssignmentPropertiesResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationProfileAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -24,20 +24,30 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	DatabaseName      string `pulumi:"databaseName"`
-	KustoPoolName     string `pulumi:"kustoPoolName"`
+	// The name of the database in the Kusto pool.
+	DatabaseName string `pulumi:"databaseName"`
+	// The name of the Kusto pool.
+	KustoPoolName string `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Class representing a Kusto database.
 type LookupDatabaseResult struct {
-	Id         string             `pulumi:"id"`
-	Kind       string             `pulumi:"kind"`
-	Location   *string            `pulumi:"location"`
-	Name       string             `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// Kind of the database
+	Kind string `pulumi:"kind"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	Type       string             `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
@@ -54,10 +64,14 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 }
 
 type LookupDatabaseOutputArgs struct {
-	DatabaseName      pulumi.StringInput `pulumi:"databaseName"`
-	KustoPoolName     pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the database in the Kusto pool.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The name of the Kusto pool.
+	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// The name of the workspace
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupDatabaseOutputArgs) ElementType() reflect.Type {
@@ -79,26 +93,32 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of the database
 func (o LookupDatabaseResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Resource location.
 func (o LookupDatabaseResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDatabaseResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }

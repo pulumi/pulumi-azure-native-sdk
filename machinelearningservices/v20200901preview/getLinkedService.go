@@ -21,19 +21,28 @@ func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opt
 }
 
 type LookupLinkedServiceArgs struct {
-	LinkName          string `pulumi:"linkName"`
+	// Friendly name of the linked workspace
+	LinkName string `pulumi:"linkName"`
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Linked service.
 type LookupLinkedServiceResult struct {
-	Id         string                     `pulumi:"id"`
-	Identity   *IdentityResponse          `pulumi:"identity"`
-	Location   *string                    `pulumi:"location"`
-	Name       string                     `pulumi:"name"`
+	// ResourceId of the link of the linked service.
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// location of the linked service.
+	Location *string `pulumi:"location"`
+	// Friendly name of the linked service.
+	Name string `pulumi:"name"`
+	// LinkedService specific properties.
 	Properties LinkedServicePropsResponse `pulumi:"properties"`
-	Type       string                     `pulumi:"type"`
+	// Resource type of linked service.
+	Type string `pulumi:"type"`
 }
 
 func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServiceResultOutput {
@@ -50,9 +59,12 @@ func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutp
 }
 
 type LookupLinkedServiceOutputArgs struct {
-	LinkName          pulumi.StringInput `pulumi:"linkName"`
+	// Friendly name of the linked workspace
+	LinkName pulumi.StringInput `pulumi:"linkName"`
+	// Name of the resource group in which workspace is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupLinkedServiceOutputArgs) ElementType() reflect.Type {
@@ -74,26 +86,32 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithCo
 	return o
 }
 
+// ResourceId of the link of the linked service.
 func (o LookupLinkedServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identity for the resource.
 func (o LookupLinkedServiceResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// location of the linked service.
 func (o LookupLinkedServiceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the linked service.
 func (o LookupLinkedServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// LinkedService specific properties.
 func (o LookupLinkedServiceResultOutput) Properties() LinkedServicePropsResponseOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) LinkedServicePropsResponse { return v.Properties }).(LinkedServicePropsResponseOutput)
 }
 
+// Resource type of linked service.
 func (o LookupLinkedServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

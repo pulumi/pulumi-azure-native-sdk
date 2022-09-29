@@ -22,20 +22,30 @@ func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulum
 }
 
 type LookupModelingArgs struct {
-	AccountName       string `pulumi:"accountName"`
-	ModelingName      string `pulumi:"modelingName"`
+	// The name of the RecommendationsService Account resource.
+	AccountName string `pulumi:"accountName"`
+	// The name of the Modeling resource.
+	ModelingName string `pulumi:"modelingName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Modeling resource details.
 type LookupModelingResult struct {
-	Id         string                             `pulumi:"id"`
-	Location   string                             `pulumi:"location"`
-	Name       string                             `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Modeling resource properties.
 	Properties ModelingResourceResponseProperties `pulumi:"properties"`
-	SystemData SystemDataResponse                 `pulumi:"systemData"`
-	Tags       map[string]string                  `pulumi:"tags"`
-	Type       string                             `pulumi:"type"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupModelingOutput(ctx *pulumi.Context, args LookupModelingOutputArgs, opts ...pulumi.InvokeOption) LookupModelingResultOutput {
@@ -52,8 +62,11 @@ func LookupModelingOutput(ctx *pulumi.Context, args LookupModelingOutputArgs, op
 }
 
 type LookupModelingOutputArgs struct {
-	AccountName       pulumi.StringInput `pulumi:"accountName"`
-	ModelingName      pulumi.StringInput `pulumi:"modelingName"`
+	// The name of the RecommendationsService Account resource.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the Modeling resource.
+	ModelingName pulumi.StringInput `pulumi:"modelingName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,30 +89,37 @@ func (o LookupModelingResultOutput) ToLookupModelingResultOutputWithContext(ctx 
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupModelingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
 func (o LookupModelingResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelingResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the resource
 func (o LookupModelingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Modeling resource properties.
 func (o LookupModelingResultOutput) Properties() ModelingResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupModelingResult) ModelingResourceResponseProperties { return v.Properties }).(ModelingResourceResponsePropertiesOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupModelingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupModelingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Resource tags.
 func (o LookupModelingResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupModelingResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupModelingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelingResult) string { return v.Type }).(pulumi.StringOutput)
 }

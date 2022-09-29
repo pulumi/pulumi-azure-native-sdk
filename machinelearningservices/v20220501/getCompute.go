@@ -21,22 +21,34 @@ func LookupCompute(ctx *pulumi.Context, args *LookupComputeArgs, opts ...pulumi.
 }
 
 type LookupComputeArgs struct {
-	ComputeName       string `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName string `pulumi:"computeName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	WorkspaceName     string `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 type LookupComputeResult struct {
-	Id         string                          `pulumi:"id"`
-	Identity   *ManagedServiceIdentityResponse `pulumi:"identity"`
-	Location   *string                         `pulumi:"location"`
-	Name       string                          `pulumi:"name"`
-	Properties interface{}                     `pulumi:"properties"`
-	Sku        *SkuResponse                    `pulumi:"sku"`
-	SystemData SystemDataResponse              `pulumi:"systemData"`
-	Tags       map[string]string               `pulumi:"tags"`
-	Type       string                          `pulumi:"type"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Compute properties
+	Properties interface{} `pulumi:"properties"`
+	// The sku of the workspace.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Contains resource tags defined as key/value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupComputeOutput(ctx *pulumi.Context, args LookupComputeOutputArgs, opts ...pulumi.InvokeOption) LookupComputeResultOutput {
@@ -53,9 +65,12 @@ func LookupComputeOutput(ctx *pulumi.Context, args LookupComputeOutputArgs, opts
 }
 
 type LookupComputeOutputArgs struct {
-	ComputeName       pulumi.StringInput `pulumi:"computeName"`
+	// Name of the Azure Machine Learning compute.
+	ComputeName pulumi.StringInput `pulumi:"computeName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	WorkspaceName     pulumi.StringInput `pulumi:"workspaceName"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (LookupComputeOutputArgs) ElementType() reflect.Type {
@@ -77,38 +92,47 @@ func (o LookupComputeResultOutput) ToLookupComputeResultOutputWithContext(ctx co
 	return o
 }
 
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupComputeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
 func (o LookupComputeResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupComputeResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// Specifies the location of the resource.
 func (o LookupComputeResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupComputeResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource
 func (o LookupComputeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Compute properties
 func (o LookupComputeResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupComputeResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
+// The sku of the workspace.
 func (o LookupComputeResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupComputeResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupComputeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupComputeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Contains resource tags defined as key/value pairs.
 func (o LookupComputeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupComputeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupComputeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -21,14 +21,18 @@ func ListDomainRecommendations(ctx *pulumi.Context, args *ListDomainRecommendati
 }
 
 type ListDomainRecommendationsArgs struct {
-	Keywords                 *string `pulumi:"keywords"`
-	MaxDomainRecommendations *int    `pulumi:"maxDomainRecommendations"`
+	// Keywords to be used for generating domain recommendations.
+	Keywords *string `pulumi:"keywords"`
+	// Maximum number of recommendations.
+	MaxDomainRecommendations *int `pulumi:"maxDomainRecommendations"`
 }
 
 // Collection of domain name identifiers.
 type ListDomainRecommendationsResult struct {
-	NextLink string                   `pulumi:"nextLink"`
-	Value    []NameIdentifierResponse `pulumi:"value"`
+	// Link to next page of resources.
+	NextLink string `pulumi:"nextLink"`
+	// Collection of resources.
+	Value []NameIdentifierResponse `pulumi:"value"`
 }
 
 func ListDomainRecommendationsOutput(ctx *pulumi.Context, args ListDomainRecommendationsOutputArgs, opts ...pulumi.InvokeOption) ListDomainRecommendationsResultOutput {
@@ -45,8 +49,10 @@ func ListDomainRecommendationsOutput(ctx *pulumi.Context, args ListDomainRecomme
 }
 
 type ListDomainRecommendationsOutputArgs struct {
-	Keywords                 pulumi.StringPtrInput `pulumi:"keywords"`
-	MaxDomainRecommendations pulumi.IntPtrInput    `pulumi:"maxDomainRecommendations"`
+	// Keywords to be used for generating domain recommendations.
+	Keywords pulumi.StringPtrInput `pulumi:"keywords"`
+	// Maximum number of recommendations.
+	MaxDomainRecommendations pulumi.IntPtrInput `pulumi:"maxDomainRecommendations"`
 }
 
 func (ListDomainRecommendationsOutputArgs) ElementType() reflect.Type {
@@ -68,10 +74,12 @@ func (o ListDomainRecommendationsResultOutput) ToListDomainRecommendationsResult
 	return o
 }
 
+// Link to next page of resources.
 func (o ListDomainRecommendationsResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDomainRecommendationsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Collection of resources.
 func (o ListDomainRecommendationsResultOutput) Value() NameIdentifierResponseArrayOutput {
 	return o.ApplyT(func(v ListDomainRecommendationsResult) []NameIdentifierResponse { return v.Value }).(NameIdentifierResponseArrayOutput)
 }

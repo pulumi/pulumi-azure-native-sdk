@@ -22,20 +22,30 @@ func ListUserAssignedIdentityAssociatedResources(ctx *pulumi.Context, args *List
 }
 
 type ListUserAssignedIdentityAssociatedResourcesArgs struct {
-	Filter            *string `pulumi:"filter"`
-	Orderby           *string `pulumi:"orderby"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ResourceName      string  `pulumi:"resourceName"`
-	Skip              *int    `pulumi:"skip"`
-	Skiptoken         *string `pulumi:"skiptoken"`
-	Top               *int    `pulumi:"top"`
+	// OData filter expression to apply to the query.
+	Filter *string `pulumi:"filter"`
+	// OData orderBy expression to apply to the query.
+	Orderby *string `pulumi:"orderby"`
+	// The name of the Resource Group to which the identity belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the identity resource.
+	ResourceName string `pulumi:"resourceName"`
+	// Number of records to skip.
+	Skip *int `pulumi:"skip"`
+	// A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+	Skiptoken *string `pulumi:"skiptoken"`
+	// Number of records to return.
+	Top *int `pulumi:"top"`
 }
 
 // Azure resources returned by the resource action to get a list of assigned resources.
 type ListUserAssignedIdentityAssociatedResourcesResult struct {
-	NextLink   string                  `pulumi:"nextLink"`
-	TotalCount float64                 `pulumi:"totalCount"`
-	Value      []AzureResourceResponse `pulumi:"value"`
+	// The url to get the next page of results, if any.
+	NextLink string `pulumi:"nextLink"`
+	// Total number of Azure resources assigned to the identity.
+	TotalCount float64 `pulumi:"totalCount"`
+	// The collection of Azure resources returned by the resource action to get a list of assigned resources.
+	Value []AzureResourceResponse `pulumi:"value"`
 }
 
 func ListUserAssignedIdentityAssociatedResourcesOutput(ctx *pulumi.Context, args ListUserAssignedIdentityAssociatedResourcesOutputArgs, opts ...pulumi.InvokeOption) ListUserAssignedIdentityAssociatedResourcesResultOutput {
@@ -52,13 +62,20 @@ func ListUserAssignedIdentityAssociatedResourcesOutput(ctx *pulumi.Context, args
 }
 
 type ListUserAssignedIdentityAssociatedResourcesOutputArgs struct {
-	Filter            pulumi.StringPtrInput `pulumi:"filter"`
-	Orderby           pulumi.StringPtrInput `pulumi:"orderby"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ResourceName      pulumi.StringInput    `pulumi:"resourceName"`
-	Skip              pulumi.IntPtrInput    `pulumi:"skip"`
-	Skiptoken         pulumi.StringPtrInput `pulumi:"skiptoken"`
-	Top               pulumi.IntPtrInput    `pulumi:"top"`
+	// OData filter expression to apply to the query.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// OData orderBy expression to apply to the query.
+	Orderby pulumi.StringPtrInput `pulumi:"orderby"`
+	// The name of the Resource Group to which the identity belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the identity resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Number of records to skip.
+	Skip pulumi.IntPtrInput `pulumi:"skip"`
+	// A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+	Skiptoken pulumi.StringPtrInput `pulumi:"skiptoken"`
+	// Number of records to return.
+	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
 func (ListUserAssignedIdentityAssociatedResourcesOutputArgs) ElementType() reflect.Type {
@@ -80,14 +97,17 @@ func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) ToListUserAssig
 	return o
 }
 
+// The url to get the next page of results, if any.
 func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListUserAssignedIdentityAssociatedResourcesResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
+// Total number of Azure resources assigned to the identity.
 func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) TotalCount() pulumi.Float64Output {
 	return o.ApplyT(func(v ListUserAssignedIdentityAssociatedResourcesResult) float64 { return v.TotalCount }).(pulumi.Float64Output)
 }
 
+// The collection of Azure resources returned by the resource action to get a list of assigned resources.
 func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) Value() AzureResourceResponseArrayOutput {
 	return o.ApplyT(func(v ListUserAssignedIdentityAssociatedResourcesResult) []AzureResourceResponse { return v.Value }).(AzureResourceResponseArrayOutput)
 }

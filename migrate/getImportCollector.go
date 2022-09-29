@@ -21,9 +21,12 @@ func LookupImportCollector(ctx *pulumi.Context, args *LookupImportCollectorArgs,
 }
 
 type LookupImportCollectorArgs struct {
+	// Unique name of a Import collector within a project.
 	ImportCollectorName string `pulumi:"importCollectorName"`
-	ProjectName         string `pulumi:"projectName"`
-	ResourceGroupName   string `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName string `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type LookupImportCollectorResult struct {
@@ -48,9 +51,12 @@ func LookupImportCollectorOutput(ctx *pulumi.Context, args LookupImportCollector
 }
 
 type LookupImportCollectorOutputArgs struct {
+	// Unique name of a Import collector within a project.
 	ImportCollectorName pulumi.StringInput `pulumi:"importCollectorName"`
-	ProjectName         pulumi.StringInput `pulumi:"projectName"`
-	ResourceGroupName   pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the Azure Migrate project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Name of the Azure Resource Group that project is part of.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupImportCollectorOutputArgs) ElementType() reflect.Type {

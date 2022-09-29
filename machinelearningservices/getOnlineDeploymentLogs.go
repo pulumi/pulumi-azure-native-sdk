@@ -21,15 +21,22 @@ func GetOnlineDeploymentLogs(ctx *pulumi.Context, args *GetOnlineDeploymentLogsA
 }
 
 type GetOnlineDeploymentLogsArgs struct {
-	ContainerType     *string `pulumi:"containerType"`
-	DeploymentName    string  `pulumi:"deploymentName"`
-	EndpointName      string  `pulumi:"endpointName"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	Tail              *int    `pulumi:"tail"`
-	WorkspaceName     string  `pulumi:"workspaceName"`
+	// The type of container to retrieve logs from.
+	ContainerType *string `pulumi:"containerType"`
+	// The name and identifier for the endpoint.
+	DeploymentName string `pulumi:"deploymentName"`
+	// Inference endpoint name.
+	EndpointName string `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The maximum number of lines to tail.
+	Tail *int `pulumi:"tail"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 type GetOnlineDeploymentLogsResult struct {
+	// The retrieved online deployment logs.
 	Content *string `pulumi:"content"`
 }
 
@@ -47,12 +54,18 @@ func GetOnlineDeploymentLogsOutput(ctx *pulumi.Context, args GetOnlineDeployment
 }
 
 type GetOnlineDeploymentLogsOutputArgs struct {
-	ContainerType     pulumi.StringPtrInput `pulumi:"containerType"`
-	DeploymentName    pulumi.StringInput    `pulumi:"deploymentName"`
-	EndpointName      pulumi.StringInput    `pulumi:"endpointName"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	Tail              pulumi.IntPtrInput    `pulumi:"tail"`
-	WorkspaceName     pulumi.StringInput    `pulumi:"workspaceName"`
+	// The type of container to retrieve logs from.
+	ContainerType pulumi.StringPtrInput `pulumi:"containerType"`
+	// The name and identifier for the endpoint.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// Inference endpoint name.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The maximum number of lines to tail.
+	Tail pulumi.IntPtrInput `pulumi:"tail"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
 func (GetOnlineDeploymentLogsOutputArgs) ElementType() reflect.Type {
@@ -73,6 +86,7 @@ func (o GetOnlineDeploymentLogsResultOutput) ToGetOnlineDeploymentLogsResultOutp
 	return o
 }
 
+// The retrieved online deployment logs.
 func (o GetOnlineDeploymentLogsResultOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOnlineDeploymentLogsResult) *string { return v.Content }).(pulumi.StringPtrOutput)
 }

@@ -21,17 +21,25 @@ func LookupWebAppDomainOwnershipIdentifier(ctx *pulumi.Context, args *LookupWebA
 }
 
 type LookupWebAppDomainOwnershipIdentifierArgs struct {
+	// Name of domain ownership identifier.
 	DomainOwnershipIdentifierName string `pulumi:"domainOwnershipIdentifierName"`
-	Name                          string `pulumi:"name"`
-	ResourceGroupName             string `pulumi:"resourceGroupName"`
+	// Name of the app.
+	Name string `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A domain specific resource identifier.
 type LookupWebAppDomainOwnershipIdentifierResult struct {
-	Id    string  `pulumi:"id"`
-	Kind  *string `pulumi:"kind"`
-	Name  string  `pulumi:"name"`
-	Type  string  `pulumi:"type"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Kind of resource.
+	Kind *string `pulumi:"kind"`
+	// Resource Name.
+	Name string `pulumi:"name"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// String representation of the identity.
 	Value *string `pulumi:"value"`
 }
 
@@ -49,9 +57,12 @@ func LookupWebAppDomainOwnershipIdentifierOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupWebAppDomainOwnershipIdentifierOutputArgs struct {
+	// Name of domain ownership identifier.
 	DomainOwnershipIdentifierName pulumi.StringInput `pulumi:"domainOwnershipIdentifierName"`
-	Name                          pulumi.StringInput `pulumi:"name"`
-	ResourceGroupName             pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the resource group to which the resource belongs.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
 func (LookupWebAppDomainOwnershipIdentifierOutputArgs) ElementType() reflect.Type {
@@ -73,22 +84,27 @@ func (o LookupWebAppDomainOwnershipIdentifierResultOutput) ToLookupWebAppDomainO
 	return o
 }
 
+// Resource Id.
 func (o LookupWebAppDomainOwnershipIdentifierResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDomainOwnershipIdentifierResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Kind of resource.
 func (o LookupWebAppDomainOwnershipIdentifierResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDomainOwnershipIdentifierResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Resource Name.
 func (o LookupWebAppDomainOwnershipIdentifierResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDomainOwnershipIdentifierResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type.
 func (o LookupWebAppDomainOwnershipIdentifierResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDomainOwnershipIdentifierResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// String representation of the identity.
 func (o LookupWebAppDomainOwnershipIdentifierResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDomainOwnershipIdentifierResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

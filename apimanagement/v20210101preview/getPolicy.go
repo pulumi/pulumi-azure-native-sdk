@@ -21,19 +21,28 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 }
 
 type LookupPolicyArgs struct {
-	Format            *string `pulumi:"format"`
-	PolicyId          string  `pulumi:"policyId"`
-	ResourceGroupName string  `pulumi:"resourceGroupName"`
-	ServiceName       string  `pulumi:"serviceName"`
+	// Policy Export Format.
+	Format *string `pulumi:"format"`
+	// The identifier of the Policy.
+	PolicyId string `pulumi:"policyId"`
+	// The name of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // Policy Contract details.
 type LookupPolicyResult struct {
+	// Format of the policyContent.
 	Format *string `pulumi:"format"`
-	Id     string  `pulumi:"id"`
-	Name   string  `pulumi:"name"`
-	Type   string  `pulumi:"type"`
-	Value  string  `pulumi:"value"`
+	// Resource ID.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Resource type for API Management resource.
+	Type string `pulumi:"type"`
+	// Contents of the Policy as defined by the format.
+	Value string `pulumi:"value"`
 }
 
 // Defaults sets the appropriate defaults for LookupPolicyResult
@@ -63,10 +72,14 @@ func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts .
 }
 
 type LookupPolicyOutputArgs struct {
-	Format            pulumi.StringPtrInput `pulumi:"format"`
-	PolicyId          pulumi.StringInput    `pulumi:"policyId"`
-	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
-	ServiceName       pulumi.StringInput    `pulumi:"serviceName"`
+	// Policy Export Format.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The identifier of the Policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The name of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the API Management service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupPolicyOutputArgs) ElementType() reflect.Type {
@@ -88,22 +101,27 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx cont
 	return o
 }
 
+// Format of the policyContent.
 func (o LookupPolicyResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID.
 func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Resource name.
 func (o LookupPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for API Management resource.
 func (o LookupPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Contents of the Policy as defined by the format.
 func (o LookupPolicyResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Value }).(pulumi.StringOutput)
 }

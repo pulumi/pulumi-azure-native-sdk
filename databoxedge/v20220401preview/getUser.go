@@ -21,20 +21,30 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 }
 
 type LookupUserArgs struct {
-	DeviceName        string `pulumi:"deviceName"`
-	Name              string `pulumi:"name"`
+	// The device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The user name.
+	Name string `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
 type LookupUserResult struct {
+	// The password details.
 	EncryptedPassword *AsymmetricEncryptedSecretResponse `pulumi:"encryptedPassword"`
-	Id                string                             `pulumi:"id"`
-	Name              string                             `pulumi:"name"`
-	ShareAccessRights []ShareAccessRightResponse         `pulumi:"shareAccessRights"`
-	SystemData        SystemDataResponse                 `pulumi:"systemData"`
-	Type              string                             `pulumi:"type"`
-	UserType          string                             `pulumi:"userType"`
+	// The path ID that uniquely identifies the object.
+	Id string `pulumi:"id"`
+	// The object name.
+	Name string `pulumi:"name"`
+	// List of shares that the user has rights on. This field should not be specified during user creation.
+	ShareAccessRights []ShareAccessRightResponse `pulumi:"shareAccessRights"`
+	// Metadata pertaining to creation and last modification of User
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The hierarchical type of the object.
+	Type string `pulumi:"type"`
+	// Type of the user.
+	UserType string `pulumi:"userType"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -51,8 +61,11 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 }
 
 type LookupUserOutputArgs struct {
-	DeviceName        pulumi.StringInput `pulumi:"deviceName"`
-	Name              pulumi.StringInput `pulumi:"name"`
+	// The device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The user name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -75,30 +88,37 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// The password details.
 func (o LookupUserResultOutput) EncryptedPassword() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *AsymmetricEncryptedSecretResponse { return v.EncryptedPassword }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
+// The path ID that uniquely identifies the object.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object name.
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of shares that the user has rights on. This field should not be specified during user creation.
 func (o LookupUserResultOutput) ShareAccessRights() ShareAccessRightResponseArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []ShareAccessRightResponse { return v.ShareAccessRights }).(ShareAccessRightResponseArrayOutput)
 }
 
+// Metadata pertaining to creation and last modification of User
 func (o LookupUserResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupUserResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// The hierarchical type of the object.
 func (o LookupUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Type of the user.
 func (o LookupUserResultOutput) UserType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.UserType }).(pulumi.StringOutput)
 }

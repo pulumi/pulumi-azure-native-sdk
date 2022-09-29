@@ -23,16 +23,22 @@ func LookupSupportPlanType(ctx *pulumi.Context, args *LookupSupportPlanTypeArgs,
 }
 
 type LookupSupportPlanTypeArgs struct {
+	// The Canonical support plan type.
 	PlanTypeName string `pulumi:"planTypeName"`
+	// The support plan type. For now the only valid type is "canonical".
 	ProviderName string `pulumi:"providerName"`
 }
 
 // The status of the Canonical support plan.
 type LookupSupportPlanTypeResult struct {
-	Id                string  `pulumi:"id"`
-	Name              string  `pulumi:"name"`
+	// The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".
+	Id string `pulumi:"id"`
+	// The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	Type              string  `pulumi:"type"`
+	// Microsoft.Addons/supportProvider
+	Type string `pulumi:"type"`
 }
 
 func LookupSupportPlanTypeOutput(ctx *pulumi.Context, args LookupSupportPlanTypeOutputArgs, opts ...pulumi.InvokeOption) LookupSupportPlanTypeResultOutput {
@@ -49,7 +55,9 @@ func LookupSupportPlanTypeOutput(ctx *pulumi.Context, args LookupSupportPlanType
 }
 
 type LookupSupportPlanTypeOutputArgs struct {
+	// The Canonical support plan type.
 	PlanTypeName pulumi.StringInput `pulumi:"planTypeName"`
+	// The support plan type. For now the only valid type is "canonical".
 	ProviderName pulumi.StringInput `pulumi:"providerName"`
 }
 
@@ -72,18 +80,22 @@ func (o LookupSupportPlanTypeResultOutput) ToLookupSupportPlanTypeResultOutputWi
 	return o
 }
 
+// The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".
 func (o LookupSupportPlanTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupportPlanTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
 func (o LookupSupportPlanTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupportPlanTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the resource.
 func (o LookupSupportPlanTypeResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSupportPlanTypeResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Microsoft.Addons/supportProvider
 func (o LookupSupportPlanTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupportPlanTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }
