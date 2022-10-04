@@ -17,7 +17,7 @@ func LookupTimeSeriesDatabaseConnection(ctx *pulumi.Context, args *LookupTimeSer
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupTimeSeriesDatabaseConnectionArgs struct {
@@ -41,6 +41,17 @@ type LookupTimeSeriesDatabaseConnectionResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource type.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupTimeSeriesDatabaseConnectionResult
+func (val *LookupTimeSeriesDatabaseConnectionResult) Defaults() *LookupTimeSeriesDatabaseConnectionResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func LookupTimeSeriesDatabaseConnectionOutput(ctx *pulumi.Context, args LookupTimeSeriesDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupTimeSeriesDatabaseConnectionResultOutput {

@@ -18,7 +18,7 @@ type AzureDataExplorerConnectionProperties struct {
 	AdxEndpointUri string `pulumi:"adxEndpointUri"`
 	// The resource ID of the Azure Data Explorer cluster.
 	AdxResourceId string `pulumi:"adxResourceId"`
-	// The name of the Azure Data Explorer table.
+	// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
 	AdxTableName *string `pulumi:"adxTableName"`
 	// The type of time series connection resource.
 	// Expected value is 'AzureDataExplorer'.
@@ -31,6 +31,23 @@ type AzureDataExplorerConnectionProperties struct {
 	EventHubEntityPath string `pulumi:"eventHubEntityPath"`
 	// The resource ID of the EventHub namespace.
 	EventHubNamespaceResourceId string `pulumi:"eventHubNamespaceResourceId"`
+}
+
+// Defaults sets the appropriate defaults for AzureDataExplorerConnectionProperties
+func (val *AzureDataExplorerConnectionProperties) Defaults() *AzureDataExplorerConnectionProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AdxTableName) {
+		adxTableName_ := "AdtPropertyEvents"
+		tmp.AdxTableName = &adxTableName_
+	}
+	if isZero(tmp.EventHubConsumerGroup) {
+		eventHubConsumerGroup_ := "$Default"
+		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
+	}
+	return &tmp
 }
 
 // AzureDataExplorerConnectionPropertiesInput is an input type that accepts AzureDataExplorerConnectionPropertiesArgs and AzureDataExplorerConnectionPropertiesOutput values.
@@ -52,7 +69,7 @@ type AzureDataExplorerConnectionPropertiesArgs struct {
 	AdxEndpointUri pulumi.StringInput `pulumi:"adxEndpointUri"`
 	// The resource ID of the Azure Data Explorer cluster.
 	AdxResourceId pulumi.StringInput `pulumi:"adxResourceId"`
-	// The name of the Azure Data Explorer table.
+	// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
 	AdxTableName pulumi.StringPtrInput `pulumi:"adxTableName"`
 	// The type of time series connection resource.
 	// Expected value is 'AzureDataExplorer'.
@@ -67,6 +84,20 @@ type AzureDataExplorerConnectionPropertiesArgs struct {
 	EventHubNamespaceResourceId pulumi.StringInput `pulumi:"eventHubNamespaceResourceId"`
 }
 
+// Defaults sets the appropriate defaults for AzureDataExplorerConnectionPropertiesArgs
+func (val *AzureDataExplorerConnectionPropertiesArgs) Defaults() *AzureDataExplorerConnectionPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AdxTableName) {
+		tmp.AdxTableName = pulumi.StringPtr("AdtPropertyEvents")
+	}
+	if isZero(tmp.EventHubConsumerGroup) {
+		tmp.EventHubConsumerGroup = pulumi.StringPtr("$Default")
+	}
+	return &tmp
+}
 func (AzureDataExplorerConnectionPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*AzureDataExplorerConnectionProperties)(nil)).Elem()
 }
@@ -160,7 +191,7 @@ func (o AzureDataExplorerConnectionPropertiesOutput) AdxResourceId() pulumi.Stri
 	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) string { return v.AdxResourceId }).(pulumi.StringOutput)
 }
 
-// The name of the Azure Data Explorer table.
+// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
 func (o AzureDataExplorerConnectionPropertiesOutput) AdxTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) *string { return v.AdxTableName }).(pulumi.StringPtrOutput)
 }
@@ -245,7 +276,7 @@ func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxResourceId() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Azure Data Explorer table.
+// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
 func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *string {
 		if v == nil {
@@ -314,7 +345,7 @@ type AzureDataExplorerConnectionPropertiesResponse struct {
 	AdxEndpointUri string `pulumi:"adxEndpointUri"`
 	// The resource ID of the Azure Data Explorer cluster.
 	AdxResourceId string `pulumi:"adxResourceId"`
-	// The name of the Azure Data Explorer table.
+	// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
 	AdxTableName *string `pulumi:"adxTableName"`
 	// The type of time series connection resource.
 	// Expected value is 'AzureDataExplorer'.
@@ -329,6 +360,23 @@ type AzureDataExplorerConnectionPropertiesResponse struct {
 	EventHubNamespaceResourceId string `pulumi:"eventHubNamespaceResourceId"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for AzureDataExplorerConnectionPropertiesResponse
+func (val *AzureDataExplorerConnectionPropertiesResponse) Defaults() *AzureDataExplorerConnectionPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AdxTableName) {
+		adxTableName_ := "AdtPropertyEvents"
+		tmp.AdxTableName = &adxTableName_
+	}
+	if isZero(tmp.EventHubConsumerGroup) {
+		eventHubConsumerGroup_ := "$Default"
+		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
+	}
+	return &tmp
 }
 
 // Properties of a time series database connection to Azure Data Explorer with data being sent via an EventHub.
@@ -361,7 +409,7 @@ func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxResourceId() pul
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) string { return v.AdxResourceId }).(pulumi.StringOutput)
 }
 
-// The name of the Azure Data Explorer table.
+// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
 func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) *string { return v.AdxTableName }).(pulumi.StringPtrOutput)
 }

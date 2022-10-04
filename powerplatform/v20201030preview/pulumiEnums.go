@@ -18,6 +18,7 @@ const (
 	EnterprisePolicyKindPrivateEndpoint  = EnterprisePolicyKind("PrivateEndpoint")
 	EnterprisePolicyKindEncryption       = EnterprisePolicyKind("Encryption")
 	EnterprisePolicyKindNetworkInjection = EnterprisePolicyKind("NetworkInjection")
+	EnterprisePolicyKindIdentity         = EnterprisePolicyKind("Identity")
 )
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.

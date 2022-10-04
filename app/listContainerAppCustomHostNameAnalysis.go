@@ -40,6 +40,8 @@ type ListContainerAppCustomHostNameAnalysisResult struct {
 	AlternateTxtRecords []string `pulumi:"alternateTxtRecords"`
 	// CName records visible for this hostname.
 	CNameRecords []string `pulumi:"cNameRecords"`
+	// <code>true</code> if there is a conflict on the Container App's managed environment level custom domain; otherwise, <code>false</code>.
+	ConflictWithEnvironmentCustomDomain bool `pulumi:"conflictWithEnvironmentCustomDomain"`
 	// Name of the conflicting Container App on the Managed Environment if it's within the same subscription.
 	ConflictingContainerAppResourceId string `pulumi:"conflictingContainerAppResourceId"`
 	// Raw failure information if DNS verification fails.
@@ -115,6 +117,13 @@ func (o ListContainerAppCustomHostNameAnalysisResultOutput) AlternateTxtRecords(
 // CName records visible for this hostname.
 func (o ListContainerAppCustomHostNameAnalysisResultOutput) CNameRecords() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListContainerAppCustomHostNameAnalysisResult) []string { return v.CNameRecords }).(pulumi.StringArrayOutput)
+}
+
+// <code>true</code> if there is a conflict on the Container App's managed environment level custom domain; otherwise, <code>false</code>.
+func (o ListContainerAppCustomHostNameAnalysisResultOutput) ConflictWithEnvironmentCustomDomain() pulumi.BoolOutput {
+	return o.ApplyT(func(v ListContainerAppCustomHostNameAnalysisResult) bool {
+		return v.ConflictWithEnvironmentCustomDomain
+	}).(pulumi.BoolOutput)
 }
 
 // Name of the conflicting Container App on the Managed Environment if it's within the same subscription.

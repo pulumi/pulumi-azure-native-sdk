@@ -489,6 +489,21 @@ type DataBoxDiskCopyProgressResponse struct {
 	Status string `pulumi:"status"`
 }
 
+// Granular Copy Log Details for customer disk
+type DataBoxDiskGranularCopyLogDetailsResponse struct {
+	// Account name.
+	AccountName string `pulumi:"accountName"`
+	// Indicates the type of job details.
+	// Expected value is 'DataBoxCustomerDisk'.
+	CopyLogDetailsType string `pulumi:"copyLogDetailsType"`
+	// Link for copy error logs.
+	ErrorLogLink string `pulumi:"errorLogLink"`
+	// Disk Serial Number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// Link for copy verbose logs.
+	VerboseLogLink string `pulumi:"verboseLogLink"`
+}
+
 // DataBox Disk Granular Copy Progress
 type DataBoxDiskGranularCopyProgressResponse struct {
 	// Id of the account where the data needs to be uploaded.
@@ -596,6 +611,8 @@ type DataBoxDiskJobDetailsResponse struct {
 	DisksAndSizeDetails map[string]int `pulumi:"disksAndSizeDetails"`
 	// The expected size of the data, which needs to be transferred in this job, in terabytes.
 	ExpectedDataSizeInTeraBytes *int `pulumi:"expectedDataSizeInTeraBytes"`
+	// Copy progress per disk.
+	GranularCopyLogDetails []DataBoxDiskGranularCopyLogDetailsResponse `pulumi:"granularCopyLogDetails"`
 	// Copy progress per disk.
 	GranularCopyProgress []DataBoxDiskGranularCopyProgressResponse `pulumi:"granularCopyProgress"`
 	// Indicates the type of job details.

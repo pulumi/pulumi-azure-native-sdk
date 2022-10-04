@@ -1509,10 +1509,6 @@ func (o DynamicExecutorAllocationPtrOutput) MinExecutors() pulumi.IntPtrOutput {
 type DynamicExecutorAllocationResponse struct {
 	// Indicates whether Dynamic Executor Allocation is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
-	// The maximum number of executors alloted
-	MaxExecutors *int `pulumi:"maxExecutors"`
-	// The minimum number of executors alloted
-	MinExecutors *int `pulumi:"minExecutors"`
 }
 
 // Dynamic Executor Allocation Properties
@@ -1533,16 +1529,6 @@ func (o DynamicExecutorAllocationResponseOutput) ToDynamicExecutorAllocationResp
 // Indicates whether Dynamic Executor Allocation is enabled or not.
 func (o DynamicExecutorAllocationResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DynamicExecutorAllocationResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// The maximum number of executors alloted
-func (o DynamicExecutorAllocationResponseOutput) MaxExecutors() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DynamicExecutorAllocationResponse) *int { return v.MaxExecutors }).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of executors alloted
-func (o DynamicExecutorAllocationResponseOutput) MinExecutors() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DynamicExecutorAllocationResponse) *int { return v.MinExecutors }).(pulumi.IntPtrOutput)
 }
 
 type DynamicExecutorAllocationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1577,26 +1563,6 @@ func (o DynamicExecutorAllocationResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
-}
-
-// The maximum number of executors alloted
-func (o DynamicExecutorAllocationResponsePtrOutput) MaxExecutors() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DynamicExecutorAllocationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxExecutors
-	}).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of executors alloted
-func (o DynamicExecutorAllocationResponsePtrOutput) MinExecutors() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DynamicExecutorAllocationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinExecutors
-	}).(pulumi.IntPtrOutput)
 }
 
 // Details of the encryption associated with the workspace

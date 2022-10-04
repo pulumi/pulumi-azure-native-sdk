@@ -55,6 +55,9 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220501:EnvironmentContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221001:EnvironmentContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EnvironmentContainer

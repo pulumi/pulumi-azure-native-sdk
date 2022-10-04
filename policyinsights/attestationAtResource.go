@@ -59,6 +59,9 @@ func NewAttestationAtResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20210101:AttestationAtResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20220901:AttestationAtResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AttestationAtResource

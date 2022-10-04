@@ -449,7 +449,7 @@ type AmazonRdsForSqlServerSource struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'AmazonRdsForSqlServerSource'.
 	Type string `pulumi:"type"`
@@ -480,7 +480,7 @@ type AmazonRdsForSqlServerSourceResponse struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'AmazonRdsForSqlServerSource'.
 	Type string `pulumi:"type"`
@@ -4668,7 +4668,7 @@ type AzureSqlSink struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -4705,7 +4705,7 @@ type AzureSqlSinkResponse struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -4748,7 +4748,7 @@ type AzureSqlSource struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'AzureSqlSource'.
 	Type string `pulumi:"type"`
@@ -4779,7 +4779,7 @@ type AzureSqlSourceResponse struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'AzureSqlSource'.
 	Type string `pulumi:"type"`

@@ -143,8 +143,6 @@ func (WorkspaceState) ElementType() reflect.Type {
 type workspaceArgs struct {
 	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
 	AzureADOnlyAuthentication *bool `pulumi:"azureADOnlyAuthentication"`
-	// Connectivity endpoints
-	ConnectivityEndpoints map[string]string `pulumi:"connectivityEndpoints"`
 	// Initial workspace AAD admin properties for a CSP subscription
 	CspWorkspaceAdminProperties *CspWorkspaceAdminProperties `pulumi:"cspWorkspaceAdminProperties"`
 	// Workspace default data lake storage account details
@@ -189,8 +187,6 @@ type workspaceArgs struct {
 type WorkspaceArgs struct {
 	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
 	AzureADOnlyAuthentication pulumi.BoolPtrInput
-	// Connectivity endpoints
-	ConnectivityEndpoints pulumi.StringMapInput
 	// Initial workspace AAD admin properties for a CSP subscription
 	CspWorkspaceAdminProperties CspWorkspaceAdminPropertiesPtrInput
 	// Workspace default data lake storage account details

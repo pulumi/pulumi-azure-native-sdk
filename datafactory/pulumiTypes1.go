@@ -12004,7 +12004,7 @@ type SqlMISink struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -12041,7 +12041,7 @@ type SqlMISinkResponse struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).

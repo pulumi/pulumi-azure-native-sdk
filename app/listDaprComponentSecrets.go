@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action
 // API Version: 2022-03-01.
 func ListDaprComponentSecrets(ctx *pulumi.Context, args *ListDaprComponentSecretsArgs, opts ...pulumi.InvokeOption) (*ListDaprComponentSecretsResult, error) {
 	var rv ListDaprComponentSecretsResult
@@ -30,10 +30,10 @@ type ListDaprComponentSecretsArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action
 type ListDaprComponentSecretsResult struct {
-	// Collection of secrets used by a Dapr component
-	Value []SecretResponse `pulumi:"value"`
+	// Collection of secrets for ListSecrets Action
+	Value []DaprSecretResponse `pulumi:"value"`
 }
 
 func ListDaprComponentSecretsOutput(ctx *pulumi.Context, args ListDaprComponentSecretsOutputArgs, opts ...pulumi.InvokeOption) ListDaprComponentSecretsResultOutput {
@@ -62,7 +62,7 @@ func (ListDaprComponentSecretsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListDaprComponentSecretsArgs)(nil)).Elem()
 }
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action
 type ListDaprComponentSecretsResultOutput struct{ *pulumi.OutputState }
 
 func (ListDaprComponentSecretsResultOutput) ElementType() reflect.Type {
@@ -77,9 +77,9 @@ func (o ListDaprComponentSecretsResultOutput) ToListDaprComponentSecretsResultOu
 	return o
 }
 
-// Collection of secrets used by a Dapr component
-func (o ListDaprComponentSecretsResultOutput) Value() SecretResponseArrayOutput {
-	return o.ApplyT(func(v ListDaprComponentSecretsResult) []SecretResponse { return v.Value }).(SecretResponseArrayOutput)
+// Collection of secrets for ListSecrets Action
+func (o ListDaprComponentSecretsResultOutput) Value() DaprSecretResponseArrayOutput {
+	return o.ApplyT(func(v ListDaprComponentSecretsResult) []DaprSecretResponse { return v.Value }).(DaprSecretResponseArrayOutput)
 }
 
 func init() {

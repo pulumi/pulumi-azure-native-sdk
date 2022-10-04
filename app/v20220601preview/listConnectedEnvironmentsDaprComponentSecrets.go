@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action.
 func ListConnectedEnvironmentsDaprComponentSecrets(ctx *pulumi.Context, args *ListConnectedEnvironmentsDaprComponentSecretsArgs, opts ...pulumi.InvokeOption) (*ListConnectedEnvironmentsDaprComponentSecretsResult, error) {
 	var rv ListConnectedEnvironmentsDaprComponentSecretsResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:listConnectedEnvironmentsDaprComponentSecrets", args, &rv, opts...)
@@ -29,7 +29,7 @@ type ListConnectedEnvironmentsDaprComponentSecretsArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action.
 type ListConnectedEnvironmentsDaprComponentSecretsResult struct {
 	// Collection of secrets used by a Dapr component
 	Value []SecretResponse `pulumi:"value"`
@@ -61,7 +61,7 @@ func (ListConnectedEnvironmentsDaprComponentSecretsOutputArgs) ElementType() ref
 	return reflect.TypeOf((*ListConnectedEnvironmentsDaprComponentSecretsArgs)(nil)).Elem()
 }
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action.
 type ListConnectedEnvironmentsDaprComponentSecretsResultOutput struct{ *pulumi.OutputState }
 
 func (ListConnectedEnvironmentsDaprComponentSecretsResultOutput) ElementType() reflect.Type {

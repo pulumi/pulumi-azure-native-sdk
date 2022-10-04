@@ -35,7 +35,7 @@ type SqlMISource struct {
 	// Name of the stored procedure for a Azure SQL Managed Instance source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'SqlMISource'.
 	Type string `pulumi:"type"`
@@ -66,7 +66,7 @@ type SqlMISourceResponse struct {
 	// Name of the stored procedure for a Azure SQL Managed Instance source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'SqlMISource'.
 	Type string `pulumi:"type"`
@@ -161,7 +161,7 @@ type SqlServerSink struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -198,7 +198,7 @@ type SqlServerSinkResponse struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -241,7 +241,7 @@ type SqlServerSource struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'SqlServerSource'.
 	Type string `pulumi:"type"`
@@ -272,7 +272,7 @@ type SqlServerSourceResponse struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'SqlServerSource'.
 	Type string `pulumi:"type"`
@@ -393,7 +393,7 @@ type SqlSink struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -430,7 +430,7 @@ type SqlSinkResponse struct {
 	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
 	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
 	// SQL stored procedure parameters.
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
 	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
 	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
@@ -473,7 +473,7 @@ type SqlSource struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameter `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'SqlSource'.
 	Type string `pulumi:"type"`
@@ -504,7 +504,7 @@ type SqlSourceResponse struct {
 	// Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
 	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
-	StoredProcedureParameters map[string]StoredProcedureParameterResponse `pulumi:"storedProcedureParameters"`
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
 	// Copy source type.
 	// Expected value is 'SqlSource'.
 	Type string `pulumi:"type"`
@@ -832,22 +832,6 @@ type StagingSettingsResponse struct {
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The path to storage for storing the interim data. Type: string (or Expression with resultType string).
 	Path interface{} `pulumi:"path"`
-}
-
-// SQL stored procedure parameter.
-type StoredProcedureParameter struct {
-	// Stored procedure parameter type.
-	Type *string `pulumi:"type"`
-	// Stored procedure parameter value. Type: string (or Expression with resultType string).
-	Value interface{} `pulumi:"value"`
-}
-
-// SQL stored procedure parameter.
-type StoredProcedureParameterResponse struct {
-	// Stored procedure parameter type.
-	Type *string `pulumi:"type"`
-	// Stored procedure parameter value. Type: string (or Expression with resultType string).
-	Value interface{} `pulumi:"value"`
 }
 
 // This activity evaluates an expression and executes activities under the cases property that correspond to the expression evaluation expected in the equals property.

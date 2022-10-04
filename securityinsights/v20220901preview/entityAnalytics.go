@@ -81,6 +81,9 @@ func NewEntityAnalytics(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20220801preview:EntityAnalytics"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20221001preview:EntityAnalytics"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EntityAnalytics

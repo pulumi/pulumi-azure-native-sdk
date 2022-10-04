@@ -593,7 +593,7 @@ type RedisCommonPropertiesRedisConfiguration struct {
 	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
 	RdbBackupEnabled *string `pulumi:"rdbBackupEnabled"`
-	// Specifies the frequency for creating rdb backup
+	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency *string `pulumi:"rdbBackupFrequency"`
 	// Specifies the maximum number of snapshots for rdb backup
 	RdbBackupMaxSnapshotCount *string `pulumi:"rdbBackupMaxSnapshotCount"`
@@ -634,7 +634,7 @@ type RedisCommonPropertiesRedisConfigurationArgs struct {
 	PreferredDataPersistenceAuthMethod pulumi.StringPtrInput `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
 	RdbBackupEnabled pulumi.StringPtrInput `pulumi:"rdbBackupEnabled"`
-	// Specifies the frequency for creating rdb backup
+	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency pulumi.StringPtrInput `pulumi:"rdbBackupFrequency"`
 	// Specifies the maximum number of snapshots for rdb backup
 	RdbBackupMaxSnapshotCount pulumi.StringPtrInput `pulumi:"rdbBackupMaxSnapshotCount"`
@@ -770,7 +770,7 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) RdbBackupEnabled() pulumi
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesRedisConfigurationOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.RdbBackupFrequency }).(pulumi.StringPtrOutput)
 }
@@ -909,7 +909,7 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbBackupEnabled() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
 		if v == nil {
@@ -965,7 +965,7 @@ type RedisCommonPropertiesResponseRedisConfiguration struct {
 	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
 	RdbBackupEnabled *string `pulumi:"rdbBackupEnabled"`
-	// Specifies the frequency for creating rdb backup
+	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency *string `pulumi:"rdbBackupFrequency"`
 	// Specifies the maximum number of snapshots for rdb backup
 	RdbBackupMaxSnapshotCount *string `pulumi:"rdbBackupMaxSnapshotCount"`
@@ -1056,7 +1056,7 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupEnabled(
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupFrequency }).(pulumi.StringPtrOutput)
 }
@@ -1220,7 +1220,7 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupEnabl
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
 		if v == nil {

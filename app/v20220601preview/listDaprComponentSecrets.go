@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action.
 func ListDaprComponentSecrets(ctx *pulumi.Context, args *ListDaprComponentSecretsArgs, opts ...pulumi.InvokeOption) (*ListDaprComponentSecretsResult, error) {
 	var rv ListDaprComponentSecretsResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:listDaprComponentSecrets", args, &rv, opts...)
@@ -29,7 +29,7 @@ type ListDaprComponentSecretsArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action.
 type ListDaprComponentSecretsResult struct {
 	// Collection of secrets used by a Dapr component
 	Value []SecretResponse `pulumi:"value"`
@@ -61,7 +61,7 @@ func (ListDaprComponentSecretsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListDaprComponentSecretsArgs)(nil)).Elem()
 }
 
-// Dapr component Secrets Collection ARM resource.
+// Dapr component Secrets Collection for ListSecrets Action.
 type ListDaprComponentSecretsResultOutput struct{ *pulumi.OutputState }
 
 func (ListDaprComponentSecretsResultOutput) ElementType() reflect.Type {
