@@ -46,6 +46,9 @@ func NewSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220601preview:Schedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:Schedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Schedule
