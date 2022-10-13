@@ -54,6 +54,9 @@ func NewCollectorPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkfunction/v20220801:CollectorPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkfunction/v20221101:CollectorPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CollectorPolicy

@@ -1138,8 +1138,10 @@ type SynapseSparkJobDefinitionActivity struct {
 	ExecutorSize interface{} `pulumi:"executorSize"`
 	// The main file used for the job, which will override the 'file' of the spark job definition you provide. Type: string (or Expression with resultType string).
 	File interface{} `pulumi:"file"`
-	// Additional files used for reference in the main definition file, which will override the 'files' of the spark job definition you provide.
+	// (Deprecated. Please use pythonCodeReference and filesV2) Additional files used for reference in the main definition file, which will override the 'files' of the spark job definition you provide.
 	Files []interface{} `pulumi:"files"`
+	// Additional files used for reference in the main definition file, which will override the 'jars' and 'files' of the spark job definition you provide.
+	FilesV2 []interface{} `pulumi:"filesV2"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -1148,6 +1150,8 @@ type SynapseSparkJobDefinitionActivity struct {
 	NumExecutors *int `pulumi:"numExecutors"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
+	PythonCodeReference []interface{} `pulumi:"pythonCodeReference"`
 	// Synapse spark job reference.
 	SparkJob SynapseSparkJobReference `pulumi:"sparkJob"`
 	// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
@@ -1177,8 +1181,10 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 	ExecutorSize interface{} `pulumi:"executorSize"`
 	// The main file used for the job, which will override the 'file' of the spark job definition you provide. Type: string (or Expression with resultType string).
 	File interface{} `pulumi:"file"`
-	// Additional files used for reference in the main definition file, which will override the 'files' of the spark job definition you provide.
+	// (Deprecated. Please use pythonCodeReference and filesV2) Additional files used for reference in the main definition file, which will override the 'files' of the spark job definition you provide.
 	Files []interface{} `pulumi:"files"`
+	// Additional files used for reference in the main definition file, which will override the 'jars' and 'files' of the spark job definition you provide.
+	FilesV2 []interface{} `pulumi:"filesV2"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -1187,6 +1193,8 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 	NumExecutors *int `pulumi:"numExecutors"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
+	PythonCodeReference []interface{} `pulumi:"pythonCodeReference"`
 	// Synapse spark job reference.
 	SparkJob SynapseSparkJobReferenceResponse `pulumi:"sparkJob"`
 	// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
@@ -1200,16 +1208,16 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 
 // Synapse spark job reference type.
 type SynapseSparkJobReference struct {
-	// Reference spark job name.
-	ReferenceName string `pulumi:"referenceName"`
+	// Reference spark job name. Expression with resultType string.
+	ReferenceName interface{} `pulumi:"referenceName"`
 	// Synapse spark job reference type.
 	Type string `pulumi:"type"`
 }
 
 // Synapse spark job reference type.
 type SynapseSparkJobReferenceResponse struct {
-	// Reference spark job name.
-	ReferenceName string `pulumi:"referenceName"`
+	// Reference spark job name. Expression with resultType string.
+	ReferenceName interface{} `pulumi:"referenceName"`
 	// Synapse spark job reference type.
 	Type string `pulumi:"type"`
 }

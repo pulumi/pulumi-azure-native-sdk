@@ -54,7 +54,7 @@ type LookupContainerAppResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Outbound IP Addresses for container app.
-	OutboundIPAddresses []string `pulumi:"outboundIPAddresses"`
+	OutboundIpAddresses []string `pulumi:"outboundIpAddresses"`
 	// Provisioning state of the Container App.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -180,8 +180,8 @@ func (o LookupContainerAppResultOutput) Name() pulumi.StringOutput {
 }
 
 // Outbound IP Addresses for container app.
-func (o LookupContainerAppResultOutput) OutboundIPAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupContainerAppResult) []string { return v.OutboundIPAddresses }).(pulumi.StringArrayOutput)
+func (o LookupContainerAppResultOutput) OutboundIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) []string { return v.OutboundIpAddresses }).(pulumi.StringArrayOutput)
 }
 
 // Provisioning state of the Container App.

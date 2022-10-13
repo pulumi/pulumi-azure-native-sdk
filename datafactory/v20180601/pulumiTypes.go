@@ -4902,6 +4902,8 @@ type AzureSynapseArtifactsLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'AzureSynapseArtifacts'.
 	Type string `pulumi:"type"`
+	// The resource ID of the Synapse workspace. The format should be: /subscriptions/{subscriptionID}/resourceGroups/{resourceGroup}/providers/Microsoft.Synapse/workspaces/{workspaceName}. Type: string (or Expression with resultType string).
+	WorkspaceResourceId interface{} `pulumi:"workspaceResourceId"`
 }
 
 // Azure Synapse Analytics (Artifacts) linked service.
@@ -4921,6 +4923,8 @@ type AzureSynapseArtifactsLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'AzureSynapseArtifacts'.
 	Type string `pulumi:"type"`
+	// The resource ID of the Synapse workspace. The format should be: /subscriptions/{subscriptionID}/resourceGroups/{resourceGroup}/providers/Microsoft.Synapse/workspaces/{workspaceName}. Type: string (or Expression with resultType string).
+	WorkspaceResourceId interface{} `pulumi:"workspaceResourceId"`
 }
 
 // The Azure Table storage dataset.

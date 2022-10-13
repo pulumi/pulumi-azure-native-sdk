@@ -4496,6 +4496,12 @@ func (val *Configuration) Defaults() *Configuration {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.ActiveRevisionsMode) {
+		activeRevisionsMode_ := "Single"
+		tmp.ActiveRevisionsMode = &activeRevisionsMode_
+	}
+	tmp.Dapr = tmp.Dapr.Defaults()
+
 	tmp.Ingress = tmp.Ingress.Defaults()
 
 	return &tmp
@@ -4535,6 +4541,9 @@ func (val *ConfigurationArgs) Defaults() *ConfigurationArgs {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.ActiveRevisionsMode) {
+		tmp.ActiveRevisionsMode = pulumi.StringPtr("Single")
+	}
 
 	return &tmp
 }
@@ -4755,6 +4764,12 @@ func (val *ConfigurationResponse) Defaults() *ConfigurationResponse {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.ActiveRevisionsMode) {
+		activeRevisionsMode_ := "Single"
+		tmp.ActiveRevisionsMode = &activeRevisionsMode_
+	}
+	tmp.Dapr = tmp.Dapr.Defaults()
+
 	tmp.Ingress = tmp.Ingress.Defaults()
 
 	return &tmp
@@ -7981,6 +7996,23 @@ type Dapr struct {
 	LogLevel *string `pulumi:"logLevel"`
 }
 
+// Defaults sets the appropriate defaults for Dapr
+func (val *Dapr) Defaults() *Dapr {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AppProtocol) {
+		appProtocol_ := "http"
+		tmp.AppProtocol = &appProtocol_
+	}
+	if isZero(tmp.Enabled) {
+		enabled_ := false
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
 // DaprInput is an input type that accepts DaprArgs and DaprOutput values.
 // You can construct a concrete instance of `DaprInput` via:
 //
@@ -8012,6 +8044,20 @@ type DaprArgs struct {
 	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
 }
 
+// Defaults sets the appropriate defaults for DaprArgs
+func (val *DaprArgs) Defaults() *DaprArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AppProtocol) {
+		tmp.AppProtocol = pulumi.StringPtr("http")
+	}
+	if isZero(tmp.Enabled) {
+		tmp.Enabled = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (DaprArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Dapr)(nil)).Elem()
 }
@@ -8430,6 +8476,23 @@ type DaprResponse struct {
 	HttpReadBufferSize *int `pulumi:"httpReadBufferSize"`
 	// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
 	LogLevel *string `pulumi:"logLevel"`
+}
+
+// Defaults sets the appropriate defaults for DaprResponse
+func (val *DaprResponse) Defaults() *DaprResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AppProtocol) {
+		appProtocol_ := "http"
+		tmp.AppProtocol = &appProtocol_
+	}
+	if isZero(tmp.Enabled) {
+		enabled_ := false
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
 }
 
 // Container App Dapr configuration.
@@ -12536,9 +12599,17 @@ func (val *Ingress) Defaults() *Ingress {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.AllowInsecure) {
+		allowInsecure_ := false
+		tmp.AllowInsecure = &allowInsecure_
+	}
 	if isZero(tmp.External) {
 		external_ := false
 		tmp.External = &external_
+	}
+	if isZero(tmp.Transport) {
+		transport_ := "auto"
+		tmp.Transport = &transport_
 	}
 	return &tmp
 }
@@ -12580,8 +12651,14 @@ func (val *IngressArgs) Defaults() *IngressArgs {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.AllowInsecure) {
+		tmp.AllowInsecure = pulumi.BoolPtr(false)
+	}
 	if isZero(tmp.External) {
 		tmp.External = pulumi.BoolPtr(false)
+	}
+	if isZero(tmp.Transport) {
+		tmp.Transport = pulumi.StringPtr("auto")
 	}
 	return &tmp
 }
@@ -12835,9 +12912,17 @@ func (val *IngressResponse) Defaults() *IngressResponse {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.AllowInsecure) {
+		allowInsecure_ := false
+		tmp.AllowInsecure = &allowInsecure_
+	}
 	if isZero(tmp.External) {
 		external_ := false
 		tmp.External = &external_
+	}
+	if isZero(tmp.Transport) {
+		transport_ := "auto"
+		tmp.Transport = &transport_
 	}
 	return &tmp
 }
