@@ -50,7 +50,7 @@ type LookupVirtualMachineScaleSetVMExtensionResult struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault interface{} `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReferenceResponse `pulumi:"protectedSettingsFromKeyVault"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The name of the extension handler publisher.
@@ -148,10 +148,10 @@ func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) ProtectedSettings()
 }
 
 // The extensions protected settings that are passed by reference, and consumed from key vault
-func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) ProtectedSettingsFromKeyVault() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) interface{} {
+func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) *KeyVaultSecretReferenceResponse {
 		return v.ProtectedSettingsFromKeyVault
-	}).(pulumi.AnyOutput)
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
 }
 
 // The provisioning state, which only appears in the response.

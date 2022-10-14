@@ -30,7 +30,7 @@ type VirtualMachineExtension struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.AnyOutput `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault pulumi.AnyOutput `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferenceResponsePtrOutput `pulumi:"protectedSettingsFromKeyVault"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The name of the extension handler publisher.
@@ -165,7 +165,7 @@ type virtualMachineExtensionArgs struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault interface{} `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
 	// The name of the extension handler publisher.
 	Publisher *string `pulumi:"publisher"`
 	// The name of the resource group.
@@ -201,7 +201,7 @@ type VirtualMachineExtensionArgs struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.Input
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault pulumi.Input
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput
 	// The name of the extension handler publisher.
 	Publisher pulumi.StringPtrInput
 	// The name of the resource group.
@@ -297,8 +297,10 @@ func (o VirtualMachineExtensionOutput) ProtectedSettings() pulumi.AnyOutput {
 }
 
 // The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineExtensionOutput) ProtectedSettingsFromKeyVault() pulumi.AnyOutput {
-	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.AnyOutput { return v.ProtectedSettingsFromKeyVault }).(pulumi.AnyOutput)
+func (o VirtualMachineExtensionOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineExtension) KeyVaultSecretReferenceResponsePtrOutput {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
 }
 
 // The provisioning state, which only appears in the response.

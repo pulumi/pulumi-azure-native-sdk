@@ -9987,6 +9987,8 @@ type FactoryGitHubConfiguration struct {
 	ClientSecret *GitHubClientSecret `pulumi:"clientSecret"`
 	// Collaboration branch.
 	CollaborationBranch string `pulumi:"collaborationBranch"`
+	// Disable manual publish operation in ADF studio to favor automated publish.
+	DisablePublish *bool `pulumi:"disablePublish"`
 	// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 	HostName *string `pulumi:"hostName"`
 	// Last commit id.
@@ -10010,6 +10012,8 @@ type FactoryGitHubConfigurationResponse struct {
 	ClientSecret *GitHubClientSecretResponse `pulumi:"clientSecret"`
 	// Collaboration branch.
 	CollaborationBranch string `pulumi:"collaborationBranch"`
+	// Disable manual publish operation in ADF studio to favor automated publish.
+	DisablePublish *bool `pulumi:"disablePublish"`
 	// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 	HostName *string `pulumi:"hostName"`
 	// Last commit id.
@@ -10299,6 +10303,8 @@ type FactoryVSTSConfiguration struct {
 	AccountName string `pulumi:"accountName"`
 	// Collaboration branch.
 	CollaborationBranch string `pulumi:"collaborationBranch"`
+	// Disable manual publish operation in ADF studio to favor automated publish.
+	DisablePublish *bool `pulumi:"disablePublish"`
 	// Last commit id.
 	LastCommitId *string `pulumi:"lastCommitId"`
 	// VSTS project name.
@@ -10320,6 +10326,8 @@ type FactoryVSTSConfigurationResponse struct {
 	AccountName string `pulumi:"accountName"`
 	// Collaboration branch.
 	CollaborationBranch string `pulumi:"collaborationBranch"`
+	// Disable manual publish operation in ADF studio to favor automated publish.
+	DisablePublish *bool `pulumi:"disablePublish"`
 	// Last commit id.
 	LastCommitId *string `pulumi:"lastCommitId"`
 	// VSTS project name.
