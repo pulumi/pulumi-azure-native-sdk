@@ -93,6 +93,9 @@ func NewApiIssueAttachment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20211201preview:ApiIssueAttachment"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiIssueAttachment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiIssueAttachment
