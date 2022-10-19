@@ -16488,7 +16488,7 @@ type ScriptReference struct {
 	ScriptArguments *string `pulumi:"scriptArguments"`
 	// The location of scripts in the mounted volume.
 	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
+	// The storage source of the script: workspace.
 	ScriptSource *string `pulumi:"scriptSource"`
 	// Optional time period passed to timeout command.
 	Timeout *string `pulumi:"timeout"`
@@ -16500,7 +16500,7 @@ type ScriptReferenceResponse struct {
 	ScriptArguments *string `pulumi:"scriptArguments"`
 	// The location of scripts in the mounted volume.
 	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
+	// The storage source of the script: workspace.
 	ScriptSource *string `pulumi:"scriptSource"`
 	// Optional time period passed to timeout command.
 	Timeout *string `pulumi:"timeout"`
