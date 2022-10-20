@@ -17687,7 +17687,7 @@ type VirtualMachineExtensionResponse struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault interface{} `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReferenceResponse `pulumi:"protectedSettingsFromKeyVault"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The name of the extension handler publisher.
@@ -17762,8 +17762,10 @@ func (o VirtualMachineExtensionResponseOutput) ProtectedSettings() pulumi.AnyOut
 }
 
 // The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineExtensionResponseOutput) ProtectedSettingsFromKeyVault() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) interface{} { return v.ProtectedSettingsFromKeyVault }).(pulumi.AnyOutput)
+func (o VirtualMachineExtensionResponseOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineExtensionResponse) *KeyVaultSecretReferenceResponse {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -20641,7 +20643,7 @@ type VirtualMachineScaleSetExtensionType struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault interface{} `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
 	// The name of the extension handler publisher.
@@ -20680,7 +20682,7 @@ type VirtualMachineScaleSetExtensionTypeArgs struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault pulumi.Input `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput `pulumi:"protectedSettingsFromKeyVault"`
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions pulumi.StringArrayInput `pulumi:"provisionAfterExtensions"`
 	// The name of the extension handler publisher.
@@ -20773,8 +20775,10 @@ func (o VirtualMachineScaleSetExtensionTypeOutput) ProtectedSettings() pulumi.An
 }
 
 // The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineScaleSetExtensionTypeOutput) ProtectedSettingsFromKeyVault() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionType) interface{} { return v.ProtectedSettingsFromKeyVault }).(pulumi.AnyOutput)
+func (o VirtualMachineScaleSetExtensionTypeOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferencePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionType) *KeyVaultSecretReference {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferencePtrOutput)
 }
 
 // Collection of extension names after which this extension needs to be provisioned.
@@ -21082,7 +21086,7 @@ type VirtualMachineScaleSetExtensionResponse struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault interface{} `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReferenceResponse `pulumi:"protectedSettingsFromKeyVault"`
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
 	// The provisioning state, which only appears in the response.
@@ -21145,8 +21149,10 @@ func (o VirtualMachineScaleSetExtensionResponseOutput) ProtectedSettings() pulum
 }
 
 // The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineScaleSetExtensionResponseOutput) ProtectedSettingsFromKeyVault() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) interface{} { return v.ProtectedSettingsFromKeyVault }).(pulumi.AnyOutput)
+func (o VirtualMachineScaleSetExtensionResponseOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *KeyVaultSecretReferenceResponse {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
 }
 
 // Collection of extension names after which this extension needs to be provisioned.
