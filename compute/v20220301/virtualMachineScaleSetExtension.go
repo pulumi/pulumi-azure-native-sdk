@@ -26,7 +26,7 @@ type VirtualMachineScaleSetExtension struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.AnyOutput `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault pulumi.AnyOutput `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferenceResponsePtrOutput `pulumi:"protectedSettingsFromKeyVault"`
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions pulumi.StringArrayOutput `pulumi:"provisionAfterExtensions"`
 	// The provisioning state, which only appears in the response.
@@ -150,7 +150,7 @@ type virtualMachineScaleSetExtensionArgs struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault interface{} `pulumi:"protectedSettingsFromKeyVault"`
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
 	// The name of the extension handler publisher.
@@ -184,7 +184,7 @@ type VirtualMachineScaleSetExtensionArgs struct {
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.Input
 	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault pulumi.Input
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions pulumi.StringArrayInput
 	// The name of the extension handler publisher.
@@ -268,8 +268,10 @@ func (o VirtualMachineScaleSetExtensionOutput) ProtectedSettings() pulumi.AnyOut
 }
 
 // The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineScaleSetExtensionOutput) ProtectedSettingsFromKeyVault() pulumi.AnyOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetExtension) pulumi.AnyOutput { return v.ProtectedSettingsFromKeyVault }).(pulumi.AnyOutput)
+func (o VirtualMachineScaleSetExtensionOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtension) KeyVaultSecretReferenceResponsePtrOutput {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
 }
 
 // Collection of extension names after which this extension needs to be provisioned.

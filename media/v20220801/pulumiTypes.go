@@ -2228,7 +2228,7 @@ type ContentKeyPolicyClearKeyConfigurationResponse struct {
 
 // Specifies a configuration for FairPlay licenses.
 type ContentKeyPolicyFairPlayConfiguration struct {
-	// The key that must be used as FairPlay Application Secret key.
+	// The key that must be used as FairPlay Application Secret key. This needs to be base64 encoded.
 	Ask string `pulumi:"ask"`
 	// The Base64 representation of FairPlay certificate in PKCS 12 (pfx) format (including private key).
 	FairPlayPfx string `pulumi:"fairPlayPfx"`
@@ -2247,7 +2247,7 @@ type ContentKeyPolicyFairPlayConfiguration struct {
 
 // Specifies a configuration for FairPlay licenses.
 type ContentKeyPolicyFairPlayConfigurationResponse struct {
-	// The key that must be used as FairPlay Application Secret key.
+	// The key that must be used as FairPlay Application Secret key. This needs to be base64 encoded.
 	Ask string `pulumi:"ask"`
 	// The Base64 representation of FairPlay certificate in PKCS 12 (pfx) format (including private key).
 	FairPlayPfx string `pulumi:"fairPlayPfx"`
