@@ -12,11 +12,15 @@ import (
 
 // A Machine Learning compute based on AKS.
 type AKS struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'AKS'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// AKS properties
 	Properties *AKSSchemaProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
@@ -37,7 +41,7 @@ func (val *AKS) Defaults() *AKS {
 // A Machine Learning compute based on AKS.
 type AKSResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'AKS'.
 	ComputeType string `pulumi:"computeType"`
@@ -46,7 +50,7 @@ type AKSResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -199,11 +203,15 @@ type AksNetworkingConfigurationResponse struct {
 
 // An Azure Machine Learning compute.
 type AmlCompute struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'AmlCompute'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Properties of AmlCompute
 	Properties *AmlComputeProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
@@ -415,7 +423,7 @@ func (val *AmlComputePropertiesResponse) Defaults() *AmlComputePropertiesRespons
 // An Azure Machine Learning compute.
 type AmlComputeResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'AmlCompute'.
 	ComputeType string `pulumi:"computeType"`
@@ -424,7 +432,7 @@ type AmlComputeResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -3508,11 +3516,15 @@ func (o ComponentVersionResponseOutput) Tags() pulumi.StringMapOutput {
 
 // An Azure Machine Learning compute instance.
 type ComputeInstance struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'ComputeInstance'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Properties of ComputeInstance
 	Properties *ComputeInstanceProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
@@ -3742,7 +3754,7 @@ func (val *ComputeInstancePropertiesResponse) Defaults() *ComputeInstancePropert
 // An Azure Machine Learning compute instance.
 type ComputeInstanceResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'ComputeInstance'.
 	ComputeType string `pulumi:"computeType"`
@@ -3751,7 +3763,7 @@ type ComputeInstanceResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -4379,11 +4391,15 @@ func (o DataContainerResponseOutput) Tags() pulumi.StringMapOutput {
 
 // A DataFactory compute.
 type DataFactory struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'DataFactory'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// ARM resource id of the underlying compute
 	ResourceId *string `pulumi:"resourceId"`
 }
@@ -4391,7 +4407,7 @@ type DataFactory struct {
 // A DataFactory compute.
 type DataFactoryResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'DataFactory'.
 	ComputeType string `pulumi:"computeType"`
@@ -4400,7 +4416,7 @@ type DataFactoryResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -4415,12 +4431,16 @@ type DataFactoryResponse struct {
 
 // A DataLakeAnalytics compute.
 type DataLakeAnalytics struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'DataLakeAnalytics'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
-	Description *string                            `pulumi:"description"`
-	Properties  *DataLakeAnalyticsSchemaProperties `pulumi:"properties"`
+	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool                              `pulumi:"disableLocalAuth"`
+	Properties       *DataLakeAnalyticsSchemaProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
 	ResourceId *string `pulumi:"resourceId"`
 }
@@ -4428,7 +4448,7 @@ type DataLakeAnalytics struct {
 // A DataLakeAnalytics compute.
 type DataLakeAnalyticsResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'DataLakeAnalytics'.
 	ComputeType string `pulumi:"computeType"`
@@ -4437,7 +4457,7 @@ type DataLakeAnalyticsResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -4485,11 +4505,15 @@ type DataPathAssetReferenceResponse struct {
 
 // A DataFactory compute.
 type Databricks struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'Databricks'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Properties of Databricks
 	Properties *DatabricksProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
@@ -4515,7 +4539,7 @@ type DatabricksPropertiesResponse struct {
 // A DataFactory compute.
 type DatabricksResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'Databricks'.
 	ComputeType string `pulumi:"computeType"`
@@ -4524,7 +4548,7 @@ type DatabricksResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -5913,11 +5937,15 @@ type GridSamplingAlgorithmResponse struct {
 
 // A HDInsight compute.
 type HDInsight struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'HDInsight'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// HDInsight compute properties
 	Properties *HDInsightProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
@@ -5947,7 +5975,7 @@ type HDInsightPropertiesResponse struct {
 // A HDInsight compute.
 type HDInsightResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'HDInsight'.
 	ComputeType string `pulumi:"computeType"`
@@ -5956,7 +5984,7 @@ type HDInsightResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -6518,11 +6546,15 @@ type JobServiceResponse struct {
 
 // A Machine Learning compute based on Kubernetes Compute.
 type Kubernetes struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'Kubernetes'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Properties of Kubernetes
 	Properties *KubernetesProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
@@ -6725,7 +6757,7 @@ func (val *KubernetesPropertiesResponse) Defaults() *KubernetesPropertiesRespons
 // A Machine Learning compute based on Kubernetes Compute.
 type KubernetesResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'Kubernetes'.
 	ComputeType string `pulumi:"computeType"`
@@ -6734,7 +6766,7 @@ type KubernetesResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -10829,12 +10861,16 @@ func (val *SweepJobResponse) Defaults() *SweepJobResponse {
 
 // A SynapseSpark compute.
 type SynapseSpark struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'SynapseSpark'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
-	Description *string                 `pulumi:"description"`
-	Properties  *SynapseSparkProperties `pulumi:"properties"`
+	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool                   `pulumi:"disableLocalAuth"`
+	Properties       *SynapseSparkProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
 	ResourceId *string `pulumi:"resourceId"`
 }
@@ -10865,7 +10901,7 @@ type SynapseSparkProperties struct {
 // A SynapseSpark compute.
 type SynapseSparkResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'SynapseSpark'.
 	ComputeType string `pulumi:"computeType"`
@@ -10874,7 +10910,7 @@ type SynapseSparkResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
@@ -11787,12 +11823,16 @@ type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
 
 // A Machine Learning compute based on Azure Virtual Machines.
 type VirtualMachine struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'VirtualMachine'.
 	ComputeType string `pulumi:"computeType"`
 	// The description of the Machine Learning compute.
-	Description *string                         `pulumi:"description"`
-	Properties  *VirtualMachineSchemaProperties `pulumi:"properties"`
+	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool                           `pulumi:"disableLocalAuth"`
+	Properties       *VirtualMachineSchemaProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
 	ResourceId *string `pulumi:"resourceId"`
 }
@@ -11812,7 +11852,7 @@ type VirtualMachineImageResponse struct {
 // A Machine Learning compute based on Azure Virtual Machines.
 type VirtualMachineResponse struct {
 	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
+	ComputeLocation *string `pulumi:"computeLocation"`
 	// The type of compute
 	// Expected value is 'VirtualMachine'.
 	ComputeType string `pulumi:"computeType"`
@@ -11821,7 +11861,7 @@ type VirtualMachineResponse struct {
 	// The description of the Machine Learning compute.
 	Description *string `pulumi:"description"`
 	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth bool `pulumi:"disableLocalAuth"`
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
