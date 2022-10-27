@@ -35,7 +35,7 @@ const (
 	ClientTypeDjango            = ClientType("django")
 	ClientTypeNodejs            = ClientType("nodejs")
 	ClientTypeSpringBoot        = ClientType("springBoot")
-	ClientType_Kafka_springBoot = ClientType("kafka-springBoot")
+	ClientType_Kafka_SpringBoot = ClientType("kafka-springBoot")
 )
 
 // The secret type.
