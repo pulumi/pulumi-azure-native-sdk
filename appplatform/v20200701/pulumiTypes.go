@@ -1076,6 +1076,929 @@ func (o ClusterResourcePropertiesResponseOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterResourcePropertiesResponse) int { return v.Version }).(pulumi.IntOutput)
 }
 
+// Property of git.
+type ConfigServerGitProperty struct {
+	// Public sshKey of git repository.
+	HostKey *string `pulumi:"hostKey"`
+	// SshKey algorithm of git repository.
+	HostKeyAlgorithm *string `pulumi:"hostKeyAlgorithm"`
+	// Label of the repository
+	Label *string `pulumi:"label"`
+	// Password of git repository basic auth.
+	Password *string `pulumi:"password"`
+	// Private sshKey algorithm of git repository.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Repositories of git.
+	Repositories []GitPatternRepository `pulumi:"repositories"`
+	// Searching path of the repository
+	SearchPaths []string `pulumi:"searchPaths"`
+	// Strict host key checking or not.
+	StrictHostKeyChecking *bool `pulumi:"strictHostKeyChecking"`
+	// URI of the repository
+	Uri string `pulumi:"uri"`
+	// Username of git repository basic auth.
+	Username *string `pulumi:"username"`
+}
+
+// ConfigServerGitPropertyInput is an input type that accepts ConfigServerGitPropertyArgs and ConfigServerGitPropertyOutput values.
+// You can construct a concrete instance of `ConfigServerGitPropertyInput` via:
+//
+//	ConfigServerGitPropertyArgs{...}
+type ConfigServerGitPropertyInput interface {
+	pulumi.Input
+
+	ToConfigServerGitPropertyOutput() ConfigServerGitPropertyOutput
+	ToConfigServerGitPropertyOutputWithContext(context.Context) ConfigServerGitPropertyOutput
+}
+
+// Property of git.
+type ConfigServerGitPropertyArgs struct {
+	// Public sshKey of git repository.
+	HostKey pulumi.StringPtrInput `pulumi:"hostKey"`
+	// SshKey algorithm of git repository.
+	HostKeyAlgorithm pulumi.StringPtrInput `pulumi:"hostKeyAlgorithm"`
+	// Label of the repository
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Password of git repository basic auth.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Private sshKey algorithm of git repository.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Repositories of git.
+	Repositories GitPatternRepositoryArrayInput `pulumi:"repositories"`
+	// Searching path of the repository
+	SearchPaths pulumi.StringArrayInput `pulumi:"searchPaths"`
+	// Strict host key checking or not.
+	StrictHostKeyChecking pulumi.BoolPtrInput `pulumi:"strictHostKeyChecking"`
+	// URI of the repository
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// Username of git repository basic auth.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConfigServerGitPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerGitProperty)(nil)).Elem()
+}
+
+func (i ConfigServerGitPropertyArgs) ToConfigServerGitPropertyOutput() ConfigServerGitPropertyOutput {
+	return i.ToConfigServerGitPropertyOutputWithContext(context.Background())
+}
+
+func (i ConfigServerGitPropertyArgs) ToConfigServerGitPropertyOutputWithContext(ctx context.Context) ConfigServerGitPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerGitPropertyOutput)
+}
+
+func (i ConfigServerGitPropertyArgs) ToConfigServerGitPropertyPtrOutput() ConfigServerGitPropertyPtrOutput {
+	return i.ToConfigServerGitPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigServerGitPropertyArgs) ToConfigServerGitPropertyPtrOutputWithContext(ctx context.Context) ConfigServerGitPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerGitPropertyOutput).ToConfigServerGitPropertyPtrOutputWithContext(ctx)
+}
+
+// ConfigServerGitPropertyPtrInput is an input type that accepts ConfigServerGitPropertyArgs, ConfigServerGitPropertyPtr and ConfigServerGitPropertyPtrOutput values.
+// You can construct a concrete instance of `ConfigServerGitPropertyPtrInput` via:
+//
+//	        ConfigServerGitPropertyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigServerGitPropertyPtrInput interface {
+	pulumi.Input
+
+	ToConfigServerGitPropertyPtrOutput() ConfigServerGitPropertyPtrOutput
+	ToConfigServerGitPropertyPtrOutputWithContext(context.Context) ConfigServerGitPropertyPtrOutput
+}
+
+type configServerGitPropertyPtrType ConfigServerGitPropertyArgs
+
+func ConfigServerGitPropertyPtr(v *ConfigServerGitPropertyArgs) ConfigServerGitPropertyPtrInput {
+	return (*configServerGitPropertyPtrType)(v)
+}
+
+func (*configServerGitPropertyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerGitProperty)(nil)).Elem()
+}
+
+func (i *configServerGitPropertyPtrType) ToConfigServerGitPropertyPtrOutput() ConfigServerGitPropertyPtrOutput {
+	return i.ToConfigServerGitPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i *configServerGitPropertyPtrType) ToConfigServerGitPropertyPtrOutputWithContext(ctx context.Context) ConfigServerGitPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerGitPropertyPtrOutput)
+}
+
+// Property of git.
+type ConfigServerGitPropertyOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerGitPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerGitProperty)(nil)).Elem()
+}
+
+func (o ConfigServerGitPropertyOutput) ToConfigServerGitPropertyOutput() ConfigServerGitPropertyOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyOutput) ToConfigServerGitPropertyOutputWithContext(ctx context.Context) ConfigServerGitPropertyOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyOutput) ToConfigServerGitPropertyPtrOutput() ConfigServerGitPropertyPtrOutput {
+	return o.ToConfigServerGitPropertyPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigServerGitPropertyOutput) ToConfigServerGitPropertyPtrOutputWithContext(ctx context.Context) ConfigServerGitPropertyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigServerGitProperty) *ConfigServerGitProperty {
+		return &v
+	}).(ConfigServerGitPropertyPtrOutput)
+}
+
+// Public sshKey of git repository.
+func (o ConfigServerGitPropertyOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *string { return v.HostKey }).(pulumi.StringPtrOutput)
+}
+
+// SshKey algorithm of git repository.
+func (o ConfigServerGitPropertyOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *string { return v.HostKeyAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Label of the repository
+func (o ConfigServerGitPropertyOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Password of git repository basic auth.
+func (o ConfigServerGitPropertyOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Private sshKey algorithm of git repository.
+func (o ConfigServerGitPropertyOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Repositories of git.
+func (o ConfigServerGitPropertyOutput) Repositories() GitPatternRepositoryArrayOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) []GitPatternRepository { return v.Repositories }).(GitPatternRepositoryArrayOutput)
+}
+
+// Searching path of the repository
+func (o ConfigServerGitPropertyOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) []string { return v.SearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// Strict host key checking or not.
+func (o ConfigServerGitPropertyOutput) StrictHostKeyChecking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *bool { return v.StrictHostKeyChecking }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the repository
+func (o ConfigServerGitPropertyOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username of git repository basic auth.
+func (o ConfigServerGitPropertyOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitProperty) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConfigServerGitPropertyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerGitPropertyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerGitProperty)(nil)).Elem()
+}
+
+func (o ConfigServerGitPropertyPtrOutput) ToConfigServerGitPropertyPtrOutput() ConfigServerGitPropertyPtrOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyPtrOutput) ToConfigServerGitPropertyPtrOutputWithContext(ctx context.Context) ConfigServerGitPropertyPtrOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyPtrOutput) Elem() ConfigServerGitPropertyOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) ConfigServerGitProperty {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigServerGitProperty
+		return ret
+	}).(ConfigServerGitPropertyOutput)
+}
+
+// Public sshKey of git repository.
+func (o ConfigServerGitPropertyPtrOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// SshKey algorithm of git repository.
+func (o ConfigServerGitPropertyPtrOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostKeyAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label of the repository
+func (o ConfigServerGitPropertyPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of git repository basic auth.
+func (o ConfigServerGitPropertyPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private sshKey algorithm of git repository.
+func (o ConfigServerGitPropertyPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repositories of git.
+func (o ConfigServerGitPropertyPtrOutput) Repositories() GitPatternRepositoryArrayOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) []GitPatternRepository {
+		if v == nil {
+			return nil
+		}
+		return v.Repositories
+	}).(GitPatternRepositoryArrayOutput)
+}
+
+// Searching path of the repository
+func (o ConfigServerGitPropertyPtrOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchPaths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Strict host key checking or not.
+func (o ConfigServerGitPropertyPtrOutput) StrictHostKeyChecking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictHostKeyChecking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the repository
+func (o ConfigServerGitPropertyPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username of git repository basic auth.
+func (o ConfigServerGitPropertyPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property of git.
+type ConfigServerGitPropertyResponse struct {
+	// Public sshKey of git repository.
+	HostKey *string `pulumi:"hostKey"`
+	// SshKey algorithm of git repository.
+	HostKeyAlgorithm *string `pulumi:"hostKeyAlgorithm"`
+	// Label of the repository
+	Label *string `pulumi:"label"`
+	// Password of git repository basic auth.
+	Password *string `pulumi:"password"`
+	// Private sshKey algorithm of git repository.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Repositories of git.
+	Repositories []GitPatternRepositoryResponse `pulumi:"repositories"`
+	// Searching path of the repository
+	SearchPaths []string `pulumi:"searchPaths"`
+	// Strict host key checking or not.
+	StrictHostKeyChecking *bool `pulumi:"strictHostKeyChecking"`
+	// URI of the repository
+	Uri string `pulumi:"uri"`
+	// Username of git repository basic auth.
+	Username *string `pulumi:"username"`
+}
+
+// Property of git.
+type ConfigServerGitPropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerGitPropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerGitPropertyResponse)(nil)).Elem()
+}
+
+func (o ConfigServerGitPropertyResponseOutput) ToConfigServerGitPropertyResponseOutput() ConfigServerGitPropertyResponseOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyResponseOutput) ToConfigServerGitPropertyResponseOutputWithContext(ctx context.Context) ConfigServerGitPropertyResponseOutput {
+	return o
+}
+
+// Public sshKey of git repository.
+func (o ConfigServerGitPropertyResponseOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *string { return v.HostKey }).(pulumi.StringPtrOutput)
+}
+
+// SshKey algorithm of git repository.
+func (o ConfigServerGitPropertyResponseOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *string { return v.HostKeyAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Label of the repository
+func (o ConfigServerGitPropertyResponseOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Password of git repository basic auth.
+func (o ConfigServerGitPropertyResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Private sshKey algorithm of git repository.
+func (o ConfigServerGitPropertyResponseOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Repositories of git.
+func (o ConfigServerGitPropertyResponseOutput) Repositories() GitPatternRepositoryResponseArrayOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) []GitPatternRepositoryResponse { return v.Repositories }).(GitPatternRepositoryResponseArrayOutput)
+}
+
+// Searching path of the repository
+func (o ConfigServerGitPropertyResponseOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) []string { return v.SearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// Strict host key checking or not.
+func (o ConfigServerGitPropertyResponseOutput) StrictHostKeyChecking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *bool { return v.StrictHostKeyChecking }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the repository
+func (o ConfigServerGitPropertyResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username of git repository basic auth.
+func (o ConfigServerGitPropertyResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigServerGitPropertyResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConfigServerGitPropertyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerGitPropertyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerGitPropertyResponse)(nil)).Elem()
+}
+
+func (o ConfigServerGitPropertyResponsePtrOutput) ToConfigServerGitPropertyResponsePtrOutput() ConfigServerGitPropertyResponsePtrOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyResponsePtrOutput) ToConfigServerGitPropertyResponsePtrOutputWithContext(ctx context.Context) ConfigServerGitPropertyResponsePtrOutput {
+	return o
+}
+
+func (o ConfigServerGitPropertyResponsePtrOutput) Elem() ConfigServerGitPropertyResponseOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) ConfigServerGitPropertyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigServerGitPropertyResponse
+		return ret
+	}).(ConfigServerGitPropertyResponseOutput)
+}
+
+// Public sshKey of git repository.
+func (o ConfigServerGitPropertyResponsePtrOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// SshKey algorithm of git repository.
+func (o ConfigServerGitPropertyResponsePtrOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostKeyAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label of the repository
+func (o ConfigServerGitPropertyResponsePtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of git repository basic auth.
+func (o ConfigServerGitPropertyResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private sshKey algorithm of git repository.
+func (o ConfigServerGitPropertyResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repositories of git.
+func (o ConfigServerGitPropertyResponsePtrOutput) Repositories() GitPatternRepositoryResponseArrayOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) []GitPatternRepositoryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Repositories
+	}).(GitPatternRepositoryResponseArrayOutput)
+}
+
+// Searching path of the repository
+func (o ConfigServerGitPropertyResponsePtrOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchPaths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Strict host key checking or not.
+func (o ConfigServerGitPropertyResponsePtrOutput) StrictHostKeyChecking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictHostKeyChecking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the repository
+func (o ConfigServerGitPropertyResponsePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username of git repository basic auth.
+func (o ConfigServerGitPropertyResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigServerGitPropertyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Config server git properties payload
+type ConfigServerProperties struct {
+	// Settings of config server.
+	ConfigServer *ConfigServerSettings `pulumi:"configServer"`
+	// Error when apply config server settings.
+	Error *Error `pulumi:"error"`
+}
+
+// ConfigServerPropertiesInput is an input type that accepts ConfigServerPropertiesArgs and ConfigServerPropertiesOutput values.
+// You can construct a concrete instance of `ConfigServerPropertiesInput` via:
+//
+//	ConfigServerPropertiesArgs{...}
+type ConfigServerPropertiesInput interface {
+	pulumi.Input
+
+	ToConfigServerPropertiesOutput() ConfigServerPropertiesOutput
+	ToConfigServerPropertiesOutputWithContext(context.Context) ConfigServerPropertiesOutput
+}
+
+// Config server git properties payload
+type ConfigServerPropertiesArgs struct {
+	// Settings of config server.
+	ConfigServer ConfigServerSettingsPtrInput `pulumi:"configServer"`
+	// Error when apply config server settings.
+	Error ErrorPtrInput `pulumi:"error"`
+}
+
+func (ConfigServerPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerProperties)(nil)).Elem()
+}
+
+func (i ConfigServerPropertiesArgs) ToConfigServerPropertiesOutput() ConfigServerPropertiesOutput {
+	return i.ToConfigServerPropertiesOutputWithContext(context.Background())
+}
+
+func (i ConfigServerPropertiesArgs) ToConfigServerPropertiesOutputWithContext(ctx context.Context) ConfigServerPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerPropertiesOutput)
+}
+
+func (i ConfigServerPropertiesArgs) ToConfigServerPropertiesPtrOutput() ConfigServerPropertiesPtrOutput {
+	return i.ToConfigServerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigServerPropertiesArgs) ToConfigServerPropertiesPtrOutputWithContext(ctx context.Context) ConfigServerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerPropertiesOutput).ToConfigServerPropertiesPtrOutputWithContext(ctx)
+}
+
+// ConfigServerPropertiesPtrInput is an input type that accepts ConfigServerPropertiesArgs, ConfigServerPropertiesPtr and ConfigServerPropertiesPtrOutput values.
+// You can construct a concrete instance of `ConfigServerPropertiesPtrInput` via:
+//
+//	        ConfigServerPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigServerPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToConfigServerPropertiesPtrOutput() ConfigServerPropertiesPtrOutput
+	ToConfigServerPropertiesPtrOutputWithContext(context.Context) ConfigServerPropertiesPtrOutput
+}
+
+type configServerPropertiesPtrType ConfigServerPropertiesArgs
+
+func ConfigServerPropertiesPtr(v *ConfigServerPropertiesArgs) ConfigServerPropertiesPtrInput {
+	return (*configServerPropertiesPtrType)(v)
+}
+
+func (*configServerPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerProperties)(nil)).Elem()
+}
+
+func (i *configServerPropertiesPtrType) ToConfigServerPropertiesPtrOutput() ConfigServerPropertiesPtrOutput {
+	return i.ToConfigServerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *configServerPropertiesPtrType) ToConfigServerPropertiesPtrOutputWithContext(ctx context.Context) ConfigServerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerPropertiesPtrOutput)
+}
+
+// Config server git properties payload
+type ConfigServerPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerProperties)(nil)).Elem()
+}
+
+func (o ConfigServerPropertiesOutput) ToConfigServerPropertiesOutput() ConfigServerPropertiesOutput {
+	return o
+}
+
+func (o ConfigServerPropertiesOutput) ToConfigServerPropertiesOutputWithContext(ctx context.Context) ConfigServerPropertiesOutput {
+	return o
+}
+
+func (o ConfigServerPropertiesOutput) ToConfigServerPropertiesPtrOutput() ConfigServerPropertiesPtrOutput {
+	return o.ToConfigServerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigServerPropertiesOutput) ToConfigServerPropertiesPtrOutputWithContext(ctx context.Context) ConfigServerPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigServerProperties) *ConfigServerProperties {
+		return &v
+	}).(ConfigServerPropertiesPtrOutput)
+}
+
+// Settings of config server.
+func (o ConfigServerPropertiesOutput) ConfigServer() ConfigServerSettingsPtrOutput {
+	return o.ApplyT(func(v ConfigServerProperties) *ConfigServerSettings { return v.ConfigServer }).(ConfigServerSettingsPtrOutput)
+}
+
+// Error when apply config server settings.
+func (o ConfigServerPropertiesOutput) Error() ErrorPtrOutput {
+	return o.ApplyT(func(v ConfigServerProperties) *Error { return v.Error }).(ErrorPtrOutput)
+}
+
+type ConfigServerPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerProperties)(nil)).Elem()
+}
+
+func (o ConfigServerPropertiesPtrOutput) ToConfigServerPropertiesPtrOutput() ConfigServerPropertiesPtrOutput {
+	return o
+}
+
+func (o ConfigServerPropertiesPtrOutput) ToConfigServerPropertiesPtrOutputWithContext(ctx context.Context) ConfigServerPropertiesPtrOutput {
+	return o
+}
+
+func (o ConfigServerPropertiesPtrOutput) Elem() ConfigServerPropertiesOutput {
+	return o.ApplyT(func(v *ConfigServerProperties) ConfigServerProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigServerProperties
+		return ret
+	}).(ConfigServerPropertiesOutput)
+}
+
+// Settings of config server.
+func (o ConfigServerPropertiesPtrOutput) ConfigServer() ConfigServerSettingsPtrOutput {
+	return o.ApplyT(func(v *ConfigServerProperties) *ConfigServerSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigServer
+	}).(ConfigServerSettingsPtrOutput)
+}
+
+// Error when apply config server settings.
+func (o ConfigServerPropertiesPtrOutput) Error() ErrorPtrOutput {
+	return o.ApplyT(func(v *ConfigServerProperties) *Error {
+		if v == nil {
+			return nil
+		}
+		return v.Error
+	}).(ErrorPtrOutput)
+}
+
+// Config server git properties payload
+type ConfigServerPropertiesResponse struct {
+	// Settings of config server.
+	ConfigServer *ConfigServerSettingsResponse `pulumi:"configServer"`
+	// Error when apply config server settings.
+	Error *ErrorResponse `pulumi:"error"`
+	// State of the config server.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Config server git properties payload
+type ConfigServerPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerPropertiesResponse)(nil)).Elem()
+}
+
+func (o ConfigServerPropertiesResponseOutput) ToConfigServerPropertiesResponseOutput() ConfigServerPropertiesResponseOutput {
+	return o
+}
+
+func (o ConfigServerPropertiesResponseOutput) ToConfigServerPropertiesResponseOutputWithContext(ctx context.Context) ConfigServerPropertiesResponseOutput {
+	return o
+}
+
+// Settings of config server.
+func (o ConfigServerPropertiesResponseOutput) ConfigServer() ConfigServerSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ConfigServerPropertiesResponse) *ConfigServerSettingsResponse { return v.ConfigServer }).(ConfigServerSettingsResponsePtrOutput)
+}
+
+// Error when apply config server settings.
+func (o ConfigServerPropertiesResponseOutput) Error() ErrorResponsePtrOutput {
+	return o.ApplyT(func(v ConfigServerPropertiesResponse) *ErrorResponse { return v.Error }).(ErrorResponsePtrOutput)
+}
+
+// State of the config server.
+func (o ConfigServerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigServerPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The settings of config server.
+type ConfigServerSettings struct {
+	// Property of git environment.
+	GitProperty *ConfigServerGitProperty `pulumi:"gitProperty"`
+}
+
+// ConfigServerSettingsInput is an input type that accepts ConfigServerSettingsArgs and ConfigServerSettingsOutput values.
+// You can construct a concrete instance of `ConfigServerSettingsInput` via:
+//
+//	ConfigServerSettingsArgs{...}
+type ConfigServerSettingsInput interface {
+	pulumi.Input
+
+	ToConfigServerSettingsOutput() ConfigServerSettingsOutput
+	ToConfigServerSettingsOutputWithContext(context.Context) ConfigServerSettingsOutput
+}
+
+// The settings of config server.
+type ConfigServerSettingsArgs struct {
+	// Property of git environment.
+	GitProperty ConfigServerGitPropertyPtrInput `pulumi:"gitProperty"`
+}
+
+func (ConfigServerSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerSettings)(nil)).Elem()
+}
+
+func (i ConfigServerSettingsArgs) ToConfigServerSettingsOutput() ConfigServerSettingsOutput {
+	return i.ToConfigServerSettingsOutputWithContext(context.Background())
+}
+
+func (i ConfigServerSettingsArgs) ToConfigServerSettingsOutputWithContext(ctx context.Context) ConfigServerSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerSettingsOutput)
+}
+
+func (i ConfigServerSettingsArgs) ToConfigServerSettingsPtrOutput() ConfigServerSettingsPtrOutput {
+	return i.ToConfigServerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigServerSettingsArgs) ToConfigServerSettingsPtrOutputWithContext(ctx context.Context) ConfigServerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerSettingsOutput).ToConfigServerSettingsPtrOutputWithContext(ctx)
+}
+
+// ConfigServerSettingsPtrInput is an input type that accepts ConfigServerSettingsArgs, ConfigServerSettingsPtr and ConfigServerSettingsPtrOutput values.
+// You can construct a concrete instance of `ConfigServerSettingsPtrInput` via:
+//
+//	        ConfigServerSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigServerSettingsPtrInput interface {
+	pulumi.Input
+
+	ToConfigServerSettingsPtrOutput() ConfigServerSettingsPtrOutput
+	ToConfigServerSettingsPtrOutputWithContext(context.Context) ConfigServerSettingsPtrOutput
+}
+
+type configServerSettingsPtrType ConfigServerSettingsArgs
+
+func ConfigServerSettingsPtr(v *ConfigServerSettingsArgs) ConfigServerSettingsPtrInput {
+	return (*configServerSettingsPtrType)(v)
+}
+
+func (*configServerSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerSettings)(nil)).Elem()
+}
+
+func (i *configServerSettingsPtrType) ToConfigServerSettingsPtrOutput() ConfigServerSettingsPtrOutput {
+	return i.ToConfigServerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *configServerSettingsPtrType) ToConfigServerSettingsPtrOutputWithContext(ctx context.Context) ConfigServerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigServerSettingsPtrOutput)
+}
+
+// The settings of config server.
+type ConfigServerSettingsOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerSettings)(nil)).Elem()
+}
+
+func (o ConfigServerSettingsOutput) ToConfigServerSettingsOutput() ConfigServerSettingsOutput {
+	return o
+}
+
+func (o ConfigServerSettingsOutput) ToConfigServerSettingsOutputWithContext(ctx context.Context) ConfigServerSettingsOutput {
+	return o
+}
+
+func (o ConfigServerSettingsOutput) ToConfigServerSettingsPtrOutput() ConfigServerSettingsPtrOutput {
+	return o.ToConfigServerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigServerSettingsOutput) ToConfigServerSettingsPtrOutputWithContext(ctx context.Context) ConfigServerSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigServerSettings) *ConfigServerSettings {
+		return &v
+	}).(ConfigServerSettingsPtrOutput)
+}
+
+// Property of git environment.
+func (o ConfigServerSettingsOutput) GitProperty() ConfigServerGitPropertyPtrOutput {
+	return o.ApplyT(func(v ConfigServerSettings) *ConfigServerGitProperty { return v.GitProperty }).(ConfigServerGitPropertyPtrOutput)
+}
+
+type ConfigServerSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerSettings)(nil)).Elem()
+}
+
+func (o ConfigServerSettingsPtrOutput) ToConfigServerSettingsPtrOutput() ConfigServerSettingsPtrOutput {
+	return o
+}
+
+func (o ConfigServerSettingsPtrOutput) ToConfigServerSettingsPtrOutputWithContext(ctx context.Context) ConfigServerSettingsPtrOutput {
+	return o
+}
+
+func (o ConfigServerSettingsPtrOutput) Elem() ConfigServerSettingsOutput {
+	return o.ApplyT(func(v *ConfigServerSettings) ConfigServerSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigServerSettings
+		return ret
+	}).(ConfigServerSettingsOutput)
+}
+
+// Property of git environment.
+func (o ConfigServerSettingsPtrOutput) GitProperty() ConfigServerGitPropertyPtrOutput {
+	return o.ApplyT(func(v *ConfigServerSettings) *ConfigServerGitProperty {
+		if v == nil {
+			return nil
+		}
+		return v.GitProperty
+	}).(ConfigServerGitPropertyPtrOutput)
+}
+
+// The settings of config server.
+type ConfigServerSettingsResponse struct {
+	// Property of git environment.
+	GitProperty *ConfigServerGitPropertyResponse `pulumi:"gitProperty"`
+}
+
+// The settings of config server.
+type ConfigServerSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigServerSettingsResponse)(nil)).Elem()
+}
+
+func (o ConfigServerSettingsResponseOutput) ToConfigServerSettingsResponseOutput() ConfigServerSettingsResponseOutput {
+	return o
+}
+
+func (o ConfigServerSettingsResponseOutput) ToConfigServerSettingsResponseOutputWithContext(ctx context.Context) ConfigServerSettingsResponseOutput {
+	return o
+}
+
+// Property of git environment.
+func (o ConfigServerSettingsResponseOutput) GitProperty() ConfigServerGitPropertyResponsePtrOutput {
+	return o.ApplyT(func(v ConfigServerSettingsResponse) *ConfigServerGitPropertyResponse { return v.GitProperty }).(ConfigServerGitPropertyResponsePtrOutput)
+}
+
+type ConfigServerSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigServerSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigServerSettingsResponse)(nil)).Elem()
+}
+
+func (o ConfigServerSettingsResponsePtrOutput) ToConfigServerSettingsResponsePtrOutput() ConfigServerSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ConfigServerSettingsResponsePtrOutput) ToConfigServerSettingsResponsePtrOutputWithContext(ctx context.Context) ConfigServerSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ConfigServerSettingsResponsePtrOutput) Elem() ConfigServerSettingsResponseOutput {
+	return o.ApplyT(func(v *ConfigServerSettingsResponse) ConfigServerSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigServerSettingsResponse
+		return ret
+	}).(ConfigServerSettingsResponseOutput)
+}
+
+// Property of git environment.
+func (o ConfigServerSettingsResponsePtrOutput) GitProperty() ConfigServerGitPropertyResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigServerSettingsResponse) *ConfigServerGitPropertyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GitProperty
+	}).(ConfigServerGitPropertyResponsePtrOutput)
+}
+
 // Custom domain of app resource payload.
 type CustomDomainProperties struct {
 	// The bound certificate name of domain.
@@ -2053,6 +2976,548 @@ func (o DeploymentSettingsResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The error code compose of code and message.
+type Error struct {
+	// The code of error.
+	Code *string `pulumi:"code"`
+	// The message of error.
+	Message *string `pulumi:"message"`
+}
+
+// ErrorInput is an input type that accepts ErrorArgs and ErrorOutput values.
+// You can construct a concrete instance of `ErrorInput` via:
+//
+//	ErrorArgs{...}
+type ErrorInput interface {
+	pulumi.Input
+
+	ToErrorOutput() ErrorOutput
+	ToErrorOutputWithContext(context.Context) ErrorOutput
+}
+
+// The error code compose of code and message.
+type ErrorArgs struct {
+	// The code of error.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// The message of error.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (ErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Error)(nil)).Elem()
+}
+
+func (i ErrorArgs) ToErrorOutput() ErrorOutput {
+	return i.ToErrorOutputWithContext(context.Background())
+}
+
+func (i ErrorArgs) ToErrorOutputWithContext(ctx context.Context) ErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorOutput)
+}
+
+func (i ErrorArgs) ToErrorPtrOutput() ErrorPtrOutput {
+	return i.ToErrorPtrOutputWithContext(context.Background())
+}
+
+func (i ErrorArgs) ToErrorPtrOutputWithContext(ctx context.Context) ErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorOutput).ToErrorPtrOutputWithContext(ctx)
+}
+
+// ErrorPtrInput is an input type that accepts ErrorArgs, ErrorPtr and ErrorPtrOutput values.
+// You can construct a concrete instance of `ErrorPtrInput` via:
+//
+//	        ErrorArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErrorPtrInput interface {
+	pulumi.Input
+
+	ToErrorPtrOutput() ErrorPtrOutput
+	ToErrorPtrOutputWithContext(context.Context) ErrorPtrOutput
+}
+
+type errorPtrType ErrorArgs
+
+func ErrorPtr(v *ErrorArgs) ErrorPtrInput {
+	return (*errorPtrType)(v)
+}
+
+func (*errorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Error)(nil)).Elem()
+}
+
+func (i *errorPtrType) ToErrorPtrOutput() ErrorPtrOutput {
+	return i.ToErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *errorPtrType) ToErrorPtrOutputWithContext(ctx context.Context) ErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorPtrOutput)
+}
+
+// The error code compose of code and message.
+type ErrorOutput struct{ *pulumi.OutputState }
+
+func (ErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Error)(nil)).Elem()
+}
+
+func (o ErrorOutput) ToErrorOutput() ErrorOutput {
+	return o
+}
+
+func (o ErrorOutput) ToErrorOutputWithContext(ctx context.Context) ErrorOutput {
+	return o
+}
+
+func (o ErrorOutput) ToErrorPtrOutput() ErrorPtrOutput {
+	return o.ToErrorPtrOutputWithContext(context.Background())
+}
+
+func (o ErrorOutput) ToErrorPtrOutputWithContext(ctx context.Context) ErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Error) *Error {
+		return &v
+	}).(ErrorPtrOutput)
+}
+
+// The code of error.
+func (o ErrorOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Error) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The message of error.
+func (o ErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Error) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Error)(nil)).Elem()
+}
+
+func (o ErrorPtrOutput) ToErrorPtrOutput() ErrorPtrOutput {
+	return o
+}
+
+func (o ErrorPtrOutput) ToErrorPtrOutputWithContext(ctx context.Context) ErrorPtrOutput {
+	return o
+}
+
+func (o ErrorPtrOutput) Elem() ErrorOutput {
+	return o.ApplyT(func(v *Error) Error {
+		if v != nil {
+			return *v
+		}
+		var ret Error
+		return ret
+	}).(ErrorOutput)
+}
+
+// The code of error.
+func (o ErrorPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Error) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The message of error.
+func (o ErrorPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Error) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error code compose of code and message.
+type ErrorResponse struct {
+	// The code of error.
+	Code *string `pulumi:"code"`
+	// The message of error.
+	Message *string `pulumi:"message"`
+}
+
+// The error code compose of code and message.
+type ErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorResponse)(nil)).Elem()
+}
+
+func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
+	return o
+}
+
+func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
+	return o
+}
+
+// The code of error.
+func (o ErrorResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The message of error.
+func (o ErrorResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
+}
+
+func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
+	return o
+}
+
+func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
+	return o
+}
+
+func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
+	return o.ApplyT(func(v *ErrorResponse) ErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorResponse
+		return ret
+	}).(ErrorResponseOutput)
+}
+
+// The code of error.
+func (o ErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The message of error.
+func (o ErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git repository property payload
+type GitPatternRepository struct {
+	// Public sshKey of git repository.
+	HostKey *string `pulumi:"hostKey"`
+	// SshKey algorithm of git repository.
+	HostKeyAlgorithm *string `pulumi:"hostKeyAlgorithm"`
+	// Label of the repository
+	Label *string `pulumi:"label"`
+	// Name of the repository
+	Name string `pulumi:"name"`
+	// Password of git repository basic auth.
+	Password *string `pulumi:"password"`
+	// Collection of pattern of the repository
+	Pattern []string `pulumi:"pattern"`
+	// Private sshKey algorithm of git repository.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Searching path of the repository
+	SearchPaths []string `pulumi:"searchPaths"`
+	// Strict host key checking or not.
+	StrictHostKeyChecking *bool `pulumi:"strictHostKeyChecking"`
+	// URI of the repository
+	Uri string `pulumi:"uri"`
+	// Username of git repository basic auth.
+	Username *string `pulumi:"username"`
+}
+
+// GitPatternRepositoryInput is an input type that accepts GitPatternRepositoryArgs and GitPatternRepositoryOutput values.
+// You can construct a concrete instance of `GitPatternRepositoryInput` via:
+//
+//	GitPatternRepositoryArgs{...}
+type GitPatternRepositoryInput interface {
+	pulumi.Input
+
+	ToGitPatternRepositoryOutput() GitPatternRepositoryOutput
+	ToGitPatternRepositoryOutputWithContext(context.Context) GitPatternRepositoryOutput
+}
+
+// Git repository property payload
+type GitPatternRepositoryArgs struct {
+	// Public sshKey of git repository.
+	HostKey pulumi.StringPtrInput `pulumi:"hostKey"`
+	// SshKey algorithm of git repository.
+	HostKeyAlgorithm pulumi.StringPtrInput `pulumi:"hostKeyAlgorithm"`
+	// Label of the repository
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Name of the repository
+	Name pulumi.StringInput `pulumi:"name"`
+	// Password of git repository basic auth.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Collection of pattern of the repository
+	Pattern pulumi.StringArrayInput `pulumi:"pattern"`
+	// Private sshKey algorithm of git repository.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Searching path of the repository
+	SearchPaths pulumi.StringArrayInput `pulumi:"searchPaths"`
+	// Strict host key checking or not.
+	StrictHostKeyChecking pulumi.BoolPtrInput `pulumi:"strictHostKeyChecking"`
+	// URI of the repository
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// Username of git repository basic auth.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GitPatternRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitPatternRepository)(nil)).Elem()
+}
+
+func (i GitPatternRepositoryArgs) ToGitPatternRepositoryOutput() GitPatternRepositoryOutput {
+	return i.ToGitPatternRepositoryOutputWithContext(context.Background())
+}
+
+func (i GitPatternRepositoryArgs) ToGitPatternRepositoryOutputWithContext(ctx context.Context) GitPatternRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitPatternRepositoryOutput)
+}
+
+// GitPatternRepositoryArrayInput is an input type that accepts GitPatternRepositoryArray and GitPatternRepositoryArrayOutput values.
+// You can construct a concrete instance of `GitPatternRepositoryArrayInput` via:
+//
+//	GitPatternRepositoryArray{ GitPatternRepositoryArgs{...} }
+type GitPatternRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGitPatternRepositoryArrayOutput() GitPatternRepositoryArrayOutput
+	ToGitPatternRepositoryArrayOutputWithContext(context.Context) GitPatternRepositoryArrayOutput
+}
+
+type GitPatternRepositoryArray []GitPatternRepositoryInput
+
+func (GitPatternRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitPatternRepository)(nil)).Elem()
+}
+
+func (i GitPatternRepositoryArray) ToGitPatternRepositoryArrayOutput() GitPatternRepositoryArrayOutput {
+	return i.ToGitPatternRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GitPatternRepositoryArray) ToGitPatternRepositoryArrayOutputWithContext(ctx context.Context) GitPatternRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitPatternRepositoryArrayOutput)
+}
+
+// Git repository property payload
+type GitPatternRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GitPatternRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitPatternRepository)(nil)).Elem()
+}
+
+func (o GitPatternRepositoryOutput) ToGitPatternRepositoryOutput() GitPatternRepositoryOutput {
+	return o
+}
+
+func (o GitPatternRepositoryOutput) ToGitPatternRepositoryOutputWithContext(ctx context.Context) GitPatternRepositoryOutput {
+	return o
+}
+
+// Public sshKey of git repository.
+func (o GitPatternRepositoryOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *string { return v.HostKey }).(pulumi.StringPtrOutput)
+}
+
+// SshKey algorithm of git repository.
+func (o GitPatternRepositoryOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *string { return v.HostKeyAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Label of the repository
+func (o GitPatternRepositoryOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Name of the repository
+func (o GitPatternRepositoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitPatternRepository) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password of git repository basic auth.
+func (o GitPatternRepositoryOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Collection of pattern of the repository
+func (o GitPatternRepositoryOutput) Pattern() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitPatternRepository) []string { return v.Pattern }).(pulumi.StringArrayOutput)
+}
+
+// Private sshKey algorithm of git repository.
+func (o GitPatternRepositoryOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Searching path of the repository
+func (o GitPatternRepositoryOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitPatternRepository) []string { return v.SearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// Strict host key checking or not.
+func (o GitPatternRepositoryOutput) StrictHostKeyChecking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *bool { return v.StrictHostKeyChecking }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the repository
+func (o GitPatternRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GitPatternRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username of git repository basic auth.
+func (o GitPatternRepositoryOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepository) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GitPatternRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GitPatternRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitPatternRepository)(nil)).Elem()
+}
+
+func (o GitPatternRepositoryArrayOutput) ToGitPatternRepositoryArrayOutput() GitPatternRepositoryArrayOutput {
+	return o
+}
+
+func (o GitPatternRepositoryArrayOutput) ToGitPatternRepositoryArrayOutputWithContext(ctx context.Context) GitPatternRepositoryArrayOutput {
+	return o
+}
+
+func (o GitPatternRepositoryArrayOutput) Index(i pulumi.IntInput) GitPatternRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitPatternRepository {
+		return vs[0].([]GitPatternRepository)[vs[1].(int)]
+	}).(GitPatternRepositoryOutput)
+}
+
+// Git repository property payload
+type GitPatternRepositoryResponse struct {
+	// Public sshKey of git repository.
+	HostKey *string `pulumi:"hostKey"`
+	// SshKey algorithm of git repository.
+	HostKeyAlgorithm *string `pulumi:"hostKeyAlgorithm"`
+	// Label of the repository
+	Label *string `pulumi:"label"`
+	// Name of the repository
+	Name string `pulumi:"name"`
+	// Password of git repository basic auth.
+	Password *string `pulumi:"password"`
+	// Collection of pattern of the repository
+	Pattern []string `pulumi:"pattern"`
+	// Private sshKey algorithm of git repository.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Searching path of the repository
+	SearchPaths []string `pulumi:"searchPaths"`
+	// Strict host key checking or not.
+	StrictHostKeyChecking *bool `pulumi:"strictHostKeyChecking"`
+	// URI of the repository
+	Uri string `pulumi:"uri"`
+	// Username of git repository basic auth.
+	Username *string `pulumi:"username"`
+}
+
+// Git repository property payload
+type GitPatternRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GitPatternRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitPatternRepositoryResponse)(nil)).Elem()
+}
+
+func (o GitPatternRepositoryResponseOutput) ToGitPatternRepositoryResponseOutput() GitPatternRepositoryResponseOutput {
+	return o
+}
+
+func (o GitPatternRepositoryResponseOutput) ToGitPatternRepositoryResponseOutputWithContext(ctx context.Context) GitPatternRepositoryResponseOutput {
+	return o
+}
+
+// Public sshKey of git repository.
+func (o GitPatternRepositoryResponseOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *string { return v.HostKey }).(pulumi.StringPtrOutput)
+}
+
+// SshKey algorithm of git repository.
+func (o GitPatternRepositoryResponseOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *string { return v.HostKeyAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Label of the repository
+func (o GitPatternRepositoryResponseOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Name of the repository
+func (o GitPatternRepositoryResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password of git repository basic auth.
+func (o GitPatternRepositoryResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Collection of pattern of the repository
+func (o GitPatternRepositoryResponseOutput) Pattern() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) []string { return v.Pattern }).(pulumi.StringArrayOutput)
+}
+
+// Private sshKey algorithm of git repository.
+func (o GitPatternRepositoryResponseOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Searching path of the repository
+func (o GitPatternRepositoryResponseOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) []string { return v.SearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// Strict host key checking or not.
+func (o GitPatternRepositoryResponseOutput) StrictHostKeyChecking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *bool { return v.StrictHostKeyChecking }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the repository
+func (o GitPatternRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username of git repository basic auth.
+func (o GitPatternRepositoryResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitPatternRepositoryResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GitPatternRepositoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GitPatternRepositoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitPatternRepositoryResponse)(nil)).Elem()
+}
+
+func (o GitPatternRepositoryResponseArrayOutput) ToGitPatternRepositoryResponseArrayOutput() GitPatternRepositoryResponseArrayOutput {
+	return o
+}
+
+func (o GitPatternRepositoryResponseArrayOutput) ToGitPatternRepositoryResponseArrayOutputWithContext(ctx context.Context) GitPatternRepositoryResponseArrayOutput {
+	return o
+}
+
+func (o GitPatternRepositoryResponseArrayOutput) Index(i pulumi.IntInput) GitPatternRepositoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitPatternRepositoryResponse {
+		return vs[0].([]GitPatternRepositoryResponse)[vs[1].(int)]
+	}).(GitPatternRepositoryResponseOutput)
+}
+
 // Managed identity properties retrieved from ARM request headers.
 type ManagedIdentityProperties struct {
 	// Principal Id
@@ -2323,6 +3788,231 @@ func (o ManagedIdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutpu
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Monitoring Setting properties payload
+type MonitoringSettingProperties struct {
+	// Target application insight instrumentation key
+	AppInsightsInstrumentationKey *string `pulumi:"appInsightsInstrumentationKey"`
+	// Error when apply Monitoring Setting changes.
+	Error *Error `pulumi:"error"`
+	// Indicates whether enable the trace functionality
+	TraceEnabled *bool `pulumi:"traceEnabled"`
+}
+
+// MonitoringSettingPropertiesInput is an input type that accepts MonitoringSettingPropertiesArgs and MonitoringSettingPropertiesOutput values.
+// You can construct a concrete instance of `MonitoringSettingPropertiesInput` via:
+//
+//	MonitoringSettingPropertiesArgs{...}
+type MonitoringSettingPropertiesInput interface {
+	pulumi.Input
+
+	ToMonitoringSettingPropertiesOutput() MonitoringSettingPropertiesOutput
+	ToMonitoringSettingPropertiesOutputWithContext(context.Context) MonitoringSettingPropertiesOutput
+}
+
+// Monitoring Setting properties payload
+type MonitoringSettingPropertiesArgs struct {
+	// Target application insight instrumentation key
+	AppInsightsInstrumentationKey pulumi.StringPtrInput `pulumi:"appInsightsInstrumentationKey"`
+	// Error when apply Monitoring Setting changes.
+	Error ErrorPtrInput `pulumi:"error"`
+	// Indicates whether enable the trace functionality
+	TraceEnabled pulumi.BoolPtrInput `pulumi:"traceEnabled"`
+}
+
+func (MonitoringSettingPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringSettingProperties)(nil)).Elem()
+}
+
+func (i MonitoringSettingPropertiesArgs) ToMonitoringSettingPropertiesOutput() MonitoringSettingPropertiesOutput {
+	return i.ToMonitoringSettingPropertiesOutputWithContext(context.Background())
+}
+
+func (i MonitoringSettingPropertiesArgs) ToMonitoringSettingPropertiesOutputWithContext(ctx context.Context) MonitoringSettingPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringSettingPropertiesOutput)
+}
+
+func (i MonitoringSettingPropertiesArgs) ToMonitoringSettingPropertiesPtrOutput() MonitoringSettingPropertiesPtrOutput {
+	return i.ToMonitoringSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringSettingPropertiesArgs) ToMonitoringSettingPropertiesPtrOutputWithContext(ctx context.Context) MonitoringSettingPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringSettingPropertiesOutput).ToMonitoringSettingPropertiesPtrOutputWithContext(ctx)
+}
+
+// MonitoringSettingPropertiesPtrInput is an input type that accepts MonitoringSettingPropertiesArgs, MonitoringSettingPropertiesPtr and MonitoringSettingPropertiesPtrOutput values.
+// You can construct a concrete instance of `MonitoringSettingPropertiesPtrInput` via:
+//
+//	        MonitoringSettingPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitoringSettingPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringSettingPropertiesPtrOutput() MonitoringSettingPropertiesPtrOutput
+	ToMonitoringSettingPropertiesPtrOutputWithContext(context.Context) MonitoringSettingPropertiesPtrOutput
+}
+
+type monitoringSettingPropertiesPtrType MonitoringSettingPropertiesArgs
+
+func MonitoringSettingPropertiesPtr(v *MonitoringSettingPropertiesArgs) MonitoringSettingPropertiesPtrInput {
+	return (*monitoringSettingPropertiesPtrType)(v)
+}
+
+func (*monitoringSettingPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringSettingProperties)(nil)).Elem()
+}
+
+func (i *monitoringSettingPropertiesPtrType) ToMonitoringSettingPropertiesPtrOutput() MonitoringSettingPropertiesPtrOutput {
+	return i.ToMonitoringSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringSettingPropertiesPtrType) ToMonitoringSettingPropertiesPtrOutputWithContext(ctx context.Context) MonitoringSettingPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringSettingPropertiesPtrOutput)
+}
+
+// Monitoring Setting properties payload
+type MonitoringSettingPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MonitoringSettingPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringSettingProperties)(nil)).Elem()
+}
+
+func (o MonitoringSettingPropertiesOutput) ToMonitoringSettingPropertiesOutput() MonitoringSettingPropertiesOutput {
+	return o
+}
+
+func (o MonitoringSettingPropertiesOutput) ToMonitoringSettingPropertiesOutputWithContext(ctx context.Context) MonitoringSettingPropertiesOutput {
+	return o
+}
+
+func (o MonitoringSettingPropertiesOutput) ToMonitoringSettingPropertiesPtrOutput() MonitoringSettingPropertiesPtrOutput {
+	return o.ToMonitoringSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringSettingPropertiesOutput) ToMonitoringSettingPropertiesPtrOutputWithContext(ctx context.Context) MonitoringSettingPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringSettingProperties) *MonitoringSettingProperties {
+		return &v
+	}).(MonitoringSettingPropertiesPtrOutput)
+}
+
+// Target application insight instrumentation key
+func (o MonitoringSettingPropertiesOutput) AppInsightsInstrumentationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringSettingProperties) *string { return v.AppInsightsInstrumentationKey }).(pulumi.StringPtrOutput)
+}
+
+// Error when apply Monitoring Setting changes.
+func (o MonitoringSettingPropertiesOutput) Error() ErrorPtrOutput {
+	return o.ApplyT(func(v MonitoringSettingProperties) *Error { return v.Error }).(ErrorPtrOutput)
+}
+
+// Indicates whether enable the trace functionality
+func (o MonitoringSettingPropertiesOutput) TraceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitoringSettingProperties) *bool { return v.TraceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type MonitoringSettingPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringSettingPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringSettingProperties)(nil)).Elem()
+}
+
+func (o MonitoringSettingPropertiesPtrOutput) ToMonitoringSettingPropertiesPtrOutput() MonitoringSettingPropertiesPtrOutput {
+	return o
+}
+
+func (o MonitoringSettingPropertiesPtrOutput) ToMonitoringSettingPropertiesPtrOutputWithContext(ctx context.Context) MonitoringSettingPropertiesPtrOutput {
+	return o
+}
+
+func (o MonitoringSettingPropertiesPtrOutput) Elem() MonitoringSettingPropertiesOutput {
+	return o.ApplyT(func(v *MonitoringSettingProperties) MonitoringSettingProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringSettingProperties
+		return ret
+	}).(MonitoringSettingPropertiesOutput)
+}
+
+// Target application insight instrumentation key
+func (o MonitoringSettingPropertiesPtrOutput) AppInsightsInstrumentationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppInsightsInstrumentationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error when apply Monitoring Setting changes.
+func (o MonitoringSettingPropertiesPtrOutput) Error() ErrorPtrOutput {
+	return o.ApplyT(func(v *MonitoringSettingProperties) *Error {
+		if v == nil {
+			return nil
+		}
+		return v.Error
+	}).(ErrorPtrOutput)
+}
+
+// Indicates whether enable the trace functionality
+func (o MonitoringSettingPropertiesPtrOutput) TraceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitoringSettingProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TraceEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Monitoring Setting properties payload
+type MonitoringSettingPropertiesResponse struct {
+	// Target application insight instrumentation key
+	AppInsightsInstrumentationKey *string `pulumi:"appInsightsInstrumentationKey"`
+	// Error when apply Monitoring Setting changes.
+	Error *ErrorResponse `pulumi:"error"`
+	// State of the Monitoring Setting.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Indicates whether enable the trace functionality
+	TraceEnabled *bool `pulumi:"traceEnabled"`
+}
+
+// Monitoring Setting properties payload
+type MonitoringSettingPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringSettingPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringSettingPropertiesResponse)(nil)).Elem()
+}
+
+func (o MonitoringSettingPropertiesResponseOutput) ToMonitoringSettingPropertiesResponseOutput() MonitoringSettingPropertiesResponseOutput {
+	return o
+}
+
+func (o MonitoringSettingPropertiesResponseOutput) ToMonitoringSettingPropertiesResponseOutputWithContext(ctx context.Context) MonitoringSettingPropertiesResponseOutput {
+	return o
+}
+
+// Target application insight instrumentation key
+func (o MonitoringSettingPropertiesResponseOutput) AppInsightsInstrumentationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringSettingPropertiesResponse) *string { return v.AppInsightsInstrumentationKey }).(pulumi.StringPtrOutput)
+}
+
+// Error when apply Monitoring Setting changes.
+func (o MonitoringSettingPropertiesResponseOutput) Error() ErrorResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringSettingPropertiesResponse) *ErrorResponse { return v.Error }).(ErrorResponsePtrOutput)
+}
+
+// State of the Monitoring Setting.
+func (o MonitoringSettingPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringSettingPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Indicates whether enable the trace functionality
+func (o MonitoringSettingPropertiesResponseOutput) TraceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitoringSettingPropertiesResponse) *bool { return v.TraceEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Service network profile payload
@@ -3963,6 +5653,17 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(ClusterResourcePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ConfigServerGitPropertyOutput{})
+	pulumi.RegisterOutputType(ConfigServerGitPropertyPtrOutput{})
+	pulumi.RegisterOutputType(ConfigServerGitPropertyResponseOutput{})
+	pulumi.RegisterOutputType(ConfigServerGitPropertyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfigServerPropertiesOutput{})
+	pulumi.RegisterOutputType(ConfigServerPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ConfigServerPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ConfigServerSettingsOutput{})
+	pulumi.RegisterOutputType(ConfigServerSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConfigServerSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ConfigServerSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainPropertiesOutput{})
 	pulumi.RegisterOutputType(CustomDomainPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainPropertiesResponseOutput{})
@@ -3975,10 +5676,21 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentSettingsResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorOutput{})
+	pulumi.RegisterOutputType(ErrorPtrOutput{})
+	pulumi.RegisterOutputType(ErrorResponseOutput{})
+	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(GitPatternRepositoryOutput{})
+	pulumi.RegisterOutputType(GitPatternRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GitPatternRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GitPatternRepositoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitoringSettingPropertiesOutput{})
+	pulumi.RegisterOutputType(MonitoringSettingPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringSettingPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(NetworkProfileOutput{})
 	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
