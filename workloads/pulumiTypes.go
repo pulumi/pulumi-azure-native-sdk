@@ -1996,6 +1996,24 @@ func (o ErrorResponseInnerErrorPtrOutput) InnerError() ErrorResponsePtrOutput {
 	}).(ErrorResponsePtrOutput)
 }
 
+// The SAP Software configuration Input when the software is installed externally outside the service.
+type ExternalInstallationSoftwareConfiguration struct {
+	// The resource ID of the virtual machine containing the central server instance.
+	CentralServerVmId *string `pulumi:"centralServerVmId"`
+	// The SAP software installation Type.
+	// Expected value is 'External'.
+	SoftwareInstallationType string `pulumi:"softwareInstallationType"`
+}
+
+// The SAP Software configuration Input when the software is installed externally outside the service.
+type ExternalInstallationSoftwareConfigurationResponse struct {
+	// The resource ID of the virtual machine containing the central server instance.
+	CentralServerVmId *string `pulumi:"centralServerVmId"`
+	// The SAP software installation Type.
+	// Expected value is 'External'.
+	SoftwareInstallationType string `pulumi:"softwareInstallationType"`
+}
+
 // File share profile
 type FileshareProfile struct {
 	// File share size in GB

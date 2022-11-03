@@ -491,8 +491,8 @@ type DataBoxDiskCopyProgressResponse struct {
 
 // Granular Copy Log Details for customer disk
 type DataBoxDiskGranularCopyLogDetailsResponse struct {
-	// Account name.
-	AccountName string `pulumi:"accountName"`
+	// Account id.
+	AccountId string `pulumi:"accountId"`
 	// Indicates the type of job details.
 	// Expected value is 'DataBoxCustomerDisk'.
 	CopyLogDetailsType string `pulumi:"copyLogDetailsType"`

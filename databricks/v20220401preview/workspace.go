@@ -21,10 +21,14 @@ type Workspace struct {
 	CreatedBy CreatedByResponsePtrOutput `pulumi:"createdBy"`
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
+	// The resource Id of the managed disk encryption set.
+	DiskEncryptionSetId pulumi.StringPtrOutput `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption WorkspacePropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+	ManagedDiskIdentity ManagedIdentityConfigurationResponsePtrOutput `pulumi:"managedDiskIdentity"`
 	// The managed resource group Id.
 	ManagedResourceGroupId pulumi.StringOutput `pulumi:"managedResourceGroupId"`
 	// The name of the resource
@@ -121,6 +125,8 @@ func (WorkspaceState) ElementType() reflect.Type {
 type workspaceArgs struct {
 	// The workspace provider authorizations.
 	Authorizations []WorkspaceProviderAuthorization `pulumi:"authorizations"`
+	// The resource Id of the managed disk encryption set.
+	DiskEncryptionSetId *string `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption *WorkspacePropertiesEncryption `pulumi:"encryption"`
 	// The geo-location where the resource lives
@@ -149,6 +155,8 @@ type workspaceArgs struct {
 type WorkspaceArgs struct {
 	// The workspace provider authorizations.
 	Authorizations WorkspaceProviderAuthorizationArrayInput
+	// The resource Id of the managed disk encryption set.
+	DiskEncryptionSetId pulumi.StringPtrInput
 	// Encryption properties for databricks workspace
 	Encryption WorkspacePropertiesEncryptionPtrInput
 	// The geo-location where the resource lives
@@ -225,6 +233,11 @@ func (o WorkspaceOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
+// The resource Id of the managed disk encryption set.
+func (o WorkspaceOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
+}
+
 // Encryption properties for databricks workspace
 func (o WorkspaceOutput) Encryption() WorkspacePropertiesResponseEncryptionPtrOutput {
 	return o.ApplyT(func(v *Workspace) WorkspacePropertiesResponseEncryptionPtrOutput { return v.Encryption }).(WorkspacePropertiesResponseEncryptionPtrOutput)
@@ -233,6 +246,11 @@ func (o WorkspaceOutput) Encryption() WorkspacePropertiesResponseEncryptionPtrOu
 // The geo-location where the resource lives
 func (o WorkspaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+func (o WorkspaceOutput) ManagedDiskIdentity() ManagedIdentityConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) ManagedIdentityConfigurationResponsePtrOutput { return v.ManagedDiskIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
 }
 
 // The managed resource group Id.

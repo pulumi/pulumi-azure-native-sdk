@@ -1572,8 +1572,9 @@ type AzureIaaSVMProtectionPolicy struct {
 	BackupManagementType string                      `pulumi:"backupManagementType"`
 	InstantRPDetails     *InstantRPAdditionalDetails `pulumi:"instantRPDetails"`
 	// Instant RP retention policy range in days
-	InstantRpRetentionRangeInDays *int    `pulumi:"instantRpRetentionRangeInDays"`
-	PolicyType                    *string `pulumi:"policyType"`
+	InstantRpRetentionRangeInDays *int `pulumi:"instantRpRetentionRangeInDays"`
+	// Type of backup policy type
+	PolicyType *string `pulumi:"policyType"`
 	// Number of items associated with this policy.
 	ProtectedItemsCount *int `pulumi:"protectedItemsCount"`
 	// ResourceGuard Operation Requests
@@ -1593,8 +1594,9 @@ type AzureIaaSVMProtectionPolicyResponse struct {
 	BackupManagementType string                              `pulumi:"backupManagementType"`
 	InstantRPDetails     *InstantRPAdditionalDetailsResponse `pulumi:"instantRPDetails"`
 	// Instant RP retention policy range in days
-	InstantRpRetentionRangeInDays *int    `pulumi:"instantRpRetentionRangeInDays"`
-	PolicyType                    *string `pulumi:"policyType"`
+	InstantRpRetentionRangeInDays *int `pulumi:"instantRpRetentionRangeInDays"`
+	// Type of backup policy type
+	PolicyType *string `pulumi:"policyType"`
 	// Number of items associated with this policy.
 	ProtectedItemsCount *int `pulumi:"protectedItemsCount"`
 	// ResourceGuard Operation Requests
