@@ -1931,6 +1931,8 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 type Storage struct {
 	// Enable Storage Auto Grow or not.
 	AutoGrow *string `pulumi:"autoGrow"`
+	// Enable IO Auto Scaling or not.
+	AutoIoScaling *string `pulumi:"autoIoScaling"`
 	// Storage IOPS for a server.
 	Iops *int `pulumi:"iops"`
 	// Max storage size allowed for a server.
@@ -1952,6 +1954,8 @@ type StorageInput interface {
 type StorageArgs struct {
 	// Enable Storage Auto Grow or not.
 	AutoGrow pulumi.StringPtrInput `pulumi:"autoGrow"`
+	// Enable IO Auto Scaling or not.
+	AutoIoScaling pulumi.StringPtrInput `pulumi:"autoIoScaling"`
 	// Storage IOPS for a server.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
 	// Max storage size allowed for a server.
@@ -2041,6 +2045,11 @@ func (o StorageOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Storage) *string { return v.AutoGrow }).(pulumi.StringPtrOutput)
 }
 
+// Enable IO Auto Scaling or not.
+func (o StorageOutput) AutoIoScaling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Storage) *string { return v.AutoIoScaling }).(pulumi.StringPtrOutput)
+}
+
 // Storage IOPS for a server.
 func (o StorageOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Storage) *int { return v.Iops }).(pulumi.IntPtrOutput)
@@ -2085,6 +2094,16 @@ func (o StoragePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable IO Auto Scaling or not.
+func (o StoragePtrOutput) AutoIoScaling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Storage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoIoScaling
+	}).(pulumi.StringPtrOutput)
+}
+
 // Storage IOPS for a server.
 func (o StoragePtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Storage) *int {
@@ -2109,6 +2128,8 @@ func (o StoragePtrOutput) StorageSizeGB() pulumi.IntPtrOutput {
 type StorageResponse struct {
 	// Enable Storage Auto Grow or not.
 	AutoGrow *string `pulumi:"autoGrow"`
+	// Enable IO Auto Scaling or not.
+	AutoIoScaling *string `pulumi:"autoIoScaling"`
 	// Storage IOPS for a server.
 	Iops *int `pulumi:"iops"`
 	// Max storage size allowed for a server.
@@ -2135,6 +2156,11 @@ func (o StorageResponseOutput) ToStorageResponseOutputWithContext(ctx context.Co
 // Enable Storage Auto Grow or not.
 func (o StorageResponseOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *string { return v.AutoGrow }).(pulumi.StringPtrOutput)
+}
+
+// Enable IO Auto Scaling or not.
+func (o StorageResponseOutput) AutoIoScaling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageResponse) *string { return v.AutoIoScaling }).(pulumi.StringPtrOutput)
 }
 
 // Storage IOPS for a server.
@@ -2183,6 +2209,16 @@ func (o StorageResponsePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.AutoGrow
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable IO Auto Scaling or not.
+func (o StorageResponsePtrOutput) AutoIoScaling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoIoScaling
 	}).(pulumi.StringPtrOutput)
 }
 

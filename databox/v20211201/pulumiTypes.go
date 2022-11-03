@@ -651,7 +651,7 @@ type DataBoxDiskJobSecretsResponse struct {
 
 // Copy log details for a storage account for Databox heavy
 type DataBoxHeavyAccountCopyLogDetailsResponse struct {
-	// Account name.
+	// Account id.
 	AccountName string `pulumi:"accountName"`
 	// Indicates the type of job details.
 	// Expected value is 'DataBoxHeavy'.

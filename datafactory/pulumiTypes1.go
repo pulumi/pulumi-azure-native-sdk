@@ -10460,6 +10460,8 @@ type ScriptActivity struct {
 	Name string `pulumi:"name"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
 	Scripts []ScriptActivityScriptBlock `pulumi:"scripts"`
 	// Type of activity.
@@ -10511,6 +10513,8 @@ type ScriptActivityResponse struct {
 	Name string `pulumi:"name"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
 	Scripts []ScriptActivityScriptBlockResponse `pulumi:"scripts"`
 	// Type of activity.

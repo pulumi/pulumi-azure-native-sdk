@@ -35,12 +35,16 @@ type LookupWorkspaceResult struct {
 	CreatedBy *CreatedByResponse `pulumi:"createdBy"`
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime string `pulumi:"createdDateTime"`
+	// The resource Id of the managed disk encryption set.
+	DiskEncryptionSetId *string `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption *WorkspacePropertiesResponseEncryption `pulumi:"encryption"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+	ManagedDiskIdentity *ManagedIdentityConfigurationResponse `pulumi:"managedDiskIdentity"`
 	// The managed resource group Id.
 	ManagedResourceGroupId string `pulumi:"managedResourceGroupId"`
 	// The name of the resource
@@ -140,6 +144,11 @@ func (o LookupWorkspaceResultOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
+// The resource Id of the managed disk encryption set.
+func (o LookupWorkspaceResultOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
+}
+
 // Encryption properties for databricks workspace
 func (o LookupWorkspaceResultOutput) Encryption() WorkspacePropertiesResponseEncryptionPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *WorkspacePropertiesResponseEncryption { return v.Encryption }).(WorkspacePropertiesResponseEncryptionPtrOutput)
@@ -153,6 +162,11 @@ func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 // The geo-location where the resource lives
 func (o LookupWorkspaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+func (o LookupWorkspaceResultOutput) ManagedDiskIdentity() ManagedIdentityConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *ManagedIdentityConfigurationResponse { return v.ManagedDiskIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
 }
 
 // The managed resource group Id.

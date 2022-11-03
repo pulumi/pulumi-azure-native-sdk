@@ -551,6 +551,8 @@ func (o EncryptionPtrOutput) KeyVersion() pulumi.StringPtrOutput {
 
 // Encryption entities for databricks workspace resource.
 type EncryptionEntitiesDefinition struct {
+	// Encryption properties for the databricks managed disks.
+	ManagedDisk *ManagedDiskEncryption `pulumi:"managedDisk"`
 	// Encryption properties for the databricks managed services.
 	ManagedServices *EncryptionV2 `pulumi:"managedServices"`
 }
@@ -568,6 +570,8 @@ type EncryptionEntitiesDefinitionInput interface {
 
 // Encryption entities for databricks workspace resource.
 type EncryptionEntitiesDefinitionArgs struct {
+	// Encryption properties for the databricks managed disks.
+	ManagedDisk ManagedDiskEncryptionPtrInput `pulumi:"managedDisk"`
 	// Encryption properties for the databricks managed services.
 	ManagedServices EncryptionV2PtrInput `pulumi:"managedServices"`
 }
@@ -650,6 +654,11 @@ func (o EncryptionEntitiesDefinitionOutput) ToEncryptionEntitiesDefinitionPtrOut
 	}).(EncryptionEntitiesDefinitionPtrOutput)
 }
 
+// Encryption properties for the databricks managed disks.
+func (o EncryptionEntitiesDefinitionOutput) ManagedDisk() ManagedDiskEncryptionPtrOutput {
+	return o.ApplyT(func(v EncryptionEntitiesDefinition) *ManagedDiskEncryption { return v.ManagedDisk }).(ManagedDiskEncryptionPtrOutput)
+}
+
 // Encryption properties for the databricks managed services.
 func (o EncryptionEntitiesDefinitionOutput) ManagedServices() EncryptionV2PtrOutput {
 	return o.ApplyT(func(v EncryptionEntitiesDefinition) *EncryptionV2 { return v.ManagedServices }).(EncryptionV2PtrOutput)
@@ -679,6 +688,16 @@ func (o EncryptionEntitiesDefinitionPtrOutput) Elem() EncryptionEntitiesDefiniti
 	}).(EncryptionEntitiesDefinitionOutput)
 }
 
+// Encryption properties for the databricks managed disks.
+func (o EncryptionEntitiesDefinitionPtrOutput) ManagedDisk() ManagedDiskEncryptionPtrOutput {
+	return o.ApplyT(func(v *EncryptionEntitiesDefinition) *ManagedDiskEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedDisk
+	}).(ManagedDiskEncryptionPtrOutput)
+}
+
 // Encryption properties for the databricks managed services.
 func (o EncryptionEntitiesDefinitionPtrOutput) ManagedServices() EncryptionV2PtrOutput {
 	return o.ApplyT(func(v *EncryptionEntitiesDefinition) *EncryptionV2 {
@@ -691,6 +710,8 @@ func (o EncryptionEntitiesDefinitionPtrOutput) ManagedServices() EncryptionV2Ptr
 
 // Encryption entities for databricks workspace resource.
 type EncryptionEntitiesDefinitionResponse struct {
+	// Encryption properties for the databricks managed disks.
+	ManagedDisk *ManagedDiskEncryptionResponse `pulumi:"managedDisk"`
 	// Encryption properties for the databricks managed services.
 	ManagedServices *EncryptionV2Response `pulumi:"managedServices"`
 }
@@ -708,6 +729,11 @@ func (o EncryptionEntitiesDefinitionResponseOutput) ToEncryptionEntitiesDefiniti
 
 func (o EncryptionEntitiesDefinitionResponseOutput) ToEncryptionEntitiesDefinitionResponseOutputWithContext(ctx context.Context) EncryptionEntitiesDefinitionResponseOutput {
 	return o
+}
+
+// Encryption properties for the databricks managed disks.
+func (o EncryptionEntitiesDefinitionResponseOutput) ManagedDisk() ManagedDiskEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionEntitiesDefinitionResponse) *ManagedDiskEncryptionResponse { return v.ManagedDisk }).(ManagedDiskEncryptionResponsePtrOutput)
 }
 
 // Encryption properties for the databricks managed services.
@@ -737,6 +763,16 @@ func (o EncryptionEntitiesDefinitionResponsePtrOutput) Elem() EncryptionEntities
 		var ret EncryptionEntitiesDefinitionResponse
 		return ret
 	}).(EncryptionEntitiesDefinitionResponseOutput)
+}
+
+// Encryption properties for the databricks managed disks.
+func (o EncryptionEntitiesDefinitionResponsePtrOutput) ManagedDisk() ManagedDiskEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionEntitiesDefinitionResponse) *ManagedDiskEncryptionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedDisk
+	}).(ManagedDiskEncryptionResponsePtrOutput)
 }
 
 // Encryption properties for the databricks managed services.
@@ -1612,6 +1648,552 @@ func (o IdentityDataResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object that contains details of encryption used on the workspace.
+type ManagedDiskEncryption struct {
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+	KeySource string `pulumi:"keySource"`
+	// Key Vault input properties for encryption.
+	KeyVaultProperties ManagedDiskEncryptionKeyVaultProperties `pulumi:"keyVaultProperties"`
+	// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+	RotationToLatestKeyVersionEnabled *bool `pulumi:"rotationToLatestKeyVersionEnabled"`
+}
+
+// ManagedDiskEncryptionInput is an input type that accepts ManagedDiskEncryptionArgs and ManagedDiskEncryptionOutput values.
+// You can construct a concrete instance of `ManagedDiskEncryptionInput` via:
+//
+//	ManagedDiskEncryptionArgs{...}
+type ManagedDiskEncryptionInput interface {
+	pulumi.Input
+
+	ToManagedDiskEncryptionOutput() ManagedDiskEncryptionOutput
+	ToManagedDiskEncryptionOutputWithContext(context.Context) ManagedDiskEncryptionOutput
+}
+
+// The object that contains details of encryption used on the workspace.
+type ManagedDiskEncryptionArgs struct {
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+	KeySource pulumi.StringInput `pulumi:"keySource"`
+	// Key Vault input properties for encryption.
+	KeyVaultProperties ManagedDiskEncryptionKeyVaultPropertiesInput `pulumi:"keyVaultProperties"`
+	// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+	RotationToLatestKeyVersionEnabled pulumi.BoolPtrInput `pulumi:"rotationToLatestKeyVersionEnabled"`
+}
+
+func (ManagedDiskEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryption)(nil)).Elem()
+}
+
+func (i ManagedDiskEncryptionArgs) ToManagedDiskEncryptionOutput() ManagedDiskEncryptionOutput {
+	return i.ToManagedDiskEncryptionOutputWithContext(context.Background())
+}
+
+func (i ManagedDiskEncryptionArgs) ToManagedDiskEncryptionOutputWithContext(ctx context.Context) ManagedDiskEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionOutput)
+}
+
+func (i ManagedDiskEncryptionArgs) ToManagedDiskEncryptionPtrOutput() ManagedDiskEncryptionPtrOutput {
+	return i.ToManagedDiskEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedDiskEncryptionArgs) ToManagedDiskEncryptionPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionOutput).ToManagedDiskEncryptionPtrOutputWithContext(ctx)
+}
+
+// ManagedDiskEncryptionPtrInput is an input type that accepts ManagedDiskEncryptionArgs, ManagedDiskEncryptionPtr and ManagedDiskEncryptionPtrOutput values.
+// You can construct a concrete instance of `ManagedDiskEncryptionPtrInput` via:
+//
+//	        ManagedDiskEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedDiskEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToManagedDiskEncryptionPtrOutput() ManagedDiskEncryptionPtrOutput
+	ToManagedDiskEncryptionPtrOutputWithContext(context.Context) ManagedDiskEncryptionPtrOutput
+}
+
+type managedDiskEncryptionPtrType ManagedDiskEncryptionArgs
+
+func ManagedDiskEncryptionPtr(v *ManagedDiskEncryptionArgs) ManagedDiskEncryptionPtrInput {
+	return (*managedDiskEncryptionPtrType)(v)
+}
+
+func (*managedDiskEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryption)(nil)).Elem()
+}
+
+func (i *managedDiskEncryptionPtrType) ToManagedDiskEncryptionPtrOutput() ManagedDiskEncryptionPtrOutput {
+	return i.ToManagedDiskEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *managedDiskEncryptionPtrType) ToManagedDiskEncryptionPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionPtrOutput)
+}
+
+// The object that contains details of encryption used on the workspace.
+type ManagedDiskEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryption)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionOutput) ToManagedDiskEncryptionOutput() ManagedDiskEncryptionOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionOutput) ToManagedDiskEncryptionOutputWithContext(ctx context.Context) ManagedDiskEncryptionOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionOutput) ToManagedDiskEncryptionPtrOutput() ManagedDiskEncryptionPtrOutput {
+	return o.ToManagedDiskEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedDiskEncryptionOutput) ToManagedDiskEncryptionPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedDiskEncryption) *ManagedDiskEncryption {
+		return &v
+	}).(ManagedDiskEncryptionPtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+func (o ManagedDiskEncryptionOutput) KeySource() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryption) string { return v.KeySource }).(pulumi.StringOutput)
+}
+
+// Key Vault input properties for encryption.
+func (o ManagedDiskEncryptionOutput) KeyVaultProperties() ManagedDiskEncryptionKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v ManagedDiskEncryption) ManagedDiskEncryptionKeyVaultProperties { return v.KeyVaultProperties }).(ManagedDiskEncryptionKeyVaultPropertiesOutput)
+}
+
+// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+func (o ManagedDiskEncryptionOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedDiskEncryption) *bool { return v.RotationToLatestKeyVersionEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedDiskEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryption)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionPtrOutput) ToManagedDiskEncryptionPtrOutput() ManagedDiskEncryptionPtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionPtrOutput) ToManagedDiskEncryptionPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionPtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionPtrOutput) Elem() ManagedDiskEncryptionOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryption) ManagedDiskEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDiskEncryption
+		return ret
+	}).(ManagedDiskEncryptionOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+func (o ManagedDiskEncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key Vault input properties for encryption.
+func (o ManagedDiskEncryptionPtrOutput) KeyVaultProperties() ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryption) *ManagedDiskEncryptionKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultProperties
+	}).(ManagedDiskEncryptionKeyVaultPropertiesPtrOutput)
+}
+
+// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+func (o ManagedDiskEncryptionPtrOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RotationToLatestKeyVersionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionKeyVaultProperties struct {
+	// The name of KeyVault key.
+	KeyName string `pulumi:"keyName"`
+	// The URI of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// The version of KeyVault key.
+	KeyVersion string `pulumi:"keyVersion"`
+}
+
+// ManagedDiskEncryptionKeyVaultPropertiesInput is an input type that accepts ManagedDiskEncryptionKeyVaultPropertiesArgs and ManagedDiskEncryptionKeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `ManagedDiskEncryptionKeyVaultPropertiesInput` via:
+//
+//	ManagedDiskEncryptionKeyVaultPropertiesArgs{...}
+type ManagedDiskEncryptionKeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToManagedDiskEncryptionKeyVaultPropertiesOutput() ManagedDiskEncryptionKeyVaultPropertiesOutput
+	ToManagedDiskEncryptionKeyVaultPropertiesOutputWithContext(context.Context) ManagedDiskEncryptionKeyVaultPropertiesOutput
+}
+
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionKeyVaultPropertiesArgs struct {
+	// The name of KeyVault key.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The URI of KeyVault.
+	KeyVaultUri pulumi.StringInput `pulumi:"keyVaultUri"`
+	// The version of KeyVault key.
+	KeyVersion pulumi.StringInput `pulumi:"keyVersion"`
+}
+
+func (ManagedDiskEncryptionKeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryptionKeyVaultProperties)(nil)).Elem()
+}
+
+func (i ManagedDiskEncryptionKeyVaultPropertiesArgs) ToManagedDiskEncryptionKeyVaultPropertiesOutput() ManagedDiskEncryptionKeyVaultPropertiesOutput {
+	return i.ToManagedDiskEncryptionKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i ManagedDiskEncryptionKeyVaultPropertiesArgs) ToManagedDiskEncryptionKeyVaultPropertiesOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionKeyVaultPropertiesOutput)
+}
+
+func (i ManagedDiskEncryptionKeyVaultPropertiesArgs) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return i.ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedDiskEncryptionKeyVaultPropertiesArgs) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionKeyVaultPropertiesOutput).ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// ManagedDiskEncryptionKeyVaultPropertiesPtrInput is an input type that accepts ManagedDiskEncryptionKeyVaultPropertiesArgs, ManagedDiskEncryptionKeyVaultPropertiesPtr and ManagedDiskEncryptionKeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `ManagedDiskEncryptionKeyVaultPropertiesPtrInput` via:
+//
+//	        ManagedDiskEncryptionKeyVaultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedDiskEncryptionKeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToManagedDiskEncryptionKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionKeyVaultPropertiesPtrOutput
+	ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Context) ManagedDiskEncryptionKeyVaultPropertiesPtrOutput
+}
+
+type managedDiskEncryptionKeyVaultPropertiesPtrType ManagedDiskEncryptionKeyVaultPropertiesArgs
+
+func ManagedDiskEncryptionKeyVaultPropertiesPtr(v *ManagedDiskEncryptionKeyVaultPropertiesArgs) ManagedDiskEncryptionKeyVaultPropertiesPtrInput {
+	return (*managedDiskEncryptionKeyVaultPropertiesPtrType)(v)
+}
+
+func (*managedDiskEncryptionKeyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryptionKeyVaultProperties)(nil)).Elem()
+}
+
+func (i *managedDiskEncryptionKeyVaultPropertiesPtrType) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return i.ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *managedDiskEncryptionKeyVaultPropertiesPtrType) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionKeyVaultPropertiesPtrOutput)
+}
+
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryptionKeyVaultProperties)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) ToManagedDiskEncryptionKeyVaultPropertiesOutput() ManagedDiskEncryptionKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) ToManagedDiskEncryptionKeyVaultPropertiesOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return o.ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedDiskEncryptionKeyVaultProperties) *ManagedDiskEncryptionKeyVaultProperties {
+		return &v
+	}).(ManagedDiskEncryptionKeyVaultPropertiesPtrOutput)
+}
+
+// The name of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionKeyVaultProperties) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The URI of KeyVault.
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionKeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// The version of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesOutput) KeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionKeyVaultProperties) string { return v.KeyVersion }).(pulumi.StringOutput)
+}
+
+type ManagedDiskEncryptionKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryptionKeyVaultProperties)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) ToManagedDiskEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) Elem() ManagedDiskEncryptionKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultProperties) ManagedDiskEncryptionKeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDiskEncryptionKeyVaultProperties
+		return ret
+	}).(ManagedDiskEncryptionKeyVaultPropertiesOutput)
+}
+
+// The name of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of KeyVault.
+func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) KeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object that contains details of encryption used on the workspace.
+type ManagedDiskEncryptionResponse struct {
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+	KeySource string `pulumi:"keySource"`
+	// Key Vault input properties for encryption.
+	KeyVaultProperties ManagedDiskEncryptionResponseKeyVaultProperties `pulumi:"keyVaultProperties"`
+	// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+	RotationToLatestKeyVersionEnabled *bool `pulumi:"rotationToLatestKeyVersionEnabled"`
+}
+
+// The object that contains details of encryption used on the workspace.
+type ManagedDiskEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryptionResponse)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionResponseOutput) ToManagedDiskEncryptionResponseOutput() ManagedDiskEncryptionResponseOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionResponseOutput) ToManagedDiskEncryptionResponseOutputWithContext(ctx context.Context) ManagedDiskEncryptionResponseOutput {
+	return o
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+func (o ManagedDiskEncryptionResponseOutput) KeySource() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponse) string { return v.KeySource }).(pulumi.StringOutput)
+}
+
+// Key Vault input properties for encryption.
+func (o ManagedDiskEncryptionResponseOutput) KeyVaultProperties() ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponse) ManagedDiskEncryptionResponseKeyVaultProperties {
+		return v.KeyVaultProperties
+	}).(ManagedDiskEncryptionResponseKeyVaultPropertiesOutput)
+}
+
+// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+func (o ManagedDiskEncryptionResponseOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponse) *bool { return v.RotationToLatestKeyVersionEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedDiskEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryptionResponse)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionResponsePtrOutput) ToManagedDiskEncryptionResponsePtrOutput() ManagedDiskEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionResponsePtrOutput) ToManagedDiskEncryptionResponsePtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionResponsePtrOutput) Elem() ManagedDiskEncryptionResponseOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) ManagedDiskEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDiskEncryptionResponse
+		return ret
+	}).(ManagedDiskEncryptionResponseOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+func (o ManagedDiskEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key Vault input properties for encryption.
+func (o ManagedDiskEncryptionResponsePtrOutput) KeyVaultProperties() ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) *ManagedDiskEncryptionResponseKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultProperties
+	}).(ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput)
+}
+
+// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+func (o ManagedDiskEncryptionResponsePtrOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RotationToLatestKeyVersionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionResponseKeyVaultProperties struct {
+	// The name of KeyVault key.
+	KeyName string `pulumi:"keyName"`
+	// The URI of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// The version of KeyVault key.
+	KeyVersion string `pulumi:"keyVersion"`
+}
+
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionResponseKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryptionResponseKeyVaultProperties)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesOutput() ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesOutputWithContext(ctx context.Context) ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
+	return o
+}
+
+// The name of KeyVault key.
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponseKeyVaultProperties) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The URI of KeyVault.
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponseKeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// The version of KeyVault key.
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) KeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponseKeyVaultProperties) string { return v.KeyVersion }).(pulumi.StringOutput)
+}
+
+type ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryptionResponseKeyVaultProperties)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) Elem() ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) ManagedDiskEncryptionResponseKeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDiskEncryptionResponseKeyVaultProperties
+		return ret
+	}).(ManagedDiskEncryptionResponseKeyVaultPropertiesOutput)
+}
+
+// The name of KeyVault key.
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of KeyVault.
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of KeyVault key.
+func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) KeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4563,6 +5145,14 @@ func init() {
 	pulumi.RegisterOutputType(IdentityDataPtrOutput{})
 	pulumi.RegisterOutputType(IdentityDataResponseOutput{})
 	pulumi.RegisterOutputType(IdentityDataResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionResponseKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})

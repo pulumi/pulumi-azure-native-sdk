@@ -41,6 +41,15 @@ const (
 	DayOfWeekWednesday = DayOfWeek("Wednesday")
 )
 
+// Immutability state
+type ImmutabilityState string
+
+const (
+	ImmutabilityStateDisabled = ImmutabilityState("Disabled")
+	ImmutabilityStateUnlocked = ImmutabilityState("Unlocked")
+	ImmutabilityStateLocked   = ImmutabilityState("Locked")
+)
+
 type Month string
 
 const (
@@ -64,6 +73,18 @@ type SecretStoreType string
 const (
 	SecretStoreTypeInvalid       = SecretStoreType("Invalid")
 	SecretStoreTypeAzureKeyVault = SecretStoreType("AzureKeyVault")
+)
+
+// State of soft delete
+type SoftDeleteState string
+
+const (
+	// Soft Delete is turned off for the BackupVault
+	SoftDeleteStateOff = SoftDeleteState("Off")
+	// Soft Delete is enabled for the BackupVault but can be turned off
+	SoftDeleteStateOn = SoftDeleteState("On")
+	// Soft Delete is permanently enabled for the BackupVault and the setting cannot be changed
+	SoftDeleteStateAlwaysOn = SoftDeleteState("AlwaysOn")
 )
 
 // Gets or sets the type of the datastore.

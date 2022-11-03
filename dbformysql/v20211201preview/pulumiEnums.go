@@ -192,7 +192,7 @@ func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(DataEncryptionTypePtrOutput)
 }
 
-// Enable Storage Auto Grow or not.
+// Enable IO Auto Scaling or not.
 type EnableStatusEnum string
 
 const (

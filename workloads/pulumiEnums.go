@@ -540,6 +540,7 @@ type SAPSoftwareInstallationType string
 const (
 	SAPSoftwareInstallationTypeServiceInitiated          = SAPSoftwareInstallationType("ServiceInitiated")
 	SAPSoftwareInstallationTypeSAPInstallWithoutOSConfig = SAPSoftwareInstallationType("SAPInstallWithoutOSConfig")
+	SAPSoftwareInstallationTypeExternal                  = SAPSoftwareInstallationType("External")
 )
 
 // Search type
