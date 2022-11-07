@@ -174,6 +174,7 @@ const (
 	HealthStatusInvalid         = HealthStatus("Invalid")
 )
 
+// Type of backup policy type
 type IAASVMPolicyType string
 
 const (
