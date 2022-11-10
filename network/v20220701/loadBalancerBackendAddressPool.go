@@ -41,6 +41,8 @@ type LoadBalancerBackendAddressPool struct {
 	TunnelInterfaces GatewayLoadBalancerTunnelInterfaceResponseArrayOutput `pulumi:"tunnelInterfaces"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// A reference to a virtual network.
+	VirtualNetwork SubResourceResponsePtrOutput `pulumi:"virtualNetwork"`
 }
 
 // NewLoadBalancerBackendAddressPool registers a new resource with the given unique name, arguments, and options.
@@ -148,6 +150,8 @@ type loadBalancerBackendAddressPoolArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces []GatewayLoadBalancerTunnelInterface `pulumi:"tunnelInterfaces"`
+	// A reference to a virtual network.
+	VirtualNetwork *SubResource `pulumi:"virtualNetwork"`
 }
 
 // The set of arguments for constructing a LoadBalancerBackendAddressPool resource.
@@ -170,6 +174,8 @@ type LoadBalancerBackendAddressPoolArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces GatewayLoadBalancerTunnelInterfaceArrayInput
+	// A reference to a virtual network.
+	VirtualNetwork SubResourcePtrInput
 }
 
 func (LoadBalancerBackendAddressPoolArgs) ElementType() reflect.Type {
@@ -278,6 +284,11 @@ func (o LoadBalancerBackendAddressPoolOutput) TunnelInterfaces() GatewayLoadBala
 // Type of the resource.
 func (o LoadBalancerBackendAddressPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerBackendAddressPool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// A reference to a virtual network.
+func (o LoadBalancerBackendAddressPoolOutput) VirtualNetwork() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *LoadBalancerBackendAddressPool) SubResourceResponsePtrOutput { return v.VirtualNetwork }).(SubResourceResponsePtrOutput)
 }
 
 func init() {

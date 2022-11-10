@@ -15473,6 +15473,19 @@ type Scale struct {
 	Rules []ScaleRule `pulumi:"rules"`
 }
 
+// Defaults sets the appropriate defaults for Scale
+func (val *Scale) Defaults() *Scale {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MaxReplicas) {
+		maxReplicas_ := 10
+		tmp.MaxReplicas = &maxReplicas_
+	}
+	return &tmp
+}
+
 // ScaleInput is an input type that accepts ScaleArgs and ScaleOutput values.
 // You can construct a concrete instance of `ScaleInput` via:
 //
@@ -15494,6 +15507,17 @@ type ScaleArgs struct {
 	Rules ScaleRuleArrayInput `pulumi:"rules"`
 }
 
+// Defaults sets the appropriate defaults for ScaleArgs
+func (val *ScaleArgs) Defaults() *ScaleArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MaxReplicas) {
+		tmp.MaxReplicas = pulumi.IntPtr(10)
+	}
+	return &tmp
+}
 func (ScaleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Scale)(nil)).Elem()
 }
@@ -15649,6 +15673,19 @@ type ScaleResponse struct {
 	MinReplicas *int `pulumi:"minReplicas"`
 	// Scaling rules.
 	Rules []ScaleRuleResponse `pulumi:"rules"`
+}
+
+// Defaults sets the appropriate defaults for ScaleResponse
+func (val *ScaleResponse) Defaults() *ScaleResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MaxReplicas) {
+		maxReplicas_ := 10
+		tmp.MaxReplicas = &maxReplicas_
+	}
+	return &tmp
 }
 
 // Container App scaling configurations.
@@ -16321,6 +16358,17 @@ type Template struct {
 	Volumes []Volume `pulumi:"volumes"`
 }
 
+// Defaults sets the appropriate defaults for Template
+func (val *Template) Defaults() *Template {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Scale = tmp.Scale.Defaults()
+
+	return &tmp
+}
+
 // TemplateInput is an input type that accepts TemplateArgs and TemplateOutput values.
 // You can construct a concrete instance of `TemplateInput` via:
 //
@@ -16346,6 +16394,15 @@ type TemplateArgs struct {
 	Volumes VolumeArrayInput `pulumi:"volumes"`
 }
 
+// Defaults sets the appropriate defaults for TemplateArgs
+func (val *TemplateArgs) Defaults() *TemplateArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (TemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Template)(nil)).Elem()
 }
@@ -16522,6 +16579,17 @@ type TemplateResponse struct {
 	Scale *ScaleResponse `pulumi:"scale"`
 	// List of volume definitions for the Container App.
 	Volumes []VolumeResponse `pulumi:"volumes"`
+}
+
+// Defaults sets the appropriate defaults for TemplateResponse
+func (val *TemplateResponse) Defaults() *TemplateResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Scale = tmp.Scale.Defaults()
+
+	return &tmp
 }
 
 // Container App versioned application definition.
