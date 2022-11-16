@@ -717,6 +717,15 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
+// Gets or sets certificate preference if secure communication is enabled.
+type SslPreference string
+
+const (
+	SslPreferenceDisabled          = SslPreference("Disabled")
+	SslPreferenceRootCertificate   = SslPreference("RootCertificate")
+	SslPreferenceServerCertificate = SslPreference("ServerCertificate")
+)
+
 // Application version
 type WordpressVersions string
 

@@ -15,6 +15,8 @@ import (
 type Extension struct {
 	pulumi.CustomResourceState
 
+	// Additional api properties.
+	AdditionalApiProperties ApiPropertiesResponseMapOutput `pulumi:"additionalApiProperties"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Extension api docs link.
@@ -89,8 +91,12 @@ func (ExtensionState) ElementType() reflect.Type {
 }
 
 type extensionArgs struct {
+	// Additional Api Properties.
+	AdditionalApiProperties map[string]ApiProperties `pulumi:"additionalApiProperties"`
 	// Id of extension resource.
 	ExtensionId *string `pulumi:"extensionId"`
+	// Extension Version.
+	ExtensionVersion *string `pulumi:"extensionVersion"`
 	// FarmBeats resource name.
 	FarmBeatsResourceName string `pulumi:"farmBeatsResourceName"`
 	// The name of the resource group. The name is case insensitive.
@@ -99,8 +105,12 @@ type extensionArgs struct {
 
 // The set of arguments for constructing a Extension resource.
 type ExtensionArgs struct {
+	// Additional Api Properties.
+	AdditionalApiProperties ApiPropertiesMapInput
 	// Id of extension resource.
 	ExtensionId pulumi.StringPtrInput
+	// Extension Version.
+	ExtensionVersion pulumi.StringPtrInput
 	// FarmBeats resource name.
 	FarmBeatsResourceName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -142,6 +152,11 @@ func (o ExtensionOutput) ToExtensionOutput() ExtensionOutput {
 
 func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
 	return o
+}
+
+// Additional api properties.
+func (o ExtensionOutput) AdditionalApiProperties() ApiPropertiesResponseMapOutput {
+	return o.ApplyT(func(v *Extension) ApiPropertiesResponseMapOutput { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

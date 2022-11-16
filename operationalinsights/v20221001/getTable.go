@@ -17,7 +17,7 @@ func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.Invo
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupTableArgs struct {
@@ -50,7 +50,7 @@ type LookupTableResult struct {
 	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
 	RetentionInDays *int `pulumi:"retentionInDays"`
 	// True - Value originates from workspace retention in days, False - Customer specific.
-	RetentionInDaysAsDefault string `pulumi:"retentionInDaysAsDefault"`
+	RetentionInDaysAsDefault bool `pulumi:"retentionInDaysAsDefault"`
 	// Table schema.
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Parameters of the search job that initiated this table.
@@ -60,24 +60,9 @@ type LookupTableResult struct {
 	// The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays *int `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
-	TotalRetentionInDaysAsDefault string `pulumi:"totalRetentionInDaysAsDefault"`
+	TotalRetentionInDaysAsDefault bool `pulumi:"totalRetentionInDaysAsDefault"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for LookupTableResult
-func (val *LookupTableResult) Defaults() *LookupTableResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.RetentionInDaysAsDefault) {
-		tmp.RetentionInDaysAsDefault = "True"
-	}
-	if isZero(tmp.TotalRetentionInDaysAsDefault) {
-		tmp.TotalRetentionInDaysAsDefault = "True"
-	}
-	return &tmp
 }
 
 func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResultOutput {
@@ -167,8 +152,8 @@ func (o LookupTableResultOutput) RetentionInDays() pulumi.IntPtrOutput {
 }
 
 // True - Value originates from workspace retention in days, False - Customer specific.
-func (o LookupTableResultOutput) RetentionInDaysAsDefault() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTableResult) string { return v.RetentionInDaysAsDefault }).(pulumi.StringOutput)
+func (o LookupTableResultOutput) RetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTableResult) bool { return v.RetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // Table schema.
@@ -192,8 +177,8 @@ func (o LookupTableResultOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 }
 
 // True - Value originates from retention in days, False - Customer specific.
-func (o LookupTableResultOutput) TotalRetentionInDaysAsDefault() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTableResult) string { return v.TotalRetentionInDaysAsDefault }).(pulumi.StringOutput)
+func (o LookupTableResultOutput) TotalRetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTableResult) bool { return v.TotalRetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

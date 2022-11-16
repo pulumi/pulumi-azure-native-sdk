@@ -23,6 +23,8 @@ type FarmBeatsModel struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// FarmBeats instance provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The resource model definition representing SKU
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -88,6 +90,8 @@ type farmBeatsModelArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource model definition representing SKU
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -100,6 +104,8 @@ type FarmBeatsModelArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// The resource model definition representing SKU
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -159,6 +165,11 @@ func (o FarmBeatsModelOutput) Name() pulumi.StringOutput {
 // FarmBeats instance provisioning state.
 func (o FarmBeatsModelOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The resource model definition representing SKU
+func (o FarmBeatsModelOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *FarmBeatsModel) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

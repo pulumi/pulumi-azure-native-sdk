@@ -15368,6 +15368,8 @@ type BackendAddressPool struct {
 	Name *string `pulumi:"name"`
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces []GatewayLoadBalancerTunnelInterface `pulumi:"tunnelInterfaces"`
+	// A reference to a virtual network.
+	VirtualNetwork *SubResource `pulumi:"virtualNetwork"`
 }
 
 // BackendAddressPoolInput is an input type that accepts BackendAddressPoolArgs and BackendAddressPoolOutput values.
@@ -15395,6 +15397,8 @@ type BackendAddressPoolArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces GatewayLoadBalancerTunnelInterfaceArrayInput `pulumi:"tunnelInterfaces"`
+	// A reference to a virtual network.
+	VirtualNetwork SubResourcePtrInput `pulumi:"virtualNetwork"`
 }
 
 func (BackendAddressPoolArgs) ElementType() reflect.Type {
@@ -15479,6 +15483,11 @@ func (o BackendAddressPoolOutput) TunnelInterfaces() GatewayLoadBalancerTunnelIn
 	return o.ApplyT(func(v BackendAddressPool) []GatewayLoadBalancerTunnelInterface { return v.TunnelInterfaces }).(GatewayLoadBalancerTunnelInterfaceArrayOutput)
 }
 
+// A reference to a virtual network.
+func (o BackendAddressPoolOutput) VirtualNetwork() SubResourcePtrOutput {
+	return o.ApplyT(func(v BackendAddressPool) *SubResource { return v.VirtualNetwork }).(SubResourcePtrOutput)
+}
+
 type BackendAddressPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (BackendAddressPoolArrayOutput) ElementType() reflect.Type {
@@ -15529,6 +15538,8 @@ type BackendAddressPoolResponse struct {
 	TunnelInterfaces []GatewayLoadBalancerTunnelInterfaceResponse `pulumi:"tunnelInterfaces"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
+	// A reference to a virtual network.
+	VirtualNetwork *SubResourceResponse `pulumi:"virtualNetwork"`
 }
 
 // Pool of backend IP addresses.
@@ -15620,6 +15631,11 @@ func (o BackendAddressPoolResponseOutput) TunnelInterfaces() GatewayLoadBalancer
 // Type of the resource.
 func (o BackendAddressPoolResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendAddressPoolResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A reference to a virtual network.
+func (o BackendAddressPoolResponseOutput) VirtualNetwork() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v BackendAddressPoolResponse) *SubResourceResponse { return v.VirtualNetwork }).(SubResourceResponsePtrOutput)
 }
 
 type BackendAddressPoolResponseArrayOutput struct{ *pulumi.OutputState }

@@ -662,6 +662,10 @@ type DB2ProviderInstanceProperties struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the DB2 provider properties.
@@ -683,6 +687,10 @@ type DB2ProviderInstancePropertiesResponse struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the database configuration.
@@ -2418,8 +2426,12 @@ type HanaDbProviderInstanceProperties struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the database sql port.
 	SqlPort *string `pulumi:"sqlPort"`
+	// Gets or sets the blob URI to SSL certificate for the DB.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets the hostname(s) in the SSL certificate.
 	SslHostNameInCertificate *string `pulumi:"sslHostNameInCertificate"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the provider properties.
@@ -2443,8 +2455,12 @@ type HanaDbProviderInstancePropertiesResponse struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the database sql port.
 	SqlPort *string `pulumi:"sqlPort"`
+	// Gets or sets the blob URI to SSL certificate for the DB.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets the hostname(s) in the SSL certificate.
 	SslHostNameInCertificate *string `pulumi:"sslHostNameInCertificate"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the high availability configuration.
@@ -2964,6 +2980,10 @@ type MsSqlServerProviderInstanceProperties struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the SQL Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the SQL server provider properties.
@@ -2983,6 +3003,10 @@ type MsSqlServerProviderInstancePropertiesResponse struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the SQL Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Defines the network configuration type for SAP system infrastructure that is being deployed
@@ -4399,6 +4423,10 @@ type PrometheusHaClusterProviderInstanceProperties struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the cluster sid.
 	Sid *string `pulumi:"sid"`
+	// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the PrometheusHaCluster provider properties.
@@ -4414,6 +4442,10 @@ type PrometheusHaClusterProviderInstancePropertiesResponse struct {
 	ProviderType string `pulumi:"providerType"`
 	// Gets or sets the cluster sid.
 	Sid *string `pulumi:"sid"`
+	// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the PrometheusOS provider properties.
@@ -4423,6 +4455,10 @@ type PrometheusOSProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'PrometheusOS'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the PrometheusOS provider properties.
@@ -4432,6 +4468,10 @@ type PrometheusOSProviderInstancePropertiesResponse struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'PrometheusOS'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Defines the provider instance errors.
@@ -4770,6 +4810,10 @@ type SapNetWeaverProviderInstanceProperties struct {
 	SapSslCertificateUri *string `pulumi:"sapSslCertificateUri"`
 	// Gets or sets the SAP user name.
 	SapUsername *string `pulumi:"sapUsername"`
+	// Gets or sets the blob URI to SSL certificate for the SAP system.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Gets or sets the provider properties.
@@ -4797,6 +4841,10 @@ type SapNetWeaverProviderInstancePropertiesResponse struct {
 	SapSslCertificateUri *string `pulumi:"sapSslCertificateUri"`
 	// Gets or sets the SAP user name.
 	SapUsername *string `pulumi:"sapUsername"`
+	// Gets or sets the blob URI to SSL certificate for the SAP system.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Search profile
