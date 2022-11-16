@@ -59,6 +59,8 @@ type LookupLoadBalancerBackendAddressPoolResult struct {
 	TunnelInterfaces []GatewayLoadBalancerTunnelInterfaceResponse `pulumi:"tunnelInterfaces"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
+	// A reference to a virtual network.
+	VirtualNetwork *SubResourceResponse `pulumi:"virtualNetwork"`
 }
 
 func LookupLoadBalancerBackendAddressPoolOutput(ctx *pulumi.Context, args LookupLoadBalancerBackendAddressPoolOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerBackendAddressPoolResultOutput {
@@ -176,6 +178,11 @@ func (o LookupLoadBalancerBackendAddressPoolResultOutput) TunnelInterfaces() Gat
 // Type of the resource.
 func (o LookupLoadBalancerBackendAddressPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A reference to a virtual network.
+func (o LookupLoadBalancerBackendAddressPoolResultOutput) VirtualNetwork() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) *SubResourceResponse { return v.VirtualNetwork }).(SubResourceResponsePtrOutput)
 }
 
 func init() {

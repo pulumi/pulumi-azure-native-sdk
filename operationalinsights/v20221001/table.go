@@ -32,7 +32,7 @@ type Table struct {
 	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
 	RetentionInDays pulumi.IntPtrOutput `pulumi:"retentionInDays"`
 	// True - Value originates from workspace retention in days, False - Customer specific.
-	RetentionInDaysAsDefault pulumi.StringOutput `pulumi:"retentionInDaysAsDefault"`
+	RetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"retentionInDaysAsDefault"`
 	// Table schema.
 	Schema SchemaResponsePtrOutput `pulumi:"schema"`
 	// Parameters of the search job that initiated this table.
@@ -42,7 +42,7 @@ type Table struct {
 	// The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays pulumi.IntPtrOutput `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
-	TotalRetentionInDaysAsDefault pulumi.StringOutput `pulumi:"totalRetentionInDaysAsDefault"`
+	TotalRetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"totalRetentionInDaysAsDefault"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -221,8 +221,8 @@ func (o TableOutput) RetentionInDays() pulumi.IntPtrOutput {
 }
 
 // True - Value originates from workspace retention in days, False - Customer specific.
-func (o TableOutput) RetentionInDaysAsDefault() pulumi.StringOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.RetentionInDaysAsDefault }).(pulumi.StringOutput)
+func (o TableOutput) RetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolOutput { return v.RetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // Table schema.
@@ -246,8 +246,8 @@ func (o TableOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 }
 
 // True - Value originates from retention in days, False - Customer specific.
-func (o TableOutput) TotalRetentionInDaysAsDefault() pulumi.StringOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TotalRetentionInDaysAsDefault }).(pulumi.StringOutput)
+func (o TableOutput) TotalRetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolOutput { return v.TotalRetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

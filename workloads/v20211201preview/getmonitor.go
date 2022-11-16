@@ -53,6 +53,8 @@ type GetmonitorResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
 	RoutingPreference *string `pulumi:"routingPreference"`
+	// The ARM ID of the Storage account used for SAP monitoring.
+	StorageAccountArmId string `pulumi:"storageAccountArmId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -160,6 +162,11 @@ func (o GetmonitorResultOutput) ProvisioningState() pulumi.StringOutput {
 // Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
 func (o GetmonitorResultOutput) RoutingPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetmonitorResult) *string { return v.RoutingPreference }).(pulumi.StringPtrOutput)
+}
+
+// The ARM ID of the Storage account used for SAP monitoring.
+func (o GetmonitorResultOutput) StorageAccountArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetmonitorResult) string { return v.StorageAccountArmId }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

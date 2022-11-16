@@ -7469,6 +7469,8 @@ type RuntimeScriptActionResponse struct {
 	ApplicationName string `pulumi:"applicationName"`
 	// The name of the script action.
 	Name string `pulumi:"name"`
+	// The parameters for the script
+	Parameters *string `pulumi:"parameters"`
 	// The list of roles where script will be executed.
 	Roles []string `pulumi:"roles"`
 	// The URI to the script.
@@ -7498,6 +7500,11 @@ func (o RuntimeScriptActionResponseOutput) ApplicationName() pulumi.StringOutput
 // The name of the script action.
 func (o RuntimeScriptActionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeScriptActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameters for the script
+func (o RuntimeScriptActionResponseOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeScriptActionResponse) *string { return v.Parameters }).(pulumi.StringPtrOutput)
 }
 
 // The list of roles where script will be executed.

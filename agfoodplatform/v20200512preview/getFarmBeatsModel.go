@@ -39,6 +39,8 @@ type LookupFarmBeatsModelResult struct {
 	Name string `pulumi:"name"`
 	// FarmBeats instance provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource model definition representing SKU
+	Sku *SkuResponse `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -109,6 +111,11 @@ func (o LookupFarmBeatsModelResultOutput) Name() pulumi.StringOutput {
 // FarmBeats instance provisioning state.
 func (o LookupFarmBeatsModelResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The resource model definition representing SKU
+func (o LookupFarmBeatsModelResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupFarmBeatsModelResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

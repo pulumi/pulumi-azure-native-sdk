@@ -2224,6 +2224,140 @@ type MagentoSourceResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Managed identity credential.
+type ManagedIdentityCredential struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// The resource id of user assigned managed identity
+	ResourceId *string `pulumi:"resourceId"`
+	// Type of credential.
+	// Expected value is 'ManagedIdentity'.
+	Type string `pulumi:"type"`
+}
+
+// ManagedIdentityCredentialInput is an input type that accepts ManagedIdentityCredentialArgs and ManagedIdentityCredentialOutput values.
+// You can construct a concrete instance of `ManagedIdentityCredentialInput` via:
+//
+//	ManagedIdentityCredentialArgs{...}
+type ManagedIdentityCredentialInput interface {
+	pulumi.Input
+
+	ToManagedIdentityCredentialOutput() ManagedIdentityCredentialOutput
+	ToManagedIdentityCredentialOutputWithContext(context.Context) ManagedIdentityCredentialOutput
+}
+
+// Managed identity credential.
+type ManagedIdentityCredentialArgs struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Credential description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The resource id of user assigned managed identity
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// Type of credential.
+	// Expected value is 'ManagedIdentity'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ManagedIdentityCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityCredential)(nil)).Elem()
+}
+
+func (i ManagedIdentityCredentialArgs) ToManagedIdentityCredentialOutput() ManagedIdentityCredentialOutput {
+	return i.ToManagedIdentityCredentialOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityCredentialArgs) ToManagedIdentityCredentialOutputWithContext(ctx context.Context) ManagedIdentityCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityCredentialOutput)
+}
+
+// Managed identity credential.
+type ManagedIdentityCredentialOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityCredential)(nil)).Elem()
+}
+
+func (o ManagedIdentityCredentialOutput) ToManagedIdentityCredentialOutput() ManagedIdentityCredentialOutput {
+	return o
+}
+
+func (o ManagedIdentityCredentialOutput) ToManagedIdentityCredentialOutputWithContext(ctx context.Context) ManagedIdentityCredentialOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o ManagedIdentityCredentialOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ManagedIdentityCredential) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o ManagedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The resource id of user assigned managed identity
+func (o ManagedIdentityCredentialOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityCredential) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of credential.
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Managed identity credential.
+type ManagedIdentityCredentialResponse struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// The resource id of user assigned managed identity
+	ResourceId *string `pulumi:"resourceId"`
+	// Type of credential.
+	// Expected value is 'ManagedIdentity'.
+	Type string `pulumi:"type"`
+}
+
+// Managed identity credential.
+type ManagedIdentityCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityCredentialResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityCredentialResponseOutput) ToManagedIdentityCredentialResponseOutput() ManagedIdentityCredentialResponseOutput {
+	return o
+}
+
+func (o ManagedIdentityCredentialResponseOutput) ToManagedIdentityCredentialResponseOutputWithContext(ctx context.Context) ManagedIdentityCredentialResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o ManagedIdentityCredentialResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ManagedIdentityCredentialResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o ManagedIdentityCredentialResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The resource id of user assigned managed identity
+func (o ManagedIdentityCredentialResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityCredentialResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of credential.
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityCredentialResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityCredentialResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
 type ManagedIntegrationRuntime struct {
 	// The compute resource for managed integration runtime.
@@ -11989,81 +12123,9 @@ type SqlDWUpsertSettingsResponse struct {
 	Keys interface{} `pulumi:"keys"`
 }
 
-// A copy activity Azure SQL Managed Instance sink.
-type SqlMISink struct {
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// SQL pre-copy script. Type: string (or Expression with resultType string).
-	PreCopyScript interface{} `pulumi:"preCopyScript"`
-	// Sink retry count. Type: integer (or Expression with resultType integer).
-	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
-	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// SQL writer stored procedure name. Type: string (or Expression with resultType string).
-	SqlWriterStoredProcedureName interface{} `pulumi:"sqlWriterStoredProcedureName"`
-	// SQL writer table type. Type: string (or Expression with resultType string).
-	SqlWriterTableType interface{} `pulumi:"sqlWriterTableType"`
-	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
-	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
-	// SQL stored procedure parameters.
-	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
-	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
-	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
-	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
-	TableOption interface{} `pulumi:"tableOption"`
-	// Copy sink type.
-	// Expected value is 'SqlMISink'.
-	Type string `pulumi:"type"`
-	// SQL upsert settings.
-	UpsertSettings *SqlUpsertSettings `pulumi:"upsertSettings"`
-	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
-	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
-	WriteBehavior interface{} `pulumi:"writeBehavior"`
-}
-
-// A copy activity Azure SQL Managed Instance sink.
-type SqlMISinkResponse struct {
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// SQL pre-copy script. Type: string (or Expression with resultType string).
-	PreCopyScript interface{} `pulumi:"preCopyScript"`
-	// Sink retry count. Type: integer (or Expression with resultType integer).
-	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
-	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// SQL writer stored procedure name. Type: string (or Expression with resultType string).
-	SqlWriterStoredProcedureName interface{} `pulumi:"sqlWriterStoredProcedureName"`
-	// SQL writer table type. Type: string (or Expression with resultType string).
-	SqlWriterTableType interface{} `pulumi:"sqlWriterTableType"`
-	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
-	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
-	// SQL stored procedure parameters.
-	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
-	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
-	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
-	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
-	TableOption interface{} `pulumi:"tableOption"`
-	// Copy sink type.
-	// Expected value is 'SqlMISink'.
-	Type string `pulumi:"type"`
-	// SQL upsert settings.
-	UpsertSettings *SqlUpsertSettingsResponse `pulumi:"upsertSettings"`
-	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
-	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
-	WriteBehavior interface{} `pulumi:"writeBehavior"`
-}
-
 func init() {
+	pulumi.RegisterOutputType(ManagedIdentityCredentialOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityCredentialResponseOutput{})
 	pulumi.RegisterOutputType(ManagedPrivateEndpointTypeOutput{})
 	pulumi.RegisterOutputType(ManagedPrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(ParameterSpecificationOutput{})

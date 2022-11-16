@@ -31,6 +31,8 @@ type LookupExtensionArgs struct {
 
 // Extension resource.
 type LookupExtensionResult struct {
+	// Additional api properties.
+	AdditionalApiProperties map[string]ApiPropertiesResponse `pulumi:"additionalApiProperties"`
 	// The ETag value to implement optimistic concurrency.
 	ETag string `pulumi:"eTag"`
 	// Extension api docs link.
@@ -92,6 +94,11 @@ func (o LookupExtensionResultOutput) ToLookupExtensionResultOutput() LookupExten
 
 func (o LookupExtensionResultOutput) ToLookupExtensionResultOutputWithContext(ctx context.Context) LookupExtensionResultOutput {
 	return o
+}
+
+// Additional api properties.
+func (o LookupExtensionResultOutput) AdditionalApiProperties() ApiPropertiesResponseMapOutput {
+	return o.ApplyT(func(v LookupExtensionResult) map[string]ApiPropertiesResponse { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

@@ -10,6 +10,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A copy activity Azure SQL Managed Instance sink.
+type SqlMISink struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// SQL writer stored procedure name. Type: string (or Expression with resultType string).
+	SqlWriterStoredProcedureName interface{} `pulumi:"sqlWriterStoredProcedureName"`
+	// SQL writer table type. Type: string (or Expression with resultType string).
+	SqlWriterTableType interface{} `pulumi:"sqlWriterTableType"`
+	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
+	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
+	// SQL stored procedure parameters.
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
+	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
+	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption interface{} `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'SqlMISink'.
+	Type string `pulumi:"type"`
+	// SQL upsert settings.
+	UpsertSettings *SqlUpsertSettings `pulumi:"upsertSettings"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	WriteBehavior interface{} `pulumi:"writeBehavior"`
+}
+
+// A copy activity Azure SQL Managed Instance sink.
+type SqlMISinkResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// SQL writer stored procedure name. Type: string (or Expression with resultType string).
+	SqlWriterStoredProcedureName interface{} `pulumi:"sqlWriterStoredProcedureName"`
+	// SQL writer table type. Type: string (or Expression with resultType string).
+	SqlWriterTableType interface{} `pulumi:"sqlWriterTableType"`
+	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
+	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
+	// SQL stored procedure parameters.
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
+	// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
+	StoredProcedureTableTypeParameterName interface{} `pulumi:"storedProcedureTableTypeParameterName"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption interface{} `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'SqlMISink'.
+	Type string `pulumi:"type"`
+	// SQL upsert settings.
+	UpsertSettings *SqlUpsertSettingsResponse `pulumi:"upsertSettings"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	WriteBehavior interface{} `pulumi:"writeBehavior"`
+}
+
 // A copy activity Azure SQL Managed Instance source.
 type SqlMISource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).

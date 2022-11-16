@@ -32,7 +32,7 @@ type ListConnectedEnvironmentsDaprComponentSecretsArgs struct {
 // Dapr component Secrets Collection for ListSecrets Action.
 type ListConnectedEnvironmentsDaprComponentSecretsResult struct {
 	// Collection of secrets used by a Dapr component
-	Value []SecretResponse `pulumi:"value"`
+	Value []DaprSecretResponse `pulumi:"value"`
 }
 
 func ListConnectedEnvironmentsDaprComponentSecretsOutput(ctx *pulumi.Context, args ListConnectedEnvironmentsDaprComponentSecretsOutputArgs, opts ...pulumi.InvokeOption) ListConnectedEnvironmentsDaprComponentSecretsResultOutput {
@@ -77,8 +77,8 @@ func (o ListConnectedEnvironmentsDaprComponentSecretsResultOutput) ToListConnect
 }
 
 // Collection of secrets used by a Dapr component
-func (o ListConnectedEnvironmentsDaprComponentSecretsResultOutput) Value() SecretResponseArrayOutput {
-	return o.ApplyT(func(v ListConnectedEnvironmentsDaprComponentSecretsResult) []SecretResponse { return v.Value }).(SecretResponseArrayOutput)
+func (o ListConnectedEnvironmentsDaprComponentSecretsResultOutput) Value() DaprSecretResponseArrayOutput {
+	return o.ApplyT(func(v ListConnectedEnvironmentsDaprComponentSecretsResult) []DaprSecretResponse { return v.Value }).(DaprSecretResponseArrayOutput)
 }
 
 func init() {

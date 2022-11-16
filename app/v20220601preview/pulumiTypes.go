@@ -8654,6 +8654,59 @@ func (o DaprResponsePtrOutput) LogLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Dapr component Secret for ListSecrets Action
+type DaprSecretResponse struct {
+	// Secret Name.
+	Name string `pulumi:"name"`
+	// Secret Value.
+	Value string `pulumi:"value"`
+}
+
+// Dapr component Secret for ListSecrets Action
+type DaprSecretResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprSecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSecretResponse)(nil)).Elem()
+}
+
+func (o DaprSecretResponseOutput) ToDaprSecretResponseOutput() DaprSecretResponseOutput {
+	return o
+}
+
+func (o DaprSecretResponseOutput) ToDaprSecretResponseOutputWithContext(ctx context.Context) DaprSecretResponseOutput {
+	return o
+}
+
+// Secret Name.
+func (o DaprSecretResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DaprSecretResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Secret Value.
+func (o DaprSecretResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DaprSecretResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DaprSecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprSecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprSecretResponse)(nil)).Elem()
+}
+
+func (o DaprSecretResponseArrayOutput) ToDaprSecretResponseArrayOutput() DaprSecretResponseArrayOutput {
+	return o
+}
+
+func (o DaprSecretResponseArrayOutput) ToDaprSecretResponseArrayOutputWithContext(ctx context.Context) DaprSecretResponseArrayOutput {
+	return o
+}
+
+func (o DaprSecretResponseArrayOutput) Index(i pulumi.IntInput) DaprSecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprSecretResponse {
+		return vs[0].([]DaprSecretResponse)[vs[1].(int)]
+	}).(DaprSecretResponseOutput)
+}
+
 // The configuration settings of the Azure Active Directory default authorization policy.
 type DefaultAuthorizationPolicy struct {
 	// The configuration settings of the Azure Active Directory allowed applications.
@@ -17483,6 +17536,19 @@ type Scale struct {
 	Rules []ScaleRule `pulumi:"rules"`
 }
 
+// Defaults sets the appropriate defaults for Scale
+func (val *Scale) Defaults() *Scale {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MaxReplicas) {
+		maxReplicas_ := 10
+		tmp.MaxReplicas = &maxReplicas_
+	}
+	return &tmp
+}
+
 // ScaleInput is an input type that accepts ScaleArgs and ScaleOutput values.
 // You can construct a concrete instance of `ScaleInput` via:
 //
@@ -17504,6 +17570,17 @@ type ScaleArgs struct {
 	Rules ScaleRuleArrayInput `pulumi:"rules"`
 }
 
+// Defaults sets the appropriate defaults for ScaleArgs
+func (val *ScaleArgs) Defaults() *ScaleArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MaxReplicas) {
+		tmp.MaxReplicas = pulumi.IntPtr(10)
+	}
+	return &tmp
+}
 func (ScaleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Scale)(nil)).Elem()
 }
@@ -17659,6 +17736,19 @@ type ScaleResponse struct {
 	MinReplicas *int `pulumi:"minReplicas"`
 	// Scaling rules.
 	Rules []ScaleRuleResponse `pulumi:"rules"`
+}
+
+// Defaults sets the appropriate defaults for ScaleResponse
+func (val *ScaleResponse) Defaults() *ScaleResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MaxReplicas) {
+		maxReplicas_ := 10
+		tmp.MaxReplicas = &maxReplicas_
+	}
+	return &tmp
 }
 
 // Container App scaling configurations.
@@ -18585,6 +18675,17 @@ type Template struct {
 	Volumes []Volume `pulumi:"volumes"`
 }
 
+// Defaults sets the appropriate defaults for Template
+func (val *Template) Defaults() *Template {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Scale = tmp.Scale.Defaults()
+
+	return &tmp
+}
+
 // TemplateInput is an input type that accepts TemplateArgs and TemplateOutput values.
 // You can construct a concrete instance of `TemplateInput` via:
 //
@@ -18612,6 +18713,15 @@ type TemplateArgs struct {
 	Volumes VolumeArrayInput `pulumi:"volumes"`
 }
 
+// Defaults sets the appropriate defaults for TemplateArgs
+func (val *TemplateArgs) Defaults() *TemplateArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (TemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Template)(nil)).Elem()
 }
@@ -18805,6 +18915,17 @@ type TemplateResponse struct {
 	Scale *ScaleResponse `pulumi:"scale"`
 	// List of volume definitions for the Container App.
 	Volumes []VolumeResponse `pulumi:"volumes"`
+}
+
+// Defaults sets the appropriate defaults for TemplateResponse
+func (val *TemplateResponse) Defaults() *TemplateResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Scale = tmp.Scale.Defaults()
+
+	return &tmp
 }
 
 // Container App versioned application definition.
@@ -20768,6 +20889,8 @@ func init() {
 	pulumi.RegisterOutputType(DaprMetadataResponseArrayOutput{})
 	pulumi.RegisterOutputType(DaprResponseOutput{})
 	pulumi.RegisterOutputType(DaprResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprSecretResponseOutput{})
+	pulumi.RegisterOutputType(DaprSecretResponseArrayOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyResponseOutput{})
