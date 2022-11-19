@@ -23,7 +23,7 @@ type FarmBeatsModel struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Private Endpoint Connection resource.
+	// The private endpoint connection resource.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseOutput `pulumi:"privateEndpointConnections"`
 	// FarmBeats instance provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -181,7 +181,7 @@ func (o FarmBeatsModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 func (o FarmBeatsModelOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) PrivateEndpointConnectionResponseOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseOutput)
 }

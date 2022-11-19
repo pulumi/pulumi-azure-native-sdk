@@ -23,6 +23,8 @@ type NetworkWatcher struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the network watcher resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// List of running operation IDs.
+	RunningOperationIds pulumi.IntArrayOutput `pulumi:"runningOperationIds"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -199,6 +201,8 @@ type networkWatcherArgs struct {
 	NetworkWatcherName *string `pulumi:"networkWatcherName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// List of running operation IDs.
+	RunningOperationIds []int `pulumi:"runningOperationIds"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -213,6 +217,8 @@ type NetworkWatcherArgs struct {
 	NetworkWatcherName pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// List of running operation IDs.
+	RunningOperationIds pulumi.IntArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -272,6 +278,11 @@ func (o NetworkWatcherOutput) Name() pulumi.StringOutput {
 // The provisioning state of the network watcher resource.
 func (o NetworkWatcherOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkWatcher) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of running operation IDs.
+func (o NetworkWatcherOutput) RunningOperationIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *NetworkWatcher) pulumi.IntArrayOutput { return v.RunningOperationIds }).(pulumi.IntArrayOutput)
 }
 
 // Resource tags.
