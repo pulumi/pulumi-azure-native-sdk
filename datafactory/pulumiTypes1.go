@@ -11740,7 +11740,7 @@ type SnowflakeSource struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// Snowflake export settings.
-	ExportSettings *SnowflakeExportCopyCommand `pulumi:"exportSettings"`
+	ExportSettings SnowflakeExportCopyCommand `pulumi:"exportSettings"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// Snowflake Sql query. Type: string (or Expression with resultType string).
@@ -11759,7 +11759,7 @@ type SnowflakeSourceResponse struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// Snowflake export settings.
-	ExportSettings *SnowflakeExportCopyCommandResponse `pulumi:"exportSettings"`
+	ExportSettings SnowflakeExportCopyCommandResponse `pulumi:"exportSettings"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// Snowflake Sql query. Type: string (or Expression with resultType string).
