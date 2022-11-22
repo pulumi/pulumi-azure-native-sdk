@@ -29,7 +29,7 @@ type LookupFarmBeatsModelArgs struct {
 
 // FarmBeats ARM Resource.
 type LookupFarmBeatsModelResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identity for the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
@@ -39,7 +39,7 @@ type LookupFarmBeatsModelResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The Private Endpoint Connection resource.
+	// The private endpoint connection resource.
 	PrivateEndpointConnections PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// FarmBeats instance provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -94,7 +94,7 @@ func (o LookupFarmBeatsModelResultOutput) ToLookupFarmBeatsModelResultOutputWith
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFarmBeatsModelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -119,7 +119,7 @@ func (o LookupFarmBeatsModelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 func (o LookupFarmBeatsModelResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseOutput {
 	return o.ApplyT(func(v LookupFarmBeatsModelResult) PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections

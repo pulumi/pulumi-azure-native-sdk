@@ -43,7 +43,7 @@ type LookupExtensionResult struct {
 	ExtensionCategory string `pulumi:"extensionCategory"`
 	// Extension Id.
 	ExtensionId string `pulumi:"extensionId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Installed extension version.
 	InstalledExtensionVersion string `pulumi:"installedExtensionVersion"`
@@ -126,7 +126,7 @@ func (o LookupExtensionResultOutput) ExtensionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ExtensionId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupExtensionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Id }).(pulumi.StringOutput)
 }
