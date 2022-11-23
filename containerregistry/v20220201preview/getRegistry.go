@@ -31,7 +31,7 @@ type LookupRegistryArgs struct {
 type LookupRegistryResult struct {
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled *bool `pulumi:"adminUserEnabled"`
-	// Enables registry-wide pull from unauthenticated clients.
+	// Enables registry-wide pull from unauthenticated clients. It's in preview and available in the Standard and Premium service tiers.
 	AnonymousPullEnabled *bool `pulumi:"anonymousPullEnabled"`
 	// The creation date of the container registry in ISO8601 format.
 	CreationDate string `pulumi:"creationDate"`
@@ -154,7 +154,7 @@ func (o LookupRegistryResultOutput) AdminUserEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupRegistryResult) *bool { return v.AdminUserEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Enables registry-wide pull from unauthenticated clients.
+// Enables registry-wide pull from unauthenticated clients. It's in preview and available in the Standard and Premium service tiers.
 func (o LookupRegistryResultOutput) AnonymousPullEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupRegistryResult) *bool { return v.AnonymousPullEnabled }).(pulumi.BoolPtrOutput)
 }

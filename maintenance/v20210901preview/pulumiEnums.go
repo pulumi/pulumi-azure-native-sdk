@@ -21,7 +21,7 @@ const (
 	MaintenanceScopeSQLManagedInstance = MaintenanceScope("SQLManagedInstance")
 )
 
-// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 type RebootOptions string
 
 const (
@@ -30,7 +30,7 @@ const (
 	RebootOptionsAlways     = RebootOptions("Always")
 )
 
-// Global Task execute once when schedule trigger. Resource task execute for each VM.
+// [Not supported] Global Task execute once when schedule trigger. Resource task execute for each VM.
 type TaskScope string
 
 const (
