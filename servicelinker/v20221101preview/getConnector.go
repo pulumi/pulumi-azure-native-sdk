@@ -27,6 +27,8 @@ type LookupConnectorArgs struct {
 	Location string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The ID of the target subscription.
+	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // Linker of source and target resource
@@ -79,6 +81,8 @@ type LookupConnectorOutputArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The ID of the target subscription.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
 func (LookupConnectorOutputArgs) ElementType() reflect.Type {

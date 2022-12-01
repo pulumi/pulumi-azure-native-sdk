@@ -21,7 +21,7 @@ type MaintenanceConfiguration struct {
 	ExpirationDateTime pulumi.StringPtrOutput `pulumi:"expirationDateTime"`
 	// Gets or sets extensionProperties of the maintenanceConfiguration
 	ExtensionProperties pulumi.StringMapOutput `pulumi:"extensionProperties"`
-	// The input parameters to be passed to the patch run operation.
+	// The input parameters to be passed to the patch run operation. This property only applies to Guest (InGuestPatch) scope.
 	InstallPatches InputPatchConfigurationResponsePtrOutput `pulumi:"installPatches"`
 	// Gets or sets location of the resource
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -122,7 +122,7 @@ type maintenanceConfigurationArgs struct {
 	ExpirationDateTime *string `pulumi:"expirationDateTime"`
 	// Gets or sets extensionProperties of the maintenanceConfiguration
 	ExtensionProperties map[string]string `pulumi:"extensionProperties"`
-	// The input parameters to be passed to the patch run operation.
+	// The input parameters to be passed to the patch run operation. This property only applies to Guest (InGuestPatch) scope.
 	InstallPatches *InputPatchConfiguration `pulumi:"installPatches"`
 	// Gets or sets location of the resource
 	Location *string `pulumi:"location"`
@@ -154,7 +154,7 @@ type MaintenanceConfigurationArgs struct {
 	ExpirationDateTime pulumi.StringPtrInput
 	// Gets or sets extensionProperties of the maintenanceConfiguration
 	ExtensionProperties pulumi.StringMapInput
-	// The input parameters to be passed to the patch run operation.
+	// The input parameters to be passed to the patch run operation. This property only applies to Guest (InGuestPatch) scope.
 	InstallPatches InputPatchConfigurationPtrInput
 	// Gets or sets location of the resource
 	Location pulumi.StringPtrInput
@@ -230,7 +230,7 @@ func (o MaintenanceConfigurationOutput) ExtensionProperties() pulumi.StringMapOu
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringMapOutput { return v.ExtensionProperties }).(pulumi.StringMapOutput)
 }
 
-// The input parameters to be passed to the patch run operation.
+// The input parameters to be passed to the patch run operation. This property only applies to Guest (InGuestPatch) scope.
 func (o MaintenanceConfigurationOutput) InstallPatches() InputPatchConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) InputPatchConfigurationResponsePtrOutput { return v.InstallPatches }).(InputPatchConfigurationResponsePtrOutput)
 }

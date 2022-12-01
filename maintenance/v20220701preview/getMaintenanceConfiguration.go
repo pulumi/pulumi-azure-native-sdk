@@ -37,7 +37,7 @@ type LookupMaintenanceConfigurationResult struct {
 	ExtensionProperties map[string]string `pulumi:"extensionProperties"`
 	// Fully qualified identifier of the resource
 	Id string `pulumi:"id"`
-	// The input parameters to be passed to the patch run operation.
+	// The input parameters to be passed to the patch run operation. This property only applies to Guest (InGuestPatch) scope.
 	InstallPatches *InputPatchConfigurationResponse `pulumi:"installPatches"`
 	// Gets or sets location of the resource
 	Location *string `pulumi:"location"`
@@ -133,7 +133,7 @@ func (o LookupMaintenanceConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The input parameters to be passed to the patch run operation.
+// The input parameters to be passed to the patch run operation. This property only applies to Guest (InGuestPatch) scope.
 func (o LookupMaintenanceConfigurationResultOutput) InstallPatches() InputPatchConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *InputPatchConfigurationResponse { return v.InstallPatches }).(InputPatchConfigurationResponsePtrOutput)
 }

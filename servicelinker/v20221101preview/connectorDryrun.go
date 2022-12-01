@@ -84,6 +84,8 @@ type connectorDryrunArgs struct {
 	Parameters *CreateOrUpdateDryrunParameters `pulumi:"parameters"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The ID of the target subscription.
+	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // The set of arguments for constructing a ConnectorDryrun resource.
@@ -96,6 +98,8 @@ type ConnectorDryrunArgs struct {
 	Parameters CreateOrUpdateDryrunParametersPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// The ID of the target subscription.
+	SubscriptionId pulumi.StringPtrInput
 }
 
 func (ConnectorDryrunArgs) ElementType() reflect.Type {
