@@ -2022,9 +2022,9 @@ func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssigned
 // Reverse Shipping Address and contact details for a job.
 type ReverseShippingDetails struct {
 	// Contact Info.
-	ContactDetails ContactInfo `pulumi:"contactDetails"`
+	ContactDetails *ContactInfo `pulumi:"contactDetails"`
 	// Shipping address where customer wishes to receive the device.
-	ShippingAddress ShippingAddress `pulumi:"shippingAddress"`
+	ShippingAddress *ShippingAddress `pulumi:"shippingAddress"`
 }
 
 // Defaults sets the appropriate defaults for ReverseShippingDetails
@@ -2033,7 +2033,7 @@ func (val *ReverseShippingDetails) Defaults() *ReverseShippingDetails {
 		return nil
 	}
 	tmp := *val
-	tmp.ShippingAddress = *tmp.ShippingAddress.Defaults()
+	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
 	return &tmp
 }
@@ -2041,12 +2041,12 @@ func (val *ReverseShippingDetails) Defaults() *ReverseShippingDetails {
 // Reverse Shipping Address and contact details for a job.
 type ReverseShippingDetailsResponse struct {
 	// Contact Info.
-	ContactDetails ContactInfoResponse `pulumi:"contactDetails"`
+	ContactDetails *ContactInfoResponse `pulumi:"contactDetails"`
 	// A flag to indicate whether Reverse Shipping details are updated or not after device has been prepared.
 	// Read only field
 	IsUpdated bool `pulumi:"isUpdated"`
 	// Shipping address where customer wishes to receive the device.
-	ShippingAddress ShippingAddressResponse `pulumi:"shippingAddress"`
+	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
 }
 
 // Defaults sets the appropriate defaults for ReverseShippingDetailsResponse
@@ -2055,7 +2055,7 @@ func (val *ReverseShippingDetailsResponse) Defaults() *ReverseShippingDetailsRes
 		return nil
 	}
 	tmp := *val
-	tmp.ShippingAddress = *tmp.ShippingAddress.Defaults()
+	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
 	return &tmp
 }

@@ -104,6 +104,8 @@ type connectorArgs struct {
 	Scope *string `pulumi:"scope"`
 	// An option to store secret value in secure place
 	SecretStore *SecretStore `pulumi:"secretStore"`
+	// The ID of the target subscription.
+	SubscriptionId *string `pulumi:"subscriptionId"`
 	// The target service properties
 	TargetService interface{} `pulumi:"targetService"`
 	// The VNet solution.
@@ -130,6 +132,8 @@ type ConnectorArgs struct {
 	Scope pulumi.StringPtrInput
 	// An option to store secret value in secure place
 	SecretStore SecretStorePtrInput
+	// The ID of the target subscription.
+	SubscriptionId pulumi.StringPtrInput
 	// The target service properties
 	TargetService pulumi.Input
 	// The VNet solution.

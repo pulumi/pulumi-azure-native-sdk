@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Input properties for patching a Linux machine.
+// Input properties for patching a Linux machine. This property only applies to Guest (InGuestPatch) scope.
 type InputLinuxParameters struct {
 	// Classification category of patches to be patched
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
@@ -31,7 +31,7 @@ type InputLinuxParametersInput interface {
 	ToInputLinuxParametersOutputWithContext(context.Context) InputLinuxParametersOutput
 }
 
-// Input properties for patching a Linux machine.
+// Input properties for patching a Linux machine. This property only applies to Guest (InGuestPatch) scope.
 type InputLinuxParametersArgs struct {
 	// Classification category of patches to be patched
 	ClassificationsToInclude pulumi.StringArrayInput `pulumi:"classificationsToInclude"`
@@ -94,7 +94,7 @@ func (i *inputLinuxParametersPtrType) ToInputLinuxParametersPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InputLinuxParametersPtrOutput)
 }
 
-// Input properties for patching a Linux machine.
+// Input properties for patching a Linux machine. This property only applies to Guest (InGuestPatch) scope.
 type InputLinuxParametersOutput struct{ *pulumi.OutputState }
 
 func (InputLinuxParametersOutput) ElementType() reflect.Type {
@@ -188,7 +188,7 @@ func (o InputLinuxParametersPtrOutput) PackageNameMasksToInclude() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-// Input properties for patching a Linux machine.
+// Input properties for patching a Linux machine. This property only applies to Guest (InGuestPatch) scope.
 type InputLinuxParametersResponse struct {
 	// Classification category of patches to be patched
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
@@ -198,7 +198,7 @@ type InputLinuxParametersResponse struct {
 	PackageNameMasksToInclude []string `pulumi:"packageNameMasksToInclude"`
 }
 
-// Input properties for patching a Linux machine.
+// Input properties for patching a Linux machine. This property only applies to Guest (InGuestPatch) scope.
 type InputLinuxParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (InputLinuxParametersResponseOutput) ElementType() reflect.Type {
@@ -284,15 +284,15 @@ func (o InputLinuxParametersResponsePtrOutput) PackageNameMasksToInclude() pulum
 
 // Input configuration for a patch run
 type InputPatchConfiguration struct {
-	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 	LinuxParameters *InputLinuxParameters `pulumi:"linuxParameters"`
-	// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+	// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 	PostTasks []TaskProperties `pulumi:"postTasks"`
-	// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+	// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 	PreTasks []TaskProperties `pulumi:"preTasks"`
-	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 	RebootSetting *string `pulumi:"rebootSetting"`
-	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 	WindowsParameters *InputWindowsParameters `pulumi:"windowsParameters"`
 }
 
@@ -322,15 +322,15 @@ type InputPatchConfigurationInput interface {
 
 // Input configuration for a patch run
 type InputPatchConfigurationArgs struct {
-	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 	LinuxParameters InputLinuxParametersPtrInput `pulumi:"linuxParameters"`
-	// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+	// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 	PostTasks TaskPropertiesArrayInput `pulumi:"postTasks"`
-	// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+	// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 	PreTasks TaskPropertiesArrayInput `pulumi:"preTasks"`
-	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 	RebootSetting pulumi.StringPtrInput `pulumi:"rebootSetting"`
-	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 	WindowsParameters InputWindowsParametersPtrInput `pulumi:"windowsParameters"`
 }
 
@@ -423,27 +423,27 @@ func (o InputPatchConfigurationOutput) ToInputPatchConfigurationPtrOutputWithCon
 	}).(InputPatchConfigurationPtrOutput)
 }
 
-// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationOutput) LinuxParameters() InputLinuxParametersPtrOutput {
 	return o.ApplyT(func(v InputPatchConfiguration) *InputLinuxParameters { return v.LinuxParameters }).(InputLinuxParametersPtrOutput)
 }
 
-// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationOutput) PostTasks() TaskPropertiesArrayOutput {
 	return o.ApplyT(func(v InputPatchConfiguration) []TaskProperties { return v.PostTasks }).(TaskPropertiesArrayOutput)
 }
 
-// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationOutput) PreTasks() TaskPropertiesArrayOutput {
 	return o.ApplyT(func(v InputPatchConfiguration) []TaskProperties { return v.PreTasks }).(TaskPropertiesArrayOutput)
 }
 
-// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InputPatchConfiguration) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
 }
 
-// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationOutput) WindowsParameters() InputWindowsParametersPtrOutput {
 	return o.ApplyT(func(v InputPatchConfiguration) *InputWindowsParameters { return v.WindowsParameters }).(InputWindowsParametersPtrOutput)
 }
@@ -472,7 +472,7 @@ func (o InputPatchConfigurationPtrOutput) Elem() InputPatchConfigurationOutput {
 	}).(InputPatchConfigurationOutput)
 }
 
-// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationPtrOutput) LinuxParameters() InputLinuxParametersPtrOutput {
 	return o.ApplyT(func(v *InputPatchConfiguration) *InputLinuxParameters {
 		if v == nil {
@@ -482,7 +482,7 @@ func (o InputPatchConfigurationPtrOutput) LinuxParameters() InputLinuxParameters
 	}).(InputLinuxParametersPtrOutput)
 }
 
-// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationPtrOutput) PostTasks() TaskPropertiesArrayOutput {
 	return o.ApplyT(func(v *InputPatchConfiguration) []TaskProperties {
 		if v == nil {
@@ -492,7 +492,7 @@ func (o InputPatchConfigurationPtrOutput) PostTasks() TaskPropertiesArrayOutput 
 	}).(TaskPropertiesArrayOutput)
 }
 
-// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationPtrOutput) PreTasks() TaskPropertiesArrayOutput {
 	return o.ApplyT(func(v *InputPatchConfiguration) []TaskProperties {
 		if v == nil {
@@ -502,7 +502,7 @@ func (o InputPatchConfigurationPtrOutput) PreTasks() TaskPropertiesArrayOutput {
 	}).(TaskPropertiesArrayOutput)
 }
 
-// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationPtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InputPatchConfiguration) *string {
 		if v == nil {
@@ -512,7 +512,7 @@ func (o InputPatchConfigurationPtrOutput) RebootSetting() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationPtrOutput) WindowsParameters() InputWindowsParametersPtrOutput {
 	return o.ApplyT(func(v *InputPatchConfiguration) *InputWindowsParameters {
 		if v == nil {
@@ -524,15 +524,15 @@ func (o InputPatchConfigurationPtrOutput) WindowsParameters() InputWindowsParame
 
 // Input configuration for a patch run
 type InputPatchConfigurationResponse struct {
-	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 	LinuxParameters *InputLinuxParametersResponse `pulumi:"linuxParameters"`
-	// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+	// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 	PostTasks []TaskPropertiesResponse `pulumi:"postTasks"`
-	// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+	// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 	PreTasks []TaskPropertiesResponse `pulumi:"preTasks"`
-	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 	RebootSetting *string `pulumi:"rebootSetting"`
-	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 	WindowsParameters *InputWindowsParametersResponse `pulumi:"windowsParameters"`
 }
 
@@ -564,27 +564,27 @@ func (o InputPatchConfigurationResponseOutput) ToInputPatchConfigurationResponse
 	return o
 }
 
-// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationResponseOutput) LinuxParameters() InputLinuxParametersResponsePtrOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) *InputLinuxParametersResponse { return v.LinuxParameters }).(InputLinuxParametersResponsePtrOutput)
 }
 
-// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationResponseOutput) PostTasks() TaskPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) []TaskPropertiesResponse { return v.PostTasks }).(TaskPropertiesResponseArrayOutput)
 }
 
-// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationResponseOutput) PreTasks() TaskPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) []TaskPropertiesResponse { return v.PreTasks }).(TaskPropertiesResponseArrayOutput)
 }
 
-// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationResponseOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
 }
 
-// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationResponseOutput) WindowsParameters() InputWindowsParametersResponsePtrOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) *InputWindowsParametersResponse { return v.WindowsParameters }).(InputWindowsParametersResponsePtrOutput)
 }
@@ -613,7 +613,7 @@ func (o InputPatchConfigurationResponsePtrOutput) Elem() InputPatchConfiguration
 	}).(InputPatchConfigurationResponseOutput)
 }
 
-// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationResponsePtrOutput) LinuxParameters() InputLinuxParametersResponsePtrOutput {
 	return o.ApplyT(func(v *InputPatchConfigurationResponse) *InputLinuxParametersResponse {
 		if v == nil {
@@ -623,7 +623,7 @@ func (o InputPatchConfigurationResponsePtrOutput) LinuxParameters() InputLinuxPa
 	}).(InputLinuxParametersResponsePtrOutput)
 }
 
-// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationResponsePtrOutput) PostTasks() TaskPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *InputPatchConfigurationResponse) []TaskPropertiesResponse {
 		if v == nil {
@@ -633,7 +633,7 @@ func (o InputPatchConfigurationResponsePtrOutput) PostTasks() TaskPropertiesResp
 	}).(TaskPropertiesResponseArrayOutput)
 }
 
-// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+// [Not supported] List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
 func (o InputPatchConfigurationResponsePtrOutput) PreTasks() TaskPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *InputPatchConfigurationResponse) []TaskPropertiesResponse {
 		if v == nil {
@@ -643,7 +643,7 @@ func (o InputPatchConfigurationResponsePtrOutput) PreTasks() TaskPropertiesRespo
 	}).(TaskPropertiesResponseArrayOutput)
 }
 
-// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationResponsePtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InputPatchConfigurationResponse) *string {
 		if v == nil {
@@ -653,7 +653,7 @@ func (o InputPatchConfigurationResponsePtrOutput) RebootSetting() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. This property only applies to Guest (InGuestPatch) scope.
 func (o InputPatchConfigurationResponsePtrOutput) WindowsParameters() InputWindowsParametersResponsePtrOutput {
 	return o.ApplyT(func(v *InputPatchConfigurationResponse) *InputWindowsParametersResponse {
 		if v == nil {
@@ -663,7 +663,7 @@ func (o InputPatchConfigurationResponsePtrOutput) WindowsParameters() InputWindo
 	}).(InputWindowsParametersResponsePtrOutput)
 }
 
-// Input properties for patching a Windows machine.
+// Input properties for patching a Windows machine. This property only applies to Guest (InGuestPatch) scope.
 type InputWindowsParameters struct {
 	// Classification category of patches to be patched
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
@@ -686,7 +686,7 @@ type InputWindowsParametersInput interface {
 	ToInputWindowsParametersOutputWithContext(context.Context) InputWindowsParametersOutput
 }
 
-// Input properties for patching a Windows machine.
+// Input properties for patching a Windows machine. This property only applies to Guest (InGuestPatch) scope.
 type InputWindowsParametersArgs struct {
 	// Classification category of patches to be patched
 	ClassificationsToInclude pulumi.StringArrayInput `pulumi:"classificationsToInclude"`
@@ -751,7 +751,7 @@ func (i *inputWindowsParametersPtrType) ToInputWindowsParametersPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(InputWindowsParametersPtrOutput)
 }
 
-// Input properties for patching a Windows machine.
+// Input properties for patching a Windows machine. This property only applies to Guest (InGuestPatch) scope.
 type InputWindowsParametersOutput struct{ *pulumi.OutputState }
 
 func (InputWindowsParametersOutput) ElementType() reflect.Type {
@@ -860,7 +860,7 @@ func (o InputWindowsParametersPtrOutput) KbNumbersToInclude() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// Input properties for patching a Windows machine.
+// Input properties for patching a Windows machine. This property only applies to Guest (InGuestPatch) scope.
 type InputWindowsParametersResponse struct {
 	// Classification category of patches to be patched
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
@@ -872,7 +872,7 @@ type InputWindowsParametersResponse struct {
 	KbNumbersToInclude []string `pulumi:"kbNumbersToInclude"`
 }
 
-// Input properties for patching a Windows machine.
+// Input properties for patching a Windows machine. This property only applies to Guest (InGuestPatch) scope.
 type InputWindowsParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (InputWindowsParametersResponseOutput) ElementType() reflect.Type {
@@ -1032,13 +1032,13 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Task properties of the software update configuration.
+// [Not supported] Task properties of the software update configuration.
 type TaskProperties struct {
-	// Gets or sets the parameters of the task.
+	// [Not supported] Gets or sets the parameters of the task.
 	Parameters map[string]string `pulumi:"parameters"`
-	// Gets or sets the name of the runbook.
+	// [Not supported] Gets or sets the name of the runbook.
 	Source *string `pulumi:"source"`
-	// Global Task execute once when schedule trigger. Resource task execute for each VM.
+	// [Not supported] Global Task execute once when schedule trigger. Resource task execute for each VM.
 	TaskScope *string `pulumi:"taskScope"`
 }
 
@@ -1066,13 +1066,13 @@ type TaskPropertiesInput interface {
 	ToTaskPropertiesOutputWithContext(context.Context) TaskPropertiesOutput
 }
 
-// Task properties of the software update configuration.
+// [Not supported] Task properties of the software update configuration.
 type TaskPropertiesArgs struct {
-	// Gets or sets the parameters of the task.
+	// [Not supported] Gets or sets the parameters of the task.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Gets or sets the name of the runbook.
+	// [Not supported] Gets or sets the name of the runbook.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Global Task execute once when schedule trigger. Resource task execute for each VM.
+	// [Not supported] Global Task execute once when schedule trigger. Resource task execute for each VM.
 	TaskScope pulumi.StringPtrInput `pulumi:"taskScope"`
 }
 
@@ -1124,7 +1124,7 @@ func (i TaskPropertiesArray) ToTaskPropertiesArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TaskPropertiesArrayOutput)
 }
 
-// Task properties of the software update configuration.
+// [Not supported] Task properties of the software update configuration.
 type TaskPropertiesOutput struct{ *pulumi.OutputState }
 
 func (TaskPropertiesOutput) ElementType() reflect.Type {
@@ -1139,17 +1139,17 @@ func (o TaskPropertiesOutput) ToTaskPropertiesOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Gets or sets the parameters of the task.
+// [Not supported] Gets or sets the parameters of the task.
 func (o TaskPropertiesOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskProperties) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// Gets or sets the name of the runbook.
+// [Not supported] Gets or sets the name of the runbook.
 func (o TaskPropertiesOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskProperties) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Global Task execute once when schedule trigger. Resource task execute for each VM.
+// [Not supported] Global Task execute once when schedule trigger. Resource task execute for each VM.
 func (o TaskPropertiesOutput) TaskScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskProperties) *string { return v.TaskScope }).(pulumi.StringPtrOutput)
 }
@@ -1174,13 +1174,13 @@ func (o TaskPropertiesArrayOutput) Index(i pulumi.IntInput) TaskPropertiesOutput
 	}).(TaskPropertiesOutput)
 }
 
-// Task properties of the software update configuration.
+// [Not supported] Task properties of the software update configuration.
 type TaskPropertiesResponse struct {
-	// Gets or sets the parameters of the task.
+	// [Not supported] Gets or sets the parameters of the task.
 	Parameters map[string]string `pulumi:"parameters"`
-	// Gets or sets the name of the runbook.
+	// [Not supported] Gets or sets the name of the runbook.
 	Source *string `pulumi:"source"`
-	// Global Task execute once when schedule trigger. Resource task execute for each VM.
+	// [Not supported] Global Task execute once when schedule trigger. Resource task execute for each VM.
 	TaskScope *string `pulumi:"taskScope"`
 }
 
@@ -1197,7 +1197,7 @@ func (val *TaskPropertiesResponse) Defaults() *TaskPropertiesResponse {
 	return &tmp
 }
 
-// Task properties of the software update configuration.
+// [Not supported] Task properties of the software update configuration.
 type TaskPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (TaskPropertiesResponseOutput) ElementType() reflect.Type {
@@ -1212,17 +1212,17 @@ func (o TaskPropertiesResponseOutput) ToTaskPropertiesResponseOutputWithContext(
 	return o
 }
 
-// Gets or sets the parameters of the task.
+// [Not supported] Gets or sets the parameters of the task.
 func (o TaskPropertiesResponseOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskPropertiesResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// Gets or sets the name of the runbook.
+// [Not supported] Gets or sets the name of the runbook.
 func (o TaskPropertiesResponseOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskPropertiesResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Global Task execute once when schedule trigger. Resource task execute for each VM.
+// [Not supported] Global Task execute once when schedule trigger. Resource task execute for each VM.
 func (o TaskPropertiesResponseOutput) TaskScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskPropertiesResponse) *string { return v.TaskScope }).(pulumi.StringPtrOutput)
 }

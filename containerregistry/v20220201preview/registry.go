@@ -17,7 +17,7 @@ type Registry struct {
 
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled pulumi.BoolPtrOutput `pulumi:"adminUserEnabled"`
-	// Enables registry-wide pull from unauthenticated clients.
+	// Enables registry-wide pull from unauthenticated clients. It's in preview and available in the Standard and Premium service tiers.
 	AnonymousPullEnabled pulumi.BoolPtrOutput `pulumi:"anonymousPullEnabled"`
 	// The creation date of the container registry in ISO8601 format.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
@@ -168,7 +168,7 @@ func (RegistryState) ElementType() reflect.Type {
 type registryArgs struct {
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled *bool `pulumi:"adminUserEnabled"`
-	// Enables registry-wide pull from unauthenticated clients.
+	// Enables registry-wide pull from unauthenticated clients. It's in preview and available in the Standard and Premium service tiers.
 	AnonymousPullEnabled *bool `pulumi:"anonymousPullEnabled"`
 	// Enable a single data endpoint per region for serving data.
 	DataEndpointEnabled *bool `pulumi:"dataEndpointEnabled"`
@@ -202,7 +202,7 @@ type registryArgs struct {
 type RegistryArgs struct {
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled pulumi.BoolPtrInput
-	// Enables registry-wide pull from unauthenticated clients.
+	// Enables registry-wide pull from unauthenticated clients. It's in preview and available in the Standard and Premium service tiers.
 	AnonymousPullEnabled pulumi.BoolPtrInput
 	// Enable a single data endpoint per region for serving data.
 	DataEndpointEnabled pulumi.BoolPtrInput
@@ -274,7 +274,7 @@ func (o RegistryOutput) AdminUserEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Registry) pulumi.BoolPtrOutput { return v.AdminUserEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Enables registry-wide pull from unauthenticated clients.
+// Enables registry-wide pull from unauthenticated clients. It's in preview and available in the Standard and Premium service tiers.
 func (o RegistryOutput) AnonymousPullEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Registry) pulumi.BoolPtrOutput { return v.AnonymousPullEnabled }).(pulumi.BoolPtrOutput)
 }
