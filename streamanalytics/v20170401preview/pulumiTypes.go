@@ -2407,8 +2407,9 @@ type OutputType struct {
 	Name *string `pulumi:"name"`
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
-	SizeWindow    *float64    `pulumi:"sizeWindow"`
-	TimeWindow    *string     `pulumi:"timeWindow"`
+	// The size window to constrain a Stream Analytics output to.
+	SizeWindow *int    `pulumi:"sizeWindow"`
+	TimeWindow *string `pulumi:"timeWindow"`
 }
 
 // OutputTypeInput is an input type that accepts OutputTypeArgs and OutputTypeOutput values.
@@ -2429,9 +2430,10 @@ type OutputTypeArgs struct {
 	// Resource name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-	Serialization pulumi.Input           `pulumi:"serialization"`
-	SizeWindow    pulumi.Float64PtrInput `pulumi:"sizeWindow"`
-	TimeWindow    pulumi.StringPtrInput  `pulumi:"timeWindow"`
+	Serialization pulumi.Input `pulumi:"serialization"`
+	// The size window to constrain a Stream Analytics output to.
+	SizeWindow pulumi.IntPtrInput    `pulumi:"sizeWindow"`
+	TimeWindow pulumi.StringPtrInput `pulumi:"timeWindow"`
 }
 
 func (OutputTypeArgs) ElementType() reflect.Type {
@@ -2501,8 +2503,9 @@ func (o OutputTypeOutput) Serialization() pulumi.AnyOutput {
 	return o.ApplyT(func(v OutputType) interface{} { return v.Serialization }).(pulumi.AnyOutput)
 }
 
-func (o OutputTypeOutput) SizeWindow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v OutputType) *float64 { return v.SizeWindow }).(pulumi.Float64PtrOutput)
+// The size window to constrain a Stream Analytics output to.
+func (o OutputTypeOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OutputType) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
 func (o OutputTypeOutput) TimeWindow() pulumi.StringPtrOutput {
@@ -2543,8 +2546,9 @@ type OutputResponse struct {
 	Name *string `pulumi:"name"`
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
-	SizeWindow    *float64    `pulumi:"sizeWindow"`
-	TimeWindow    *string     `pulumi:"timeWindow"`
+	// The size window to constrain a Stream Analytics output to.
+	SizeWindow *int    `pulumi:"sizeWindow"`
+	TimeWindow *string `pulumi:"timeWindow"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
@@ -2594,8 +2598,9 @@ func (o OutputResponseOutput) Serialization() pulumi.AnyOutput {
 	return o.ApplyT(func(v OutputResponse) interface{} { return v.Serialization }).(pulumi.AnyOutput)
 }
 
-func (o OutputResponseOutput) SizeWindow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v OutputResponse) *float64 { return v.SizeWindow }).(pulumi.Float64PtrOutput)
+// The size window to constrain a Stream Analytics output to.
+func (o OutputResponseOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OutputResponse) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
 func (o OutputResponseOutput) TimeWindow() pulumi.StringPtrOutput {

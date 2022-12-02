@@ -60,6 +60,9 @@ func NewGuestAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20220110preview:GuestAgent"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20220715preview:GuestAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource GuestAgent

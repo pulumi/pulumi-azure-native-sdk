@@ -35,6 +35,8 @@ type NspLink struct {
 	RemoteOutboundProfiles pulumi.StringArrayOutput `pulumi:"remoteOutboundProfiles"`
 	// Remote NSP Guid with which the link gets created.
 	RemotePerimeterGuid pulumi.StringOutput `pulumi:"remotePerimeterGuid"`
+	// Remote NSP location with which the link gets created.
+	RemotePerimeterLocation pulumi.StringOutput `pulumi:"remotePerimeterLocation"`
 	// The NSP link state.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Resource type.
@@ -205,6 +207,11 @@ func (o NspLinkOutput) RemoteOutboundProfiles() pulumi.StringArrayOutput {
 // Remote NSP Guid with which the link gets created.
 func (o NspLinkOutput) RemotePerimeterGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.RemotePerimeterGuid }).(pulumi.StringOutput)
+}
+
+// Remote NSP location with which the link gets created.
+func (o NspLinkOutput) RemotePerimeterLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.RemotePerimeterLocation }).(pulumi.StringOutput)
 }
 
 // The NSP link state.
