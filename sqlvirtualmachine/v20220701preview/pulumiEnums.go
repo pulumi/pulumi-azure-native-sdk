@@ -434,6 +434,7 @@ type LeastPrivilegeMode string
 
 const (
 	LeastPrivilegeModeEnabled = LeastPrivilegeMode("Enabled")
+	LeastPrivilegeModeNotSet  = LeastPrivilegeMode("NotSet")
 )
 
 // Replica readable secondary mode in availability group.
