@@ -42,6 +42,8 @@ type LookupSAPDatabaseInstanceResult struct {
 	Id string `pulumi:"id"`
 	// Database IP Address.
 	IpAddress string `pulumi:"ipAddress"`
+	// The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
+	LoadBalancerDetails LoadBalancerDetailsResponse `pulumi:"loadBalancerDetails"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -126,6 +128,11 @@ func (o LookupSAPDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
 // Database IP Address.
 func (o LookupSAPDatabaseInstanceResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
+func (o LookupSAPDatabaseInstanceResultOutput) LoadBalancerDetails() LoadBalancerDetailsResponseOutput {
+	return o.ApplyT(func(v LookupSAPDatabaseInstanceResult) LoadBalancerDetailsResponse { return v.LoadBalancerDetails }).(LoadBalancerDetailsResponseOutput)
 }
 
 // The geo-location where the resource lives

@@ -43,8 +43,9 @@ type LookupOutputResult struct {
 	Name *string `pulumi:"name"`
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
-	SizeWindow    *float64    `pulumi:"sizeWindow"`
-	TimeWindow    *string     `pulumi:"timeWindow"`
+	// The size window to constrain a Stream Analytics output to.
+	SizeWindow *int    `pulumi:"sizeWindow"`
+	TimeWindow *string `pulumi:"timeWindow"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
@@ -120,8 +121,9 @@ func (o LookupOutputResultOutput) Serialization() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupOutputResult) interface{} { return v.Serialization }).(pulumi.AnyOutput)
 }
 
-func (o LookupOutputResultOutput) SizeWindow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupOutputResult) *float64 { return v.SizeWindow }).(pulumi.Float64PtrOutput)
+// The size window to constrain a Stream Analytics output to.
+func (o LookupOutputResultOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupOutputResult) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
 func (o LookupOutputResultOutput) TimeWindow() pulumi.StringPtrOutput {

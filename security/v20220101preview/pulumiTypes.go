@@ -10,13 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describe the additional data of GovernanceAssignment - optional
+// Describe the additional data of governance assignment - optional
 type GovernanceAssignmentAdditionalData struct {
-	// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+	// Ticket link associated with this governance assignment - for example: https://snow.com
 	TicketLink *string `pulumi:"ticketLink"`
-	// Ticket number associated with this GovernanceAssignment
+	// Ticket number associated with this governance assignment
 	TicketNumber *int `pulumi:"ticketNumber"`
-	// The ticket status associated with this GovernanceAssignment - for example: Active
+	// The ticket status associated with this governance assignment - for example: Active
 	TicketStatus *string `pulumi:"ticketStatus"`
 }
 
@@ -31,13 +31,13 @@ type GovernanceAssignmentAdditionalDataInput interface {
 	ToGovernanceAssignmentAdditionalDataOutputWithContext(context.Context) GovernanceAssignmentAdditionalDataOutput
 }
 
-// Describe the additional data of GovernanceAssignment - optional
+// Describe the additional data of governance assignment - optional
 type GovernanceAssignmentAdditionalDataArgs struct {
-	// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+	// Ticket link associated with this governance assignment - for example: https://snow.com
 	TicketLink pulumi.StringPtrInput `pulumi:"ticketLink"`
-	// Ticket number associated with this GovernanceAssignment
+	// Ticket number associated with this governance assignment
 	TicketNumber pulumi.IntPtrInput `pulumi:"ticketNumber"`
-	// The ticket status associated with this GovernanceAssignment - for example: Active
+	// The ticket status associated with this governance assignment - for example: Active
 	TicketStatus pulumi.StringPtrInput `pulumi:"ticketStatus"`
 }
 
@@ -94,7 +94,7 @@ func (i *governanceAssignmentAdditionalDataPtrType) ToGovernanceAssignmentAdditi
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentAdditionalDataPtrOutput)
 }
 
-// Describe the additional data of GovernanceAssignment - optional
+// Describe the additional data of governance assignment - optional
 type GovernanceAssignmentAdditionalDataOutput struct{ *pulumi.OutputState }
 
 func (GovernanceAssignmentAdditionalDataOutput) ElementType() reflect.Type {
@@ -119,17 +119,17 @@ func (o GovernanceAssignmentAdditionalDataOutput) ToGovernanceAssignmentAddition
 	}).(GovernanceAssignmentAdditionalDataPtrOutput)
 }
 
-// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+// Ticket link associated with this governance assignment - for example: https://snow.com
 func (o GovernanceAssignmentAdditionalDataOutput) TicketLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalData) *string { return v.TicketLink }).(pulumi.StringPtrOutput)
 }
 
-// Ticket number associated with this GovernanceAssignment
+// Ticket number associated with this governance assignment
 func (o GovernanceAssignmentAdditionalDataOutput) TicketNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalData) *int { return v.TicketNumber }).(pulumi.IntPtrOutput)
 }
 
-// The ticket status associated with this GovernanceAssignment - for example: Active
+// The ticket status associated with this governance assignment - for example: Active
 func (o GovernanceAssignmentAdditionalDataOutput) TicketStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalData) *string { return v.TicketStatus }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +158,7 @@ func (o GovernanceAssignmentAdditionalDataPtrOutput) Elem() GovernanceAssignment
 	}).(GovernanceAssignmentAdditionalDataOutput)
 }
 
-// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+// Ticket link associated with this governance assignment - for example: https://snow.com
 func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) *string {
 		if v == nil {
@@ -168,7 +168,7 @@ func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketLink() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Ticket number associated with this GovernanceAssignment
+// Ticket number associated with this governance assignment
 func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) *int {
 		if v == nil {
@@ -178,7 +178,7 @@ func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketNumber() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The ticket status associated with this GovernanceAssignment - for example: Active
+// The ticket status associated with this governance assignment - for example: Active
 func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) *string {
 		if v == nil {
@@ -188,17 +188,17 @@ func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketStatus() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describe the additional data of GovernanceAssignment - optional
+// Describe the additional data of governance assignment - optional
 type GovernanceAssignmentAdditionalDataResponse struct {
-	// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+	// Ticket link associated with this governance assignment - for example: https://snow.com
 	TicketLink *string `pulumi:"ticketLink"`
-	// Ticket number associated with this GovernanceAssignment
+	// Ticket number associated with this governance assignment
 	TicketNumber *int `pulumi:"ticketNumber"`
-	// The ticket status associated with this GovernanceAssignment - for example: Active
+	// The ticket status associated with this governance assignment - for example: Active
 	TicketStatus *string `pulumi:"ticketStatus"`
 }
 
-// Describe the additional data of GovernanceAssignment - optional
+// Describe the additional data of governance assignment - optional
 type GovernanceAssignmentAdditionalDataResponseOutput struct{ *pulumi.OutputState }
 
 func (GovernanceAssignmentAdditionalDataResponseOutput) ElementType() reflect.Type {
@@ -213,17 +213,17 @@ func (o GovernanceAssignmentAdditionalDataResponseOutput) ToGovernanceAssignment
 	return o
 }
 
-// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+// Ticket link associated with this governance assignment - for example: https://snow.com
 func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *string { return v.TicketLink }).(pulumi.StringPtrOutput)
 }
 
-// Ticket number associated with this GovernanceAssignment
+// Ticket number associated with this governance assignment
 func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *int { return v.TicketNumber }).(pulumi.IntPtrOutput)
 }
 
-// The ticket status associated with this GovernanceAssignment - for example: Active
+// The ticket status associated with this governance assignment - for example: Active
 func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *string { return v.TicketStatus }).(pulumi.StringPtrOutput)
 }
@@ -252,7 +252,7 @@ func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) Elem() GovernanceAs
 	}).(GovernanceAssignmentAdditionalDataResponseOutput)
 }
 
-// Ticket link associated with this GovernanceAssignment - for example: https://snow.com
+// Ticket link associated with this governance assignment - for example: https://snow.com
 func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) *string {
 		if v == nil {
@@ -262,7 +262,7 @@ func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketLink() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Ticket number associated with this GovernanceAssignment
+// Ticket number associated with this governance assignment
 func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) *int {
 		if v == nil {
@@ -272,7 +272,7 @@ func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketNumber() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The ticket status associated with this GovernanceAssignment - for example: Active
+// The ticket status associated with this governance assignment - for example: Active
 func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) *string {
 		if v == nil {
@@ -518,11 +518,11 @@ func (o GovernanceEmailNotificationResponsePtrOutput) DisableOwnerEmailNotificat
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The governance email weekly notification configuration.
+// The governance email weekly notification configuration
 type GovernanceRuleEmailNotification struct {
-	// Defines whether manager email notifications are disabled.
+	// Defines whether manager email notifications are disabled
 	DisableManagerEmailNotification *bool `pulumi:"disableManagerEmailNotification"`
-	// Defines whether owner email notifications are disabled.
+	// Defines whether owner email notifications are disabled
 	DisableOwnerEmailNotification *bool `pulumi:"disableOwnerEmailNotification"`
 }
 
@@ -537,11 +537,11 @@ type GovernanceRuleEmailNotificationInput interface {
 	ToGovernanceRuleEmailNotificationOutputWithContext(context.Context) GovernanceRuleEmailNotificationOutput
 }
 
-// The governance email weekly notification configuration.
+// The governance email weekly notification configuration
 type GovernanceRuleEmailNotificationArgs struct {
-	// Defines whether manager email notifications are disabled.
+	// Defines whether manager email notifications are disabled
 	DisableManagerEmailNotification pulumi.BoolPtrInput `pulumi:"disableManagerEmailNotification"`
-	// Defines whether owner email notifications are disabled.
+	// Defines whether owner email notifications are disabled
 	DisableOwnerEmailNotification pulumi.BoolPtrInput `pulumi:"disableOwnerEmailNotification"`
 }
 
@@ -598,7 +598,7 @@ func (i *governanceRuleEmailNotificationPtrType) ToGovernanceRuleEmailNotificati
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleEmailNotificationPtrOutput)
 }
 
-// The governance email weekly notification configuration.
+// The governance email weekly notification configuration
 type GovernanceRuleEmailNotificationOutput struct{ *pulumi.OutputState }
 
 func (GovernanceRuleEmailNotificationOutput) ElementType() reflect.Type {
@@ -623,12 +623,12 @@ func (o GovernanceRuleEmailNotificationOutput) ToGovernanceRuleEmailNotification
 	}).(GovernanceRuleEmailNotificationPtrOutput)
 }
 
-// Defines whether manager email notifications are disabled.
+// Defines whether manager email notifications are disabled
 func (o GovernanceRuleEmailNotificationOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceRuleEmailNotification) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether owner email notifications are disabled.
+// Defines whether owner email notifications are disabled
 func (o GovernanceRuleEmailNotificationOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceRuleEmailNotification) *bool { return v.DisableOwnerEmailNotification }).(pulumi.BoolPtrOutput)
 }
@@ -657,7 +657,7 @@ func (o GovernanceRuleEmailNotificationPtrOutput) Elem() GovernanceRuleEmailNoti
 	}).(GovernanceRuleEmailNotificationOutput)
 }
 
-// Defines whether manager email notifications are disabled.
+// Defines whether manager email notifications are disabled
 func (o GovernanceRuleEmailNotificationPtrOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GovernanceRuleEmailNotification) *bool {
 		if v == nil {
@@ -667,7 +667,7 @@ func (o GovernanceRuleEmailNotificationPtrOutput) DisableManagerEmailNotificatio
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether owner email notifications are disabled.
+// Defines whether owner email notifications are disabled
 func (o GovernanceRuleEmailNotificationPtrOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GovernanceRuleEmailNotification) *bool {
 		if v == nil {
@@ -677,15 +677,15 @@ func (o GovernanceRuleEmailNotificationPtrOutput) DisableOwnerEmailNotification(
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The governance email weekly notification configuration.
+// The governance email weekly notification configuration
 type GovernanceRuleEmailNotificationResponse struct {
-	// Defines whether manager email notifications are disabled.
+	// Defines whether manager email notifications are disabled
 	DisableManagerEmailNotification *bool `pulumi:"disableManagerEmailNotification"`
-	// Defines whether owner email notifications are disabled.
+	// Defines whether owner email notifications are disabled
 	DisableOwnerEmailNotification *bool `pulumi:"disableOwnerEmailNotification"`
 }
 
-// The governance email weekly notification configuration.
+// The governance email weekly notification configuration
 type GovernanceRuleEmailNotificationResponseOutput struct{ *pulumi.OutputState }
 
 func (GovernanceRuleEmailNotificationResponseOutput) ElementType() reflect.Type {
@@ -700,12 +700,12 @@ func (o GovernanceRuleEmailNotificationResponseOutput) ToGovernanceRuleEmailNoti
 	return o
 }
 
-// Defines whether manager email notifications are disabled.
+// Defines whether manager email notifications are disabled
 func (o GovernanceRuleEmailNotificationResponseOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceRuleEmailNotificationResponse) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether owner email notifications are disabled.
+// Defines whether owner email notifications are disabled
 func (o GovernanceRuleEmailNotificationResponseOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceRuleEmailNotificationResponse) *bool { return v.DisableOwnerEmailNotification }).(pulumi.BoolPtrOutput)
 }
@@ -734,7 +734,7 @@ func (o GovernanceRuleEmailNotificationResponsePtrOutput) Elem() GovernanceRuleE
 	}).(GovernanceRuleEmailNotificationResponseOutput)
 }
 
-// Defines whether manager email notifications are disabled.
+// Defines whether manager email notifications are disabled
 func (o GovernanceRuleEmailNotificationResponsePtrOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GovernanceRuleEmailNotificationResponse) *bool {
 		if v == nil {
@@ -744,7 +744,7 @@ func (o GovernanceRuleEmailNotificationResponsePtrOutput) DisableManagerEmailNot
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether owner email notifications are disabled.
+// Defines whether owner email notifications are disabled
 func (o GovernanceRuleEmailNotificationResponsePtrOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GovernanceRuleEmailNotificationResponse) *bool {
 		if v == nil {
@@ -752,6 +752,117 @@ func (o GovernanceRuleEmailNotificationResponsePtrOutput) DisableOwnerEmailNotif
 		}
 		return v.DisableOwnerEmailNotification
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The governance rule metadata
+type GovernanceRuleMetadataResponse struct {
+	// Governance rule Created by object id (GUID)
+	CreatedBy string `pulumi:"createdBy"`
+	// Governance rule creation date
+	CreatedOn string `pulumi:"createdOn"`
+	// Governance rule last updated by object id (GUID)
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Governance rule last update date
+	UpdatedOn string `pulumi:"updatedOn"`
+}
+
+// The governance rule metadata
+type GovernanceRuleMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleMetadataResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleMetadataResponseOutput) ToGovernanceRuleMetadataResponseOutput() GovernanceRuleMetadataResponseOutput {
+	return o
+}
+
+func (o GovernanceRuleMetadataResponseOutput) ToGovernanceRuleMetadataResponseOutputWithContext(ctx context.Context) GovernanceRuleMetadataResponseOutput {
+	return o
+}
+
+// Governance rule Created by object id (GUID)
+func (o GovernanceRuleMetadataResponseOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Governance rule creation date
+func (o GovernanceRuleMetadataResponseOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Governance rule last updated by object id (GUID)
+func (o GovernanceRuleMetadataResponseOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Governance rule last update date
+func (o GovernanceRuleMetadataResponseOutput) UpdatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.UpdatedOn }).(pulumi.StringOutput)
+}
+
+type GovernanceRuleMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceRuleMetadataResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleMetadataResponsePtrOutput) ToGovernanceRuleMetadataResponsePtrOutput() GovernanceRuleMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceRuleMetadataResponsePtrOutput) ToGovernanceRuleMetadataResponsePtrOutputWithContext(ctx context.Context) GovernanceRuleMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceRuleMetadataResponsePtrOutput) Elem() GovernanceRuleMetadataResponseOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) GovernanceRuleMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceRuleMetadataResponse
+		return ret
+	}).(GovernanceRuleMetadataResponseOutput)
+}
+
+// Governance rule Created by object id (GUID)
+func (o GovernanceRuleMetadataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Governance rule creation date
+func (o GovernanceRuleMetadataResponsePtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Governance rule last updated by object id (GUID)
+func (o GovernanceRuleMetadataResponsePtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Governance rule last update date
+func (o GovernanceRuleMetadataResponsePtrOutput) UpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedOn
+	}).(pulumi.StringPtrOutput)
 }
 
 // Describe the owner source of governance rule
@@ -1100,6 +1211,8 @@ func init() {
 	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationPtrOutput{})
 	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationResponseOutput{})
 	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationResponsePtrOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GovernanceRuleOwnerSourceOutput{})
 	pulumi.RegisterOutputType(GovernanceRuleOwnerSourceResponseOutput{})
 	pulumi.RegisterOutputType(RemediationEtaOutput{})

@@ -11,23 +11,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security GovernanceRule over a given scope
+// Governance rule over a given scope
 type GovernanceRule struct {
 	pulumi.CustomResourceState
 
-	// description of the governanceRule
+	// Description of the governance rule
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// display name of the governanceRule
+	// Display name of the governance rule
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Excluded scopes, filter out the descendants of the scope (on management scopes)
+	ExcludedScopes pulumi.StringArrayOutput `pulumi:"excludedScopes"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification GovernanceRuleEmailNotificationResponsePtrOutput `pulumi:"governanceEmailNotification"`
+	// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
+	IncludeMemberScopes pulumi.BoolPtrOutput `pulumi:"includeMemberScopes"`
 	// Defines whether the rule is active/inactive
 	IsDisabled pulumi.BoolPtrOutput `pulumi:"isDisabled"`
 	// Defines whether there is a grace period on the governance rule
 	IsGracePeriod pulumi.BoolPtrOutput `pulumi:"isGracePeriod"`
+	// The governance rule metadata
+	Metadata GovernanceRuleMetadataResponsePtrOutput `pulumi:"metadata"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+	// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 	OwnerSource GovernanceRuleOwnerSourceResponseOutput `pulumi:"ownerSource"`
 	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 	RemediationTimeframe pulumi.StringPtrOutput `pulumi:"remediationTimeframe"`
@@ -37,6 +43,8 @@ type GovernanceRule struct {
 	RuleType pulumi.StringOutput `pulumi:"ruleType"`
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType pulumi.StringOutput `pulumi:"sourceResourceType"`
+	// The tenantId (GUID)
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -95,21 +103,25 @@ func (GovernanceRuleState) ElementType() reflect.Type {
 }
 
 type governanceRuleArgs struct {
-	// description of the governanceRule
+	// Description of the governance rule
 	Description *string `pulumi:"description"`
-	// display name of the governanceRule
+	// Display name of the governance rule
 	DisplayName string `pulumi:"displayName"`
+	// Excluded scopes, filter out the descendants of the scope (on management scopes)
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceRuleEmailNotification `pulumi:"governanceEmailNotification"`
+	// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
+	IncludeMemberScopes *bool `pulumi:"includeMemberScopes"`
 	// Defines whether the rule is active/inactive
 	IsDisabled *bool `pulumi:"isDisabled"`
 	// Defines whether there is a grace period on the governance rule
 	IsGracePeriod *bool `pulumi:"isGracePeriod"`
-	// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+	// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 	OwnerSource GovernanceRuleOwnerSource `pulumi:"ownerSource"`
 	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 	RemediationTimeframe *string `pulumi:"remediationTimeframe"`
-	// The security GovernanceRule key - unique key for the standard GovernanceRule
+	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId *string `pulumi:"ruleId"`
 	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
 	RulePriority int `pulumi:"rulePriority"`
@@ -121,21 +133,25 @@ type governanceRuleArgs struct {
 
 // The set of arguments for constructing a GovernanceRule resource.
 type GovernanceRuleArgs struct {
-	// description of the governanceRule
+	// Description of the governance rule
 	Description pulumi.StringPtrInput
-	// display name of the governanceRule
+	// Display name of the governance rule
 	DisplayName pulumi.StringInput
+	// Excluded scopes, filter out the descendants of the scope (on management scopes)
+	ExcludedScopes pulumi.StringArrayInput
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification GovernanceRuleEmailNotificationPtrInput
+	// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
+	IncludeMemberScopes pulumi.BoolPtrInput
 	// Defines whether the rule is active/inactive
 	IsDisabled pulumi.BoolPtrInput
 	// Defines whether there is a grace period on the governance rule
 	IsGracePeriod pulumi.BoolPtrInput
-	// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+	// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 	OwnerSource GovernanceRuleOwnerSourceInput
 	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 	RemediationTimeframe pulumi.StringPtrInput
-	// The security GovernanceRule key - unique key for the standard GovernanceRule
+	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId pulumi.StringPtrInput
 	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
 	RulePriority pulumi.IntInput
@@ -182,14 +198,19 @@ func (o GovernanceRuleOutput) ToGovernanceRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// description of the governanceRule
+// Description of the governance rule
 func (o GovernanceRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// display name of the governanceRule
+// Display name of the governance rule
 func (o GovernanceRuleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Excluded scopes, filter out the descendants of the scope (on management scopes)
+func (o GovernanceRuleOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GovernanceRule) pulumi.StringArrayOutput { return v.ExcludedScopes }).(pulumi.StringArrayOutput)
 }
 
 // The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
@@ -197,6 +218,11 @@ func (o GovernanceRuleOutput) GovernanceEmailNotification() GovernanceRuleEmailN
 	return o.ApplyT(func(v *GovernanceRule) GovernanceRuleEmailNotificationResponsePtrOutput {
 		return v.GovernanceEmailNotification
 	}).(GovernanceRuleEmailNotificationResponsePtrOutput)
+}
+
+// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
+func (o GovernanceRuleOutput) IncludeMemberScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceRule) pulumi.BoolPtrOutput { return v.IncludeMemberScopes }).(pulumi.BoolPtrOutput)
 }
 
 // Defines whether the rule is active/inactive
@@ -209,12 +235,17 @@ func (o GovernanceRuleOutput) IsGracePeriod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.BoolPtrOutput { return v.IsGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
+// The governance rule metadata
+func (o GovernanceRuleOutput) Metadata() GovernanceRuleMetadataResponsePtrOutput {
+	return o.ApplyT(func(v *GovernanceRule) GovernanceRuleMetadataResponsePtrOutput { return v.Metadata }).(GovernanceRuleMetadataResponsePtrOutput)
+}
+
 // Resource name
 func (o GovernanceRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 func (o GovernanceRuleOutput) OwnerSource() GovernanceRuleOwnerSourceResponseOutput {
 	return o.ApplyT(func(v *GovernanceRule) GovernanceRuleOwnerSourceResponseOutput { return v.OwnerSource }).(GovernanceRuleOwnerSourceResponseOutput)
 }
@@ -237,6 +268,11 @@ func (o GovernanceRuleOutput) RuleType() pulumi.StringOutput {
 // The governance rule source, what the rule affects, e.g. Assessments
 func (o GovernanceRuleOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.SourceResourceType }).(pulumi.StringOutput)
+}
+
+// The tenantId (GUID)
+func (o GovernanceRuleOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // Resource type
