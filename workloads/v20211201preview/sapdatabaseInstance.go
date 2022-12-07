@@ -23,6 +23,8 @@ type SAPDatabaseInstance struct {
 	Errors SAPVirtualInstanceErrorResponseOutput `pulumi:"errors"`
 	// Database IP Address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
+	LoadBalancerDetails LoadBalancerDetailsResponseOutput `pulumi:"loadBalancerDetails"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -175,6 +177,11 @@ func (o SAPDatabaseInstanceOutput) Errors() SAPVirtualInstanceErrorResponseOutpu
 // Database IP Address.
 func (o SAPDatabaseInstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *SAPDatabaseInstance) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
+func (o SAPDatabaseInstanceOutput) LoadBalancerDetails() LoadBalancerDetailsResponseOutput {
+	return o.ApplyT(func(v *SAPDatabaseInstance) LoadBalancerDetailsResponseOutput { return v.LoadBalancerDetails }).(LoadBalancerDetailsResponseOutput)
 }
 
 // The geo-location where the resource lives

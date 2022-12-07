@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security GovernanceRule over a given scope
+// Governance rule over a given scope
 func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, opts ...pulumi.InvokeOption) (*LookupGovernanceRuleResult, error) {
 	var rv LookupGovernanceRuleResult
 	err := ctx.Invoke("azure-native:security/v20220101preview:getGovernanceRule", args, &rv, opts...)
@@ -21,27 +21,33 @@ func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, o
 }
 
 type LookupGovernanceRuleArgs struct {
-	// The security GovernanceRule key - unique key for the standard GovernanceRule
+	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId string `pulumi:"ruleId"`
 }
 
-// Security GovernanceRule over a given scope
+// Governance rule over a given scope
 type LookupGovernanceRuleResult struct {
-	// description of the governanceRule
+	// Description of the governance rule
 	Description *string `pulumi:"description"`
-	// display name of the governanceRule
+	// Display name of the governance rule
 	DisplayName string `pulumi:"displayName"`
+	// Excluded scopes, filter out the descendants of the scope (on management scopes)
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceRuleEmailNotificationResponse `pulumi:"governanceEmailNotification"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
+	IncludeMemberScopes *bool `pulumi:"includeMemberScopes"`
 	// Defines whether the rule is active/inactive
 	IsDisabled *bool `pulumi:"isDisabled"`
 	// Defines whether there is a grace period on the governance rule
 	IsGracePeriod *bool `pulumi:"isGracePeriod"`
+	// The governance rule metadata
+	Metadata *GovernanceRuleMetadataResponse `pulumi:"metadata"`
 	// Resource name
 	Name string `pulumi:"name"`
-	// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+	// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 	OwnerSource GovernanceRuleOwnerSourceResponse `pulumi:"ownerSource"`
 	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 	RemediationTimeframe *string `pulumi:"remediationTimeframe"`
@@ -51,6 +57,8 @@ type LookupGovernanceRuleResult struct {
 	RuleType string `pulumi:"ruleType"`
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType string `pulumi:"sourceResourceType"`
+	// The tenantId (GUID)
+	TenantId string `pulumi:"tenantId"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
@@ -69,7 +77,7 @@ func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOu
 }
 
 type LookupGovernanceRuleOutputArgs struct {
-	// The security GovernanceRule key - unique key for the standard GovernanceRule
+	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
 
@@ -77,7 +85,7 @@ func (LookupGovernanceRuleOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupGovernanceRuleArgs)(nil)).Elem()
 }
 
-// Security GovernanceRule over a given scope
+// Governance rule over a given scope
 type LookupGovernanceRuleResultOutput struct{ *pulumi.OutputState }
 
 func (LookupGovernanceRuleResultOutput) ElementType() reflect.Type {
@@ -92,14 +100,19 @@ func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutputWith
 	return o
 }
 
-// description of the governanceRule
+// Description of the governance rule
 func (o LookupGovernanceRuleResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// display name of the governanceRule
+// Display name of the governance rule
 func (o LookupGovernanceRuleResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Excluded scopes, filter out the descendants of the scope (on management scopes)
+func (o LookupGovernanceRuleResultOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) []string { return v.ExcludedScopes }).(pulumi.StringArrayOutput)
 }
 
 // The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
@@ -114,6 +127,11 @@ func (o LookupGovernanceRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
+func (o LookupGovernanceRuleResultOutput) IncludeMemberScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) *bool { return v.IncludeMemberScopes }).(pulumi.BoolPtrOutput)
+}
+
 // Defines whether the rule is active/inactive
 func (o LookupGovernanceRuleResultOutput) IsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *bool { return v.IsDisabled }).(pulumi.BoolPtrOutput)
@@ -124,12 +142,17 @@ func (o LookupGovernanceRuleResultOutput) IsGracePeriod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *bool { return v.IsGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
+// The governance rule metadata
+func (o LookupGovernanceRuleResultOutput) Metadata() GovernanceRuleMetadataResponsePtrOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) *GovernanceRuleMetadataResponse { return v.Metadata }).(GovernanceRuleMetadataResponsePtrOutput)
+}
+
 // Resource name
 func (o LookupGovernanceRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Owner source for the governance rule - e.g. Manually by user@contoso.com - see example
+// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 func (o LookupGovernanceRuleResultOutput) OwnerSource() GovernanceRuleOwnerSourceResponseOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) GovernanceRuleOwnerSourceResponse { return v.OwnerSource }).(GovernanceRuleOwnerSourceResponseOutput)
 }
@@ -152,6 +175,11 @@ func (o LookupGovernanceRuleResultOutput) RuleType() pulumi.StringOutput {
 // The governance rule source, what the rule affects, e.g. Assessments
 func (o LookupGovernanceRuleResultOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
+}
+
+// The tenantId (GUID)
+func (o LookupGovernanceRuleResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // Resource type
