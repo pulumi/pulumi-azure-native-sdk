@@ -31,6 +31,8 @@ type SAPCentralInstance struct {
 	KernelPatch pulumi.StringOutput `pulumi:"kernelPatch"`
 	// The central services instance Kernel Version.
 	KernelVersion pulumi.StringOutput `pulumi:"kernelVersion"`
+	// The Load Balancer details such as LoadBalancer ID attached to ASCS Virtual Machines
+	LoadBalancerDetails LoadBalancerDetailsResponseOutput `pulumi:"loadBalancerDetails"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Defines the SAP Message Server properties.
@@ -207,6 +209,11 @@ func (o SAPCentralInstanceOutput) KernelPatch() pulumi.StringOutput {
 // The central services instance Kernel Version.
 func (o SAPCentralInstanceOutput) KernelVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *SAPCentralInstance) pulumi.StringOutput { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
+// The Load Balancer details such as LoadBalancer ID attached to ASCS Virtual Machines
+func (o SAPCentralInstanceOutput) LoadBalancerDetails() LoadBalancerDetailsResponseOutput {
+	return o.ApplyT(func(v *SAPCentralInstance) LoadBalancerDetailsResponseOutput { return v.LoadBalancerDetails }).(LoadBalancerDetailsResponseOutput)
 }
 
 // The geo-location where the resource lives

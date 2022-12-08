@@ -26,7 +26,7 @@ type Output struct {
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization pulumi.AnyOutput `pulumi:"serialization"`
 	// The size window to constrain a Stream Analytics output to.
-	SizeWindow pulumi.Float64PtrOutput `pulumi:"sizeWindow"`
+	SizeWindow pulumi.IntPtrOutput `pulumi:"sizeWindow"`
 	// The time frame for filtering Stream Analytics job outputs.
 	TimeWindow pulumi.StringPtrOutput `pulumi:"timeWindow"`
 	// Resource type
@@ -106,7 +106,7 @@ type outputArgs struct {
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
 	// The size window to constrain a Stream Analytics output to.
-	SizeWindow *float64 `pulumi:"sizeWindow"`
+	SizeWindow *int `pulumi:"sizeWindow"`
 	// The time frame for filtering Stream Analytics job outputs.
 	TimeWindow *string `pulumi:"timeWindow"`
 }
@@ -126,7 +126,7 @@ type OutputArgs struct {
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization pulumi.Input
 	// The size window to constrain a Stream Analytics output to.
-	SizeWindow pulumi.Float64PtrInput
+	SizeWindow pulumi.IntPtrInput
 	// The time frame for filtering Stream Analytics job outputs.
 	TimeWindow pulumi.StringPtrInput
 }
@@ -194,8 +194,8 @@ func (o OutputOutput) Serialization() pulumi.AnyOutput {
 }
 
 // The size window to constrain a Stream Analytics output to.
-func (o OutputOutput) SizeWindow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Output) pulumi.Float64PtrOutput { return v.SizeWindow }).(pulumi.Float64PtrOutput)
+func (o OutputOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Output) pulumi.IntPtrOutput { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
 // The time frame for filtering Stream Analytics job outputs.

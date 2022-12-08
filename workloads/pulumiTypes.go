@@ -594,6 +594,8 @@ type CentralServerConfigurationResponse struct {
 
 // The SAP Central Services Instance VM details.
 type CentralServerVmDetailsResponse struct {
+	// Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage.
+	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
 	// Defines the type of central server VM.
 	Type             string `pulumi:"type"`
 	VirtualMachineId string `pulumi:"virtualMachineId"`
@@ -612,6 +614,11 @@ func (o CentralServerVmDetailsResponseOutput) ToCentralServerVmDetailsResponseOu
 
 func (o CentralServerVmDetailsResponseOutput) ToCentralServerVmDetailsResponseOutputWithContext(ctx context.Context) CentralServerVmDetailsResponseOutput {
 	return o
+}
+
+// Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage.
+func (o CentralServerVmDetailsResponseOutput) StorageDetails() StorageInformationResponseArrayOutput {
+	return o.ApplyT(func(v CentralServerVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
 }
 
 // Defines the type of central server VM.
@@ -641,6 +648,28 @@ func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Cent
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CentralServerVmDetailsResponse {
 		return vs[0].([]CentralServerVmDetailsResponse)[vs[1].(int)]
 	}).(CentralServerVmDetailsResponseOutput)
+}
+
+// Gets or sets the file share configuration for file share created with the VIS case.
+type CreateAndMountFileShareConfiguration struct {
+	// The type of file share config.
+	// Expected value is 'CreateAndMount'.
+	ConfigurationType string `pulumi:"configurationType"`
+	// The name of file share resource group. The app rg is used in case of missing input.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// The name of file share storage account name . A custom name is used in case of missing input.
+	StorageAccountName *string `pulumi:"storageAccountName"`
+}
+
+// Gets or sets the file share configuration for file share created with the VIS case.
+type CreateAndMountFileShareConfigurationResponse struct {
+	// The type of file share config.
+	// Expected value is 'CreateAndMount'.
+	ConfigurationType string `pulumi:"configurationType"`
+	// The name of file share resource group. The app rg is used in case of missing input.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// The name of file share storage account name . A custom name is used in case of missing input.
+	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
 // Gets or sets the DB2 provider properties.
@@ -697,6 +726,8 @@ type DB2ProviderInstancePropertiesResponse struct {
 type DatabaseConfiguration struct {
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Gets or sets the disk configuration.
+	DiskConfiguration *DiskConfiguration `pulumi:"diskConfiguration"`
 	// The number of database VMs.
 	InstanceCount float64 `pulumi:"instanceCount"`
 	// The subnet id.
@@ -709,6 +740,8 @@ type DatabaseConfiguration struct {
 type DatabaseConfigurationResponse struct {
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Gets or sets the disk configuration.
+	DiskConfiguration *DiskConfigurationResponse `pulumi:"diskConfiguration"`
 	// The number of database VMs.
 	InstanceCount float64 `pulumi:"instanceCount"`
 	// The subnet id.
@@ -968,8 +1001,10 @@ func (o DatabaseProfileResponseOutput) Version() pulumi.StringPtrOutput {
 // Database VM details.
 type DatabaseVmDetailsResponse struct {
 	// Defines the SAP Instance status.
-	Status           string `pulumi:"status"`
-	VirtualMachineId string `pulumi:"virtualMachineId"`
+	Status string `pulumi:"status"`
+	// Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage.
+	StorageDetails   []StorageInformationResponse `pulumi:"storageDetails"`
+	VirtualMachineId string                       `pulumi:"virtualMachineId"`
 }
 
 // Database VM details.
@@ -990,6 +1025,11 @@ func (o DatabaseVmDetailsResponseOutput) ToDatabaseVmDetailsResponseOutputWithCo
 // Defines the SAP Instance status.
 func (o DatabaseVmDetailsResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseVmDetailsResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage.
+func (o DatabaseVmDetailsResponseOutput) StorageDetails() StorageInformationResponseArrayOutput {
+	return o.ApplyT(func(v DatabaseVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
 }
 
 func (o DatabaseVmDetailsResponseOutput) VirtualMachineId() pulumi.StringOutput {
@@ -1106,6 +1146,18 @@ type DiscoveryConfigurationResponse struct {
 	// The configuration Type.
 	// Expected value is 'Discovery'.
 	ConfigurationType string `pulumi:"configurationType"`
+}
+
+// The Disk Configuration Details.
+type DiskConfiguration struct {
+	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+	DiskVolumeConfigurations map[string]DiskVolumeConfiguration `pulumi:"diskVolumeConfigurations"`
+}
+
+// The Disk Configuration Details.
+type DiskConfigurationResponse struct {
+	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+	DiskVolumeConfigurations map[string]DiskVolumeConfigurationResponse `pulumi:"diskVolumeConfigurations"`
 }
 
 // Disk resource creation details
@@ -1407,6 +1459,38 @@ func (o DiskInfoResponseArrayOutput) Index(i pulumi.IntInput) DiskInfoResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInfoResponse {
 		return vs[0].([]DiskInfoResponse)[vs[1].(int)]
 	}).(DiskInfoResponseOutput)
+}
+
+// The disk sku.
+type DiskSku struct {
+	// Defines the disk sku name.
+	Name *string `pulumi:"name"`
+}
+
+// The disk sku.
+type DiskSkuResponse struct {
+	// Defines the disk sku name.
+	Name *string `pulumi:"name"`
+}
+
+// The disk configuration required for the selected volume.
+type DiskVolumeConfiguration struct {
+	// The total number of disks required for the concerned volume.
+	Count *float64 `pulumi:"count"`
+	// The disk size in GB.
+	SizeGB *float64 `pulumi:"sizeGB"`
+	// The disk SKU details.
+	Sku *DiskSku `pulumi:"sku"`
+}
+
+// The disk configuration required for the selected volume.
+type DiskVolumeConfigurationResponse struct {
+	// The total number of disks required for the concerned volume.
+	Count *float64 `pulumi:"count"`
+	// The disk size in GB.
+	SizeGB *float64 `pulumi:"sizeGB"`
+	// The disk SKU details.
+	Sku *DiskSkuResponse `pulumi:"sku"`
 }
 
 // Defines the SAP Enqueue Replication Server (ERS) properties.
@@ -2547,6 +2631,30 @@ type LinuxConfigurationResponse struct {
 	SshKeyPair *SshKeyPairResponse `pulumi:"sshKeyPair"`
 }
 
+// The Load Balancer details such as Load Balancer ID.
+type LoadBalancerDetailsResponse struct {
+	Id string `pulumi:"id"`
+}
+
+// The Load Balancer details such as Load Balancer ID.
+type LoadBalancerDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDetailsResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerDetailsResponseOutput) ToLoadBalancerDetailsResponseOutput() LoadBalancerDetailsResponseOutput {
+	return o
+}
+
+func (o LoadBalancerDetailsResponseOutput) ToLoadBalancerDetailsResponseOutputWithContext(ctx context.Context) LoadBalancerDetailsResponseOutput {
+	return o
+}
+
+func (o LoadBalancerDetailsResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerDetailsResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // Managed resource group configuration
 type ManagedRGConfiguration struct {
 	// Managed resource group name
@@ -2961,6 +3069,28 @@ func (o MonitorPropertiesResponseErrorsOutput) Message() pulumi.StringOutput {
 // Target of the error.
 func (o MonitorPropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Gets or sets the file share configuration for externally mounted cases.
+type MountFileShareConfiguration struct {
+	// The type of file share config.
+	// Expected value is 'Mount'.
+	ConfigurationType string `pulumi:"configurationType"`
+	// The fileshare resource ID
+	Id string `pulumi:"id"`
+	// The private endpoint resource ID
+	PrivateEndpointId string `pulumi:"privateEndpointId"`
+}
+
+// Gets or sets the file share configuration for externally mounted cases.
+type MountFileShareConfigurationResponse struct {
+	// The type of file share config.
+	// Expected value is 'Mount'.
+	ConfigurationType string `pulumi:"configurationType"`
+	// The fileshare resource ID
+	Id string `pulumi:"id"`
+	// The private endpoint resource ID
+	PrivateEndpointId string `pulumi:"privateEndpointId"`
 }
 
 // Gets or sets the SQL server provider properties.
@@ -5288,6 +5418,8 @@ type SingleServerConfiguration struct {
 	AppResourceGroup string `pulumi:"appResourceGroup"`
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Gets or sets the disk configuration.
+	DbDiskConfiguration *DiskConfiguration `pulumi:"dbDiskConfiguration"`
 	// The type of SAP deployment, single server or Three tier.
 	// Expected value is 'SingleServer'.
 	DeploymentType string `pulumi:"deploymentType"`
@@ -5316,6 +5448,8 @@ type SingleServerConfigurationResponse struct {
 	AppResourceGroup string `pulumi:"appResourceGroup"`
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Gets or sets the disk configuration.
+	DbDiskConfiguration *DiskConfigurationResponse `pulumi:"dbDiskConfiguration"`
 	// The type of SAP deployment, single server or Three tier.
 	// Expected value is 'SingleServer'.
 	DeploymentType string `pulumi:"deploymentType"`
@@ -5536,6 +5670,20 @@ func (o SiteProfileResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
 		}
 		return v.DomainName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the skip file share configuration
+type SkipFileShareConfiguration struct {
+	// The type of file share config.
+	// Expected value is 'Skip'.
+	ConfigurationType string `pulumi:"configurationType"`
+}
+
+// Gets or sets the skip file share configuration
+type SkipFileShareConfigurationResponse struct {
+	// The type of file share config.
+	// Expected value is 'Skip'.
+	ConfigurationType string `pulumi:"configurationType"`
 }
 
 // The resource model definition representing SKU
@@ -5922,6 +6070,62 @@ type SshPublicKeyResponse struct {
 	KeyData *string `pulumi:"keyData"`
 }
 
+// Gets or sets the storage configuration.
+type StorageConfiguration struct {
+	// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+	TransportFileShareConfiguration interface{} `pulumi:"transportFileShareConfiguration"`
+}
+
+// Gets or sets the storage configuration.
+type StorageConfigurationResponse struct {
+	// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+	TransportFileShareConfiguration interface{} `pulumi:"transportFileShareConfiguration"`
+}
+
+// Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage.
+type StorageInformationResponse struct {
+	Id string `pulumi:"id"`
+}
+
+// Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage.
+type StorageInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageInformationResponse)(nil)).Elem()
+}
+
+func (o StorageInformationResponseOutput) ToStorageInformationResponseOutput() StorageInformationResponseOutput {
+	return o
+}
+
+func (o StorageInformationResponseOutput) ToStorageInformationResponseOutputWithContext(ctx context.Context) StorageInformationResponseOutput {
+	return o
+}
+
+func (o StorageInformationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageInformationResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type StorageInformationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageInformationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageInformationResponse)(nil)).Elem()
+}
+
+func (o StorageInformationResponseArrayOutput) ToStorageInformationResponseArrayOutput() StorageInformationResponseArrayOutput {
+	return o
+}
+
+func (o StorageInformationResponseArrayOutput) ToStorageInformationResponseArrayOutputWithContext(ctx context.Context) StorageInformationResponseArrayOutput {
+	return o
+}
+
+func (o StorageInformationResponseArrayOutput) Index(i pulumi.IntInput) StorageInformationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageInformationResponse {
+		return vs[0].([]StorageInformationResponse)[vs[1].(int)]
+	}).(StorageInformationResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -6000,6 +6204,8 @@ type ThreeTierConfiguration struct {
 	HighAvailabilityConfig *HighAvailabilityConfiguration `pulumi:"highAvailabilityConfig"`
 	// Network configuration common to all servers
 	NetworkConfiguration *NetworkConfiguration `pulumi:"networkConfiguration"`
+	// The storage configuration.
+	StorageConfiguration *StorageConfiguration `pulumi:"storageConfiguration"`
 }
 
 // Defaults sets the appropriate defaults for ThreeTierConfiguration
@@ -6030,6 +6236,8 @@ type ThreeTierConfigurationResponse struct {
 	HighAvailabilityConfig *HighAvailabilityConfigurationResponse `pulumi:"highAvailabilityConfig"`
 	// Network configuration common to all servers
 	NetworkConfiguration *NetworkConfigurationResponse `pulumi:"networkConfiguration"`
+	// The storage configuration.
+	StorageConfiguration *StorageConfigurationResponse `pulumi:"storageConfiguration"`
 }
 
 // Defaults sets the appropriate defaults for ThreeTierConfigurationResponse
@@ -6688,6 +6896,7 @@ func init() {
 	pulumi.RegisterOutputType(FileshareProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationResponseOutput{})
@@ -6733,6 +6942,8 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(StorageInformationResponseOutput{})
+	pulumi.RegisterOutputType(StorageInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
