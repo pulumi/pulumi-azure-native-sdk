@@ -44,6 +44,8 @@ type SAPApplicationServerInstance struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Defines the SAP Instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
+	StorageDetails StorageInformationResponseArrayOutput `pulumi:"storageDetails"`
 	// Application server Subnet.
 	Subnet pulumi.StringOutput `pulumi:"subnet"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -238,6 +240,11 @@ func (o SAPApplicationServerInstanceOutput) ProvisioningState() pulumi.StringOut
 // Defines the SAP Instance status.
 func (o SAPApplicationServerInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SAPApplicationServerInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
+func (o SAPApplicationServerInstanceOutput) StorageDetails() StorageInformationResponseArrayOutput {
+	return o.ApplyT(func(v *SAPApplicationServerInstance) StorageInformationResponseArrayOutput { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
 }
 
 // Application server Subnet.

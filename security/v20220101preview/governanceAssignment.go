@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security GovernanceAssignment over a given scope
+// Governance assignment over a given scope
 type GovernanceAssignment struct {
 	pulumi.CustomResourceState
 
@@ -83,9 +83,9 @@ func (GovernanceAssignmentState) ElementType() reflect.Type {
 type governanceAssignmentArgs struct {
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData *GovernanceAssignmentAdditionalData `pulumi:"additionalData"`
-	// The Assessment Key - Unique key for the assessment type
+	// The Assessment Key - A unique key for the assessment type
 	AssessmentName string `pulumi:"assessmentName"`
-	// The security governance assignment key - the assessment key of the required governance assignment
+	// The governance assignment key - the assessment key of the required governance assignment
 	AssignmentKey *string `pulumi:"assignmentKey"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceEmailNotification `pulumi:"governanceEmailNotification"`
@@ -105,9 +105,9 @@ type governanceAssignmentArgs struct {
 type GovernanceAssignmentArgs struct {
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData GovernanceAssignmentAdditionalDataPtrInput
-	// The Assessment Key - Unique key for the assessment type
+	// The Assessment Key - A unique key for the assessment type
 	AssessmentName pulumi.StringInput
-	// The security governance assignment key - the assessment key of the required governance assignment
+	// The governance assignment key - the assessment key of the required governance assignment
 	AssignmentKey pulumi.StringPtrInput
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification GovernanceEmailNotificationPtrInput

@@ -18,6 +18,15 @@ const (
 	AzureFrontDoorEnabledDisabled = AzureFrontDoorEnabled("Disabled")
 )
 
+// The type of file share config.
+type ConfigurationType string
+
+const (
+	ConfigurationTypeSkip           = ConfigurationType("Skip")
+	ConfigurationTypeCreateAndMount = ConfigurationType("CreateAndMount")
+	ConfigurationTypeMount          = ConfigurationType("Mount")
+)
+
 // Tier of the server SKU
 type DatabaseTier string
 
@@ -189,6 +198,19 @@ type DatabaseType string
 
 const (
 	DatabaseTypeMySql = DatabaseType("MySql")
+)
+
+// Defines the disk sku name.
+type DiskSkuName string
+
+const (
+	DiskSkuName_Standard_LRS    = DiskSkuName("Standard_LRS")
+	DiskSkuName_Premium_LRS     = DiskSkuName("Premium_LRS")
+	DiskSkuName_StandardSSD_LRS = DiskSkuName("StandardSSD_LRS")
+	DiskSkuName_UltraSSD_LRS    = DiskSkuName("UltraSSD_LRS")
+	DiskSkuName_Premium_ZRS     = DiskSkuName("Premium_ZRS")
+	DiskSkuName_StandardSSD_ZRS = DiskSkuName("StandardSSD_ZRS")
+	DiskSkuName_PremiumV2_LRS   = DiskSkuName("PremiumV2_LRS")
 )
 
 // Storage type

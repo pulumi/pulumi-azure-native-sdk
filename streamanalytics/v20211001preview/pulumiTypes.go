@@ -2688,7 +2688,7 @@ type OutputType struct {
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
 	// The size window to constrain a Stream Analytics output to.
-	SizeWindow *float64 `pulumi:"sizeWindow"`
+	SizeWindow *int `pulumi:"sizeWindow"`
 	// The time frame for filtering Stream Analytics job outputs.
 	TimeWindow *string `pulumi:"timeWindow"`
 	// Settings which determine whether to send watermarks to downstream.
@@ -2715,7 +2715,7 @@ type OutputTypeArgs struct {
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization pulumi.Input `pulumi:"serialization"`
 	// The size window to constrain a Stream Analytics output to.
-	SizeWindow pulumi.Float64PtrInput `pulumi:"sizeWindow"`
+	SizeWindow pulumi.IntPtrInput `pulumi:"sizeWindow"`
 	// The time frame for filtering Stream Analytics job outputs.
 	TimeWindow pulumi.StringPtrInput `pulumi:"timeWindow"`
 	// Settings which determine whether to send watermarks to downstream.
@@ -2790,8 +2790,8 @@ func (o OutputTypeOutput) Serialization() pulumi.AnyOutput {
 }
 
 // The size window to constrain a Stream Analytics output to.
-func (o OutputTypeOutput) SizeWindow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v OutputType) *float64 { return v.SizeWindow }).(pulumi.Float64PtrOutput)
+func (o OutputTypeOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OutputType) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
 // The time frame for filtering Stream Analytics job outputs.
@@ -2841,7 +2841,7 @@ type OutputResponse struct {
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
 	// The size window to constrain a Stream Analytics output to.
-	SizeWindow *float64 `pulumi:"sizeWindow"`
+	SizeWindow *int `pulumi:"sizeWindow"`
 	// The time frame for filtering Stream Analytics job outputs.
 	TimeWindow *string `pulumi:"timeWindow"`
 	// Resource type
@@ -2901,8 +2901,8 @@ func (o OutputResponseOutput) Serialization() pulumi.AnyOutput {
 }
 
 // The size window to constrain a Stream Analytics output to.
-func (o OutputResponseOutput) SizeWindow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v OutputResponse) *float64 { return v.SizeWindow }).(pulumi.Float64PtrOutput)
+func (o OutputResponseOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OutputResponse) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
 // The time frame for filtering Stream Analytics job outputs.

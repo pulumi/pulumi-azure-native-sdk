@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security GovernanceAssignment over a given scope
+// Governance assignment over a given scope
 func LookupGovernanceAssignment(ctx *pulumi.Context, args *LookupGovernanceAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGovernanceAssignmentResult, error) {
 	var rv LookupGovernanceAssignmentResult
 	err := ctx.Invoke("azure-native:security/v20220101preview:getGovernanceAssignment", args, &rv, opts...)
@@ -21,15 +21,15 @@ func LookupGovernanceAssignment(ctx *pulumi.Context, args *LookupGovernanceAssig
 }
 
 type LookupGovernanceAssignmentArgs struct {
-	// The Assessment Key - Unique key for the assessment type
+	// The Assessment Key - A unique key for the assessment type
 	AssessmentName string `pulumi:"assessmentName"`
-	// The security governance assignment key - the assessment key of the required governance assignment
+	// The governance assignment key - the assessment key of the required governance assignment
 	AssignmentKey string `pulumi:"assignmentKey"`
 	// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
 	Scope string `pulumi:"scope"`
 }
 
-// Security GovernanceAssignment over a given scope
+// Governance assignment over a given scope
 type LookupGovernanceAssignmentResult struct {
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData *GovernanceAssignmentAdditionalDataResponse `pulumi:"additionalData"`
@@ -65,9 +65,9 @@ func LookupGovernanceAssignmentOutput(ctx *pulumi.Context, args LookupGovernance
 }
 
 type LookupGovernanceAssignmentOutputArgs struct {
-	// The Assessment Key - Unique key for the assessment type
+	// The Assessment Key - A unique key for the assessment type
 	AssessmentName pulumi.StringInput `pulumi:"assessmentName"`
-	// The security governance assignment key - the assessment key of the required governance assignment
+	// The governance assignment key - the assessment key of the required governance assignment
 	AssignmentKey pulumi.StringInput `pulumi:"assignmentKey"`
 	// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
 	Scope pulumi.StringInput `pulumi:"scope"`
@@ -77,7 +77,7 @@ func (LookupGovernanceAssignmentOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupGovernanceAssignmentArgs)(nil)).Elem()
 }
 
-// Security GovernanceAssignment over a given scope
+// Governance assignment over a given scope
 type LookupGovernanceAssignmentResultOutput struct{ *pulumi.OutputState }
 
 func (LookupGovernanceAssignmentResultOutput) ElementType() reflect.Type {

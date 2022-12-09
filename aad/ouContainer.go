@@ -75,6 +75,9 @@ func NewOuContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:aad/v20220901:OuContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:aad/v20221201:OuContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource OuContainer
