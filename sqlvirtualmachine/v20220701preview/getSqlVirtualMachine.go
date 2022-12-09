@@ -17,7 +17,7 @@ func LookupSqlVirtualMachine(ctx *pulumi.Context, args *LookupSqlVirtualMachineA
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupSqlVirtualMachineArgs struct {
@@ -79,6 +79,23 @@ type LookupSqlVirtualMachineResult struct {
 	WsfcDomainCredentials *WsfcDomainCredentialsResponse `pulumi:"wsfcDomainCredentials"`
 	// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
 	WsfcStaticIp *string `pulumi:"wsfcStaticIp"`
+}
+
+// Defaults sets the appropriate defaults for LookupSqlVirtualMachineResult
+func (val *LookupSqlVirtualMachineResult) Defaults() *LookupSqlVirtualMachineResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.EnableAutomaticUpgrade) {
+		enableAutomaticUpgrade_ := false
+		tmp.EnableAutomaticUpgrade = &enableAutomaticUpgrade_
+	}
+	if isZero(tmp.LeastPrivilegeMode) {
+		leastPrivilegeMode_ := "NotSet"
+		tmp.LeastPrivilegeMode = &leastPrivilegeMode_
+	}
+	return &tmp
 }
 
 func LookupSqlVirtualMachineOutput(ctx *pulumi.Context, args LookupSqlVirtualMachineOutputArgs, opts ...pulumi.InvokeOption) LookupSqlVirtualMachineResultOutput {
