@@ -60,7 +60,7 @@ type AppServiceEnvironment struct {
 	UpgradeAvailability pulumi.StringOutput `pulumi:"upgradeAvailability"`
 	// Upgrade Preference
 	UpgradePreference pulumi.StringPtrOutput `pulumi:"upgradePreference"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges pulumi.StringArrayOutput `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileResponseOutput `pulumi:"virtualNetwork"`
@@ -188,7 +188,7 @@ type appServiceEnvironmentArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Upgrade Preference
 	UpgradePreference *string `pulumi:"upgradePreference"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges []string `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfile `pulumi:"virtualNetwork"`
@@ -228,7 +228,7 @@ type AppServiceEnvironmentArgs struct {
 	Tags pulumi.StringMapInput
 	// Upgrade Preference
 	UpgradePreference pulumi.StringPtrInput
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges pulumi.StringArrayInput
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileInput
@@ -389,7 +389,7 @@ func (o AppServiceEnvironmentOutput) UpgradePreference() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringPtrOutput { return v.UpgradePreference }).(pulumi.StringPtrOutput)
 }
 
-// User added ip ranges to whitelist on ASE db
+// User added list of IP Ranges allowed on ASE db
 func (o AppServiceEnvironmentOutput) UserWhitelistedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringArrayOutput { return v.UserWhitelistedIpRanges }).(pulumi.StringArrayOutput)
 }
