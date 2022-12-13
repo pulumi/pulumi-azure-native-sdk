@@ -37,7 +37,7 @@ type LookupClusterResult struct {
 	AzureActiveDirectory *AzureActiveDirectoryResponse `pulumi:"azureActiveDirectory"`
 	// This primary certificate will be used as cluster node to node security, SSL certificate for cluster management endpoint and default admin client
 	Certificate *CertificateDescriptionResponse `pulumi:"certificate"`
-	//  List of client certificates to whitelist based on common names
+	//  List of client certificates to trust based on common names
 	ClientCertificateCommonNames []ClientCertificateCommonNameResponse `pulumi:"clientCertificateCommonNames"`
 	// The client thumbprint details ,it is used for client access for cluster operation
 	ClientCertificateThumbprints []ClientCertificateThumbprintResponse `pulumi:"clientCertificateThumbprints"`
@@ -135,7 +135,7 @@ func (o LookupClusterResultOutput) Certificate() CertificateDescriptionResponseP
 	return o.ApplyT(func(v LookupClusterResult) *CertificateDescriptionResponse { return v.Certificate }).(CertificateDescriptionResponsePtrOutput)
 }
 
-// List of client certificates to whitelist based on common names
+// List of client certificates to trust based on common names
 func (o LookupClusterResultOutput) ClientCertificateCommonNames() ClientCertificateCommonNameResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []ClientCertificateCommonNameResponse {
 		return v.ClientCertificateCommonNames

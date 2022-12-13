@@ -39,7 +39,7 @@ type ManagedCluster struct {
 	DiskEncryptionSetID pulumi.StringPtrOutput `pulumi:"diskEncryptionSetID"`
 	// This cannot be updated once the Managed Cluster has been created.
 	DnsPrefix pulumi.StringPtrOutput `pulumi:"dnsPrefix"`
-	// The default value is false. It can be enabled/disabled on creation and updation of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
+	// The default value is false. It can be enabled/disabled on creation and updating of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
 	EnableNamespaceResources pulumi.BoolPtrOutput `pulumi:"enableNamespaceResources"`
 	// (DEPRECATING) Whether to enable Kubernetes pod security policy (preview). This feature is set for removal on October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
 	EnablePodSecurityPolicy pulumi.BoolPtrOutput `pulumi:"enablePodSecurityPolicy"`
@@ -310,7 +310,7 @@ type managedClusterArgs struct {
 	DiskEncryptionSetID *string `pulumi:"diskEncryptionSetID"`
 	// This cannot be updated once the Managed Cluster has been created.
 	DnsPrefix *string `pulumi:"dnsPrefix"`
-	// The default value is false. It can be enabled/disabled on creation and updation of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
+	// The default value is false. It can be enabled/disabled on creation and updating of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
 	EnableNamespaceResources *bool `pulumi:"enableNamespaceResources"`
 	// (DEPRECATING) Whether to enable Kubernetes pod security policy (preview). This feature is set for removal on October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
 	EnablePodSecurityPolicy *bool `pulumi:"enablePodSecurityPolicy"`
@@ -388,7 +388,7 @@ type ManagedClusterArgs struct {
 	DiskEncryptionSetID pulumi.StringPtrInput
 	// This cannot be updated once the Managed Cluster has been created.
 	DnsPrefix pulumi.StringPtrInput
-	// The default value is false. It can be enabled/disabled on creation and updation of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
+	// The default value is false. It can be enabled/disabled on creation and updating of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
 	EnableNamespaceResources pulumi.BoolPtrInput
 	// (DEPRECATING) Whether to enable Kubernetes pod security policy (preview). This feature is set for removal on October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
 	EnablePodSecurityPolicy pulumi.BoolPtrInput
@@ -545,7 +545,7 @@ func (o ManagedClusterOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.DnsPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The default value is false. It can be enabled/disabled on creation and updation of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
+// The default value is false. It can be enabled/disabled on creation and updating of the managed cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as a ARM Resource.
 func (o ManagedClusterOutput) EnableNamespaceResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.BoolPtrOutput { return v.EnableNamespaceResources }).(pulumi.BoolPtrOutput)
 }

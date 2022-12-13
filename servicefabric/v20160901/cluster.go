@@ -23,7 +23,7 @@ type Cluster struct {
 	AzureActiveDirectory AzureActiveDirectoryResponsePtrOutput `pulumi:"azureActiveDirectory"`
 	// This primary certificate will be used as cluster node to node security, SSL certificate for cluster management endpoint and default admin client
 	Certificate CertificateDescriptionResponsePtrOutput `pulumi:"certificate"`
-	//  List of client certificates to whitelist based on common names
+	//  List of client certificates to trust based on common names
 	ClientCertificateCommonNames ClientCertificateCommonNameResponseArrayOutput `pulumi:"clientCertificateCommonNames"`
 	// The client thumbprint details ,it is used for client access for cluster operation
 	ClientCertificateThumbprints ClientCertificateThumbprintResponseArrayOutput `pulumi:"clientCertificateThumbprints"`
@@ -150,7 +150,7 @@ type clusterArgs struct {
 	AzureActiveDirectory *AzureActiveDirectory `pulumi:"azureActiveDirectory"`
 	// This primary certificate will be used as cluster node to node security, SSL certificate for cluster management endpoint and default admin client
 	Certificate *CertificateDescription `pulumi:"certificate"`
-	//  List of client certificates to whitelist based on common names
+	//  List of client certificates to trust based on common names
 	ClientCertificateCommonNames []ClientCertificateCommonName `pulumi:"clientCertificateCommonNames"`
 	// The client thumbprint details ,it is used for client access for cluster operation
 	ClientCertificateThumbprints []ClientCertificateThumbprint `pulumi:"clientCertificateThumbprints"`
@@ -190,7 +190,7 @@ type ClusterArgs struct {
 	AzureActiveDirectory AzureActiveDirectoryPtrInput
 	// This primary certificate will be used as cluster node to node security, SSL certificate for cluster management endpoint and default admin client
 	Certificate CertificateDescriptionPtrInput
-	//  List of client certificates to whitelist based on common names
+	//  List of client certificates to trust based on common names
 	ClientCertificateCommonNames ClientCertificateCommonNameArrayInput
 	// The client thumbprint details ,it is used for client access for cluster operation
 	ClientCertificateThumbprints ClientCertificateThumbprintArrayInput
@@ -276,7 +276,7 @@ func (o ClusterOutput) Certificate() CertificateDescriptionResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) CertificateDescriptionResponsePtrOutput { return v.Certificate }).(CertificateDescriptionResponsePtrOutput)
 }
 
-// List of client certificates to whitelist based on common names
+// List of client certificates to trust based on common names
 func (o ClusterOutput) ClientCertificateCommonNames() ClientCertificateCommonNameResponseArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClientCertificateCommonNameResponseArrayOutput { return v.ClientCertificateCommonNames }).(ClientCertificateCommonNameResponseArrayOutput)
 }
