@@ -2293,6 +2293,8 @@ func (o ManagedIdentityConfigurationResponsePtrOutput) Type() pulumi.StringPtrOu
 
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionProperties struct {
+	// GroupIds from the private link service resource.
+	GroupIds []string `pulumi:"groupIds"`
 	// Private endpoint connection state
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 }
@@ -2310,6 +2312,8 @@ type PrivateEndpointConnectionPropertiesInput interface {
 
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionPropertiesArgs struct {
+	// GroupIds from the private link service resource.
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
 	// Private endpoint connection state
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
 }
@@ -2341,6 +2345,11 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 	return o
 }
 
+// GroupIds from the private link service resource.
+func (o PrivateEndpointConnectionPropertiesOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProperties) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // Private endpoint connection state
 func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionProperties) PrivateLinkServiceConnectionState {
@@ -2350,6 +2359,8 @@ func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionS
 
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionPropertiesResponse struct {
+	// GroupIds from the private link service resource.
+	GroupIds []string `pulumi:"groupIds"`
 	// Private endpoint
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// Private endpoint connection state
@@ -2371,6 +2382,11 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 
 func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponseOutput {
 	return o
+}
+
+// GroupIds from the private link service resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
 // Private endpoint
@@ -2522,7 +2538,7 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionState struct {
 	// Actions required for a private endpoint connection
-	ActionRequired *string `pulumi:"actionRequired"`
+	ActionsRequired *string `pulumi:"actionsRequired"`
 	// The description for the current state of a private endpoint connection
 	Description *string `pulumi:"description"`
 	// The status of a private endpoint connection
@@ -2543,7 +2559,7 @@ type PrivateLinkServiceConnectionStateInput interface {
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionStateArgs struct {
 	// Actions required for a private endpoint connection
-	ActionRequired pulumi.StringPtrInput `pulumi:"actionRequired"`
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
 	// The description for the current state of a private endpoint connection
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The status of a private endpoint connection
@@ -2578,8 +2594,8 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 }
 
 // Actions required for a private endpoint connection
-func (o PrivateLinkServiceConnectionStateOutput) ActionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionRequired }).(pulumi.StringPtrOutput)
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
 // The description for the current state of a private endpoint connection
@@ -2595,7 +2611,7 @@ func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringOutput {
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionStateResponse struct {
 	// Actions required for a private endpoint connection
-	ActionRequired *string `pulumi:"actionRequired"`
+	ActionsRequired *string `pulumi:"actionsRequired"`
 	// The description for the current state of a private endpoint connection
 	Description *string `pulumi:"description"`
 	// The status of a private endpoint connection
@@ -2618,8 +2634,8 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 }
 
 // Actions required for a private endpoint connection
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionRequired }).(pulumi.StringPtrOutput)
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
 // The description for the current state of a private endpoint connection

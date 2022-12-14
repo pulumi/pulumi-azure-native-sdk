@@ -76,7 +76,7 @@ type LookupAppServiceEnvironmentResult struct {
 	UpgradeAvailability string `pulumi:"upgradeAvailability"`
 	// Upgrade Preference
 	UpgradePreference *string `pulumi:"upgradePreference"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges []string `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileResponse `pulumi:"virtualNetwork"`
@@ -257,7 +257,7 @@ func (o LookupAppServiceEnvironmentResultOutput) UpgradePreference() pulumi.Stri
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *string { return v.UpgradePreference }).(pulumi.StringPtrOutput)
 }
 
-// User added ip ranges to whitelist on ASE db
+// User added list of IP Ranges allowed on ASE db
 func (o LookupAppServiceEnvironmentResultOutput) UserWhitelistedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) []string { return v.UserWhitelistedIpRanges }).(pulumi.StringArrayOutput)
 }

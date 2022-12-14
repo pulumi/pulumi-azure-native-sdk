@@ -41,7 +41,7 @@ type ListWebAppSitePushSettingsResult struct {
 	Name string `pulumi:"name"`
 	// The system metadata relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 	TagWhitelistJson *string `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -121,7 +121,7 @@ func (o ListWebAppSitePushSettingsResultOutput) SystemData() SystemDataResponseO
 	return o.ApplyT(func(v ListWebAppSitePushSettingsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 func (o ListWebAppSitePushSettingsResultOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppSitePushSettingsResult) *string { return v.TagWhitelistJson }).(pulumi.StringPtrOutput)
 }
