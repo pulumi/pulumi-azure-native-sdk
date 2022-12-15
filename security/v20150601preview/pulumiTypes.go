@@ -1020,7 +1020,7 @@ type PathRecommendation struct {
 	ConfigurationStatus *string `pulumi:"configurationStatus"`
 	// The type of the file (for Linux files - Executable is used)
 	FileType *string `pulumi:"fileType"`
-	// The full path to whitelist
+	// The full path to the application to allow
 	Path *string `pulumi:"path"`
 	// Represents the publisher information of a process/rule
 	PublisherInfo *PublisherInfo `pulumi:"publisherInfo"`
@@ -1051,7 +1051,7 @@ type PathRecommendationArgs struct {
 	ConfigurationStatus pulumi.StringPtrInput `pulumi:"configurationStatus"`
 	// The type of the file (for Linux files - Executable is used)
 	FileType pulumi.StringPtrInput `pulumi:"fileType"`
-	// The full path to whitelist
+	// The full path to the application to allow
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Represents the publisher information of a process/rule
 	PublisherInfo PublisherInfoPtrInput `pulumi:"publisherInfo"`
@@ -1133,7 +1133,7 @@ func (o PathRecommendationOutput) FileType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathRecommendation) *string { return v.FileType }).(pulumi.StringPtrOutput)
 }
 
-// The full path to whitelist
+// The full path to the application to allow
 func (o PathRecommendationOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathRecommendation) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -1186,7 +1186,7 @@ type PathRecommendationResponse struct {
 	ConfigurationStatus *string `pulumi:"configurationStatus"`
 	// The type of the file (for Linux files - Executable is used)
 	FileType *string `pulumi:"fileType"`
-	// The full path to whitelist
+	// The full path to the application to allow
 	Path *string `pulumi:"path"`
 	// Represents the publisher information of a process/rule
 	PublisherInfo *PublisherInfoResponse `pulumi:"publisherInfo"`
@@ -1231,7 +1231,7 @@ func (o PathRecommendationResponseOutput) FileType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathRecommendationResponse) *string { return v.FileType }).(pulumi.StringPtrOutput)
 }
 
-// The full path to whitelist
+// The full path to the application to allow
 func (o PathRecommendationResponseOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathRecommendationResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
 }

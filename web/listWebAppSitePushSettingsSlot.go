@@ -42,7 +42,7 @@ type ListWebAppSitePushSettingsSlotResult struct {
 	Kind *string `pulumi:"kind"`
 	// Resource Name.
 	Name string `pulumi:"name"`
-	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 	TagWhitelistJson *string `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -119,7 +119,7 @@ func (o ListWebAppSitePushSettingsSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppSitePushSettingsSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 func (o ListWebAppSitePushSettingsSlotResultOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListWebAppSitePushSettingsSlotResult) *string { return v.TagWhitelistJson }).(pulumi.StringPtrOutput)
 }

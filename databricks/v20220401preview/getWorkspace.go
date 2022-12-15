@@ -36,7 +36,7 @@ type LookupWorkspaceResult struct {
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime string `pulumi:"createdDateTime"`
 	// The resource Id of the managed disk encryption set.
-	DiskEncryptionSetId *string `pulumi:"diskEncryptionSetId"`
+	DiskEncryptionSetId string `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption *WorkspacePropertiesResponseEncryption `pulumi:"encryption"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -145,8 +145,8 @@ func (o LookupWorkspaceResultOutput) CreatedDateTime() pulumi.StringOutput {
 }
 
 // The resource Id of the managed disk encryption set.
-func (o LookupWorkspaceResultOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
+func (o LookupWorkspaceResultOutput) DiskEncryptionSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.DiskEncryptionSetId }).(pulumi.StringOutput)
 }
 
 // Encryption properties for databricks workspace
