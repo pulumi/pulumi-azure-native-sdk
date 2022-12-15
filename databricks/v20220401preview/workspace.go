@@ -22,7 +22,7 @@ type Workspace struct {
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
 	// The resource Id of the managed disk encryption set.
-	DiskEncryptionSetId pulumi.StringPtrOutput `pulumi:"diskEncryptionSetId"`
+	DiskEncryptionSetId pulumi.StringOutput `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption WorkspacePropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
 	// The geo-location where the resource lives
@@ -125,8 +125,6 @@ func (WorkspaceState) ElementType() reflect.Type {
 type workspaceArgs struct {
 	// The workspace provider authorizations.
 	Authorizations []WorkspaceProviderAuthorization `pulumi:"authorizations"`
-	// The resource Id of the managed disk encryption set.
-	DiskEncryptionSetId *string `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption *WorkspacePropertiesEncryption `pulumi:"encryption"`
 	// The geo-location where the resource lives
@@ -155,8 +153,6 @@ type workspaceArgs struct {
 type WorkspaceArgs struct {
 	// The workspace provider authorizations.
 	Authorizations WorkspaceProviderAuthorizationArrayInput
-	// The resource Id of the managed disk encryption set.
-	DiskEncryptionSetId pulumi.StringPtrInput
 	// Encryption properties for databricks workspace
 	Encryption WorkspacePropertiesEncryptionPtrInput
 	// The geo-location where the resource lives
@@ -234,8 +230,8 @@ func (o WorkspaceOutput) CreatedDateTime() pulumi.StringOutput {
 }
 
 // The resource Id of the managed disk encryption set.
-func (o WorkspaceOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
+func (o WorkspaceOutput) DiskEncryptionSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.DiskEncryptionSetId }).(pulumi.StringOutput)
 }
 
 // Encryption properties for databricks workspace

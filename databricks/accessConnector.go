@@ -24,6 +24,8 @@ type AccessConnector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Databricks accessConnector properties
 	Properties AccessConnectorPropertiesResponseOutput `pulumi:"properties"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -159,6 +161,11 @@ func (o AccessConnectorOutput) Name() pulumi.StringOutput {
 // Azure Databricks accessConnector properties
 func (o AccessConnectorOutput) Properties() AccessConnectorPropertiesResponseOutput {
 	return o.ApplyT(func(v *AccessConnector) AccessConnectorPropertiesResponseOutput { return v.Properties }).(AccessConnectorPropertiesResponseOutput)
+}
+
+// The system metadata relating to this resource
+func (o AccessConnectorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AccessConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

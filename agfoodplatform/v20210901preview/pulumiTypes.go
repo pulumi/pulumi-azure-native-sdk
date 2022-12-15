@@ -1135,6 +1135,316 @@ func (o SensorIntegrationResponsePtrOutput) ProvisioningState() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Solution resource properties.
+type SolutionProperties struct {
+	// SaaS application Publisher Id.
+	MarketplacePublisherId string `pulumi:"marketplacePublisherId"`
+	// SaaS application Offer Id.
+	OfferId string `pulumi:"offerId"`
+	// SaaS application Plan Id.
+	PlanId string `pulumi:"planId"`
+	// SaaS subscriptionId of the installed SaaS application.
+	SaasSubscriptionId string `pulumi:"saasSubscriptionId"`
+	// SaaS subscription name of the installed SaaS application.
+	SaasSubscriptionName string `pulumi:"saasSubscriptionName"`
+	// SaaS application Term Id.
+	TermId string `pulumi:"termId"`
+}
+
+// SolutionPropertiesInput is an input type that accepts SolutionPropertiesArgs and SolutionPropertiesOutput values.
+// You can construct a concrete instance of `SolutionPropertiesInput` via:
+//
+//	SolutionPropertiesArgs{...}
+type SolutionPropertiesInput interface {
+	pulumi.Input
+
+	ToSolutionPropertiesOutput() SolutionPropertiesOutput
+	ToSolutionPropertiesOutputWithContext(context.Context) SolutionPropertiesOutput
+}
+
+// Solution resource properties.
+type SolutionPropertiesArgs struct {
+	// SaaS application Publisher Id.
+	MarketplacePublisherId pulumi.StringInput `pulumi:"marketplacePublisherId"`
+	// SaaS application Offer Id.
+	OfferId pulumi.StringInput `pulumi:"offerId"`
+	// SaaS application Plan Id.
+	PlanId pulumi.StringInput `pulumi:"planId"`
+	// SaaS subscriptionId of the installed SaaS application.
+	SaasSubscriptionId pulumi.StringInput `pulumi:"saasSubscriptionId"`
+	// SaaS subscription name of the installed SaaS application.
+	SaasSubscriptionName pulumi.StringInput `pulumi:"saasSubscriptionName"`
+	// SaaS application Term Id.
+	TermId pulumi.StringInput `pulumi:"termId"`
+}
+
+func (SolutionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SolutionProperties)(nil)).Elem()
+}
+
+func (i SolutionPropertiesArgs) ToSolutionPropertiesOutput() SolutionPropertiesOutput {
+	return i.ToSolutionPropertiesOutputWithContext(context.Background())
+}
+
+func (i SolutionPropertiesArgs) ToSolutionPropertiesOutputWithContext(ctx context.Context) SolutionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesOutput)
+}
+
+func (i SolutionPropertiesArgs) ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput {
+	return i.ToSolutionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SolutionPropertiesArgs) ToSolutionPropertiesPtrOutputWithContext(ctx context.Context) SolutionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesOutput).ToSolutionPropertiesPtrOutputWithContext(ctx)
+}
+
+// SolutionPropertiesPtrInput is an input type that accepts SolutionPropertiesArgs, SolutionPropertiesPtr and SolutionPropertiesPtrOutput values.
+// You can construct a concrete instance of `SolutionPropertiesPtrInput` via:
+//
+//	        SolutionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SolutionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput
+	ToSolutionPropertiesPtrOutputWithContext(context.Context) SolutionPropertiesPtrOutput
+}
+
+type solutionPropertiesPtrType SolutionPropertiesArgs
+
+func SolutionPropertiesPtr(v *SolutionPropertiesArgs) SolutionPropertiesPtrInput {
+	return (*solutionPropertiesPtrType)(v)
+}
+
+func (*solutionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SolutionProperties)(nil)).Elem()
+}
+
+func (i *solutionPropertiesPtrType) ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput {
+	return i.ToSolutionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *solutionPropertiesPtrType) ToSolutionPropertiesPtrOutputWithContext(ctx context.Context) SolutionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesPtrOutput)
+}
+
+// Solution resource properties.
+type SolutionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SolutionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SolutionProperties)(nil)).Elem()
+}
+
+func (o SolutionPropertiesOutput) ToSolutionPropertiesOutput() SolutionPropertiesOutput {
+	return o
+}
+
+func (o SolutionPropertiesOutput) ToSolutionPropertiesOutputWithContext(ctx context.Context) SolutionPropertiesOutput {
+	return o
+}
+
+func (o SolutionPropertiesOutput) ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput {
+	return o.ToSolutionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SolutionPropertiesOutput) ToSolutionPropertiesPtrOutputWithContext(ctx context.Context) SolutionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SolutionProperties) *SolutionProperties {
+		return &v
+	}).(SolutionPropertiesPtrOutput)
+}
+
+// SaaS application Publisher Id.
+func (o SolutionPropertiesOutput) MarketplacePublisherId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionProperties) string { return v.MarketplacePublisherId }).(pulumi.StringOutput)
+}
+
+// SaaS application Offer Id.
+func (o SolutionPropertiesOutput) OfferId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionProperties) string { return v.OfferId }).(pulumi.StringOutput)
+}
+
+// SaaS application Plan Id.
+func (o SolutionPropertiesOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionProperties) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// SaaS subscriptionId of the installed SaaS application.
+func (o SolutionPropertiesOutput) SaasSubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionProperties) string { return v.SaasSubscriptionId }).(pulumi.StringOutput)
+}
+
+// SaaS subscription name of the installed SaaS application.
+func (o SolutionPropertiesOutput) SaasSubscriptionName() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionProperties) string { return v.SaasSubscriptionName }).(pulumi.StringOutput)
+}
+
+// SaaS application Term Id.
+func (o SolutionPropertiesOutput) TermId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionProperties) string { return v.TermId }).(pulumi.StringOutput)
+}
+
+type SolutionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SolutionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SolutionProperties)(nil)).Elem()
+}
+
+func (o SolutionPropertiesPtrOutput) ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput {
+	return o
+}
+
+func (o SolutionPropertiesPtrOutput) ToSolutionPropertiesPtrOutputWithContext(ctx context.Context) SolutionPropertiesPtrOutput {
+	return o
+}
+
+func (o SolutionPropertiesPtrOutput) Elem() SolutionPropertiesOutput {
+	return o.ApplyT(func(v *SolutionProperties) SolutionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SolutionProperties
+		return ret
+	}).(SolutionPropertiesOutput)
+}
+
+// SaaS application Publisher Id.
+func (o SolutionPropertiesPtrOutput) MarketplacePublisherId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MarketplacePublisherId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SaaS application Offer Id.
+func (o SolutionPropertiesPtrOutput) OfferId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OfferId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SaaS application Plan Id.
+func (o SolutionPropertiesPtrOutput) PlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlanId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SaaS subscriptionId of the installed SaaS application.
+func (o SolutionPropertiesPtrOutput) SaasSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SaasSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SaaS subscription name of the installed SaaS application.
+func (o SolutionPropertiesPtrOutput) SaasSubscriptionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SaasSubscriptionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SaaS application Term Id.
+func (o SolutionPropertiesPtrOutput) TermId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TermId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Solution resource properties.
+type SolutionPropertiesResponse struct {
+	// SaaS application Publisher Id.
+	MarketplacePublisherId string `pulumi:"marketplacePublisherId"`
+	// SaaS application Offer Id.
+	OfferId string `pulumi:"offerId"`
+	// Partner Id of the Solution.
+	PartnerId string `pulumi:"partnerId"`
+	// SaaS application Plan Id.
+	PlanId string `pulumi:"planId"`
+	// SaaS subscriptionId of the installed SaaS application.
+	SaasSubscriptionId string `pulumi:"saasSubscriptionId"`
+	// SaaS subscription name of the installed SaaS application.
+	SaasSubscriptionName string `pulumi:"saasSubscriptionName"`
+	// Solution Id.
+	SolutionId string `pulumi:"solutionId"`
+	// SaaS application Term Id.
+	TermId string `pulumi:"termId"`
+}
+
+// Solution resource properties.
+type SolutionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SolutionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SolutionPropertiesResponse)(nil)).Elem()
+}
+
+func (o SolutionPropertiesResponseOutput) ToSolutionPropertiesResponseOutput() SolutionPropertiesResponseOutput {
+	return o
+}
+
+func (o SolutionPropertiesResponseOutput) ToSolutionPropertiesResponseOutputWithContext(ctx context.Context) SolutionPropertiesResponseOutput {
+	return o
+}
+
+// SaaS application Publisher Id.
+func (o SolutionPropertiesResponseOutput) MarketplacePublisherId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.MarketplacePublisherId }).(pulumi.StringOutput)
+}
+
+// SaaS application Offer Id.
+func (o SolutionPropertiesResponseOutput) OfferId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.OfferId }).(pulumi.StringOutput)
+}
+
+// Partner Id of the Solution.
+func (o SolutionPropertiesResponseOutput) PartnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.PartnerId }).(pulumi.StringOutput)
+}
+
+// SaaS application Plan Id.
+func (o SolutionPropertiesResponseOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// SaaS subscriptionId of the installed SaaS application.
+func (o SolutionPropertiesResponseOutput) SaasSubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.SaasSubscriptionId }).(pulumi.StringOutput)
+}
+
+// SaaS subscription name of the installed SaaS application.
+func (o SolutionPropertiesResponseOutput) SaasSubscriptionName() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.SaasSubscriptionName }).(pulumi.StringOutput)
+}
+
+// Solution Id.
+func (o SolutionPropertiesResponseOutput) SolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.SolutionId }).(pulumi.StringOutput)
+}
+
+// SaaS application Term Id.
+func (o SolutionPropertiesResponseOutput) TermId() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.TermId }).(pulumi.StringOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1221,5 +1531,8 @@ func init() {
 	pulumi.RegisterOutputType(SensorIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(SensorIntegrationResponseOutput{})
 	pulumi.RegisterOutputType(SensorIntegrationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SolutionPropertiesOutput{})
+	pulumi.RegisterOutputType(SolutionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SolutionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

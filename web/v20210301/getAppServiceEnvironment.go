@@ -68,7 +68,7 @@ type LookupAppServiceEnvironmentResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
 	Type string `pulumi:"type"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges []string `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileResponse `pulumi:"virtualNetwork"`
@@ -212,7 +212,7 @@ func (o LookupAppServiceEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// User added ip ranges to whitelist on ASE db
+// User added list of IP Ranges allowed on ASE db
 func (o LookupAppServiceEnvironmentResultOutput) UserWhitelistedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) []string { return v.UserWhitelistedIpRanges }).(pulumi.StringArrayOutput)
 }

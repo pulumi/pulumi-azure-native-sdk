@@ -52,7 +52,7 @@ type AppServiceEnvironment struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges pulumi.StringArrayOutput `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileResponseOutput `pulumi:"virtualNetwork"`
@@ -167,7 +167,7 @@ type appServiceEnvironmentArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges []string `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfile `pulumi:"virtualNetwork"`
@@ -197,7 +197,7 @@ type AppServiceEnvironmentArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges pulumi.StringArrayInput
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileInput
@@ -332,7 +332,7 @@ func (o AppServiceEnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// User added ip ranges to whitelist on ASE db
+// User added list of IP Ranges allowed on ASE db
 func (o AppServiceEnvironmentOutput) UserWhitelistedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringArrayOutput { return v.UserWhitelistedIpRanges }).(pulumi.StringArrayOutput)
 }

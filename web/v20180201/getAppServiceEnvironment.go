@@ -103,7 +103,7 @@ type LookupAppServiceEnvironmentResult struct {
 	Type string `pulumi:"type"`
 	// Number of upgrade domains of the App Service Environment.
 	UpgradeDomains int `pulumi:"upgradeDomains"`
-	// User added ip ranges to whitelist on ASE db
+	// User added list of IP Ranges allowed on ASE db
 	UserWhitelistedIpRanges []string `pulumi:"userWhitelistedIpRanges"`
 	// Description of IP SSL mapping for the App Service Environment.
 	VipMappings []VirtualIPMappingResponse `pulumi:"vipMappings"`
@@ -343,7 +343,7 @@ func (o LookupAppServiceEnvironmentResultOutput) UpgradeDomains() pulumi.IntOutp
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) int { return v.UpgradeDomains }).(pulumi.IntOutput)
 }
 
-// User added ip ranges to whitelist on ASE db
+// User added list of IP Ranges allowed on ASE db
 func (o LookupAppServiceEnvironmentResultOutput) UserWhitelistedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) []string { return v.UserWhitelistedIpRanges }).(pulumi.StringArrayOutput)
 }

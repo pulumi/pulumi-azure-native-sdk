@@ -1003,6 +1003,8 @@ func (o ManagedIdentityConfigurationResponsePtrOutput) Type() pulumi.StringPtrOu
 
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionProperties struct {
+	// GroupIds from the private link service resource.
+	GroupIds []string `pulumi:"groupIds"`
 	// Private endpoint connection state
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 }
@@ -1020,6 +1022,8 @@ type PrivateEndpointConnectionPropertiesInput interface {
 
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionPropertiesArgs struct {
+	// GroupIds from the private link service resource.
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
 	// Private endpoint connection state
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
 }
@@ -1051,6 +1055,11 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 	return o
 }
 
+// GroupIds from the private link service resource.
+func (o PrivateEndpointConnectionPropertiesOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProperties) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // Private endpoint connection state
 func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionProperties) PrivateLinkServiceConnectionState {
@@ -1060,6 +1069,8 @@ func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionS
 
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionPropertiesResponse struct {
+	// GroupIds from the private link service resource.
+	GroupIds []string `pulumi:"groupIds"`
 	// Private endpoint
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// Private endpoint connection state
@@ -1081,6 +1092,11 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 
 func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponseOutput {
 	return o
+}
+
+// GroupIds from the private link service resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
 // Private endpoint
@@ -1163,7 +1179,7 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionState struct {
 	// Actions required for a private endpoint connection
-	ActionRequired *string `pulumi:"actionRequired"`
+	ActionsRequired *string `pulumi:"actionsRequired"`
 	// The description for the current state of a private endpoint connection
 	Description *string `pulumi:"description"`
 	// The status of a private endpoint connection
@@ -1184,7 +1200,7 @@ type PrivateLinkServiceConnectionStateInput interface {
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionStateArgs struct {
 	// Actions required for a private endpoint connection
-	ActionRequired pulumi.StringPtrInput `pulumi:"actionRequired"`
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
 	// The description for the current state of a private endpoint connection
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The status of a private endpoint connection
@@ -1219,8 +1235,8 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 }
 
 // Actions required for a private endpoint connection
-func (o PrivateLinkServiceConnectionStateOutput) ActionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionRequired }).(pulumi.StringPtrOutput)
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
 // The description for the current state of a private endpoint connection
@@ -1236,7 +1252,7 @@ func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringOutput {
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionStateResponse struct {
 	// Actions required for a private endpoint connection
-	ActionRequired *string `pulumi:"actionRequired"`
+	ActionsRequired *string `pulumi:"actionsRequired"`
 	// The description for the current state of a private endpoint connection
 	Description *string `pulumi:"description"`
 	// The status of a private endpoint connection
@@ -1259,8 +1275,8 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 }
 
 // Actions required for a private endpoint connection
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionRequired }).(pulumi.StringPtrOutput)
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
 // The description for the current state of a private endpoint connection
@@ -1507,6 +1523,67 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 		}
 		return v.Tier
 	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
@@ -3525,6 +3602,7 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkOutput{})

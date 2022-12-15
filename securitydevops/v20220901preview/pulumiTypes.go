@@ -12,6 +12,9 @@ import (
 
 type AuthorizationInfo struct {
 	// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+	//
+	// Only used during PUT operations. The secret is cleared during GET.
+	// In general, RPaaS does not return any property marked as a secret.
 	Code *string `pulumi:"code"`
 }
 
@@ -28,6 +31,9 @@ type AuthorizationInfoInput interface {
 
 type AuthorizationInfoArgs struct {
 	// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+	//
+	// Only used during PUT operations. The secret is cleared during GET.
+	// In general, RPaaS does not return any property marked as a secret.
 	Code pulumi.StringPtrInput `pulumi:"code"`
 }
 
@@ -109,6 +115,9 @@ func (o AuthorizationInfoOutput) ToAuthorizationInfoPtrOutputWithContext(ctx con
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o AuthorizationInfoOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorizationInfo) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
@@ -138,6 +147,9 @@ func (o AuthorizationInfoPtrOutput) Elem() AuthorizationInfoOutput {
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o AuthorizationInfoPtrOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizationInfo) *string {
 		if v == nil {
@@ -149,6 +161,9 @@ func (o AuthorizationInfoPtrOutput) Code() pulumi.StringPtrOutput {
 
 type AuthorizationInfoResponse struct {
 	// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+	//
+	// Only used during PUT operations. The secret is cleared during GET.
+	// In general, RPaaS does not return any property marked as a secret.
 	Code *string `pulumi:"code"`
 }
 
@@ -167,6 +182,9 @@ func (o AuthorizationInfoResponseOutput) ToAuthorizationInfoResponseOutputWithCo
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o AuthorizationInfoResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorizationInfoResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
@@ -196,6 +214,9 @@ func (o AuthorizationInfoResponsePtrOutput) Elem() AuthorizationInfoResponseOutp
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o AuthorizationInfoResponsePtrOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizationInfoResponse) *string {
 		if v == nil {
@@ -208,8 +229,7 @@ func (o AuthorizationInfoResponsePtrOutput) Code() pulumi.StringPtrOutput {
 type AzureDevOpsConnectorProperties struct {
 	Authorization *AuthorizationInfo `pulumi:"authorization"`
 	// Gets or sets org onboarding information.
-	Orgs              []AzureDevOpsOrgMetadata `pulumi:"orgs"`
-	ProvisioningState *string                  `pulumi:"provisioningState"`
+	Orgs []AzureDevOpsOrgMetadata `pulumi:"orgs"`
 }
 
 // AzureDevOpsConnectorPropertiesInput is an input type that accepts AzureDevOpsConnectorPropertiesArgs and AzureDevOpsConnectorPropertiesOutput values.
@@ -226,8 +246,7 @@ type AzureDevOpsConnectorPropertiesInput interface {
 type AzureDevOpsConnectorPropertiesArgs struct {
 	Authorization AuthorizationInfoPtrInput `pulumi:"authorization"`
 	// Gets or sets org onboarding information.
-	Orgs              AzureDevOpsOrgMetadataArrayInput `pulumi:"orgs"`
-	ProvisioningState pulumi.StringPtrInput            `pulumi:"provisioningState"`
+	Orgs AzureDevOpsOrgMetadataArrayInput `pulumi:"orgs"`
 }
 
 func (AzureDevOpsConnectorPropertiesArgs) ElementType() reflect.Type {
@@ -316,10 +335,6 @@ func (o AzureDevOpsConnectorPropertiesOutput) Orgs() AzureDevOpsOrgMetadataArray
 	return o.ApplyT(func(v AzureDevOpsConnectorProperties) []AzureDevOpsOrgMetadata { return v.Orgs }).(AzureDevOpsOrgMetadataArrayOutput)
 }
 
-func (o AzureDevOpsConnectorPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureDevOpsConnectorProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 type AzureDevOpsConnectorPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (AzureDevOpsConnectorPropertiesPtrOutput) ElementType() reflect.Type {
@@ -363,20 +378,11 @@ func (o AzureDevOpsConnectorPropertiesPtrOutput) Orgs() AzureDevOpsOrgMetadataAr
 	}).(AzureDevOpsOrgMetadataArrayOutput)
 }
 
-func (o AzureDevOpsConnectorPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureDevOpsConnectorProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
 type AzureDevOpsConnectorPropertiesResponse struct {
 	Authorization *AuthorizationInfoResponse `pulumi:"authorization"`
 	// Gets or sets org onboarding information.
 	Orgs              []AzureDevOpsOrgMetadataResponse `pulumi:"orgs"`
-	ProvisioningState *string                          `pulumi:"provisioningState"`
+	ProvisioningState string                           `pulumi:"provisioningState"`
 }
 
 type AzureDevOpsConnectorPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -402,8 +408,8 @@ func (o AzureDevOpsConnectorPropertiesResponseOutput) Orgs() AzureDevOpsOrgMetad
 	return o.ApplyT(func(v AzureDevOpsConnectorPropertiesResponse) []AzureDevOpsOrgMetadataResponse { return v.Orgs }).(AzureDevOpsOrgMetadataResponseArrayOutput)
 }
 
-func (o AzureDevOpsConnectorPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureDevOpsConnectorPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o AzureDevOpsConnectorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDevOpsConnectorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Org onboarding info.
@@ -750,8 +756,10 @@ func (o AzureDevOpsProjectMetadataResponseArrayOutput) Index(i pulumi.IntInput) 
 // Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
 type GitHubConnectorProperties struct {
 	// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
-	Code              *string `pulumi:"code"`
-	ProvisioningState *string `pulumi:"provisioningState"`
+	//
+	// Only used during PUT operations. The secret is cleared during GET.
+	// In general, RPaaS does not return any property marked as a secret.
+	Code *string `pulumi:"code"`
 }
 
 // GitHubConnectorPropertiesInput is an input type that accepts GitHubConnectorPropertiesArgs and GitHubConnectorPropertiesOutput values.
@@ -768,8 +776,10 @@ type GitHubConnectorPropertiesInput interface {
 // Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
 type GitHubConnectorPropertiesArgs struct {
 	// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
-	Code              pulumi.StringPtrInput `pulumi:"code"`
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	//
+	// Only used during PUT operations. The secret is cleared during GET.
+	// In general, RPaaS does not return any property marked as a secret.
+	Code pulumi.StringPtrInput `pulumi:"code"`
 }
 
 func (GitHubConnectorPropertiesArgs) ElementType() reflect.Type {
@@ -851,12 +861,11 @@ func (o GitHubConnectorPropertiesOutput) ToGitHubConnectorPropertiesPtrOutputWit
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o GitHubConnectorPropertiesOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubConnectorProperties) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-func (o GitHubConnectorPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitHubConnectorProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 type GitHubConnectorPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -884,6 +893,9 @@ func (o GitHubConnectorPropertiesPtrOutput) Elem() GitHubConnectorPropertiesOutp
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o GitHubConnectorPropertiesPtrOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitHubConnectorProperties) *string {
 		if v == nil {
@@ -893,20 +905,14 @@ func (o GitHubConnectorPropertiesPtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GitHubConnectorPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubConnectorProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
 // Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
 type GitHubConnectorPropertiesResponse struct {
 	// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+	//
+	// Only used during PUT operations. The secret is cleared during GET.
+	// In general, RPaaS does not return any property marked as a secret.
 	Code              *string `pulumi:"code"`
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string  `pulumi:"provisioningState"`
 }
 
 // Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
@@ -925,12 +931,15 @@ func (o GitHubConnectorPropertiesResponseOutput) ToGitHubConnectorPropertiesResp
 }
 
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
+//
+// Only used during PUT operations. The secret is cleared during GET.
+// In general, RPaaS does not return any property marked as a secret.
 func (o GitHubConnectorPropertiesResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubConnectorPropertiesResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-func (o GitHubConnectorPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitHubConnectorPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o GitHubConnectorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubConnectorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

@@ -6946,7 +6946,7 @@ type PushSettings struct {
 	IsPushEnabled bool `pulumi:"isPushEnabled"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 	TagWhitelistJson *string `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -6974,7 +6974,7 @@ type PushSettingsArgs struct {
 	IsPushEnabled pulumi.BoolInput `pulumi:"isPushEnabled"`
 	// Kind of resource.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 	TagWhitelistJson pulumi.StringPtrInput `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -7076,7 +7076,7 @@ func (o PushSettingsOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PushSettings) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 func (o PushSettingsOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PushSettings) *string { return v.TagWhitelistJson }).(pulumi.StringPtrOutput)
 }
@@ -7143,7 +7143,7 @@ func (o PushSettingsPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 func (o PushSettingsPtrOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PushSettings) *string {
 		if v == nil {
@@ -7178,7 +7178,7 @@ type PushSettingsResponse struct {
 	Kind *string `pulumi:"kind"`
 	// Resource Name.
 	Name string `pulumi:"name"`
-	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 	TagWhitelistJson *string `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -7229,7 +7229,7 @@ func (o PushSettingsResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PushSettingsResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 func (o PushSettingsResponseOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PushSettingsResponse) *string { return v.TagWhitelistJson }).(pulumi.StringPtrOutput)
 }
@@ -7321,7 +7321,7 @@ func (o PushSettingsResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
 func (o PushSettingsResponsePtrOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PushSettingsResponse) *string {
 		if v == nil {
