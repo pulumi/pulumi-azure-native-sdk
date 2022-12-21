@@ -650,7 +650,7 @@ func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Cent
 	}).(CentralServerVmDetailsResponseOutput)
 }
 
-// Gets or sets the file share configuration for file share created with the VIS case.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow.
 type CreateAndMountFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
@@ -661,7 +661,7 @@ type CreateAndMountFileShareConfiguration struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
-// Gets or sets the file share configuration for file share created with the VIS case.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow.
 type CreateAndMountFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
@@ -3071,7 +3071,7 @@ func (o MonitorPropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
 }
 
-// Gets or sets the file share configuration for externally mounted cases.
+// Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
 type MountFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'Mount'.
@@ -3082,7 +3082,7 @@ type MountFileShareConfiguration struct {
 	PrivateEndpointId string `pulumi:"privateEndpointId"`
 }
 
-// Gets or sets the file share configuration for externally mounted cases.
+// Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
 type MountFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'Mount'.
@@ -5672,14 +5672,14 @@ func (o SiteProfileResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the skip file share configuration
+// Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
 type SkipFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'Skip'.
 	ConfigurationType string `pulumi:"configurationType"`
 }
 
-// Gets or sets the skip file share configuration
+// Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
 type SkipFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'Skip'.
