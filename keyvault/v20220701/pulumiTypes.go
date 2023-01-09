@@ -2694,6 +2694,39 @@ func (o MHSMVirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) MHSM
 	}).(MHSMVirtualNetworkRuleResponseOutput)
 }
 
+// The security domain properties of the managed hsm.
+type ManagedHSMSecurityDomainPropertiesResponse struct {
+	// Activation Status
+	ActivationStatus string `pulumi:"activationStatus"`
+	// Activation Status Message.
+	ActivationStatusMessage string `pulumi:"activationStatusMessage"`
+}
+
+// The security domain properties of the managed hsm.
+type ManagedHSMSecurityDomainPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedHSMSecurityDomainPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedHSMSecurityDomainPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ToManagedHSMSecurityDomainPropertiesResponseOutput() ManagedHSMSecurityDomainPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ToManagedHSMSecurityDomainPropertiesResponseOutputWithContext(ctx context.Context) ManagedHSMSecurityDomainPropertiesResponseOutput {
+	return o
+}
+
+// Activation Status
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ActivationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHSMSecurityDomainPropertiesResponse) string { return v.ActivationStatus }).(pulumi.StringOutput)
+}
+
+// Activation Status Message.
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ActivationStatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHSMSecurityDomainPropertiesResponse) string { return v.ActivationStatusMessage }).(pulumi.StringOutput)
+}
+
 // Properties of the managed HSM Pool
 type ManagedHsmProperties struct {
 	// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
@@ -3007,8 +3040,6 @@ func (o ManagedHsmPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
 
 // Properties of the managed HSM Pool
 type ManagedHsmPropertiesResponse struct {
-	// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
-	CreateMode *string `pulumi:"createMode"`
 	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
 	EnablePurgeProtection *bool `pulumi:"enablePurgeProtection"`
 	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
@@ -3027,6 +3058,8 @@ type ManagedHsmPropertiesResponse struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The scheduled purge date in UTC.
 	ScheduledPurgeDate string `pulumi:"scheduledPurgeDate"`
+	// Managed HSM security domain properties.
+	SecurityDomainProperties ManagedHSMSecurityDomainPropertiesResponse `pulumi:"securityDomainProperties"`
 	// softDelete data retention days. It accepts >=7 and <=90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// Resource Status Message.
@@ -3069,11 +3102,6 @@ func (o ManagedHsmPropertiesResponseOutput) ToManagedHsmPropertiesResponseOutput
 
 func (o ManagedHsmPropertiesResponseOutput) ToManagedHsmPropertiesResponseOutputWithContext(ctx context.Context) ManagedHsmPropertiesResponseOutput {
 	return o
-}
-
-// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
-func (o ManagedHsmPropertiesResponseOutput) CreateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
 }
 
 // Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
@@ -3121,6 +3149,13 @@ func (o ManagedHsmPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringP
 // The scheduled purge date in UTC.
 func (o ManagedHsmPropertiesResponseOutput) ScheduledPurgeDate() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) string { return v.ScheduledPurgeDate }).(pulumi.StringOutput)
+}
+
+// Managed HSM security domain properties.
+func (o ManagedHsmPropertiesResponseOutput) SecurityDomainProperties() ManagedHSMSecurityDomainPropertiesResponseOutput {
+	return o.ApplyT(func(v ManagedHsmPropertiesResponse) ManagedHSMSecurityDomainPropertiesResponse {
+		return v.SecurityDomainProperties
+	}).(ManagedHSMSecurityDomainPropertiesResponseOutput)
 }
 
 // softDelete data retention days. It accepts >=7 and <=90.
@@ -5868,6 +5903,7 @@ func init() {
 	pulumi.RegisterOutputType(MHSMVirtualNetworkRuleArrayOutput{})
 	pulumi.RegisterOutputType(MHSMVirtualNetworkRuleResponseOutput{})
 	pulumi.RegisterOutputType(MHSMVirtualNetworkRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedHSMSecurityDomainPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedHsmPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedHsmPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedHsmPropertiesResponseOutput{})

@@ -95,6 +95,9 @@ func NewDedicatedHost(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20220301:DedicatedHost"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20221101:DedicatedHost"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DedicatedHost

@@ -955,6 +955,23 @@ type MHSMNetworkRuleSet struct {
 	VirtualNetworkRules []MHSMVirtualNetworkRule `pulumi:"virtualNetworkRules"`
 }
 
+// Defaults sets the appropriate defaults for MHSMNetworkRuleSet
+func (val *MHSMNetworkRuleSet) Defaults() *MHSMNetworkRuleSet {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Bypass) {
+		bypass_ := "AzureServices"
+		tmp.Bypass = &bypass_
+	}
+	if isZero(tmp.DefaultAction) {
+		defaultAction_ := "Allow"
+		tmp.DefaultAction = &defaultAction_
+	}
+	return &tmp
+}
+
 // MHSMNetworkRuleSetInput is an input type that accepts MHSMNetworkRuleSetArgs and MHSMNetworkRuleSetOutput values.
 // You can construct a concrete instance of `MHSMNetworkRuleSetInput` via:
 //
@@ -978,6 +995,20 @@ type MHSMNetworkRuleSetArgs struct {
 	VirtualNetworkRules MHSMVirtualNetworkRuleArrayInput `pulumi:"virtualNetworkRules"`
 }
 
+// Defaults sets the appropriate defaults for MHSMNetworkRuleSetArgs
+func (val *MHSMNetworkRuleSetArgs) Defaults() *MHSMNetworkRuleSetArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Bypass) {
+		tmp.Bypass = pulumi.StringPtr("AzureServices")
+	}
+	if isZero(tmp.DefaultAction) {
+		tmp.DefaultAction = pulumi.StringPtr("Allow")
+	}
+	return &tmp
+}
 func (MHSMNetworkRuleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*MHSMNetworkRuleSet)(nil)).Elem()
 }
@@ -1150,6 +1181,23 @@ type MHSMNetworkRuleSetResponse struct {
 	IpRules []MHSMIPRuleResponse `pulumi:"ipRules"`
 	// The list of virtual network rules.
 	VirtualNetworkRules []MHSMVirtualNetworkRuleResponse `pulumi:"virtualNetworkRules"`
+}
+
+// Defaults sets the appropriate defaults for MHSMNetworkRuleSetResponse
+func (val *MHSMNetworkRuleSetResponse) Defaults() *MHSMNetworkRuleSetResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Bypass) {
+		bypass_ := "AzureServices"
+		tmp.Bypass = &bypass_
+	}
+	if isZero(tmp.DefaultAction) {
+		defaultAction_ := "Allow"
+		tmp.DefaultAction = &defaultAction_
+	}
+	return &tmp
 }
 
 // A set of rules governing the network accessibility of a managed hsm pool.
@@ -1841,6 +1889,8 @@ func (val *ManagedHsmProperties) Defaults() *ManagedHsmProperties {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
+	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
+
 	if isZero(tmp.SoftDeleteRetentionInDays) {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
@@ -1891,6 +1941,7 @@ func (val *ManagedHsmPropertiesArgs) Defaults() *ManagedHsmPropertiesArgs {
 	if isZero(tmp.EnableSoftDelete) {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
+
 	if isZero(tmp.SoftDeleteRetentionInDays) {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
@@ -2120,8 +2171,6 @@ func (o ManagedHsmPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
 
 // Properties of the managed HSM Pool
 type ManagedHsmPropertiesResponse struct {
-	// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
-	CreateMode *string `pulumi:"createMode"`
 	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
 	EnablePurgeProtection *bool `pulumi:"enablePurgeProtection"`
 	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
@@ -2162,6 +2211,8 @@ func (val *ManagedHsmPropertiesResponse) Defaults() *ManagedHsmPropertiesRespons
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
+	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
+
 	if isZero(tmp.SoftDeleteRetentionInDays) {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
@@ -2182,11 +2233,6 @@ func (o ManagedHsmPropertiesResponseOutput) ToManagedHsmPropertiesResponseOutput
 
 func (o ManagedHsmPropertiesResponseOutput) ToManagedHsmPropertiesResponseOutputWithContext(ctx context.Context) ManagedHsmPropertiesResponseOutput {
 	return o
-}
-
-// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
-func (o ManagedHsmPropertiesResponseOutput) CreateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
 }
 
 // Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.

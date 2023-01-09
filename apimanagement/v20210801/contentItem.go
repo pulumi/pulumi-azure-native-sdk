@@ -102,6 +102,8 @@ type contentItemArgs struct {
 	ContentItemId *string `pulumi:"contentItemId"`
 	// Content type identifier.
 	ContentTypeId string `pulumi:"contentTypeId"`
+	// Properties of the content item.
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
@@ -114,6 +116,8 @@ type ContentItemArgs struct {
 	ContentItemId pulumi.StringPtrInput
 	// Content type identifier.
 	ContentTypeId pulumi.StringInput
+	// Properties of the content item.
+	Properties pulumi.Input
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.

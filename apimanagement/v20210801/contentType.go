@@ -101,20 +101,40 @@ func (ContentTypeState) ElementType() reflect.Type {
 type contentTypeArgs struct {
 	// Content type identifier.
 	ContentTypeId *string `pulumi:"contentTypeId"`
+	// Content type description.
+	Description *string `pulumi:"description"`
+	// Content type identifier
+	Id *string `pulumi:"id"`
+	// Content type name. Must be 1 to 250 characters long.
+	Name *string `pulumi:"name"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Content type schema.
+	Schema interface{} `pulumi:"schema"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
+	// Content type version.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a ContentType resource.
 type ContentTypeArgs struct {
 	// Content type identifier.
 	ContentTypeId pulumi.StringPtrInput
+	// Content type description.
+	Description pulumi.StringPtrInput
+	// Content type identifier
+	Id pulumi.StringPtrInput
+	// Content type name. Must be 1 to 250 characters long.
+	Name pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// Content type schema.
+	Schema pulumi.Input
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
+	// Content type version.
+	Version pulumi.StringPtrInput
 }
 
 func (ContentTypeArgs) ElementType() reflect.Type {
