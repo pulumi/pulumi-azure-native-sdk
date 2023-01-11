@@ -10,6 +10,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Sql DW upsert option settings
+type SqlDWUpsertSettings struct {
+	// Schema name for interim table. Type: string (or Expression with resultType string).
+	InterimSchemaName interface{} `pulumi:"interimSchemaName"`
+	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+	Keys interface{} `pulumi:"keys"`
+}
+
+// Sql DW upsert option settings
+type SqlDWUpsertSettingsResponse struct {
+	// Schema name for interim table. Type: string (or Expression with resultType string).
+	InterimSchemaName interface{} `pulumi:"interimSchemaName"`
+	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+	Keys interface{} `pulumi:"keys"`
+}
+
 // A copy activity Azure SQL Managed Instance sink.
 type SqlMISink struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -1202,6 +1218,8 @@ type SynapseSparkJobDefinitionActivity struct {
 	ClassName interface{} `pulumi:"className"`
 	// Spark configuration properties, which will override the 'conf' of the spark job definition you provide.
 	Conf interface{} `pulumi:"conf"`
+	// The type of the spark config.
+	ConfigurationType *string `pulumi:"configurationType"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
 	// Activity description.
@@ -1220,16 +1238,22 @@ type SynapseSparkJobDefinitionActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
-	// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide.
-	NumExecutors *int `pulumi:"numExecutors"`
+	// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide. Type: integer (or Expression with resultType integer).
+	NumExecutors interface{} `pulumi:"numExecutors"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
 	PythonCodeReference []interface{} `pulumi:"pythonCodeReference"`
+	// Scanning subfolders from the root folder of the main definition file, these files will be added as reference files. The folders named 'jars', 'pyFiles', 'files' or 'archives' will be scanned, and the folders name are case sensitive. Type: boolean (or Expression with resultType boolean).
+	ScanFolder interface{} `pulumi:"scanFolder"`
+	// Spark configuration property.
+	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// Synapse spark job reference.
 	SparkJob SynapseSparkJobReference `pulumi:"sparkJob"`
 	// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
 	TargetBigDataPool *BigDataPoolParametrizationReference `pulumi:"targetBigDataPool"`
+	// The spark configuration of the spark job.
+	TargetSparkConfiguration *SparkConfigurationParametrizationReference `pulumi:"targetSparkConfiguration"`
 	// Type of activity.
 	// Expected value is 'SparkJob'.
 	Type string `pulumi:"type"`
@@ -1245,6 +1269,8 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 	ClassName interface{} `pulumi:"className"`
 	// Spark configuration properties, which will override the 'conf' of the spark job definition you provide.
 	Conf interface{} `pulumi:"conf"`
+	// The type of the spark config.
+	ConfigurationType *string `pulumi:"configurationType"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
 	// Activity description.
@@ -1263,16 +1289,22 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
-	// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide.
-	NumExecutors *int `pulumi:"numExecutors"`
+	// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide. Type: integer (or Expression with resultType integer).
+	NumExecutors interface{} `pulumi:"numExecutors"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
 	PythonCodeReference []interface{} `pulumi:"pythonCodeReference"`
+	// Scanning subfolders from the root folder of the main definition file, these files will be added as reference files. The folders named 'jars', 'pyFiles', 'files' or 'archives' will be scanned, and the folders name are case sensitive. Type: boolean (or Expression with resultType boolean).
+	ScanFolder interface{} `pulumi:"scanFolder"`
+	// Spark configuration property.
+	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// Synapse spark job reference.
 	SparkJob SynapseSparkJobReferenceResponse `pulumi:"sparkJob"`
 	// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
 	TargetBigDataPool *BigDataPoolParametrizationReferenceResponse `pulumi:"targetBigDataPool"`
+	// The spark configuration of the spark job.
+	TargetSparkConfiguration *SparkConfigurationParametrizationReferenceResponse `pulumi:"targetSparkConfiguration"`
 	// Type of activity.
 	// Expected value is 'SparkJob'.
 	Type string `pulumi:"type"`

@@ -17,7 +17,7 @@ func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWi
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type ListBotConnectionWithSecretsArgs struct {
@@ -49,8 +49,17 @@ type ListBotConnectionWithSecretsResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
-	// Entity zones
-	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for ListBotConnectionWithSecretsResult
+func (val *ListBotConnectionWithSecretsResult) Defaults() *ListBotConnectionWithSecretsResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnectionWithSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotConnectionWithSecretsResultOutput {
@@ -137,11 +146,6 @@ func (o ListBotConnectionWithSecretsResultOutput) Tags() pulumi.StringMapOutput 
 // Specifies the type of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Entity zones
-func (o ListBotConnectionWithSecretsResultOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

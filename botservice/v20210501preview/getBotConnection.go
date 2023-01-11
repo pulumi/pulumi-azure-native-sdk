@@ -17,7 +17,7 @@ func LookupBotConnection(ctx *pulumi.Context, args *LookupBotConnectionArgs, opt
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupBotConnectionArgs struct {
@@ -49,8 +49,17 @@ type LookupBotConnectionResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
-	// Entity zones
-	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for LookupBotConnectionResult
+func (val *LookupBotConnectionResult) Defaults() *LookupBotConnectionResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func LookupBotConnectionOutput(ctx *pulumi.Context, args LookupBotConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupBotConnectionResultOutput {
@@ -137,11 +146,6 @@ func (o LookupBotConnectionResultOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o LookupBotConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Entity zones
-func (o LookupBotConnectionResultOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupBotConnectionResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {
