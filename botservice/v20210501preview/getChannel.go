@@ -49,8 +49,6 @@ type LookupChannelResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
-	// Entity zones
-	Zones []string `pulumi:"zones"`
 }
 
 func LookupChannelOutput(ctx *pulumi.Context, args LookupChannelOutputArgs, opts ...pulumi.InvokeOption) LookupChannelResultOutput {
@@ -137,11 +135,6 @@ func (o LookupChannelResultOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o LookupChannelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Entity zones
-func (o LookupChannelResultOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupChannelResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

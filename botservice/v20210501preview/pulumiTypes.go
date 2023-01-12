@@ -10,6 +10,56 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// AcsChat channel definition
+type AcsChatChannel struct {
+	// The channel name
+	// Expected value is 'AcsChatChannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+}
+
+// Defaults sets the appropriate defaults for AcsChatChannel
+func (val *AcsChatChannel) Defaults() *AcsChatChannel {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// AcsChat channel definition
+type AcsChatChannelResponse struct {
+	// The channel name
+	// Expected value is 'AcsChatChannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for AcsChatChannelResponse
+func (val *AcsChatChannelResponse) Defaults() *AcsChatChannelResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
 // Alexa channel definition
 type AlexaChannel struct {
 	// The channel name
@@ -138,6 +188,8 @@ type BotProperties struct {
 	SchemaTransformationVersion *string `pulumi:"schemaTransformationVersion"`
 	// The storage resourceId for the bot
 	StorageResourceId *string `pulumi:"storageResourceId"`
+	// The Tenant Id for the bot
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // Defaults sets the appropriate defaults for BotProperties
@@ -146,6 +198,14 @@ func (val *BotProperties) Defaults() *BotProperties {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.IconUrl) {
+		iconUrl_ := ""
+		tmp.IconUrl = &iconUrl_
+	}
+	if isZero(tmp.IsCmekEnabled) {
+		isCmekEnabled_ := false
+		tmp.IsCmekEnabled = &isCmekEnabled_
+	}
 	if isZero(tmp.IsStreamingSupported) {
 		isStreamingSupported_ := false
 		tmp.IsStreamingSupported = &isStreamingSupported_
@@ -222,6 +282,8 @@ type BotPropertiesArgs struct {
 	SchemaTransformationVersion pulumi.StringPtrInput `pulumi:"schemaTransformationVersion"`
 	// The storage resourceId for the bot
 	StorageResourceId pulumi.StringPtrInput `pulumi:"storageResourceId"`
+	// The Tenant Id for the bot
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
 // Defaults sets the appropriate defaults for BotPropertiesArgs
@@ -230,6 +292,12 @@ func (val *BotPropertiesArgs) Defaults() *BotPropertiesArgs {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.IconUrl) {
+		tmp.IconUrl = pulumi.StringPtr("")
+	}
+	if isZero(tmp.IsCmekEnabled) {
+		tmp.IsCmekEnabled = pulumi.BoolPtr(false)
+	}
 	if isZero(tmp.IsStreamingSupported) {
 		tmp.IsStreamingSupported = pulumi.BoolPtr(false)
 	}
@@ -444,6 +512,11 @@ func (o BotPropertiesOutput) SchemaTransformationVersion() pulumi.StringPtrOutpu
 // The storage resourceId for the bot
 func (o BotPropertiesOutput) StorageResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BotProperties) *string { return v.StorageResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The Tenant Id for the bot
+func (o BotPropertiesOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BotProperties) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 type BotPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -730,6 +803,16 @@ func (o BotPropertiesPtrOutput) StorageResourceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Tenant Id for the bot
+func (o BotPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BotProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The parameters to provide for the Bot.
 type BotPropertiesResponse struct {
 	// Contains resource all settings defined as key/value pairs.
@@ -800,6 +883,8 @@ type BotPropertiesResponse struct {
 	SchemaTransformationVersion *string `pulumi:"schemaTransformationVersion"`
 	// The storage resourceId for the bot
 	StorageResourceId *string `pulumi:"storageResourceId"`
+	// The Tenant Id for the bot
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // Defaults sets the appropriate defaults for BotPropertiesResponse
@@ -808,6 +893,14 @@ func (val *BotPropertiesResponse) Defaults() *BotPropertiesResponse {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.IconUrl) {
+		iconUrl_ := ""
+		tmp.IconUrl = &iconUrl_
+	}
+	if isZero(tmp.IsCmekEnabled) {
+		isCmekEnabled_ := false
+		tmp.IsCmekEnabled = &isCmekEnabled_
+	}
 	if isZero(tmp.IsStreamingSupported) {
 		isStreamingSupported_ := false
 		tmp.IsStreamingSupported = &isStreamingSupported_
@@ -1004,6 +1097,11 @@ func (o BotPropertiesResponseOutput) StorageResourceId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.StorageResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The Tenant Id for the bot
+func (o BotPropertiesResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
 // Channel settings definition
 type ChannelSettingsResponse struct {
 	// The bot icon url
@@ -1022,8 +1120,27 @@ type ChannelSettingsResponse struct {
 	ExtensionKey2 *string `pulumi:"extensionKey2"`
 	// Whether this channel is enabled for the bot
 	IsEnabled *bool `pulumi:"isEnabled"`
+	// Whether customer needs to agree to new terms.
+	RequireTermsAgreement *bool `pulumi:"requireTermsAgreement"`
 	// The list of sites
 	Sites []SiteResponse `pulumi:"sites"`
+}
+
+// Defaults sets the appropriate defaults for ChannelSettingsResponse
+func (val *ChannelSettingsResponse) Defaults() *ChannelSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.ExtensionKey1) {
+		extensionKey1_ := ""
+		tmp.ExtensionKey1 = &extensionKey1_
+	}
+	if isZero(tmp.ExtensionKey2) {
+		extensionKey2_ := ""
+		tmp.ExtensionKey2 = &extensionKey2_
+	}
+	return &tmp
 }
 
 // Channel settings definition
@@ -1079,6 +1196,11 @@ func (o ChannelSettingsResponseOutput) ExtensionKey2() pulumi.StringPtrOutput {
 // Whether this channel is enabled for the bot
 func (o ChannelSettingsResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ChannelSettingsResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether customer needs to agree to new terms.
+func (o ChannelSettingsResponseOutput) RequireTermsAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ChannelSettingsResponse) *bool { return v.RequireTermsAgreement }).(pulumi.BoolPtrOutput)
 }
 
 // The list of sites
@@ -1187,6 +1309,16 @@ func (o ChannelSettingsResponsePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether customer needs to agree to new terms.
+func (o ChannelSettingsResponsePtrOutput) RequireTermsAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ChannelSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireTermsAgreement
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1368,10 +1500,6 @@ type ConnectionSettingProperties struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Id associated with the Connection Setting.
-	Id *string `pulumi:"id"`
-	// Name associated with the Connection Setting.
-	Name *string `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters []ConnectionSettingParameter `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1382,6 +1510,19 @@ type ConnectionSettingProperties struct {
 	ServiceProviderDisplayName *string `pulumi:"serviceProviderDisplayName"`
 	// Service Provider Id associated with the Connection Setting
 	ServiceProviderId *string `pulumi:"serviceProviderId"`
+}
+
+// Defaults sets the appropriate defaults for ConnectionSettingProperties
+func (val *ConnectionSettingProperties) Defaults() *ConnectionSettingProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Scopes) {
+		scopes_ := ""
+		tmp.Scopes = &scopes_
+	}
+	return &tmp
 }
 
 // ConnectionSettingPropertiesInput is an input type that accepts ConnectionSettingPropertiesArgs and ConnectionSettingPropertiesOutput values.
@@ -1401,10 +1542,6 @@ type ConnectionSettingPropertiesArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Id associated with the Connection Setting.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Name associated with the Connection Setting.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters ConnectionSettingParameterArrayInput `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1417,6 +1554,17 @@ type ConnectionSettingPropertiesArgs struct {
 	ServiceProviderId pulumi.StringPtrInput `pulumi:"serviceProviderId"`
 }
 
+// Defaults sets the appropriate defaults for ConnectionSettingPropertiesArgs
+func (val *ConnectionSettingPropertiesArgs) Defaults() *ConnectionSettingPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Scopes) {
+		tmp.Scopes = pulumi.StringPtr("")
+	}
+	return &tmp
+}
 func (ConnectionSettingPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionSettingProperties)(nil)).Elem()
 }
@@ -1505,16 +1653,6 @@ func (o ConnectionSettingPropertiesOutput) ClientSecret() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Id associated with the Connection Setting.
-func (o ConnectionSettingPropertiesOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Name associated with the Connection Setting.
-func (o ConnectionSettingPropertiesOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
 // Service Provider Parameters associated with the Connection Setting
 func (o ConnectionSettingPropertiesOutput) Parameters() ConnectionSettingParameterArrayOutput {
 	return o.ApplyT(func(v ConnectionSettingProperties) []ConnectionSettingParameter { return v.Parameters }).(ConnectionSettingParameterArrayOutput)
@@ -1584,26 +1722,6 @@ func (o ConnectionSettingPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Id associated with the Connection Setting.
-func (o ConnectionSettingPropertiesPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name associated with the Connection Setting.
-func (o ConnectionSettingPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
 // Service Provider Parameters associated with the Connection Setting
 func (o ConnectionSettingPropertiesPtrOutput) Parameters() ConnectionSettingParameterArrayOutput {
 	return o.ApplyT(func(v *ConnectionSettingProperties) []ConnectionSettingParameter {
@@ -1660,10 +1778,6 @@ type ConnectionSettingPropertiesResponse struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Id associated with the Connection Setting.
-	Id *string `pulumi:"id"`
-	// Name associated with the Connection Setting.
-	Name *string `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters []ConnectionSettingParameterResponse `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1676,6 +1790,19 @@ type ConnectionSettingPropertiesResponse struct {
 	ServiceProviderId *string `pulumi:"serviceProviderId"`
 	// Setting Id set by the service for the Connection Setting.
 	SettingId string `pulumi:"settingId"`
+}
+
+// Defaults sets the appropriate defaults for ConnectionSettingPropertiesResponse
+func (val *ConnectionSettingPropertiesResponse) Defaults() *ConnectionSettingPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Scopes) {
+		scopes_ := ""
+		tmp.Scopes = &scopes_
+	}
+	return &tmp
 }
 
 // Properties for a Connection Setting Item
@@ -1701,16 +1828,6 @@ func (o ConnectionSettingPropertiesResponseOutput) ClientId() pulumi.StringPtrOu
 // Client Secret associated with the Connection Setting
 func (o ConnectionSettingPropertiesResponseOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-// Id associated with the Connection Setting.
-func (o ConnectionSettingPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Name associated with the Connection Setting.
-func (o ConnectionSettingPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Service Provider Parameters associated with the Connection Setting
@@ -1766,6 +1883,8 @@ func (val *DirectLineChannel) Defaults() *DirectLineChannel {
 		location_ := "global"
 		tmp.Location = &location_
 	}
+	tmp.Properties = tmp.Properties.Defaults()
+
 	return &tmp
 }
 
@@ -1773,16 +1892,58 @@ func (val *DirectLineChannel) Defaults() *DirectLineChannel {
 type DirectLineChannelProperties struct {
 	// Direct Line embed code of the resource
 	DirectLineEmbedCode *string `pulumi:"directLineEmbedCode"`
+	// The extensionKey1
+	ExtensionKey1 *string `pulumi:"extensionKey1"`
+	// The extensionKey2
+	ExtensionKey2 *string `pulumi:"extensionKey2"`
 	// The list of Direct Line sites
 	Sites []DirectLineSite `pulumi:"sites"`
+}
+
+// Defaults sets the appropriate defaults for DirectLineChannelProperties
+func (val *DirectLineChannelProperties) Defaults() *DirectLineChannelProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.ExtensionKey1) {
+		extensionKey1_ := ""
+		tmp.ExtensionKey1 = &extensionKey1_
+	}
+	if isZero(tmp.ExtensionKey2) {
+		extensionKey2_ := ""
+		tmp.ExtensionKey2 = &extensionKey2_
+	}
+	return &tmp
 }
 
 // The parameters to provide for the Direct Line channel.
 type DirectLineChannelPropertiesResponse struct {
 	// Direct Line embed code of the resource
 	DirectLineEmbedCode *string `pulumi:"directLineEmbedCode"`
+	// The extensionKey1
+	ExtensionKey1 *string `pulumi:"extensionKey1"`
+	// The extensionKey2
+	ExtensionKey2 *string `pulumi:"extensionKey2"`
 	// The list of Direct Line sites
 	Sites []DirectLineSiteResponse `pulumi:"sites"`
+}
+
+// Defaults sets the appropriate defaults for DirectLineChannelPropertiesResponse
+func (val *DirectLineChannelPropertiesResponse) Defaults() *DirectLineChannelPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.ExtensionKey1) {
+		extensionKey1_ := ""
+		tmp.ExtensionKey1 = &extensionKey1_
+	}
+	if isZero(tmp.ExtensionKey2) {
+		extensionKey2_ := ""
+		tmp.ExtensionKey2 = &extensionKey2_
+	}
+	return &tmp
 }
 
 // Direct Line channel definition
@@ -1810,39 +1971,90 @@ func (val *DirectLineChannelResponse) Defaults() *DirectLineChannelResponse {
 		location_ := "global"
 		tmp.Location = &location_
 	}
+	tmp.Properties = tmp.Properties.Defaults()
+
 	return &tmp
 }
 
 // A site for the Direct Line channel
 type DirectLineSite struct {
+	// DirectLine application id
+	AppId *string `pulumi:"appId"`
+	// Entity Tag
+	ETag *string `pulumi:"eTag"`
 	// Whether this site is enabled for block user upload.
 	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
-	// Whether this site is enabled for DirectLine channel.
+	// Whether this site is disabled detailed logging for
+	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
+	// Whether this site is enabled for DirectLine channel
 	IsEnabled bool `pulumi:"isEnabled"`
+	// Whether this site is EndpointParameters enabled for channel
+	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
+	// Whether this no-storage site is disabled detailed logging for
+	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
 	// Whether this site is enabled for authentication with Bot Framework.
 	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
 	// Whether this site is enabled for Bot Framework V1 protocol.
 	IsV1Enabled bool `pulumi:"isV1Enabled"`
-	// Whether this site is enabled for Bot Framework V1 protocol.
+	// Whether this site is enabled for Bot Framework V3 protocol.
 	IsV3Enabled bool `pulumi:"isV3Enabled"`
+	// Whether this site is enabled for Webchat Speech
+	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
+	// Whether this site is enabled for preview versions of Webchat
+	IsWebchatPreviewEnabled *bool `pulumi:"isWebchatPreviewEnabled"`
 	// Site name
 	SiteName string `pulumi:"siteName"`
+	// Tenant Id
+	TenantId *string `pulumi:"tenantId"`
 	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
 	TrustedOrigins []string `pulumi:"trustedOrigins"`
 }
 
+// Defaults sets the appropriate defaults for DirectLineSite
+func (val *DirectLineSite) Defaults() *DirectLineSite {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.IsWebChatSpeechEnabled) {
+		isWebChatSpeechEnabled_ := false
+		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
+	}
+	if isZero(tmp.IsWebchatPreviewEnabled) {
+		isWebchatPreviewEnabled_ := false
+		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
+	}
+	return &tmp
+}
+
 // A site for the Direct Line channel
 type DirectLineSiteResponse struct {
+	// DirectLine application id
+	AppId *string `pulumi:"appId"`
+	// Entity Tag
+	ETag *string `pulumi:"eTag"`
 	// Whether this site is enabled for block user upload.
 	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
-	// Whether this site is enabled for DirectLine channel.
+	// Whether this site is disabled detailed logging for
+	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
+	// Whether this site is enabled for DirectLine channel
 	IsEnabled bool `pulumi:"isEnabled"`
+	// Whether this site is EndpointParameters enabled for channel
+	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
+	// Whether this no-storage site is disabled detailed logging for
+	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
 	// Whether this site is enabled for authentication with Bot Framework.
 	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
+	// Whether this site is token enabled for channel
+	IsTokenEnabled bool `pulumi:"isTokenEnabled"`
 	// Whether this site is enabled for Bot Framework V1 protocol.
 	IsV1Enabled bool `pulumi:"isV1Enabled"`
-	// Whether this site is enabled for Bot Framework V1 protocol.
+	// Whether this site is enabled for Bot Framework V3 protocol.
 	IsV3Enabled bool `pulumi:"isV3Enabled"`
+	// Whether this site is enabled for Webchat Speech
+	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
+	// Whether this site is enabled for preview versions of Webchat
+	IsWebchatPreviewEnabled *bool `pulumi:"isWebchatPreviewEnabled"`
 	// Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
 	Key string `pulumi:"key"`
 	// Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -1851,8 +2063,27 @@ type DirectLineSiteResponse struct {
 	SiteId string `pulumi:"siteId"`
 	// Site name
 	SiteName string `pulumi:"siteName"`
+	// Tenant Id
+	TenantId *string `pulumi:"tenantId"`
 	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
 	TrustedOrigins []string `pulumi:"trustedOrigins"`
+}
+
+// Defaults sets the appropriate defaults for DirectLineSiteResponse
+func (val *DirectLineSiteResponse) Defaults() *DirectLineSiteResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.IsWebChatSpeechEnabled) {
+		isWebChatSpeechEnabled_ := false
+		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
+	}
+	if isZero(tmp.IsWebchatPreviewEnabled) {
+		isWebchatPreviewEnabled_ := false
+		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
+	}
+	return &tmp
 }
 
 // DirectLine Speech channel definition
@@ -1884,9 +2115,11 @@ func (val *DirectLineSpeechChannel) Defaults() *DirectLineSpeechChannel {
 // The parameters to provide for the DirectLine Speech channel.
 type DirectLineSpeechChannelProperties struct {
 	// The cognitive service region with this channel registration.
-	CognitiveServiceRegion string `pulumi:"cognitiveServiceRegion"`
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The cognitive service id with this channel registration.
+	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
 	// The cognitive service subscription key to use with this channel registration.
-	CognitiveServiceSubscriptionKey string `pulumi:"cognitiveServiceSubscriptionKey"`
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
 	// Custom voice deployment id (optional).
 	CustomSpeechModelId *string `pulumi:"customSpeechModelId"`
 	// Custom speech model id (optional).
@@ -1900,9 +2133,11 @@ type DirectLineSpeechChannelProperties struct {
 // The parameters to provide for the DirectLine Speech channel.
 type DirectLineSpeechChannelPropertiesResponse struct {
 	// The cognitive service region with this channel registration.
-	CognitiveServiceRegion string `pulumi:"cognitiveServiceRegion"`
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The cognitive service id with this channel registration.
+	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
 	// The cognitive service subscription key to use with this channel registration.
-	CognitiveServiceSubscriptionKey string `pulumi:"cognitiveServiceSubscriptionKey"`
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
 	// Custom voice deployment id (optional).
 	CustomSpeechModelId *string `pulumi:"customSpeechModelId"`
 	// Custom speech model id (optional).
@@ -1969,20 +2204,28 @@ func (val *EmailChannel) Defaults() *EmailChannel {
 
 // The parameters to provide for the Email channel.
 type EmailChannelProperties struct {
+	// Email channel auth method. 0 Password (Default); 1 Graph.
+	AuthMethod *float64 `pulumi:"authMethod"`
 	// The email address
 	EmailAddress string `pulumi:"emailAddress"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
+	// The magic code for setting up the modern authentication.
+	MagicCode *string `pulumi:"magicCode"`
 	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
 	Password *string `pulumi:"password"`
 }
 
 // The parameters to provide for the Email channel.
 type EmailChannelPropertiesResponse struct {
+	// Email channel auth method. 0 Password (Default); 1 Graph.
+	AuthMethod *float64 `pulumi:"authMethod"`
 	// The email address
 	EmailAddress string `pulumi:"emailAddress"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
+	// The magic code for setting up the modern authentication.
+	MagicCode *string `pulumi:"magicCode"`
 	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
 	Password *string `pulumi:"password"`
 }
@@ -2279,6 +2522,56 @@ type LineRegistrationResponse struct {
 	GeneratedId string `pulumi:"generatedId"`
 }
 
+// M365 Extensions definition
+type M365Extensions struct {
+	// The channel name
+	// Expected value is 'M365Extensions'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+}
+
+// Defaults sets the appropriate defaults for M365Extensions
+func (val *M365Extensions) Defaults() *M365Extensions {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// M365 Extensions definition
+type M365ExtensionsResponse struct {
+	// The channel name
+	// Expected value is 'M365Extensions'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for M365ExtensionsResponse
+func (val *M365ExtensionsResponse) Defaults() *M365ExtensionsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
 // Microsoft Teams channel definition
 type MsTeamsChannel struct {
 	// The channel name
@@ -2302,6 +2595,8 @@ func (val *MsTeamsChannel) Defaults() *MsTeamsChannel {
 		location_ := "global"
 		tmp.Location = &location_
 	}
+	tmp.Properties = tmp.Properties.Defaults()
+
 	return &tmp
 }
 
@@ -2310,7 +2605,7 @@ type MsTeamsChannelProperties struct {
 	// Whether this channel accepted terms
 	AcceptedTerms *bool `pulumi:"acceptedTerms"`
 	// Webhook for Microsoft Teams channel calls
-	CallingWebHook *string `pulumi:"callingWebHook"`
+	CallingWebhook *string `pulumi:"callingWebhook"`
 	// Deployment environment for Microsoft Teams channel calls
 	DeploymentEnvironment *string `pulumi:"deploymentEnvironment"`
 	// Enable calling for Microsoft Teams channel
@@ -2321,12 +2616,29 @@ type MsTeamsChannelProperties struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 }
 
+// Defaults sets the appropriate defaults for MsTeamsChannelProperties
+func (val *MsTeamsChannelProperties) Defaults() *MsTeamsChannelProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.DeploymentEnvironment) {
+		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
+		tmp.DeploymentEnvironment = &deploymentEnvironment_
+	}
+	if isZero(tmp.EnableCalling) {
+		enableCalling_ := false
+		tmp.EnableCalling = &enableCalling_
+	}
+	return &tmp
+}
+
 // The parameters to provide for the Microsoft Teams channel.
 type MsTeamsChannelPropertiesResponse struct {
 	// Whether this channel accepted terms
 	AcceptedTerms *bool `pulumi:"acceptedTerms"`
 	// Webhook for Microsoft Teams channel calls
-	CallingWebHook *string `pulumi:"callingWebHook"`
+	CallingWebhook *string `pulumi:"callingWebhook"`
 	// Deployment environment for Microsoft Teams channel calls
 	DeploymentEnvironment *string `pulumi:"deploymentEnvironment"`
 	// Enable calling for Microsoft Teams channel
@@ -2335,6 +2647,23 @@ type MsTeamsChannelPropertiesResponse struct {
 	IncomingCallRoute *string `pulumi:"incomingCallRoute"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
+}
+
+// Defaults sets the appropriate defaults for MsTeamsChannelPropertiesResponse
+func (val *MsTeamsChannelPropertiesResponse) Defaults() *MsTeamsChannelPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.DeploymentEnvironment) {
+		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
+		tmp.DeploymentEnvironment = &deploymentEnvironment_
+	}
+	if isZero(tmp.EnableCalling) {
+		enableCalling_ := false
+		tmp.EnableCalling = &enableCalling_
+	}
+	return &tmp
 }
 
 // Microsoft Teams channel definition
@@ -2362,11 +2691,115 @@ func (val *MsTeamsChannelResponse) Defaults() *MsTeamsChannelResponse {
 		location_ := "global"
 		tmp.Location = &location_
 	}
+	tmp.Properties = tmp.Properties.Defaults()
+
+	return &tmp
+}
+
+// Omnichannel channel definition
+type Omnichannel struct {
+	// The channel name
+	// Expected value is 'Omnichannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+}
+
+// Defaults sets the appropriate defaults for Omnichannel
+func (val *Omnichannel) Defaults() *Omnichannel {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// Omnichannel channel definition
+type OmnichannelResponse struct {
+	// The channel name
+	// Expected value is 'Omnichannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for OmnichannelResponse
+func (val *OmnichannelResponse) Defaults() *OmnichannelResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// Outlook channel definition
+type OutlookChannel struct {
+	// The channel name
+	// Expected value is 'OutlookChannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+}
+
+// Defaults sets the appropriate defaults for OutlookChannel
+func (val *OutlookChannel) Defaults() *OutlookChannel {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// Outlook channel definition
+type OutlookChannelResponse struct {
+	// The channel name
+	// Expected value is 'OutlookChannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for OutlookChannelResponse
+func (val *OutlookChannelResponse) Defaults() *OutlookChannelResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
 	return &tmp
 }
 
 // The Private Endpoint Connection resource.
 type PrivateEndpointConnectionResponse struct {
+	// Group ids
+	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -2394,6 +2827,11 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
+}
+
+// Group ids
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -2621,6 +3059,56 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// SearchAssistant definition
+type SearchAssistant struct {
+	// The channel name
+	// Expected value is 'SearchAssistant'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+}
+
+// Defaults sets the appropriate defaults for SearchAssistant
+func (val *SearchAssistant) Defaults() *SearchAssistant {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// SearchAssistant definition
+type SearchAssistantResponse struct {
+	// The channel name
+	// Expected value is 'SearchAssistant'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for SearchAssistantResponse
+func (val *SearchAssistantResponse) Defaults() *SearchAssistantResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
 // Extra Parameters specific to each Service Provider
 type ServiceProviderParameterResponse struct {
 	// Default Name for the Service Provider
@@ -2653,18 +3141,31 @@ type ServiceProviderParameterResponseMetadata struct {
 
 // The Object used to describe a Service Provider supported by Bot Service
 type ServiceProviderPropertiesResponse struct {
-	// Display Name of the Service Provider
+	// URL of Dev Portal
 	DevPortalUrl string `pulumi:"devPortalUrl"`
 	// Display Name of the Service Provider
 	DisplayName string `pulumi:"displayName"`
-	// Display Name of the Service Provider
-	IconUrl string `pulumi:"iconUrl"`
+	// The URL of icon
+	IconUrl *string `pulumi:"iconUrl"`
 	// Id for Service Provider
 	Id string `pulumi:"id"`
 	// The list of parameters for the Service Provider
 	Parameters []ServiceProviderParameterResponse `pulumi:"parameters"`
-	// Display Name of the Service Provider
+	// Name of the Service Provider
 	ServiceProviderName string `pulumi:"serviceProviderName"`
+}
+
+// Defaults sets the appropriate defaults for ServiceProviderPropertiesResponse
+func (val *ServiceProviderPropertiesResponse) Defaults() *ServiceProviderPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.IconUrl) {
+		iconUrl_ := ""
+		tmp.IconUrl = &iconUrl_
+	}
+	return &tmp
 }
 
 // Service Provider Definition
@@ -2673,24 +3174,45 @@ type ServiceProviderResponse struct {
 	Properties *ServiceProviderPropertiesResponse `pulumi:"properties"`
 }
 
+// Defaults sets the appropriate defaults for ServiceProviderResponse
+func (val *ServiceProviderResponse) Defaults() *ServiceProviderResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = tmp.Properties.Defaults()
+
+	return &tmp
+}
+
 // A site for the channel
 type SiteResponse struct {
+	// DirectLine application id
+	AppId *string `pulumi:"appId"`
 	// Entity Tag
 	ETag *string `pulumi:"eTag"`
 	// Whether this site is enabled for block user upload.
 	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
-	// Whether this site is enabled for DirectLine channel.
+	// Whether this site is disabled detailed logging for
+	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
+	// Whether this site is enabled for DirectLine channel
 	IsEnabled bool `pulumi:"isEnabled"`
+	// Whether this site is EndpointParameters enabled for channel
+	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
+	// Whether this no-storage site is disabled detailed logging for
+	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
 	// Whether this site is enabled for authentication with Bot Framework.
 	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
 	// Whether this site is token enabled for channel
-	IsTokenEnabled *bool `pulumi:"isTokenEnabled"`
+	IsTokenEnabled bool `pulumi:"isTokenEnabled"`
 	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV1Enabled bool `pulumi:"isV1Enabled"`
-	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV3Enabled bool `pulumi:"isV3Enabled"`
+	IsV1Enabled *bool `pulumi:"isV1Enabled"`
+	// Whether this site is enabled for Bot Framework V3 protocol.
+	IsV3Enabled *bool `pulumi:"isV3Enabled"`
+	// Whether this site is enabled for Webchat Speech
+	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
-	IsWebchatPreviewEnabled bool `pulumi:"isWebchatPreviewEnabled"`
+	IsWebchatPreviewEnabled *bool `pulumi:"isWebchatPreviewEnabled"`
 	// Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
 	Key string `pulumi:"key"`
 	// Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -2699,6 +3221,8 @@ type SiteResponse struct {
 	SiteId string `pulumi:"siteId"`
 	// Site name
 	SiteName string `pulumi:"siteName"`
+	// Tenant Id
+	TenantId *string `pulumi:"tenantId"`
 	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
 	TrustedOrigins []string `pulumi:"trustedOrigins"`
 }
@@ -2709,8 +3233,13 @@ func (val *SiteResponse) Defaults() *SiteResponse {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.IsWebChatSpeechEnabled) {
+		isWebChatSpeechEnabled_ := false
+		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
+	}
 	if isZero(tmp.IsWebchatPreviewEnabled) {
-		tmp.IsWebchatPreviewEnabled = false
+		isWebchatPreviewEnabled_ := false
+		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
 	return &tmp
 }
@@ -2730,6 +3259,11 @@ func (o SiteResponseOutput) ToSiteResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+// DirectLine application id
+func (o SiteResponseOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
 // Entity Tag
 func (o SiteResponseOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteResponse) *string { return v.ETag }).(pulumi.StringPtrOutput)
@@ -2740,9 +3274,24 @@ func (o SiteResponseOutput) IsBlockUserUploadEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SiteResponse) *bool { return v.IsBlockUserUploadEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this site is enabled for DirectLine channel.
+// Whether this site is disabled detailed logging for
+func (o SiteResponseOutput) IsDetailedLoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsDetailedLoggingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this site is enabled for DirectLine channel
 func (o SiteResponseOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v SiteResponse) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether this site is EndpointParameters enabled for channel
+func (o SiteResponseOutput) IsEndpointParametersEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsEndpointParametersEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this no-storage site is disabled detailed logging for
+func (o SiteResponseOutput) IsNoStorageEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsNoStorageEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this site is enabled for authentication with Bot Framework.
@@ -2751,23 +3300,28 @@ func (o SiteResponseOutput) IsSecureSiteEnabled() pulumi.BoolPtrOutput {
 }
 
 // Whether this site is token enabled for channel
-func (o SiteResponseOutput) IsTokenEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SiteResponse) *bool { return v.IsTokenEnabled }).(pulumi.BoolPtrOutput)
+func (o SiteResponseOutput) IsTokenEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SiteResponse) bool { return v.IsTokenEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether this site is enabled for Bot Framework V1 protocol.
-func (o SiteResponseOutput) IsV1Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v SiteResponse) bool { return v.IsV1Enabled }).(pulumi.BoolOutput)
+func (o SiteResponseOutput) IsV1Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsV1Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this site is enabled for Bot Framework V1 protocol.
-func (o SiteResponseOutput) IsV3Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v SiteResponse) bool { return v.IsV3Enabled }).(pulumi.BoolOutput)
+// Whether this site is enabled for Bot Framework V3 protocol.
+func (o SiteResponseOutput) IsV3Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsV3Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this site is enabled for Webchat Speech
+func (o SiteResponseOutput) IsWebChatSpeechEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsWebChatSpeechEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this site is enabled for preview versions of Webchat
-func (o SiteResponseOutput) IsWebchatPreviewEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v SiteResponse) bool { return v.IsWebchatPreviewEnabled }).(pulumi.BoolOutput)
+func (o SiteResponseOutput) IsWebchatPreviewEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *bool { return v.IsWebchatPreviewEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -2788,6 +3342,11 @@ func (o SiteResponseOutput) SiteId() pulumi.StringOutput {
 // Site name
 func (o SiteResponseOutput) SiteName() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteResponse) string { return v.SiteName }).(pulumi.StringOutput)
+}
+
+// Tenant Id
+func (o SiteResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
@@ -3055,6 +3614,8 @@ func (val *SkypeChannel) Defaults() *SkypeChannel {
 		location_ := "global"
 		tmp.Location = &location_
 	}
+	tmp.Properties = tmp.Properties.Defaults()
+
 	return &tmp
 }
 
@@ -3082,6 +3643,19 @@ type SkypeChannelProperties struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 }
 
+// Defaults sets the appropriate defaults for SkypeChannelProperties
+func (val *SkypeChannelProperties) Defaults() *SkypeChannelProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.EnableCalling) {
+		enableCalling_ := false
+		tmp.EnableCalling = &enableCalling_
+	}
+	return &tmp
+}
+
 // The parameters to provide for the Microsoft Teams channel.
 type SkypeChannelPropertiesResponse struct {
 	// Calling web hook for Skype channel
@@ -3104,6 +3678,19 @@ type SkypeChannelPropertiesResponse struct {
 	IncomingCallRoute *string `pulumi:"incomingCallRoute"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
+}
+
+// Defaults sets the appropriate defaults for SkypeChannelPropertiesResponse
+func (val *SkypeChannelPropertiesResponse) Defaults() *SkypeChannelPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.EnableCalling) {
+		enableCalling_ := false
+		tmp.EnableCalling = &enableCalling_
+	}
+	return &tmp
 }
 
 // Skype channel definition
@@ -3131,6 +3718,8 @@ func (val *SkypeChannelResponse) Defaults() *SkypeChannelResponse {
 		location_ := "global"
 		tmp.Location = &location_
 	}
+	tmp.Properties = tmp.Properties.Defaults()
+
 	return &tmp
 }
 
@@ -3170,8 +3759,6 @@ type SlackChannelProperties struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The Slack landing page Url
 	LandingPageUrl *string `pulumi:"landingPageUrl"`
-	// Whether to register the settings before OAuth validation is performed. Recommended to True.
-	RegisterBeforeOAuthFlow *bool `pulumi:"registerBeforeOAuthFlow"`
 	// The Slack permission scopes.
 	Scopes *string `pulumi:"scopes"`
 	// The Slack signing secret.
@@ -3197,7 +3784,7 @@ type SlackChannelPropertiesResponse struct {
 	// The Slack redirect action
 	RedirectAction string `pulumi:"redirectAction"`
 	// Whether to register the settings before OAuth validation is performed. Recommended to True.
-	RegisterBeforeOAuthFlow *bool `pulumi:"registerBeforeOAuthFlow"`
+	RegisterBeforeOAuthFlow bool `pulumi:"registerBeforeOAuthFlow"`
 	// The Slack permission scopes.
 	Scopes *string `pulumi:"scopes"`
 	// The Slack signing secret.
@@ -3390,6 +3977,176 @@ func (val *TelegramChannelResponse) Defaults() *TelegramChannelResponse {
 	return &tmp
 }
 
+// Telephony channel definition
+type TelephonyChannel struct {
+	// The channel name
+	// Expected value is 'TelephonyChannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// The set of properties specific to Telephony channel resource
+	Properties *TelephonyChannelProperties `pulumi:"properties"`
+}
+
+// Defaults sets the appropriate defaults for TelephonyChannel
+func (val *TelephonyChannel) Defaults() *TelephonyChannel {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// The parameters to provide for the Direct Line channel.
+type TelephonyChannelProperties struct {
+	// The list of Telephony api configuration
+	ApiConfigurations []TelephonyChannelResourceApiConfiguration `pulumi:"apiConfigurations"`
+	// The extensionKey2
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The extensionKey1
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
+	// The default locale of the channel
+	DefaultLocale *string `pulumi:"defaultLocale"`
+	// Whether the channel is enabled
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The list of Telephony phone numbers
+	PhoneNumbers []TelephonyPhoneNumbers `pulumi:"phoneNumbers"`
+	// The premium SKU applied to the channel
+	PremiumSKU *string `pulumi:"premiumSKU"`
+}
+
+// The parameters to provide for the Direct Line channel.
+type TelephonyChannelPropertiesResponse struct {
+	// The list of Telephony api configuration
+	ApiConfigurations []TelephonyChannelResourceApiConfigurationResponse `pulumi:"apiConfigurations"`
+	// The extensionKey2
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The extensionKey1
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
+	// The default locale of the channel
+	DefaultLocale *string `pulumi:"defaultLocale"`
+	// Whether the channel is enabled
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The list of Telephony phone numbers
+	PhoneNumbers []TelephonyPhoneNumbersResponse `pulumi:"phoneNumbers"`
+	// The premium SKU applied to the channel
+	PremiumSKU *string `pulumi:"premiumSKU"`
+}
+
+// A resource Api configuration for the Telephony channel
+type TelephonyChannelResourceApiConfiguration struct {
+	// The cognitive service region.
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The cognitive service resourceId.
+	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
+	// The cognitive service subscription key.
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
+	// The default locale.
+	DefaultLocale *string `pulumi:"defaultLocale"`
+	// The id of config.
+	Id *string `pulumi:"id"`
+	// The provider name.
+	ProviderName *string `pulumi:"providerName"`
+}
+
+// A resource Api configuration for the Telephony channel
+type TelephonyChannelResourceApiConfigurationResponse struct {
+	// The cognitive service region.
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The cognitive service resourceId.
+	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
+	// The cognitive service subscription key.
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
+	// The default locale.
+	DefaultLocale *string `pulumi:"defaultLocale"`
+	// The id of config.
+	Id *string `pulumi:"id"`
+	// The provider name.
+	ProviderName *string `pulumi:"providerName"`
+}
+
+// Telephony channel definition
+type TelephonyChannelResponse struct {
+	// The channel name
+	// Expected value is 'TelephonyChannel'.
+	ChannelName string `pulumi:"channelName"`
+	// Entity Tag of the resource
+	Etag *string `pulumi:"etag"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
+	// The set of properties specific to Telephony channel resource
+	Properties *TelephonyChannelPropertiesResponse `pulumi:"properties"`
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for TelephonyChannelResponse
+func (val *TelephonyChannelResponse) Defaults() *TelephonyChannelResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Location) {
+		location_ := "global"
+		tmp.Location = &location_
+	}
+	return &tmp
+}
+
+// A telephone number for the Telephony channel
+type TelephonyPhoneNumbers struct {
+	// The endpoint of ACS.
+	AcsEndpoint *string `pulumi:"acsEndpoint"`
+	// The resource id of ACS.
+	AcsResourceId *string `pulumi:"acsResourceId"`
+	// The secret of ACS.
+	AcsSecret *string `pulumi:"acsSecret"`
+	// The service region of cognitive service.
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The resource id of cognitive service.
+	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
+	// The subscription key of cognitive service.
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
+	// The default locale of the phone number.
+	DefaultLocale *string `pulumi:"defaultLocale"`
+	// The element id.
+	Id *string `pulumi:"id"`
+	// Optional Property that will determine the offering type of the phone.
+	OfferType *string `pulumi:"offerType"`
+	// The phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+}
+
+// A telephone number for the Telephony channel
+type TelephonyPhoneNumbersResponse struct {
+	// The endpoint of ACS.
+	AcsEndpoint *string `pulumi:"acsEndpoint"`
+	// The resource id of ACS.
+	AcsResourceId *string `pulumi:"acsResourceId"`
+	// The secret of ACS.
+	AcsSecret *string `pulumi:"acsSecret"`
+	// The service region of cognitive service.
+	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
+	// The resource id of cognitive service.
+	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
+	// The subscription key of cognitive service.
+	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
+	// The default locale of the phone number.
+	DefaultLocale *string `pulumi:"defaultLocale"`
+	// The element id.
+	Id *string `pulumi:"id"`
+	// Optional Property that will determine the offering type of the phone.
+	OfferType *string `pulumi:"offerType"`
+	// The phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+}
+
 // Web Chat channel definition
 type WebChatChannel struct {
 	// The channel name
@@ -3460,12 +4217,36 @@ func (val *WebChatChannelResponse) Defaults() *WebChatChannelResponse {
 
 // A site for the Webchat channel
 type WebChatSite struct {
+	// DirectLine application id
+	AppId *string `pulumi:"appId"`
+	// Entity Tag
+	ETag *string `pulumi:"eTag"`
+	// Whether this site is enabled for block user upload.
+	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
+	// Whether this site is disabled detailed logging for
+	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
 	// Whether this site is enabled for DirectLine channel
 	IsEnabled bool `pulumi:"isEnabled"`
+	// Whether this site is EndpointParameters enabled for channel
+	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
+	// Whether this no-storage site is disabled detailed logging for
+	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
+	// Whether this site is enabled for authentication with Bot Framework.
+	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
+	// Whether this site is enabled for Bot Framework V1 protocol.
+	IsV1Enabled *bool `pulumi:"isV1Enabled"`
+	// Whether this site is enabled for Bot Framework V3 protocol.
+	IsV3Enabled *bool `pulumi:"isV3Enabled"`
+	// Whether this site is enabled for Webchat Speech
+	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
 	IsWebchatPreviewEnabled bool `pulumi:"isWebchatPreviewEnabled"`
 	// Site name
 	SiteName string `pulumi:"siteName"`
+	// Tenant Id
+	TenantId *string `pulumi:"tenantId"`
+	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
+	TrustedOrigins []string `pulumi:"trustedOrigins"`
 }
 
 // Defaults sets the appropriate defaults for WebChatSite
@@ -3474,6 +4255,10 @@ func (val *WebChatSite) Defaults() *WebChatSite {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.IsWebChatSpeechEnabled) {
+		isWebChatSpeechEnabled_ := false
+		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
+	}
 	if isZero(tmp.IsWebchatPreviewEnabled) {
 		tmp.IsWebchatPreviewEnabled = false
 	}
@@ -3482,8 +4267,30 @@ func (val *WebChatSite) Defaults() *WebChatSite {
 
 // A site for the Webchat channel
 type WebChatSiteResponse struct {
+	// DirectLine application id
+	AppId *string `pulumi:"appId"`
+	// Entity Tag
+	ETag *string `pulumi:"eTag"`
+	// Whether this site is enabled for block user upload.
+	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
+	// Whether this site is disabled detailed logging for
+	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
 	// Whether this site is enabled for DirectLine channel
 	IsEnabled bool `pulumi:"isEnabled"`
+	// Whether this site is EndpointParameters enabled for channel
+	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
+	// Whether this no-storage site is disabled detailed logging for
+	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
+	// Whether this site is enabled for authentication with Bot Framework.
+	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
+	// Whether this site is token enabled for channel
+	IsTokenEnabled bool `pulumi:"isTokenEnabled"`
+	// Whether this site is enabled for Bot Framework V1 protocol.
+	IsV1Enabled *bool `pulumi:"isV1Enabled"`
+	// Whether this site is enabled for Bot Framework V3 protocol.
+	IsV3Enabled *bool `pulumi:"isV3Enabled"`
+	// Whether this site is enabled for Webchat Speech
+	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
 	IsWebchatPreviewEnabled bool `pulumi:"isWebchatPreviewEnabled"`
 	// Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -3494,6 +4301,10 @@ type WebChatSiteResponse struct {
 	SiteId string `pulumi:"siteId"`
 	// Site name
 	SiteName string `pulumi:"siteName"`
+	// Tenant Id
+	TenantId *string `pulumi:"tenantId"`
+	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
+	TrustedOrigins []string `pulumi:"trustedOrigins"`
 }
 
 // Defaults sets the appropriate defaults for WebChatSiteResponse
@@ -3502,6 +4313,10 @@ func (val *WebChatSiteResponse) Defaults() *WebChatSiteResponse {
 		return nil
 	}
 	tmp := *val
+	if isZero(tmp.IsWebChatSpeechEnabled) {
+		isWebChatSpeechEnabled_ := false
+		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
+	}
 	if isZero(tmp.IsWebchatPreviewEnabled) {
 		tmp.IsWebchatPreviewEnabled = false
 	}
