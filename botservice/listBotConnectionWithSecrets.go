@@ -18,7 +18,7 @@ func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWi
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type ListBotConnectionWithSecretsArgs struct {
@@ -52,6 +52,17 @@ type ListBotConnectionWithSecretsResult struct {
 	Type string `pulumi:"type"`
 	// Entity zones
 	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for ListBotConnectionWithSecretsResult
+func (val *ListBotConnectionWithSecretsResult) Defaults() *ListBotConnectionWithSecretsResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnectionWithSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotConnectionWithSecretsResultOutput {
