@@ -54,6 +54,15 @@ const (
 	CassandraSourceReadConsistencyLevels_LOCAL_SERIAL = CassandraSourceReadConsistencyLevels("LOCAL_SERIAL")
 )
 
+// The type of the spark config.
+type ConfigurationType string
+
+const (
+	ConfigurationTypeDefault    = ConfigurationType("Default")
+	ConfigurationTypeCustomized = ConfigurationType("Customized")
+	ConfigurationTypeArtifact   = ConfigurationType("Artifact")
+)
+
 // The connection mode used to access CosmosDB account. Type: string (or Expression with resultType string).
 type CosmosDbConnectionMode string
 
@@ -514,6 +523,13 @@ const (
 	SparkAuthenticationTypeUsername                     = SparkAuthenticationType("Username")
 	SparkAuthenticationTypeUsernameAndPassword          = SparkAuthenticationType("UsernameAndPassword")
 	SparkAuthenticationTypeWindowsAzureHDInsightService = SparkAuthenticationType("WindowsAzureHDInsightService")
+)
+
+// Spark configuration reference type.
+type SparkConfigurationReferenceType string
+
+const (
+	SparkConfigurationReferenceTypeSparkConfigurationReference = SparkConfigurationReferenceType("SparkConfigurationReference")
 )
 
 // Synapse spark job reference type.

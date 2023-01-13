@@ -11773,6 +11773,22 @@ type SnowflakeSourceResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Spark configuration reference.
+type SparkConfigurationParametrizationReference struct {
+	// Reference spark configuration name. Type: string (or Expression with resultType string).
+	ReferenceName interface{} `pulumi:"referenceName"`
+	// Spark configuration reference type.
+	Type string `pulumi:"type"`
+}
+
+// Spark configuration reference.
+type SparkConfigurationParametrizationReferenceResponse struct {
+	// Reference spark configuration name. Type: string (or Expression with resultType string).
+	ReferenceName interface{} `pulumi:"referenceName"`
+	// Spark configuration reference type.
+	Type string `pulumi:"type"`
+}
+
 // Spark Server linked service.
 type SparkLinkedService struct {
 	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -12105,22 +12121,6 @@ type SqlDWSourceResponse struct {
 	// Copy source type.
 	// Expected value is 'SqlDWSource'.
 	Type string `pulumi:"type"`
-}
-
-// Sql DW upsert option settings
-type SqlDWUpsertSettings struct {
-	// Schema name for interim table. Type: string (or Expression with resultType string).
-	InterimSchemaName interface{} `pulumi:"interimSchemaName"`
-	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-	Keys interface{} `pulumi:"keys"`
-}
-
-// Sql DW upsert option settings
-type SqlDWUpsertSettingsResponse struct {
-	// Schema name for interim table. Type: string (or Expression with resultType string).
-	InterimSchemaName interface{} `pulumi:"interimSchemaName"`
-	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-	Keys interface{} `pulumi:"keys"`
 }
 
 func init() {

@@ -31,8 +31,6 @@ type Channel struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Entity zones
-	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewChannel registers a new resource with the given unique name, arguments, and options.
@@ -66,6 +64,9 @@ func NewChannel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:botservice/v20220615preview:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:botservice/v20220915:Channel"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -214,11 +215,6 @@ func (o ChannelOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o ChannelOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// Entity zones
-func (o ChannelOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Channel) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

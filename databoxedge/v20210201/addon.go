@@ -77,6 +77,9 @@ func NewAddon(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:Addon"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:Addon"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Addon
