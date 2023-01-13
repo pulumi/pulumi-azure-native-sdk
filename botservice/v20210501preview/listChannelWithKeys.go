@@ -17,7 +17,7 @@ func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opt
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type ListChannelWithKeysArgs struct {
@@ -59,8 +59,17 @@ type ListChannelWithKeysResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
-	// Entity zones
-	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for ListChannelWithKeysResult
+func (val *ListChannelWithKeysResult) Defaults() *ListChannelWithKeysResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Setting = tmp.Setting.Defaults()
+
+	return &tmp
 }
 
 func ListChannelWithKeysOutput(ctx *pulumi.Context, args ListChannelWithKeysOutputArgs, opts ...pulumi.InvokeOption) ListChannelWithKeysResultOutput {
@@ -172,11 +181,6 @@ func (o ListChannelWithKeysResultOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o ListChannelWithKeysResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Entity zones
-func (o ListChannelWithKeysResultOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ListChannelWithKeysResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {
