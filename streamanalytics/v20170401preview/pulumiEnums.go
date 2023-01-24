@@ -43,6 +43,7 @@ const (
 	EventSerializationTypeJson      = EventSerializationType("Json")
 	EventSerializationTypeCustomClr = EventSerializationType("CustomClr")
 	EventSerializationTypeParquet   = EventSerializationType("Parquet")
+	EventSerializationTypeDelta     = EventSerializationType("Delta")
 )
 
 // Indicates the policy to apply to events that arrive out of order in the input event stream.

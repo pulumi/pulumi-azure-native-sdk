@@ -884,6 +884,28 @@ type CustomClrSerializationResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Describes how data from an input is serialized or how data is serialized when written to an output in Delta Lake format.
+type DeltaSerialization struct {
+	// Specifies the path of the Delta Lake table that the output will be written to.
+	DeltaTablePath string `pulumi:"deltaTablePath"`
+	// Specifies the names of the columns for which the Delta Lake table will be partitioned. We are only supporting 1 partition column, but keeping it as an array for extensibility.
+	PartitionColumns []string `pulumi:"partitionColumns"`
+	// Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+	// Expected value is 'Delta'.
+	Type string `pulumi:"type"`
+}
+
+// Describes how data from an input is serialized or how data is serialized when written to an output in Delta Lake format.
+type DeltaSerializationResponse struct {
+	// Specifies the path of the Delta Lake table that the output will be written to.
+	DeltaTablePath string `pulumi:"deltaTablePath"`
+	// Specifies the names of the columns for which the Delta Lake table will be partitioned. We are only supporting 1 partition column, but keeping it as an array for extensibility.
+	PartitionColumns []string `pulumi:"partitionColumns"`
+	// Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+	// Expected value is 'Delta'.
+	Type string `pulumi:"type"`
+}
+
 // Condition applicable to the resource, or to the job overall, that warrant customer attention.
 type DiagnosticConditionResponse struct {
 	// The opaque diagnostic code.
