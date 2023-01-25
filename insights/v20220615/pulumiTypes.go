@@ -2322,7 +2322,7 @@ type WebTestPropertiesResponseValidationRules struct {
 	// Validate that the WebTest returns the http status code provided.
 	ExpectedHttpStatusCode *int `pulumi:"expectedHttpStatusCode"`
 	// When set, validation will ignore the status code.
-	IgnoreHttpsStatusCode *bool `pulumi:"ignoreHttpsStatusCode"`
+	IgnoreHttpStatusCode *bool `pulumi:"ignoreHttpStatusCode"`
 	// A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
 	SSLCertRemainingLifetimeCheck *int `pulumi:"sSLCertRemainingLifetimeCheck"`
 	// Checks to see if the SSL cert is still valid.
@@ -2357,8 +2357,8 @@ func (o WebTestPropertiesResponseValidationRulesOutput) ExpectedHttpStatusCode()
 }
 
 // When set, validation will ignore the status code.
-func (o WebTestPropertiesResponseValidationRulesOutput) IgnoreHttpsStatusCode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v WebTestPropertiesResponseValidationRules) *bool { return v.IgnoreHttpsStatusCode }).(pulumi.BoolPtrOutput)
+func (o WebTestPropertiesResponseValidationRulesOutput) IgnoreHttpStatusCode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebTestPropertiesResponseValidationRules) *bool { return v.IgnoreHttpStatusCode }).(pulumi.BoolPtrOutput)
 }
 
 // A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
@@ -2416,12 +2416,12 @@ func (o WebTestPropertiesResponseValidationRulesPtrOutput) ExpectedHttpStatusCod
 }
 
 // When set, validation will ignore the status code.
-func (o WebTestPropertiesResponseValidationRulesPtrOutput) IgnoreHttpsStatusCode() pulumi.BoolPtrOutput {
+func (o WebTestPropertiesResponseValidationRulesPtrOutput) IgnoreHttpStatusCode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WebTestPropertiesResponseValidationRules) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.IgnoreHttpsStatusCode
+		return v.IgnoreHttpStatusCode
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2452,7 +2452,7 @@ type WebTestPropertiesValidationRules struct {
 	// Validate that the WebTest returns the http status code provided.
 	ExpectedHttpStatusCode *int `pulumi:"expectedHttpStatusCode"`
 	// When set, validation will ignore the status code.
-	IgnoreHttpsStatusCode *bool `pulumi:"ignoreHttpsStatusCode"`
+	IgnoreHttpStatusCode *bool `pulumi:"ignoreHttpStatusCode"`
 	// A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
 	SSLCertRemainingLifetimeCheck *int `pulumi:"sSLCertRemainingLifetimeCheck"`
 	// Checks to see if the SSL cert is still valid.
@@ -2477,7 +2477,7 @@ type WebTestPropertiesValidationRulesArgs struct {
 	// Validate that the WebTest returns the http status code provided.
 	ExpectedHttpStatusCode pulumi.IntPtrInput `pulumi:"expectedHttpStatusCode"`
 	// When set, validation will ignore the status code.
-	IgnoreHttpsStatusCode pulumi.BoolPtrInput `pulumi:"ignoreHttpsStatusCode"`
+	IgnoreHttpStatusCode pulumi.BoolPtrInput `pulumi:"ignoreHttpStatusCode"`
 	// A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
 	SSLCertRemainingLifetimeCheck pulumi.IntPtrInput `pulumi:"sSLCertRemainingLifetimeCheck"`
 	// Checks to see if the SSL cert is still valid.
@@ -2575,8 +2575,8 @@ func (o WebTestPropertiesValidationRulesOutput) ExpectedHttpStatusCode() pulumi.
 }
 
 // When set, validation will ignore the status code.
-func (o WebTestPropertiesValidationRulesOutput) IgnoreHttpsStatusCode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v WebTestPropertiesValidationRules) *bool { return v.IgnoreHttpsStatusCode }).(pulumi.BoolPtrOutput)
+func (o WebTestPropertiesValidationRulesOutput) IgnoreHttpStatusCode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebTestPropertiesValidationRules) *bool { return v.IgnoreHttpStatusCode }).(pulumi.BoolPtrOutput)
 }
 
 // A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
@@ -2634,12 +2634,12 @@ func (o WebTestPropertiesValidationRulesPtrOutput) ExpectedHttpStatusCode() pulu
 }
 
 // When set, validation will ignore the status code.
-func (o WebTestPropertiesValidationRulesPtrOutput) IgnoreHttpsStatusCode() pulumi.BoolPtrOutput {
+func (o WebTestPropertiesValidationRulesPtrOutput) IgnoreHttpStatusCode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WebTestPropertiesValidationRules) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.IgnoreHttpsStatusCode
+		return v.IgnoreHttpStatusCode
 	}).(pulumi.BoolPtrOutput)
 }
 

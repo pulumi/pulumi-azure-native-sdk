@@ -12,9 +12,9 @@ import (
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
 type MonitoringAccountResponseDefaultIngestionSettings struct {
-	// The Azure resource Id of the default data collection endpoint for this monitoring account.
+	// The Azure resource Id of the default data collection endpoint for this workspace.
 	DataCollectionEndpointResourceId string `pulumi:"dataCollectionEndpointResourceId"`
-	// The Azure resource Id of the default data collection rule for this monitoring account.
+	// The Azure resource Id of the default data collection rule for this workspace.
 	DataCollectionRuleResourceId string `pulumi:"dataCollectionRuleResourceId"`
 }
 
@@ -33,29 +33,29 @@ func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) ToMonitoringAcc
 	return o
 }
 
-// The Azure resource Id of the default data collection endpoint for this monitoring account.
+// The Azure resource Id of the default data collection endpoint for this workspace.
 func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) DataCollectionEndpointResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoringAccountResponseDefaultIngestionSettings) string {
 		return v.DataCollectionEndpointResourceId
 	}).(pulumi.StringOutput)
 }
 
-// The Azure resource Id of the default data collection rule for this monitoring account.
+// The Azure resource Id of the default data collection rule for this workspace.
 func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) DataCollectionRuleResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoringAccountResponseDefaultIngestionSettings) string {
 		return v.DataCollectionRuleResourceId
 	}).(pulumi.StringOutput)
 }
 
-// Information about metrics for the monitoring account
+// Information about metrics for the Azure Monitor workspace
 type MonitoringAccountResponseMetrics struct {
 	// An internal identifier for the metrics container. Only to be used by the system
 	InternalId string `pulumi:"internalId"`
-	// The Prometheus query endpoint for the monitoring account
+	// The Prometheus query endpoint for the workspace
 	PrometheusQueryEndpoint string `pulumi:"prometheusQueryEndpoint"`
 }
 
-// Information about metrics for the monitoring account
+// Information about metrics for the Azure Monitor workspace
 type MonitoringAccountResponseMetricsOutput struct{ *pulumi.OutputState }
 
 func (MonitoringAccountResponseMetricsOutput) ElementType() reflect.Type {
@@ -75,7 +75,7 @@ func (o MonitoringAccountResponseMetricsOutput) InternalId() pulumi.StringOutput
 	return o.ApplyT(func(v MonitoringAccountResponseMetrics) string { return v.InternalId }).(pulumi.StringOutput)
 }
 
-// The Prometheus query endpoint for the monitoring account
+// The Prometheus query endpoint for the workspace
 func (o MonitoringAccountResponseMetricsOutput) PrometheusQueryEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoringAccountResponseMetrics) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
 }

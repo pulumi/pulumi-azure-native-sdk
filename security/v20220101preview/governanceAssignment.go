@@ -97,7 +97,7 @@ type governanceAssignmentArgs struct {
 	RemediationDueDate string `pulumi:"remediationDueDate"`
 	// The ETA (estimated time of arrival) for remediation (optional), see example
 	RemediationEta *RemediationEta `pulumi:"remediationEta"`
-	// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+	// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
 	Scope string `pulumi:"scope"`
 }
 
@@ -119,7 +119,7 @@ type GovernanceAssignmentArgs struct {
 	RemediationDueDate pulumi.StringInput
 	// The ETA (estimated time of arrival) for remediation (optional), see example
 	RemediationEta RemediationEtaPtrInput
-	// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+	// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
 	Scope pulumi.StringInput
 }
 

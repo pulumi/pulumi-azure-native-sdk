@@ -1415,7 +1415,7 @@ type DataNetworkConfiguration struct {
 	DataNetwork DataNetworkResourceId `pulumi:"dataNetwork"`
 	// The default PDU session type, which is used if the UE does not request a specific session type.
 	DefaultSessionType *string `pulumi:"defaultSessionType"`
-	// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
 	MaximumNumberOfBufferedPackets *int `pulumi:"maximumNumberOfBufferedPackets"`
@@ -1483,7 +1483,7 @@ type DataNetworkConfigurationArgs struct {
 	DataNetwork DataNetworkResourceIdInput `pulumi:"dataNetwork"`
 	// The default PDU session type, which is used if the UE does not request a specific session type.
 	DefaultSessionType pulumi.StringPtrInput `pulumi:"defaultSessionType"`
-	// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi pulumi.IntPtrInput `pulumi:"fiveQi"`
 	// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
 	MaximumNumberOfBufferedPackets pulumi.IntPtrInput `pulumi:"maximumNumberOfBufferedPackets"`
@@ -1598,7 +1598,7 @@ func (o DataNetworkConfigurationOutput) DefaultSessionType() pulumi.StringPtrOut
 	return o.ApplyT(func(v DataNetworkConfiguration) *string { return v.DefaultSessionType }).(pulumi.StringPtrOutput)
 }
 
-// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o DataNetworkConfigurationOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DataNetworkConfiguration) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -1655,7 +1655,7 @@ type DataNetworkConfigurationResponse struct {
 	DataNetwork DataNetworkResourceIdResponse `pulumi:"dataNetwork"`
 	// The default PDU session type, which is used if the UE does not request a specific session type.
 	DefaultSessionType *string `pulumi:"defaultSessionType"`
-	// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
 	MaximumNumberOfBufferedPackets *int `pulumi:"maximumNumberOfBufferedPackets"`
@@ -1740,7 +1740,7 @@ func (o DataNetworkConfigurationResponseOutput) DefaultSessionType() pulumi.Stri
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) *string { return v.DefaultSessionType }).(pulumi.StringPtrOutput)
 }
 
-// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o DataNetworkConfigurationResponseOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -3682,7 +3682,7 @@ func (o PccRuleConfigurationResponseArrayOutput) Index(i pulumi.IntInput) PccRul
 type PccRuleQosPolicy struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The guaranteed bit rate (GBR) for all service data flows that use this data flow policy rule. This is an optional setting. If you do not provide a value, there will be no GBR set for the data flow policy rule that uses this QoS definition.
 	GuaranteedBitRate *Ambr `pulumi:"guaranteedBitRate"`
@@ -3734,7 +3734,7 @@ type PccRuleQosPolicyInput interface {
 type PccRuleQosPolicyArgs struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel pulumi.IntPtrInput `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi pulumi.IntPtrInput `pulumi:"fiveQi"`
 	// The guaranteed bit rate (GBR) for all service data flows that use this data flow policy rule. This is an optional setting. If you do not provide a value, there will be no GBR set for the data flow policy rule that uses this QoS definition.
 	GuaranteedBitRate AmbrPtrInput `pulumi:"guaranteedBitRate"`
@@ -3849,7 +3849,7 @@ func (o PccRuleQosPolicyOutput) AllocationAndRetentionPriorityLevel() pulumi.Int
 	return o.ApplyT(func(v PccRuleQosPolicy) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PccRuleQosPolicy) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -3908,7 +3908,7 @@ func (o PccRuleQosPolicyPtrOutput) AllocationAndRetentionPriorityLevel() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyPtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PccRuleQosPolicy) *int {
 		if v == nil {
@@ -3962,7 +3962,7 @@ func (o PccRuleQosPolicyPtrOutput) PreemptionVulnerability() pulumi.StringPtrOut
 type PccRuleQosPolicyResponse struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The guaranteed bit rate (GBR) for all service data flows that use this data flow policy rule. This is an optional setting. If you do not provide a value, there will be no GBR set for the data flow policy rule that uses this QoS definition.
 	GuaranteedBitRate *AmbrResponse `pulumi:"guaranteedBitRate"`
@@ -4019,7 +4019,7 @@ func (o PccRuleQosPolicyResponseOutput) AllocationAndRetentionPriorityLevel() pu
 	return o.ApplyT(func(v PccRuleQosPolicyResponse) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyResponseOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PccRuleQosPolicyResponse) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -4078,7 +4078,7 @@ func (o PccRuleQosPolicyResponsePtrOutput) AllocationAndRetentionPriorityLevel()
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyResponsePtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PccRuleQosPolicyResponse) *int {
 		if v == nil {
@@ -5296,7 +5296,7 @@ func (o PortReuseHoldTimesResponsePtrOutput) Udp() pulumi.IntPtrOutput {
 type QosPolicy struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The maximum bit rate (MBR) for all service data flows that use this data flow policy rule or service.
 	MaximumBitRate Ambr `pulumi:"maximumBitRate"`
@@ -5346,7 +5346,7 @@ type QosPolicyInput interface {
 type QosPolicyArgs struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel pulumi.IntPtrInput `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi pulumi.IntPtrInput `pulumi:"fiveQi"`
 	// The maximum bit rate (MBR) for all service data flows that use this data flow policy rule or service.
 	MaximumBitRate AmbrInput `pulumi:"maximumBitRate"`
@@ -5459,7 +5459,7 @@ func (o QosPolicyOutput) AllocationAndRetentionPriorityLevel() pulumi.IntPtrOutp
 	return o.ApplyT(func(v QosPolicy) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QosPolicy) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -5513,7 +5513,7 @@ func (o QosPolicyPtrOutput) AllocationAndRetentionPriorityLevel() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyPtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *QosPolicy) *int {
 		if v == nil {
@@ -5557,7 +5557,7 @@ func (o QosPolicyPtrOutput) PreemptionVulnerability() pulumi.StringPtrOutput {
 type QosPolicyResponse struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The maximum bit rate (MBR) for all service data flows that use this data flow policy rule or service.
 	MaximumBitRate AmbrResponse `pulumi:"maximumBitRate"`
@@ -5612,7 +5612,7 @@ func (o QosPolicyResponseOutput) AllocationAndRetentionPriorityLevel() pulumi.In
 	return o.ApplyT(func(v QosPolicyResponse) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyResponseOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QosPolicyResponse) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -5666,7 +5666,7 @@ func (o QosPolicyResponsePtrOutput) AllocationAndRetentionPriorityLevel() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyResponsePtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *QosPolicyResponse) *int {
 		if v == nil {

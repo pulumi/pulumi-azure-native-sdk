@@ -37,7 +37,7 @@ type GovernanceRule struct {
 	OwnerSource GovernanceRuleOwnerSourceResponseOutput `pulumi:"ownerSource"`
 	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 	RemediationTimeframe pulumi.StringPtrOutput `pulumi:"remediationTimeframe"`
-	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+	// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
 	RulePriority pulumi.IntOutput `pulumi:"rulePriority"`
 	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 	RuleType pulumi.StringOutput `pulumi:"ruleType"`
@@ -67,6 +67,9 @@ func NewGovernanceRule(ctx *pulumi.Context,
 	}
 	if args.RuleType == nil {
 		return nil, errors.New("invalid value for required argument 'RuleType'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	if args.SourceResourceType == nil {
 		return nil, errors.New("invalid value for required argument 'SourceResourceType'")
@@ -123,10 +126,12 @@ type governanceRuleArgs struct {
 	RemediationTimeframe *string `pulumi:"remediationTimeframe"`
 	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId *string `pulumi:"ruleId"`
-	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+	// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
 	RulePriority int `pulumi:"rulePriority"`
 	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 	RuleType string `pulumi:"ruleType"`
+	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	Scope string `pulumi:"scope"`
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType string `pulumi:"sourceResourceType"`
 }
@@ -153,10 +158,12 @@ type GovernanceRuleArgs struct {
 	RemediationTimeframe pulumi.StringPtrInput
 	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId pulumi.StringPtrInput
-	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+	// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
 	RulePriority pulumi.IntInput
 	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 	RuleType pulumi.StringInput
+	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	Scope pulumi.StringInput
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType pulumi.StringInput
 }
@@ -255,7 +262,7 @@ func (o GovernanceRuleOutput) RemediationTimeframe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringPtrOutput { return v.RemediationTimeframe }).(pulumi.StringPtrOutput)
 }
 
-// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
 func (o GovernanceRuleOutput) RulePriority() pulumi.IntOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.IntOutput { return v.RulePriority }).(pulumi.IntOutput)
 }
