@@ -557,6 +557,19 @@ type KeyAttributes struct {
 	NotBefore *float64 `pulumi:"notBefore"`
 }
 
+// Defaults sets the appropriate defaults for KeyAttributes
+func (val *KeyAttributes) Defaults() *KeyAttributes {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Exportable) {
+		exportable_ := false
+		tmp.Exportable = &exportable_
+	}
+	return &tmp
+}
+
 // KeyAttributesInput is an input type that accepts KeyAttributesArgs and KeyAttributesOutput values.
 // You can construct a concrete instance of `KeyAttributesInput` via:
 //
@@ -580,6 +593,17 @@ type KeyAttributesArgs struct {
 	NotBefore pulumi.Float64PtrInput `pulumi:"notBefore"`
 }
 
+// Defaults sets the appropriate defaults for KeyAttributesArgs
+func (val *KeyAttributesArgs) Defaults() *KeyAttributesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Exportable) {
+		tmp.Exportable = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (KeyAttributesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyAttributes)(nil)).Elem()
 }
@@ -760,6 +784,19 @@ type KeyAttributesResponse struct {
 	Updated float64 `pulumi:"updated"`
 }
 
+// Defaults sets the appropriate defaults for KeyAttributesResponse
+func (val *KeyAttributesResponse) Defaults() *KeyAttributesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.Exportable) {
+		exportable_ := false
+		tmp.Exportable = &exportable_
+	}
+	return &tmp
+}
+
 // The object attributes managed by the Azure Key Vault service.
 type KeyAttributesResponseOutput struct{ *pulumi.OutputState }
 
@@ -927,6 +964,8 @@ func (val *KeyProperties) Defaults() *KeyProperties {
 		return nil
 	}
 	tmp := *val
+	tmp.Attributes = tmp.Attributes.Defaults()
+
 	tmp.ReleasePolicy = tmp.ReleasePolicy.Defaults()
 
 	return &tmp

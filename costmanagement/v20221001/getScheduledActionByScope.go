@@ -31,7 +31,7 @@ type LookupScheduledActionByScopeArgs struct {
 type LookupScheduledActionByScopeResult struct {
 	// Scheduled action name.
 	DisplayName string `pulumi:"displayName"`
-	// Resource Etag.
+	// Resource Etag. For update calls, eTag is mandatory. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
 	ETag string `pulumi:"eTag"`
 	// Destination format of the view data. This is optional.
 	FileDestination *FileDestinationResponse `pulumi:"fileDestination"`
@@ -103,7 +103,7 @@ func (o LookupScheduledActionByScopeResultOutput) DisplayName() pulumi.StringOut
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource Etag.
+// Resource Etag. For update calls, eTag is mandatory. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
 func (o LookupScheduledActionByScopeResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.ETag }).(pulumi.StringOutput)
 }

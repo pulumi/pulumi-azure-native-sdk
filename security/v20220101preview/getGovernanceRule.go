@@ -23,6 +23,8 @@ func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, o
 type LookupGovernanceRuleArgs struct {
 	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId string `pulumi:"ruleId"`
+	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	Scope string `pulumi:"scope"`
 }
 
 // Governance rule over a given scope
@@ -51,7 +53,7 @@ type LookupGovernanceRuleResult struct {
 	OwnerSource GovernanceRuleOwnerSourceResponse `pulumi:"ownerSource"`
 	// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
 	RemediationTimeframe *string `pulumi:"remediationTimeframe"`
-	// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+	// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
 	RulePriority int `pulumi:"rulePriority"`
 	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 	RuleType string `pulumi:"ruleType"`
@@ -79,6 +81,8 @@ func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOu
 type LookupGovernanceRuleOutputArgs struct {
 	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (LookupGovernanceRuleOutputArgs) ElementType() reflect.Type {
@@ -162,7 +166,7 @@ func (o LookupGovernanceRuleResultOutput) RemediationTimeframe() pulumi.StringPt
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *string { return v.RemediationTimeframe }).(pulumi.StringPtrOutput)
 }
 
-// The governance rule priority, priority to the lower number. Rules with the same priority on the same subscription will not be allowed
+// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
 func (o LookupGovernanceRuleResultOutput) RulePriority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) int { return v.RulePriority }).(pulumi.IntOutput)
 }
