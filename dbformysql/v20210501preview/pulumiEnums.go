@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Source of the configuration.
+type ConfigurationSource string
+
+const (
+	ConfigurationSource_System_Default = ConfigurationSource("system-default")
+	ConfigurationSource_User_Override  = ConfigurationSource("user-override")
+)
+
 // The mode to create a new MySQL server.
 type CreateMode string
 
