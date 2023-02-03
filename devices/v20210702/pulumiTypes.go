@@ -5048,7 +5048,7 @@ type RoutingProperties struct {
 	Endpoints *RoutingEndpoints `pulumi:"endpoints"`
 	// The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid
 	Enrichments []EnrichmentProperties `pulumi:"enrichments"`
-	// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+	// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 	FallbackRoute *FallbackRouteProperties `pulumi:"fallbackRoute"`
 	// The list of user-provided routing rules that the IoT hub uses to route messages to built-in and custom endpoints. A maximum of 100 routing rules are allowed for paid hubs and a maximum of 5 routing rules are allowed for free hubs.
 	Routes []RouteProperties `pulumi:"routes"`
@@ -5071,7 +5071,7 @@ type RoutingPropertiesArgs struct {
 	Endpoints RoutingEndpointsPtrInput `pulumi:"endpoints"`
 	// The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid
 	Enrichments EnrichmentPropertiesArrayInput `pulumi:"enrichments"`
-	// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+	// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 	FallbackRoute FallbackRoutePropertiesPtrInput `pulumi:"fallbackRoute"`
 	// The list of user-provided routing rules that the IoT hub uses to route messages to built-in and custom endpoints. A maximum of 100 routing rules are allowed for paid hubs and a maximum of 5 routing rules are allowed for free hubs.
 	Routes RoutePropertiesArrayInput `pulumi:"routes"`
@@ -5165,7 +5165,7 @@ func (o RoutingPropertiesOutput) Enrichments() EnrichmentPropertiesArrayOutput {
 	return o.ApplyT(func(v RoutingProperties) []EnrichmentProperties { return v.Enrichments }).(EnrichmentPropertiesArrayOutput)
 }
 
-// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 func (o RoutingPropertiesOutput) FallbackRoute() FallbackRoutePropertiesPtrOutput {
 	return o.ApplyT(func(v RoutingProperties) *FallbackRouteProperties { return v.FallbackRoute }).(FallbackRoutePropertiesPtrOutput)
 }
@@ -5219,7 +5219,7 @@ func (o RoutingPropertiesPtrOutput) Enrichments() EnrichmentPropertiesArrayOutpu
 	}).(EnrichmentPropertiesArrayOutput)
 }
 
-// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 func (o RoutingPropertiesPtrOutput) FallbackRoute() FallbackRoutePropertiesPtrOutput {
 	return o.ApplyT(func(v *RoutingProperties) *FallbackRouteProperties {
 		if v == nil {
@@ -5245,7 +5245,7 @@ type RoutingPropertiesResponse struct {
 	Endpoints *RoutingEndpointsResponse `pulumi:"endpoints"`
 	// The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid
 	Enrichments []EnrichmentPropertiesResponse `pulumi:"enrichments"`
-	// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+	// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 	FallbackRoute *FallbackRoutePropertiesResponse `pulumi:"fallbackRoute"`
 	// The list of user-provided routing rules that the IoT hub uses to route messages to built-in and custom endpoints. A maximum of 100 routing rules are allowed for paid hubs and a maximum of 5 routing rules are allowed for free hubs.
 	Routes []RoutePropertiesResponse `pulumi:"routes"`
@@ -5276,7 +5276,7 @@ func (o RoutingPropertiesResponseOutput) Enrichments() EnrichmentPropertiesRespo
 	return o.ApplyT(func(v RoutingPropertiesResponse) []EnrichmentPropertiesResponse { return v.Enrichments }).(EnrichmentPropertiesResponseArrayOutput)
 }
 
-// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 func (o RoutingPropertiesResponseOutput) FallbackRoute() FallbackRoutePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v RoutingPropertiesResponse) *FallbackRoutePropertiesResponse { return v.FallbackRoute }).(FallbackRoutePropertiesResponsePtrOutput)
 }
@@ -5330,7 +5330,7 @@ func (o RoutingPropertiesResponsePtrOutput) Enrichments() EnrichmentPropertiesRe
 	}).(EnrichmentPropertiesResponseArrayOutput)
 }
 
-// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not set, the messages which do not meet any of the conditions specified in the 'routes' section get routed to the built-in eventhub endpoint.
+// The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
 func (o RoutingPropertiesResponsePtrOutput) FallbackRoute() FallbackRoutePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *RoutingPropertiesResponse) *FallbackRoutePropertiesResponse {
 		if v == nil {

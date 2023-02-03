@@ -70,7 +70,13 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:keyvault/v20211101preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:keyvault/v20220201preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:keyvault/v20220701:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20221101:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
