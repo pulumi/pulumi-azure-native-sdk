@@ -250,7 +250,7 @@ type ActiveDirectory struct {
 	Site *string `pulumi:"site"`
 	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
 	SmbServerName *string `pulumi:"smbServerName"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username *string `pulumi:"username"`
 }
 
@@ -318,7 +318,7 @@ type ActiveDirectoryArgs struct {
 	Site pulumi.StringPtrInput `pulumi:"site"`
 	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
 	SmbServerName pulumi.StringPtrInput `pulumi:"smbServerName"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -480,7 +480,7 @@ func (o ActiveDirectoryOutput) SmbServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
 }
 
-// Username of Active Directory domain administrator
+// A domain user account with permission to create machine accounts
 func (o ActiveDirectoryOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -549,7 +549,7 @@ type ActiveDirectoryResponse struct {
 	Status string `pulumi:"status"`
 	// Any details in regards to the Status of the Active Directory
 	StatusDetails string `pulumi:"statusDetails"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username *string `pulumi:"username"`
 }
 
@@ -686,7 +686,7 @@ func (o ActiveDirectoryResponseOutput) StatusDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) string { return v.StatusDetails }).(pulumi.StringOutput)
 }
 
-// Username of Active Directory domain administrator
+// A domain user account with permission to create machine accounts
 func (o ActiveDirectoryResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -3886,7 +3886,7 @@ type VolumeGroupVolumeProperties struct {
 	ThroughputMibps *float64          `pulumi:"throughputMibps"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
 	VolumeSpecName *string `pulumi:"volumeSpecName"`
@@ -4042,7 +4042,7 @@ type VolumeGroupVolumePropertiesArgs struct {
 	ThroughputMibps pulumi.Float64PtrInput `pulumi:"throughputMibps"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions pulumi.StringPtrInput `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold pulumi.Float64Input `pulumi:"usageThreshold"`
 	// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
 	VolumeSpecName pulumi.StringPtrInput `pulumi:"volumeSpecName"`
@@ -4317,7 +4317,7 @@ func (o VolumeGroupVolumePropertiesOutput) UnixPermissions() pulumi.StringPtrOut
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o VolumeGroupVolumePropertiesOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }
@@ -4356,6 +4356,8 @@ func (o VolumeGroupVolumePropertiesArrayOutput) Index(i pulumi.IntInput) VolumeG
 type VolumeGroupVolumePropertiesResponse struct {
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore *string `pulumi:"avsDataStore"`
+	// UUID v4 or resource identifier used to identify the Backup.
+	BackupId *string `pulumi:"backupId"`
 	// Unique Baremetal Tenant Identifier.
 	BaremetalTenantId string `pulumi:"baremetalTenantId"`
 	// Pool Resource Id used in case of creating a volume through volume group
@@ -4424,6 +4426,8 @@ type VolumeGroupVolumePropertiesResponse struct {
 	SmbEncryption *bool `pulumi:"smbEncryption"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
+	// UUID v4 or resource identifier used to identify the Snapshot.
+	SnapshotId *string `pulumi:"snapshotId"`
 	// Provides storage to network proximity information for the volume.
 	StorageToNetworkProximity string `pulumi:"storageToNetworkProximity"`
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
@@ -4437,7 +4441,7 @@ type VolumeGroupVolumePropertiesResponse struct {
 	Type string `pulumi:"type"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume Group Name
 	VolumeGroupName string `pulumi:"volumeGroupName"`
@@ -4537,6 +4541,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ToVolumeGroupVolumeProperties
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 func (o VolumeGroupVolumePropertiesResponseOutput) AvsDataStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.AvsDataStore }).(pulumi.StringPtrOutput)
+}
+
+// UUID v4 or resource identifier used to identify the Backup.
+func (o VolumeGroupVolumePropertiesResponseOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
 
 // Unique Baremetal Tenant Identifier.
@@ -4713,6 +4722,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) SnapshotDirectoryVisible() pu
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.SnapshotDirectoryVisible }).(pulumi.BoolPtrOutput)
 }
 
+// UUID v4 or resource identifier used to identify the Snapshot.
+func (o VolumeGroupVolumePropertiesResponseOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
 // Provides storage to network proximity information for the volume.
 func (o VolumeGroupVolumePropertiesResponseOutput) StorageToNetworkProximity() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) string { return v.StorageToNetworkProximity }).(pulumi.StringOutput)
@@ -4747,7 +4761,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) UnixPermissions() pulumi.Stri
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o VolumeGroupVolumePropertiesResponseOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }

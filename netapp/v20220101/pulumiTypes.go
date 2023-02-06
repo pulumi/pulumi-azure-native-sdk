@@ -250,7 +250,7 @@ type ActiveDirectory struct {
 	Site *string `pulumi:"site"`
 	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
 	SmbServerName *string `pulumi:"smbServerName"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username *string `pulumi:"username"`
 }
 
@@ -318,7 +318,7 @@ type ActiveDirectoryArgs struct {
 	Site pulumi.StringPtrInput `pulumi:"site"`
 	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
 	SmbServerName pulumi.StringPtrInput `pulumi:"smbServerName"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -480,7 +480,7 @@ func (o ActiveDirectoryOutput) SmbServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
 }
 
-// Username of Active Directory domain administrator
+// A domain user account with permission to create machine accounts
 func (o ActiveDirectoryOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -549,7 +549,7 @@ type ActiveDirectoryResponse struct {
 	Status string `pulumi:"status"`
 	// Any details in regards to the Status of the Active Directory
 	StatusDetails string `pulumi:"statusDetails"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username *string `pulumi:"username"`
 }
 
@@ -686,7 +686,7 @@ func (o ActiveDirectoryResponseOutput) StatusDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) string { return v.StatusDetails }).(pulumi.StringOutput)
 }
 
-// Username of Active Directory domain administrator
+// A domain user account with permission to create machine accounts
 func (o ActiveDirectoryResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -4347,6 +4347,8 @@ func (o VolumeGroupVolumePropertiesArrayOutput) Index(i pulumi.IntInput) VolumeG
 type VolumeGroupVolumePropertiesResponse struct {
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore *string `pulumi:"avsDataStore"`
+	// UUID v4 or resource identifier used to identify the Backup.
+	BackupId *string `pulumi:"backupId"`
 	// Unique Baremetal Tenant Identifier.
 	BaremetalTenantId string `pulumi:"baremetalTenantId"`
 	// Pool Resource Id used in case of creating a volume through volume group
@@ -4413,6 +4415,8 @@ type VolumeGroupVolumePropertiesResponse struct {
 	SmbEncryption *bool `pulumi:"smbEncryption"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
+	// UUID v4 or resource identifier used to identify the Snapshot.
+	SnapshotId *string `pulumi:"snapshotId"`
 	// Provides storage to network proximity information for the volume.
 	StorageToNetworkProximity string `pulumi:"storageToNetworkProximity"`
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
@@ -4526,6 +4530,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ToVolumeGroupVolumeProperties
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 func (o VolumeGroupVolumePropertiesResponseOutput) AvsDataStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.AvsDataStore }).(pulumi.StringPtrOutput)
+}
+
+// UUID v4 or resource identifier used to identify the Backup.
+func (o VolumeGroupVolumePropertiesResponseOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
 
 // Unique Baremetal Tenant Identifier.
@@ -4695,6 +4704,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) SmbEncryption() pulumi.BoolPt
 // If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 func (o VolumeGroupVolumePropertiesResponseOutput) SnapshotDirectoryVisible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.SnapshotDirectoryVisible }).(pulumi.BoolPtrOutput)
+}
+
+// UUID v4 or resource identifier used to identify the Snapshot.
+func (o VolumeGroupVolumePropertiesResponseOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
 // Provides storage to network proximity information for the volume.
