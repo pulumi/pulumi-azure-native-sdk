@@ -38,7 +38,7 @@ type ActiveDirectory struct {
 	Site *string `pulumi:"site"`
 	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
 	SmbServerName *string `pulumi:"smbServerName"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username *string `pulumi:"username"`
 }
 
@@ -98,7 +98,7 @@ type ActiveDirectoryArgs struct {
 	Site pulumi.StringPtrInput `pulumi:"site"`
 	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
 	SmbServerName pulumi.StringPtrInput `pulumi:"smbServerName"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -233,7 +233,7 @@ func (o ActiveDirectoryOutput) SmbServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
 }
 
-// Username of Active Directory domain administrator
+// A domain user account with permission to create machine accounts
 func (o ActiveDirectoryOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -290,7 +290,7 @@ type ActiveDirectoryResponse struct {
 	Status string `pulumi:"status"`
 	// Any details in regards to the Status of the Active Directory
 	StatusDetails string `pulumi:"statusDetails"`
-	// Username of Active Directory domain administrator
+	// A domain user account with permission to create machine accounts
 	Username *string `pulumi:"username"`
 }
 
@@ -401,7 +401,7 @@ func (o ActiveDirectoryResponseOutput) StatusDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) string { return v.StatusDetails }).(pulumi.StringOutput)
 }
 
-// Username of Active Directory domain administrator
+// A domain user account with permission to create machine accounts
 func (o ActiveDirectoryResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
