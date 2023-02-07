@@ -116,6 +116,9 @@ func NewCosmosDbDataConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20220707:CosmosDbDataConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:CosmosDbDataConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CosmosDbDataConnection

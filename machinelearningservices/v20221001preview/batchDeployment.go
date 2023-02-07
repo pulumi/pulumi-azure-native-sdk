@@ -73,6 +73,9 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001:BatchDeployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:BatchDeployment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource BatchDeployment
