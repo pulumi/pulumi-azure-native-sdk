@@ -35,6 +35,8 @@ type LookupVolumeArgs struct {
 type LookupVolumeResult struct {
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore *string `pulumi:"avsDataStore"`
+	// UUID v4 or resource identifier used to identify the Backup.
+	BackupId *string `pulumi:"backupId"`
 	// Unique Baremetal Tenant Identifier.
 	BaremetalTenantId string `pulumi:"baremetalTenantId"`
 	// Pool Resource Id used in case of creating a volume through volume group
@@ -113,6 +115,8 @@ type LookupVolumeResult struct {
 	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
+	// UUID v4 or resource identifier used to identify the Snapshot.
+	SnapshotId *string `pulumi:"snapshotId"`
 	// Provides storage to network proximity information for the volume.
 	StorageToNetworkProximity string `pulumi:"storageToNetworkProximity"`
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
@@ -128,7 +132,7 @@ type LookupVolumeResult struct {
 	Type string `pulumi:"type"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume Group Name
 	VolumeGroupName string `pulumi:"volumeGroupName"`
@@ -258,6 +262,11 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 func (o LookupVolumeResultOutput) AvsDataStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *string { return v.AvsDataStore }).(pulumi.StringPtrOutput)
+}
+
+// UUID v4 or resource identifier used to identify the Backup.
+func (o LookupVolumeResultOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
 
 // Unique Baremetal Tenant Identifier.
@@ -455,6 +464,11 @@ func (o LookupVolumeResultOutput) SnapshotDirectoryVisible() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v LookupVolumeResult) *bool { return v.SnapshotDirectoryVisible }).(pulumi.BoolPtrOutput)
 }
 
+// UUID v4 or resource identifier used to identify the Snapshot.
+func (o LookupVolumeResultOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
 // Provides storage to network proximity information for the volume.
 func (o LookupVolumeResultOutput) StorageToNetworkProximity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.StorageToNetworkProximity }).(pulumi.StringOutput)
@@ -494,7 +508,7 @@ func (o LookupVolumeResultOutput) UnixPermissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o LookupVolumeResultOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupVolumeResult) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }
