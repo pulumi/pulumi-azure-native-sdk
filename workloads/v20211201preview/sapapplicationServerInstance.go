@@ -74,6 +74,9 @@ func NewSAPApplicationServerInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads:SAPApplicationServerInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20221101preview:SAPApplicationServerInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SAPApplicationServerInstance

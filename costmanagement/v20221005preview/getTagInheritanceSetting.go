@@ -21,7 +21,7 @@ func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritance
 }
 
 type LookupTagInheritanceSettingArgs struct {
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope string `pulumi:"scope"`
 	// Setting type.
 	Type string `pulumi:"type"`
@@ -58,7 +58,7 @@ func LookupTagInheritanceSettingOutput(ctx *pulumi.Context, args LookupTagInheri
 }
 
 type LookupTagInheritanceSettingOutputArgs struct {
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Setting type.
 	Type pulumi.StringInput `pulumi:"type"`
