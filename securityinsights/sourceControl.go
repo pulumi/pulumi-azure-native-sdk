@@ -116,6 +116,9 @@ func NewSourceControl(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20221201preview:SourceControl"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201preview:SourceControl"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SourceControl
