@@ -10,6 +10,138 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A copy activity SQL Data Warehouse sink.
+type SqlDWSink struct {
+	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+	AllowCopyCommand interface{} `pulumi:"allowCopyCommand"`
+	// Indicates to use PolyBase to copy data into SQL Data Warehouse when applicable. Type: boolean (or Expression with resultType boolean).
+	AllowPolyBase interface{} `pulumi:"allowPolyBase"`
+	// Specifies Copy Command related settings when allowCopyCommand is true.
+	CopyCommandSettings *DWCopyCommandSettings `pulumi:"copyCommandSettings"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specifies PolyBase-related settings when allowPolyBase is true.
+	PolyBaseSettings *PolybaseSettings `pulumi:"polyBaseSettings"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
+	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption interface{} `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'SqlDWSink'.
+	Type string `pulumi:"type"`
+	// SQL DW upsert settings.
+	UpsertSettings *SqlDWUpsertSettings `pulumi:"upsertSettings"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// Write behavior when copying data into azure SQL DW. Type: SqlDWWriteBehaviorEnum (or Expression with resultType SqlDWWriteBehaviorEnum)
+	WriteBehavior interface{} `pulumi:"writeBehavior"`
+}
+
+// A copy activity SQL Data Warehouse sink.
+type SqlDWSinkResponse struct {
+	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+	AllowCopyCommand interface{} `pulumi:"allowCopyCommand"`
+	// Indicates to use PolyBase to copy data into SQL Data Warehouse when applicable. Type: boolean (or Expression with resultType boolean).
+	AllowPolyBase interface{} `pulumi:"allowPolyBase"`
+	// Specifies Copy Command related settings when allowCopyCommand is true.
+	CopyCommandSettings *DWCopyCommandSettingsResponse `pulumi:"copyCommandSettings"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specifies PolyBase-related settings when allowPolyBase is true.
+	PolyBaseSettings *PolybaseSettingsResponse `pulumi:"polyBaseSettings"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
+	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption interface{} `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'SqlDWSink'.
+	Type string `pulumi:"type"`
+	// SQL DW upsert settings.
+	UpsertSettings *SqlDWUpsertSettingsResponse `pulumi:"upsertSettings"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// Write behavior when copying data into azure SQL DW. Type: SqlDWWriteBehaviorEnum (or Expression with resultType SqlDWWriteBehaviorEnum)
+	WriteBehavior interface{} `pulumi:"writeBehavior"`
+}
+
+// A copy activity SQL Data Warehouse source.
+type SqlDWSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// The settings that will be leveraged for Sql source partitioning.
+	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// SQL Data Warehouse reader query. Type: string (or Expression with resultType string).
+	SqlReaderQuery interface{} `pulumi:"sqlReaderQuery"`
+	// Name of the stored procedure for a SQL Data Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
+	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
+	// Copy source type.
+	// Expected value is 'SqlDWSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity SQL Data Warehouse source.
+type SqlDWSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// The settings that will be leveraged for Sql source partitioning.
+	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// SQL Data Warehouse reader query. Type: string (or Expression with resultType string).
+	SqlReaderQuery interface{} `pulumi:"sqlReaderQuery"`
+	// Name of the stored procedure for a SQL Data Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
+	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
+	// Copy source type.
+	// Expected value is 'SqlDWSource'.
+	Type string `pulumi:"type"`
+}
+
 // Sql DW upsert option settings
 type SqlDWUpsertSettings struct {
 	// Schema name for interim table. Type: string (or Expression with resultType string).

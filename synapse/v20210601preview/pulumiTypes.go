@@ -1648,6 +1648,10 @@ func (o DynamicExecutorAllocationPtrOutput) MinExecutors() pulumi.IntPtrOutput {
 type DynamicExecutorAllocationResponse struct {
 	// Indicates whether Dynamic Executor Allocation is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
+	// The maximum number of executors alloted
+	MaxExecutors *int `pulumi:"maxExecutors"`
+	// The minimum number of executors alloted
+	MinExecutors *int `pulumi:"minExecutors"`
 }
 
 // Dynamic Executor Allocation Properties
@@ -1668,6 +1672,16 @@ func (o DynamicExecutorAllocationResponseOutput) ToDynamicExecutorAllocationResp
 // Indicates whether Dynamic Executor Allocation is enabled or not.
 func (o DynamicExecutorAllocationResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DynamicExecutorAllocationResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of executors alloted
+func (o DynamicExecutorAllocationResponseOutput) MaxExecutors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DynamicExecutorAllocationResponse) *int { return v.MaxExecutors }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of executors alloted
+func (o DynamicExecutorAllocationResponseOutput) MinExecutors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DynamicExecutorAllocationResponse) *int { return v.MinExecutors }).(pulumi.IntPtrOutput)
 }
 
 type DynamicExecutorAllocationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1702,6 +1716,26 @@ func (o DynamicExecutorAllocationResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of executors alloted
+func (o DynamicExecutorAllocationResponsePtrOutput) MaxExecutors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DynamicExecutorAllocationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxExecutors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of executors alloted
+func (o DynamicExecutorAllocationResponsePtrOutput) MinExecutors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DynamicExecutorAllocationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinExecutors
+	}).(pulumi.IntPtrOutput)
 }
 
 // Details of the encryption associated with the workspace
@@ -2509,8 +2543,6 @@ type LibraryInfo struct {
 	Path *string `pulumi:"path"`
 	// Type of the library.
 	Type *string `pulumi:"type"`
-	// The last update time of the library.
-	UploadedTimestamp *string `pulumi:"uploadedTimestamp"`
 }
 
 // LibraryInfoInput is an input type that accepts LibraryInfoArgs and LibraryInfoOutput values.
@@ -2534,8 +2566,6 @@ type LibraryInfoArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Type of the library.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The last update time of the library.
-	UploadedTimestamp pulumi.StringPtrInput `pulumi:"uploadedTimestamp"`
 }
 
 func (LibraryInfoArgs) ElementType() reflect.Type {
@@ -2610,11 +2640,6 @@ func (o LibraryInfoOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LibraryInfo) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The last update time of the library.
-func (o LibraryInfoOutput) UploadedTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LibraryInfo) *string { return v.UploadedTimestamp }).(pulumi.StringPtrOutput)
-}
-
 type LibraryInfoArrayOutput struct{ *pulumi.OutputState }
 
 func (LibraryInfoArrayOutput) ElementType() reflect.Type {
@@ -2650,7 +2675,7 @@ type LibraryInfoResponse struct {
 	// Type of the library.
 	Type *string `pulumi:"type"`
 	// The last update time of the library.
-	UploadedTimestamp *string `pulumi:"uploadedTimestamp"`
+	UploadedTimestamp string `pulumi:"uploadedTimestamp"`
 }
 
 // Library/package information of a Big Data pool powered by Apache Spark
@@ -2699,8 +2724,8 @@ func (o LibraryInfoResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The last update time of the library.
-func (o LibraryInfoResponseOutput) UploadedTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LibraryInfoResponse) *string { return v.UploadedTimestamp }).(pulumi.StringPtrOutput)
+func (o LibraryInfoResponseOutput) UploadedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LibraryInfoResponse) string { return v.UploadedTimestamp }).(pulumi.StringOutput)
 }
 
 type LibraryInfoResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4845,7 +4870,8 @@ type SelfHostedIntegrationRuntimeStatusResponse struct {
 	// The node communication Channel encryption mode
 	NodeCommunicationChannelEncryptionMode string `pulumi:"nodeCommunicationChannelEncryptionMode"`
 	// The list of nodes for this integration runtime.
-	Nodes []SelfHostedIntegrationRuntimeNodeResponse `pulumi:"nodes"`
+	Nodes  []SelfHostedIntegrationRuntimeNodeResponse `pulumi:"nodes"`
+	OsType int                                        `pulumi:"osType"`
 	// The version that the integration runtime is going to update to.
 	PushedVersion string `pulumi:"pushedVersion"`
 	// The date at which the integration runtime will be scheduled to update, in ISO8601 format.
@@ -4855,7 +4881,8 @@ type SelfHostedIntegrationRuntimeStatusResponse struct {
 	// The URLs for the services used in integration runtime backend service.
 	ServiceUrls []string `pulumi:"serviceUrls"`
 	// The state of integration runtime.
-	State string `pulumi:"state"`
+	State           string `pulumi:"state"`
+	TargetFramework int    `pulumi:"targetFramework"`
 	// The task queue id of the integration runtime.
 	TaskQueueId string `pulumi:"taskQueueId"`
 	// The type of integration runtime.
