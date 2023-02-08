@@ -64,7 +64,13 @@ func NewMHSMPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:keyvault/v20211101preview:MHSMPrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:keyvault/v20220201preview:MHSMPrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:keyvault/v20220701:MHSMPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20221101:MHSMPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

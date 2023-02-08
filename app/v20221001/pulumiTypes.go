@@ -7272,8 +7272,8 @@ func (o CorsPolicyResponsePtrOutput) MaxAge() pulumi.IntPtrOutput {
 type CustomDomain struct {
 	// Custom Domain binding type.
 	BindingType *string `pulumi:"bindingType"`
-	// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-	CertificateId string `pulumi:"certificateId"`
+	// Resource Id of the Certificate to be bound to this hostname.
+	CertificateId *string `pulumi:"certificateId"`
 	// Hostname.
 	Name string `pulumi:"name"`
 }
@@ -7293,8 +7293,8 @@ type CustomDomainInput interface {
 type CustomDomainArgs struct {
 	// Custom Domain binding type.
 	BindingType pulumi.StringPtrInput `pulumi:"bindingType"`
-	// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// Resource Id of the Certificate to be bound to this hostname.
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	// Hostname.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -7356,9 +7356,9 @@ func (o CustomDomainOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomain) *string { return v.BindingType }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-func (o CustomDomainOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomDomain) string { return v.CertificateId }).(pulumi.StringOutput)
+// Resource Id of the Certificate to be bound to this hostname.
+func (o CustomDomainOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomain) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 // Hostname.
@@ -7730,8 +7730,8 @@ func (o CustomDomainConfigurationResponsePtrOutput) Thumbprint() pulumi.StringPt
 type CustomDomainResponse struct {
 	// Custom Domain binding type.
 	BindingType *string `pulumi:"bindingType"`
-	// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-	CertificateId string `pulumi:"certificateId"`
+	// Resource Id of the Certificate to be bound to this hostname.
+	CertificateId *string `pulumi:"certificateId"`
 	// Hostname.
 	Name string `pulumi:"name"`
 }
@@ -7756,9 +7756,9 @@ func (o CustomDomainResponseOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomainResponse) *string { return v.BindingType }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-func (o CustomDomainResponseOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomDomainResponse) string { return v.CertificateId }).(pulumi.StringOutput)
+// Resource Id of the Certificate to be bound to this hostname.
+func (o CustomDomainResponseOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainResponse) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 // Hostname.
