@@ -10,6 +10,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// HDInsight Pig activity type.
+type HDInsightPigActivity struct {
+	// User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
+	Arguments interface{} `pulumi:"arguments"`
+	// Allows user to specify defines for Pig job request.
+	Defines map[string]interface{} `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn []ActivityDependency `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo *string `pulumi:"getDebugInfo"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Activity policy.
+	Policy *ActivityPolicy `pulumi:"policy"`
+	// Script linked service reference.
+	ScriptLinkedService *LinkedServiceReference `pulumi:"scriptLinkedService"`
+	// Script path. Type: string (or Expression with resultType string).
+	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Storage linked service references.
+	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightPig'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserProperty `pulumi:"userProperties"`
+}
+
+// HDInsight Pig activity type.
+type HDInsightPigActivityResponse struct {
+	// User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
+	Arguments interface{} `pulumi:"arguments"`
+	// Allows user to specify defines for Pig job request.
+	Defines map[string]interface{} `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo *string `pulumi:"getDebugInfo"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Activity policy.
+	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Script linked service reference.
+	ScriptLinkedService *LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
+	// Script path. Type: string (or Expression with resultType string).
+	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Storage linked service references.
+	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightPig'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
+}
+
 // HDInsight Spark activity.
 type HDInsightSparkActivity struct {
 	// The user-specified arguments to HDInsightSparkActivity.
@@ -1314,6 +1376,8 @@ type InformixTableDatasetResponse struct {
 
 // The compute resource properties for managed integration runtime.
 type IntegrationRuntimeComputeProperties struct {
+	// CopyComputeScale properties for managed integration runtime.
+	CopyComputeScaleProperties *CopyComputeScaleProperties `pulumi:"copyComputeScaleProperties"`
 	// Data flow properties for managed integration runtime.
 	DataFlowProperties *IntegrationRuntimeDataFlowProperties `pulumi:"dataFlowProperties"`
 	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
@@ -1324,12 +1388,16 @@ type IntegrationRuntimeComputeProperties struct {
 	NodeSize *string `pulumi:"nodeSize"`
 	// The required number of nodes for managed integration runtime.
 	NumberOfNodes *int `pulumi:"numberOfNodes"`
+	// PipelineExternalComputeScale properties for managed integration runtime.
+	PipelineExternalComputeScaleProperties *PipelineExternalComputeScaleProperties `pulumi:"pipelineExternalComputeScaleProperties"`
 	// VNet properties for managed integration runtime.
 	VNetProperties *IntegrationRuntimeVNetProperties `pulumi:"vNetProperties"`
 }
 
 // The compute resource properties for managed integration runtime.
 type IntegrationRuntimeComputePropertiesResponse struct {
+	// CopyComputeScale properties for managed integration runtime.
+	CopyComputeScaleProperties *CopyComputeScalePropertiesResponse `pulumi:"copyComputeScaleProperties"`
 	// Data flow properties for managed integration runtime.
 	DataFlowProperties *IntegrationRuntimeDataFlowPropertiesResponse `pulumi:"dataFlowProperties"`
 	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
@@ -1340,6 +1408,8 @@ type IntegrationRuntimeComputePropertiesResponse struct {
 	NodeSize *string `pulumi:"nodeSize"`
 	// The required number of nodes for managed integration runtime.
 	NumberOfNodes *int `pulumi:"numberOfNodes"`
+	// PipelineExternalComputeScale properties for managed integration runtime.
+	PipelineExternalComputeScaleProperties *PipelineExternalComputeScalePropertiesResponse `pulumi:"pipelineExternalComputeScaleProperties"`
 	// VNet properties for managed integration runtime.
 	VNetProperties *IntegrationRuntimeVNetPropertiesResponse `pulumi:"vNetProperties"`
 }
@@ -6037,6 +6107,18 @@ func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) Duration() pulumi.AnyO
 		}
 		return v.Duration
 	}).(pulumi.AnyOutput)
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScaleProperties struct {
+	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScalePropertiesResponse struct {
+	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+	TimeToLive *int `pulumi:"timeToLive"`
 }
 
 // The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
@@ -11989,138 +12071,6 @@ type SqlAlwaysEncryptedPropertiesResponse struct {
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure Key Vault.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
-}
-
-// A copy activity SQL Data Warehouse sink.
-type SqlDWSink struct {
-	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
-	AllowCopyCommand interface{} `pulumi:"allowCopyCommand"`
-	// Indicates to use PolyBase to copy data into SQL Data Warehouse when applicable. Type: boolean (or Expression with resultType boolean).
-	AllowPolyBase interface{} `pulumi:"allowPolyBase"`
-	// Specifies Copy Command related settings when allowCopyCommand is true.
-	CopyCommandSettings *DWCopyCommandSettings `pulumi:"copyCommandSettings"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Specifies PolyBase-related settings when allowPolyBase is true.
-	PolyBaseSettings *PolybaseSettings `pulumi:"polyBaseSettings"`
-	// SQL pre-copy script. Type: string (or Expression with resultType string).
-	PreCopyScript interface{} `pulumi:"preCopyScript"`
-	// Sink retry count. Type: integer (or Expression with resultType integer).
-	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
-	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
-	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
-	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
-	TableOption interface{} `pulumi:"tableOption"`
-	// Copy sink type.
-	// Expected value is 'SqlDWSink'.
-	Type string `pulumi:"type"`
-	// SQL DW upsert settings.
-	UpsertSettings *SqlDWUpsertSettings `pulumi:"upsertSettings"`
-	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
-	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// Write behavior when copying data into azure SQL DW. Type: SqlDWWriteBehaviorEnum (or Expression with resultType SqlDWWriteBehaviorEnum)
-	WriteBehavior interface{} `pulumi:"writeBehavior"`
-}
-
-// A copy activity SQL Data Warehouse sink.
-type SqlDWSinkResponse struct {
-	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
-	AllowCopyCommand interface{} `pulumi:"allowCopyCommand"`
-	// Indicates to use PolyBase to copy data into SQL Data Warehouse when applicable. Type: boolean (or Expression with resultType boolean).
-	AllowPolyBase interface{} `pulumi:"allowPolyBase"`
-	// Specifies Copy Command related settings when allowCopyCommand is true.
-	CopyCommandSettings *DWCopyCommandSettingsResponse `pulumi:"copyCommandSettings"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Specifies PolyBase-related settings when allowPolyBase is true.
-	PolyBaseSettings *PolybaseSettingsResponse `pulumi:"polyBaseSettings"`
-	// SQL pre-copy script. Type: string (or Expression with resultType string).
-	PreCopyScript interface{} `pulumi:"preCopyScript"`
-	// Sink retry count. Type: integer (or Expression with resultType integer).
-	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
-	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
-	SqlWriterUseTableLock interface{} `pulumi:"sqlWriterUseTableLock"`
-	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
-	TableOption interface{} `pulumi:"tableOption"`
-	// Copy sink type.
-	// Expected value is 'SqlDWSink'.
-	Type string `pulumi:"type"`
-	// SQL DW upsert settings.
-	UpsertSettings *SqlDWUpsertSettingsResponse `pulumi:"upsertSettings"`
-	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
-	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// Write behavior when copying data into azure SQL DW. Type: SqlDWWriteBehaviorEnum (or Expression with resultType SqlDWWriteBehaviorEnum)
-	WriteBehavior interface{} `pulumi:"writeBehavior"`
-}
-
-// A copy activity SQL Data Warehouse source.
-type SqlDWSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
-	PartitionOption interface{} `pulumi:"partitionOption"`
-	// The settings that will be leveraged for Sql source partitioning.
-	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// SQL Data Warehouse reader query. Type: string (or Expression with resultType string).
-	SqlReaderQuery interface{} `pulumi:"sqlReaderQuery"`
-	// Name of the stored procedure for a SQL Data Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
-	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
-	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
-	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
-	// Copy source type.
-	// Expected value is 'SqlDWSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity SQL Data Warehouse source.
-type SqlDWSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
-	PartitionOption interface{} `pulumi:"partitionOption"`
-	// The settings that will be leveraged for Sql source partitioning.
-	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// SQL Data Warehouse reader query. Type: string (or Expression with resultType string).
-	SqlReaderQuery interface{} `pulumi:"sqlReaderQuery"`
-	// Name of the stored procedure for a SQL Data Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
-	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
-	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
-	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
-	// Copy source type.
-	// Expected value is 'SqlDWSource'.
-	Type string `pulumi:"type"`
 }
 
 func init() {

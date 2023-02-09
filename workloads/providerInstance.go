@@ -49,6 +49,9 @@ func NewProviderInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:ProviderInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20221101preview:ProviderInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ProviderInstance
