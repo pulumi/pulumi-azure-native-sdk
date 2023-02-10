@@ -65,6 +65,9 @@ func NewManagedPrivateEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20220707:ManagedPrivateEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:ManagedPrivateEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedPrivateEndpoint
