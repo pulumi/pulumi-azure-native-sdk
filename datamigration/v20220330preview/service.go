@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Database Migration Service resource
+// An Azure Database Migration Service (classic) resource
 type Service struct {
 	pulumi.CustomResourceState
 

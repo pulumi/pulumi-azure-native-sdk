@@ -47,6 +47,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databricks/v20220401preview:PrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20230201:PrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpointConnection

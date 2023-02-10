@@ -10138,7 +10138,7 @@ func (o OSDiskResponsePtrOutput) WriteAcceleratorEnabled() pulumi.BoolPtrOutput 
 type OSImageNotificationProfile struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
@@ -10156,7 +10156,7 @@ type OSImageNotificationProfileInput interface {
 type OSImageNotificationProfileArgs struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 	NotBeforeTimeout pulumi.StringPtrInput `pulumi:"notBeforeTimeout"`
 }
 
@@ -10242,7 +10242,7 @@ func (o OSImageNotificationProfileOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfile) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfileOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfile) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -10281,7 +10281,7 @@ func (o OSImageNotificationProfilePtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSImageNotificationProfile) *string {
 		if v == nil {
@@ -10294,7 +10294,7 @@ func (o OSImageNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtr
 type OSImageNotificationProfileResponse struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
@@ -10317,7 +10317,7 @@ func (o OSImageNotificationProfileResponseOutput) Enable() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v OSImageNotificationProfileResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfileResponseOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfileResponse) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -10356,7 +10356,7 @@ func (o OSImageNotificationProfileResponsePtrOutput) Enable() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfileResponsePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSImageNotificationProfileResponse) *string {
 		if v == nil {
