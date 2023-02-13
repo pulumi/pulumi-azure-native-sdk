@@ -64,6 +64,7 @@ const (
 	ClientTypeNodejs            = ClientType("nodejs")
 	ClientTypeSpringBoot        = ClientType("springBoot")
 	ClientType_Kafka_SpringBoot = ClientType("kafka-springBoot")
+	ClientTypeDapr              = ClientType("dapr")
 )
 
 // Indicates whether to clean up previous operation when Linker is updating or deleting

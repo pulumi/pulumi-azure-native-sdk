@@ -2299,7 +2299,7 @@ func (o ReportConfigTimePeriodResponsePtrOutput) To() pulumi.StringPtrOutput {
 
 // The properties of the tag inheritance setting.
 type TagInheritanceProperties struct {
-	// Prefer Container tags to override container tags with resource tags in case of conflicts.
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -2316,7 +2316,7 @@ type TagInheritancePropertiesInput interface {
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesArgs struct {
-	// Prefer Container tags to override container tags with resource tags in case of conflicts.
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 	PreferContainerTags pulumi.BoolInput `pulumi:"preferContainerTags"`
 }
 
@@ -2398,7 +2398,7 @@ func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutputWithC
 	}).(TagInheritancePropertiesPtrOutput)
 }
 
-// Prefer Container tags to override container tags with resource tags in case of conflicts.
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritanceProperties) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
@@ -2427,7 +2427,7 @@ func (o TagInheritancePropertiesPtrOutput) Elem() TagInheritancePropertiesOutput
 	}).(TagInheritancePropertiesOutput)
 }
 
-// Prefer Container tags to override container tags with resource tags in case of conflicts.
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagInheritanceProperties) *bool {
 		if v == nil {
@@ -2439,7 +2439,7 @@ func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrO
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesResponse struct {
-	// Prefer Container tags to override container tags with resource tags in case of conflicts.
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -2458,7 +2458,7 @@ func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesRespon
 	return o
 }
 
-// Prefer Container tags to override container tags with resource tags in case of conflicts.
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesResponseOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritancePropertiesResponse) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
