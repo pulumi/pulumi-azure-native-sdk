@@ -1425,7 +1425,7 @@ func (val *ConnectToTargetSqlDbTaskPropertiesResponse) Defaults() *ConnectToTarg
 
 // Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
 type ConnectToTargetSqlMISyncTaskInput struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryApp `pulumi:"azureApp"`
 	// Connection information for Azure SQL Database Managed Instance
 	TargetConnectionInfo MiSqlConnectionInfo `pulumi:"targetConnectionInfo"`
@@ -1433,7 +1433,7 @@ type ConnectToTargetSqlMISyncTaskInput struct {
 
 // Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
 type ConnectToTargetSqlMISyncTaskInputResponse struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppResponse `pulumi:"azureApp"`
 	// Connection information for Azure SQL Database Managed Instance
 	TargetConnectionInfo MiSqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
@@ -4928,7 +4928,7 @@ type MigrateSqlServerSqlMIDatabaseInputResponse struct {
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type MigrateSqlServerSqlMISyncTaskInput struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryApp `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShare `pulumi:"backupFileShare"`
@@ -4957,7 +4957,7 @@ func (val *MigrateSqlServerSqlMISyncTaskInput) Defaults() *MigrateSqlServerSqlMI
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type MigrateSqlServerSqlMISyncTaskInputResponse struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppResponse `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShareResponse `pulumi:"backupFileShare"`
@@ -7583,7 +7583,7 @@ type SsisMigrationInfo struct {
 	EnvironmentOverwriteOption *string `pulumi:"environmentOverwriteOption"`
 	// The overwrite option for the SSIS project migration
 	ProjectOverwriteOption *string `pulumi:"projectOverwriteOption"`
-	// The SSIS store type of source, only SSIS catalog is supported now in DMS
+	// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 	SsisStoreType *string `pulumi:"ssisStoreType"`
 }
 
@@ -7593,7 +7593,7 @@ type SsisMigrationInfoResponse struct {
 	EnvironmentOverwriteOption *string `pulumi:"environmentOverwriteOption"`
 	// The overwrite option for the SSIS project migration
 	ProjectOverwriteOption *string `pulumi:"projectOverwriteOption"`
-	// The SSIS store type of source, only SSIS catalog is supported now in DMS
+	// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 	SsisStoreType *string `pulumi:"ssisStoreType"`
 }
 
@@ -7718,7 +7718,7 @@ func (val *ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse) Defau
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type ValidateMigrationInputSqlServerSqlMISyncTaskInput struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryApp `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShare `pulumi:"backupFileShare"`
@@ -7745,7 +7745,7 @@ func (val *ValidateMigrationInputSqlServerSqlMISyncTaskInput) Defaults() *Valida
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppResponse `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShareResponse `pulumi:"backupFileShare"`

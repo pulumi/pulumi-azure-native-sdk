@@ -62,6 +62,9 @@ func NewMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20220701preview:Monitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20220901preview:Monitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Monitor
