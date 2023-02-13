@@ -23,7 +23,7 @@ func LookupSettingByScope(ctx *pulumi.Context, args *LookupSettingByScopeArgs, o
 }
 
 type LookupSettingByScopeArgs struct {
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope string `pulumi:"scope"`
 	// Setting type.
 	Type string `pulumi:"type"`
@@ -57,7 +57,7 @@ func LookupSettingByScopeOutput(ctx *pulumi.Context, args LookupSettingByScopeOu
 }
 
 type LookupSettingByScopeOutputArgs struct {
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Setting type.
 	Type pulumi.StringInput `pulumi:"type"`

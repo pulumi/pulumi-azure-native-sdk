@@ -82,7 +82,7 @@ type settingByScopeArgs struct {
 	ETag *string `pulumi:"eTag"`
 	// Specifies the kind of settings.
 	Kind string `pulumi:"kind"`
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope string `pulumi:"scope"`
 	// Setting type.
 	Type *string `pulumi:"type"`
@@ -94,7 +94,7 @@ type SettingByScopeArgs struct {
 	ETag pulumi.StringPtrInput
 	// Specifies the kind of settings.
 	Kind pulumi.StringInput
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope pulumi.StringInput
 	// Setting type.
 	Type pulumi.StringPtrInput

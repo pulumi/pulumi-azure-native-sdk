@@ -79,6 +79,9 @@ func NewDomainService(ctx *pulumi.Context,
 	if args.LdapsSettings != nil {
 		args.LdapsSettings = args.LdapsSettings.ToLdapsSettingsPtrOutput().ApplyT(func(v *LdapsSettings) *LdapsSettings { return v.Defaults() }).(LdapsSettingsPtrOutput)
 	}
+	if isZero(args.SyncScope) {
+		args.SyncScope = pulumi.StringPtr("All")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:aad:DomainService"),
