@@ -46,6 +46,9 @@ func NewStorageMover(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:StorageMover"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20230301:StorageMover"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageMover

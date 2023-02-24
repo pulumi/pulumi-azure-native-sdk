@@ -87,6 +87,8 @@ type ConfigurationInfo struct {
 	AdditionalConfigurations map[string]string `pulumi:"additionalConfigurations"`
 	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 	CustomizedKeys map[string]string `pulumi:"customizedKeys"`
+	// Indicates some additional properties for dapr client type
+	DaprProperties *DaprProperties `pulumi:"daprProperties"`
 	// Indicates whether to clean up previous operation when Linker is updating or deleting
 	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 }
@@ -110,6 +112,8 @@ type ConfigurationInfoArgs struct {
 	AdditionalConfigurations pulumi.StringMapInput `pulumi:"additionalConfigurations"`
 	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 	CustomizedKeys pulumi.StringMapInput `pulumi:"customizedKeys"`
+	// Indicates some additional properties for dapr client type
+	DaprProperties DaprPropertiesPtrInput `pulumi:"daprProperties"`
 	// Indicates whether to clean up previous operation when Linker is updating or deleting
 	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
 }
@@ -207,6 +211,11 @@ func (o ConfigurationInfoOutput) CustomizedKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConfigurationInfo) map[string]string { return v.CustomizedKeys }).(pulumi.StringMapOutput)
 }
 
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoOutput) DaprProperties() DaprPropertiesPtrOutput {
+	return o.ApplyT(func(v ConfigurationInfo) *DaprProperties { return v.DaprProperties }).(DaprPropertiesPtrOutput)
+}
+
 // Indicates whether to clean up previous operation when Linker is updating or deleting
 func (o ConfigurationInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigurationInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
@@ -266,6 +275,16 @@ func (o ConfigurationInfoPtrOutput) CustomizedKeys() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoPtrOutput) DaprProperties() DaprPropertiesPtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) *DaprProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DaprProperties
+	}).(DaprPropertiesPtrOutput)
+}
+
 // Indicates whether to clean up previous operation when Linker is updating or deleting
 func (o ConfigurationInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigurationInfo) *string {
@@ -284,6 +303,8 @@ type ConfigurationInfoResponse struct {
 	AdditionalConfigurations map[string]string `pulumi:"additionalConfigurations"`
 	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 	CustomizedKeys map[string]string `pulumi:"customizedKeys"`
+	// Indicates some additional properties for dapr client type
+	DaprProperties *DaprPropertiesResponse `pulumi:"daprProperties"`
 	// Indicates whether to clean up previous operation when Linker is updating or deleting
 	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 }
@@ -316,6 +337,11 @@ func (o ConfigurationInfoResponseOutput) AdditionalConfigurations() pulumi.Strin
 // Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 func (o ConfigurationInfoResponseOutput) CustomizedKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConfigurationInfoResponse) map[string]string { return v.CustomizedKeys }).(pulumi.StringMapOutput)
+}
+
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoResponseOutput) DaprProperties() DaprPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) *DaprPropertiesResponse { return v.DaprProperties }).(DaprPropertiesResponsePtrOutput)
 }
 
 // Indicates whether to clean up previous operation when Linker is updating or deleting
@@ -375,6 +401,16 @@ func (o ConfigurationInfoResponsePtrOutput) CustomizedKeys() pulumi.StringMapOut
 		}
 		return v.CustomizedKeys
 	}).(pulumi.StringMapOutput)
+}
+
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoResponsePtrOutput) DaprProperties() DaprPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) *DaprPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DaprProperties
+	}).(DaprPropertiesResponsePtrOutput)
 }
 
 // Indicates whether to clean up previous operation when Linker is updating or deleting
@@ -935,6 +971,528 @@ func (o CreateOrUpdateDryrunParametersResponsePtrOutput) VNetSolution() VNetSolu
 		}
 		return v.VNetSolution
 	}).(VNetSolutionResponsePtrOutput)
+}
+
+// The dapr component metadata.
+type DaprMetadata struct {
+	// Metadata property name.
+	Name *string `pulumi:"name"`
+	// The secret name where dapr could get value
+	SecretRef *string `pulumi:"secretRef"`
+	// Metadata property value.
+	Value *string `pulumi:"value"`
+}
+
+// DaprMetadataInput is an input type that accepts DaprMetadataArgs and DaprMetadataOutput values.
+// You can construct a concrete instance of `DaprMetadataInput` via:
+//
+//	DaprMetadataArgs{...}
+type DaprMetadataInput interface {
+	pulumi.Input
+
+	ToDaprMetadataOutput() DaprMetadataOutput
+	ToDaprMetadataOutputWithContext(context.Context) DaprMetadataOutput
+}
+
+// The dapr component metadata.
+type DaprMetadataArgs struct {
+	// Metadata property name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The secret name where dapr could get value
+	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
+	// Metadata property value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DaprMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprMetadata)(nil)).Elem()
+}
+
+func (i DaprMetadataArgs) ToDaprMetadataOutput() DaprMetadataOutput {
+	return i.ToDaprMetadataOutputWithContext(context.Background())
+}
+
+func (i DaprMetadataArgs) ToDaprMetadataOutputWithContext(ctx context.Context) DaprMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprMetadataOutput)
+}
+
+// DaprMetadataArrayInput is an input type that accepts DaprMetadataArray and DaprMetadataArrayOutput values.
+// You can construct a concrete instance of `DaprMetadataArrayInput` via:
+//
+//	DaprMetadataArray{ DaprMetadataArgs{...} }
+type DaprMetadataArrayInput interface {
+	pulumi.Input
+
+	ToDaprMetadataArrayOutput() DaprMetadataArrayOutput
+	ToDaprMetadataArrayOutputWithContext(context.Context) DaprMetadataArrayOutput
+}
+
+type DaprMetadataArray []DaprMetadataInput
+
+func (DaprMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprMetadata)(nil)).Elem()
+}
+
+func (i DaprMetadataArray) ToDaprMetadataArrayOutput() DaprMetadataArrayOutput {
+	return i.ToDaprMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i DaprMetadataArray) ToDaprMetadataArrayOutputWithContext(ctx context.Context) DaprMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprMetadataArrayOutput)
+}
+
+// The dapr component metadata.
+type DaprMetadataOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprMetadata)(nil)).Elem()
+}
+
+func (o DaprMetadataOutput) ToDaprMetadataOutput() DaprMetadataOutput {
+	return o
+}
+
+func (o DaprMetadataOutput) ToDaprMetadataOutputWithContext(ctx context.Context) DaprMetadataOutput {
+	return o
+}
+
+// Metadata property name.
+func (o DaprMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret name where dapr could get value
+func (o DaprMetadataOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Metadata property value.
+func (o DaprMetadataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DaprMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprMetadata)(nil)).Elem()
+}
+
+func (o DaprMetadataArrayOutput) ToDaprMetadataArrayOutput() DaprMetadataArrayOutput {
+	return o
+}
+
+func (o DaprMetadataArrayOutput) ToDaprMetadataArrayOutputWithContext(ctx context.Context) DaprMetadataArrayOutput {
+	return o
+}
+
+func (o DaprMetadataArrayOutput) Index(i pulumi.IntInput) DaprMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprMetadata {
+		return vs[0].([]DaprMetadata)[vs[1].(int)]
+	}).(DaprMetadataOutput)
+}
+
+// The dapr component metadata.
+type DaprMetadataResponse struct {
+	// Metadata property name.
+	Name *string `pulumi:"name"`
+	// The secret name where dapr could get value
+	SecretRef *string `pulumi:"secretRef"`
+	// Metadata property value.
+	Value *string `pulumi:"value"`
+}
+
+// The dapr component metadata.
+type DaprMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprMetadataResponse)(nil)).Elem()
+}
+
+func (o DaprMetadataResponseOutput) ToDaprMetadataResponseOutput() DaprMetadataResponseOutput {
+	return o
+}
+
+func (o DaprMetadataResponseOutput) ToDaprMetadataResponseOutputWithContext(ctx context.Context) DaprMetadataResponseOutput {
+	return o
+}
+
+// Metadata property name.
+func (o DaprMetadataResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret name where dapr could get value
+func (o DaprMetadataResponseOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Metadata property value.
+func (o DaprMetadataResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DaprMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprMetadataResponse)(nil)).Elem()
+}
+
+func (o DaprMetadataResponseArrayOutput) ToDaprMetadataResponseArrayOutput() DaprMetadataResponseArrayOutput {
+	return o
+}
+
+func (o DaprMetadataResponseArrayOutput) ToDaprMetadataResponseArrayOutputWithContext(ctx context.Context) DaprMetadataResponseArrayOutput {
+	return o
+}
+
+func (o DaprMetadataResponseArrayOutput) Index(i pulumi.IntInput) DaprMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprMetadataResponse {
+		return vs[0].([]DaprMetadataResponse)[vs[1].(int)]
+	}).(DaprMetadataResponseOutput)
+}
+
+// Indicates some additional properties for dapr client type
+type DaprProperties struct {
+	// The dapr component type
+	ComponentType *string `pulumi:"componentType"`
+	// Additional dapr metadata
+	Metadata []DaprMetadata `pulumi:"metadata"`
+	// The dapr component scopes
+	Scopes []string `pulumi:"scopes"`
+	// The name of a secret store dapr to retrieve secret
+	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
+	// The dapr component version
+	Version *string `pulumi:"version"`
+}
+
+// DaprPropertiesInput is an input type that accepts DaprPropertiesArgs and DaprPropertiesOutput values.
+// You can construct a concrete instance of `DaprPropertiesInput` via:
+//
+//	DaprPropertiesArgs{...}
+type DaprPropertiesInput interface {
+	pulumi.Input
+
+	ToDaprPropertiesOutput() DaprPropertiesOutput
+	ToDaprPropertiesOutputWithContext(context.Context) DaprPropertiesOutput
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesArgs struct {
+	// The dapr component type
+	ComponentType pulumi.StringPtrInput `pulumi:"componentType"`
+	// Additional dapr metadata
+	Metadata DaprMetadataArrayInput `pulumi:"metadata"`
+	// The dapr component scopes
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The name of a secret store dapr to retrieve secret
+	SecretStoreComponent pulumi.StringPtrInput `pulumi:"secretStoreComponent"`
+	// The dapr component version
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (DaprPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprProperties)(nil)).Elem()
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesOutput() DaprPropertiesOutput {
+	return i.ToDaprPropertiesOutputWithContext(context.Background())
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesOutputWithContext(ctx context.Context) DaprPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprPropertiesOutput)
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return i.ToDaprPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprPropertiesOutput).ToDaprPropertiesPtrOutputWithContext(ctx)
+}
+
+// DaprPropertiesPtrInput is an input type that accepts DaprPropertiesArgs, DaprPropertiesPtr and DaprPropertiesPtrOutput values.
+// You can construct a concrete instance of `DaprPropertiesPtrInput` via:
+//
+//	        DaprPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput
+	ToDaprPropertiesPtrOutputWithContext(context.Context) DaprPropertiesPtrOutput
+}
+
+type daprPropertiesPtrType DaprPropertiesArgs
+
+func DaprPropertiesPtr(v *DaprPropertiesArgs) DaprPropertiesPtrInput {
+	return (*daprPropertiesPtrType)(v)
+}
+
+func (*daprPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprProperties)(nil)).Elem()
+}
+
+func (i *daprPropertiesPtrType) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return i.ToDaprPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *daprPropertiesPtrType) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprPropertiesPtrOutput)
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprProperties)(nil)).Elem()
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesOutput() DaprPropertiesOutput {
+	return o
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesOutputWithContext(ctx context.Context) DaprPropertiesOutput {
+	return o
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return o.ToDaprPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprProperties) *DaprProperties {
+		return &v
+	}).(DaprPropertiesPtrOutput)
+}
+
+// The dapr component type
+func (o DaprPropertiesOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprProperties) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesOutput) Metadata() DaprMetadataArrayOutput {
+	return o.ApplyT(func(v DaprProperties) []DaprMetadata { return v.Metadata }).(DaprMetadataArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DaprProperties) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprProperties) *string { return v.SecretStoreComponent }).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprProperties) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DaprPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprProperties)(nil)).Elem()
+}
+
+func (o DaprPropertiesPtrOutput) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return o
+}
+
+func (o DaprPropertiesPtrOutput) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return o
+}
+
+func (o DaprPropertiesPtrOutput) Elem() DaprPropertiesOutput {
+	return o.ApplyT(func(v *DaprProperties) DaprProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DaprProperties
+		return ret
+	}).(DaprPropertiesOutput)
+}
+
+// The dapr component type
+func (o DaprPropertiesPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesPtrOutput) Metadata() DaprMetadataArrayOutput {
+	return o.ApplyT(func(v *DaprProperties) []DaprMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(DaprMetadataArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DaprProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesPtrOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreComponent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesResponse struct {
+	// The dapr component type
+	ComponentType *string `pulumi:"componentType"`
+	// Additional dapr metadata
+	Metadata []DaprMetadataResponse `pulumi:"metadata"`
+	// The dapr component scopes
+	Scopes []string `pulumi:"scopes"`
+	// The name of a secret store dapr to retrieve secret
+	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
+	// The dapr component version
+	Version *string `pulumi:"version"`
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprPropertiesResponse)(nil)).Elem()
+}
+
+func (o DaprPropertiesResponseOutput) ToDaprPropertiesResponseOutput() DaprPropertiesResponseOutput {
+	return o
+}
+
+func (o DaprPropertiesResponseOutput) ToDaprPropertiesResponseOutputWithContext(ctx context.Context) DaprPropertiesResponseOutput {
+	return o
+}
+
+// The dapr component type
+func (o DaprPropertiesResponseOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesResponseOutput) Metadata() DaprMetadataResponseArrayOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) []DaprMetadataResponse { return v.Metadata }).(DaprMetadataResponseArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesResponseOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.SecretStoreComponent }).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DaprPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprPropertiesResponse)(nil)).Elem()
+}
+
+func (o DaprPropertiesResponsePtrOutput) ToDaprPropertiesResponsePtrOutput() DaprPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DaprPropertiesResponsePtrOutput) ToDaprPropertiesResponsePtrOutputWithContext(ctx context.Context) DaprPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DaprPropertiesResponsePtrOutput) Elem() DaprPropertiesResponseOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) DaprPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprPropertiesResponse
+		return ret
+	}).(DaprPropertiesResponseOutput)
+}
+
+// The dapr component type
+func (o DaprPropertiesResponsePtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesResponsePtrOutput) Metadata() DaprMetadataResponseArrayOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) []DaprMetadataResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(DaprMetadataResponseArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesResponsePtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesResponsePtrOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreComponent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // The preview of the operations for creation
@@ -2423,6 +2981,14 @@ func init() {
 	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersPtrOutput{})
 	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersResponseOutput{})
 	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprMetadataOutput{})
+	pulumi.RegisterOutputType(DaprMetadataArrayOutput{})
+	pulumi.RegisterOutputType(DaprMetadataResponseOutput{})
+	pulumi.RegisterOutputType(DaprMetadataResponseArrayOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DryrunOperationPreviewResponseOutput{})
 	pulumi.RegisterOutputType(DryrunOperationPreviewResponseArrayOutput{})
 	pulumi.RegisterOutputType(FirewallRulesOutput{})
