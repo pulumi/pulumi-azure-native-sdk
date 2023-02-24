@@ -611,7 +611,7 @@ func (o ApiPortalResourceRequestsResponseOutput) Memory() pulumi.StringOutput {
 // App resource properties payload
 type AppResourceProperties struct {
 	// Collection of addons
-	AddonConfigs map[string]map[string]interface{} `pulumi:"addonConfigs"`
+	AddonConfigs map[string]interface{} `pulumi:"addonConfigs"`
 	// List of custom persistent disks
 	CustomPersistentDisks []CustomPersistentDiskResource `pulumi:"customPersistentDisks"`
 	// Indicate if end to end TLS is enabled.
@@ -667,7 +667,7 @@ type AppResourcePropertiesInput interface {
 // App resource properties payload
 type AppResourcePropertiesArgs struct {
 	// Collection of addons
-	AddonConfigs pulumi.MapMapInput `pulumi:"addonConfigs"`
+	AddonConfigs pulumi.MapInput `pulumi:"addonConfigs"`
 	// List of custom persistent disks
 	CustomPersistentDisks CustomPersistentDiskResourceArrayInput `pulumi:"customPersistentDisks"`
 	// Indicate if end to end TLS is enabled.
@@ -782,8 +782,8 @@ func (o AppResourcePropertiesOutput) ToAppResourcePropertiesPtrOutputWithContext
 }
 
 // Collection of addons
-func (o AppResourcePropertiesOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v AppResourceProperties) map[string]map[string]interface{} { return v.AddonConfigs }).(pulumi.MapMapOutput)
+func (o AppResourcePropertiesOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v AppResourceProperties) map[string]interface{} { return v.AddonConfigs }).(pulumi.MapOutput)
 }
 
 // List of custom persistent disks
@@ -856,13 +856,13 @@ func (o AppResourcePropertiesPtrOutput) Elem() AppResourcePropertiesOutput {
 }
 
 // Collection of addons
-func (o AppResourcePropertiesPtrOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v *AppResourceProperties) map[string]map[string]interface{} {
+func (o AppResourcePropertiesPtrOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v *AppResourceProperties) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.AddonConfigs
-	}).(pulumi.MapMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // List of custom persistent disks
@@ -958,7 +958,7 @@ func (o AppResourcePropertiesPtrOutput) VnetAddons() AppVNetAddonsPtrOutput {
 // App resource properties payload
 type AppResourcePropertiesResponse struct {
 	// Collection of addons
-	AddonConfigs map[string]map[string]interface{} `pulumi:"addonConfigs"`
+	AddonConfigs map[string]interface{} `pulumi:"addonConfigs"`
 	// List of custom persistent disks
 	CustomPersistentDisks []CustomPersistentDiskResourceResponse `pulumi:"customPersistentDisks"`
 	// Indicate if end to end TLS is enabled.
@@ -1022,8 +1022,8 @@ func (o AppResourcePropertiesResponseOutput) ToAppResourcePropertiesResponseOutp
 }
 
 // Collection of addons
-func (o AppResourcePropertiesResponseOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v AppResourcePropertiesResponse) map[string]map[string]interface{} { return v.AddonConfigs }).(pulumi.MapMapOutput)
+func (o AppResourcePropertiesResponseOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v AppResourcePropertiesResponse) map[string]interface{} { return v.AddonConfigs }).(pulumi.MapOutput)
 }
 
 // List of custom persistent disks
@@ -1756,7 +1756,7 @@ func (o AzureFileVolumeResponsePtrOutput) Type() pulumi.StringPtrOutput {
 // Binding resource properties payload
 type BindingResourceProperties struct {
 	// Binding parameters of the Binding resource
-	BindingParameters map[string]interface{} `pulumi:"bindingParameters"`
+	BindingParameters map[string]string `pulumi:"bindingParameters"`
 	// The key of the bound resource
 	Key *string `pulumi:"key"`
 	// The Azure resource id of the bound resource
@@ -1777,7 +1777,7 @@ type BindingResourcePropertiesInput interface {
 // Binding resource properties payload
 type BindingResourcePropertiesArgs struct {
 	// Binding parameters of the Binding resource
-	BindingParameters pulumi.MapInput `pulumi:"bindingParameters"`
+	BindingParameters pulumi.StringMapInput `pulumi:"bindingParameters"`
 	// The key of the bound resource
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The Azure resource id of the bound resource
@@ -1863,8 +1863,8 @@ func (o BindingResourcePropertiesOutput) ToBindingResourcePropertiesPtrOutputWit
 }
 
 // Binding parameters of the Binding resource
-func (o BindingResourcePropertiesOutput) BindingParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v BindingResourceProperties) map[string]interface{} { return v.BindingParameters }).(pulumi.MapOutput)
+func (o BindingResourcePropertiesOutput) BindingParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BindingResourceProperties) map[string]string { return v.BindingParameters }).(pulumi.StringMapOutput)
 }
 
 // The key of the bound resource
@@ -1902,13 +1902,13 @@ func (o BindingResourcePropertiesPtrOutput) Elem() BindingResourcePropertiesOutp
 }
 
 // Binding parameters of the Binding resource
-func (o BindingResourcePropertiesPtrOutput) BindingParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *BindingResourceProperties) map[string]interface{} {
+func (o BindingResourcePropertiesPtrOutput) BindingParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BindingResourceProperties) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BindingParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The key of the bound resource
@@ -1934,7 +1934,7 @@ func (o BindingResourcePropertiesPtrOutput) ResourceId() pulumi.StringPtrOutput 
 // Binding resource properties payload
 type BindingResourcePropertiesResponse struct {
 	// Binding parameters of the Binding resource
-	BindingParameters map[string]interface{} `pulumi:"bindingParameters"`
+	BindingParameters map[string]string `pulumi:"bindingParameters"`
 	// Creation time of the Binding resource
 	CreatedAt string `pulumi:"createdAt"`
 	// The generated Spring Boot property file for this binding. The secret will be deducted.
@@ -1967,8 +1967,8 @@ func (o BindingResourcePropertiesResponseOutput) ToBindingResourcePropertiesResp
 }
 
 // Binding parameters of the Binding resource
-func (o BindingResourcePropertiesResponseOutput) BindingParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v BindingResourcePropertiesResponse) map[string]interface{} { return v.BindingParameters }).(pulumi.MapOutput)
+func (o BindingResourcePropertiesResponseOutput) BindingParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BindingResourcePropertiesResponse) map[string]string { return v.BindingParameters }).(pulumi.StringMapOutput)
 }
 
 // Creation time of the Binding resource
@@ -6599,7 +6599,7 @@ func (o DeploymentResourcePropertiesResponseOutput) Status() pulumi.StringOutput
 // Deployment settings payload
 type DeploymentSettings struct {
 	// Collection of addons
-	AddonConfigs map[string]map[string]interface{} `pulumi:"addonConfigs"`
+	AddonConfigs map[string]interface{} `pulumi:"addonConfigs"`
 	// Container liveness and readiness probe settings
 	ContainerProbeSettings *ContainerProbeSettings `pulumi:"containerProbeSettings"`
 	// Collection of environment variables
@@ -6649,7 +6649,7 @@ type DeploymentSettingsInput interface {
 // Deployment settings payload
 type DeploymentSettingsArgs struct {
 	// Collection of addons
-	AddonConfigs pulumi.MapMapInput `pulumi:"addonConfigs"`
+	AddonConfigs pulumi.MapInput `pulumi:"addonConfigs"`
 	// Container liveness and readiness probe settings
 	ContainerProbeSettings ContainerProbeSettingsPtrInput `pulumi:"containerProbeSettings"`
 	// Collection of environment variables
@@ -6757,8 +6757,8 @@ func (o DeploymentSettingsOutput) ToDeploymentSettingsPtrOutputWithContext(ctx c
 }
 
 // Collection of addons
-func (o DeploymentSettingsOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v DeploymentSettings) map[string]map[string]interface{} { return v.AddonConfigs }).(pulumi.MapMapOutput)
+func (o DeploymentSettingsOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v DeploymentSettings) map[string]interface{} { return v.AddonConfigs }).(pulumi.MapOutput)
 }
 
 // Container liveness and readiness probe settings
@@ -6821,13 +6821,13 @@ func (o DeploymentSettingsPtrOutput) Elem() DeploymentSettingsOutput {
 }
 
 // Collection of addons
-func (o DeploymentSettingsPtrOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v *DeploymentSettings) map[string]map[string]interface{} {
+func (o DeploymentSettingsPtrOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v *DeploymentSettings) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.AddonConfigs
-	}).(pulumi.MapMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Container liveness and readiness probe settings
@@ -6903,7 +6903,7 @@ func (o DeploymentSettingsPtrOutput) TerminationGracePeriodSeconds() pulumi.IntP
 // Deployment settings payload
 type DeploymentSettingsResponse struct {
 	// Collection of addons
-	AddonConfigs map[string]map[string]interface{} `pulumi:"addonConfigs"`
+	AddonConfigs map[string]interface{} `pulumi:"addonConfigs"`
 	// Container liveness and readiness probe settings
 	ContainerProbeSettings *ContainerProbeSettingsResponse `pulumi:"containerProbeSettings"`
 	// Collection of environment variables
@@ -6955,8 +6955,8 @@ func (o DeploymentSettingsResponseOutput) ToDeploymentSettingsResponseOutputWith
 }
 
 // Collection of addons
-func (o DeploymentSettingsResponseOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v DeploymentSettingsResponse) map[string]map[string]interface{} { return v.AddonConfigs }).(pulumi.MapMapOutput)
+func (o DeploymentSettingsResponseOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v DeploymentSettingsResponse) map[string]interface{} { return v.AddonConfigs }).(pulumi.MapOutput)
 }
 
 // Container liveness and readiness probe settings
@@ -7019,13 +7019,13 @@ func (o DeploymentSettingsResponsePtrOutput) Elem() DeploymentSettingsResponseOu
 }
 
 // Collection of addons
-func (o DeploymentSettingsResponsePtrOutput) AddonConfigs() pulumi.MapMapOutput {
-	return o.ApplyT(func(v *DeploymentSettingsResponse) map[string]map[string]interface{} {
+func (o DeploymentSettingsResponsePtrOutput) AddonConfigs() pulumi.MapOutput {
+	return o.ApplyT(func(v *DeploymentSettingsResponse) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.AddonConfigs
-	}).(pulumi.MapMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Container liveness and readiness probe settings

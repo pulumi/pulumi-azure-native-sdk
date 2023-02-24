@@ -94,6 +94,9 @@ func NewLogger(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Logger"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:Logger"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Logger

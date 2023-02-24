@@ -75,6 +75,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databricks/v20220401preview:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20230201:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Workspace

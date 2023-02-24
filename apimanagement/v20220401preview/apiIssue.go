@@ -98,6 +98,9 @@ func NewApiIssue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20211201preview:ApiIssue"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiIssue"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiIssue

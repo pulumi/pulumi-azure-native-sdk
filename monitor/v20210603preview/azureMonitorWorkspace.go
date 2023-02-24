@@ -18,13 +18,13 @@ type AzureMonitorWorkspace struct {
 	// The immutable ID of the Azure Monitor workspace. This property is read-only.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
-	DefaultIngestionSettings MonitoringAccountResponseDefaultIngestionSettingsOutput `pulumi:"defaultIngestionSettings"`
+	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Information about metrics for the Azure Monitor workspace
-	Metrics MonitoringAccountResponseMetricsOutput `pulumi:"metrics"`
+	Metrics AzureMonitorWorkspaceResponseMetricsOutput `pulumi:"metrics"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
@@ -85,10 +85,10 @@ func (AzureMonitorWorkspaceState) ElementType() reflect.Type {
 }
 
 type azureMonitorWorkspaceArgs struct {
+	// The name of the Azure Monitor workspace.  The name is case insensitive
+	AzureMonitorWorkspaceName *string `pulumi:"azureMonitorWorkspaceName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the Azure Monitor workspace.  The name is case insensitive
-	MonitoringAccountName *string `pulumi:"monitoringAccountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -97,10 +97,10 @@ type azureMonitorWorkspaceArgs struct {
 
 // The set of arguments for constructing a AzureMonitorWorkspace resource.
 type AzureMonitorWorkspaceArgs struct {
+	// The name of the Azure Monitor workspace.  The name is case insensitive
+	AzureMonitorWorkspaceName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the Azure Monitor workspace.  The name is case insensitive
-	MonitoringAccountName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -150,10 +150,10 @@ func (o AzureMonitorWorkspaceOutput) AccountId() pulumi.StringOutput {
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
-func (o AzureMonitorWorkspaceOutput) DefaultIngestionSettings() MonitoringAccountResponseDefaultIngestionSettingsOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) MonitoringAccountResponseDefaultIngestionSettingsOutput {
+func (o AzureMonitorWorkspaceOutput) DefaultIngestionSettings() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
 		return v.DefaultIngestionSettings
-	}).(MonitoringAccountResponseDefaultIngestionSettingsOutput)
+	}).(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput)
 }
 
 // Resource entity tag (ETag)
@@ -167,8 +167,8 @@ func (o AzureMonitorWorkspaceOutput) Location() pulumi.StringOutput {
 }
 
 // Information about metrics for the Azure Monitor workspace
-func (o AzureMonitorWorkspaceOutput) Metrics() MonitoringAccountResponseMetricsOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) MonitoringAccountResponseMetricsOutput { return v.Metrics }).(MonitoringAccountResponseMetricsOutput)
+func (o AzureMonitorWorkspaceOutput) Metrics() AzureMonitorWorkspaceResponseMetricsOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) AzureMonitorWorkspaceResponseMetricsOutput { return v.Metrics }).(AzureMonitorWorkspaceResponseMetricsOutput)
 }
 
 // The name of the resource
