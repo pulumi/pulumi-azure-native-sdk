@@ -3840,6 +3840,158 @@ func (o ResourceGuardTypePtrOutput) VaultCriticalOperationExclusionList() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// VaultCritical Operation protected by a resource guard
+type ResourceGuardOperationDetail struct {
+	DefaultResourceRequest *string `pulumi:"defaultResourceRequest"`
+	VaultCriticalOperation *string `pulumi:"vaultCriticalOperation"`
+}
+
+// ResourceGuardOperationDetailInput is an input type that accepts ResourceGuardOperationDetailArgs and ResourceGuardOperationDetailOutput values.
+// You can construct a concrete instance of `ResourceGuardOperationDetailInput` via:
+//
+//	ResourceGuardOperationDetailArgs{...}
+type ResourceGuardOperationDetailInput interface {
+	pulumi.Input
+
+	ToResourceGuardOperationDetailOutput() ResourceGuardOperationDetailOutput
+	ToResourceGuardOperationDetailOutputWithContext(context.Context) ResourceGuardOperationDetailOutput
+}
+
+// VaultCritical Operation protected by a resource guard
+type ResourceGuardOperationDetailArgs struct {
+	DefaultResourceRequest pulumi.StringPtrInput `pulumi:"defaultResourceRequest"`
+	VaultCriticalOperation pulumi.StringPtrInput `pulumi:"vaultCriticalOperation"`
+}
+
+func (ResourceGuardOperationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGuardOperationDetail)(nil)).Elem()
+}
+
+func (i ResourceGuardOperationDetailArgs) ToResourceGuardOperationDetailOutput() ResourceGuardOperationDetailOutput {
+	return i.ToResourceGuardOperationDetailOutputWithContext(context.Background())
+}
+
+func (i ResourceGuardOperationDetailArgs) ToResourceGuardOperationDetailOutputWithContext(ctx context.Context) ResourceGuardOperationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardOperationDetailOutput)
+}
+
+// ResourceGuardOperationDetailArrayInput is an input type that accepts ResourceGuardOperationDetailArray and ResourceGuardOperationDetailArrayOutput values.
+// You can construct a concrete instance of `ResourceGuardOperationDetailArrayInput` via:
+//
+//	ResourceGuardOperationDetailArray{ ResourceGuardOperationDetailArgs{...} }
+type ResourceGuardOperationDetailArrayInput interface {
+	pulumi.Input
+
+	ToResourceGuardOperationDetailArrayOutput() ResourceGuardOperationDetailArrayOutput
+	ToResourceGuardOperationDetailArrayOutputWithContext(context.Context) ResourceGuardOperationDetailArrayOutput
+}
+
+type ResourceGuardOperationDetailArray []ResourceGuardOperationDetailInput
+
+func (ResourceGuardOperationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceGuardOperationDetail)(nil)).Elem()
+}
+
+func (i ResourceGuardOperationDetailArray) ToResourceGuardOperationDetailArrayOutput() ResourceGuardOperationDetailArrayOutput {
+	return i.ToResourceGuardOperationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceGuardOperationDetailArray) ToResourceGuardOperationDetailArrayOutputWithContext(ctx context.Context) ResourceGuardOperationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardOperationDetailArrayOutput)
+}
+
+// VaultCritical Operation protected by a resource guard
+type ResourceGuardOperationDetailOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardOperationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGuardOperationDetail)(nil)).Elem()
+}
+
+func (o ResourceGuardOperationDetailOutput) ToResourceGuardOperationDetailOutput() ResourceGuardOperationDetailOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailOutput) ToResourceGuardOperationDetailOutputWithContext(ctx context.Context) ResourceGuardOperationDetailOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailOutput) DefaultResourceRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardOperationDetail) *string { return v.DefaultResourceRequest }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardOperationDetailOutput) VaultCriticalOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardOperationDetail) *string { return v.VaultCriticalOperation }).(pulumi.StringPtrOutput)
+}
+
+type ResourceGuardOperationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardOperationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceGuardOperationDetail)(nil)).Elem()
+}
+
+func (o ResourceGuardOperationDetailArrayOutput) ToResourceGuardOperationDetailArrayOutput() ResourceGuardOperationDetailArrayOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailArrayOutput) ToResourceGuardOperationDetailArrayOutputWithContext(ctx context.Context) ResourceGuardOperationDetailArrayOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailArrayOutput) Index(i pulumi.IntInput) ResourceGuardOperationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceGuardOperationDetail {
+		return vs[0].([]ResourceGuardOperationDetail)[vs[1].(int)]
+	}).(ResourceGuardOperationDetailOutput)
+}
+
+// VaultCritical Operation protected by a resource guard
+type ResourceGuardOperationDetailResponse struct {
+	DefaultResourceRequest *string `pulumi:"defaultResourceRequest"`
+	VaultCriticalOperation *string `pulumi:"vaultCriticalOperation"`
+}
+
+// VaultCritical Operation protected by a resource guard
+type ResourceGuardOperationDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardOperationDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGuardOperationDetailResponse)(nil)).Elem()
+}
+
+func (o ResourceGuardOperationDetailResponseOutput) ToResourceGuardOperationDetailResponseOutput() ResourceGuardOperationDetailResponseOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailResponseOutput) ToResourceGuardOperationDetailResponseOutputWithContext(ctx context.Context) ResourceGuardOperationDetailResponseOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailResponseOutput) DefaultResourceRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardOperationDetailResponse) *string { return v.DefaultResourceRequest }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardOperationDetailResponseOutput) VaultCriticalOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardOperationDetailResponse) *string { return v.VaultCriticalOperation }).(pulumi.StringPtrOutput)
+}
+
+type ResourceGuardOperationDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardOperationDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceGuardOperationDetailResponse)(nil)).Elem()
+}
+
+func (o ResourceGuardOperationDetailResponseArrayOutput) ToResourceGuardOperationDetailResponseArrayOutput() ResourceGuardOperationDetailResponseArrayOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailResponseArrayOutput) ToResourceGuardOperationDetailResponseArrayOutputWithContext(ctx context.Context) ResourceGuardOperationDetailResponseArrayOutput {
+	return o
+}
+
+func (o ResourceGuardOperationDetailResponseArrayOutput) Index(i pulumi.IntInput) ResourceGuardOperationDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceGuardOperationDetailResponse {
+		return vs[0].([]ResourceGuardOperationDetailResponse)[vs[1].(int)]
+	}).(ResourceGuardOperationDetailResponseOutput)
+}
+
 // This class contains all the details about a critical operation.
 type ResourceGuardOperationResponse struct {
 	// Type of resource request.
@@ -3891,6 +4043,228 @@ func (o ResourceGuardOperationResponseArrayOutput) Index(i pulumi.IntInput) Reso
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceGuardOperationResponse {
 		return vs[0].([]ResourceGuardOperationResponse)[vs[1].(int)]
 	}).(ResourceGuardOperationResponseOutput)
+}
+
+// ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
+type ResourceGuardProxyBase struct {
+	Description                   *string                        `pulumi:"description"`
+	LastUpdatedTime               *string                        `pulumi:"lastUpdatedTime"`
+	ResourceGuardOperationDetails []ResourceGuardOperationDetail `pulumi:"resourceGuardOperationDetails"`
+	ResourceGuardResourceId       *string                        `pulumi:"resourceGuardResourceId"`
+}
+
+// ResourceGuardProxyBaseInput is an input type that accepts ResourceGuardProxyBaseArgs and ResourceGuardProxyBaseOutput values.
+// You can construct a concrete instance of `ResourceGuardProxyBaseInput` via:
+//
+//	ResourceGuardProxyBaseArgs{...}
+type ResourceGuardProxyBaseInput interface {
+	pulumi.Input
+
+	ToResourceGuardProxyBaseOutput() ResourceGuardProxyBaseOutput
+	ToResourceGuardProxyBaseOutputWithContext(context.Context) ResourceGuardProxyBaseOutput
+}
+
+// ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
+type ResourceGuardProxyBaseArgs struct {
+	Description                   pulumi.StringPtrInput                  `pulumi:"description"`
+	LastUpdatedTime               pulumi.StringPtrInput                  `pulumi:"lastUpdatedTime"`
+	ResourceGuardOperationDetails ResourceGuardOperationDetailArrayInput `pulumi:"resourceGuardOperationDetails"`
+	ResourceGuardResourceId       pulumi.StringPtrInput                  `pulumi:"resourceGuardResourceId"`
+}
+
+func (ResourceGuardProxyBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGuardProxyBase)(nil)).Elem()
+}
+
+func (i ResourceGuardProxyBaseArgs) ToResourceGuardProxyBaseOutput() ResourceGuardProxyBaseOutput {
+	return i.ToResourceGuardProxyBaseOutputWithContext(context.Background())
+}
+
+func (i ResourceGuardProxyBaseArgs) ToResourceGuardProxyBaseOutputWithContext(ctx context.Context) ResourceGuardProxyBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardProxyBaseOutput)
+}
+
+func (i ResourceGuardProxyBaseArgs) ToResourceGuardProxyBasePtrOutput() ResourceGuardProxyBasePtrOutput {
+	return i.ToResourceGuardProxyBasePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGuardProxyBaseArgs) ToResourceGuardProxyBasePtrOutputWithContext(ctx context.Context) ResourceGuardProxyBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardProxyBaseOutput).ToResourceGuardProxyBasePtrOutputWithContext(ctx)
+}
+
+// ResourceGuardProxyBasePtrInput is an input type that accepts ResourceGuardProxyBaseArgs, ResourceGuardProxyBasePtr and ResourceGuardProxyBasePtrOutput values.
+// You can construct a concrete instance of `ResourceGuardProxyBasePtrInput` via:
+//
+//	        ResourceGuardProxyBaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceGuardProxyBasePtrInput interface {
+	pulumi.Input
+
+	ToResourceGuardProxyBasePtrOutput() ResourceGuardProxyBasePtrOutput
+	ToResourceGuardProxyBasePtrOutputWithContext(context.Context) ResourceGuardProxyBasePtrOutput
+}
+
+type resourceGuardProxyBasePtrType ResourceGuardProxyBaseArgs
+
+func ResourceGuardProxyBasePtr(v *ResourceGuardProxyBaseArgs) ResourceGuardProxyBasePtrInput {
+	return (*resourceGuardProxyBasePtrType)(v)
+}
+
+func (*resourceGuardProxyBasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGuardProxyBase)(nil)).Elem()
+}
+
+func (i *resourceGuardProxyBasePtrType) ToResourceGuardProxyBasePtrOutput() ResourceGuardProxyBasePtrOutput {
+	return i.ToResourceGuardProxyBasePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGuardProxyBasePtrType) ToResourceGuardProxyBasePtrOutputWithContext(ctx context.Context) ResourceGuardProxyBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardProxyBasePtrOutput)
+}
+
+// ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
+type ResourceGuardProxyBaseOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardProxyBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGuardProxyBase)(nil)).Elem()
+}
+
+func (o ResourceGuardProxyBaseOutput) ToResourceGuardProxyBaseOutput() ResourceGuardProxyBaseOutput {
+	return o
+}
+
+func (o ResourceGuardProxyBaseOutput) ToResourceGuardProxyBaseOutputWithContext(ctx context.Context) ResourceGuardProxyBaseOutput {
+	return o
+}
+
+func (o ResourceGuardProxyBaseOutput) ToResourceGuardProxyBasePtrOutput() ResourceGuardProxyBasePtrOutput {
+	return o.ToResourceGuardProxyBasePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGuardProxyBaseOutput) ToResourceGuardProxyBasePtrOutputWithContext(ctx context.Context) ResourceGuardProxyBasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGuardProxyBase) *ResourceGuardProxyBase {
+		return &v
+	}).(ResourceGuardProxyBasePtrOutput)
+}
+
+func (o ResourceGuardProxyBaseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBase) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardProxyBaseOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBase) *string { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardProxyBaseOutput) ResourceGuardOperationDetails() ResourceGuardOperationDetailArrayOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBase) []ResourceGuardOperationDetail { return v.ResourceGuardOperationDetails }).(ResourceGuardOperationDetailArrayOutput)
+}
+
+func (o ResourceGuardProxyBaseOutput) ResourceGuardResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBase) *string { return v.ResourceGuardResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ResourceGuardProxyBasePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardProxyBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGuardProxyBase)(nil)).Elem()
+}
+
+func (o ResourceGuardProxyBasePtrOutput) ToResourceGuardProxyBasePtrOutput() ResourceGuardProxyBasePtrOutput {
+	return o
+}
+
+func (o ResourceGuardProxyBasePtrOutput) ToResourceGuardProxyBasePtrOutputWithContext(ctx context.Context) ResourceGuardProxyBasePtrOutput {
+	return o
+}
+
+func (o ResourceGuardProxyBasePtrOutput) Elem() ResourceGuardProxyBaseOutput {
+	return o.ApplyT(func(v *ResourceGuardProxyBase) ResourceGuardProxyBase {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGuardProxyBase
+		return ret
+	}).(ResourceGuardProxyBaseOutput)
+}
+
+func (o ResourceGuardProxyBasePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGuardProxyBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardProxyBasePtrOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGuardProxyBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastUpdatedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardProxyBasePtrOutput) ResourceGuardOperationDetails() ResourceGuardOperationDetailArrayOutput {
+	return o.ApplyT(func(v *ResourceGuardProxyBase) []ResourceGuardOperationDetail {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGuardOperationDetails
+	}).(ResourceGuardOperationDetailArrayOutput)
+}
+
+func (o ResourceGuardProxyBasePtrOutput) ResourceGuardResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGuardProxyBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGuardResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
+type ResourceGuardProxyBaseResponse struct {
+	Description                   *string                                `pulumi:"description"`
+	LastUpdatedTime               *string                                `pulumi:"lastUpdatedTime"`
+	ResourceGuardOperationDetails []ResourceGuardOperationDetailResponse `pulumi:"resourceGuardOperationDetails"`
+	ResourceGuardResourceId       *string                                `pulumi:"resourceGuardResourceId"`
+}
+
+// ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
+type ResourceGuardProxyBaseResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceGuardProxyBaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGuardProxyBaseResponse)(nil)).Elem()
+}
+
+func (o ResourceGuardProxyBaseResponseOutput) ToResourceGuardProxyBaseResponseOutput() ResourceGuardProxyBaseResponseOutput {
+	return o
+}
+
+func (o ResourceGuardProxyBaseResponseOutput) ToResourceGuardProxyBaseResponseOutputWithContext(ctx context.Context) ResourceGuardProxyBaseResponseOutput {
+	return o
+}
+
+func (o ResourceGuardProxyBaseResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBaseResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardProxyBaseResponseOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBaseResponse) *string { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGuardProxyBaseResponseOutput) ResourceGuardOperationDetails() ResourceGuardOperationDetailResponseArrayOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBaseResponse) []ResourceGuardOperationDetailResponse {
+		return v.ResourceGuardOperationDetails
+	}).(ResourceGuardOperationDetailResponseArrayOutput)
+}
+
+func (o ResourceGuardProxyBaseResponseOutput) ResourceGuardResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGuardProxyBaseResponse) *string { return v.ResourceGuardResourceId }).(pulumi.StringPtrOutput)
 }
 
 type ResourceGuardResponse struct {
@@ -5616,8 +5990,15 @@ func init() {
 	pulumi.RegisterOutputType(ProtectionStatusDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceGuardTypeOutput{})
 	pulumi.RegisterOutputType(ResourceGuardTypePtrOutput{})
+	pulumi.RegisterOutputType(ResourceGuardOperationDetailOutput{})
+	pulumi.RegisterOutputType(ResourceGuardOperationDetailArrayOutput{})
+	pulumi.RegisterOutputType(ResourceGuardOperationDetailResponseOutput{})
+	pulumi.RegisterOutputType(ResourceGuardOperationDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGuardOperationResponseOutput{})
 	pulumi.RegisterOutputType(ResourceGuardOperationResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceGuardProxyBaseOutput{})
+	pulumi.RegisterOutputType(ResourceGuardProxyBasePtrOutput{})
+	pulumi.RegisterOutputType(ResourceGuardProxyBaseResponseOutput{})
 	pulumi.RegisterOutputType(ResourceGuardResponseOutput{})
 	pulumi.RegisterOutputType(ResourceMoveDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SecretStoreBasedAuthCredentialsOutput{})

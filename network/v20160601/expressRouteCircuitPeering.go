@@ -196,6 +196,9 @@ func NewExpressRouteCircuitPeering(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220701:ExpressRouteCircuitPeering"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuitPeering"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteCircuitPeering
