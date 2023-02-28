@@ -24,6 +24,17 @@ const (
 	AzureSearchIndexWriteBehaviorTypeUpload = AzureSearchIndexWriteBehaviorType("Upload")
 )
 
+// The type used for authentication. Type: string.
+type AzureStorageAuthenticationType string
+
+const (
+	AzureStorageAuthenticationTypeAnonymous        = AzureStorageAuthenticationType("Anonymous")
+	AzureStorageAuthenticationTypeAccountKey       = AzureStorageAuthenticationType("AccountKey")
+	AzureStorageAuthenticationTypeSasUri           = AzureStorageAuthenticationType("SasUri")
+	AzureStorageAuthenticationTypeServicePrincipal = AzureStorageAuthenticationType("ServicePrincipal")
+	AzureStorageAuthenticationTypeMsi              = AzureStorageAuthenticationType("Msi")
+)
+
 // Big data pool reference type.
 type BigDataPoolReferenceType string
 

@@ -41,6 +41,12 @@ func NewDevToolPortal(ctx *pulumi.Context,
 	if args.Properties != nil {
 		args.Properties = args.Properties.ToDevToolPortalPropertiesPtrOutput().ApplyT(func(v *DevToolPortalProperties) *DevToolPortalProperties { return v.Defaults() }).(DevToolPortalPropertiesPtrOutput)
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230101preview:DevToolPortal"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource DevToolPortal
 	err := ctx.RegisterResource("azure-native:appplatform/v20221101preview:DevToolPortal", name, args, &resource, opts...)
 	if err != nil {
