@@ -20,6 +20,8 @@ type NspAccessRule struct {
 	AddressPrefixes pulumi.StringArrayOutput `pulumi:"addressPrefixes"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
+	// Outbound rules email address format.
+	EmailAddresses pulumi.StringArrayOutput `pulumi:"emailAddresses"`
 	// Outbound rules fully qualified domain name format.
 	FullyQualifiedDomainNames pulumi.StringArrayOutput `pulumi:"fullyQualifiedDomainNames"`
 	// Resource location.
@@ -28,6 +30,8 @@ type NspAccessRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Inbound rule specified by the perimeter id.
 	NetworkSecurityPerimeters PerimeterBasedAccessRuleResponseArrayOutput `pulumi:"networkSecurityPerimeters"`
+	// Outbound rules phone number format.
+	PhoneNumbers pulumi.StringArrayOutput `pulumi:"phoneNumbers"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// List of subscription ids
@@ -98,6 +102,8 @@ type nspAccessRuleArgs struct {
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction *string `pulumi:"direction"`
+	// Outbound rules email address format.
+	EmailAddresses []string `pulumi:"emailAddresses"`
 	// Outbound rules fully qualified domain name format.
 	FullyQualifiedDomainNames []string `pulumi:"fullyQualifiedDomainNames"`
 	// Resource ID.
@@ -110,6 +116,8 @@ type nspAccessRuleArgs struct {
 	NetworkSecurityPerimeterName string `pulumi:"networkSecurityPerimeterName"`
 	// Inbound rule specified by the perimeter id.
 	NetworkSecurityPerimeters []PerimeterBasedAccessRule `pulumi:"networkSecurityPerimeters"`
+	// Outbound rules phone number format.
+	PhoneNumbers []string `pulumi:"phoneNumbers"`
 	// The name of the NSP profile.
 	ProfileName string `pulumi:"profileName"`
 	// The name of the resource group.
@@ -128,6 +136,8 @@ type NspAccessRuleArgs struct {
 	AddressPrefixes pulumi.StringArrayInput
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction pulumi.StringPtrInput
+	// Outbound rules email address format.
+	EmailAddresses pulumi.StringArrayInput
 	// Outbound rules fully qualified domain name format.
 	FullyQualifiedDomainNames pulumi.StringArrayInput
 	// Resource ID.
@@ -140,6 +150,8 @@ type NspAccessRuleArgs struct {
 	NetworkSecurityPerimeterName pulumi.StringInput
 	// Inbound rule specified by the perimeter id.
 	NetworkSecurityPerimeters PerimeterBasedAccessRuleArrayInput
+	// Outbound rules phone number format.
+	PhoneNumbers pulumi.StringArrayInput
 	// The name of the NSP profile.
 	ProfileName pulumi.StringInput
 	// The name of the resource group.
@@ -197,6 +209,11 @@ func (o NspAccessRuleOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NspAccessRule) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
+// Outbound rules email address format.
+func (o NspAccessRuleOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NspAccessRule) pulumi.StringArrayOutput { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
 // Outbound rules fully qualified domain name format.
 func (o NspAccessRuleOutput) FullyQualifiedDomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NspAccessRule) pulumi.StringArrayOutput { return v.FullyQualifiedDomainNames }).(pulumi.StringArrayOutput)
@@ -215,6 +232,11 @@ func (o NspAccessRuleOutput) Name() pulumi.StringOutput {
 // Inbound rule specified by the perimeter id.
 func (o NspAccessRuleOutput) NetworkSecurityPerimeters() PerimeterBasedAccessRuleResponseArrayOutput {
 	return o.ApplyT(func(v *NspAccessRule) PerimeterBasedAccessRuleResponseArrayOutput { return v.NetworkSecurityPerimeters }).(PerimeterBasedAccessRuleResponseArrayOutput)
+}
+
+// Outbound rules phone number format.
+func (o NspAccessRuleOutput) PhoneNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NspAccessRule) pulumi.StringArrayOutput { return v.PhoneNumbers }).(pulumi.StringArrayOutput)
 }
 
 // The provisioning state of the scope assignment resource.

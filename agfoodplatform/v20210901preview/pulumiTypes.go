@@ -13,7 +13,7 @@ import (
 // Api properties.
 type ApiProperties struct {
 	// Interval in minutes for which the weather data for the api needs to be refreshed.
-	ApiFreshnessWindowInMinutes *int `pulumi:"apiFreshnessWindowInMinutes"`
+	ApiFreshnessTimeInMinutes *int `pulumi:"apiFreshnessTimeInMinutes"`
 }
 
 // ApiPropertiesInput is an input type that accepts ApiPropertiesArgs and ApiPropertiesOutput values.
@@ -30,7 +30,7 @@ type ApiPropertiesInput interface {
 // Api properties.
 type ApiPropertiesArgs struct {
 	// Interval in minutes for which the weather data for the api needs to be refreshed.
-	ApiFreshnessWindowInMinutes pulumi.IntPtrInput `pulumi:"apiFreshnessWindowInMinutes"`
+	ApiFreshnessTimeInMinutes pulumi.IntPtrInput `pulumi:"apiFreshnessTimeInMinutes"`
 }
 
 func (ApiPropertiesArgs) ElementType() reflect.Type {
@@ -86,8 +86,8 @@ func (o ApiPropertiesOutput) ToApiPropertiesOutputWithContext(ctx context.Contex
 }
 
 // Interval in minutes for which the weather data for the api needs to be refreshed.
-func (o ApiPropertiesOutput) ApiFreshnessWindowInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApiProperties) *int { return v.ApiFreshnessWindowInMinutes }).(pulumi.IntPtrOutput)
+func (o ApiPropertiesOutput) ApiFreshnessTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApiProperties) *int { return v.ApiFreshnessTimeInMinutes }).(pulumi.IntPtrOutput)
 }
 
 type ApiPropertiesMapOutput struct{ *pulumi.OutputState }
@@ -113,7 +113,7 @@ func (o ApiPropertiesMapOutput) MapIndex(k pulumi.StringInput) ApiPropertiesOutp
 // Api properties.
 type ApiPropertiesResponse struct {
 	// Interval in minutes for which the weather data for the api needs to be refreshed.
-	ApiFreshnessWindowInMinutes *int `pulumi:"apiFreshnessWindowInMinutes"`
+	ApiFreshnessTimeInMinutes *int `pulumi:"apiFreshnessTimeInMinutes"`
 }
 
 // Api properties.
@@ -132,8 +132,8 @@ func (o ApiPropertiesResponseOutput) ToApiPropertiesResponseOutputWithContext(ct
 }
 
 // Interval in minutes for which the weather data for the api needs to be refreshed.
-func (o ApiPropertiesResponseOutput) ApiFreshnessWindowInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApiPropertiesResponse) *int { return v.ApiFreshnessWindowInMinutes }).(pulumi.IntPtrOutput)
+func (o ApiPropertiesResponseOutput) ApiFreshnessTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApiPropertiesResponse) *int { return v.ApiFreshnessTimeInMinutes }).(pulumi.IntPtrOutput)
 }
 
 type ApiPropertiesResponseMapOutput struct{ *pulumi.OutputState }

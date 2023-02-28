@@ -23,8 +23,8 @@ type NetworkWatcher struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the network watcher resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// List of running operation IDs.
-	RunningOperationIds pulumi.IntArrayOutput `pulumi:"runningOperationIds"`
+	// List of running operation GUIDs.
+	RunningOperationIds pulumi.StringArrayOutput `pulumi:"runningOperationIds"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -159,6 +159,9 @@ func NewNetworkWatcher(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220701:NetworkWatcher"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20220901:NetworkWatcher"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkWatcher
@@ -201,8 +204,8 @@ type networkWatcherArgs struct {
 	NetworkWatcherName *string `pulumi:"networkWatcherName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// List of running operation IDs.
-	RunningOperationIds []int `pulumi:"runningOperationIds"`
+	// List of running operation GUIDs.
+	RunningOperationIds []string `pulumi:"runningOperationIds"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -217,8 +220,8 @@ type NetworkWatcherArgs struct {
 	NetworkWatcherName pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// List of running operation IDs.
-	RunningOperationIds pulumi.IntArrayInput
+	// List of running operation GUIDs.
+	RunningOperationIds pulumi.StringArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -280,9 +283,9 @@ func (o NetworkWatcherOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkWatcher) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// List of running operation IDs.
-func (o NetworkWatcherOutput) RunningOperationIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *NetworkWatcher) pulumi.IntArrayOutput { return v.RunningOperationIds }).(pulumi.IntArrayOutput)
+// List of running operation GUIDs.
+func (o NetworkWatcherOutput) RunningOperationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkWatcher) pulumi.StringArrayOutput { return v.RunningOperationIds }).(pulumi.StringArrayOutput)
 }
 
 // Resource tags.

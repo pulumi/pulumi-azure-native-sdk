@@ -43,6 +43,12 @@ func NewApplicationAccelerator(ctx *pulumi.Context,
 	if args.Sku != nil {
 		args.Sku = args.Sku.ToSkuPtrOutput().ApplyT(func(v *Sku) *Sku { return v.Defaults() }).(SkuPtrOutput)
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230101preview:ApplicationAccelerator"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ApplicationAccelerator
 	err := ctx.RegisterResource("azure-native:appplatform/v20221101preview:ApplicationAccelerator", name, args, &resource, opts...)
 	if err != nil {
