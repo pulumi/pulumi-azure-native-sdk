@@ -22,13 +22,13 @@ func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupLabArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
 	// May be used to include budget information.
 	IncludeBudget *bool `pulumi:"includeBudget"`
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
 }
 
@@ -78,13 +78,13 @@ func LookupLabOutput(ctx *pulumi.Context, args LookupLabOutputArgs, opts ...pulu
 }
 
 type LookupLabOutputArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName pulumi.StringInput `pulumi:"billingProfileName"`
 	// May be used to include budget information.
 	IncludeBudget pulumi.BoolPtrInput `pulumi:"includeBudget"`
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName pulumi.StringInput `pulumi:"invoiceSectionName"`
 }
 

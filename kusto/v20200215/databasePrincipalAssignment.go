@@ -88,6 +88,9 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20221111:DatabasePrincipalAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:DatabasePrincipalAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DatabasePrincipalAssignment

@@ -109,9 +109,9 @@ func (LabState) ElementType() reflect.Type {
 }
 
 type labArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent Amount `pulumi:"budgetPerStudent"`
@@ -123,7 +123,7 @@ type labArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Default expiration date for each student in this lab
 	ExpirationDate string `pulumi:"expirationDate"`
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
 	// Amount value.
 	Value *float64 `pulumi:"value"`
@@ -131,9 +131,9 @@ type labArgs struct {
 
 // The set of arguments for constructing a Lab resource.
 type LabArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName pulumi.StringInput
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName pulumi.StringInput
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent AmountInput
@@ -145,7 +145,7 @@ type LabArgs struct {
 	DisplayName pulumi.StringInput
 	// Default expiration date for each student in this lab
 	ExpirationDate pulumi.StringInput
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName pulumi.StringInput
 	// Amount value.
 	Value pulumi.Float64PtrInput

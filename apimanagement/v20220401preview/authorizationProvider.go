@@ -40,6 +40,12 @@ func NewAuthorizationProvider(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:AuthorizationProvider"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource AuthorizationProvider
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220401preview:AuthorizationProvider", name, args, &resource, opts...)
 	if err != nil {

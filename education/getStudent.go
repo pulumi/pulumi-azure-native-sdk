@@ -22,11 +22,11 @@ func LookupStudent(ctx *pulumi.Context, args *LookupStudentArgs, opts ...pulumi.
 }
 
 type LookupStudentArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
 	// Student alias.
 	StudentAlias string `pulumi:"studentAlias"`
@@ -80,11 +80,11 @@ func LookupStudentOutput(ctx *pulumi.Context, args LookupStudentOutputArgs, opts
 }
 
 type LookupStudentOutputArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName pulumi.StringInput `pulumi:"billingProfileName"`
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName pulumi.StringInput `pulumi:"invoiceSectionName"`
 	// Student alias.
 	StudentAlias pulumi.StringInput `pulumi:"studentAlias"`

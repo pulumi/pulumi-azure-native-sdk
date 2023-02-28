@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Database Migration Service resource
+// An Azure Database Migration Service (classic) resource
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:datamigration/v20220330preview:getService", args, &rv, opts...)
@@ -27,7 +27,7 @@ type LookupServiceArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 }
 
-// A Database Migration Service resource
+// An Azure Database Migration Service (classic) resource
 type LookupServiceResult struct {
 	// The time delay before the service is auto-stopped when idle.
 	AutoStopDelay *string `pulumi:"autoStopDelay"`
@@ -79,7 +79,7 @@ func (LookupServiceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
 }
 
-// A Database Migration Service resource
+// An Azure Database Migration Service (classic) resource
 type LookupServiceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupServiceResultOutput) ElementType() reflect.Type {

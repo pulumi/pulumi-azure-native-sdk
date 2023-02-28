@@ -10138,7 +10138,7 @@ func (o OSDiskResponsePtrOutput) WriteAcceleratorEnabled() pulumi.BoolPtrOutput 
 type OSImageNotificationProfile struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
@@ -10156,7 +10156,7 @@ type OSImageNotificationProfileInput interface {
 type OSImageNotificationProfileArgs struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 	NotBeforeTimeout pulumi.StringPtrInput `pulumi:"notBeforeTimeout"`
 }
 
@@ -10242,7 +10242,7 @@ func (o OSImageNotificationProfileOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfile) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfileOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfile) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -10281,7 +10281,7 @@ func (o OSImageNotificationProfilePtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSImageNotificationProfile) *string {
 		if v == nil {
@@ -10294,7 +10294,7 @@ func (o OSImageNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtr
 type OSImageNotificationProfileResponse struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
@@ -10317,7 +10317,7 @@ func (o OSImageNotificationProfileResponseOutput) Enable() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v OSImageNotificationProfileResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfileResponseOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfileResponse) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -10356,7 +10356,7 @@ func (o OSImageNotificationProfileResponsePtrOutput) Enable() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
 func (o OSImageNotificationProfileResponsePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSImageNotificationProfileResponse) *string {
 		if v == nil {
@@ -26144,12 +26144,20 @@ type VirtualMachineScaleSetVMInstanceViewResponse struct {
 	AssignedHost string `pulumi:"assignedHost"`
 	// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the VM from the hypervisor.
 	BootDiagnostics *BootDiagnosticsInstanceViewResponse `pulumi:"bootDiagnostics"`
+	// Specifies the host OS name of the virtual machine. <br><br> This name cannot be updated after the VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For naming conventions and restrictions see [Azure infrastructure services implementation guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+	ComputerName *string `pulumi:"computerName"`
 	// The disks information.
 	Disks []DiskInstanceViewResponse `pulumi:"disks"`
 	// The extensions information.
 	Extensions []VirtualMachineExtensionInstanceViewResponse `pulumi:"extensions"`
+	// The hypervisor generation of the Virtual Machine [V1, V2]
+	HyperVGeneration *string `pulumi:"hyperVGeneration"`
 	// The Maintenance Operation status on the virtual machine.
 	MaintenanceRedeployStatus *MaintenanceRedeployStatusResponse `pulumi:"maintenanceRedeployStatus"`
+	// The Operating System running on the hybrid machine.
+	OsName *string `pulumi:"osName"`
+	// The version of Operating System running on the hybrid machine.
+	OsVersion *string `pulumi:"osVersion"`
 	// The placement group in which the VM is running. If the VM is deallocated it will not have a placementGroupId.
 	PlacementGroupId *string `pulumi:"placementGroupId"`
 	// The Fault Domain count.
@@ -26193,6 +26201,11 @@ func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) BootDiagnostics() Bo
 	}).(BootDiagnosticsInstanceViewResponsePtrOutput)
 }
 
+// Specifies the host OS name of the virtual machine. <br><br> This name cannot be updated after the VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For naming conventions and restrictions see [Azure infrastructure services implementation guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetVMInstanceViewResponse) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
 // The disks information.
 func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) Disks() DiskInstanceViewResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetVMInstanceViewResponse) []DiskInstanceViewResponse { return v.Disks }).(DiskInstanceViewResponseArrayOutput)
@@ -26205,11 +26218,26 @@ func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) Extensions() Virtual
 	}).(VirtualMachineExtensionInstanceViewResponseArrayOutput)
 }
 
+// The hypervisor generation of the Virtual Machine [V1, V2]
+func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) HyperVGeneration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetVMInstanceViewResponse) *string { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
+}
+
 // The Maintenance Operation status on the virtual machine.
 func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) MaintenanceRedeployStatus() MaintenanceRedeployStatusResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetVMInstanceViewResponse) *MaintenanceRedeployStatusResponse {
 		return v.MaintenanceRedeployStatus
 	}).(MaintenanceRedeployStatusResponsePtrOutput)
+}
+
+// The Operating System running on the hybrid machine.
+func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) OsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetVMInstanceViewResponse) *string { return v.OsName }).(pulumi.StringPtrOutput)
+}
+
+// The version of Operating System running on the hybrid machine.
+func (o VirtualMachineScaleSetVMInstanceViewResponseOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetVMInstanceViewResponse) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
 }
 
 // The placement group in which the VM is running. If the VM is deallocated it will not have a placementGroupId.
