@@ -117,9 +117,9 @@ func (StudentState) ElementType() reflect.Type {
 }
 
 type studentArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
 	// Student Budget
 	Budget Amount `pulumi:"budget"`
@@ -129,7 +129,7 @@ type studentArgs struct {
 	ExpirationDate string `pulumi:"expirationDate"`
 	// First Name
 	FirstName string `pulumi:"firstName"`
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
 	// Last Name
 	LastName string `pulumi:"lastName"`
@@ -145,9 +145,9 @@ type studentArgs struct {
 
 // The set of arguments for constructing a Student resource.
 type StudentArgs struct {
-	// Billing account name.
+	// The ID that uniquely identifies a billing account.
 	BillingAccountName pulumi.StringInput
-	// Billing profile name.
+	// The ID that uniquely identifies a billing profile.
 	BillingProfileName pulumi.StringInput
 	// Student Budget
 	Budget AmountInput
@@ -157,7 +157,7 @@ type StudentArgs struct {
 	ExpirationDate pulumi.StringInput
 	// First Name
 	FirstName pulumi.StringInput
-	// Invoice section name.
+	// The ID that uniquely identifies an invoice section.
 	InvoiceSectionName pulumi.StringInput
 	// Last Name
 	LastName pulumi.StringInput

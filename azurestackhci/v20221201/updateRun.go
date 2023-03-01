@@ -65,6 +65,12 @@ func NewUpdateRun(ctx *pulumi.Context,
 	if args.UpdateName == nil {
 		return nil, errors.New("invalid value for required argument 'UpdateName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230201:UpdateRun"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource UpdateRun
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20221201:UpdateRun", name, args, &resource, opts...)
 	if err != nil {

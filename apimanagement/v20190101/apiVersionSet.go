@@ -90,6 +90,9 @@ func NewApiVersionSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiVersionSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiVersionSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiVersionSet
