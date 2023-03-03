@@ -103,6 +103,9 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20221111:EventHubDataConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:EventHubDataConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EventHubDataConnection

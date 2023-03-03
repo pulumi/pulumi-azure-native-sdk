@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a connected cluster.
+// Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
 //
 // Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
 func LookupConnectedCluster(ctx *pulumi.Context, args *LookupConnectedClusterArgs, opts ...pulumi.InvokeOption) (*LookupConnectedClusterResult, error) {

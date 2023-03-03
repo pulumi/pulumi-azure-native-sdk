@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a connected registry for a container registry.
+// Gets the properties of the connected registry.
 // API Version: 2020-11-01-preview.
 func LookupConnectedRegistry(ctx *pulumi.Context, args *LookupConnectedRegistryArgs, opts ...pulumi.InvokeOption) (*LookupConnectedRegistryResult, error) {
 	var rv LookupConnectedRegistryResult

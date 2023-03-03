@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of Fhir Service
+// Gets the properties of the specified FHIR Service.
 // API Version: 2022-05-15.
 func LookupFhirService(ctx *pulumi.Context, args *LookupFhirServiceArgs, opts ...pulumi.InvokeOption) (*LookupFhirServiceResult, error) {
 	var rv LookupFhirServiceResult

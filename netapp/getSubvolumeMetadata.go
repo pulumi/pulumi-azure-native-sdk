@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the post subvolume and action is to get metadata of the subvolume.
+// Get details of the specified subvolume
 // API Version: 2021-10-01.
 func GetSubvolumeMetadata(ctx *pulumi.Context, args *GetSubvolumeMetadataArgs, opts ...pulumi.InvokeOption) (*GetSubvolumeMetadataResult, error) {
 	var rv GetSubvolumeMetadataResult

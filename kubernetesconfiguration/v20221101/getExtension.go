@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Extension object.
+// Gets Kubernetes Cluster Extension.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20221101:getExtension", args, &rv, opts...)

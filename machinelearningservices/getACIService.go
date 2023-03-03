@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning service object wrapped into ARM resource envelope.
+// Get a Service by name.
 // API Version: 2021-01-01.
 func LookupACIService(ctx *pulumi.Context, args *LookupACIServiceArgs, opts ...pulumi.InvokeOption) (*LookupACIServiceResult, error) {
 	var rv LookupACIServiceResult

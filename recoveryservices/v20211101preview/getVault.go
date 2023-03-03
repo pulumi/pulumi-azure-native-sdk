@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource information, as returned by the resource provider.
+// Get the Vault details.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	var rv LookupVaultResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20211101preview:getVault", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in a List or Get AuthorizationRule operation
+// Gets an AuthorizationRule for an Event Hub by rule name.
 func LookupEventHubAuthorizationRule(ctx *pulumi.Context, args *LookupEventHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupEventHubAuthorizationRuleResult, error) {
 	var rv LookupEventHubAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:eventhub/v20180101preview:getEventHubAuthorizationRule", args, &rv, opts...)

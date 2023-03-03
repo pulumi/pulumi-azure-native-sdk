@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace active directory administrator
+// Gets a workspace active directory admin
 // API Version: 2021-03-01.
 func LookupWorkspaceAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceAadAdminResult, error) {
 	var rv LookupWorkspaceAadAdminResult

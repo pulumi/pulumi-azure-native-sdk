@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Inbound NAT rule of the load balancer.
+// Gets the specified load balancer inbound nat rule.
 //
 // Deprecated: Version 2017-06-01 will be removed in v2 of the provider.
 func LookupInboundNatRule(ctx *pulumi.Context, args *LookupInboundNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupInboundNatRuleResult, error) {

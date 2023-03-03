@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Modeling resource details.
+// Returns Modeling resources for a given name.
 // API Version: 2022-02-01.
 func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulumi.InvokeOption) (*LookupModelingResult, error) {
 	var rv LookupModelingResult

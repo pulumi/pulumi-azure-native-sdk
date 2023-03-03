@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The SourceControl Configuration object.
+// Gets details of the Source Control Configuration.
 //
 // Deprecated: Version 2019-11-01-preview will be removed in v2 of the provider.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {

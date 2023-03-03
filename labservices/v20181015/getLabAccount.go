@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a lab account.
+// Get lab account
 func LookupLabAccount(ctx *pulumi.Context, args *LookupLabAccountArgs, opts ...pulumi.InvokeOption) (*LookupLabAccountResult, error) {
 	var rv LookupLabAccountResult
 	err := ctx.Invoke("azure-native:labservices/v20181015:getLabAccount", args, &rv, opts...)

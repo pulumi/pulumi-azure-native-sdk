@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// OpenShiftClusterAdminKubeconfig represents an OpenShift cluster's admin kubeconfig.
+// The operation returns the admin kubeconfig.
 func ListOpenShiftClusterAdminCredentials(ctx *pulumi.Context, args *ListOpenShiftClusterAdminCredentialsArgs, opts ...pulumi.InvokeOption) (*ListOpenShiftClusterAdminCredentialsResult, error) {
 	var rv ListOpenShiftClusterAdminCredentialsResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20220904:listOpenShiftClusterAdminCredentials", args, &rv, opts...)

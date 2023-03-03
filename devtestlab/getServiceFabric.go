@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Service Fabric.
+// Get service fabric.
 // API Version: 2018-09-15.
 func LookupServiceFabric(ctx *pulumi.Context, args *LookupServiceFabricArgs, opts ...pulumi.InvokeOption) (*LookupServiceFabricResult, error) {
 	var rv LookupServiceFabricResult

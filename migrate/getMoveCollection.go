@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the move collection.
+// Gets the move collection.
 // API Version: 2021-01-01.
 func LookupMoveCollection(ctx *pulumi.Context, args *LookupMoveCollectionArgs, opts ...pulumi.InvokeOption) (*LookupMoveCollectionResult, error) {
 	var rv LookupMoveCollectionResult

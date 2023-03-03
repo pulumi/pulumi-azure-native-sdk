@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Customer Notification Event resource.
+// Gets a Test Base CustomerEvent.
 func LookupCustomerEvent(ctx *pulumi.Context, args *LookupCustomerEventArgs, opts ...pulumi.InvokeOption) (*LookupCustomerEventResult, error) {
 	var rv LookupCustomerEventResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getCustomerEvent", args, &rv, opts...)

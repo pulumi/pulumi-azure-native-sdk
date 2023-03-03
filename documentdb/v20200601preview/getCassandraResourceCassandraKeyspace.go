@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Cassandra keyspace.
+// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
 //
 // Deprecated: Version 2020-06-01-preview will be removed in v2 of the provider.
 func LookupCassandraResourceCassandraKeyspace(ctx *pulumi.Context, args *LookupCassandraResourceCassandraKeyspaceArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraKeyspaceResult, error) {

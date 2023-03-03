@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of top-level domain legal agreements.
+// Gets all legal agreements that user needs to accept before purchasing a domain.
 // API Version: 2020-10-01.
 func ListTopLevelDomainAgreements(ctx *pulumi.Context, args *ListTopLevelDomainAgreementsArgs, opts ...pulumi.InvokeOption) (*ListTopLevelDomainAgreementsResult, error) {
 	var rv ListTopLevelDomainAgreementsResult

@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
 func ListWorkspaceCollectionAccessKeys(ctx *pulumi.Context, args *ListWorkspaceCollectionAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceCollectionAccessKeysResult, error) {
 	var rv ListWorkspaceCollectionAccessKeysResult
 	err := ctx.Invoke("azure-native:powerbi/v20160129:listWorkspaceCollectionAccessKeys", args, &rv, opts...)

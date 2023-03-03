@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Application Group object
+// Gets an ApplicationGroup for a Namespace.
 // API Version: 2022-01-01-preview.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	var rv LookupApplicationGroupResult

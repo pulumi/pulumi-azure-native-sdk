@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response of getting a download URL.
+// Gets the download URL of the test result.
 // API Version: 2022-04-01-preview.
 func GetTestResultDownloadURL(ctx *pulumi.Context, args *GetTestResultDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultDownloadURLResult, error) {
 	var rv GetTestResultDownloadURLResult

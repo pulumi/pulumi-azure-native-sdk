@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Virtual Machine run command.
+// The operation to get the VMSS VM run command.
 // API Version: 2021-03-01.
 func LookupVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMRunCommandResult, error) {
 	var rv LookupVirtualMachineScaleSetVMRunCommandResult

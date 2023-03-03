@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The policy definition.
+// This operation retrieves the policy definition in the given management group with the given name.
 // API Version: 2020-09-01.
 func LookupPolicyDefinitionAtManagementGroup(ctx *pulumi.Context, args *LookupPolicyDefinitionAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionAtManagementGroupResult, error) {
 	var rv LookupPolicyDefinitionAtManagementGroupResult

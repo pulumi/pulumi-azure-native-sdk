@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// String dictionary resource.
+// Get function keys for a function in a web site, or a deployment slot.
 // API Version: 2020-12-01.
 func ListWebAppFunctionKeys(ctx *pulumi.Context, args *ListWebAppFunctionKeysArgs, opts ...pulumi.InvokeOption) (*ListWebAppFunctionKeysResult, error) {
 	var rv ListWebAppFunctionKeysResult

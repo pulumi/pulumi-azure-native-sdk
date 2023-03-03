@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
+// Gets the details of the private endpoint connection to the search service in the given resource group.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:search/v20200801preview:getPrivateEndpointConnection", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for all the Bastion Shareable Link endpoints.
+// Return the Bastion Shareable Links for all the VMs specified in the request.
 // API Version: 2020-11-01.
 func GetBastionShareableLink(ctx *pulumi.Context, args *GetBastionShareableLinkArgs, opts ...pulumi.InvokeOption) (*GetBastionShareableLinkResult, error) {
 	var rv GetBastionShareableLinkResult

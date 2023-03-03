@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Table.
+// Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
 //
 // Deprecated: Version 2015-04-08 will be removed in v2 of the provider.
 func LookupDatabaseAccountTable(ctx *pulumi.Context, args *LookupDatabaseAccountTableArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountTableResult, error) {

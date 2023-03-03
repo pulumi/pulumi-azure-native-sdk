@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Live Output.
+// Gets a live output.
 // API Version: 2020-05-01.
 func LookupLiveOutput(ctx *pulumi.Context, args *LookupLiveOutputArgs, opts ...pulumi.InvokeOption) (*LookupLiveOutputResult, error) {
 	var rv LookupLiveOutputResult

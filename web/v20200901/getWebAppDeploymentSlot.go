@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// User credentials used for publishing activity.
+// Get a deployment by its ID for an app, or a deployment slot.
 func LookupWebAppDeploymentSlot(ctx *pulumi.Context, args *LookupWebAppDeploymentSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDeploymentSlotResult, error) {
 	var rv LookupWebAppDeploymentSlotResult
 	err := ctx.Invoke("azure-native:web/v20200901:getWebAppDeploymentSlot", args, &rv, opts...)

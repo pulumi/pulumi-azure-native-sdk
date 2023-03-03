@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network profile resource.
+// Gets the specified network profile in a specified resource group.
 func LookupNetworkProfile(ctx *pulumi.Context, args *LookupNetworkProfileArgs, opts ...pulumi.InvokeOption) (*LookupNetworkProfileResult, error) {
 	var rv LookupNetworkProfileResult
 	err := ctx.Invoke("azure-native:network/v20210201:getNetworkProfile", args, &rv, opts...)

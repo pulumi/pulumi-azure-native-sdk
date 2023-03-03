@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Postgres Instance.
+// Retrieves a postgres Instance resource
 func LookupPostgresInstance(ctx *pulumi.Context, args *LookupPostgresInstanceArgs, opts ...pulumi.InvokeOption) (*LookupPostgresInstanceResult, error) {
 	var rv LookupPostgresInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20220615preview:getPostgresInstance", args, &rv, opts...)

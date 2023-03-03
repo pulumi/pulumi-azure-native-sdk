@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Policy Contract details.
+// Get the policy configuration at the API Operation level.
 // API Version: 2020-12-01.
 func LookupApiOperationPolicy(ctx *pulumi.Context, args *LookupApiOperationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiOperationPolicyResult, error) {
 	var rv LookupApiOperationPolicyResult

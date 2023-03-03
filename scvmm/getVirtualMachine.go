@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The VirtualMachines resource definition.
+// Implements VirtualMachine GET method.
 // API Version: 2020-06-05-preview.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult

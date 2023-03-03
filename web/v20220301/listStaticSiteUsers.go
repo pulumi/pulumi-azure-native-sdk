@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of static site custom users.
+// Description for Gets the list of users of a static site.
 func ListStaticSiteUsers(ctx *pulumi.Context, args *ListStaticSiteUsersArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteUsersResult, error) {
 	var rv ListStaticSiteUsersResult
 	err := ctx.Invoke("azure-native:web/v20220301:listStaticSiteUsers", args, &rv, opts...)

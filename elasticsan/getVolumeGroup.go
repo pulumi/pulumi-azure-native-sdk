@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for Volume Group request.
+// Get an VolumeGroups.
 // API Version: 2021-11-20-preview.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	var rv LookupVolumeGroupResult

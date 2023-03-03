@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A type of trigger based on schedule
+// Get a Trigger in a shareSubscription
 // API Version: 2020-09-01.
 func LookupScheduledTrigger(ctx *pulumi.Context, args *LookupScheduledTriggerArgs, opts ...pulumi.InvokeOption) (*LookupScheduledTriggerResult, error) {
 	var rv LookupScheduledTriggerResult

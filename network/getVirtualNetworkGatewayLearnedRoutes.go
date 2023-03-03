@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of virtual network gateway routes.
+// This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.
 // API Version: 2020-11-01.
 func GetVirtualNetworkGatewayLearnedRoutes(ctx *pulumi.Context, args *GetVirtualNetworkGatewayLearnedRoutesArgs, opts ...pulumi.InvokeOption) (*GetVirtualNetworkGatewayLearnedRoutesResult, error) {
 	var rv GetVirtualNetworkGatewayLearnedRoutesResult

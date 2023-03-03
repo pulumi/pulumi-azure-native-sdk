@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Source control configuration for an app.
+// Description for Gets the source control configuration of an app.
 func LookupWebAppSourceControlSlot(ctx *pulumi.Context, args *LookupWebAppSourceControlSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSourceControlSlotResult, error) {
 	var rv LookupWebAppSourceControlSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppSourceControlSlot", args, &rv, opts...)

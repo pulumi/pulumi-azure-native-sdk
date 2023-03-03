@@ -87,7 +87,7 @@ type tagInheritanceSettingArgs struct {
 	Kind string `pulumi:"kind"`
 	// The properties of the tag inheritance setting.
 	Properties *TagInheritanceProperties `pulumi:"properties"`
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope string `pulumi:"scope"`
 	// Setting type.
 	Type *string `pulumi:"type"`
@@ -102,7 +102,7 @@ type TagInheritanceSettingArgs struct {
 	Kind pulumi.StringInput
 	// The properties of the tag inheritance setting.
 	Properties TagInheritancePropertiesPtrInput
-	// The scope associated with setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
+	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope pulumi.StringInput
 	// Setting type.
 	Type pulumi.StringPtrInput

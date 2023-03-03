@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Base class for container with backup items. Containers with specific workloads are derived from this class.
+// Gets details of the specific container registered to your Recovery Services Vault.
 // API Version: 2021-02-01.
 func LookupProtectionContainer(ctx *pulumi.Context, args *LookupProtectionContainerArgs, opts ...pulumi.InvokeOption) (*LookupProtectionContainerResult, error) {
 	var rv LookupProtectionContainerResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A failover group.
+// Gets a failover group.
 func LookupFailoverGroup(ctx *pulumi.Context, args *LookupFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupFailoverGroupResult, error) {
 	var rv LookupFailoverGroupResult
 	err := ctx.Invoke("azure-native:sql/v20200801preview:getFailoverGroup", args, &rv, opts...)

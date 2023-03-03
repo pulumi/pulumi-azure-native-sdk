@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Type of the Storage Target.
+// Returns a Storage Target from a Cache.
 // API Version: 2021-03-01.
 func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opts ...pulumi.InvokeOption) (*LookupStorageTargetResult, error) {
 	var rv LookupStorageTargetResult

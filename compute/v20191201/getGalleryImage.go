@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the gallery Image Definition that you want to create or update.
+// Retrieves information about a gallery Image Definition.
 //
 // Deprecated: Version 2019-12-01 will be removed in v2 of the provider.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {

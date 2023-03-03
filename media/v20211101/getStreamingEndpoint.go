@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The streaming endpoint.
+// Gets a streaming endpoint.
 func LookupStreamingEndpoint(ctx *pulumi.Context, args *LookupStreamingEndpointArgs, opts ...pulumi.InvokeOption) (*LookupStreamingEndpointResult, error) {
 	var rv LookupStreamingEndpointResult
 	err := ctx.Invoke("azure-native:media/v20211101:getStreamingEndpoint", args, &rv, opts...)

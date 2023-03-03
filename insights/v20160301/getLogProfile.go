@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The log profile resource.
+// Gets the log profile.
 func LookupLogProfile(ctx *pulumi.Context, args *LookupLogProfileArgs, opts ...pulumi.InvokeOption) (*LookupLogProfileResult, error) {
 	var rv LookupLogProfileResult
 	err := ctx.Invoke("azure-native:insights/v20160301:getLogProfile", args, &rv, opts...)

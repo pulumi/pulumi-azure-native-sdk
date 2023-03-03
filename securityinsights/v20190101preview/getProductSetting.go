@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Setting.
+// Gets a setting.
 //
 // Deprecated: Please use one of the variants: Anomalies, EntityAnalytics, EyesOn, IPSyncer, Ueba.
 func LookupProductSetting(ctx *pulumi.Context, args *LookupProductSettingArgs, opts ...pulumi.InvokeOption) (*LookupProductSettingResult, error) {

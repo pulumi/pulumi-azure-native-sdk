@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Private endpoint resource.
+// Gets the specified private endpoint by resource group.
 func LookupPrivateEndpoint(ctx *pulumi.Context, args *LookupPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointResult, error) {
 	var rv LookupPrivateEndpointResult
 	err := ctx.Invoke("azure-native:network/v20191201:getPrivateEndpoint", args, &rv, opts...)

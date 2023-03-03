@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing an Event Grid data connection.
+// Returns a data connection.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	var rv LookupEventGridDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getEventGridDataConnection", args, &rv, opts...)

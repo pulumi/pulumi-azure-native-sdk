@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// LoadTest details
+// Get a LoadTest resource.
 func LookupLoadTest(ctx *pulumi.Context, args *LookupLoadTestArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestResult, error) {
 	var rv LookupLoadTestResult
 	err := ctx.Invoke("azure-native:loadtestservice/v20211201preview:getLoadTest", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IP firewall rule
+// Get a firewall rule
 func LookupIpFirewallRule(ctx *pulumi.Context, args *LookupIpFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIpFirewallRuleResult, error) {
 	var rv LookupIpFirewallRuleResult
 	err := ctx.Invoke("azure-native:synapse/v20210301:getIpFirewallRule", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// NetworkSecurityGroup resource.
+// Gets the specified network security group.
 func LookupNetworkSecurityGroup(ctx *pulumi.Context, args *LookupNetworkSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityGroupResult, error) {
 	var rv LookupNetworkSecurityGroupResult
 	err := ctx.Invoke("azure-native:network/v20210801:getNetworkSecurityGroup", args, &rv, opts...)

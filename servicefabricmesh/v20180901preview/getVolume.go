@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This type describes a volume resource.
+// Gets the information about the volume resource with the given name. The information include the description and other properties of the volume.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:servicefabricmesh/v20180901preview:getVolume", args, &rv, opts...)

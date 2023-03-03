@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a Server collector.
 // API Version: 2019-10-01.
 func LookupServerCollector(ctx *pulumi.Context, args *LookupServerCollectorArgs, opts ...pulumi.InvokeOption) (*LookupServerCollectorResult, error) {
 	var rv LookupServerCollectorResult

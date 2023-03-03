@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// P2SVpnServerConfiguration Resource.
+// Retrieves the details of a P2SVpnServerConfiguration.
 // API Version: 2019-07-01.
 func LookupP2sVpnServerConfiguration(ctx *pulumi.Context, args *LookupP2sVpnServerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupP2sVpnServerConfigurationResult, error) {
 	var rv LookupP2sVpnServerConfigurationResult

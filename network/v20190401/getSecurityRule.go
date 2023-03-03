@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network security rule.
+// Get the specified network security rule.
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	var rv LookupSecurityRuleResult
 	err := ctx.Invoke("azure-native:network/v20190401:getSecurityRule", args, &rv, opts...)

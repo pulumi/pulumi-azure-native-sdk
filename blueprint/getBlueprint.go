@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Blueprint definition.
+// Get a blueprint definition.
 // API Version: 2018-11-01-preview.
 func LookupBlueprint(ctx *pulumi.Context, args *LookupBlueprintArgs, opts ...pulumi.InvokeOption) (*LookupBlueprintResult, error) {
 	var rv LookupBlueprintResult

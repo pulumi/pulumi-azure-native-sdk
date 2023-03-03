@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents IoT data connector.
+// Gets a data connector.
 func LookupIoTDataConnector(ctx *pulumi.Context, args *LookupIoTDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIoTDataConnectorResult, error) {
 	var rv LookupIoTDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getIoTDataConnector", args, &rv, opts...)

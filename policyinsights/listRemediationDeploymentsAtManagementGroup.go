@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of deployments for a remediation.
+// Gets all deployments for a remediation at management group scope.
 // API Version: 2019-07-01.
 func ListRemediationDeploymentsAtManagementGroup(ctx *pulumi.Context, args *ListRemediationDeploymentsAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtManagementGroupResult, error) {
 	var rv ListRemediationDeploymentsAtManagementGroupResult

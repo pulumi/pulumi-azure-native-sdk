@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security Standard on a resource
+// Get a specific security standard for the requested scope
 func LookupStandard(ctx *pulumi.Context, args *LookupStandardArgs, opts ...pulumi.InvokeOption) (*LookupStandardResult, error) {
 	var rv LookupStandardResult
 	err := ctx.Invoke("azure-native:security/v20210801preview:getStandard", args, &rv, opts...)

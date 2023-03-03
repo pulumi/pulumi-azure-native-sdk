@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in List or Get Event Hub operation
+// Gets an Event Hubs description for the specified Event Hub.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
 func LookupEventHub(ctx *pulumi.Context, args *LookupEventHubArgs, opts ...pulumi.InvokeOption) (*LookupEventHubResult, error) {

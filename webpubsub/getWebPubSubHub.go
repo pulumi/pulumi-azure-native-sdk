@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A hub setting
+// Get a hub setting.
 // API Version: 2021-10-01.
 func LookupWebPubSubHub(ctx *pulumi.Context, args *LookupWebPubSubHubArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubHubResult, error) {
 	var rv LookupWebPubSubHubResult

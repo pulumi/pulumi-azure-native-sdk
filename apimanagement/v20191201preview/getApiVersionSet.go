@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api Version Set Contract details.
+// Gets the details of the Api Version Set specified by its identifier.
 func LookupApiVersionSet(ctx *pulumi.Context, args *LookupApiVersionSetArgs, opts ...pulumi.InvokeOption) (*LookupApiVersionSetResult, error) {
 	var rv LookupApiVersionSetResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201preview:getApiVersionSet", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
+// Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
 // API Version: 2020-05-01.
 func LookupFrontDoor(ctx *pulumi.Context, args *LookupFrontDoorArgs, opts ...pulumi.InvokeOption) (*LookupFrontDoorResult, error) {
 	var rv LookupFrontDoorResult

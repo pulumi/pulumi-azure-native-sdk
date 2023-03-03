@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Service Endpoint policy definitions.
+// Get the specified service endpoint policy definitions from service endpoint policy.
 func LookupServiceEndpointPolicyDefinition(ctx *pulumi.Context, args *LookupServiceEndpointPolicyDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointPolicyDefinitionResult, error) {
 	var rv LookupServiceEndpointPolicyDefinitionResult
 	err := ctx.Invoke("azure-native:network/v20201101:getServiceEndpointPolicyDefinition", args, &rv, opts...)

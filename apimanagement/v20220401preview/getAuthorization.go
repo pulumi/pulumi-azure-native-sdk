@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Authorization contract.
+// Gets the details of the authorization specified by its identifier.
 func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationResult, error) {
 	var rv LookupAuthorizationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getAuthorization", args, &rv, opts...)

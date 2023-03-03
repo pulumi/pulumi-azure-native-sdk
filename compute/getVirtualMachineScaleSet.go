@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Virtual Machine Scale Set.
+// Display information about a virtual machine scale set.
 // API Version: 2021-03-01.
 func LookupVirtualMachineScaleSet(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetResult, error) {
 	var rv LookupVirtualMachineScaleSetResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// StaticMember Item.
+// Gets the specified static member.
 // API Version: 2022-02-01-preview.
 func LookupStaticMember(ctx *pulumi.Context, args *LookupStaticMemberArgs, opts ...pulumi.InvokeOption) (*LookupStaticMemberResult, error) {
 	var rv LookupStaticMemberResult

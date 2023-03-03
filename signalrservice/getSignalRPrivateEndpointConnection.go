@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A private endpoint connection to SignalR resource
+// Get the specified private endpoint connection associated with a SignalR resource.
 // API Version: 2020-05-01.
 func LookupSignalRPrivateEndpointConnection(ctx *pulumi.Context, args *LookupSignalRPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupSignalRPrivateEndpointConnectionResult, error) {
 	var rv LookupSignalRPrivateEndpointConnectionResult

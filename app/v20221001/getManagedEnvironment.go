@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment for hosting container apps
+// Get the properties of a Managed Environment used to host container apps.
 func LookupManagedEnvironment(ctx *pulumi.Context, args *LookupManagedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentResult, error) {
 	var rv LookupManagedEnvironmentResult
 	err := ctx.Invoke("azure-native:app/v20221001:getManagedEnvironment", args, &rv, opts...)

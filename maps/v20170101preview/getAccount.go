@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure resource which represents access to a suite of Maps REST APIs.
+// Get a Maps Account.
 //
 // Deprecated: Version 2017-01-01-preview will be removed in v2 of the provider.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {

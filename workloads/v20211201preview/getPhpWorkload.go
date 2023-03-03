@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Php workload resource
+// Gets the PHP workload resource.
 func LookupPhpWorkload(ctx *pulumi.Context, args *LookupPhpWorkloadArgs, opts ...pulumi.InvokeOption) (*LookupPhpWorkloadResult, error) {
 	var rv LookupPhpWorkloadResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getPhpWorkload", args, &rv, opts...)

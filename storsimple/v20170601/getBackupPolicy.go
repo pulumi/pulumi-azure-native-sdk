@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The backup policy.
+// Gets the properties of the specified backup policy name.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	var rv LookupBackupPolicyResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getBackupPolicy", args, &rv, opts...)

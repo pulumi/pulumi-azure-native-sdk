@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADLSGen2 storage account data set.
+// Get a DataSet in a share
 func LookupADLSGen2StorageAccountDataSet(ctx *pulumi.Context, args *LookupADLSGen2StorageAccountDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2StorageAccountDataSetResult, error) {
 	var rv LookupADLSGen2StorageAccountDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getADLSGen2StorageAccountDataSet", args, &rv, opts...)

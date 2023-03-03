@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The device security group resource
+// Use this method to get the device security group for the specified IoT Hub resource.
 func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceSecurityGroupResult, error) {
 	var rv LookupDeviceSecurityGroupResult
 	err := ctx.Invoke("azure-native:security/v20170801preview:getDeviceSecurityGroup", args, &rv, opts...)

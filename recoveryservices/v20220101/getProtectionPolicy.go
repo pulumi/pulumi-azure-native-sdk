@@ -10,7 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Base class for backup policy. Workload-specific backup policies are derived from this class.
+// Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
+// operation. Status of the operation can be fetched using GetPolicyOperationResult API.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
 	var rv LookupProtectionPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220101:getProtectionPolicy", args, &rv, opts...)

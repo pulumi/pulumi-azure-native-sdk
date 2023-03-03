@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADLS Gen2 file system data set mapping.
+// Get a DataSetMapping in a shareSubscription
 func LookupADLSGen2FileSystemDataSetMapping(ctx *pulumi.Context, args *LookupADLSGen2FileSystemDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileSystemDataSetMappingResult, error) {
 	var rv LookupADLSGen2FileSystemDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getADLSGen2FileSystemDataSetMapping", args, &rv, opts...)

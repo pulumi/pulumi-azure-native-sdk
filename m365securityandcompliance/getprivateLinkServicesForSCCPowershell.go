@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the service.
+// Get the metadata of a privateLinkServicesForSCCPowershell resource.
 // API Version: 2021-03-25-preview.
 func GetprivateLinkServicesForSCCPowershell(ctx *pulumi.Context, args *GetprivateLinkServicesForSCCPowershellArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForSCCPowershellResult, error) {
 	var rv GetprivateLinkServicesForSCCPowershellResult

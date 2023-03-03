@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of a orchestrator.
+// Gets details about the specified dnc DelegatedSubnet Link.
 //
 // Deprecated: Version 2020-08-08-preview will be removed in v2 of the provider.
 func LookupDelegatedSubnetServiceDetails(ctx *pulumi.Context, args *LookupDelegatedSubnetServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupDelegatedSubnetServiceDetailsResult, error) {

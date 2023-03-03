@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The alert rule information
+// Get a specific Smart Detector alert rule.
 // API Version: 2019-06-01.
 func LookupSmartDetectorAlertRule(ctx *pulumi.Context, args *LookupSmartDetectorAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupSmartDetectorAlertRuleResult, error) {
 	var rv LookupSmartDetectorAlertRuleResult

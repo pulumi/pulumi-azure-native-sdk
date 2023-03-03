@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Streaming Locators associated with this Asset.
+// Lists Streaming Locators which are associated with this asset.
 func ListAssetStreamingLocators(ctx *pulumi.Context, args *ListAssetStreamingLocatorsArgs, opts ...pulumi.InvokeOption) (*ListAssetStreamingLocatorsResult, error) {
 	var rv ListAssetStreamingLocatorsResult
 	err := ctx.Invoke("azure-native:media/v20180701:listAssetStreamingLocators", args, &rv, opts...)

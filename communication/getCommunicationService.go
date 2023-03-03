@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class representing a CommunicationService resource.
+// Get the CommunicationService and its properties.
 // API Version: 2020-08-20.
 func LookupCommunicationService(ctx *pulumi.Context, args *LookupCommunicationServiceArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationServiceResult, error) {
 	var rv LookupCommunicationServiceResult

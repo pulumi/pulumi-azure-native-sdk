@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of get log link operation.
+// Gets a link to download the run logs.
 // API Version: 2019-06-01-preview.
 func ListRunLogSasUrl(ctx *pulumi.Context, args *ListRunLogSasUrlArgs, opts ...pulumi.InvokeOption) (*ListRunLogSasUrlResult, error) {
 	var rv ListRunLogSasUrlResult

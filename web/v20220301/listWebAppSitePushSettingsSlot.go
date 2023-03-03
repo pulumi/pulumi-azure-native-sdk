@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Push settings for the App.
+// Description for Gets the Push settings associated with web app.
 func ListWebAppSitePushSettingsSlot(ctx *pulumi.Context, args *ListWebAppSitePushSettingsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppSitePushSettingsSlotResult, error) {
 	var rv ListWebAppSitePushSettingsSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:listWebAppSitePushSettingsSlot", args, &rv, opts...)

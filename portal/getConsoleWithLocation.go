@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cloud shell console
+// Gets the console for the user.
 // API Version: 2018-10-01.
 func LookupConsoleWithLocation(ctx *pulumi.Context, args *LookupConsoleWithLocationArgs, opts ...pulumi.InvokeOption) (*LookupConsoleWithLocationResult, error) {
 	var rv LookupConsoleWithLocationResult

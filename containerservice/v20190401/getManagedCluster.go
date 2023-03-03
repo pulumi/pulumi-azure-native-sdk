@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Managed cluster.
+// Gets the details of the managed cluster with a specified resource group and name.
 //
 // Deprecated: Version 2019-04-01 will be removed in v2 of the provider.
 func LookupManagedCluster(ctx *pulumi.Context, args *LookupManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterResult, error) {

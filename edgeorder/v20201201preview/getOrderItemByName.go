@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents order item contract
+// Gets an order item.
 //
 // Deprecated: Version 2020-12-01-preview will be removed in v2 of the provider.
 func LookupOrderItemByName(ctx *pulumi.Context, args *LookupOrderItemByNameArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemByNameResult, error) {

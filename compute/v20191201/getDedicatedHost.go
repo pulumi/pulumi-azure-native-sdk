@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the Dedicated host.
+// Retrieves information about a dedicated host.
 //
 // Deprecated: Version 2019-12-01 will be removed in v2 of the provider.
 func LookupDedicatedHost(ctx *pulumi.Context, args *LookupDedicatedHostArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostResult, error) {

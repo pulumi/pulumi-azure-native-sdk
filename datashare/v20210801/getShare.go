@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A share data transfer object.
+// Get a share
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	var rv LookupShareResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getShare", args, &rv, opts...)

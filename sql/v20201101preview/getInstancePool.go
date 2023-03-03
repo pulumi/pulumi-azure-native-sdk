@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure SQL instance pool.
+// Gets an instance pool.
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	var rv LookupInstancePoolResult
 	err := ctx.Invoke("azure-native:sql/v20201101preview:getInstancePool", args, &rv, opts...)

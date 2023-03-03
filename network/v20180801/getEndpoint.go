@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a Traffic Manager endpoint.
+// Gets a Traffic Manager endpoint.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:network/v20180801:getEndpoint", args, &rv, opts...)

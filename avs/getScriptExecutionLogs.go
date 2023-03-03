@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An instance of a script executed by a user - custom or AVS
+// Return the logs for a script execution resource
 // API Version: 2021-06-01.
 func GetScriptExecutionLogs(ctx *pulumi.Context, args *GetScriptExecutionLogsArgs, opts ...pulumi.InvokeOption) (*GetScriptExecutionLogsResult, error) {
 	var rv GetScriptExecutionLogsResult

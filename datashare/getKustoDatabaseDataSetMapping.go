@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Kusto database data set mapping
+// Get a DataSetMapping in a shareSubscription
 // API Version: 2020-09-01.
 func LookupKustoDatabaseDataSetMapping(ctx *pulumi.Context, args *LookupKustoDatabaseDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupKustoDatabaseDataSetMappingResult, error) {
 	var rv LookupKustoDatabaseDataSetMappingResult

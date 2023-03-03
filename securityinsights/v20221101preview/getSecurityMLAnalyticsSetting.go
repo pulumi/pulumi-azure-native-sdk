@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security ML Analytics Setting
+// Gets the Security ML Analytics Settings.
 //
 // Deprecated: Please use one of the variants: AnomalySecurityMLAnalyticsSettings.
 func LookupSecurityMLAnalyticsSetting(ctx *pulumi.Context, args *LookupSecurityMLAnalyticsSettingArgs, opts ...pulumi.InvokeOption) (*LookupSecurityMLAnalyticsSettingResult, error) {

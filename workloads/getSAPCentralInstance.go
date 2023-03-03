@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the SAP Central Services Instance resource.
+// Gets the SAP Central Services Instance resource.
 // API Version: 2021-12-01-preview.
 func LookupSAPCentralInstance(ctx *pulumi.Context, args *LookupSAPCentralInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPCentralInstanceResult, error) {
 	var rv LookupSAPCentralInstanceResult

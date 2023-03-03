@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Amazon Web Services S3 data connector.
+// Gets a data connector.
 func LookupAwsS3DataConnector(ctx *pulumi.Context, args *LookupAwsS3DataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsS3DataConnectorResult, error) {
 	var rv LookupAwsS3DataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getAwsS3DataConnector", args, &rv, opts...)

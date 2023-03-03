@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a hybrid machine.
+// Retrieves information about the model view or the instance view of a hybrid machine.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {
 	var rv LookupMachineResult
 	err := ctx.Invoke("azure-native:hybridcompute/v20210517preview:getMachine", args, &rv, opts...)

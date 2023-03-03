@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the HybridIdentityMetadata.
+// Implements HybridIdentityMetadata GET method.
 // API Version: 2020-10-01-preview.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	var rv LookupHybridIdentityMetadatumResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The storage account credential.
+// Gets the properties of the specified storage account credential.
 func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAccountCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountCredentialResult, error) {
 	var rv LookupStorageAccountCredentialResult
 	err := ctx.Invoke("azure-native:databoxedge/v20230101preview:getStorageAccountCredential", args, &rv, opts...)

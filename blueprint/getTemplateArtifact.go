@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Blueprint artifact that deploys a Resource Manager template.
+// Get a blueprint artifact.
 // API Version: 2018-11-01-preview.
 func LookupTemplateArtifact(ctx *pulumi.Context, args *LookupTemplateArtifactArgs, opts ...pulumi.InvokeOption) (*LookupTemplateArtifactResult, error) {
 	var rv LookupTemplateArtifactResult

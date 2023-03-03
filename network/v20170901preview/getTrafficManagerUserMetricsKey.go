@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a Traffic Manager Real User Metrics key response.
+// Get the subscription-level key used for Real User Metrics collection.
 //
 // Deprecated: Version 2017-09-01-preview will be removed in v2 of the provider.
 func LookupTrafficManagerUserMetricsKey(ctx *pulumi.Context, args *LookupTrafficManagerUserMetricsKeyArgs, opts ...pulumi.InvokeOption) (*LookupTrafficManagerUserMetricsKeyResult, error) {

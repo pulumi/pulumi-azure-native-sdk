@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Scheduled action definition.
+// Get the shared scheduled action from the given scope by name.
 // API Version: 2022-04-01-preview.
 func LookupScheduledActionByScope(ctx *pulumi.Context, args *LookupScheduledActionByScopeArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionByScopeResult, error) {
 	var rv LookupScheduledActionByScopeResult

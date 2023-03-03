@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
+// Get information about a virtual machine image template
 func LookupVirtualMachineImageTemplate(ctx *pulumi.Context, args *LookupVirtualMachineImageTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineImageTemplateResult, error) {
 	var rv LookupVirtualMachineImageTemplateResult
 	err := ctx.Invoke("azure-native:virtualmachineimages/v20200214:getVirtualMachineImageTemplate", args, &rv, opts...)

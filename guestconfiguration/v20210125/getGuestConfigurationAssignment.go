@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Guest configuration assignment is an association between a machine and guest configuration.
+// Get information about a guest configuration assignment
 func LookupGuestConfigurationAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationAssignmentResult, error) {
 	var rv LookupGuestConfigurationAssignmentResult
 	err := ctx.Invoke("azure-native:guestconfiguration/v20210125:getGuestConfigurationAssignment", args, &rv, opts...)

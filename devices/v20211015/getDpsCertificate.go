@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The X509 Certificate.
+// Get the certificate from the provisioning service.
 func LookupDpsCertificate(ctx *pulumi.Context, args *LookupDpsCertificateArgs, opts ...pulumi.InvokeOption) (*LookupDpsCertificateResult, error) {
 	var rv LookupDpsCertificateResult
 	err := ctx.Invoke("azure-native:devices/v20211015:getDpsCertificate", args, &rv, opts...)

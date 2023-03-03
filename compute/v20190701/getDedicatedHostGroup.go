@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. <br><br> Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
+// Retrieves information about a dedicated host group.
 //
 // Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostGroupResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of virtual network gateway vpn client connection health.
+// Get VPN client connection health detail per P2S client connection of the virtual network gateway in the specified resource group.
 func GetVirtualNetworkGatewayVpnclientConnectionHealth(ctx *pulumi.Context, args *GetVirtualNetworkGatewayVpnclientConnectionHealthArgs, opts ...pulumi.InvokeOption) (*GetVirtualNetworkGatewayVpnclientConnectionHealthResult, error) {
 	var rv GetVirtualNetworkGatewayVpnclientConnectionHealthResult
 	err := ctx.Invoke("azure-native:network/v20210201:getVirtualNetworkGatewayVpnclientConnectionHealth", args, &rv, opts...)

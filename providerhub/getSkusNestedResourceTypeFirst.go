@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets the sku details for the given resource type and sku name.
 // API Version: 2020-11-20.
 func LookupSkusNestedResourceTypeFirst(ctx *pulumi.Context, args *LookupSkusNestedResourceTypeFirstArgs, opts ...pulumi.InvokeOption) (*LookupSkusNestedResourceTypeFirstResult, error) {
 	var rv LookupSkusNestedResourceTypeFirstResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ObjectAnchorsAccount Response.
+// Retrieve an Object Anchors Account.
 // API Version: 2021-03-01-preview.
 func LookupObjectAnchorsAccount(ctx *pulumi.Context, args *LookupObjectAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupObjectAnchorsAccountResult, error) {
 	var rv LookupObjectAnchorsAccountResult

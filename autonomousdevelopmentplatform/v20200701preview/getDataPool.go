@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADP Data Pool.
+// Gets the properties of a Data Pool.
 //
 // Deprecated: Version 2020-07-01-preview will be removed in v2 of the provider.
 func LookupDataPool(ctx *pulumi.Context, args *LookupDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupDataPoolResult, error) {

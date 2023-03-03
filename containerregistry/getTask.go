@@ -10,8 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The task that has the ARM resource and task properties.
-// The task will have all information to schedule a run against it.
+// Get the properties of a specified task.
 // API Version: 2019-06-01-preview.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
 	var rv LookupTaskResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A DDoS protection plan in a resource group.
+// Gets information about the specified DDoS protection plan.
 func LookupDdosProtectionPlan(ctx *pulumi.Context, args *LookupDdosProtectionPlanArgs, opts ...pulumi.InvokeOption) (*LookupDdosProtectionPlanResult, error) {
 	var rv LookupDdosProtectionPlanResult
 	err := ctx.Invoke("azure-native:network/v20190401:getDdosProtectionPlan", args, &rv, opts...)

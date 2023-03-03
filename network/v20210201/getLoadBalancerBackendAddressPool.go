@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Pool of backend IP addresses.
+// Gets load balancer backend address pool.
 func LookupLoadBalancerBackendAddressPool(ctx *pulumi.Context, args *LookupLoadBalancerBackendAddressPoolArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerBackendAddressPoolResult, error) {
 	var rv LookupLoadBalancerBackendAddressPoolResult
 	err := ctx.Invoke("azure-native:network/v20210201:getLoadBalancerBackendAddressPool", args, &rv, opts...)

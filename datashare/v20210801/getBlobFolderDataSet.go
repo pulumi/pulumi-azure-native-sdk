@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure storage blob folder data set.
+// Get a DataSet in a share
 func LookupBlobFolderDataSet(ctx *pulumi.Context, args *LookupBlobFolderDataSetArgs, opts ...pulumi.InvokeOption) (*LookupBlobFolderDataSetResult, error) {
 	var rv LookupBlobFolderDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getBlobFolderDataSet", args, &rv, opts...)

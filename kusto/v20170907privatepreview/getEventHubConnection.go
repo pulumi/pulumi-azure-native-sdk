@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing an event hub connection.
+// Returns an Event Hub connection.
 //
 // Deprecated: Version 2017-09-07-privatepreview will be removed in v2 of the provider.
 func LookupEventHubConnection(ctx *pulumi.Context, args *LookupEventHubConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventHubConnectionResult, error) {

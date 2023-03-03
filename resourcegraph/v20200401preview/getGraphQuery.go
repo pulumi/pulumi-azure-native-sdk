@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Graph Query entity definition.
+// Get a single graph query by its resourceName.
 func LookupGraphQuery(ctx *pulumi.Context, args *LookupGraphQueryArgs, opts ...pulumi.InvokeOption) (*LookupGraphQueryResult, error) {
 	var rv LookupGraphQueryResult
 	err := ctx.Invoke("azure-native:resourcegraph/v20200401preview:getGraphQuery", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The relationship resource format.
+// Gets information about the specified relationship.
 func LookupRelationship(ctx *pulumi.Context, args *LookupRelationshipArgs, opts ...pulumi.InvokeOption) (*LookupRelationshipResult, error) {
 	var rv LookupRelationshipResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getRelationship", args, &rv, opts...)

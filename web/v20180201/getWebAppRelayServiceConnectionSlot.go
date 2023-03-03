@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Hybrid Connection for an App Service app.
+// Gets a hybrid connection configuration by its name.
 func LookupWebAppRelayServiceConnectionSlot(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionSlotResult, error) {
 	var rv LookupWebAppRelayServiceConnectionSlotResult
 	err := ctx.Invoke("azure-native:web/v20180201:getWebAppRelayServiceConnectionSlot", args, &rv, opts...)

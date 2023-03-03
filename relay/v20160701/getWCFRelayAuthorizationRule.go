@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of a Namespace AuthorizationRules.
+// Get authorizationRule for a WCFRelays by name.
 //
 // Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
 func LookupWCFRelayAuthorizationRule(ctx *pulumi.Context, args *LookupWCFRelayAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupWCFRelayAuthorizationRuleResult, error) {

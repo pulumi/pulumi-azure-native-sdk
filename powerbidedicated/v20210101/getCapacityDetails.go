@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of a Dedicated Capacity resource.
+// Gets details about the specified dedicated capacity.
 func LookupCapacityDetails(ctx *pulumi.Context, args *LookupCapacityDetailsArgs, opts ...pulumi.InvokeOption) (*LookupCapacityDetailsResult, error) {
 	var rv LookupCapacityDetailsResult
 	err := ctx.Invoke("azure-native:powerbidedicated/v20210101:getCapacityDetails", args, &rv, opts...)

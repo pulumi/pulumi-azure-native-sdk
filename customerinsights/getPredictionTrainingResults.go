@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The training results of the prediction.
+// Gets training results.
 // API Version: 2017-04-26.
 func GetPredictionTrainingResults(ctx *pulumi.Context, args *GetPredictionTrainingResultsArgs, opts ...pulumi.InvokeOption) (*GetPredictionTrainingResultsResult, error) {
 	var rv GetPredictionTrainingResultsResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADLS Gen 1 file data set.
+// Get a DataSet in a share
 func LookupADLSGen1FileDataSet(ctx *pulumi.Context, args *LookupADLSGen1FileDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen1FileDataSetResult, error) {
 	var rv LookupADLSGen1FileDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getADLSGen1FileDataSet", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gateway authentication keys.
+// Retrieves gateway keys.
 // API Version: 2020-12-01.
 func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pulumi.InvokeOption) (*ListGatewayKeysResult, error) {
 	var rv ListGatewayKeysResult

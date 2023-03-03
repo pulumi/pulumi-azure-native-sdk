@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// disk access resource.
+// Gets information about a disk access resource.
 //
 // Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
 func LookupDiskAccess(ctx *pulumi.Context, args *LookupDiskAccessArgs, opts ...pulumi.InvokeOption) (*LookupDiskAccessResult, error) {

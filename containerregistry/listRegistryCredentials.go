@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response from the ListCredentials operation.
+// Lists the login credentials for the specified container registry.
 // API Version: 2019-05-01.
 func ListRegistryCredentials(ctx *pulumi.Context, args *ListRegistryCredentialsArgs, opts ...pulumi.InvokeOption) (*ListRegistryCredentialsResult, error) {
 	var rv ListRegistryCredentialsResult

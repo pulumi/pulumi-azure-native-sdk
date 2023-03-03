@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Contact resource
+// Get a Contact
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
 	var rv LookupContactResult
 	err := ctx.Invoke("azure-native:voiceservices/v20221201preview:getContact", args, &rv, opts...)

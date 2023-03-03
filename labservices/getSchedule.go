@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Schedule for automatically turning virtual machines in a lab on and off at specified times.
+// Returns the properties of a lab Schedule.
 // API Version: 2021-10-01-preview.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult

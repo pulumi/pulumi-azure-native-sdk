@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of subscription resource.
+// Returns a subscription description for the specified topic.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
 	var rv LookupSubscriptionResult
 	err := ctx.Invoke("azure-native:servicebus/v20170401:getSubscription", args, &rv, opts...)

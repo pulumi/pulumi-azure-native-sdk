@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ID and Key for Migration Project.
+// Gets the Log Analytics Workspace ID and Primary Key for the specified project.
 func GetProjectKeys(ctx *pulumi.Context, args *GetProjectKeysArgs, opts ...pulumi.InvokeOption) (*GetProjectKeysResult, error) {
 	var rv GetProjectKeysResult
 	err := ctx.Invoke("azure-native:migrate/v20180202:getProjectKeys", args, &rv, opts...)

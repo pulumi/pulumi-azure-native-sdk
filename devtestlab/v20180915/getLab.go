@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A lab.
+// Get lab.
 func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOption) (*LookupLabResult, error) {
 	var rv LookupLabResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getLab", args, &rv, opts...)

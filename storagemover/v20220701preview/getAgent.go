@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Agent resource.
+// Gets an Agent resource.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
 	var rv LookupAgentResult
 	err := ctx.Invoke("azure-native:storagemover/v20220701preview:getAgent", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for the ListAvailableContacts API service call.
+// Return list of available contacts
 func ListSpacecraftAvailableContacts(ctx *pulumi.Context, args *ListSpacecraftAvailableContactsArgs, opts ...pulumi.InvokeOption) (*ListSpacecraftAvailableContactsResult, error) {
 	var rv ListSpacecraftAvailableContactsResult
 	err := ctx.Invoke("azure-native:orbital/v20210404preview:listSpacecraftAvailableContacts", args, &rv, opts...)

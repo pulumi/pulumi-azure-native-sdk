@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Monitor Workspace definition
+// Returns the specific Azure Monitor workspace
 // API Version: 2021-06-03-preview.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	var rv LookupAzureMonitorWorkspaceResult
@@ -23,7 +23,7 @@ func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWo
 
 type LookupAzureMonitorWorkspaceArgs struct {
 	// The name of the Azure Monitor workspace.  The name is case insensitive
-	MonitoringAccountName string `pulumi:"monitoringAccountName"`
+	AzureMonitorWorkspaceName string `pulumi:"azureMonitorWorkspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -33,7 +33,7 @@ type LookupAzureMonitorWorkspaceResult struct {
 	// The immutable ID of the Azure Monitor workspace. This property is read-only.
 	AccountId string `pulumi:"accountId"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
-	DefaultIngestionSettings MonitoringAccountResponseDefaultIngestionSettings `pulumi:"defaultIngestionSettings"`
+	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettings `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -41,7 +41,7 @@ type LookupAzureMonitorWorkspaceResult struct {
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Information about metrics for the Azure Monitor workspace
-	Metrics MonitoringAccountResponseMetrics `pulumi:"metrics"`
+	Metrics AzureMonitorWorkspaceResponseMetrics `pulumi:"metrics"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
@@ -69,7 +69,7 @@ func LookupAzureMonitorWorkspaceOutput(ctx *pulumi.Context, args LookupAzureMoni
 
 type LookupAzureMonitorWorkspaceOutputArgs struct {
 	// The name of the Azure Monitor workspace.  The name is case insensitive
-	MonitoringAccountName pulumi.StringInput `pulumi:"monitoringAccountName"`
+	AzureMonitorWorkspaceName pulumi.StringInput `pulumi:"azureMonitorWorkspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
@@ -99,10 +99,10 @@ func (o LookupAzureMonitorWorkspaceResultOutput) AccountId() pulumi.StringOutput
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
-func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() MonitoringAccountResponseDefaultIngestionSettingsOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) MonitoringAccountResponseDefaultIngestionSettings {
+func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) AzureMonitorWorkspaceResponseDefaultIngestionSettings {
 		return v.DefaultIngestionSettings
-	}).(MonitoringAccountResponseDefaultIngestionSettingsOutput)
+	}).(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput)
 }
 
 // Resource entity tag (ETag)
@@ -121,8 +121,8 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Location() pulumi.StringOutput 
 }
 
 // Information about metrics for the Azure Monitor workspace
-func (o LookupAzureMonitorWorkspaceResultOutput) Metrics() MonitoringAccountResponseMetricsOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) MonitoringAccountResponseMetrics { return v.Metrics }).(MonitoringAccountResponseMetricsOutput)
+func (o LookupAzureMonitorWorkspaceResultOutput) Metrics() AzureMonitorWorkspaceResponseMetricsOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) AzureMonitorWorkspaceResponseMetrics { return v.Metrics }).(AzureMonitorWorkspaceResponseMetricsOutput)
 }
 
 // The name of the resource

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Peering in a ExpressRouteCircuit resource
+// The GET peering operation retrieves the specified authorization from the ExpressRouteCircuit.
 //
 // Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupExpressRouteCircuitPeering(ctx *pulumi.Context, args *LookupExpressRouteCircuitPeeringArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitPeeringResult, error) {

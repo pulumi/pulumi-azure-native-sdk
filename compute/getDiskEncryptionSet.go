@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// disk encryption set resource.
+// Gets information about a disk encryption set.
 // API Version: 2020-12-01.
 func LookupDiskEncryptionSet(ctx *pulumi.Context, args *LookupDiskEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupDiskEncryptionSetResult, error) {
 	var rv LookupDiskEncryptionSetResult

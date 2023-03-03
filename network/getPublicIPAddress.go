@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Public IP address resource.
+// Gets the specified public IP address in a specified resource group.
 // API Version: 2020-11-01.
 func LookupPublicIPAddress(ctx *pulumi.Context, args *LookupPublicIPAddressArgs, opts ...pulumi.InvokeOption) (*LookupPublicIPAddressResult, error) {
 	var rv LookupPublicIPAddressResult

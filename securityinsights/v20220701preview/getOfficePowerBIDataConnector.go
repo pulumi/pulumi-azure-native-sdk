@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Office Microsoft PowerBI data connector.
+// Gets a data connector.
 func LookupOfficePowerBIDataConnector(ctx *pulumi.Context, args *LookupOfficePowerBIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficePowerBIDataConnectorResult, error) {
 	var rv LookupOfficePowerBIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getOfficePowerBIDataConnector", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of credential result response.
+// Gets cluster admin credential of the managed cluster with a specified resource group and name.
 // API Version: 2021-03-01.
 func ListManagedClusterAdminCredentials(ctx *pulumi.Context, args *ListManagedClusterAdminCredentialsArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAdminCredentialsResult, error) {
 	var rv ListManagedClusterAdminCredentialsResult

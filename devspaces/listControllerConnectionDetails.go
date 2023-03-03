@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
 // API Version: 2019-04-01.
 func ListControllerConnectionDetails(ctx *pulumi.Context, args *ListControllerConnectionDetailsArgs, opts ...pulumi.InvokeOption) (*ListControllerConnectionDetailsResult, error) {
 	var rv ListControllerConnectionDetailsResult

@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a Hyper-V collector.
 func LookupHyperVCollector(ctx *pulumi.Context, args *LookupHyperVCollectorArgs, opts ...pulumi.InvokeOption) (*LookupHyperVCollectorResult, error) {
 	var rv LookupHyperVCollectorResult
 	err := ctx.Invoke("azure-native:migrate/v20191001:getHyperVCollector", args, &rv, opts...)

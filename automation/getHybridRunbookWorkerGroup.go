@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of hybrid runbook worker group.
+// Retrieve a hybrid runbook worker group.
 // API Version: 2021-06-22.
 func LookupHybridRunbookWorkerGroup(ctx *pulumi.Context, args *LookupHybridRunbookWorkerGroupArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerGroupResult, error) {
 	var rv LookupHybridRunbookWorkerGroupResult

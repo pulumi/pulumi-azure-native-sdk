@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Application gateway resource.
+// Gets the specified application gateway.
 func LookupApplicationGateway(ctx *pulumi.Context, args *LookupApplicationGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayResult, error) {
 	var rv LookupApplicationGatewayResult
 	err := ctx.Invoke("azure-native:network/v20191201:getApplicationGateway", args, &rv, opts...)

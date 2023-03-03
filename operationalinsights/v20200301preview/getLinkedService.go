@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The top level Linked service resource container.
+// Gets a linked service instance.
 func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServiceResult, error) {
 	var rv LookupLinkedServiceResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200301preview:getLinkedService", args, &rv, opts...)

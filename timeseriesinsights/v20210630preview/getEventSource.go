@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment receives data from one or more event sources. Each event source has associated connection info that allows the Time Series Insights ingress pipeline to connect to and pull data from the event source
+// Gets the event source with the specified name in the specified environment.
 //
 // Deprecated: Please use one of the variants: EventHubEventSource, IoTHubEventSource.
 func LookupEventSource(ctx *pulumi.Context, args *LookupEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupEventSourceResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Streaming Policy resource
+// Get the details of a Streaming Policy in the Media Services account
 // API Version: 2020-05-01.
 func LookupStreamingPolicy(ctx *pulumi.Context, args *LookupStreamingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupStreamingPolicyResult, error) {
 	var rv LookupStreamingPolicyResult

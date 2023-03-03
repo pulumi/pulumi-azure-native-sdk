@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets a workflow access key.
 // API Version: 2015-02-01-preview.
 func LookupWorkflowAccessKey(ctx *pulumi.Context, args *LookupWorkflowAccessKeyArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowAccessKeyResult, error) {
 	var rv LookupWorkflowAccessKeyResult

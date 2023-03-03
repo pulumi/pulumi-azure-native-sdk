@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a webhook for a container registry.
+// Gets the properties of the specified webhook.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	var rv LookupWebhookResult
 	err := ctx.Invoke("azure-native:containerregistry/v20171001:getWebhook", args, &rv, opts...)

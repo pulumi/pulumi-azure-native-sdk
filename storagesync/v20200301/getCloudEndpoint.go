@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cloud Endpoint object.
+// Get a given CloudEndpoint.
 func LookupCloudEndpoint(ctx *pulumi.Context, args *LookupCloudEndpointArgs, opts ...pulumi.InvokeOption) (*LookupCloudEndpointResult, error) {
 	var rv LookupCloudEndpointResult
 	err := ctx.Invoke("azure-native:storagesync/v20200301:getCloudEndpoint", args, &rv, opts...)

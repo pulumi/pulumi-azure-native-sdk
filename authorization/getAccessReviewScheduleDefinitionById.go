@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access Review Schedule Definition.
+// Get single access review definition
 // API Version: 2021-03-01-preview.
 func LookupAccessReviewScheduleDefinitionById(ctx *pulumi.Context, args *LookupAccessReviewScheduleDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupAccessReviewScheduleDefinitionByIdResult, error) {
 	var rv LookupAccessReviewScheduleDefinitionByIdResult

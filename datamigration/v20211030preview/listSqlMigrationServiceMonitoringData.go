@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Integration Runtime Monitoring Data.
+// Retrieve the Monitoring Data.
 func ListSqlMigrationServiceMonitoringData(ctx *pulumi.Context, args *ListSqlMigrationServiceMonitoringDataArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceMonitoringDataResult, error) {
 	var rv ListSqlMigrationServiceMonitoringDataResult
 	err := ctx.Invoke("azure-native:datamigration/v20211030preview:listSqlMigrationServiceMonitoringData", args, &rv, opts...)

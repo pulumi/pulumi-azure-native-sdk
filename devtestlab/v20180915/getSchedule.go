@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A schedule.
+// Get schedule.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getSchedule", args, &rv, opts...)

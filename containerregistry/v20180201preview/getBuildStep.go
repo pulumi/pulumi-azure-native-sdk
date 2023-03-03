@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Build step resource properties
+// Gets the build step for a build task.
 func LookupBuildStep(ctx *pulumi.Context, args *LookupBuildStepArgs, opts ...pulumi.InvokeOption) (*LookupBuildStepResult, error) {
 	var rv LookupBuildStepResult
 	err := ctx.Invoke("azure-native:containerregistry/v20180201preview:getBuildStep", args, &rv, opts...)

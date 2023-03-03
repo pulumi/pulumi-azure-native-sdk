@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attached data network resource.
+// Gets information about the specified attached data network.
 func LookupAttachedDataNetwork(ctx *pulumi.Context, args *LookupAttachedDataNetworkArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDataNetworkResult, error) {
 	var rv LookupAttachedDataNetworkResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getAttachedDataNetwork", args, &rv, opts...)

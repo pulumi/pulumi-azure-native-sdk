@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Schema for EndpointKeys generate/refresh operations.
+// Lists the QnA Maker endpoint keys
 func ListQnAMakerEndpointKey(ctx *pulumi.Context, args *ListQnAMakerEndpointKeyArgs, opts ...pulumi.InvokeOption) (*ListQnAMakerEndpointKeyResult, error) {
 	var rv ListQnAMakerEndpointKeyResult
 	err := ctx.Invoke("azure-native:botservice/v20220915:listQnAMakerEndpointKey", args, &rv, opts...)

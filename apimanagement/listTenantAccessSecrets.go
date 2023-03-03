@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tenant access information contract of the API Management service.
+// Get tenant access information details.
 // API Version: 2020-12-01.
 func ListTenantAccessSecrets(ctx *pulumi.Context, args *ListTenantAccessSecretsArgs, opts ...pulumi.InvokeOption) (*ListTenantAccessSecretsResult, error) {
 	var rv ListTenantAccessSecretsResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// FirewallPolicy Resource.
+// Gets the specified Firewall Policy.
 // API Version: 2020-11-01.
 func LookupFirewallPolicy(ctx *pulumi.Context, args *LookupFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyResult, error) {
 	var rv LookupFirewallPolicyResult

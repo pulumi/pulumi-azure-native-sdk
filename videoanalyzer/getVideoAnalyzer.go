@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Video Analyzer account.
+// Get the details of the specified Video Analyzer account
 // API Version: 2021-05-01-preview.
 func LookupVideoAnalyzer(ctx *pulumi.Context, args *LookupVideoAnalyzerArgs, opts ...pulumi.InvokeOption) (*LookupVideoAnalyzerResult, error) {
 	var rv LookupVideoAnalyzerResult

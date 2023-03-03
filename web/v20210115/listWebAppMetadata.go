@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// String dictionary resource.
+// Gets the metadata of an app.
 func ListWebAppMetadata(ctx *pulumi.Context, args *ListWebAppMetadataArgs, opts ...pulumi.InvokeOption) (*ListWebAppMetadataResult, error) {
 	var rv ListWebAppMetadataResult
 	err := ctx.Invoke("azure-native:web/v20210115:listWebAppMetadata", args, &rv, opts...)

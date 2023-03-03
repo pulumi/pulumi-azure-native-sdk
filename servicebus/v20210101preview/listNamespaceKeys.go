@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Namespace/ServiceBus Connection String
+// Gets the primary and secondary connection strings for the namespace.
 func ListNamespaceKeys(ctx *pulumi.Context, args *ListNamespaceKeysArgs, opts ...pulumi.InvokeOption) (*ListNamespaceKeysResult, error) {
 	var rv ListNamespaceKeysResult
 	err := ctx.Invoke("azure-native:servicebus/v20210101preview:listNamespaceKeys", args, &rv, opts...)

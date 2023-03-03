@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Shared Private Link Resource
+// Get the specified shared private link resource
 // API Version: 2021-04-01-preview.
 func LookupSignalRSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSignalRSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSignalRSharedPrivateLinkResourceResult, error) {
 	var rv LookupSignalRSharedPrivateLinkResourceResult

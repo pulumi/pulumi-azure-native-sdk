@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a server group for create.
+// Gets information about a server group.
 func LookupServerGroup(ctx *pulumi.Context, args *LookupServerGroupArgs, opts ...pulumi.InvokeOption) (*LookupServerGroupResult, error) {
 	var rv LookupServerGroupResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20201005privatepreview:getServerGroup", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Active Directory administrator.
+// Gets a Azure Active Directory administrator.
 // API Version: 2020-11-01-preview.
 func LookupServerAzureADAdministrator(ctx *pulumi.Context, args *LookupServerAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAzureADAdministratorResult, error) {
 	var rv LookupServerAzureADAdministratorResult

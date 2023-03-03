@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A sensitivity label.
+// Gets the sensitivity label of a given column
 func LookupManagedDatabaseSensitivityLabel(ctx *pulumi.Context, args *LookupManagedDatabaseSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseSensitivityLabelResult, error) {
 	var rv LookupManagedDatabaseSensitivityLabelResult
 	err := ctx.Invoke("azure-native:sql/v20200801preview:getManagedDatabaseSensitivityLabel", args, &rv, opts...)

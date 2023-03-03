@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Action rule object containing target scope, conditions and suppression logic
+// Get a specific action rule
 // API Version: 2019-05-05-preview.
 func LookupActionRuleByName(ctx *pulumi.Context, args *LookupActionRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupActionRuleByNameResult, error) {
 	var rv LookupActionRuleByNameResult

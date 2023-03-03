@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Endpoint resource, which contains information about file sources and targets.
+// Gets an Endpoint resource.
 // API Version: 2022-07-01-preview.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult

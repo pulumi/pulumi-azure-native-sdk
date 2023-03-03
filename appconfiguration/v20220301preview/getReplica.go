@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The replica resource.
+// Gets the properties of the specified replica.
 func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.InvokeOption) (*LookupReplicaResult, error) {
 	var rv LookupReplicaResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20220301preview:getReplica", args, &rv, opts...)

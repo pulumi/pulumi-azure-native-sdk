@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in List or Get Consumer group operation
+// Gets a description for the specified consumer group.
 func LookupConsumerGroup(ctx *pulumi.Context, args *LookupConsumerGroupArgs, opts ...pulumi.InvokeOption) (*LookupConsumerGroupResult, error) {
 	var rv LookupConsumerGroupResult
 	err := ctx.Invoke("azure-native:eventhub/v20211101:getConsumerGroup", args, &rv, opts...)

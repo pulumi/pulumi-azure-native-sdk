@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ExpressRouteCircuit resource
+// The Get ExpressRouteCircuit operation retrieves information about the specified ExpressRouteCircuit.
 //
 // Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
 func LookupExpressRouteCircuit(ctx *pulumi.Context, args *LookupExpressRouteCircuitArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collector policy resource.
+// Gets the collector policy in a specified Traffic Collector
 func LookupCollectorPolicy(ctx *pulumi.Context, args *LookupCollectorPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCollectorPolicyResult, error) {
 	var rv LookupCollectorPolicyResult
 	err := ctx.Invoke("azure-native:networkfunction/v20220501:getCollectorPolicy", args, &rv, opts...)

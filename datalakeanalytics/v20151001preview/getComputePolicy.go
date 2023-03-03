@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data Lake Analytics compute policy information.
+// Gets the specified Data Lake Analytics compute policy.
 //
 // Deprecated: Version 2015-10-01-preview will be removed in v2 of the provider.
 func LookupComputePolicy(ctx *pulumi.Context, args *LookupComputePolicyArgs, opts ...pulumi.InvokeOption) (*LookupComputePolicyResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Product details.
+// Gets the details of the product specified by its identifier.
 // API Version: 2020-12-01.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
 	var rv LookupProductResult

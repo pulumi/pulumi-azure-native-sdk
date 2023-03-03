@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Streaming Locator resource
+// Get the details of a Streaming Locator in the Media Services account
 // API Version: 2020-05-01.
 func LookupStreamingLocator(ctx *pulumi.Context, args *LookupStreamingLocatorArgs, opts ...pulumi.InvokeOption) (*LookupStreamingLocatorResult, error) {
 	var rv LookupStreamingLocatorResult

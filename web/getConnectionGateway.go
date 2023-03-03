@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The gateway definition
+// Gets a specific gateway under a subscription and in a specific resource group
 // API Version: 2016-06-01.
 func LookupConnectionGateway(ctx *pulumi.Context, args *LookupConnectionGatewayArgs, opts ...pulumi.InvokeOption) (*LookupConnectionGatewayResult, error) {
 	var rv LookupConnectionGatewayResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A DDoS protection plan in a resource group.
+// Gets information about the specified DDoS protection plan.
 //
 // Deprecated: Version 2018-02-01 will be removed in v2 of the provider.
 func LookupDdosProtectionPlan(ctx *pulumi.Context, args *LookupDdosProtectionPlanArgs, opts ...pulumi.InvokeOption) (*LookupDdosProtectionPlanResult, error) {

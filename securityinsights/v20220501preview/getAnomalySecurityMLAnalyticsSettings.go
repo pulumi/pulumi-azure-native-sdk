@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Anomaly Security ML Analytics Settings
+// Gets the Security ML Analytics Settings.
 func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
 	var rv LookupAnomalySecurityMLAnalyticsSettingsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getAnomalySecurityMLAnalyticsSettings", args, &rv, opts...)

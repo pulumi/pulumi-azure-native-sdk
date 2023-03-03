@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Contract details.
+// Gets the details of the group specified by its identifier.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getGroup", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a hybrid machine.
+// Retrieves information about the model view or the instance view of a hybrid machine.
 //
 // Deprecated: Version 2020-07-30-preview will be removed in v2 of the provider.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {

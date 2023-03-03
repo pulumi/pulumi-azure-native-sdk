@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A stored credential that can be used by a job to connect to target databases.
+// Gets a jobs credential.
 // API Version: 2020-11-01-preview.
 func LookupJobCredential(ctx *pulumi.Context, args *LookupJobCredentialArgs, opts ...pulumi.InvokeOption) (*LookupJobCredentialResult, error) {
 	var rv LookupJobCredentialResult

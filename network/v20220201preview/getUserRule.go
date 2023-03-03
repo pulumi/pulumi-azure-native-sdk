@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network base rule.
+// Gets a user rule.
 //
 // Deprecated: Please use one of the variants: DefaultUserRule, UserRule.
 func LookupUserRule(ctx *pulumi.Context, args *LookupUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleResult, error) {

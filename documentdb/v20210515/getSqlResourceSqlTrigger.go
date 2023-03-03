@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB trigger.
+// Gets the SQL trigger under an existing Azure Cosmos DB database account.
 func LookupSqlResourceSqlTrigger(ctx *pulumi.Context, args *LookupSqlResourceSqlTriggerArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlTriggerResult, error) {
 	var rv LookupSqlResourceSqlTriggerResult
 	err := ctx.Invoke("azure-native:documentdb/v20210515:getSqlResourceSqlTrigger", args, &rv, opts...)

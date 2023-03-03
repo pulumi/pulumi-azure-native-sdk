@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of backup items.
+// Description for Gets existing backups of an app.
 func ListWebAppSiteBackupsSlot(ctx *pulumi.Context, args *ListWebAppSiteBackupsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppSiteBackupsSlotResult, error) {
 	var rv ListWebAppSiteBackupsSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:listWebAppSiteBackupsSlot", args, &rv, opts...)

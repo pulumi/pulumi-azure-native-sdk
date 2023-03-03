@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Agent Pool.
+// Gets the details of the agent pool by managed cluster and resource group.
 // API Version: 2021-03-01.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	var rv LookupAgentPoolResult

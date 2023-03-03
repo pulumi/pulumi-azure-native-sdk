@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Grid Partner Topic.
+// Get properties of a partner topic.
 func LookupPartnerTopic(ctx *pulumi.Context, args *LookupPartnerTopicArgs, opts ...pulumi.InvokeOption) (*LookupPartnerTopicResult, error) {
 	var rv LookupPartnerTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getPartnerTopic", args, &rv, opts...)

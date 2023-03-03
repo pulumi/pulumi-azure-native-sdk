@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of a orchestrator.
+// Gets details about the orchestrator instance.
 // API Version: 2021-03-15.
 func LookupOrchestratorInstanceServiceDetails(ctx *pulumi.Context, args *LookupOrchestratorInstanceServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorInstanceServiceDetailsResult, error) {
 	var rv LookupOrchestratorInstanceServiceDetailsResult
