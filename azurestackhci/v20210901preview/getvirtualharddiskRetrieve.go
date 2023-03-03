@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The virtual hard disk resource definition.
+// Gets virtualharddisks by resource name
 func GetvirtualharddiskRetrieve(ctx *pulumi.Context, args *GetvirtualharddiskRetrieveArgs, opts ...pulumi.InvokeOption) (*GetvirtualharddiskRetrieveResult, error) {
 	var rv GetvirtualharddiskRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getvirtualharddiskRetrieve", args, &rv, opts...)

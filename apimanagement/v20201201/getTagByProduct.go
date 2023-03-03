@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tag Contract details.
+// Get tag associated with the Product.
 func LookupTagByProduct(ctx *pulumi.Context, args *LookupTagByProductArgs, opts ...pulumi.InvokeOption) (*LookupTagByProductResult, error) {
 	var rv LookupTagByProductResult
 	err := ctx.Invoke("azure-native:apimanagement/v20201201:getTagByProduct", args, &rv, opts...)

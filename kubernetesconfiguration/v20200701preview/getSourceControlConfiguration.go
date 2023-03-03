@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The SourceControl Configuration object returned in Get & Put response.
+// Gets details of the Source Control Configuration.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {
 	var rv LookupSourceControlConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20200701preview:getSourceControlConfiguration", args, &rv, opts...)

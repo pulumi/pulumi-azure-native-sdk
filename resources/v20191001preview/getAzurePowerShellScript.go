@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Object model for the Azure PowerShell script.
+// Gets a deployment script with a given name.
 func LookupAzurePowerShellScript(ctx *pulumi.Context, args *LookupAzurePowerShellScriptArgs, opts ...pulumi.InvokeOption) (*LookupAzurePowerShellScriptResult, error) {
 	var rv LookupAzurePowerShellScriptResult
 	err := ctx.Invoke("azure-native:resources/v20191001preview:getAzurePowerShellScript", args, &rv, opts...)

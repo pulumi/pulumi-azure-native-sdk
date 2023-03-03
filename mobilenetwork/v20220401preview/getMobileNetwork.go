@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Mobile network resource.
+// Gets information about the specified mobile network.
 func LookupMobileNetwork(ctx *pulumi.Context, args *LookupMobileNetworkArgs, opts ...pulumi.InvokeOption) (*LookupMobileNetworkResult, error) {
 	var rv LookupMobileNetworkResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220401preview:getMobileNetwork", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Settings with single toggle.
+// Gets a setting.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
 	var rv LookupAnomaliesResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221001preview:getAnomalies", args, &rv, opts...)

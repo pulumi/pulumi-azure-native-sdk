@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
+// Gets details about the specified input.
 func LookupInput(ctx *pulumi.Context, args *LookupInputArgs, opts ...pulumi.InvokeOption) (*LookupInputResult, error) {
 	var rv LookupInputResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20211001preview:getInput", args, &rv, opts...)

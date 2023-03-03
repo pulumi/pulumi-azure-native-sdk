@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A sql pool resource.
+// Gets a SqlPool.
 //
 // Deprecated: Version 2020-04-01-preview will be removed in v2 of the provider.
 func LookupSqlPoolsV3(ctx *pulumi.Context, args *LookupSqlPoolsV3Args, opts ...pulumi.InvokeOption) (*LookupSqlPoolsV3Result, error) {

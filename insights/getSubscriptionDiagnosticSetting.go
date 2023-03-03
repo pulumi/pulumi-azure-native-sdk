@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The subscription diagnostic setting resource.
+// Gets the active subscription diagnostic settings for the specified resource.
 // API Version: 2017-05-01-preview.
 func LookupSubscriptionDiagnosticSetting(ctx *pulumi.Context, args *LookupSubscriptionDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionDiagnosticSettingResult, error) {
 	var rv LookupSubscriptionDiagnosticSettingResult

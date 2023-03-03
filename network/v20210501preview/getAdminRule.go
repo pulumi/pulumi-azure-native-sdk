@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network base admin rule.
+// Gets a network manager security configuration admin rule.
 //
 // Deprecated: Please use one of the variants: AdminRule, DefaultAdminRule.
 func LookupAdminRule(ctx *pulumi.Context, args *LookupAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupAdminRuleResult, error) {

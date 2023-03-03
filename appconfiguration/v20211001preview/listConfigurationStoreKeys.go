@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of a request to list API keys.
+// Lists the access key for the specified configuration store.
 func ListConfigurationStoreKeys(ctx *pulumi.Context, args *ListConfigurationStoreKeysArgs, opts ...pulumi.InvokeOption) (*ListConfigurationStoreKeysResult, error) {
 	var rv ListConfigurationStoreKeysResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20211001preview:listConfigurationStoreKeys", args, &rv, opts...)

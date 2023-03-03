@@ -80,6 +80,9 @@ func NewNotificationRecipientEmail(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:NotificationRecipientEmail"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:NotificationRecipientEmail"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NotificationRecipientEmail

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Sql pool transparent data encryption configuration.
+// Get a SQL pool's transparent data encryption configuration.
 //
 // Deprecated: Version 2019-06-01-preview will be removed in v2 of the provider.
 func LookupSqlPoolTransparentDataEncryption(ctx *pulumi.Context, args *LookupSqlPoolTransparentDataEncryptionArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolTransparentDataEncryptionResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The top level data export resource container.
+// Gets a data export instance.
 func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...pulumi.InvokeOption) (*LookupDataExportResult, error) {
 	var rv LookupDataExportResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20190801preview:getDataExport", args, &rv, opts...)

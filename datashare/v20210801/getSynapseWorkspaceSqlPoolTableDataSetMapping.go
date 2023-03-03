@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Synapse Workspace Sql Pool Table data set mapping
+// Get a DataSetMapping in a shareSubscription
 func LookupSynapseWorkspaceSqlPoolTableDataSetMapping(ctx *pulumi.Context, args *LookupSynapseWorkspaceSqlPoolTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult, error) {
 	var rv LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getSynapseWorkspaceSqlPoolTableDataSetMapping", args, &rv, opts...)

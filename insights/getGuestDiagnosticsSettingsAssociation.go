@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual machine guest diagnostic settings resource.
+// Gets guest diagnostics association settings.
 // API Version: 2018-06-01-preview.
 func LookupGuestDiagnosticsSettingsAssociation(ctx *pulumi.Context, args *LookupGuestDiagnosticsSettingsAssociationArgs, opts ...pulumi.InvokeOption) (*LookupGuestDiagnosticsSettingsAssociationResult, error) {
 	var rv LookupGuestDiagnosticsSettingsAssociationResult

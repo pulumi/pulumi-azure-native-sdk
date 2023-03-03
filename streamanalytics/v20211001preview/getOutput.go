@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
+// Gets details about the specified output.
 func LookupOutput(ctx *pulumi.Context, args *LookupOutputArgs, opts ...pulumi.InvokeOption) (*LookupOutputResult, error) {
 	var rv LookupOutputResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20211001preview:getOutput", args, &rv, opts...)

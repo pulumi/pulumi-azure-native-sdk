@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a virtual network link.
+// Gets properties of a virtual network link to a DNS forwarding ruleset.
 func LookupVirtualNetworkLink(ctx *pulumi.Context, args *LookupVirtualNetworkLinkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkLinkResult, error) {
 	var rv LookupVirtualNetworkLinkResult
 	err := ctx.Invoke("azure-native:network/v20220701:getVirtualNetworkLink", args, &rv, opts...)

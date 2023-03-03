@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SQL DB Table data set mapping.
+// Get a DataSetMapping in a shareSubscription
 func LookupSqlDBTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDBTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSqlDBTableDataSetMappingResult, error) {
 	var rv LookupSqlDBTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getSqlDBTableDataSetMapping", args, &rv, opts...)

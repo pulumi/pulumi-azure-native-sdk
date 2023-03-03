@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual machine guest diagnostics settings resource.
+// Gets guest diagnostics settings.
 func GetguestDiagnosticsSetting(ctx *pulumi.Context, args *GetguestDiagnosticsSettingArgs, opts ...pulumi.InvokeOption) (*GetguestDiagnosticsSettingResult, error) {
 	var rv GetguestDiagnosticsSettingResult
 	err := ctx.Invoke("azure-native:insights/v20180601preview:getguestDiagnosticsSetting", args, &rv, opts...)

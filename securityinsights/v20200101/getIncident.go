@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an incident in Azure Security Insights.
+// Gets an incident.
 func LookupIncident(ctx *pulumi.Context, args *LookupIncidentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentResult, error) {
 	var rv LookupIncidentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20200101:getIncident", args, &rv, opts...)

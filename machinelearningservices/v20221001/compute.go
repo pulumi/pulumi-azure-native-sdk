@@ -119,6 +119,9 @@ func NewCompute(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:Compute"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Compute"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Compute

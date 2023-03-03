@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configuration profile assignment is an association between a VM and automanage profile configuration.
+// Get information about a configuration profile assignment
 func LookupConfigurationProfileHCIAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileHCIAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileHCIAssignmentResult, error) {
 	var rv LookupConfigurationProfileHCIAssignmentResult
 	err := ctx.Invoke("azure-native:automanage/v20220504:getConfigurationProfileHCIAssignment", args, &rv, opts...)

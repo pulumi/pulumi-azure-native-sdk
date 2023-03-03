@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Governance assignment over a given scope
+// Get a specific governanceAssignment for the requested scope by AssignmentKey
 func LookupGovernanceAssignment(ctx *pulumi.Context, args *LookupGovernanceAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGovernanceAssignmentResult, error) {
 	var rv LookupGovernanceAssignmentResult
 	err := ctx.Invoke("azure-native:security/v20220101preview:getGovernanceAssignment", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Office Microsoft Project data connector.
+// Gets a data connector.
 func LookupOffice365ProjectDataConnector(ctx *pulumi.Context, args *LookupOffice365ProjectDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOffice365ProjectDataConnectorResult, error) {
 	var rv LookupOffice365ProjectDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220901preview:getOffice365ProjectDataConnector", args, &rv, opts...)

@@ -66,6 +66,9 @@ func NewScript(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20220707:Script"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:Script"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Script

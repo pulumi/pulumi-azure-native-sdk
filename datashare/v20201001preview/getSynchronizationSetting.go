@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Synchronization Setting data transfer object.
+// Get a synchronizationSetting in a share
 //
 // Deprecated: Please use one of the variants: ScheduledSynchronizationSetting.
 func LookupSynchronizationSetting(ctx *pulumi.Context, args *LookupSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupSynchronizationSettingResult, error) {

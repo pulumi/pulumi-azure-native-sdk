@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A workbook definition.
+// Get a single workbook by its resourceName.
 func LookupWorkbook(ctx *pulumi.Context, args *LookupWorkbookArgs, opts ...pulumi.InvokeOption) (*LookupWorkbookResult, error) {
 	var rv LookupWorkbookResult
 	err := ctx.Invoke("azure-native:insights/v20220401:getWorkbook", args, &rv, opts...)

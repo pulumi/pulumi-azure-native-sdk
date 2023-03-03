@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of deployments resource ids.
+// List deployments that are using the builder.
 func ListBuildServiceBuilderDeployments(ctx *pulumi.Context, args *ListBuildServiceBuilderDeploymentsArgs, opts ...pulumi.InvokeOption) (*ListBuildServiceBuilderDeploymentsResult, error) {
 	var rv ListBuildServiceBuilderDeploymentsResult
 	err := ctx.Invoke("azure-native:appplatform/v20221201:listBuildServiceBuilderDeployments", args, &rv, opts...)

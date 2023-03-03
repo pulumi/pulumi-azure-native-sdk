@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tenant access information contract of the API Management service.
+// Gets the Git access configuration for the tenant.
 func ListTenantAccessGitSecrets(ctx *pulumi.Context, args *ListTenantAccessGitSecretsArgs, opts ...pulumi.InvokeOption) (*ListTenantAccessGitSecretsResult, error) {
 	var rv ListTenantAccessGitSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201preview:listTenantAccessGitSecrets", args, &rv, opts...)

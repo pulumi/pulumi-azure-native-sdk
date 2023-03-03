@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The integration account agreement.
+// Gets an integration account agreement.
 func LookupAgreement(ctx *pulumi.Context, args *LookupAgreementArgs, opts ...pulumi.InvokeOption) (*LookupAgreementResult, error) {
 	var rv LookupAgreementResult
 	err := ctx.Invoke("azure-native:logic/v20160601:getAgreement", args, &rv, opts...)

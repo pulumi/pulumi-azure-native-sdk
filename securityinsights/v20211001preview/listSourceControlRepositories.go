@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List all the source controls.
+// Gets a list of repositories metadata.
 func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlRepositoriesArgs, opts ...pulumi.InvokeOption) (*ListSourceControlRepositoriesResult, error) {
 	var rv ListSourceControlRepositoriesResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:listSourceControlRepositories", args, &rv, opts...)

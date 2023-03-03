@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network slice resource. Must be created in the same location as its parent mobile network.
+// Gets information about the specified network slice.
 func LookupSlice(ctx *pulumi.Context, args *LookupSliceArgs, opts ...pulumi.InvokeOption) (*LookupSliceResult, error) {
 	var rv LookupSliceResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20221101:getSlice", args, &rv, opts...)

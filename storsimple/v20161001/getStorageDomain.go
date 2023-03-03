@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The storage domain.
+// Returns the properties of the specified storage domain name.
 //
 // Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupStorageDomain(ctx *pulumi.Context, args *LookupStorageDomainArgs, opts ...pulumi.InvokeOption) (*LookupStorageDomainResult, error) {

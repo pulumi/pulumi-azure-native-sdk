@@ -38,6 +38,12 @@ func NewApplicationLiveView(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230101preview:ApplicationLiveView"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ApplicationLiveView
 	err := ctx.RegisterResource("azure-native:appplatform/v20221101preview:ApplicationLiveView", name, args, &resource, opts...)
 	if err != nil {

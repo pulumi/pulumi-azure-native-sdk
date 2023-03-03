@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The autoscale setting resource.
+// Gets an autoscale setting
 func LookupAutoscaleSetting(ctx *pulumi.Context, args *LookupAutoscaleSettingArgs, opts ...pulumi.InvokeOption) (*LookupAutoscaleSettingResult, error) {
 	var rv LookupAutoscaleSettingResult
 	err := ctx.Invoke("azure-native:insights/v20221001:getAutoscaleSetting", args, &rv, opts...)

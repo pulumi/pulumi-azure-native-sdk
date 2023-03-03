@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a DNS zone.
+// Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
 //
 // Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {

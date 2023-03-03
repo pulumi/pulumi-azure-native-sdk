@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The shared dashboard resource definition.
+// Gets the Dashboard.
 func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pulumi.InvokeOption) (*LookupDashboardResult, error) {
 	var rv LookupDashboardResult
 	err := ctx.Invoke("azure-native:portal/v20181001preview:getDashboard", args, &rv, opts...)

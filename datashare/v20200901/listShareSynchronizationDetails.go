@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// details of synchronization
+// List synchronization details
 func ListShareSynchronizationDetails(ctx *pulumi.Context, args *ListShareSynchronizationDetailsArgs, opts ...pulumi.InvokeOption) (*ListShareSynchronizationDetailsResult, error) {
 	var rv ListShareSynchronizationDetailsResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:listShareSynchronizationDetails", args, &rv, opts...)

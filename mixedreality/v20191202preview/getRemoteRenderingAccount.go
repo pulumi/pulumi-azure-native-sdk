@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// RemoteRenderingAccount Response.
+// Retrieve a Remote Rendering Account.
 //
 // Deprecated: Version 2019-12-02-preview will be removed in v2 of the provider.
 func LookupRemoteRenderingAccount(ctx *pulumi.Context, args *LookupRemoteRenderingAccountArgs, opts ...pulumi.InvokeOption) (*LookupRemoteRenderingAccountResult, error) {

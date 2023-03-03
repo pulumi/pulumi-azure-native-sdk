@@ -70,6 +70,9 @@ func NewAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:Agent"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20230301:Agent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Agent

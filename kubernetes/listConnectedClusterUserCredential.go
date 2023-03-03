@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of credential result response.
+// Gets cluster user credentials of the connected cluster with a specified resource group and name.
 // API Version: 2022-05-01-preview.
 func ListConnectedClusterUserCredential(ctx *pulumi.Context, args *ListConnectedClusterUserCredentialArgs, opts ...pulumi.InvokeOption) (*ListConnectedClusterUserCredentialResult, error) {
 	var rv ListConnectedClusterUserCredentialResult

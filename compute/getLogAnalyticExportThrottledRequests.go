@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// LogAnalytics operation status response
+// Export logs that show total throttled Api requests for this subscription in the given time window.
 // API Version: 2020-12-01.
 func GetLogAnalyticExportThrottledRequests(ctx *pulumi.Context, args *GetLogAnalyticExportThrottledRequestsArgs, opts ...pulumi.InvokeOption) (*GetLogAnalyticExportThrottledRequestsResult, error) {
 	var rv GetLogAnalyticExportThrottledRequestsResult

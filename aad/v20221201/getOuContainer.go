@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for OuContainer.
+// Get OuContainer in DomainService instance.
 func LookupOuContainer(ctx *pulumi.Context, args *LookupOuContainerArgs, opts ...pulumi.InvokeOption) (*LookupOuContainerResult, error) {
 	var rv LookupOuContainerResult
 	err := ctx.Invoke("azure-native:aad/v20221201:getOuContainer", args, &rv, opts...)

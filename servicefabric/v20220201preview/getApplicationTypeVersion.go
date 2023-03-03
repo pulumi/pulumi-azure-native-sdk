@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An application type version resource for the specified application type name resource.
+// Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
 func LookupApplicationTypeVersion(ctx *pulumi.Context, args *LookupApplicationTypeVersionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationTypeVersionResult, error) {
 	var rv LookupApplicationTypeVersionResult
 	err := ctx.Invoke("azure-native:servicefabric/v20220201preview:getApplicationTypeVersion", args, &rv, opts...)

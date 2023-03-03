@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A CommunicationsGateway resource
+// Get a CommunicationsGateway
 func LookupCommunicationsGateway(ctx *pulumi.Context, args *LookupCommunicationsGatewayArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationsGatewayResult, error) {
 	var rv LookupCommunicationsGatewayResult
 	err := ctx.Invoke("azure-native:voiceservices/v20230131:getCommunicationsGateway", args, &rv, opts...)

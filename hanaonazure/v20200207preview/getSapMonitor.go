@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SAP monitor info on Azure (ARM properties and SAP monitor properties)
+// Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
 func LookupSapMonitor(ctx *pulumi.Context, args *LookupSapMonitorArgs, opts ...pulumi.InvokeOption) (*LookupSapMonitorResult, error) {
 	var rv LookupSapMonitorResult
 	err := ctx.Invoke("azure-native:hanaonazure/v20200207preview:getSapMonitor", args, &rv, opts...)

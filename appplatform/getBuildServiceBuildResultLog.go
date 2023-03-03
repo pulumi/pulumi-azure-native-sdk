@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Build result log resource properties payload
+// Get a KPack build result log download URL.
 // API Version: 2022-01-01-preview.
 func GetBuildServiceBuildResultLog(ctx *pulumi.Context, args *GetBuildServiceBuildResultLogArgs, opts ...pulumi.InvokeOption) (*GetBuildServiceBuildResultLogResult, error) {
 	var rv GetBuildServiceBuildResultLogResult

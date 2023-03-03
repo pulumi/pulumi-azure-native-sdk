@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tenant configuration.
+// Gets the tenant configuration.
 func LookupTenantConfiguration(ctx *pulumi.Context, args *LookupTenantConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupTenantConfigurationResult, error) {
 	var rv LookupTenantConfigurationResult
 	err := ctx.Invoke("azure-native:portal/v20200901preview:getTenantConfiguration", args, &rv, opts...)

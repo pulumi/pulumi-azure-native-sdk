@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// WordPress instance resource
+// Gets the WordPress instance resource.
 func LookupWordpressInstance(ctx *pulumi.Context, args *LookupWordpressInstanceArgs, opts ...pulumi.InvokeOption) (*LookupWordpressInstanceResult, error) {
 	var rv LookupWordpressInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getWordpressInstance", args, &rv, opts...)

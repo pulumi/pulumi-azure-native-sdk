@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the Shared Image Gallery that you want to create or update.
+// Retrieves information about a Shared Image Gallery.
 //
 // Deprecated: Version 2018-06-01 will be removed in v2 of the provider.
 func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.InvokeOption) (*LookupGalleryResult, error) {

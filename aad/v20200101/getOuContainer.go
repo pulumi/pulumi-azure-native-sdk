@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for OuContainer.
+// Get OuContainer in DomainService instance.
 //
 // Deprecated: Version 2020-01-01 will be removed in v2 of the provider.
 func LookupOuContainer(ctx *pulumi.Context, args *LookupOuContainerArgs, opts ...pulumi.InvokeOption) (*LookupOuContainerResult, error) {

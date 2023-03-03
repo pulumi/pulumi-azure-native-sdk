@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Document processor details
+// Returns a document processor for a given name.
 func LookupDocumentProcessor(ctx *pulumi.Context, args *LookupDocumentProcessorArgs, opts ...pulumi.InvokeOption) (*LookupDocumentProcessorResult, error) {
 	var rv LookupDocumentProcessorResult
 	err := ctx.Invoke("azure-native:syntex/v20220915preview:getDocumentProcessor", args, &rv, opts...)

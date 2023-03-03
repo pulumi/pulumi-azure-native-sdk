@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Custom Locations definition.
+// Gets the details of the customLocation with a specified resource group and name.
 // API Version: 2021-03-15-preview.
 func LookupCustomLocation(ctx *pulumi.Context, args *LookupCustomLocationArgs, opts ...pulumi.InvokeOption) (*LookupCustomLocationResult, error) {
 	var rv LookupCustomLocationResult

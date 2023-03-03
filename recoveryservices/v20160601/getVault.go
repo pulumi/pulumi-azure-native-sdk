@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource information, as returned by the resource provider.
+// Get the Vault details.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The List Cluster Customer User Credential Results appliance.
+// Returns the cluster customer user credentials for the dedicated appliance.
 func ListApplianceClusterCustomerUserCredential(ctx *pulumi.Context, args *ListApplianceClusterCustomerUserCredentialArgs, opts ...pulumi.InvokeOption) (*ListApplianceClusterCustomerUserCredentialResult, error) {
 	var rv ListApplianceClusterCustomerUserCredentialResult
 	err := ctx.Invoke("azure-native:resourceconnector/v20220415preview:listApplianceClusterCustomerUserCredential", args, &rv, opts...)

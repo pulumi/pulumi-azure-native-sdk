@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Scheduled action definition.
+// Get the private scheduled action by name.
 // API Version: 2022-04-01-preview.
 func LookupScheduledAction(ctx *pulumi.Context, args *LookupScheduledActionArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionResult, error) {
 	var rv LookupScheduledActionResult

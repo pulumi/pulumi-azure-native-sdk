@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An assessment created for a group in the Migration project.
+// Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	var rv LookupAssessmentResult
 	err := ctx.Invoke("azure-native:migrate/v20191001:getAssessment", args, &rv, opts...)

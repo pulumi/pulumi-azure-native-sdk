@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Payload of the transaction node which is the request/response of the resource provider.
+// Get the details of the transaction node.
 // API Version: 2018-06-01-preview.
 func LookupTransactionNode(ctx *pulumi.Context, args *LookupTransactionNodeArgs, opts ...pulumi.InvokeOption) (*LookupTransactionNodeResult, error) {
 	var rv LookupTransactionNodeResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing an iot hub data connection.
+// Returns a data connection.
 func LookupIotHubDataConnection(ctx *pulumi.Context, args *LookupIotHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotHubDataConnectionResult, error) {
 	var rv LookupIotHubDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20190515:getIotHubDataConnection", args, &rv, opts...)

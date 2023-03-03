@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Private dns zone group resource.
+// Gets the private dns zone group resource by specified private dns zone group name.
 func LookupPrivateDnsZoneGroup(ctx *pulumi.Context, args *LookupPrivateDnsZoneGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDnsZoneGroupResult, error) {
 	var rv LookupPrivateDnsZoneGroupResult
 	err := ctx.Invoke("azure-native:network/v20200601:getPrivateDnsZoneGroup", args, &rv, opts...)

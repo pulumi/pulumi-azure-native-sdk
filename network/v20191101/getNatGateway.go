@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Nat Gateway resource.
+// Gets the specified nat gateway in a specified resource group.
 func LookupNatGateway(ctx *pulumi.Context, args *LookupNatGatewayArgs, opts ...pulumi.InvokeOption) (*LookupNatGatewayResult, error) {
 	var rv LookupNatGatewayResult
 	err := ctx.Invoke("azure-native:network/v20191101:getNatGateway", args, &rv, opts...)

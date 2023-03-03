@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for Volume Group request.
+// Get an VolumeGroups.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	var rv LookupVolumeGroupResult
 	err := ctx.Invoke("azure-native:elasticsan/v20211120preview:getVolumeGroup", args, &rv, opts...)

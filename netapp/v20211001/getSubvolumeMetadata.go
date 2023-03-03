@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the post subvolume and action is to get metadata of the subvolume.
+// Get details of the specified subvolume
 func GetSubvolumeMetadata(ctx *pulumi.Context, args *GetSubvolumeMetadataArgs, opts ...pulumi.InvokeOption) (*GetSubvolumeMetadataResult, error) {
 	var rv GetSubvolumeMetadataResult
 	err := ctx.Invoke("azure-native:netapp/v20211001:getSubvolumeMetadata", args, &rv, opts...)

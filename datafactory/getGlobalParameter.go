@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Global parameters resource type.
+// Gets a Global parameter
 // API Version: 2018-06-01.
 func LookupGlobalParameter(ctx *pulumi.Context, args *LookupGlobalParameterArgs, opts ...pulumi.InvokeOption) (*LookupGlobalParameterResult, error) {
 	var rv LookupGlobalParameterResult

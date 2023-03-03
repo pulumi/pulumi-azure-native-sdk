@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network default admin rule.
+// Gets a network manager security configuration admin rule.
 func LookupDefaultAdminRule(ctx *pulumi.Context, args *LookupDefaultAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultAdminRuleResult, error) {
 	var rv LookupDefaultAdminRuleResult
 	err := ctx.Invoke("azure-native:network/v20210501preview:getDefaultAdminRule", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An assessment created for a group in the Migration project.
+// Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
 //
 // Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {

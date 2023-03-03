@@ -93,6 +93,9 @@ func NewManagedDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220501preview:ManagedDatabase"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedDatabase"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedDatabase

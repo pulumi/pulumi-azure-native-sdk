@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response to put/get linked server (with properties) for Redis cache.
+// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
 func LookupLinkedServer(ctx *pulumi.Context, args *LookupLinkedServerArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServerResult, error) {
 	var rv LookupLinkedServerResult
 	err := ctx.Invoke("azure-native:cache/v20210601:getLinkedServer", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Peering Service
+// Gets an existing peering service with the specified name under the given subscription and resource group.
 //
 // Deprecated: Version 2020-10-01 will be removed in v2 of the provider.
 func LookupPeeringService(ctx *pulumi.Context, args *LookupPeeringServiceArgs, opts ...pulumi.InvokeOption) (*LookupPeeringServiceResult, error) {

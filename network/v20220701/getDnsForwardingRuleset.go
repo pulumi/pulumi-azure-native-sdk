@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a DNS forwarding ruleset.
+// Gets a DNS forwarding ruleset properties.
 func LookupDnsForwardingRuleset(ctx *pulumi.Context, args *LookupDnsForwardingRulesetArgs, opts ...pulumi.InvokeOption) (*LookupDnsForwardingRulesetResult, error) {
 	var rv LookupDnsForwardingRulesetResult
 	err := ctx.Invoke("azure-native:network/v20220701:getDnsForwardingRuleset", args, &rv, opts...)

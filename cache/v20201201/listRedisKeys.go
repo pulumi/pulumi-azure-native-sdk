@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Redis cache access keys.
+// Retrieve a Redis cache's access keys. This operation requires write permission to the cache resource.
 func ListRedisKeys(ctx *pulumi.Context, args *ListRedisKeysArgs, opts ...pulumi.InvokeOption) (*ListRedisKeysResult, error) {
 	var rv ListRedisKeysResult
 	err := ctx.Invoke("azure-native:cache/v20201201:listRedisKeys", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The access keys for the given database account.
+// Lists the access keys for the specified Azure Cosmos DB database account.
 func ListDatabaseAccountKeys(ctx *pulumi.Context, args *ListDatabaseAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseAccountKeysResult, error) {
 	var rv ListDatabaseAccountKeysResult
 	err := ctx.Invoke("azure-native:documentdb/v20151106:listDatabaseAccountKeys", args, &rv, opts...)

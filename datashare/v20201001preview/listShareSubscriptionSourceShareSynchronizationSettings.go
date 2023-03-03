@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List response for get source share Synchronization settings
+// Get synchronization settings set on a share
 func ListShareSubscriptionSourceShareSynchronizationSettings(ctx *pulumi.Context, args *ListShareSubscriptionSourceShareSynchronizationSettingsArgs, opts ...pulumi.InvokeOption) (*ListShareSubscriptionSourceShareSynchronizationSettingsResult, error) {
 	var rv ListShareSubscriptionSourceShareSynchronizationSettingsResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:listShareSubscriptionSourceShareSynchronizationSettings", args, &rv, opts...)

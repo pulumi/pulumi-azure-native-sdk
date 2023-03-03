@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning service object wrapped into ARM resource envelope.
+// Get a Service by name.
 func LookupAKSService(ctx *pulumi.Context, args *LookupAKSServiceArgs, opts ...pulumi.InvokeOption) (*LookupAKSServiceResult, error) {
 	var rv LookupAKSServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200501preview:getAKSService", args, &rv, opts...)

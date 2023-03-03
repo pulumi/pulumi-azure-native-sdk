@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the resourcePool.
+// Implements resourcePool GET method.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	var rv LookupResourcePoolResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getResourcePool", args, &rv, opts...)

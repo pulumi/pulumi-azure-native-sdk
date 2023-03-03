@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Property details.
+// Gets the details of the property specified by its identifier.
 func LookupProperty(ctx *pulumi.Context, args *LookupPropertyArgs, opts ...pulumi.InvokeOption) (*LookupPropertyResult, error) {
 	var rv LookupPropertyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getProperty", args, &rv, opts...)

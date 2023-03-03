@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+// Gets the existing immutability policy along with the corresponding ETag in response headers and body.
 func LookupBlobContainerImmutabilityPolicy(ctx *pulumi.Context, args *LookupBlobContainerImmutabilityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerImmutabilityPolicyResult, error) {
 	var rv LookupBlobContainerImmutabilityPolicyResult
 	err := ctx.Invoke("azure-native:storage/v20210801:getBlobContainerImmutabilityPolicy", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Linked workspace.
+// Get the detail of a linked workspace.
 func LookupLinkedWorkspace(ctx *pulumi.Context, args *LookupLinkedWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedWorkspaceResult, error) {
 	var rv LookupLinkedWorkspaceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200515preview:getLinkedWorkspace", args, &rv, opts...)

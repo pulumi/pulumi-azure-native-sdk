@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the configuration profile.
+// Get information about a configuration profile version
 func LookupConfigurationProfilesVersion(ctx *pulumi.Context, args *LookupConfigurationProfilesVersionArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfilesVersionResult, error) {
 	var rv LookupConfigurationProfilesVersionResult
 	err := ctx.Invoke("azure-native:automanage/v20220504:getConfigurationProfilesVersion", args, &rv, opts...)

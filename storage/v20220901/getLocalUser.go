@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The local user associated with the storage accounts.
+// Get the local user of the storage account by username.
 func LookupLocalUser(ctx *pulumi.Context, args *LookupLocalUserArgs, opts ...pulumi.InvokeOption) (*LookupLocalUserResult, error) {
 	var rv LookupLocalUserResult
 	err := ctx.Invoke("azure-native:storage/v20220901:getLocalUser", args, &rv, opts...)

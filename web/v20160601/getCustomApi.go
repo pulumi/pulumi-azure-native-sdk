@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A custom API
+// Gets a custom API by name for a specific subscription and resource group
 func LookupCustomApi(ctx *pulumi.Context, args *LookupCustomApiArgs, opts ...pulumi.InvokeOption) (*LookupCustomApiResult, error) {
 	var rv LookupCustomApiResult
 	err := ctx.Invoke("azure-native:web/v20160601:getCustomApi", args, &rv, opts...)

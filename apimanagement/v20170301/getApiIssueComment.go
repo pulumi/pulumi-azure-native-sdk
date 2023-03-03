@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Issue Comment Contract details.
+// Gets the details of the issue Comment for an API specified by its identifier.
 func LookupApiIssueComment(ctx *pulumi.Context, args *LookupApiIssueCommentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueCommentResult, error) {
 	var rv LookupApiIssueCommentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20170301:getApiIssueComment", args, &rv, opts...)

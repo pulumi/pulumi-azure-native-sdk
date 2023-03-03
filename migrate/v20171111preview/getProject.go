@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Migrate Project.
+// Get the project with the specified name.
 //
 // Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {

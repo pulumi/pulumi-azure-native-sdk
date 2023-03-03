@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A custom domain
+// Get a custom domain.
 func LookupWebPubSubCustomDomain(ctx *pulumi.Context, args *LookupWebPubSubCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubCustomDomainResult, error) {
 	var rv LookupWebPubSubCustomDomainResult
 	err := ctx.Invoke("azure-native:webpubsub/v20220801preview:getWebPubSubCustomDomain", args, &rv, opts...)

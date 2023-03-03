@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// vCenter definition.
+// Gets the details of a registered vCenter server(Add vCenter server.)
 //
 // Deprecated: Version 2016-08-10 will be removed in v2 of the provider.
 func LookupReplicationvCenter(ctx *pulumi.Context, args *LookupReplicationvCenterArgs, opts ...pulumi.InvokeOption) (*LookupReplicationvCenterResult, error) {

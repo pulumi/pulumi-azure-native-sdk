@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Subscription feature registration details
+// Returns a feature registration
 func LookupSubscriptionFeatureRegistration(ctx *pulumi.Context, args *LookupSubscriptionFeatureRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionFeatureRegistrationResult, error) {
 	var rv LookupSubscriptionFeatureRegistrationResult
 	err := ctx.Invoke("azure-native:features/v20210701:getSubscriptionFeatureRegistration", args, &rv, opts...)

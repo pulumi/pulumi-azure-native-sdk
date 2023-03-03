@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Remote debugging config.
+// Get remote debugging config.
 func GetDeploymentRemoteDebuggingConfig(ctx *pulumi.Context, args *GetDeploymentRemoteDebuggingConfigArgs, opts ...pulumi.InvokeOption) (*GetDeploymentRemoteDebuggingConfigResult, error) {
 	var rv GetDeploymentRemoteDebuggingConfigResult
 	err := ctx.Invoke("azure-native:appplatform/v20221201:getDeploymentRemoteDebuggingConfig", args, &rv, opts...)

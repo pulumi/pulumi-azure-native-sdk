@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of custom API WSDL interfaces
+// This returns the list of interfaces in the WSDL
 // API Version: 2016-06-01.
 func ListCustomApiWsdlInterfaces(ctx *pulumi.Context, args *ListCustomApiWsdlInterfacesArgs, opts ...pulumi.InvokeOption) (*ListCustomApiWsdlInterfacesResult, error) {
 	var rv ListCustomApiWsdlInterfacesResult

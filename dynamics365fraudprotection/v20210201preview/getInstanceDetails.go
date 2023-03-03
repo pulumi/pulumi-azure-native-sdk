@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of a DFP instance resource.
+// Gets details about the specified instances.
 func LookupInstanceDetails(ctx *pulumi.Context, args *LookupInstanceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupInstanceDetailsResult, error) {
 	var rv LookupInstanceDetailsResult
 	err := ctx.Invoke("azure-native:dynamics365fraudprotection/v20210201preview:getInstanceDetails", args, &rv, opts...)

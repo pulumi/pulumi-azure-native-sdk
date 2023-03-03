@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specific entity query.
+// Gets an entity query.
 // API Version: 2021-03-01-preview.
 //
 // Deprecated: Please use one of the variants: ActivityCustomEntityQuery.

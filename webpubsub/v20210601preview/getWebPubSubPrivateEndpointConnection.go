@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A private endpoint connection to an azure resource
+// Get the specified private endpoint connection
 func LookupWebPubSubPrivateEndpointConnection(ctx *pulumi.Context, args *LookupWebPubSubPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubPrivateEndpointConnectionResult, error) {
 	var rv LookupWebPubSubPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:webpubsub/v20210601preview:getWebPubSubPrivateEndpointConnection", args, &rv, opts...)

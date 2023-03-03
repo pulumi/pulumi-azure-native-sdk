@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Application Insights WebTest definition.
+// Get a specific Application Insights web test definition.
 func LookupWebTest(ctx *pulumi.Context, args *LookupWebTestArgs, opts ...pulumi.InvokeOption) (*LookupWebTestResult, error) {
 	var rv LookupWebTestResult
 	err := ctx.Invoke("azure-native:insights/v20201005preview:getWebTest", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the admin rule collection.
+// Gets a network manager security admin configuration rule collection.
 func LookupAdminRuleCollection(ctx *pulumi.Context, args *LookupAdminRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupAdminRuleCollectionResult, error) {
 	var rv LookupAdminRuleCollectionResult
 	err := ctx.Invoke("azure-native:network/v20220101:getAdminRuleCollection", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The replication policy between two storage accounts. Multiple rules can be defined in one policy.
+// Get the object replication policy of the storage account by policy ID.
 func LookupObjectReplicationPolicy(ctx *pulumi.Context, args *LookupObjectReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupObjectReplicationPolicyResult, error) {
 	var rv LookupObjectReplicationPolicyResult
 	err := ctx.Invoke("azure-native:storage/v20210801:getObjectReplicationPolicy", args, &rv, opts...)

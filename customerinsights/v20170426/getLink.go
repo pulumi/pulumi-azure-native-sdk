@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The link resource format.
+// Gets a link in the hub.
 func LookupLink(ctx *pulumi.Context, args *LookupLinkArgs, opts ...pulumi.InvokeOption) (*LookupLinkResult, error) {
 	var rv LookupLinkResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getLink", args, &rv, opts...)

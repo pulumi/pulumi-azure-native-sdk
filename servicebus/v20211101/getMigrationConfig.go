@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in List or Get Migration Config operation
+// Retrieves Migration Config
 func LookupMigrationConfig(ctx *pulumi.Context, args *LookupMigrationConfigArgs, opts ...pulumi.InvokeOption) (*LookupMigrationConfigResult, error) {
 	var rv LookupMigrationConfigResult
 	err := ctx.Invoke("azure-native:servicebus/v20211101:getMigrationConfig", args, &rv, opts...)

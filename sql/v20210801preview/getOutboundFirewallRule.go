@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure SQL DB Server Outbound Firewall Rule.
+// Gets an outbound firewall rule.
 func LookupOutboundFirewallRule(ctx *pulumi.Context, args *LookupOutboundFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupOutboundFirewallRuleResult, error) {
 	var rv LookupOutboundFirewallRuleResult
 	err := ctx.Invoke("azure-native:sql/v20210801preview:getOutboundFirewallRule", args, &rv, opts...)

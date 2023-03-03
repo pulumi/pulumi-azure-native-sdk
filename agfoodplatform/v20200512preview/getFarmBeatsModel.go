@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// FarmBeats ARM Resource.
+// Get FarmBeats resource.
 func LookupFarmBeatsModel(ctx *pulumi.Context, args *LookupFarmBeatsModelArgs, opts ...pulumi.InvokeOption) (*LookupFarmBeatsModelResult, error) {
 	var rv LookupFarmBeatsModelResult
 	err := ctx.Invoke("azure-native:agfoodplatform/v20200512preview:getFarmBeatsModel", args, &rv, opts...)

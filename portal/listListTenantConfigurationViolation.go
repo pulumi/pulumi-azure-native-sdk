@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of list of items that violate tenant's configuration.
+// Gets list of items that violate tenant's configuration.
 // API Version: 2020-09-01-preview.
 func ListListTenantConfigurationViolation(ctx *pulumi.Context, args *ListListTenantConfigurationViolationArgs, opts ...pulumi.InvokeOption) (*ListListTenantConfigurationViolationResult, error) {
 	var rv ListListTenantConfigurationViolationResult

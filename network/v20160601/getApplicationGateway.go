@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ApplicationGateways resource
+// The Get ApplicationGateway operation retrieves information about the specified application gateway.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 func LookupApplicationGateway(ctx *pulumi.Context, args *LookupApplicationGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayResult, error) {

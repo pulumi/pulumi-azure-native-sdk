@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The IoT Central application.
+// Get the metadata of an IoT Central application.
 //
 // Deprecated: Version 2018-09-01 will be removed in v2 of the provider.
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {

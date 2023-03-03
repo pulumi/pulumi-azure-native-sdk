@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A DDoS custom policy in a resource group.
+// Gets information about the specified DDoS custom policy.
 func LookupDdosCustomPolicy(ctx *pulumi.Context, args *LookupDdosCustomPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDdosCustomPolicyResult, error) {
 	var rv LookupDdosCustomPolicyResult
 	err := ctx.Invoke("azure-native:network/v20220701:getDdosCustomPolicy", args, &rv, opts...)

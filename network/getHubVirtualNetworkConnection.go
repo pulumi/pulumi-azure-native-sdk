@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// HubVirtualNetworkConnection Resource.
+// Retrieves the details of a HubVirtualNetworkConnection.
 // API Version: 2020-11-01.
 func LookupHubVirtualNetworkConnection(ctx *pulumi.Context, args *LookupHubVirtualNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHubVirtualNetworkConnectionResult, error) {
 	var rv LookupHubVirtualNetworkConnectionResult

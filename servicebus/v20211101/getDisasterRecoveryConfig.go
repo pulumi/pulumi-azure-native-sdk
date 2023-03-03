@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in List or Get Alias(Disaster Recovery configuration) operation
+// Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
 	var rv LookupDisasterRecoveryConfigResult
 	err := ctx.Invoke("azure-native:servicebus/v20211101:getDisasterRecoveryConfig", args, &rv, opts...)

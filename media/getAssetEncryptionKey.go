@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data needed to decrypt asset files encrypted with legacy storage encryption.
+// Gets the Asset storage encryption keys used to decrypt content created by version 2 of the Media Services API
 // API Version: 2020-05-01.
 func GetAssetEncryptionKey(ctx *pulumi.Context, args *GetAssetEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*GetAssetEncryptionKeyResult, error) {
 	var rv GetAssetEncryptionKeyResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SIM resource.
+// Gets information about the specified SIM.
 func LookupSim(ctx *pulumi.Context, args *LookupSimArgs, opts ...pulumi.InvokeOption) (*LookupSimResult, error) {
 	var rv LookupSimResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220401preview:getSim", args, &rv, opts...)

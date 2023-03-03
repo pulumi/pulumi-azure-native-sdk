@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The device registration key.
+// List the registration key for the device.
 func ListDeviceRegistrationKey(ctx *pulumi.Context, args *ListDeviceRegistrationKeyArgs, opts ...pulumi.InvokeOption) (*ListDeviceRegistrationKeyResult, error) {
 	var rv ListDeviceRegistrationKeyResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20220101preview:listDeviceRegistrationKey", args, &rv, opts...)

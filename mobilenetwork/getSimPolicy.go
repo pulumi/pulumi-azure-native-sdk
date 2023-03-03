@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SIM policy resource.
+// Gets information about the specified SIM policy.
 // API Version: 2022-04-01-preview.
 func LookupSimPolicy(ctx *pulumi.Context, args *LookupSimPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSimPolicyResult, error) {
 	var rv LookupSimPolicyResult
