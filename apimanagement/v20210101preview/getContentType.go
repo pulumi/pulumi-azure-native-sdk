@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Content type contract details.
+// Gets the details of the developer portal's content type. Content types describe content items' properties, validation rules, and constraints.
 func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ...pulumi.InvokeOption) (*LookupContentTypeResult, error) {
 	var rv LookupContentTypeResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210101preview:getContentType", args, &rv, opts...)

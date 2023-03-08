@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class represents the access keys of the resource.
+// Get the access keys of the resource.
 func ListSignalRKeys(ctx *pulumi.Context, args *ListSignalRKeysArgs, opts ...pulumi.InvokeOption) (*ListSignalRKeysResult, error) {
 	var rv ListSignalRKeysResult
 	err := ctx.Invoke("azure-native:signalrservice/v20211001:listSignalRKeys", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// CloudEdgeManagementRole role.
+// Gets a specific role by name.
 func LookupCloudEdgeManagementRole(ctx *pulumi.Context, args *LookupCloudEdgeManagementRoleArgs, opts ...pulumi.InvokeOption) (*LookupCloudEdgeManagementRoleResult, error) {
 	var rv LookupCloudEdgeManagementRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901preview:getCloudEdgeManagementRole", args, &rv, opts...)

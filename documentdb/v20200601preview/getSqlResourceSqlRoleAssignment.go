@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Role Assignment
+// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
 //
 // Deprecated: Version 2020-06-01-preview will be removed in v2 of the provider.
 func LookupSqlResourceSqlRoleAssignment(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleAssignmentResult, error) {

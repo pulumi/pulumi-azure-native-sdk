@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of key vault keys.
+// Gets the integration account's Key Vault keys.
 func ListIntegrationAccountKeyVaultKeys(ctx *pulumi.Context, args *ListIntegrationAccountKeyVaultKeysArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountKeyVaultKeysResult, error) {
 	var rv ListIntegrationAccountKeyVaultKeysResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:listIntegrationAccountKeyVaultKeys", args, &rv, opts...)

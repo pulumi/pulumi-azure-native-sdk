@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents the secrets encrypted using Symmetric Encryption Key.
+// Returns the symmetric encrypted public encryption key of the manager.
 // API Version: 2017-06-01.
 func ListManagerPublicEncryptionKey(ctx *pulumi.Context, args *ListManagerPublicEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*ListManagerPublicEncryptionKeyResult, error) {
 	var rv ListManagerPublicEncryptionKeyResult

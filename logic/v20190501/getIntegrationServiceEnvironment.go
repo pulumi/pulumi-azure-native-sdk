@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The integration service environment.
+// Gets an integration service environment.
 func LookupIntegrationServiceEnvironment(ctx *pulumi.Context, args *LookupIntegrationServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationServiceEnvironmentResult, error) {
 	var rv LookupIntegrationServiceEnvironmentResult
 	err := ctx.Invoke("azure-native:logic/v20190501:getIntegrationServiceEnvironment", args, &rv, opts...)

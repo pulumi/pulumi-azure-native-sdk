@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Storage resource for managedEnvironment.
+// Get storage for a managedEnvironment.
 // API Version: 2022-03-01.
 func LookupManagedEnvironmentsStorage(ctx *pulumi.Context, args *LookupManagedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentsStorageResult, error) {
 	var rv LookupManagedEnvironmentsStorageResult

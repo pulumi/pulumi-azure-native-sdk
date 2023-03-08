@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a devcenter resource.
+// Gets a devcenter.
 func LookupDevCenter(ctx *pulumi.Context, args *LookupDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupDevCenterResult, error) {
 	var rv LookupDevCenterResult
 	err := ctx.Invoke("azure-native:devcenter/v20220801preview:getDevCenter", args, &rv, opts...)

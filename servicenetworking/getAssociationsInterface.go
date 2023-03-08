@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Association Subresource of Traffic Controller
+// Get a Traffic Controller Association
 // API Version: 2022-10-01-preview.
 func LookupAssociationsInterface(ctx *pulumi.Context, args *LookupAssociationsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupAssociationsInterfaceResult, error) {
 	var rv LookupAssociationsInterfaceResult

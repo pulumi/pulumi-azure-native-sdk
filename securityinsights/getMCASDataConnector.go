@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents MCAS (Microsoft Cloud App Security) data connector.
+// Gets a data connector.
 // API Version: 2020-01-01.
 func LookupMCASDataConnector(ctx *pulumi.Context, args *LookupMCASDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMCASDataConnectorResult, error) {
 	var rv LookupMCASDataConnectorResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configurations for source resource, include appSettings, connectionString and serviceBindings
+// list source configurations for a linker.
 func ListLinkerConfigurations(ctx *pulumi.Context, args *ListLinkerConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListLinkerConfigurationsResult, error) {
 	var rv ListLinkerConfigurationsResult
 	err := ctx.Invoke("azure-native:servicelinker/v20220501:listLinkerConfigurations", args, &rv, opts...)

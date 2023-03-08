@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site User Provided Function App ARM resource.
+// Gets the details of the user provided function app registered with a static site build
 // API Version: 2020-12-01.
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult, error) {
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Kubernetes cluster specialized for web workloads by Azure App Service
+// Get the properties of a Kubernetes Environment.
 func LookupKubeEnvironment(ctx *pulumi.Context, args *LookupKubeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupKubeEnvironmentResult, error) {
 	var rv LookupKubeEnvironmentResult
 	err := ctx.Invoke("azure-native:web/v20210301:getKubeEnvironment", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Remote Private Endpoint Connection ARM resource.
+// Description for Gets a private endpoint connection
 func LookupAppServiceEnvironmentPrivateEndpointConnection(ctx *pulumi.Context, args *LookupAppServiceEnvironmentPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentPrivateEndpointConnectionResult, error) {
 	var rv LookupAppServiceEnvironmentPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:web/v20220301:getAppServiceEnvironmentPrivateEndpointConnection", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Representation of a managed Cassandra cluster.
+// Get the properties of a managed Cassandra cluster.
 func LookupCassandraCluster(ctx *pulumi.Context, args *LookupCassandraClusterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraClusterResult, error) {
 	var rv LookupCassandraClusterResult
 	err := ctx.Invoke("azure-native:documentdb/v20220215preview:getCassandraCluster", args, &rv, opts...)

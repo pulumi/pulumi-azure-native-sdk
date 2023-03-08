@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents an import pipeline for a container registry.
+// Gets the properties of the import pipeline.
 func LookupImportPipeline(ctx *pulumi.Context, args *LookupImportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupImportPipelineResult, error) {
 	var rv LookupImportPipelineResult
 	err := ctx.Invoke("azure-native:containerregistry/v20210601preview:getImportPipeline", args, &rv, opts...)

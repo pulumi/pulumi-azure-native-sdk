@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A file resource
+// The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
 func LookupFile(ctx *pulumi.Context, args *LookupFileArgs, opts ...pulumi.InvokeOption) (*LookupFileResult, error) {
 	var rv LookupFileResult
 	err := ctx.Invoke("azure-native:datamigration/v20211030preview:getFile", args, &rv, opts...)

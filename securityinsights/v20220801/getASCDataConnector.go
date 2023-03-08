@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents ASC (Azure Security Center) data connector.
+// Gets a data connector.
 func LookupASCDataConnector(ctx *pulumi.Context, args *LookupASCDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupASCDataConnectorResult, error) {
 	var rv LookupASCDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801:getASCDataConnector", args, &rv, opts...)

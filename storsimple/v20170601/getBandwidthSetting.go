@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The bandwidth setting.
+// Returns the properties of the specified bandwidth setting name.
 func LookupBandwidthSetting(ctx *pulumi.Context, args *LookupBandwidthSettingArgs, opts ...pulumi.InvokeOption) (*LookupBandwidthSettingResult, error) {
 	var rv LookupBandwidthSettingResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getBandwidthSetting", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// PublicIPAddress resource
+// The Get publicIpAddress operation retrieves information about the specified pubicIpAddress
 //
 // Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupPublicIpAddress(ctx *pulumi.Context, args *LookupPublicIpAddressArgs, opts ...pulumi.InvokeOption) (*LookupPublicIpAddressResult, error) {

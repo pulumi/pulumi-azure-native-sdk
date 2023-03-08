@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The VirtualMachineTemplates resource definition.
+// Implements VirtualMachineTemplate GET method.
 // API Version: 2020-06-05-preview.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	var rv LookupVirtualMachineTemplateResult

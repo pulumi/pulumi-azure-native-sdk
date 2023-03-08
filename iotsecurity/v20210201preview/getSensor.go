@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IoT sensor model
+// Get IoT sensor
 func LookupSensor(ctx *pulumi.Context, args *LookupSensorArgs, opts ...pulumi.InvokeOption) (*LookupSensorResult, error) {
 	var rv LookupSensorResult
 	err := ctx.Invoke("azure-native:iotsecurity/v20210201preview:getSensor", args, &rv, opts...)

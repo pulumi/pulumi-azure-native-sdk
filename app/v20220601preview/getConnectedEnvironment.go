@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment for Kubernetes cluster specialized for web workloads by Azure App Service
+// Get the properties of an connectedEnvironment.
 func LookupConnectedEnvironment(ctx *pulumi.Context, args *LookupConnectedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentResult, error) {
 	var rv LookupConnectedEnvironmentResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:getConnectedEnvironment", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A user-defined logical grouping of machines.
+// Returns the specified machine group as it existed during the specified time interval.
 func LookupMachineGroup(ctx *pulumi.Context, args *LookupMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupMachineGroupResult, error) {
 	var rv LookupMachineGroupResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20151101preview:getMachineGroup", args, &rv, opts...)

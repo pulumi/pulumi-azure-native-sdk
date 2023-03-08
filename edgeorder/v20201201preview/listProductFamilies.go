@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of product families.
+// This method provides the list of product families for the given subscription.
 func ListProductFamilies(ctx *pulumi.Context, args *ListProductFamiliesArgs, opts ...pulumi.InvokeOption) (*ListProductFamiliesResult, error) {
 	var rv ListProductFamiliesResult
 	err := ctx.Invoke("azure-native:edgeorder/v20201201preview:listProductFamilies", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a scope map for a container registry.
+// Gets the properties of the specified scope map.
 func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulumi.InvokeOption) (*LookupScopeMapResult, error) {
 	var rv LookupScopeMapResult
 	err := ctx.Invoke("azure-native:containerregistry/v20221201:getScopeMap", args, &rv, opts...)

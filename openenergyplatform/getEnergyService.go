@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Returns oep resource for a given name.
 // API Version: 2022-04-04-preview.
 func LookupEnergyService(ctx *pulumi.Context, args *LookupEnergyServiceArgs, opts ...pulumi.InvokeOption) (*LookupEnergyServiceResult, error) {
 	var rv LookupEnergyServiceResult

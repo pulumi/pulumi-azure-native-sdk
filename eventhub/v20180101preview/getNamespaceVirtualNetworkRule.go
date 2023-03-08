@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in a List or Get VirtualNetworkRules operation
+// Gets an VirtualNetworkRule for a Namespace by rule name.
 func LookupNamespaceVirtualNetworkRule(ctx *pulumi.Context, args *LookupNamespaceVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceVirtualNetworkRuleResult, error) {
 	var rv LookupNamespaceVirtualNetworkRuleResult
 	err := ctx.Invoke("azure-native:eventhub/v20180101preview:getNamespaceVirtualNetworkRule", args, &rv, opts...)

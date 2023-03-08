@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The VmmServers resource definition.
+// Implements VMMServer GET method.
 // API Version: 2020-06-05-preview.
 func LookupVmmServer(ctx *pulumi.Context, args *LookupVmmServerArgs, opts ...pulumi.InvokeOption) (*LookupVmmServerResult, error) {
 	var rv LookupVmmServerResult

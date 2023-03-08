@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Slot Config names azure resource.
+// Gets the names of app settings and connection strings that stick to the slot (not swapped).
 func LookupWebAppSlotConfigurationNames(ctx *pulumi.Context, args *LookupWebAppSlotConfigurationNamesArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSlotConfigurationNamesResult, error) {
 	var rv LookupWebAppSlotConfigurationNamesResult
 	err := ctx.Invoke("azure-native:web/v20160801:getWebAppSlotConfigurationNames", args, &rv, opts...)

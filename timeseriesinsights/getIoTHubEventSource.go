@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An event source that receives its data from an Azure IoTHub.
+// Gets the event source with the specified name in the specified environment.
 // API Version: 2020-05-15.
 func LookupIoTHubEventSource(ctx *pulumi.Context, args *LookupIoTHubEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupIoTHubEventSourceResult, error) {
 	var rv LookupIoTHubEventSourceResult

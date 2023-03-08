@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Dynamics365 data connector.
+// Gets a data connector.
 func LookupDynamics365DataConnector(ctx *pulumi.Context, args *LookupDynamics365DataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDynamics365DataConnectorResult, error) {
 	var rv LookupDynamics365DataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getDynamics365DataConnector", args, &rv, opts...)

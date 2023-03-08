@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of unencrypted credentials for accessing device.
+// This method gets the unencrypted secrets related to the job.
 func ListJobCredentials(ctx *pulumi.Context, args *ListJobCredentialsArgs, opts ...pulumi.InvokeOption) (*ListJobCredentialsResult, error) {
 	var rv ListJobCredentialsResult
 	err := ctx.Invoke("azure-native:databox/v20180101:listJobCredentials", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The role assignment
+// Gets a role assignment for the caller on a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
 func LookupBillingRoleAssignmentByDepartment(ctx *pulumi.Context, args *LookupBillingRoleAssignmentByDepartmentArgs, opts ...pulumi.InvokeOption) (*LookupBillingRoleAssignmentByDepartmentResult, error) {
 	var rv LookupBillingRoleAssignmentByDepartmentResult
 	err := ctx.Invoke("azure-native:billing/v20191001preview:getBillingRoleAssignmentByDepartment", args, &rv, opts...)

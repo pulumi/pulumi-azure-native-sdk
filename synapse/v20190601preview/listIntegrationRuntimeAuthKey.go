@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The integration runtime authentication keys.
+// List authentication keys in an integration runtime
 func ListIntegrationRuntimeAuthKey(ctx *pulumi.Context, args *ListIntegrationRuntimeAuthKeyArgs, opts ...pulumi.InvokeOption) (*ListIntegrationRuntimeAuthKeyResult, error) {
 	var rv ListIntegrationRuntimeAuthKeyResult
 	err := ctx.Invoke("azure-native:synapse/v20190601preview:listIntegrationRuntimeAuthKey", args, &rv, opts...)

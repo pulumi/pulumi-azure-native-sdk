@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An extended database blob auditing policy.
+// Gets an extended database's blob auditing policy.
 // API Version: 2020-11-01-preview.
 func LookupExtendedDatabaseBlobAuditingPolicy(ctx *pulumi.Context, args *LookupExtendedDatabaseBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupExtendedDatabaseBlobAuditingPolicyResult, error) {
 	var rv LookupExtendedDatabaseBlobAuditingPolicyResult

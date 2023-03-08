@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of bot service providers response.
+// Lists the available Service Providers for creating Connection Settings
 func ListBotConnectionServiceProviders(ctx *pulumi.Context, args *ListBotConnectionServiceProvidersArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionServiceProvidersResult, error) {
 	var rv ListBotConnectionServiceProvidersResult
 	err := ctx.Invoke("azure-native:botservice/v20210501preview:listBotConnectionServiceProviders", args, &rv, opts...)

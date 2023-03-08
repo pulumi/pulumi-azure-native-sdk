@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The relationship link resource format.
+// Gets information about the specified relationship Link.
 // API Version: 2017-04-26.
 func LookupRelationshipLink(ctx *pulumi.Context, args *LookupRelationshipLinkArgs, opts ...pulumi.InvokeOption) (*LookupRelationshipLinkResult, error) {
 	var rv LookupRelationshipLinkResult

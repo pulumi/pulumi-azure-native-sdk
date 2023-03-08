@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a .rdp file
+// Gets a string that represents the contents of the RDP file for the virtual machine
 func GetVirtualMachineRdpFileContents(ctx *pulumi.Context, args *GetVirtualMachineRdpFileContentsArgs, opts ...pulumi.InvokeOption) (*GetVirtualMachineRdpFileContentsResult, error) {
 	var rv GetVirtualMachineRdpFileContentsResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getVirtualMachineRdpFileContents", args, &rv, opts...)

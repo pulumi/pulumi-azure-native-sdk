@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of Network Manager Deployment Status
+// Post to List of Network Manager Deployment Status.
 func ListNetworkManagerDeploymentStatus(ctx *pulumi.Context, args *ListNetworkManagerDeploymentStatusArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerDeploymentStatusResult, error) {
 	var rv ListNetworkManagerDeploymentStatusResult
 	err := ctx.Invoke("azure-native:network/v20220101:listNetworkManagerDeploymentStatus", args, &rv, opts...)

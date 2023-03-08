@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasources under OMS Workspace.
+// Gets a datasource instance.
 func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...pulumi.InvokeOption) (*LookupDataSourceResult, error) {
 	var rv LookupDataSourceResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200801:getDataSource", args, &rv, opts...)

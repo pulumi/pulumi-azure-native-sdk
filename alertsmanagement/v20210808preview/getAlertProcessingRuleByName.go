@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Alert processing rule object containing target scopes, conditions and scheduling logic.
+// Get an alert processing rule by name.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
 	var rv LookupAlertProcessingRuleByNameResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20210808preview:getAlertProcessingRuleByName", args, &rv, opts...)

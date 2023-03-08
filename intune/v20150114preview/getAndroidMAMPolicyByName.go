@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Android Policy entity for Intune MAM.
+// Returns AndroidMAMPolicy with given name.
 func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupAndroidMAMPolicyByNameResult, error) {
 	var rv LookupAndroidMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune/v20150114preview:getAndroidMAMPolicyByName", args, &rv, opts...)

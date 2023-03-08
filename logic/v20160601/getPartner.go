@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The integration account partner.
+// Gets an integration account partner.
 func LookupPartner(ctx *pulumi.Context, args *LookupPartnerArgs, opts ...pulumi.InvokeOption) (*LookupPartnerResult, error) {
 	var rv LookupPartnerResult
 	err := ctx.Invoke("azure-native:logic/v20160601:getPartner", args, &rv, opts...)

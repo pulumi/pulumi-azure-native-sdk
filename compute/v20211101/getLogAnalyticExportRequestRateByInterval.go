@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// LogAnalytics operation status response
+// Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 func GetLogAnalyticExportRequestRateByInterval(ctx *pulumi.Context, args *GetLogAnalyticExportRequestRateByIntervalArgs, opts ...pulumi.InvokeOption) (*GetLogAnalyticExportRequestRateByIntervalResult, error) {
 	var rv GetLogAnalyticExportRequestRateByIntervalResult
 	err := ctx.Invoke("azure-native:compute/v20211101:getLogAnalyticExportRequestRateByInterval", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// REST model used to encapsulate the user visible state of a PrivateEndpoint.
+// Get the private endpoint with the specified name.
 func LookupPrivateEndpointConnectionControllerPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:migrate/v20200501:getPrivateEndpointConnectionControllerPrivateEndpointConnection", args, &rv, opts...)

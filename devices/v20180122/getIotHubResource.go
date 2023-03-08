@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the IoT hub.
+// Get the non-security related metadata of an IoT hub.
 //
 // Deprecated: Version 2018-01-22 will be removed in v2 of the provider.
 func LookupIotHubResource(ctx *pulumi.Context, args *LookupIotHubResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotHubResourceResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The workflow trigger callback URL.
+// Get the content callback url.
 func ListIntegrationAccountAgreementContentCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountAgreementContentCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountAgreementContentCallbackUrlResult, error) {
 	var rv ListIntegrationAccountAgreementContentCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic/v20190501:listIntegrationAccountAgreementContentCallbackUrl", args, &rv, opts...)

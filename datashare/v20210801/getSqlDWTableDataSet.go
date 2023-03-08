@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SQL DW table data set.
+// Get a DataSet in a share
 func LookupSqlDWTableDataSet(ctx *pulumi.Context, args *LookupSqlDWTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupSqlDWTableDataSetResult, error) {
 	var rv LookupSqlDWTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getSqlDWTableDataSet", args, &rv, opts...)

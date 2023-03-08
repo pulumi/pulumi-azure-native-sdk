@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Shared Private Link Resource
+// Get the specified shared private link resource
 func LookupWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupWebPubSubSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubSharedPrivateLinkResourceResult, error) {
 	var rv LookupWebPubSubSharedPrivateLinkResourceResult
 	err := ctx.Invoke("azure-native:webpubsub/v20211001:getWebPubSubSharedPrivateLinkResource", args, &rv, opts...)

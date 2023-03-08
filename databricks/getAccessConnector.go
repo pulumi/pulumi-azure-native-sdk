@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about azure databricks accessConnector.
+// Gets an azure databricks accessConnector.
 // API Version: 2022-04-01-preview.
 func LookupAccessConnector(ctx *pulumi.Context, args *LookupAccessConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAccessConnectorResult, error) {
 	var rv LookupAccessConnectorResult

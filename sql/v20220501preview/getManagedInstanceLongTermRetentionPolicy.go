@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A long term retention policy.
+// Gets a managed database's long term retention policy.
 func LookupManagedInstanceLongTermRetentionPolicy(ctx *pulumi.Context, args *LookupManagedInstanceLongTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceLongTermRetentionPolicyResult, error) {
 	var rv LookupManagedInstanceLongTermRetentionPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getManagedInstanceLongTermRetentionPolicy", args, &rv, opts...)

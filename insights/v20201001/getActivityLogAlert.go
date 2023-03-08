@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Activity Log Alert rule resource.
+// Get an Activity Log Alert rule.
 func LookupActivityLogAlert(ctx *pulumi.Context, args *LookupActivityLogAlertArgs, opts ...pulumi.InvokeOption) (*LookupActivityLogAlertResult, error) {
 	var rv LookupActivityLogAlertResult
 	err := ctx.Invoke("azure-native:insights/v20201001:getActivityLogAlert", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Threat intelligence information object.
+// View a threat intelligence indicator by name.
 func LookupThreatIntelligenceIndicator(ctx *pulumi.Context, args *LookupThreatIntelligenceIndicatorArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceIndicatorResult, error) {
 	var rv LookupThreatIntelligenceIndicatorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20210401:getThreatIntelligenceIndicator", args, &rv, opts...)

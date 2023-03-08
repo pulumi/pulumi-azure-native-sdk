@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Standard environments have data retention limits.
+// Gets the environment with the specified name in the specified subscription and resource group.
 func LookupStandardEnvironment(ctx *pulumi.Context, args *LookupStandardEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupStandardEnvironmentResult, error) {
 	var rv LookupStandardEnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20180815preview:getStandardEnvironment", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Function secrets.
+// This is to allow calling via powershell and ARM template.
 func ListWebAppSyncFunctionTriggersSlot(ctx *pulumi.Context, args *ListWebAppSyncFunctionTriggersSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppSyncFunctionTriggersSlotResult, error) {
 	var rv ListWebAppSyncFunctionTriggersSlotResult
 	err := ctx.Invoke("azure-native:web/v20210115:listWebAppSyncFunctionTriggersSlot", args, &rv, opts...)

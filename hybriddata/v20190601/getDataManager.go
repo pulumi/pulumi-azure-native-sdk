@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The DataManager resource.
+// Gets information about the specified data manager resource.
 func LookupDataManager(ctx *pulumi.Context, args *LookupDataManagerArgs, opts ...pulumi.InvokeOption) (*LookupDataManagerResult, error) {
 	var rv LookupDataManagerResult
 	err := ctx.Invoke("azure-native:hybriddata/v20190601:getDataManager", args, &rv, opts...)

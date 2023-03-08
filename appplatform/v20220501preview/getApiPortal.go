@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API portal resource
+// Get the API portal and its properties.
 func LookupApiPortal(ctx *pulumi.Context, args *LookupApiPortalArgs, opts ...pulumi.InvokeOption) (*LookupApiPortalResult, error) {
 	var rv LookupApiPortalResult
 	err := ctx.Invoke("azure-native:appplatform/v20220501preview:getApiPortal", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the configuration profile preference.
+// Get information about a configuration profile preference
 func LookupConfigurationProfilePreference(ctx *pulumi.Context, args *LookupConfigurationProfilePreferenceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfilePreferenceResult, error) {
 	var rv LookupConfigurationProfilePreferenceResult
 	err := ctx.Invoke("azure-native:automanage/v20200630preview:getConfigurationProfilePreference", args, &rv, opts...)

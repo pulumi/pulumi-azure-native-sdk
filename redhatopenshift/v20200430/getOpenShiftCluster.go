@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// OpenShiftCluster represents an Azure Red Hat OpenShift cluster.
+// The operation returns properties of a OpenShift cluster.
 func LookupOpenShiftCluster(ctx *pulumi.Context, args *LookupOpenShiftClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftClusterResult, error) {
 	var rv LookupOpenShiftClusterResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20200430:getOpenShiftCluster", args, &rv, opts...)

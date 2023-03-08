@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A schedule.
+// Get schedule.
 func LookupVirtualMachineSchedule(ctx *pulumi.Context, args *LookupVirtualMachineScheduleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScheduleResult, error) {
 	var rv LookupVirtualMachineScheduleResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getVirtualMachineSchedule", args, &rv, opts...)

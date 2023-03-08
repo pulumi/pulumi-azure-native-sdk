@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cognitive Services Account is an Azure resource representing the provisioned account, its type, location and SKU.
+// Returns a Cognitive Services account specified by the parameters.
 //
 // Deprecated: Version 2016-02-01-preview will be removed in v2 of the provider.
 func LookupCognitiveServicesAccount(ctx *pulumi.Context, args *LookupCognitiveServicesAccountArgs, opts ...pulumi.InvokeOption) (*LookupCognitiveServicesAccountResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Linked storage accounts top level resource container.
+// Gets all linked storage account of a specific data source type associated with the specified workspace.
 func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupLinkedStorageAccountResult, error) {
 	var rv LookupLinkedStorageAccountResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200801:getLinkedStorageAccount", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Subscription migrate date information properties
+// list date to migrate to new pricing model.
 func ListEASubscriptionListMigrationDatePost(ctx *pulumi.Context, args *ListEASubscriptionListMigrationDatePostArgs, opts ...pulumi.InvokeOption) (*ListEASubscriptionListMigrationDatePostResult, error) {
 	var rv ListEASubscriptionListMigrationDatePostResult
 	err := ctx.Invoke("azure-native:insights/v20171001:listEASubscriptionListMigrationDatePost", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ARM channel of list channel with keys operation response.
+// Lists a Channel registration for a Bot Service including secrets
 // API Version: 2021-03-01.
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
 	var rv ListChannelWithKeysResult

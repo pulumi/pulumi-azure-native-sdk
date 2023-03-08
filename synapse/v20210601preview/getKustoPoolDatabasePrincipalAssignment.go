@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a database principal assignment.
+// Gets a Kusto pool database principalAssignment.
 func LookupKustoPoolDatabasePrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPoolDatabasePrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolDatabasePrincipalAssignmentResult, error) {
 	var rv LookupKustoPoolDatabasePrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getKustoPoolDatabasePrincipalAssignment", args, &rv, opts...)

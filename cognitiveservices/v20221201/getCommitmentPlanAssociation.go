@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The commitment plan association.
+// Gets the association of the Cognitive Services commitment plan.
 func LookupCommitmentPlanAssociation(ctx *pulumi.Context, args *LookupCommitmentPlanAssociationArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanAssociationResult, error) {
 	var rv LookupCommitmentPlanAssociationResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20221201:getCommitmentPlanAssociation", args, &rv, opts...)

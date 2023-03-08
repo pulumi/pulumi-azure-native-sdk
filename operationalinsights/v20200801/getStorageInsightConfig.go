@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The top level storage insight resource container.
+// Gets a storage insight instance.
 func LookupStorageInsightConfig(ctx *pulumi.Context, args *LookupStorageInsightConfigArgs, opts ...pulumi.InvokeOption) (*LookupStorageInsightConfigResult, error) {
 	var rv LookupStorageInsightConfigResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200801:getStorageInsightConfig", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Blob folder data set mapping.
+// Get a DataSetMapping in a shareSubscription
 func LookupBlobFolderDataSetMapping(ctx *pulumi.Context, args *LookupBlobFolderDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobFolderDataSetMappingResult, error) {
 	var rv LookupBlobFolderDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getBlobFolderDataSetMapping", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the update summaries for the cluster
+// Get all Update summaries under the HCI cluster
 func LookupUpdateSummary(ctx *pulumi.Context, args *LookupUpdateSummaryArgs, opts ...pulumi.InvokeOption) (*LookupUpdateSummaryResult, error) {
 	var rv LookupUpdateSummaryResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20221201:getUpdateSummary", args, &rv, opts...)

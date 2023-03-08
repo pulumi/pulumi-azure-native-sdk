@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Graph Query entity definition.
+// Get a single graph query by its resourceName.
 // API Version: 2018-09-01-preview.
 func LookupGraphQuery(ctx *pulumi.Context, args *LookupGraphQueryArgs, opts ...pulumi.InvokeOption) (*LookupGraphQueryResult, error) {
 	var rv LookupGraphQueryResult

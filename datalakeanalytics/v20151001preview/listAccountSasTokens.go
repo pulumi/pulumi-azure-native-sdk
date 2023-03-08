@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The SAS response that contains the storage account, container and associated SAS token for connection use.
+// Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
 func ListAccountSasTokens(ctx *pulumi.Context, args *ListAccountSasTokensArgs, opts ...pulumi.InvokeOption) (*ListAccountSasTokensResult, error) {
 	var rv ListAccountSasTokensResult
 	err := ctx.Invoke("azure-native:datalakeanalytics/v20151001preview:listAccountSasTokens", args, &rv, opts...)

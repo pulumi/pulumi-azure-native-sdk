@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site User Provided Function App ARM resource.
+// Gets the details of the user provided function app registered with a static site build
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult, error) {
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult
 	err := ctx.Invoke("azure-native:web/v20201201:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, &rv, opts...)

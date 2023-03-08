@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Sku credential definition.
+// Generate credentials for publishing SKU images.
 func ListVendorSkusCredential(ctx *pulumi.Context, args *ListVendorSkusCredentialArgs, opts ...pulumi.InvokeOption) (*ListVendorSkusCredentialResult, error) {
 	var rv ListVendorSkusCredentialResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20220101preview:listVendorSkusCredential", args, &rv, opts...)

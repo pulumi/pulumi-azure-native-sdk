@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of get log link operation.
+// Gets a link to download the run logs.
 func ListRunLogSasUrl(ctx *pulumi.Context, args *ListRunLogSasUrlArgs, opts ...pulumi.InvokeOption) (*ListRunLogSasUrlResult, error) {
 	var rv ListRunLogSasUrlResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190601preview:listRunLogSasUrl", args, &rv, opts...)

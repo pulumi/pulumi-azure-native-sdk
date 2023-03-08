@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site ARM resource.
+// Gets the details of a static site.
 func LookupStaticSite(ctx *pulumi.Context, args *LookupStaticSiteArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteResult, error) {
 	var rv LookupStaticSiteResult
 	err := ctx.Invoke("azure-native:web/v20210201:getStaticSite", args, &rv, opts...)

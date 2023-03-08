@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents office data connector.
+// Gets a data connector.
 func LookupOfficeDataConnector(ctx *pulumi.Context, args *LookupOfficeDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeDataConnectorResult, error) {
 	var rv LookupOfficeDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:getOfficeDataConnector", args, &rv, opts...)

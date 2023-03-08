@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// State of the myscope setting.
+// Retrieves the current value for a specific setting.
 func LookupSetting(ctx *pulumi.Context, args *LookupSettingArgs, opts ...pulumi.InvokeOption) (*LookupSettingResult, error) {
 	var rv LookupSettingResult
 	err := ctx.Invoke("azure-native:costmanagement/v20191101:getSetting", args, &rv, opts...)

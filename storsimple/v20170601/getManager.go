@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The StorSimple Manager.
+// Returns the properties of the specified manager name.
 func LookupManager(ctx *pulumi.Context, args *LookupManagerArgs, opts ...pulumi.InvokeOption) (*LookupManagerResult, error) {
 	var rv LookupManagerResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getManager", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a read only following database.
+// Returns a database.
 func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadOnlyFollowingDatabaseResult, error) {
 	var rv LookupReadOnlyFollowingDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getReadOnlyFollowingDatabase", args, &rv, opts...)

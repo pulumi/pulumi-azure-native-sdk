@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Bot resource definition
+// Returns a BotService specified by the parameters.
 //
 // Deprecated: Version 2017-12-01 will be removed in v2 of the provider.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {

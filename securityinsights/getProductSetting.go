@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Setting.
+// Gets a setting.
 // API Version: 2021-03-01-preview.
 //
 // Deprecated: Please use one of the variants: Anomalies, EntityAnalytics, EyesOn, Ueba.

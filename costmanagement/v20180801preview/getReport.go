@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A report resource.
+// Gets the report for a subscription by report name.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	var rv LookupReportResult
 	err := ctx.Invoke("azure-native:costmanagement/v20180801preview:getReport", args, &rv, opts...)

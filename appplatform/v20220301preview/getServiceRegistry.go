@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Service Registry resource
+// Get the Service Registry and its properties.
 func LookupServiceRegistry(ctx *pulumi.Context, args *LookupServiceRegistryArgs, opts ...pulumi.InvokeOption) (*LookupServiceRegistryResult, error) {
 	var rv LookupServiceRegistryResult
 	err := ctx.Invoke("azure-native:appplatform/v20220301preview:getServiceRegistry", args, &rv, opts...)

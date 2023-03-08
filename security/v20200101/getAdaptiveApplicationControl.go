@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets an application control VM/server group.
 func LookupAdaptiveApplicationControl(ctx *pulumi.Context, args *LookupAdaptiveApplicationControlArgs, opts ...pulumi.InvokeOption) (*LookupAdaptiveApplicationControlResult, error) {
 	var rv LookupAdaptiveApplicationControlResult
 	err := ctx.Invoke("azure-native:security/v20200101:getAdaptiveApplicationControl", args, &rv, opts...)

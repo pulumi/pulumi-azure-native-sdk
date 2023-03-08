@@ -17,8 +17,6 @@ type Workspace struct {
 
 	// The ADLA resource ID.
 	AdlaResourceId pulumi.StringOutput `pulumi:"adlaResourceId"`
-	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
-	AzureADOnlyAuthentication pulumi.BoolPtrOutput `pulumi:"azureADOnlyAuthentication"`
 	// Connectivity endpoints
 	ConnectivityEndpoints pulumi.StringMapOutput `pulumi:"connectivityEndpoints"`
 	// Initial workspace AAD admin properties for a CSP subscription
@@ -28,7 +26,7 @@ type Workspace struct {
 	// The encryption details of the workspace
 	Encryption EncryptionDetailsResponsePtrOutput `pulumi:"encryption"`
 	// Workspace level configs and feature flags
-	ExtraProperties pulumi.MapOutput `pulumi:"extraProperties"`
+	ExtraProperties pulumi.AnyOutput `pulumi:"extraProperties"`
 	// Identity of the workspace
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -143,8 +141,6 @@ func (WorkspaceState) ElementType() reflect.Type {
 type workspaceArgs struct {
 	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
 	AzureADOnlyAuthentication *bool `pulumi:"azureADOnlyAuthentication"`
-	// Connectivity endpoints
-	ConnectivityEndpoints map[string]string `pulumi:"connectivityEndpoints"`
 	// Initial workspace AAD admin properties for a CSP subscription
 	CspWorkspaceAdminProperties *CspWorkspaceAdminProperties `pulumi:"cspWorkspaceAdminProperties"`
 	// Workspace default data lake storage account details
@@ -189,8 +185,6 @@ type workspaceArgs struct {
 type WorkspaceArgs struct {
 	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
 	AzureADOnlyAuthentication pulumi.BoolPtrInput
-	// Connectivity endpoints
-	ConnectivityEndpoints pulumi.StringMapInput
 	// Initial workspace AAD admin properties for a CSP subscription
 	CspWorkspaceAdminProperties CspWorkspaceAdminPropertiesPtrInput
 	// Workspace default data lake storage account details
@@ -273,11 +267,6 @@ func (o WorkspaceOutput) AdlaResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AdlaResourceId }).(pulumi.StringOutput)
 }
 
-// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
-func (o WorkspaceOutput) AzureADOnlyAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.AzureADOnlyAuthentication }).(pulumi.BoolPtrOutput)
-}
-
 // Connectivity endpoints
 func (o WorkspaceOutput) ConnectivityEndpoints() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.ConnectivityEndpoints }).(pulumi.StringMapOutput)
@@ -299,8 +288,8 @@ func (o WorkspaceOutput) Encryption() EncryptionDetailsResponsePtrOutput {
 }
 
 // Workspace level configs and feature flags
-func (o WorkspaceOutput) ExtraProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.MapOutput { return v.ExtraProperties }).(pulumi.MapOutput)
+func (o WorkspaceOutput) ExtraProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.AnyOutput { return v.ExtraProperties }).(pulumi.AnyOutput)
 }
 
 // Identity of the workspace

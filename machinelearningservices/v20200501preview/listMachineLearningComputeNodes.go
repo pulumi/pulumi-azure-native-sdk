@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Compute node information related to a AmlCompute.
+// Get the details (e.g IP address, port etc) of all the compute nodes in the compute.
 func ListMachineLearningComputeNodes(ctx *pulumi.Context, args *ListMachineLearningComputeNodesArgs, opts ...pulumi.InvokeOption) (*ListMachineLearningComputeNodesResult, error) {
 	var rv ListMachineLearningComputeNodesResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200501preview:listMachineLearningComputeNodes", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the credential.
+// Retrieve the credential identified by credential name.
 func LookupCredential(ctx *pulumi.Context, args *LookupCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCredentialResult, error) {
 	var rv LookupCredentialResult
 	err := ctx.Invoke("azure-native:automation/v20151031:getCredential", args, &rv, opts...)

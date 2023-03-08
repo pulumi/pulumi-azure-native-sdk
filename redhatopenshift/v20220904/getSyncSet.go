@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SyncSet represents a SyncSet for an Azure Red Hat OpenShift Cluster.
+// The operation returns properties of a SyncSet.
 func LookupSyncSet(ctx *pulumi.Context, args *LookupSyncSetArgs, opts ...pulumi.InvokeOption) (*LookupSyncSetResult, error) {
 	var rv LookupSyncSetResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20220904:getSyncSet", args, &rv, opts...)

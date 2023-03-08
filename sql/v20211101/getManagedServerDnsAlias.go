@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A managed server DNS alias.
+// Gets a server DNS alias.
 func LookupManagedServerDnsAlias(ctx *pulumi.Context, args *LookupManagedServerDnsAliasArgs, opts ...pulumi.InvokeOption) (*LookupManagedServerDnsAliasResult, error) {
 	var rv LookupManagedServerDnsAliasResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getManagedServerDnsAlias", args, &rv, opts...)

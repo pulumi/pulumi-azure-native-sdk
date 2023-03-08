@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning labeling job object wrapped into ARM resource envelope.
+// Gets a labeling job by id.
 func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ...pulumi.InvokeOption) (*LookupLabelingJobResult, error) {
 	var rv LookupLabelingJobResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200901preview:getLabelingJob", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class represent a SignalR service resource.
+// Get the SignalR service and its properties.
 func LookupSignalR(ctx *pulumi.Context, args *LookupSignalRArgs, opts ...pulumi.InvokeOption) (*LookupSignalRResult, error) {
 	var rv LookupSignalRResult
 	err := ctx.Invoke("azure-native:signalrservice/v20200501:getSignalR", args, &rv, opts...)

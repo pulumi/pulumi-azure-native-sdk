@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets a resource type details in the given subscription and provider.
 func LookupResourceTypeRegistration(ctx *pulumi.Context, args *LookupResourceTypeRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupResourceTypeRegistrationResult, error) {
 	var rv LookupResourceTypeRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub/v20210901preview:getResourceTypeRegistration", args, &rv, opts...)

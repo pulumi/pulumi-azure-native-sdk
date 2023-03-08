@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of failover sets.
+// Returns all failover sets for a given device and their eligibility for participating in a failover. A failover set refers to a set of volume containers that need to be failed-over as a single unit to maintain data integrity.
 func ListDeviceFailoverSets(ctx *pulumi.Context, args *ListDeviceFailoverSetsArgs, opts ...pulumi.InvokeOption) (*ListDeviceFailoverSetsResult, error) {
 	var rv ListDeviceFailoverSetsResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:listDeviceFailoverSets", args, &rv, opts...)

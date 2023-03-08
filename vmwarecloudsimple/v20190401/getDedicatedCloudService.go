@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Dedicated cloud service model
+// Returns Dedicate Cloud Service
 func LookupDedicatedCloudService(ctx *pulumi.Context, args *LookupDedicatedCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedCloudServiceResult, error) {
 	var rv LookupDedicatedCloudServiceResult
 	err := ctx.Invoke("azure-native:vmwarecloudsimple/v20190401:getDedicatedCloudService", args, &rv, opts...)

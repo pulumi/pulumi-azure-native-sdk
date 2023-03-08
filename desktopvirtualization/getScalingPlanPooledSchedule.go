@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a ScalingPlanPooledSchedule definition.
+// Get a ScalingPlanPooledSchedule.
 // API Version: 2022-04-01-preview.
 func LookupScalingPlanPooledSchedule(ctx *pulumi.Context, args *LookupScalingPlanPooledScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPooledScheduleResult, error) {
 	var rv LookupScalingPlanPooledScheduleResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning datastore object wrapped into ARM resource envelope.
+// Get a Datastore by name.
 // API Version: 2020-05-01-preview.
 func LookupMachineLearningDatastore(ctx *pulumi.Context, args *LookupMachineLearningDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningDatastoreResult, error) {
 	var rv LookupMachineLearningDatastoreResult

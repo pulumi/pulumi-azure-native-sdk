@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specific entity query.
+// Gets an entity query.
 //
 // Deprecated: Please use one of the variants: ActivityCustomEntityQuery.
 func LookupEntityQuery(ctx *pulumi.Context, args *LookupEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupEntityQueryResult, error) {

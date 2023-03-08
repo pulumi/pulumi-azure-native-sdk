@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a Kusto kusto pool.
+// Gets a Kusto pool.
 // API Version: 2021-04-01-preview.
 func GetkustoPool(ctx *pulumi.Context, args *GetkustoPoolArgs, opts ...pulumi.InvokeOption) (*GetkustoPoolResult, error) {
 	var rv GetkustoPoolResult

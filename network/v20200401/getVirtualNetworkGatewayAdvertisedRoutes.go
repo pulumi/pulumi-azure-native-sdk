@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of virtual network gateway routes.
+// This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.
 func GetVirtualNetworkGatewayAdvertisedRoutes(ctx *pulumi.Context, args *GetVirtualNetworkGatewayAdvertisedRoutesArgs, opts ...pulumi.InvokeOption) (*GetVirtualNetworkGatewayAdvertisedRoutesResult, error) {
 	var rv GetVirtualNetworkGatewayAdvertisedRoutesResult
 	err := ctx.Invoke("azure-native:network/v20200401:getVirtualNetworkGatewayAdvertisedRoutes", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of the consortium payload.
+// Lists the available consortiums for a subscription.
 func ListLocationConsortiums(ctx *pulumi.Context, args *ListLocationConsortiumsArgs, opts ...pulumi.InvokeOption) (*ListLocationConsortiumsResult, error) {
 	var rv ListLocationConsortiumsResult
 	err := ctx.Invoke("azure-native:blockchain/v20180601preview:listLocationConsortiums", args, &rv, opts...)

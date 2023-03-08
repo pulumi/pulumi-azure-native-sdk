@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response to put/get linked server (with properties) for Redis cache.
+// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
 //
 // Deprecated: Version 2017-02-01 will be removed in v2 of the provider.
 func LookupRedisLinkedServer(ctx *pulumi.Context, args *LookupRedisLinkedServerArgs, opts ...pulumi.InvokeOption) (*LookupRedisLinkedServerResult, error) {

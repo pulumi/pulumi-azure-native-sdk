@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Object model for the Azure CLI script.
+// Gets a deployment script with a given name.
 func LookupAzureCliScript(ctx *pulumi.Context, args *LookupAzureCliScriptArgs, opts ...pulumi.InvokeOption) (*LookupAzureCliScriptResult, error) {
 	var rv LookupAzureCliScriptResult
 	err := ctx.Invoke("azure-native:resources/v20201001:getAzureCliScript", args, &rv, opts...)

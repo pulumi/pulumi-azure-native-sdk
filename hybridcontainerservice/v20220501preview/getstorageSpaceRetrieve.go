@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The storageSpaces resource definition.
+// Gets the Hybrid AKS storage space object
 func GetstorageSpaceRetrieve(ctx *pulumi.Context, args *GetstorageSpaceRetrieveArgs, opts ...pulumi.InvokeOption) (*GetstorageSpaceRetrieveResult, error) {
 	var rv GetstorageSpaceRetrieveResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice/v20220501preview:getstorageSpaceRetrieve", args, &rv, opts...)

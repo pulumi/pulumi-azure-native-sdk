@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Role Addon
+// Gets a specific addon by name.
 // API Version: 2020-12-01.
 //
 // Deprecated: Please use one of the variants: ArcAddon, IoTAddon.

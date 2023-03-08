@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Managed CCF. Contains the properties of Managed CCF Resource.
+// Retrieves the properties of a Managed CCF app.
 func LookupManagedCCF(ctx *pulumi.Context, args *LookupManagedCCFArgs, opts ...pulumi.InvokeOption) (*LookupManagedCCFResult, error) {
 	var rv LookupManagedCCFResult
 	err := ctx.Invoke("azure-native:confidentialledger/v20220908preview:getManagedCCF", args, &rv, opts...)

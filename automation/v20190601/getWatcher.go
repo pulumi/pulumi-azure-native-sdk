@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the watcher type.
+// Retrieve the watcher identified by watcher name.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	var rv LookupWatcherResult
 	err := ctx.Invoke("azure-native:automation/v20190601:getWatcher", args, &rv, opts...)

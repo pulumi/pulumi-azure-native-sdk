@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The variable.
+// This operation retrieves a single variable, given its name and the subscription it was created at.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	var rv LookupVariableResult
 	err := ctx.Invoke("azure-native:authorization/v20220801preview:getVariable", args, &rv, opts...)

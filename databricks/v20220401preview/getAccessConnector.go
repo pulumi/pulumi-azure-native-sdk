@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about azure databricks accessConnector.
+// Gets an azure databricks accessConnector.
 func LookupAccessConnector(ctx *pulumi.Context, args *LookupAccessConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAccessConnectorResult, error) {
 	var rv LookupAccessConnectorResult
 	err := ctx.Invoke("azure-native:databricks/v20220401preview:getAccessConnector", args, &rv, opts...)

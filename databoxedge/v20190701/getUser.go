@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
+// Gets the properties of the specified user.
 //
 // Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {

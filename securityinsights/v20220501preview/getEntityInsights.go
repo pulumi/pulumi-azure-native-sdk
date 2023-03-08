@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Get Insights result operation response.
+// Execute Insights for an entity.
 func GetEntityInsights(ctx *pulumi.Context, args *GetEntityInsightsArgs, opts ...pulumi.InvokeOption) (*GetEntityInsightsResult, error) {
 	var rv GetEntityInsightsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getEntityInsights", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of a request to list events for a webhook.
+// Lists recent events for the specified webhook.
 func ListWebhookEvents(ctx *pulumi.Context, args *ListWebhookEventsArgs, opts ...pulumi.InvokeOption) (*ListWebhookEventsResult, error) {
 	var rv ListWebhookEventsResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190501:listWebhookEvents", args, &rv, opts...)

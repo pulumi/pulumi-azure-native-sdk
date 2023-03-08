@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Integration Runtime Monitoring Data.
+// Retrieve the Monitoring Data.
 // API Version: 2021-10-30-preview.
 func ListSqlMigrationServiceMonitoringData(ctx *pulumi.Context, args *ListSqlMigrationServiceMonitoringDataArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceMonitoringDataResult, error) {
 	var rv ListSqlMigrationServiceMonitoringDataResult

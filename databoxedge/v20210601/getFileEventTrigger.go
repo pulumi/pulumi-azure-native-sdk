@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Trigger details.
+// Get a specific trigger by name.
 func LookupFileEventTrigger(ctx *pulumi.Context, args *LookupFileEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupFileEventTriggerResult, error) {
 	var rv LookupFileEventTriggerResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210601:getFileEventTrigger", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Replication protected item.
+// Gets the details of an ASR replication protected item.
 func LookupReplicationProtectedItem(ctx *pulumi.Context, args *LookupReplicationProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupReplicationProtectedItemResult, error) {
 	var rv LookupReplicationProtectedItemResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20210210:getReplicationProtectedItem", args, &rv, opts...)

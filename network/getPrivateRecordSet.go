@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a DNS record set (a collection of DNS records with the same name and type) in a Private DNS zone.
+// Gets a record set.
 // API Version: 2020-06-01.
 func LookupPrivateRecordSet(ctx *pulumi.Context, args *LookupPrivateRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupPrivateRecordSetResult, error) {
 	var rv LookupPrivateRecordSetResult

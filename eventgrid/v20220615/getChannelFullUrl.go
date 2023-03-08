@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Full endpoint url of an event subscription
+// Get the full endpoint URL of a partner destination channel.
 func GetChannelFullUrl(ctx *pulumi.Context, args *GetChannelFullUrlArgs, opts ...pulumi.InvokeOption) (*GetChannelFullUrlResult, error) {
 	var rv GetChannelFullUrlResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getChannelFullUrl", args, &rv, opts...)
