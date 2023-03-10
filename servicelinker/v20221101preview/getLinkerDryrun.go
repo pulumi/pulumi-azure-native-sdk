@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// a dryrun job resource
+// get a dryrun job
 func LookupLinkerDryrun(ctx *pulumi.Context, args *LookupLinkerDryrunArgs, opts ...pulumi.InvokeOption) (*LookupLinkerDryrunResult, error) {
 	var rv LookupLinkerDryrunResult
 	err := ctx.Invoke("azure-native:servicelinker/v20221101preview:getLinkerDryrun", args, &rv, opts...)

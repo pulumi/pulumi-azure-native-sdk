@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// List keys of a notebook.
 func ListWorkspaceNotebookKeys(ctx *pulumi.Context, args *ListWorkspaceNotebookKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceNotebookKeysResult, error) {
 	var rv ListWorkspaceNotebookKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20210701:listWorkspaceNotebookKeys", args, &rv, opts...)

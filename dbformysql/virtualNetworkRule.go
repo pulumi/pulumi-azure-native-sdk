@@ -51,6 +51,9 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201preview:VirtualNetworkRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:VirtualNetworkRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkRule

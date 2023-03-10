@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Custom Assessment Automation
+// Gets a single custom assessment automation by name for the provided subscription and resource group.
 // API Version: 2021-07-01-preview.
 func LookupCustomAssessmentAutomation(ctx *pulumi.Context, args *LookupCustomAssessmentAutomationArgs, opts ...pulumi.InvokeOption) (*LookupCustomAssessmentAutomationResult, error) {
 	var rv LookupCustomAssessmentAutomationResult

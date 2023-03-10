@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties of the table, including Id, resource name, resource type.
+// Gets the table with the specified table name, under the specified account if it exists.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {

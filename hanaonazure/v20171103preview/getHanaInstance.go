@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// HANA instance info on Azure (ARM properties and HANA properties)
+// Gets properties of a SAP HANA instance for the specified subscription, resource group, and instance name.
 func LookupHanaInstance(ctx *pulumi.Context, args *LookupHanaInstanceArgs, opts ...pulumi.InvokeOption) (*LookupHanaInstanceResult, error) {
 	var rv LookupHanaInstanceResult
 	err := ctx.Invoke("azure-native:hanaonazure/v20171103preview:getHanaInstance", args, &rv, opts...)

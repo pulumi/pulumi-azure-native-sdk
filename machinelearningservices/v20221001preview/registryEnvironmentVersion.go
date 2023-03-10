@@ -45,6 +45,15 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.EnvironmentVersionProperties = args.EnvironmentVersionProperties.ToEnvironmentVersionTypeOutput().ApplyT(func(v EnvironmentVersionType) EnvironmentVersionType { return *v.Defaults() }).(EnvironmentVersionTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryEnvironmentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryEnvironmentVersion"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource RegistryEnvironmentVersion
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20221001preview:RegistryEnvironmentVersion", name, args, &resource, opts...)
 	if err != nil {

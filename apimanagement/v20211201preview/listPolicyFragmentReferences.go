@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A collection of resources.
+// Lists policy resources that reference the policy fragment.
 func ListPolicyFragmentReferences(ctx *pulumi.Context, args *ListPolicyFragmentReferencesArgs, opts ...pulumi.InvokeOption) (*ListPolicyFragmentReferencesResult, error) {
 	var rv ListPolicyFragmentReferencesResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:listPolicyFragmentReferences", args, &rv, opts...)

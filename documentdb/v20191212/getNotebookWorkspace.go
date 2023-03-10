@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A notebook workspace resource
+// Gets the notebook workspace for a Cosmos DB account.
 //
 // Deprecated: Version 2019-12-12 will be removed in v2 of the provider.
 func LookupNotebookWorkspace(ctx *pulumi.Context, args *LookupNotebookWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupNotebookWorkspaceResult, error) {

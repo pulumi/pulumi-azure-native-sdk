@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Advanced Threat Protection resource.
+// Gets the Advanced Threat Protection settings for the specified resource.
 func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThreatProtectionArgs, opts ...pulumi.InvokeOption) (*LookupAdvancedThreatProtectionResult, error) {
 	var rv LookupAdvancedThreatProtectionResult
 	err := ctx.Invoke("azure-native:security/v20190101:getAdvancedThreatProtection", args, &rv, opts...)

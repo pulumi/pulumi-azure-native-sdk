@@ -53,6 +53,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201:Configuration"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:Configuration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Configuration

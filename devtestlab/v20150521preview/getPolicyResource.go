@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Policy.
+// Get policy.
 //
 // Deprecated: Version 2015-05-21-preview will be removed in v2 of the provider.
 func LookupPolicyResource(ctx *pulumi.Context, args *LookupPolicyResourceArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResourceResult, error) {

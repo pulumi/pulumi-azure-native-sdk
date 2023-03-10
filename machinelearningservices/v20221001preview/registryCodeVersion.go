@@ -45,6 +45,15 @@ func NewRegistryCodeVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.CodeVersionProperties = args.CodeVersionProperties.ToCodeVersionTypeOutput().ApplyT(func(v CodeVersionType) CodeVersionType { return *v.Defaults() }).(CodeVersionTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryCodeVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryCodeVersion"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource RegistryCodeVersion
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20221001preview:RegistryCodeVersion", name, args, &resource, opts...)
 	if err != nil {

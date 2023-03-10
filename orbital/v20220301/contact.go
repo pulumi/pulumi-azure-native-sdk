@@ -89,6 +89,9 @@ func NewContact(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:orbital/v20210404preview:Contact"),
 		},
+		{
+			Type: pulumi.String("azure-native:orbital/v20221101:Contact"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Contact

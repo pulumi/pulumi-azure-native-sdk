@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of configurations.
+// This method provides the list of configurations for the given product family, product line and product under subscription.
 // API Version: 2021-12-01.
 func ListConfigurations(ctx *pulumi.Context, args *ListConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListConfigurationsResult, error) {
 	var rv ListConfigurationsResult

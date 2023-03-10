@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a cluster principal assignment.
+// Gets a Kusto pool principalAssignment.
 // API Version: 2021-04-01-preview.
 func LookupKustoPoolPrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPoolPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolPrincipalAssignmentResult, error) {
 	var rv LookupKustoPoolPrincipalAssignmentResult

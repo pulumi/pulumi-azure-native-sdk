@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A custom certificate.
+// Get a custom certificate.
 func LookupWebPubSubCustomCertificate(ctx *pulumi.Context, args *LookupWebPubSubCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubCustomCertificateResult, error) {
 	var rv LookupWebPubSubCustomCertificateResult
 	err := ctx.Invoke("azure-native:webpubsub/v20220801preview:getWebPubSubCustomCertificate", args, &rv, opts...)

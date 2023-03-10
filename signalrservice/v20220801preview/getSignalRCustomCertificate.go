@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A custom certificate.
+// Get a custom certificate.
 func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomCertificateResult, error) {
 	var rv LookupSignalRCustomCertificateResult
 	err := ctx.Invoke("azure-native:signalrservice/v20220801preview:getSignalRCustomCertificate", args, &rv, opts...)

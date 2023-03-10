@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual Network resource
+// The Get VirtualNetwork operation retrieves information about the specified virtual network.
 //
 // Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {

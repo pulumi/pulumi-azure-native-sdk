@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of a request to retrieve a key-value from the specified configuration store.
+// Lists a configuration store key-value.
 // API Version: 2020-06-01.
 func ListConfigurationStoreKeyValue(ctx *pulumi.Context, args *ListConfigurationStoreKeyValueArgs, opts ...pulumi.InvokeOption) (*ListConfigurationStoreKeyValueResult, error) {
 	var rv ListConfigurationStoreKeyValueResult

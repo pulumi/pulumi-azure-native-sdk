@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a Import collector.
 // API Version: 2019-10-01.
 func LookupImportCollector(ctx *pulumi.Context, args *LookupImportCollectorArgs, opts ...pulumi.InvokeOption) (*LookupImportCollectorResult, error) {
 	var rv LookupImportCollectorResult

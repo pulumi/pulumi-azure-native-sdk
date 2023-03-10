@@ -63,6 +63,12 @@ func NewDataController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:DataController"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230315preview:DataController"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DataController

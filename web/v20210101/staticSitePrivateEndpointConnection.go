@@ -62,6 +62,9 @@ func NewStaticSitePrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220301:StaticSitePrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20220901:StaticSitePrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StaticSitePrivateEndpointConnection

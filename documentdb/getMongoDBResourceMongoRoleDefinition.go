@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Mongo Role Definition.
+// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
 // API Version: 2021-10-15-preview.
 func LookupMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context, args *LookupMongoDBResourceMongoRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoRoleDefinitionResult, error) {
 	var rv LookupMongoDBResourceMongoRoleDefinitionResult

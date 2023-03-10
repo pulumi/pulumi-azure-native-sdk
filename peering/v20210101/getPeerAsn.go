@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The essential information related to the peer's ASN.
+// Gets the peer ASN with the specified name under the given subscription.
 func LookupPeerAsn(ctx *pulumi.Context, args *LookupPeerAsnArgs, opts ...pulumi.InvokeOption) (*LookupPeerAsnResult, error) {
 	var rv LookupPeerAsnResult
 	err := ctx.Invoke("azure-native:peering/v20210101:getPeerAsn", args, &rv, opts...)

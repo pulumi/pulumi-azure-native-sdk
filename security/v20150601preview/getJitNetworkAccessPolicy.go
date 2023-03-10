@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Policies for protecting resources using Just-in-Time access control for the subscription, location
+//
 // Deprecated: Version 2015-06-01-preview will be removed in v2 of the provider.
 func LookupJitNetworkAccessPolicy(ctx *pulumi.Context, args *LookupJitNetworkAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJitNetworkAccessPolicyResult, error) {
 	var rv LookupJitNetworkAccessPolicyResult

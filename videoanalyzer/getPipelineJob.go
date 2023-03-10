@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
+// Retrieves a specific pipeline job by name. If a pipeline job with that name has been previously created, the call will return the JSON representation of that instance.
 // API Version: 2021-11-01-preview.
 func LookupPipelineJob(ctx *pulumi.Context, args *LookupPipelineJobArgs, opts ...pulumi.InvokeOption) (*LookupPipelineJobResult, error) {
 	var rv LookupPipelineJobResult

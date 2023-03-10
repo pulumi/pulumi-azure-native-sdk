@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The security connector resource.
+// Retrieves details of a specific security connector
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	var rv LookupSecurityConnectorResult
 	err := ctx.Invoke("azure-native:security/v20211201preview:getSecurityConnector", args, &rv, opts...)

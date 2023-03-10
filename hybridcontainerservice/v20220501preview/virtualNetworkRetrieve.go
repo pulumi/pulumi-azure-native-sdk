@@ -44,6 +44,9 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice:virtualNetworkRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkRetrieve

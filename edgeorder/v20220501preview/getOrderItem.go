@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents order item resource.
+// Get an order item.
 func LookupOrderItem(ctx *pulumi.Context, args *LookupOrderItemArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemResult, error) {
 	var rv LookupOrderItemResult
 	err := ctx.Invoke("azure-native:edgeorder/v20220501preview:getOrderItem", args, &rv, opts...)

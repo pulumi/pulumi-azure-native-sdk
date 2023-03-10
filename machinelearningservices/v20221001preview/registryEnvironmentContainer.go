@@ -42,6 +42,15 @@ func NewRegistryEnvironmentContainer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.EnvironmentContainerProperties = args.EnvironmentContainerProperties.ToEnvironmentContainerTypeOutput().ApplyT(func(v EnvironmentContainerType) EnvironmentContainerType { return *v.Defaults() }).(EnvironmentContainerTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryEnvironmentContainer"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource RegistryEnvironmentContainer
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20221001preview:RegistryEnvironmentContainer", name, args, &resource, opts...)
 	if err != nil {

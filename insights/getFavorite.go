@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties that define a favorite that is associated to an Application Insights component.
+// Get a single favorite by its FavoriteId, defined within an Application Insights component.
 // API Version: 2015-05-01.
 func LookupFavorite(ctx *pulumi.Context, args *LookupFavoriteArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteResult, error) {
 	var rv LookupFavoriteResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The build task that has the resource properties and all build items. The build task will have all information to schedule a build against it.
+// Get the properties of a specified build task.
 func LookupBuildTask(ctx *pulumi.Context, args *LookupBuildTaskArgs, opts ...pulumi.InvokeOption) (*LookupBuildTaskResult, error) {
 	var rv LookupBuildTaskResult
 	err := ctx.Invoke("azure-native:containerregistry/v20180201preview:getBuildTask", args, &rv, opts...)

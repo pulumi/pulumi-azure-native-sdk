@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A private endpoint connection
+// Gets a private endpoint connection.
 func LookupManagedInstancePrivateEndpointConnection(ctx *pulumi.Context, args *LookupManagedInstancePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstancePrivateEndpointConnectionResult, error) {
 	var rv LookupManagedInstancePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:sql/v20210201preview:getManagedInstancePrivateEndpointConnection", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the module type.
+// Retrieve the python 3 package identified by package name.
 func LookupPython3Package(ctx *pulumi.Context, args *LookupPython3PackageArgs, opts ...pulumi.InvokeOption) (*LookupPython3PackageResult, error) {
 	var rv LookupPython3PackageResult
 	err := ctx.Invoke("azure-native:automation/v20220808:getPython3Package", args, &rv, opts...)

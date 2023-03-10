@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// the ISV access token result response.
+// Gets the ISV access token for a specified Subscription Level SaaS.
 func ListSaasSubscriptionLevelAccessToken(ctx *pulumi.Context, args *ListSaasSubscriptionLevelAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasSubscriptionLevelAccessTokenResult, error) {
 	var rv ListSaasSubscriptionLevelAccessTokenResult
 	err := ctx.Invoke("azure-native:saas/v20180301beta:listSaasSubscriptionLevelAccessToken", args, &rv, opts...)

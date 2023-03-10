@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Backup Vault Resource
+// Returns a resource belonging to a resource group.
 func LookupBackupVault(ctx *pulumi.Context, args *LookupBackupVaultArgs, opts ...pulumi.InvokeOption) (*LookupBackupVaultResult, error) {
 	var rv LookupBackupVaultResult
 	err := ctx.Invoke("azure-native:dataprotection/v20211201preview:getBackupVault", args, &rv, opts...)

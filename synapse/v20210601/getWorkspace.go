@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A workspace
+// Gets a workspace
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getWorkspace", args, &rv, opts...)
@@ -31,8 +31,6 @@ type LookupWorkspaceArgs struct {
 type LookupWorkspaceResult struct {
 	// The ADLA resource ID.
 	AdlaResourceId string `pulumi:"adlaResourceId"`
-	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
-	AzureADOnlyAuthentication *bool `pulumi:"azureADOnlyAuthentication"`
 	// Connectivity endpoints
 	ConnectivityEndpoints map[string]string `pulumi:"connectivityEndpoints"`
 	// Initial workspace AAD admin properties for a CSP subscription
@@ -42,7 +40,7 @@ type LookupWorkspaceResult struct {
 	// The encryption details of the workspace
 	Encryption *EncryptionDetailsResponse `pulumi:"encryption"`
 	// Workspace level configs and feature flags
-	ExtraProperties map[string]interface{} `pulumi:"extraProperties"`
+	ExtraProperties interface{} `pulumi:"extraProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Identity of the workspace
@@ -146,11 +144,6 @@ func (o LookupWorkspaceResultOutput) AdlaResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.AdlaResourceId }).(pulumi.StringOutput)
 }
 
-// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
-func (o LookupWorkspaceResultOutput) AzureADOnlyAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolPtrOutput)
-}
-
 // Connectivity endpoints
 func (o LookupWorkspaceResultOutput) ConnectivityEndpoints() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.ConnectivityEndpoints }).(pulumi.StringMapOutput)
@@ -174,8 +167,8 @@ func (o LookupWorkspaceResultOutput) Encryption() EncryptionDetailsResponsePtrOu
 }
 
 // Workspace level configs and feature flags
-func (o LookupWorkspaceResultOutput) ExtraProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) map[string]interface{} { return v.ExtraProperties }).(pulumi.MapOutput)
+func (o LookupWorkspaceResultOutput) ExtraProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) interface{} { return v.ExtraProperties }).(pulumi.AnyOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

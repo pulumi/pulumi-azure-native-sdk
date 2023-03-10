@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties that define a Continuous Export configuration.
+// Get the Continuous Export configuration for this export id.
 func LookupExportConfiguration(ctx *pulumi.Context, args *LookupExportConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupExportConfigurationResult, error) {
 	var rv LookupExportConfigurationResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getExportConfiguration", args, &rv, opts...)

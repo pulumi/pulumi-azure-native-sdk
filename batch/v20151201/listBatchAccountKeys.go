@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A set of Azure Batch account keys.
+// Gets the account keys for the specified Batch account.
 func ListBatchAccountKeys(ctx *pulumi.Context, args *ListBatchAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListBatchAccountKeysResult, error) {
 	var rv ListBatchAccountKeysResult
 	err := ctx.Invoke("azure-native:batch/v20151201:listBatchAccountKeys", args, &rv, opts...)

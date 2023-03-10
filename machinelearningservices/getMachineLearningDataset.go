@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning dataset object wrapped into ARM resource envelope.
+// Get a Dataset by name.
 // API Version: 2020-05-01-preview.
 func LookupMachineLearningDataset(ctx *pulumi.Context, args *LookupMachineLearningDatasetArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningDatasetResult, error) {
 	var rv LookupMachineLearningDatasetResult

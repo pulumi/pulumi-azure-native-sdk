@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The virtual machine resource definition.
+// Gets virtual machines by resource name
 func GetvirtualmachineRetrieve(ctx *pulumi.Context, args *GetvirtualmachineRetrieveArgs, opts ...pulumi.InvokeOption) (*GetvirtualmachineRetrieveResult, error) {
 	var rv GetvirtualmachineRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getvirtualmachineRetrieve", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Extended description about the product required for installing it into Azure Stack.
+// Returns the extended properties of a product.
 // API Version: 2017-06-01.
 func ListProductDetails(ctx *pulumi.Context, args *ListProductDetailsArgs, opts ...pulumi.InvokeOption) (*ListProductDetailsResult, error) {
 	var rv ListProductDetailsResult

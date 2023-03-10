@@ -50,6 +50,12 @@ func NewWebPubSubCustomCertificate(ctx *pulumi.Context,
 	if args.ResourceName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230201:WebPubSubCustomCertificate"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource WebPubSubCustomCertificate
 	err := ctx.RegisterResource("azure-native:webpubsub/v20220801preview:WebPubSubCustomCertificate", name, args, &resource, opts...)
 	if err != nil {

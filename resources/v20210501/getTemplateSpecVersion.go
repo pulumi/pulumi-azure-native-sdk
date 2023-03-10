@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Template Spec Version object.
+// Gets a Template Spec version from a specific Template Spec.
 func LookupTemplateSpecVersion(ctx *pulumi.Context, args *LookupTemplateSpecVersionArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecVersionResult, error) {
 	var rv LookupTemplateSpecVersionResult
 	err := ctx.Invoke("azure-native:resources/v20210501:getTemplateSpecVersion", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Model that represents a Experiment resource.
+// Get a Experiment resource.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
 	var rv LookupExperimentResult
 	err := ctx.Invoke("azure-native:chaos/v20210915preview:getExperiment", args, &rv, opts...)

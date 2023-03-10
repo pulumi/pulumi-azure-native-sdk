@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The notification registration definition.
+// Gets the notification registration details.
 func LookupNotificationRegistration(ctx *pulumi.Context, args *LookupNotificationRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupNotificationRegistrationResult, error) {
 	var rv LookupNotificationRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub/v20210901preview:getNotificationRegistration", args, &rv, opts...)

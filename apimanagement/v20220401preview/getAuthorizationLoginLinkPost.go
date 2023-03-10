@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Authorization login response contract.
+// Gets authorization login links.
 func GetAuthorizationLoginLinkPost(ctx *pulumi.Context, args *GetAuthorizationLoginLinkPostArgs, opts ...pulumi.InvokeOption) (*GetAuthorizationLoginLinkPostResult, error) {
 	var rv GetAuthorizationLoginLinkPostResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getAuthorizationLoginLinkPost", args, &rv, opts...)

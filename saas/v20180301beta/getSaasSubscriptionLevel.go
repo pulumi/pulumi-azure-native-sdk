@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SaaS REST API resource definition.
+// Gets information about the specified Subscription Level SaaS.
 func LookupSaasSubscriptionLevel(ctx *pulumi.Context, args *LookupSaasSubscriptionLevelArgs, opts ...pulumi.InvokeOption) (*LookupSaasSubscriptionLevelResult, error) {
 	var rv LookupSaasSubscriptionLevelResult
 	err := ctx.Invoke("azure-native:saas/v20180301beta:getSaasSubscriptionLevel", args, &rv, opts...)

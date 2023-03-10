@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Functions host level keys.
+// Get host secrets for a function app.
 func ListWebAppHostKeysSlot(ctx *pulumi.Context, args *ListWebAppHostKeysSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppHostKeysSlotResult, error) {
 	var rv ListWebAppHostKeysSlotResult
 	err := ctx.Invoke("azure-native:web/v20210301:listWebAppHostKeysSlot", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning service object wrapped into ARM resource envelope.
+// Get a Service by name.
 func LookupEndpointVariant(ctx *pulumi.Context, args *LookupEndpointVariantArgs, opts ...pulumi.InvokeOption) (*LookupEndpointVariantResult, error) {
 	var rv LookupEndpointVariantResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200901preview:getEndpointVariant", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security Application over a given scope
+// Get a specific application for the requested scope by applicationId
 func LookupSecurityConnectorApplication(ctx *pulumi.Context, args *LookupSecurityConnectorApplicationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorApplicationResult, error) {
 	var rv LookupSecurityConnectorApplicationResult
 	err := ctx.Invoke("azure-native:security/v20220701preview:getSecurityConnectorApplication", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties of the blob container, including Id, resource name, resource type, Etag.
+// Gets properties of a specified container.
 func LookupBlobContainer(ctx *pulumi.Context, args *LookupBlobContainerArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerResult, error) {
 	var rv LookupBlobContainerResult
 	err := ctx.Invoke("azure-native:storage/v20210401:getBlobContainer", args, &rv, opts...)

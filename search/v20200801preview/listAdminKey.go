@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response containing the primary and secondary admin API keys for a given Azure Cognitive Search service.
+// Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
 func ListAdminKey(ctx *pulumi.Context, args *ListAdminKeyArgs, opts ...pulumi.InvokeOption) (*ListAdminKeyResult, error) {
 	var rv ListAdminKeyResult
 	err := ctx.Invoke("azure-native:search/v20200801preview:listAdminKey", args, &rv, opts...)

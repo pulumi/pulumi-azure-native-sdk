@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. LongTerm environments do not have set data retention limits.
+// Gets the environment with the specified name in the specified subscription and resource group.
 func LookupLongTermEnvironment(ctx *pulumi.Context, args *LookupLongTermEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupLongTermEnvironmentResult, error) {
 	var rv LookupLongTermEnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20180815preview:getLongTermEnvironment", args, &rv, opts...)

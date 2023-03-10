@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Instance of an Azure ML Operationalization Cluster resource.
+// Gets the operationalization cluster resource view. Note that the credentials are not returned by this call. Call ListKeys to get them.
 func LookupOperationalizationCluster(ctx *pulumi.Context, args *LookupOperationalizationClusterArgs, opts ...pulumi.InvokeOption) (*LookupOperationalizationClusterResult, error) {
 	var rv LookupOperationalizationClusterResult
 	err := ctx.Invoke("azure-native:machinelearningcompute/v20170801preview:getOperationalizationCluster", args, &rv, opts...)

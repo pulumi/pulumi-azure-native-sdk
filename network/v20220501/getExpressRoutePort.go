@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ExpressRoutePort resource definition.
+// Retrieves the requested ExpressRoutePort resource.
 func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortResult, error) {
 	var rv LookupExpressRoutePortResult
 	err := ctx.Invoke("azure-native:network/v20220501:getExpressRoutePort", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IoT Security solution configuration and resource information.
+// User this method to get details of a specific IoT Security solution based on solution name
 func LookupIotSecuritySolution(ctx *pulumi.Context, args *LookupIotSecuritySolutionArgs, opts ...pulumi.InvokeOption) (*LookupIotSecuritySolutionResult, error) {
 	var rv LookupIotSecuritySolutionResult
 	err := ctx.Invoke("azure-native:security/v20190801:getIotSecuritySolution", args, &rv, opts...)

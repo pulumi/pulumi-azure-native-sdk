@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Asset.
+// Get the details of an Asset in the Media Services account
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	var rv LookupAssetResult
 	err := ctx.Invoke("azure-native:media/v20200501:getAsset", args, &rv, opts...)

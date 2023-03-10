@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of shared access keys.
+// Get the security metadata for a provisioning service.
 func ListIotDpsResourceKeys(ctx *pulumi.Context, args *ListIotDpsResourceKeysArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysResult, error) {
 	var rv ListIotDpsResourceKeysResult
 	err := ctx.Invoke("azure-native:devices/v20170821preview:listIotDpsResourceKeys", args, &rv, opts...)

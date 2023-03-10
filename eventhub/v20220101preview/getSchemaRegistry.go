@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in List or Get Schema Group operation
+// Gets the details of an EventHub schema group.
 func LookupSchemaRegistry(ctx *pulumi.Context, args *LookupSchemaRegistryArgs, opts ...pulumi.InvokeOption) (*LookupSchemaRegistryResult, error) {
 	var rv LookupSchemaRegistryResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:getSchemaRegistry", args, &rv, opts...)

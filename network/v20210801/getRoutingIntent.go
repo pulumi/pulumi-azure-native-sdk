@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The routing intent child resource of a Virtual hub.
+// Retrieves the details of a RoutingIntent.
 func LookupRoutingIntent(ctx *pulumi.Context, args *LookupRoutingIntentArgs, opts ...pulumi.InvokeOption) (*LookupRoutingIntentResult, error) {
 	var rv LookupRoutingIntentResult
 	err := ctx.Invoke("azure-native:network/v20210801:getRoutingIntent", args, &rv, opts...)

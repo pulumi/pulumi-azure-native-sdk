@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The workflow trigger callback URL.
+// Get the callback URL for a workflow trigger.
 func ListWorkflowTriggerCallbackUrl(ctx *pulumi.Context, args *ListWorkflowTriggerCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListWorkflowTriggerCallbackUrlResult, error) {
 	var rv ListWorkflowTriggerCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:listWorkflowTriggerCallbackUrl", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flux Configuration object returned in Get & Put response.
+// Gets details of the Flux Configuration.
 func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupFluxConfigurationResult, error) {
 	var rv LookupFluxConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20221101:getFluxConfiguration", args, &rv, opts...)

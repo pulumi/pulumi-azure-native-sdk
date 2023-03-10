@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An event source that receives its data from an Azure EventHub.
+// Gets the event source with the specified name in the specified environment.
 func LookupEventHubEventSource(ctx *pulumi.Context, args *LookupEventHubEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupEventHubEventSourceResult, error) {
 	var rv LookupEventHubEventSourceResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20170228preview:getEventHubEventSource", args, &rv, opts...)

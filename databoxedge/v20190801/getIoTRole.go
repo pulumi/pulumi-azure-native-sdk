@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Compute role.
+// Gets a specific role by name.
 func LookupIoTRole(ctx *pulumi.Context, args *LookupIoTRoleArgs, opts ...pulumi.InvokeOption) (*LookupIoTRoleResult, error) {
 	var rv LookupIoTRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20190801:getIoTRole", args, &rv, opts...)

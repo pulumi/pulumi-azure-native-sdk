@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The IpGroups resource information.
+// Gets the specified ipGroups.
 func LookupIpGroup(ctx *pulumi.Context, args *LookupIpGroupArgs, opts ...pulumi.InvokeOption) (*LookupIpGroupResult, error) {
 	var rv LookupIpGroupResult
 	err := ctx.Invoke("azure-native:network/v20200601:getIpGroup", args, &rv, opts...)

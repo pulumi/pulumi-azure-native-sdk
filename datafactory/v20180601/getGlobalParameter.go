@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Global parameters resource type.
+// Gets a Global parameter
 func LookupGlobalParameter(ctx *pulumi.Context, args *LookupGlobalParameterArgs, opts ...pulumi.InvokeOption) (*LookupGlobalParameterResult, error) {
 	var rv LookupGlobalParameterResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getGlobalParameter", args, &rv, opts...)

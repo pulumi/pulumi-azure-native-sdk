@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Trigger data transfer object.
+// Get a Trigger in a shareSubscription
 //
 // Deprecated: Version 2018-11-01-preview will be removed in v2 of the provider.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {

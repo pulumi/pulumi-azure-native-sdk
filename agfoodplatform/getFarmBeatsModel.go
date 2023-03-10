@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// FarmBeats ARM Resource.
+// Get FarmBeats resource.
 // API Version: 2020-05-12-preview.
 func LookupFarmBeatsModel(ctx *pulumi.Context, args *LookupFarmBeatsModelArgs, opts ...pulumi.InvokeOption) (*LookupFarmBeatsModelResult, error) {
 	var rv LookupFarmBeatsModelResult

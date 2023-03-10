@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Custom domain of the Spring Cloud Gateway
+// Get the Spring Cloud Gateway custom domain.
 // API Version: 2022-01-01-preview.
 func LookupGatewayCustomDomain(ctx *pulumi.Context, args *LookupGatewayCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCustomDomainResult, error) {
 	var rv LookupGatewayCustomDomainResult

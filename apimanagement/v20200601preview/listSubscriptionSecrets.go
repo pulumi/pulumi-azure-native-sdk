@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Subscription keys.
+// Gets the specified Subscription keys.
 func ListSubscriptionSecrets(ctx *pulumi.Context, args *ListSubscriptionSecretsArgs, opts ...pulumi.InvokeOption) (*ListSubscriptionSecretsResult, error) {
 	var rv ListSubscriptionSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:listSubscriptionSecrets", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Distributed availability group between box and Sql Managed Instance.
+// Gets a distributed availability group info.
 func LookupDistributedAvailabilityGroup(ctx *pulumi.Context, args *LookupDistributedAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDistributedAvailabilityGroupResult, error) {
 	var rv LookupDistributedAvailabilityGroupResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getDistributedAvailabilityGroup", args, &rv, opts...)

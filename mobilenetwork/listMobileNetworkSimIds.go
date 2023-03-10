@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for list SIM IDs API service call.
+// Lists the IDs of all provisioned SIMs in a mobile network
 // API Version: 2022-04-01-preview.
 func ListMobileNetworkSimIds(ctx *pulumi.Context, args *ListMobileNetworkSimIdsArgs, opts ...pulumi.InvokeOption) (*ListMobileNetworkSimIdsResult, error) {
 	var rv ListMobileNetworkSimIdsResult

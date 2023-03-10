@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access Review Schedule Definition.
+// Get single access review definition
 func LookupScopeAccessReviewScheduleDefinitionById(ctx *pulumi.Context, args *LookupScopeAccessReviewScheduleDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupScopeAccessReviewScheduleDefinitionByIdResult, error) {
 	var rv LookupScopeAccessReviewScheduleDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization/v20211201preview:getScopeAccessReviewScheduleDefinitionById", args, &rv, opts...)

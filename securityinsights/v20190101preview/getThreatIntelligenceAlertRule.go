@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Threat Intelligence alert rule.
+// Gets the alert rule.
 func LookupThreatIntelligenceAlertRule(ctx *pulumi.Context, args *LookupThreatIntelligenceAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceAlertRuleResult, error) {
 	var rv LookupThreatIntelligenceAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getThreatIntelligenceAlertRule", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+// Gets the specified Express Route Circuit Connection from the specified express route circuit.
 func LookupExpressRouteCircuitConnection(ctx *pulumi.Context, args *LookupExpressRouteCircuitConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitConnectionResult, error) {
 	var rv LookupExpressRouteCircuitConnectionResult
 	err := ctx.Invoke("azure-native:network/v20200701:getExpressRouteCircuitConnection", args, &rv, opts...)

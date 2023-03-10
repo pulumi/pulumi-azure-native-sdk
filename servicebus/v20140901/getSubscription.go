@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of subscription resource.
+// Returns a subscription description for the specified topic.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an automation rule.
+// Gets the automation rule.
 func LookupAutomationRule(ctx *pulumi.Context, args *LookupAutomationRuleArgs, opts ...pulumi.InvokeOption) (*LookupAutomationRuleResult, error) {
 	var rv LookupAutomationRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20210901preview:getAutomationRule", args, &rv, opts...)

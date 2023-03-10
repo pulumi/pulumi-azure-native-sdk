@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Arc Addon.
+// Gets a specific addon by name.
 func LookupArcAddon(ctx *pulumi.Context, args *LookupArcAddonArgs, opts ...pulumi.InvokeOption) (*LookupArcAddonResult, error) {
 	var rv LookupArcAddonResult
 	err := ctx.Invoke("azure-native:databoxedge/v20201201:getArcAddon", args, &rv, opts...)

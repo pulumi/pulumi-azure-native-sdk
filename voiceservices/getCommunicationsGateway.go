@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A CommunicationsGateway resource
+// Get a CommunicationsGateway
 // API Version: 2022-12-01-preview.
 func LookupCommunicationsGateway(ctx *pulumi.Context, args *LookupCommunicationsGatewayArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationsGatewayResult, error) {
 	var rv LookupCommunicationsGatewayResult

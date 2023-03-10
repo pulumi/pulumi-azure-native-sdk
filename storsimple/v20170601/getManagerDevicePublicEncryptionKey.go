@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The public key.
+// Returns the public encryption key of the device.
 func GetManagerDevicePublicEncryptionKey(ctx *pulumi.Context, args *GetManagerDevicePublicEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*GetManagerDevicePublicEncryptionKeyResult, error) {
 	var rv GetManagerDevicePublicEncryptionKeyResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getManagerDevicePublicEncryptionKey", args, &rv, opts...)

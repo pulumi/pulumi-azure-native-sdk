@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// String dictionary resource.
+// Gets the connection strings of an app.
 func ListWebAppConnectionStrings(ctx *pulumi.Context, args *ListWebAppConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListWebAppConnectionStringsResult, error) {
 	var rv ListWebAppConnectionStringsResult
 	err := ctx.Invoke("azure-native:web/v20181101:listWebAppConnectionStrings", args, &rv, opts...)

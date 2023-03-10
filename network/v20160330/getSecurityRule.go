@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network security rule
+// The Get NetworkSecurityRule operation retrieves information about the specified network security rule.
 //
 // Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {

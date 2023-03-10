@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Database, Server or Elastic Pool Advisor.
+// Gets a database advisor.
 func LookupDatabaseAdvisor(ctx *pulumi.Context, args *LookupDatabaseAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAdvisorResult, error) {
 	var rv LookupDatabaseAdvisorResult
 	err := ctx.Invoke("azure-native:sql/v20210501preview:getDatabaseAdvisor", args, &rv, opts...)

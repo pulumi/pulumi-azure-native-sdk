@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This type describes a network resource.
+// Gets the information about the network resource with a given name. This information includes the network description and other runtime information.
 //
 // Deprecated: Version 2018-07-01-preview will be removed in v2 of the provider.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {

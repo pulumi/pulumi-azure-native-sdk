@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Subscription
+// Get properties of an event subscription of a domain.
 func LookupDomainEventSubscription(ctx *pulumi.Context, args *LookupDomainEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDomainEventSubscriptionResult, error) {
 	var rv LookupDomainEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getDomainEventSubscription", args, &rv, opts...)

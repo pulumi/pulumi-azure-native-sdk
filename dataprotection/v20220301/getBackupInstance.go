@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// BackupInstance Resource
+// Gets a backup instance with name in a backup vault
 func LookupBackupInstance(ctx *pulumi.Context, args *LookupBackupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupBackupInstanceResult, error) {
 	var rv LookupBackupInstanceResult
 	err := ctx.Invoke("azure-native:dataprotection/v20220301:getBackupInstance", args, &rv, opts...)

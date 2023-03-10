@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Rule Group resource.
+// Gets the specified FirewallPolicyRuleGroup.
 func LookupFirewallPolicyRuleGroup(ctx *pulumi.Context, args *LookupFirewallPolicyRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleGroupResult, error) {
 	var rv LookupFirewallPolicyRuleGroupResult
 	err := ctx.Invoke("azure-native:network/v20190701:getFirewallPolicyRuleGroup", args, &rv, opts...)

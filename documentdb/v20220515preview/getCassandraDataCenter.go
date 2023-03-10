@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A managed Cassandra data center.
+// Get the properties of a managed Cassandra data center.
 func LookupCassandraDataCenter(ctx *pulumi.Context, args *LookupCassandraDataCenterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraDataCenterResult, error) {
 	var rv LookupCassandraDataCenterResult
 	err := ctx.Invoke("azure-native:documentdb/v20220515preview:getCassandraDataCenter", args, &rv, opts...)

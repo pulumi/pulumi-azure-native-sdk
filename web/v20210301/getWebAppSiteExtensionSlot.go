@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Site Extension Information.
+// Get site extension information by its ID for a web site, or a deployment slot.
 func LookupWebAppSiteExtensionSlot(ctx *pulumi.Context, args *LookupWebAppSiteExtensionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteExtensionSlotResult, error) {
 	var rv LookupWebAppSiteExtensionSlotResult
 	err := ctx.Invoke("azure-native:web/v20210301:getWebAppSiteExtensionSlot", args, &rv, opts...)

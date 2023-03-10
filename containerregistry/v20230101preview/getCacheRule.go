@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a cache rule for a container registry.
+// Gets the properties of the specified cache rule resource.
 func LookupCacheRule(ctx *pulumi.Context, args *LookupCacheRuleArgs, opts ...pulumi.InvokeOption) (*LookupCacheRuleResult, error) {
 	var rv LookupCacheRuleResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230101preview:getCacheRule", args, &rv, opts...)

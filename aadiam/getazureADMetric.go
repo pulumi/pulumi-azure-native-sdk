@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// AzureADMetrics resource.
+// Gets a azureADMetrics instance with a given name.
 // API Version: 2020-07-01-preview.
 func GetazureADMetric(ctx *pulumi.Context, args *GetazureADMetricArgs, opts ...pulumi.InvokeOption) (*GetazureADMetricResult, error) {
 	var rv GetazureADMetricResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This type describes a gateway resource.
+// Gets the information about the gateway resource with the given name. The information include the description and other properties of the gateway.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	var rv LookupGatewayResult
 	err := ctx.Invoke("azure-native:servicefabricmesh/v20180901preview:getGateway", args, &rv, opts...)

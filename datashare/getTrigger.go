@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Trigger data transfer object.
+// Get a Trigger in a shareSubscription
 // API Version: 2020-09-01.
 //
 // Deprecated: Please use one of the variants: ScheduledTrigger.

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// OpenShift Managed cluster.
+// Gets the details of the managed OpenShift cluster with a specified resource group and name.
 //
 // Deprecated: Version 2018-09-30-preview will be removed in v2 of the provider.
 func LookupOpenShiftManagedCluster(ctx *pulumi.Context, args *LookupOpenShiftManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftManagedClusterResult, error) {

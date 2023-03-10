@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Managed Network resource
+// The Get ManagedNetworks operation gets a Managed Network Resource, specified by the resource group and Managed Network name
 func LookupManagedNetwork(ctx *pulumi.Context, args *LookupManagedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkResult, error) {
 	var rv LookupManagedNetworkResult
 	err := ctx.Invoke("azure-native:managednetwork/v20190601preview:getManagedNetwork", args, &rv, opts...)

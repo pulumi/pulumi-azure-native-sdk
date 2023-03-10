@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The NSP resource association resource
+// Gets the specified NSP association by name.
 func LookupNspAssociation(ctx *pulumi.Context, args *LookupNspAssociationArgs, opts ...pulumi.InvokeOption) (*LookupNspAssociationResult, error) {
 	var rv LookupNspAssociationResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getNspAssociation", args, &rv, opts...)

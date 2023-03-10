@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VpnGatewayNatRule Resource.
+// Retrieves the details of a nat ruleGet.
 func LookupNatRule(ctx *pulumi.Context, args *LookupNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupNatRuleResult, error) {
 	var rv LookupNatRuleResult
 	err := ctx.Invoke("azure-native:network/v20201101:getNatRule", args, &rv, opts...)

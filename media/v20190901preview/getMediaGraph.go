@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Media Graph.
+// Get the details of a Media Graph in the Media Services account
 func LookupMediaGraph(ctx *pulumi.Context, args *LookupMediaGraphArgs, opts ...pulumi.InvokeOption) (*LookupMediaGraphResult, error) {
 	var rv LookupMediaGraphResult
 	err := ctx.Invoke("azure-native:media/v20190901preview:getMediaGraph", args, &rv, opts...)

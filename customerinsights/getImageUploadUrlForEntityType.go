@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The image definition.
+// Gets entity type (profile or interaction) image upload URL.
 // API Version: 2017-04-26.
 func GetImageUploadUrlForEntityType(ctx *pulumi.Context, args *GetImageUploadUrlForEntityTypeArgs, opts ...pulumi.InvokeOption) (*GetImageUploadUrlForEntityTypeResult, error) {
 	var rv GetImageUploadUrlForEntityTypeResult

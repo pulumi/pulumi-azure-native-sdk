@@ -21,8 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:dbformysql/v20180601privatepreview:Configuration":
+		r = &Configuration{}
+	case "azure-native:dbformysql/v20180601privatepreview:Database":
+		r = &Database{}
+	case "azure-native:dbformysql/v20180601privatepreview:FirewallRule":
+		r = &FirewallRule{}
 	case "azure-native:dbformysql/v20180601privatepreview:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:dbformysql/v20180601privatepreview:Server":
+		r = &Server{}
+	case "azure-native:dbformysql/v20180601privatepreview:ServerAdministrator":
+		r = &ServerAdministrator{}
+	case "azure-native:dbformysql/v20180601privatepreview:VirtualNetworkRule":
+		r = &VirtualNetworkRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

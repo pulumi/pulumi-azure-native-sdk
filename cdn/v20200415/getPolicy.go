@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines web application firewall policy for Azure CDN.
+// Retrieve protection policy with specified name within a resource group.
 //
 // Deprecated: Version 2020-04-15 will be removed in v2 of the provider.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {

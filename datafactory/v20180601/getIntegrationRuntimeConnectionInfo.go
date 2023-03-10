@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Connection information for encrypting the on-premises data source credentials.
+// Gets the on-premises integration runtime connection information for encrypting the on-premises data source credentials.
 func GetIntegrationRuntimeConnectionInfo(ctx *pulumi.Context, args *GetIntegrationRuntimeConnectionInfoArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeConnectionInfoResult, error) {
 	var rv GetIntegrationRuntimeConnectionInfoResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getIntegrationRuntimeConnectionInfo", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Namespace/EventHub Connection String
+// Gets the ACS and SAS connection strings for the Event Hub.
 func ListEventHubKeys(ctx *pulumi.Context, args *ListEventHubKeysArgs, opts ...pulumi.InvokeOption) (*ListEventHubKeysResult, error) {
 	var rv ListEventHubKeysResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:listEventHubKeys", args, &rv, opts...)
