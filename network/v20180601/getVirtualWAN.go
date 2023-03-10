@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VirtualWAN Resource.
+// Retrieves the details of a VirtualWAN.
 func LookupVirtualWAN(ctx *pulumi.Context, args *LookupVirtualWANArgs, opts ...pulumi.InvokeOption) (*LookupVirtualWANResult, error) {
 	var rv LookupVirtualWANResult
 	err := ctx.Invoke("azure-native:network/v20180601:getVirtualWAN", args, &rv, opts...)

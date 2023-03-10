@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Fabric definition.
+// Gets the details of an Azure Site Recovery fabric.
 func LookupReplicationFabric(ctx *pulumi.Context, args *LookupReplicationFabricArgs, opts ...pulumi.InvokeOption) (*LookupReplicationFabricResult, error) {
 	var rv LookupReplicationFabricResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20211101:getReplicationFabric", args, &rv, opts...)

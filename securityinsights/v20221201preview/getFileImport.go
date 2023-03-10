@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a file import in Azure Security Insights.
+// Gets a file import.
 func LookupFileImport(ctx *pulumi.Context, args *LookupFileImportArgs, opts ...pulumi.InvokeOption) (*LookupFileImportResult, error) {
 	var rv LookupFileImportResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getFileImport", args, &rv, opts...)

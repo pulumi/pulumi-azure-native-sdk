@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The network interface resource definition.
+// Gets network interfaces by resource name
 func GetnetworkinterfaceRetrieve(ctx *pulumi.Context, args *GetnetworkinterfaceRetrieveArgs, opts ...pulumi.InvokeOption) (*GetnetworkinterfaceRetrieveResult, error) {
 	var rv GetnetworkinterfaceRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getnetworkinterfaceRetrieve", args, &rv, opts...)

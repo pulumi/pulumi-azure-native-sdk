@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the request to list networkManagerEffectiveSecurityAdminRules. It contains a list of groups and a skiptoken to get the next set of results.
+// List all effective security admin rules applied on a virtual network.
 func ListNetworkManagerEffectiveSecurityAdminRules(ctx *pulumi.Context, args *ListNetworkManagerEffectiveSecurityAdminRulesArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerEffectiveSecurityAdminRulesResult, error) {
 	var rv ListNetworkManagerEffectiveSecurityAdminRulesResult
 	err := ctx.Invoke("azure-native:network/v20220101:listNetworkManagerEffectiveSecurityAdminRules", args, &rv, opts...)

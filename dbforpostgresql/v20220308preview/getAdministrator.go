@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an Active Directory administrator.
+// Gets information about a server.
 func LookupAdministrator(ctx *pulumi.Context, args *LookupAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAdministratorResult, error) {
 	var rv LookupAdministratorResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20220308preview:getAdministrator", args, &rv, opts...)

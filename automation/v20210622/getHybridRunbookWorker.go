@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of hybrid runbook worker.
+// Retrieve a hybrid runbook worker.
 func LookupHybridRunbookWorker(ctx *pulumi.Context, args *LookupHybridRunbookWorkerArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerResult, error) {
 	var rv LookupHybridRunbookWorkerResult
 	err := ctx.Invoke("azure-native:automation/v20210622:getHybridRunbookWorker", args, &rv, opts...)

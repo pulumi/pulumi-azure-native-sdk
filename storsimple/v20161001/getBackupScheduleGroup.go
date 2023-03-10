@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Backup Schedule Group
+// Returns the properties of the specified backup schedule group name.
 //
 // Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupBackupScheduleGroup(ctx *pulumi.Context, args *LookupBackupScheduleGroupArgs, opts ...pulumi.InvokeOption) (*LookupBackupScheduleGroupResult, error) {

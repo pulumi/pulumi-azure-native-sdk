@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// MEC role.
+// Gets a specific role by name.
 func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.InvokeOption) (*LookupMECRoleResult, error) {
 	var rv LookupMECRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20221201preview:getMECRole", args, &rv, opts...)

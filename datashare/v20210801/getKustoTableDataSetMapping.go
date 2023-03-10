@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Kusto database data set mapping
+// Get a DataSetMapping in a shareSubscription
 func LookupKustoTableDataSetMapping(ctx *pulumi.Context, args *LookupKustoTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupKustoTableDataSetMappingResult, error) {
 	var rv LookupKustoTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getKustoTableDataSetMapping", args, &rv, opts...)

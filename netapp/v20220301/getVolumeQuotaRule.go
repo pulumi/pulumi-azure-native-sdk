@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Quota Rule of a Volume
+// Get details of the specified quota rule
 func LookupVolumeQuotaRule(ctx *pulumi.Context, args *LookupVolumeQuotaRuleArgs, opts ...pulumi.InvokeOption) (*LookupVolumeQuotaRuleResult, error) {
 	var rv LookupVolumeQuotaRuleResult
 	err := ctx.Invoke("azure-native:netapp/v20220301:getVolumeQuotaRule", args, &rv, opts...)

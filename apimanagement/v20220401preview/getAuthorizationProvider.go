@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Authorization Provider contract.
+// Gets the details of the authorization provider specified by its identifier.
 func LookupAuthorizationProvider(ctx *pulumi.Context, args *LookupAuthorizationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationProviderResult, error) {
 	var rv LookupAuthorizationProviderResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getAuthorizationProvider", args, &rv, opts...)

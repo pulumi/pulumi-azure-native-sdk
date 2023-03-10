@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
+// Lists the applicable start/stop schedules, if any.
 func ListServiceFabricApplicableSchedules(ctx *pulumi.Context, args *ListServiceFabricApplicableSchedulesArgs, opts ...pulumi.InvokeOption) (*ListServiceFabricApplicableSchedulesResult, error) {
 	var rv ListServiceFabricApplicableSchedulesResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:listServiceFabricApplicableSchedules", args, &rv, opts...)

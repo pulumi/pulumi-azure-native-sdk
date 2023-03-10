@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// Gets the details of the Private Endpoint Connection specified by its identifier.
 func LookupPrivateEndpointConnectionByName(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByNameArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByNameResult, error) {
 	var rv LookupPrivateEndpointConnectionByNameResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getPrivateEndpointConnectionByName", args, &rv, opts...)

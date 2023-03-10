@@ -107,6 +107,12 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20221101preview:MDATPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201preview:MDATPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MDATPDataConnector

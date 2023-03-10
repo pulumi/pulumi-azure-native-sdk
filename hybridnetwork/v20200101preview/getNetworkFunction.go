@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network function resource response.
+// Gets information about the specified network function resource.
 func LookupNetworkFunction(ctx *pulumi.Context, args *LookupNetworkFunctionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFunctionResult, error) {
 	var rv LookupNetworkFunctionResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20200101preview:getNetworkFunction", args, &rv, opts...)

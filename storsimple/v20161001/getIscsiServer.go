@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The iSCSI server.
+// Returns the properties of the specified iSCSI server name.
 //
 // Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupIscsiServer(ctx *pulumi.Context, args *LookupIscsiServerArgs, opts ...pulumi.InvokeOption) (*LookupIscsiServerResult, error) {

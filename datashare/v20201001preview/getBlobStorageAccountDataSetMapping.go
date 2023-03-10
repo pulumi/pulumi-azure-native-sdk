@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A blob storage account data set mapping.
+// Get a DataSetMapping in a shareSubscription
 func LookupBlobStorageAccountDataSetMapping(ctx *pulumi.Context, args *LookupBlobStorageAccountDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobStorageAccountDataSetMappingResult, error) {
 	var rv LookupBlobStorageAccountDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getBlobStorageAccountDataSetMapping", args, &rv, opts...)

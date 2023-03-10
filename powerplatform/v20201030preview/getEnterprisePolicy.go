@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the EnterprisePolicy.
+// Get information about an EnterprisePolicy
 func LookupEnterprisePolicy(ctx *pulumi.Context, args *LookupEnterprisePolicyArgs, opts ...pulumi.InvokeOption) (*LookupEnterprisePolicyResult, error) {
 	var rv LookupEnterprisePolicyResult
 	err := ctx.Invoke("azure-native:powerplatform/v20201030preview:getEnterprisePolicy", args, &rv, opts...)

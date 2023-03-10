@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access Review History Definition.
+// Get access review history definition by definition Id
 func LookupScopeAccessReviewHistoryDefinitionById(ctx *pulumi.Context, args *LookupScopeAccessReviewHistoryDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupScopeAccessReviewHistoryDefinitionByIdResult, error) {
 	var rv LookupScopeAccessReviewHistoryDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization/v20211201preview:getScopeAccessReviewHistoryDefinitionById", args, &rv, opts...)

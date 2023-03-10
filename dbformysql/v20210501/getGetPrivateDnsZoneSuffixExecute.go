@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response of get private dns zone suffix.
+// Get private DNS zone suffix in the cloud.
 func GetGetPrivateDnsZoneSuffixExecute(ctx *pulumi.Context, args *GetGetPrivateDnsZoneSuffixExecuteArgs, opts ...pulumi.InvokeOption) (*GetGetPrivateDnsZoneSuffixExecuteResult, error) {
 	var rv GetGetPrivateDnsZoneSuffixExecuteResult
 	err := ctx.Invoke("azure-native:dbformysql/v20210501:getGetPrivateDnsZoneSuffixExecute", args, &rv, opts...)

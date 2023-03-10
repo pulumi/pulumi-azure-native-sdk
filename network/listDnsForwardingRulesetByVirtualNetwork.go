@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response to an enumeration operation on Virtual Network DNS Forwarding Ruleset.
+// Lists DNS forwarding ruleset resource IDs attached to a virtual network.
 // API Version: 2020-04-01-preview.
 func ListDnsForwardingRulesetByVirtualNetwork(ctx *pulumi.Context, args *ListDnsForwardingRulesetByVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*ListDnsForwardingRulesetByVirtualNetworkResult, error) {
 	var rv ListDnsForwardingRulesetByVirtualNetworkResult

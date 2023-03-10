@@ -70,6 +70,12 @@ func NewSAPVirtualInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads:SAPVirtualInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20221101preview:SAPVirtualInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20230401:SAPVirtualInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SAPVirtualInstance

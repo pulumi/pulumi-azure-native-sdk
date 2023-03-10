@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Payload of the blockchain member which is exposed in the request/response of the resource provider.
+// Get details about a blockchain member.
 func LookupBlockchainMember(ctx *pulumi.Context, args *LookupBlockchainMemberArgs, opts ...pulumi.InvokeOption) (*LookupBlockchainMemberResult, error) {
 	var rv LookupBlockchainMemberResult
 	err := ctx.Invoke("azure-native:blockchain/v20180601preview:getBlockchainMember", args, &rv, opts...)

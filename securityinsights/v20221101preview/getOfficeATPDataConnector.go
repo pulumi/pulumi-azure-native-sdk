@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents OfficeATP (Office 365 Advanced Threat Protection) data connector.
+// Gets a data connector.
 func LookupOfficeATPDataConnector(ctx *pulumi.Context, args *LookupOfficeATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeATPDataConnectorResult, error) {
 	var rv LookupOfficeATPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221101preview:getOfficeATPDataConnector", args, &rv, opts...)

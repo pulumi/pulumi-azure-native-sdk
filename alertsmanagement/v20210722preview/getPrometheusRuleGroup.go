@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Prometheus rule group resource.
+// Retrieve a Prometheus rule group definition.
 func LookupPrometheusRuleGroup(ctx *pulumi.Context, args *LookupPrometheusRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusRuleGroupResult, error) {
 	var rv LookupPrometheusRuleGroupResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20210722preview:getPrometheusRuleGroup", args, &rv, opts...)

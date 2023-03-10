@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Linked Subscription information.
+// Returns the properties of a Linked Subscription resource.
 func LookupLinkedSubscription(ctx *pulumi.Context, args *LookupLinkedSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupLinkedSubscriptionResult, error) {
 	var rv LookupLinkedSubscriptionResult
 	err := ctx.Invoke("azure-native:azurestack/v20200601preview:getLinkedSubscription", args, &rv, opts...)

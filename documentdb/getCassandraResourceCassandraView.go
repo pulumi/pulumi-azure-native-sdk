@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Cassandra view.
+// Gets the Cassandra view under an existing Azure Cosmos DB database account.
 // API Version: 2021-07-01-preview.
 func LookupCassandraResourceCassandraView(ctx *pulumi.Context, args *LookupCassandraResourceCassandraViewArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraViewResult, error) {
 	var rv LookupCassandraResourceCassandraViewResult

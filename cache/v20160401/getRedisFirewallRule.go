@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
+// Gets a single firewall rule in a specified redis cache.
 //
 // Deprecated: Version 2016-04-01 will be removed in v2 of the provider.
 func LookupRedisFirewallRule(ctx *pulumi.Context, args *LookupRedisFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupRedisFirewallRuleResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a ScalingPlanPooledSchedule definition.
+// Get a ScalingPlanPooledSchedule.
 func LookupScalingPlanPooledSchedule(ctx *pulumi.Context, args *LookupScalingPlanPooledScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPooledScheduleResult, error) {
 	var rv LookupScalingPlanPooledScheduleResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20221014preview:getScalingPlanPooledSchedule", args, &rv, opts...)

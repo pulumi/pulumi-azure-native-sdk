@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The customer's ASN that is registered by the peering service provider.
+// Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
 //
 // Deprecated: Version 2020-04-01 will be removed in v2 of the provider.
 func LookupRegisteredAsn(ctx *pulumi.Context, args *LookupRegisteredAsnArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredAsnResult, error) {

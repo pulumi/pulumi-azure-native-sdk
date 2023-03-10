@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Application Configuration Service resource
+// Get the Application Configuration Service and its properties.
 func LookupConfigurationService(ctx *pulumi.Context, args *LookupConfigurationServiceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationServiceResult, error) {
 	var rv LookupConfigurationServiceResult
 	err := ctx.Invoke("azure-native:appplatform/v20220401:getConfigurationService", args, &rv, opts...)

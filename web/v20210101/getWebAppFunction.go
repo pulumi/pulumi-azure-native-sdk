@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Function information.
+// Get function information by its ID for web site, or a deployment slot.
 func LookupWebAppFunction(ctx *pulumi.Context, args *LookupWebAppFunctionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFunctionResult, error) {
 	var rv LookupWebAppFunctionResult
 	err := ctx.Invoke("azure-native:web/v20210101:getWebAppFunction", args, &rv, opts...)

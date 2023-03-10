@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of the API key payload which is exposed in the response of the resource provider.
+// Lists the API keys for a blockchain member.
 // API Version: 2018-06-01-preview.
 func ListBlockchainMemberApiKeys(ctx *pulumi.Context, args *ListBlockchainMemberApiKeysArgs, opts ...pulumi.InvokeOption) (*ListBlockchainMemberApiKeysResult, error) {
 	var rv ListBlockchainMemberApiKeysResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource upload definition payload
+// Get an resource upload URL for an App, which may be artifacts or source archive.
 func GetAppResourceUploadUrl(ctx *pulumi.Context, args *GetAppResourceUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetAppResourceUploadUrlResult, error) {
 	var rv GetAppResourceUploadUrlResult
 	err := ctx.Invoke("azure-native:appplatform/v20220101preview:getAppResourceUploadUrl", args, &rv, opts...)

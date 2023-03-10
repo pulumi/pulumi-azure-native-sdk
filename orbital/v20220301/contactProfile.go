@@ -64,6 +64,9 @@ func NewContactProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:orbital/v20210404preview:ContactProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:orbital/v20221101:ContactProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ContactProfile

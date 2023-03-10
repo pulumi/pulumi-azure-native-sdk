@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of top-level domain legal agreements.
+// Description for Gets all legal agreements that user needs to accept before purchasing a domain.
 func ListTopLevelDomainAgreements(ctx *pulumi.Context, args *ListTopLevelDomainAgreementsArgs, opts ...pulumi.InvokeOption) (*ListTopLevelDomainAgreementsResult, error) {
 	var rv ListTopLevelDomainAgreementsResult
 	err := ctx.Invoke("azure-native:domainregistration/v20220301:listTopLevelDomainAgreements", args, &rv, opts...)

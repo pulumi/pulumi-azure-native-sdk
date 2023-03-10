@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collection of domain name identifiers.
+// Description for Get domain name recommendations based on keywords.
 func ListDomainRecommendations(ctx *pulumi.Context, args *ListDomainRecommendationsArgs, opts ...pulumi.InvokeOption) (*ListDomainRecommendationsResult, error) {
 	var rv ListDomainRecommendationsResult
 	err := ctx.Invoke("azure-native:domainregistration/v20220301:listDomainRecommendations", args, &rv, opts...)

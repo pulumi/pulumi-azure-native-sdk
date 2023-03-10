@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Arc Sql Server database
+// Retrieves an Arc Sql Server database.
 func LookupSqlServerDatabase(ctx *pulumi.Context, args *LookupSqlServerDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerDatabaseResult, error) {
 	var rv LookupSqlServerDatabaseResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20220615preview:getSqlServerDatabase", args, &rv, opts...)

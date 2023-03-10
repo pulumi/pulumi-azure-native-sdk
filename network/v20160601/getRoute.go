@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Route resource
+// The Get route operation retrieves information about the specified route from the route table.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {

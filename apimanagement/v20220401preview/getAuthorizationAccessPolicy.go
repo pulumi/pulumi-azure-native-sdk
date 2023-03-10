@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Authorization access policy contract.
+// Gets the details of the authorization access policy specified by its identifier.
 func LookupAuthorizationAccessPolicy(ctx *pulumi.Context, args *LookupAuthorizationAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationAccessPolicyResult, error) {
 	var rv LookupAuthorizationAccessPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getAuthorizationAccessPolicy", args, &rv, opts...)

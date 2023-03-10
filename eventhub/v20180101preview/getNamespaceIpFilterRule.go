@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in a List or Get IpFilterRules operation
+// Gets an IpFilterRule for a Namespace by rule name.
 func LookupNamespaceIpFilterRule(ctx *pulumi.Context, args *LookupNamespaceIpFilterRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceIpFilterRuleResult, error) {
 	var rv LookupNamespaceIpFilterRuleResult
 	err := ctx.Invoke("azure-native:eventhub/v20180101preview:getNamespaceIpFilterRule", args, &rv, opts...)

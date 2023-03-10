@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The privateStore offer data structure.
+// Gets information about a specific offer.
 func LookupPrivateStoreCollectionOffer(ctx *pulumi.Context, args *LookupPrivateStoreCollectionOfferArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionOfferResult, error) {
 	var rv LookupPrivateStoreCollectionOfferResult
 	err := ctx.Invoke("azure-native:marketplace/v20220901:getPrivateStoreCollectionOffer", args, &rv, opts...)

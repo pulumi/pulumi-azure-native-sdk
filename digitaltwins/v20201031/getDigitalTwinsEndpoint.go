@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// DigitalTwinsInstance endpoint resource.
+// Get DigitalTwinsInstances Endpoint.
 //
 // Deprecated: Version 2020-10-31 will be removed in v2 of the provider.
 func LookupDigitalTwinsEndpoint(ctx *pulumi.Context, args *LookupDigitalTwinsEndpointArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinsEndpointResult, error) {

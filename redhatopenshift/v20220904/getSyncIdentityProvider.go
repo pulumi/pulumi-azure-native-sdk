@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SyncIdentityProvider represents a SyncIdentityProvider
+// The operation returns properties of a SyncIdentityProvider.
 func LookupSyncIdentityProvider(ctx *pulumi.Context, args *LookupSyncIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupSyncIdentityProviderResult, error) {
 	var rv LookupSyncIdentityProviderResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20220904:getSyncIdentityProvider", args, &rv, opts...)

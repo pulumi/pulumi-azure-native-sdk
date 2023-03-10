@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configures where to store the OMS agent data for workspaces under a scope
+// Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
 // API Version: 2017-08-01-preview.
 func LookupWorkspaceSetting(ctx *pulumi.Context, args *LookupWorkspaceSettingArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSettingResult, error) {
 	var rv LookupWorkspaceSettingResult

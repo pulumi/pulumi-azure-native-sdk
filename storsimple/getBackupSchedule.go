@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The backup schedule.
+// Gets the properties of the specified backup schedule name.
 // API Version: 2017-06-01.
 func LookupBackupSchedule(ctx *pulumi.Context, args *LookupBackupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBackupScheduleResult, error) {
 	var rv LookupBackupScheduleResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents MLBehaviorAnalytics alert rule.
+// Gets the alert rule.
 func LookupMLBehaviorAnalyticsAlertRule(ctx *pulumi.Context, args *LookupMLBehaviorAnalyticsAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupMLBehaviorAnalyticsAlertRuleResult, error) {
 	var rv LookupMLBehaviorAnalyticsAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221101preview:getMLBehaviorAnalyticsAlertRule", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An attestation resource.
+// Gets an existing attestation at resource scope.
 func LookupAttestationAtResource(ctx *pulumi.Context, args *LookupAttestationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceResult, error) {
 	var rv LookupAttestationAtResourceResult
 	err := ctx.Invoke("azure-native:policyinsights/v20210101:getAttestationAtResource", args, &rv, opts...)

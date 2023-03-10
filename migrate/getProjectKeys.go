@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ID and Key for Migration Project.
+// Gets the Log Analytics Workspace ID and Primary Key for the specified project.
 // API Version: 2018-02-02.
 func GetProjectKeys(ctx *pulumi.Context, args *GetProjectKeysArgs, opts ...pulumi.InvokeOption) (*GetProjectKeysResult, error) {
 	var rv GetProjectKeysResult

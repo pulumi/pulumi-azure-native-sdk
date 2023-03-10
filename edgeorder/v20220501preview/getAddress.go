@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Address Resource.
+// Get information about the specified address.
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	var rv LookupAddressResult
 	err := ctx.Invoke("azure-native:edgeorder/v20220501preview:getAddress", args, &rv, opts...)

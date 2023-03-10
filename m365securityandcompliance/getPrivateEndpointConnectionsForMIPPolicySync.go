@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// Gets the specified private endpoint connection associated with the service.
 // API Version: 2021-03-25-preview.
 func LookupPrivateEndpointConnectionsForMIPPolicySync(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsForMIPPolicySyncArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsForMIPPolicySyncResult, error) {
 	var rv LookupPrivateEndpointConnectionsForMIPPolicySyncResult

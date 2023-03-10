@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a replication for a container registry.
+// Gets the properties of the specified replication.
 func LookupReplication(ctx *pulumi.Context, args *LookupReplicationArgs, opts ...pulumi.InvokeOption) (*LookupReplicationResult, error) {
 	var rv LookupReplicationResult
 	err := ctx.Invoke("azure-native:containerregistry/v20210901:getReplication", args, &rv, opts...)

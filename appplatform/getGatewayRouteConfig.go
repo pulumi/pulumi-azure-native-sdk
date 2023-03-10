@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Spring Cloud Gateway route config resource
+// Get the Spring Cloud Gateway route configs.
 // API Version: 2022-01-01-preview.
 func LookupGatewayRouteConfig(ctx *pulumi.Context, args *LookupGatewayRouteConfigArgs, opts ...pulumi.InvokeOption) (*LookupGatewayRouteConfigResult, error) {
 	var rv LookupGatewayRouteConfigResult

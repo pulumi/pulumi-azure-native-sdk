@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The gateway definition
+// Gets a specific gateway under a subscription and in a specific resource group
 func LookupConnectionGateway(ctx *pulumi.Context, args *LookupConnectionGatewayArgs, opts ...pulumi.InvokeOption) (*LookupConnectionGatewayResult, error) {
 	var rv LookupConnectionGatewayResult
 	err := ctx.Invoke("azure-native:web/v20160601:getConnectionGateway", args, &rv, opts...)

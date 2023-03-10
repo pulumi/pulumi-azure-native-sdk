@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Blueprint artifact applies Azure role assignment.
+// Get a Blueprint artifact.
 func LookupRoleAssignmentArtifact(ctx *pulumi.Context, args *LookupRoleAssignmentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentArtifactResult, error) {
 	var rv LookupRoleAssignmentArtifactResult
 	err := ctx.Invoke("azure-native:blueprint/v20171111preview:getRoleAssignmentArtifact", args, &rv, opts...)

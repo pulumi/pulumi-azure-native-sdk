@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Status of gateway is live.
+// Return the gateway status of the specified Analysis Services server instance.
 // API Version: 2017-08-01.
 func ListServerGatewayStatus(ctx *pulumi.Context, args *ListServerGatewayStatusArgs, opts ...pulumi.InvokeOption) (*ListServerGatewayStatusResult, error) {
 	var rv ListServerGatewayStatusResult

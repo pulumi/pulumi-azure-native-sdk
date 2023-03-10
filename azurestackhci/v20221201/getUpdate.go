@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Update details
+// Get specified Update
 func LookupUpdate(ctx *pulumi.Context, args *LookupUpdateArgs, opts ...pulumi.InvokeOption) (*LookupUpdateResult, error) {
 	var rv LookupUpdateResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20221201:getUpdate", args, &rv, opts...)

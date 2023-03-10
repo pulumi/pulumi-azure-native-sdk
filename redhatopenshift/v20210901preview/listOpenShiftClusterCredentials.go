@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// OpenShiftClusterCredentials represents an OpenShift cluster's credentials.
+// The operation returns the credentials.
 func ListOpenShiftClusterCredentials(ctx *pulumi.Context, args *ListOpenShiftClusterCredentialsArgs, opts ...pulumi.InvokeOption) (*ListOpenShiftClusterCredentialsResult, error) {
 	var rv ListOpenShiftClusterCredentialsResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20210901preview:listOpenShiftClusterCredentials", args, &rv, opts...)

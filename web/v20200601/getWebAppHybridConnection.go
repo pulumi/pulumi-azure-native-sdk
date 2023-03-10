@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Hybrid Connection contract. This is used to configure a Hybrid Connection.
+// Retrieves a specific Service Bus Hybrid Connection used by this Web App.
 func LookupWebAppHybridConnection(ctx *pulumi.Context, args *LookupWebAppHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionResult, error) {
 	var rv LookupWebAppHybridConnectionResult
 	err := ctx.Invoke("azure-native:web/v20200601:getWebAppHybridConnection", args, &rv, opts...)

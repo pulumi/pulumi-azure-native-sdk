@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of supported availability zone pairs which are part of SAP HA deployment.
+// Get the recommended SAP Availability Zone Pair Details for your region.
 func GetSAPAvailabilityZoneDetails(ctx *pulumi.Context, args *GetSAPAvailabilityZoneDetailsArgs, opts ...pulumi.InvokeOption) (*GetSAPAvailabilityZoneDetailsResult, error) {
 	var rv GetSAPAvailabilityZoneDetailsResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPAvailabilityZoneDetails", args, &rv, opts...)

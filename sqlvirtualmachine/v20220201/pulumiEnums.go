@@ -212,8 +212,8 @@ const (
 type Commit string
 
 const (
-	Commit_SYNCHRONOUS_COMMIT  = Commit("SYNCHRONOUS_COMMIT")
-	Commit_ASYNCHRONOUS_COMMIT = Commit("ASYNCHRONOUS_COMMIT")
+	Commit_Synchronous_Commit  = Commit("Synchronous_Commit")
+	Commit_Asynchronous_Commit = Commit("Asynchronous_Commit")
 )
 
 // SQL Server connectivity option.
@@ -409,8 +409,8 @@ const (
 type Failover string
 
 const (
-	FailoverAUTOMATIC = Failover("AUTOMATIC")
-	FailoverMANUAL    = Failover("MANUAL")
+	FailoverAutomatic = Failover("Automatic")
+	FailoverManual    = Failover("Manual")
 )
 
 // Frequency of full backups. In both cases, full backups begin during the next scheduled time window.
@@ -433,17 +433,17 @@ const (
 type ReadableSecondary string
 
 const (
-	ReadableSecondaryNO         = ReadableSecondary("NO")
-	ReadableSecondaryALL        = ReadableSecondary("ALL")
-	ReadableSecondary_READ_ONLY = ReadableSecondary("READ_ONLY")
+	ReadableSecondaryNo         = ReadableSecondary("No")
+	ReadableSecondaryAll        = ReadableSecondary("All")
+	ReadableSecondary_Read_Only = ReadableSecondary("Read_Only")
 )
 
 // Replica Role in availability group.
 type Role string
 
 const (
-	RolePRIMARY   = Role("PRIMARY")
-	RoleSECONDARY = Role("SECONDARY")
+	RolePrimary   = Role("Primary")
+	RoleSecondary = Role("Secondary")
 )
 
 // SQL Server edition type.

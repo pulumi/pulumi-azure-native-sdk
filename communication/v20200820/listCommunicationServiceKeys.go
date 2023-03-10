@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class representing the access keys of a CommunicationService.
+// Get the access keys of the CommunicationService resource.
 func ListCommunicationServiceKeys(ctx *pulumi.Context, args *ListCommunicationServiceKeysArgs, opts ...pulumi.InvokeOption) (*ListCommunicationServiceKeysResult, error) {
 	var rv ListCommunicationServiceKeysResult
 	err := ctx.Invoke("azure-native:communication/v20200820:listCommunicationServiceKeys", args, &rv, opts...)

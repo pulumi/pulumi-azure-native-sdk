@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response to a live token query.
+// **Gets an access token for live metrics stream data.**
 func GetLiveToken(ctx *pulumi.Context, args *GetLiveTokenArgs, opts ...pulumi.InvokeOption) (*GetLiveTokenResult, error) {
 	var rv GetLiveTokenResult
 	err := ctx.Invoke("azure-native:insights/v20211014:getLiveToken", args, &rv, opts...)

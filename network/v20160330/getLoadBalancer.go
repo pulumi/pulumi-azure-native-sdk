@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// LoadBalancer resource
+// The Get network interface operation retrieves information about the specified network interface.
 //
 // Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {

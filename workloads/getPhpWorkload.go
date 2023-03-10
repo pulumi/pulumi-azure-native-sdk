@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Php workload resource
+// Gets the PHP workload resource.
 // API Version: 2021-12-01-preview.
 func LookupPhpWorkload(ctx *pulumi.Context, args *LookupPhpWorkloadArgs, opts ...pulumi.InvokeOption) (*LookupPhpWorkloadResult, error) {
 	var rv LookupPhpWorkloadResult

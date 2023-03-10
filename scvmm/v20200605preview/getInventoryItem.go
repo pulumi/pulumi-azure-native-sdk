@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the inventory item.
+// Shows an inventory item.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
 	var rv LookupInventoryItemResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getInventoryItem", args, &rv, opts...)

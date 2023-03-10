@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Codeless UI data connector.
+// Gets a data connector.
 func LookupCodelessUiDataConnector(ctx *pulumi.Context, args *LookupCodelessUiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCodelessUiDataConnectorResult, error) {
 	var rv LookupCodelessUiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getCodelessUiDataConnector", args, &rv, opts...)

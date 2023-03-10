@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ADP Data Pool
+// Gets the properties of a Data Pool
 func LookupDataPool(ctx *pulumi.Context, args *LookupDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupDataPoolResult, error) {
 	var rv LookupDataPoolResult
 	err := ctx.Invoke("azure-native:autonomousdevelopmentplatform/v20210201preview:getDataPool", args, &rv, opts...)

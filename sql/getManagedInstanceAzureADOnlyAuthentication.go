@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Active Directory only authentication.
+// Gets a specific Azure Active Directory only authentication property.
 // API Version: 2020-11-01-preview.
 func LookupManagedInstanceAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupManagedInstanceAzureADOnlyAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceAzureADOnlyAuthenticationResult, error) {
 	var rv LookupManagedInstanceAzureADOnlyAuthenticationResult

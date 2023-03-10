@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A function object, containing all information associated with the named function. All functions are contained under a streaming job.
+// Gets details about the specified function.
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
 	var rv LookupFunctionResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20211001preview:getFunction", args, &rv, opts...)

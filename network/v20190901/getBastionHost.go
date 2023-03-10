@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Bastion Host resource.
+// Gets the specified Bastion Host.
 func LookupBastionHost(ctx *pulumi.Context, args *LookupBastionHostArgs, opts ...pulumi.InvokeOption) (*LookupBastionHostResult, error) {
 	var rv LookupBastionHostResult
 	err := ctx.Invoke("azure-native:network/v20190901:getBastionHost", args, &rv, opts...)

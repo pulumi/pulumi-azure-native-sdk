@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents OfficeIRM (Microsoft Insider Risk Management) data connector.
+// Gets a data connector.
 func LookupOfficeIRMDataConnector(ctx *pulumi.Context, args *LookupOfficeIRMDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeIRMDataConnectorResult, error) {
 	var rv LookupOfficeIRMDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220401preview:getOfficeIRMDataConnector", args, &rv, opts...)

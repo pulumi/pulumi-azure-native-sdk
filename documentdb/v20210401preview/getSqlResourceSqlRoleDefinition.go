@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB SQL Role Definition.
+// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
 func LookupSqlResourceSqlRoleDefinition(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleDefinitionResult, error) {
 	var rv LookupSqlResourceSqlRoleDefinitionResult
 	err := ctx.Invoke("azure-native:documentdb/v20210401preview:getSqlResourceSqlRoleDefinition", args, &rv, opts...)

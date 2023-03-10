@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Network Security Perimeter resource
+// Gets the specified network security perimeter by the name.
 func LookupNetworkSecurityPerimeter(ctx *pulumi.Context, args *LookupNetworkSecurityPerimeterArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityPerimeterResult, error) {
 	var rv LookupNetworkSecurityPerimeterResult
 	err := ctx.Invoke("azure-native:network/v20210301preview:getNetworkSecurityPerimeter", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SecurityPolicy association for AzureFrontDoor profile
+// Gets an existing security policy within a profile.
 func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPolicyResult, error) {
 	var rv LookupSecurityPolicyResult
 	err := ctx.Invoke("azure-native:cdn/v20220501preview:getSecurityPolicy", args, &rv, opts...)

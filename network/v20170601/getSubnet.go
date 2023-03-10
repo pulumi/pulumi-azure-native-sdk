@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Subnet in a virtual network resource.
+// Gets the specified subnet by virtual network and resource group.
 //
 // Deprecated: Version 2017-06-01 will be removed in v2 of the provider.
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {

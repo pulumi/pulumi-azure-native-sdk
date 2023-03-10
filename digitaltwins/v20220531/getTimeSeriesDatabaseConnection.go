@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a time series database connection resource.
+// Get the description of an existing time series database connection.
 func LookupTimeSeriesDatabaseConnection(ctx *pulumi.Context, args *LookupTimeSeriesDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupTimeSeriesDatabaseConnectionResult, error) {
 	var rv LookupTimeSeriesDatabaseConnectionResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20220531:getTimeSeriesDatabaseConnection", args, &rv, opts...)

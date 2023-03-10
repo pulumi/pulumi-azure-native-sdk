@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An extended server blob auditing policy.
+// Gets an extended server's blob auditing policy.
 // API Version: 2020-11-01-preview.
 func LookupExtendedServerBlobAuditingPolicy(ctx *pulumi.Context, args *LookupExtendedServerBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupExtendedServerBlobAuditingPolicyResult, error) {
 	var rv LookupExtendedServerBlobAuditingPolicyResult

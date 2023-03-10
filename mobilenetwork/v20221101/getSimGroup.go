@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SIM group resource.
+// Gets information about the specified SIM group.
 func LookupSimGroup(ctx *pulumi.Context, args *LookupSimGroupArgs, opts ...pulumi.InvokeOption) (*LookupSimGroupResult, error) {
 	var rv LookupSimGroupResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20221101:getSimGroup", args, &rv, opts...)

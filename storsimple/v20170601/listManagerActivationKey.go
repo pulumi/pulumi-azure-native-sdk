@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The key.
+// Returns the activation key of the manager.
 func ListManagerActivationKey(ctx *pulumi.Context, args *ListManagerActivationKeyArgs, opts ...pulumi.InvokeOption) (*ListManagerActivationKeyResult, error) {
 	var rv ListManagerActivationKeyResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:listManagerActivationKey", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a database data masking policy.
+// Gets a database data masking policy.
 func LookupDataMaskingPolicy(ctx *pulumi.Context, args *LookupDataMaskingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDataMaskingPolicyResult, error) {
 	var rv LookupDataMaskingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20140401:getDataMaskingPolicy", args, &rv, opts...)

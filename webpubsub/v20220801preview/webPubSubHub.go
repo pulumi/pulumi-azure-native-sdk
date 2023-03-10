@@ -49,6 +49,9 @@ func NewWebPubSubHub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20211001:WebPubSubHub"),
 		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230201:WebPubSubHub"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource WebPubSubHub

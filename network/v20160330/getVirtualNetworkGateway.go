@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A common class for general resource information
+// The Get VirtualNetworkGateway operation retrieves information about the specified virtual network gateway through Network resource provider.
 //
 // Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
 func LookupVirtualNetworkGateway(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayResult, error) {
