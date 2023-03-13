@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A managed instance key.
+// Gets a managed instance key.
 func LookupManagedInstanceKey(ctx *pulumi.Context, args *LookupManagedInstanceKeyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceKeyResult, error) {
 	var rv LookupManagedInstanceKeyResult
 	err := ctx.Invoke("azure-native:sql/v20200202preview:getManagedInstanceKey", args, &rv, opts...)

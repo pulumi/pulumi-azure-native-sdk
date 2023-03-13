@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
+// Gets an existing peering with the specified name under the given subscription and resource group.
 func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.InvokeOption) (*LookupPeeringResult, error) {
 	var rv LookupPeeringResult
 	err := ctx.Invoke("azure-native:peering/v20220101:getPeering", args, &rv, opts...)

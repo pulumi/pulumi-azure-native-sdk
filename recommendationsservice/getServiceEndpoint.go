@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ServiceEndpoint resource details.
+// Returns ServiceEndpoint resources for a given name.
 // API Version: 2022-02-01.
 func LookupServiceEndpoint(ctx *pulumi.Context, args *LookupServiceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointResult, error) {
 	var rv LookupServiceEndpointResult

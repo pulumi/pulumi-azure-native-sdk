@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IoT Connector FHIR destination definition.
+// Gets the properties of the specified Iot Connector FHIR destination.
 // API Version: 2022-05-15.
 func LookupIotConnectorFhirDestination(ctx *pulumi.Context, args *LookupIotConnectorFhirDestinationArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorFhirDestinationResult, error) {
 	var rv LookupIotConnectorFhirDestinationResult

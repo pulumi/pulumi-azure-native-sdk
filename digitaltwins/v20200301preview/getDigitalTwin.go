@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the DigitalTwins service.
+// Get DigitalTwinsInstances resource.
 //
 // Deprecated: Version 2020-03-01-preview will be removed in v2 of the provider.
 func LookupDigitalTwin(ctx *pulumi.Context, args *LookupDigitalTwinArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinResult, error) {

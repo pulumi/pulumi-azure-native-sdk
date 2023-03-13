@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A domain specific resource identifier.
+// Get domain ownership identifier for web app.
 func LookupWebAppDomainOwnershipIdentifier(ctx *pulumi.Context, args *LookupWebAppDomainOwnershipIdentifierArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDomainOwnershipIdentifierResult, error) {
 	var rv LookupWebAppDomainOwnershipIdentifierResult
 	err := ctx.Invoke("azure-native:web/v20210201:getWebAppDomainOwnershipIdentifier", args, &rv, opts...)

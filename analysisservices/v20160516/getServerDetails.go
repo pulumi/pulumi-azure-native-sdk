@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of an Analysis Services resource.
+// Gets details about the specified Analysis Services server.
 //
 // Deprecated: Version 2016-05-16 will be removed in v2 of the provider.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {

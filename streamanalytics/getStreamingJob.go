@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A streaming job object, containing all information associated with the named streaming job.
+// Gets details about the specified streaming job.
 // API Version: 2016-03-01.
 func LookupStreamingJob(ctx *pulumi.Context, args *LookupStreamingJobArgs, opts ...pulumi.InvokeOption) (*LookupStreamingJobResult, error) {
 	var rv LookupStreamingJobResult

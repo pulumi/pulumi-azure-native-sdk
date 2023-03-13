@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A logical database transparent data encryption state.
+// Gets a logical database's transparent data encryption.
 func LookupTransparentDataEncryption(ctx *pulumi.Context, args *LookupTransparentDataEncryptionArgs, opts ...pulumi.InvokeOption) (*LookupTransparentDataEncryptionResult, error) {
 	var rv LookupTransparentDataEncryptionResult
 	err := ctx.Invoke("azure-native:sql/v20210201preview:getTransparentDataEncryption", args, &rv, opts...)

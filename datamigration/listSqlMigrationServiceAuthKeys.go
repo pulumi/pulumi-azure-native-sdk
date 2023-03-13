@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An authentication key.
+// Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 // API Version: 2021-10-30-preview.
 func ListSqlMigrationServiceAuthKeys(ctx *pulumi.Context, args *ListSqlMigrationServiceAuthKeysArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceAuthKeysResult, error) {
 	var rv ListSqlMigrationServiceAuthKeysResult

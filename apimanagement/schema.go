@@ -57,6 +57,9 @@ func NewSchema(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Schema"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:Schema"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Schema

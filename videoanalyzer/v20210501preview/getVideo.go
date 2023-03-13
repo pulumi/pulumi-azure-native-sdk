@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The representation of a single video in a Video Analyzer account.
+// Retrieves an existing video resource within an account with a given name.
 func LookupVideo(ctx *pulumi.Context, args *LookupVideoArgs, opts ...pulumi.InvokeOption) (*LookupVideoResult, error) {
 	var rv LookupVideoResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20210501preview:getVideo", args, &rv, opts...)

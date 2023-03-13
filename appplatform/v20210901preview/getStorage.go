@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Storage resource payload.
+// Get the storage resource.
 func LookupStorage(ctx *pulumi.Context, args *LookupStorageArgs, opts ...pulumi.InvokeOption) (*LookupStorageResult, error) {
 	var rv LookupStorageResult
 	err := ctx.Invoke("azure-native:appplatform/v20210901preview:getStorage", args, &rv, opts...)

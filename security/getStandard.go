@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security Standard on a resource
+// Get a specific security standard for the requested scope
 // API Version: 2021-08-01-preview.
 func LookupStandard(ctx *pulumi.Context, args *LookupStandardArgs, opts ...pulumi.InvokeOption) (*LookupStandardResult, error) {
 	var rv LookupStandardResult

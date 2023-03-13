@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network watcher in a resource group.
+// Gets the specified network watcher by resource group.
 func LookupNetworkWatcher(ctx *pulumi.Context, args *LookupNetworkWatcherArgs, opts ...pulumi.InvokeOption) (*LookupNetworkWatcherResult, error) {
 	var rv LookupNetworkWatcherResult
 	err := ctx.Invoke("azure-native:network/v20181001:getNetworkWatcher", args, &rv, opts...)

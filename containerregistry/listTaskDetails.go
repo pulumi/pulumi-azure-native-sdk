@@ -10,8 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The task that has the ARM resource and task properties.
-// The task will have all information to schedule a run against it.
+// Returns a task with extended information that includes all secrets.
 // API Version: 2019-06-01-preview.
 func ListTaskDetails(ctx *pulumi.Context, args *ListTaskDetailsArgs, opts ...pulumi.InvokeOption) (*ListTaskDetailsResult, error) {
 	var rv ListTaskDetailsResult

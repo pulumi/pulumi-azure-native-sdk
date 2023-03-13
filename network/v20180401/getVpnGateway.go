@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VpnGateway Resource.
+// Retrieves the details of a virtual wan vpn gateway.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
 func LookupVpnGateway(ctx *pulumi.Context, args *LookupVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVpnGatewayResult, error) {

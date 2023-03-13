@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Test keys payload
+// List test keys for a Service.
 func ListServiceTestKeys(ctx *pulumi.Context, args *ListServiceTestKeysArgs, opts ...pulumi.InvokeOption) (*ListServiceTestKeysResult, error) {
 	var rv ListServiceTestKeysResult
 	err := ctx.Invoke("azure-native:appplatform/v20210601preview:listServiceTestKeys", args, &rv, opts...)

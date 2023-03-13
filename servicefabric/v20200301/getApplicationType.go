@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The application type name resource
+// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric cluster resource.
 func LookupApplicationType(ctx *pulumi.Context, args *LookupApplicationTypeArgs, opts ...pulumi.InvokeOption) (*LookupApplicationTypeResult, error) {
 	var rv LookupApplicationTypeResult
 	err := ctx.Invoke("azure-native:servicefabric/v20200301:getApplicationType", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Domain service.
+// The Get Domain Service operation retrieves a json representation of the Domain Service.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 func LookupDomainService(ctx *pulumi.Context, args *LookupDomainServiceArgs, opts ...pulumi.InvokeOption) (*LookupDomainServiceResult, error) {

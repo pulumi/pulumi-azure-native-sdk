@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Backend details.
+// Gets the details of the backend specified by its identifier.
 func LookupBackend(ctx *pulumi.Context, args *LookupBackendArgs, opts ...pulumi.InvokeOption) (*LookupBackendResult, error) {
 	var rv LookupBackendResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getBackend", args, &rv, opts...)

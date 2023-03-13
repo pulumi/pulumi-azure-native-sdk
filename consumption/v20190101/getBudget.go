@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A budget resource.
+// Gets the budget for the scope by budget name.
 //
 // Deprecated: Version 2019-01-01 will be removed in v2 of the provider.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {

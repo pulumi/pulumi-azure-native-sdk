@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The shared dashboard resource definition.
+// Gets the Dashboard.
 //
 // Deprecated: Version 2015-08-01-preview will be removed in v2 of the provider.
 func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pulumi.InvokeOption) (*LookupDashboardResult, error) {

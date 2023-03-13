@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Metadata resource definition.
+// Get a Metadata.
 // API Version: 2021-03-01-preview.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
 	var rv LookupMetadataResult

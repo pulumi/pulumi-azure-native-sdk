@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the vCenter.
+// Implements vCenter GET method.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
 	var rv LookupVCenterResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getVCenter", args, &rv, opts...)

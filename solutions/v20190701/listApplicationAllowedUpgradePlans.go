@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The array of plan.
+// List allowed upgrade plans for application.
 func ListApplicationAllowedUpgradePlans(ctx *pulumi.Context, args *ListApplicationAllowedUpgradePlansArgs, opts ...pulumi.InvokeOption) (*ListApplicationAllowedUpgradePlansResult, error) {
 	var rv ListApplicationAllowedUpgradePlansResult
 	err := ctx.Invoke("azure-native:solutions/v20190701:listApplicationAllowedUpgradePlans", args, &rv, opts...)

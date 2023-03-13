@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The storage container resource definition.
+// Gets storagecontainers by resource name
 func GetstoragecontainerRetrieve(ctx *pulumi.Context, args *GetstoragecontainerRetrieveArgs, opts ...pulumi.InvokeOption) (*GetstoragecontainerRetrieveResult, error) {
 	var rv GetstoragecontainerRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getstoragecontainerRetrieve", args, &rv, opts...)

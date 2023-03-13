@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets an incident.
 func LookupIncident(ctx *pulumi.Context, args *LookupIncidentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentResult, error) {
 	var rv LookupIncidentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getIncident", args, &rv, opts...)

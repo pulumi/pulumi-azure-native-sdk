@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an environment type.
+// Gets a project environment type.
 func LookupProjectEnvironmentType(ctx *pulumi.Context, args *LookupProjectEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupProjectEnvironmentTypeResult, error) {
 	var rv LookupProjectEnvironmentTypeResult
 	err := ctx.Invoke("azure-native:devcenter/v20220801preview:getProjectEnvironmentType", args, &rv, opts...)

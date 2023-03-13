@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Association Subresource of Traffic Controller
+// Get a Traffic Controller Association
 func LookupAssociationsInterface(ctx *pulumi.Context, args *LookupAssociationsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupAssociationsInterfaceResult, error) {
 	var rv LookupAssociationsInterfaceResult
 	err := ctx.Invoke("azure-native:servicenetworking/v20221001preview:getAssociationsInterface", args, &rv, opts...)

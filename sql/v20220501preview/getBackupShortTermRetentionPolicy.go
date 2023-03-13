@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A short term retention policy.
+// Gets a database's short term retention policy.
 func LookupBackupShortTermRetentionPolicy(ctx *pulumi.Context, args *LookupBackupShortTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupShortTermRetentionPolicyResult, error) {
 	var rv LookupBackupShortTermRetentionPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getBackupShortTermRetentionPolicy", args, &rv, opts...)

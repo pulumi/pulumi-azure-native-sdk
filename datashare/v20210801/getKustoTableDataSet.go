@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A kusto table data set.
+// Get a DataSet in a share
 func LookupKustoTableDataSet(ctx *pulumi.Context, args *LookupKustoTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupKustoTableDataSetResult, error) {
 	var rv LookupKustoTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getKustoTableDataSet", args, &rv, opts...)

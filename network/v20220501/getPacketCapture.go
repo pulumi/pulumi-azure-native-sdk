@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about packet capture session.
+// Gets a packet capture session by name.
 func LookupPacketCapture(ctx *pulumi.Context, args *LookupPacketCaptureArgs, opts ...pulumi.InvokeOption) (*LookupPacketCaptureResult, error) {
 	var rv LookupPacketCaptureResult
 	err := ctx.Invoke("azure-native:network/v20220501:getPacketCapture", args, &rv, opts...)

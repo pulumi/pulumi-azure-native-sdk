@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ExpressRoutePort resource definition.
+// Retrieves the requested ExpressRoutePort resource.
 // API Version: 2020-11-01.
 func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortResult, error) {
 	var rv LookupExpressRoutePortResult

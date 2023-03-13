@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents NRT alert rule.
+// Gets the alert rule.
 func LookupNrtAlertRule(ctx *pulumi.Context, args *LookupNrtAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupNrtAlertRuleResult, error) {
 	var rv LookupNrtAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801preview:getNrtAlertRule", args, &rv, opts...)

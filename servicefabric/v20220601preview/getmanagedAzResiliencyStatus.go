@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the result of the request to list Managed VM Sizes for Service Fabric Managed Clusters.
+// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
 func GetmanagedAzResiliencyStatus(ctx *pulumi.Context, args *GetmanagedAzResiliencyStatusArgs, opts ...pulumi.InvokeOption) (*GetmanagedAzResiliencyStatusResult, error) {
 	var rv GetmanagedAzResiliencyStatusResult
 	err := ctx.Invoke("azure-native:servicefabric/v20220601preview:getmanagedAzResiliencyStatus", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Database Migration Resource for SQL Database.
+// Retrieve the Database Migration resource.
 // API Version: 2022-03-30-preview.
 func LookupDatabaseMigrationsSqlDb(ctx *pulumi.Context, args *LookupDatabaseMigrationsSqlDbArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsSqlDbResult, error) {
 	var rv LookupDatabaseMigrationsSqlDbResult

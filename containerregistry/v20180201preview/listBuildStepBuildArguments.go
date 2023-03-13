@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of build arguments for a build step.
+// List the build arguments for a step including the secret arguments.
 func ListBuildStepBuildArguments(ctx *pulumi.Context, args *ListBuildStepBuildArgumentsArgs, opts ...pulumi.InvokeOption) (*ListBuildStepBuildArgumentsResult, error) {
 	var rv ListBuildStepBuildArgumentsResult
 	err := ctx.Invoke("azure-native:containerregistry/v20180201preview:listBuildStepBuildArguments", args, &rv, opts...)

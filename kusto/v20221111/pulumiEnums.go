@@ -246,11 +246,9 @@ const (
 type LanguageExtensionImageName string
 
 const (
-	LanguageExtensionImageNameR                                = LanguageExtensionImageName("R")
-	LanguageExtensionImageName_Python3_6_5                     = LanguageExtensionImageName("Python3_6_5")
-	LanguageExtensionImageName_Python3_9_12                    = LanguageExtensionImageName("Python3_9_12")
-	LanguageExtensionImageName_Python3_9_12IncludeDeepLearning = LanguageExtensionImageName("Python3_9_12IncludeDeepLearning")
-	LanguageExtensionImageName_Python3_10_8                    = LanguageExtensionImageName("Python3_10_8")
+	LanguageExtensionImageNameR             = LanguageExtensionImageName("R")
+	LanguageExtensionImageName_Python3_6_5  = LanguageExtensionImageName("Python3_6_5")
+	LanguageExtensionImageName_Python3_10_8 = LanguageExtensionImageName("Python3_10_8")
 )
 
 // The language extension name.

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An IPv6 server firewall rule.
+// Gets an IPv6 firewall rule.
 func LookupIPv6FirewallRule(ctx *pulumi.Context, args *LookupIPv6FirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIPv6FirewallRuleResult, error) {
 	var rv LookupIPv6FirewallRuleResult
 	err := ctx.Invoke("azure-native:sql/v20220201preview:getIPv6FirewallRule", args, &rv, opts...)

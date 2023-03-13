@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A database security alert policy.
+// Gets a database's security alert policy.
 func LookupDatabaseSecurityAlertPolicy(ctx *pulumi.Context, args *LookupDatabaseSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseSecurityAlertPolicyResult, error) {
 	var rv LookupDatabaseSecurityAlertPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20210201preview:getDatabaseSecurityAlertPolicy", args, &rv, opts...)

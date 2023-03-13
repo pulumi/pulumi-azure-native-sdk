@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource information with extended details.
+// Gets the specified managed HSM Pool.
 func LookupManagedHsm(ctx *pulumi.Context, args *LookupManagedHsmArgs, opts ...pulumi.InvokeOption) (*LookupManagedHsmResult, error) {
 	var rv LookupManagedHsmResult
 	err := ctx.Invoke("azure-native:keyvault/v20220701:getManagedHsm", args, &rv, opts...)

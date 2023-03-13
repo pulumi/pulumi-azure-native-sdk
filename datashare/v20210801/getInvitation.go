@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Invitation data transfer object.
+// Get an invitation in a share
 func LookupInvitation(ctx *pulumi.Context, args *LookupInvitationArgs, opts ...pulumi.InvokeOption) (*LookupInvitationResult, error) {
 	var rv LookupInvitationResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getInvitation", args, &rv, opts...)

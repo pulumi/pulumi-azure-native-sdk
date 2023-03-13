@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data store.
+// This method gets the data store/repository by name.
 func LookupDataStore(ctx *pulumi.Context, args *LookupDataStoreArgs, opts ...pulumi.InvokeOption) (*LookupDataStoreResult, error) {
 	var rv LookupDataStoreResult
 	err := ctx.Invoke("azure-native:hybriddata/v20190601:getDataStore", args, &rv, opts...)

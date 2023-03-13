@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of an auto scale v-core resource.
+// Gets details about the specified auto scale v-core.
 func LookupAutoScaleVCore(ctx *pulumi.Context, args *LookupAutoScaleVCoreArgs, opts ...pulumi.InvokeOption) (*LookupAutoScaleVCoreResult, error) {
 	var rv LookupAutoScaleVCoreResult
 	err := ctx.Invoke("azure-native:powerbidedicated/v20210101:getAutoScaleVCore", args, &rv, opts...)

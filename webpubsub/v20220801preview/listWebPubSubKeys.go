@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class represents the access keys of the resource.
+// Get the access keys of the resource.
 func ListWebPubSubKeys(ctx *pulumi.Context, args *ListWebPubSubKeysArgs, opts ...pulumi.InvokeOption) (*ListWebPubSubKeysResult, error) {
 	var rv ListWebPubSubKeysResult
 	err := ctx.Invoke("azure-native:webpubsub/v20220801preview:listWebPubSubKeys", args, &rv, opts...)

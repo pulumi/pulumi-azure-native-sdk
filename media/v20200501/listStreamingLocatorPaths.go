@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class of response for listPaths action
+// List Paths supported by this Streaming Locator
 func ListStreamingLocatorPaths(ctx *pulumi.Context, args *ListStreamingLocatorPathsArgs, opts ...pulumi.InvokeOption) (*ListStreamingLocatorPathsResult, error) {
 	var rv ListStreamingLocatorPathsResult
 	err := ctx.Invoke("azure-native:media/v20200501:listStreamingLocatorPaths", args, &rv, opts...)

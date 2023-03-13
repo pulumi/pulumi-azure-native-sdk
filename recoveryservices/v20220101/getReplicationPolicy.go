@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Protection profile details.
+// Gets the details of a replication policy.
 func LookupReplicationPolicy(ctx *pulumi.Context, args *LookupReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupReplicationPolicyResult, error) {
 	var rv LookupReplicationPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220101:getReplicationPolicy", args, &rv, opts...)

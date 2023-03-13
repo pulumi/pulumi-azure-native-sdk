@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of Dicom Service
+// Gets the properties of the specified DICOM Service.
 func LookupDicomService(ctx *pulumi.Context, args *LookupDicomServiceArgs, opts ...pulumi.InvokeOption) (*LookupDicomServiceResult, error) {
 	var rv LookupDicomServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20221001preview:getDicomService", args, &rv, opts...)

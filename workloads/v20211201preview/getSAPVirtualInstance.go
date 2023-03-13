@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the Virtual Instance for SAP solutions resource.
+// Gets a Virtual Instance for SAP solutions resource
 func LookupSAPVirtualInstance(ctx *pulumi.Context, args *LookupSAPVirtualInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPVirtualInstanceResult, error) {
 	var rv LookupSAPVirtualInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPVirtualInstance", args, &rv, opts...)

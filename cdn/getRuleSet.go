@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Friendly RuleSet name mapping to the any RuleSet or secret related information.
+// Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 // API Version: 2020-09-01.
 func LookupRuleSet(ctx *pulumi.Context, args *LookupRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupRuleSetResult, error) {
 	var rv LookupRuleSetResult

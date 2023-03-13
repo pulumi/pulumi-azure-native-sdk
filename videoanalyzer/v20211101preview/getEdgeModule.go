@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The representation of an edge module.
+// Retrieves an existing edge module resource with the given name.
 func LookupEdgeModule(ctx *pulumi.Context, args *LookupEdgeModuleArgs, opts ...pulumi.InvokeOption) (*LookupEdgeModuleResult, error) {
 	var rv LookupEdgeModuleResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20211101preview:getEdgeModule", args, &rv, opts...)

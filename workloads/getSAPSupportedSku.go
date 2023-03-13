@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of supported SKUs for different resources which are part of SAP deployment.
+// Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 // API Version: 2021-12-01-preview.
 func GetSAPSupportedSku(ctx *pulumi.Context, args *GetSAPSupportedSkuArgs, opts ...pulumi.InvokeOption) (*GetSAPSupportedSkuResult, error) {
 	var rv GetSAPSupportedSkuResult

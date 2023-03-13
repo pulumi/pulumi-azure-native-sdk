@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents AAD (Azure Active Directory) data connector.
+// Gets a data connector.
 func LookupAADDataConnector(ctx *pulumi.Context, args *LookupAADDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAADDataConnectorResult, error) {
 	var rv LookupAADDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getAADDataConnector", args, &rv, opts...)

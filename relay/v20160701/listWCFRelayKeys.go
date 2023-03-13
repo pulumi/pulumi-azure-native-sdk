@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Namespace/Relay Connection String
+// Primary and Secondary ConnectionStrings to the WCFRelays.
 func ListWCFRelayKeys(ctx *pulumi.Context, args *ListWCFRelayKeysArgs, opts ...pulumi.InvokeOption) (*ListWCFRelayKeysResult, error) {
 	var rv ListWCFRelayKeysResult
 	err := ctx.Invoke("azure-native:relay/v20160701:listWCFRelayKeys", args, &rv, opts...)

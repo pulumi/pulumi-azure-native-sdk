@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response to a live token query.
+// **Gets an access token for live metrics stream data.**
 // API Version: 2020-06-02-preview.
 func GetLiveToken(ctx *pulumi.Context, args *GetLiveTokenArgs, opts ...pulumi.InvokeOption) (*GetLiveTokenResult, error) {
 	var rv GetLiveTokenResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workload classifier operations for a data warehouse
+// Gets a workload classifier
 func LookupWorkloadClassifier(ctx *pulumi.Context, args *LookupWorkloadClassifierArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadClassifierResult, error) {
 	var rv LookupWorkloadClassifierResult
 	err := ctx.Invoke("azure-native:sql/v20200202preview:getWorkloadClassifier", args, &rv, opts...)

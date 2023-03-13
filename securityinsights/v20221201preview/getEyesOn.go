@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Settings with single toggle.
+// Gets a setting.
 func LookupEyesOn(ctx *pulumi.Context, args *LookupEyesOnArgs, opts ...pulumi.InvokeOption) (*LookupEyesOnResult, error) {
 	var rv LookupEyesOnResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getEyesOn", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
+// Gets a Storage Mover resource.
 // API Version: 2022-07-01-preview.
 func LookupStorageMover(ctx *pulumi.Context, args *LookupStorageMoverArgs, opts ...pulumi.InvokeOption) (*LookupStorageMoverResult, error) {
 	var rv LookupStorageMoverResult

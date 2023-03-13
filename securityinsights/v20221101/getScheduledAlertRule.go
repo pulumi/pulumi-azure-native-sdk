@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents scheduled alert rule.
+// Gets the alert rule.
 func LookupScheduledAlertRule(ctx *pulumi.Context, args *LookupScheduledAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledAlertRuleResult, error) {
 	var rv LookupScheduledAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221101:getScheduledAlertRule", args, &rv, opts...)

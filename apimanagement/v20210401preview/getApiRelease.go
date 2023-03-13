@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ApiRelease details.
+// Returns the details of an API release.
 func LookupApiRelease(ctx *pulumi.Context, args *LookupApiReleaseArgs, opts ...pulumi.InvokeOption) (*LookupApiReleaseResult, error) {
 	var rv LookupApiReleaseResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210401preview:getApiRelease", args, &rv, opts...)

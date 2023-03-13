@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// StaticMember Item.
+// Gets the specified static member.
 func LookupStaticMember(ctx *pulumi.Context, args *LookupStaticMemberArgs, opts ...pulumi.InvokeOption) (*LookupStaticMemberResult, error) {
 	var rv LookupStaticMemberResult
 	err := ctx.Invoke("azure-native:network/v20220701:getStaticMember", args, &rv, opts...)

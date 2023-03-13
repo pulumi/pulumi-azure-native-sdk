@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a read write database.
+// Returns a database.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20200918:getReadWriteDatabase", args, &rv, opts...)

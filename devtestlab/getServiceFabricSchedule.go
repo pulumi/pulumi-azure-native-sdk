@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A schedule.
+// Get schedule.
 // API Version: 2018-09-15.
 func LookupServiceFabricSchedule(ctx *pulumi.Context, args *LookupServiceFabricScheduleArgs, opts ...pulumi.InvokeOption) (*LookupServiceFabricScheduleResult, error) {
 	var rv LookupServiceFabricScheduleResult

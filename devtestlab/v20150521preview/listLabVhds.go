@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response of a list operation.
+// List disk images available for custom image creation.
 func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.InvokeOption) (*ListLabVhdsResult, error) {
 	var rv ListLabVhdsResult
 	err := ctx.Invoke("azure-native:devtestlab/v20150521preview:listLabVhds", args, &rv, opts...)

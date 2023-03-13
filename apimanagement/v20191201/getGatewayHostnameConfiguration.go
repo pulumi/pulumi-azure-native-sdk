@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gateway hostname configuration details.
+// Gets the details of the Gateway hostname configuration specified by its identifier.
 func LookupGatewayHostnameConfiguration(ctx *pulumi.Context, args *LookupGatewayHostnameConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupGatewayHostnameConfigurationResult, error) {
 	var rv LookupGatewayHostnameConfigurationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201:getGatewayHostnameConfiguration", args, &rv, opts...)

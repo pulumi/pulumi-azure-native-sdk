@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A virtual network.
+// Get virtual network.
 //
 // Deprecated: Version 2015-05-21-preview will be removed in v2 of the provider.
 func LookupVirtualNetworkResource(ctx *pulumi.Context, args *LookupVirtualNetworkResourceArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResourceResult, error) {

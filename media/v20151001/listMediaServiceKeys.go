@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response body for a ListKeys API.
+// Lists the keys for a Media Service.
 func ListMediaServiceKeys(ctx *pulumi.Context, args *ListMediaServiceKeysArgs, opts ...pulumi.InvokeOption) (*ListMediaServiceKeysResult, error) {
 	var rv ListMediaServiceKeysResult
 	err := ctx.Invoke("azure-native:media/v20151001:listMediaServiceKeys", args, &rv, opts...)

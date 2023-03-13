@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Account Filter.
+// Get the details of an Account Filter in the Media Services account.
 func LookupAccountFilter(ctx *pulumi.Context, args *LookupAccountFilterArgs, opts ...pulumi.InvokeOption) (*LookupAccountFilterResult, error) {
 	var rv LookupAccountFilterResult
 	err := ctx.Invoke("azure-native:media/v20200501:getAccountFilter", args, &rv, opts...)

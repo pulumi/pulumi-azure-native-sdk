@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The properties of a response to source upload request.
+// Get the upload location for the user to be able to upload the source.
 func ListRegistryBuildSourceUploadUrl(ctx *pulumi.Context, args *ListRegistryBuildSourceUploadUrlArgs, opts ...pulumi.InvokeOption) (*ListRegistryBuildSourceUploadUrlResult, error) {
 	var rv ListRegistryBuildSourceUploadUrlResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190601preview:listRegistryBuildSourceUploadUrl", args, &rv, opts...)

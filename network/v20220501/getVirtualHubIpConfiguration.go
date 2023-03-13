@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IpConfigurations.
+// Retrieves the details of a Virtual Hub Ip configuration.
 func LookupVirtualHubIpConfiguration(ctx *pulumi.Context, args *LookupVirtualHubIpConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubIpConfigurationResult, error) {
 	var rv LookupVirtualHubIpConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20220501:getVirtualHubIpConfiguration", args, &rv, opts...)

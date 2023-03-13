@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Hybrid Connection contract. This is used to configure a Hybrid Connection.
+// Retrieves a specific Service Bus Hybrid Connection used by this Web App.
 // API Version: 2020-12-01.
 func LookupWebAppHybridConnection(ctx *pulumi.Context, args *LookupWebAppHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionResult, error) {
 	var rv LookupWebAppHybridConnectionResult

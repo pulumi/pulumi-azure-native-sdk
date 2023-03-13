@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Governance rule over a given scope
+// Get a specific governance rule for the requested scope by ruleId
 func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, opts ...pulumi.InvokeOption) (*LookupGovernanceRuleResult, error) {
 	var rv LookupGovernanceRuleResult
 	err := ctx.Invoke("azure-native:security/v20220101preview:getGovernanceRule", args, &rv, opts...)

@@ -73,6 +73,12 @@ func NewSAPCentralInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:SAPCentralInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20221101preview:SAPCentralInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20230401:SAPCentralInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SAPCentralInstance

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace authorization keys for a workspace.
+// List the authorization keys associated with this workspace.
 func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceKeysResult, error) {
 	var rv ListWorkspaceKeysResult
 	err := ctx.Invoke("azure-native:machinelearning/v20191001:listWorkspaceKeys", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// the ISV access token result response.
+// Gets the ISV access token for a SaaS resource.
 // API Version: 2018-03-01-beta.
 func ListSaasResourceAccessToken(ctx *pulumi.Context, args *ListSaasResourceAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasResourceAccessTokenResult, error) {
 	var rv ListSaasResourceAccessTokenResult

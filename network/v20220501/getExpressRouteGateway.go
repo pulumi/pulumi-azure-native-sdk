@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ExpressRoute gateway resource.
+// Fetches the details of a ExpressRoute gateway in a resource group.
 func LookupExpressRouteGateway(ctx *pulumi.Context, args *LookupExpressRouteGatewayArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteGatewayResult, error) {
 	var rv LookupExpressRouteGatewayResult
 	err := ctx.Invoke("azure-native:network/v20220501:getExpressRouteGateway", args, &rv, opts...)

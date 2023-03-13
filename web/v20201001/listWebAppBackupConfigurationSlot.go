@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of a backup which will be performed.
+// Gets the backup configuration of an app.
 func ListWebAppBackupConfigurationSlot(ctx *pulumi.Context, args *ListWebAppBackupConfigurationSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppBackupConfigurationSlotResult, error) {
 	var rv ListWebAppBackupConfigurationSlotResult
 	err := ctx.Invoke("azure-native:web/v20201001:listWebAppBackupConfigurationSlot", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the request to list active connectivity configurations. It contains a list of active connectivity configurations and a skiptoken to get the next set of results.
+// Lists active connectivity configurations in a network manager.
 func ListActiveConnectivityConfigurations(ctx *pulumi.Context, args *ListActiveConnectivityConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListActiveConnectivityConfigurationsResult, error) {
 	var rv ListActiveConnectivityConfigurationsResult
 	err := ctx.Invoke("azure-native:network/v20220501:listActiveConnectivityConfigurations", args, &rv, opts...)

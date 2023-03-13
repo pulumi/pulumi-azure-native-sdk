@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SQL virtual machine group.
+// Gets a SQL virtual machine group.
 func LookupSqlVirtualMachineGroup(ctx *pulumi.Context, args *LookupSqlVirtualMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlVirtualMachineGroupResult, error) {
 	var rv LookupSqlVirtualMachineGroupResult
 	err := ctx.Invoke("azure-native:sqlvirtualmachine/v20220201preview:getSqlVirtualMachineGroup", args, &rv, opts...)

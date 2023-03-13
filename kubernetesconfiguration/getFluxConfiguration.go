@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flux Configuration object returned in Get & Put response.
+// Gets details of the Flux Configuration.
 // API Version: 2021-11-01-preview.
 func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupFluxConfigurationResult, error) {
 	var rv LookupFluxConfigurationResult

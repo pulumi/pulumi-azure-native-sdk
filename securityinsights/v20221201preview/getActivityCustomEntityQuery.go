@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Activity entity query.
+// Gets an entity query.
 func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupActivityCustomEntityQueryResult, error) {
 	var rv LookupActivityCustomEntityQueryResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getActivityCustomEntityQuery", args, &rv, opts...)

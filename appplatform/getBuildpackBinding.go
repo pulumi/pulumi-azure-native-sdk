@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Buildpack Binding Resource object
+// Get a buildpack binding by name.
 // API Version: 2022-01-01-preview.
 func LookupBuildpackBinding(ctx *pulumi.Context, args *LookupBuildpackBindingArgs, opts ...pulumi.InvokeOption) (*LookupBuildpackBindingResult, error) {
 	var rv LookupBuildpackBindingResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The network group resource
+// Gets the specified network group.
 func LookupNetworkGroup(ctx *pulumi.Context, args *LookupNetworkGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkGroupResult, error) {
 	var rv LookupNetworkGroupResult
 	err := ctx.Invoke("azure-native:network/v20220101:getNetworkGroup", args, &rv, opts...)

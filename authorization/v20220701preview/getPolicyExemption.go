@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The policy exemption.
+// This operation retrieves a single policy exemption, given its name and the scope it was created at.
 func LookupPolicyExemption(ctx *pulumi.Context, args *LookupPolicyExemptionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyExemptionResult, error) {
 	var rv LookupPolicyExemptionResult
 	err := ctx.Invoke("azure-native:authorization/v20220701preview:getPolicyExemption", args, &rv, opts...)

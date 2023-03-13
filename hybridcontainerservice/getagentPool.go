@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The agentPool resource definition
+// Gets the agent pool in the Hybrid AKS provisioned cluster
 // API Version: 2022-05-01-preview.
 func GetagentPool(ctx *pulumi.Context, args *GetagentPoolArgs, opts ...pulumi.InvokeOption) (*GetagentPoolResult, error) {
 	var rv GetagentPoolResult

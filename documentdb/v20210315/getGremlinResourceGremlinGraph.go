@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Gremlin graph.
+// Gets the Gremlin graph under an existing Azure Cosmos DB database account.
 func LookupGremlinResourceGremlinGraph(ctx *pulumi.Context, args *LookupGremlinResourceGremlinGraphArgs, opts ...pulumi.InvokeOption) (*LookupGremlinResourceGremlinGraphResult, error) {
 	var rv LookupGremlinResourceGremlinGraphResult
 	err := ctx.Invoke("azure-native:documentdb/v20210315:getGremlinResourceGremlinGraph", args, &rv, opts...)

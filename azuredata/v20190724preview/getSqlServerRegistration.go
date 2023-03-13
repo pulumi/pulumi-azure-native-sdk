@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SQL server registration.
+// Gets a SQL Server registration.
 func LookupSqlServerRegistration(ctx *pulumi.Context, args *LookupSqlServerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerRegistrationResult, error) {
 	var rv LookupSqlServerRegistrationResult
 	err := ctx.Invoke("azure-native:azuredata/v20190724preview:getSqlServerRegistration", args, &rv, opts...)

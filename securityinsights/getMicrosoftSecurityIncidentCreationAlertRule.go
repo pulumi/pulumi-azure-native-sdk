@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents MicrosoftSecurityIncidentCreation rule.
+// Gets the alert rule.
 // API Version: 2020-01-01.
 func LookupMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context, args *LookupMicrosoftSecurityIncidentCreationAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupMicrosoftSecurityIncidentCreationAlertRuleResult, error) {
 	var rv LookupMicrosoftSecurityIncidentCreationAlertRuleResult

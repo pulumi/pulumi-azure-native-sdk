@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response of a list operation.
+// Lists all applicable schedules
 func ListScheduleApplicable(ctx *pulumi.Context, args *ListScheduleApplicableArgs, opts ...pulumi.InvokeOption) (*ListScheduleApplicableResult, error) {
 	var rv ListScheduleApplicableResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:listScheduleApplicable", args, &rv, opts...)

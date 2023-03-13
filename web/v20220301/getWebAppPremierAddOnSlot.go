@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Premier add-on.
+// Description for Gets a named add-on of an app.
 func LookupWebAppPremierAddOnSlot(ctx *pulumi.Context, args *LookupWebAppPremierAddOnSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPremierAddOnSlotResult, error) {
 	var rv LookupWebAppPremierAddOnSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppPremierAddOnSlot", args, &rv, opts...)

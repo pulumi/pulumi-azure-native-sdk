@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Collector policy resource.
+// Gets the collector policy in a specified Traffic Collector
 // API Version: 2022-05-01.
 func LookupCollectorPolicy(ctx *pulumi.Context, args *LookupCollectorPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCollectorPolicyResult, error) {
 	var rv LookupCollectorPolicyResult

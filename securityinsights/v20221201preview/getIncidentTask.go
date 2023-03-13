@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets an incident task.
 func LookupIncidentTask(ctx *pulumi.Context, args *LookupIncidentTaskArgs, opts ...pulumi.InvokeOption) (*LookupIncidentTaskResult, error) {
 	var rv LookupIncidentTaskResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getIncidentTask", args, &rv, opts...)

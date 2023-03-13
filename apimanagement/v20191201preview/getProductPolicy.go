@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Policy Contract details.
+// Get the policy configuration at the Product level.
 func LookupProductPolicy(ctx *pulumi.Context, args *LookupProductPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProductPolicyResult, error) {
 	var rv LookupProductPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201preview:getProductPolicy", args, &rv, opts...)

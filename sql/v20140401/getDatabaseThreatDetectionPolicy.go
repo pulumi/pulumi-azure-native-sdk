@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Contains information about a database Threat Detection policy.
+// Gets a database's threat detection policy.
 func LookupDatabaseThreatDetectionPolicy(ctx *pulumi.Context, args *LookupDatabaseThreatDetectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseThreatDetectionPolicyResult, error) {
 	var rv LookupDatabaseThreatDetectionPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20140401:getDatabaseThreatDetectionPolicy", args, &rv, opts...)

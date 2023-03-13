@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a DNS record set (a collection of DNS records with the same name and type).
+// Gets a record set.
 //
 // Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
 func LookupRecordSet(ctx *pulumi.Context, args *LookupRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupRecordSetResult, error) {

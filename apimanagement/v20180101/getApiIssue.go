@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Issue Contract details.
+// Gets the details of the Issue for an API specified by its identifier.
 func LookupApiIssue(ctx *pulumi.Context, args *LookupApiIssueArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueResult, error) {
 	var rv LookupApiIssueResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getApiIssue", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// RemoteRenderingAccount Response.
+// Retrieve a Remote Rendering Account.
 func LookupRemoteRenderingAccount(ctx *pulumi.Context, args *LookupRemoteRenderingAccountArgs, opts ...pulumi.InvokeOption) (*LookupRemoteRenderingAccountResult, error) {
 	var rv LookupRemoteRenderingAccountResult
 	err := ctx.Invoke("azure-native:mixedreality/v20210301preview:getRemoteRenderingAccount", args, &rv, opts...)

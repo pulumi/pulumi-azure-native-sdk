@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Lists connection keys.
 func ListConnectionKeys(ctx *pulumi.Context, args *ListConnectionKeysArgs, opts ...pulumi.InvokeOption) (*ListConnectionKeysResult, error) {
 	var rv ListConnectionKeysResult
 	err := ctx.Invoke("azure-native:web/v20150801preview:listConnectionKeys", args, &rv, opts...)

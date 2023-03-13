@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A DataSet data transfer object.
+// Get a DataSet in a share
 //
 // Deprecated: Version 2018-11-01-preview will be removed in v2 of the provider.
 func LookupDataSet(ctx *pulumi.Context, args *LookupDataSetArgs, opts ...pulumi.InvokeOption) (*LookupDataSetResult, error) {

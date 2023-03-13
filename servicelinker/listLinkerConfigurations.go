@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configurations for source resource, include appSettings, connectionString and serviceBindings
+// list source configurations for a linker.
 // API Version: 2021-11-01-preview.
 func ListLinkerConfigurations(ctx *pulumi.Context, args *ListLinkerConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListLinkerConfigurationsResult, error) {
 	var rv ListLinkerConfigurationsResult

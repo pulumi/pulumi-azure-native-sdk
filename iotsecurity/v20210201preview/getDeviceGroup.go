@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Device group
+// Get device group
 func LookupDeviceGroup(ctx *pulumi.Context, args *LookupDeviceGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceGroupResult, error) {
 	var rv LookupDeviceGroupResult
 	err := ctx.Invoke("azure-native:iotsecurity/v20210201preview:getDeviceGroup", args, &rv, opts...)

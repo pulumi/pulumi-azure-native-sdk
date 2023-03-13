@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The integration service environment managed api.
+// Gets the integration service environment managed Api.
 func LookupIntegrationServiceEnvironmentManagedApi(ctx *pulumi.Context, args *LookupIntegrationServiceEnvironmentManagedApiArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationServiceEnvironmentManagedApiResult, error) {
 	var rv LookupIntegrationServiceEnvironmentManagedApiResult
 	err := ctx.Invoke("azure-native:logic/v20190501:getIntegrationServiceEnvironmentManagedApi", args, &rv, opts...)

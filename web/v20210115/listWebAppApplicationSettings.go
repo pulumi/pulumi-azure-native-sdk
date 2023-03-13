@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// String dictionary resource.
+// Gets the application settings of an app.
 func ListWebAppApplicationSettings(ctx *pulumi.Context, args *ListWebAppApplicationSettingsArgs, opts ...pulumi.InvokeOption) (*ListWebAppApplicationSettingsResult, error) {
 	var rv ListWebAppApplicationSettingsResult
 	err := ctx.Invoke("azure-native:web/v20210115:listWebAppApplicationSettings", args, &rv, opts...)

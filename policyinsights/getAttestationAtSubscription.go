@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An attestation resource.
+// Gets an existing attestation at subscription scope.
 // API Version: 2021-01-01.
 func LookupAttestationAtSubscription(ctx *pulumi.Context, args *LookupAttestationAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtSubscriptionResult, error) {
 	var rv LookupAttestationAtSubscriptionResult

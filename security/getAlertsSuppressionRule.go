@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the suppression rule
+// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
 // API Version: 2019-01-01-preview.
 func LookupAlertsSuppressionRule(ctx *pulumi.Context, args *LookupAlertsSuppressionRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertsSuppressionRuleResult, error) {
 	var rv LookupAlertsSuppressionRuleResult

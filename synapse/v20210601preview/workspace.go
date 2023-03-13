@@ -28,7 +28,7 @@ type Workspace struct {
 	// The encryption details of the workspace
 	Encryption EncryptionDetailsResponsePtrOutput `pulumi:"encryption"`
 	// Workspace level configs and feature flags
-	ExtraProperties pulumi.MapOutput `pulumi:"extraProperties"`
+	ExtraProperties pulumi.AnyOutput `pulumi:"extraProperties"`
 	// Identity of the workspace
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -295,8 +295,8 @@ func (o WorkspaceOutput) Encryption() EncryptionDetailsResponsePtrOutput {
 }
 
 // Workspace level configs and feature flags
-func (o WorkspaceOutput) ExtraProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.MapOutput { return v.ExtraProperties }).(pulumi.MapOutput)
+func (o WorkspaceOutput) ExtraProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.AnyOutput { return v.ExtraProperties }).(pulumi.AnyOutput)
 }
 
 // Identity of the workspace

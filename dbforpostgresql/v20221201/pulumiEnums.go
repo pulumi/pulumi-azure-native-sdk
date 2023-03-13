@@ -11,12 +11,12 @@ const (
 	ActiveDirectoryAuthEnumDisabled = ActiveDirectoryAuthEnum("Disabled")
 )
 
-// Data encryption type to depict if it is System assigned vs Azure Key vault.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 type ArmServerKeyType string
 
 const (
-	ArmServerKeyTypeSystemAssigned = ArmServerKeyType("SystemAssigned")
-	ArmServerKeyTypeAzureKeyVault  = ArmServerKeyType("AzureKeyVault")
+	ArmServerKeyTypeSystemManaged = ArmServerKeyType("SystemManaged")
+	ArmServerKeyTypeAzureKeyVault = ArmServerKeyType("AzureKeyVault")
 )
 
 // The mode to create a new PostgreSQL server.

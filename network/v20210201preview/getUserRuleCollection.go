@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the rule collection.
+// Gets a network manager security user configuration rule collection.
 func LookupUserRuleCollection(ctx *pulumi.Context, args *LookupUserRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleCollectionResult, error) {
 	var rv LookupUserRuleCollectionResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getUserRuleCollection", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+// Gets the specified Express Route Circuit Connection from the specified express route circuit.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
 func LookupExpressRouteCircuitConnection(ctx *pulumi.Context, args *LookupExpressRouteCircuitConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitConnectionResult, error) {

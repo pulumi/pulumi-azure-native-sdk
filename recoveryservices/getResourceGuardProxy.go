@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Returns ResourceGuardProxy under vault and with the name referenced in request
 // API Version: 2021-02-01-preview.
 func LookupResourceGuardProxy(ctx *pulumi.Context, args *LookupResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardProxyResult, error) {
 	var rv LookupResourceGuardProxyResult

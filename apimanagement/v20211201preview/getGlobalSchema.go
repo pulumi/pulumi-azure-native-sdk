@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Global Schema Contract details.
+// Gets the details of the Schema specified by its identifier.
 func LookupGlobalSchema(ctx *pulumi.Context, args *LookupGlobalSchemaArgs, opts ...pulumi.InvokeOption) (*LookupGlobalSchemaResult, error) {
 	var rv LookupGlobalSchemaResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getGlobalSchema", args, &rv, opts...)

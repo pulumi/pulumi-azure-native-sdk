@@ -123,7 +123,6 @@ const (
 	ApplicationGatewaySkuName_WAF_Medium      = ApplicationGatewaySkuName("WAF_Medium")
 	ApplicationGatewaySkuName_WAF_Large       = ApplicationGatewaySkuName("WAF_Large")
 	ApplicationGatewaySkuName_Standard_v2     = ApplicationGatewaySkuName("Standard_v2")
-	ApplicationGatewaySkuName_Standard_Basic  = ApplicationGatewaySkuName("Standard_Basic")
 	ApplicationGatewaySkuName_WAF_v2          = ApplicationGatewaySkuName("WAF_v2")
 )
 
@@ -195,11 +194,10 @@ const (
 type ApplicationGatewayTier string
 
 const (
-	ApplicationGatewayTierStandard        = ApplicationGatewayTier("Standard")
-	ApplicationGatewayTierWAF             = ApplicationGatewayTier("WAF")
-	ApplicationGatewayTier_Standard_v2    = ApplicationGatewayTier("Standard_v2")
-	ApplicationGatewayTier_WAF_v2         = ApplicationGatewayTier("WAF_v2")
-	ApplicationGatewayTier_Standard_Basic = ApplicationGatewayTier("Standard_Basic")
+	ApplicationGatewayTierStandard     = ApplicationGatewayTier("Standard")
+	ApplicationGatewayTierWAF          = ApplicationGatewayTier("WAF")
+	ApplicationGatewayTier_Standard_v2 = ApplicationGatewayTier("Standard_v2")
+	ApplicationGatewayTier_WAF_v2      = ApplicationGatewayTier("WAF_v2")
 )
 
 // The authorization use status.

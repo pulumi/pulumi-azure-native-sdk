@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// Gets the specified private endpoint connection associated with the workspace.
 // API Version: 2022-05-15.
 func LookupWorkspacePrivateEndpointConnection(ctx *pulumi.Context, args *LookupWorkspacePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePrivateEndpointConnectionResult, error) {
 	var rv LookupWorkspacePrivateEndpointConnectionResult

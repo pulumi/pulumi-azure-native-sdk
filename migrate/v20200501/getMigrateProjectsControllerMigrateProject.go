@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Migrate project.
+// Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
 func LookupMigrateProjectsControllerMigrateProject(ctx *pulumi.Context, args *LookupMigrateProjectsControllerMigrateProjectArgs, opts ...pulumi.InvokeOption) (*LookupMigrateProjectsControllerMigrateProjectResult, error) {
 	var rv LookupMigrateProjectsControllerMigrateProjectResult
 	err := ctx.Invoke("azure-native:migrate/v20200501:getMigrateProjectsControllerMigrateProject", args, &rv, opts...)

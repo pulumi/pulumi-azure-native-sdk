@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Scope Connections resource
+// Get specified scope connection created by this Network Manager.
 func LookupScopeConnection(ctx *pulumi.Context, args *LookupScopeConnectionArgs, opts ...pulumi.InvokeOption) (*LookupScopeConnectionResult, error) {
 	var rv LookupScopeConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220101:getScopeConnection", args, &rv, opts...)

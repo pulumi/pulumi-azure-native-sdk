@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IpAllocation resource.
+// Gets the specified IpAllocation by resource group.
 func LookupIpAllocation(ctx *pulumi.Context, args *LookupIpAllocationArgs, opts ...pulumi.InvokeOption) (*LookupIpAllocationResult, error) {
 	var rv LookupIpAllocationResult
 	err := ctx.Invoke("azure-native:network/v20200701:getIpAllocation", args, &rv, opts...)

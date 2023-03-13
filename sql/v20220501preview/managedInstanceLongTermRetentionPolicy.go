@@ -45,6 +45,12 @@ func NewManagedInstanceLongTermRetentionPolicy(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstanceLongTermRetentionPolicy"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ManagedInstanceLongTermRetentionPolicy
 	err := ctx.RegisterResource("azure-native:sql/v20220501preview:ManagedInstanceLongTermRetentionPolicy", name, args, &resource, opts...)
 	if err != nil {

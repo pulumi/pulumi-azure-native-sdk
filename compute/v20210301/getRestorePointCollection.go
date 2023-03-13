@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create or update Restore Point collection parameters.
+// The operation to get the restore point collection.
 func LookupRestorePointCollection(ctx *pulumi.Context, args *LookupRestorePointCollectionArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointCollectionResult, error) {
 	var rv LookupRestorePointCollectionResult
 	err := ctx.Invoke("azure-native:compute/v20210301:getRestorePointCollection", args, &rv, opts...)

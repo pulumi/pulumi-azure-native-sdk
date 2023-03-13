@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Complete information about the private endpoint.
+// Gets information about the specified Private Endpoint.
 func LookupPrivateEndpoint(ctx *pulumi.Context, args *LookupPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointResult, error) {
 	var rv LookupPrivateEndpointResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20200301:getPrivateEndpoint", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ArcSetting details.
+// Get ArcSetting resource details of HCI Cluster.
 // API Version: 2021-01-01-preview.
 func LookupArcSetting(ctx *pulumi.Context, args *LookupArcSettingArgs, opts ...pulumi.InvokeOption) (*LookupArcSettingResult, error) {
 	var rv LookupArcSettingResult

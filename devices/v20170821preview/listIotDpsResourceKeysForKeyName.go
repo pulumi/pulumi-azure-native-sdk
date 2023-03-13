@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of the shared access key.
+// Get a shared access policy by name from a provisioning service.
 func ListIotDpsResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotDpsResourceKeysForKeyNameArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysForKeyNameResult, error) {
 	var rv ListIotDpsResourceKeysForKeyNameResult
 	err := ctx.Invoke("azure-native:devices/v20170821preview:listIotDpsResourceKeysForKeyName", args, &rv, opts...)
