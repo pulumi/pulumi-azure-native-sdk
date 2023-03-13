@@ -10,7 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The management group details.
+// Get the details of the management group.
+//
 // API Version: 2020-05-01.
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {
 	var rv LookupManagementGroupResult

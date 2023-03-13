@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of a DNC controller.
+// Gets details about the specified dnc controller.
 func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupControllerDetailsResult, error) {
 	var rv LookupControllerDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork/v20210315:getControllerDetails", args, &rv, opts...)

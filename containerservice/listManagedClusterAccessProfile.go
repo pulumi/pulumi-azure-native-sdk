@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Managed cluster Access Profile.
+// Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
 // API Version: 2020-03-01.
 func ListManagedClusterAccessProfile(ctx *pulumi.Context, args *ListManagedClusterAccessProfileArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAccessProfileResult, error) {
 	var rv ListManagedClusterAccessProfileResult

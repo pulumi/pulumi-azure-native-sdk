@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Network Manager Connection resource
+// Get a specified connection created by this management group.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
 	var rv LookupManagementGroupNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220101:getManagementGroupNetworkManagerConnection", args, &rv, opts...)

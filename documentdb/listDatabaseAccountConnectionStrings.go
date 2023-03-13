@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The connection strings for the given database account.
+// Lists the connection strings for the specified Azure Cosmos DB database account.
 // API Version: 2021-03-15.
 func ListDatabaseAccountConnectionStrings(ctx *pulumi.Context, args *ListDatabaseAccountConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListDatabaseAccountConnectionStringsResult, error) {
 	var rv ListDatabaseAccountConnectionStringsResult

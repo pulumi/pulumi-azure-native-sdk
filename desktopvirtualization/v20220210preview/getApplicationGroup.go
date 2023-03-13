@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a ApplicationGroup definition.
+// Get an application group.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	var rv LookupApplicationGroupResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20220210preview:getApplicationGroup", args, &rv, opts...)

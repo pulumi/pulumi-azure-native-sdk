@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB userDefinedFunction.
+// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
 //
 // Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
 func LookupSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context, args *LookupSqlResourceSqlUserDefinedFunctionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlUserDefinedFunctionResult, error) {

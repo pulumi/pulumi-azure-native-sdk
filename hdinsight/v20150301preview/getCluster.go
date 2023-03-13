@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The HDInsight cluster.
+// Gets the specified cluster.
 //
 // Deprecated: Version 2015-03-01-preview will be removed in v2 of the provider.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {

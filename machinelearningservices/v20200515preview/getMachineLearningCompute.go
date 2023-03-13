@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning compute object wrapped into ARM resource envelope.
+// Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.
 func LookupMachineLearningCompute(ctx *pulumi.Context, args *LookupMachineLearningComputeArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningComputeResult, error) {
 	var rv LookupMachineLearningComputeResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200515preview:getMachineLearningCompute", args, &rv, opts...)

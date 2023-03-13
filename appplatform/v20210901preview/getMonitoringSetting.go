@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Monitoring Setting resource
+// Get the Monitoring Setting and its properties.
 func LookupMonitoringSetting(ctx *pulumi.Context, args *LookupMonitoringSettingArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringSettingResult, error) {
 	var rv LookupMonitoringSettingResult
 	err := ctx.Invoke("azure-native:appplatform/v20210901preview:getMonitoringSetting", args, &rv, opts...)

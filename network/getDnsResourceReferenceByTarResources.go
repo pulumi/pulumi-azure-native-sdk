@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents the properties of the Dns Resource Reference Result.
+// Returns the DNS records specified by the referencing targetResourceIds.
 // API Version: 2018-05-01.
 func GetDnsResourceReferenceByTarResources(ctx *pulumi.Context, args *GetDnsResourceReferenceByTarResourcesArgs, opts ...pulumi.InvokeOption) (*GetDnsResourceReferenceByTarResourcesResult, error) {
 	var rv GetDnsResourceReferenceByTarResourcesResult

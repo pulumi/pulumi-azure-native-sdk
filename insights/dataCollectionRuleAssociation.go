@@ -50,6 +50,9 @@ func NewDataCollectionRuleAssociation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20210901preview:DataCollectionRuleAssociation"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20220601:DataCollectionRuleAssociation"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DataCollectionRuleAssociation

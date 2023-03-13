@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for list sim ids API service call.
+// List sim ids under a mobile network.
 func ListMobileNetworkSimIds(ctx *pulumi.Context, args *ListMobileNetworkSimIdsArgs, opts ...pulumi.InvokeOption) (*ListMobileNetworkSimIdsResult, error) {
 	var rv ListMobileNetworkSimIdsResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:listMobileNetworkSimIds", args, &rv, opts...)

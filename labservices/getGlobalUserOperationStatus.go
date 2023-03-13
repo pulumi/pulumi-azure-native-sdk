@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Status Details of the long running operation for an environment
+// Gets the status of long running operation
 // API Version: 2018-10-15.
 func GetGlobalUserOperationStatus(ctx *pulumi.Context, args *GetGlobalUserOperationStatusArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserOperationStatusResult, error) {
 	var rv GetGlobalUserOperationStatusResult

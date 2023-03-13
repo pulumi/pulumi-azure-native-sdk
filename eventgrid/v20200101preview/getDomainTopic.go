@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Domain Topic
+// Get properties of a domain topic
 //
 // Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
 func LookupDomainTopic(ctx *pulumi.Context, args *LookupDomainTopicArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicResult, error) {

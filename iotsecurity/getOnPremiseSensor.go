@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// On-premise IoT sensor
+// Get on-premise IoT sensor
 // API Version: 2021-02-01-preview.
 func LookupOnPremiseSensor(ctx *pulumi.Context, args *LookupOnPremiseSensorArgs, opts ...pulumi.InvokeOption) (*LookupOnPremiseSensorResult, error) {
 	var rv LookupOnPremiseSensorResult

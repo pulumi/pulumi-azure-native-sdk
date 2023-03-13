@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a Kusto database.
+// Returns a database.
 // API Version: 2021-01-01.
 //
 // Deprecated: Please use one of the variants: ReadOnlyFollowingDatabase, ReadWriteDatabase.

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Test Base Account resource.
+// Gets a Test Base Account.
 func LookupTestBaseAccount(ctx *pulumi.Context, args *LookupTestBaseAccountArgs, opts ...pulumi.InvokeOption) (*LookupTestBaseAccountResult, error) {
 	var rv LookupTestBaseAccountResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getTestBaseAccount", args, &rv, opts...)

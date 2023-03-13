@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A privateLinkHub
+// Gets a privateLinkHub
 func LookupPrivateLinkHub(ctx *pulumi.Context, args *LookupPrivateLinkHubArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkHubResult, error) {
 	var rv LookupPrivateLinkHubResult
 	err := ctx.Invoke("azure-native:synapse/v20210501:getPrivateLinkHub", args, &rv, opts...)

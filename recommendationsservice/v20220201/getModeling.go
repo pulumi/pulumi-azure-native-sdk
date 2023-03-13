@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Modeling resource details.
+// Returns Modeling resources for a given name.
 func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulumi.InvokeOption) (*LookupModelingResult, error) {
 	var rv LookupModelingResult
 	err := ctx.Invoke("azure-native:recommendationsservice/v20220201:getModeling", args, &rv, opts...)

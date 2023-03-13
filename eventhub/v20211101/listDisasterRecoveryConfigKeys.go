@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Namespace/EventHub Connection String
+// Gets the primary and secondary connection strings for the Namespace.
 func ListDisasterRecoveryConfigKeys(ctx *pulumi.Context, args *ListDisasterRecoveryConfigKeysArgs, opts ...pulumi.InvokeOption) (*ListDisasterRecoveryConfigKeysResult, error) {
 	var rv ListDisasterRecoveryConfigKeysResult
 	err := ctx.Invoke("azure-native:eventhub/v20211101:listDisasterRecoveryConfigKeys", args, &rv, opts...)

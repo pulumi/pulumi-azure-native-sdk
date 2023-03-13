@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Fabric definition.
+// Gets the details of an Azure Site Recovery fabric.
 // API Version: 2018-07-10.
 func LookupReplicationFabric(ctx *pulumi.Context, args *LookupReplicationFabricArgs, opts ...pulumi.InvokeOption) (*LookupReplicationFabricResult, error) {
 	var rv LookupReplicationFabricResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The NSP access rule resource
+// Gets the specified NSP access rule by name.
 func LookupNspAccessRule(ctx *pulumi.Context, args *LookupNspAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupNspAccessRuleResult, error) {
 	var rv LookupNspAccessRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getNspAccessRule", args, &rv, opts...)
@@ -37,6 +37,8 @@ type LookupNspAccessRuleResult struct {
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction *string `pulumi:"direction"`
+	// Outbound rules email address format.
+	EmailAddresses []string `pulumi:"emailAddresses"`
 	// Outbound rules fully qualified domain name format.
 	FullyQualifiedDomainNames []string `pulumi:"fullyQualifiedDomainNames"`
 	// Resource ID.
@@ -47,6 +49,8 @@ type LookupNspAccessRuleResult struct {
 	Name string `pulumi:"name"`
 	// Inbound rule specified by the perimeter id.
 	NetworkSecurityPerimeters []PerimeterBasedAccessRuleResponse `pulumi:"networkSecurityPerimeters"`
+	// Outbound rules phone number format.
+	PhoneNumbers []string `pulumi:"phoneNumbers"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// List of subscription ids
@@ -110,6 +114,11 @@ func (o LookupNspAccessRuleResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
+// Outbound rules email address format.
+func (o LookupNspAccessRuleResultOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
 // Outbound rules fully qualified domain name format.
 func (o LookupNspAccessRuleResultOutput) FullyQualifiedDomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.FullyQualifiedDomainNames }).(pulumi.StringArrayOutput)
@@ -135,6 +144,11 @@ func (o LookupNspAccessRuleResultOutput) NetworkSecurityPerimeters() PerimeterBa
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []PerimeterBasedAccessRuleResponse {
 		return v.NetworkSecurityPerimeters
 	}).(PerimeterBasedAccessRuleResponseArrayOutput)
+}
+
+// Outbound rules phone number format.
+func (o LookupNspAccessRuleResultOutput) PhoneNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.PhoneNumbers }).(pulumi.StringArrayOutput)
 }
 
 // The provisioning state of the scope assignment resource.

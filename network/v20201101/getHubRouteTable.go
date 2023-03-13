@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// RouteTable resource in a virtual hub.
+// Retrieves the details of a RouteTable.
 func LookupHubRouteTable(ctx *pulumi.Context, args *LookupHubRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupHubRouteTableResult, error) {
 	var rv LookupHubRouteTableResult
 	err := ctx.Invoke("azure-native:network/v20201101:getHubRouteTable", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A container for a managed identity to execute DevTest lab services.
+// Get service runner.
 //
 // Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opts ...pulumi.InvokeOption) (*LookupServiceRunnerResult, error) {

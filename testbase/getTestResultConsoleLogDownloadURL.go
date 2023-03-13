@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response of getting a download URL.
+// Gets the download URL of the test execution console log file.
 // API Version: 2022-04-01-preview.
 func GetTestResultConsoleLogDownloadURL(ctx *pulumi.Context, args *GetTestResultConsoleLogDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultConsoleLogDownloadURLResult, error) {
 	var rv GetTestResultConsoleLogDownloadURLResult

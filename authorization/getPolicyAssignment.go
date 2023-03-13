@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The policy assignment.
+// This operation retrieves a single policy assignment, given its name and the scope it was created at.
 // API Version: 2020-09-01.
 func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentResult, error) {
 	var rv LookupPolicyAssignmentResult

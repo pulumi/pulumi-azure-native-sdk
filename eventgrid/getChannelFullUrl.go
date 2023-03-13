@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Full endpoint url of an event subscription
+// Get the full endpoint URL of a partner destination channel.
 // API Version: 2021-10-15-preview.
 func GetChannelFullUrl(ctx *pulumi.Context, args *GetChannelFullUrlArgs, opts ...pulumi.InvokeOption) (*GetChannelFullUrlResult, error) {
 	var rv GetChannelFullUrlResult

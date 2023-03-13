@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Developer Keys of account
+// List Both of the 2 Keys of a Spatial Anchors Account
 func ListSpatialAnchorsAccountKeys(ctx *pulumi.Context, args *ListSpatialAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListSpatialAnchorsAccountKeysResult, error) {
 	var rv ListSpatialAnchorsAccountKeysResult
 	err := ctx.Invoke("azure-native:mixedreality/v20210301preview:listSpatialAnchorsAccountKeys", args, &rv, opts...)

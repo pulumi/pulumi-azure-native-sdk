@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The diagnostic setting resource.
+// Gets the active diagnostic setting for AadIam.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	var rv LookupDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:aadiam/v20170401:getDiagnosticSetting", args, &rv, opts...)

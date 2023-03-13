@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Bot channel resource definition
+// Get a Connection Setting registration for a Bot Service
 // API Version: 2021-03-01.
 func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWithSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionWithSecretsResult, error) {
 	var rv ListBotConnectionWithSecretsResult

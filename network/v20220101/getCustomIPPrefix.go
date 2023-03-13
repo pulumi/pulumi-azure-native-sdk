@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Custom IP prefix resource.
+// Gets the specified custom IP prefix in a specified resource group.
 func LookupCustomIPPrefix(ctx *pulumi.Context, args *LookupCustomIPPrefixArgs, opts ...pulumi.InvokeOption) (*LookupCustomIPPrefixResult, error) {
 	var rv LookupCustomIPPrefixResult
 	err := ctx.Invoke("azure-native:network/v20220101:getCustomIPPrefix", args, &rv, opts...)

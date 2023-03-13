@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of Fhir Service
+// Gets the properties of the specified FHIR Service.
 func LookupFhirService(ctx *pulumi.Context, args *LookupFhirServiceArgs, opts ...pulumi.InvokeOption) (*LookupFhirServiceResult, error) {
 	var rv LookupFhirServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20220515:getFhirService", args, &rv, opts...)

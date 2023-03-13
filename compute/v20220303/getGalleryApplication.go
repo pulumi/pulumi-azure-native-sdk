@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the gallery Application Definition that you want to create or update.
+// Retrieves information about a gallery Application Definition.
 func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationResult, error) {
 	var rv LookupGalleryApplicationResult
 	err := ctx.Invoke("azure-native:compute/v20220303:getGalleryApplication", args, &rv, opts...)

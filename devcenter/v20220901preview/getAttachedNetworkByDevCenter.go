@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an attached NetworkConnection.
+// Gets an attached NetworkConnection.
 func LookupAttachedNetworkByDevCenter(ctx *pulumi.Context, args *LookupAttachedNetworkByDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupAttachedNetworkByDevCenterResult, error) {
 	var rv LookupAttachedNetworkByDevCenterResult
 	err := ctx.Invoke("azure-native:devcenter/v20220901preview:getAttachedNetworkByDevCenter", args, &rv, opts...)

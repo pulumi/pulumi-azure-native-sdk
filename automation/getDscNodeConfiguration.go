@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the dsc node configuration.
+// Retrieve the Dsc node configurations by node configuration.
 // API Version: 2019-06-01.
 func LookupDscNodeConfiguration(ctx *pulumi.Context, args *LookupDscNodeConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscNodeConfigurationResult, error) {
 	var rv LookupDscNodeConfigurationResult

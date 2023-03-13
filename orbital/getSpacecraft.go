@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Customer creates a spacecraft resource to schedule a contact.
+// Gets the specified spacecraft in a specified resource group
 // API Version: 2021-04-04-preview.
 func LookupSpacecraft(ctx *pulumi.Context, args *LookupSpacecraftArgs, opts ...pulumi.InvokeOption) (*LookupSpacecraftResult, error) {
 	var rv LookupSpacecraftResult

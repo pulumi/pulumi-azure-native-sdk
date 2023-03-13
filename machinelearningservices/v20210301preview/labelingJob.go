@@ -54,6 +54,12 @@ func NewLabelingJob(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:LabelingJob"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:LabelingJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:LabelingJob"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource LabelingJob

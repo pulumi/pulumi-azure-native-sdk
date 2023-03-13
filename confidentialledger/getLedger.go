@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Confidential Ledger. Contains the properties of Confidential Ledger Resource.
+// Retrieves the properties of a Confidential Ledger.
 // API Version: 2020-12-01-preview.
 func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.InvokeOption) (*LookupLedgerResult, error) {
 	var rv LookupLedgerResult

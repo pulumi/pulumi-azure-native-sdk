@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Partner configuration information
+// Get properties of a partner configuration.
 // API Version: 2021-10-15-preview.
 func LookupPartnerConfiguration(ctx *pulumi.Context, args *LookupPartnerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerConfigurationResult, error) {
 	var rv LookupPartnerConfigurationResult

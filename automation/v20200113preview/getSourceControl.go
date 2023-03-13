@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the source control.
+// Retrieve the source control identified by source control name.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	var rv LookupSourceControlResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getSourceControl", args, &rv, opts...)

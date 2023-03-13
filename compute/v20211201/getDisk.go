@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Disk resource.
+// Gets information about a disk.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	var rv LookupDiskResult
 	err := ctx.Invoke("azure-native:compute/v20211201:getDisk", args, &rv, opts...)

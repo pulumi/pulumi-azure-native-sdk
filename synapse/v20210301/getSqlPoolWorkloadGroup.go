@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workload group operations for a sql pool
+// Get a Sql pool's workload group.
 func LookupSqlPoolWorkloadGroup(ctx *pulumi.Context, args *LookupSqlPoolWorkloadGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolWorkloadGroupResult, error) {
 	var rv LookupSqlPoolWorkloadGroupResult
 	err := ctx.Invoke("azure-native:synapse/v20210301:getSqlPoolWorkloadGroup", args, &rv, opts...)

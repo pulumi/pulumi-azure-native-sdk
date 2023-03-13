@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// User of a lab that can register for and use virtual machines within the lab.
+// Returns the properties of a lab user.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:labservices/v20211001preview:getUser", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// LoadBalancer resource.
+// Gets the specified load balancer.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("azure-native:network/v20210501:getLoadBalancer", args, &rv, opts...)

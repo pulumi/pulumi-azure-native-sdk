@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SqlManagedInstance.
+// Retrieves a SQL Managed Instance resource
 func LookupSqlManagedInstance(ctx *pulumi.Context, args *LookupSqlManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlManagedInstanceResult, error) {
 	var rv LookupSqlManagedInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20220615preview:getSqlManagedInstance", args, &rv, opts...)

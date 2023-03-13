@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The IpGroups resource information.
+// Gets the specified ipGroups.
 // API Version: 2020-11-01.
 func LookupIpGroup(ctx *pulumi.Context, args *LookupIpGroupArgs, opts ...pulumi.InvokeOption) (*LookupIpGroupResult, error) {
 	var rv LookupIpGroupResult

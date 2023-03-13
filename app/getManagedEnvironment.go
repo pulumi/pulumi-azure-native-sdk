@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment for hosting container apps
+// Get the properties of a Managed Environment used to host container apps.
 // API Version: 2022-03-01.
 func LookupManagedEnvironment(ctx *pulumi.Context, args *LookupManagedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentResult, error) {
 	var rv LookupManagedEnvironmentResult

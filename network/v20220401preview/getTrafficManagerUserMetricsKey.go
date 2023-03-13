@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing Traffic Manager User Metrics.
+// Get the subscription-level key used for Real User Metrics collection.
 func LookupTrafficManagerUserMetricsKey(ctx *pulumi.Context, args *LookupTrafficManagerUserMetricsKeyArgs, opts ...pulumi.InvokeOption) (*LookupTrafficManagerUserMetricsKeyResult, error) {
 	var rv LookupTrafficManagerUserMetricsKeyResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:getTrafficManagerUserMetricsKey", args, &rv, opts...)

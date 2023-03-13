@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of Network Manager Deployment Status
+// Post to List of Network Manager Deployment Status.
 // API Version: 2021-02-01-preview.
 func ListNetworkManagerDeploymentStatus(ctx *pulumi.Context, args *ListNetworkManagerDeploymentStatusArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerDeploymentStatusResult, error) {
 	var rv ListNetworkManagerDeploymentStatusResult

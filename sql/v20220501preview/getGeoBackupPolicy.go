@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Geo backup policy.
+// Gets a Geo backup policy for the given database resource.
 func LookupGeoBackupPolicy(ctx *pulumi.Context, args *LookupGeoBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGeoBackupPolicyResult, error) {
 	var rv LookupGeoBackupPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getGeoBackupPolicy", args, &rv, opts...)

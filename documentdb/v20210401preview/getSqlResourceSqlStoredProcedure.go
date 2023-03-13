@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB storedProcedure.
+// Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
 func LookupSqlResourceSqlStoredProcedure(ctx *pulumi.Context, args *LookupSqlResourceSqlStoredProcedureArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlStoredProcedureResult, error) {
 	var rv LookupSqlResourceSqlStoredProcedureResult
 	err := ctx.Invoke("azure-native:documentdb/v20210401preview:getSqlResourceSqlStoredProcedure", args, &rv, opts...)

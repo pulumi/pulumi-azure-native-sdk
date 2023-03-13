@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Frontend Subresource of Traffic Controller.
+// Get a Traffic Controller Frontend
 // API Version: 2022-10-01-preview.
 func LookupFrontendsInterface(ctx *pulumi.Context, args *LookupFrontendsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupFrontendsInterfaceResult, error) {
 	var rv LookupFrontendsInterfaceResult

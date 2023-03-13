@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a cluster principal assignment.
+// Gets a Kusto cluster principalAssignment.
 func LookupClusterPrincipalAssignment(ctx *pulumi.Context, args *LookupClusterPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupClusterPrincipalAssignmentResult, error) {
 	var rv LookupClusterPrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getClusterPrincipalAssignment", args, &rv, opts...)

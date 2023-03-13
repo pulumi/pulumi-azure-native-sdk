@@ -42,6 +42,15 @@ func NewRegistryCodeContainer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.CodeContainerProperties = args.CodeContainerProperties.ToCodeContainerTypeOutput().ApplyT(func(v CodeContainerType) CodeContainerType { return *v.Defaults() }).(CodeContainerTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryCodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryCodeContainer"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource RegistryCodeContainer
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20221001preview:RegistryCodeContainer", name, args, &resource, opts...)
 	if err != nil {

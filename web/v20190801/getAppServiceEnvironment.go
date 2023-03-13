@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// App Service Environment ARM resource.
+// Get the properties of an App Service Environment.
 func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentResult, error) {
 	var rv LookupAppServiceEnvironmentResult
 	err := ctx.Invoke("azure-native:web/v20190801:getAppServiceEnvironment", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A common class for general resource information.
+// Gets the specified virtual network gateway connection by resource group.
 func LookupVirtualNetworkGatewayConnection(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayConnectionResult, error) {
 	var rv LookupVirtualNetworkGatewayConnectionResult
 	err := ctx.Invoke("azure-native:network/v20200701:getVirtualNetworkGatewayConnection", args, &rv, opts...)

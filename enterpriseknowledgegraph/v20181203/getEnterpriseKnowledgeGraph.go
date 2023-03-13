@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// EnterpriseKnowledgeGraph resource definition
+// Returns a EnterpriseKnowledgeGraph service specified by the parameters.
 func LookupEnterpriseKnowledgeGraph(ctx *pulumi.Context, args *LookupEnterpriseKnowledgeGraphArgs, opts ...pulumi.InvokeOption) (*LookupEnterpriseKnowledgeGraphResult, error) {
 	var rv LookupEnterpriseKnowledgeGraphResult
 	err := ctx.Invoke("azure-native:enterpriseknowledgegraph/v20181203:getEnterpriseKnowledgeGraph", args, &rv, opts...)

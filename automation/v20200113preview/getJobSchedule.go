@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the job schedule.
+// Retrieve the job schedule identified by job schedule name.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	var rv LookupJobScheduleResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getJobSchedule", args, &rv, opts...)

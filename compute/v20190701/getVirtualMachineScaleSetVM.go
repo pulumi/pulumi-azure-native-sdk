@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a virtual machine scale set virtual machine.
+// Gets a virtual machine from a VM scale set.
 //
 // Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 func LookupVirtualMachineScaleSetVM(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMResult, error) {

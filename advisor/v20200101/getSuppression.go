@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
+// Obtains the details of a suppression.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	var rv LookupSuppressionResult
 	err := ctx.Invoke("azure-native:advisor/v20200101:getSuppression", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SQL DW Table data set mapping.
+// Get a DataSetMapping in a shareSubscription
 // API Version: 2020-09-01.
 func LookupSqlDWTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDWTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSqlDWTableDataSetMappingResult, error) {
 	var rv LookupSqlDWTableDataSetMappingResult

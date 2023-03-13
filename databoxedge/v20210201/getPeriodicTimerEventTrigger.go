@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Trigger details.
+// Get a specific trigger by name.
 func LookupPeriodicTimerEventTrigger(ctx *pulumi.Context, args *LookupPeriodicTimerEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupPeriodicTimerEventTriggerResult, error) {
 	var rv LookupPeriodicTimerEventTriggerResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210201:getPeriodicTimerEventTrigger", args, &rv, opts...)

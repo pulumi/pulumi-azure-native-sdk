@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a forwarding rule within a DNS forwarding ruleset.
+// Gets properties of a forwarding rule in a DNS forwarding ruleset.
 // API Version: 2020-04-01-preview.
 func LookupForwardingRule(ctx *pulumi.Context, args *LookupForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupForwardingRuleResult, error) {
 	var rv LookupForwardingRuleResult

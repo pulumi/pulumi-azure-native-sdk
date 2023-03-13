@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing an attached database configuration.
+// Returns an attached database configuration.
 func LookupAttachedDatabaseConfiguration(ctx *pulumi.Context, args *LookupAttachedDatabaseConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDatabaseConfigurationResult, error) {
 	var rv LookupAttachedDatabaseConfigurationResult
 	err := ctx.Invoke("azure-native:kusto/v20221111:getAttachedDatabaseConfiguration", args, &rv, opts...)

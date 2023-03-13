@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Domain service.
+// The Get Domain Service operation retrieves a json representation of the Domain Service.
 func LookupDomainService(ctx *pulumi.Context, args *LookupDomainServiceArgs, opts ...pulumi.InvokeOption) (*LookupDomainServiceResult, error) {
 	var rv LookupDomainServiceResult
 	err := ctx.Invoke("azure-native:aad/v20220901:getDomainService", args, &rv, opts...)
@@ -89,6 +89,10 @@ func (val *LookupDomainServiceResult) Defaults() *LookupDomainServiceResult {
 
 	tmp.LdapsSettings = tmp.LdapsSettings.Defaults()
 
+	if isZero(tmp.SyncScope) {
+		syncScope_ := "All"
+		tmp.SyncScope = &syncScope_
+	}
 	return &tmp
 }
 

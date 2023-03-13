@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Gremlin database.
+// Gets the Gremlin databases under an existing Azure Cosmos DB database account with the provided name.
 //
 // Deprecated: Version 2015-04-08 will be removed in v2 of the provider.
 func LookupDatabaseAccountGremlinDatabase(ctx *pulumi.Context, args *LookupDatabaseAccountGremlinDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountGremlinDatabaseResult, error) {

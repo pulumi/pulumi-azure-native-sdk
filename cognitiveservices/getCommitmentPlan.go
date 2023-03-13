@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cognitive Services account commitment plan.
+// Gets the specified commitmentPlans associated with the Cognitive Services account.
 // API Version: 2021-10-01.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	var rv LookupCommitmentPlanResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Storage resource for connectedEnvironment.
+// Get storage for a connectedEnvironment.
 func LookupConnectedEnvironmentsStorage(ctx *pulumi.Context, args *LookupConnectedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsStorageResult, error) {
 	var rv LookupConnectedEnvironmentsStorageResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:getConnectedEnvironmentsStorage", args, &rv, opts...)

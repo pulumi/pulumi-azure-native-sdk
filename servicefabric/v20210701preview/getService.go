@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The service resource.
+// Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:servicefabric/v20210701preview:getService", args, &rv, opts...)

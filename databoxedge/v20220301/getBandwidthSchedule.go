@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The bandwidth schedule details.
+// Gets the properties of the specified bandwidth schedule.
 func LookupBandwidthSchedule(ctx *pulumi.Context, args *LookupBandwidthScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBandwidthScheduleResult, error) {
 	var rv LookupBandwidthScheduleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20220301:getBandwidthSchedule", args, &rv, opts...)

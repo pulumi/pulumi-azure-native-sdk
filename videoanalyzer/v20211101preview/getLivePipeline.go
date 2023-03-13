@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Live pipeline represents a unique instance of a live topology, used for real-time ingestion, archiving and publishing of content for a unique RTSP camera.
+// Retrieves a specific live pipeline by name. If a live pipeline with that name has been previously created, the call will return the JSON representation of that instance.
 func LookupLivePipeline(ctx *pulumi.Context, args *LookupLivePipelineArgs, opts ...pulumi.InvokeOption) (*LookupLivePipelineResult, error) {
 	var rv LookupLivePipelineResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20211101preview:getLivePipeline", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// "Video content token grants access to the video content URLs."
+// Generates a streaming token which can be used for accessing content from video content URLs, for a video resource with the given name.
 // API Version: 2021-11-01-preview.
 func ListVideoContentToken(ctx *pulumi.Context, args *ListVideoContentTokenArgs, opts ...pulumi.InvokeOption) (*ListVideoContentTokenResult, error) {
 	var rv ListVideoContentTokenResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in a List or Get IpFilterRules operation
+// Gets an IpFilterRule for a Namespace by rule name.
 // API Version: 2018-01-01-preview.
 func LookupNamespaceIpFilterRule(ctx *pulumi.Context, args *LookupNamespaceIpFilterRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceIpFilterRuleResult, error) {
 	var rv LookupNamespaceIpFilterRuleResult

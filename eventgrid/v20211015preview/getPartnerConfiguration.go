@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Partner configuration information
+// Get properties of a partner configuration.
 func LookupPartnerConfiguration(ctx *pulumi.Context, args *LookupPartnerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerConfigurationResult, error) {
 	var rv LookupPartnerConfigurationResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getPartnerConfiguration", args, &rv, opts...)

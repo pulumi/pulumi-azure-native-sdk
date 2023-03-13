@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Logger details.
+// Gets the details of the logger specified by its identifier.
 func LookupLogger(ctx *pulumi.Context, args *LookupLoggerArgs, opts ...pulumi.InvokeOption) (*LookupLoggerResult, error) {
 	var rv LookupLoggerResult
 	err := ctx.Invoke("azure-native:apimanagement/v20201201:getLogger", args, &rv, opts...)

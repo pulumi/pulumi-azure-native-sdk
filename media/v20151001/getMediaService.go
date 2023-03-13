@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The properties of a Media Service resource.
+// Gets a Media Service.
 func LookupMediaService(ctx *pulumi.Context, args *LookupMediaServiceArgs, opts ...pulumi.InvokeOption) (*LookupMediaServiceResult, error) {
 	var rv LookupMediaServiceResult
 	err := ctx.Invoke("azure-native:media/v20151001:getMediaService", args, &rv, opts...)

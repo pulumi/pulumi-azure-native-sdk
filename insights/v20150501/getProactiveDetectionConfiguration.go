@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties that define a ProactiveDetection configuration.
+// Get the ProactiveDetection configuration for this configuration id.
 func LookupProactiveDetectionConfiguration(ctx *pulumi.Context, args *LookupProactiveDetectionConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupProactiveDetectionConfigurationResult, error) {
 	var rv LookupProactiveDetectionConfigurationResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getProactiveDetectionConfiguration", args, &rv, opts...)

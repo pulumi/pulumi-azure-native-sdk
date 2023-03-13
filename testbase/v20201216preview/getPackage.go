@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Test Base Package resource.
+// Gets a Test Base Package.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {

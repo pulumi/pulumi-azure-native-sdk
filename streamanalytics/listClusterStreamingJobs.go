@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of streaming jobs. Populated by a List operation.
+// Lists all of the streaming jobs in the given cluster.
 // API Version: 2020-03-01-preview.
 func ListClusterStreamingJobs(ctx *pulumi.Context, args *ListClusterStreamingJobsArgs, opts ...pulumi.InvokeOption) (*ListClusterStreamingJobsResult, error) {
 	var rv ListClusterStreamingJobsResult

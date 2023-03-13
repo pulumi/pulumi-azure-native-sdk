@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The remediation definition.
+// Gets an existing remediation at management group scope.
 func LookupRemediationAtManagementGroup(ctx *pulumi.Context, args *LookupRemediationAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtManagementGroupResult, error) {
 	var rv LookupRemediationAtManagementGroupResult
 	err := ctx.Invoke("azure-native:policyinsights/v20211001:getRemediationAtManagementGroup", args, &rv, opts...)

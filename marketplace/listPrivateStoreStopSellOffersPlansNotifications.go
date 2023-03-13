@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of stop sell offers and plans notifications.
+// List stop sell notifications for both stop sell offers and stop sell plans
 // API Version: 2021-12-01.
 func ListPrivateStoreStopSellOffersPlansNotifications(ctx *pulumi.Context, args *ListPrivateStoreStopSellOffersPlansNotificationsArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreStopSellOffersPlansNotificationsResult, error) {
 	var rv ListPrivateStoreStopSellOffersPlansNotificationsResult

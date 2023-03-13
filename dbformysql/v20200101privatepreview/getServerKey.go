@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A MySQL Server key.
+// Gets a MySQL Server key.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult
 	err := ctx.Invoke("azure-native:dbformysql/v20200101privatepreview:getServerKey", args, &rv, opts...)

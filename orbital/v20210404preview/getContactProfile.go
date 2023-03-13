@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Customer creates a Contact Profile Resource, which will contain all of the configurations required for scheduling a contact.
+// Gets the specified contact Profile in a specified resource group
 func LookupContactProfile(ctx *pulumi.Context, args *LookupContactProfileArgs, opts ...pulumi.InvokeOption) (*LookupContactProfileResult, error) {
 	var rv LookupContactProfileResult
 	err := ctx.Invoke("azure-native:orbital/v20210404preview:getContactProfile", args, &rv, opts...)

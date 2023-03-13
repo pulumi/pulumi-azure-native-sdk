@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Friendly Rules name mapping to the any Rules or secret related information.
+// Gets an existing delivery rule within a rule set.
 // API Version: 2020-09-01.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	var rv LookupRuleResult

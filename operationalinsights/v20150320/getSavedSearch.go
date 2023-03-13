@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Value object for saved search results.
+// Gets the specified saved search for a given workspace.
 //
 // Deprecated: Version 2015-03-20 will be removed in v2 of the provider.
 func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ...pulumi.InvokeOption) (*LookupSavedSearchResult, error) {

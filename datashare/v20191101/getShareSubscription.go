@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A share subscription data transfer object.
+// Get a shareSubscription in an account
 //
 // Deprecated: Version 2019-11-01 will be removed in v2 of the provider.
 func LookupShareSubscription(ctx *pulumi.Context, args *LookupShareSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupShareSubscriptionResult, error) {

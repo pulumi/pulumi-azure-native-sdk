@@ -637,7 +637,7 @@ type DataEncryption struct {
 	PrimaryKeyURI *string `pulumi:"primaryKeyURI"`
 	// Resource Id for the User assigned identity to be used for data encryption for primary server.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
-	// Data encryption type to depict if it is System assigned vs Azure Key vault.
+	// Data encryption type to depict if it is System Managed vs Azure Key vault.
 	Type *string `pulumi:"type"`
 }
 
@@ -658,7 +658,7 @@ type DataEncryptionArgs struct {
 	PrimaryKeyURI pulumi.StringPtrInput `pulumi:"primaryKeyURI"`
 	// Resource Id for the User assigned identity to be used for data encryption for primary server.
 	PrimaryUserAssignedIdentityId pulumi.StringPtrInput `pulumi:"primaryUserAssignedIdentityId"`
-	// Data encryption type to depict if it is System assigned vs Azure Key vault.
+	// Data encryption type to depict if it is System Managed vs Azure Key vault.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -750,7 +750,7 @@ func (o DataEncryptionOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOu
 	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type to depict if it is System assigned vs Azure Key vault.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -799,7 +799,7 @@ func (o DataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type to depict if it is System assigned vs Azure Key vault.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -815,7 +815,7 @@ type DataEncryptionResponse struct {
 	PrimaryKeyURI *string `pulumi:"primaryKeyURI"`
 	// Resource Id for the User assigned identity to be used for data encryption for primary server.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
-	// Data encryption type to depict if it is System assigned vs Azure Key vault.
+	// Data encryption type to depict if it is System Managed vs Azure Key vault.
 	Type *string `pulumi:"type"`
 }
 
@@ -844,7 +844,7 @@ func (o DataEncryptionResponseOutput) PrimaryUserAssignedIdentityId() pulumi.Str
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type to depict if it is System assigned vs Azure Key vault.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -893,7 +893,7 @@ func (o DataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type to depict if it is System assigned vs Azure Key vault.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {

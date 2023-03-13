@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource information with extended details.
+// Gets the specified Azure dedicated HSM.
 // API Version: 2018-10-31-preview.
 func LookupDedicatedHsm(ctx *pulumi.Context, args *LookupDedicatedHsmArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHsmResult, error) {
 	var rv LookupDedicatedHsmResult

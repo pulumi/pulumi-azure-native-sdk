@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security Assignment on a resource group over a given scope
+// Get a specific standard assignment for the requested scope by resourceId
 func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAssignmentResult, error) {
 	var rv LookupAssignmentResult
 	err := ctx.Invoke("azure-native:security/v20210801preview:getAssignment", args, &rv, opts...)

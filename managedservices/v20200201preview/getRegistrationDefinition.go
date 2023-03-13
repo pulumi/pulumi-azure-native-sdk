@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The registration definition.
+// Gets the registration definition details.
 func LookupRegistrationDefinition(ctx *pulumi.Context, args *LookupRegistrationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationDefinitionResult, error) {
 	var rv LookupRegistrationDefinitionResult
 	err := ctx.Invoke("azure-native:managedservices/v20200201preview:getRegistrationDefinition", args, &rv, opts...)

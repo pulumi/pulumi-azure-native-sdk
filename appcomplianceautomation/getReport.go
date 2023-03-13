@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class represent an AppComplianceAutomation report resource.
+// Get the AppComplianceAutomation report and its properties.
 // API Version: 2022-11-16-preview.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	var rv LookupReportResult

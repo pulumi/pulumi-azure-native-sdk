@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A database blob auditing policy.
+// Gets a database's blob auditing policy.
 func LookupDatabaseBlobAuditingPolicy(ctx *pulumi.Context, args *LookupDatabaseBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseBlobAuditingPolicyResult, error) {
 	var rv LookupDatabaseBlobAuditingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getDatabaseBlobAuditingPolicy", args, &rv, opts...)

@@ -39,6 +39,12 @@ func NewManagedCCF(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20230126preview:ManagedCCF"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ManagedCCF
 	err := ctx.RegisterResource("azure-native:confidentialledger/v20220908preview:ManagedCCF", name, args, &resource, opts...)
 	if err != nil {

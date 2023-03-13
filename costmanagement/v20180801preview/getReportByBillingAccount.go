@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A report resource.
+// Gets the report for a billing account by report name.
 func LookupReportByBillingAccount(ctx *pulumi.Context, args *LookupReportByBillingAccountArgs, opts ...pulumi.InvokeOption) (*LookupReportByBillingAccountResult, error) {
 	var rv LookupReportByBillingAccountResult
 	err := ctx.Invoke("azure-native:costmanagement/v20180801preview:getReportByBillingAccount", args, &rv, opts...)

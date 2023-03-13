@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Backend details.
+// Gets the details of the backend specified by its identifier.
 // API Version: 2020-12-01.
 func LookupBackend(ctx *pulumi.Context, args *LookupBackendArgs, opts ...pulumi.InvokeOption) (*LookupBackendResult, error) {
 	var rv LookupBackendResult

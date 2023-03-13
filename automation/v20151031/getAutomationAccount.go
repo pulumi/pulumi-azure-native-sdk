@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the automation account type.
+// Get information about an Automation Account.
 func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountArgs, opts ...pulumi.InvokeOption) (*LookupAutomationAccountResult, error) {
 	var rv LookupAutomationAccountResult
 	err := ctx.Invoke("azure-native:automation/v20151031:getAutomationAccount", args, &rv, opts...)

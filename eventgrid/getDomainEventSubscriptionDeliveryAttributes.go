@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the Get delivery attributes operation.
+// Get all delivery attributes for an event subscription for domain.
 // API Version: 2021-10-15-preview.
 func GetDomainEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetDomainEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetDomainEventSubscriptionDeliveryAttributesResult, error) {
 	var rv GetDomainEventSubscriptionDeliveryAttributesResult

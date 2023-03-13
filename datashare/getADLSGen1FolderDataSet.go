@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADLS Gen 1 folder data set.
+// Get a DataSet in a share
 // API Version: 2020-09-01.
 func LookupADLSGen1FolderDataSet(ctx *pulumi.Context, args *LookupADLSGen1FolderDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen1FolderDataSetResult, error) {
 	var rv LookupADLSGen1FolderDataSetResult

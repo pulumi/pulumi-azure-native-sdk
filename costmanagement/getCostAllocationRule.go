@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The cost allocation rule model definition
+// Get a cost allocation rule by rule name and billing account or enterprise enrollment.
 // API Version: 2020-03-01-preview.
 func LookupCostAllocationRule(ctx *pulumi.Context, args *LookupCostAllocationRuleArgs, opts ...pulumi.InvokeOption) (*LookupCostAllocationRuleResult, error) {
 	var rv LookupCostAllocationRuleResult

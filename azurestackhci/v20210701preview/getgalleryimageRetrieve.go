@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The galleryimages resource definition.
+// Lists all galleryimages under the resource group.
 func GetgalleryimageRetrieve(ctx *pulumi.Context, args *GetgalleryimageRetrieveArgs, opts ...pulumi.InvokeOption) (*GetgalleryimageRetrieveResult, error) {
 	var rv GetgalleryimageRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210701preview:getgalleryimageRetrieve", args, &rv, opts...)

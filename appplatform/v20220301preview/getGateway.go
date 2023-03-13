@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Spring Cloud Gateway resource
+// Get the Spring Cloud Gateway and its properties.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	var rv LookupGatewayResult
 	err := ctx.Invoke("azure-native:appplatform/v20220301preview:getGateway", args, &rv, opts...)

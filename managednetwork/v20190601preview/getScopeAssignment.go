@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Managed Network resource
+// Get the specified scope assignment.
 func LookupScopeAssignment(ctx *pulumi.Context, args *LookupScopeAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupScopeAssignmentResult, error) {
 	var rv LookupScopeAssignmentResult
 	err := ctx.Invoke("azure-native:managednetwork/v20190601preview:getScopeAssignment", args, &rv, opts...)

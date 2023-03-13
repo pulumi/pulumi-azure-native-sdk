@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about the connection monitor.
+// Gets a connection monitor by name.
 func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorResult, error) {
 	var rv LookupConnectionMonitorResult
 	err := ctx.Invoke("azure-native:network/v20180601:getConnectionMonitor", args, &rv, opts...)

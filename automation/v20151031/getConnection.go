@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the connection.
+// Retrieve the connection identified by connection name.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	var rv LookupConnectionResult
 	err := ctx.Invoke("azure-native:automation/v20151031:getConnection", args, &rv, opts...)

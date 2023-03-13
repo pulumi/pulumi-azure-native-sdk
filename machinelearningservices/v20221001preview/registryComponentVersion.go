@@ -45,6 +45,15 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.ComponentVersionProperties = args.ComponentVersionProperties.ToComponentVersionTypeOutput().ApplyT(func(v ComponentVersionType) ComponentVersionType { return *v.Defaults() }).(ComponentVersionTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryComponentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryComponentVersion"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource RegistryComponentVersion
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20221001preview:RegistryComponentVersion", name, args, &resource, opts...)
 	if err != nil {

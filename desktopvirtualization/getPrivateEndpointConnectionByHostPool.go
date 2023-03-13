@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// Get a private endpoint connection.
 // API Version: 2021-04-01-preview.
 func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByHostPoolResult, error) {
 	var rv LookupPrivateEndpointConnectionByHostPoolResult

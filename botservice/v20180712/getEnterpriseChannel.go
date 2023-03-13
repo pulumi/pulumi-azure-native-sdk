@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Enterprise Channel resource definition
+// Returns an Enterprise Channel specified by the parameters.
 func LookupEnterpriseChannel(ctx *pulumi.Context, args *LookupEnterpriseChannelArgs, opts ...pulumi.InvokeOption) (*LookupEnterpriseChannelResult, error) {
 	var rv LookupEnterpriseChannelResult
 	err := ctx.Invoke("azure-native:botservice/v20180712:getEnterpriseChannel", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the gallery Image Version that you want to create or update.
+// Retrieves information about a gallery Image Version.
 //
 // Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageVersionResult, error) {

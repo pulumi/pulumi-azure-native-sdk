@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Application Live View resource
+// Get the Application Live  and its properties.
 func LookupApplicationLiveView(ctx *pulumi.Context, args *LookupApplicationLiveViewArgs, opts ...pulumi.InvokeOption) (*LookupApplicationLiveViewResult, error) {
 	var rv LookupApplicationLiveViewResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getApplicationLiveView", args, &rv, opts...)

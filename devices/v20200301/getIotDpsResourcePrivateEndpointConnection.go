@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The private endpoint connection of a provisioning service
+// Get private endpoint connection properties
 func LookupIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context, args *LookupIotDpsResourcePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourcePrivateEndpointConnectionResult, error) {
 	var rv LookupIotDpsResourcePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:devices/v20200301:getIotDpsResourcePrivateEndpointConnection", args, &rv, opts...)

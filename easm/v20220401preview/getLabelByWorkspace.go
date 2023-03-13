@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Label details
+// Returns a label in the given workspace.
 func LookupLabelByWorkspace(ctx *pulumi.Context, args *LookupLabelByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLabelByWorkspaceResult, error) {
 	var rv LookupLabelByWorkspaceResult
 	err := ctx.Invoke("azure-native:easm/v20220401preview:getLabelByWorkspace", args, &rv, opts...)

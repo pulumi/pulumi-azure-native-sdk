@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A formula for creating a VM, specifying an image base and other parameters
+// Get formula.
 // API Version: 2018-09-15.
 func LookupFormula(ctx *pulumi.Context, args *LookupFormulaArgs, opts ...pulumi.InvokeOption) (*LookupFormulaResult, error) {
 	var rv LookupFormulaResult

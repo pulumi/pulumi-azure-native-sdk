@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SQL Analytics pool
+// Get SQL pool properties
 func LookupSqlPool(ctx *pulumi.Context, args *LookupSqlPoolArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolResult, error) {
 	var rv LookupSqlPoolResult
 	err := ctx.Invoke("azure-native:synapse/v20210301:getSqlPool", args, &rv, opts...)

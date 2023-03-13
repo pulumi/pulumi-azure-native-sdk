@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets an integration account schema.
 func LookupIntegrationAccountSchema(ctx *pulumi.Context, args *LookupIntegrationAccountSchemaArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountSchemaResult, error) {
 	var rv LookupIntegrationAccountSchemaResult
 	err := ctx.Invoke("azure-native:logic/v20150801preview:getIntegrationAccountSchema", args, &rv, opts...)

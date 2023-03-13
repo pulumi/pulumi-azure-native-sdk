@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Application Insights private workbook definition.
+// Get a single private workbook by its resourceName.
 // API Version: 2020-10-20.
 func LookupMyWorkbook(ctx *pulumi.Context, args *LookupMyWorkbookArgs, opts ...pulumi.InvokeOption) (*LookupMyWorkbookResult, error) {
 	var rv LookupMyWorkbookResult

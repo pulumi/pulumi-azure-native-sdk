@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Bot channel resource definition
+// Lists a Channel registration for a Bot Service including secrets
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
 	var rv ListChannelWithKeysResult
 	err := ctx.Invoke("azure-native:botservice/v20200602:listChannelWithKeys", args, &rv, opts...)

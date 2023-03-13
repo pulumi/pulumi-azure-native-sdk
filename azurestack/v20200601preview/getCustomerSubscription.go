@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Customer subscription.
+// Returns the specified product.
 func LookupCustomerSubscription(ctx *pulumi.Context, args *LookupCustomerSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupCustomerSubscriptionResult, error) {
 	var rv LookupCustomerSubscriptionResult
 	err := ctx.Invoke("azure-native:azurestack/v20200601preview:getCustomerSubscription", args, &rv, opts...)

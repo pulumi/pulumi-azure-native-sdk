@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Managed Network resource
+// The Get ManagedNetworks operation gets a Managed Network Resource, specified by the resource group and Managed Network name
 // API Version: 2019-06-01-preview.
 func LookupManagedNetwork(ctx *pulumi.Context, args *LookupManagedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkResult, error) {
 	var rv LookupManagedNetworkResult

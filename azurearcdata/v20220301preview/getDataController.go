@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data controller resource
+// Retrieves a dataController resource
 func LookupDataController(ctx *pulumi.Context, args *LookupDataControllerArgs, opts ...pulumi.InvokeOption) (*LookupDataControllerResult, error) {
 	var rv LookupDataControllerResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20220301preview:getDataController", args, &rv, opts...)

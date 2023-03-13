@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The peering service prefix class.
+// Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
 //
 // Deprecated: Version 2019-09-01-preview will be removed in v2 of the provider.
 func LookupPrefix(ctx *pulumi.Context, args *LookupPrefixArgs, opts ...pulumi.InvokeOption) (*LookupPrefixResult, error) {

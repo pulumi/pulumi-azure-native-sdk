@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A virtual machine.
+// Get virtual machine.
 //
 // Deprecated: Version 2015-05-21-preview will be removed in v2 of the provider.
 func LookupVirtualMachineResource(ctx *pulumi.Context, args *LookupVirtualMachineResourceArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResourceResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Connection Monitor Test class.
+// Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 func LookupConnectionMonitorTest(ctx *pulumi.Context, args *LookupConnectionMonitorTestArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorTestResult, error) {
 	var rv LookupConnectionMonitorTestResult
 	err := ctx.Invoke("azure-native:peering/v20220101:getConnectionMonitorTest", args, &rv, opts...)

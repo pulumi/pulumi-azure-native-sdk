@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Model that represents a Capability resource.
+// Get a Capability resource that extends a Target resource.
 func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityResult, error) {
 	var rv LookupCapabilityResult
 	err := ctx.Invoke("azure-native:chaos/v20210915preview:getCapability", args, &rv, opts...)

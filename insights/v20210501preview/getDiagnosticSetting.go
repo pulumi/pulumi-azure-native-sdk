@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The diagnostic setting resource.
+// Gets the active diagnostic settings for the specified resource.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	var rv LookupDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:insights/v20210501preview:getDiagnosticSetting", args, &rv, opts...)

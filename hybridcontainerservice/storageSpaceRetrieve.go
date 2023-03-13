@@ -45,6 +45,9 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:storageSpaceRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageSpaceRetrieve

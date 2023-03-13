@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+// Gets the client secret details of the Identity Provider.
 // API Version: 2020-12-01.
 func ListIdentityProviderSecrets(ctx *pulumi.Context, args *ListIdentityProviderSecretsArgs, opts ...pulumi.InvokeOption) (*ListIdentityProviderSecretsResult, error) {
 	var rv ListIdentityProviderSecretsResult

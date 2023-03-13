@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The KPI resource format.
+// Gets a KPI in the hub.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 func LookupKpi(ctx *pulumi.Context, args *LookupKpiArgs, opts ...pulumi.InvokeOption) (*LookupKpiResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Firewall resource.
+// Gets the specified Azure Firewall.
 func LookupAzureFirewall(ctx *pulumi.Context, args *LookupAzureFirewallArgs, opts ...pulumi.InvokeOption) (*LookupAzureFirewallResult, error) {
 	var rv LookupAzureFirewallResult
 	err := ctx.Invoke("azure-native:network/v20210201:getAzureFirewall", args, &rv, opts...)

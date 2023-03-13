@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gateway authentication keys.
+// Retrieves gateway keys.
 func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pulumi.InvokeOption) (*ListGatewayKeysResult, error) {
 	var rv ListGatewayKeysResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:listGatewayKeys", args, &rv, opts...)

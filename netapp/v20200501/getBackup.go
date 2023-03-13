@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Backup of a Volume
+// Get a particular backup of the volume
 //
 // Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
 func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.InvokeOption) (*LookupBackupResult, error) {

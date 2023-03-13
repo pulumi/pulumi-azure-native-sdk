@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the result of the request to view entities.
+// List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
 func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOption) (*GetEntityResult, error) {
 	var rv GetEntityResult
 	err := ctx.Invoke("azure-native:management/v20180101preview:getEntity", args, &rv, opts...)

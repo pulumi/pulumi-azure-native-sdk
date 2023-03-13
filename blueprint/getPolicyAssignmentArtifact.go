@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Blueprint artifact that applies a Policy assignment.
+// Get a blueprint artifact.
 // API Version: 2018-11-01-preview.
 func LookupPolicyAssignmentArtifact(ctx *pulumi.Context, args *LookupPolicyAssignmentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentArtifactResult, error) {
 	var rv LookupPolicyAssignmentArtifactResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADLS Gen 2 file data set.
+// Get a DataSet in a share
 // API Version: 2020-09-01.
 func LookupADLSGen2FileDataSet(ctx *pulumi.Context, args *LookupADLSGen2FileDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileDataSetResult, error) {
 	var rv LookupADLSGen2FileDataSetResult

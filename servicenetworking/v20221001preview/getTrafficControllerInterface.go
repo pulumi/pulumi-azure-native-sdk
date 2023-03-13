@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+// Get a TrafficController
 func LookupTrafficControllerInterface(ctx *pulumi.Context, args *LookupTrafficControllerInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupTrafficControllerInterfaceResult, error) {
 	var rv LookupTrafficControllerInterfaceResult
 	err := ctx.Invoke("azure-native:servicenetworking/v20221001preview:getTrafficControllerInterface", args, &rv, opts...)

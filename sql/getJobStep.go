@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A job step.
+// Gets a job step in a job's current version.
 // API Version: 2020-11-01-preview.
 func LookupJobStep(ctx *pulumi.Context, args *LookupJobStepArgs, opts ...pulumi.InvokeOption) (*LookupJobStepResult, error) {
 	var rv LookupJobStepResult

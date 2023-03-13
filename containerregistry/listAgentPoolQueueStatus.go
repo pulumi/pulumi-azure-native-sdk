@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The QueueStatus of Agent Pool
+// Gets the count of queued runs for a given agent pool.
 // API Version: 2019-06-01-preview.
 func ListAgentPoolQueueStatus(ctx *pulumi.Context, args *ListAgentPoolQueueStatusArgs, opts ...pulumi.InvokeOption) (*ListAgentPoolQueueStatusResult, error) {
 	var rv ListAgentPoolQueueStatusResult

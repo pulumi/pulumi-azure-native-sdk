@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure blob storage account data set.
+// Get a DataSet in a share
 func LookupBlobStorageAccountDataSet(ctx *pulumi.Context, args *LookupBlobStorageAccountDataSetArgs, opts ...pulumi.InvokeOption) (*LookupBlobStorageAccountDataSetResult, error) {
 	var rv LookupBlobStorageAccountDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getBlobStorageAccountDataSet", args, &rv, opts...)

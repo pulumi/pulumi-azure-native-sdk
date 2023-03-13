@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Integration runtime resource type.
+// Gets an integration runtime.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
 	var rv LookupIntegrationRuntimeResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getIntegrationRuntime", args, &rv, opts...)

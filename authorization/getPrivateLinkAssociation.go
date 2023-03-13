@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a single private link association
 // API Version: 2020-05-01.
 func LookupPrivateLinkAssociation(ctx *pulumi.Context, args *LookupPrivateLinkAssociationArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkAssociationResult, error) {
 	var rv LookupPrivateLinkAssociationResult

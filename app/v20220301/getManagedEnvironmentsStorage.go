@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Storage resource for managedEnvironment.
+// Get storage for a managedEnvironment.
 func LookupManagedEnvironmentsStorage(ctx *pulumi.Context, args *LookupManagedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentsStorageResult, error) {
 	var rv LookupManagedEnvironmentsStorageResult
 	err := ctx.Invoke("azure-native:app/v20220301:getManagedEnvironmentsStorage", args, &rv, opts...)

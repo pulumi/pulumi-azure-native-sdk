@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of a NotificationHub Resource.
+// Lists the notification hubs associated with a namespace.
 //
 // Deprecated: Version 2016-03-01 will be removed in v2 of the provider.
 func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubResult, error) {

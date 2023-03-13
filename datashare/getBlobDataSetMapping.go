@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Blob data set mapping.
+// Get a DataSetMapping in a shareSubscription
 // API Version: 2020-09-01.
 func LookupBlobDataSetMapping(ctx *pulumi.Context, args *LookupBlobDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobDataSetMappingResult, error) {
 	var rv LookupBlobDataSetMappingResult

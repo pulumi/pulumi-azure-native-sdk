@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a federated identity credential.
+// Gets the federated identity credential.
 func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederatedIdentityCredentialArgs, opts ...pulumi.InvokeOption) (*LookupFederatedIdentityCredentialResult, error) {
 	var rv LookupFederatedIdentityCredentialResult
 	err := ctx.Invoke("azure-native:managedidentity/v20220131preview:getFederatedIdentityCredential", args, &rv, opts...)

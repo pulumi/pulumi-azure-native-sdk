@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual Appliance Site resource.
+// Gets the specified Virtual Appliance Site.
 func LookupVirtualApplianceSite(ctx *pulumi.Context, args *LookupVirtualApplianceSiteArgs, opts ...pulumi.InvokeOption) (*LookupVirtualApplianceSiteResult, error) {
 	var rv LookupVirtualApplianceSiteResult
 	err := ctx.Invoke("azure-native:network/v20210301:getVirtualApplianceSite", args, &rv, opts...)

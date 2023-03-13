@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class represents the access keys of SignalR service.
+// Get the access keys of the SignalR resource.
 // API Version: 2020-05-01.
 func ListSignalRKeys(ctx *pulumi.Context, args *ListSignalRKeysArgs, opts ...pulumi.InvokeOption) (*ListSignalRKeysResult, error) {
 	var rv ListSignalRKeysResult

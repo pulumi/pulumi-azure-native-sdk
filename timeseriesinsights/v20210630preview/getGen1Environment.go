@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
+// Gets the environment with the specified name in the specified subscription and resource group.
 func LookupGen1Environment(ctx *pulumi.Context, args *LookupGen1EnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupGen1EnvironmentResult, error) {
 	var rv LookupGen1EnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20210630preview:getGen1Environment", args, &rv, opts...)

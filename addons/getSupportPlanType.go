@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The status of the Canonical support plan.
+// Returns whether or not the canonical support plan of type {type} is enabled for the subscription.
 // API Version: 2018-03-01.
 func LookupSupportPlanType(ctx *pulumi.Context, args *LookupSupportPlanTypeArgs, opts ...pulumi.InvokeOption) (*LookupSupportPlanTypeResult, error) {
 	var rv LookupSupportPlanTypeResult

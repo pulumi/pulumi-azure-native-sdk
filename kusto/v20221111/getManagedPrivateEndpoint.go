@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a managed private endpoint.
+// Gets a managed private endpoint.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	var rv LookupManagedPrivateEndpointResult
 	err := ctx.Invoke("azure-native:kusto/v20221111:getManagedPrivateEndpoint", args, &rv, opts...)

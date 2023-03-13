@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data network resource. Must be created in the same location as its parent mobile network.
+// Gets information about the specified data network.
 func LookupDataNetwork(ctx *pulumi.Context, args *LookupDataNetworkArgs, opts ...pulumi.InvokeOption) (*LookupDataNetworkResult, error) {
 	var rv LookupDataNetworkResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20221101:getDataNetwork", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site Custom Domain Overview ARM resource.
+// Gets an existing custom domain for a particular static site.
 func LookupStaticSiteCustomDomain(ctx *pulumi.Context, args *LookupStaticSiteCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteCustomDomainResult, error) {
 	var rv LookupStaticSiteCustomDomainResult
 	err := ctx.Invoke("azure-native:web/v20210101:getStaticSiteCustomDomain", args, &rv, opts...)

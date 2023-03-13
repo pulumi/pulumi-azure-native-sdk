@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
+// Gets a single firewall rule in a specified redis cache.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	var rv LookupFirewallRuleResult
 	err := ctx.Invoke("azure-native:cache/v20220601:getFirewallRule", args, &rv, opts...)

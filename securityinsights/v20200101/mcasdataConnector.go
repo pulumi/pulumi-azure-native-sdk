@@ -102,6 +102,12 @@ func NewMCASDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20221201preview:MCASDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201preview:MCASDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MCASDataConnector

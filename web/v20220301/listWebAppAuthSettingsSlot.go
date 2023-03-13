@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configuration settings for the Azure App Service Authentication / Authorization feature.
+// Description for Gets the Authentication/Authorization settings of an app.
 func ListWebAppAuthSettingsSlot(ctx *pulumi.Context, args *ListWebAppAuthSettingsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppAuthSettingsSlotResult, error) {
 	var rv ListWebAppAuthSettingsSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:listWebAppAuthSettingsSlot", args, &rv, opts...)

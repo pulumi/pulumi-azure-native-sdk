@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The essential information related to the peer's ASN.
+// Gets the peer ASN with the specified name under the given subscription.
 //
 // Deprecated: Version 2019-09-01-preview will be removed in v2 of the provider.
 func LookupPeerAsn(ctx *pulumi.Context, args *LookupPeerAsnArgs, opts ...pulumi.InvokeOption) (*LookupPeerAsnResult, error) {

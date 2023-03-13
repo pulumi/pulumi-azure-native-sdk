@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of a request to list events for a webhook.
+// Lists recent events for the specified webhook.
 // API Version: 2019-05-01.
 func ListWebhookEvents(ctx *pulumi.Context, args *ListWebhookEventsArgs, opts ...pulumi.InvokeOption) (*ListWebhookEventsResult, error) {
 	var rv ListWebhookEventsResult

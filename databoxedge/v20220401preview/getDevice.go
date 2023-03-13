@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Data Box Edge/Gateway device.
+// Gets the properties of the Data Box Edge/Data Box Gateway device.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
 	var rv LookupDeviceResult
 	err := ctx.Invoke("azure-native:databoxedge/v20220401preview:getDevice", args, &rv, opts...)

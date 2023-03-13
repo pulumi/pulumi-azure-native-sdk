@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of hybrid connection resource.
+// Returns the description for the specified hybrid connection.
 func LookupHybridConnection(ctx *pulumi.Context, args *LookupHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionResult, error) {
 	var rv LookupHybridConnectionResult
 	err := ctx.Invoke("azure-native:relay/v20170401:getHybridConnection", args, &rv, opts...)

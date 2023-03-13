@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure SQL job agent.
+// Gets a job agent.
 func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulumi.InvokeOption) (*LookupJobAgentResult, error) {
 	var rv LookupJobAgentResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getJobAgent", args, &rv, opts...)

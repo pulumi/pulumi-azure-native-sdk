@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Linked Subscription information.
+// Returns the properties of a Linked Subscription resource.
 // API Version: 2020-06-01-preview.
 func LookupLinkedSubscription(ctx *pulumi.Context, args *LookupLinkedSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupLinkedSubscriptionResult, error) {
 	var rv LookupLinkedSubscriptionResult

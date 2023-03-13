@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a Server collector.
 func LookupServerCollector(ctx *pulumi.Context, args *LookupServerCollectorArgs, opts ...pulumi.InvokeOption) (*LookupServerCollectorResult, error) {
 	var rv LookupServerCollectorResult
 	err := ctx.Invoke("azure-native:migrate/v20191001:getServerCollector", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Binding resource payload
+// Get a Binding and its properties.
 func LookupBinding(ctx *pulumi.Context, args *LookupBindingArgs, opts ...pulumi.InvokeOption) (*LookupBindingResult, error) {
 	var rv LookupBindingResult
 	err := ctx.Invoke("azure-native:appplatform/v20221201:getBinding", args, &rv, opts...)

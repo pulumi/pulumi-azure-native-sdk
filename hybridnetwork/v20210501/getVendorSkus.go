@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Sku sub resource.
+// Gets information about the specified sku.
 func LookupVendorSkus(ctx *pulumi.Context, args *LookupVendorSkusArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkusResult, error) {
 	var rv LookupVendorSkusResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20210501:getVendorSkus", args, &rv, opts...)

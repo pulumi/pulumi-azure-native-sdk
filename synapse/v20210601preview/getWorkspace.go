@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A workspace
+// Gets a workspace
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getWorkspace", args, &rv, opts...)
@@ -42,7 +42,7 @@ type LookupWorkspaceResult struct {
 	// The encryption details of the workspace
 	Encryption *EncryptionDetailsResponse `pulumi:"encryption"`
 	// Workspace level configs and feature flags
-	ExtraProperties map[string]interface{} `pulumi:"extraProperties"`
+	ExtraProperties interface{} `pulumi:"extraProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Identity of the workspace
@@ -174,8 +174,8 @@ func (o LookupWorkspaceResultOutput) Encryption() EncryptionDetailsResponsePtrOu
 }
 
 // Workspace level configs and feature flags
-func (o LookupWorkspaceResultOutput) ExtraProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) map[string]interface{} { return v.ExtraProperties }).(pulumi.MapOutput)
+func (o LookupWorkspaceResultOutput) ExtraProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) interface{} { return v.ExtraProperties }).(pulumi.AnyOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

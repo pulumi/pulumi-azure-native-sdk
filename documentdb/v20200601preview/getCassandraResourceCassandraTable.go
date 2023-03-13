@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB Cassandra table.
+// Gets the Cassandra table under an existing Azure Cosmos DB database account.
 //
 // Deprecated: Version 2020-06-01-preview will be removed in v2 of the provider.
 func LookupCassandraResourceCassandraTable(ctx *pulumi.Context, args *LookupCassandraResourceCassandraTableArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraTableResult, error) {

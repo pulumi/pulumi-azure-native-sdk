@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves an existing Power BI Workspace Collection.
 func LookupWorkspaceCollection(ctx *pulumi.Context, args *LookupWorkspaceCollectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceCollectionResult, error) {
 	var rv LookupWorkspaceCollectionResult
 	err := ctx.Invoke("azure-native:powerbi/v20160129:getWorkspaceCollection", args, &rv, opts...)

@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// List storage account keys of a workspace.
 func ListWorkspaceStorageAccountKeys(ctx *pulumi.Context, args *ListWorkspaceStorageAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceStorageAccountKeysResult, error) {
 	var rv ListWorkspaceStorageAccountKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220101preview:listWorkspaceStorageAccountKeys", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the gallery Application Version that you want to create or update.
+// Retrieves information about a gallery Application Version.
 // API Version: 2020-09-30.
 func LookupGalleryApplicationVersion(ctx *pulumi.Context, args *LookupGalleryApplicationVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationVersionResult, error) {
 	var rv LookupGalleryApplicationVersionResult

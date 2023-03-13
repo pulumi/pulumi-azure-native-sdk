@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets a workflow access key.
 func LookupWorkflowAccessKey(ctx *pulumi.Context, args *LookupWorkflowAccessKeyArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowAccessKeyResult, error) {
 	var rv LookupWorkflowAccessKeyResult
 	err := ctx.Invoke("azure-native:logic/v20150201preview:getWorkflowAccessKey", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The top level data export resource container.
+// Gets a data export instance.
 // API Version: 2020-08-01.
 func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...pulumi.InvokeOption) (*LookupDataExportResult, error) {
 	var rv LookupDataExportResult

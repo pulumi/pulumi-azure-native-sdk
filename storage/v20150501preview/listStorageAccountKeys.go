@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The access keys for the storage account.
+// Lists the access keys for the specified storage account.
 func ListStorageAccountKeys(ctx *pulumi.Context, args *ListStorageAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountKeysResult, error) {
 	var rv ListStorageAccountKeysResult
 	err := ctx.Invoke("azure-native:storage/v20150501preview:listStorageAccountKeys", args, &rv, opts...)

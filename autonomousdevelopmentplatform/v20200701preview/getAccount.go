@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An ADP account.
+// Gets the properties of an ADP account.
 //
 // Deprecated: Version 2020-07-01-preview will be removed in v2 of the provider.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {

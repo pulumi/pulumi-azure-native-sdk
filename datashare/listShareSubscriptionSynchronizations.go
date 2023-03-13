@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A consumer side list of share subscription synchronizations
+// List synchronizations of a share subscription
 // API Version: 2020-09-01.
 func ListShareSubscriptionSynchronizations(ctx *pulumi.Context, args *ListShareSubscriptionSynchronizationsArgs, opts ...pulumi.InvokeOption) (*ListShareSubscriptionSynchronizationsResult, error) {
 	var rv ListShareSubscriptionSynchronizationsResult

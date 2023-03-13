@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SIM group resource.
+// Gets information about the specified SIM group.
 // API Version: 2022-04-01-preview.
 func LookupSimGroup(ctx *pulumi.Context, args *LookupSimGroupArgs, opts ...pulumi.InvokeOption) (*LookupSimGroupResult, error) {
 	var rv LookupSimGroupResult

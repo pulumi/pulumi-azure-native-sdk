@@ -60,6 +60,12 @@ func NewJob(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001:Job"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Job"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Job
