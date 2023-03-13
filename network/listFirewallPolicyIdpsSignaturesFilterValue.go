@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the list of all possible values for a specific filter value
+// Retrieves the current filter values for the signatures overrides
 // API Version: 2022-01-01.
 func ListFirewallPolicyIdpsSignaturesFilterValue(ctx *pulumi.Context, args *ListFirewallPolicyIdpsSignaturesFilterValueArgs, opts ...pulumi.InvokeOption) (*ListFirewallPolicyIdpsSignaturesFilterValueResult, error) {
 	var rv ListFirewallPolicyIdpsSignaturesFilterValueResult

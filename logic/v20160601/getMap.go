@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The integration account map.
+// Gets an integration account map.
 func LookupMap(ctx *pulumi.Context, args *LookupMapArgs, opts ...pulumi.InvokeOption) (*LookupMapResult, error) {
 	var rv LookupMapResult
 	err := ctx.Invoke("azure-native:logic/v20160601:getMap", args, &rv, opts...)

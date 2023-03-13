@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Connection string for ingesting security data and logs
+// Connection strings for ingesting security scan logs and data.
 // API Version: 2021-01-15-preview.
 func ListIngestionSettingConnectionStrings(ctx *pulumi.Context, args *ListIngestionSettingConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListIngestionSettingConnectionStringsResult, error) {
 	var rv ListIngestionSettingConnectionStringsResult

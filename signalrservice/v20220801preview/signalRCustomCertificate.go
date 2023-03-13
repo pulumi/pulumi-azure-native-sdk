@@ -57,6 +57,9 @@ func NewSignalRCustomCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220201:SignalRCustomCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230201:SignalRCustomCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SignalRCustomCertificate

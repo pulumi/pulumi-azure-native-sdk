@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// States and configurations of Cost Analysis.
+// Gets the view by view name.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:costmanagement/v20211001:getView", args, &rv, opts...)

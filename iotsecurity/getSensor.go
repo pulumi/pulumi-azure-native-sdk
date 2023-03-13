@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// IoT sensor model
+// Get IoT sensor
 // API Version: 2021-02-01-preview.
 func LookupSensor(ctx *pulumi.Context, args *LookupSensorArgs, opts ...pulumi.InvokeOption) (*LookupSensorResult, error) {
 	var rv LookupSensorResult

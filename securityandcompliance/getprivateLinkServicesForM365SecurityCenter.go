@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the service.
+// Get the metadata of a privateLinkServicesForM365SecurityCenter resource.
 // API Version: 2021-03-08.
 func GetprivateLinkServicesForM365SecurityCenter(ctx *pulumi.Context, args *GetprivateLinkServicesForM365SecurityCenterArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForM365SecurityCenterResult, error) {
 	var rv GetprivateLinkServicesForM365SecurityCenterResult

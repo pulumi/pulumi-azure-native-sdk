@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties of the file share, including Id, resource name, resource type, Etag.
+// Gets properties of a specified share.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
 func LookupFileShare(ctx *pulumi.Context, args *LookupFileShareArgs, opts ...pulumi.InvokeOption) (*LookupFileShareResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// CDN profile is a logical grouping of endpoints that share the same settings, such as CDN provider and pricing tier.
+// Gets a CDN profile with the specified profile name under the specified subscription and resource group.
 //
 // Deprecated: Version 2017-10-12 will be removed in v2 of the provider.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {

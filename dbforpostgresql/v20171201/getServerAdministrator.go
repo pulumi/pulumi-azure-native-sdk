@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a and external administrator to be created.
+// Gets information about a AAD server administrator.
 func LookupServerAdministrator(ctx *pulumi.Context, args *LookupServerAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAdministratorResult, error) {
 	var rv LookupServerAdministratorResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20171201:getServerAdministrator", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the Database resource.
+// Gets the SAP Database Instance resource.
 func LookupSAPDatabaseInstance(ctx *pulumi.Context, args *LookupSAPDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPDatabaseInstanceResult, error) {
 	var rv LookupSAPDatabaseInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPDatabaseInstance", args, &rv, opts...)

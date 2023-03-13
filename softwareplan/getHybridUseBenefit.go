@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response on GET of a hybrid use benefit
+// Gets a given plan ID
 // API Version: 2019-06-01-preview.
 func LookupHybridUseBenefit(ctx *pulumi.Context, args *LookupHybridUseBenefitArgs, opts ...pulumi.InvokeOption) (*LookupHybridUseBenefitResult, error) {
 	var rv LookupHybridUseBenefitResult

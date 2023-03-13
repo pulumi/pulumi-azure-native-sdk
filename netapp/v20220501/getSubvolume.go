@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Subvolume Information properties
+// Returns the path associated with the subvolumeName provided
 func LookupSubvolume(ctx *pulumi.Context, args *LookupSubvolumeArgs, opts ...pulumi.InvokeOption) (*LookupSubvolumeResult, error) {
 	var rv LookupSubvolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20220501:getSubvolume", args, &rv, opts...)

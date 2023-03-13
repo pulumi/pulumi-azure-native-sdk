@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Microsoft Threat Intelligence data connector.
+// Gets a data connector.
 func LookupMSTIDataConnector(ctx *pulumi.Context, args *LookupMSTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMSTIDataConnectorResult, error) {
 	var rv LookupMSTIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getMSTIDataConnector", args, &rv, opts...)

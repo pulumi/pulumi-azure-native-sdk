@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for ElasticSan request.
+// Get a ElasticSan.
 func LookupElasticSan(ctx *pulumi.Context, args *LookupElasticSanArgs, opts ...pulumi.InvokeOption) (*LookupElasticSanResult, error) {
 	var rv LookupElasticSanResult
 	err := ctx.Invoke("azure-native:elasticsan/v20211120preview:getElasticSan", args, &rv, opts...)

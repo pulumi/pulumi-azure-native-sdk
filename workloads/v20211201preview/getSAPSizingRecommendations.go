@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The SAP sizing recommendation result.
+// Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
 func GetSAPSizingRecommendations(ctx *pulumi.Context, args *GetSAPSizingRecommendationsArgs, opts ...pulumi.InvokeOption) (*GetSAPSizingRecommendationsResult, error) {
 	var rv GetSAPSizingRecommendationsResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPSizingRecommendations", args, &rv, opts...)

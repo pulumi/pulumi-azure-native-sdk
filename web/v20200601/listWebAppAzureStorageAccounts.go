@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// AzureStorageInfo dictionary resource.
+// Gets the Azure storage account configurations of an app.
 func ListWebAppAzureStorageAccounts(ctx *pulumi.Context, args *ListWebAppAzureStorageAccountsArgs, opts ...pulumi.InvokeOption) (*ListWebAppAzureStorageAccountsResult, error) {
 	var rv ListWebAppAzureStorageAccountsResult
 	err := ctx.Invoke("azure-native:web/v20200601:listWebAppAzureStorageAccounts", args, &rv, opts...)

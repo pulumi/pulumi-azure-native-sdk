@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Active directory connector resource
+// Retrieves an Active Directory connector resource
 func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirectoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupActiveDirectoryConnectorResult, error) {
 	var rv LookupActiveDirectoryConnectorResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20220301preview:getActiveDirectoryConnector", args, &rv, opts...)

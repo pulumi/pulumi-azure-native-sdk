@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Pageable list of products.
+// Returns a list of products.
 func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.InvokeOption) (*GetProductsResult, error) {
 	var rv GetProductsResult
 	err := ctx.Invoke("azure-native:azurestack/v20160101:getProducts", args, &rv, opts...)

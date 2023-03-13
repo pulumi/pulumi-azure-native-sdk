@@ -92,6 +92,9 @@ func NewActionGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20220401:ActionGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230101:ActionGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ActionGroup

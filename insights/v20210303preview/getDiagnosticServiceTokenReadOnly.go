@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response to a diagnostic services token query.
+// Gets an read-only access token for application insights diagnostic service data.
 func GetDiagnosticServiceTokenReadOnly(ctx *pulumi.Context, args *GetDiagnosticServiceTokenReadOnlyArgs, opts ...pulumi.InvokeOption) (*GetDiagnosticServiceTokenReadOnlyResult, error) {
 	var rv GetDiagnosticServiceTokenReadOnlyResult
 	err := ctx.Invoke("azure-native:insights/v20210303preview:getDiagnosticServiceTokenReadOnly", args, &rv, opts...)

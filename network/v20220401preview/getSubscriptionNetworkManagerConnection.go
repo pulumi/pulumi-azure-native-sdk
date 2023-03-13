@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Network Manager Connection resource
+// Get a specified connection created by this subscription.
 func LookupSubscriptionNetworkManagerConnection(ctx *pulumi.Context, args *LookupSubscriptionNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionNetworkManagerConnectionResult, error) {
 	var rv LookupSubscriptionNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:getSubscriptionNetworkManagerConnection", args, &rv, opts...)

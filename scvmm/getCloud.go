@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clouds resource definition.
+// Implements Cloud GET method.
 // API Version: 2020-06-05-preview.
 func LookupCloud(ctx *pulumi.Context, args *LookupCloudArgs, opts ...pulumi.InvokeOption) (*LookupCloudResult, error) {
 	var rv LookupCloudResult

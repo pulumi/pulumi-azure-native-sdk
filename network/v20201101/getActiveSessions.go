@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for GetActiveSessions.
+// Returns the list of currently active sessions on the Bastion.
 func GetActiveSessions(ctx *pulumi.Context, args *GetActiveSessionsArgs, opts ...pulumi.InvokeOption) (*GetActiveSessionsResult, error) {
 	var rv GetActiveSessionsResult
 	err := ctx.Invoke("azure-native:network/v20201101:getActiveSessions", args, &rv, opts...)

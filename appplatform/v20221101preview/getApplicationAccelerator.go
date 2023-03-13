@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Application accelerator resource
+// Get the application accelerator.
 func LookupApplicationAccelerator(ctx *pulumi.Context, args *LookupApplicationAcceleratorArgs, opts ...pulumi.InvokeOption) (*LookupApplicationAcceleratorResult, error) {
 	var rv LookupApplicationAcceleratorResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getApplicationAccelerator", args, &rv, opts...)

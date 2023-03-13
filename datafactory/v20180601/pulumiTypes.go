@@ -1629,6 +1629,10 @@ type AzureBlobFSLinkedService struct {
 	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The Azure key vault secret reference of sasToken in sas uri.
+	SasToken interface{} `pulumi:"sasToken"`
+	// SAS URI of the Azure Data Lake Storage Gen2 service. Type: string, SecureString or AzureKeyVaultSecretReference.
+	SasUri interface{} `pulumi:"sasUri"`
 	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
 	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
 	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
@@ -1664,6 +1668,10 @@ type AzureBlobFSLinkedServiceResponse struct {
 	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The Azure key vault secret reference of sasToken in sas uri.
+	SasToken interface{} `pulumi:"sasToken"`
+	// SAS URI of the Azure Data Lake Storage Gen2 service. Type: string, SecureString or AzureKeyVaultSecretReference.
+	SasUri interface{} `pulumi:"sasUri"`
 	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
 	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
 	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
@@ -1891,12 +1899,16 @@ type AzureBlobStorageLinkedService struct {
 	AccountKind *string `pulumi:"accountKind"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Container uri of the Azure Blob Storage resource only support for anonymous access. Type: string (or Expression with resultType string).
+	ContainerUri interface{} `pulumi:"containerUri"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
@@ -1930,12 +1942,16 @@ type AzureBlobStorageLinkedServiceResponse struct {
 	AccountKind *string `pulumi:"accountKind"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Container uri of the Azure Blob Storage resource only support for anonymous access. Type: string (or Expression with resultType string).
+	ContainerUri interface{} `pulumi:"containerUri"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
@@ -6515,6 +6531,22 @@ type CopyActivityResponse struct {
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
 	// Whether to enable Data Consistency validation. Type: boolean (or Expression with resultType boolean).
 	ValidateDataConsistency interface{} `pulumi:"validateDataConsistency"`
+}
+
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScaleProperties struct {
+	// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+	DataIntegrationUnit *int `pulumi:"dataIntegrationUnit"`
+	// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScalePropertiesResponse struct {
+	// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+	DataIntegrationUnit *int `pulumi:"dataIntegrationUnit"`
+	// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+	TimeToLive *int `pulumi:"timeToLive"`
 }
 
 // Microsoft Azure Cosmos Database (CosmosDB) linked service.
@@ -12520,68 +12552,6 @@ type HDInsightOnDemandLinkedServiceResponse struct {
 	YarnConfiguration interface{} `pulumi:"yarnConfiguration"`
 	// Specifies the size of the Zoo Keeper node for the HDInsight cluster.
 	ZookeeperNodeSize interface{} `pulumi:"zookeeperNodeSize"`
-}
-
-// HDInsight Pig activity type.
-type HDInsightPigActivity struct {
-	// User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
-	Arguments interface{} `pulumi:"arguments"`
-	// Allows user to specify defines for Pig job request.
-	Defines map[string]interface{} `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn []ActivityDependency `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo *string `pulumi:"getDebugInfo"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Activity policy.
-	Policy *ActivityPolicy `pulumi:"policy"`
-	// Script linked service reference.
-	ScriptLinkedService *LinkedServiceReference `pulumi:"scriptLinkedService"`
-	// Script path. Type: string (or Expression with resultType string).
-	ScriptPath interface{} `pulumi:"scriptPath"`
-	// Storage linked service references.
-	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightPig'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserProperty `pulumi:"userProperties"`
-}
-
-// HDInsight Pig activity type.
-type HDInsightPigActivityResponse struct {
-	// User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
-	Arguments interface{} `pulumi:"arguments"`
-	// Allows user to specify defines for Pig job request.
-	Defines map[string]interface{} `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo *string `pulumi:"getDebugInfo"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Activity policy.
-	Policy *ActivityPolicyResponse `pulumi:"policy"`
-	// Script linked service reference.
-	ScriptLinkedService *LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
-	// Script path. Type: string (or Expression with resultType string).
-	ScriptPath interface{} `pulumi:"scriptPath"`
-	// Storage linked service references.
-	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightPig'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
 }
 
 func init() {

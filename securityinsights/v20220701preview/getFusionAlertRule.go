@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Fusion alert rule.
+// Gets the alert rule.
 func LookupFusionAlertRule(ctx *pulumi.Context, args *LookupFusionAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupFusionAlertRuleResult, error) {
 	var rv LookupFusionAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getFusionAlertRule", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The network security perimeter profile resource
+// Gets the specified NSP profile.
 func LookupNspProfile(ctx *pulumi.Context, args *LookupNspProfileArgs, opts ...pulumi.InvokeOption) (*LookupNspProfileResult, error) {
 	var rv LookupNspProfileResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getNspProfile", args, &rv, opts...)

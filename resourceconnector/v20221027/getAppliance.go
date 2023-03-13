@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Appliances definition.
+// Gets the details of an Appliance with a specified resource group and name.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	var rv LookupApplianceResult
 	err := ctx.Invoke("azure-native:resourceconnector/v20221027:getAppliance", args, &rv, opts...)

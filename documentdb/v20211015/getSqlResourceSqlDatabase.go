@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB SQL database.
+// Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
 func LookupSqlResourceSqlDatabase(ctx *pulumi.Context, args *LookupSqlResourceSqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlDatabaseResult, error) {
 	var rv LookupSqlResourceSqlDatabaseResult
 	err := ctx.Invoke("azure-native:documentdb/v20211015:getSqlResourceSqlDatabase", args, &rv, opts...)

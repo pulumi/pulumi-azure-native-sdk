@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Namespace/ServiceBus Connection String
+// Gets the primary and secondary connection strings for the topic.
 func ListTopicKeys(ctx *pulumi.Context, args *ListTopicKeysArgs, opts ...pulumi.InvokeOption) (*ListTopicKeysResult, error) {
 	var rv ListTopicKeysResult
 	err := ctx.Invoke("azure-native:servicebus/v20220101preview:listTopicKeys", args, &rv, opts...)

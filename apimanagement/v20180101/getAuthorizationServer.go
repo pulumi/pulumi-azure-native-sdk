@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// External OAuth authorization server settings.
+// Gets the details of the authorization server specified by its identifier.
 func LookupAuthorizationServer(ctx *pulumi.Context, args *LookupAuthorizationServerArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationServerResult, error) {
 	var rv LookupAuthorizationServerResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getAuthorizationServer", args, &rv, opts...)

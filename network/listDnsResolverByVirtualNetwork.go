@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response to an enumeration operation on sub-resources.
+// Lists DNS resolver resource IDs linked to a virtual network.
 // API Version: 2020-04-01-preview.
 func ListDnsResolverByVirtualNetwork(ctx *pulumi.Context, args *ListDnsResolverByVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*ListDnsResolverByVirtualNetworkResult, error) {
 	var rv ListDnsResolverByVirtualNetworkResult

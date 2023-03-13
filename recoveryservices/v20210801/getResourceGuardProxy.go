@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Returns ResourceGuardProxy under vault and with the name referenced in request
 func LookupResourceGuardProxy(ctx *pulumi.Context, args *LookupResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardProxyResult, error) {
 	var rv LookupResourceGuardProxyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20210801:getResourceGuardProxy", args, &rv, opts...)

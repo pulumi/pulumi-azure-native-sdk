@@ -97,6 +97,9 @@ func NewServerFarmRouteForVnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220301:ServerFarmRouteForVnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20220901:ServerFarmRouteForVnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ServerFarmRouteForVnet

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Health Bot Keys Response.
+// List all secrets of a HealthBot.
 func ListBotSecrets(ctx *pulumi.Context, args *ListBotSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotSecretsResult, error) {
 	var rv ListBotSecretsResult
 	err := ctx.Invoke("azure-native:healthbot/v20220808:listBotSecrets", args, &rv, opts...)

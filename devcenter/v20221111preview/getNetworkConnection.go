@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network related settings
+// Gets a network connection resource
 func LookupNetworkConnection(ctx *pulumi.Context, args *LookupNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkConnectionResult, error) {
 	var rv LookupNetworkConnectionResult
 	err := ctx.Invoke("azure-native:devcenter/v20221111preview:getNetworkConnection", args, &rv, opts...)

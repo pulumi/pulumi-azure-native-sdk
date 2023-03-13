@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents Codeless API Polling data connector.
+// Gets a data connector.
 func LookupCodelessApiPollingDataConnector(ctx *pulumi.Context, args *LookupCodelessApiPollingDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCodelessApiPollingDataConnectorResult, error) {
 	var rv LookupCodelessApiPollingDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20210901preview:getCodelessApiPollingDataConnector", args, &rv, opts...)

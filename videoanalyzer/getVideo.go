@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The representation of a single video in a Video Analyzer account.
+// Retrieves an existing video resource within an account with a given name.
 // API Version: 2021-05-01-preview.
 func LookupVideo(ctx *pulumi.Context, args *LookupVideoArgs, opts ...pulumi.InvokeOption) (*LookupVideoResult, error) {
 	var rv LookupVideoResult

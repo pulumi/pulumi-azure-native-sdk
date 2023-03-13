@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Guest Usages Resource
+// Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
 func LookupGuestUsage(ctx *pulumi.Context, args *LookupGuestUsageArgs, opts ...pulumi.InvokeOption) (*LookupGuestUsageResult, error) {
 	var rv LookupGuestUsageResult
 	err := ctx.Invoke("azure-native:azureactivedirectory/v20210401:getGuestUsage", args, &rv, opts...)

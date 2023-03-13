@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Data Box Edge/Gateway device.
+// Gets the properties of the Data Box Edge/Data Box Gateway device.
 //
 // Deprecated: Version 2020-09-01-preview will be removed in v2 of the provider.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {

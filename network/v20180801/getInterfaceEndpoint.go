@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Interface endpoint resource.
+// Gets the specified interface endpoint by resource group.
 func LookupInterfaceEndpoint(ctx *pulumi.Context, args *LookupInterfaceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupInterfaceEndpointResult, error) {
 	var rv LookupInterfaceEndpointResult
 	err := ctx.Invoke("azure-native:network/v20180801:getInterfaceEndpoint", args, &rv, opts...)

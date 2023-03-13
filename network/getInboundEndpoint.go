@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes an inbound endpoint for a DNS resolver.
+// Gets properties of an inbound endpoint for a DNS resolver.
 // API Version: 2020-04-01-preview.
 func LookupInboundEndpoint(ctx *pulumi.Context, args *LookupInboundEndpointArgs, opts ...pulumi.InvokeOption) (*LookupInboundEndpointResult, error) {
 	var rv LookupInboundEndpointResult

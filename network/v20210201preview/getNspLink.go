@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The network security perimeter link resource
+// Gets the specified NSP link resource.
 func LookupNspLink(ctx *pulumi.Context, args *LookupNspLinkArgs, opts ...pulumi.InvokeOption) (*LookupNspLinkResult, error) {
 	var rv LookupNspLinkResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getNspLink", args, &rv, opts...)

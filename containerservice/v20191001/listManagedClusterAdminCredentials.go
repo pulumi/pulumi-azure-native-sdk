@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of credential result response.
+// Gets cluster admin credential of the managed cluster with a specified resource group and name.
 func ListManagedClusterAdminCredentials(ctx *pulumi.Context, args *ListManagedClusterAdminCredentialsArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAdminCredentialsResult, error) {
 	var rv ListManagedClusterAdminCredentialsResult
 	err := ctx.Invoke("azure-native:containerservice/v20191001:listManagedClusterAdminCredentials", args, &rv, opts...)

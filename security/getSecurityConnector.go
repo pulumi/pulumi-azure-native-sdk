@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The security connector resource.
+// Retrieves details of a specific security connector
 // API Version: 2021-07-01-preview.
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	var rv LookupSecurityConnectorResult

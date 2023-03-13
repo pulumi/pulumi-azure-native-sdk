@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data connector to pull Threat intelligence data from TAXII 2.0/2.1 server
+// Gets a data connector.
 func LookupTiTaxiiDataConnector(ctx *pulumi.Context, args *LookupTiTaxiiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTiTaxiiDataConnectorResult, error) {
 	var rv LookupTiTaxiiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:getTiTaxiiDataConnector", args, &rv, opts...)

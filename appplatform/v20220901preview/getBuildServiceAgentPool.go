@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The build service agent pool resource
+// Get build service agent pool.
 func LookupBuildServiceAgentPool(ctx *pulumi.Context, args *LookupBuildServiceAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceAgentPoolResult, error) {
 	var rv LookupBuildServiceAgentPoolResult
 	err := ctx.Invoke("azure-native:appplatform/v20220901preview:getBuildServiceAgentPool", args, &rv, opts...)

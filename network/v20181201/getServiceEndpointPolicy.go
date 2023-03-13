@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Service End point policy resource.
+// Gets the specified service Endpoint Policies in a specified resource group.
 func LookupServiceEndpointPolicy(ctx *pulumi.Context, args *LookupServiceEndpointPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointPolicyResult, error) {
 	var rv LookupServiceEndpointPolicyResult
 	err := ctx.Invoke("azure-native:network/v20181201:getServiceEndpointPolicy", args, &rv, opts...)

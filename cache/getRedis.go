@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A single Redis item in List or Get Operation.
+// Gets a Redis cache (resource description).
 // API Version: 2020-06-01.
 func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.InvokeOption) (*LookupRedisResult, error) {
 	var rv LookupRedisResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a relation between two resources
+// Gets a bookmark relation.
 func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkRelationResult, error) {
 	var rv LookupBookmarkRelationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getBookmarkRelation", args, &rv, opts...)

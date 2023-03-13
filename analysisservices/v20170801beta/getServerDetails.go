@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of an Analysis Services resource.
+// Gets details about the specified Analysis Services server.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {
 	var rv LookupServerDetailsResult
 	err := ctx.Invoke("azure-native:analysisservices/v20170801beta:getServerDetails", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the host.
+// Implements host GET method.
 func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.InvokeOption) (*LookupHostResult, error) {
 	var rv LookupHostResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getHost", args, &rv, opts...)

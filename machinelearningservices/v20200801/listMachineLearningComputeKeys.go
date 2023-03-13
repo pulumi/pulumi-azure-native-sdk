@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Secrets related to a Machine Learning compute. Might differ for every type of compute.
+// Gets secrets related to Machine Learning compute (storage keys, service credentials, etc).
 func ListMachineLearningComputeKeys(ctx *pulumi.Context, args *ListMachineLearningComputeKeysArgs, opts ...pulumi.InvokeOption) (*ListMachineLearningComputeKeysResult, error) {
 	var rv ListMachineLearningComputeKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200801:listMachineLearningComputeKeys", args, &rv, opts...)

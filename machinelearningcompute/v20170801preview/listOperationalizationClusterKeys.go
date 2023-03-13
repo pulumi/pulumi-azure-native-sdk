@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Credentials to resources in the cluster.
+// Gets the credentials for the specified cluster such as Storage, ACR and ACS credentials. This is a long running operation because it fetches keys from dependencies.
 func ListOperationalizationClusterKeys(ctx *pulumi.Context, args *ListOperationalizationClusterKeysArgs, opts ...pulumi.InvokeOption) (*ListOperationalizationClusterKeysResult, error) {
 	var rv ListOperationalizationClusterKeysResult
 	err := ctx.Invoke("azure-native:machinelearningcompute/v20170801preview:listOperationalizationClusterKeys", args, &rv, opts...)

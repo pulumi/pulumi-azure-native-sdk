@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of data partitions.
+// Method that gets called when list of partitions is requested.
 func ListEnergyServicePartitions(ctx *pulumi.Context, args *ListEnergyServicePartitionsArgs, opts ...pulumi.InvokeOption) (*ListEnergyServicePartitionsResult, error) {
 	var rv ListEnergyServicePartitionsResult
 	err := ctx.Invoke("azure-native:openenergyplatform/v20220404preview:listEnergyServicePartitions", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data Lake Analytics firewall rule information.
+// Gets the specified Data Lake Analytics firewall rule.
 //
 // Deprecated: Version 2015-10-01-preview will be removed in v2 of the provider.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {

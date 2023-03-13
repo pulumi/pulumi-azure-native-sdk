@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
+// Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 // API Version: 2020-05-01.
 func LookupRulesEngine(ctx *pulumi.Context, args *LookupRulesEngineArgs, opts ...pulumi.InvokeOption) (*LookupRulesEngineResult, error) {
 	var rv LookupRulesEngineResult

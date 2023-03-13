@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a token for a container registry.
+// Gets the properties of the specified token.
 func LookupToken(ctx *pulumi.Context, args *LookupTokenArgs, opts ...pulumi.InvokeOption) (*LookupTokenResult, error) {
 	var rv LookupTokenResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190501preview:getToken", args, &rv, opts...)

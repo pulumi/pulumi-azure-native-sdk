@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The access keys for the cognitive services account.
+// Lists the account keys for the specified Cognitive Services account.
 func ListCognitiveServicesAccountKeys(ctx *pulumi.Context, args *ListCognitiveServicesAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListCognitiveServicesAccountKeysResult, error) {
 	var rv ListCognitiveServicesAccountKeysResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20160201preview:listCognitiveServicesAccountKeys", args, &rv, opts...)

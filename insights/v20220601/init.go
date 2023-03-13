@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:insights/v20220601:ActionGroup":
 		r = &ActionGroup{}
+	case "azure-native:insights/v20220601:DataCollectionEndpoint":
+		r = &DataCollectionEndpoint{}
+	case "azure-native:insights/v20220601:DataCollectionRule":
+		r = &DataCollectionRule{}
+	case "azure-native:insights/v20220601:DataCollectionRuleAssociation":
+		r = &DataCollectionRuleAssociation{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

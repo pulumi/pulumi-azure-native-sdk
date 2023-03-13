@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Full endpoint url of an event subscription
+// Get the full endpoint URL for a nested event subscription for domain topic.
 func GetDomainTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetDomainTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetDomainTopicEventSubscriptionFullUrlResult, error) {
 	var rv GetDomainTopicEventSubscriptionFullUrlResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getDomainTopicEventSubscriptionFullUrl", args, &rv, opts...)

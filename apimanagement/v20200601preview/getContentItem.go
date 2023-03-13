@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Content type contract details.
+// Returns content item details
 func LookupContentItem(ctx *pulumi.Context, args *LookupContentItemArgs, opts ...pulumi.InvokeOption) (*LookupContentItemResult, error) {
 	var rv LookupContentItemResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getContentItem", args, &rv, opts...)

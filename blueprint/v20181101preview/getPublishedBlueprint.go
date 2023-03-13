@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a published blueprint.
+// Get a published version of a blueprint definition.
 func LookupPublishedBlueprint(ctx *pulumi.Context, args *LookupPublishedBlueprintArgs, opts ...pulumi.InvokeOption) (*LookupPublishedBlueprintResult, error) {
 	var rv LookupPublishedBlueprintResult
 	err := ctx.Invoke("azure-native:blueprint/v20181101preview:getPublishedBlueprint", args, &rv, opts...)

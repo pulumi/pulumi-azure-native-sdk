@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Watchlist in Azure Security Insights.
+// Gets a watchlist, without its watchlist items.
 func LookupWatchlist(ctx *pulumi.Context, args *LookupWatchlistArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistResult, error) {
 	var rv LookupWatchlistResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220401preview:getWatchlist", args, &rv, opts...)

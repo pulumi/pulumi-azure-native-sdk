@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Analytics Connector definition.
+// Gets the properties of the specified Analytics Connector.
 func LookupAnalyticsConnector(ctx *pulumi.Context, args *LookupAnalyticsConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAnalyticsConnectorResult, error) {
 	var rv LookupAnalyticsConnectorResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20221001preview:getAnalyticsConnector", args, &rv, opts...)

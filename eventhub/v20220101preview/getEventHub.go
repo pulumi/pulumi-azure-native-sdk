@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single item in List or Get Event Hub operation
+// Gets an Event Hubs description for the specified Event Hub.
 func LookupEventHub(ctx *pulumi.Context, args *LookupEventHubArgs, opts ...pulumi.InvokeOption) (*LookupEventHubResult, error) {
 	var rv LookupEventHubResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:getEventHub", args, &rv, opts...)

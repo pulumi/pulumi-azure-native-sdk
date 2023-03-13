@@ -75,6 +75,9 @@ func NewTransparentDataEncryption(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220501preview:TransparentDataEncryption"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20220801preview:TransparentDataEncryption"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource TransparentDataEncryption

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Subscription
+// Get properties of an event subscription of a topic.
 func LookupTopicEventSubscription(ctx *pulumi.Context, args *LookupTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupTopicEventSubscriptionResult, error) {
 	var rv LookupTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getTopicEventSubscription", args, &rv, opts...)

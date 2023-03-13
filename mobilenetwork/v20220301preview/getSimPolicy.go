@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Sim policy resource.
+// Gets information about the specified sim policy.
 func LookupSimPolicy(ctx *pulumi.Context, args *LookupSimPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSimPolicyResult, error) {
 	var rv LookupSimPolicyResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getSimPolicy", args, &rv, opts...)

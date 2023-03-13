@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response of getting a download URL.
+// Gets the download URL of the test execution screen recording.
 func GetTestResultVideoDownloadURL(ctx *pulumi.Context, args *GetTestResultVideoDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultVideoDownloadURLResult, error) {
 	var rv GetTestResultVideoDownloadURLResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getTestResultVideoDownloadURL", args, &rv, opts...)

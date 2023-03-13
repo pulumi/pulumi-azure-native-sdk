@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieve the automation keys for an account.
 func ListKeyByAutomationAccount(ctx *pulumi.Context, args *ListKeyByAutomationAccountArgs, opts ...pulumi.InvokeOption) (*ListKeyByAutomationAccountResult, error) {
 	var rv ListKeyByAutomationAccountResult
 	err := ctx.Invoke("azure-native:automation/v20220808:listKeyByAutomationAccount", args, &rv, opts...)

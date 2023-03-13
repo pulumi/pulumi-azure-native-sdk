@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SpatialAnchorsAccount Response.
+// Retrieve a Spatial Anchors Account.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {
 	var rv LookupSpatialAnchorsAccountResult
 	err := ctx.Invoke("azure-native:mixedreality/v20210301preview:getSpatialAnchorsAccount", args, &rv, opts...)

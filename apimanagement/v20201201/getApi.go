@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api details.
+// Gets the details of the API specified by its identifier.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
 	var rv LookupApiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20201201:getApi", args, &rv, opts...)

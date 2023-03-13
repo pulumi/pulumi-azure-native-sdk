@@ -10,7 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Base class for backup ProtectionIntent.
+// Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
+// call the GetItemOperationResult API.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
 	var rv LookupProtectionIntentResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20210801:getProtectionIntent", args, &rv, opts...)

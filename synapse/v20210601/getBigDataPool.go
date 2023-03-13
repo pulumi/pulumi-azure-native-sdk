@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Big Data pool
+// Get a Big Data pool.
 func LookupBigDataPool(ctx *pulumi.Context, args *LookupBigDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupBigDataPoolResult, error) {
 	var rv LookupBigDataPoolResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getBigDataPool", args, &rv, opts...)
@@ -36,7 +36,7 @@ type LookupBigDataPoolResult struct {
 	// Auto-scaling properties
 	AutoScale *AutoScalePropertiesResponse `pulumi:"autoScale"`
 	// The cache size
-	CacheSize *int `pulumi:"cacheSize"`
+	CacheSize int `pulumi:"cacheSize"`
 	// The time when the Big Data pool was created.
 	CreationDate string `pulumi:"creationDate"`
 	// List of custom libraries/packages associated with the spark pool.
@@ -133,8 +133,8 @@ func (o LookupBigDataPoolResultOutput) AutoScale() AutoScalePropertiesResponsePt
 }
 
 // The cache size
-func (o LookupBigDataPoolResultOutput) CacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupBigDataPoolResult) *int { return v.CacheSize }).(pulumi.IntPtrOutput)
+func (o LookupBigDataPoolResultOutput) CacheSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBigDataPoolResult) int { return v.CacheSize }).(pulumi.IntOutput)
 }
 
 // The time when the Big Data pool was created.

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A hostname binding object.
+// Description for Get the named hostname binding for an app (or deployment slot, if specified).
 func LookupWebAppHostNameBindingSlot(ctx *pulumi.Context, args *LookupWebAppHostNameBindingSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHostNameBindingSlotResult, error) {
 	var rv LookupWebAppHostNameBindingSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppHostNameBindingSlot", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Private endpoint connection proxy details.
+// (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
 func LookupPrivateEndpointConnectionProxy(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionProxyArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionProxyResult, error) {
 	var rv LookupPrivateEndpointConnectionProxyResult
 	err := ctx.Invoke("azure-native:deviceupdate/v20221201preview:getPrivateEndpointConnectionProxy", args, &rv, opts...)

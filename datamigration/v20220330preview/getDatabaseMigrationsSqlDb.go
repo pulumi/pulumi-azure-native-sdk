@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Database Migration Resource for SQL Database.
+// Retrieve the Database Migration resource.
 func LookupDatabaseMigrationsSqlDb(ctx *pulumi.Context, args *LookupDatabaseMigrationsSqlDbArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsSqlDbResult, error) {
 	var rv LookupDatabaseMigrationsSqlDbResult
 	err := ctx.Invoke("azure-native:datamigration/v20220330preview:getDatabaseMigrationsSqlDb", args, &rv, opts...)

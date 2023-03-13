@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Markup rule
+// Get a markup rule by its rule name.
 func LookupMarkupRule(ctx *pulumi.Context, args *LookupMarkupRuleArgs, opts ...pulumi.InvokeOption) (*LookupMarkupRuleResult, error) {
 	var rv LookupMarkupRuleResult
 	err := ctx.Invoke("azure-native:costmanagement/v20221005preview:getMarkupRule", args, &rv, opts...)

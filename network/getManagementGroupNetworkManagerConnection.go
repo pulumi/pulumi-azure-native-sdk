@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Network Manager Connection resource
+// Get a specified connection created by this management group.
 // API Version: 2021-05-01-preview.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
 	var rv LookupManagementGroupNetworkManagerConnectionResult

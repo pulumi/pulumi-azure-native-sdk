@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Lists the integration account callback URL.
 func ListIntegrationAccountCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountCallbackUrlResult, error) {
 	var rv ListIntegrationAccountCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic/v20150801preview:listIntegrationAccountCallbackUrl", args, &rv, opts...)

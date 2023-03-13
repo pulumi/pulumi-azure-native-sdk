@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector.
+// Gets a data connector.
 func LookupMDATPDataConnector(ctx *pulumi.Context, args *LookupMDATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMDATPDataConnectorResult, error) {
 	var rv LookupMDATPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:getMDATPDataConnector", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The secret access keys used for authenticating connections to redis
+// Retrieves the access keys for the RedisEnterprise database.
 func ListDatabaseKeys(ctx *pulumi.Context, args *ListDatabaseKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseKeysResult, error) {
 	var rv ListDatabaseKeysResult
 	err := ctx.Invoke("azure-native:cache/v20210201preview:listDatabaseKeys", args, &rv, opts...)

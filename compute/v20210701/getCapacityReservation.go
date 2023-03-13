@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the capacity reservation.
+// The operation that retrieves information about the capacity reservation.
 func LookupCapacityReservation(ctx *pulumi.Context, args *LookupCapacityReservationArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationResult, error) {
 	var rv LookupCapacityReservationResult
 	err := ctx.Invoke("azure-native:compute/v20210701:getCapacityReservation", args, &rv, opts...)

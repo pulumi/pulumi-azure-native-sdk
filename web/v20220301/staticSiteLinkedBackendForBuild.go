@@ -51,6 +51,9 @@ func NewStaticSiteLinkedBackendForBuild(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web:StaticSiteLinkedBackendForBuild"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20220901:StaticSiteLinkedBackendForBuild"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StaticSiteLinkedBackendForBuild

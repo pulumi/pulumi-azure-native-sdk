@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Private DNS zone.
+// Gets a Private DNS zone. Retrieves the zone properties, but not the virtual networks links or the record sets within the zone.
 // API Version: 2020-06-01.
 func LookupPrivateZone(ctx *pulumi.Context, args *LookupPrivateZoneArgs, opts ...pulumi.InvokeOption) (*LookupPrivateZoneResult, error) {
 	var rv LookupPrivateZoneResult

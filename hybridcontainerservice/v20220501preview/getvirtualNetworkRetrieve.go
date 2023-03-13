@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The virtualNetworks resource definition.
+// Gets the Hybrid AKS virtual network
 func GetvirtualNetworkRetrieve(ctx *pulumi.Context, args *GetvirtualNetworkRetrieveArgs, opts ...pulumi.InvokeOption) (*GetvirtualNetworkRetrieveResult, error) {
 	var rv GetvirtualNetworkRetrieveResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice/v20220501preview:getvirtualNetworkRetrieve", args, &rv, opts...)

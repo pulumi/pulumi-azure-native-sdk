@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a CosmosDb data connection.
+// Returns a data connection.
 func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCosmosDbDataConnectionResult, error) {
 	var rv LookupCosmosDbDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20221111:getCosmosDbDataConnection", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of NetworkRuleSet resource.
+// Gets NetworkRuleSet for a Namespace.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	var rv LookupNamespaceNetworkRuleSetResult
 	err := ctx.Invoke("azure-native:servicebus/v20221001preview:getNamespaceNetworkRuleSet", args, &rv, opts...)

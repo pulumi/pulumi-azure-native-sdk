@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace active directory administrator
+// Gets a workspace SQL active directory admin
 func LookupWorkspaceSqlAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceSqlAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSqlAadAdminResult, error) {
 	var rv LookupWorkspaceSqlAadAdminResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getWorkspaceSqlAadAdmin", args, &rv, opts...)

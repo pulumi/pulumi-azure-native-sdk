@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Get Storage Account ManagementPolicies operation response.
+// Gets the data policy rules associated with the specified storage account.
 //
 // Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
 func LookupStorageAccountManagementPolicies(ctx *pulumi.Context, args *LookupStorageAccountManagementPoliciesArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountManagementPoliciesResult, error) {

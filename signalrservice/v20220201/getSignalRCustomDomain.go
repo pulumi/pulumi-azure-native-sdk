@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A custom domain
+// Get a custom domain.
 func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomDomainResult, error) {
 	var rv LookupSignalRCustomDomainResult
 	err := ctx.Invoke("azure-native:signalrservice/v20220201:getSignalRCustomDomain", args, &rv, opts...)

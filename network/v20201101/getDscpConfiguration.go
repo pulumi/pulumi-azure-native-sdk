@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// DSCP Configuration in a resource group.
+// Gets a DSCP Configuration.
 func LookupDscpConfiguration(ctx *pulumi.Context, args *LookupDscpConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscpConfigurationResult, error) {
 	var rv LookupDscpConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20201101:getDscpConfiguration", args, &rv, opts...)

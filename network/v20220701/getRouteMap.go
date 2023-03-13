@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The RouteMap child resource of a Virtual hub.
+// Retrieves the details of a RouteMap.
 func LookupRouteMap(ctx *pulumi.Context, args *LookupRouteMapArgs, opts ...pulumi.InvokeOption) (*LookupRouteMapResult, error) {
 	var rv LookupRouteMapResult
 	err := ctx.Invoke("azure-native:network/v20220701:getRouteMap", args, &rv, opts...)

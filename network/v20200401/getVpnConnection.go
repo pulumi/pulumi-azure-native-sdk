@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VpnConnection Resource.
+// Retrieves the details of a vpn connection.
 func LookupVpnConnection(ctx *pulumi.Context, args *LookupVpnConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVpnConnectionResult, error) {
 	var rv LookupVpnConnectionResult
 	err := ctx.Invoke("azure-native:network/v20200401:getVpnConnection", args, &rv, opts...)

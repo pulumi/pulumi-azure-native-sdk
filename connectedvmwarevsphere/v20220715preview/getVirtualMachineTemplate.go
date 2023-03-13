@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the virtualMachineTemplate.
+// Implements virtual machine template GET method.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	var rv LookupVirtualMachineTemplateResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20220715preview:getVirtualMachineTemplate", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of disk configuration for vmSku which are part of SAP deployment.
+// Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 func GetSAPDiskConfigurations(ctx *pulumi.Context, args *GetSAPDiskConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetSAPDiskConfigurationsResult, error) {
 	var rv GetSAPDiskConfigurationsResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPDiskConfigurations", args, &rv, opts...)

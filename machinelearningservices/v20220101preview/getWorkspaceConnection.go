@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace connection.
+// Get the detail of a workspace connection.
 func LookupWorkspaceConnection(ctx *pulumi.Context, args *LookupWorkspaceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceConnectionResult, error) {
 	var rv LookupWorkspaceConnectionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220101preview:getWorkspaceConnection", args, &rv, opts...)

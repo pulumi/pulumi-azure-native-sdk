@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Application Insights component linked storage accounts
+// Returns the current linked storage settings for an Application Insights component.
 // API Version: 2020-03-01-preview.
 func LookupComponentLinkedStorageAccount(ctx *pulumi.Context, args *LookupComponentLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupComponentLinkedStorageAccountResult, error) {
 	var rv LookupComponentLinkedStorageAccountResult

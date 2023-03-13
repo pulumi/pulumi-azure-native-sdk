@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Label details
+// Returns a label in the given workspace.
 // API Version: 2022-04-01-preview.
 func LookupLabelByWorkspace(ctx *pulumi.Context, args *LookupLabelByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLabelByWorkspaceResult, error) {
 	var rv LookupLabelByWorkspaceResult

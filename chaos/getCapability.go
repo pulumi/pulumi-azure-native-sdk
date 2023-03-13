@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Model that represents a Capability resource.
+// Get a Capability resource that extends a Target resource.
 // API Version: 2021-09-15-preview.
 func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityResult, error) {
 	var rv LookupCapabilityResult

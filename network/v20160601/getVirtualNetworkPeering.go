@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Peerings in a VirtualNetwork resource
+// The Get virtual network peering operation retrieves information about the specified virtual network peering.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 func LookupVirtualNetworkPeering(ctx *pulumi.Context, args *LookupVirtualNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkPeeringResult, error) {

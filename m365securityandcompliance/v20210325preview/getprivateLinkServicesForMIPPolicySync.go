@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the service.
+// Get the metadata of a privateLinkServicesForMIPPolicySync resource.
 func GetprivateLinkServicesForMIPPolicySync(ctx *pulumi.Context, args *GetprivateLinkServicesForMIPPolicySyncArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForMIPPolicySyncResult, error) {
 	var rv GetprivateLinkServicesForMIPPolicySyncResult
 	err := ctx.Invoke("azure-native:m365securityandcompliance/v20210325preview:getprivateLinkServicesForMIPPolicySync", args, &rv, opts...)

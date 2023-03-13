@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list of invoice section properties with create subscription permission.
+// Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
 func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission(ctx *pulumi.Context, args *ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs, opts ...pulumi.InvokeOption) (*ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult, error) {
 	var rv ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult
 	err := ctx.Invoke("azure-native:billing/v20200501:listBillingAccountInvoiceSectionsByCreateSubscriptionPermission", args, &rv, opts...)

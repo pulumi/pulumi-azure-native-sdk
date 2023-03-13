@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A TestLine resource
+// Get a TestLine
 // API Version: 2022-12-01-preview.
 func LookupTestLine(ctx *pulumi.Context, args *LookupTestLineArgs, opts ...pulumi.InvokeOption) (*LookupTestLineResult, error) {
 	var rv LookupTestLineResult

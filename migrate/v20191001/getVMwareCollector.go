@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a VMware collector.
 func LookupVMwareCollector(ctx *pulumi.Context, args *LookupVMwareCollectorArgs, opts ...pulumi.InvokeOption) (*LookupVMwareCollectorResult, error) {
 	var rv LookupVMwareCollectorResult
 	err := ctx.Invoke("azure-native:migrate/v20191001:getVMwareCollector", args, &rv, opts...)

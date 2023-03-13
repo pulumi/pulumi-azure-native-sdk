@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents AATP (Azure Advanced Threat Protection) data connector.
+// Gets a data connector.
 // API Version: 2020-01-01.
 func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAATPDataConnectorResult, error) {
 	var rv LookupAATPDataConnectorResult

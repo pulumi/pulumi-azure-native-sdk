@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This type represents the unencrypted value of the secret.
+// Lists the decrypted value of the specified named value of the secret resource. This is a privileged operation.
 func ListSecretValue(ctx *pulumi.Context, args *ListSecretValueArgs, opts ...pulumi.InvokeOption) (*ListSecretValueResult, error) {
 	var rv ListSecretValueResult
 	err := ctx.Invoke("azure-native:servicefabricmesh/v20180901preview:listSecretValue", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VirtualNetworkGatewayNatRule Resource.
+// Retrieves the details of a nat rule.
 // API Version: 2021-03-01.
 func LookupVirtualNetworkGatewayNatRule(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayNatRuleResult, error) {
 	var rv LookupVirtualNetworkGatewayNatRuleResult

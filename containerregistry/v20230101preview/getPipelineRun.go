@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a pipeline run for a container registry.
+// Gets the detailed information for a given pipeline run.
 func LookupPipelineRun(ctx *pulumi.Context, args *LookupPipelineRunArgs, opts ...pulumi.InvokeOption) (*LookupPipelineRunResult, error) {
 	var rv LookupPipelineRunResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230101preview:getPipelineRun", args, &rv, opts...)

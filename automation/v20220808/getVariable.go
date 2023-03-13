@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the variable.
+// Retrieve the variable identified by variable name.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	var rv LookupVariableResult
 	err := ctx.Invoke("azure-native:automation/v20220808:getVariable", args, &rv, opts...)
