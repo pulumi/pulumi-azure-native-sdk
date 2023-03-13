@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The network manager connectivity configuration resource
+// Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
 // API Version: 2021-02-01-preview.
 func LookupConnectivityConfiguration(ctx *pulumi.Context, args *LookupConnectivityConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConnectivityConfigurationResult, error) {
 	var rv LookupConnectivityConfigurationResult

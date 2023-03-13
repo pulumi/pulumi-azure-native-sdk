@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Health Bot resource definition
+// Get a HealthBot.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	var rv LookupBotResult
 	err := ctx.Invoke("azure-native:healthbot/v20220808:getBot", args, &rv, opts...)

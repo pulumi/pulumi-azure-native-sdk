@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The callback url.
+// Gets the integration account callback URL.
 // API Version: 2019-05-01.
 func ListIntegrationAccountCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountCallbackUrlResult, error) {
 	var rv ListIntegrationAccountCallbackUrlResult

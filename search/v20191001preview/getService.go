@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes an Azure Cognitive Search service and its current state.
+// Gets the Search service with the given name in the given resource group.
 //
 // Deprecated: Version 2019-10-01-preview will be removed in v2 of the provider.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VpnServerConfigurationPolicyGroup Resource.
+// Retrieves the details of a ConfigurationPolicyGroup.
 // API Version: 2022-01-01.
 func LookupConfigurationPolicyGroup(ctx *pulumi.Context, args *LookupConfigurationPolicyGroupArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationPolicyGroupResult, error) {
 	var rv LookupConfigurationPolicyGroupResult

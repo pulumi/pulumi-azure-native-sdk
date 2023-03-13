@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Contains information about an application in a Batch account.
+// Gets information about the specified application.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {

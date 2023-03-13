@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The policy set definition.
+// Gets the policy set definition.
 func LookupPolicySetDefinition(ctx *pulumi.Context, args *LookupPolicySetDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupPolicySetDefinitionResult, error) {
 	var rv LookupPolicySetDefinitionResult
 	err := ctx.Invoke("azure-native:authorization/v20170601preview:getPolicySetDefinition", args, &rv, opts...)

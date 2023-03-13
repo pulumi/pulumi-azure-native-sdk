@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of custom API WSDL interfaces
+// This returns the list of interfaces in the WSDL
 func ListCustomApiWsdlInterfaces(ctx *pulumi.Context, args *ListCustomApiWsdlInterfacesArgs, opts ...pulumi.InvokeOption) (*ListCustomApiWsdlInterfacesResult, error) {
 	var rv ListCustomApiWsdlInterfacesResult
 	err := ctx.Invoke("azure-native:web/v20160601:listCustomApiWsdlInterfaces", args, &rv, opts...)

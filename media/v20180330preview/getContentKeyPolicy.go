@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Content Key Policy resource.
+// Get the details of a Content Key Policy in the Media Services account
 func LookupContentKeyPolicy(ctx *pulumi.Context, args *LookupContentKeyPolicyArgs, opts ...pulumi.InvokeOption) (*LookupContentKeyPolicyResult, error) {
 	var rv LookupContentKeyPolicyResult
 	err := ctx.Invoke("azure-native:media/v20180330preview:getContentKeyPolicy", args, &rv, opts...)

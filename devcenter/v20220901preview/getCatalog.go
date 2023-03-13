@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a catalog.
+// Gets a catalog
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	var rv LookupCatalogResult
 	err := ctx.Invoke("azure-native:devcenter/v20220901preview:getCatalog", args, &rv, opts...)

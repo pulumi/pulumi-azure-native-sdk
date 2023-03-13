@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about managed application.
+// Gets the managed application.
 //
 // Deprecated: Version 2017-09-01 will be removed in v2 of the provider.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {

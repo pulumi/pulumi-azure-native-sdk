@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A report config resource.
+// Gets the report config for a subscription by report config name.
 //
 // Deprecated: Version 2018-05-31 will be removed in v2 of the provider.
 func LookupReportConfig(ctx *pulumi.Context, args *LookupReportConfigArgs, opts ...pulumi.InvokeOption) (*LookupReportConfigResult, error) {

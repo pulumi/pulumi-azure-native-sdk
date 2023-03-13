@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The shared dashboard resource definition.
+// Gets the Dashboard.
 // API Version: 2020-09-01-preview.
 func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pulumi.InvokeOption) (*LookupDashboardResult, error) {
 	var rv LookupDashboardResult

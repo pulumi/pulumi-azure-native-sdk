@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Public certificate object
+// Get the named public certificate for an app (or deployment slot, if specified).
 // API Version: 2020-12-01.
 func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPublicCertificateSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateSlotResult, error) {
 	var rv LookupWebAppPublicCertificateSlotResult

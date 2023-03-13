@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A storage system being cached by a Cache.
+// Returns a storage target from a cache.
 //
 // Deprecated: Version 2019-08-01-preview will be removed in v2 of the provider.
 func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opts ...pulumi.InvokeOption) (*LookupStorageTargetResult, error) {

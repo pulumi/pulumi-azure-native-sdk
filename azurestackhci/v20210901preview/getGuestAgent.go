@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the GuestAgent.
+// Implements GuestAgent GET method.
 func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupGuestAgentResult, error) {
 	var rv LookupGuestAgentResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getGuestAgent", args, &rv, opts...)

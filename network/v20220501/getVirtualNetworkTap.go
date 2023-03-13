@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual Network Tap resource.
+// Gets information about the specified virtual network tap.
 func LookupVirtualNetworkTap(ctx *pulumi.Context, args *LookupVirtualNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkTapResult, error) {
 	var rv LookupVirtualNetworkTapResult
 	err := ctx.Invoke("azure-native:network/v20220501:getVirtualNetworkTap", args, &rv, opts...)

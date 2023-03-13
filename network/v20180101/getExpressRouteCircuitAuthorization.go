@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Authorization in an ExpressRouteCircuit resource.
+// Gets the specified authorization from the specified express route circuit.
 //
 // Deprecated: Version 2018-01-01 will be removed in v2 of the provider.
 func LookupExpressRouteCircuitAuthorization(ctx *pulumi.Context, args *LookupExpressRouteCircuitAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitAuthorizationResult, error) {

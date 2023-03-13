@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A formula for creating a VM, specifying an image base and other parameters
+// Get formula.
 //
 // Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupFormula(ctx *pulumi.Context, args *LookupFormulaArgs, opts ...pulumi.InvokeOption) (*LookupFormulaResult, error) {

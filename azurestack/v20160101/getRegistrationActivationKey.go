@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The resource containing the Azure Stack activation key.
+// Returns Azure Stack Activation Key.
 func GetRegistrationActivationKey(ctx *pulumi.Context, args *GetRegistrationActivationKeyArgs, opts ...pulumi.InvokeOption) (*GetRegistrationActivationKeyResult, error) {
 	var rv GetRegistrationActivationKeyResult
 	err := ctx.Invoke("azure-native:azurestack/v20160101:getRegistrationActivationKey", args, &rv, opts...)

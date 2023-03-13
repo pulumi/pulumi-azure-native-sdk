@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network security default user rule.
+// Gets a user rule.
 func LookupDefaultUserRule(ctx *pulumi.Context, args *LookupDefaultUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultUserRuleResult, error) {
 	var rv LookupDefaultUserRuleResult
 	err := ctx.Invoke("azure-native:network/v20220201preview:getDefaultUserRule", args, &rv, opts...)

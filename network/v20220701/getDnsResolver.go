@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a DNS resolver.
+// Gets properties of a DNS resolver.
 func LookupDnsResolver(ctx *pulumi.Context, args *LookupDnsResolverArgs, opts ...pulumi.InvokeOption) (*LookupDnsResolverResult, error) {
 	var rv LookupDnsResolverResult
 	err := ctx.Invoke("azure-native:network/v20220701:getDnsResolver", args, &rv, opts...)

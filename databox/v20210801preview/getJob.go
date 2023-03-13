@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Job Resource.
+// Gets information about the specified job.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:databox/v20210801preview:getJob", args, &rv, opts...)

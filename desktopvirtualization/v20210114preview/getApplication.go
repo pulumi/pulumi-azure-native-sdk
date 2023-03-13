@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Schema for Application properties.
+// Get an application.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20210114preview:getApplication", args, &rv, opts...)

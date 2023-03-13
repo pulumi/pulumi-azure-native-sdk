@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Packet core control plane resource.
+// Gets information about the specified packet core control plane.
 func LookupPacketCoreControlPlane(ctx *pulumi.Context, args *LookupPacketCoreControlPlaneArgs, opts ...pulumi.InvokeOption) (*LookupPacketCoreControlPlaneResult, error) {
 	var rv LookupPacketCoreControlPlaneResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getPacketCoreControlPlane", args, &rv, opts...)

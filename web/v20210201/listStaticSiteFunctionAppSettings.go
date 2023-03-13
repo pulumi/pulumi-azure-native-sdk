@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// String dictionary resource.
+// Gets the application settings of a static site.
 func ListStaticSiteFunctionAppSettings(ctx *pulumi.Context, args *ListStaticSiteFunctionAppSettingsArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteFunctionAppSettingsResult, error) {
 	var rv ListStaticSiteFunctionAppSettingsResult
 	err := ctx.Invoke("azure-native:web/v20210201:listStaticSiteFunctionAppSettings", args, &rv, opts...)

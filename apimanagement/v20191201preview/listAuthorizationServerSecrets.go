@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+// Gets the client secret details of the authorization server.
 func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorizationServerSecretsArgs, opts ...pulumi.InvokeOption) (*ListAuthorizationServerSecretsResult, error) {
 	var rv ListAuthorizationServerSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201preview:listAuthorizationServerSecrets", args, &rv, opts...)

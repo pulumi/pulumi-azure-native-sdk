@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource information.
+// Gets a resource.
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	var rv LookupResourceResult
 	err := ctx.Invoke("azure-native:resources/v20210401:getResource", args, &rv, opts...)

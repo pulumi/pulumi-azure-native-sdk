@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a blueprint artifact.
+// Get a blueprint artifact.
 // API Version: 2018-11-01-preview.
 //
 // Deprecated: Please use one of the variants: PolicyAssignmentArtifact, RoleAssignmentArtifact, TemplateArtifact.

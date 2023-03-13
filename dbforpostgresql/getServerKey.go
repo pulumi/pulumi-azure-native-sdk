@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A PostgreSQL Server key.
+// Gets a PostgreSQL Server key.
 // API Version: 2020-01-01.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult

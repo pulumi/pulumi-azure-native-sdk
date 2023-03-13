@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Custom domain of the API portal
+// Get the API portal custom domain.
 func LookupApiPortalCustomDomain(ctx *pulumi.Context, args *LookupApiPortalCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupApiPortalCustomDomainResult, error) {
 	var rv LookupApiPortalCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform/v20220901preview:getApiPortalCustomDomain", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A favorite process identifier.
+// Gets a favorite process for a Test Base Package.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
 func LookupFavoriteProcess(ctx *pulumi.Context, args *LookupFavoriteProcessArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteProcessResult, error) {

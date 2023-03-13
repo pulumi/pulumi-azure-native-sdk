@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the service.
+// Get the metadata of a privateLinkServicesForEDMUpload resource.
 func GetprivateLinkServicesForEDMUpload(ctx *pulumi.Context, args *GetprivateLinkServicesForEDMUploadArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForEDMUploadResult, error) {
 	var rv GetprivateLinkServicesForEDMUploadResult
 	err := ctx.Invoke("azure-native:m365securityandcompliance/v20210325preview:getprivateLinkServicesForEDMUpload", args, &rv, opts...)

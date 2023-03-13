@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A group created in a Migration project.
+// Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
 //
 // Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {

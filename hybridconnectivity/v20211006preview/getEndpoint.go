@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The endpoint for the target resource.
+// Gets the endpoint to the resource.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:hybridconnectivity/v20211006preview:getEndpoint", args, &rv, opts...)

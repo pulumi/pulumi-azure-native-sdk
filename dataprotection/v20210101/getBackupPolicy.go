@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// BaseBackupPolicy resource
+// Gets a backup policy belonging to a backup vault
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	var rv LookupBackupPolicyResult
 	err := ctx.Invoke("azure-native:dataprotection/v20210101:getBackupPolicy", args, &rv, opts...)

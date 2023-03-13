@@ -145,6 +145,9 @@ func NewVpnSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220501:VpnSite"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20220901:VpnSite"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VpnSite

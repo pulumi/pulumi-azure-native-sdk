@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Protection container mapping object.
+// Gets the details of a protection container mapping.
 func LookupReplicationProtectionContainerMapping(ctx *pulumi.Context, args *LookupReplicationProtectionContainerMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationProtectionContainerMappingResult, error) {
 	var rv LookupReplicationProtectionContainerMappingResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20211101:getReplicationProtectionContainerMapping", args, &rv, opts...)

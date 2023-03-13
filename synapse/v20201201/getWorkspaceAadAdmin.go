@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace active directory administrator
+// Gets a workspace active directory admin
 //
 // Deprecated: Version 2020-12-01 will be removed in v2 of the provider.
 func LookupWorkspaceAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceAadAdminResult, error) {

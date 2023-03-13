@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get User Token response details.
+// Gets the Shared Access Authorization Token for the User.
 func GetUserSharedAccessToken(ctx *pulumi.Context, args *GetUserSharedAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetUserSharedAccessTokenResult, error) {
 	var rv GetUserSharedAccessTokenResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201preview:getUserSharedAccessToken", args.Defaults(), &rv, opts...)

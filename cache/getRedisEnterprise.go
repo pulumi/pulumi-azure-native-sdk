@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the RedisEnterprise cluster
+// Gets information about a RedisEnterprise cluster
 // API Version: 2021-03-01.
 func LookupRedisEnterprise(ctx *pulumi.Context, args *LookupRedisEnterpriseArgs, opts ...pulumi.InvokeOption) (*LookupRedisEnterpriseResult, error) {
 	var rv LookupRedisEnterpriseResult

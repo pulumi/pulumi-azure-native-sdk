@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Subscription
+// Get properties of a nested event subscription for a domain topic.
 // API Version: 2021-10-15-preview.
 func LookupDomainTopicEventSubscription(ctx *pulumi.Context, args *LookupDomainTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicEventSubscriptionResult, error) {
 	var rv LookupDomainTopicEventSubscriptionResult

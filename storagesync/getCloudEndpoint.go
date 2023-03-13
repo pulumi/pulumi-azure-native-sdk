@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cloud Endpoint object.
+// Get a given CloudEndpoint.
 // API Version: 2020-03-01.
 func LookupCloudEndpoint(ctx *pulumi.Context, args *LookupCloudEndpointArgs, opts ...pulumi.InvokeOption) (*LookupCloudEndpointResult, error) {
 	var rv LookupCloudEndpointResult

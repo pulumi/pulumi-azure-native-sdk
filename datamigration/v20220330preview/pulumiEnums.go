@@ -105,7 +105,7 @@ const (
 	SsisMigrationOverwriteOptionOverwrite = SsisMigrationOverwriteOption("Overwrite")
 )
 
-// The SSIS store type of source, only SSIS catalog is supported now in DMS
+// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 type SsisStoreType string
 
 const (

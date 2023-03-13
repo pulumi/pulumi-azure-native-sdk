@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning service object wrapped into ARM resource envelope.
+// Get a Service by name.
 //
 // Deprecated: Please use one of the variants: ACIService, AKSService, EndpointVariant.
 func LookupMachineLearningService(ctx *pulumi.Context, args *LookupMachineLearningServiceArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningServiceResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Test result.
+// Returns a file test result for the matching test
 func GetTestResultFile(ctx *pulumi.Context, args *GetTestResultFileArgs, opts ...pulumi.InvokeOption) (*GetTestResultFileResult, error) {
 	var rv GetTestResultFileResult
 	err := ctx.Invoke("azure-native:insights/v20200210preview:getTestResultFile", args, &rv, opts...)

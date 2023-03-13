@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing an Event Grid data connection.
+// Returns a data connection.
 // API Version: 2021-01-01.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	var rv LookupEventGridDataConnectionResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An object that represents a webhook for a container registry.
+// Gets the properties of the specified webhook.
 // API Version: 2019-05-01.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	var rv LookupWebhookResult

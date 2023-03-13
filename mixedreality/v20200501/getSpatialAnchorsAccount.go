@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SpatialAnchorsAccount Response.
+// Retrieve a Spatial Anchors Account.
 //
 // Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {

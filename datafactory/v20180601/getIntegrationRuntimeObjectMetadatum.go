@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A list of SSIS object metadata.
+// Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.
 func GetIntegrationRuntimeObjectMetadatum(ctx *pulumi.Context, args *GetIntegrationRuntimeObjectMetadatumArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeObjectMetadatumResult, error) {
 	var rv GetIntegrationRuntimeObjectMetadatumResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getIntegrationRuntimeObjectMetadatum", args, &rv, opts...)

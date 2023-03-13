@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// User credentials used for publishing activity.
+// Gets the Git/FTP publishing credentials of an app.
 func ListWebAppPublishingCredentials(ctx *pulumi.Context, args *ListWebAppPublishingCredentialsArgs, opts ...pulumi.InvokeOption) (*ListWebAppPublishingCredentialsResult, error) {
 	var rv ListWebAppPublishingCredentialsResult
 	err := ctx.Invoke("azure-native:web/v20190801:listWebAppPublishingCredentials", args, &rv, opts...)

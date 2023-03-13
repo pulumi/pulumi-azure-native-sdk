@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a managed private endpoint.
+// Gets a managed private endpoint.
 // API Version: 2021-08-27.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	var rv LookupManagedPrivateEndpointResult

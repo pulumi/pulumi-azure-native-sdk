@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Namespace/NotificationHub Connection String
+// Gets the Primary and Secondary ConnectionStrings to the NotificationHub
 // API Version: 2017-04-01.
 func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysArgs, opts ...pulumi.InvokeOption) (*ListNotificationHubKeysResult, error) {
 	var rv ListNotificationHubKeysResult

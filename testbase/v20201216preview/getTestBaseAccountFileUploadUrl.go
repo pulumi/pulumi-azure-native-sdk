@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The URL response
+// Gets the file upload URL of a Test Base Account.
 func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccountFileUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetTestBaseAccountFileUploadUrlResult, error) {
 	var rv GetTestBaseAccountFileUploadUrlResult
 	err := ctx.Invoke("azure-native:testbase/v20201216preview:getTestBaseAccountFileUploadUrl", args, &rv, opts...)

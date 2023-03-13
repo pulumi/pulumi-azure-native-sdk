@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A flow log resource.
+// Gets a flow log resource by name.
 func LookupFlowLog(ctx *pulumi.Context, args *LookupFlowLogArgs, opts ...pulumi.InvokeOption) (*LookupFlowLogResult, error) {
 	var rv LookupFlowLogResult
 	err := ctx.Invoke("azure-native:network/v20210301:getFlowLog", args, &rv, opts...)

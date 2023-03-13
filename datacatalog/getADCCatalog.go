@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Data Catalog.
+// The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
 // API Version: 2016-03-30.
 func LookupADCCatalog(ctx *pulumi.Context, args *LookupADCCatalogArgs, opts ...pulumi.InvokeOption) (*LookupADCCatalogResult, error) {
 	var rv LookupADCCatalogResult

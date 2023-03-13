@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Cosmos DB MongoDB database.
+// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
 //
 // Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
 func LookupMongoDBResourceMongoDBDatabase(ctx *pulumi.Context, args *LookupMongoDBResourceMongoDBDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoDBDatabaseResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A group created in a Migration project.
+// Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("azure-native:migrate/v20180202:getGroup", args, &rv, opts...)

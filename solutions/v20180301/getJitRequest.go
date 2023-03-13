@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about JIT request definition.
+// Gets the JIT request.
 //
 // Deprecated: Version 2018-03-01 will be removed in v2 of the provider.
 func LookupJitRequest(ctx *pulumi.Context, args *LookupJitRequestArgs, opts ...pulumi.InvokeOption) (*LookupJitRequestResult, error) {

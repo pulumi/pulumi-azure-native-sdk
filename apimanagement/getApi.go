@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api details.
+// Gets the details of the API specified by its identifier.
 // API Version: 2020-12-01.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
 	var rv LookupApiResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class represent a resource.
+// Get the resource and its properties.
 func LookupWebPubSub(ctx *pulumi.Context, args *LookupWebPubSubArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubResult, error) {
 	var rv LookupWebPubSubResult
 	err := ctx.Invoke("azure-native:webpubsub/v20210401preview:getWebPubSub", args, &rv, opts...)

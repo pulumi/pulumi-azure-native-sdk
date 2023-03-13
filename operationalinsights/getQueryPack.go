@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Log Analytics QueryPack definition.
+// Returns a Log Analytics QueryPack.
 // API Version: 2019-09-01.
 func LookupQueryPack(ctx *pulumi.Context, args *LookupQueryPackArgs, opts ...pulumi.InvokeOption) (*LookupQueryPackResult, error) {
 	var rv LookupQueryPackResult

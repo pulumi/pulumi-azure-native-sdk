@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Site resource.
+// Gets information about the specified mobile network site.
 // API Version: 2022-04-01-preview.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
 	var rv LookupSiteResult

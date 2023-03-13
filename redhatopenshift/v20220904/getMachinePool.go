@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// MachinePool represents a MachinePool
+// The operation returns properties of a MachinePool.
 func LookupMachinePool(ctx *pulumi.Context, args *LookupMachinePoolArgs, opts ...pulumi.InvokeOption) (*LookupMachinePoolResult, error) {
 	var rv LookupMachinePoolResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20220904:getMachinePool", args, &rv, opts...)

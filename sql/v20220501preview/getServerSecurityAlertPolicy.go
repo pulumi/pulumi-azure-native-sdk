@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A server security alert policy.
+// Get a server's security alert policy.
 func LookupServerSecurityAlertPolicy(ctx *pulumi.Context, args *LookupServerSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerSecurityAlertPolicyResult, error) {
 	var rv LookupServerSecurityAlertPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getServerSecurityAlertPolicy", args, &rv, opts...)

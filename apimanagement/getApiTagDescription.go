@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Contract details.
+// Get Tag description in scope of API
 // API Version: 2020-12-01.
 func LookupApiTagDescription(ctx *pulumi.Context, args *LookupApiTagDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupApiTagDescriptionResult, error) {
 	var rv LookupApiTagDescriptionResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an image from the Azure Marketplace
+// Get gallery image
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	var rv LookupGalleryImageResult
 	err := ctx.Invoke("azure-native:labservices/v20181015:getGalleryImage", args, &rv, opts...)

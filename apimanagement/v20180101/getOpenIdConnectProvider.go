@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// OpenId Connect Provider details.
+// Gets specific OpenID Connect Provider.
 func LookupOpenIdConnectProvider(ctx *pulumi.Context, args *LookupOpenIdConnectProviderArgs, opts ...pulumi.InvokeOption) (*LookupOpenIdConnectProviderResult, error) {
 	var rv LookupOpenIdConnectProviderResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getOpenIdConnectProvider", args, &rv, opts...)

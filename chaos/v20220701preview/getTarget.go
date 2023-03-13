@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Model that represents a Target resource.
+// Get a Target resource that extends a tracked regional resource.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
 	var rv LookupTargetResult
 	err := ctx.Invoke("azure-native:chaos/v20220701preview:getTarget", args, &rv, opts...)

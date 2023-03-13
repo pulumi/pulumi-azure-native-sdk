@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Settings with single toggle.
+// Gets a setting.
 func LookupIPSyncer(ctx *pulumi.Context, args *LookupIPSyncerArgs, opts ...pulumi.InvokeOption) (*LookupIPSyncerResult, error) {
 	var rv LookupIPSyncerResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getIPSyncer", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The provisionedClusters resource definition.
+// Gets the Hybrid AKS provisioned cluster
 func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedClusterArgs, opts ...pulumi.InvokeOption) (*LookupProvisionedClusterResult, error) {
 	var rv LookupProvisionedClusterResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice/v20220501preview:getProvisionedCluster", args, &rv, opts...)

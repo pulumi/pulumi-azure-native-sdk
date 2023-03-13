@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Arc PrivateLinkScope definition.
+// Returns a Azure Arc PrivateLinkScope.
 // API Version: 2022-04-02-preview.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	var rv LookupPrivateLinkScopeResult

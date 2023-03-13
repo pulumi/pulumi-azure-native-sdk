@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets the queue with the specified queue name, under the specified account if it exists.
+//
 // Deprecated: Version 2020-08-01-preview will be removed in v2 of the provider.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
 	var rv LookupQueueResult

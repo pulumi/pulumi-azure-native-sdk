@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The key-value resource along with all resource properties.
+// Gets the properties of the specified key-value.
 // API Version: 2020-07-01-preview.
 func LookupKeyValue(ctx *pulumi.Context, args *LookupKeyValueArgs, opts ...pulumi.InvokeOption) (*LookupKeyValueResult, error) {
 	var rv LookupKeyValueResult

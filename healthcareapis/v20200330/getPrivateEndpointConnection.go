@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// Gets the specified private endpoint connection associated with the service.
 //
 // Deprecated: Version 2020-03-30 will be removed in v2 of the provider.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {

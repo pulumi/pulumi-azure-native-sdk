@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Status Details of the long running operation for an environment
+// Get batch operation status
 // API Version: 2018-10-15.
 func GetGlobalUserOperationBatchStatus(ctx *pulumi.Context, args *GetGlobalUserOperationBatchStatusArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserOperationBatchStatusResult, error) {
 	var rv GetGlobalUserOperationBatchStatusResult

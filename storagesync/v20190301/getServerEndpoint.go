@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Server Endpoint object.
+// Get a ServerEndpoint.
 //
 // Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
 func LookupServerEndpoint(ctx *pulumi.Context, args *LookupServerEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServerEndpointResult, error) {

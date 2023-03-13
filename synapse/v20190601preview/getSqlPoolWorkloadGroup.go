@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workload group operations for a sql pool
+// Get a Sql pool's workload group.
 //
 // Deprecated: Version 2019-06-01-preview will be removed in v2 of the provider.
 func LookupSqlPoolWorkloadGroup(ctx *pulumi.Context, args *LookupSqlPoolWorkloadGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolWorkloadGroupResult, error) {

@@ -92,6 +92,9 @@ func NewSiteRelayServiceConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220301:SiteRelayServiceConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20220901:SiteRelayServiceConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SiteRelayServiceConnection

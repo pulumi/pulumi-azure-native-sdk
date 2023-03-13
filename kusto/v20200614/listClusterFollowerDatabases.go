@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list Kusto database principals operation response.
+// Returns a list of databases that are owned by this cluster and were followed by another cluster.
 func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListClusterFollowerDatabasesResult, error) {
 	var rv ListClusterFollowerDatabasesResult
 	err := ctx.Invoke("azure-native:kusto/v20200614:listClusterFollowerDatabases", args, &rv, opts...)

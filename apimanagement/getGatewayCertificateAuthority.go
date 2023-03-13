@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gateway certificate authority details.
+// Get assigned Gateway Certificate Authority details.
 // API Version: 2020-12-01.
 func LookupGatewayCertificateAuthority(ctx *pulumi.Context, args *LookupGatewayCertificateAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCertificateAuthorityResult, error) {
 	var rv LookupGatewayCertificateAuthorityResult

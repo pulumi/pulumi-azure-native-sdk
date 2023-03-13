@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Asset Track resource.
+// Get the details of a Track in the Asset
 // API Version: 2021-11-01.
 func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.InvokeOption) (*LookupTrackResult, error) {
 	var rv LookupTrackResult

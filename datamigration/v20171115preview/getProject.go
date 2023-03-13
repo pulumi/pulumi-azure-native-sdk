@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A project resource
+// The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
 //
 // Deprecated: Version 2017-11-15-preview will be removed in v2 of the provider.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {

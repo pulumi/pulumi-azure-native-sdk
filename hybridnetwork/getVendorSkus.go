@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Sku sub resource.
+// Gets information about the specified sku.
 // API Version: 2020-01-01-preview.
 func LookupVendorSkus(ctx *pulumi.Context, args *LookupVendorSkusArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkusResult, error) {
 	var rv LookupVendorSkusResult

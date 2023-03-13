@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The response model from the GetRegionalAvailability action
+// Get regional availability information for each size category configured under a lab account
 func GetLabAccountRegionalAvailability(ctx *pulumi.Context, args *GetLabAccountRegionalAvailabilityArgs, opts ...pulumi.InvokeOption) (*GetLabAccountRegionalAvailabilityResult, error) {
 	var rv GetLabAccountRegionalAvailabilityResult
 	err := ctx.Invoke("azure-native:labservices/v20181015:getLabAccountRegionalAvailability", args, &rv, opts...)

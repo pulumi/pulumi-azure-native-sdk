@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Public certificate object
+// Description for Get the named public certificate for an app (or deployment slot, if specified).
 func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPublicCertificateSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateSlotResult, error) {
 	var rv LookupWebAppPublicCertificateSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppPublicCertificateSlot", args, &rv, opts...)

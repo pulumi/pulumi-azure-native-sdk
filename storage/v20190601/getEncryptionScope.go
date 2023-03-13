@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Encryption Scope resource.
+// Returns the properties for the specified encryption scope.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
 func LookupEncryptionScope(ctx *pulumi.Context, args *LookupEncryptionScopeArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionScopeResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the security configuration
+// Retrieves a network manager security user configuration.
 func LookupSecurityUserConfiguration(ctx *pulumi.Context, args *LookupSecurityUserConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityUserConfigurationResult, error) {
 	var rv LookupSecurityUserConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20210501preview:getSecurityUserConfiguration", args, &rv, opts...)

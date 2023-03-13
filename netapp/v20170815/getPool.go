@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Capacity pool resource
+// Get a capacity pool
 //
 // Deprecated: Version 2017-08-15 will be removed in v2 of the provider.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {

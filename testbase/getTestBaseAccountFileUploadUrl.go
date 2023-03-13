@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The URL response
+// Gets the file upload URL of a Test Base Account.
 // API Version: 2022-04-01-preview.
 func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccountFileUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetTestBaseAccountFileUploadUrlResult, error) {
 	var rv GetTestBaseAccountFileUploadUrlResult

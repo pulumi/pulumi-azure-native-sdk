@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Identity Provider details.
+// Gets the configuration details of the identity Provider configured in specified service instance.
 // API Version: 2020-12-01.
 func LookupIdentityProvider(ctx *pulumi.Context, args *LookupIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupIdentityProviderResult, error) {
 	var rv LookupIdentityProviderResult

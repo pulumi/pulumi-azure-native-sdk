@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents settings of an environment, from which environment instances would be created
+// Get environment setting
 func LookupEnvironmentSetting(ctx *pulumi.Context, args *LookupEnvironmentSettingArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentSettingResult, error) {
 	var rv LookupEnvironmentSettingResult
 	err := ctx.Invoke("azure-native:labservices/v20181015:getEnvironmentSetting", args, &rv, opts...)

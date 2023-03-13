@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The alert rule resource.
+// Gets a classic metric alert rule
 func LookupAlertRule(ctx *pulumi.Context, args *LookupAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertRuleResult, error) {
 	var rv LookupAlertRuleResult
 	err := ctx.Invoke("azure-native:insights/v20160301:getAlertRule", args, &rv, opts...)

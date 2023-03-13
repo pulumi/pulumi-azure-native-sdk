@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents MTP (Microsoft Threat Protection) data connector.
+// Gets a data connector.
 func LookupMTPDataConnector(ctx *pulumi.Context, args *LookupMTPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMTPDataConnectorResult, error) {
 	var rv LookupMTPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801preview:getMTPDataConnector", args, &rv, opts...)

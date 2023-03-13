@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the cloud service.
+// Display information about a cloud service.
 // API Version: 2021-03-01.
 func LookupCloudService(ctx *pulumi.Context, args *LookupCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupCloudServiceResult, error) {
 	var rv LookupCloudServiceResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The privateStore offer data structure.
+// Gets information about a specific offer.
 // API Version: 2020-01-01.
 func LookupPrivateStoreOffer(ctx *pulumi.Context, args *LookupPrivateStoreOfferArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreOfferResult, error) {
 	var rv LookupPrivateStoreOfferResult

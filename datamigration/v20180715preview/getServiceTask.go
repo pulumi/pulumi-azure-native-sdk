@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A task resource
+// The service tasks resource is a nested, proxy-only resource representing work performed by a DMS instance. The GET method retrieves information about a service task.
 func LookupServiceTask(ctx *pulumi.Context, args *LookupServiceTaskArgs, opts ...pulumi.InvokeOption) (*LookupServiceTaskResult, error) {
 	var rv LookupServiceTaskResult
 	err := ctx.Invoke("azure-native:datamigration/v20180715preview:getServiceTask", args, &rv, opts...)

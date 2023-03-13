@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of stop sell offers and plans notifications.
+// List stop sell notifications for both stop sell offers and stop sell plans
 func ListPrivateStoreStopSellOffersPlansNotifications(ctx *pulumi.Context, args *ListPrivateStoreStopSellOffersPlansNotificationsArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreStopSellOffersPlansNotificationsResult, error) {
 	var rv ListPrivateStoreStopSellOffersPlansNotificationsResult
 	err := ctx.Invoke("azure-native:marketplace/v20220901:listPrivateStoreStopSellOffersPlansNotifications", args, &rv, opts...)

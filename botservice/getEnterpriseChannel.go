@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Enterprise Channel resource definition
+// Returns an Enterprise Channel specified by the parameters.
 // API Version: 2018-07-12.
 func LookupEnterpriseChannel(ctx *pulumi.Context, args *LookupEnterpriseChannelArgs, opts ...pulumi.InvokeOption) (*LookupEnterpriseChannelResult, error) {
 	var rv LookupEnterpriseChannelResult

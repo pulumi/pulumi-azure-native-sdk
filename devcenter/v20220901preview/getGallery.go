@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a gallery.
+// Gets a gallery
 func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.InvokeOption) (*LookupGalleryResult, error) {
 	var rv LookupGalleryResult
 	err := ctx.Invoke("azure-native:devcenter/v20220901preview:getGallery", args, &rv, opts...)

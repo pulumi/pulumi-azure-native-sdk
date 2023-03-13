@@ -47,6 +47,12 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Registry"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Registry
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20221001preview:Registry", name, args, &resource, opts...)
 	if err != nil {

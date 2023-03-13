@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Shared access keys of the Domain.
+// List the two keys used to publish to a domain.
 // API Version: 2020-06-01.
 func ListDomainSharedAccessKeys(ctx *pulumi.Context, args *ListDomainSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListDomainSharedAccessKeysResult, error) {
 	var rv ListDomainSharedAccessKeysResult

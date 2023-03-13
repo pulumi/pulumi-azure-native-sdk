@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Bot resource definition
+// Returns a BotService specified by the parameters.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	var rv LookupBotResult
 	err := ctx.Invoke("azure-native:botservice/v20210501preview:getBot", args, &rv, opts...)

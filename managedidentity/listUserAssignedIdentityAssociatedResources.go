@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure resources returned by the resource action to get a list of assigned resources.
+// Lists the associated resources for this identity.
 // API Version: 2022-01-31-preview.
 func ListUserAssignedIdentityAssociatedResources(ctx *pulumi.Context, args *ListUserAssignedIdentityAssociatedResourcesArgs, opts ...pulumi.InvokeOption) (*ListUserAssignedIdentityAssociatedResourcesResult, error) {
 	var rv ListUserAssignedIdentityAssociatedResourcesResult

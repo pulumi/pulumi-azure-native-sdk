@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for iSCSI target requests.
+// Get an iSCSI target.
 func LookupIscsiTarget(ctx *pulumi.Context, args *LookupIscsiTargetArgs, opts ...pulumi.InvokeOption) (*LookupIscsiTargetResult, error) {
 	var rv LookupIscsiTargetResult
 	err := ctx.Invoke("azure-native:storagepool/v20200315preview:getIscsiTarget", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Trigger details.
+// Get a specific trigger by name.
 //
 // Deprecated: Please use one of the variants: FileEventTrigger, PeriodicTimerEventTrigger.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of shared access keys.
+// List the primary and secondary keys for a provisioning service.
 // API Version: 2020-03-01.
 func ListIotDpsResourceKeys(ctx *pulumi.Context, args *ListIotDpsResourceKeysArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysResult, error) {
 	var rv ListIotDpsResourceKeysResult

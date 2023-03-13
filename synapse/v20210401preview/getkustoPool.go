@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class representing a Kusto kusto pool.
+// Gets a Kusto pool.
 func GetkustoPool(ctx *pulumi.Context, args *GetkustoPoolArgs, opts ...pulumi.InvokeOption) (*GetkustoPoolResult, error) {
 	var rv GetkustoPoolResult
 	err := ctx.Invoke("azure-native:synapse/v20210401preview:getkustoPool", args, &rv, opts...)

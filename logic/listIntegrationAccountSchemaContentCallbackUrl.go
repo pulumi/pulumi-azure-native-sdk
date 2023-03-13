@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The workflow trigger callback URL.
+// Get the content callback url.
 // API Version: 2019-05-01.
 func ListIntegrationAccountSchemaContentCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountSchemaContentCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountSchemaContentCallbackUrlResult, error) {
 	var rv ListIntegrationAccountSchemaContentCallbackUrlResult

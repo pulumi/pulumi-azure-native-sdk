@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the request to list active security user rules. It contains a list of active security user rules and a skiptoken to get the next set of results.
+// Lists Active Security User Rules in a network manager.
 func ListActiveSecurityUserRule(ctx *pulumi.Context, args *ListActiveSecurityUserRuleArgs, opts ...pulumi.InvokeOption) (*ListActiveSecurityUserRuleResult, error) {
 	var rv ListActiveSecurityUserRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:listActiveSecurityUserRule", args, &rv, opts...)

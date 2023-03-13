@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Channel info.
+// Get properties of a channel.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
 	var rv LookupChannelResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getChannel", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The VirtualNetworks resource definition.
+// Implements VirtualNetwork GET method.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getVirtualNetwork", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// PrivateEndpointConnection resource.
+// Get the specific private end point connection by specific private link service in the resource group.
 func LookupPrivateLinkServicePrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateLinkServicePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicePrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateLinkServicePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:network/v20200301:getPrivateLinkServicePrivateEndpointConnection", args, &rv, opts...)

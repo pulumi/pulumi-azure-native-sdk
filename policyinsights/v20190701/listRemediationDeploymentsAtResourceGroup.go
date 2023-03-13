@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of deployments for a remediation.
+// Gets all deployments for a remediation at resource group scope.
 func ListRemediationDeploymentsAtResourceGroup(ctx *pulumi.Context, args *ListRemediationDeploymentsAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtResourceGroupResult, error) {
 	var rv ListRemediationDeploymentsAtResourceGroupResult
 	err := ctx.Invoke("azure-native:policyinsights/v20190701:listRemediationDeploymentsAtResourceGroup", args, &rv, opts...)

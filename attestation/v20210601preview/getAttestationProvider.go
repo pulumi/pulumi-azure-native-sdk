@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attestation service response message.
+// Get the status of Attestation Provider.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
 	var rv LookupAttestationProviderResult
 	err := ctx.Invoke("azure-native:attestation/v20210601preview:getAttestationProvider", args, &rv, opts...)

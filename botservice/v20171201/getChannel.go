@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Bot channel resource definition
+// Returns a BotService Channel registration specified by the parameters.
 //
 // Deprecated: Version 2017-12-01 will be removed in v2 of the provider.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {

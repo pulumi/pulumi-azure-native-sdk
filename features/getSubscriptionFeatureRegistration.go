@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Subscription feature registration details
+// Returns a feature registration
 // API Version: 2021-07-01.
 func LookupSubscriptionFeatureRegistration(ctx *pulumi.Context, args *LookupSubscriptionFeatureRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionFeatureRegistrationResult, error) {
 	var rv LookupSubscriptionFeatureRegistrationResult

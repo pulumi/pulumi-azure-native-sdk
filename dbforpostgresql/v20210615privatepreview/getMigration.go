@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a migration resource.
+// Gets details of a migration.
 func LookupMigration(ctx *pulumi.Context, args *LookupMigrationArgs, opts ...pulumi.InvokeOption) (*LookupMigrationResult, error) {
 	var rv LookupMigrationResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20210615privatepreview:getMigration", args, &rv, opts...)

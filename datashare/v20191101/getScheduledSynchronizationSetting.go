@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A type of synchronization setting based on schedule
+// Get a synchronizationSetting in a share
 func LookupScheduledSynchronizationSetting(ctx *pulumi.Context, args *LookupScheduledSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupScheduledSynchronizationSettingResult, error) {
 	var rv LookupScheduledSynchronizationSettingResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getScheduledSynchronizationSetting", args, &rv, opts...)

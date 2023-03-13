@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Private endpoint connection resource.
+// Gets the specified private endpoint connection associated with the managed HSM Pool.
 // API Version: 2021-06-01-preview.
 func LookupMHSMPrivateEndpointConnection(ctx *pulumi.Context, args *LookupMHSMPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupMHSMPrivateEndpointConnectionResult, error) {
 	var rv LookupMHSMPrivateEndpointConnectionResult

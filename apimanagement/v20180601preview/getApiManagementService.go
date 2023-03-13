@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A single API Management service resource in List or Get response.
+// Gets an API Management service resource description.
 func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupApiManagementServiceResult, error) {
 	var rv LookupApiManagementServiceResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180601preview:getApiManagementService", args, &rv, opts...)

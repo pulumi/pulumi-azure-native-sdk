@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Volume resource
+// Get the details of the specified volume
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20220101:getVolume", args, &rv, opts...)
@@ -35,6 +35,8 @@ type LookupVolumeArgs struct {
 type LookupVolumeResult struct {
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore *string `pulumi:"avsDataStore"`
+	// UUID v4 or resource identifier used to identify the Backup.
+	BackupId *string `pulumi:"backupId"`
 	// Unique Baremetal Tenant Identifier.
 	BaremetalTenantId string `pulumi:"baremetalTenantId"`
 	// Pool Resource Id used in case of creating a volume through volume group
@@ -105,6 +107,8 @@ type LookupVolumeResult struct {
 	SmbEncryption *bool `pulumi:"smbEncryption"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
+	// UUID v4 or resource identifier used to identify the Snapshot.
+	SnapshotId *string `pulumi:"snapshotId"`
 	// Provides storage to network proximity information for the volume.
 	StorageToNetworkProximity string `pulumi:"storageToNetworkProximity"`
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
@@ -250,6 +254,11 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 func (o LookupVolumeResultOutput) AvsDataStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *string { return v.AvsDataStore }).(pulumi.StringPtrOutput)
+}
+
+// UUID v4 or resource identifier used to identify the Backup.
+func (o LookupVolumeResultOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
 
 // Unique Baremetal Tenant Identifier.
@@ -425,6 +434,11 @@ func (o LookupVolumeResultOutput) SmbEncryption() pulumi.BoolPtrOutput {
 // If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 func (o LookupVolumeResultOutput) SnapshotDirectoryVisible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *bool { return v.SnapshotDirectoryVisible }).(pulumi.BoolPtrOutput)
+}
+
+// UUID v4 or resource identifier used to identify the Snapshot.
+func (o LookupVolumeResultOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
 // Provides storage to network proximity information for the volume.

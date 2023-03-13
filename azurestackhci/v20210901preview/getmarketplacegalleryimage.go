@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The marketplace gallery image resource definition.
+// Gets marketplacegalleryimages by resource name
 func Getmarketplacegalleryimage(ctx *pulumi.Context, args *GetmarketplacegalleryimageArgs, opts ...pulumi.InvokeOption) (*GetmarketplacegalleryimageResult, error) {
 	var rv GetmarketplacegalleryimageResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getmarketplacegalleryimage", args, &rv, opts...)

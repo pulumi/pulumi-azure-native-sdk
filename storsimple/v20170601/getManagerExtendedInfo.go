@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The extended info of the manager.
+// Returns the extended information of the specified manager name.
 func LookupManagerExtendedInfo(ctx *pulumi.Context, args *LookupManagerExtendedInfoArgs, opts ...pulumi.InvokeOption) (*LookupManagerExtendedInfoResult, error) {
 	var rv LookupManagerExtendedInfoResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getManagerExtendedInfo", args, &rv, opts...)

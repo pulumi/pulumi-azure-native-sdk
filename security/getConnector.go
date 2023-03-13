@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The connector setting
+// Details of a specific cloud account connector
 // API Version: 2020-01-01-preview.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	var rv LookupConnectorResult

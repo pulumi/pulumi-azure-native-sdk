@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Define the Virtual Instance for SAP solutions resource.
+// Gets a Virtual Instance for SAP solutions resource
 // API Version: 2021-12-01-preview.
 func LookupSAPVirtualInstance(ctx *pulumi.Context, args *LookupSAPVirtualInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPVirtualInstanceResult, error) {
 	var rv LookupSAPVirtualInstanceResult

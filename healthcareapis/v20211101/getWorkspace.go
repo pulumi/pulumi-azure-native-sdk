@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace resource.
+// Gets the properties of the specified workspace.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20211101:getWorkspace", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// DSCP Configuration in a resource group.
+// Gets a DSCP Configuration.
 // API Version: 2020-11-01.
 func LookupDscpConfiguration(ctx *pulumi.Context, args *LookupDscpConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscpConfigurationResult, error) {
 	var rv LookupDscpConfigurationResult

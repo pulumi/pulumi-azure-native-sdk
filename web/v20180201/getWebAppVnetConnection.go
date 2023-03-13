@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual Network information contract.
+// Gets a virtual network the app (or deployment slot) is connected to by name.
 func LookupWebAppVnetConnection(ctx *pulumi.Context, args *LookupWebAppVnetConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppVnetConnectionResult, error) {
 	var rv LookupWebAppVnetConnectionResult
 	err := ctx.Invoke("azure-native:web/v20180201:getWebAppVnetConnection", args, &rv, opts...)

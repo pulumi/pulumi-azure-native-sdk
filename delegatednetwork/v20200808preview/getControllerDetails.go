@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents an instance of a DNC controller.
+// Gets details about the specified dnc controller.
 //
 // Deprecated: Version 2020-08-08-preview will be removed in v2 of the provider.
 func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupControllerDetailsResult, error) {

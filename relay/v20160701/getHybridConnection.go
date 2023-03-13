@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of HybridConnection Resource.
+// Returns the description for the specified HybridConnection.
 //
 // Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
 func LookupHybridConnection(ctx *pulumi.Context, args *LookupHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// iOS Policy entity for Intune MAM.
+// Returns Intune iOS policies.
 func LookupIoMAMPolicyByName(ctx *pulumi.Context, args *LookupIoMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupIoMAMPolicyByNameResult, error) {
 	var rv LookupIoMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune/v20150114privatepreview:getIoMAMPolicyByName", args, &rv, opts...)

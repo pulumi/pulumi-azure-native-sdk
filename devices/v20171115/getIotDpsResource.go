@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the provisioning service.
+// Get the metadata of the provisioning service without SAS keys.
 //
 // Deprecated: Version 2017-11-15 will be removed in v2 of the provider.
 func LookupIotDpsResource(ctx *pulumi.Context, args *LookupIotDpsResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourceResult, error) {

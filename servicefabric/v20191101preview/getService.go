@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The service resource.
+// Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
 //
 // Deprecated: Version 2019-11-01-preview will be removed in v2 of the provider.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {

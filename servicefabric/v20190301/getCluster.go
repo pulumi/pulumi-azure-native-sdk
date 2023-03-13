@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The cluster resource
+// Get a Service Fabric cluster resource created or in the process of being created in the specified resource group.
 //
 // Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {

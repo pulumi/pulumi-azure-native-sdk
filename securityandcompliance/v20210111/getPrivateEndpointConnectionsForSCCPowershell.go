@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// Gets the specified private endpoint connection associated with the service.
 func LookupPrivateEndpointConnectionsForSCCPowershell(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsForSCCPowershellArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsForSCCPowershellResult, error) {
 	var rv LookupPrivateEndpointConnectionsForSCCPowershellResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getPrivateEndpointConnectionsForSCCPowershell", args, &rv, opts...)

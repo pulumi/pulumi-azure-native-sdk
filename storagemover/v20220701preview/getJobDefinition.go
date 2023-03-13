@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Job Definition resource.
+// Gets a Job Definition resource.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	var rv LookupJobDefinitionResult
 	err := ctx.Invoke("azure-native:storagemover/v20220701preview:getJobDefinition", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the request to list Effective Virtual Network. It contains a list of groups and a URL link to get the next set of results.
+// Lists all effective virtual networks by specified network group.
 // API Version: 2021-02-01-preview.
 func ListEffectiveVirtualNetworkByNetworkGroup(ctx *pulumi.Context, args *ListEffectiveVirtualNetworkByNetworkGroupArgs, opts ...pulumi.InvokeOption) (*ListEffectiveVirtualNetworkByNetworkGroupResult, error) {
 	var rv ListEffectiveVirtualNetworkByNetworkGroupResult

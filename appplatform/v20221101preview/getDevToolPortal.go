@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Dev Tool Portal resource
+// Get the Application Live  and its properties.
 func LookupDevToolPortal(ctx *pulumi.Context, args *LookupDevToolPortalArgs, opts ...pulumi.InvokeOption) (*LookupDevToolPortalResult, error) {
 	var rv LookupDevToolPortalResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getDevToolPortal", args, &rv, opts...)

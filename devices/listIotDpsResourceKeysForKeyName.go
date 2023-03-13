@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of the shared access key.
+// List primary and secondary keys for a specific key name
 // API Version: 2020-03-01.
 func ListIotDpsResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotDpsResourceKeysForKeyNameArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysForKeyNameResult, error) {
 	var rv ListIotDpsResourceKeysForKeyNameResult

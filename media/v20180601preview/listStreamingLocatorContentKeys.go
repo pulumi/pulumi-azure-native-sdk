@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Class of response for listContentKeys action
+// List Content Keys used by this Streaming Locator
 func ListStreamingLocatorContentKeys(ctx *pulumi.Context, args *ListStreamingLocatorContentKeysArgs, opts ...pulumi.InvokeOption) (*ListStreamingLocatorContentKeysResult, error) {
 	var rv ListStreamingLocatorContentKeysResult
 	err := ctx.Invoke("azure-native:media/v20180601preview:listStreamingLocatorContentKeys", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A report resource.
+// Gets the report for a subscription by report name.
 // API Version: 2018-08-01-preview.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	var rv LookupReportResult

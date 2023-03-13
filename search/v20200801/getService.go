@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes an Azure Cognitive Search service and its current state.
+// Gets the search service with the given name in the given resource group.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:search/v20200801:getService", args, &rv, opts...)

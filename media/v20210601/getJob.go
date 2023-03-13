@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
+// Gets a Job.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:media/v20210601:getJob", args, &rv, opts...)

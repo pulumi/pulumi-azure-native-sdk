@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
+// Gets a Transform.
 func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pulumi.InvokeOption) (*LookupTransformResult, error) {
 	var rv LookupTransformResult
 	err := ctx.Invoke("azure-native:media/v20220501preview:getTransform", args, &rv, opts...)

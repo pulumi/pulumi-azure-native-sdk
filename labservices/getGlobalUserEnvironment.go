@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents the environments details
+// Gets the virtual machine details
 // API Version: 2018-10-15.
 func GetGlobalUserEnvironment(ctx *pulumi.Context, args *GetGlobalUserEnvironmentArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserEnvironmentResult, error) {
 	var rv GetGlobalUserEnvironmentResult

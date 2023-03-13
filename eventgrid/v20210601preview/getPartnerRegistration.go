@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about a partner registration.
+// Gets a partner registration with the specified parameters.
 func LookupPartnerRegistration(ctx *pulumi.Context, args *LookupPartnerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerRegistrationResult, error) {
 	var rv LookupPartnerRegistrationResult
 	err := ctx.Invoke("azure-native:eventgrid/v20210601preview:getPartnerRegistration", args, &rv, opts...)

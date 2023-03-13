@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Schema for MSIX Package properties.
+// Get a msixpackage.
 func LookupMSIXPackage(ctx *pulumi.Context, args *LookupMSIXPackageArgs, opts ...pulumi.InvokeOption) (*LookupMSIXPackageResult, error) {
 	var rv LookupMSIXPackageResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20210114preview:getMSIXPackage", args, &rv, opts...)

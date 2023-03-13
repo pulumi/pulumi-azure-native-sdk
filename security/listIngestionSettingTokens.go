@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configures how to correlate scan data and logs with resources associated with the subscription.
+// Returns the token that is used for correlating ingested telemetry with the resources in the subscription.
 // API Version: 2021-01-15-preview.
 func ListIngestionSettingTokens(ctx *pulumi.Context, args *ListIngestionSettingTokensArgs, opts ...pulumi.InvokeOption) (*ListIngestionSettingTokensResult, error) {
 	var rv ListIngestionSettingTokensResult

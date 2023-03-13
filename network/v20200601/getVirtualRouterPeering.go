@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual Router Peering resource.
+// Gets the specified Virtual Router Peering.
 func LookupVirtualRouterPeering(ctx *pulumi.Context, args *LookupVirtualRouterPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVirtualRouterPeeringResult, error) {
 	var rv LookupVirtualRouterPeeringResult
 	err := ctx.Invoke("azure-native:network/v20200601:getVirtualRouterPeering", args, &rv, opts...)

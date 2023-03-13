@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An API collection as represented by Defender for APIs.
+// Gets an Azure API Management API if it has been onboarded to Defender for APIs. If an Azure API Management API is onboarded to Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
 func LookupAPICollection(ctx *pulumi.Context, args *LookupAPICollectionArgs, opts ...pulumi.InvokeOption) (*LookupAPICollectionResult, error) {
 	var rv LookupAPICollectionResult
 	err := ctx.Invoke("azure-native:security/v20221120preview:getAPICollection", args, &rv, opts...)

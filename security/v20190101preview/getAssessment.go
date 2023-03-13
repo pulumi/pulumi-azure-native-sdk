@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security assessment on a resource
+// Get a security assessment on your scanned resource
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	var rv LookupAssessmentResult
 	err := ctx.Invoke("azure-native:security/v20190101preview:getAssessment", args, &rv, opts...)

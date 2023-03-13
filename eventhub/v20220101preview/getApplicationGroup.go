@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Application Group object
+// Gets an ApplicationGroup for a Namespace.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	var rv LookupApplicationGroupResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:getApplicationGroup", args, &rv, opts...)

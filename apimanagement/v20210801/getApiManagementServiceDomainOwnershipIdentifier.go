@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response of the GetDomainOwnershipIdentifier operation.
+// Get the custom domain ownership identifier for an API Management service.
 func GetApiManagementServiceDomainOwnershipIdentifier(ctx *pulumi.Context, args *GetApiManagementServiceDomainOwnershipIdentifierArgs, opts ...pulumi.InvokeOption) (*GetApiManagementServiceDomainOwnershipIdentifierResult, error) {
 	var rv GetApiManagementServiceDomainOwnershipIdentifierResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210801:getApiManagementServiceDomainOwnershipIdentifier", args, &rv, opts...)

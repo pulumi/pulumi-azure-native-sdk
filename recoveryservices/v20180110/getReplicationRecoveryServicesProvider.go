@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provider details.
+// Gets the details of registered recovery services provider.
 //
 // Deprecated: Version 2018-01-10 will be removed in v2 of the provider.
 func LookupReplicationRecoveryServicesProvider(ctx *pulumi.Context, args *LookupReplicationRecoveryServicesProviderArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryServicesProviderResult, error) {

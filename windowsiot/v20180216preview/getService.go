@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of the Windows IoT Device Service.
+// Get the non-security related metadata of a Windows IoT Device Service.
 //
 // Deprecated: Version 2018-02-16-preview will be removed in v2 of the provider.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {

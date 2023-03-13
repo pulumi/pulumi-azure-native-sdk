@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:guestconfiguration/v20200625:GuestConfigurationAssignment":
 		r = &GuestConfigurationAssignment{}
+	case "azure-native:guestconfiguration/v20200625:GuestConfigurationConnectedVMwarevSphereAssignment":
+		r = &GuestConfigurationConnectedVMwarevSphereAssignment{}
 	case "azure-native:guestconfiguration/v20200625:GuestConfigurationHCRPAssignment":
 		r = &GuestConfigurationHCRPAssignment{}
 	default:

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The storage account blob inventory policy.
+// Gets the blob inventory policy associated with the specified storage account.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
 func LookupBlobInventoryPolicy(ctx *pulumi.Context, args *LookupBlobInventoryPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBlobInventoryPolicyResult, error) {

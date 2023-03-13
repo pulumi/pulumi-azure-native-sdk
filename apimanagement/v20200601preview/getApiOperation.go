@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api Operation details.
+// Gets the details of the API Operation specified by its identifier.
 func LookupApiOperation(ctx *pulumi.Context, args *LookupApiOperationArgs, opts ...pulumi.InvokeOption) (*LookupApiOperationResult, error) {
 	var rv LookupApiOperationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getApiOperation", args, &rv, opts...)

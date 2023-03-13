@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A class representing an EmailService resource.
+// Get the EmailService and its properties.
 func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts ...pulumi.InvokeOption) (*LookupEmailServiceResult, error) {
 	var rv LookupEmailServiceResult
 	err := ctx.Invoke("azure-native:communication/v20220701preview:getEmailService", args, &rv, opts...)

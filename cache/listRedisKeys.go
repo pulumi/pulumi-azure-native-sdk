@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Redis cache access keys.
+// Retrieve a Redis cache's access keys. This operation requires write permission to the cache resource.
 // API Version: 2020-06-01.
 func ListRedisKeys(ctx *pulumi.Context, args *ListRedisKeysArgs, opts ...pulumi.InvokeOption) (*ListRedisKeysResult, error) {
 	var rv ListRedisKeysResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a relation between two resources
+// Gets an incident relation.
 func LookupIncidentRelation(ctx *pulumi.Context, args *LookupIncidentRelationArgs, opts ...pulumi.InvokeOption) (*LookupIncidentRelationResult, error) {
 	var rv LookupIncidentRelationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221001preview:getIncidentRelation", args, &rv, opts...)

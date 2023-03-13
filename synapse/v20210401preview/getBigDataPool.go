@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Big Data pool
+// Get a Big Data pool.
 func LookupBigDataPool(ctx *pulumi.Context, args *LookupBigDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupBigDataPoolResult, error) {
 	var rv LookupBigDataPoolResult
 	err := ctx.Invoke("azure-native:synapse/v20210401preview:getBigDataPool", args, &rv, opts...)

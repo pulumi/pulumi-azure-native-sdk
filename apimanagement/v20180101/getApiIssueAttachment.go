@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Issue Attachment Contract details.
+// Gets the details of the issue Attachment for an API specified by its identifier.
 func LookupApiIssueAttachment(ctx *pulumi.Context, args *LookupApiIssueAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueAttachmentResult, error) {
 	var rv LookupApiIssueAttachmentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getApiIssueAttachment", args, &rv, opts...)

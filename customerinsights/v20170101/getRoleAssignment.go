@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Role Assignment resource format.
+// Gets the role assignment in the hub.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentResult, error) {

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The result of the GetSupportedOptimizationTypes API
+// Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
 func GetProfileSupportedOptimizationTypes(ctx *pulumi.Context, args *GetProfileSupportedOptimizationTypesArgs, opts ...pulumi.InvokeOption) (*GetProfileSupportedOptimizationTypesResult, error) {
 	var rv GetProfileSupportedOptimizationTypesResult
 	err := ctx.Invoke("azure-native:cdn/v20161002:getProfileSupportedOptimizationTypes", args, &rv, opts...)

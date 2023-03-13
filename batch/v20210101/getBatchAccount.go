@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Contains information about an Azure Batch account.
+// Gets information about the specified Batch account.
 func LookupBatchAccount(ctx *pulumi.Context, args *LookupBatchAccountArgs, opts ...pulumi.InvokeOption) (*LookupBatchAccountResult, error) {
 	var rv LookupBatchAccountResult
 	err := ctx.Invoke("azure-native:batch/v20210101:getBatchAccount", args, &rv, opts...)

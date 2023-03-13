@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of a namespace authorization rule.
+// Authorization rule for a namespace by name.
 // API Version: 2017-04-01.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult

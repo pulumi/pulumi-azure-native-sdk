@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Service Fabric.
+// Get service fabric.
 func LookupServiceFabric(ctx *pulumi.Context, args *LookupServiceFabricArgs, opts ...pulumi.InvokeOption) (*LookupServiceFabricResult, error) {
 	var rv LookupServiceFabricResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getServiceFabric", args, &rv, opts...)

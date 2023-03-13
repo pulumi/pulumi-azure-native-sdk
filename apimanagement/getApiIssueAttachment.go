@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Issue Attachment Contract details.
+// Gets the details of the issue Attachment for an API specified by its identifier.
 // API Version: 2020-12-01.
 func LookupApiIssueAttachment(ctx *pulumi.Context, args *LookupApiIssueAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueAttachmentResult, error) {
 	var rv LookupApiIssueAttachmentResult

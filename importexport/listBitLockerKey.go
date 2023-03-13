@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GetBitLockerKeys response
+// Returns the BitLocker Keys for all drives in the specified job.
 // API Version: 2020-08-01.
 func ListBitLockerKey(ctx *pulumi.Context, args *ListBitLockerKeyArgs, opts ...pulumi.InvokeOption) (*ListBitLockerKeyResult, error) {
 	var rv ListBitLockerKeyResult

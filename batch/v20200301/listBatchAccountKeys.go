@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A set of Azure Batch account keys.
+// This operation applies only to Batch accounts created with a poolAllocationMode of 'BatchService'. If the Batch account was created with a poolAllocationMode of 'UserSubscription', clients cannot use access to keys to authenticate, and must use Azure Active Directory instead. In this case, getting the keys will fail.
 func ListBatchAccountKeys(ctx *pulumi.Context, args *ListBatchAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListBatchAccountKeysResult, error) {
 	var rv ListBatchAccountKeysResult
 	err := ctx.Invoke("azure-native:batch/v20200301:listBatchAccountKeys", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Blueprint artifact that deploys a Resource Manager template.
+// Get a blueprint artifact.
 func LookupTemplateArtifact(ctx *pulumi.Context, args *LookupTemplateArtifactArgs, opts ...pulumi.InvokeOption) (*LookupTemplateArtifactResult, error) {
 	var rv LookupTemplateArtifactResult
 	err := ctx.Invoke("azure-native:blueprint/v20181101preview:getTemplateArtifact", args, &rv, opts...)

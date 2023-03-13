@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tag Contract details.
+// Get tag associated with the Operation.
 // API Version: 2020-12-01.
 func LookupTagByOperation(ctx *pulumi.Context, args *LookupTagByOperationArgs, opts ...pulumi.InvokeOption) (*LookupTagByOperationResult, error) {
 	var rv LookupTagByOperationResult

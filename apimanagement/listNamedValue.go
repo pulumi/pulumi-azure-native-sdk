@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+// Gets the secret of the named value specified by its identifier.
 // API Version: 2020-12-01.
 func ListNamedValue(ctx *pulumi.Context, args *ListNamedValueArgs, opts ...pulumi.InvokeOption) (*ListNamedValueResult, error) {
 	var rv ListNamedValueResult

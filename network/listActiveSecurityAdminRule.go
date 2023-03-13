@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of the request to list active security admin rules. It contains a list of active security admin rules and a skiptoken to get the next set of results.
+// Lists active security admin rules in a network manager.
 // API Version: 2021-02-01-preview.
 func ListActiveSecurityAdminRule(ctx *pulumi.Context, args *ListActiveSecurityAdminRuleArgs, opts ...pulumi.InvokeOption) (*ListActiveSecurityAdminRuleResult, error) {
 	var rv ListActiveSecurityAdminRuleResult

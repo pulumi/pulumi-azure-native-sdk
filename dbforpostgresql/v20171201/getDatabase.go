@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Database.
+// Gets information about a database.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20171201:getDatabase", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The application resource.
+// Get a Service Fabric application resource created or in the process of being created in the Service Fabric cluster resource.
 //
 // Deprecated: Version 2019-11-01-preview will be removed in v2 of the provider.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {

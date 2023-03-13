@@ -11,7 +11,7 @@ import (
 )
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
-type MonitoringAccountResponseDefaultIngestionSettings struct {
+type AzureMonitorWorkspaceResponseDefaultIngestionSettings struct {
 	// The Azure resource Id of the default data collection endpoint for this workspace.
 	DataCollectionEndpointResourceId string `pulumi:"dataCollectionEndpointResourceId"`
 	// The Azure resource Id of the default data collection rule for this workspace.
@@ -19,36 +19,36 @@ type MonitoringAccountResponseDefaultIngestionSettings struct {
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
-type MonitoringAccountResponseDefaultIngestionSettingsOutput struct{ *pulumi.OutputState }
+type AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput struct{ *pulumi.OutputState }
 
-func (MonitoringAccountResponseDefaultIngestionSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitoringAccountResponseDefaultIngestionSettings)(nil)).Elem()
+func (AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceResponseDefaultIngestionSettings)(nil)).Elem()
 }
 
-func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) ToMonitoringAccountResponseDefaultIngestionSettingsOutput() MonitoringAccountResponseDefaultIngestionSettingsOutput {
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
 	return o
 }
 
-func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) ToMonitoringAccountResponseDefaultIngestionSettingsOutputWithContext(ctx context.Context) MonitoringAccountResponseDefaultIngestionSettingsOutput {
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMonitorWorkspaceResponseDefaultIngestionSettingsOutputWithContext(ctx context.Context) AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
 	return o
 }
 
 // The Azure resource Id of the default data collection endpoint for this workspace.
-func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) DataCollectionEndpointResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitoringAccountResponseDefaultIngestionSettings) string {
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) DataCollectionEndpointResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseDefaultIngestionSettings) string {
 		return v.DataCollectionEndpointResourceId
 	}).(pulumi.StringOutput)
 }
 
 // The Azure resource Id of the default data collection rule for this workspace.
-func (o MonitoringAccountResponseDefaultIngestionSettingsOutput) DataCollectionRuleResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitoringAccountResponseDefaultIngestionSettings) string {
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) DataCollectionRuleResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseDefaultIngestionSettings) string {
 		return v.DataCollectionRuleResourceId
 	}).(pulumi.StringOutput)
 }
 
 // Information about metrics for the Azure Monitor workspace
-type MonitoringAccountResponseMetrics struct {
+type AzureMonitorWorkspaceResponseMetrics struct {
 	// An internal identifier for the metrics container. Only to be used by the system
 	InternalId string `pulumi:"internalId"`
 	// The Prometheus query endpoint for the workspace
@@ -56,28 +56,28 @@ type MonitoringAccountResponseMetrics struct {
 }
 
 // Information about metrics for the Azure Monitor workspace
-type MonitoringAccountResponseMetricsOutput struct{ *pulumi.OutputState }
+type AzureMonitorWorkspaceResponseMetricsOutput struct{ *pulumi.OutputState }
 
-func (MonitoringAccountResponseMetricsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitoringAccountResponseMetrics)(nil)).Elem()
+func (AzureMonitorWorkspaceResponseMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceResponseMetrics)(nil)).Elem()
 }
 
-func (o MonitoringAccountResponseMetricsOutput) ToMonitoringAccountResponseMetricsOutput() MonitoringAccountResponseMetricsOutput {
+func (o AzureMonitorWorkspaceResponseMetricsOutput) ToAzureMonitorWorkspaceResponseMetricsOutput() AzureMonitorWorkspaceResponseMetricsOutput {
 	return o
 }
 
-func (o MonitoringAccountResponseMetricsOutput) ToMonitoringAccountResponseMetricsOutputWithContext(ctx context.Context) MonitoringAccountResponseMetricsOutput {
+func (o AzureMonitorWorkspaceResponseMetricsOutput) ToAzureMonitorWorkspaceResponseMetricsOutputWithContext(ctx context.Context) AzureMonitorWorkspaceResponseMetricsOutput {
 	return o
 }
 
 // An internal identifier for the metrics container. Only to be used by the system
-func (o MonitoringAccountResponseMetricsOutput) InternalId() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitoringAccountResponseMetrics) string { return v.InternalId }).(pulumi.StringOutput)
+func (o AzureMonitorWorkspaceResponseMetricsOutput) InternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.InternalId }).(pulumi.StringOutput)
 }
 
 // The Prometheus query endpoint for the workspace
-func (o MonitoringAccountResponseMetricsOutput) PrometheusQueryEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitoringAccountResponseMetrics) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
+func (o AzureMonitorWorkspaceResponseMetricsOutput) PrometheusQueryEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -142,7 +142,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(MonitoringAccountResponseDefaultIngestionSettingsOutput{})
-	pulumi.RegisterOutputType(MonitoringAccountResponseMetricsOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceResponseMetricsOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

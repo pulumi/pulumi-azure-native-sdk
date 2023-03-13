@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Video streaming token grants access to the video streaming URLs which can be used by an compatible HLS or DASH player.
+// Generates a streaming token used for authenticating video playback.
 // API Version: 2021-05-01-preview.
 func ListVideoStreamingToken(ctx *pulumi.Context, args *ListVideoStreamingTokenArgs, opts ...pulumi.InvokeOption) (*ListVideoStreamingTokenResult, error) {
 	var rv ListVideoStreamingTokenResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Shared access keys of the Topic
+// List the two keys used to publish to a topic.
 func ListTopicSharedAccessKeys(ctx *pulumi.Context, args *ListTopicSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListTopicSharedAccessKeysResult, error) {
 	var rv ListTopicSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211201:listTopicSharedAccessKeys", args, &rv, opts...)

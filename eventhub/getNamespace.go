@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Single Namespace item in List or Get Operation
+// Gets the description of the specified namespace.
 // API Version: 2017-04-01.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult

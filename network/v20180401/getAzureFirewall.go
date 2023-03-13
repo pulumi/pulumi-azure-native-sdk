@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Firewall resource
+// Gets the specified Azure Firewall.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
 func LookupAzureFirewall(ctx *pulumi.Context, args *LookupAzureFirewallArgs, opts ...pulumi.InvokeOption) (*LookupAzureFirewallResult, error) {

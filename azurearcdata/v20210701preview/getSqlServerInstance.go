@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A SqlServerInstance.
+// Retrieves a SQL Server Instance resource
 func LookupSqlServerInstance(ctx *pulumi.Context, args *LookupSqlServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerInstanceResult, error) {
 	var rv LookupSqlServerInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20210701preview:getSqlServerInstance", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of a Namespace AuthorizationRules.
+// HybridConnection authorizationRule for a HybridConnection by name.
 //
 // Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
 func LookupHybridConnectionAuthorizationRule(ctx *pulumi.Context, args *LookupHybridConnectionAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionAuthorizationRuleResult, error) {

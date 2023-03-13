@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets the properties for an Azure Dev Spaces Controller.
 // API Version: 2019-04-01.
 func LookupController(ctx *pulumi.Context, args *LookupControllerArgs, opts ...pulumi.InvokeOption) (*LookupControllerResult, error) {
 	var rv LookupControllerResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Snapshot resource.
+// Gets information about a snapshot.
 //
 // Deprecated: Version 2018-06-01 will be removed in v2 of the provider.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {

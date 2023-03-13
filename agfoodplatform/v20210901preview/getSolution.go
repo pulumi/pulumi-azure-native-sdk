@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Solution resource.
+// Get installed Solution details by Solution id.
 func LookupSolution(ctx *pulumi.Context, args *LookupSolutionArgs, opts ...pulumi.InvokeOption) (*LookupSolutionResult, error) {
 	var rv LookupSolutionResult
 	err := ctx.Invoke("azure-native:agfoodplatform/v20210901preview:getSolution", args, &rv, opts...)

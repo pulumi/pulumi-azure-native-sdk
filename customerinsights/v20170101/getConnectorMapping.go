@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The connector mapping resource format.
+// Gets a connector mapping in the connector.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 func LookupConnectorMapping(ctx *pulumi.Context, args *LookupConnectorMappingArgs, opts ...pulumi.InvokeOption) (*LookupConnectorMappingResult, error) {

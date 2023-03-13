@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workspace connection.
+// Get the detail of a workspace connection.
 // API Version: 2021-01-01.
 func LookupWorkspaceConnection(ctx *pulumi.Context, args *LookupWorkspaceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceConnectionResult, error) {
 	var rv LookupWorkspaceConnectionResult

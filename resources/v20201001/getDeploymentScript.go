@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Deployment script object.
+// Gets a deployment script with a given name.
 //
 // Deprecated: Please use one of the variants: AzureCliScript, AzurePowerShellScript.
 func LookupDeploymentScript(ctx *pulumi.Context, args *LookupDeploymentScriptArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentScriptResult, error) {

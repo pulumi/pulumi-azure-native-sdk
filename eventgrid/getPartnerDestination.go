@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Grid Partner Destination.
+// Get properties of a partner destination.
 // API Version: 2021-10-15-preview.
 func LookupPartnerDestination(ctx *pulumi.Context, args *LookupPartnerDestinationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerDestinationResult, error) {
 	var rv LookupPartnerDestinationResult

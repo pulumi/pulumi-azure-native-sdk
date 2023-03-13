@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list Kusto database principals operation response.
+// Returns a list of database principals of the given Kusto cluster and database.
 // API Version: 2021-01-01.
 func ListDatabasePrincipals(ctx *pulumi.Context, args *ListDatabasePrincipalsArgs, opts ...pulumi.InvokeOption) (*ListDatabasePrincipalsResult, error) {
 	var rv ListDatabasePrincipalsResult

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list Kusto database principals operation response.
+// Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
 // API Version: 2021-06-01-preview.
 func ListKustoPoolFollowerDatabases(ctx *pulumi.Context, args *ListKustoPoolFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListKustoPoolFollowerDatabasesResult, error) {
 	var rv ListKustoPoolFollowerDatabasesResult

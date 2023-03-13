@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// String dictionary resource.
+// Lists the secrets for an existing static site.
 // API Version: 2020-12-01.
 func ListStaticSiteSecrets(ctx *pulumi.Context, args *ListStaticSiteSecretsArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteSecretsResult, error) {
 	var rv ListStaticSiteSecretsResult

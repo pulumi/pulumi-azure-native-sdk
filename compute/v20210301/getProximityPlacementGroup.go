@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the proximity placement group.
+// Retrieves information about a proximity placement group .
 func LookupProximityPlacementGroup(ctx *pulumi.Context, args *LookupProximityPlacementGroupArgs, opts ...pulumi.InvokeOption) (*LookupProximityPlacementGroupResult, error) {
 	var rv LookupProximityPlacementGroupResult
 	err := ctx.Invoke("azure-native:compute/v20210301:getProximityPlacementGroup", args, &rv, opts...)

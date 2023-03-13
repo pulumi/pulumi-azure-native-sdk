@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A managed database resource.
+// Gets a managed database.
 func LookupManagedDatabase(ctx *pulumi.Context, args *LookupManagedDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseResult, error) {
 	var rv LookupManagedDatabaseResult
 	err := ctx.Invoke("azure-native:sql/v20210501preview:getManagedDatabase", args, &rv, opts...)

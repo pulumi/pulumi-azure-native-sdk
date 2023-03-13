@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security Application over a given scope
+// Get a specific application for the requested scope by applicationId
 // API Version: 2022-07-01-preview.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult

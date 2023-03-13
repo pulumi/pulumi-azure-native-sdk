@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
+// Gets a server trust certificate that was uploaded from box to Sql Managed Instance.
 func LookupServerTrustCertificate(ctx *pulumi.Context, args *LookupServerTrustCertificateArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustCertificateResult, error) {
 	var rv LookupServerTrustCertificateResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getServerTrustCertificate", args, &rv, opts...)

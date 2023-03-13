@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The lock information.
+// Gets a management lock at the resource group level.
 func LookupManagementLockAtResourceGroupLevel(ctx *pulumi.Context, args *LookupManagementLockAtResourceGroupLevelArgs, opts ...pulumi.InvokeOption) (*LookupManagementLockAtResourceGroupLevelResult, error) {
 	var rv LookupManagementLockAtResourceGroupLevelResult
 	err := ctx.Invoke("azure-native:authorization/v20200501:getManagementLockAtResourceGroupLevel", args, &rv, opts...)

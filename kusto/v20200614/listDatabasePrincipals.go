@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list Kusto database principals operation response.
+// Returns a list of database principals of the given Kusto cluster and database.
 func ListDatabasePrincipals(ctx *pulumi.Context, args *ListDatabasePrincipalsArgs, opts ...pulumi.InvokeOption) (*ListDatabasePrincipalsResult, error) {
 	var rv ListDatabasePrincipalsResult
 	err := ctx.Invoke("azure-native:kusto/v20200614:listDatabasePrincipals", args, &rv, opts...)

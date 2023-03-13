@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Address Resource.
+// Gets information about the specified address.
 // API Version: 2021-12-01.
 func LookupAddressByName(ctx *pulumi.Context, args *LookupAddressByNameArgs, opts ...pulumi.InvokeOption) (*LookupAddressByNameResult, error) {
 	var rv LookupAddressByNameResult

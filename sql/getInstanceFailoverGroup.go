@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An instance failover group.
+// Gets a failover group.
 // API Version: 2020-11-01-preview.
 func LookupInstanceFailoverGroup(ctx *pulumi.Context, args *LookupInstanceFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupInstanceFailoverGroupResult, error) {
 	var rv LookupInstanceFailoverGroupResult

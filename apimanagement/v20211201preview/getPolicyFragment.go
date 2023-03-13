@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Policy fragment contract details.
+// Gets a policy fragment.
 func LookupPolicyFragment(ctx *pulumi.Context, args *LookupPolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyFragmentResult, error) {
 	var rv LookupPolicyFragmentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getPolicyFragment", args, &rv, opts...)

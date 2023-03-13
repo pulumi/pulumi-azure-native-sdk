@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Definition of the configuration type.
+// Retrieve the configuration identified by configuration name.
 func LookupDscConfiguration(ctx *pulumi.Context, args *LookupDscConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscConfigurationResult, error) {
 	var rv LookupDscConfigurationResult
 	err := ctx.Invoke("azure-native:automation/v20190601:getDscConfiguration", args, &rv, opts...)

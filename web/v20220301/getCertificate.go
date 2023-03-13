@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SSL certificate for an app.
+// Description for Get a certificate.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:web/v20220301:getCertificate", args, &rv, opts...)

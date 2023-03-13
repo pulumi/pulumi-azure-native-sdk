@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The array of managed identity tokens.
+// List tokens for application.
 func ListApplicationTokens(ctx *pulumi.Context, args *ListApplicationTokensArgs, opts ...pulumi.InvokeOption) (*ListApplicationTokensResult, error) {
 	var rv ListApplicationTokensResult
 	err := ctx.Invoke("azure-native:solutions/v20180901preview:listApplicationTokens", args, &rv, opts...)

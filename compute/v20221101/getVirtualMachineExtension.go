@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Virtual Machine Extension.
+// The operation to get the extension.
 func LookupVirtualMachineExtension(ctx *pulumi.Context, args *LookupVirtualMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineExtensionResult, error) {
 	var rv LookupVirtualMachineExtensionResult
 	err := ctx.Invoke("azure-native:compute/v20221101:getVirtualMachineExtension", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access policies help define the authentication rules, and control access to specific video resources.
+// Retrieves an existing access policy resource with the given name.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	var rv LookupAccessPolicyResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20211101preview:getAccessPolicy", args, &rv, opts...)

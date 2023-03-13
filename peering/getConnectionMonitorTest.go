@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Connection Monitor Test class.
+// Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 // API Version: 2021-06-01.
 func LookupConnectionMonitorTest(ctx *pulumi.Context, args *LookupConnectionMonitorTestArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorTestResult, error) {
 	var rv LookupConnectionMonitorTestResult

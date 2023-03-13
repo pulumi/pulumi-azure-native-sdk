@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a single private link association
 func LookupPrivateLinkAssociation(ctx *pulumi.Context, args *LookupPrivateLinkAssociationArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkAssociationResult, error) {
 	var rv LookupPrivateLinkAssociationResult
 	err := ctx.Invoke("azure-native:authorization/v20200501:getPrivateLinkAssociation", args, &rv, opts...)

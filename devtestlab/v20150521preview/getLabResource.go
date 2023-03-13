@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A lab.
+// Get lab.
 //
 // Deprecated: Version 2015-05-21-preview will be removed in v2 of the provider.
 func LookupLabResource(ctx *pulumi.Context, args *LookupLabResourceArgs, opts ...pulumi.InvokeOption) (*LookupLabResourceResult, error) {

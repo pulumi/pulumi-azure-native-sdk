@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Managed Network resource
+// Gets the specified Network Manager.
 func LookupNetworkManager(ctx *pulumi.Context, args *LookupNetworkManagerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkManagerResult, error) {
 	var rv LookupNetworkManagerResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:getNetworkManager", args, &rv, opts...)
