@@ -171,6 +171,14 @@ const (
 	ComputeInstanceAuthorizationTypePersonal = ComputeInstanceAuthorizationType("personal")
 )
 
+// [Required] The compute power action.
+type ComputePowerAction string
+
+const (
+	ComputePowerActionStart = ComputePowerAction("Start")
+	ComputePowerActionStop  = ComputePowerAction("Stop")
+)
+
 // The type of compute
 type ComputeType string
 
@@ -726,6 +734,23 @@ type ScheduleActionType string
 const (
 	ScheduleActionTypeCreateJob           = ScheduleActionType("CreateJob")
 	ScheduleActionTypeInvokeBatchEndpoint = ScheduleActionType("InvokeBatchEndpoint")
+)
+
+// The current deployment state of schedule.
+type ScheduleProvisioningState string
+
+const (
+	ScheduleProvisioningStateCompleted    = ScheduleProvisioningState("Completed")
+	ScheduleProvisioningStateProvisioning = ScheduleProvisioningState("Provisioning")
+	ScheduleProvisioningStateFailed       = ScheduleProvisioningState("Failed")
+)
+
+// Is the schedule enabled or disabled?
+type ScheduleStatus string
+
+const (
+	ScheduleStatusEnabled  = ScheduleStatus("Enabled")
+	ScheduleStatusDisabled = ScheduleStatus("Disabled")
 )
 
 // [Required] Seasonality mode.

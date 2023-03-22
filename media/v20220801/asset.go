@@ -74,6 +74,9 @@ func NewAsset(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:media/v20211101:Asset"),
 		},
+		{
+			Type: pulumi.String("azure-native:media/v20230101:Asset"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Asset

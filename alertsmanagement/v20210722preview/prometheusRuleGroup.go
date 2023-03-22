@@ -55,6 +55,12 @@ func NewPrometheusRuleGroup(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20230301:PrometheusRuleGroup"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource PrometheusRuleGroup
 	err := ctx.RegisterResource("azure-native:alertsmanagement/v20210722preview:PrometheusRuleGroup", name, args, &resource, opts...)
 	if err != nil {

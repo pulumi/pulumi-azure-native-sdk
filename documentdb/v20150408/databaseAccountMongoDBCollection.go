@@ -138,6 +138,9 @@ func NewDatabaseAccountMongoDBCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20221115:DatabaseAccountMongoDBCollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:DatabaseAccountMongoDBCollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DatabaseAccountMongoDBCollection

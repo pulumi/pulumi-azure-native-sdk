@@ -33,7 +33,7 @@ type Server struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+	// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
 	MinimalTlsVersion pulumi.StringPtrOutput `pulumi:"minimalTlsVersion"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -158,7 +158,7 @@ type serverArgs struct {
 	KeyId *string `pulumi:"keyId"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+	// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
 	MinimalTlsVersion *string `pulumi:"minimalTlsVersion"`
 	// The resource id of a user assigned identity to be used by default.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
@@ -192,7 +192,7 @@ type ServerArgs struct {
 	KeyId pulumi.StringPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+	// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
 	MinimalTlsVersion pulumi.StringPtrInput
 	// The resource id of a user assigned identity to be used by default.
 	PrimaryUserAssignedIdentityId pulumi.StringPtrInput
@@ -292,7 +292,7 @@ func (o ServerOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
 func (o ServerOutput) MinimalTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.MinimalTlsVersion }).(pulumi.StringPtrOutput)
 }

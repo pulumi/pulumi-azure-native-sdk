@@ -51,7 +51,7 @@ type LookupServerResult struct {
 	Kind string `pulumi:"kind"`
 	// Resource location.
 	Location string `pulumi:"location"`
-	// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+	// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
 	MinimalTlsVersion *string `pulumi:"minimalTlsVersion"`
 	// Resource name.
 	Name string `pulumi:"name"`
@@ -166,7 +166,7 @@ func (o LookupServerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
 func (o LookupServerResultOutput) MinimalTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.MinimalTlsVersion }).(pulumi.StringPtrOutput)
 }

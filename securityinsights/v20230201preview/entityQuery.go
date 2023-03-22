@@ -88,6 +88,9 @@ func NewEntityQuery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20221201preview:EntityQuery"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:EntityQuery"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EntityQuery

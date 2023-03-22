@@ -132,6 +132,9 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20220815preview:SqlResourceSqlContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SqlResourceSqlContainer

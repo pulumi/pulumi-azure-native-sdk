@@ -94,6 +94,9 @@ func NewProductSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:ProductSetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:ProductSetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ProductSetting

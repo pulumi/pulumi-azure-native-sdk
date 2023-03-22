@@ -59,6 +59,9 @@ func NewAccountFilter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:media/v20220801:AccountFilter"),
 		},
+		{
+			Type: pulumi.String("azure-native:media/v20230101:AccountFilter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AccountFilter

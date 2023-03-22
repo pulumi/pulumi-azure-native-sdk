@@ -51,7 +51,7 @@ type LookupRemediationAtResourceGroupResult struct {
 	PolicyAssignmentId *string `pulumi:"policyAssignmentId"`
 	// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
 	PolicyDefinitionReferenceId *string `pulumi:"policyDefinitionReferenceId"`
-	// The status of the remediation.
+	// The status of the remediation. This refers to the entire remediation task, not individual deployments. Allowed values are Evaluating, Canceled, Cancelling, Failed, Complete, or Succeeded.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
 	ResourceCount *int `pulumi:"resourceCount"`
@@ -163,7 +163,7 @@ func (o LookupRemediationAtResourceGroupResultOutput) PolicyDefinitionReferenceI
 	return o.ApplyT(func(v LookupRemediationAtResourceGroupResult) *string { return v.PolicyDefinitionReferenceId }).(pulumi.StringPtrOutput)
 }
 
-// The status of the remediation.
+// The status of the remediation. This refers to the entire remediation task, not individual deployments. Allowed values are Evaluating, Canceled, Cancelling, Failed, Complete, or Succeeded.
 func (o LookupRemediationAtResourceGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
