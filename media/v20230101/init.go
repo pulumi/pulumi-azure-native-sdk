@@ -21,10 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:media/v20230101:AccountFilter":
+		r = &AccountFilter{}
+	case "azure-native:media/v20230101:Asset":
+		r = &Asset{}
+	case "azure-native:media/v20230101:AssetFilter":
+		r = &AssetFilter{}
+	case "azure-native:media/v20230101:ContentKeyPolicy":
+		r = &ContentKeyPolicy{}
 	case "azure-native:media/v20230101:MediaService":
 		r = &MediaService{}
 	case "azure-native:media/v20230101:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:media/v20230101:StreamingLocator":
+		r = &StreamingLocator{}
+	case "azure-native:media/v20230101:StreamingPolicy":
+		r = &StreamingPolicy{}
+	case "azure-native:media/v20230101:Track":
+		r = &Track{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

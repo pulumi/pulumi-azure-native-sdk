@@ -31,7 +31,7 @@ type Cluster struct {
 	ClientCertificateCommonNames ClientCertificateCommonNameResponseArrayOutput `pulumi:"clientCertificateCommonNames"`
 	// The list of client certificates referenced by thumbprint that are allowed to manage the cluster.
 	ClientCertificateThumbprints ClientCertificateThumbprintResponseArrayOutput `pulumi:"clientCertificateThumbprints"`
-	// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
+	// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list). To get the list of available version for existing clusters use **availableClusterVersions**.
 	ClusterCodeVersion pulumi.StringPtrOutput `pulumi:"clusterCodeVersion"`
 	// The Azure Resource Provider endpoint. A system service in the cluster connects to this  endpoint.
 	ClusterEndpoint pulumi.StringOutput `pulumi:"clusterEndpoint"`
@@ -208,7 +208,7 @@ type clusterArgs struct {
 	ClientCertificateCommonNames []ClientCertificateCommonName `pulumi:"clientCertificateCommonNames"`
 	// The list of client certificates referenced by thumbprint that are allowed to manage the cluster.
 	ClientCertificateThumbprints []ClientCertificateThumbprint `pulumi:"clientCertificateThumbprints"`
-	// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
+	// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list). To get the list of available version for existing clusters use **availableClusterVersions**.
 	ClusterCodeVersion *string `pulumi:"clusterCodeVersion"`
 	// The name of the cluster resource.
 	ClusterName *string `pulumi:"clusterName"`
@@ -280,7 +280,7 @@ type ClusterArgs struct {
 	ClientCertificateCommonNames ClientCertificateCommonNameArrayInput
 	// The list of client certificates referenced by thumbprint that are allowed to manage the cluster.
 	ClientCertificateThumbprints ClientCertificateThumbprintArrayInput
-	// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
+	// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list). To get the list of available version for existing clusters use **availableClusterVersions**.
 	ClusterCodeVersion pulumi.StringPtrInput
 	// The name of the cluster resource.
 	ClusterName pulumi.StringPtrInput
@@ -415,7 +415,7 @@ func (o ClusterOutput) ClientCertificateThumbprints() ClientCertificateThumbprin
 	return o.ApplyT(func(v *Cluster) ClientCertificateThumbprintResponseArrayOutput { return v.ClientCertificateThumbprints }).(ClientCertificateThumbprintResponseArrayOutput)
 }
 
-// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
+// The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list). To get the list of available version for existing clusters use **availableClusterVersions**.
 func (o ClusterOutput) ClusterCodeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterCodeVersion }).(pulumi.StringPtrOutput)
 }

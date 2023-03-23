@@ -61,6 +61,9 @@ func NewPrivateStoreCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:marketplace/v20220901:PrivateStoreCollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:marketplace/v20230101:PrivateStoreCollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateStoreCollection

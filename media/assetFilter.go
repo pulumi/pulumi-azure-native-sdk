@@ -62,6 +62,9 @@ func NewAssetFilter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:media/v20220801:AssetFilter"),
 		},
+		{
+			Type: pulumi.String("azure-native:media/v20230101:AssetFilter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AssetFilter
