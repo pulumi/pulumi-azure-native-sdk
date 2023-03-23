@@ -4133,6 +4133,8 @@ type ComputeInstanceProperties struct {
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
 	// Settings for a personal compute instance.
 	PersonalComputeInstanceSettings *PersonalComputeInstanceSettings `pulumi:"personalComputeInstanceSettings"`
+	// The list of schedules to be applied on the computes.
+	Schedules *ComputeSchedules `pulumi:"schedules"`
 	// Details of customized scripts to execute for setting up the cluster.
 	SetupScripts *SetupScripts `pulumi:"setupScripts"`
 	// Specifies policy and settings for SSH access.
@@ -4189,7 +4191,7 @@ type ComputeInstancePropertiesResponse struct {
 	// Settings for a personal compute instance.
 	PersonalComputeInstanceSettings *PersonalComputeInstanceSettingsResponse `pulumi:"personalComputeInstanceSettings"`
 	// The list of schedules to be applied on the computes.
-	Schedules ComputeSchedulesResponse `pulumi:"schedules"`
+	Schedules *ComputeSchedulesResponse `pulumi:"schedules"`
 	// Details of customized scripts to execute for setting up the cluster.
 	SetupScripts *SetupScriptsResponse `pulumi:"setupScripts"`
 	// Specifies policy and settings for SSH access.
@@ -4314,9 +4316,44 @@ type ComputeInstanceVersionResponse struct {
 }
 
 // The list of schedules to be applied on the computes
+type ComputeSchedules struct {
+	// The list of compute start stop schedules to be applied.
+	ComputeStartStop []ComputeStartStopSchedule `pulumi:"computeStartStop"`
+}
+
+// The list of schedules to be applied on the computes
 type ComputeSchedulesResponse struct {
 	// The list of compute start stop schedules to be applied.
 	ComputeStartStop []ComputeStartStopScheduleResponse `pulumi:"computeStartStop"`
+}
+
+// Compute start stop schedule properties
+type ComputeStartStopSchedule struct {
+	// [Required] The compute power action.
+	Action *string `pulumi:"action"`
+	// Required if triggerType is Cron.
+	Cron *Cron `pulumi:"cron"`
+	// Required if triggerType is Recurrence.
+	Recurrence *Recurrence `pulumi:"recurrence"`
+	// [Deprecated] Not used any more.
+	Schedule *ScheduleBase `pulumi:"schedule"`
+	// Is the schedule enabled or disabled?
+	Status *string `pulumi:"status"`
+	// [Required] The schedule trigger type.
+	TriggerType *string `pulumi:"triggerType"`
+}
+
+// Defaults sets the appropriate defaults for ComputeStartStopSchedule
+func (val *ComputeStartStopSchedule) Defaults() *ComputeStartStopSchedule {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Cron = tmp.Cron.Defaults()
+
+	tmp.Recurrence = tmp.Recurrence.Defaults()
+
+	return &tmp
 }
 
 // Compute start stop schedule properties
@@ -4324,13 +4361,13 @@ type ComputeStartStopScheduleResponse struct {
 	// [Required] The compute power action.
 	Action *string `pulumi:"action"`
 	// Required if triggerType is Cron.
-	Cron *CronTriggerResponse `pulumi:"cron"`
+	Cron *CronResponse `pulumi:"cron"`
 	// A system assigned id for the schedule.
 	Id string `pulumi:"id"`
 	// The current deployment state of schedule.
 	ProvisioningStatus string `pulumi:"provisioningStatus"`
 	// Required if triggerType is Recurrence.
-	Recurrence *RecurrenceTriggerResponse `pulumi:"recurrence"`
+	Recurrence *RecurrenceResponse `pulumi:"recurrence"`
 	// [Deprecated] Not used any more.
 	Schedule *ScheduleBaseResponse `pulumi:"schedule"`
 	// Is the schedule enabled or disabled?
@@ -4585,6 +4622,56 @@ func (o CosmosDbSettingsResponsePtrOutput) CollectionsThroughput() pulumi.IntPtr
 		}
 		return v.CollectionsThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The workflow trigger cron for ComputeStartStop schedule type.
+type Cron struct {
+	// [Required] Specifies cron expression of schedule.
+	// The expression should follow NCronTab format.
+	Expression *string `pulumi:"expression"`
+	// The start time in yyyy-MM-ddTHH:mm:ss format.
+	StartTime *string `pulumi:"startTime"`
+	// Specifies time zone in which the schedule runs.
+	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for Cron
+func (val *Cron) Defaults() *Cron {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.TimeZone) {
+		timeZone_ := "UTC"
+		tmp.TimeZone = &timeZone_
+	}
+	return &tmp
+}
+
+// The workflow trigger cron for ComputeStartStop schedule type.
+type CronResponse struct {
+	// [Required] Specifies cron expression of schedule.
+	// The expression should follow NCronTab format.
+	Expression *string `pulumi:"expression"`
+	// The start time in yyyy-MM-ddTHH:mm:ss format.
+	StartTime *string `pulumi:"startTime"`
+	// Specifies time zone in which the schedule runs.
+	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for CronResponse
+func (val *CronResponse) Defaults() *CronResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.TimeZone) {
+		timeZone_ := "UTC"
+		tmp.TimeZone = &timeZone_
+	}
+	return &tmp
 }
 
 type CronTrigger struct {
@@ -12210,6 +12297,62 @@ func (val *RandomSamplingAlgorithmResponse) Defaults() *RandomSamplingAlgorithmR
 	return &tmp
 }
 
+// The workflow trigger recurrence for ComputeStartStop schedule type.
+type Recurrence struct {
+	// [Required] The frequency to trigger schedule.
+	Frequency *string `pulumi:"frequency"`
+	// [Required] Specifies schedule interval in conjunction with frequency
+	Interval *int `pulumi:"interval"`
+	// [Required] The recurrence schedule.
+	Schedule *RecurrenceSchedule `pulumi:"schedule"`
+	// The start time in yyyy-MM-ddTHH:mm:ss format.
+	StartTime *string `pulumi:"startTime"`
+	// Specifies time zone in which the schedule runs.
+	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for Recurrence
+func (val *Recurrence) Defaults() *Recurrence {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.TimeZone) {
+		timeZone_ := "UTC"
+		tmp.TimeZone = &timeZone_
+	}
+	return &tmp
+}
+
+// The workflow trigger recurrence for ComputeStartStop schedule type.
+type RecurrenceResponse struct {
+	// [Required] The frequency to trigger schedule.
+	Frequency *string `pulumi:"frequency"`
+	// [Required] Specifies schedule interval in conjunction with frequency
+	Interval *int `pulumi:"interval"`
+	// [Required] The recurrence schedule.
+	Schedule *RecurrenceScheduleResponse `pulumi:"schedule"`
+	// The start time in yyyy-MM-ddTHH:mm:ss format.
+	StartTime *string `pulumi:"startTime"`
+	// Specifies time zone in which the schedule runs.
+	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for RecurrenceResponse
+func (val *RecurrenceResponse) Defaults() *RecurrenceResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.TimeZone) {
+		timeZone_ := "UTC"
+		tmp.TimeZone = &timeZone_
+	}
+	return &tmp
+}
+
 type RecurrenceSchedule struct {
 	// [Required] List of hours for the schedule.
 	Hours []int `pulumi:"hours"`
@@ -13059,6 +13202,15 @@ func (o ScheduleTypeOutput) Tags() pulumi.StringMapOutput {
 // [Required] Specifies the trigger details
 func (o ScheduleTypeOutput) Trigger() pulumi.AnyOutput {
 	return o.ApplyT(func(v ScheduleType) interface{} { return v.Trigger }).(pulumi.AnyOutput)
+}
+
+type ScheduleBase struct {
+	// A system assigned id for the schedule.
+	Id *string `pulumi:"id"`
+	// The current deployment state of schedule.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// Is the schedule enabled or disabled?
+	Status *string `pulumi:"status"`
 }
 
 type ScheduleBaseResponse struct {

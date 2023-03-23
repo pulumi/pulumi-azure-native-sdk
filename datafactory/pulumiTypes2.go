@@ -10,6 +10,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Sql always encrypted properties.
+type SqlAlwaysEncryptedProperties struct {
+	// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
+	AlwaysEncryptedAkvAuthType string `pulumi:"alwaysEncryptedAkvAuthType"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
+	// The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate against Azure Key Vault.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+}
+
+// Sql always encrypted properties.
+type SqlAlwaysEncryptedPropertiesResponse struct {
+	// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
+	AlwaysEncryptedAkvAuthType string `pulumi:"alwaysEncryptedAkvAuthType"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate against Azure Key Vault.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+}
+
 // A copy activity SQL Data Warehouse sink.
 type SqlDWSink struct {
 	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).

@@ -13,6 +13,86 @@ const (
 	AccountEncryptionKeyTypeCustomerKey = AccountEncryptionKeyType("CustomerKey")
 )
 
+// The permissions to set on the SAS URL.
+type AssetContainerPermission string
+
+const (
+	// The SAS URL will allow read access to the container.
+	AssetContainerPermissionRead = AssetContainerPermission("Read")
+	// The SAS URL will allow read and write access to the container.
+	AssetContainerPermissionReadWrite = AssetContainerPermission("ReadWrite")
+	// The SAS URL will allow read, write and delete access to the container.
+	AssetContainerPermissionReadWriteDelete = AssetContainerPermission("ReadWriteDelete")
+)
+
+// The rental and lease key type.
+type ContentKeyPolicyFairPlayRentalAndLeaseKeyType string
+
+const (
+	// Represents a ContentKeyPolicyFairPlayRentalAndLeaseKeyType that is unavailable in current API version.
+	ContentKeyPolicyFairPlayRentalAndLeaseKeyTypeUnknown = ContentKeyPolicyFairPlayRentalAndLeaseKeyType("Unknown")
+	// Key duration is not specified.
+	ContentKeyPolicyFairPlayRentalAndLeaseKeyTypeUndefined = ContentKeyPolicyFairPlayRentalAndLeaseKeyType("Undefined")
+	// Dual expiry for offline rental.
+	ContentKeyPolicyFairPlayRentalAndLeaseKeyTypeDualExpiry = ContentKeyPolicyFairPlayRentalAndLeaseKeyType("DualExpiry")
+	// Content key can be persisted with an unlimited duration
+	ContentKeyPolicyFairPlayRentalAndLeaseKeyTypePersistentUnlimited = ContentKeyPolicyFairPlayRentalAndLeaseKeyType("PersistentUnlimited")
+	// Content key can be persisted and the valid duration is limited by the Rental Duration value
+	ContentKeyPolicyFairPlayRentalAndLeaseKeyTypePersistentLimited = ContentKeyPolicyFairPlayRentalAndLeaseKeyType("PersistentLimited")
+)
+
+// The PlayReady content type.
+type ContentKeyPolicyPlayReadyContentType string
+
+const (
+	// Represents a ContentKeyPolicyPlayReadyContentType that is unavailable in current API version.
+	ContentKeyPolicyPlayReadyContentTypeUnknown = ContentKeyPolicyPlayReadyContentType("Unknown")
+	// Unspecified content type.
+	ContentKeyPolicyPlayReadyContentTypeUnspecified = ContentKeyPolicyPlayReadyContentType("Unspecified")
+	// Ultraviolet download content type.
+	ContentKeyPolicyPlayReadyContentTypeUltraVioletDownload = ContentKeyPolicyPlayReadyContentType("UltraVioletDownload")
+	// Ultraviolet streaming content type.
+	ContentKeyPolicyPlayReadyContentTypeUltraVioletStreaming = ContentKeyPolicyPlayReadyContentType("UltraVioletStreaming")
+)
+
+// The license type.
+type ContentKeyPolicyPlayReadyLicenseType string
+
+const (
+	// Represents a ContentKeyPolicyPlayReadyLicenseType that is unavailable in current API version.
+	ContentKeyPolicyPlayReadyLicenseTypeUnknown = ContentKeyPolicyPlayReadyLicenseType("Unknown")
+	// Non persistent license.
+	ContentKeyPolicyPlayReadyLicenseTypeNonPersistent = ContentKeyPolicyPlayReadyLicenseType("NonPersistent")
+	// Persistent license. Allows offline playback.
+	ContentKeyPolicyPlayReadyLicenseTypePersistent = ContentKeyPolicyPlayReadyLicenseType("Persistent")
+)
+
+// Configures Unknown output handling settings of the license.
+type ContentKeyPolicyPlayReadyUnknownOutputPassingOption string
+
+const (
+	// Represents a ContentKeyPolicyPlayReadyUnknownOutputPassingOption that is unavailable in current API version.
+	ContentKeyPolicyPlayReadyUnknownOutputPassingOptionUnknown = ContentKeyPolicyPlayReadyUnknownOutputPassingOption("Unknown")
+	// Passing the video portion of protected content to an Unknown Output is not allowed.
+	ContentKeyPolicyPlayReadyUnknownOutputPassingOptionNotAllowed = ContentKeyPolicyPlayReadyUnknownOutputPassingOption("NotAllowed")
+	// Passing the video portion of protected content to an Unknown Output is allowed.
+	ContentKeyPolicyPlayReadyUnknownOutputPassingOptionAllowed = ContentKeyPolicyPlayReadyUnknownOutputPassingOption("Allowed")
+	// Passing the video portion of protected content to an Unknown Output is allowed but with constrained resolution.
+	ContentKeyPolicyPlayReadyUnknownOutputPassingOptionAllowedWithVideoConstriction = ContentKeyPolicyPlayReadyUnknownOutputPassingOption("AllowedWithVideoConstriction")
+)
+
+// The type of token.
+type ContentKeyPolicyRestrictionTokenType string
+
+const (
+	// Represents a ContentKeyPolicyRestrictionTokenType that is unavailable in current API version.
+	ContentKeyPolicyRestrictionTokenTypeUnknown = ContentKeyPolicyRestrictionTokenType("Unknown")
+	// Simple Web Token.
+	ContentKeyPolicyRestrictionTokenTypeSwt = ContentKeyPolicyRestrictionTokenType("Swt")
+	// JSON Web Token.
+	ContentKeyPolicyRestrictionTokenTypeJwt = ContentKeyPolicyRestrictionTokenType("Jwt")
+)
+
 // The behavior for IP access control in Key Delivery.
 type DefaultAction string
 
@@ -21,6 +101,34 @@ const (
 	DefaultActionAllow = DefaultAction("Allow")
 	// Public IP addresses are blocked.
 	DefaultActionDeny = DefaultAction("Deny")
+)
+
+// The track property condition operation.
+type FilterTrackPropertyCompareOperation string
+
+const (
+	// The equal operation.
+	FilterTrackPropertyCompareOperationEqual = FilterTrackPropertyCompareOperation("Equal")
+	// The not equal operation.
+	FilterTrackPropertyCompareOperationNotEqual = FilterTrackPropertyCompareOperation("NotEqual")
+)
+
+// The track property type.
+type FilterTrackPropertyType string
+
+const (
+	// The unknown track property type.
+	FilterTrackPropertyTypeUnknown = FilterTrackPropertyType("Unknown")
+	// The type.
+	FilterTrackPropertyTypeType = FilterTrackPropertyType("Type")
+	// The name.
+	FilterTrackPropertyTypeName = FilterTrackPropertyType("Name")
+	// The language.
+	FilterTrackPropertyTypeLanguage = FilterTrackPropertyType("Language")
+	// The fourCC.
+	FilterTrackPropertyTypeFourCC = FilterTrackPropertyType("FourCC")
+	// The bitrate.
+	FilterTrackPropertyTypeBitrate = FilterTrackPropertyType("Bitrate")
 )
 
 // The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
@@ -56,6 +164,20 @@ const (
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
+// The security level.
+type SecurityLevel string
+
+const (
+	// Represents a SecurityLevel that is unavailable in current API version.
+	SecurityLevelUnknown = SecurityLevel("Unknown")
+	// For clients under development or test. No protection against unauthorized use.
+	SecurityLevelSL150 = SecurityLevel("SL150")
+	// For hardened devices and applications consuming commercial content. Software or hardware protection.
+	SecurityLevelSL2000 = SecurityLevel("SL2000")
+	// For hardened devices only. Hardware protection.
+	SecurityLevelSL3000 = SecurityLevel("SL3000")
+)
+
 // The type of the storage account.
 type StorageAccountType string
 
@@ -73,6 +195,36 @@ const (
 	StorageAuthenticationSystem = StorageAuthentication("System")
 	// Managed Identity authentication.
 	StorageAuthenticationManagedIdentity = StorageAuthentication("ManagedIdentity")
+)
+
+// Track property condition operation
+type TrackPropertyCompareOperation string
+
+const (
+	// Unknown track property compare operation
+	TrackPropertyCompareOperationUnknown = TrackPropertyCompareOperation("Unknown")
+	// Equal operation
+	TrackPropertyCompareOperationEqual = TrackPropertyCompareOperation("Equal")
+)
+
+// Track property type
+type TrackPropertyType string
+
+const (
+	// Unknown track property
+	TrackPropertyTypeUnknown = TrackPropertyType("Unknown")
+	// Track FourCC
+	TrackPropertyTypeFourCC = TrackPropertyType("FourCC")
+)
+
+// When PlayerVisibility is set to "Visible", the text track will be present in the DASH manifest or HLS playlist when requested by a client. When the PlayerVisibility is set to "Hidden", the text will not be available to the client. The default value is "Visible".
+type Visibility string
+
+const (
+	// The track is hidden to video player.
+	VisibilityHidden = Visibility("Hidden")
+	// The track is visible to video player.
+	VisibilityVisible = Visibility("Visible")
 )
 
 func init() {

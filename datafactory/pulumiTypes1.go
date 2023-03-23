@@ -1450,8 +1450,17 @@ type IntegrationRuntimeDataFlowProperties struct {
 	ComputeType *string `pulumi:"computeType"`
 	// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
 	CoreCount *int `pulumi:"coreCount"`
+	// Custom properties are used to tune the data flow runtime performance.
+	CustomProperties []IntegrationRuntimeDataFlowPropertiesCustomProperties `pulumi:"customProperties"`
 	// Time to live (in minutes) setting of the cluster which will execute data flow job.
 	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+type IntegrationRuntimeDataFlowPropertiesCustomProperties struct {
+	// Name of custom property.
+	Name *string `pulumi:"name"`
+	// Value of custom property.
+	Value *string `pulumi:"value"`
 }
 
 // Data flow properties for managed integration runtime.
@@ -1462,8 +1471,17 @@ type IntegrationRuntimeDataFlowPropertiesResponse struct {
 	ComputeType *string `pulumi:"computeType"`
 	// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
 	CoreCount *int `pulumi:"coreCount"`
+	// Custom properties are used to tune the data flow runtime performance.
+	CustomProperties []IntegrationRuntimeDataFlowPropertiesResponseCustomProperties `pulumi:"customProperties"`
 	// Time to live (in minutes) setting of the cluster which will execute data flow job.
 	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+type IntegrationRuntimeDataFlowPropertiesResponseCustomProperties struct {
+	// Name of custom property.
+	Name *string `pulumi:"name"`
+	// Value of custom property.
+	Value *string `pulumi:"value"`
 }
 
 // Data proxy properties for a managed dedicated integration runtime.
@@ -12047,30 +12065,6 @@ type SparkSourceResponse struct {
 	// Copy source type.
 	// Expected value is 'SparkSource'.
 	Type string `pulumi:"type"`
-}
-
-// Sql always encrypted properties.
-type SqlAlwaysEncryptedProperties struct {
-	// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
-	AlwaysEncryptedAkvAuthType string `pulumi:"alwaysEncryptedAkvAuthType"`
-	// The credential reference containing authentication information.
-	Credential *CredentialReference `pulumi:"credential"`
-	// The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
-	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The key of the service principal used to authenticate against Azure Key Vault.
-	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
-}
-
-// Sql always encrypted properties.
-type SqlAlwaysEncryptedPropertiesResponse struct {
-	// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
-	AlwaysEncryptedAkvAuthType string `pulumi:"alwaysEncryptedAkvAuthType"`
-	// The credential reference containing authentication information.
-	Credential *CredentialReferenceResponse `pulumi:"credential"`
-	// The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
-	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The key of the service principal used to authenticate against Azure Key Vault.
-	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 }
 
 func init() {

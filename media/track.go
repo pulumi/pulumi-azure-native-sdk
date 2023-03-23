@@ -49,6 +49,9 @@ func NewTrack(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:media/v20220801:Track"),
 		},
+		{
+			Type: pulumi.String("azure-native:media/v20230101:Track"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Track

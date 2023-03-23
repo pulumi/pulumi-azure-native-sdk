@@ -19,6 +19,13 @@ const (
 	AgentAutoUpdateStatusEnabled  = AgentAutoUpdateStatus("Enabled")
 )
 
+type AlertsState string
+
+const (
+	AlertsStateEnabled  = AlertsState("Enabled")
+	AlertsStateDisabled = AlertsState("Disabled")
+)
+
 // A value indicating the type authentication to use for automation Account.
 type AutomationAccountAuthenticationType string
 
@@ -73,6 +80,14 @@ const (
 	CreateModeRecover = CreateMode("Recover")
 )
 
+type CrossSubscriptionRestoreState string
+
+const (
+	CrossSubscriptionRestoreStateEnabled             = CrossSubscriptionRestoreState("Enabled")
+	CrossSubscriptionRestoreStateDisabled            = CrossSubscriptionRestoreState("Disabled")
+	CrossSubscriptionRestoreStatePermanentlyDisabled = CrossSubscriptionRestoreState("PermanentlyDisabled")
+)
+
 type DayOfWeek string
 
 const (
@@ -116,6 +131,22 @@ const (
 	IAASVMPolicyTypeInvalid = IAASVMPolicyType("Invalid")
 	IAASVMPolicyTypeV1      = IAASVMPolicyType("V1")
 	IAASVMPolicyTypeV2      = IAASVMPolicyType("V2")
+)
+
+type ImmutabilityState string
+
+const (
+	ImmutabilityStateDisabled = ImmutabilityState("Disabled")
+	ImmutabilityStateUnlocked = ImmutabilityState("Unlocked")
+	ImmutabilityStateLocked   = ImmutabilityState("Locked")
+)
+
+// Enabling/Disabling the Double Encryption state
+type InfrastructureEncryptionState string
+
+const (
+	InfrastructureEncryptionStateEnabled  = InfrastructureEncryptionState("Enabled")
+	InfrastructureEncryptionStateDisabled = InfrastructureEncryptionState("Disabled")
 )
 
 // Last backup operation status. Possible values: Healthy, Unhealthy.
@@ -292,6 +323,14 @@ const (
 	ProvisioningStatePending   = ProvisioningState("Pending")
 )
 
+// property to enable or disable resource provider inbound network traffic from public clients
+type PublicNetworkAccess string
+
+const (
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
 // The fabric location.
 type RecoveryPlanActionLocation string
 
@@ -340,6 +379,16 @@ const (
 	ResourceHealthStatusInvalid             = ResourceHealthStatus("Invalid")
 )
 
+// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+type ResourceIdentityType string
+
+const (
+	ResourceIdentityTypeSystemAssigned               = ResourceIdentityType("SystemAssigned")
+	ResourceIdentityTypeNone                         = ResourceIdentityType("None")
+	ResourceIdentityTypeUserAssigned                 = ResourceIdentityType("UserAssigned")
+	ResourceIdentityType_SystemAssigned_UserAssigned = ResourceIdentityType("SystemAssigned, UserAssigned")
+)
+
 // Retention duration type: days/weeks/months/years
 // Used only if TieringMode is set to TierAfter
 type RetentionDurationType string
@@ -386,6 +435,14 @@ type SetMultiVmSyncStatus string
 const (
 	SetMultiVmSyncStatusEnable  = SetMultiVmSyncStatus("Enable")
 	SetMultiVmSyncStatusDisable = SetMultiVmSyncStatus("Disable")
+)
+
+// Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
+type SkuName string
+
+const (
+	SkuNameStandard = SkuName("Standard")
+	SkuNameRS0      = SkuName("RS0")
 )
 
 // The SQL Server license type.

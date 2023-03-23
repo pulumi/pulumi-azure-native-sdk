@@ -525,6 +525,2466 @@ func (o AccountEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Asset File Storage encryption metadata.
+type AssetFileEncryptionMetadataResponse struct {
+	// The Asset File Id.
+	AssetFileId string `pulumi:"assetFileId"`
+	// The Asset File name.
+	AssetFileName *string `pulumi:"assetFileName"`
+	// The Asset File initialization vector.
+	InitializationVector *string `pulumi:"initializationVector"`
+}
+
+// The Asset File Storage encryption metadata.
+type AssetFileEncryptionMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetFileEncryptionMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetFileEncryptionMetadataResponse)(nil)).Elem()
+}
+
+func (o AssetFileEncryptionMetadataResponseOutput) ToAssetFileEncryptionMetadataResponseOutput() AssetFileEncryptionMetadataResponseOutput {
+	return o
+}
+
+func (o AssetFileEncryptionMetadataResponseOutput) ToAssetFileEncryptionMetadataResponseOutputWithContext(ctx context.Context) AssetFileEncryptionMetadataResponseOutput {
+	return o
+}
+
+// The Asset File Id.
+func (o AssetFileEncryptionMetadataResponseOutput) AssetFileId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetFileEncryptionMetadataResponse) string { return v.AssetFileId }).(pulumi.StringOutput)
+}
+
+// The Asset File name.
+func (o AssetFileEncryptionMetadataResponseOutput) AssetFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetFileEncryptionMetadataResponse) *string { return v.AssetFileName }).(pulumi.StringPtrOutput)
+}
+
+// The Asset File initialization vector.
+func (o AssetFileEncryptionMetadataResponseOutput) InitializationVector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetFileEncryptionMetadataResponse) *string { return v.InitializationVector }).(pulumi.StringPtrOutput)
+}
+
+type AssetFileEncryptionMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetFileEncryptionMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetFileEncryptionMetadataResponse)(nil)).Elem()
+}
+
+func (o AssetFileEncryptionMetadataResponseArrayOutput) ToAssetFileEncryptionMetadataResponseArrayOutput() AssetFileEncryptionMetadataResponseArrayOutput {
+	return o
+}
+
+func (o AssetFileEncryptionMetadataResponseArrayOutput) ToAssetFileEncryptionMetadataResponseArrayOutputWithContext(ctx context.Context) AssetFileEncryptionMetadataResponseArrayOutput {
+	return o
+}
+
+func (o AssetFileEncryptionMetadataResponseArrayOutput) Index(i pulumi.IntInput) AssetFileEncryptionMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetFileEncryptionMetadataResponse {
+		return vs[0].([]AssetFileEncryptionMetadataResponse)[vs[1].(int)]
+	}).(AssetFileEncryptionMetadataResponseOutput)
+}
+
+// Properties of the Streaming Locator.
+type AssetStreamingLocatorResponse struct {
+	// Asset Name.
+	AssetName string `pulumi:"assetName"`
+	// The creation time of the Streaming Locator.
+	Created string `pulumi:"created"`
+	// Name of the default ContentKeyPolicy used by this Streaming Locator.
+	DefaultContentKeyPolicyName string `pulumi:"defaultContentKeyPolicyName"`
+	// The end time of the Streaming Locator.
+	EndTime string `pulumi:"endTime"`
+	// Streaming Locator name.
+	Name string `pulumi:"name"`
+	// The start time of the Streaming Locator.
+	StartTime string `pulumi:"startTime"`
+	// StreamingLocatorId of the Streaming Locator.
+	StreamingLocatorId string `pulumi:"streamingLocatorId"`
+	// Name of the Streaming Policy used by this Streaming Locator.
+	StreamingPolicyName string `pulumi:"streamingPolicyName"`
+}
+
+// Properties of the Streaming Locator.
+type AssetStreamingLocatorResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetStreamingLocatorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetStreamingLocatorResponse)(nil)).Elem()
+}
+
+func (o AssetStreamingLocatorResponseOutput) ToAssetStreamingLocatorResponseOutput() AssetStreamingLocatorResponseOutput {
+	return o
+}
+
+func (o AssetStreamingLocatorResponseOutput) ToAssetStreamingLocatorResponseOutputWithContext(ctx context.Context) AssetStreamingLocatorResponseOutput {
+	return o
+}
+
+// Asset Name.
+func (o AssetStreamingLocatorResponseOutput) AssetName() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.AssetName }).(pulumi.StringOutput)
+}
+
+// The creation time of the Streaming Locator.
+func (o AssetStreamingLocatorResponseOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Name of the default ContentKeyPolicy used by this Streaming Locator.
+func (o AssetStreamingLocatorResponseOutput) DefaultContentKeyPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.DefaultContentKeyPolicyName }).(pulumi.StringOutput)
+}
+
+// The end time of the Streaming Locator.
+func (o AssetStreamingLocatorResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Streaming Locator name.
+func (o AssetStreamingLocatorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The start time of the Streaming Locator.
+func (o AssetStreamingLocatorResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// StreamingLocatorId of the Streaming Locator.
+func (o AssetStreamingLocatorResponseOutput) StreamingLocatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.StreamingLocatorId }).(pulumi.StringOutput)
+}
+
+// Name of the Streaming Policy used by this Streaming Locator.
+func (o AssetStreamingLocatorResponseOutput) StreamingPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStreamingLocatorResponse) string { return v.StreamingPolicyName }).(pulumi.StringOutput)
+}
+
+type AssetStreamingLocatorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetStreamingLocatorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetStreamingLocatorResponse)(nil)).Elem()
+}
+
+func (o AssetStreamingLocatorResponseArrayOutput) ToAssetStreamingLocatorResponseArrayOutput() AssetStreamingLocatorResponseArrayOutput {
+	return o
+}
+
+func (o AssetStreamingLocatorResponseArrayOutput) ToAssetStreamingLocatorResponseArrayOutputWithContext(ctx context.Context) AssetStreamingLocatorResponseArrayOutput {
+	return o
+}
+
+func (o AssetStreamingLocatorResponseArrayOutput) Index(i pulumi.IntInput) AssetStreamingLocatorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetStreamingLocatorResponse {
+		return vs[0].([]AssetStreamingLocatorResponse)[vs[1].(int)]
+	}).(AssetStreamingLocatorResponseOutput)
+}
+
+// Represents an audio track in the asset.
+type AudioTrack struct {
+	// The DASH specific setting for the audio track.
+	DashSettings *DashSettings `pulumi:"dashSettings"`
+	// The display name of the audio track on a video player. In HLS, this maps to the NAME attribute of EXT-X-MEDIA.
+	DisplayName *string `pulumi:"displayName"`
+	// The file name to the source file. This file is located in the storage container of the asset.
+	FileName *string `pulumi:"fileName"`
+	// The HLS specific setting for the audio track.
+	HlsSettings *HlsSettings `pulumi:"hlsSettings"`
+	// The RFC5646 language code for the audio track.
+	LanguageCode *string `pulumi:"languageCode"`
+	// The MPEG-4 audio track ID for the audio track.
+	Mpeg4TrackId *int `pulumi:"mpeg4TrackId"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.AudioTrack'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents an audio track in the asset.
+type AudioTrackResponse struct {
+	// The stream bit rate for the audio track.
+	BitRate int `pulumi:"bitRate"`
+	// The DASH specific setting for the audio track.
+	DashSettings *DashSettingsResponse `pulumi:"dashSettings"`
+	// The display name of the audio track on a video player. In HLS, this maps to the NAME attribute of EXT-X-MEDIA.
+	DisplayName *string `pulumi:"displayName"`
+	// The file name to the source file. This file is located in the storage container of the asset.
+	FileName *string `pulumi:"fileName"`
+	// The HLS specific setting for the audio track.
+	HlsSettings *HlsSettingsResponse `pulumi:"hlsSettings"`
+	// The RFC5646 language code for the audio track.
+	LanguageCode *string `pulumi:"languageCode"`
+	// The MPEG-4 audio track ID for the audio track.
+	Mpeg4TrackId *int `pulumi:"mpeg4TrackId"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.AudioTrack'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
+type CbcsDrmConfiguration struct {
+	// FairPlay configurations
+	FairPlay *StreamingPolicyFairPlayConfiguration `pulumi:"fairPlay"`
+	// PlayReady configurations
+	PlayReady *StreamingPolicyPlayReadyConfiguration `pulumi:"playReady"`
+	// Widevine configurations
+	Widevine *StreamingPolicyWidevineConfiguration `pulumi:"widevine"`
+}
+
+// CbcsDrmConfigurationInput is an input type that accepts CbcsDrmConfigurationArgs and CbcsDrmConfigurationOutput values.
+// You can construct a concrete instance of `CbcsDrmConfigurationInput` via:
+//
+//	CbcsDrmConfigurationArgs{...}
+type CbcsDrmConfigurationInput interface {
+	pulumi.Input
+
+	ToCbcsDrmConfigurationOutput() CbcsDrmConfigurationOutput
+	ToCbcsDrmConfigurationOutputWithContext(context.Context) CbcsDrmConfigurationOutput
+}
+
+// Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
+type CbcsDrmConfigurationArgs struct {
+	// FairPlay configurations
+	FairPlay StreamingPolicyFairPlayConfigurationPtrInput `pulumi:"fairPlay"`
+	// PlayReady configurations
+	PlayReady StreamingPolicyPlayReadyConfigurationPtrInput `pulumi:"playReady"`
+	// Widevine configurations
+	Widevine StreamingPolicyWidevineConfigurationPtrInput `pulumi:"widevine"`
+}
+
+func (CbcsDrmConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CbcsDrmConfiguration)(nil)).Elem()
+}
+
+func (i CbcsDrmConfigurationArgs) ToCbcsDrmConfigurationOutput() CbcsDrmConfigurationOutput {
+	return i.ToCbcsDrmConfigurationOutputWithContext(context.Background())
+}
+
+func (i CbcsDrmConfigurationArgs) ToCbcsDrmConfigurationOutputWithContext(ctx context.Context) CbcsDrmConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CbcsDrmConfigurationOutput)
+}
+
+func (i CbcsDrmConfigurationArgs) ToCbcsDrmConfigurationPtrOutput() CbcsDrmConfigurationPtrOutput {
+	return i.ToCbcsDrmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CbcsDrmConfigurationArgs) ToCbcsDrmConfigurationPtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CbcsDrmConfigurationOutput).ToCbcsDrmConfigurationPtrOutputWithContext(ctx)
+}
+
+// CbcsDrmConfigurationPtrInput is an input type that accepts CbcsDrmConfigurationArgs, CbcsDrmConfigurationPtr and CbcsDrmConfigurationPtrOutput values.
+// You can construct a concrete instance of `CbcsDrmConfigurationPtrInput` via:
+//
+//	        CbcsDrmConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CbcsDrmConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCbcsDrmConfigurationPtrOutput() CbcsDrmConfigurationPtrOutput
+	ToCbcsDrmConfigurationPtrOutputWithContext(context.Context) CbcsDrmConfigurationPtrOutput
+}
+
+type cbcsDrmConfigurationPtrType CbcsDrmConfigurationArgs
+
+func CbcsDrmConfigurationPtr(v *CbcsDrmConfigurationArgs) CbcsDrmConfigurationPtrInput {
+	return (*cbcsDrmConfigurationPtrType)(v)
+}
+
+func (*cbcsDrmConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CbcsDrmConfiguration)(nil)).Elem()
+}
+
+func (i *cbcsDrmConfigurationPtrType) ToCbcsDrmConfigurationPtrOutput() CbcsDrmConfigurationPtrOutput {
+	return i.ToCbcsDrmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *cbcsDrmConfigurationPtrType) ToCbcsDrmConfigurationPtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CbcsDrmConfigurationPtrOutput)
+}
+
+// Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
+type CbcsDrmConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CbcsDrmConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CbcsDrmConfiguration)(nil)).Elem()
+}
+
+func (o CbcsDrmConfigurationOutput) ToCbcsDrmConfigurationOutput() CbcsDrmConfigurationOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationOutput) ToCbcsDrmConfigurationOutputWithContext(ctx context.Context) CbcsDrmConfigurationOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationOutput) ToCbcsDrmConfigurationPtrOutput() CbcsDrmConfigurationPtrOutput {
+	return o.ToCbcsDrmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CbcsDrmConfigurationOutput) ToCbcsDrmConfigurationPtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CbcsDrmConfiguration) *CbcsDrmConfiguration {
+		return &v
+	}).(CbcsDrmConfigurationPtrOutput)
+}
+
+// FairPlay configurations
+func (o CbcsDrmConfigurationOutput) FairPlay() StreamingPolicyFairPlayConfigurationPtrOutput {
+	return o.ApplyT(func(v CbcsDrmConfiguration) *StreamingPolicyFairPlayConfiguration { return v.FairPlay }).(StreamingPolicyFairPlayConfigurationPtrOutput)
+}
+
+// PlayReady configurations
+func (o CbcsDrmConfigurationOutput) PlayReady() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o.ApplyT(func(v CbcsDrmConfiguration) *StreamingPolicyPlayReadyConfiguration { return v.PlayReady }).(StreamingPolicyPlayReadyConfigurationPtrOutput)
+}
+
+// Widevine configurations
+func (o CbcsDrmConfigurationOutput) Widevine() StreamingPolicyWidevineConfigurationPtrOutput {
+	return o.ApplyT(func(v CbcsDrmConfiguration) *StreamingPolicyWidevineConfiguration { return v.Widevine }).(StreamingPolicyWidevineConfigurationPtrOutput)
+}
+
+type CbcsDrmConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CbcsDrmConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CbcsDrmConfiguration)(nil)).Elem()
+}
+
+func (o CbcsDrmConfigurationPtrOutput) ToCbcsDrmConfigurationPtrOutput() CbcsDrmConfigurationPtrOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationPtrOutput) ToCbcsDrmConfigurationPtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationPtrOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationPtrOutput) Elem() CbcsDrmConfigurationOutput {
+	return o.ApplyT(func(v *CbcsDrmConfiguration) CbcsDrmConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CbcsDrmConfiguration
+		return ret
+	}).(CbcsDrmConfigurationOutput)
+}
+
+// FairPlay configurations
+func (o CbcsDrmConfigurationPtrOutput) FairPlay() StreamingPolicyFairPlayConfigurationPtrOutput {
+	return o.ApplyT(func(v *CbcsDrmConfiguration) *StreamingPolicyFairPlayConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.FairPlay
+	}).(StreamingPolicyFairPlayConfigurationPtrOutput)
+}
+
+// PlayReady configurations
+func (o CbcsDrmConfigurationPtrOutput) PlayReady() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o.ApplyT(func(v *CbcsDrmConfiguration) *StreamingPolicyPlayReadyConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.PlayReady
+	}).(StreamingPolicyPlayReadyConfigurationPtrOutput)
+}
+
+// Widevine configurations
+func (o CbcsDrmConfigurationPtrOutput) Widevine() StreamingPolicyWidevineConfigurationPtrOutput {
+	return o.ApplyT(func(v *CbcsDrmConfiguration) *StreamingPolicyWidevineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Widevine
+	}).(StreamingPolicyWidevineConfigurationPtrOutput)
+}
+
+// Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
+type CbcsDrmConfigurationResponse struct {
+	// FairPlay configurations
+	FairPlay *StreamingPolicyFairPlayConfigurationResponse `pulumi:"fairPlay"`
+	// PlayReady configurations
+	PlayReady *StreamingPolicyPlayReadyConfigurationResponse `pulumi:"playReady"`
+	// Widevine configurations
+	Widevine *StreamingPolicyWidevineConfigurationResponse `pulumi:"widevine"`
+}
+
+// Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
+type CbcsDrmConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CbcsDrmConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CbcsDrmConfigurationResponse)(nil)).Elem()
+}
+
+func (o CbcsDrmConfigurationResponseOutput) ToCbcsDrmConfigurationResponseOutput() CbcsDrmConfigurationResponseOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationResponseOutput) ToCbcsDrmConfigurationResponseOutputWithContext(ctx context.Context) CbcsDrmConfigurationResponseOutput {
+	return o
+}
+
+// FairPlay configurations
+func (o CbcsDrmConfigurationResponseOutput) FairPlay() StreamingPolicyFairPlayConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CbcsDrmConfigurationResponse) *StreamingPolicyFairPlayConfigurationResponse { return v.FairPlay }).(StreamingPolicyFairPlayConfigurationResponsePtrOutput)
+}
+
+// PlayReady configurations
+func (o CbcsDrmConfigurationResponseOutput) PlayReady() StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CbcsDrmConfigurationResponse) *StreamingPolicyPlayReadyConfigurationResponse {
+		return v.PlayReady
+	}).(StreamingPolicyPlayReadyConfigurationResponsePtrOutput)
+}
+
+// Widevine configurations
+func (o CbcsDrmConfigurationResponseOutput) Widevine() StreamingPolicyWidevineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CbcsDrmConfigurationResponse) *StreamingPolicyWidevineConfigurationResponse { return v.Widevine }).(StreamingPolicyWidevineConfigurationResponsePtrOutput)
+}
+
+type CbcsDrmConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CbcsDrmConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CbcsDrmConfigurationResponse)(nil)).Elem()
+}
+
+func (o CbcsDrmConfigurationResponsePtrOutput) ToCbcsDrmConfigurationResponsePtrOutput() CbcsDrmConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationResponsePtrOutput) ToCbcsDrmConfigurationResponsePtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CbcsDrmConfigurationResponsePtrOutput) Elem() CbcsDrmConfigurationResponseOutput {
+	return o.ApplyT(func(v *CbcsDrmConfigurationResponse) CbcsDrmConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CbcsDrmConfigurationResponse
+		return ret
+	}).(CbcsDrmConfigurationResponseOutput)
+}
+
+// FairPlay configurations
+func (o CbcsDrmConfigurationResponsePtrOutput) FairPlay() StreamingPolicyFairPlayConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CbcsDrmConfigurationResponse) *StreamingPolicyFairPlayConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FairPlay
+	}).(StreamingPolicyFairPlayConfigurationResponsePtrOutput)
+}
+
+// PlayReady configurations
+func (o CbcsDrmConfigurationResponsePtrOutput) PlayReady() StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CbcsDrmConfigurationResponse) *StreamingPolicyPlayReadyConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PlayReady
+	}).(StreamingPolicyPlayReadyConfigurationResponsePtrOutput)
+}
+
+// Widevine configurations
+func (o CbcsDrmConfigurationResponsePtrOutput) Widevine() StreamingPolicyWidevineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CbcsDrmConfigurationResponse) *StreamingPolicyWidevineConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Widevine
+	}).(StreamingPolicyWidevineConfigurationResponsePtrOutput)
+}
+
+// Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
+type CencDrmConfiguration struct {
+	// PlayReady configurations
+	PlayReady *StreamingPolicyPlayReadyConfiguration `pulumi:"playReady"`
+	// Widevine configurations
+	Widevine *StreamingPolicyWidevineConfiguration `pulumi:"widevine"`
+}
+
+// CencDrmConfigurationInput is an input type that accepts CencDrmConfigurationArgs and CencDrmConfigurationOutput values.
+// You can construct a concrete instance of `CencDrmConfigurationInput` via:
+//
+//	CencDrmConfigurationArgs{...}
+type CencDrmConfigurationInput interface {
+	pulumi.Input
+
+	ToCencDrmConfigurationOutput() CencDrmConfigurationOutput
+	ToCencDrmConfigurationOutputWithContext(context.Context) CencDrmConfigurationOutput
+}
+
+// Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
+type CencDrmConfigurationArgs struct {
+	// PlayReady configurations
+	PlayReady StreamingPolicyPlayReadyConfigurationPtrInput `pulumi:"playReady"`
+	// Widevine configurations
+	Widevine StreamingPolicyWidevineConfigurationPtrInput `pulumi:"widevine"`
+}
+
+func (CencDrmConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CencDrmConfiguration)(nil)).Elem()
+}
+
+func (i CencDrmConfigurationArgs) ToCencDrmConfigurationOutput() CencDrmConfigurationOutput {
+	return i.ToCencDrmConfigurationOutputWithContext(context.Background())
+}
+
+func (i CencDrmConfigurationArgs) ToCencDrmConfigurationOutputWithContext(ctx context.Context) CencDrmConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CencDrmConfigurationOutput)
+}
+
+func (i CencDrmConfigurationArgs) ToCencDrmConfigurationPtrOutput() CencDrmConfigurationPtrOutput {
+	return i.ToCencDrmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CencDrmConfigurationArgs) ToCencDrmConfigurationPtrOutputWithContext(ctx context.Context) CencDrmConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CencDrmConfigurationOutput).ToCencDrmConfigurationPtrOutputWithContext(ctx)
+}
+
+// CencDrmConfigurationPtrInput is an input type that accepts CencDrmConfigurationArgs, CencDrmConfigurationPtr and CencDrmConfigurationPtrOutput values.
+// You can construct a concrete instance of `CencDrmConfigurationPtrInput` via:
+//
+//	        CencDrmConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CencDrmConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCencDrmConfigurationPtrOutput() CencDrmConfigurationPtrOutput
+	ToCencDrmConfigurationPtrOutputWithContext(context.Context) CencDrmConfigurationPtrOutput
+}
+
+type cencDrmConfigurationPtrType CencDrmConfigurationArgs
+
+func CencDrmConfigurationPtr(v *CencDrmConfigurationArgs) CencDrmConfigurationPtrInput {
+	return (*cencDrmConfigurationPtrType)(v)
+}
+
+func (*cencDrmConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CencDrmConfiguration)(nil)).Elem()
+}
+
+func (i *cencDrmConfigurationPtrType) ToCencDrmConfigurationPtrOutput() CencDrmConfigurationPtrOutput {
+	return i.ToCencDrmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *cencDrmConfigurationPtrType) ToCencDrmConfigurationPtrOutputWithContext(ctx context.Context) CencDrmConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CencDrmConfigurationPtrOutput)
+}
+
+// Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
+type CencDrmConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CencDrmConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CencDrmConfiguration)(nil)).Elem()
+}
+
+func (o CencDrmConfigurationOutput) ToCencDrmConfigurationOutput() CencDrmConfigurationOutput {
+	return o
+}
+
+func (o CencDrmConfigurationOutput) ToCencDrmConfigurationOutputWithContext(ctx context.Context) CencDrmConfigurationOutput {
+	return o
+}
+
+func (o CencDrmConfigurationOutput) ToCencDrmConfigurationPtrOutput() CencDrmConfigurationPtrOutput {
+	return o.ToCencDrmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CencDrmConfigurationOutput) ToCencDrmConfigurationPtrOutputWithContext(ctx context.Context) CencDrmConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CencDrmConfiguration) *CencDrmConfiguration {
+		return &v
+	}).(CencDrmConfigurationPtrOutput)
+}
+
+// PlayReady configurations
+func (o CencDrmConfigurationOutput) PlayReady() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o.ApplyT(func(v CencDrmConfiguration) *StreamingPolicyPlayReadyConfiguration { return v.PlayReady }).(StreamingPolicyPlayReadyConfigurationPtrOutput)
+}
+
+// Widevine configurations
+func (o CencDrmConfigurationOutput) Widevine() StreamingPolicyWidevineConfigurationPtrOutput {
+	return o.ApplyT(func(v CencDrmConfiguration) *StreamingPolicyWidevineConfiguration { return v.Widevine }).(StreamingPolicyWidevineConfigurationPtrOutput)
+}
+
+type CencDrmConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CencDrmConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CencDrmConfiguration)(nil)).Elem()
+}
+
+func (o CencDrmConfigurationPtrOutput) ToCencDrmConfigurationPtrOutput() CencDrmConfigurationPtrOutput {
+	return o
+}
+
+func (o CencDrmConfigurationPtrOutput) ToCencDrmConfigurationPtrOutputWithContext(ctx context.Context) CencDrmConfigurationPtrOutput {
+	return o
+}
+
+func (o CencDrmConfigurationPtrOutput) Elem() CencDrmConfigurationOutput {
+	return o.ApplyT(func(v *CencDrmConfiguration) CencDrmConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CencDrmConfiguration
+		return ret
+	}).(CencDrmConfigurationOutput)
+}
+
+// PlayReady configurations
+func (o CencDrmConfigurationPtrOutput) PlayReady() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o.ApplyT(func(v *CencDrmConfiguration) *StreamingPolicyPlayReadyConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.PlayReady
+	}).(StreamingPolicyPlayReadyConfigurationPtrOutput)
+}
+
+// Widevine configurations
+func (o CencDrmConfigurationPtrOutput) Widevine() StreamingPolicyWidevineConfigurationPtrOutput {
+	return o.ApplyT(func(v *CencDrmConfiguration) *StreamingPolicyWidevineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Widevine
+	}).(StreamingPolicyWidevineConfigurationPtrOutput)
+}
+
+// Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
+type CencDrmConfigurationResponse struct {
+	// PlayReady configurations
+	PlayReady *StreamingPolicyPlayReadyConfigurationResponse `pulumi:"playReady"`
+	// Widevine configurations
+	Widevine *StreamingPolicyWidevineConfigurationResponse `pulumi:"widevine"`
+}
+
+// Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
+type CencDrmConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CencDrmConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CencDrmConfigurationResponse)(nil)).Elem()
+}
+
+func (o CencDrmConfigurationResponseOutput) ToCencDrmConfigurationResponseOutput() CencDrmConfigurationResponseOutput {
+	return o
+}
+
+func (o CencDrmConfigurationResponseOutput) ToCencDrmConfigurationResponseOutputWithContext(ctx context.Context) CencDrmConfigurationResponseOutput {
+	return o
+}
+
+// PlayReady configurations
+func (o CencDrmConfigurationResponseOutput) PlayReady() StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CencDrmConfigurationResponse) *StreamingPolicyPlayReadyConfigurationResponse {
+		return v.PlayReady
+	}).(StreamingPolicyPlayReadyConfigurationResponsePtrOutput)
+}
+
+// Widevine configurations
+func (o CencDrmConfigurationResponseOutput) Widevine() StreamingPolicyWidevineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CencDrmConfigurationResponse) *StreamingPolicyWidevineConfigurationResponse { return v.Widevine }).(StreamingPolicyWidevineConfigurationResponsePtrOutput)
+}
+
+type CencDrmConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CencDrmConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CencDrmConfigurationResponse)(nil)).Elem()
+}
+
+func (o CencDrmConfigurationResponsePtrOutput) ToCencDrmConfigurationResponsePtrOutput() CencDrmConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CencDrmConfigurationResponsePtrOutput) ToCencDrmConfigurationResponsePtrOutputWithContext(ctx context.Context) CencDrmConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CencDrmConfigurationResponsePtrOutput) Elem() CencDrmConfigurationResponseOutput {
+	return o.ApplyT(func(v *CencDrmConfigurationResponse) CencDrmConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CencDrmConfigurationResponse
+		return ret
+	}).(CencDrmConfigurationResponseOutput)
+}
+
+// PlayReady configurations
+func (o CencDrmConfigurationResponsePtrOutput) PlayReady() StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CencDrmConfigurationResponse) *StreamingPolicyPlayReadyConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PlayReady
+	}).(StreamingPolicyPlayReadyConfigurationResponsePtrOutput)
+}
+
+// Widevine configurations
+func (o CencDrmConfigurationResponsePtrOutput) Widevine() StreamingPolicyWidevineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CencDrmConfigurationResponse) *StreamingPolicyWidevineConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Widevine
+	}).(StreamingPolicyWidevineConfigurationResponsePtrOutput)
+}
+
+// Class to specify ClearKey configuration of common encryption schemes in Streaming Policy
+type ClearKeyEncryptionConfiguration struct {
+	// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+	CustomKeysAcquisitionUrlTemplate *string `pulumi:"customKeysAcquisitionUrlTemplate"`
+}
+
+// ClearKeyEncryptionConfigurationInput is an input type that accepts ClearKeyEncryptionConfigurationArgs and ClearKeyEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `ClearKeyEncryptionConfigurationInput` via:
+//
+//	ClearKeyEncryptionConfigurationArgs{...}
+type ClearKeyEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToClearKeyEncryptionConfigurationOutput() ClearKeyEncryptionConfigurationOutput
+	ToClearKeyEncryptionConfigurationOutputWithContext(context.Context) ClearKeyEncryptionConfigurationOutput
+}
+
+// Class to specify ClearKey configuration of common encryption schemes in Streaming Policy
+type ClearKeyEncryptionConfigurationArgs struct {
+	// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+	CustomKeysAcquisitionUrlTemplate pulumi.StringPtrInput `pulumi:"customKeysAcquisitionUrlTemplate"`
+}
+
+func (ClearKeyEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClearKeyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i ClearKeyEncryptionConfigurationArgs) ToClearKeyEncryptionConfigurationOutput() ClearKeyEncryptionConfigurationOutput {
+	return i.ToClearKeyEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i ClearKeyEncryptionConfigurationArgs) ToClearKeyEncryptionConfigurationOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClearKeyEncryptionConfigurationOutput)
+}
+
+func (i ClearKeyEncryptionConfigurationArgs) ToClearKeyEncryptionConfigurationPtrOutput() ClearKeyEncryptionConfigurationPtrOutput {
+	return i.ToClearKeyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ClearKeyEncryptionConfigurationArgs) ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClearKeyEncryptionConfigurationOutput).ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// ClearKeyEncryptionConfigurationPtrInput is an input type that accepts ClearKeyEncryptionConfigurationArgs, ClearKeyEncryptionConfigurationPtr and ClearKeyEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `ClearKeyEncryptionConfigurationPtrInput` via:
+//
+//	        ClearKeyEncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClearKeyEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToClearKeyEncryptionConfigurationPtrOutput() ClearKeyEncryptionConfigurationPtrOutput
+	ToClearKeyEncryptionConfigurationPtrOutputWithContext(context.Context) ClearKeyEncryptionConfigurationPtrOutput
+}
+
+type clearKeyEncryptionConfigurationPtrType ClearKeyEncryptionConfigurationArgs
+
+func ClearKeyEncryptionConfigurationPtr(v *ClearKeyEncryptionConfigurationArgs) ClearKeyEncryptionConfigurationPtrInput {
+	return (*clearKeyEncryptionConfigurationPtrType)(v)
+}
+
+func (*clearKeyEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClearKeyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *clearKeyEncryptionConfigurationPtrType) ToClearKeyEncryptionConfigurationPtrOutput() ClearKeyEncryptionConfigurationPtrOutput {
+	return i.ToClearKeyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *clearKeyEncryptionConfigurationPtrType) ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClearKeyEncryptionConfigurationPtrOutput)
+}
+
+// Class to specify ClearKey configuration of common encryption schemes in Streaming Policy
+type ClearKeyEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ClearKeyEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClearKeyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o ClearKeyEncryptionConfigurationOutput) ToClearKeyEncryptionConfigurationOutput() ClearKeyEncryptionConfigurationOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationOutput) ToClearKeyEncryptionConfigurationOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationOutput) ToClearKeyEncryptionConfigurationPtrOutput() ClearKeyEncryptionConfigurationPtrOutput {
+	return o.ToClearKeyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ClearKeyEncryptionConfigurationOutput) ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClearKeyEncryptionConfiguration) *ClearKeyEncryptionConfiguration {
+		return &v
+	}).(ClearKeyEncryptionConfigurationPtrOutput)
+}
+
+// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+func (o ClearKeyEncryptionConfigurationOutput) CustomKeysAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClearKeyEncryptionConfiguration) *string { return v.CustomKeysAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+type ClearKeyEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClearKeyEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClearKeyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o ClearKeyEncryptionConfigurationPtrOutput) ToClearKeyEncryptionConfigurationPtrOutput() ClearKeyEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationPtrOutput) ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationPtrOutput) Elem() ClearKeyEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *ClearKeyEncryptionConfiguration) ClearKeyEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ClearKeyEncryptionConfiguration
+		return ret
+	}).(ClearKeyEncryptionConfigurationOutput)
+}
+
+// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+func (o ClearKeyEncryptionConfigurationPtrOutput) CustomKeysAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClearKeyEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomKeysAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify ClearKey configuration of common encryption schemes in Streaming Policy
+type ClearKeyEncryptionConfigurationResponse struct {
+	// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+	CustomKeysAcquisitionUrlTemplate *string `pulumi:"customKeysAcquisitionUrlTemplate"`
+}
+
+// Class to specify ClearKey configuration of common encryption schemes in Streaming Policy
+type ClearKeyEncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ClearKeyEncryptionConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClearKeyEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o ClearKeyEncryptionConfigurationResponseOutput) ToClearKeyEncryptionConfigurationResponseOutput() ClearKeyEncryptionConfigurationResponseOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationResponseOutput) ToClearKeyEncryptionConfigurationResponseOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationResponseOutput {
+	return o
+}
+
+// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+func (o ClearKeyEncryptionConfigurationResponseOutput) CustomKeysAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClearKeyEncryptionConfigurationResponse) *string { return v.CustomKeysAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+type ClearKeyEncryptionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClearKeyEncryptionConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClearKeyEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o ClearKeyEncryptionConfigurationResponsePtrOutput) ToClearKeyEncryptionConfigurationResponsePtrOutput() ClearKeyEncryptionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationResponsePtrOutput) ToClearKeyEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ClearKeyEncryptionConfigurationResponsePtrOutput) Elem() ClearKeyEncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *ClearKeyEncryptionConfigurationResponse) ClearKeyEncryptionConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClearKeyEncryptionConfigurationResponse
+		return ret
+	}).(ClearKeyEncryptionConfigurationResponseOutput)
+}
+
+// Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
+func (o ClearKeyEncryptionConfigurationResponsePtrOutput) CustomKeysAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClearKeyEncryptionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomKeysAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class for CommonEncryptionCbcs encryption scheme
+type CommonEncryptionCbcs struct {
+	// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+	ClearKeyEncryptionConfiguration *ClearKeyEncryptionConfiguration `pulumi:"clearKeyEncryptionConfiguration"`
+	// Representing which tracks should not be encrypted
+	ClearTracks []TrackSelection `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys *StreamingPolicyContentKeys `pulumi:"contentKeys"`
+	// Configuration of DRMs for current encryption scheme
+	Drm *CbcsDrmConfiguration `pulumi:"drm"`
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocols `pulumi:"enabledProtocols"`
+}
+
+// CommonEncryptionCbcsInput is an input type that accepts CommonEncryptionCbcsArgs and CommonEncryptionCbcsOutput values.
+// You can construct a concrete instance of `CommonEncryptionCbcsInput` via:
+//
+//	CommonEncryptionCbcsArgs{...}
+type CommonEncryptionCbcsInput interface {
+	pulumi.Input
+
+	ToCommonEncryptionCbcsOutput() CommonEncryptionCbcsOutput
+	ToCommonEncryptionCbcsOutputWithContext(context.Context) CommonEncryptionCbcsOutput
+}
+
+// Class for CommonEncryptionCbcs encryption scheme
+type CommonEncryptionCbcsArgs struct {
+	// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+	ClearKeyEncryptionConfiguration ClearKeyEncryptionConfigurationPtrInput `pulumi:"clearKeyEncryptionConfiguration"`
+	// Representing which tracks should not be encrypted
+	ClearTracks TrackSelectionArrayInput `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys StreamingPolicyContentKeysPtrInput `pulumi:"contentKeys"`
+	// Configuration of DRMs for current encryption scheme
+	Drm CbcsDrmConfigurationPtrInput `pulumi:"drm"`
+	// Representing supported protocols
+	EnabledProtocols EnabledProtocolsPtrInput `pulumi:"enabledProtocols"`
+}
+
+func (CommonEncryptionCbcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonEncryptionCbcs)(nil)).Elem()
+}
+
+func (i CommonEncryptionCbcsArgs) ToCommonEncryptionCbcsOutput() CommonEncryptionCbcsOutput {
+	return i.ToCommonEncryptionCbcsOutputWithContext(context.Background())
+}
+
+func (i CommonEncryptionCbcsArgs) ToCommonEncryptionCbcsOutputWithContext(ctx context.Context) CommonEncryptionCbcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCbcsOutput)
+}
+
+func (i CommonEncryptionCbcsArgs) ToCommonEncryptionCbcsPtrOutput() CommonEncryptionCbcsPtrOutput {
+	return i.ToCommonEncryptionCbcsPtrOutputWithContext(context.Background())
+}
+
+func (i CommonEncryptionCbcsArgs) ToCommonEncryptionCbcsPtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCbcsOutput).ToCommonEncryptionCbcsPtrOutputWithContext(ctx)
+}
+
+// CommonEncryptionCbcsPtrInput is an input type that accepts CommonEncryptionCbcsArgs, CommonEncryptionCbcsPtr and CommonEncryptionCbcsPtrOutput values.
+// You can construct a concrete instance of `CommonEncryptionCbcsPtrInput` via:
+//
+//	        CommonEncryptionCbcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommonEncryptionCbcsPtrInput interface {
+	pulumi.Input
+
+	ToCommonEncryptionCbcsPtrOutput() CommonEncryptionCbcsPtrOutput
+	ToCommonEncryptionCbcsPtrOutputWithContext(context.Context) CommonEncryptionCbcsPtrOutput
+}
+
+type commonEncryptionCbcsPtrType CommonEncryptionCbcsArgs
+
+func CommonEncryptionCbcsPtr(v *CommonEncryptionCbcsArgs) CommonEncryptionCbcsPtrInput {
+	return (*commonEncryptionCbcsPtrType)(v)
+}
+
+func (*commonEncryptionCbcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonEncryptionCbcs)(nil)).Elem()
+}
+
+func (i *commonEncryptionCbcsPtrType) ToCommonEncryptionCbcsPtrOutput() CommonEncryptionCbcsPtrOutput {
+	return i.ToCommonEncryptionCbcsPtrOutputWithContext(context.Background())
+}
+
+func (i *commonEncryptionCbcsPtrType) ToCommonEncryptionCbcsPtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCbcsPtrOutput)
+}
+
+// Class for CommonEncryptionCbcs encryption scheme
+type CommonEncryptionCbcsOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCbcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonEncryptionCbcs)(nil)).Elem()
+}
+
+func (o CommonEncryptionCbcsOutput) ToCommonEncryptionCbcsOutput() CommonEncryptionCbcsOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsOutput) ToCommonEncryptionCbcsOutputWithContext(ctx context.Context) CommonEncryptionCbcsOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsOutput) ToCommonEncryptionCbcsPtrOutput() CommonEncryptionCbcsPtrOutput {
+	return o.ToCommonEncryptionCbcsPtrOutputWithContext(context.Background())
+}
+
+func (o CommonEncryptionCbcsOutput) ToCommonEncryptionCbcsPtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonEncryptionCbcs) *CommonEncryptionCbcs {
+		return &v
+	}).(CommonEncryptionCbcsPtrOutput)
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+func (o CommonEncryptionCbcsOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcs) *ClearKeyEncryptionConfiguration {
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationPtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCbcsOutput) ClearTracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcs) []TrackSelection { return v.ClearTracks }).(TrackSelectionArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCbcsOutput) ContentKeys() StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcs) *StreamingPolicyContentKeys { return v.ContentKeys }).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Configuration of DRMs for current encryption scheme
+func (o CommonEncryptionCbcsOutput) Drm() CbcsDrmConfigurationPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcs) *CbcsDrmConfiguration { return v.Drm }).(CbcsDrmConfigurationPtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCbcsOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcs) *EnabledProtocols { return v.EnabledProtocols }).(EnabledProtocolsPtrOutput)
+}
+
+type CommonEncryptionCbcsPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCbcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonEncryptionCbcs)(nil)).Elem()
+}
+
+func (o CommonEncryptionCbcsPtrOutput) ToCommonEncryptionCbcsPtrOutput() CommonEncryptionCbcsPtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsPtrOutput) ToCommonEncryptionCbcsPtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsPtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsPtrOutput) Elem() CommonEncryptionCbcsOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcs) CommonEncryptionCbcs {
+		if v != nil {
+			return *v
+		}
+		var ret CommonEncryptionCbcs
+		return ret
+	}).(CommonEncryptionCbcsOutput)
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+func (o CommonEncryptionCbcsPtrOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcs) *ClearKeyEncryptionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationPtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCbcsPtrOutput) ClearTracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcs) []TrackSelection {
+		if v == nil {
+			return nil
+		}
+		return v.ClearTracks
+	}).(TrackSelectionArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCbcsPtrOutput) ContentKeys() StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcs) *StreamingPolicyContentKeys {
+		if v == nil {
+			return nil
+		}
+		return v.ContentKeys
+	}).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Configuration of DRMs for current encryption scheme
+func (o CommonEncryptionCbcsPtrOutput) Drm() CbcsDrmConfigurationPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcs) *CbcsDrmConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Drm
+	}).(CbcsDrmConfigurationPtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCbcsPtrOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcs) *EnabledProtocols {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsPtrOutput)
+}
+
+// Class for CommonEncryptionCbcs encryption scheme
+type CommonEncryptionCbcsResponse struct {
+	// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+	ClearKeyEncryptionConfiguration *ClearKeyEncryptionConfigurationResponse `pulumi:"clearKeyEncryptionConfiguration"`
+	// Representing which tracks should not be encrypted
+	ClearTracks []TrackSelectionResponse `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys *StreamingPolicyContentKeysResponse `pulumi:"contentKeys"`
+	// Configuration of DRMs for current encryption scheme
+	Drm *CbcsDrmConfigurationResponse `pulumi:"drm"`
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocolsResponse `pulumi:"enabledProtocols"`
+}
+
+// Class for CommonEncryptionCbcs encryption scheme
+type CommonEncryptionCbcsResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCbcsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonEncryptionCbcsResponse)(nil)).Elem()
+}
+
+func (o CommonEncryptionCbcsResponseOutput) ToCommonEncryptionCbcsResponseOutput() CommonEncryptionCbcsResponseOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsResponseOutput) ToCommonEncryptionCbcsResponseOutputWithContext(ctx context.Context) CommonEncryptionCbcsResponseOutput {
+	return o
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+func (o CommonEncryptionCbcsResponseOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcsResponse) *ClearKeyEncryptionConfigurationResponse {
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationResponsePtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCbcsResponseOutput) ClearTracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcsResponse) []TrackSelectionResponse { return v.ClearTracks }).(TrackSelectionResponseArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCbcsResponseOutput) ContentKeys() StreamingPolicyContentKeysResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcsResponse) *StreamingPolicyContentKeysResponse { return v.ContentKeys }).(StreamingPolicyContentKeysResponsePtrOutput)
+}
+
+// Configuration of DRMs for current encryption scheme
+func (o CommonEncryptionCbcsResponseOutput) Drm() CbcsDrmConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcsResponse) *CbcsDrmConfigurationResponse { return v.Drm }).(CbcsDrmConfigurationResponsePtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCbcsResponseOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCbcsResponse) *EnabledProtocolsResponse { return v.EnabledProtocols }).(EnabledProtocolsResponsePtrOutput)
+}
+
+type CommonEncryptionCbcsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCbcsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonEncryptionCbcsResponse)(nil)).Elem()
+}
+
+func (o CommonEncryptionCbcsResponsePtrOutput) ToCommonEncryptionCbcsResponsePtrOutput() CommonEncryptionCbcsResponsePtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsResponsePtrOutput) ToCommonEncryptionCbcsResponsePtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsResponsePtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCbcsResponsePtrOutput) Elem() CommonEncryptionCbcsResponseOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcsResponse) CommonEncryptionCbcsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommonEncryptionCbcsResponse
+		return ret
+	}).(CommonEncryptionCbcsResponseOutput)
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
+func (o CommonEncryptionCbcsResponsePtrOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcsResponse) *ClearKeyEncryptionConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationResponsePtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCbcsResponsePtrOutput) ClearTracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcsResponse) []TrackSelectionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClearTracks
+	}).(TrackSelectionResponseArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCbcsResponsePtrOutput) ContentKeys() StreamingPolicyContentKeysResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcsResponse) *StreamingPolicyContentKeysResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ContentKeys
+	}).(StreamingPolicyContentKeysResponsePtrOutput)
+}
+
+// Configuration of DRMs for current encryption scheme
+func (o CommonEncryptionCbcsResponsePtrOutput) Drm() CbcsDrmConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcsResponse) *CbcsDrmConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Drm
+	}).(CbcsDrmConfigurationResponsePtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCbcsResponsePtrOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCbcsResponse) *EnabledProtocolsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsResponsePtrOutput)
+}
+
+// Class for envelope encryption scheme
+type CommonEncryptionCenc struct {
+	// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+	ClearKeyEncryptionConfiguration *ClearKeyEncryptionConfiguration `pulumi:"clearKeyEncryptionConfiguration"`
+	// Representing which tracks should not be encrypted
+	ClearTracks []TrackSelection `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys *StreamingPolicyContentKeys `pulumi:"contentKeys"`
+	// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+	Drm *CencDrmConfiguration `pulumi:"drm"`
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocols `pulumi:"enabledProtocols"`
+}
+
+// CommonEncryptionCencInput is an input type that accepts CommonEncryptionCencArgs and CommonEncryptionCencOutput values.
+// You can construct a concrete instance of `CommonEncryptionCencInput` via:
+//
+//	CommonEncryptionCencArgs{...}
+type CommonEncryptionCencInput interface {
+	pulumi.Input
+
+	ToCommonEncryptionCencOutput() CommonEncryptionCencOutput
+	ToCommonEncryptionCencOutputWithContext(context.Context) CommonEncryptionCencOutput
+}
+
+// Class for envelope encryption scheme
+type CommonEncryptionCencArgs struct {
+	// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+	ClearKeyEncryptionConfiguration ClearKeyEncryptionConfigurationPtrInput `pulumi:"clearKeyEncryptionConfiguration"`
+	// Representing which tracks should not be encrypted
+	ClearTracks TrackSelectionArrayInput `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys StreamingPolicyContentKeysPtrInput `pulumi:"contentKeys"`
+	// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+	Drm CencDrmConfigurationPtrInput `pulumi:"drm"`
+	// Representing supported protocols
+	EnabledProtocols EnabledProtocolsPtrInput `pulumi:"enabledProtocols"`
+}
+
+func (CommonEncryptionCencArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonEncryptionCenc)(nil)).Elem()
+}
+
+func (i CommonEncryptionCencArgs) ToCommonEncryptionCencOutput() CommonEncryptionCencOutput {
+	return i.ToCommonEncryptionCencOutputWithContext(context.Background())
+}
+
+func (i CommonEncryptionCencArgs) ToCommonEncryptionCencOutputWithContext(ctx context.Context) CommonEncryptionCencOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCencOutput)
+}
+
+func (i CommonEncryptionCencArgs) ToCommonEncryptionCencPtrOutput() CommonEncryptionCencPtrOutput {
+	return i.ToCommonEncryptionCencPtrOutputWithContext(context.Background())
+}
+
+func (i CommonEncryptionCencArgs) ToCommonEncryptionCencPtrOutputWithContext(ctx context.Context) CommonEncryptionCencPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCencOutput).ToCommonEncryptionCencPtrOutputWithContext(ctx)
+}
+
+// CommonEncryptionCencPtrInput is an input type that accepts CommonEncryptionCencArgs, CommonEncryptionCencPtr and CommonEncryptionCencPtrOutput values.
+// You can construct a concrete instance of `CommonEncryptionCencPtrInput` via:
+//
+//	        CommonEncryptionCencArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommonEncryptionCencPtrInput interface {
+	pulumi.Input
+
+	ToCommonEncryptionCencPtrOutput() CommonEncryptionCencPtrOutput
+	ToCommonEncryptionCencPtrOutputWithContext(context.Context) CommonEncryptionCencPtrOutput
+}
+
+type commonEncryptionCencPtrType CommonEncryptionCencArgs
+
+func CommonEncryptionCencPtr(v *CommonEncryptionCencArgs) CommonEncryptionCencPtrInput {
+	return (*commonEncryptionCencPtrType)(v)
+}
+
+func (*commonEncryptionCencPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonEncryptionCenc)(nil)).Elem()
+}
+
+func (i *commonEncryptionCencPtrType) ToCommonEncryptionCencPtrOutput() CommonEncryptionCencPtrOutput {
+	return i.ToCommonEncryptionCencPtrOutputWithContext(context.Background())
+}
+
+func (i *commonEncryptionCencPtrType) ToCommonEncryptionCencPtrOutputWithContext(ctx context.Context) CommonEncryptionCencPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCencPtrOutput)
+}
+
+// Class for envelope encryption scheme
+type CommonEncryptionCencOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCencOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonEncryptionCenc)(nil)).Elem()
+}
+
+func (o CommonEncryptionCencOutput) ToCommonEncryptionCencOutput() CommonEncryptionCencOutput {
+	return o
+}
+
+func (o CommonEncryptionCencOutput) ToCommonEncryptionCencOutputWithContext(ctx context.Context) CommonEncryptionCencOutput {
+	return o
+}
+
+func (o CommonEncryptionCencOutput) ToCommonEncryptionCencPtrOutput() CommonEncryptionCencPtrOutput {
+	return o.ToCommonEncryptionCencPtrOutputWithContext(context.Background())
+}
+
+func (o CommonEncryptionCencOutput) ToCommonEncryptionCencPtrOutputWithContext(ctx context.Context) CommonEncryptionCencPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonEncryptionCenc) *CommonEncryptionCenc {
+		return &v
+	}).(CommonEncryptionCencPtrOutput)
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+func (o CommonEncryptionCencOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCenc) *ClearKeyEncryptionConfiguration {
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationPtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCencOutput) ClearTracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v CommonEncryptionCenc) []TrackSelection { return v.ClearTracks }).(TrackSelectionArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCencOutput) ContentKeys() StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCenc) *StreamingPolicyContentKeys { return v.ContentKeys }).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+func (o CommonEncryptionCencOutput) Drm() CencDrmConfigurationPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCenc) *CencDrmConfiguration { return v.Drm }).(CencDrmConfigurationPtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCencOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCenc) *EnabledProtocols { return v.EnabledProtocols }).(EnabledProtocolsPtrOutput)
+}
+
+type CommonEncryptionCencPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCencPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonEncryptionCenc)(nil)).Elem()
+}
+
+func (o CommonEncryptionCencPtrOutput) ToCommonEncryptionCencPtrOutput() CommonEncryptionCencPtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCencPtrOutput) ToCommonEncryptionCencPtrOutputWithContext(ctx context.Context) CommonEncryptionCencPtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCencPtrOutput) Elem() CommonEncryptionCencOutput {
+	return o.ApplyT(func(v *CommonEncryptionCenc) CommonEncryptionCenc {
+		if v != nil {
+			return *v
+		}
+		var ret CommonEncryptionCenc
+		return ret
+	}).(CommonEncryptionCencOutput)
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+func (o CommonEncryptionCencPtrOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCenc) *ClearKeyEncryptionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationPtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCencPtrOutput) ClearTracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v *CommonEncryptionCenc) []TrackSelection {
+		if v == nil {
+			return nil
+		}
+		return v.ClearTracks
+	}).(TrackSelectionArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCencPtrOutput) ContentKeys() StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCenc) *StreamingPolicyContentKeys {
+		if v == nil {
+			return nil
+		}
+		return v.ContentKeys
+	}).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+func (o CommonEncryptionCencPtrOutput) Drm() CencDrmConfigurationPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCenc) *CencDrmConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Drm
+	}).(CencDrmConfigurationPtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCencPtrOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCenc) *EnabledProtocols {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsPtrOutput)
+}
+
+// Class for envelope encryption scheme
+type CommonEncryptionCencResponse struct {
+	// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+	ClearKeyEncryptionConfiguration *ClearKeyEncryptionConfigurationResponse `pulumi:"clearKeyEncryptionConfiguration"`
+	// Representing which tracks should not be encrypted
+	ClearTracks []TrackSelectionResponse `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys *StreamingPolicyContentKeysResponse `pulumi:"contentKeys"`
+	// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+	Drm *CencDrmConfigurationResponse `pulumi:"drm"`
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocolsResponse `pulumi:"enabledProtocols"`
+}
+
+// Class for envelope encryption scheme
+type CommonEncryptionCencResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCencResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonEncryptionCencResponse)(nil)).Elem()
+}
+
+func (o CommonEncryptionCencResponseOutput) ToCommonEncryptionCencResponseOutput() CommonEncryptionCencResponseOutput {
+	return o
+}
+
+func (o CommonEncryptionCencResponseOutput) ToCommonEncryptionCencResponseOutputWithContext(ctx context.Context) CommonEncryptionCencResponseOutput {
+	return o
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+func (o CommonEncryptionCencResponseOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCencResponse) *ClearKeyEncryptionConfigurationResponse {
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationResponsePtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCencResponseOutput) ClearTracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v CommonEncryptionCencResponse) []TrackSelectionResponse { return v.ClearTracks }).(TrackSelectionResponseArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCencResponseOutput) ContentKeys() StreamingPolicyContentKeysResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCencResponse) *StreamingPolicyContentKeysResponse { return v.ContentKeys }).(StreamingPolicyContentKeysResponsePtrOutput)
+}
+
+// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+func (o CommonEncryptionCencResponseOutput) Drm() CencDrmConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCencResponse) *CencDrmConfigurationResponse { return v.Drm }).(CencDrmConfigurationResponsePtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCencResponseOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v CommonEncryptionCencResponse) *EnabledProtocolsResponse { return v.EnabledProtocols }).(EnabledProtocolsResponsePtrOutput)
+}
+
+type CommonEncryptionCencResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommonEncryptionCencResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonEncryptionCencResponse)(nil)).Elem()
+}
+
+func (o CommonEncryptionCencResponsePtrOutput) ToCommonEncryptionCencResponsePtrOutput() CommonEncryptionCencResponsePtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCencResponsePtrOutput) ToCommonEncryptionCencResponsePtrOutputWithContext(ctx context.Context) CommonEncryptionCencResponsePtrOutput {
+	return o
+}
+
+func (o CommonEncryptionCencResponsePtrOutput) Elem() CommonEncryptionCencResponseOutput {
+	return o.ApplyT(func(v *CommonEncryptionCencResponse) CommonEncryptionCencResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommonEncryptionCencResponse
+		return ret
+	}).(CommonEncryptionCencResponseOutput)
+}
+
+// Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
+func (o CommonEncryptionCencResponsePtrOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCencResponse) *ClearKeyEncryptionConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClearKeyEncryptionConfiguration
+	}).(ClearKeyEncryptionConfigurationResponsePtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o CommonEncryptionCencResponsePtrOutput) ClearTracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v *CommonEncryptionCencResponse) []TrackSelectionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClearTracks
+	}).(TrackSelectionResponseArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o CommonEncryptionCencResponsePtrOutput) ContentKeys() StreamingPolicyContentKeysResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCencResponse) *StreamingPolicyContentKeysResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ContentKeys
+	}).(StreamingPolicyContentKeysResponsePtrOutput)
+}
+
+// Configuration of DRMs for CommonEncryptionCenc encryption scheme
+func (o CommonEncryptionCencResponsePtrOutput) Drm() CencDrmConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCencResponse) *CencDrmConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Drm
+	}).(CencDrmConfigurationResponsePtrOutput)
+}
+
+// Representing supported protocols
+func (o CommonEncryptionCencResponsePtrOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v *CommonEncryptionCencResponse) *EnabledProtocolsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsResponsePtrOutput)
+}
+
+// Represents a configuration for non-DRM keys.
+type ContentKeyPolicyClearKeyConfiguration struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyClearKeyConfiguration'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a configuration for non-DRM keys.
+type ContentKeyPolicyClearKeyConfigurationResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyClearKeyConfiguration'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies a configuration for FairPlay licenses.
+type ContentKeyPolicyFairPlayConfiguration struct {
+	// The key that must be used as FairPlay Application Secret key. This needs to be base64 encoded.
+	Ask string `pulumi:"ask"`
+	// The Base64 representation of FairPlay certificate in PKCS 12 (pfx) format (including private key).
+	FairPlayPfx string `pulumi:"fairPlayPfx"`
+	// The password encrypting FairPlay certificate in PKCS 12 (pfx) format.
+	FairPlayPfxPassword string `pulumi:"fairPlayPfxPassword"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration'.
+	OdataType string `pulumi:"odataType"`
+	// Offline rental policy
+	OfflineRentalConfiguration *ContentKeyPolicyFairPlayOfflineRentalConfiguration `pulumi:"offlineRentalConfiguration"`
+	// The rental and lease key type.
+	RentalAndLeaseKeyType string `pulumi:"rentalAndLeaseKeyType"`
+	// The rental duration. Must be greater than or equal to 0.
+	RentalDuration float64 `pulumi:"rentalDuration"`
+}
+
+// Specifies a configuration for FairPlay licenses.
+type ContentKeyPolicyFairPlayConfigurationResponse struct {
+	// The key that must be used as FairPlay Application Secret key. This needs to be base64 encoded.
+	Ask string `pulumi:"ask"`
+	// The Base64 representation of FairPlay certificate in PKCS 12 (pfx) format (including private key).
+	FairPlayPfx string `pulumi:"fairPlayPfx"`
+	// The password encrypting FairPlay certificate in PKCS 12 (pfx) format.
+	FairPlayPfxPassword string `pulumi:"fairPlayPfxPassword"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration'.
+	OdataType string `pulumi:"odataType"`
+	// Offline rental policy
+	OfflineRentalConfiguration *ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse `pulumi:"offlineRentalConfiguration"`
+	// The rental and lease key type.
+	RentalAndLeaseKeyType string `pulumi:"rentalAndLeaseKeyType"`
+	// The rental duration. Must be greater than or equal to 0.
+	RentalDuration float64 `pulumi:"rentalDuration"`
+}
+
+type ContentKeyPolicyFairPlayOfflineRentalConfiguration struct {
+	// Playback duration
+	PlaybackDurationSeconds float64 `pulumi:"playbackDurationSeconds"`
+	// Storage duration
+	StorageDurationSeconds float64 `pulumi:"storageDurationSeconds"`
+}
+
+type ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse struct {
+	// Playback duration
+	PlaybackDurationSeconds float64 `pulumi:"playbackDurationSeconds"`
+	// Storage duration
+	StorageDurationSeconds float64 `pulumi:"storageDurationSeconds"`
+}
+
+// Represents an open restriction. License or key will be delivered on every request.
+type ContentKeyPolicyOpenRestriction struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyOpenRestriction'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents an open restriction. License or key will be delivered on every request.
+type ContentKeyPolicyOpenRestrictionResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyOpenRestriction'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a policy option.
+type ContentKeyPolicyOption struct {
+	// The key delivery configuration.
+	Configuration interface{} `pulumi:"configuration"`
+	// The Policy Option description.
+	Name *string `pulumi:"name"`
+	// The requirements that must be met to deliver keys with this configuration
+	Restriction interface{} `pulumi:"restriction"`
+}
+
+// ContentKeyPolicyOptionInput is an input type that accepts ContentKeyPolicyOptionArgs and ContentKeyPolicyOptionOutput values.
+// You can construct a concrete instance of `ContentKeyPolicyOptionInput` via:
+//
+//	ContentKeyPolicyOptionArgs{...}
+type ContentKeyPolicyOptionInput interface {
+	pulumi.Input
+
+	ToContentKeyPolicyOptionOutput() ContentKeyPolicyOptionOutput
+	ToContentKeyPolicyOptionOutputWithContext(context.Context) ContentKeyPolicyOptionOutput
+}
+
+// Represents a policy option.
+type ContentKeyPolicyOptionArgs struct {
+	// The key delivery configuration.
+	Configuration pulumi.Input `pulumi:"configuration"`
+	// The Policy Option description.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The requirements that must be met to deliver keys with this configuration
+	Restriction pulumi.Input `pulumi:"restriction"`
+}
+
+func (ContentKeyPolicyOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentKeyPolicyOption)(nil)).Elem()
+}
+
+func (i ContentKeyPolicyOptionArgs) ToContentKeyPolicyOptionOutput() ContentKeyPolicyOptionOutput {
+	return i.ToContentKeyPolicyOptionOutputWithContext(context.Background())
+}
+
+func (i ContentKeyPolicyOptionArgs) ToContentKeyPolicyOptionOutputWithContext(ctx context.Context) ContentKeyPolicyOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentKeyPolicyOptionOutput)
+}
+
+// ContentKeyPolicyOptionArrayInput is an input type that accepts ContentKeyPolicyOptionArray and ContentKeyPolicyOptionArrayOutput values.
+// You can construct a concrete instance of `ContentKeyPolicyOptionArrayInput` via:
+//
+//	ContentKeyPolicyOptionArray{ ContentKeyPolicyOptionArgs{...} }
+type ContentKeyPolicyOptionArrayInput interface {
+	pulumi.Input
+
+	ToContentKeyPolicyOptionArrayOutput() ContentKeyPolicyOptionArrayOutput
+	ToContentKeyPolicyOptionArrayOutputWithContext(context.Context) ContentKeyPolicyOptionArrayOutput
+}
+
+type ContentKeyPolicyOptionArray []ContentKeyPolicyOptionInput
+
+func (ContentKeyPolicyOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentKeyPolicyOption)(nil)).Elem()
+}
+
+func (i ContentKeyPolicyOptionArray) ToContentKeyPolicyOptionArrayOutput() ContentKeyPolicyOptionArrayOutput {
+	return i.ToContentKeyPolicyOptionArrayOutputWithContext(context.Background())
+}
+
+func (i ContentKeyPolicyOptionArray) ToContentKeyPolicyOptionArrayOutputWithContext(ctx context.Context) ContentKeyPolicyOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentKeyPolicyOptionArrayOutput)
+}
+
+// Represents a policy option.
+type ContentKeyPolicyOptionOutput struct{ *pulumi.OutputState }
+
+func (ContentKeyPolicyOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentKeyPolicyOption)(nil)).Elem()
+}
+
+func (o ContentKeyPolicyOptionOutput) ToContentKeyPolicyOptionOutput() ContentKeyPolicyOptionOutput {
+	return o
+}
+
+func (o ContentKeyPolicyOptionOutput) ToContentKeyPolicyOptionOutputWithContext(ctx context.Context) ContentKeyPolicyOptionOutput {
+	return o
+}
+
+// The key delivery configuration.
+func (o ContentKeyPolicyOptionOutput) Configuration() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOption) interface{} { return v.Configuration }).(pulumi.AnyOutput)
+}
+
+// The Policy Option description.
+func (o ContentKeyPolicyOptionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOption) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The requirements that must be met to deliver keys with this configuration
+func (o ContentKeyPolicyOptionOutput) Restriction() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOption) interface{} { return v.Restriction }).(pulumi.AnyOutput)
+}
+
+type ContentKeyPolicyOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (ContentKeyPolicyOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentKeyPolicyOption)(nil)).Elem()
+}
+
+func (o ContentKeyPolicyOptionArrayOutput) ToContentKeyPolicyOptionArrayOutput() ContentKeyPolicyOptionArrayOutput {
+	return o
+}
+
+func (o ContentKeyPolicyOptionArrayOutput) ToContentKeyPolicyOptionArrayOutputWithContext(ctx context.Context) ContentKeyPolicyOptionArrayOutput {
+	return o
+}
+
+func (o ContentKeyPolicyOptionArrayOutput) Index(i pulumi.IntInput) ContentKeyPolicyOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentKeyPolicyOption {
+		return vs[0].([]ContentKeyPolicyOption)[vs[1].(int)]
+	}).(ContentKeyPolicyOptionOutput)
+}
+
+// Represents a policy option.
+type ContentKeyPolicyOptionResponse struct {
+	// The key delivery configuration.
+	Configuration interface{} `pulumi:"configuration"`
+	// The Policy Option description.
+	Name *string `pulumi:"name"`
+	// The legacy Policy Option ID.
+	PolicyOptionId string `pulumi:"policyOptionId"`
+	// The requirements that must be met to deliver keys with this configuration
+	Restriction interface{} `pulumi:"restriction"`
+}
+
+// Represents a policy option.
+type ContentKeyPolicyOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (ContentKeyPolicyOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentKeyPolicyOptionResponse)(nil)).Elem()
+}
+
+func (o ContentKeyPolicyOptionResponseOutput) ToContentKeyPolicyOptionResponseOutput() ContentKeyPolicyOptionResponseOutput {
+	return o
+}
+
+func (o ContentKeyPolicyOptionResponseOutput) ToContentKeyPolicyOptionResponseOutputWithContext(ctx context.Context) ContentKeyPolicyOptionResponseOutput {
+	return o
+}
+
+// The key delivery configuration.
+func (o ContentKeyPolicyOptionResponseOutput) Configuration() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOptionResponse) interface{} { return v.Configuration }).(pulumi.AnyOutput)
+}
+
+// The Policy Option description.
+func (o ContentKeyPolicyOptionResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOptionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The legacy Policy Option ID.
+func (o ContentKeyPolicyOptionResponseOutput) PolicyOptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOptionResponse) string { return v.PolicyOptionId }).(pulumi.StringOutput)
+}
+
+// The requirements that must be met to deliver keys with this configuration
+func (o ContentKeyPolicyOptionResponseOutput) Restriction() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContentKeyPolicyOptionResponse) interface{} { return v.Restriction }).(pulumi.AnyOutput)
+}
+
+type ContentKeyPolicyOptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContentKeyPolicyOptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentKeyPolicyOptionResponse)(nil)).Elem()
+}
+
+func (o ContentKeyPolicyOptionResponseArrayOutput) ToContentKeyPolicyOptionResponseArrayOutput() ContentKeyPolicyOptionResponseArrayOutput {
+	return o
+}
+
+func (o ContentKeyPolicyOptionResponseArrayOutput) ToContentKeyPolicyOptionResponseArrayOutputWithContext(ctx context.Context) ContentKeyPolicyOptionResponseArrayOutput {
+	return o
+}
+
+func (o ContentKeyPolicyOptionResponseArrayOutput) Index(i pulumi.IntInput) ContentKeyPolicyOptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentKeyPolicyOptionResponse {
+		return vs[0].([]ContentKeyPolicyOptionResponse)[vs[1].(int)]
+	}).(ContentKeyPolicyOptionResponseOutput)
+}
+
+// Specifies a configuration for PlayReady licenses.
+type ContentKeyPolicyPlayReadyConfiguration struct {
+	// The PlayReady licenses.
+	Licenses []ContentKeyPolicyPlayReadyLicense `pulumi:"licenses"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyPlayReadyConfiguration'.
+	OdataType string `pulumi:"odataType"`
+	// The custom response data.
+	ResponseCustomData *string `pulumi:"responseCustomData"`
+}
+
+// Specifies a configuration for PlayReady licenses.
+type ContentKeyPolicyPlayReadyConfigurationResponse struct {
+	// The PlayReady licenses.
+	Licenses []ContentKeyPolicyPlayReadyLicenseResponse `pulumi:"licenses"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyPlayReadyConfiguration'.
+	OdataType string `pulumi:"odataType"`
+	// The custom response data.
+	ResponseCustomData *string `pulumi:"responseCustomData"`
+}
+
+// Specifies that the content key ID is in the PlayReady header.
+type ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies that the content key ID is in the PlayReady header.
+type ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeaderResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies that the content key ID is specified in the PlayReady configuration.
+type ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier struct {
+	// The content key ID.
+	KeyId string `pulumi:"keyId"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies that the content key ID is specified in the PlayReady configuration.
+type ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifierResponse struct {
+	// The content key ID.
+	KeyId string `pulumi:"keyId"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Configures the Explicit Analog Television Output Restriction control bits. For further details see the PlayReady Compliance Rules.
+type ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction struct {
+	// Indicates whether this restriction is enforced on a Best Effort basis.
+	BestEffort bool `pulumi:"bestEffort"`
+	// Configures the restriction control bits. Must be between 0 and 3 inclusive.
+	ConfigurationData int `pulumi:"configurationData"`
+}
+
+// Configures the Explicit Analog Television Output Restriction control bits. For further details see the PlayReady Compliance Rules.
+type ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse struct {
+	// Indicates whether this restriction is enforced on a Best Effort basis.
+	BestEffort bool `pulumi:"bestEffort"`
+	// Configures the restriction control bits. Must be between 0 and 3 inclusive.
+	ConfigurationData int `pulumi:"configurationData"`
+}
+
+// The PlayReady license
+type ContentKeyPolicyPlayReadyLicense struct {
+	// A flag indicating whether test devices can use the license.
+	AllowTestDevices bool `pulumi:"allowTestDevices"`
+	// The begin date of license
+	BeginDate *string `pulumi:"beginDate"`
+	// The content key location.
+	ContentKeyLocation interface{} `pulumi:"contentKeyLocation"`
+	// The PlayReady content type.
+	ContentType string `pulumi:"contentType"`
+	// The expiration date of license.
+	ExpirationDate *string `pulumi:"expirationDate"`
+	// The grace period of license.
+	GracePeriod *string `pulumi:"gracePeriod"`
+	// The license type.
+	LicenseType string `pulumi:"licenseType"`
+	// The license PlayRight
+	PlayRight *ContentKeyPolicyPlayReadyPlayRight `pulumi:"playRight"`
+	// The relative begin date of license.
+	RelativeBeginDate *string `pulumi:"relativeBeginDate"`
+	// The relative expiration date of license.
+	RelativeExpirationDate *string `pulumi:"relativeExpirationDate"`
+	// The security level.
+	SecurityLevel *string `pulumi:"securityLevel"`
+}
+
+// The PlayReady license
+type ContentKeyPolicyPlayReadyLicenseResponse struct {
+	// A flag indicating whether test devices can use the license.
+	AllowTestDevices bool `pulumi:"allowTestDevices"`
+	// The begin date of license
+	BeginDate *string `pulumi:"beginDate"`
+	// The content key location.
+	ContentKeyLocation interface{} `pulumi:"contentKeyLocation"`
+	// The PlayReady content type.
+	ContentType string `pulumi:"contentType"`
+	// The expiration date of license.
+	ExpirationDate *string `pulumi:"expirationDate"`
+	// The grace period of license.
+	GracePeriod *string `pulumi:"gracePeriod"`
+	// The license type.
+	LicenseType string `pulumi:"licenseType"`
+	// The license PlayRight
+	PlayRight *ContentKeyPolicyPlayReadyPlayRightResponse `pulumi:"playRight"`
+	// The relative begin date of license.
+	RelativeBeginDate *string `pulumi:"relativeBeginDate"`
+	// The relative expiration date of license.
+	RelativeExpirationDate *string `pulumi:"relativeExpirationDate"`
+	// The security level.
+	SecurityLevel *string `pulumi:"securityLevel"`
+}
+
+// Configures the Play Right in the PlayReady license.
+type ContentKeyPolicyPlayReadyPlayRight struct {
+	// Configures Automatic Gain Control (AGC) and Color Stripe in the license. Must be between 0 and 3 inclusive.
+	AgcAndColorStripeRestriction *int `pulumi:"agcAndColorStripeRestriction"`
+	// Configures Unknown output handling settings of the license.
+	AllowPassingVideoContentToUnknownOutput string `pulumi:"allowPassingVideoContentToUnknownOutput"`
+	// Specifies the output protection level for compressed digital audio.
+	AnalogVideoOpl *int `pulumi:"analogVideoOpl"`
+	// Specifies the output protection level for compressed digital audio.
+	CompressedDigitalAudioOpl *int `pulumi:"compressedDigitalAudioOpl"`
+	// Specifies the output protection level for compressed digital video.
+	CompressedDigitalVideoOpl *int `pulumi:"compressedDigitalVideoOpl"`
+	// Enables the Image Constraint For Analog Component Video Restriction in the license.
+	DigitalVideoOnlyContentRestriction bool `pulumi:"digitalVideoOnlyContentRestriction"`
+	// Configures the Explicit Analog Television Output Restriction in the license. Configuration data must be between 0 and 3 inclusive.
+	ExplicitAnalogTelevisionOutputRestriction *ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction `pulumi:"explicitAnalogTelevisionOutputRestriction"`
+	// The amount of time that the license is valid after the license is first used to play content.
+	FirstPlayExpiration *string `pulumi:"firstPlayExpiration"`
+	// Enables the Image Constraint For Analog Component Video Restriction in the license.
+	ImageConstraintForAnalogComponentVideoRestriction bool `pulumi:"imageConstraintForAnalogComponentVideoRestriction"`
+	// Enables the Image Constraint For Analog Component Video Restriction in the license.
+	ImageConstraintForAnalogComputerMonitorRestriction bool `pulumi:"imageConstraintForAnalogComputerMonitorRestriction"`
+	// Configures the Serial Copy Management System (SCMS) in the license. Must be between 0 and 3 inclusive.
+	ScmsRestriction *int `pulumi:"scmsRestriction"`
+	// Specifies the output protection level for uncompressed digital audio.
+	UncompressedDigitalAudioOpl *int `pulumi:"uncompressedDigitalAudioOpl"`
+	// Specifies the output protection level for uncompressed digital video.
+	UncompressedDigitalVideoOpl *int `pulumi:"uncompressedDigitalVideoOpl"`
+}
+
+// Configures the Play Right in the PlayReady license.
+type ContentKeyPolicyPlayReadyPlayRightResponse struct {
+	// Configures Automatic Gain Control (AGC) and Color Stripe in the license. Must be between 0 and 3 inclusive.
+	AgcAndColorStripeRestriction *int `pulumi:"agcAndColorStripeRestriction"`
+	// Configures Unknown output handling settings of the license.
+	AllowPassingVideoContentToUnknownOutput string `pulumi:"allowPassingVideoContentToUnknownOutput"`
+	// Specifies the output protection level for compressed digital audio.
+	AnalogVideoOpl *int `pulumi:"analogVideoOpl"`
+	// Specifies the output protection level for compressed digital audio.
+	CompressedDigitalAudioOpl *int `pulumi:"compressedDigitalAudioOpl"`
+	// Specifies the output protection level for compressed digital video.
+	CompressedDigitalVideoOpl *int `pulumi:"compressedDigitalVideoOpl"`
+	// Enables the Image Constraint For Analog Component Video Restriction in the license.
+	DigitalVideoOnlyContentRestriction bool `pulumi:"digitalVideoOnlyContentRestriction"`
+	// Configures the Explicit Analog Television Output Restriction in the license. Configuration data must be between 0 and 3 inclusive.
+	ExplicitAnalogTelevisionOutputRestriction *ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse `pulumi:"explicitAnalogTelevisionOutputRestriction"`
+	// The amount of time that the license is valid after the license is first used to play content.
+	FirstPlayExpiration *string `pulumi:"firstPlayExpiration"`
+	// Enables the Image Constraint For Analog Component Video Restriction in the license.
+	ImageConstraintForAnalogComponentVideoRestriction bool `pulumi:"imageConstraintForAnalogComponentVideoRestriction"`
+	// Enables the Image Constraint For Analog Component Video Restriction in the license.
+	ImageConstraintForAnalogComputerMonitorRestriction bool `pulumi:"imageConstraintForAnalogComputerMonitorRestriction"`
+	// Configures the Serial Copy Management System (SCMS) in the license. Must be between 0 and 3 inclusive.
+	ScmsRestriction *int `pulumi:"scmsRestriction"`
+	// Specifies the output protection level for uncompressed digital audio.
+	UncompressedDigitalAudioOpl *int `pulumi:"uncompressedDigitalAudioOpl"`
+	// Specifies the output protection level for uncompressed digital video.
+	UncompressedDigitalVideoOpl *int `pulumi:"uncompressedDigitalVideoOpl"`
+}
+
+// Specifies a RSA key for token validation
+type ContentKeyPolicyRsaTokenKey struct {
+	// The RSA Parameter exponent
+	Exponent string `pulumi:"exponent"`
+	// The RSA Parameter modulus
+	Modulus string `pulumi:"modulus"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyRsaTokenKey'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies a RSA key for token validation
+type ContentKeyPolicyRsaTokenKeyResponse struct {
+	// The RSA Parameter exponent
+	Exponent string `pulumi:"exponent"`
+	// The RSA Parameter modulus
+	Modulus string `pulumi:"modulus"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyRsaTokenKey'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies a symmetric key for token validation.
+type ContentKeyPolicySymmetricTokenKey struct {
+	// The key value of the key
+	KeyValue string `pulumi:"keyValue"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicySymmetricTokenKey'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies a symmetric key for token validation.
+type ContentKeyPolicySymmetricTokenKeyResponse struct {
+	// The key value of the key
+	KeyValue string `pulumi:"keyValue"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicySymmetricTokenKey'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a token claim.
+type ContentKeyPolicyTokenClaim struct {
+	// Token claim type.
+	ClaimType *string `pulumi:"claimType"`
+	// Token claim value.
+	ClaimValue *string `pulumi:"claimValue"`
+}
+
+// Represents a token claim.
+type ContentKeyPolicyTokenClaimResponse struct {
+	// Token claim type.
+	ClaimType *string `pulumi:"claimType"`
+	// Token claim value.
+	ClaimValue *string `pulumi:"claimValue"`
+}
+
+// Represents a token restriction. Provided token must match these requirements for successful license or key delivery.
+type ContentKeyPolicyTokenRestriction struct {
+	// A list of alternative verification keys.
+	AlternateVerificationKeys []interface{} `pulumi:"alternateVerificationKeys"`
+	// The audience for the token.
+	Audience string `pulumi:"audience"`
+	// The token issuer.
+	Issuer string `pulumi:"issuer"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyTokenRestriction'.
+	OdataType string `pulumi:"odataType"`
+	// The OpenID connect discovery document.
+	OpenIdConnectDiscoveryDocument *string `pulumi:"openIdConnectDiscoveryDocument"`
+	// The primary verification key.
+	PrimaryVerificationKey interface{} `pulumi:"primaryVerificationKey"`
+	// A list of required token claims.
+	RequiredClaims []ContentKeyPolicyTokenClaim `pulumi:"requiredClaims"`
+	// The type of token.
+	RestrictionTokenType string `pulumi:"restrictionTokenType"`
+}
+
+// Represents a token restriction. Provided token must match these requirements for successful license or key delivery.
+type ContentKeyPolicyTokenRestrictionResponse struct {
+	// A list of alternative verification keys.
+	AlternateVerificationKeys []interface{} `pulumi:"alternateVerificationKeys"`
+	// The audience for the token.
+	Audience string `pulumi:"audience"`
+	// The token issuer.
+	Issuer string `pulumi:"issuer"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyTokenRestriction'.
+	OdataType string `pulumi:"odataType"`
+	// The OpenID connect discovery document.
+	OpenIdConnectDiscoveryDocument *string `pulumi:"openIdConnectDiscoveryDocument"`
+	// The primary verification key.
+	PrimaryVerificationKey interface{} `pulumi:"primaryVerificationKey"`
+	// A list of required token claims.
+	RequiredClaims []ContentKeyPolicyTokenClaimResponse `pulumi:"requiredClaims"`
+	// The type of token.
+	RestrictionTokenType string `pulumi:"restrictionTokenType"`
+}
+
+// Represents a ContentKeyPolicyConfiguration that is unavailable in the current API version.
+type ContentKeyPolicyUnknownConfiguration struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyUnknownConfiguration'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a ContentKeyPolicyConfiguration that is unavailable in the current API version.
+type ContentKeyPolicyUnknownConfigurationResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyUnknownConfiguration'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a ContentKeyPolicyRestriction that is unavailable in the current API version.
+type ContentKeyPolicyUnknownRestriction struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyUnknownRestriction'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a ContentKeyPolicyRestriction that is unavailable in the current API version.
+type ContentKeyPolicyUnknownRestrictionResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyUnknownRestriction'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies a configuration for Widevine licenses.
+type ContentKeyPolicyWidevineConfiguration struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyWidevineConfiguration'.
+	OdataType string `pulumi:"odataType"`
+	// The Widevine template.
+	WidevineTemplate string `pulumi:"widevineTemplate"`
+}
+
+// Specifies a configuration for Widevine licenses.
+type ContentKeyPolicyWidevineConfigurationResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyWidevineConfiguration'.
+	OdataType string `pulumi:"odataType"`
+	// The Widevine template.
+	WidevineTemplate string `pulumi:"widevineTemplate"`
+}
+
+// Specifies a certificate for token validation.
+type ContentKeyPolicyX509CertificateTokenKey struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey'.
+	OdataType string `pulumi:"odataType"`
+	// The raw data field of a certificate in PKCS 12 format (X509Certificate2 in .NET)
+	RawBody string `pulumi:"rawBody"`
+}
+
+// Specifies a certificate for token validation.
+type ContentKeyPolicyX509CertificateTokenKeyResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey'.
+	OdataType string `pulumi:"odataType"`
+	// The raw data field of a certificate in PKCS 12 format (X509Certificate2 in .NET)
+	RawBody string `pulumi:"rawBody"`
+}
+
+// The DASH setting for a track.
+type DashSettings struct {
+	// The role for the DASH setting.
+	Role *string `pulumi:"role"`
+}
+
+// The DASH setting for a track.
+type DashSettingsResponse struct {
+	// The role for the DASH setting.
+	Role *string `pulumi:"role"`
+}
+
+// Class to specify properties of default content key for each encryption scheme
+type DefaultKey struct {
+	// Label can be used to specify Content Key when creating a Streaming Locator
+	Label *string `pulumi:"label"`
+	// Policy used by Default Key
+	PolicyName *string `pulumi:"policyName"`
+}
+
+// DefaultKeyInput is an input type that accepts DefaultKeyArgs and DefaultKeyOutput values.
+// You can construct a concrete instance of `DefaultKeyInput` via:
+//
+//	DefaultKeyArgs{...}
+type DefaultKeyInput interface {
+	pulumi.Input
+
+	ToDefaultKeyOutput() DefaultKeyOutput
+	ToDefaultKeyOutputWithContext(context.Context) DefaultKeyOutput
+}
+
+// Class to specify properties of default content key for each encryption scheme
+type DefaultKeyArgs struct {
+	// Label can be used to specify Content Key when creating a Streaming Locator
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Policy used by Default Key
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+}
+
+func (DefaultKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKey)(nil)).Elem()
+}
+
+func (i DefaultKeyArgs) ToDefaultKeyOutput() DefaultKeyOutput {
+	return i.ToDefaultKeyOutputWithContext(context.Background())
+}
+
+func (i DefaultKeyArgs) ToDefaultKeyOutputWithContext(ctx context.Context) DefaultKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultKeyOutput)
+}
+
+func (i DefaultKeyArgs) ToDefaultKeyPtrOutput() DefaultKeyPtrOutput {
+	return i.ToDefaultKeyPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultKeyArgs) ToDefaultKeyPtrOutputWithContext(ctx context.Context) DefaultKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultKeyOutput).ToDefaultKeyPtrOutputWithContext(ctx)
+}
+
+// DefaultKeyPtrInput is an input type that accepts DefaultKeyArgs, DefaultKeyPtr and DefaultKeyPtrOutput values.
+// You can construct a concrete instance of `DefaultKeyPtrInput` via:
+//
+//	        DefaultKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultKeyPtrInput interface {
+	pulumi.Input
+
+	ToDefaultKeyPtrOutput() DefaultKeyPtrOutput
+	ToDefaultKeyPtrOutputWithContext(context.Context) DefaultKeyPtrOutput
+}
+
+type defaultKeyPtrType DefaultKeyArgs
+
+func DefaultKeyPtr(v *DefaultKeyArgs) DefaultKeyPtrInput {
+	return (*defaultKeyPtrType)(v)
+}
+
+func (*defaultKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultKey)(nil)).Elem()
+}
+
+func (i *defaultKeyPtrType) ToDefaultKeyPtrOutput() DefaultKeyPtrOutput {
+	return i.ToDefaultKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultKeyPtrType) ToDefaultKeyPtrOutputWithContext(ctx context.Context) DefaultKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultKeyPtrOutput)
+}
+
+// Class to specify properties of default content key for each encryption scheme
+type DefaultKeyOutput struct{ *pulumi.OutputState }
+
+func (DefaultKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKey)(nil)).Elem()
+}
+
+func (o DefaultKeyOutput) ToDefaultKeyOutput() DefaultKeyOutput {
+	return o
+}
+
+func (o DefaultKeyOutput) ToDefaultKeyOutputWithContext(ctx context.Context) DefaultKeyOutput {
+	return o
+}
+
+func (o DefaultKeyOutput) ToDefaultKeyPtrOutput() DefaultKeyPtrOutput {
+	return o.ToDefaultKeyPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultKeyOutput) ToDefaultKeyPtrOutputWithContext(ctx context.Context) DefaultKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultKey) *DefaultKey {
+		return &v
+	}).(DefaultKeyPtrOutput)
+}
+
+// Label can be used to specify Content Key when creating a Streaming Locator
+func (o DefaultKeyOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefaultKey) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Policy used by Default Key
+func (o DefaultKeyOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefaultKey) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+type DefaultKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultKey)(nil)).Elem()
+}
+
+func (o DefaultKeyPtrOutput) ToDefaultKeyPtrOutput() DefaultKeyPtrOutput {
+	return o
+}
+
+func (o DefaultKeyPtrOutput) ToDefaultKeyPtrOutputWithContext(ctx context.Context) DefaultKeyPtrOutput {
+	return o
+}
+
+func (o DefaultKeyPtrOutput) Elem() DefaultKeyOutput {
+	return o.ApplyT(func(v *DefaultKey) DefaultKey {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultKey
+		return ret
+	}).(DefaultKeyOutput)
+}
+
+// Label can be used to specify Content Key when creating a Streaming Locator
+func (o DefaultKeyPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+// Policy used by Default Key
+func (o DefaultKeyPtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify properties of default content key for each encryption scheme
+type DefaultKeyResponse struct {
+	// Label can be used to specify Content Key when creating a Streaming Locator
+	Label *string `pulumi:"label"`
+	// Policy used by Default Key
+	PolicyName *string `pulumi:"policyName"`
+}
+
+// Class to specify properties of default content key for each encryption scheme
+type DefaultKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (DefaultKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKeyResponse)(nil)).Elem()
+}
+
+func (o DefaultKeyResponseOutput) ToDefaultKeyResponseOutput() DefaultKeyResponseOutput {
+	return o
+}
+
+func (o DefaultKeyResponseOutput) ToDefaultKeyResponseOutputWithContext(ctx context.Context) DefaultKeyResponseOutput {
+	return o
+}
+
+// Label can be used to specify Content Key when creating a Streaming Locator
+func (o DefaultKeyResponseOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefaultKeyResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Policy used by Default Key
+func (o DefaultKeyResponseOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefaultKeyResponse) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+type DefaultKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultKeyResponse)(nil)).Elem()
+}
+
+func (o DefaultKeyResponsePtrOutput) ToDefaultKeyResponsePtrOutput() DefaultKeyResponsePtrOutput {
+	return o
+}
+
+func (o DefaultKeyResponsePtrOutput) ToDefaultKeyResponsePtrOutputWithContext(ctx context.Context) DefaultKeyResponsePtrOutput {
+	return o
+}
+
+func (o DefaultKeyResponsePtrOutput) Elem() DefaultKeyResponseOutput {
+	return o.ApplyT(func(v *DefaultKeyResponse) DefaultKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultKeyResponse
+		return ret
+	}).(DefaultKeyResponseOutput)
+}
+
+// Label can be used to specify Content Key when creating a Streaming Locator
+func (o DefaultKeyResponsePtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+// Policy used by Default Key
+func (o DefaultKeyResponsePtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type EdgeUsageDataCollectionPolicyResponse struct {
 	// Usage data collection frequency in ISO 8601 duration format e.g. PT10M , PT5H.
 	DataCollectionFrequency *string `pulumi:"dataCollectionFrequency"`
@@ -724,6 +3184,1166 @@ func (o EdgeUsageDataEventHubResponsePtrOutput) Token() pulumi.StringPtrOutput {
 		}
 		return v.Token
 	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify which protocols are enabled
+type EnabledProtocols struct {
+	// Enable DASH protocol or not
+	Dash bool `pulumi:"dash"`
+	// Enable Download protocol or not
+	Download bool `pulumi:"download"`
+	// Enable HLS protocol or not
+	Hls bool `pulumi:"hls"`
+	// Enable SmoothStreaming protocol or not
+	SmoothStreaming bool `pulumi:"smoothStreaming"`
+}
+
+// EnabledProtocolsInput is an input type that accepts EnabledProtocolsArgs and EnabledProtocolsOutput values.
+// You can construct a concrete instance of `EnabledProtocolsInput` via:
+//
+//	EnabledProtocolsArgs{...}
+type EnabledProtocolsInput interface {
+	pulumi.Input
+
+	ToEnabledProtocolsOutput() EnabledProtocolsOutput
+	ToEnabledProtocolsOutputWithContext(context.Context) EnabledProtocolsOutput
+}
+
+// Class to specify which protocols are enabled
+type EnabledProtocolsArgs struct {
+	// Enable DASH protocol or not
+	Dash pulumi.BoolInput `pulumi:"dash"`
+	// Enable Download protocol or not
+	Download pulumi.BoolInput `pulumi:"download"`
+	// Enable HLS protocol or not
+	Hls pulumi.BoolInput `pulumi:"hls"`
+	// Enable SmoothStreaming protocol or not
+	SmoothStreaming pulumi.BoolInput `pulumi:"smoothStreaming"`
+}
+
+func (EnabledProtocolsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnabledProtocols)(nil)).Elem()
+}
+
+func (i EnabledProtocolsArgs) ToEnabledProtocolsOutput() EnabledProtocolsOutput {
+	return i.ToEnabledProtocolsOutputWithContext(context.Background())
+}
+
+func (i EnabledProtocolsArgs) ToEnabledProtocolsOutputWithContext(ctx context.Context) EnabledProtocolsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnabledProtocolsOutput)
+}
+
+func (i EnabledProtocolsArgs) ToEnabledProtocolsPtrOutput() EnabledProtocolsPtrOutput {
+	return i.ToEnabledProtocolsPtrOutputWithContext(context.Background())
+}
+
+func (i EnabledProtocolsArgs) ToEnabledProtocolsPtrOutputWithContext(ctx context.Context) EnabledProtocolsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnabledProtocolsOutput).ToEnabledProtocolsPtrOutputWithContext(ctx)
+}
+
+// EnabledProtocolsPtrInput is an input type that accepts EnabledProtocolsArgs, EnabledProtocolsPtr and EnabledProtocolsPtrOutput values.
+// You can construct a concrete instance of `EnabledProtocolsPtrInput` via:
+//
+//	        EnabledProtocolsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnabledProtocolsPtrInput interface {
+	pulumi.Input
+
+	ToEnabledProtocolsPtrOutput() EnabledProtocolsPtrOutput
+	ToEnabledProtocolsPtrOutputWithContext(context.Context) EnabledProtocolsPtrOutput
+}
+
+type enabledProtocolsPtrType EnabledProtocolsArgs
+
+func EnabledProtocolsPtr(v *EnabledProtocolsArgs) EnabledProtocolsPtrInput {
+	return (*enabledProtocolsPtrType)(v)
+}
+
+func (*enabledProtocolsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnabledProtocols)(nil)).Elem()
+}
+
+func (i *enabledProtocolsPtrType) ToEnabledProtocolsPtrOutput() EnabledProtocolsPtrOutput {
+	return i.ToEnabledProtocolsPtrOutputWithContext(context.Background())
+}
+
+func (i *enabledProtocolsPtrType) ToEnabledProtocolsPtrOutputWithContext(ctx context.Context) EnabledProtocolsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnabledProtocolsPtrOutput)
+}
+
+// Class to specify which protocols are enabled
+type EnabledProtocolsOutput struct{ *pulumi.OutputState }
+
+func (EnabledProtocolsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnabledProtocols)(nil)).Elem()
+}
+
+func (o EnabledProtocolsOutput) ToEnabledProtocolsOutput() EnabledProtocolsOutput {
+	return o
+}
+
+func (o EnabledProtocolsOutput) ToEnabledProtocolsOutputWithContext(ctx context.Context) EnabledProtocolsOutput {
+	return o
+}
+
+func (o EnabledProtocolsOutput) ToEnabledProtocolsPtrOutput() EnabledProtocolsPtrOutput {
+	return o.ToEnabledProtocolsPtrOutputWithContext(context.Background())
+}
+
+func (o EnabledProtocolsOutput) ToEnabledProtocolsPtrOutputWithContext(ctx context.Context) EnabledProtocolsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnabledProtocols) *EnabledProtocols {
+		return &v
+	}).(EnabledProtocolsPtrOutput)
+}
+
+// Enable DASH protocol or not
+func (o EnabledProtocolsOutput) Dash() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocols) bool { return v.Dash }).(pulumi.BoolOutput)
+}
+
+// Enable Download protocol or not
+func (o EnabledProtocolsOutput) Download() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocols) bool { return v.Download }).(pulumi.BoolOutput)
+}
+
+// Enable HLS protocol or not
+func (o EnabledProtocolsOutput) Hls() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocols) bool { return v.Hls }).(pulumi.BoolOutput)
+}
+
+// Enable SmoothStreaming protocol or not
+func (o EnabledProtocolsOutput) SmoothStreaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocols) bool { return v.SmoothStreaming }).(pulumi.BoolOutput)
+}
+
+type EnabledProtocolsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnabledProtocolsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnabledProtocols)(nil)).Elem()
+}
+
+func (o EnabledProtocolsPtrOutput) ToEnabledProtocolsPtrOutput() EnabledProtocolsPtrOutput {
+	return o
+}
+
+func (o EnabledProtocolsPtrOutput) ToEnabledProtocolsPtrOutputWithContext(ctx context.Context) EnabledProtocolsPtrOutput {
+	return o
+}
+
+func (o EnabledProtocolsPtrOutput) Elem() EnabledProtocolsOutput {
+	return o.ApplyT(func(v *EnabledProtocols) EnabledProtocols {
+		if v != nil {
+			return *v
+		}
+		var ret EnabledProtocols
+		return ret
+	}).(EnabledProtocolsOutput)
+}
+
+// Enable DASH protocol or not
+func (o EnabledProtocolsPtrOutput) Dash() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocols) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Dash
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable Download protocol or not
+func (o EnabledProtocolsPtrOutput) Download() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocols) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Download
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable HLS protocol or not
+func (o EnabledProtocolsPtrOutput) Hls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocols) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Hls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable SmoothStreaming protocol or not
+func (o EnabledProtocolsPtrOutput) SmoothStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocols) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SmoothStreaming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Class to specify which protocols are enabled
+type EnabledProtocolsResponse struct {
+	// Enable DASH protocol or not
+	Dash bool `pulumi:"dash"`
+	// Enable Download protocol or not
+	Download bool `pulumi:"download"`
+	// Enable HLS protocol or not
+	Hls bool `pulumi:"hls"`
+	// Enable SmoothStreaming protocol or not
+	SmoothStreaming bool `pulumi:"smoothStreaming"`
+}
+
+// Class to specify which protocols are enabled
+type EnabledProtocolsResponseOutput struct{ *pulumi.OutputState }
+
+func (EnabledProtocolsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnabledProtocolsResponse)(nil)).Elem()
+}
+
+func (o EnabledProtocolsResponseOutput) ToEnabledProtocolsResponseOutput() EnabledProtocolsResponseOutput {
+	return o
+}
+
+func (o EnabledProtocolsResponseOutput) ToEnabledProtocolsResponseOutputWithContext(ctx context.Context) EnabledProtocolsResponseOutput {
+	return o
+}
+
+// Enable DASH protocol or not
+func (o EnabledProtocolsResponseOutput) Dash() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocolsResponse) bool { return v.Dash }).(pulumi.BoolOutput)
+}
+
+// Enable Download protocol or not
+func (o EnabledProtocolsResponseOutput) Download() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocolsResponse) bool { return v.Download }).(pulumi.BoolOutput)
+}
+
+// Enable HLS protocol or not
+func (o EnabledProtocolsResponseOutput) Hls() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocolsResponse) bool { return v.Hls }).(pulumi.BoolOutput)
+}
+
+// Enable SmoothStreaming protocol or not
+func (o EnabledProtocolsResponseOutput) SmoothStreaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnabledProtocolsResponse) bool { return v.SmoothStreaming }).(pulumi.BoolOutput)
+}
+
+type EnabledProtocolsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnabledProtocolsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnabledProtocolsResponse)(nil)).Elem()
+}
+
+func (o EnabledProtocolsResponsePtrOutput) ToEnabledProtocolsResponsePtrOutput() EnabledProtocolsResponsePtrOutput {
+	return o
+}
+
+func (o EnabledProtocolsResponsePtrOutput) ToEnabledProtocolsResponsePtrOutputWithContext(ctx context.Context) EnabledProtocolsResponsePtrOutput {
+	return o
+}
+
+func (o EnabledProtocolsResponsePtrOutput) Elem() EnabledProtocolsResponseOutput {
+	return o.ApplyT(func(v *EnabledProtocolsResponse) EnabledProtocolsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnabledProtocolsResponse
+		return ret
+	}).(EnabledProtocolsResponseOutput)
+}
+
+// Enable DASH protocol or not
+func (o EnabledProtocolsResponsePtrOutput) Dash() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocolsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Dash
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable Download protocol or not
+func (o EnabledProtocolsResponsePtrOutput) Download() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocolsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Download
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable HLS protocol or not
+func (o EnabledProtocolsResponsePtrOutput) Hls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocolsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Hls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable SmoothStreaming protocol or not
+func (o EnabledProtocolsResponsePtrOutput) SmoothStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnabledProtocolsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SmoothStreaming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Class for EnvelopeEncryption encryption scheme
+type EnvelopeEncryption struct {
+	// Representing which tracks should not be encrypted
+	ClearTracks []TrackSelection `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys *StreamingPolicyContentKeys `pulumi:"contentKeys"`
+	// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomKeyAcquisitionUrlTemplate *string `pulumi:"customKeyAcquisitionUrlTemplate"`
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocols `pulumi:"enabledProtocols"`
+}
+
+// EnvelopeEncryptionInput is an input type that accepts EnvelopeEncryptionArgs and EnvelopeEncryptionOutput values.
+// You can construct a concrete instance of `EnvelopeEncryptionInput` via:
+//
+//	EnvelopeEncryptionArgs{...}
+type EnvelopeEncryptionInput interface {
+	pulumi.Input
+
+	ToEnvelopeEncryptionOutput() EnvelopeEncryptionOutput
+	ToEnvelopeEncryptionOutputWithContext(context.Context) EnvelopeEncryptionOutput
+}
+
+// Class for EnvelopeEncryption encryption scheme
+type EnvelopeEncryptionArgs struct {
+	// Representing which tracks should not be encrypted
+	ClearTracks TrackSelectionArrayInput `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys StreamingPolicyContentKeysPtrInput `pulumi:"contentKeys"`
+	// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomKeyAcquisitionUrlTemplate pulumi.StringPtrInput `pulumi:"customKeyAcquisitionUrlTemplate"`
+	// Representing supported protocols
+	EnabledProtocols EnabledProtocolsPtrInput `pulumi:"enabledProtocols"`
+}
+
+func (EnvelopeEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeEncryption)(nil)).Elem()
+}
+
+func (i EnvelopeEncryptionArgs) ToEnvelopeEncryptionOutput() EnvelopeEncryptionOutput {
+	return i.ToEnvelopeEncryptionOutputWithContext(context.Background())
+}
+
+func (i EnvelopeEncryptionArgs) ToEnvelopeEncryptionOutputWithContext(ctx context.Context) EnvelopeEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeEncryptionOutput)
+}
+
+func (i EnvelopeEncryptionArgs) ToEnvelopeEncryptionPtrOutput() EnvelopeEncryptionPtrOutput {
+	return i.ToEnvelopeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i EnvelopeEncryptionArgs) ToEnvelopeEncryptionPtrOutputWithContext(ctx context.Context) EnvelopeEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeEncryptionOutput).ToEnvelopeEncryptionPtrOutputWithContext(ctx)
+}
+
+// EnvelopeEncryptionPtrInput is an input type that accepts EnvelopeEncryptionArgs, EnvelopeEncryptionPtr and EnvelopeEncryptionPtrOutput values.
+// You can construct a concrete instance of `EnvelopeEncryptionPtrInput` via:
+//
+//	        EnvelopeEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvelopeEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToEnvelopeEncryptionPtrOutput() EnvelopeEncryptionPtrOutput
+	ToEnvelopeEncryptionPtrOutputWithContext(context.Context) EnvelopeEncryptionPtrOutput
+}
+
+type envelopeEncryptionPtrType EnvelopeEncryptionArgs
+
+func EnvelopeEncryptionPtr(v *EnvelopeEncryptionArgs) EnvelopeEncryptionPtrInput {
+	return (*envelopeEncryptionPtrType)(v)
+}
+
+func (*envelopeEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvelopeEncryption)(nil)).Elem()
+}
+
+func (i *envelopeEncryptionPtrType) ToEnvelopeEncryptionPtrOutput() EnvelopeEncryptionPtrOutput {
+	return i.ToEnvelopeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *envelopeEncryptionPtrType) ToEnvelopeEncryptionPtrOutputWithContext(ctx context.Context) EnvelopeEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeEncryptionPtrOutput)
+}
+
+// Class for EnvelopeEncryption encryption scheme
+type EnvelopeEncryptionOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeEncryption)(nil)).Elem()
+}
+
+func (o EnvelopeEncryptionOutput) ToEnvelopeEncryptionOutput() EnvelopeEncryptionOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionOutput) ToEnvelopeEncryptionOutputWithContext(ctx context.Context) EnvelopeEncryptionOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionOutput) ToEnvelopeEncryptionPtrOutput() EnvelopeEncryptionPtrOutput {
+	return o.ToEnvelopeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o EnvelopeEncryptionOutput) ToEnvelopeEncryptionPtrOutputWithContext(ctx context.Context) EnvelopeEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvelopeEncryption) *EnvelopeEncryption {
+		return &v
+	}).(EnvelopeEncryptionPtrOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o EnvelopeEncryptionOutput) ClearTracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v EnvelopeEncryption) []TrackSelection { return v.ClearTracks }).(TrackSelectionArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o EnvelopeEncryptionOutput) ContentKeys() StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyT(func(v EnvelopeEncryption) *StreamingPolicyContentKeys { return v.ContentKeys }).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o EnvelopeEncryptionOutput) CustomKeyAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvelopeEncryption) *string { return v.CustomKeyAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Representing supported protocols
+func (o EnvelopeEncryptionOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v EnvelopeEncryption) *EnabledProtocols { return v.EnabledProtocols }).(EnabledProtocolsPtrOutput)
+}
+
+type EnvelopeEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvelopeEncryption)(nil)).Elem()
+}
+
+func (o EnvelopeEncryptionPtrOutput) ToEnvelopeEncryptionPtrOutput() EnvelopeEncryptionPtrOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionPtrOutput) ToEnvelopeEncryptionPtrOutputWithContext(ctx context.Context) EnvelopeEncryptionPtrOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionPtrOutput) Elem() EnvelopeEncryptionOutput {
+	return o.ApplyT(func(v *EnvelopeEncryption) EnvelopeEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret EnvelopeEncryption
+		return ret
+	}).(EnvelopeEncryptionOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o EnvelopeEncryptionPtrOutput) ClearTracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v *EnvelopeEncryption) []TrackSelection {
+		if v == nil {
+			return nil
+		}
+		return v.ClearTracks
+	}).(TrackSelectionArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o EnvelopeEncryptionPtrOutput) ContentKeys() StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyT(func(v *EnvelopeEncryption) *StreamingPolicyContentKeys {
+		if v == nil {
+			return nil
+		}
+		return v.ContentKeys
+	}).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o EnvelopeEncryptionPtrOutput) CustomKeyAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvelopeEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomKeyAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Representing supported protocols
+func (o EnvelopeEncryptionPtrOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v *EnvelopeEncryption) *EnabledProtocols {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsPtrOutput)
+}
+
+// Class for EnvelopeEncryption encryption scheme
+type EnvelopeEncryptionResponse struct {
+	// Representing which tracks should not be encrypted
+	ClearTracks []TrackSelectionResponse `pulumi:"clearTracks"`
+	// Representing default content key for each encryption scheme and separate content keys for specific tracks
+	ContentKeys *StreamingPolicyContentKeysResponse `pulumi:"contentKeys"`
+	// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomKeyAcquisitionUrlTemplate *string `pulumi:"customKeyAcquisitionUrlTemplate"`
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocolsResponse `pulumi:"enabledProtocols"`
+}
+
+// Class for EnvelopeEncryption encryption scheme
+type EnvelopeEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeEncryptionResponse)(nil)).Elem()
+}
+
+func (o EnvelopeEncryptionResponseOutput) ToEnvelopeEncryptionResponseOutput() EnvelopeEncryptionResponseOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionResponseOutput) ToEnvelopeEncryptionResponseOutputWithContext(ctx context.Context) EnvelopeEncryptionResponseOutput {
+	return o
+}
+
+// Representing which tracks should not be encrypted
+func (o EnvelopeEncryptionResponseOutput) ClearTracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v EnvelopeEncryptionResponse) []TrackSelectionResponse { return v.ClearTracks }).(TrackSelectionResponseArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o EnvelopeEncryptionResponseOutput) ContentKeys() StreamingPolicyContentKeysResponsePtrOutput {
+	return o.ApplyT(func(v EnvelopeEncryptionResponse) *StreamingPolicyContentKeysResponse { return v.ContentKeys }).(StreamingPolicyContentKeysResponsePtrOutput)
+}
+
+// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o EnvelopeEncryptionResponseOutput) CustomKeyAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvelopeEncryptionResponse) *string { return v.CustomKeyAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Representing supported protocols
+func (o EnvelopeEncryptionResponseOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v EnvelopeEncryptionResponse) *EnabledProtocolsResponse { return v.EnabledProtocols }).(EnabledProtocolsResponsePtrOutput)
+}
+
+type EnvelopeEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvelopeEncryptionResponse)(nil)).Elem()
+}
+
+func (o EnvelopeEncryptionResponsePtrOutput) ToEnvelopeEncryptionResponsePtrOutput() EnvelopeEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionResponsePtrOutput) ToEnvelopeEncryptionResponsePtrOutputWithContext(ctx context.Context) EnvelopeEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o EnvelopeEncryptionResponsePtrOutput) Elem() EnvelopeEncryptionResponseOutput {
+	return o.ApplyT(func(v *EnvelopeEncryptionResponse) EnvelopeEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvelopeEncryptionResponse
+		return ret
+	}).(EnvelopeEncryptionResponseOutput)
+}
+
+// Representing which tracks should not be encrypted
+func (o EnvelopeEncryptionResponsePtrOutput) ClearTracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v *EnvelopeEncryptionResponse) []TrackSelectionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClearTracks
+	}).(TrackSelectionResponseArrayOutput)
+}
+
+// Representing default content key for each encryption scheme and separate content keys for specific tracks
+func (o EnvelopeEncryptionResponsePtrOutput) ContentKeys() StreamingPolicyContentKeysResponsePtrOutput {
+	return o.ApplyT(func(v *EnvelopeEncryptionResponse) *StreamingPolicyContentKeysResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ContentKeys
+	}).(StreamingPolicyContentKeysResponsePtrOutput)
+}
+
+// Template for the URL of the custom service delivering keys to end user players.  Not required when using Azure Media Services for issuing keys.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o EnvelopeEncryptionResponsePtrOutput) CustomKeyAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvelopeEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomKeyAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Representing supported protocols
+func (o EnvelopeEncryptionResponsePtrOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v *EnvelopeEncryptionResponse) *EnabledProtocolsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsResponsePtrOutput)
+}
+
+// The class to specify one track property condition.
+type FilterTrackPropertyCondition struct {
+	// The track property condition operation.
+	Operation string `pulumi:"operation"`
+	// The track property type.
+	Property string `pulumi:"property"`
+	// The track property value.
+	Value string `pulumi:"value"`
+}
+
+// FilterTrackPropertyConditionInput is an input type that accepts FilterTrackPropertyConditionArgs and FilterTrackPropertyConditionOutput values.
+// You can construct a concrete instance of `FilterTrackPropertyConditionInput` via:
+//
+//	FilterTrackPropertyConditionArgs{...}
+type FilterTrackPropertyConditionInput interface {
+	pulumi.Input
+
+	ToFilterTrackPropertyConditionOutput() FilterTrackPropertyConditionOutput
+	ToFilterTrackPropertyConditionOutputWithContext(context.Context) FilterTrackPropertyConditionOutput
+}
+
+// The class to specify one track property condition.
+type FilterTrackPropertyConditionArgs struct {
+	// The track property condition operation.
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// The track property type.
+	Property pulumi.StringInput `pulumi:"property"`
+	// The track property value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (FilterTrackPropertyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTrackPropertyCondition)(nil)).Elem()
+}
+
+func (i FilterTrackPropertyConditionArgs) ToFilterTrackPropertyConditionOutput() FilterTrackPropertyConditionOutput {
+	return i.ToFilterTrackPropertyConditionOutputWithContext(context.Background())
+}
+
+func (i FilterTrackPropertyConditionArgs) ToFilterTrackPropertyConditionOutputWithContext(ctx context.Context) FilterTrackPropertyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackPropertyConditionOutput)
+}
+
+// FilterTrackPropertyConditionArrayInput is an input type that accepts FilterTrackPropertyConditionArray and FilterTrackPropertyConditionArrayOutput values.
+// You can construct a concrete instance of `FilterTrackPropertyConditionArrayInput` via:
+//
+//	FilterTrackPropertyConditionArray{ FilterTrackPropertyConditionArgs{...} }
+type FilterTrackPropertyConditionArrayInput interface {
+	pulumi.Input
+
+	ToFilterTrackPropertyConditionArrayOutput() FilterTrackPropertyConditionArrayOutput
+	ToFilterTrackPropertyConditionArrayOutputWithContext(context.Context) FilterTrackPropertyConditionArrayOutput
+}
+
+type FilterTrackPropertyConditionArray []FilterTrackPropertyConditionInput
+
+func (FilterTrackPropertyConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterTrackPropertyCondition)(nil)).Elem()
+}
+
+func (i FilterTrackPropertyConditionArray) ToFilterTrackPropertyConditionArrayOutput() FilterTrackPropertyConditionArrayOutput {
+	return i.ToFilterTrackPropertyConditionArrayOutputWithContext(context.Background())
+}
+
+func (i FilterTrackPropertyConditionArray) ToFilterTrackPropertyConditionArrayOutputWithContext(ctx context.Context) FilterTrackPropertyConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackPropertyConditionArrayOutput)
+}
+
+// The class to specify one track property condition.
+type FilterTrackPropertyConditionOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackPropertyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTrackPropertyCondition)(nil)).Elem()
+}
+
+func (o FilterTrackPropertyConditionOutput) ToFilterTrackPropertyConditionOutput() FilterTrackPropertyConditionOutput {
+	return o
+}
+
+func (o FilterTrackPropertyConditionOutput) ToFilterTrackPropertyConditionOutputWithContext(ctx context.Context) FilterTrackPropertyConditionOutput {
+	return o
+}
+
+// The track property condition operation.
+func (o FilterTrackPropertyConditionOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterTrackPropertyCondition) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// The track property type.
+func (o FilterTrackPropertyConditionOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterTrackPropertyCondition) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The track property value.
+func (o FilterTrackPropertyConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterTrackPropertyCondition) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type FilterTrackPropertyConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackPropertyConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterTrackPropertyCondition)(nil)).Elem()
+}
+
+func (o FilterTrackPropertyConditionArrayOutput) ToFilterTrackPropertyConditionArrayOutput() FilterTrackPropertyConditionArrayOutput {
+	return o
+}
+
+func (o FilterTrackPropertyConditionArrayOutput) ToFilterTrackPropertyConditionArrayOutputWithContext(ctx context.Context) FilterTrackPropertyConditionArrayOutput {
+	return o
+}
+
+func (o FilterTrackPropertyConditionArrayOutput) Index(i pulumi.IntInput) FilterTrackPropertyConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterTrackPropertyCondition {
+		return vs[0].([]FilterTrackPropertyCondition)[vs[1].(int)]
+	}).(FilterTrackPropertyConditionOutput)
+}
+
+// The class to specify one track property condition.
+type FilterTrackPropertyConditionResponse struct {
+	// The track property condition operation.
+	Operation string `pulumi:"operation"`
+	// The track property type.
+	Property string `pulumi:"property"`
+	// The track property value.
+	Value string `pulumi:"value"`
+}
+
+// The class to specify one track property condition.
+type FilterTrackPropertyConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackPropertyConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTrackPropertyConditionResponse)(nil)).Elem()
+}
+
+func (o FilterTrackPropertyConditionResponseOutput) ToFilterTrackPropertyConditionResponseOutput() FilterTrackPropertyConditionResponseOutput {
+	return o
+}
+
+func (o FilterTrackPropertyConditionResponseOutput) ToFilterTrackPropertyConditionResponseOutputWithContext(ctx context.Context) FilterTrackPropertyConditionResponseOutput {
+	return o
+}
+
+// The track property condition operation.
+func (o FilterTrackPropertyConditionResponseOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterTrackPropertyConditionResponse) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// The track property type.
+func (o FilterTrackPropertyConditionResponseOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterTrackPropertyConditionResponse) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The track property value.
+func (o FilterTrackPropertyConditionResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterTrackPropertyConditionResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type FilterTrackPropertyConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackPropertyConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterTrackPropertyConditionResponse)(nil)).Elem()
+}
+
+func (o FilterTrackPropertyConditionResponseArrayOutput) ToFilterTrackPropertyConditionResponseArrayOutput() FilterTrackPropertyConditionResponseArrayOutput {
+	return o
+}
+
+func (o FilterTrackPropertyConditionResponseArrayOutput) ToFilterTrackPropertyConditionResponseArrayOutputWithContext(ctx context.Context) FilterTrackPropertyConditionResponseArrayOutput {
+	return o
+}
+
+func (o FilterTrackPropertyConditionResponseArrayOutput) Index(i pulumi.IntInput) FilterTrackPropertyConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterTrackPropertyConditionResponse {
+		return vs[0].([]FilterTrackPropertyConditionResponse)[vs[1].(int)]
+	}).(FilterTrackPropertyConditionResponseOutput)
+}
+
+// Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
+type FilterTrackSelection struct {
+	// The track selections.
+	TrackSelections []FilterTrackPropertyCondition `pulumi:"trackSelections"`
+}
+
+// FilterTrackSelectionInput is an input type that accepts FilterTrackSelectionArgs and FilterTrackSelectionOutput values.
+// You can construct a concrete instance of `FilterTrackSelectionInput` via:
+//
+//	FilterTrackSelectionArgs{...}
+type FilterTrackSelectionInput interface {
+	pulumi.Input
+
+	ToFilterTrackSelectionOutput() FilterTrackSelectionOutput
+	ToFilterTrackSelectionOutputWithContext(context.Context) FilterTrackSelectionOutput
+}
+
+// Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
+type FilterTrackSelectionArgs struct {
+	// The track selections.
+	TrackSelections FilterTrackPropertyConditionArrayInput `pulumi:"trackSelections"`
+}
+
+func (FilterTrackSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTrackSelection)(nil)).Elem()
+}
+
+func (i FilterTrackSelectionArgs) ToFilterTrackSelectionOutput() FilterTrackSelectionOutput {
+	return i.ToFilterTrackSelectionOutputWithContext(context.Background())
+}
+
+func (i FilterTrackSelectionArgs) ToFilterTrackSelectionOutputWithContext(ctx context.Context) FilterTrackSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackSelectionOutput)
+}
+
+// FilterTrackSelectionArrayInput is an input type that accepts FilterTrackSelectionArray and FilterTrackSelectionArrayOutput values.
+// You can construct a concrete instance of `FilterTrackSelectionArrayInput` via:
+//
+//	FilterTrackSelectionArray{ FilterTrackSelectionArgs{...} }
+type FilterTrackSelectionArrayInput interface {
+	pulumi.Input
+
+	ToFilterTrackSelectionArrayOutput() FilterTrackSelectionArrayOutput
+	ToFilterTrackSelectionArrayOutputWithContext(context.Context) FilterTrackSelectionArrayOutput
+}
+
+type FilterTrackSelectionArray []FilterTrackSelectionInput
+
+func (FilterTrackSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterTrackSelection)(nil)).Elem()
+}
+
+func (i FilterTrackSelectionArray) ToFilterTrackSelectionArrayOutput() FilterTrackSelectionArrayOutput {
+	return i.ToFilterTrackSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i FilterTrackSelectionArray) ToFilterTrackSelectionArrayOutputWithContext(ctx context.Context) FilterTrackSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackSelectionArrayOutput)
+}
+
+// Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
+type FilterTrackSelectionOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTrackSelection)(nil)).Elem()
+}
+
+func (o FilterTrackSelectionOutput) ToFilterTrackSelectionOutput() FilterTrackSelectionOutput {
+	return o
+}
+
+func (o FilterTrackSelectionOutput) ToFilterTrackSelectionOutputWithContext(ctx context.Context) FilterTrackSelectionOutput {
+	return o
+}
+
+// The track selections.
+func (o FilterTrackSelectionOutput) TrackSelections() FilterTrackPropertyConditionArrayOutput {
+	return o.ApplyT(func(v FilterTrackSelection) []FilterTrackPropertyCondition { return v.TrackSelections }).(FilterTrackPropertyConditionArrayOutput)
+}
+
+type FilterTrackSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterTrackSelection)(nil)).Elem()
+}
+
+func (o FilterTrackSelectionArrayOutput) ToFilterTrackSelectionArrayOutput() FilterTrackSelectionArrayOutput {
+	return o
+}
+
+func (o FilterTrackSelectionArrayOutput) ToFilterTrackSelectionArrayOutputWithContext(ctx context.Context) FilterTrackSelectionArrayOutput {
+	return o
+}
+
+func (o FilterTrackSelectionArrayOutput) Index(i pulumi.IntInput) FilterTrackSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterTrackSelection {
+		return vs[0].([]FilterTrackSelection)[vs[1].(int)]
+	}).(FilterTrackSelectionOutput)
+}
+
+// Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
+type FilterTrackSelectionResponse struct {
+	// The track selections.
+	TrackSelections []FilterTrackPropertyConditionResponse `pulumi:"trackSelections"`
+}
+
+// Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
+type FilterTrackSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTrackSelectionResponse)(nil)).Elem()
+}
+
+func (o FilterTrackSelectionResponseOutput) ToFilterTrackSelectionResponseOutput() FilterTrackSelectionResponseOutput {
+	return o
+}
+
+func (o FilterTrackSelectionResponseOutput) ToFilterTrackSelectionResponseOutputWithContext(ctx context.Context) FilterTrackSelectionResponseOutput {
+	return o
+}
+
+// The track selections.
+func (o FilterTrackSelectionResponseOutput) TrackSelections() FilterTrackPropertyConditionResponseArrayOutput {
+	return o.ApplyT(func(v FilterTrackSelectionResponse) []FilterTrackPropertyConditionResponse { return v.TrackSelections }).(FilterTrackPropertyConditionResponseArrayOutput)
+}
+
+type FilterTrackSelectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterTrackSelectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterTrackSelectionResponse)(nil)).Elem()
+}
+
+func (o FilterTrackSelectionResponseArrayOutput) ToFilterTrackSelectionResponseArrayOutput() FilterTrackSelectionResponseArrayOutput {
+	return o
+}
+
+func (o FilterTrackSelectionResponseArrayOutput) ToFilterTrackSelectionResponseArrayOutputWithContext(ctx context.Context) FilterTrackSelectionResponseArrayOutput {
+	return o
+}
+
+func (o FilterTrackSelectionResponseArrayOutput) Index(i pulumi.IntInput) FilterTrackSelectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterTrackSelectionResponse {
+		return vs[0].([]FilterTrackSelectionResponse)[vs[1].(int)]
+	}).(FilterTrackSelectionResponseOutput)
+}
+
+// Filter First Quality
+type FirstQuality struct {
+	// The first quality bitrate.
+	Bitrate int `pulumi:"bitrate"`
+}
+
+// FirstQualityInput is an input type that accepts FirstQualityArgs and FirstQualityOutput values.
+// You can construct a concrete instance of `FirstQualityInput` via:
+//
+//	FirstQualityArgs{...}
+type FirstQualityInput interface {
+	pulumi.Input
+
+	ToFirstQualityOutput() FirstQualityOutput
+	ToFirstQualityOutputWithContext(context.Context) FirstQualityOutput
+}
+
+// Filter First Quality
+type FirstQualityArgs struct {
+	// The first quality bitrate.
+	Bitrate pulumi.IntInput `pulumi:"bitrate"`
+}
+
+func (FirstQualityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirstQuality)(nil)).Elem()
+}
+
+func (i FirstQualityArgs) ToFirstQualityOutput() FirstQualityOutput {
+	return i.ToFirstQualityOutputWithContext(context.Background())
+}
+
+func (i FirstQualityArgs) ToFirstQualityOutputWithContext(ctx context.Context) FirstQualityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirstQualityOutput)
+}
+
+func (i FirstQualityArgs) ToFirstQualityPtrOutput() FirstQualityPtrOutput {
+	return i.ToFirstQualityPtrOutputWithContext(context.Background())
+}
+
+func (i FirstQualityArgs) ToFirstQualityPtrOutputWithContext(ctx context.Context) FirstQualityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirstQualityOutput).ToFirstQualityPtrOutputWithContext(ctx)
+}
+
+// FirstQualityPtrInput is an input type that accepts FirstQualityArgs, FirstQualityPtr and FirstQualityPtrOutput values.
+// You can construct a concrete instance of `FirstQualityPtrInput` via:
+//
+//	        FirstQualityArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirstQualityPtrInput interface {
+	pulumi.Input
+
+	ToFirstQualityPtrOutput() FirstQualityPtrOutput
+	ToFirstQualityPtrOutputWithContext(context.Context) FirstQualityPtrOutput
+}
+
+type firstQualityPtrType FirstQualityArgs
+
+func FirstQualityPtr(v *FirstQualityArgs) FirstQualityPtrInput {
+	return (*firstQualityPtrType)(v)
+}
+
+func (*firstQualityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirstQuality)(nil)).Elem()
+}
+
+func (i *firstQualityPtrType) ToFirstQualityPtrOutput() FirstQualityPtrOutput {
+	return i.ToFirstQualityPtrOutputWithContext(context.Background())
+}
+
+func (i *firstQualityPtrType) ToFirstQualityPtrOutputWithContext(ctx context.Context) FirstQualityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirstQualityPtrOutput)
+}
+
+// Filter First Quality
+type FirstQualityOutput struct{ *pulumi.OutputState }
+
+func (FirstQualityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirstQuality)(nil)).Elem()
+}
+
+func (o FirstQualityOutput) ToFirstQualityOutput() FirstQualityOutput {
+	return o
+}
+
+func (o FirstQualityOutput) ToFirstQualityOutputWithContext(ctx context.Context) FirstQualityOutput {
+	return o
+}
+
+func (o FirstQualityOutput) ToFirstQualityPtrOutput() FirstQualityPtrOutput {
+	return o.ToFirstQualityPtrOutputWithContext(context.Background())
+}
+
+func (o FirstQualityOutput) ToFirstQualityPtrOutputWithContext(ctx context.Context) FirstQualityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirstQuality) *FirstQuality {
+		return &v
+	}).(FirstQualityPtrOutput)
+}
+
+// The first quality bitrate.
+func (o FirstQualityOutput) Bitrate() pulumi.IntOutput {
+	return o.ApplyT(func(v FirstQuality) int { return v.Bitrate }).(pulumi.IntOutput)
+}
+
+type FirstQualityPtrOutput struct{ *pulumi.OutputState }
+
+func (FirstQualityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirstQuality)(nil)).Elem()
+}
+
+func (o FirstQualityPtrOutput) ToFirstQualityPtrOutput() FirstQualityPtrOutput {
+	return o
+}
+
+func (o FirstQualityPtrOutput) ToFirstQualityPtrOutputWithContext(ctx context.Context) FirstQualityPtrOutput {
+	return o
+}
+
+func (o FirstQualityPtrOutput) Elem() FirstQualityOutput {
+	return o.ApplyT(func(v *FirstQuality) FirstQuality {
+		if v != nil {
+			return *v
+		}
+		var ret FirstQuality
+		return ret
+	}).(FirstQualityOutput)
+}
+
+// The first quality bitrate.
+func (o FirstQualityPtrOutput) Bitrate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirstQuality) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Bitrate
+	}).(pulumi.IntPtrOutput)
+}
+
+// Filter First Quality
+type FirstQualityResponse struct {
+	// The first quality bitrate.
+	Bitrate int `pulumi:"bitrate"`
+}
+
+// Filter First Quality
+type FirstQualityResponseOutput struct{ *pulumi.OutputState }
+
+func (FirstQualityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirstQualityResponse)(nil)).Elem()
+}
+
+func (o FirstQualityResponseOutput) ToFirstQualityResponseOutput() FirstQualityResponseOutput {
+	return o
+}
+
+func (o FirstQualityResponseOutput) ToFirstQualityResponseOutputWithContext(ctx context.Context) FirstQualityResponseOutput {
+	return o
+}
+
+// The first quality bitrate.
+func (o FirstQualityResponseOutput) Bitrate() pulumi.IntOutput {
+	return o.ApplyT(func(v FirstQualityResponse) int { return v.Bitrate }).(pulumi.IntOutput)
+}
+
+type FirstQualityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FirstQualityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirstQualityResponse)(nil)).Elem()
+}
+
+func (o FirstQualityResponsePtrOutput) ToFirstQualityResponsePtrOutput() FirstQualityResponsePtrOutput {
+	return o
+}
+
+func (o FirstQualityResponsePtrOutput) ToFirstQualityResponsePtrOutputWithContext(ctx context.Context) FirstQualityResponsePtrOutput {
+	return o
+}
+
+func (o FirstQualityResponsePtrOutput) Elem() FirstQualityResponseOutput {
+	return o.ApplyT(func(v *FirstQualityResponse) FirstQualityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FirstQualityResponse
+		return ret
+	}).(FirstQualityResponseOutput)
+}
+
+// The first quality bitrate.
+func (o FirstQualityResponsePtrOutput) Bitrate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirstQualityResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Bitrate
+	}).(pulumi.IntPtrOutput)
+}
+
+// The HLS setting for a track.
+type HlsSettings struct {
+	// The characteristics for the HLS setting.
+	Characteristics *string `pulumi:"characteristics"`
+	// The default for the HLS setting.
+	Default *bool `pulumi:"default"`
+	// The forced for the HLS setting.
+	Forced *bool `pulumi:"forced"`
+}
+
+// The HLS setting for a track.
+type HlsSettingsResponse struct {
+	// The characteristics for the HLS setting.
+	Characteristics *string `pulumi:"characteristics"`
+	// The default for the HLS setting.
+	Default *bool `pulumi:"default"`
+	// The forced for the HLS setting.
+	Forced *bool `pulumi:"forced"`
 }
 
 type KeyDelivery struct {
@@ -1400,6 +5020,586 @@ func (o MediaServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssi
 	}).(UserAssignedManagedIdentityResponseMapOutput)
 }
 
+// Class for NoEncryption scheme
+type NoEncryption struct {
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocols `pulumi:"enabledProtocols"`
+}
+
+// NoEncryptionInput is an input type that accepts NoEncryptionArgs and NoEncryptionOutput values.
+// You can construct a concrete instance of `NoEncryptionInput` via:
+//
+//	NoEncryptionArgs{...}
+type NoEncryptionInput interface {
+	pulumi.Input
+
+	ToNoEncryptionOutput() NoEncryptionOutput
+	ToNoEncryptionOutputWithContext(context.Context) NoEncryptionOutput
+}
+
+// Class for NoEncryption scheme
+type NoEncryptionArgs struct {
+	// Representing supported protocols
+	EnabledProtocols EnabledProtocolsPtrInput `pulumi:"enabledProtocols"`
+}
+
+func (NoEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoEncryption)(nil)).Elem()
+}
+
+func (i NoEncryptionArgs) ToNoEncryptionOutput() NoEncryptionOutput {
+	return i.ToNoEncryptionOutputWithContext(context.Background())
+}
+
+func (i NoEncryptionArgs) ToNoEncryptionOutputWithContext(ctx context.Context) NoEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoEncryptionOutput)
+}
+
+func (i NoEncryptionArgs) ToNoEncryptionPtrOutput() NoEncryptionPtrOutput {
+	return i.ToNoEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i NoEncryptionArgs) ToNoEncryptionPtrOutputWithContext(ctx context.Context) NoEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoEncryptionOutput).ToNoEncryptionPtrOutputWithContext(ctx)
+}
+
+// NoEncryptionPtrInput is an input type that accepts NoEncryptionArgs, NoEncryptionPtr and NoEncryptionPtrOutput values.
+// You can construct a concrete instance of `NoEncryptionPtrInput` via:
+//
+//	        NoEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type NoEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToNoEncryptionPtrOutput() NoEncryptionPtrOutput
+	ToNoEncryptionPtrOutputWithContext(context.Context) NoEncryptionPtrOutput
+}
+
+type noEncryptionPtrType NoEncryptionArgs
+
+func NoEncryptionPtr(v *NoEncryptionArgs) NoEncryptionPtrInput {
+	return (*noEncryptionPtrType)(v)
+}
+
+func (*noEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoEncryption)(nil)).Elem()
+}
+
+func (i *noEncryptionPtrType) ToNoEncryptionPtrOutput() NoEncryptionPtrOutput {
+	return i.ToNoEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *noEncryptionPtrType) ToNoEncryptionPtrOutputWithContext(ctx context.Context) NoEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoEncryptionPtrOutput)
+}
+
+// Class for NoEncryption scheme
+type NoEncryptionOutput struct{ *pulumi.OutputState }
+
+func (NoEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoEncryption)(nil)).Elem()
+}
+
+func (o NoEncryptionOutput) ToNoEncryptionOutput() NoEncryptionOutput {
+	return o
+}
+
+func (o NoEncryptionOutput) ToNoEncryptionOutputWithContext(ctx context.Context) NoEncryptionOutput {
+	return o
+}
+
+func (o NoEncryptionOutput) ToNoEncryptionPtrOutput() NoEncryptionPtrOutput {
+	return o.ToNoEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o NoEncryptionOutput) ToNoEncryptionPtrOutputWithContext(ctx context.Context) NoEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoEncryption) *NoEncryption {
+		return &v
+	}).(NoEncryptionPtrOutput)
+}
+
+// Representing supported protocols
+func (o NoEncryptionOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v NoEncryption) *EnabledProtocols { return v.EnabledProtocols }).(EnabledProtocolsPtrOutput)
+}
+
+type NoEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (NoEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoEncryption)(nil)).Elem()
+}
+
+func (o NoEncryptionPtrOutput) ToNoEncryptionPtrOutput() NoEncryptionPtrOutput {
+	return o
+}
+
+func (o NoEncryptionPtrOutput) ToNoEncryptionPtrOutputWithContext(ctx context.Context) NoEncryptionPtrOutput {
+	return o
+}
+
+func (o NoEncryptionPtrOutput) Elem() NoEncryptionOutput {
+	return o.ApplyT(func(v *NoEncryption) NoEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret NoEncryption
+		return ret
+	}).(NoEncryptionOutput)
+}
+
+// Representing supported protocols
+func (o NoEncryptionPtrOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
+	return o.ApplyT(func(v *NoEncryption) *EnabledProtocols {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsPtrOutput)
+}
+
+// Class for NoEncryption scheme
+type NoEncryptionResponse struct {
+	// Representing supported protocols
+	EnabledProtocols *EnabledProtocolsResponse `pulumi:"enabledProtocols"`
+}
+
+// Class for NoEncryption scheme
+type NoEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (NoEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoEncryptionResponse)(nil)).Elem()
+}
+
+func (o NoEncryptionResponseOutput) ToNoEncryptionResponseOutput() NoEncryptionResponseOutput {
+	return o
+}
+
+func (o NoEncryptionResponseOutput) ToNoEncryptionResponseOutputWithContext(ctx context.Context) NoEncryptionResponseOutput {
+	return o
+}
+
+// Representing supported protocols
+func (o NoEncryptionResponseOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v NoEncryptionResponse) *EnabledProtocolsResponse { return v.EnabledProtocols }).(EnabledProtocolsResponsePtrOutput)
+}
+
+type NoEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NoEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoEncryptionResponse)(nil)).Elem()
+}
+
+func (o NoEncryptionResponsePtrOutput) ToNoEncryptionResponsePtrOutput() NoEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o NoEncryptionResponsePtrOutput) ToNoEncryptionResponsePtrOutputWithContext(ctx context.Context) NoEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o NoEncryptionResponsePtrOutput) Elem() NoEncryptionResponseOutput {
+	return o.ApplyT(func(v *NoEncryptionResponse) NoEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NoEncryptionResponse
+		return ret
+	}).(NoEncryptionResponseOutput)
+}
+
+// Representing supported protocols
+func (o NoEncryptionResponsePtrOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
+	return o.ApplyT(func(v *NoEncryptionResponse) *EnabledProtocolsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProtocols
+	}).(EnabledProtocolsResponsePtrOutput)
+}
+
+// The presentation time range, this is asset related and not recommended for Account Filter.
+type PresentationTimeRange struct {
+	// The absolute end time boundary.
+	EndTimestamp *float64 `pulumi:"endTimestamp"`
+	// The indicator of forcing existing of end time stamp.
+	ForceEndTimestamp *bool `pulumi:"forceEndTimestamp"`
+	// The relative to end right edge.
+	LiveBackoffDuration *float64 `pulumi:"liveBackoffDuration"`
+	// The relative to end sliding window.
+	PresentationWindowDuration *float64 `pulumi:"presentationWindowDuration"`
+	// The absolute start time boundary.
+	StartTimestamp *float64 `pulumi:"startTimestamp"`
+	// The time scale of time stamps.
+	Timescale *float64 `pulumi:"timescale"`
+}
+
+// PresentationTimeRangeInput is an input type that accepts PresentationTimeRangeArgs and PresentationTimeRangeOutput values.
+// You can construct a concrete instance of `PresentationTimeRangeInput` via:
+//
+//	PresentationTimeRangeArgs{...}
+type PresentationTimeRangeInput interface {
+	pulumi.Input
+
+	ToPresentationTimeRangeOutput() PresentationTimeRangeOutput
+	ToPresentationTimeRangeOutputWithContext(context.Context) PresentationTimeRangeOutput
+}
+
+// The presentation time range, this is asset related and not recommended for Account Filter.
+type PresentationTimeRangeArgs struct {
+	// The absolute end time boundary.
+	EndTimestamp pulumi.Float64PtrInput `pulumi:"endTimestamp"`
+	// The indicator of forcing existing of end time stamp.
+	ForceEndTimestamp pulumi.BoolPtrInput `pulumi:"forceEndTimestamp"`
+	// The relative to end right edge.
+	LiveBackoffDuration pulumi.Float64PtrInput `pulumi:"liveBackoffDuration"`
+	// The relative to end sliding window.
+	PresentationWindowDuration pulumi.Float64PtrInput `pulumi:"presentationWindowDuration"`
+	// The absolute start time boundary.
+	StartTimestamp pulumi.Float64PtrInput `pulumi:"startTimestamp"`
+	// The time scale of time stamps.
+	Timescale pulumi.Float64PtrInput `pulumi:"timescale"`
+}
+
+func (PresentationTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PresentationTimeRange)(nil)).Elem()
+}
+
+func (i PresentationTimeRangeArgs) ToPresentationTimeRangeOutput() PresentationTimeRangeOutput {
+	return i.ToPresentationTimeRangeOutputWithContext(context.Background())
+}
+
+func (i PresentationTimeRangeArgs) ToPresentationTimeRangeOutputWithContext(ctx context.Context) PresentationTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PresentationTimeRangeOutput)
+}
+
+func (i PresentationTimeRangeArgs) ToPresentationTimeRangePtrOutput() PresentationTimeRangePtrOutput {
+	return i.ToPresentationTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i PresentationTimeRangeArgs) ToPresentationTimeRangePtrOutputWithContext(ctx context.Context) PresentationTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PresentationTimeRangeOutput).ToPresentationTimeRangePtrOutputWithContext(ctx)
+}
+
+// PresentationTimeRangePtrInput is an input type that accepts PresentationTimeRangeArgs, PresentationTimeRangePtr and PresentationTimeRangePtrOutput values.
+// You can construct a concrete instance of `PresentationTimeRangePtrInput` via:
+//
+//	        PresentationTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PresentationTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToPresentationTimeRangePtrOutput() PresentationTimeRangePtrOutput
+	ToPresentationTimeRangePtrOutputWithContext(context.Context) PresentationTimeRangePtrOutput
+}
+
+type presentationTimeRangePtrType PresentationTimeRangeArgs
+
+func PresentationTimeRangePtr(v *PresentationTimeRangeArgs) PresentationTimeRangePtrInput {
+	return (*presentationTimeRangePtrType)(v)
+}
+
+func (*presentationTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PresentationTimeRange)(nil)).Elem()
+}
+
+func (i *presentationTimeRangePtrType) ToPresentationTimeRangePtrOutput() PresentationTimeRangePtrOutput {
+	return i.ToPresentationTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *presentationTimeRangePtrType) ToPresentationTimeRangePtrOutputWithContext(ctx context.Context) PresentationTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PresentationTimeRangePtrOutput)
+}
+
+// The presentation time range, this is asset related and not recommended for Account Filter.
+type PresentationTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (PresentationTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PresentationTimeRange)(nil)).Elem()
+}
+
+func (o PresentationTimeRangeOutput) ToPresentationTimeRangeOutput() PresentationTimeRangeOutput {
+	return o
+}
+
+func (o PresentationTimeRangeOutput) ToPresentationTimeRangeOutputWithContext(ctx context.Context) PresentationTimeRangeOutput {
+	return o
+}
+
+func (o PresentationTimeRangeOutput) ToPresentationTimeRangePtrOutput() PresentationTimeRangePtrOutput {
+	return o.ToPresentationTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o PresentationTimeRangeOutput) ToPresentationTimeRangePtrOutputWithContext(ctx context.Context) PresentationTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PresentationTimeRange) *PresentationTimeRange {
+		return &v
+	}).(PresentationTimeRangePtrOutput)
+}
+
+// The absolute end time boundary.
+func (o PresentationTimeRangeOutput) EndTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRange) *float64 { return v.EndTimestamp }).(pulumi.Float64PtrOutput)
+}
+
+// The indicator of forcing existing of end time stamp.
+func (o PresentationTimeRangeOutput) ForceEndTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PresentationTimeRange) *bool { return v.ForceEndTimestamp }).(pulumi.BoolPtrOutput)
+}
+
+// The relative to end right edge.
+func (o PresentationTimeRangeOutput) LiveBackoffDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRange) *float64 { return v.LiveBackoffDuration }).(pulumi.Float64PtrOutput)
+}
+
+// The relative to end sliding window.
+func (o PresentationTimeRangeOutput) PresentationWindowDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRange) *float64 { return v.PresentationWindowDuration }).(pulumi.Float64PtrOutput)
+}
+
+// The absolute start time boundary.
+func (o PresentationTimeRangeOutput) StartTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRange) *float64 { return v.StartTimestamp }).(pulumi.Float64PtrOutput)
+}
+
+// The time scale of time stamps.
+func (o PresentationTimeRangeOutput) Timescale() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRange) *float64 { return v.Timescale }).(pulumi.Float64PtrOutput)
+}
+
+type PresentationTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (PresentationTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PresentationTimeRange)(nil)).Elem()
+}
+
+func (o PresentationTimeRangePtrOutput) ToPresentationTimeRangePtrOutput() PresentationTimeRangePtrOutput {
+	return o
+}
+
+func (o PresentationTimeRangePtrOutput) ToPresentationTimeRangePtrOutputWithContext(ctx context.Context) PresentationTimeRangePtrOutput {
+	return o
+}
+
+func (o PresentationTimeRangePtrOutput) Elem() PresentationTimeRangeOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) PresentationTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret PresentationTimeRange
+		return ret
+	}).(PresentationTimeRangeOutput)
+}
+
+// The absolute end time boundary.
+func (o PresentationTimeRangePtrOutput) EndTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.EndTimestamp
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The indicator of forcing existing of end time stamp.
+func (o PresentationTimeRangePtrOutput) ForceEndTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceEndTimestamp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The relative to end right edge.
+func (o PresentationTimeRangePtrOutput) LiveBackoffDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LiveBackoffDuration
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The relative to end sliding window.
+func (o PresentationTimeRangePtrOutput) PresentationWindowDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PresentationWindowDuration
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The absolute start time boundary.
+func (o PresentationTimeRangePtrOutput) StartTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StartTimestamp
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The time scale of time stamps.
+func (o PresentationTimeRangePtrOutput) Timescale() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Timescale
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The presentation time range, this is asset related and not recommended for Account Filter.
+type PresentationTimeRangeResponse struct {
+	// The absolute end time boundary.
+	EndTimestamp *float64 `pulumi:"endTimestamp"`
+	// The indicator of forcing existing of end time stamp.
+	ForceEndTimestamp *bool `pulumi:"forceEndTimestamp"`
+	// The relative to end right edge.
+	LiveBackoffDuration *float64 `pulumi:"liveBackoffDuration"`
+	// The relative to end sliding window.
+	PresentationWindowDuration *float64 `pulumi:"presentationWindowDuration"`
+	// The absolute start time boundary.
+	StartTimestamp *float64 `pulumi:"startTimestamp"`
+	// The time scale of time stamps.
+	Timescale *float64 `pulumi:"timescale"`
+}
+
+// The presentation time range, this is asset related and not recommended for Account Filter.
+type PresentationTimeRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (PresentationTimeRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PresentationTimeRangeResponse)(nil)).Elem()
+}
+
+func (o PresentationTimeRangeResponseOutput) ToPresentationTimeRangeResponseOutput() PresentationTimeRangeResponseOutput {
+	return o
+}
+
+func (o PresentationTimeRangeResponseOutput) ToPresentationTimeRangeResponseOutputWithContext(ctx context.Context) PresentationTimeRangeResponseOutput {
+	return o
+}
+
+// The absolute end time boundary.
+func (o PresentationTimeRangeResponseOutput) EndTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRangeResponse) *float64 { return v.EndTimestamp }).(pulumi.Float64PtrOutput)
+}
+
+// The indicator of forcing existing of end time stamp.
+func (o PresentationTimeRangeResponseOutput) ForceEndTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PresentationTimeRangeResponse) *bool { return v.ForceEndTimestamp }).(pulumi.BoolPtrOutput)
+}
+
+// The relative to end right edge.
+func (o PresentationTimeRangeResponseOutput) LiveBackoffDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRangeResponse) *float64 { return v.LiveBackoffDuration }).(pulumi.Float64PtrOutput)
+}
+
+// The relative to end sliding window.
+func (o PresentationTimeRangeResponseOutput) PresentationWindowDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRangeResponse) *float64 { return v.PresentationWindowDuration }).(pulumi.Float64PtrOutput)
+}
+
+// The absolute start time boundary.
+func (o PresentationTimeRangeResponseOutput) StartTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRangeResponse) *float64 { return v.StartTimestamp }).(pulumi.Float64PtrOutput)
+}
+
+// The time scale of time stamps.
+func (o PresentationTimeRangeResponseOutput) Timescale() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PresentationTimeRangeResponse) *float64 { return v.Timescale }).(pulumi.Float64PtrOutput)
+}
+
+type PresentationTimeRangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PresentationTimeRangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PresentationTimeRangeResponse)(nil)).Elem()
+}
+
+func (o PresentationTimeRangeResponsePtrOutput) ToPresentationTimeRangeResponsePtrOutput() PresentationTimeRangeResponsePtrOutput {
+	return o
+}
+
+func (o PresentationTimeRangeResponsePtrOutput) ToPresentationTimeRangeResponsePtrOutputWithContext(ctx context.Context) PresentationTimeRangeResponsePtrOutput {
+	return o
+}
+
+func (o PresentationTimeRangeResponsePtrOutput) Elem() PresentationTimeRangeResponseOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) PresentationTimeRangeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PresentationTimeRangeResponse
+		return ret
+	}).(PresentationTimeRangeResponseOutput)
+}
+
+// The absolute end time boundary.
+func (o PresentationTimeRangeResponsePtrOutput) EndTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.EndTimestamp
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The indicator of forcing existing of end time stamp.
+func (o PresentationTimeRangeResponsePtrOutput) ForceEndTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceEndTimestamp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The relative to end right edge.
+func (o PresentationTimeRangeResponsePtrOutput) LiveBackoffDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LiveBackoffDuration
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The relative to end sliding window.
+func (o PresentationTimeRangeResponsePtrOutput) PresentationWindowDuration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PresentationWindowDuration
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The absolute start time boundary.
+func (o PresentationTimeRangeResponsePtrOutput) StartTimestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StartTimestamp
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The time scale of time stamps.
+func (o PresentationTimeRangeResponsePtrOutput) Timescale() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PresentationTimeRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Timescale
+	}).(pulumi.Float64PtrOutput)
+}
+
 // The Private Endpoint Connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -2072,6 +6272,1359 @@ func (o StorageAccountResponseArrayOutput) Index(i pulumi.IntInput) StorageAccou
 	}).(StorageAccountResponseOutput)
 }
 
+// Class for content key in Streaming Locator
+type StreamingLocatorContentKey struct {
+	// ID of Content Key
+	Id string `pulumi:"id"`
+	// Label of Content Key as specified in the Streaming Policy
+	LabelReferenceInStreamingPolicy *string `pulumi:"labelReferenceInStreamingPolicy"`
+	// Value of Content Key
+	Value *string `pulumi:"value"`
+}
+
+// StreamingLocatorContentKeyInput is an input type that accepts StreamingLocatorContentKeyArgs and StreamingLocatorContentKeyOutput values.
+// You can construct a concrete instance of `StreamingLocatorContentKeyInput` via:
+//
+//	StreamingLocatorContentKeyArgs{...}
+type StreamingLocatorContentKeyInput interface {
+	pulumi.Input
+
+	ToStreamingLocatorContentKeyOutput() StreamingLocatorContentKeyOutput
+	ToStreamingLocatorContentKeyOutputWithContext(context.Context) StreamingLocatorContentKeyOutput
+}
+
+// Class for content key in Streaming Locator
+type StreamingLocatorContentKeyArgs struct {
+	// ID of Content Key
+	Id pulumi.StringInput `pulumi:"id"`
+	// Label of Content Key as specified in the Streaming Policy
+	LabelReferenceInStreamingPolicy pulumi.StringPtrInput `pulumi:"labelReferenceInStreamingPolicy"`
+	// Value of Content Key
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (StreamingLocatorContentKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingLocatorContentKey)(nil)).Elem()
+}
+
+func (i StreamingLocatorContentKeyArgs) ToStreamingLocatorContentKeyOutput() StreamingLocatorContentKeyOutput {
+	return i.ToStreamingLocatorContentKeyOutputWithContext(context.Background())
+}
+
+func (i StreamingLocatorContentKeyArgs) ToStreamingLocatorContentKeyOutputWithContext(ctx context.Context) StreamingLocatorContentKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorContentKeyOutput)
+}
+
+// StreamingLocatorContentKeyArrayInput is an input type that accepts StreamingLocatorContentKeyArray and StreamingLocatorContentKeyArrayOutput values.
+// You can construct a concrete instance of `StreamingLocatorContentKeyArrayInput` via:
+//
+//	StreamingLocatorContentKeyArray{ StreamingLocatorContentKeyArgs{...} }
+type StreamingLocatorContentKeyArrayInput interface {
+	pulumi.Input
+
+	ToStreamingLocatorContentKeyArrayOutput() StreamingLocatorContentKeyArrayOutput
+	ToStreamingLocatorContentKeyArrayOutputWithContext(context.Context) StreamingLocatorContentKeyArrayOutput
+}
+
+type StreamingLocatorContentKeyArray []StreamingLocatorContentKeyInput
+
+func (StreamingLocatorContentKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingLocatorContentKey)(nil)).Elem()
+}
+
+func (i StreamingLocatorContentKeyArray) ToStreamingLocatorContentKeyArrayOutput() StreamingLocatorContentKeyArrayOutput {
+	return i.ToStreamingLocatorContentKeyArrayOutputWithContext(context.Background())
+}
+
+func (i StreamingLocatorContentKeyArray) ToStreamingLocatorContentKeyArrayOutputWithContext(ctx context.Context) StreamingLocatorContentKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorContentKeyArrayOutput)
+}
+
+// Class for content key in Streaming Locator
+type StreamingLocatorContentKeyOutput struct{ *pulumi.OutputState }
+
+func (StreamingLocatorContentKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingLocatorContentKey)(nil)).Elem()
+}
+
+func (o StreamingLocatorContentKeyOutput) ToStreamingLocatorContentKeyOutput() StreamingLocatorContentKeyOutput {
+	return o
+}
+
+func (o StreamingLocatorContentKeyOutput) ToStreamingLocatorContentKeyOutputWithContext(ctx context.Context) StreamingLocatorContentKeyOutput {
+	return o
+}
+
+// ID of Content Key
+func (o StreamingLocatorContentKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Label of Content Key as specified in the Streaming Policy
+func (o StreamingLocatorContentKeyOutput) LabelReferenceInStreamingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKey) *string { return v.LabelReferenceInStreamingPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Value of Content Key
+func (o StreamingLocatorContentKeyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKey) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type StreamingLocatorContentKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamingLocatorContentKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingLocatorContentKey)(nil)).Elem()
+}
+
+func (o StreamingLocatorContentKeyArrayOutput) ToStreamingLocatorContentKeyArrayOutput() StreamingLocatorContentKeyArrayOutput {
+	return o
+}
+
+func (o StreamingLocatorContentKeyArrayOutput) ToStreamingLocatorContentKeyArrayOutputWithContext(ctx context.Context) StreamingLocatorContentKeyArrayOutput {
+	return o
+}
+
+func (o StreamingLocatorContentKeyArrayOutput) Index(i pulumi.IntInput) StreamingLocatorContentKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamingLocatorContentKey {
+		return vs[0].([]StreamingLocatorContentKey)[vs[1].(int)]
+	}).(StreamingLocatorContentKeyOutput)
+}
+
+// Class for content key in Streaming Locator
+type StreamingLocatorContentKeyResponse struct {
+	// ID of Content Key
+	Id string `pulumi:"id"`
+	// Label of Content Key as specified in the Streaming Policy
+	LabelReferenceInStreamingPolicy *string `pulumi:"labelReferenceInStreamingPolicy"`
+	// ContentKeyPolicy used by Content Key
+	PolicyName string `pulumi:"policyName"`
+	// Tracks which use this Content Key
+	Tracks []TrackSelectionResponse `pulumi:"tracks"`
+	// Encryption type of Content Key
+	Type string `pulumi:"type"`
+	// Value of Content Key
+	Value *string `pulumi:"value"`
+}
+
+// Class for content key in Streaming Locator
+type StreamingLocatorContentKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingLocatorContentKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingLocatorContentKeyResponse)(nil)).Elem()
+}
+
+func (o StreamingLocatorContentKeyResponseOutput) ToStreamingLocatorContentKeyResponseOutput() StreamingLocatorContentKeyResponseOutput {
+	return o
+}
+
+func (o StreamingLocatorContentKeyResponseOutput) ToStreamingLocatorContentKeyResponseOutputWithContext(ctx context.Context) StreamingLocatorContentKeyResponseOutput {
+	return o
+}
+
+// ID of Content Key
+func (o StreamingLocatorContentKeyResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKeyResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Label of Content Key as specified in the Streaming Policy
+func (o StreamingLocatorContentKeyResponseOutput) LabelReferenceInStreamingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKeyResponse) *string { return v.LabelReferenceInStreamingPolicy }).(pulumi.StringPtrOutput)
+}
+
+// ContentKeyPolicy used by Content Key
+func (o StreamingLocatorContentKeyResponseOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKeyResponse) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// Tracks which use this Content Key
+func (o StreamingLocatorContentKeyResponseOutput) Tracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKeyResponse) []TrackSelectionResponse { return v.Tracks }).(TrackSelectionResponseArrayOutput)
+}
+
+// Encryption type of Content Key
+func (o StreamingLocatorContentKeyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKeyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value of Content Key
+func (o StreamingLocatorContentKeyResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingLocatorContentKeyResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type StreamingLocatorContentKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamingLocatorContentKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingLocatorContentKeyResponse)(nil)).Elem()
+}
+
+func (o StreamingLocatorContentKeyResponseArrayOutput) ToStreamingLocatorContentKeyResponseArrayOutput() StreamingLocatorContentKeyResponseArrayOutput {
+	return o
+}
+
+func (o StreamingLocatorContentKeyResponseArrayOutput) ToStreamingLocatorContentKeyResponseArrayOutputWithContext(ctx context.Context) StreamingLocatorContentKeyResponseArrayOutput {
+	return o
+}
+
+func (o StreamingLocatorContentKeyResponseArrayOutput) Index(i pulumi.IntInput) StreamingLocatorContentKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamingLocatorContentKeyResponse {
+		return vs[0].([]StreamingLocatorContentKeyResponse)[vs[1].(int)]
+	}).(StreamingLocatorContentKeyResponseOutput)
+}
+
+// Class of paths for streaming
+type StreamingPathResponse struct {
+	// Encryption scheme
+	EncryptionScheme string `pulumi:"encryptionScheme"`
+	// Streaming paths for each protocol and encryptionScheme pair
+	Paths []string `pulumi:"paths"`
+	// Streaming protocol
+	StreamingProtocol string `pulumi:"streamingProtocol"`
+}
+
+// Class of paths for streaming
+type StreamingPathResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingPathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPathResponse)(nil)).Elem()
+}
+
+func (o StreamingPathResponseOutput) ToStreamingPathResponseOutput() StreamingPathResponseOutput {
+	return o
+}
+
+func (o StreamingPathResponseOutput) ToStreamingPathResponseOutputWithContext(ctx context.Context) StreamingPathResponseOutput {
+	return o
+}
+
+// Encryption scheme
+func (o StreamingPathResponseOutput) EncryptionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamingPathResponse) string { return v.EncryptionScheme }).(pulumi.StringOutput)
+}
+
+// Streaming paths for each protocol and encryptionScheme pair
+func (o StreamingPathResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamingPathResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Streaming protocol
+func (o StreamingPathResponseOutput) StreamingProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamingPathResponse) string { return v.StreamingProtocol }).(pulumi.StringOutput)
+}
+
+type StreamingPathResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamingPathResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingPathResponse)(nil)).Elem()
+}
+
+func (o StreamingPathResponseArrayOutput) ToStreamingPathResponseArrayOutput() StreamingPathResponseArrayOutput {
+	return o
+}
+
+func (o StreamingPathResponseArrayOutput) ToStreamingPathResponseArrayOutputWithContext(ctx context.Context) StreamingPathResponseArrayOutput {
+	return o
+}
+
+func (o StreamingPathResponseArrayOutput) Index(i pulumi.IntInput) StreamingPathResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamingPathResponse {
+		return vs[0].([]StreamingPathResponse)[vs[1].(int)]
+	}).(StreamingPathResponseOutput)
+}
+
+// Class to specify properties of content key
+type StreamingPolicyContentKey struct {
+	// Label can be used to specify Content Key when creating a Streaming Locator
+	Label *string `pulumi:"label"`
+	// Policy used by Content Key
+	PolicyName *string `pulumi:"policyName"`
+	// Tracks which use this content key
+	Tracks []TrackSelection `pulumi:"tracks"`
+}
+
+// StreamingPolicyContentKeyInput is an input type that accepts StreamingPolicyContentKeyArgs and StreamingPolicyContentKeyOutput values.
+// You can construct a concrete instance of `StreamingPolicyContentKeyInput` via:
+//
+//	StreamingPolicyContentKeyArgs{...}
+type StreamingPolicyContentKeyInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyContentKeyOutput() StreamingPolicyContentKeyOutput
+	ToStreamingPolicyContentKeyOutputWithContext(context.Context) StreamingPolicyContentKeyOutput
+}
+
+// Class to specify properties of content key
+type StreamingPolicyContentKeyArgs struct {
+	// Label can be used to specify Content Key when creating a Streaming Locator
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Policy used by Content Key
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	// Tracks which use this content key
+	Tracks TrackSelectionArrayInput `pulumi:"tracks"`
+}
+
+func (StreamingPolicyContentKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyContentKey)(nil)).Elem()
+}
+
+func (i StreamingPolicyContentKeyArgs) ToStreamingPolicyContentKeyOutput() StreamingPolicyContentKeyOutput {
+	return i.ToStreamingPolicyContentKeyOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyContentKeyArgs) ToStreamingPolicyContentKeyOutputWithContext(ctx context.Context) StreamingPolicyContentKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeyOutput)
+}
+
+// StreamingPolicyContentKeyArrayInput is an input type that accepts StreamingPolicyContentKeyArray and StreamingPolicyContentKeyArrayOutput values.
+// You can construct a concrete instance of `StreamingPolicyContentKeyArrayInput` via:
+//
+//	StreamingPolicyContentKeyArray{ StreamingPolicyContentKeyArgs{...} }
+type StreamingPolicyContentKeyArrayInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyContentKeyArrayOutput() StreamingPolicyContentKeyArrayOutput
+	ToStreamingPolicyContentKeyArrayOutputWithContext(context.Context) StreamingPolicyContentKeyArrayOutput
+}
+
+type StreamingPolicyContentKeyArray []StreamingPolicyContentKeyInput
+
+func (StreamingPolicyContentKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingPolicyContentKey)(nil)).Elem()
+}
+
+func (i StreamingPolicyContentKeyArray) ToStreamingPolicyContentKeyArrayOutput() StreamingPolicyContentKeyArrayOutput {
+	return i.ToStreamingPolicyContentKeyArrayOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyContentKeyArray) ToStreamingPolicyContentKeyArrayOutputWithContext(ctx context.Context) StreamingPolicyContentKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeyArrayOutput)
+}
+
+// Class to specify properties of content key
+type StreamingPolicyContentKeyOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyContentKey)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeyOutput) ToStreamingPolicyContentKeyOutput() StreamingPolicyContentKeyOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeyOutput) ToStreamingPolicyContentKeyOutputWithContext(ctx context.Context) StreamingPolicyContentKeyOutput {
+	return o
+}
+
+// Label can be used to specify Content Key when creating a Streaming Locator
+func (o StreamingPolicyContentKeyOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKey) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Policy used by Content Key
+func (o StreamingPolicyContentKeyOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKey) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Tracks which use this content key
+func (o StreamingPolicyContentKeyOutput) Tracks() TrackSelectionArrayOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKey) []TrackSelection { return v.Tracks }).(TrackSelectionArrayOutput)
+}
+
+type StreamingPolicyContentKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingPolicyContentKey)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeyArrayOutput) ToStreamingPolicyContentKeyArrayOutput() StreamingPolicyContentKeyArrayOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeyArrayOutput) ToStreamingPolicyContentKeyArrayOutputWithContext(ctx context.Context) StreamingPolicyContentKeyArrayOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeyArrayOutput) Index(i pulumi.IntInput) StreamingPolicyContentKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamingPolicyContentKey {
+		return vs[0].([]StreamingPolicyContentKey)[vs[1].(int)]
+	}).(StreamingPolicyContentKeyOutput)
+}
+
+// Class to specify properties of content key
+type StreamingPolicyContentKeyResponse struct {
+	// Label can be used to specify Content Key when creating a Streaming Locator
+	Label *string `pulumi:"label"`
+	// Policy used by Content Key
+	PolicyName *string `pulumi:"policyName"`
+	// Tracks which use this content key
+	Tracks []TrackSelectionResponse `pulumi:"tracks"`
+}
+
+// Class to specify properties of content key
+type StreamingPolicyContentKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyContentKeyResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeyResponseOutput) ToStreamingPolicyContentKeyResponseOutput() StreamingPolicyContentKeyResponseOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeyResponseOutput) ToStreamingPolicyContentKeyResponseOutputWithContext(ctx context.Context) StreamingPolicyContentKeyResponseOutput {
+	return o
+}
+
+// Label can be used to specify Content Key when creating a Streaming Locator
+func (o StreamingPolicyContentKeyResponseOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeyResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Policy used by Content Key
+func (o StreamingPolicyContentKeyResponseOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeyResponse) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Tracks which use this content key
+func (o StreamingPolicyContentKeyResponseOutput) Tracks() TrackSelectionResponseArrayOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeyResponse) []TrackSelectionResponse { return v.Tracks }).(TrackSelectionResponseArrayOutput)
+}
+
+type StreamingPolicyContentKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamingPolicyContentKeyResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeyResponseArrayOutput) ToStreamingPolicyContentKeyResponseArrayOutput() StreamingPolicyContentKeyResponseArrayOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeyResponseArrayOutput) ToStreamingPolicyContentKeyResponseArrayOutputWithContext(ctx context.Context) StreamingPolicyContentKeyResponseArrayOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeyResponseArrayOutput) Index(i pulumi.IntInput) StreamingPolicyContentKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamingPolicyContentKeyResponse {
+		return vs[0].([]StreamingPolicyContentKeyResponse)[vs[1].(int)]
+	}).(StreamingPolicyContentKeyResponseOutput)
+}
+
+// Class to specify properties of all content keys in Streaming Policy
+type StreamingPolicyContentKeys struct {
+	// Default content key for an encryption scheme
+	DefaultKey *DefaultKey `pulumi:"defaultKey"`
+	// Representing tracks needs separate content key
+	KeyToTrackMappings []StreamingPolicyContentKey `pulumi:"keyToTrackMappings"`
+}
+
+// StreamingPolicyContentKeysInput is an input type that accepts StreamingPolicyContentKeysArgs and StreamingPolicyContentKeysOutput values.
+// You can construct a concrete instance of `StreamingPolicyContentKeysInput` via:
+//
+//	StreamingPolicyContentKeysArgs{...}
+type StreamingPolicyContentKeysInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyContentKeysOutput() StreamingPolicyContentKeysOutput
+	ToStreamingPolicyContentKeysOutputWithContext(context.Context) StreamingPolicyContentKeysOutput
+}
+
+// Class to specify properties of all content keys in Streaming Policy
+type StreamingPolicyContentKeysArgs struct {
+	// Default content key for an encryption scheme
+	DefaultKey DefaultKeyPtrInput `pulumi:"defaultKey"`
+	// Representing tracks needs separate content key
+	KeyToTrackMappings StreamingPolicyContentKeyArrayInput `pulumi:"keyToTrackMappings"`
+}
+
+func (StreamingPolicyContentKeysArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyContentKeys)(nil)).Elem()
+}
+
+func (i StreamingPolicyContentKeysArgs) ToStreamingPolicyContentKeysOutput() StreamingPolicyContentKeysOutput {
+	return i.ToStreamingPolicyContentKeysOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyContentKeysArgs) ToStreamingPolicyContentKeysOutputWithContext(ctx context.Context) StreamingPolicyContentKeysOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeysOutput)
+}
+
+func (i StreamingPolicyContentKeysArgs) ToStreamingPolicyContentKeysPtrOutput() StreamingPolicyContentKeysPtrOutput {
+	return i.ToStreamingPolicyContentKeysPtrOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyContentKeysArgs) ToStreamingPolicyContentKeysPtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeysOutput).ToStreamingPolicyContentKeysPtrOutputWithContext(ctx)
+}
+
+// StreamingPolicyContentKeysPtrInput is an input type that accepts StreamingPolicyContentKeysArgs, StreamingPolicyContentKeysPtr and StreamingPolicyContentKeysPtrOutput values.
+// You can construct a concrete instance of `StreamingPolicyContentKeysPtrInput` via:
+//
+//	        StreamingPolicyContentKeysArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamingPolicyContentKeysPtrInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyContentKeysPtrOutput() StreamingPolicyContentKeysPtrOutput
+	ToStreamingPolicyContentKeysPtrOutputWithContext(context.Context) StreamingPolicyContentKeysPtrOutput
+}
+
+type streamingPolicyContentKeysPtrType StreamingPolicyContentKeysArgs
+
+func StreamingPolicyContentKeysPtr(v *StreamingPolicyContentKeysArgs) StreamingPolicyContentKeysPtrInput {
+	return (*streamingPolicyContentKeysPtrType)(v)
+}
+
+func (*streamingPolicyContentKeysPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyContentKeys)(nil)).Elem()
+}
+
+func (i *streamingPolicyContentKeysPtrType) ToStreamingPolicyContentKeysPtrOutput() StreamingPolicyContentKeysPtrOutput {
+	return i.ToStreamingPolicyContentKeysPtrOutputWithContext(context.Background())
+}
+
+func (i *streamingPolicyContentKeysPtrType) ToStreamingPolicyContentKeysPtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Class to specify properties of all content keys in Streaming Policy
+type StreamingPolicyContentKeysOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeysOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyContentKeys)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeysOutput) ToStreamingPolicyContentKeysOutput() StreamingPolicyContentKeysOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysOutput) ToStreamingPolicyContentKeysOutputWithContext(ctx context.Context) StreamingPolicyContentKeysOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysOutput) ToStreamingPolicyContentKeysPtrOutput() StreamingPolicyContentKeysPtrOutput {
+	return o.ToStreamingPolicyContentKeysPtrOutputWithContext(context.Background())
+}
+
+func (o StreamingPolicyContentKeysOutput) ToStreamingPolicyContentKeysPtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingPolicyContentKeys) *StreamingPolicyContentKeys {
+		return &v
+	}).(StreamingPolicyContentKeysPtrOutput)
+}
+
+// Default content key for an encryption scheme
+func (o StreamingPolicyContentKeysOutput) DefaultKey() DefaultKeyPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeys) *DefaultKey { return v.DefaultKey }).(DefaultKeyPtrOutput)
+}
+
+// Representing tracks needs separate content key
+func (o StreamingPolicyContentKeysOutput) KeyToTrackMappings() StreamingPolicyContentKeyArrayOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeys) []StreamingPolicyContentKey { return v.KeyToTrackMappings }).(StreamingPolicyContentKeyArrayOutput)
+}
+
+type StreamingPolicyContentKeysPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeysPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyContentKeys)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeysPtrOutput) ToStreamingPolicyContentKeysPtrOutput() StreamingPolicyContentKeysPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysPtrOutput) ToStreamingPolicyContentKeysPtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysPtrOutput) Elem() StreamingPolicyContentKeysOutput {
+	return o.ApplyT(func(v *StreamingPolicyContentKeys) StreamingPolicyContentKeys {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyContentKeys
+		return ret
+	}).(StreamingPolicyContentKeysOutput)
+}
+
+// Default content key for an encryption scheme
+func (o StreamingPolicyContentKeysPtrOutput) DefaultKey() DefaultKeyPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyContentKeys) *DefaultKey {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultKey
+	}).(DefaultKeyPtrOutput)
+}
+
+// Representing tracks needs separate content key
+func (o StreamingPolicyContentKeysPtrOutput) KeyToTrackMappings() StreamingPolicyContentKeyArrayOutput {
+	return o.ApplyT(func(v *StreamingPolicyContentKeys) []StreamingPolicyContentKey {
+		if v == nil {
+			return nil
+		}
+		return v.KeyToTrackMappings
+	}).(StreamingPolicyContentKeyArrayOutput)
+}
+
+// Class to specify properties of all content keys in Streaming Policy
+type StreamingPolicyContentKeysResponse struct {
+	// Default content key for an encryption scheme
+	DefaultKey *DefaultKeyResponse `pulumi:"defaultKey"`
+	// Representing tracks needs separate content key
+	KeyToTrackMappings []StreamingPolicyContentKeyResponse `pulumi:"keyToTrackMappings"`
+}
+
+// Class to specify properties of all content keys in Streaming Policy
+type StreamingPolicyContentKeysResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeysResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyContentKeysResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeysResponseOutput) ToStreamingPolicyContentKeysResponseOutput() StreamingPolicyContentKeysResponseOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysResponseOutput) ToStreamingPolicyContentKeysResponseOutputWithContext(ctx context.Context) StreamingPolicyContentKeysResponseOutput {
+	return o
+}
+
+// Default content key for an encryption scheme
+func (o StreamingPolicyContentKeysResponseOutput) DefaultKey() DefaultKeyResponsePtrOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeysResponse) *DefaultKeyResponse { return v.DefaultKey }).(DefaultKeyResponsePtrOutput)
+}
+
+// Representing tracks needs separate content key
+func (o StreamingPolicyContentKeysResponseOutput) KeyToTrackMappings() StreamingPolicyContentKeyResponseArrayOutput {
+	return o.ApplyT(func(v StreamingPolicyContentKeysResponse) []StreamingPolicyContentKeyResponse {
+		return v.KeyToTrackMappings
+	}).(StreamingPolicyContentKeyResponseArrayOutput)
+}
+
+type StreamingPolicyContentKeysResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyContentKeysResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyContentKeysResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyContentKeysResponsePtrOutput) ToStreamingPolicyContentKeysResponsePtrOutput() StreamingPolicyContentKeysResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysResponsePtrOutput) ToStreamingPolicyContentKeysResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyContentKeysResponsePtrOutput) Elem() StreamingPolicyContentKeysResponseOutput {
+	return o.ApplyT(func(v *StreamingPolicyContentKeysResponse) StreamingPolicyContentKeysResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyContentKeysResponse
+		return ret
+	}).(StreamingPolicyContentKeysResponseOutput)
+}
+
+// Default content key for an encryption scheme
+func (o StreamingPolicyContentKeysResponsePtrOutput) DefaultKey() DefaultKeyResponsePtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyContentKeysResponse) *DefaultKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultKey
+	}).(DefaultKeyResponsePtrOutput)
+}
+
+// Representing tracks needs separate content key
+func (o StreamingPolicyContentKeysResponsePtrOutput) KeyToTrackMappings() StreamingPolicyContentKeyResponseArrayOutput {
+	return o.ApplyT(func(v *StreamingPolicyContentKeysResponse) []StreamingPolicyContentKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KeyToTrackMappings
+	}).(StreamingPolicyContentKeyResponseArrayOutput)
+}
+
+// Class to specify configurations of FairPlay in Streaming Policy
+type StreamingPolicyFairPlayConfiguration struct {
+	// All license to be persistent or not
+	AllowPersistentLicense bool `pulumi:"allowPersistentLicense"`
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate *string `pulumi:"customLicenseAcquisitionUrlTemplate"`
+}
+
+// StreamingPolicyFairPlayConfigurationInput is an input type that accepts StreamingPolicyFairPlayConfigurationArgs and StreamingPolicyFairPlayConfigurationOutput values.
+// You can construct a concrete instance of `StreamingPolicyFairPlayConfigurationInput` via:
+//
+//	StreamingPolicyFairPlayConfigurationArgs{...}
+type StreamingPolicyFairPlayConfigurationInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyFairPlayConfigurationOutput() StreamingPolicyFairPlayConfigurationOutput
+	ToStreamingPolicyFairPlayConfigurationOutputWithContext(context.Context) StreamingPolicyFairPlayConfigurationOutput
+}
+
+// Class to specify configurations of FairPlay in Streaming Policy
+type StreamingPolicyFairPlayConfigurationArgs struct {
+	// All license to be persistent or not
+	AllowPersistentLicense pulumi.BoolInput `pulumi:"allowPersistentLicense"`
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate pulumi.StringPtrInput `pulumi:"customLicenseAcquisitionUrlTemplate"`
+}
+
+func (StreamingPolicyFairPlayConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyFairPlayConfiguration)(nil)).Elem()
+}
+
+func (i StreamingPolicyFairPlayConfigurationArgs) ToStreamingPolicyFairPlayConfigurationOutput() StreamingPolicyFairPlayConfigurationOutput {
+	return i.ToStreamingPolicyFairPlayConfigurationOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyFairPlayConfigurationArgs) ToStreamingPolicyFairPlayConfigurationOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyFairPlayConfigurationOutput)
+}
+
+func (i StreamingPolicyFairPlayConfigurationArgs) ToStreamingPolicyFairPlayConfigurationPtrOutput() StreamingPolicyFairPlayConfigurationPtrOutput {
+	return i.ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyFairPlayConfigurationArgs) ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyFairPlayConfigurationOutput).ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx)
+}
+
+// StreamingPolicyFairPlayConfigurationPtrInput is an input type that accepts StreamingPolicyFairPlayConfigurationArgs, StreamingPolicyFairPlayConfigurationPtr and StreamingPolicyFairPlayConfigurationPtrOutput values.
+// You can construct a concrete instance of `StreamingPolicyFairPlayConfigurationPtrInput` via:
+//
+//	        StreamingPolicyFairPlayConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamingPolicyFairPlayConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyFairPlayConfigurationPtrOutput() StreamingPolicyFairPlayConfigurationPtrOutput
+	ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(context.Context) StreamingPolicyFairPlayConfigurationPtrOutput
+}
+
+type streamingPolicyFairPlayConfigurationPtrType StreamingPolicyFairPlayConfigurationArgs
+
+func StreamingPolicyFairPlayConfigurationPtr(v *StreamingPolicyFairPlayConfigurationArgs) StreamingPolicyFairPlayConfigurationPtrInput {
+	return (*streamingPolicyFairPlayConfigurationPtrType)(v)
+}
+
+func (*streamingPolicyFairPlayConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyFairPlayConfiguration)(nil)).Elem()
+}
+
+func (i *streamingPolicyFairPlayConfigurationPtrType) ToStreamingPolicyFairPlayConfigurationPtrOutput() StreamingPolicyFairPlayConfigurationPtrOutput {
+	return i.ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *streamingPolicyFairPlayConfigurationPtrType) ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyFairPlayConfigurationPtrOutput)
+}
+
+// Class to specify configurations of FairPlay in Streaming Policy
+type StreamingPolicyFairPlayConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyFairPlayConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyFairPlayConfiguration)(nil)).Elem()
+}
+
+func (o StreamingPolicyFairPlayConfigurationOutput) ToStreamingPolicyFairPlayConfigurationOutput() StreamingPolicyFairPlayConfigurationOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationOutput) ToStreamingPolicyFairPlayConfigurationOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationOutput) ToStreamingPolicyFairPlayConfigurationPtrOutput() StreamingPolicyFairPlayConfigurationPtrOutput {
+	return o.ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o StreamingPolicyFairPlayConfigurationOutput) ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingPolicyFairPlayConfiguration) *StreamingPolicyFairPlayConfiguration {
+		return &v
+	}).(StreamingPolicyFairPlayConfigurationPtrOutput)
+}
+
+// All license to be persistent or not
+func (o StreamingPolicyFairPlayConfigurationOutput) AllowPersistentLicense() pulumi.BoolOutput {
+	return o.ApplyT(func(v StreamingPolicyFairPlayConfiguration) bool { return v.AllowPersistentLicense }).(pulumi.BoolOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyFairPlayConfigurationOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyFairPlayConfiguration) *string { return v.CustomLicenseAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+type StreamingPolicyFairPlayConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyFairPlayConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyFairPlayConfiguration)(nil)).Elem()
+}
+
+func (o StreamingPolicyFairPlayConfigurationPtrOutput) ToStreamingPolicyFairPlayConfigurationPtrOutput() StreamingPolicyFairPlayConfigurationPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationPtrOutput) ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationPtrOutput) Elem() StreamingPolicyFairPlayConfigurationOutput {
+	return o.ApplyT(func(v *StreamingPolicyFairPlayConfiguration) StreamingPolicyFairPlayConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyFairPlayConfiguration
+		return ret
+	}).(StreamingPolicyFairPlayConfigurationOutput)
+}
+
+// All license to be persistent or not
+func (o StreamingPolicyFairPlayConfigurationPtrOutput) AllowPersistentLicense() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyFairPlayConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowPersistentLicense
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyFairPlayConfigurationPtrOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyFairPlayConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify configurations of FairPlay in Streaming Policy
+type StreamingPolicyFairPlayConfigurationResponse struct {
+	// All license to be persistent or not
+	AllowPersistentLicense bool `pulumi:"allowPersistentLicense"`
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate *string `pulumi:"customLicenseAcquisitionUrlTemplate"`
+}
+
+// Class to specify configurations of FairPlay in Streaming Policy
+type StreamingPolicyFairPlayConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyFairPlayConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyFairPlayConfigurationResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyFairPlayConfigurationResponseOutput) ToStreamingPolicyFairPlayConfigurationResponseOutput() StreamingPolicyFairPlayConfigurationResponseOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationResponseOutput) ToStreamingPolicyFairPlayConfigurationResponseOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationResponseOutput {
+	return o
+}
+
+// All license to be persistent or not
+func (o StreamingPolicyFairPlayConfigurationResponseOutput) AllowPersistentLicense() pulumi.BoolOutput {
+	return o.ApplyT(func(v StreamingPolicyFairPlayConfigurationResponse) bool { return v.AllowPersistentLicense }).(pulumi.BoolOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyFairPlayConfigurationResponseOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyFairPlayConfigurationResponse) *string {
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamingPolicyFairPlayConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyFairPlayConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyFairPlayConfigurationResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) ToStreamingPolicyFairPlayConfigurationResponsePtrOutput() StreamingPolicyFairPlayConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) ToStreamingPolicyFairPlayConfigurationResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) Elem() StreamingPolicyFairPlayConfigurationResponseOutput {
+	return o.ApplyT(func(v *StreamingPolicyFairPlayConfigurationResponse) StreamingPolicyFairPlayConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyFairPlayConfigurationResponse
+		return ret
+	}).(StreamingPolicyFairPlayConfigurationResponseOutput)
+}
+
+// All license to be persistent or not
+func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) AllowPersistentLicense() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyFairPlayConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowPersistentLicense
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyFairPlayConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify configurations of PlayReady in Streaming Policy
+type StreamingPolicyPlayReadyConfiguration struct {
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate *string `pulumi:"customLicenseAcquisitionUrlTemplate"`
+	// Custom attributes for PlayReady
+	PlayReadyCustomAttributes *string `pulumi:"playReadyCustomAttributes"`
+}
+
+// StreamingPolicyPlayReadyConfigurationInput is an input type that accepts StreamingPolicyPlayReadyConfigurationArgs and StreamingPolicyPlayReadyConfigurationOutput values.
+// You can construct a concrete instance of `StreamingPolicyPlayReadyConfigurationInput` via:
+//
+//	StreamingPolicyPlayReadyConfigurationArgs{...}
+type StreamingPolicyPlayReadyConfigurationInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyPlayReadyConfigurationOutput() StreamingPolicyPlayReadyConfigurationOutput
+	ToStreamingPolicyPlayReadyConfigurationOutputWithContext(context.Context) StreamingPolicyPlayReadyConfigurationOutput
+}
+
+// Class to specify configurations of PlayReady in Streaming Policy
+type StreamingPolicyPlayReadyConfigurationArgs struct {
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate pulumi.StringPtrInput `pulumi:"customLicenseAcquisitionUrlTemplate"`
+	// Custom attributes for PlayReady
+	PlayReadyCustomAttributes pulumi.StringPtrInput `pulumi:"playReadyCustomAttributes"`
+}
+
+func (StreamingPolicyPlayReadyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyPlayReadyConfiguration)(nil)).Elem()
+}
+
+func (i StreamingPolicyPlayReadyConfigurationArgs) ToStreamingPolicyPlayReadyConfigurationOutput() StreamingPolicyPlayReadyConfigurationOutput {
+	return i.ToStreamingPolicyPlayReadyConfigurationOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyPlayReadyConfigurationArgs) ToStreamingPolicyPlayReadyConfigurationOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyPlayReadyConfigurationOutput)
+}
+
+func (i StreamingPolicyPlayReadyConfigurationArgs) ToStreamingPolicyPlayReadyConfigurationPtrOutput() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return i.ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyPlayReadyConfigurationArgs) ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyPlayReadyConfigurationOutput).ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx)
+}
+
+// StreamingPolicyPlayReadyConfigurationPtrInput is an input type that accepts StreamingPolicyPlayReadyConfigurationArgs, StreamingPolicyPlayReadyConfigurationPtr and StreamingPolicyPlayReadyConfigurationPtrOutput values.
+// You can construct a concrete instance of `StreamingPolicyPlayReadyConfigurationPtrInput` via:
+//
+//	        StreamingPolicyPlayReadyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamingPolicyPlayReadyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyPlayReadyConfigurationPtrOutput() StreamingPolicyPlayReadyConfigurationPtrOutput
+	ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(context.Context) StreamingPolicyPlayReadyConfigurationPtrOutput
+}
+
+type streamingPolicyPlayReadyConfigurationPtrType StreamingPolicyPlayReadyConfigurationArgs
+
+func StreamingPolicyPlayReadyConfigurationPtr(v *StreamingPolicyPlayReadyConfigurationArgs) StreamingPolicyPlayReadyConfigurationPtrInput {
+	return (*streamingPolicyPlayReadyConfigurationPtrType)(v)
+}
+
+func (*streamingPolicyPlayReadyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyPlayReadyConfiguration)(nil)).Elem()
+}
+
+func (i *streamingPolicyPlayReadyConfigurationPtrType) ToStreamingPolicyPlayReadyConfigurationPtrOutput() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return i.ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *streamingPolicyPlayReadyConfigurationPtrType) ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyPlayReadyConfigurationPtrOutput)
+}
+
+// Class to specify configurations of PlayReady in Streaming Policy
+type StreamingPolicyPlayReadyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyPlayReadyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyPlayReadyConfiguration)(nil)).Elem()
+}
+
+func (o StreamingPolicyPlayReadyConfigurationOutput) ToStreamingPolicyPlayReadyConfigurationOutput() StreamingPolicyPlayReadyConfigurationOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationOutput) ToStreamingPolicyPlayReadyConfigurationOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationOutput) ToStreamingPolicyPlayReadyConfigurationPtrOutput() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o.ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o StreamingPolicyPlayReadyConfigurationOutput) ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingPolicyPlayReadyConfiguration) *StreamingPolicyPlayReadyConfiguration {
+		return &v
+	}).(StreamingPolicyPlayReadyConfigurationPtrOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyPlayReadyConfigurationOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyPlayReadyConfiguration) *string { return v.CustomLicenseAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes for PlayReady
+func (o StreamingPolicyPlayReadyConfigurationOutput) PlayReadyCustomAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyPlayReadyConfiguration) *string { return v.PlayReadyCustomAttributes }).(pulumi.StringPtrOutput)
+}
+
+type StreamingPolicyPlayReadyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyPlayReadyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyPlayReadyConfiguration)(nil)).Elem()
+}
+
+func (o StreamingPolicyPlayReadyConfigurationPtrOutput) ToStreamingPolicyPlayReadyConfigurationPtrOutput() StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationPtrOutput) ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationPtrOutput) Elem() StreamingPolicyPlayReadyConfigurationOutput {
+	return o.ApplyT(func(v *StreamingPolicyPlayReadyConfiguration) StreamingPolicyPlayReadyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyPlayReadyConfiguration
+		return ret
+	}).(StreamingPolicyPlayReadyConfigurationOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyPlayReadyConfigurationPtrOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyPlayReadyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes for PlayReady
+func (o StreamingPolicyPlayReadyConfigurationPtrOutput) PlayReadyCustomAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyPlayReadyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlayReadyCustomAttributes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify configurations of PlayReady in Streaming Policy
+type StreamingPolicyPlayReadyConfigurationResponse struct {
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate *string `pulumi:"customLicenseAcquisitionUrlTemplate"`
+	// Custom attributes for PlayReady
+	PlayReadyCustomAttributes *string `pulumi:"playReadyCustomAttributes"`
+}
+
+// Class to specify configurations of PlayReady in Streaming Policy
+type StreamingPolicyPlayReadyConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyPlayReadyConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyPlayReadyConfigurationResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyPlayReadyConfigurationResponseOutput) ToStreamingPolicyPlayReadyConfigurationResponseOutput() StreamingPolicyPlayReadyConfigurationResponseOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationResponseOutput) ToStreamingPolicyPlayReadyConfigurationResponseOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationResponseOutput {
+	return o
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyPlayReadyConfigurationResponseOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyPlayReadyConfigurationResponse) *string {
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes for PlayReady
+func (o StreamingPolicyPlayReadyConfigurationResponseOutput) PlayReadyCustomAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyPlayReadyConfigurationResponse) *string { return v.PlayReadyCustomAttributes }).(pulumi.StringPtrOutput)
+}
+
+type StreamingPolicyPlayReadyConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyPlayReadyConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyPlayReadyConfigurationResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) ToStreamingPolicyPlayReadyConfigurationResponsePtrOutput() StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) ToStreamingPolicyPlayReadyConfigurationResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) Elem() StreamingPolicyPlayReadyConfigurationResponseOutput {
+	return o.ApplyT(func(v *StreamingPolicyPlayReadyConfigurationResponse) StreamingPolicyPlayReadyConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyPlayReadyConfigurationResponse
+		return ret
+	}).(StreamingPolicyPlayReadyConfigurationResponseOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyPlayReadyConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes for PlayReady
+func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) PlayReadyCustomAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyPlayReadyConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlayReadyCustomAttributes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify configurations of Widevine in Streaming Policy
+type StreamingPolicyWidevineConfiguration struct {
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate *string `pulumi:"customLicenseAcquisitionUrlTemplate"`
+}
+
+// StreamingPolicyWidevineConfigurationInput is an input type that accepts StreamingPolicyWidevineConfigurationArgs and StreamingPolicyWidevineConfigurationOutput values.
+// You can construct a concrete instance of `StreamingPolicyWidevineConfigurationInput` via:
+//
+//	StreamingPolicyWidevineConfigurationArgs{...}
+type StreamingPolicyWidevineConfigurationInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyWidevineConfigurationOutput() StreamingPolicyWidevineConfigurationOutput
+	ToStreamingPolicyWidevineConfigurationOutputWithContext(context.Context) StreamingPolicyWidevineConfigurationOutput
+}
+
+// Class to specify configurations of Widevine in Streaming Policy
+type StreamingPolicyWidevineConfigurationArgs struct {
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate pulumi.StringPtrInput `pulumi:"customLicenseAcquisitionUrlTemplate"`
+}
+
+func (StreamingPolicyWidevineConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyWidevineConfiguration)(nil)).Elem()
+}
+
+func (i StreamingPolicyWidevineConfigurationArgs) ToStreamingPolicyWidevineConfigurationOutput() StreamingPolicyWidevineConfigurationOutput {
+	return i.ToStreamingPolicyWidevineConfigurationOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyWidevineConfigurationArgs) ToStreamingPolicyWidevineConfigurationOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyWidevineConfigurationOutput)
+}
+
+func (i StreamingPolicyWidevineConfigurationArgs) ToStreamingPolicyWidevineConfigurationPtrOutput() StreamingPolicyWidevineConfigurationPtrOutput {
+	return i.ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i StreamingPolicyWidevineConfigurationArgs) ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyWidevineConfigurationOutput).ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx)
+}
+
+// StreamingPolicyWidevineConfigurationPtrInput is an input type that accepts StreamingPolicyWidevineConfigurationArgs, StreamingPolicyWidevineConfigurationPtr and StreamingPolicyWidevineConfigurationPtrOutput values.
+// You can construct a concrete instance of `StreamingPolicyWidevineConfigurationPtrInput` via:
+//
+//	        StreamingPolicyWidevineConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamingPolicyWidevineConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToStreamingPolicyWidevineConfigurationPtrOutput() StreamingPolicyWidevineConfigurationPtrOutput
+	ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(context.Context) StreamingPolicyWidevineConfigurationPtrOutput
+}
+
+type streamingPolicyWidevineConfigurationPtrType StreamingPolicyWidevineConfigurationArgs
+
+func StreamingPolicyWidevineConfigurationPtr(v *StreamingPolicyWidevineConfigurationArgs) StreamingPolicyWidevineConfigurationPtrInput {
+	return (*streamingPolicyWidevineConfigurationPtrType)(v)
+}
+
+func (*streamingPolicyWidevineConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyWidevineConfiguration)(nil)).Elem()
+}
+
+func (i *streamingPolicyWidevineConfigurationPtrType) ToStreamingPolicyWidevineConfigurationPtrOutput() StreamingPolicyWidevineConfigurationPtrOutput {
+	return i.ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *streamingPolicyWidevineConfigurationPtrType) ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyWidevineConfigurationPtrOutput)
+}
+
+// Class to specify configurations of Widevine in Streaming Policy
+type StreamingPolicyWidevineConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyWidevineConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyWidevineConfiguration)(nil)).Elem()
+}
+
+func (o StreamingPolicyWidevineConfigurationOutput) ToStreamingPolicyWidevineConfigurationOutput() StreamingPolicyWidevineConfigurationOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationOutput) ToStreamingPolicyWidevineConfigurationOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationOutput) ToStreamingPolicyWidevineConfigurationPtrOutput() StreamingPolicyWidevineConfigurationPtrOutput {
+	return o.ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o StreamingPolicyWidevineConfigurationOutput) ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingPolicyWidevineConfiguration) *StreamingPolicyWidevineConfiguration {
+		return &v
+	}).(StreamingPolicyWidevineConfigurationPtrOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyWidevineConfigurationOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyWidevineConfiguration) *string { return v.CustomLicenseAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
+}
+
+type StreamingPolicyWidevineConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyWidevineConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyWidevineConfiguration)(nil)).Elem()
+}
+
+func (o StreamingPolicyWidevineConfigurationPtrOutput) ToStreamingPolicyWidevineConfigurationPtrOutput() StreamingPolicyWidevineConfigurationPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationPtrOutput) ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationPtrOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationPtrOutput) Elem() StreamingPolicyWidevineConfigurationOutput {
+	return o.ApplyT(func(v *StreamingPolicyWidevineConfiguration) StreamingPolicyWidevineConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyWidevineConfiguration
+		return ret
+	}).(StreamingPolicyWidevineConfigurationOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyWidevineConfigurationPtrOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyWidevineConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Class to specify configurations of Widevine in Streaming Policy
+type StreamingPolicyWidevineConfigurationResponse struct {
+	// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+	CustomLicenseAcquisitionUrlTemplate *string `pulumi:"customLicenseAcquisitionUrlTemplate"`
+}
+
+// Class to specify configurations of Widevine in Streaming Policy
+type StreamingPolicyWidevineConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyWidevineConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicyWidevineConfigurationResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyWidevineConfigurationResponseOutput) ToStreamingPolicyWidevineConfigurationResponseOutput() StreamingPolicyWidevineConfigurationResponseOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationResponseOutput) ToStreamingPolicyWidevineConfigurationResponseOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationResponseOutput {
+	return o
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyWidevineConfigurationResponseOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamingPolicyWidevineConfigurationResponse) *string {
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamingPolicyWidevineConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamingPolicyWidevineConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamingPolicyWidevineConfigurationResponse)(nil)).Elem()
+}
+
+func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) ToStreamingPolicyWidevineConfigurationResponsePtrOutput() StreamingPolicyWidevineConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) ToStreamingPolicyWidevineConfigurationResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) Elem() StreamingPolicyWidevineConfigurationResponseOutput {
+	return o.ApplyT(func(v *StreamingPolicyWidevineConfigurationResponse) StreamingPolicyWidevineConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingPolicyWidevineConfigurationResponse
+		return ret
+	}).(StreamingPolicyWidevineConfigurationResponseOutput)
+}
+
+// Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
+func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamingPolicyWidevineConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLicenseAcquisitionUrlTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -2133,6 +7686,362 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Represents a text track in an asset. A text track is usually used for sparse data related to the audio or video tracks.
+type TextTrack struct {
+	// The display name of the text track on a video player. In HLS, this maps to the NAME attribute of EXT-X-MEDIA.
+	DisplayName *string `pulumi:"displayName"`
+	// The file name to the source file. This file is located in the storage container of the asset.
+	FileName *string `pulumi:"fileName"`
+	// The HLS specific setting for the text track.
+	HlsSettings *HlsSettings `pulumi:"hlsSettings"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.TextTrack'.
+	OdataType string `pulumi:"odataType"`
+	// When PlayerVisibility is set to "Visible", the text track will be present in the DASH manifest or HLS playlist when requested by a client. When the PlayerVisibility is set to "Hidden", the text will not be available to the client. The default value is "Visible".
+	PlayerVisibility *string `pulumi:"playerVisibility"`
+}
+
+// Represents a text track in an asset. A text track is usually used for sparse data related to the audio or video tracks.
+type TextTrackResponse struct {
+	// The display name of the text track on a video player. In HLS, this maps to the NAME attribute of EXT-X-MEDIA.
+	DisplayName *string `pulumi:"displayName"`
+	// The file name to the source file. This file is located in the storage container of the asset.
+	FileName *string `pulumi:"fileName"`
+	// The HLS specific setting for the text track.
+	HlsSettings *HlsSettingsResponse `pulumi:"hlsSettings"`
+	// The RFC5646 language code for the text track.
+	LanguageCode string `pulumi:"languageCode"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.TextTrack'.
+	OdataType string `pulumi:"odataType"`
+	// When PlayerVisibility is set to "Visible", the text track will be present in the DASH manifest or HLS playlist when requested by a client. When the PlayerVisibility is set to "Hidden", the text will not be available to the client. The default value is "Visible".
+	PlayerVisibility *string `pulumi:"playerVisibility"`
+}
+
+// Class to specify one track property condition
+type TrackPropertyCondition struct {
+	// Track property condition operation
+	Operation string `pulumi:"operation"`
+	// Track property type
+	Property string `pulumi:"property"`
+	// Track property value
+	Value *string `pulumi:"value"`
+}
+
+// TrackPropertyConditionInput is an input type that accepts TrackPropertyConditionArgs and TrackPropertyConditionOutput values.
+// You can construct a concrete instance of `TrackPropertyConditionInput` via:
+//
+//	TrackPropertyConditionArgs{...}
+type TrackPropertyConditionInput interface {
+	pulumi.Input
+
+	ToTrackPropertyConditionOutput() TrackPropertyConditionOutput
+	ToTrackPropertyConditionOutputWithContext(context.Context) TrackPropertyConditionOutput
+}
+
+// Class to specify one track property condition
+type TrackPropertyConditionArgs struct {
+	// Track property condition operation
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// Track property type
+	Property pulumi.StringInput `pulumi:"property"`
+	// Track property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TrackPropertyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackPropertyCondition)(nil)).Elem()
+}
+
+func (i TrackPropertyConditionArgs) ToTrackPropertyConditionOutput() TrackPropertyConditionOutput {
+	return i.ToTrackPropertyConditionOutputWithContext(context.Background())
+}
+
+func (i TrackPropertyConditionArgs) ToTrackPropertyConditionOutputWithContext(ctx context.Context) TrackPropertyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackPropertyConditionOutput)
+}
+
+// TrackPropertyConditionArrayInput is an input type that accepts TrackPropertyConditionArray and TrackPropertyConditionArrayOutput values.
+// You can construct a concrete instance of `TrackPropertyConditionArrayInput` via:
+//
+//	TrackPropertyConditionArray{ TrackPropertyConditionArgs{...} }
+type TrackPropertyConditionArrayInput interface {
+	pulumi.Input
+
+	ToTrackPropertyConditionArrayOutput() TrackPropertyConditionArrayOutput
+	ToTrackPropertyConditionArrayOutputWithContext(context.Context) TrackPropertyConditionArrayOutput
+}
+
+type TrackPropertyConditionArray []TrackPropertyConditionInput
+
+func (TrackPropertyConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrackPropertyCondition)(nil)).Elem()
+}
+
+func (i TrackPropertyConditionArray) ToTrackPropertyConditionArrayOutput() TrackPropertyConditionArrayOutput {
+	return i.ToTrackPropertyConditionArrayOutputWithContext(context.Background())
+}
+
+func (i TrackPropertyConditionArray) ToTrackPropertyConditionArrayOutputWithContext(ctx context.Context) TrackPropertyConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackPropertyConditionArrayOutput)
+}
+
+// Class to specify one track property condition
+type TrackPropertyConditionOutput struct{ *pulumi.OutputState }
+
+func (TrackPropertyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackPropertyCondition)(nil)).Elem()
+}
+
+func (o TrackPropertyConditionOutput) ToTrackPropertyConditionOutput() TrackPropertyConditionOutput {
+	return o
+}
+
+func (o TrackPropertyConditionOutput) ToTrackPropertyConditionOutputWithContext(ctx context.Context) TrackPropertyConditionOutput {
+	return o
+}
+
+// Track property condition operation
+func (o TrackPropertyConditionOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackPropertyCondition) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Track property type
+func (o TrackPropertyConditionOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackPropertyCondition) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// Track property value
+func (o TrackPropertyConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackPropertyCondition) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TrackPropertyConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (TrackPropertyConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrackPropertyCondition)(nil)).Elem()
+}
+
+func (o TrackPropertyConditionArrayOutput) ToTrackPropertyConditionArrayOutput() TrackPropertyConditionArrayOutput {
+	return o
+}
+
+func (o TrackPropertyConditionArrayOutput) ToTrackPropertyConditionArrayOutputWithContext(ctx context.Context) TrackPropertyConditionArrayOutput {
+	return o
+}
+
+func (o TrackPropertyConditionArrayOutput) Index(i pulumi.IntInput) TrackPropertyConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrackPropertyCondition {
+		return vs[0].([]TrackPropertyCondition)[vs[1].(int)]
+	}).(TrackPropertyConditionOutput)
+}
+
+// Class to specify one track property condition
+type TrackPropertyConditionResponse struct {
+	// Track property condition operation
+	Operation string `pulumi:"operation"`
+	// Track property type
+	Property string `pulumi:"property"`
+	// Track property value
+	Value *string `pulumi:"value"`
+}
+
+// Class to specify one track property condition
+type TrackPropertyConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (TrackPropertyConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackPropertyConditionResponse)(nil)).Elem()
+}
+
+func (o TrackPropertyConditionResponseOutput) ToTrackPropertyConditionResponseOutput() TrackPropertyConditionResponseOutput {
+	return o
+}
+
+func (o TrackPropertyConditionResponseOutput) ToTrackPropertyConditionResponseOutputWithContext(ctx context.Context) TrackPropertyConditionResponseOutput {
+	return o
+}
+
+// Track property condition operation
+func (o TrackPropertyConditionResponseOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackPropertyConditionResponse) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Track property type
+func (o TrackPropertyConditionResponseOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackPropertyConditionResponse) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// Track property value
+func (o TrackPropertyConditionResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackPropertyConditionResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TrackPropertyConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrackPropertyConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrackPropertyConditionResponse)(nil)).Elem()
+}
+
+func (o TrackPropertyConditionResponseArrayOutput) ToTrackPropertyConditionResponseArrayOutput() TrackPropertyConditionResponseArrayOutput {
+	return o
+}
+
+func (o TrackPropertyConditionResponseArrayOutput) ToTrackPropertyConditionResponseArrayOutputWithContext(ctx context.Context) TrackPropertyConditionResponseArrayOutput {
+	return o
+}
+
+func (o TrackPropertyConditionResponseArrayOutput) Index(i pulumi.IntInput) TrackPropertyConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrackPropertyConditionResponse {
+		return vs[0].([]TrackPropertyConditionResponse)[vs[1].(int)]
+	}).(TrackPropertyConditionResponseOutput)
+}
+
+// Class to select a track
+type TrackSelection struct {
+	// TrackSelections is a track property condition list which can specify track(s)
+	TrackSelections []TrackPropertyCondition `pulumi:"trackSelections"`
+}
+
+// TrackSelectionInput is an input type that accepts TrackSelectionArgs and TrackSelectionOutput values.
+// You can construct a concrete instance of `TrackSelectionInput` via:
+//
+//	TrackSelectionArgs{...}
+type TrackSelectionInput interface {
+	pulumi.Input
+
+	ToTrackSelectionOutput() TrackSelectionOutput
+	ToTrackSelectionOutputWithContext(context.Context) TrackSelectionOutput
+}
+
+// Class to select a track
+type TrackSelectionArgs struct {
+	// TrackSelections is a track property condition list which can specify track(s)
+	TrackSelections TrackPropertyConditionArrayInput `pulumi:"trackSelections"`
+}
+
+func (TrackSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackSelection)(nil)).Elem()
+}
+
+func (i TrackSelectionArgs) ToTrackSelectionOutput() TrackSelectionOutput {
+	return i.ToTrackSelectionOutputWithContext(context.Background())
+}
+
+func (i TrackSelectionArgs) ToTrackSelectionOutputWithContext(ctx context.Context) TrackSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackSelectionOutput)
+}
+
+// TrackSelectionArrayInput is an input type that accepts TrackSelectionArray and TrackSelectionArrayOutput values.
+// You can construct a concrete instance of `TrackSelectionArrayInput` via:
+//
+//	TrackSelectionArray{ TrackSelectionArgs{...} }
+type TrackSelectionArrayInput interface {
+	pulumi.Input
+
+	ToTrackSelectionArrayOutput() TrackSelectionArrayOutput
+	ToTrackSelectionArrayOutputWithContext(context.Context) TrackSelectionArrayOutput
+}
+
+type TrackSelectionArray []TrackSelectionInput
+
+func (TrackSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrackSelection)(nil)).Elem()
+}
+
+func (i TrackSelectionArray) ToTrackSelectionArrayOutput() TrackSelectionArrayOutput {
+	return i.ToTrackSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i TrackSelectionArray) ToTrackSelectionArrayOutputWithContext(ctx context.Context) TrackSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackSelectionArrayOutput)
+}
+
+// Class to select a track
+type TrackSelectionOutput struct{ *pulumi.OutputState }
+
+func (TrackSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackSelection)(nil)).Elem()
+}
+
+func (o TrackSelectionOutput) ToTrackSelectionOutput() TrackSelectionOutput {
+	return o
+}
+
+func (o TrackSelectionOutput) ToTrackSelectionOutputWithContext(ctx context.Context) TrackSelectionOutput {
+	return o
+}
+
+// TrackSelections is a track property condition list which can specify track(s)
+func (o TrackSelectionOutput) TrackSelections() TrackPropertyConditionArrayOutput {
+	return o.ApplyT(func(v TrackSelection) []TrackPropertyCondition { return v.TrackSelections }).(TrackPropertyConditionArrayOutput)
+}
+
+type TrackSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (TrackSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrackSelection)(nil)).Elem()
+}
+
+func (o TrackSelectionArrayOutput) ToTrackSelectionArrayOutput() TrackSelectionArrayOutput {
+	return o
+}
+
+func (o TrackSelectionArrayOutput) ToTrackSelectionArrayOutputWithContext(ctx context.Context) TrackSelectionArrayOutput {
+	return o
+}
+
+func (o TrackSelectionArrayOutput) Index(i pulumi.IntInput) TrackSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrackSelection {
+		return vs[0].([]TrackSelection)[vs[1].(int)]
+	}).(TrackSelectionOutput)
+}
+
+// Class to select a track
+type TrackSelectionResponse struct {
+	// TrackSelections is a track property condition list which can specify track(s)
+	TrackSelections []TrackPropertyConditionResponse `pulumi:"trackSelections"`
+}
+
+// Class to select a track
+type TrackSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (TrackSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackSelectionResponse)(nil)).Elem()
+}
+
+func (o TrackSelectionResponseOutput) ToTrackSelectionResponseOutput() TrackSelectionResponseOutput {
+	return o
+}
+
+func (o TrackSelectionResponseOutput) ToTrackSelectionResponseOutputWithContext(ctx context.Context) TrackSelectionResponseOutput {
+	return o
+}
+
+// TrackSelections is a track property condition list which can specify track(s)
+func (o TrackSelectionResponseOutput) TrackSelections() TrackPropertyConditionResponseArrayOutput {
+	return o.ApplyT(func(v TrackSelectionResponse) []TrackPropertyConditionResponse { return v.TrackSelections }).(TrackPropertyConditionResponseArrayOutput)
+}
+
+type TrackSelectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrackSelectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrackSelectionResponse)(nil)).Elem()
+}
+
+func (o TrackSelectionResponseArrayOutput) ToTrackSelectionResponseArrayOutput() TrackSelectionResponseArrayOutput {
+	return o
+}
+
+func (o TrackSelectionResponseArrayOutput) ToTrackSelectionResponseArrayOutputWithContext(ctx context.Context) TrackSelectionResponseArrayOutput {
+	return o
+}
+
+func (o TrackSelectionResponseArrayOutput) Index(i pulumi.IntInput) TrackSelectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrackSelectionResponse {
+		return vs[0].([]TrackSelectionResponse)[vs[1].(int)]
+	}).(TrackSelectionResponseOutput)
+}
+
 type UserAssignedManagedIdentityResponse struct {
 	// The client ID.
 	ClientId string `pulumi:"clientId"`
@@ -2184,6 +8093,20 @@ func (o UserAssignedManagedIdentityResponseMapOutput) MapIndex(k pulumi.StringIn
 	}).(UserAssignedManagedIdentityResponseOutput)
 }
 
+// Represents a video track in the asset.
+type VideoTrack struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.VideoTrack'.
+	OdataType string `pulumi:"odataType"`
+}
+
+// Represents a video track in the asset.
+type VideoTrackResponse struct {
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.Media.VideoTrack'.
+	OdataType string `pulumi:"odataType"`
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessControlOutput{})
 	pulumi.RegisterOutputType(AccessControlPtrOutput{})
@@ -2193,10 +8116,62 @@ func init() {
 	pulumi.RegisterOutputType(AccountEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(AccountEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(AccountEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(AssetFileEncryptionMetadataResponseOutput{})
+	pulumi.RegisterOutputType(AssetFileEncryptionMetadataResponseArrayOutput{})
+	pulumi.RegisterOutputType(AssetStreamingLocatorResponseOutput{})
+	pulumi.RegisterOutputType(AssetStreamingLocatorResponseArrayOutput{})
+	pulumi.RegisterOutputType(CbcsDrmConfigurationOutput{})
+	pulumi.RegisterOutputType(CbcsDrmConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CbcsDrmConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CbcsDrmConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(CencDrmConfigurationOutput{})
+	pulumi.RegisterOutputType(CencDrmConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CencDrmConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CencDrmConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClearKeyEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(ClearKeyEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClearKeyEncryptionConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ClearKeyEncryptionConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCbcsOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCbcsPtrOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCbcsResponseOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCbcsResponsePtrOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCencOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCencPtrOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCencResponseOutput{})
+	pulumi.RegisterOutputType(CommonEncryptionCencResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContentKeyPolicyOptionOutput{})
+	pulumi.RegisterOutputType(ContentKeyPolicyOptionArrayOutput{})
+	pulumi.RegisterOutputType(ContentKeyPolicyOptionResponseOutput{})
+	pulumi.RegisterOutputType(ContentKeyPolicyOptionResponseArrayOutput{})
+	pulumi.RegisterOutputType(DefaultKeyOutput{})
+	pulumi.RegisterOutputType(DefaultKeyPtrOutput{})
+	pulumi.RegisterOutputType(DefaultKeyResponseOutput{})
+	pulumi.RegisterOutputType(DefaultKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(EdgeUsageDataCollectionPolicyResponseOutput{})
 	pulumi.RegisterOutputType(EdgeUsageDataCollectionPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(EdgeUsageDataEventHubResponseOutput{})
 	pulumi.RegisterOutputType(EdgeUsageDataEventHubResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnabledProtocolsOutput{})
+	pulumi.RegisterOutputType(EnabledProtocolsPtrOutput{})
+	pulumi.RegisterOutputType(EnabledProtocolsResponseOutput{})
+	pulumi.RegisterOutputType(EnabledProtocolsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnvelopeEncryptionOutput{})
+	pulumi.RegisterOutputType(EnvelopeEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(EnvelopeEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(EnvelopeEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(FilterTrackPropertyConditionOutput{})
+	pulumi.RegisterOutputType(FilterTrackPropertyConditionArrayOutput{})
+	pulumi.RegisterOutputType(FilterTrackPropertyConditionResponseOutput{})
+	pulumi.RegisterOutputType(FilterTrackPropertyConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(FilterTrackSelectionOutput{})
+	pulumi.RegisterOutputType(FilterTrackSelectionArrayOutput{})
+	pulumi.RegisterOutputType(FilterTrackSelectionResponseOutput{})
+	pulumi.RegisterOutputType(FilterTrackSelectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(FirstQualityOutput{})
+	pulumi.RegisterOutputType(FirstQualityPtrOutput{})
+	pulumi.RegisterOutputType(FirstQualityResponseOutput{})
+	pulumi.RegisterOutputType(FirstQualityResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyDeliveryOutput{})
 	pulumi.RegisterOutputType(KeyDeliveryPtrOutput{})
 	pulumi.RegisterOutputType(KeyDeliveryResponseOutput{})
@@ -2209,6 +8184,14 @@ func init() {
 	pulumi.RegisterOutputType(MediaServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(MediaServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(MediaServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(NoEncryptionOutput{})
+	pulumi.RegisterOutputType(NoEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(NoEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(NoEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(PresentationTimeRangeOutput{})
+	pulumi.RegisterOutputType(PresentationTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(PresentationTimeRangeResponseOutput{})
+	pulumi.RegisterOutputType(PresentationTimeRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
@@ -2223,7 +8206,41 @@ func init() {
 	pulumi.RegisterOutputType(StorageAccountArrayOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponseArrayOutput{})
+	pulumi.RegisterOutputType(StreamingLocatorContentKeyOutput{})
+	pulumi.RegisterOutputType(StreamingLocatorContentKeyArrayOutput{})
+	pulumi.RegisterOutputType(StreamingLocatorContentKeyResponseOutput{})
+	pulumi.RegisterOutputType(StreamingLocatorContentKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(StreamingPathResponseOutput{})
+	pulumi.RegisterOutputType(StreamingPathResponseArrayOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeyOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeyArrayOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeyResponseOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeysOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeysPtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeysResponseOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyContentKeysResponsePtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyFairPlayConfigurationOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyFairPlayConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyFairPlayConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyFairPlayConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyPlayReadyConfigurationOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyPlayReadyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyPlayReadyConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyPlayReadyConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyWidevineConfigurationOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyWidevineConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyWidevineConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(StreamingPolicyWidevineConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TrackPropertyConditionOutput{})
+	pulumi.RegisterOutputType(TrackPropertyConditionArrayOutput{})
+	pulumi.RegisterOutputType(TrackPropertyConditionResponseOutput{})
+	pulumi.RegisterOutputType(TrackPropertyConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(TrackSelectionOutput{})
+	pulumi.RegisterOutputType(TrackSelectionArrayOutput{})
+	pulumi.RegisterOutputType(TrackSelectionResponseOutput{})
+	pulumi.RegisterOutputType(TrackSelectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseMapOutput{})
 }
