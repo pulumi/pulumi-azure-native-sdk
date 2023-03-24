@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk v1.98.0
+	github.com/pulumi/pulumi-azure-native-sdk v1.98.1-alpha.12c65c79
 	github.com/pulumi/pulumi/sdk/v3 v3.37.2
 )
 
