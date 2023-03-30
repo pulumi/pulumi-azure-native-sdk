@@ -257,12 +257,16 @@ type ContactInfoResponse struct {
 type CopyProgressResponse struct {
 	// Id of the account where the data needs to be uploaded.
 	AccountId string `pulumi:"accountId"`
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// To indicate bytes transferred.
 	BytesProcessed float64 `pulumi:"bytesProcessed"`
 	// Data Account Type.
 	DataAccountType string `pulumi:"dataAccountType"`
 	// To indicate directories errored out in the job.
 	DirectoriesErroredOut float64 `pulumi:"directoriesErroredOut"`
+	// Error, if any, in the stage
+	Error CloudErrorResponse `pulumi:"error"`
 	// Number of files which could not be copied
 	FilesErroredOut float64 `pulumi:"filesErroredOut"`
 	// Number of files processed
@@ -333,6 +337,8 @@ type DataBoxCustomerDiskCopyLogDetailsResponse struct {
 type DataBoxCustomerDiskCopyProgressResponse struct {
 	// Id of the account where the data needs to be uploaded.
 	AccountId string `pulumi:"accountId"`
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// To indicate bytes transferred.
 	BytesProcessed float64 `pulumi:"bytesProcessed"`
 	// The Status of the copy
@@ -341,6 +347,8 @@ type DataBoxCustomerDiskCopyProgressResponse struct {
 	DataAccountType string `pulumi:"dataAccountType"`
 	// To indicate directories errored out in the job.
 	DirectoriesErroredOut float64 `pulumi:"directoriesErroredOut"`
+	// Error, if any, in the stage
+	Error CloudErrorResponse `pulumi:"error"`
 	// Number of files which could not be copied
 	FilesErroredOut float64 `pulumi:"filesErroredOut"`
 	// Number of files processed

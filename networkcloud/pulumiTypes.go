@@ -103,6 +103,7 @@ func (o AdministrativeCredentialsResponseOutput) Username() pulumi.StringOutput 
 }
 
 type BareMetalMachineConfigurationData struct {
+	// The credentials of the baseboard management controller on this bare metal machine.
 	BmcCredentials AdministrativeCredentials `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC for this machine.
 	BmcMacAddress string `pulumi:"bmcMacAddress"`
@@ -131,6 +132,7 @@ type BareMetalMachineConfigurationDataInput interface {
 }
 
 type BareMetalMachineConfigurationDataArgs struct {
+	// The credentials of the baseboard management controller on this bare metal machine.
 	BmcCredentials AdministrativeCredentialsInput `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC for this machine.
 	BmcMacAddress pulumi.StringInput `pulumi:"bmcMacAddress"`
@@ -198,6 +200,7 @@ func (o BareMetalMachineConfigurationDataOutput) ToBareMetalMachineConfiguration
 	return o
 }
 
+// The credentials of the baseboard management controller on this bare metal machine.
 func (o BareMetalMachineConfigurationDataOutput) BmcCredentials() AdministrativeCredentialsOutput {
 	return o.ApplyT(func(v BareMetalMachineConfigurationData) AdministrativeCredentials { return v.BmcCredentials }).(AdministrativeCredentialsOutput)
 }
@@ -255,8 +258,9 @@ func (o BareMetalMachineConfigurationDataArrayOutput) Index(i pulumi.IntInput) B
 
 type BareMetalMachineConfigurationDataResponse struct {
 	// The connection string for the baseboard management controller including IP address and protocol.
-	BmcConnectionString string                            `pulumi:"bmcConnectionString"`
-	BmcCredentials      AdministrativeCredentialsResponse `pulumi:"bmcCredentials"`
+	BmcConnectionString string `pulumi:"bmcConnectionString"`
+	// The credentials of the baseboard management controller on this bare metal machine.
+	BmcCredentials AdministrativeCredentialsResponse `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC for this machine.
 	BmcMacAddress string `pulumi:"bmcMacAddress"`
 	// The MAC address associated with the PXE NIC card.
@@ -291,6 +295,7 @@ func (o BareMetalMachineConfigurationDataResponseOutput) BmcConnectionString() p
 	return o.ApplyT(func(v BareMetalMachineConfigurationDataResponse) string { return v.BmcConnectionString }).(pulumi.StringOutput)
 }
 
+// The credentials of the baseboard management controller on this bare metal machine.
 func (o BareMetalMachineConfigurationDataResponseOutput) BmcCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v BareMetalMachineConfigurationDataResponse) AdministrativeCredentialsResponse {
 		return v.BmcCredentials
@@ -644,276 +649,6 @@ func (o ClusterAvailableVersionResponseArrayOutput) Index(i pulumi.IntInput) Clu
 	}).(ClusterAvailableVersionResponseOutput)
 }
 
-type ClusterCapacity struct {
-	// The remaining appliance-based storage in GB available for workload use.
-	AvailableApplianceStorageGB *float64 `pulumi:"availableApplianceStorageGB"`
-	// The remaining number of cores that are available in this cluster for workload use.
-	AvailableCoreCount *float64 `pulumi:"availableCoreCount"`
-	// The remaining machine or host-based storage in GB available for workload use.
-	AvailableHostStorageGB *float64 `pulumi:"availableHostStorageGB"`
-	// The remaining memory in GB that are available in this cluster for workload use.
-	AvailableMemoryGB *float64 `pulumi:"availableMemoryGB"`
-	// The total appliance-based storage in GB supported by this cluster for workload use.
-	TotalApplianceStorageGB *float64 `pulumi:"totalApplianceStorageGB"`
-	// The total number of cores that are supported by this cluster for workload use.
-	TotalCoreCount *float64 `pulumi:"totalCoreCount"`
-	// The total machine or host-based storage in GB supported by this cluster for workload use.
-	TotalHostStorageGB *float64 `pulumi:"totalHostStorageGB"`
-	// The total memory supported by this cluster for workload use.
-	TotalMemoryGB *float64 `pulumi:"totalMemoryGB"`
-}
-
-// ClusterCapacityInput is an input type that accepts ClusterCapacityArgs and ClusterCapacityOutput values.
-// You can construct a concrete instance of `ClusterCapacityInput` via:
-//
-//	ClusterCapacityArgs{...}
-type ClusterCapacityInput interface {
-	pulumi.Input
-
-	ToClusterCapacityOutput() ClusterCapacityOutput
-	ToClusterCapacityOutputWithContext(context.Context) ClusterCapacityOutput
-}
-
-type ClusterCapacityArgs struct {
-	// The remaining appliance-based storage in GB available for workload use.
-	AvailableApplianceStorageGB pulumi.Float64PtrInput `pulumi:"availableApplianceStorageGB"`
-	// The remaining number of cores that are available in this cluster for workload use.
-	AvailableCoreCount pulumi.Float64PtrInput `pulumi:"availableCoreCount"`
-	// The remaining machine or host-based storage in GB available for workload use.
-	AvailableHostStorageGB pulumi.Float64PtrInput `pulumi:"availableHostStorageGB"`
-	// The remaining memory in GB that are available in this cluster for workload use.
-	AvailableMemoryGB pulumi.Float64PtrInput `pulumi:"availableMemoryGB"`
-	// The total appliance-based storage in GB supported by this cluster for workload use.
-	TotalApplianceStorageGB pulumi.Float64PtrInput `pulumi:"totalApplianceStorageGB"`
-	// The total number of cores that are supported by this cluster for workload use.
-	TotalCoreCount pulumi.Float64PtrInput `pulumi:"totalCoreCount"`
-	// The total machine or host-based storage in GB supported by this cluster for workload use.
-	TotalHostStorageGB pulumi.Float64PtrInput `pulumi:"totalHostStorageGB"`
-	// The total memory supported by this cluster for workload use.
-	TotalMemoryGB pulumi.Float64PtrInput `pulumi:"totalMemoryGB"`
-}
-
-func (ClusterCapacityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterCapacity)(nil)).Elem()
-}
-
-func (i ClusterCapacityArgs) ToClusterCapacityOutput() ClusterCapacityOutput {
-	return i.ToClusterCapacityOutputWithContext(context.Background())
-}
-
-func (i ClusterCapacityArgs) ToClusterCapacityOutputWithContext(ctx context.Context) ClusterCapacityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCapacityOutput)
-}
-
-func (i ClusterCapacityArgs) ToClusterCapacityPtrOutput() ClusterCapacityPtrOutput {
-	return i.ToClusterCapacityPtrOutputWithContext(context.Background())
-}
-
-func (i ClusterCapacityArgs) ToClusterCapacityPtrOutputWithContext(ctx context.Context) ClusterCapacityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCapacityOutput).ToClusterCapacityPtrOutputWithContext(ctx)
-}
-
-// ClusterCapacityPtrInput is an input type that accepts ClusterCapacityArgs, ClusterCapacityPtr and ClusterCapacityPtrOutput values.
-// You can construct a concrete instance of `ClusterCapacityPtrInput` via:
-//
-//	        ClusterCapacityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClusterCapacityPtrInput interface {
-	pulumi.Input
-
-	ToClusterCapacityPtrOutput() ClusterCapacityPtrOutput
-	ToClusterCapacityPtrOutputWithContext(context.Context) ClusterCapacityPtrOutput
-}
-
-type clusterCapacityPtrType ClusterCapacityArgs
-
-func ClusterCapacityPtr(v *ClusterCapacityArgs) ClusterCapacityPtrInput {
-	return (*clusterCapacityPtrType)(v)
-}
-
-func (*clusterCapacityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterCapacity)(nil)).Elem()
-}
-
-func (i *clusterCapacityPtrType) ToClusterCapacityPtrOutput() ClusterCapacityPtrOutput {
-	return i.ToClusterCapacityPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterCapacityPtrType) ToClusterCapacityPtrOutputWithContext(ctx context.Context) ClusterCapacityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCapacityPtrOutput)
-}
-
-type ClusterCapacityOutput struct{ *pulumi.OutputState }
-
-func (ClusterCapacityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterCapacity)(nil)).Elem()
-}
-
-func (o ClusterCapacityOutput) ToClusterCapacityOutput() ClusterCapacityOutput {
-	return o
-}
-
-func (o ClusterCapacityOutput) ToClusterCapacityOutputWithContext(ctx context.Context) ClusterCapacityOutput {
-	return o
-}
-
-func (o ClusterCapacityOutput) ToClusterCapacityPtrOutput() ClusterCapacityPtrOutput {
-	return o.ToClusterCapacityPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterCapacityOutput) ToClusterCapacityPtrOutputWithContext(ctx context.Context) ClusterCapacityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterCapacity) *ClusterCapacity {
-		return &v
-	}).(ClusterCapacityPtrOutput)
-}
-
-// The remaining appliance-based storage in GB available for workload use.
-func (o ClusterCapacityOutput) AvailableApplianceStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.AvailableApplianceStorageGB }).(pulumi.Float64PtrOutput)
-}
-
-// The remaining number of cores that are available in this cluster for workload use.
-func (o ClusterCapacityOutput) AvailableCoreCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.AvailableCoreCount }).(pulumi.Float64PtrOutput)
-}
-
-// The remaining machine or host-based storage in GB available for workload use.
-func (o ClusterCapacityOutput) AvailableHostStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.AvailableHostStorageGB }).(pulumi.Float64PtrOutput)
-}
-
-// The remaining memory in GB that are available in this cluster for workload use.
-func (o ClusterCapacityOutput) AvailableMemoryGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.AvailableMemoryGB }).(pulumi.Float64PtrOutput)
-}
-
-// The total appliance-based storage in GB supported by this cluster for workload use.
-func (o ClusterCapacityOutput) TotalApplianceStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.TotalApplianceStorageGB }).(pulumi.Float64PtrOutput)
-}
-
-// The total number of cores that are supported by this cluster for workload use.
-func (o ClusterCapacityOutput) TotalCoreCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.TotalCoreCount }).(pulumi.Float64PtrOutput)
-}
-
-// The total machine or host-based storage in GB supported by this cluster for workload use.
-func (o ClusterCapacityOutput) TotalHostStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.TotalHostStorageGB }).(pulumi.Float64PtrOutput)
-}
-
-// The total memory supported by this cluster for workload use.
-func (o ClusterCapacityOutput) TotalMemoryGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterCapacity) *float64 { return v.TotalMemoryGB }).(pulumi.Float64PtrOutput)
-}
-
-type ClusterCapacityPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterCapacityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterCapacity)(nil)).Elem()
-}
-
-func (o ClusterCapacityPtrOutput) ToClusterCapacityPtrOutput() ClusterCapacityPtrOutput {
-	return o
-}
-
-func (o ClusterCapacityPtrOutput) ToClusterCapacityPtrOutputWithContext(ctx context.Context) ClusterCapacityPtrOutput {
-	return o
-}
-
-func (o ClusterCapacityPtrOutput) Elem() ClusterCapacityOutput {
-	return o.ApplyT(func(v *ClusterCapacity) ClusterCapacity {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterCapacity
-		return ret
-	}).(ClusterCapacityOutput)
-}
-
-// The remaining appliance-based storage in GB available for workload use.
-func (o ClusterCapacityPtrOutput) AvailableApplianceStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableApplianceStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The remaining number of cores that are available in this cluster for workload use.
-func (o ClusterCapacityPtrOutput) AvailableCoreCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableCoreCount
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The remaining machine or host-based storage in GB available for workload use.
-func (o ClusterCapacityPtrOutput) AvailableHostStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableHostStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The remaining memory in GB that are available in this cluster for workload use.
-func (o ClusterCapacityPtrOutput) AvailableMemoryGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableMemoryGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total appliance-based storage in GB supported by this cluster for workload use.
-func (o ClusterCapacityPtrOutput) TotalApplianceStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalApplianceStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total number of cores that are supported by this cluster for workload use.
-func (o ClusterCapacityPtrOutput) TotalCoreCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalCoreCount
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total machine or host-based storage in GB supported by this cluster for workload use.
-func (o ClusterCapacityPtrOutput) TotalHostStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalHostStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total memory supported by this cluster for workload use.
-func (o ClusterCapacityPtrOutput) TotalMemoryGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacity) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalMemoryGB
-	}).(pulumi.Float64PtrOutput)
-}
-
 type ClusterCapacityResponse struct {
 	// The remaining appliance-based storage in GB available for workload use.
 	AvailableApplianceStorageGB *float64 `pulumi:"availableApplianceStorageGB"`
@@ -985,110 +720,6 @@ func (o ClusterCapacityResponseOutput) TotalHostStorageGB() pulumi.Float64PtrOut
 // The total memory supported by this cluster for workload use.
 func (o ClusterCapacityResponseOutput) TotalMemoryGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.TotalMemoryGB }).(pulumi.Float64PtrOutput)
-}
-
-type ClusterCapacityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterCapacityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterCapacityResponse)(nil)).Elem()
-}
-
-func (o ClusterCapacityResponsePtrOutput) ToClusterCapacityResponsePtrOutput() ClusterCapacityResponsePtrOutput {
-	return o
-}
-
-func (o ClusterCapacityResponsePtrOutput) ToClusterCapacityResponsePtrOutputWithContext(ctx context.Context) ClusterCapacityResponsePtrOutput {
-	return o
-}
-
-func (o ClusterCapacityResponsePtrOutput) Elem() ClusterCapacityResponseOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) ClusterCapacityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterCapacityResponse
-		return ret
-	}).(ClusterCapacityResponseOutput)
-}
-
-// The remaining appliance-based storage in GB available for workload use.
-func (o ClusterCapacityResponsePtrOutput) AvailableApplianceStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableApplianceStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The remaining number of cores that are available in this cluster for workload use.
-func (o ClusterCapacityResponsePtrOutput) AvailableCoreCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableCoreCount
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The remaining machine or host-based storage in GB available for workload use.
-func (o ClusterCapacityResponsePtrOutput) AvailableHostStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableHostStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The remaining memory in GB that are available in this cluster for workload use.
-func (o ClusterCapacityResponsePtrOutput) AvailableMemoryGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AvailableMemoryGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total appliance-based storage in GB supported by this cluster for workload use.
-func (o ClusterCapacityResponsePtrOutput) TotalApplianceStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalApplianceStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total number of cores that are supported by this cluster for workload use.
-func (o ClusterCapacityResponsePtrOutput) TotalCoreCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalCoreCount
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total machine or host-based storage in GB supported by this cluster for workload use.
-func (o ClusterCapacityResponsePtrOutput) TotalHostStorageGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalHostStorageGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total memory supported by this cluster for workload use.
-func (o ClusterCapacityResponsePtrOutput) TotalMemoryGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterCapacityResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalMemoryGB
-	}).(pulumi.Float64PtrOutput)
 }
 
 type CniBgpConfiguration struct {
@@ -2093,60 +1724,6 @@ func (o HardwareInventoryResponseOutput) Nics() NicResponseArrayOutput {
 	return o.ApplyT(func(v HardwareInventoryResponse) []NicResponse { return v.Nics }).(NicResponseArrayOutput)
 }
 
-type HardwareInventoryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HardwareInventoryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HardwareInventoryResponse)(nil)).Elem()
-}
-
-func (o HardwareInventoryResponsePtrOutput) ToHardwareInventoryResponsePtrOutput() HardwareInventoryResponsePtrOutput {
-	return o
-}
-
-func (o HardwareInventoryResponsePtrOutput) ToHardwareInventoryResponsePtrOutputWithContext(ctx context.Context) HardwareInventoryResponsePtrOutput {
-	return o
-}
-
-func (o HardwareInventoryResponsePtrOutput) Elem() HardwareInventoryResponseOutput {
-	return o.ApplyT(func(v *HardwareInventoryResponse) HardwareInventoryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HardwareInventoryResponse
-		return ret
-	}).(HardwareInventoryResponseOutput)
-}
-
-// Freeform data extracted from the environment about this machine. This information varies depending on the specific hardware and configuration.
-func (o HardwareInventoryResponsePtrOutput) AdditionalHostInformation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HardwareInventoryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AdditionalHostInformation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of network interfaces and associated details for the bare metal machine.
-func (o HardwareInventoryResponsePtrOutput) Interfaces() HardwareInventoryNetworkInterfaceResponseArrayOutput {
-	return o.ApplyT(func(v *HardwareInventoryResponse) []HardwareInventoryNetworkInterfaceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Interfaces
-	}).(HardwareInventoryNetworkInterfaceResponseArrayOutput)
-}
-
-// Field Deprecated. Will be removed in an upcoming version. The list of network interface cards and associated details for the bare metal machine.
-func (o HardwareInventoryResponsePtrOutput) Nics() NicResponseArrayOutput {
-	return o.ApplyT(func(v *HardwareInventoryResponse) []NicResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Nics
-	}).(NicResponseArrayOutput)
-}
-
 type HardwareValidationStatusResponse struct {
 	// The timestamp of the hardware validation execution.
 	LastValidationTime string `pulumi:"lastValidationTime"`
@@ -2176,50 +1753,6 @@ func (o HardwareValidationStatusResponseOutput) LastValidationTime() pulumi.Stri
 // The outcome of the hardware validation.
 func (o HardwareValidationStatusResponseOutput) Result() pulumi.StringOutput {
 	return o.ApplyT(func(v HardwareValidationStatusResponse) string { return v.Result }).(pulumi.StringOutput)
-}
-
-type HardwareValidationStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HardwareValidationStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HardwareValidationStatusResponse)(nil)).Elem()
-}
-
-func (o HardwareValidationStatusResponsePtrOutput) ToHardwareValidationStatusResponsePtrOutput() HardwareValidationStatusResponsePtrOutput {
-	return o
-}
-
-func (o HardwareValidationStatusResponsePtrOutput) ToHardwareValidationStatusResponsePtrOutputWithContext(ctx context.Context) HardwareValidationStatusResponsePtrOutput {
-	return o
-}
-
-func (o HardwareValidationStatusResponsePtrOutput) Elem() HardwareValidationStatusResponseOutput {
-	return o.ApplyT(func(v *HardwareValidationStatusResponse) HardwareValidationStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HardwareValidationStatusResponse
-		return ret
-	}).(HardwareValidationStatusResponseOutput)
-}
-
-// The timestamp of the hardware validation execution.
-func (o HardwareValidationStatusResponsePtrOutput) LastValidationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HardwareValidationStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastValidationTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The outcome of the hardware validation.
-func (o HardwareValidationStatusResponsePtrOutput) Result() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HardwareValidationStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Result
-	}).(pulumi.StringPtrOutput)
 }
 
 type ImageRepositoryCredentials struct {
@@ -2493,7 +2026,8 @@ type KeySetUser struct {
 	// The Azure Active Directory user name (email name).
 	AzureUserName string `pulumi:"azureUserName"`
 	// The free-form description for this user.
-	Description  *string      `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The SSH public key for this user.
 	SshPublicKey SshPublicKey `pulumi:"sshPublicKey"`
 }
 
@@ -2512,8 +2046,9 @@ type KeySetUserArgs struct {
 	// The Azure Active Directory user name (email name).
 	AzureUserName pulumi.StringInput `pulumi:"azureUserName"`
 	// The free-form description for this user.
-	Description  pulumi.StringPtrInput `pulumi:"description"`
-	SshPublicKey SshPublicKeyInput     `pulumi:"sshPublicKey"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The SSH public key for this user.
+	SshPublicKey SshPublicKeyInput `pulumi:"sshPublicKey"`
 }
 
 func (KeySetUserArgs) ElementType() reflect.Type {
@@ -2577,6 +2112,7 @@ func (o KeySetUserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeySetUser) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The SSH public key for this user.
 func (o KeySetUserOutput) SshPublicKey() SshPublicKeyOutput {
 	return o.ApplyT(func(v KeySetUser) SshPublicKey { return v.SshPublicKey }).(SshPublicKeyOutput)
 }
@@ -2605,7 +2141,8 @@ type KeySetUserResponse struct {
 	// The Azure Active Directory user name (email name).
 	AzureUserName string `pulumi:"azureUserName"`
 	// The free-form description for this user.
-	Description  *string              `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The SSH public key for this user.
 	SshPublicKey SshPublicKeyResponse `pulumi:"sshPublicKey"`
 }
 
@@ -2633,6 +2170,7 @@ func (o KeySetUserResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeySetUserResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The SSH public key for this user.
 func (o KeySetUserResponseOutput) SshPublicKey() SshPublicKeyResponseOutput {
 	return o.ApplyT(func(v KeySetUserResponse) SshPublicKeyResponse { return v.SshPublicKey }).(SshPublicKeyResponseOutput)
 }
@@ -2758,70 +2296,6 @@ func (o LldpNeighborResponseOutput) SystemDescription() pulumi.StringOutput {
 // The system-assigned name of the connected device.
 func (o LldpNeighborResponseOutput) SystemName() pulumi.StringOutput {
 	return o.ApplyT(func(v LldpNeighborResponse) string { return v.SystemName }).(pulumi.StringOutput)
-}
-
-type LldpNeighborResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LldpNeighborResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LldpNeighborResponse)(nil)).Elem()
-}
-
-func (o LldpNeighborResponsePtrOutput) ToLldpNeighborResponsePtrOutput() LldpNeighborResponsePtrOutput {
-	return o
-}
-
-func (o LldpNeighborResponsePtrOutput) ToLldpNeighborResponsePtrOutputWithContext(ctx context.Context) LldpNeighborResponsePtrOutput {
-	return o
-}
-
-func (o LldpNeighborResponsePtrOutput) Elem() LldpNeighborResponseOutput {
-	return o.ApplyT(func(v *LldpNeighborResponse) LldpNeighborResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LldpNeighborResponse
-		return ret
-	}).(LldpNeighborResponseOutput)
-}
-
-// The descriptive information about the port on the connected device.
-func (o LldpNeighborResponsePtrOutput) PortDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LldpNeighborResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PortDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// The system-assigned name of the port on the connected device.
-func (o LldpNeighborResponsePtrOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LldpNeighborResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PortName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The descriptive information about the connected device.
-func (o LldpNeighborResponsePtrOutput) SystemDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LldpNeighborResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SystemDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// The system-assigned name of the connected device.
-func (o LldpNeighborResponsePtrOutput) SystemName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LldpNeighborResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SystemName
-	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedResourceGroupConfiguration struct {
@@ -3389,7 +2863,8 @@ func (o NetworkAttachmentResponseArrayOutput) Index(i pulumi.IntInput) NetworkAt
 }
 
 type NicResponse struct {
-	LldpNeighbor *LldpNeighborResponse `pulumi:"lldpNeighbor"`
+	// The information about the device connected to this NIC.
+	LldpNeighbor LldpNeighborResponse `pulumi:"lldpNeighbor"`
 	// The MAC address associated with this NIC.
 	MacAddress string `pulumi:"macAddress"`
 	// The name of the NIC/interface.
@@ -3410,8 +2885,9 @@ func (o NicResponseOutput) ToNicResponseOutputWithContext(ctx context.Context) N
 	return o
 }
 
-func (o NicResponseOutput) LldpNeighbor() LldpNeighborResponsePtrOutput {
-	return o.ApplyT(func(v NicResponse) *LldpNeighborResponse { return v.LldpNeighbor }).(LldpNeighborResponsePtrOutput)
+// The information about the device connected to this NIC.
+func (o NicResponseOutput) LldpNeighbor() LldpNeighborResponseOutput {
+	return o.ApplyT(func(v NicResponse) LldpNeighborResponse { return v.LldpNeighbor }).(LldpNeighborResponseOutput)
 }
 
 // The MAC address associated with this NIC.
@@ -4458,6 +3934,7 @@ func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyRe
 }
 
 type StorageApplianceConfigurationData struct {
+	// The credentials of the administrative interface on this storage appliance.
 	AdminCredentials AdministrativeCredentials `pulumi:"adminCredentials"`
 	// The slot that storage appliance is in the rack based on the BOM configuration.
 	RackSlot float64 `pulumi:"rackSlot"`
@@ -4479,6 +3956,7 @@ type StorageApplianceConfigurationDataInput interface {
 }
 
 type StorageApplianceConfigurationDataArgs struct {
+	// The credentials of the administrative interface on this storage appliance.
 	AdminCredentials AdministrativeCredentialsInput `pulumi:"adminCredentials"`
 	// The slot that storage appliance is in the rack based on the BOM configuration.
 	RackSlot pulumi.Float64Input `pulumi:"rackSlot"`
@@ -4539,6 +4017,7 @@ func (o StorageApplianceConfigurationDataOutput) ToStorageApplianceConfiguration
 	return o
 }
 
+// The credentials of the administrative interface on this storage appliance.
 func (o StorageApplianceConfigurationDataOutput) AdminCredentials() AdministrativeCredentialsOutput {
 	return o.ApplyT(func(v StorageApplianceConfigurationData) AdministrativeCredentials { return v.AdminCredentials }).(AdministrativeCredentialsOutput)
 }
@@ -4579,6 +4058,7 @@ func (o StorageApplianceConfigurationDataArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type StorageApplianceConfigurationDataResponse struct {
+	// The credentials of the administrative interface on this storage appliance.
 	AdminCredentials AdministrativeCredentialsResponse `pulumi:"adminCredentials"`
 	// The slot that storage appliance is in the rack based on the BOM configuration.
 	RackSlot float64 `pulumi:"rackSlot"`
@@ -4602,6 +4082,7 @@ func (o StorageApplianceConfigurationDataResponseOutput) ToStorageApplianceConfi
 	return o
 }
 
+// The credentials of the administrative interface on this storage appliance.
 func (o StorageApplianceConfigurationDataResponseOutput) AdminCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v StorageApplianceConfigurationDataResponse) AdministrativeCredentialsResponse {
 		return v.AdminCredentials
@@ -4644,6 +4125,7 @@ func (o StorageApplianceConfigurationDataResponseArrayOutput) Index(i pulumi.Int
 }
 
 type StorageProfile struct {
+	// The disk to use with this virtual machine.
 	OsDisk OsDisk `pulumi:"osDisk"`
 	// The resource IDs of volumes that are requested to be attached to the virtual machine.
 	VolumeAttachments []string `pulumi:"volumeAttachments"`
@@ -4672,6 +4154,7 @@ type StorageProfileInput interface {
 }
 
 type StorageProfileArgs struct {
+	// The disk to use with this virtual machine.
 	OsDisk OsDiskInput `pulumi:"osDisk"`
 	// The resource IDs of volumes that are requested to be attached to the virtual machine.
 	VolumeAttachments pulumi.StringArrayInput `pulumi:"volumeAttachments"`
@@ -4712,6 +4195,7 @@ func (o StorageProfileOutput) ToStorageProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The disk to use with this virtual machine.
 func (o StorageProfileOutput) OsDisk() OsDiskOutput {
 	return o.ApplyT(func(v StorageProfile) OsDisk { return v.OsDisk }).(OsDiskOutput)
 }
@@ -4722,6 +4206,7 @@ func (o StorageProfileOutput) VolumeAttachments() pulumi.StringArrayOutput {
 }
 
 type StorageProfileResponse struct {
+	// The disk to use with this virtual machine.
 	OsDisk OsDiskResponse `pulumi:"osDisk"`
 	// The resource IDs of volumes that are requested to be attached to the virtual machine.
 	VolumeAttachments []string `pulumi:"volumeAttachments"`
@@ -4752,6 +4237,7 @@ func (o StorageProfileResponseOutput) ToStorageProfileResponseOutputWithContext(
 	return o
 }
 
+// The disk to use with this virtual machine.
 func (o StorageProfileResponseOutput) OsDisk() OsDiskResponseOutput {
 	return o.ApplyT(func(v StorageProfileResponse) OsDiskResponse { return v.OsDisk }).(OsDiskResponseOutput)
 }
@@ -5293,10 +4779,7 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAvailableUpgradeVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAvailableVersionResponseOutput{})
 	pulumi.RegisterOutputType(ClusterAvailableVersionResponseArrayOutput{})
-	pulumi.RegisterOutputType(ClusterCapacityOutput{})
-	pulumi.RegisterOutputType(ClusterCapacityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterCapacityResponseOutput{})
-	pulumi.RegisterOutputType(ClusterCapacityResponsePtrOutput{})
 	pulumi.RegisterOutputType(CniBgpConfigurationOutput{})
 	pulumi.RegisterOutputType(CniBgpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(CniBgpConfigurationResponseOutput{})
@@ -5318,9 +4801,7 @@ func init() {
 	pulumi.RegisterOutputType(HardwareInventoryNetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(HardwareInventoryNetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(HardwareInventoryResponseOutput{})
-	pulumi.RegisterOutputType(HardwareInventoryResponsePtrOutput{})
 	pulumi.RegisterOutputType(HardwareValidationStatusResponseOutput{})
-	pulumi.RegisterOutputType(HardwareValidationStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsResponseOutput{})
@@ -5332,7 +4813,6 @@ func init() {
 	pulumi.RegisterOutputType(KeySetUserStatusResponseOutput{})
 	pulumi.RegisterOutputType(KeySetUserStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(LldpNeighborResponseOutput{})
-	pulumi.RegisterOutputType(LldpNeighborResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponseOutput{})

@@ -65,6 +65,9 @@ func NewCommunicationService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:communication/v20220701preview:CommunicationService"),
 		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230331:CommunicationService"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CommunicationService

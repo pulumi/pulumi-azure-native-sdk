@@ -20287,7 +20287,7 @@ type VnetConfiguration struct {
 	PlatformReservedCidr *string `pulumi:"platformReservedCidr"`
 	//  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 	PlatformReservedDnsIP *string `pulumi:"platformReservedDnsIP"`
-	// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+	// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 	RuntimeSubnetId *string `pulumi:"runtimeSubnetId"`
 }
 
@@ -20316,7 +20316,7 @@ type VnetConfigurationArgs struct {
 	PlatformReservedCidr pulumi.StringPtrInput `pulumi:"platformReservedCidr"`
 	//  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 	PlatformReservedDnsIP pulumi.StringPtrInput `pulumi:"platformReservedDnsIP"`
-	// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+	// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 	RuntimeSubnetId pulumi.StringPtrInput `pulumi:"runtimeSubnetId"`
 }
 
@@ -20428,7 +20428,7 @@ func (o VnetConfigurationOutput) PlatformReservedDnsIP() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v VnetConfiguration) *string { return v.PlatformReservedDnsIP }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 func (o VnetConfigurationOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfiguration) *string { return v.RuntimeSubnetId }).(pulumi.StringPtrOutput)
 }
@@ -20517,7 +20517,7 @@ func (o VnetConfigurationPtrOutput) PlatformReservedDnsIP() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 func (o VnetConfigurationPtrOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnetConfiguration) *string {
 		if v == nil {
@@ -20541,7 +20541,7 @@ type VnetConfigurationResponse struct {
 	PlatformReservedCidr *string `pulumi:"platformReservedCidr"`
 	//  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 	PlatformReservedDnsIP *string `pulumi:"platformReservedDnsIP"`
-	// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+	// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 	RuntimeSubnetId *string `pulumi:"runtimeSubnetId"`
 }
 
@@ -20592,7 +20592,7 @@ func (o VnetConfigurationResponseOutput) PlatformReservedDnsIP() pulumi.StringPt
 	return o.ApplyT(func(v VnetConfigurationResponse) *string { return v.PlatformReservedDnsIP }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 func (o VnetConfigurationResponseOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfigurationResponse) *string { return v.RuntimeSubnetId }).(pulumi.StringPtrOutput)
 }
@@ -20681,7 +20681,7 @@ func (o VnetConfigurationResponsePtrOutput) PlatformReservedDnsIP() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet that Container App containers are injected into. This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId. Must not overlap with any other provided IP ranges.
+// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
 func (o VnetConfigurationResponsePtrOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnetConfigurationResponse) *string {
 		if v == nil {

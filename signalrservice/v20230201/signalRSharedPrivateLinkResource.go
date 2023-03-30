@@ -74,6 +74,9 @@ func NewSignalRSharedPrivateLinkResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220801preview:SignalRSharedPrivateLinkResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalRSharedPrivateLinkResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SignalRSharedPrivateLinkResource

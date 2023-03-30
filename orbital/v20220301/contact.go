@@ -84,12 +84,6 @@ func NewContact(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:orbital:Contact"),
-		},
-		{
-			Type: pulumi.String("azure-native:orbital/v20210404preview:Contact"),
-		},
-		{
 			Type: pulumi.String("azure-native:orbital/v20221101:Contact"),
 		},
 	})

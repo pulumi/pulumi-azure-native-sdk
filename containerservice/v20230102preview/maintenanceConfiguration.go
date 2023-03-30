@@ -139,6 +139,12 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230101:MaintenanceConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:MaintenanceConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MaintenanceConfiguration

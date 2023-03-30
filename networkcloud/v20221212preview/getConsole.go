@@ -49,8 +49,9 @@ type LookupConsoleResult struct {
 	// The resource ID of the private link service that is used to provide virtual machine console access.
 	PrivateLinkServiceId string `pulumi:"privateLinkServiceId"`
 	// The provisioning state of the virtual machine console.
-	ProvisioningState string               `pulumi:"provisioningState"`
-	SshPublicKey      SshPublicKeyResponse `pulumi:"sshPublicKey"`
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
+	SshPublicKey SshPublicKeyResponse `pulumi:"sshPublicKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -151,6 +152,7 @@ func (o LookupConsoleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsoleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 func (o LookupConsoleResultOutput) SshPublicKey() SshPublicKeyResponseOutput {
 	return o.ApplyT(func(v LookupConsoleResult) SshPublicKeyResponse { return v.SshPublicKey }).(SshPublicKeyResponseOutput)
 }

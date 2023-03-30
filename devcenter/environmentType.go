@@ -54,6 +54,9 @@ func NewEnvironmentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:EnvironmentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:EnvironmentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EnvironmentType

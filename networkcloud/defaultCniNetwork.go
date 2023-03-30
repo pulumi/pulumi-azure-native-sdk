@@ -18,7 +18,8 @@ type DefaultCniNetwork struct {
 	// The resource ID of the Network Cloud cluster this default CNI network is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The autonomous system number that the fabric expects to peer with, derived from the associated L3 isolation domain.
-	CniAsNumber         pulumi.Float64Output                 `pulumi:"cniAsNumber"`
+	CniAsNumber pulumi.Float64Output `pulumi:"cniAsNumber"`
+	// The Calico BGP configuration.
 	CniBgpConfiguration CniBgpConfigurationResponsePtrOutput `pulumi:"cniBgpConfiguration"`
 	// The more detailed status of the default CNI network.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
@@ -118,6 +119,7 @@ func (DefaultCniNetworkState) ElementType() reflect.Type {
 }
 
 type defaultCniNetworkArgs struct {
+	// The Calico BGP configuration.
 	CniBgpConfiguration *CniBgpConfiguration `pulumi:"cniBgpConfiguration"`
 	// The name of the default CNI network.
 	DefaultCniNetworkName *string `pulumi:"defaultCniNetworkName"`
@@ -145,6 +147,7 @@ type defaultCniNetworkArgs struct {
 
 // The set of arguments for constructing a DefaultCniNetwork resource.
 type DefaultCniNetworkArgs struct {
+	// The Calico BGP configuration.
 	CniBgpConfiguration CniBgpConfigurationPtrInput
 	// The name of the default CNI network.
 	DefaultCniNetworkName pulumi.StringPtrInput
@@ -217,6 +220,7 @@ func (o DefaultCniNetworkOutput) CniAsNumber() pulumi.Float64Output {
 	return o.ApplyT(func(v *DefaultCniNetwork) pulumi.Float64Output { return v.CniAsNumber }).(pulumi.Float64Output)
 }
 
+// The Calico BGP configuration.
 func (o DefaultCniNetworkOutput) CniBgpConfiguration() CniBgpConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *DefaultCniNetwork) CniBgpConfigurationResponsePtrOutput { return v.CniBgpConfiguration }).(CniBgpConfigurationResponsePtrOutput)
 }

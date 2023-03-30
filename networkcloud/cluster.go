@@ -15,28 +15,31 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionResponseOutput `pulumi:"aggregatorOrSingleRackDefinition"`
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 	AnalyticsWorkspaceId pulumi.StringOutput `pulumi:"analyticsWorkspaceId"`
 	// The list of cluster runtime version upgrades available for this cluster.
 	AvailableUpgradeVersions ClusterAvailableUpgradeVersionResponseArrayOutput `pulumi:"availableUpgradeVersions"`
-	ClusterCapacity          ClusterCapacityResponsePtrOutput                  `pulumi:"clusterCapacity"`
+	// The capacity supported by this cluster.
+	ClusterCapacity ClusterCapacityResponseOutput `pulumi:"clusterCapacity"`
 	// The latest heartbeat status between the cluster manager and the cluster.
 	ClusterConnectionStatus pulumi.StringOutput `pulumi:"clusterConnectionStatus"`
-	// The extended location (custom location) that represents the cluster's control plane location.
-	// This extended location is used to route the requests of child objects of the cluster that are handled by the platform operator.
+	// The extended location (custom location) that represents the cluster's control plane location. This extended location is used to route the requests of child objects of the cluster that are handled by the platform operator.
 	ClusterExtendedLocation ExtendedLocationResponseOutput `pulumi:"clusterExtendedLocation"`
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation pulumi.StringPtrOutput `pulumi:"clusterLocation"`
 	// The latest connectivity status between cluster manager and the cluster.
 	ClusterManagerConnectionStatus pulumi.StringOutput `pulumi:"clusterManagerConnectionStatus"`
 	// The resource ID of the cluster manager that manages this cluster. This is set by the Cluster Manager when the cluster is created.
-	ClusterManagerId        pulumi.StringOutput                          `pulumi:"clusterManagerId"`
+	ClusterManagerId pulumi.StringOutput `pulumi:"clusterManagerId"`
+	// The service principal to be used by the cluster during Arc Appliance installation.
 	ClusterServicePrincipal ServicePrincipalInformationResponsePtrOutput `pulumi:"clusterServicePrincipal"`
 	// The type of rack configuration for the cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
 	// The current runtime version of the cluster.
-	ClusterVersion             pulumi.StringOutput                  `pulumi:"clusterVersion"`
+	ClusterVersion pulumi.StringOutput `pulumi:"clusterVersion"`
+	// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 	ComputeDeploymentThreshold ValidationThresholdResponsePtrOutput `pulumi:"computeDeploymentThreshold"`
 	// The list of rack definitions for the compute racks in a multi-rack
 	// cluster, or an empty list in a single-rack cluster.
@@ -47,8 +50,7 @@ type Cluster struct {
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster manager associated with the cluster.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
-	// The extended location (custom location) that represents the Hybrid AKS control plane location.
-	// This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
+	// The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 	HybridAksExtendedLocation ExtendedLocationResponseOutput `pulumi:"hybridAksExtendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -140,19 +142,21 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinition `pulumi:"aggregatorOrSingleRackDefinition"`
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-	AnalyticsWorkspaceId string           `pulumi:"analyticsWorkspaceId"`
-	ClusterCapacity      *ClusterCapacity `pulumi:"clusterCapacity"`
+	AnalyticsWorkspaceId string `pulumi:"analyticsWorkspaceId"`
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation *string `pulumi:"clusterLocation"`
 	// The name of the cluster.
-	ClusterName             *string                      `pulumi:"clusterName"`
+	ClusterName *string `pulumi:"clusterName"`
+	// The service principal to be used by the cluster during Arc Appliance installation.
 	ClusterServicePrincipal *ServicePrincipalInformation `pulumi:"clusterServicePrincipal"`
 	// The type of rack configuration for the cluster.
 	ClusterType string `pulumi:"clusterType"`
 	// The current runtime version of the cluster.
-	ClusterVersion             string               `pulumi:"clusterVersion"`
+	ClusterVersion string `pulumi:"clusterVersion"`
+	// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 	ComputeDeploymentThreshold *ValidationThreshold `pulumi:"computeDeploymentThreshold"`
 	// The list of rack definitions for the compute racks in a multi-rack
 	// cluster, or an empty list in a single-rack cluster.
@@ -173,19 +177,21 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionInput
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 	AnalyticsWorkspaceId pulumi.StringInput
-	ClusterCapacity      ClusterCapacityPtrInput
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation pulumi.StringPtrInput
 	// The name of the cluster.
-	ClusterName             pulumi.StringPtrInput
+	ClusterName pulumi.StringPtrInput
+	// The service principal to be used by the cluster during Arc Appliance installation.
 	ClusterServicePrincipal ServicePrincipalInformationPtrInput
 	// The type of rack configuration for the cluster.
 	ClusterType pulumi.StringInput
 	// The current runtime version of the cluster.
-	ClusterVersion             pulumi.StringInput
+	ClusterVersion pulumi.StringInput
+	// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 	ComputeDeploymentThreshold ValidationThresholdPtrInput
 	// The list of rack definitions for the compute racks in a multi-rack
 	// cluster, or an empty list in a single-rack cluster.
@@ -241,6 +247,7 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 func (o ClusterOutput) AggregatorOrSingleRackDefinition() RackDefinitionResponseOutput {
 	return o.ApplyT(func(v *Cluster) RackDefinitionResponseOutput { return v.AggregatorOrSingleRackDefinition }).(RackDefinitionResponseOutput)
 }
@@ -255,8 +262,9 @@ func (o ClusterOutput) AvailableUpgradeVersions() ClusterAvailableUpgradeVersion
 	return o.ApplyT(func(v *Cluster) ClusterAvailableUpgradeVersionResponseArrayOutput { return v.AvailableUpgradeVersions }).(ClusterAvailableUpgradeVersionResponseArrayOutput)
 }
 
-func (o ClusterOutput) ClusterCapacity() ClusterCapacityResponsePtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterCapacityResponsePtrOutput { return v.ClusterCapacity }).(ClusterCapacityResponsePtrOutput)
+// The capacity supported by this cluster.
+func (o ClusterOutput) ClusterCapacity() ClusterCapacityResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterCapacityResponseOutput { return v.ClusterCapacity }).(ClusterCapacityResponseOutput)
 }
 
 // The latest heartbeat status between the cluster manager and the cluster.
@@ -264,8 +272,7 @@ func (o ClusterOutput) ClusterConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterConnectionStatus }).(pulumi.StringOutput)
 }
 
-// The extended location (custom location) that represents the cluster's control plane location.
-// This extended location is used to route the requests of child objects of the cluster that are handled by the platform operator.
+// The extended location (custom location) that represents the cluster's control plane location. This extended location is used to route the requests of child objects of the cluster that are handled by the platform operator.
 func (o ClusterOutput) ClusterExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.ClusterExtendedLocation }).(ExtendedLocationResponseOutput)
 }
@@ -285,6 +292,7 @@ func (o ClusterOutput) ClusterManagerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterManagerId }).(pulumi.StringOutput)
 }
 
+// The service principal to be used by the cluster during Arc Appliance installation.
 func (o ClusterOutput) ClusterServicePrincipal() ServicePrincipalInformationResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) ServicePrincipalInformationResponsePtrOutput { return v.ClusterServicePrincipal }).(ServicePrincipalInformationResponsePtrOutput)
 }
@@ -299,6 +307,7 @@ func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
 }
 
+// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 func (o ClusterOutput) ComputeDeploymentThreshold() ValidationThresholdResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) ValidationThresholdResponsePtrOutput { return v.ComputeDeploymentThreshold }).(ValidationThresholdResponsePtrOutput)
 }
@@ -324,8 +333,7 @@ func (o ClusterOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The extended location (custom location) that represents the Hybrid AKS control plane location.
-// This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
+// The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 func (o ClusterOutput) HybridAksExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.HybridAksExtendedLocation }).(ExtendedLocationResponseOutput)
 }

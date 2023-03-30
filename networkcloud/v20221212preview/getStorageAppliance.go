@@ -28,6 +28,7 @@ type LookupStorageApplianceArgs struct {
 }
 
 type LookupStorageApplianceResult struct {
+	// The credentials of the administrative interface on this storage appliance.
 	AdministratorCredentials AdministrativeCredentialsResponse `pulumi:"administratorCredentials"`
 	// The total capacity of the storage appliance.
 	Capacity float64 `pulumi:"capacity"`
@@ -109,6 +110,7 @@ func (o LookupStorageApplianceResultOutput) ToLookupStorageApplianceResultOutput
 	return o
 }
 
+// The credentials of the administrative interface on this storage appliance.
 func (o LookupStorageApplianceResultOutput) AdministratorCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v LookupStorageApplianceResult) AdministrativeCredentialsResponse {
 		return v.AdministratorCredentials

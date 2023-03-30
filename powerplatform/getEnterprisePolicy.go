@@ -32,6 +32,8 @@ type LookupEnterprisePolicyArgs struct {
 type LookupEnterprisePolicyResult struct {
 	// The encryption settings for a configuration store.
 	Encryption *PropertiesResponseEncryption `pulumi:"encryption"`
+	// The health status of the resource.
+	HealthStatus *string `pulumi:"healthStatus"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the EnterprisePolicy.
@@ -98,6 +100,11 @@ func (o LookupEnterprisePolicyResultOutput) ToLookupEnterprisePolicyResultOutput
 // The encryption settings for a configuration store.
 func (o LookupEnterprisePolicyResultOutput) Encryption() PropertiesResponseEncryptionPtrOutput {
 	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesResponseEncryption { return v.Encryption }).(PropertiesResponseEncryptionPtrOutput)
+}
+
+// The health status of the resource.
+func (o LookupEnterprisePolicyResultOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

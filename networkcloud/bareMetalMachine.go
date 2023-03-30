@@ -16,8 +16,9 @@ type BareMetalMachine struct {
 	pulumi.CustomResourceState
 
 	// The connection string for the baseboard management controller including IP address and protocol.
-	BmcConnectionString pulumi.StringOutput                     `pulumi:"bmcConnectionString"`
-	BmcCredentials      AdministrativeCredentialsResponseOutput `pulumi:"bmcCredentials"`
+	BmcConnectionString pulumi.StringOutput `pulumi:"bmcConnectionString"`
+	// The credentials of the baseboard management controller on this bare metal machine.
+	BmcCredentials AdministrativeCredentialsResponseOutput `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC device.
 	BmcMacAddress pulumi.StringOutput `pulumi:"bmcMacAddress"`
 	// The MAC address of a NIC connected to the PXE network.
@@ -31,9 +32,11 @@ type BareMetalMachine struct {
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
-	ExtendedLocation         ExtendedLocationResponseOutput            `pulumi:"extendedLocation"`
-	HardwareInventory        HardwareInventoryResponsePtrOutput        `pulumi:"hardwareInventory"`
-	HardwareValidationStatus HardwareValidationStatusResponsePtrOutput `pulumi:"hardwareValidationStatus"`
+	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
+	// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
+	HardwareInventory HardwareInventoryResponseOutput `pulumi:"hardwareInventory"`
+	// The details of the latest hardware validation performed for this bare metal machine.
+	HardwareValidationStatus HardwareValidationStatusResponseOutput `pulumi:"hardwareValidationStatus"`
 	// The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
 	HybridAksClustersAssociatedIds pulumi.StringArrayOutput `pulumi:"hybridAksClustersAssociatedIds"`
 	// The name of this machine represented by the host object in the Cluster's Kubernetes control plane.
@@ -164,8 +167,9 @@ type bareMetalMachineArgs struct {
 	// The name of the bare metal machine.
 	BareMetalMachineName *string `pulumi:"bareMetalMachineName"`
 	// The connection string for the baseboard management controller including IP address and protocol.
-	BmcConnectionString string                    `pulumi:"bmcConnectionString"`
-	BmcCredentials      AdministrativeCredentials `pulumi:"bmcCredentials"`
+	BmcConnectionString string `pulumi:"bmcConnectionString"`
+	// The credentials of the baseboard management controller on this bare metal machine.
+	BmcCredentials AdministrativeCredentials `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC device.
 	BmcMacAddress string `pulumi:"bmcMacAddress"`
 	// The MAC address of a NIC connected to the PXE network.
@@ -198,7 +202,8 @@ type BareMetalMachineArgs struct {
 	BareMetalMachineName pulumi.StringPtrInput
 	// The connection string for the baseboard management controller including IP address and protocol.
 	BmcConnectionString pulumi.StringInput
-	BmcCredentials      AdministrativeCredentialsInput
+	// The credentials of the baseboard management controller on this bare metal machine.
+	BmcCredentials AdministrativeCredentialsInput
 	// The MAC address of the BMC device.
 	BmcMacAddress pulumi.StringInput
 	// The MAC address of a NIC connected to the PXE network.
@@ -267,6 +272,7 @@ func (o BareMetalMachineOutput) BmcConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.BmcConnectionString }).(pulumi.StringOutput)
 }
 
+// The credentials of the baseboard management controller on this bare metal machine.
 func (o BareMetalMachineOutput) BmcCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v *BareMetalMachine) AdministrativeCredentialsResponseOutput { return v.BmcCredentials }).(AdministrativeCredentialsResponseOutput)
 }
@@ -306,12 +312,14 @@ func (o BareMetalMachineOutput) ExtendedLocation() ExtendedLocationResponseOutpu
 	return o.ApplyT(func(v *BareMetalMachine) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-func (o BareMetalMachineOutput) HardwareInventory() HardwareInventoryResponsePtrOutput {
-	return o.ApplyT(func(v *BareMetalMachine) HardwareInventoryResponsePtrOutput { return v.HardwareInventory }).(HardwareInventoryResponsePtrOutput)
+// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
+func (o BareMetalMachineOutput) HardwareInventory() HardwareInventoryResponseOutput {
+	return o.ApplyT(func(v *BareMetalMachine) HardwareInventoryResponseOutput { return v.HardwareInventory }).(HardwareInventoryResponseOutput)
 }
 
-func (o BareMetalMachineOutput) HardwareValidationStatus() HardwareValidationStatusResponsePtrOutput {
-	return o.ApplyT(func(v *BareMetalMachine) HardwareValidationStatusResponsePtrOutput { return v.HardwareValidationStatus }).(HardwareValidationStatusResponsePtrOutput)
+// The details of the latest hardware validation performed for this bare metal machine.
+func (o BareMetalMachineOutput) HardwareValidationStatus() HardwareValidationStatusResponseOutput {
+	return o.ApplyT(func(v *BareMetalMachine) HardwareValidationStatusResponseOutput { return v.HardwareValidationStatus }).(HardwareValidationStatusResponseOutput)
 }
 
 // The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.

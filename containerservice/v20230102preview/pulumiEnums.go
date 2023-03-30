@@ -187,9 +187,9 @@ const (
 type ManagedClusterSKUName string
 
 const (
-	// Basic will be removed in 07/01/2023 API version. Base will replace Basic, please switch to Base.
+	// Basic option for the AKS control plane.
 	ManagedClusterSKUNameBasic = ManagedClusterSKUName("Basic")
-	// Base option for the AKS control plane.
+	// Not yet available in this version.
 	ManagedClusterSKUNameBase = ManagedClusterSKUName("Base")
 )
 
@@ -197,9 +197,9 @@ const (
 type ManagedClusterSKUTier string
 
 const (
-	// Paid tier will be removed in 07/01/2023 API version. Standard tier will replace Paid tier, please switch to Standard tier.
-	ManagedClusterSKUTierPaid = ManagedClusterSKUTier("Paid")
 	// Recommended for mission-critical and production workloads. Includes Kubernetes control plane autoscaling, workload-intensive testing, and up to 5,000 nodes per cluster. Guarantees 99.95% availability of the Kubernetes API server endpoint for clusters that use Availability Zones and 99.9% of availability for clusters that don't use Availability Zones.
+	ManagedClusterSKUTierPaid = ManagedClusterSKUTier("Paid")
+	// Not yet available in this version.
 	ManagedClusterSKUTierStandard = ManagedClusterSKUTier("Standard")
 	// The cluster management is free, but charged for VM, storage, and networking usage. Best for experimenting, learning, simple testing, or workloads with fewer than 10 nodes. Not recommended for production use cases.
 	ManagedClusterSKUTierFree = ManagedClusterSKUTier("Free")

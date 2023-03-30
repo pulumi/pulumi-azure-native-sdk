@@ -18,6 +18,8 @@ type EnterprisePolicy struct {
 
 	// The encryption settings for a configuration store.
 	Encryption PropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
+	// The health status of the resource.
+	HealthStatus pulumi.StringPtrOutput `pulumi:"healthStatus"`
 	// The identity of the EnterprisePolicy.
 	Identity EnterprisePolicyIdentityResponsePtrOutput `pulumi:"identity"`
 	// The kind (type) of Enterprise Policy.
@@ -95,6 +97,8 @@ type enterprisePolicyArgs struct {
 	Encryption *PropertiesEncryption `pulumi:"encryption"`
 	// Name of the EnterprisePolicy.
 	EnterprisePolicyName *string `pulumi:"enterprisePolicyName"`
+	// The health status of the resource.
+	HealthStatus *string `pulumi:"healthStatus"`
 	// The identity of the EnterprisePolicy.
 	Identity *EnterprisePolicyIdentity `pulumi:"identity"`
 	// The kind (type) of Enterprise Policy.
@@ -117,6 +121,8 @@ type EnterprisePolicyArgs struct {
 	Encryption PropertiesEncryptionPtrInput
 	// Name of the EnterprisePolicy.
 	EnterprisePolicyName pulumi.StringPtrInput
+	// The health status of the resource.
+	HealthStatus pulumi.StringPtrInput
 	// The identity of the EnterprisePolicy.
 	Identity EnterprisePolicyIdentityPtrInput
 	// The kind (type) of Enterprise Policy.
@@ -173,6 +179,11 @@ func (o EnterprisePolicyOutput) ToEnterprisePolicyOutputWithContext(ctx context.
 // The encryption settings for a configuration store.
 func (o EnterprisePolicyOutput) Encryption() PropertiesResponseEncryptionPtrOutput {
 	return o.ApplyT(func(v *EnterprisePolicy) PropertiesResponseEncryptionPtrOutput { return v.Encryption }).(PropertiesResponseEncryptionPtrOutput)
+}
+
+// The health status of the resource.
+func (o EnterprisePolicyOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) pulumi.StringPtrOutput { return v.HealthStatus }).(pulumi.StringPtrOutput)
 }
 
 // The identity of the EnterprisePolicy.

@@ -19,7 +19,8 @@ type VirtualMachine struct {
 	// The resource ID of the bare metal machine the virtual machine has landed to.
 	BareMetalMachineId pulumi.StringOutput `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
-	BootMethod                     pulumi.StringPtrOutput          `pulumi:"bootMethod"`
+	BootMethod pulumi.StringPtrOutput `pulumi:"bootMethod"`
+	// The cloud service network that provides platform-level services for the virtual machine.
 	CloudServicesNetworkAttachment NetworkAttachmentResponseOutput `pulumi:"cloudServicesNetworkAttachment"`
 	// The resource ID of the cluster the virtual machine is created for.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -50,8 +51,9 @@ type VirtualMachine struct {
 	// The provisioning state of the virtual machine.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-	SshPublicKeys  SshPublicKeyResponseArrayOutput `pulumi:"sshPublicKeys"`
-	StorageProfile StorageProfileResponseOutput    `pulumi:"storageProfile"`
+	SshPublicKeys SshPublicKeyResponseArrayOutput `pulumi:"sshPublicKeys"`
+	// The storage profile that specifies size and other parameters about the disks related to the virtual machine.
+	StorageProfile StorageProfileResponseOutput `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -65,7 +67,8 @@ type VirtualMachine struct {
 	// The type of the device model to use.
 	VmDeviceModel pulumi.StringPtrOutput `pulumi:"vmDeviceModel"`
 	// The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
-	VmImage                      pulumi.StringOutput                         `pulumi:"vmImage"`
+	VmImage pulumi.StringOutput `pulumi:"vmImage"`
+	// The credentials used to login to the image repository that has access to the specified image.
 	VmImageRepositoryCredentials ImageRepositoryCredentialsResponsePtrOutput `pulumi:"vmImageRepositoryCredentials"`
 	// The resource IDs of volumes that are attached to the virtual machine.
 	Volumes pulumi.StringArrayOutput `pulumi:"volumes"`
@@ -156,7 +159,8 @@ type virtualMachineArgs struct {
 	// The name of the administrator to which the ssh public keys will be added into the authorized keys.
 	AdminUsername string `pulumi:"adminUsername"`
 	// Selects the boot method for the virtual machine.
-	BootMethod                     *string           `pulumi:"bootMethod"`
+	BootMethod *string `pulumi:"bootMethod"`
+	// The cloud service network that provides platform-level services for the virtual machine.
 	CloudServicesNetworkAttachment NetworkAttachment `pulumi:"cloudServicesNetworkAttachment"`
 	// The number of CPU cores in the virtual machine.
 	CpuCores float64 `pulumi:"cpuCores"`
@@ -177,7 +181,8 @@ type virtualMachineArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-	SshPublicKeys  []SshPublicKey `pulumi:"sshPublicKeys"`
+	SshPublicKeys []SshPublicKey `pulumi:"sshPublicKeys"`
+	// The storage profile that specifies size and other parameters about the disks related to the virtual machine.
 	StorageProfile StorageProfile `pulumi:"storageProfile"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -190,7 +195,8 @@ type virtualMachineArgs struct {
 	// The type of the device model to use.
 	VmDeviceModel *string `pulumi:"vmDeviceModel"`
 	// The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
-	VmImage                      string                      `pulumi:"vmImage"`
+	VmImage string `pulumi:"vmImage"`
+	// The credentials used to login to the image repository that has access to the specified image.
 	VmImageRepositoryCredentials *ImageRepositoryCredentials `pulumi:"vmImageRepositoryCredentials"`
 }
 
@@ -199,7 +205,8 @@ type VirtualMachineArgs struct {
 	// The name of the administrator to which the ssh public keys will be added into the authorized keys.
 	AdminUsername pulumi.StringInput
 	// Selects the boot method for the virtual machine.
-	BootMethod                     pulumi.StringPtrInput
+	BootMethod pulumi.StringPtrInput
+	// The cloud service network that provides platform-level services for the virtual machine.
 	CloudServicesNetworkAttachment NetworkAttachmentInput
 	// The number of CPU cores in the virtual machine.
 	CpuCores pulumi.Float64Input
@@ -220,7 +227,8 @@ type VirtualMachineArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-	SshPublicKeys  SshPublicKeyArrayInput
+	SshPublicKeys SshPublicKeyArrayInput
+	// The storage profile that specifies size and other parameters about the disks related to the virtual machine.
 	StorageProfile StorageProfileInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -233,7 +241,8 @@ type VirtualMachineArgs struct {
 	// The type of the device model to use.
 	VmDeviceModel pulumi.StringPtrInput
 	// The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
-	VmImage                      pulumi.StringInput
+	VmImage pulumi.StringInput
+	// The credentials used to login to the image repository that has access to the specified image.
 	VmImageRepositoryCredentials ImageRepositoryCredentialsPtrInput
 }
 
@@ -289,6 +298,7 @@ func (o VirtualMachineOutput) BootMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.BootMethod }).(pulumi.StringPtrOutput)
 }
 
+// The cloud service network that provides platform-level services for the virtual machine.
 func (o VirtualMachineOutput) CloudServicesNetworkAttachment() NetworkAttachmentResponseOutput {
 	return o.ApplyT(func(v *VirtualMachine) NetworkAttachmentResponseOutput { return v.CloudServicesNetworkAttachment }).(NetworkAttachmentResponseOutput)
 }
@@ -368,6 +378,7 @@ func (o VirtualMachineOutput) SshPublicKeys() SshPublicKeyResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) SshPublicKeyResponseArrayOutput { return v.SshPublicKeys }).(SshPublicKeyResponseArrayOutput)
 }
 
+// The storage profile that specifies size and other parameters about the disks related to the virtual machine.
 func (o VirtualMachineOutput) StorageProfile() StorageProfileResponseOutput {
 	return o.ApplyT(func(v *VirtualMachine) StorageProfileResponseOutput { return v.StorageProfile }).(StorageProfileResponseOutput)
 }
@@ -407,6 +418,7 @@ func (o VirtualMachineOutput) VmImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.VmImage }).(pulumi.StringOutput)
 }
 
+// The credentials used to login to the image repository that has access to the specified image.
 func (o VirtualMachineOutput) VmImageRepositoryCredentials() ImageRepositoryCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) ImageRepositoryCredentialsResponsePtrOutput {
 		return v.VmImageRepositoryCredentials

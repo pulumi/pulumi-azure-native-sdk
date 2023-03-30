@@ -32,8 +32,9 @@ type Console struct {
 	// The resource ID of the private link service that is used to provide virtual machine console access.
 	PrivateLinkServiceId pulumi.StringOutput `pulumi:"privateLinkServiceId"`
 	// The provisioning state of the virtual machine console.
-	ProvisioningState pulumi.StringOutput        `pulumi:"provisioningState"`
-	SshPublicKey      SshPublicKeyResponseOutput `pulumi:"sshPublicKey"`
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
+	SshPublicKey SshPublicKeyResponseOutput `pulumi:"sshPublicKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -115,8 +116,9 @@ type consoleArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string       `pulumi:"resourceGroupName"`
-	SshPublicKey      SshPublicKey `pulumi:"sshPublicKey"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
+	SshPublicKey SshPublicKey `pulumi:"sshPublicKey"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the virtual machine.
@@ -137,7 +139,8 @@ type ConsoleArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	SshPublicKey      SshPublicKeyInput
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
+	SshPublicKey SshPublicKeyInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The name of the virtual machine.
@@ -226,6 +229,7 @@ func (o ConsoleOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Console) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 func (o ConsoleOutput) SshPublicKey() SshPublicKeyResponseOutput {
 	return o.ApplyT(func(v *Console) SshPublicKeyResponseOutput { return v.SshPublicKey }).(SshPublicKeyResponseOutput)
 }

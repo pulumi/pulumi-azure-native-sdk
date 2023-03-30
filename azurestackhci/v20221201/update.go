@@ -76,6 +76,9 @@ func NewUpdate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230201:Update"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230301:Update"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Update

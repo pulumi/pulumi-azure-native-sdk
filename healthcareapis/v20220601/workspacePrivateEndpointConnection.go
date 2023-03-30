@@ -64,6 +64,9 @@ func NewWorkspacePrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:WorkspacePrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:WorkspacePrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource WorkspacePrivateEndpointConnection

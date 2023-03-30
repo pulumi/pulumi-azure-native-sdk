@@ -21,6 +21,15 @@ const (
 	EnterprisePolicyKindIdentity         = EnterprisePolicyKind("Identity")
 )
 
+// The health status of the resource.
+type HealthStatus string
+
+const (
+	HealthStatusUndetermined = HealthStatus("Undetermined")
+	HealthStatusHealthy      = HealthStatus("Healthy")
+	HealthStatusUnhealthy    = HealthStatus("Unhealthy")
+)
+
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 

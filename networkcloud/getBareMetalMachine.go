@@ -30,8 +30,9 @@ type LookupBareMetalMachineArgs struct {
 
 type LookupBareMetalMachineResult struct {
 	// The connection string for the baseboard management controller including IP address and protocol.
-	BmcConnectionString string                            `pulumi:"bmcConnectionString"`
-	BmcCredentials      AdministrativeCredentialsResponse `pulumi:"bmcCredentials"`
+	BmcConnectionString string `pulumi:"bmcConnectionString"`
+	// The credentials of the baseboard management controller on this bare metal machine.
+	BmcCredentials AdministrativeCredentialsResponse `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC device.
 	BmcMacAddress string `pulumi:"bmcMacAddress"`
 	// The MAC address of a NIC connected to the PXE network.
@@ -45,9 +46,11 @@ type LookupBareMetalMachineResult struct {
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
-	ExtendedLocation         ExtendedLocationResponse          `pulumi:"extendedLocation"`
-	HardwareInventory        *HardwareInventoryResponse        `pulumi:"hardwareInventory"`
-	HardwareValidationStatus *HardwareValidationStatusResponse `pulumi:"hardwareValidationStatus"`
+	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
+	HardwareInventory HardwareInventoryResponse `pulumi:"hardwareInventory"`
+	// The details of the latest hardware validation performed for this bare metal machine.
+	HardwareValidationStatus HardwareValidationStatusResponse `pulumi:"hardwareValidationStatus"`
 	// The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
 	HybridAksClustersAssociatedIds []string `pulumi:"hybridAksClustersAssociatedIds"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -139,6 +142,7 @@ func (o LookupBareMetalMachineResultOutput) BmcConnectionString() pulumi.StringO
 	return o.ApplyT(func(v LookupBareMetalMachineResult) string { return v.BmcConnectionString }).(pulumi.StringOutput)
 }
 
+// The credentials of the baseboard management controller on this bare metal machine.
 func (o LookupBareMetalMachineResultOutput) BmcCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineResult) AdministrativeCredentialsResponse { return v.BmcCredentials }).(AdministrativeCredentialsResponseOutput)
 }
@@ -178,14 +182,16 @@ func (o LookupBareMetalMachineResultOutput) ExtendedLocation() ExtendedLocationR
 	return o.ApplyT(func(v LookupBareMetalMachineResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-func (o LookupBareMetalMachineResultOutput) HardwareInventory() HardwareInventoryResponsePtrOutput {
-	return o.ApplyT(func(v LookupBareMetalMachineResult) *HardwareInventoryResponse { return v.HardwareInventory }).(HardwareInventoryResponsePtrOutput)
+// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
+func (o LookupBareMetalMachineResultOutput) HardwareInventory() HardwareInventoryResponseOutput {
+	return o.ApplyT(func(v LookupBareMetalMachineResult) HardwareInventoryResponse { return v.HardwareInventory }).(HardwareInventoryResponseOutput)
 }
 
-func (o LookupBareMetalMachineResultOutput) HardwareValidationStatus() HardwareValidationStatusResponsePtrOutput {
-	return o.ApplyT(func(v LookupBareMetalMachineResult) *HardwareValidationStatusResponse {
+// The details of the latest hardware validation performed for this bare metal machine.
+func (o LookupBareMetalMachineResultOutput) HardwareValidationStatus() HardwareValidationStatusResponseOutput {
+	return o.ApplyT(func(v LookupBareMetalMachineResult) HardwareValidationStatusResponse {
 		return v.HardwareValidationStatus
-	}).(HardwareValidationStatusResponsePtrOutput)
+	}).(HardwareValidationStatusResponseOutput)
 }
 
 // The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.

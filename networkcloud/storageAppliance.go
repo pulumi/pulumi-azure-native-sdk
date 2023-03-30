@@ -15,6 +15,7 @@ import (
 type StorageAppliance struct {
 	pulumi.CustomResourceState
 
+	// The credentials of the administrative interface on this storage appliance.
 	AdministratorCredentials AdministrativeCredentialsResponseOutput `pulumi:"administratorCredentials"`
 	// The total capacity of the storage appliance.
 	Capacity pulumi.Float64Output `pulumi:"capacity"`
@@ -122,6 +123,7 @@ func (StorageApplianceState) ElementType() reflect.Type {
 }
 
 type storageApplianceArgs struct {
+	// The credentials of the administrative interface on this storage appliance.
 	AdministratorCredentials AdministrativeCredentials `pulumi:"administratorCredentials"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
@@ -145,6 +147,7 @@ type storageApplianceArgs struct {
 
 // The set of arguments for constructing a StorageAppliance resource.
 type StorageApplianceArgs struct {
+	// The credentials of the administrative interface on this storage appliance.
 	AdministratorCredentials AdministrativeCredentialsInput
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationInput
@@ -203,6 +206,7 @@ func (o StorageApplianceOutput) ToStorageApplianceOutputWithContext(ctx context.
 	return o
 }
 
+// The credentials of the administrative interface on this storage appliance.
 func (o StorageApplianceOutput) AdministratorCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v *StorageAppliance) AdministrativeCredentialsResponseOutput { return v.AdministratorCredentials }).(AdministrativeCredentialsResponseOutput)
 }

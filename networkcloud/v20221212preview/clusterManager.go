@@ -30,8 +30,7 @@ type ClusterManager struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
 	ManagedResourceGroupConfiguration ManagedResourceGroupConfigurationResponsePtrOutput `pulumi:"managedResourceGroupConfiguration"`
-	// The extended location (custom location) that represents the cluster manager's control plane location.
-	//  This extended location is used when creating cluster and rack manifest resources.
+	// The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
 	ManagerExtendedLocation ExtendedLocationResponseOutput `pulumi:"managerExtendedLocation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -219,9 +218,7 @@ func (o ClusterManagerOutput) ManagedResourceGroupConfiguration() ManagedResourc
 	}).(ManagedResourceGroupConfigurationResponsePtrOutput)
 }
 
-// The extended location (custom location) that represents the cluster manager's control plane location.
-//
-//	This extended location is used when creating cluster and rack manifest resources.
+// The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
 func (o ClusterManagerOutput) ManagerExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *ClusterManager) ExtendedLocationResponseOutput { return v.ManagerExtendedLocation }).(ExtendedLocationResponseOutput)
 }

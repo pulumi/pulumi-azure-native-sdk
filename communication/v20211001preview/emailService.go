@@ -51,6 +51,9 @@ func NewEmailService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:communication/v20220701preview:EmailService"),
 		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230331:EmailService"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EmailService

@@ -42,6 +42,12 @@ func NewReplica(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20230301:Replica"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Replica
 	err := ctx.RegisterResource("azure-native:appconfiguration/v20220301preview:Replica", name, args, &resource, opts...)
 	if err != nil {
