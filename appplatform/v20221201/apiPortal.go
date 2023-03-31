@@ -68,9 +68,6 @@ func NewApiPortal(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ApiPortal"),
 		},
-		{
-			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApiPortal"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiPortal

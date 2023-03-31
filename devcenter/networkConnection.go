@@ -75,9 +75,6 @@ func NewNetworkConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:NetworkConnection"),
 		},
-		{
-			Type: pulumi.String("azure-native:devcenter/v20230101preview:NetworkConnection"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkConnection

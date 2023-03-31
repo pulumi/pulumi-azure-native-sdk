@@ -46,9 +46,6 @@ func NewConnectedEnvironmentsCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironmentsCertificate"),
 		},
-		{
-			Type: pulumi.String("azure-native:app/v20221101preview:ConnectedEnvironmentsCertificate"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource ConnectedEnvironmentsCertificate

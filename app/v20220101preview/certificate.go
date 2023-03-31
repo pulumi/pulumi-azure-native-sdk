@@ -55,9 +55,6 @@ func NewCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20221001:Certificate"),
 		},
-		{
-			Type: pulumi.String("azure-native:app/v20221101preview:Certificate"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource Certificate

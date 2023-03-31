@@ -55,9 +55,6 @@ func NewDevCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:DevCenter"),
 		},
-		{
-			Type: pulumi.String("azure-native:devcenter/v20230101preview:DevCenter"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource DevCenter
