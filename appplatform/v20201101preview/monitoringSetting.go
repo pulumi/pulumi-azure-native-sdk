@@ -73,9 +73,6 @@ func NewMonitoringSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:MonitoringSetting"),
 		},
-		{
-			Type: pulumi.String("azure-native:appplatform/v20230301preview:MonitoringSetting"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource MonitoringSetting

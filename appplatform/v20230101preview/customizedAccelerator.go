@@ -50,9 +50,6 @@ func NewCustomizedAccelerator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:CustomizedAccelerator"),
 		},
-		{
-			Type: pulumi.String("azure-native:appplatform/v20230301preview:CustomizedAccelerator"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource CustomizedAccelerator

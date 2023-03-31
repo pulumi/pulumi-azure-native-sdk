@@ -47,9 +47,6 @@ func NewApplicationAccelerator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:ApplicationAccelerator"),
 		},
-		{
-			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApplicationAccelerator"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource ApplicationAccelerator

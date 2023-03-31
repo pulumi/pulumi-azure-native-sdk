@@ -58,9 +58,6 @@ func NewUpdateSummary(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230201:UpdateSummary"),
 		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20230301:UpdateSummary"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource UpdateSummary
