@@ -656,6 +656,107 @@ type AddressPrefixItem struct {
 	AddressPrefixType *string `pulumi:"addressPrefixType"`
 }
 
+// AddressPrefixItemInput is an input type that accepts AddressPrefixItemArgs and AddressPrefixItemOutput values.
+// You can construct a concrete instance of `AddressPrefixItemInput` via:
+//
+//	AddressPrefixItemArgs{...}
+type AddressPrefixItemInput interface {
+	pulumi.Input
+
+	ToAddressPrefixItemOutput() AddressPrefixItemOutput
+	ToAddressPrefixItemOutputWithContext(context.Context) AddressPrefixItemOutput
+}
+
+// Address prefix item.
+type AddressPrefixItemArgs struct {
+	// Address prefix.
+	AddressPrefix pulumi.StringPtrInput `pulumi:"addressPrefix"`
+	// Address prefix type.
+	AddressPrefixType pulumi.StringPtrInput `pulumi:"addressPrefixType"`
+}
+
+func (AddressPrefixItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressPrefixItem)(nil)).Elem()
+}
+
+func (i AddressPrefixItemArgs) ToAddressPrefixItemOutput() AddressPrefixItemOutput {
+	return i.ToAddressPrefixItemOutputWithContext(context.Background())
+}
+
+func (i AddressPrefixItemArgs) ToAddressPrefixItemOutputWithContext(ctx context.Context) AddressPrefixItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressPrefixItemOutput)
+}
+
+// AddressPrefixItemArrayInput is an input type that accepts AddressPrefixItemArray and AddressPrefixItemArrayOutput values.
+// You can construct a concrete instance of `AddressPrefixItemArrayInput` via:
+//
+//	AddressPrefixItemArray{ AddressPrefixItemArgs{...} }
+type AddressPrefixItemArrayInput interface {
+	pulumi.Input
+
+	ToAddressPrefixItemArrayOutput() AddressPrefixItemArrayOutput
+	ToAddressPrefixItemArrayOutputWithContext(context.Context) AddressPrefixItemArrayOutput
+}
+
+type AddressPrefixItemArray []AddressPrefixItemInput
+
+func (AddressPrefixItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressPrefixItem)(nil)).Elem()
+}
+
+func (i AddressPrefixItemArray) ToAddressPrefixItemArrayOutput() AddressPrefixItemArrayOutput {
+	return i.ToAddressPrefixItemArrayOutputWithContext(context.Background())
+}
+
+func (i AddressPrefixItemArray) ToAddressPrefixItemArrayOutputWithContext(ctx context.Context) AddressPrefixItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressPrefixItemArrayOutput)
+}
+
+// Address prefix item.
+type AddressPrefixItemOutput struct{ *pulumi.OutputState }
+
+func (AddressPrefixItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressPrefixItem)(nil)).Elem()
+}
+
+func (o AddressPrefixItemOutput) ToAddressPrefixItemOutput() AddressPrefixItemOutput {
+	return o
+}
+
+func (o AddressPrefixItemOutput) ToAddressPrefixItemOutputWithContext(ctx context.Context) AddressPrefixItemOutput {
+	return o
+}
+
+// Address prefix.
+func (o AddressPrefixItemOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressPrefixItem) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Address prefix type.
+func (o AddressPrefixItemOutput) AddressPrefixType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressPrefixItem) *string { return v.AddressPrefixType }).(pulumi.StringPtrOutput)
+}
+
+type AddressPrefixItemArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressPrefixItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressPrefixItem)(nil)).Elem()
+}
+
+func (o AddressPrefixItemArrayOutput) ToAddressPrefixItemArrayOutput() AddressPrefixItemArrayOutput {
+	return o
+}
+
+func (o AddressPrefixItemArrayOutput) ToAddressPrefixItemArrayOutputWithContext(ctx context.Context) AddressPrefixItemArrayOutput {
+	return o
+}
+
+func (o AddressPrefixItemArrayOutput) Index(i pulumi.IntInput) AddressPrefixItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressPrefixItem {
+		return vs[0].([]AddressPrefixItem)[vs[1].(int)]
+	}).(AddressPrefixItemOutput)
+}
+
 // Address prefix item.
 type AddressPrefixItemResponse struct {
 	// Address prefix.
@@ -61479,6 +61580,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ActiveConnectivityConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ActiveConnectivityConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(AddressPrefixItemOutput{})
+	pulumi.RegisterOutputType(AddressPrefixItemArrayOutput{})
 	pulumi.RegisterOutputType(AddressPrefixItemResponseOutput{})
 	pulumi.RegisterOutputType(AddressPrefixItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(AddressSpaceOutput{})

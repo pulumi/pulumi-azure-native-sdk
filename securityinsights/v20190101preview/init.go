@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ASCDataConnector{}
 	case "azure-native:securityinsights/v20190101preview:Action":
 		r = &Action{}
-	case "azure-native:securityinsights/v20190101preview:AlertRule":
-		r = &AlertRule{}
 	case "azure-native:securityinsights/v20190101preview:Anomalies":
 		r = &Anomalies{}
 	case "azure-native:securityinsights/v20190101preview:AutomationRule":
@@ -41,8 +39,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bookmark{}
 	case "azure-native:securityinsights/v20190101preview:BookmarkRelation":
 		r = &BookmarkRelation{}
-	case "azure-native:securityinsights/v20190101preview:DataConnector":
-		r = &DataConnector{}
 	case "azure-native:securityinsights/v20190101preview:Dynamics365DataConnector":
 		r = &Dynamics365DataConnector{}
 	case "azure-native:securityinsights/v20190101preview:EntityAnalytics":
@@ -75,8 +71,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficeATPDataConnector{}
 	case "azure-native:securityinsights/v20190101preview:OfficeDataConnector":
 		r = &OfficeDataConnector{}
-	case "azure-native:securityinsights/v20190101preview:ProductSetting":
-		r = &ProductSetting{}
 	case "azure-native:securityinsights/v20190101preview:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
 	case "azure-native:securityinsights/v20190101preview:TIDataConnector":

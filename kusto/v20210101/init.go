@@ -27,10 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:kusto/v20210101:ClusterPrincipalAssignment":
 		r = &ClusterPrincipalAssignment{}
-	case "azure-native:kusto/v20210101:DataConnection":
-		r = &DataConnection{}
-	case "azure-native:kusto/v20210101:Database":
-		r = &Database{}
 	case "azure-native:kusto/v20210101:DatabasePrincipalAssignment":
 		r = &DatabasePrincipalAssignment{}
 	case "azure-native:kusto/v20210101:EventGridDataConnection":

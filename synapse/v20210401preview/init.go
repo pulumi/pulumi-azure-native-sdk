@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:synapse/v20210401preview:BigDataPool":
 		r = &BigDataPool{}
-	case "azure-native:synapse/v20210401preview:DataConnection":
-		r = &DataConnection{}
-	case "azure-native:synapse/v20210401preview:Database":
-		r = &Database{}
 	case "azure-native:synapse/v20210401preview:DatabasePrincipalAssignment":
 		r = &DatabasePrincipalAssignment{}
 	case "azure-native:synapse/v20210401preview:EventGridDataConnection":

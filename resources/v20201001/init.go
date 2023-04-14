@@ -35,8 +35,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeploymentAtSubscriptionScope{}
 	case "azure-native:resources/v20201001:DeploymentAtTenantScope":
 		r = &DeploymentAtTenantScope{}
-	case "azure-native:resources/v20201001:DeploymentScript":
-		r = &DeploymentScript{}
 	case "azure-native:resources/v20201001:Resource":
 		r = &Resource{}
 	case "azure-native:resources/v20201001:ResourceGroup":
