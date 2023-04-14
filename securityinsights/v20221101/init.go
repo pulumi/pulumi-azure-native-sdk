@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ASCDataConnector{}
 	case "azure-native:securityinsights/v20221101:Action":
 		r = &Action{}
-	case "azure-native:securityinsights/v20221101:AlertRule":
-		r = &AlertRule{}
 	case "azure-native:securityinsights/v20221101:AnomalySecurityMLAnalyticsSettings":
 		r = &AnomalySecurityMLAnalyticsSettings{}
 	case "azure-native:securityinsights/v20221101:AutomationRule":
@@ -39,8 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsCloudTrailDataConnector{}
 	case "azure-native:securityinsights/v20221101:Bookmark":
 		r = &Bookmark{}
-	case "azure-native:securityinsights/v20221101:DataConnector":
-		r = &DataConnector{}
 	case "azure-native:securityinsights/v20221101:FusionAlertRule":
 		r = &FusionAlertRule{}
 	case "azure-native:securityinsights/v20221101:Incident":
@@ -59,8 +55,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficeDataConnector{}
 	case "azure-native:securityinsights/v20221101:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20221101:SecurityMLAnalyticsSetting":
-		r = &SecurityMLAnalyticsSetting{}
 	case "azure-native:securityinsights/v20221101:SentinelOnboardingState":
 		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights/v20221101:TIDataConnector":

@@ -51,10 +51,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BlobFolderDataSet{}
 	case "azure-native:datashare/v20181101preview:BlobFolderDataSetMapping":
 		r = &BlobFolderDataSetMapping{}
-	case "azure-native:datashare/v20181101preview:DataSet":
-		r = &DataSet{}
-	case "azure-native:datashare/v20181101preview:DataSetMapping":
-		r = &DataSetMapping{}
 	case "azure-native:datashare/v20181101preview:Invitation":
 		r = &Invitation{}
 	case "azure-native:datashare/v20181101preview:KustoClusterDataSet":
@@ -81,10 +77,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlDWTableDataSet{}
 	case "azure-native:datashare/v20181101preview:SqlDWTableDataSetMapping":
 		r = &SqlDWTableDataSetMapping{}
-	case "azure-native:datashare/v20181101preview:SynchronizationSetting":
-		r = &SynchronizationSetting{}
-	case "azure-native:datashare/v20181101preview:Trigger":
-		r = &Trigger{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

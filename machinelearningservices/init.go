@@ -61,8 +61,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MachineLearningDataset{}
 	case "azure-native:machinelearningservices:MachineLearningDatastore":
 		r = &MachineLearningDatastore{}
-	case "azure-native:machinelearningservices:MachineLearningService":
-		r = &MachineLearningService{}
 	case "azure-native:machinelearningservices:ModelContainer":
 		r = &ModelContainer{}
 	case "azure-native:machinelearningservices:ModelVersion":

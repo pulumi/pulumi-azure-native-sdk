@@ -29,16 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ASCDataConnector{}
 	case "azure-native:securityinsights/v20211001:Action":
 		r = &Action{}
-	case "azure-native:securityinsights/v20211001:AlertRule":
-		r = &AlertRule{}
 	case "azure-native:securityinsights/v20211001:AutomationRule":
 		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20211001:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
 	case "azure-native:securityinsights/v20211001:Bookmark":
 		r = &Bookmark{}
-	case "azure-native:securityinsights/v20211001:DataConnector":
-		r = &DataConnector{}
 	case "azure-native:securityinsights/v20211001:FusionAlertRule":
 		r = &FusionAlertRule{}
 	case "azure-native:securityinsights/v20211001:Incident":

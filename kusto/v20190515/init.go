@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:kusto/v20190515:Cluster":
 		r = &Cluster{}
-	case "azure-native:kusto/v20190515:DataConnection":
-		r = &DataConnection{}
 	case "azure-native:kusto/v20190515:Database":
 		r = &Database{}
 	case "azure-native:kusto/v20190515:EventGridDataConnection":

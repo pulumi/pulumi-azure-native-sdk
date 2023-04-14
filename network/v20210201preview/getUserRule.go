@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a user rule.
-//
-// Deprecated: Please use one of the variants: DefaultUserRule, UserRule.
 func LookupUserRule(ctx *pulumi.Context, args *LookupUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleResult, error) {
 	var rv LookupUserRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getUserRule", args, &rv, opts...)
@@ -35,16 +33,35 @@ type LookupUserRuleArgs struct {
 	RuleName string `pulumi:"ruleName"`
 }
 
-// Network base rule.
+// Network security user rule.
 type LookupUserRuleResult struct {
+	// A description for this rule.
+	Description *string `pulumi:"description"`
+	// The destination port ranges.
+	DestinationPortRanges []string `pulumi:"destinationPortRanges"`
+	// The destination address prefixes. CIDR or destination IP ranges.
+	Destinations []AddressPrefixItemResponse `pulumi:"destinations"`
+	// Indicates if the traffic matched against the rule in inbound or outbound.
+	Direction string `pulumi:"direction"`
+	// A friendly name for the rule.
+	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Whether the rule is custom or default.
+	// Expected value is 'Custom'.
 	Kind string `pulumi:"kind"`
 	// Resource name.
 	Name string `pulumi:"name"`
+	// Network protocol this rule applies to.
+	Protocol string `pulumi:"protocol"`
+	// The provisioning state of the security configuration user rule resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The source port ranges.
+	SourcePortRanges []string `pulumi:"sourcePortRanges"`
+	// The CIDR or source IP ranges.
+	Sources []AddressPrefixItemResponse `pulumi:"sources"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
@@ -81,7 +98,7 @@ func (LookupUserRuleOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupUserRuleArgs)(nil)).Elem()
 }
 
-// Network base rule.
+// Network security user rule.
 type LookupUserRuleResultOutput struct{ *pulumi.OutputState }
 
 func (LookupUserRuleResultOutput) ElementType() reflect.Type {
@@ -96,6 +113,31 @@ func (o LookupUserRuleResultOutput) ToLookupUserRuleResultOutputWithContext(ctx 
 	return o
 }
 
+// A description for this rule.
+func (o LookupUserRuleResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination port ranges.
+func (o LookupUserRuleResultOutput) DestinationPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The destination address prefixes. CIDR or destination IP ranges.
+func (o LookupUserRuleResultOutput) Destinations() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) []AddressPrefixItemResponse { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
+}
+
+// Indicates if the traffic matched against the rule in inbound or outbound.
+func (o LookupUserRuleResultOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// A friendly name for the rule.
+func (o LookupUserRuleResultOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupUserRuleResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserRuleResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -107,6 +149,7 @@ func (o LookupUserRuleResultOutput) Id() pulumi.StringOutput {
 }
 
 // Whether the rule is custom or default.
+// Expected value is 'Custom'.
 func (o LookupUserRuleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -114,6 +157,26 @@ func (o LookupUserRuleResultOutput) Kind() pulumi.StringOutput {
 // Resource name.
 func (o LookupUserRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network protocol this rule applies to.
+func (o LookupUserRuleResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the security configuration user rule resource.
+func (o LookupUserRuleResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The source port ranges.
+func (o LookupUserRuleResultOutput) SourcePortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The CIDR or source IP ranges.
+func (o LookupUserRuleResultOutput) Sources() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) []AddressPrefixItemResponse { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // The system metadata related to this resource.

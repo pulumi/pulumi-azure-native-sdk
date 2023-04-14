@@ -25,10 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AttachedDatabaseConfiguration{}
 	case "azure-native:kusto/v20190907:Cluster":
 		r = &Cluster{}
-	case "azure-native:kusto/v20190907:DataConnection":
-		r = &DataConnection{}
-	case "azure-native:kusto/v20190907:Database":
-		r = &Database{}
 	case "azure-native:kusto/v20190907:EventGridDataConnection":
 		r = &EventGridDataConnection{}
 	case "azure-native:kusto/v20190907:EventHubDataConnection":
