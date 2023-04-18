@@ -35,7 +35,7 @@ type ListChannelWithKeysResult struct {
 	ChangedTime *string `pulumi:"changedTime"`
 	// Entity tag of the resource
 	EntityTag *string `pulumi:"entityTag"`
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -125,7 +125,7 @@ func (o ListChannelWithKeysResultOutput) EntityTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.EntityTag }).(pulumi.StringPtrOutput)
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ListChannelWithKeysResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

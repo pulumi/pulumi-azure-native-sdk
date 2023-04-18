@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a network manager security configuration admin rule.
-//
-// Deprecated: Please use one of the variants: AdminRule, DefaultAdminRule.
 func LookupAdminRule(ctx *pulumi.Context, args *LookupAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupAdminRuleResult, error) {
 	var rv LookupAdminRuleResult
 	err := ctx.Invoke("azure-native:network/v20220701:getAdminRule", args, &rv, opts...)
@@ -35,16 +33,37 @@ type LookupAdminRuleArgs struct {
 	RuleName string `pulumi:"ruleName"`
 }
 
-// Network base admin rule.
+// Network admin rule.
 type LookupAdminRuleResult struct {
+	// Indicates the access allowed for this particular rule
+	Access string `pulumi:"access"`
+	// A description for this rule. Restricted to 140 chars.
+	Description *string `pulumi:"description"`
+	// The destination port ranges.
+	DestinationPortRanges []string `pulumi:"destinationPortRanges"`
+	// The destination address prefixes. CIDR or destination IP ranges.
+	Destinations []AddressPrefixItemResponse `pulumi:"destinations"`
+	// Indicates if the traffic matched against the rule in inbound or outbound.
+	Direction string `pulumi:"direction"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Whether the rule is custom or default.
+	// Expected value is 'Custom'.
 	Kind string `pulumi:"kind"`
 	// Resource name.
 	Name string `pulumi:"name"`
+	// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+	Priority int `pulumi:"priority"`
+	// Network protocol this rule applies to.
+	Protocol string `pulumi:"protocol"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The source port ranges.
+	SourcePortRanges []string `pulumi:"sourcePortRanges"`
+	// The CIDR or source IP ranges.
+	Sources []AddressPrefixItemResponse `pulumi:"sources"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
@@ -81,7 +100,7 @@ func (LookupAdminRuleOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupAdminRuleArgs)(nil)).Elem()
 }
 
-// Network base admin rule.
+// Network admin rule.
 type LookupAdminRuleResultOutput struct{ *pulumi.OutputState }
 
 func (LookupAdminRuleResultOutput) ElementType() reflect.Type {
@@ -96,6 +115,31 @@ func (o LookupAdminRuleResultOutput) ToLookupAdminRuleResultOutputWithContext(ct
 	return o
 }
 
+// Indicates the access allowed for this particular rule
+func (o LookupAdminRuleResultOutput) Access() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Access }).(pulumi.StringOutput)
+}
+
+// A description for this rule. Restricted to 140 chars.
+func (o LookupAdminRuleResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination port ranges.
+func (o LookupAdminRuleResultOutput) DestinationPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The destination address prefixes. CIDR or destination IP ranges.
+func (o LookupAdminRuleResultOutput) Destinations() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) []AddressPrefixItemResponse { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
+}
+
+// Indicates if the traffic matched against the rule in inbound or outbound.
+func (o LookupAdminRuleResultOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Direction }).(pulumi.StringOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupAdminRuleResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -107,6 +151,7 @@ func (o LookupAdminRuleResultOutput) Id() pulumi.StringOutput {
 }
 
 // Whether the rule is custom or default.
+// Expected value is 'Custom'.
 func (o LookupAdminRuleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -114,6 +159,31 @@ func (o LookupAdminRuleResultOutput) Kind() pulumi.StringOutput {
 // Resource name.
 func (o LookupAdminRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+func (o LookupAdminRuleResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Network protocol this rule applies to.
+func (o LookupAdminRuleResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource.
+func (o LookupAdminRuleResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The source port ranges.
+func (o LookupAdminRuleResultOutput) SourcePortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The CIDR or source IP ranges.
+func (o LookupAdminRuleResultOutput) Sources() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) []AddressPrefixItemResponse { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // The system metadata related to this resource.

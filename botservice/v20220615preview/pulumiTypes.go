@@ -1500,6 +1500,10 @@ type ConnectionSettingProperties struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Id of the Connection Setting.
+	Id *string `pulumi:"id"`
+	// Name of the Connection Setting.
+	Name *string `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters []ConnectionSettingParameter `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1542,6 +1546,10 @@ type ConnectionSettingPropertiesArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Id of the Connection Setting.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the Connection Setting.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters ConnectionSettingParameterArrayInput `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1653,6 +1661,16 @@ func (o ConnectionSettingPropertiesOutput) ClientSecret() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Id of the Connection Setting.
+func (o ConnectionSettingPropertiesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Connection Setting.
+func (o ConnectionSettingPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // Service Provider Parameters associated with the Connection Setting
 func (o ConnectionSettingPropertiesOutput) Parameters() ConnectionSettingParameterArrayOutput {
 	return o.ApplyT(func(v ConnectionSettingProperties) []ConnectionSettingParameter { return v.Parameters }).(ConnectionSettingParameterArrayOutput)
@@ -1722,6 +1740,26 @@ func (o ConnectionSettingPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Id of the Connection Setting.
+func (o ConnectionSettingPropertiesPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Connection Setting.
+func (o ConnectionSettingPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // Service Provider Parameters associated with the Connection Setting
 func (o ConnectionSettingPropertiesPtrOutput) Parameters() ConnectionSettingParameterArrayOutput {
 	return o.ApplyT(func(v *ConnectionSettingProperties) []ConnectionSettingParameter {
@@ -1778,6 +1816,10 @@ type ConnectionSettingPropertiesResponse struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Id of the Connection Setting.
+	Id *string `pulumi:"id"`
+	// Name of the Connection Setting.
+	Name *string `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters []ConnectionSettingParameterResponse `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1828,6 +1870,16 @@ func (o ConnectionSettingPropertiesResponseOutput) ClientId() pulumi.StringPtrOu
 // Client Secret associated with the Connection Setting
 func (o ConnectionSettingPropertiesResponseOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Id of the Connection Setting.
+func (o ConnectionSettingPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Connection Setting.
+func (o ConnectionSettingPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Service Provider Parameters associated with the Connection Setting

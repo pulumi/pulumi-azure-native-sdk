@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:blueprint:Artifact":
-		r = &Artifact{}
 	case "azure-native:blueprint:Assignment":
 		r = &Assignment{}
 	case "azure-native:blueprint:Blueprint":

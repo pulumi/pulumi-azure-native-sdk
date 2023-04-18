@@ -31,7 +31,7 @@ type ListBotConnectionWithSecretsArgs struct {
 
 // Bot channel resource definition
 type ListBotConnectionWithSecretsResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -49,6 +49,8 @@ type ListBotConnectionWithSecretsResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
+	// Entity zones
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for ListBotConnectionWithSecretsResult
@@ -103,7 +105,7 @@ func (o ListBotConnectionWithSecretsResultOutput) ToListBotConnectionWithSecrets
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ListBotConnectionWithSecretsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -146,6 +148,11 @@ func (o ListBotConnectionWithSecretsResultOutput) Tags() pulumi.StringMapOutput 
 // Specifies the type of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Entity zones
+func (o ListBotConnectionWithSecretsResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

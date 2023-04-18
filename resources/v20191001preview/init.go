@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureCliScript{}
 	case "azure-native:resources/v20191001preview:AzurePowerShellScript":
 		r = &AzurePowerShellScript{}
-	case "azure-native:resources/v20191001preview:DeploymentScript":
-		r = &DeploymentScript{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -49,6 +49,9 @@ func NewRegistryCodeVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryCodeVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:RegistryCodeVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RegistryCodeVersion

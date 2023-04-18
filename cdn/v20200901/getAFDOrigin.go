@@ -17,7 +17,7 @@ func LookupAFDOrigin(ctx *pulumi.Context, args *LookupAFDOriginArgs, opts ...pul
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAFDOriginArgs struct {
@@ -62,6 +62,23 @@ type LookupAFDOriginResult struct {
 	Type string `pulumi:"type"`
 	// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 	Weight *int `pulumi:"weight"`
+}
+
+// Defaults sets the appropriate defaults for LookupAFDOriginResult
+func (val *LookupAFDOriginResult) Defaults() *LookupAFDOriginResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.HttpPort) {
+		httpPort_ := 80
+		tmp.HttpPort = &httpPort_
+	}
+	if isZero(tmp.HttpsPort) {
+		httpsPort_ := 443
+		tmp.HttpsPort = &httpsPort_
+	}
+	return &tmp
 }
 
 func LookupAFDOriginOutput(ctx *pulumi.Context, args LookupAFDOriginOutputArgs, opts ...pulumi.InvokeOption) LookupAFDOriginResultOutput {

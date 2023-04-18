@@ -134,8 +134,6 @@ func (ProfileState) ElementType() reflect.Type {
 }
 
 type profileArgs struct {
-	// Key-Value pair representing additional properties for profiles.
-	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
@@ -152,8 +150,6 @@ type profileArgs struct {
 
 // The set of arguments for constructing a Profile resource.
 type ProfileArgs struct {
-	// Key-Value pair representing additional properties for profiles.
-	ExtendedProperties pulumi.StringMapInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.

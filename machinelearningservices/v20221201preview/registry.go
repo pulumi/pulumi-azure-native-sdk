@@ -51,6 +51,9 @@ func NewRegistry(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:Registry"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Registry"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Registry

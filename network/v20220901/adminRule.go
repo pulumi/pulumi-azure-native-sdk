@@ -11,18 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network base admin rule.
-//
-// Deprecated: Please use one of the variants: AdminRule, DefaultAdminRule.
+// Network admin rule.
 type AdminRule struct {
 	pulumi.CustomResourceState
 
+	// Indicates the access allowed for this particular rule
+	Access pulumi.StringOutput `pulumi:"access"`
+	// A description for this rule. Restricted to 140 chars.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The destination port ranges.
+	DestinationPortRanges pulumi.StringArrayOutput `pulumi:"destinationPortRanges"`
+	// The destination address prefixes. CIDR or destination IP ranges.
+	Destinations AddressPrefixItemResponseArrayOutput `pulumi:"destinations"`
+	// Indicates if the traffic matched against the rule in inbound or outbound.
+	Direction pulumi.StringOutput `pulumi:"direction"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Whether the rule is custom or default.
+	// Expected value is 'Custom'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+	Priority pulumi.IntOutput `pulumi:"priority"`
+	// Network protocol this rule applies to.
+	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// The provisioning state of the resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The source port ranges.
+	SourcePortRanges pulumi.StringArrayOutput `pulumi:"sourcePortRanges"`
+	// The CIDR or source IP ranges.
+	Sources AddressPrefixItemResponseArrayOutput `pulumi:"sources"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -36,8 +55,14 @@ func NewAdminRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Access == nil {
+		return nil, errors.New("invalid value for required argument 'Access'")
+	}
 	if args.ConfigurationName == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigurationName'")
+	}
+	if args.Direction == nil {
+		return nil, errors.New("invalid value for required argument 'Direction'")
 	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
@@ -45,12 +70,19 @@ func NewAdminRule(ctx *pulumi.Context,
 	if args.NetworkManagerName == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkManagerName'")
 	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.RuleCollectionName == nil {
 		return nil, errors.New("invalid value for required argument 'RuleCollectionName'")
 	}
+	args.Kind = pulumi.String("Custom")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:network:AdminRule"),
@@ -110,34 +142,72 @@ func (AdminRuleState) ElementType() reflect.Type {
 }
 
 type adminRuleArgs struct {
+	// Indicates the access allowed for this particular rule
+	Access string `pulumi:"access"`
 	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
+	// A description for this rule. Restricted to 140 chars.
+	Description *string `pulumi:"description"`
+	// The destination port ranges.
+	DestinationPortRanges []string `pulumi:"destinationPortRanges"`
+	// The destination address prefixes. CIDR or destination IP ranges.
+	Destinations []AddressPrefixItem `pulumi:"destinations"`
+	// Indicates if the traffic matched against the rule in inbound or outbound.
+	Direction string `pulumi:"direction"`
 	// Whether the rule is custom or default.
+	// Expected value is 'Custom'.
 	Kind string `pulumi:"kind"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
+	// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+	Priority int `pulumi:"priority"`
+	// Network protocol this rule applies to.
+	Protocol string `pulumi:"protocol"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the network manager security Configuration rule collection.
 	RuleCollectionName string `pulumi:"ruleCollectionName"`
 	// The name of the rule.
 	RuleName *string `pulumi:"ruleName"`
+	// The source port ranges.
+	SourcePortRanges []string `pulumi:"sourcePortRanges"`
+	// The CIDR or source IP ranges.
+	Sources []AddressPrefixItem `pulumi:"sources"`
 }
 
 // The set of arguments for constructing a AdminRule resource.
 type AdminRuleArgs struct {
+	// Indicates the access allowed for this particular rule
+	Access pulumi.StringInput
 	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
+	// A description for this rule. Restricted to 140 chars.
+	Description pulumi.StringPtrInput
+	// The destination port ranges.
+	DestinationPortRanges pulumi.StringArrayInput
+	// The destination address prefixes. CIDR or destination IP ranges.
+	Destinations AddressPrefixItemArrayInput
+	// Indicates if the traffic matched against the rule in inbound or outbound.
+	Direction pulumi.StringInput
 	// Whether the rule is custom or default.
+	// Expected value is 'Custom'.
 	Kind pulumi.StringInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
+	// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+	Priority pulumi.IntInput
+	// Network protocol this rule applies to.
+	Protocol pulumi.StringInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The name of the network manager security Configuration rule collection.
 	RuleCollectionName pulumi.StringInput
 	// The name of the rule.
 	RuleName pulumi.StringPtrInput
+	// The source port ranges.
+	SourcePortRanges pulumi.StringArrayInput
+	// The CIDR or source IP ranges.
+	Sources AddressPrefixItemArrayInput
 }
 
 func (AdminRuleArgs) ElementType() reflect.Type {
@@ -177,12 +247,38 @@ func (o AdminRuleOutput) ToAdminRuleOutputWithContext(ctx context.Context) Admin
 	return o
 }
 
+// Indicates the access allowed for this particular rule
+func (o AdminRuleOutput) Access() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
+}
+
+// A description for this rule. Restricted to 140 chars.
+func (o AdminRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination port ranges.
+func (o AdminRuleOutput) DestinationPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringArrayOutput { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The destination address prefixes. CIDR or destination IP ranges.
+func (o AdminRuleOutput) Destinations() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v *AdminRule) AddressPrefixItemResponseArrayOutput { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
+}
+
+// Indicates if the traffic matched against the rule in inbound or outbound.
+func (o AdminRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o AdminRuleOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Whether the rule is custom or default.
+// Expected value is 'Custom'.
 func (o AdminRuleOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
@@ -190,6 +286,31 @@ func (o AdminRuleOutput) Kind() pulumi.StringOutput {
 // Resource name.
 func (o AdminRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+func (o AdminRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Network protocol this rule applies to.
+func (o AdminRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource.
+func (o AdminRuleOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The source port ranges.
+func (o AdminRuleOutput) SourcePortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AdminRule) pulumi.StringArrayOutput { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The CIDR or source IP ranges.
+func (o AdminRuleOutput) Sources() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v *AdminRule) AddressPrefixItemResponseArrayOutput { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // The system metadata related to this resource.

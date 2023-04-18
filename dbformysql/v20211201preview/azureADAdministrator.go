@@ -46,6 +46,12 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 	if args.ServerName == nil {
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20220101:AzureADAdministrator"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource AzureADAdministrator
 	err := ctx.RegisterResource("azure-native:dbformysql/v20211201preview:AzureADAdministrator", name, args, &resource, opts...)
 	if err != nil {

@@ -158,7 +158,7 @@ func (o CommonExportPropertiesResponsePtrOutput) RunHistory() ExportExecutionLis
 // The details of the error.
 type ErrorDetailsResponse struct {
 	// Error code.
-	Code string `pulumi:"code"`
+	Code int `pulumi:"code"`
 	// Error message indicating why the operation failed.
 	Message string `pulumi:"message"`
 }
@@ -179,8 +179,8 @@ func (o ErrorDetailsResponseOutput) ToErrorDetailsResponseOutputWithContext(ctx 
 }
 
 // Error code.
-func (o ErrorDetailsResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorDetailsResponse) string { return v.Code }).(pulumi.StringOutput)
+func (o ErrorDetailsResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v ErrorDetailsResponse) int { return v.Code }).(pulumi.IntOutput)
 }
 
 // Error message indicating why the operation failed.
@@ -213,13 +213,13 @@ func (o ErrorDetailsResponsePtrOutput) Elem() ErrorDetailsResponseOutput {
 }
 
 // Error code.
-func (o ErrorDetailsResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailsResponse) *string {
+func (o ErrorDetailsResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailsResponse) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.Code
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Error message indicating why the operation failed.

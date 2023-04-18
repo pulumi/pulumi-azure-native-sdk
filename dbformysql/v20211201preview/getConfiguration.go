@@ -33,12 +33,16 @@ type LookupConfigurationArgs struct {
 type LookupConfigurationResult struct {
 	// Allowed values of the configuration.
 	AllowedValues string `pulumi:"allowedValues"`
+	// Current value of the configuration.
+	CurrentValue *string `pulumi:"currentValue"`
 	// Data type of the configuration.
 	DataType string `pulumi:"dataType"`
 	// Default value of the configuration.
 	DefaultValue string `pulumi:"defaultValue"`
 	// Description of the configuration.
 	Description string `pulumi:"description"`
+	// The link used to get the document from community or Azure site.
+	DocumentationLink string `pulumi:"documentationLink"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// If is the configuration pending restart or not.
@@ -105,6 +109,11 @@ func (o LookupConfigurationResultOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AllowedValues }).(pulumi.StringOutput)
 }
 
+// Current value of the configuration.
+func (o LookupConfigurationResultOutput) CurrentValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.CurrentValue }).(pulumi.StringPtrOutput)
+}
+
 // Data type of the configuration.
 func (o LookupConfigurationResultOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DataType }).(pulumi.StringOutput)
@@ -118,6 +127,11 @@ func (o LookupConfigurationResultOutput) DefaultValue() pulumi.StringOutput {
 // Description of the configuration.
 func (o LookupConfigurationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The link used to get the document from community or Azure site.
+func (o LookupConfigurationResultOutput) DocumentationLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DocumentationLink }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

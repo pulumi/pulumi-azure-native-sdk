@@ -57,6 +57,9 @@ func NewRule(ctx *pulumi.Context,
 	if args.RuleSetName == nil {
 		return nil, errors.New("invalid value for required argument 'RuleSetName'")
 	}
+	if isZero(args.MatchProcessingBehavior) {
+		args.MatchProcessingBehavior = pulumi.StringPtr("Continue")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cdn/v20200901:Rule"),

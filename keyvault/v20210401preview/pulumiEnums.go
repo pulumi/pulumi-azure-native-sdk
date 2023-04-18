@@ -436,6 +436,7 @@ type ManagedHsmSkuName string
 const (
 	ManagedHsmSkuName_Standard_B1 = ManagedHsmSkuName("Standard_B1")
 	ManagedHsmSkuName_Custom_B32  = ManagedHsmSkuName("Custom_B32")
+	ManagedHsmSkuName_Custom_B6   = ManagedHsmSkuName("Custom_B6")
 )
 
 func (ManagedHsmSkuName) ElementType() reflect.Type {
@@ -621,7 +622,7 @@ const (
 	PrivateEndpointServiceConnectionStatusDisconnected = PrivateEndpointServiceConnectionStatus("Disconnected")
 )
 
-// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+// Control permission to the managed HSM from public networks.
 type PublicNetworkAccess string
 
 const (

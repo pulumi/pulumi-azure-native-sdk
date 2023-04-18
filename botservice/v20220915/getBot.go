@@ -29,7 +29,7 @@ type LookupBotArgs struct {
 
 // Bot resource definition
 type LookupBotResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -101,7 +101,7 @@ func (o LookupBotResultOutput) ToLookupBotResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o LookupBotResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

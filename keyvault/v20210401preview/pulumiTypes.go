@@ -2413,17 +2413,17 @@ func (o MHSMVirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) MHSM
 type ManagedHsmProperties struct {
 	// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
 	CreateMode *CreateMode `pulumi:"createMode"`
-	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
 	EnablePurgeProtection *bool `pulumi:"enablePurgeProtection"`
-	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
+	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
 	EnableSoftDelete *bool `pulumi:"enableSoftDelete"`
 	// Array of initial administrators object ids for this managed hsm pool.
 	InitialAdminObjectIds []string `pulumi:"initialAdminObjectIds"`
 	// Rules governing the accessibility of the key vault from specific network locations.
 	NetworkAcls *MHSMNetworkRuleSet `pulumi:"networkAcls"`
-	// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+	// Control permission to the managed HSM from public networks.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// softDelete data retention days. It accepts >=7 and <=90.
+	// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
 	TenantId *string `pulumi:"tenantId"`
@@ -2445,6 +2445,10 @@ func (val *ManagedHsmProperties) Defaults() *ManagedHsmProperties {
 	}
 	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
 
+	if isZero(tmp.PublicNetworkAccess) {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
 	if isZero(tmp.SoftDeleteRetentionInDays) {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
@@ -2467,17 +2471,17 @@ type ManagedHsmPropertiesInput interface {
 type ManagedHsmPropertiesArgs struct {
 	// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
 	CreateMode CreateModePtrInput `pulumi:"createMode"`
-	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
 	EnablePurgeProtection pulumi.BoolPtrInput `pulumi:"enablePurgeProtection"`
-	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
+	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
 	EnableSoftDelete pulumi.BoolPtrInput `pulumi:"enableSoftDelete"`
 	// Array of initial administrators object ids for this managed hsm pool.
 	InitialAdminObjectIds pulumi.StringArrayInput `pulumi:"initialAdminObjectIds"`
 	// Rules governing the accessibility of the key vault from specific network locations.
 	NetworkAcls MHSMNetworkRuleSetPtrInput `pulumi:"networkAcls"`
-	// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+	// Control permission to the managed HSM from public networks.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
-	// softDelete data retention days. It accepts >=7 and <=90.
+	// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 	SoftDeleteRetentionInDays pulumi.IntPtrInput `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
@@ -2496,6 +2500,9 @@ func (val *ManagedHsmPropertiesArgs) Defaults() *ManagedHsmPropertiesArgs {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
 
+	if isZero(tmp.PublicNetworkAccess) {
+		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
 	if isZero(tmp.SoftDeleteRetentionInDays) {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
@@ -2584,12 +2591,12 @@ func (o ManagedHsmPropertiesOutput) CreateMode() CreateModePtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *CreateMode { return v.CreateMode }).(CreateModePtrOutput)
 }
 
-// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
 func (o ManagedHsmPropertiesOutput) EnablePurgeProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *bool { return v.EnablePurgeProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
+// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
 func (o ManagedHsmPropertiesOutput) EnableSoftDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *bool { return v.EnableSoftDelete }).(pulumi.BoolPtrOutput)
 }
@@ -2604,12 +2611,12 @@ func (o ManagedHsmPropertiesOutput) NetworkAcls() MHSMNetworkRuleSetPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *MHSMNetworkRuleSet { return v.NetworkAcls }).(MHSMNetworkRuleSetPtrOutput)
 }
 
-// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+// Control permission to the managed HSM from public networks.
 func (o ManagedHsmPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// softDelete data retention days. It accepts >=7 and <=90.
+// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 func (o ManagedHsmPropertiesOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *int { return v.SoftDeleteRetentionInDays }).(pulumi.IntPtrOutput)
 }
@@ -2653,7 +2660,7 @@ func (o ManagedHsmPropertiesPtrOutput) CreateMode() CreateModePtrOutput {
 	}).(CreateModePtrOutput)
 }
 
-// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
 func (o ManagedHsmPropertiesPtrOutput) EnablePurgeProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedHsmProperties) *bool {
 		if v == nil {
@@ -2663,7 +2670,7 @@ func (o ManagedHsmPropertiesPtrOutput) EnablePurgeProtection() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
+// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
 func (o ManagedHsmPropertiesPtrOutput) EnableSoftDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedHsmProperties) *bool {
 		if v == nil {
@@ -2693,7 +2700,7 @@ func (o ManagedHsmPropertiesPtrOutput) NetworkAcls() MHSMNetworkRuleSetPtrOutput
 	}).(MHSMNetworkRuleSetPtrOutput)
 }
 
-// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+// Control permission to the managed HSM from public networks.
 func (o ManagedHsmPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedHsmProperties) *string {
 		if v == nil {
@@ -2703,7 +2710,7 @@ func (o ManagedHsmPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// softDelete data retention days. It accepts >=7 and <=90.
+// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 func (o ManagedHsmPropertiesPtrOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedHsmProperties) *int {
 		if v == nil {
@@ -2725,9 +2732,9 @@ func (o ManagedHsmPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
 
 // Properties of the managed HSM Pool
 type ManagedHsmPropertiesResponse struct {
-	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+	// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
 	EnablePurgeProtection *bool `pulumi:"enablePurgeProtection"`
-	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
+	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
 	EnableSoftDelete *bool `pulumi:"enableSoftDelete"`
 	// The URI of the managed hsm pool for performing operations on keys.
 	HsmUri string `pulumi:"hsmUri"`
@@ -2739,11 +2746,11 @@ type ManagedHsmPropertiesResponse struct {
 	PrivateEndpointConnections []MHSMPrivateEndpointConnectionItemResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+	// Control permission to the managed HSM from public networks.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The scheduled purge date in UTC.
 	ScheduledPurgeDate string `pulumi:"scheduledPurgeDate"`
-	// softDelete data retention days. It accepts >=7 and <=90.
+	// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// Resource Status Message.
 	StatusMessage string `pulumi:"statusMessage"`
@@ -2767,6 +2774,10 @@ func (val *ManagedHsmPropertiesResponse) Defaults() *ManagedHsmPropertiesRespons
 	}
 	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
 
+	if isZero(tmp.PublicNetworkAccess) {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
 	if isZero(tmp.SoftDeleteRetentionInDays) {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
@@ -2789,12 +2800,12 @@ func (o ManagedHsmPropertiesResponseOutput) ToManagedHsmPropertiesResponseOutput
 	return o
 }
 
-// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
 func (o ManagedHsmPropertiesResponseOutput) EnablePurgeProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *bool { return v.EnablePurgeProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
+// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
 func (o ManagedHsmPropertiesResponseOutput) EnableSoftDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *bool { return v.EnableSoftDelete }).(pulumi.BoolPtrOutput)
 }
@@ -2826,7 +2837,7 @@ func (o ManagedHsmPropertiesResponseOutput) ProvisioningState() pulumi.StringOut
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+// Control permission to the managed HSM from public networks.
 func (o ManagedHsmPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
@@ -2836,7 +2847,7 @@ func (o ManagedHsmPropertiesResponseOutput) ScheduledPurgeDate() pulumi.StringOu
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) string { return v.ScheduledPurgeDate }).(pulumi.StringOutput)
 }
 
-// softDelete data retention days. It accepts >=7 and <=90.
+// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 func (o ManagedHsmPropertiesResponseOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *int { return v.SoftDeleteRetentionInDays }).(pulumi.IntPtrOutput)
 }

@@ -44,6 +44,9 @@ func NewGuestUsage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20210401:GuestUsage"),
 		},
+		{
+			Type: pulumi.String("azure-native:azureactivedirectory/v20230118preview:GuestUsage"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource GuestUsage

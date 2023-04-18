@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:costmanagement/v20221001preview:SettingByScope":
-		r = &SettingByScope{}
 	case "azure-native:costmanagement/v20221001preview:TagInheritanceSetting":
 		r = &TagInheritanceSetting{}
 	case "azure-native:costmanagement/v20221001preview:View":

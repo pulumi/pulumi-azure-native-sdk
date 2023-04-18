@@ -15,7 +15,7 @@ import (
 type Channel struct {
 	pulumi.CustomResourceState
 
-	// Entity Tag
+	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -31,6 +31,8 @@ type Channel struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Entity zones
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewChannel registers a new resource with the given unique name, arguments, and options.
@@ -177,7 +179,7 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ChannelOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -215,6 +217,11 @@ func (o ChannelOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o ChannelOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Entity zones
+func (o ChannelOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

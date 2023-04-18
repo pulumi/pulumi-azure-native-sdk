@@ -64,6 +64,12 @@ func NewAFDOrigin(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if isZero(args.HttpPort) {
+		args.HttpPort = pulumi.IntPtr(80)
+	}
+	if isZero(args.HttpsPort) {
+		args.HttpsPort = pulumi.IntPtr(443)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cdn/v20200901:AFDOrigin"),

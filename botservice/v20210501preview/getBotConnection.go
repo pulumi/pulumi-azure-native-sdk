@@ -31,7 +31,7 @@ type LookupBotConnectionArgs struct {
 
 // Bot channel resource definition
 type LookupBotConnectionResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -49,6 +49,8 @@ type LookupBotConnectionResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
+	// Entity zones
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for LookupBotConnectionResult
@@ -103,7 +105,7 @@ func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutputWithCo
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o LookupBotConnectionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -146,6 +148,11 @@ func (o LookupBotConnectionResultOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o LookupBotConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Entity zones
+func (o LookupBotConnectionResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBotConnectionResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

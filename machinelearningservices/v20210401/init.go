@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointVariant{}
 	case "azure-native:machinelearningservices/v20210401:MachineLearningCompute":
 		r = &MachineLearningCompute{}
-	case "azure-native:machinelearningservices/v20210401:MachineLearningService":
-		r = &MachineLearningService{}
 	case "azure-native:machinelearningservices/v20210401:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:machinelearningservices/v20210401:Workspace":

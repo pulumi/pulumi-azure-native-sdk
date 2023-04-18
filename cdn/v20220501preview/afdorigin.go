@@ -70,6 +70,12 @@ func NewAFDOrigin(ctx *pulumi.Context,
 	if isZero(args.EnforceCertificateNameCheck) {
 		args.EnforceCertificateNameCheck = pulumi.BoolPtr(true)
 	}
+	if isZero(args.HttpPort) {
+		args.HttpPort = pulumi.IntPtr(80)
+	}
+	if isZero(args.HttpsPort) {
+		args.HttpsPort = pulumi.IntPtr(443)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cdn:AFDOrigin"),

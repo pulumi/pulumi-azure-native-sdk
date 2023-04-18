@@ -133,6 +133,9 @@ func NewVirtualMachineScaleSetVM(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20220801:VirtualMachineScaleSetVM"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230301:VirtualMachineScaleSetVM"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualMachineScaleSetVM

@@ -136,8 +136,6 @@ func (ProfileState) ElementType() reflect.Type {
 }
 
 type profileArgs struct {
-	// Key-Value pair representing additional properties for profiles.
-	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// Managed service identity (system assigned and/or user assigned identities).
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Resource location.
@@ -156,8 +154,6 @@ type profileArgs struct {
 
 // The set of arguments for constructing a Profile resource.
 type ProfileArgs struct {
-	// Key-Value pair representing additional properties for profiles.
-	ExtendedProperties pulumi.StringMapInput
 	// Managed service identity (system assigned and/or user assigned identities).
 	Identity ManagedServiceIdentityPtrInput
 	// Resource location.
