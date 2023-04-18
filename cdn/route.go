@@ -70,6 +70,15 @@ func NewRoute(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if isZero(args.ForwardingProtocol) {
+		args.ForwardingProtocol = pulumi.StringPtr("MatchRequest")
+	}
+	if isZero(args.HttpsRedirect) {
+		args.HttpsRedirect = pulumi.StringPtr("Disabled")
+	}
+	if isZero(args.LinkToDefaultDomain) {
+		args.LinkToDefaultDomain = pulumi.StringPtr("Disabled")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cdn/v20200901:Route"),

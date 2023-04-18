@@ -17,7 +17,7 @@ func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.Invoke
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupRuleArgs struct {
@@ -52,6 +52,19 @@ type LookupRuleResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupRuleResult
+func (val *LookupRuleResult) Defaults() *LookupRuleResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.MatchProcessingBehavior) {
+		matchProcessingBehavior_ := "Continue"
+		tmp.MatchProcessingBehavior = &matchProcessingBehavior_
+	}
+	return &tmp
 }
 
 func LookupRuleOutput(ctx *pulumi.Context, args LookupRuleOutputArgs, opts ...pulumi.InvokeOption) LookupRuleResultOutput {

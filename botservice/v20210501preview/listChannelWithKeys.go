@@ -35,7 +35,7 @@ type ListChannelWithKeysResult struct {
 	ChangedTime *string `pulumi:"changedTime"`
 	// Entity tag of the resource
 	EntityTag *string `pulumi:"entityTag"`
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -59,6 +59,8 @@ type ListChannelWithKeysResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
+	// Entity zones
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for ListChannelWithKeysResult
@@ -123,7 +125,7 @@ func (o ListChannelWithKeysResultOutput) EntityTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.EntityTag }).(pulumi.StringPtrOutput)
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ListChannelWithKeysResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -181,6 +183,11 @@ func (o ListChannelWithKeysResultOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o ListChannelWithKeysResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Entity zones
+func (o ListChannelWithKeysResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ListChannelWithKeysResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

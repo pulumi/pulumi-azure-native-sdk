@@ -18,7 +18,7 @@ func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulum
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupEndpointArgs struct {
@@ -82,6 +82,27 @@ type LookupEndpointResult struct {
 	UrlSigningKeys []UrlSigningKeyResponse `pulumi:"urlSigningKeys"`
 	// Defines the Web Application Firewall policy for the endpoint (if applicable)
 	WebApplicationFirewallPolicyLink *EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink `pulumi:"webApplicationFirewallPolicyLink"`
+}
+
+// Defaults sets the appropriate defaults for LookupEndpointResult
+func (val *LookupEndpointResult) Defaults() *LookupEndpointResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.IsHttpAllowed) {
+		isHttpAllowed_ := true
+		tmp.IsHttpAllowed = &isHttpAllowed_
+	}
+	if isZero(tmp.IsHttpsAllowed) {
+		isHttpsAllowed_ := true
+		tmp.IsHttpsAllowed = &isHttpsAllowed_
+	}
+	if isZero(tmp.QueryStringCachingBehavior) {
+		queryStringCachingBehavior_ := "NotSet"
+		tmp.QueryStringCachingBehavior = &queryStringCachingBehavior_
+	}
+	return &tmp
 }
 
 func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointResultOutput {

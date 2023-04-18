@@ -81,6 +81,9 @@ func NewIotDpsResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devices/v20220205:IotDpsResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:devices/v20230301preview:IotDpsResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IotDpsResource

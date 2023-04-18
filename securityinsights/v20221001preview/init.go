@@ -31,8 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Action{}
 	case "azure-native:securityinsights/v20221001preview:ActivityCustomEntityQuery":
 		r = &ActivityCustomEntityQuery{}
-	case "azure-native:securityinsights/v20221001preview:AlertRule":
-		r = &AlertRule{}
 	case "azure-native:securityinsights/v20221001preview:Anomalies":
 		r = &Anomalies{}
 	case "azure-native:securityinsights/v20221001preview:AnomalySecurityMLAnalyticsSettings":
@@ -51,14 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CodelessApiPollingDataConnector{}
 	case "azure-native:securityinsights/v20221001preview:CodelessUiDataConnector":
 		r = &CodelessUiDataConnector{}
-	case "azure-native:securityinsights/v20221001preview:DataConnector":
-		r = &DataConnector{}
 	case "azure-native:securityinsights/v20221001preview:Dynamics365DataConnector":
 		r = &Dynamics365DataConnector{}
 	case "azure-native:securityinsights/v20221001preview:EntityAnalytics":
 		r = &EntityAnalytics{}
-	case "azure-native:securityinsights/v20221001preview:EntityQuery":
-		r = &EntityQuery{}
 	case "azure-native:securityinsights/v20221001preview:EyesOn":
 		r = &EyesOn{}
 	case "azure-native:securityinsights/v20221001preview:FileImport":
@@ -99,12 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficeIRMDataConnector{}
 	case "azure-native:securityinsights/v20221001preview:OfficePowerBIDataConnector":
 		r = &OfficePowerBIDataConnector{}
-	case "azure-native:securityinsights/v20221001preview:ProductSetting":
-		r = &ProductSetting{}
 	case "azure-native:securityinsights/v20221001preview:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20221001preview:SecurityMLAnalyticsSetting":
-		r = &SecurityMLAnalyticsSetting{}
 	case "azure-native:securityinsights/v20221001preview:SentinelOnboardingState":
 		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights/v20221001preview:SourceControl":

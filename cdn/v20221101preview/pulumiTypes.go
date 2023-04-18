@@ -709,6 +709,8 @@ func (o AfdRouteCacheConfigurationResponsePtrOutput) QueryStringCachingBehavior(
 
 // Azure FirstParty Managed Certificate provided by other first party resource providers to enable HTTPS.
 type AzureFirstPartyManagedCertificateParameters struct {
+	// The list of SANs.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// The type of the secret resource.
 	// Expected value is 'AzureFirstPartyManagedCertificate'.
 	Type string `pulumi:"type"`
@@ -716,6 +718,18 @@ type AzureFirstPartyManagedCertificateParameters struct {
 
 // Azure FirstParty Managed Certificate provided by other first party resource providers to enable HTTPS.
 type AzureFirstPartyManagedCertificateParametersResponse struct {
+	// Certificate issuing authority.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Certificate expiration date.
+	ExpirationDate string `pulumi:"expirationDate"`
+	// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+	SecretSource ResourceReferenceResponse `pulumi:"secretSource"`
+	// Subject name in the certificate.
+	Subject string `pulumi:"subject"`
+	// The list of SANs.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
+	// Certificate thumbprint.
+	Thumbprint string `pulumi:"thumbprint"`
 	// The type of the secret resource.
 	// Expected value is 'AzureFirstPartyManagedCertificate'.
 	Type string `pulumi:"type"`
@@ -868,6 +882,19 @@ type ClientPortMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for ClientPortMatchConditionParameters
+func (val *ClientPortMatchConditionParameters) Defaults() *ClientPortMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for ClientPort match conditions
 type ClientPortMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -879,6 +906,19 @@ type ClientPortMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for ClientPortMatchConditionParametersResponse
+func (val *ClientPortMatchConditionParametersResponse) Defaults() *ClientPortMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // settings for compression.
@@ -1132,6 +1172,19 @@ type CookiesMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for CookiesMatchConditionParameters
+func (val *CookiesMatchConditionParameters) Defaults() *CookiesMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for Cookies match conditions
 type CookiesMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -1145,6 +1198,19 @@ type CookiesMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for CookiesMatchConditionParametersResponse
+func (val *CookiesMatchConditionParametersResponse) Defaults() *CookiesMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the common attributes for a custom rule that can be included in a waf policy
@@ -2372,6 +2438,17 @@ type DeliveryRuleClientPortCondition struct {
 	Parameters ClientPortMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleClientPortCondition
+func (val *DeliveryRuleClientPortCondition) Defaults() *DeliveryRuleClientPortCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the ClientPort condition for the delivery rule.
 type DeliveryRuleClientPortConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2379,6 +2456,17 @@ type DeliveryRuleClientPortConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters ClientPortMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleClientPortConditionResponse
+func (val *DeliveryRuleClientPortConditionResponse) Defaults() *DeliveryRuleClientPortConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the Cookies condition for the delivery rule.
@@ -2390,6 +2478,17 @@ type DeliveryRuleCookiesCondition struct {
 	Parameters CookiesMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleCookiesCondition
+func (val *DeliveryRuleCookiesCondition) Defaults() *DeliveryRuleCookiesCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the Cookies condition for the delivery rule.
 type DeliveryRuleCookiesConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2397,6 +2496,17 @@ type DeliveryRuleCookiesConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters CookiesMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleCookiesConditionResponse
+func (val *DeliveryRuleCookiesConditionResponse) Defaults() *DeliveryRuleCookiesConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the HostName condition for the delivery rule.
@@ -2408,6 +2518,17 @@ type DeliveryRuleHostNameCondition struct {
 	Parameters HostNameMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleHostNameCondition
+func (val *DeliveryRuleHostNameCondition) Defaults() *DeliveryRuleHostNameCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the HostName condition for the delivery rule.
 type DeliveryRuleHostNameConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2415,6 +2536,17 @@ type DeliveryRuleHostNameConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters HostNameMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleHostNameConditionResponse
+func (val *DeliveryRuleHostNameConditionResponse) Defaults() *DeliveryRuleHostNameConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the HttpVersion condition for the delivery rule.
@@ -2426,6 +2558,17 @@ type DeliveryRuleHttpVersionCondition struct {
 	Parameters HttpVersionMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleHttpVersionCondition
+func (val *DeliveryRuleHttpVersionCondition) Defaults() *DeliveryRuleHttpVersionCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the HttpVersion condition for the delivery rule.
 type DeliveryRuleHttpVersionConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2433,6 +2576,17 @@ type DeliveryRuleHttpVersionConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters HttpVersionMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleHttpVersionConditionResponse
+func (val *DeliveryRuleHttpVersionConditionResponse) Defaults() *DeliveryRuleHttpVersionConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the IsDevice condition for the delivery rule.
@@ -2444,6 +2598,17 @@ type DeliveryRuleIsDeviceCondition struct {
 	Parameters IsDeviceMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleIsDeviceCondition
+func (val *DeliveryRuleIsDeviceCondition) Defaults() *DeliveryRuleIsDeviceCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the IsDevice condition for the delivery rule.
 type DeliveryRuleIsDeviceConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2451,6 +2616,17 @@ type DeliveryRuleIsDeviceConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters IsDeviceMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleIsDeviceConditionResponse
+func (val *DeliveryRuleIsDeviceConditionResponse) Defaults() *DeliveryRuleIsDeviceConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the PostArgs condition for the delivery rule.
@@ -2462,6 +2638,17 @@ type DeliveryRulePostArgsCondition struct {
 	Parameters PostArgsMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRulePostArgsCondition
+func (val *DeliveryRulePostArgsCondition) Defaults() *DeliveryRulePostArgsCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the PostArgs condition for the delivery rule.
 type DeliveryRulePostArgsConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2469,6 +2656,17 @@ type DeliveryRulePostArgsConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters PostArgsMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRulePostArgsConditionResponse
+func (val *DeliveryRulePostArgsConditionResponse) Defaults() *DeliveryRulePostArgsConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the QueryString condition for the delivery rule.
@@ -2480,6 +2678,17 @@ type DeliveryRuleQueryStringCondition struct {
 	Parameters QueryStringMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleQueryStringCondition
+func (val *DeliveryRuleQueryStringCondition) Defaults() *DeliveryRuleQueryStringCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the QueryString condition for the delivery rule.
 type DeliveryRuleQueryStringConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2487,6 +2696,17 @@ type DeliveryRuleQueryStringConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters QueryStringMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleQueryStringConditionResponse
+func (val *DeliveryRuleQueryStringConditionResponse) Defaults() *DeliveryRuleQueryStringConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the RemoteAddress condition for the delivery rule.
@@ -2498,6 +2718,17 @@ type DeliveryRuleRemoteAddressCondition struct {
 	Parameters RemoteAddressMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleRemoteAddressCondition
+func (val *DeliveryRuleRemoteAddressCondition) Defaults() *DeliveryRuleRemoteAddressCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the RemoteAddress condition for the delivery rule.
 type DeliveryRuleRemoteAddressConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2505,6 +2736,17 @@ type DeliveryRuleRemoteAddressConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters RemoteAddressMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleRemoteAddressConditionResponse
+func (val *DeliveryRuleRemoteAddressConditionResponse) Defaults() *DeliveryRuleRemoteAddressConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the RequestBody condition for the delivery rule.
@@ -2516,6 +2758,17 @@ type DeliveryRuleRequestBodyCondition struct {
 	Parameters RequestBodyMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleRequestBodyCondition
+func (val *DeliveryRuleRequestBodyCondition) Defaults() *DeliveryRuleRequestBodyCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the RequestBody condition for the delivery rule.
 type DeliveryRuleRequestBodyConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2523,6 +2776,17 @@ type DeliveryRuleRequestBodyConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters RequestBodyMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleRequestBodyConditionResponse
+func (val *DeliveryRuleRequestBodyConditionResponse) Defaults() *DeliveryRuleRequestBodyConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the request header action for the delivery rule.
@@ -2552,6 +2816,17 @@ type DeliveryRuleRequestHeaderCondition struct {
 	Parameters RequestHeaderMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleRequestHeaderCondition
+func (val *DeliveryRuleRequestHeaderCondition) Defaults() *DeliveryRuleRequestHeaderCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the RequestHeader condition for the delivery rule.
 type DeliveryRuleRequestHeaderConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2559,6 +2834,17 @@ type DeliveryRuleRequestHeaderConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters RequestHeaderMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleRequestHeaderConditionResponse
+func (val *DeliveryRuleRequestHeaderConditionResponse) Defaults() *DeliveryRuleRequestHeaderConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the RequestMethod condition for the delivery rule.
@@ -2570,6 +2856,17 @@ type DeliveryRuleRequestMethodCondition struct {
 	Parameters RequestMethodMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleRequestMethodCondition
+func (val *DeliveryRuleRequestMethodCondition) Defaults() *DeliveryRuleRequestMethodCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the RequestMethod condition for the delivery rule.
 type DeliveryRuleRequestMethodConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2577,6 +2874,17 @@ type DeliveryRuleRequestMethodConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters RequestMethodMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleRequestMethodConditionResponse
+func (val *DeliveryRuleRequestMethodConditionResponse) Defaults() *DeliveryRuleRequestMethodConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the RequestScheme condition for the delivery rule.
@@ -2588,6 +2896,17 @@ type DeliveryRuleRequestSchemeCondition struct {
 	Parameters RequestSchemeMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleRequestSchemeCondition
+func (val *DeliveryRuleRequestSchemeCondition) Defaults() *DeliveryRuleRequestSchemeCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the RequestScheme condition for the delivery rule.
 type DeliveryRuleRequestSchemeConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2595,6 +2914,17 @@ type DeliveryRuleRequestSchemeConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters RequestSchemeMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleRequestSchemeConditionResponse
+func (val *DeliveryRuleRequestSchemeConditionResponse) Defaults() *DeliveryRuleRequestSchemeConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the RequestUri condition for the delivery rule.
@@ -2606,6 +2936,17 @@ type DeliveryRuleRequestUriCondition struct {
 	Parameters RequestUriMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleRequestUriCondition
+func (val *DeliveryRuleRequestUriCondition) Defaults() *DeliveryRuleRequestUriCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the RequestUri condition for the delivery rule.
 type DeliveryRuleRequestUriConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2613,6 +2954,17 @@ type DeliveryRuleRequestUriConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters RequestUriMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleRequestUriConditionResponse
+func (val *DeliveryRuleRequestUriConditionResponse) Defaults() *DeliveryRuleRequestUriConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // A rule that specifies a set of actions and conditions
@@ -2727,6 +3079,17 @@ type DeliveryRuleServerPortCondition struct {
 	Parameters ServerPortMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleServerPortCondition
+func (val *DeliveryRuleServerPortCondition) Defaults() *DeliveryRuleServerPortCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the ServerPort condition for the delivery rule.
 type DeliveryRuleServerPortConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2734,6 +3097,17 @@ type DeliveryRuleServerPortConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters ServerPortMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleServerPortConditionResponse
+func (val *DeliveryRuleServerPortConditionResponse) Defaults() *DeliveryRuleServerPortConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the SocketAddress condition for the delivery rule.
@@ -2745,6 +3119,17 @@ type DeliveryRuleSocketAddrCondition struct {
 	Parameters SocketAddrMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleSocketAddrCondition
+func (val *DeliveryRuleSocketAddrCondition) Defaults() *DeliveryRuleSocketAddrCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the SocketAddress condition for the delivery rule.
 type DeliveryRuleSocketAddrConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2752,6 +3137,17 @@ type DeliveryRuleSocketAddrConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters SocketAddrMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleSocketAddrConditionResponse
+func (val *DeliveryRuleSocketAddrConditionResponse) Defaults() *DeliveryRuleSocketAddrConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the SslProtocol condition for the delivery rule.
@@ -2763,6 +3159,17 @@ type DeliveryRuleSslProtocolCondition struct {
 	Parameters SslProtocolMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleSslProtocolCondition
+func (val *DeliveryRuleSslProtocolCondition) Defaults() *DeliveryRuleSslProtocolCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the SslProtocol condition for the delivery rule.
 type DeliveryRuleSslProtocolConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2770,6 +3177,17 @@ type DeliveryRuleSslProtocolConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters SslProtocolMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleSslProtocolConditionResponse
+func (val *DeliveryRuleSslProtocolConditionResponse) Defaults() *DeliveryRuleSslProtocolConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the UrlFileExtension condition for the delivery rule.
@@ -2781,6 +3199,17 @@ type DeliveryRuleUrlFileExtensionCondition struct {
 	Parameters UrlFileExtensionMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleUrlFileExtensionCondition
+func (val *DeliveryRuleUrlFileExtensionCondition) Defaults() *DeliveryRuleUrlFileExtensionCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the UrlFileExtension condition for the delivery rule.
 type DeliveryRuleUrlFileExtensionConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2788,6 +3217,17 @@ type DeliveryRuleUrlFileExtensionConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters UrlFileExtensionMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleUrlFileExtensionConditionResponse
+func (val *DeliveryRuleUrlFileExtensionConditionResponse) Defaults() *DeliveryRuleUrlFileExtensionConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the UrlFileName condition for the delivery rule.
@@ -2799,6 +3239,17 @@ type DeliveryRuleUrlFileNameCondition struct {
 	Parameters UrlFileNameMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleUrlFileNameCondition
+func (val *DeliveryRuleUrlFileNameCondition) Defaults() *DeliveryRuleUrlFileNameCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the UrlFileName condition for the delivery rule.
 type DeliveryRuleUrlFileNameConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2806,6 +3257,17 @@ type DeliveryRuleUrlFileNameConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters UrlFileNameMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleUrlFileNameConditionResponse
+func (val *DeliveryRuleUrlFileNameConditionResponse) Defaults() *DeliveryRuleUrlFileNameConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // Defines the UrlPath condition for the delivery rule.
@@ -2817,6 +3279,17 @@ type DeliveryRuleUrlPathCondition struct {
 	Parameters UrlPathMatchConditionParameters `pulumi:"parameters"`
 }
 
+// Defaults sets the appropriate defaults for DeliveryRuleUrlPathCondition
+func (val *DeliveryRuleUrlPathCondition) Defaults() *DeliveryRuleUrlPathCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
+}
+
 // Defines the UrlPath condition for the delivery rule.
 type DeliveryRuleUrlPathConditionResponse struct {
 	// The name of the condition for the delivery rule.
@@ -2824,6 +3297,17 @@ type DeliveryRuleUrlPathConditionResponse struct {
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
 	Parameters UrlPathMatchConditionParametersResponse `pulumi:"parameters"`
+}
+
+// Defaults sets the appropriate defaults for DeliveryRuleUrlPathConditionResponse
+func (val *DeliveryRuleUrlPathConditionResponse) Defaults() *DeliveryRuleUrlPathConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Parameters = *tmp.Parameters.Defaults()
+
+	return &tmp
 }
 
 // The JSON object that contains the properties to validate a domain.
@@ -3820,6 +4304,19 @@ type HostNameMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for HostNameMatchConditionParameters
+func (val *HostNameMatchConditionParameters) Defaults() *HostNameMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for HostName match conditions
 type HostNameMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -3831,6 +4328,19 @@ type HostNameMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for HostNameMatchConditionParametersResponse
+func (val *HostNameMatchConditionParametersResponse) Defaults() *HostNameMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // The JSON object that represents the range for http status codes
@@ -4008,6 +4518,19 @@ type HttpVersionMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for HttpVersionMatchConditionParameters
+func (val *HttpVersionMatchConditionParameters) Defaults() *HttpVersionMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for HttpVersion match conditions
 type HttpVersionMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -4019,6 +4542,19 @@ type HttpVersionMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for HttpVersionMatchConditionParametersResponse
+func (val *HttpVersionMatchConditionParametersResponse) Defaults() *HttpVersionMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for IsDevice match conditions
@@ -4034,6 +4570,19 @@ type IsDeviceMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for IsDeviceMatchConditionParameters
+func (val *IsDeviceMatchConditionParameters) Defaults() *IsDeviceMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for IsDevice match conditions
 type IsDeviceMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -4045,6 +4594,19 @@ type IsDeviceMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for IsDeviceMatchConditionParametersResponse
+func (val *IsDeviceMatchConditionParametersResponse) Defaults() *IsDeviceMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Describes the parameters for using a user's KeyVault certificate for securing custom domain.
@@ -6151,6 +6713,19 @@ type PostArgsMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for PostArgsMatchConditionParameters
+func (val *PostArgsMatchConditionParameters) Defaults() *PostArgsMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for PostArgs match conditions
 type PostArgsMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -6166,6 +6741,19 @@ type PostArgsMatchConditionParametersResponse struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for PostArgsMatchConditionParametersResponse
+func (val *PostArgsMatchConditionParametersResponse) Defaults() *PostArgsMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for QueryString match conditions
 type QueryStringMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -6179,6 +6767,19 @@ type QueryStringMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for QueryStringMatchConditionParameters
+func (val *QueryStringMatchConditionParameters) Defaults() *QueryStringMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for QueryString match conditions
 type QueryStringMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -6190,6 +6791,19 @@ type QueryStringMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for QueryStringMatchConditionParametersResponse
+func (val *QueryStringMatchConditionParametersResponse) Defaults() *QueryStringMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines a rate limiting rule that can be included in a waf policy
@@ -6647,6 +7261,19 @@ type RemoteAddressMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RemoteAddressMatchConditionParameters
+func (val *RemoteAddressMatchConditionParameters) Defaults() *RemoteAddressMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RemoteAddress match conditions
 type RemoteAddressMatchConditionParametersResponse struct {
 	// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
@@ -6658,6 +7285,19 @@ type RemoteAddressMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for RemoteAddressMatchConditionParametersResponse
+func (val *RemoteAddressMatchConditionParametersResponse) Defaults() *RemoteAddressMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for RequestBody match conditions
@@ -6673,6 +7313,19 @@ type RequestBodyMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RequestBodyMatchConditionParameters
+func (val *RequestBodyMatchConditionParameters) Defaults() *RequestBodyMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RequestBody match conditions
 type RequestBodyMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -6684,6 +7337,19 @@ type RequestBodyMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for RequestBodyMatchConditionParametersResponse
+func (val *RequestBodyMatchConditionParametersResponse) Defaults() *RequestBodyMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for RequestHeader match conditions
@@ -6701,6 +7367,19 @@ type RequestHeaderMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RequestHeaderMatchConditionParameters
+func (val *RequestHeaderMatchConditionParameters) Defaults() *RequestHeaderMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RequestHeader match conditions
 type RequestHeaderMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -6716,6 +7395,19 @@ type RequestHeaderMatchConditionParametersResponse struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RequestHeaderMatchConditionParametersResponse
+func (val *RequestHeaderMatchConditionParametersResponse) Defaults() *RequestHeaderMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RequestMethod match conditions
 type RequestMethodMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -6727,6 +7419,19 @@ type RequestMethodMatchConditionParameters struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for RequestMethodMatchConditionParameters
+func (val *RequestMethodMatchConditionParameters) Defaults() *RequestMethodMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for RequestMethod match conditions
@@ -6742,6 +7447,19 @@ type RequestMethodMatchConditionParametersResponse struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RequestMethodMatchConditionParametersResponse
+func (val *RequestMethodMatchConditionParametersResponse) Defaults() *RequestMethodMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RequestScheme match conditions
 type RequestSchemeMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -6753,6 +7471,19 @@ type RequestSchemeMatchConditionParameters struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for RequestSchemeMatchConditionParameters
+func (val *RequestSchemeMatchConditionParameters) Defaults() *RequestSchemeMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for RequestScheme match conditions
@@ -6768,6 +7499,19 @@ type RequestSchemeMatchConditionParametersResponse struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RequestSchemeMatchConditionParametersResponse
+func (val *RequestSchemeMatchConditionParametersResponse) Defaults() *RequestSchemeMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RequestUri match conditions
 type RequestUriMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -6781,6 +7525,19 @@ type RequestUriMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for RequestUriMatchConditionParameters
+func (val *RequestUriMatchConditionParameters) Defaults() *RequestUriMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for RequestUri match conditions
 type RequestUriMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -6792,6 +7549,19 @@ type RequestUriMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for RequestUriMatchConditionParametersResponse
+func (val *RequestUriMatchConditionParametersResponse) Defaults() *RequestUriMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Reference to another resource.
@@ -7823,6 +8593,19 @@ type ServerPortMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for ServerPortMatchConditionParameters
+func (val *ServerPortMatchConditionParameters) Defaults() *ServerPortMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for ServerPort match conditions
 type ServerPortMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -7834,6 +8617,19 @@ type ServerPortMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for ServerPortMatchConditionParametersResponse
+func (val *ServerPortMatchConditionParametersResponse) Defaults() *ServerPortMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
@@ -8334,6 +9130,19 @@ type SocketAddrMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for SocketAddrMatchConditionParameters
+func (val *SocketAddrMatchConditionParameters) Defaults() *SocketAddrMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for SocketAddress match conditions
 type SocketAddrMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -8345,6 +9154,19 @@ type SocketAddrMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for SocketAddrMatchConditionParametersResponse
+func (val *SocketAddrMatchConditionParametersResponse) Defaults() *SocketAddrMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for SslProtocol match conditions
@@ -8360,6 +9182,19 @@ type SslProtocolMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for SslProtocolMatchConditionParameters
+func (val *SslProtocolMatchConditionParameters) Defaults() *SslProtocolMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for SslProtocol match conditions
 type SslProtocolMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -8371,6 +9206,19 @@ type SslProtocolMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for SslProtocolMatchConditionParametersResponse
+func (val *SslProtocolMatchConditionParametersResponse) Defaults() *SslProtocolMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Read only system data
@@ -8447,6 +9295,19 @@ type UrlFileExtensionMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParameters
+func (val *UrlFileExtensionMatchConditionParameters) Defaults() *UrlFileExtensionMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for UrlFileExtension match conditions
 type UrlFileExtensionMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -8458,6 +9319,19 @@ type UrlFileExtensionMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersResponse
+func (val *UrlFileExtensionMatchConditionParametersResponse) Defaults() *UrlFileExtensionMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for UrlFilename match conditions
@@ -8473,6 +9347,19 @@ type UrlFileNameMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for UrlFileNameMatchConditionParameters
+func (val *UrlFileNameMatchConditionParameters) Defaults() *UrlFileNameMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for UrlFilename match conditions
 type UrlFileNameMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -8484,6 +9371,19 @@ type UrlFileNameMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for UrlFileNameMatchConditionParametersResponse
+func (val *UrlFileNameMatchConditionParametersResponse) Defaults() *UrlFileNameMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the parameters for UrlPath match conditions
@@ -8499,6 +9399,19 @@ type UrlPathMatchConditionParameters struct {
 	TypeName   string   `pulumi:"typeName"`
 }
 
+// Defaults sets the appropriate defaults for UrlPathMatchConditionParameters
+func (val *UrlPathMatchConditionParameters) Defaults() *UrlPathMatchConditionParameters {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
+}
+
 // Defines the parameters for UrlPath match conditions
 type UrlPathMatchConditionParametersResponse struct {
 	// The match value for the condition of the delivery rule
@@ -8510,6 +9423,19 @@ type UrlPathMatchConditionParametersResponse struct {
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 	TypeName   string   `pulumi:"typeName"`
+}
+
+// Defaults sets the appropriate defaults for UrlPathMatchConditionParametersResponse
+func (val *UrlPathMatchConditionParametersResponse) Defaults() *UrlPathMatchConditionParametersResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.NegateCondition) {
+		negateCondition_ := false
+		tmp.NegateCondition = &negateCondition_
+	}
+	return &tmp
 }
 
 // Defines the url redirect action for the delivery rule.

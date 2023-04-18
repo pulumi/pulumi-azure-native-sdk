@@ -96,6 +96,9 @@ func NewUeba(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Ueba"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Ueba"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Ueba

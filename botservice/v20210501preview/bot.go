@@ -15,7 +15,7 @@ import (
 type Bot struct {
 	pulumi.CustomResourceState
 
-	// Entity Tag
+	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -31,6 +31,8 @@ type Bot struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Entity zones
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewBot registers a new resource with the given unique name, arguments, and options.
@@ -173,7 +175,7 @@ func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o BotOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -211,6 +213,11 @@ func (o BotOutput) Tags() pulumi.StringMapOutput {
 // Specifies the type of the resource.
 func (o BotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Entity zones
+func (o BotOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Bot) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

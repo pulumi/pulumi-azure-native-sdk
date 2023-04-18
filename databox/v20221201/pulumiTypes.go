@@ -1179,6 +1179,8 @@ type DiskSecretResponse struct {
 type EncryptionPreferences struct {
 	// Defines secondary layer of software-based encryption enablement.
 	DoubleEncryption *string `pulumi:"doubleEncryption"`
+	// Defines Hardware level encryption (Only for disk)
+	HardwareEncryption *string `pulumi:"hardwareEncryption"`
 }
 
 // Defaults sets the appropriate defaults for EncryptionPreferences
@@ -1198,6 +1200,8 @@ func (val *EncryptionPreferences) Defaults() *EncryptionPreferences {
 type EncryptionPreferencesResponse struct {
 	// Defines secondary layer of software-based encryption enablement.
 	DoubleEncryption *string `pulumi:"doubleEncryption"`
+	// Defines Hardware level encryption (Only for disk)
+	HardwareEncryption *string `pulumi:"hardwareEncryption"`
 }
 
 // Defaults sets the appropriate defaults for EncryptionPreferencesResponse
@@ -2102,6 +2106,8 @@ type ShippingAddress struct {
 	Country string `pulumi:"country"`
 	// Postal code.
 	PostalCode *string `pulumi:"postalCode"`
+	// Flag to indicate if customer has chosen to skip default address validation
+	SkipAddressValidation *bool `pulumi:"skipAddressValidation"`
 	// Name of the State or Province.
 	StateOrProvince *string `pulumi:"stateOrProvince"`
 	// Street Address line 1.
@@ -2110,6 +2116,8 @@ type ShippingAddress struct {
 	StreetAddress2 *string `pulumi:"streetAddress2"`
 	// Street Address line 3.
 	StreetAddress3 *string `pulumi:"streetAddress3"`
+	// Tax Identification Number
+	TaxIdentificationNumber *string `pulumi:"taxIdentificationNumber"`
 	// Extended Zip Code.
 	ZipExtendedCode *string `pulumi:"zipExtendedCode"`
 }
@@ -2139,6 +2147,8 @@ type ShippingAddressResponse struct {
 	Country string `pulumi:"country"`
 	// Postal code.
 	PostalCode *string `pulumi:"postalCode"`
+	// Flag to indicate if customer has chosen to skip default address validation
+	SkipAddressValidation *bool `pulumi:"skipAddressValidation"`
 	// Name of the State or Province.
 	StateOrProvince *string `pulumi:"stateOrProvince"`
 	// Street Address line 1.
@@ -2147,6 +2157,8 @@ type ShippingAddressResponse struct {
 	StreetAddress2 *string `pulumi:"streetAddress2"`
 	// Street Address line 3.
 	StreetAddress3 *string `pulumi:"streetAddress3"`
+	// Tax Identification Number
+	TaxIdentificationNumber *string `pulumi:"taxIdentificationNumber"`
 	// Extended Zip Code.
 	ZipExtendedCode *string `pulumi:"zipExtendedCode"`
 }

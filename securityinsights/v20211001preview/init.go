@@ -31,8 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Action{}
 	case "azure-native:securityinsights/v20211001preview:ActivityCustomEntityQuery":
 		r = &ActivityCustomEntityQuery{}
-	case "azure-native:securityinsights/v20211001preview:AlertRule":
-		r = &AlertRule{}
 	case "azure-native:securityinsights/v20211001preview:Anomalies":
 		r = &Anomalies{}
 	case "azure-native:securityinsights/v20211001preview:AutomationRule":
@@ -49,14 +47,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CodelessApiPollingDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:CodelessUiDataConnector":
 		r = &CodelessUiDataConnector{}
-	case "azure-native:securityinsights/v20211001preview:DataConnector":
-		r = &DataConnector{}
 	case "azure-native:securityinsights/v20211001preview:Dynamics365DataConnector":
 		r = &Dynamics365DataConnector{}
 	case "azure-native:securityinsights/v20211001preview:EntityAnalytics":
 		r = &EntityAnalytics{}
-	case "azure-native:securityinsights/v20211001preview:EntityQuery":
-		r = &EntityQuery{}
 	case "azure-native:securityinsights/v20211001preview:EyesOn":
 		r = &EyesOn{}
 	case "azure-native:securityinsights/v20211001preview:FusionAlertRule":
@@ -93,8 +87,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficeIRMDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:OfficePowerBIDataConnector":
 		r = &OfficePowerBIDataConnector{}
-	case "azure-native:securityinsights/v20211001preview:ProductSetting":
-		r = &ProductSetting{}
 	case "azure-native:securityinsights/v20211001preview:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
 	case "azure-native:securityinsights/v20211001preview:SentinelOnboardingState":

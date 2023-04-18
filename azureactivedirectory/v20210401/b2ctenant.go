@@ -52,6 +52,9 @@ func NewB2CTenant(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20190101preview:B2CTenant"),
 		},
+		{
+			Type: pulumi.String("azure-native:azureactivedirectory/v20230118preview:B2CTenant"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource B2CTenant

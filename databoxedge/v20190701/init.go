@@ -33,14 +33,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Order{}
 	case "azure-native:databoxedge/v20190701:PeriodicTimerEventTrigger":
 		r = &PeriodicTimerEventTrigger{}
-	case "azure-native:databoxedge/v20190701:Role":
-		r = &Role{}
 	case "azure-native:databoxedge/v20190701:Share":
 		r = &Share{}
 	case "azure-native:databoxedge/v20190701:StorageAccountCredential":
 		r = &StorageAccountCredential{}
-	case "azure-native:databoxedge/v20190701:Trigger":
-		r = &Trigger{}
 	case "azure-native:databoxedge/v20190701:User":
 		r = &User{}
 	default:

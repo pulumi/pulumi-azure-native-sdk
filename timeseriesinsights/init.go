@@ -23,12 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:timeseriesinsights:AccessPolicy":
 		r = &AccessPolicy{}
-	case "azure-native:timeseriesinsights:Environment":
-		r = &Environment{}
 	case "azure-native:timeseriesinsights:EventHubEventSource":
 		r = &EventHubEventSource{}
-	case "azure-native:timeseriesinsights:EventSource":
-		r = &EventSource{}
 	case "azure-native:timeseriesinsights:Gen1Environment":
 		r = &Gen1Environment{}
 	case "azure-native:timeseriesinsights:Gen2Environment":

@@ -110,6 +110,9 @@ func NewIoTDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201:IoTDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230401preview:IoTDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IoTDataConnector

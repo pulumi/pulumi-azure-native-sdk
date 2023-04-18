@@ -67,6 +67,9 @@ func NewEnvironmentSpecificationVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:EnvironmentSpecificationVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:EnvironmentSpecificationVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EnvironmentSpecificationVersion

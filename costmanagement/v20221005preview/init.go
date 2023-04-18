@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:costmanagement/v20221005preview:MarkupRule":
 		r = &MarkupRule{}
-	case "azure-native:costmanagement/v20221005preview:SettingByScope":
-		r = &SettingByScope{}
 	case "azure-native:costmanagement/v20221005preview:TagInheritanceSetting":
 		r = &TagInheritanceSetting{}
 	case "azure-native:costmanagement/v20221005preview:View":

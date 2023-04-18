@@ -11105,12 +11105,14 @@ type SetVariableActivity struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// If set to true, it sets the pipeline run return value.
+	SetSystemVariable *bool `pulumi:"setSystemVariable"`
 	// Type of activity.
 	// Expected value is 'SetVariable'.
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserProperty `pulumi:"userProperties"`
-	// Value to be set. Could be a static value or Expression
+	// Value to be set. Could be a static value or Expression.
 	Value interface{} `pulumi:"value"`
 	// Name of the variable whose value needs to be set.
 	VariableName *string `pulumi:"variableName"`
@@ -11124,12 +11126,14 @@ type SetVariableActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// If set to true, it sets the pipeline run return value.
+	SetSystemVariable *bool `pulumi:"setSystemVariable"`
 	// Type of activity.
 	// Expected value is 'SetVariable'.
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-	// Value to be set. Could be a static value or Expression
+	// Value to be set. Could be a static value or Expression.
 	Value interface{} `pulumi:"value"`
 	// Name of the variable whose value needs to be set.
 	VariableName *string `pulumi:"variableName"`

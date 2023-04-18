@@ -59,6 +59,16 @@ const (
 	FilterFileTypeAzureFile = FilterFileType("AzureFile")
 )
 
+// Defines Hardware level encryption (Only for disk)
+type HardwareEncryption string
+
+const (
+	// Hardware-based encryption is enabled.
+	HardwareEncryptionEnabled = HardwareEncryption("Enabled")
+	// Hardware-based encryption is enabled.
+	HardwareEncryptionDisabled = HardwareEncryption("Disabled")
+)
+
 // Delivery type of Job.
 type JobDeliveryType string
 

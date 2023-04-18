@@ -31,7 +31,7 @@ type LookupBotConnectionArgs struct {
 
 // Bot channel resource definition
 type LookupBotConnectionResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -105,7 +105,7 @@ func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutputWithCo
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o LookupBotConnectionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:databoxedge/v20200901preview:Addon":
-		r = &Addon{}
 	case "azure-native:databoxedge/v20200901preview:ArcAddon":
 		r = &ArcAddon{}
 	case "azure-native:databoxedge/v20200901preview:BandwidthSchedule":
@@ -49,16 +47,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Order{}
 	case "azure-native:databoxedge/v20200901preview:PeriodicTimerEventTrigger":
 		r = &PeriodicTimerEventTrigger{}
-	case "azure-native:databoxedge/v20200901preview:Role":
-		r = &Role{}
 	case "azure-native:databoxedge/v20200901preview:Share":
 		r = &Share{}
 	case "azure-native:databoxedge/v20200901preview:StorageAccount":
 		r = &StorageAccount{}
 	case "azure-native:databoxedge/v20200901preview:StorageAccountCredential":
 		r = &StorageAccountCredential{}
-	case "azure-native:databoxedge/v20200901preview:Trigger":
-		r = &Trigger{}
 	case "azure-native:databoxedge/v20200901preview:User":
 		r = &User{}
 	default:

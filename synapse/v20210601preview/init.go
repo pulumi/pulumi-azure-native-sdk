@@ -39,10 +39,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KustoPool{}
 	case "azure-native:synapse/v20210601preview:KustoPoolAttachedDatabaseConfiguration":
 		r = &KustoPoolAttachedDatabaseConfiguration{}
-	case "azure-native:synapse/v20210601preview:KustoPoolDataConnection":
-		r = &KustoPoolDataConnection{}
-	case "azure-native:synapse/v20210601preview:KustoPoolDatabase":
-		r = &KustoPoolDatabase{}
 	case "azure-native:synapse/v20210601preview:KustoPoolDatabasePrincipalAssignment":
 		r = &KustoPoolDatabasePrincipalAssignment{}
 	case "azure-native:synapse/v20210601preview:KustoPoolPrincipalAssignment":

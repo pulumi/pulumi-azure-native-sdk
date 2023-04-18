@@ -31,7 +31,7 @@ type ListBotConnectionWithSecretsArgs struct {
 
 // Bot channel resource definition
 type ListBotConnectionWithSecretsResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -105,7 +105,7 @@ func (o ListBotConnectionWithSecretsResultOutput) ToListBotConnectionWithSecrets
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ListBotConnectionWithSecretsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

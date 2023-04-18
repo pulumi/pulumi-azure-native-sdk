@@ -18,7 +18,7 @@ func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.Invo
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupRouteArgs struct {
@@ -69,6 +69,27 @@ type LookupRouteResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupRouteResult
+func (val *LookupRouteResult) Defaults() *LookupRouteResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.ForwardingProtocol) {
+		forwardingProtocol_ := "MatchRequest"
+		tmp.ForwardingProtocol = &forwardingProtocol_
+	}
+	if isZero(tmp.HttpsRedirect) {
+		httpsRedirect_ := "Disabled"
+		tmp.HttpsRedirect = &httpsRedirect_
+	}
+	if isZero(tmp.LinkToDefaultDomain) {
+		linkToDefaultDomain_ := "Disabled"
+		tmp.LinkToDefaultDomain = &linkToDefaultDomain_
+	}
+	return &tmp
 }
 
 func LookupRouteOutput(ctx *pulumi.Context, args LookupRouteOutputArgs, opts ...pulumi.InvokeOption) LookupRouteResultOutput {

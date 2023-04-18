@@ -61,6 +61,9 @@ func NewComponentContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:ComponentContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:ComponentContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ComponentContainer

@@ -65,11 +65,7 @@ type ReplicationRole string
 const (
 	ReplicationRoleNone            = ReplicationRole("None")
 	ReplicationRolePrimary         = ReplicationRole("Primary")
-	ReplicationRoleSecondary       = ReplicationRole("Secondary")
-	ReplicationRoleWalReplica      = ReplicationRole("WalReplica")
-	ReplicationRoleSyncReplica     = ReplicationRole("SyncReplica")
 	ReplicationRoleAsyncReplica    = ReplicationRole("AsyncReplica")
-	ReplicationRoleGeoSyncReplica  = ReplicationRole("GeoSyncReplica")
 	ReplicationRoleGeoAsyncReplica = ReplicationRole("GeoAsyncReplica")
 )
 

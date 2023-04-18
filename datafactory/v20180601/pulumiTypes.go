@@ -1721,8 +1721,8 @@ type AzureBlobFSReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -1750,8 +1750,8 @@ type AzureBlobFSReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -1775,7 +1775,7 @@ type AzureBlobFSReadSettingsResponse struct {
 
 // A copy activity Azure Data Lake Storage Gen2 sink.
 type AzureBlobFSSink struct {
-	// The type of copy behavior for copy sink.
+	// The type of copy behavior for copy sink. Type: string (or Expression with resultType string).
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -1798,7 +1798,7 @@ type AzureBlobFSSink struct {
 
 // A copy activity Azure Data Lake Storage Gen2 sink.
 type AzureBlobFSSinkResponse struct {
-	// The type of copy behavior for copy sink.
+	// The type of copy behavior for copy sink. Type: string (or Expression with resultType string).
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -2555,8 +2555,8 @@ type AzureDataLakeStoreReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// Lists files after the value (exclusive) based on file/folder names’ lexicographical order. Applies under the folderPath in data set, and filter files/sub-folders under the folderPath. Type: string (or Expression with resultType string).
@@ -2588,8 +2588,8 @@ type AzureDataLakeStoreReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// Lists files after the value (exclusive) based on file/folder names’ lexicographical order. Applies under the folderPath in data set, and filter files/sub-folders under the folderPath. Type: string (or Expression with resultType string).
@@ -2617,7 +2617,7 @@ type AzureDataLakeStoreReadSettingsResponse struct {
 
 // A copy activity Azure Data Lake Store sink.
 type AzureDataLakeStoreSink struct {
-	// The type of copy behavior for copy sink.
+	// The type of copy behavior for copy sink. Type: string (or Expression with resultType string).
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -2640,7 +2640,7 @@ type AzureDataLakeStoreSink struct {
 
 // A copy activity Azure Data Lake Store sink.
 type AzureDataLakeStoreSinkResponse struct {
-	// The type of copy behavior for copy sink.
+	// The type of copy behavior for copy sink. Type: string (or Expression with resultType string).
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -2701,7 +2701,7 @@ type AzureDataLakeStoreWriteSettings struct {
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Specifies the expiry time of the written files. The time is applied to the UTC time zone in the format of "2018-12-01T05:00:00Z". Default value is NULL. Type: integer (or Expression with resultType integer).
+	// Specifies the expiry time of the written files. The time is applied to the UTC time zone in the format of "2018-12-01T05:00:00Z". Default value is NULL. Type: string (or Expression with resultType string).
 	ExpiryDateTime interface{} `pulumi:"expiryDateTime"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
@@ -2716,7 +2716,7 @@ type AzureDataLakeStoreWriteSettingsResponse struct {
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Specifies the expiry time of the written files. The time is applied to the UTC time zone in the format of "2018-12-01T05:00:00Z". Default value is NULL. Type: integer (or Expression with resultType integer).
+	// Specifies the expiry time of the written files. The time is applied to the UTC time zone in the format of "2018-12-01T05:00:00Z". Default value is NULL. Type: string (or Expression with resultType string).
 	ExpiryDateTime interface{} `pulumi:"expiryDateTime"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
