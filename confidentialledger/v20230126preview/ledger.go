@@ -21,11 +21,9 @@ type Ledger struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of Confidential Ledger Resource.
 	Properties LedgerPropertiesResponseOutput `pulumi:"properties"`
-	// Object representing RunningState for Ledger.
-	RunningState pulumi.StringPtrOutput `pulumi:"runningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -99,9 +97,7 @@ type ledgerArgs struct {
 	Properties *LedgerProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Object representing RunningState for Ledger.
-	RunningState *string `pulumi:"runningState"`
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -115,9 +111,7 @@ type LedgerArgs struct {
 	Properties LedgerPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Object representing RunningState for Ledger.
-	RunningState pulumi.StringPtrInput
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -173,17 +167,12 @@ func (o LedgerOutput) Properties() LedgerPropertiesResponseOutput {
 	return o.ApplyT(func(v *Ledger) LedgerPropertiesResponseOutput { return v.Properties }).(LedgerPropertiesResponseOutput)
 }
 
-// Object representing RunningState for Ledger.
-func (o LedgerOutput) RunningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ledger) pulumi.StringPtrOutput { return v.RunningState }).(pulumi.StringPtrOutput)
-}
-
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LedgerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Ledger) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Additional tags for Confidential Ledger
+// Resource tags.
 func (o LedgerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Ledger) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

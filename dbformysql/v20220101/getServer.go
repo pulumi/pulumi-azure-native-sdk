@@ -17,7 +17,7 @@ func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.In
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupServerArgs struct {
@@ -73,6 +73,19 @@ type LookupServerResult struct {
 	Type string `pulumi:"type"`
 	// Server version.
 	Version *string `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for LookupServerResult
+func (val *LookupServerResult) Defaults() *LookupServerResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Backup = tmp.Backup.Defaults()
+
+	tmp.Storage = tmp.Storage.Defaults()
+
+	return &tmp
 }
 
 func LookupServerOutput(ctx *pulumi.Context, args LookupServerOutputArgs, opts ...pulumi.InvokeOption) LookupServerResultOutput {

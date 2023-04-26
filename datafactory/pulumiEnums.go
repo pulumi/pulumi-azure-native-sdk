@@ -74,20 +74,12 @@ const (
 	ConfigurationTypeArtifact   = ConfigurationType("Artifact")
 )
 
-// The connection mode used to access CosmosDB account. Type: string (or Expression with resultType string).
+// The connection mode used to access CosmosDB account. Type: string.
 type CosmosDbConnectionMode string
 
 const (
 	CosmosDbConnectionModeGateway = CosmosDbConnectionMode("Gateway")
 	CosmosDbConnectionModeDirect  = CosmosDbConnectionMode("Direct")
-)
-
-// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
-type CosmosDbServicePrincipalCredentialType string
-
-const (
-	CosmosDbServicePrincipalCredentialTypeServicePrincipalKey  = CosmosDbServicePrincipalCredentialType("ServicePrincipalKey")
-	CosmosDbServicePrincipalCredentialTypeServicePrincipalCert = CosmosDbServicePrincipalCredentialType("ServicePrincipalCert")
 )
 
 // Credential reference type.
@@ -568,7 +560,7 @@ const (
 	SparkThriftTransportProtocol_HTTP_ = SparkThriftTransportProtocol("HTTP ")
 )
 
-// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
+// Sql always encrypted AKV authentication type. Type: string.
 type SqlAlwaysEncryptedAkvAuthType string
 
 const (

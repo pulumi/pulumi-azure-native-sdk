@@ -18,6 +18,19 @@ type Backup struct {
 	GeoRedundantBackup *string `pulumi:"geoRedundantBackup"`
 }
 
+// Defaults sets the appropriate defaults for Backup
+func (val *Backup) Defaults() *Backup {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.GeoRedundantBackup) {
+		geoRedundantBackup_ := "Disabled"
+		tmp.GeoRedundantBackup = &geoRedundantBackup_
+	}
+	return &tmp
+}
+
 // BackupInput is an input type that accepts BackupArgs and BackupOutput values.
 // You can construct a concrete instance of `BackupInput` via:
 //
@@ -37,6 +50,17 @@ type BackupArgs struct {
 	GeoRedundantBackup pulumi.StringPtrInput `pulumi:"geoRedundantBackup"`
 }
 
+// Defaults sets the appropriate defaults for BackupArgs
+func (val *BackupArgs) Defaults() *BackupArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.GeoRedundantBackup) {
+		tmp.GeoRedundantBackup = pulumi.StringPtr("Disabled")
+	}
+	return &tmp
+}
 func (BackupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Backup)(nil)).Elem()
 }
@@ -177,6 +201,19 @@ type BackupResponse struct {
 	EarliestRestoreDate string `pulumi:"earliestRestoreDate"`
 	// Whether or not geo redundant backup is enabled.
 	GeoRedundantBackup *string `pulumi:"geoRedundantBackup"`
+}
+
+// Defaults sets the appropriate defaults for BackupResponse
+func (val *BackupResponse) Defaults() *BackupResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.GeoRedundantBackup) {
+		geoRedundantBackup_ := "Disabled"
+		tmp.GeoRedundantBackup = &geoRedundantBackup_
+	}
+	return &tmp
 }
 
 // Storage Profile properties of a server
@@ -1935,8 +1972,31 @@ type Storage struct {
 	AutoIoScaling *string `pulumi:"autoIoScaling"`
 	// Storage IOPS for a server.
 	Iops *int `pulumi:"iops"`
+	// Enable Log On Disk or not.
+	LogOnDisk *string `pulumi:"logOnDisk"`
 	// Max storage size allowed for a server.
 	StorageSizeGB *int `pulumi:"storageSizeGB"`
+}
+
+// Defaults sets the appropriate defaults for Storage
+func (val *Storage) Defaults() *Storage {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AutoGrow) {
+		autoGrow_ := "Disabled"
+		tmp.AutoGrow = &autoGrow_
+	}
+	if isZero(tmp.AutoIoScaling) {
+		autoIoScaling_ := "Disabled"
+		tmp.AutoIoScaling = &autoIoScaling_
+	}
+	if isZero(tmp.LogOnDisk) {
+		logOnDisk_ := "Disabled"
+		tmp.LogOnDisk = &logOnDisk_
+	}
+	return &tmp
 }
 
 // StorageInput is an input type that accepts StorageArgs and StorageOutput values.
@@ -1958,10 +2018,29 @@ type StorageArgs struct {
 	AutoIoScaling pulumi.StringPtrInput `pulumi:"autoIoScaling"`
 	// Storage IOPS for a server.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// Enable Log On Disk or not.
+	LogOnDisk pulumi.StringPtrInput `pulumi:"logOnDisk"`
 	// Max storage size allowed for a server.
 	StorageSizeGB pulumi.IntPtrInput `pulumi:"storageSizeGB"`
 }
 
+// Defaults sets the appropriate defaults for StorageArgs
+func (val *StorageArgs) Defaults() *StorageArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AutoGrow) {
+		tmp.AutoGrow = pulumi.StringPtr("Disabled")
+	}
+	if isZero(tmp.AutoIoScaling) {
+		tmp.AutoIoScaling = pulumi.StringPtr("Disabled")
+	}
+	if isZero(tmp.LogOnDisk) {
+		tmp.LogOnDisk = pulumi.StringPtr("Disabled")
+	}
+	return &tmp
+}
 func (StorageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Storage)(nil)).Elem()
 }
@@ -2055,6 +2134,11 @@ func (o StorageOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Storage) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// Enable Log On Disk or not.
+func (o StorageOutput) LogOnDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Storage) *string { return v.LogOnDisk }).(pulumi.StringPtrOutput)
+}
+
 // Max storage size allowed for a server.
 func (o StorageOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Storage) *int { return v.StorageSizeGB }).(pulumi.IntPtrOutput)
@@ -2114,6 +2198,16 @@ func (o StoragePtrOutput) Iops() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enable Log On Disk or not.
+func (o StoragePtrOutput) LogOnDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Storage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogOnDisk
+	}).(pulumi.StringPtrOutput)
+}
+
 // Max storage size allowed for a server.
 func (o StoragePtrOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Storage) *int {
@@ -2132,10 +2226,33 @@ type StorageResponse struct {
 	AutoIoScaling *string `pulumi:"autoIoScaling"`
 	// Storage IOPS for a server.
 	Iops *int `pulumi:"iops"`
+	// Enable Log On Disk or not.
+	LogOnDisk *string `pulumi:"logOnDisk"`
 	// Max storage size allowed for a server.
 	StorageSizeGB *int `pulumi:"storageSizeGB"`
 	// The sku name of the server storage.
 	StorageSku string `pulumi:"storageSku"`
+}
+
+// Defaults sets the appropriate defaults for StorageResponse
+func (val *StorageResponse) Defaults() *StorageResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if isZero(tmp.AutoGrow) {
+		autoGrow_ := "Disabled"
+		tmp.AutoGrow = &autoGrow_
+	}
+	if isZero(tmp.AutoIoScaling) {
+		autoIoScaling_ := "Disabled"
+		tmp.AutoIoScaling = &autoIoScaling_
+	}
+	if isZero(tmp.LogOnDisk) {
+		logOnDisk_ := "Disabled"
+		tmp.LogOnDisk = &logOnDisk_
+	}
+	return &tmp
 }
 
 // Storage Profile properties of a server
@@ -2166,6 +2283,11 @@ func (o StorageResponseOutput) AutoIoScaling() pulumi.StringPtrOutput {
 // Storage IOPS for a server.
 func (o StorageResponseOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// Enable Log On Disk or not.
+func (o StorageResponseOutput) LogOnDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageResponse) *string { return v.LogOnDisk }).(pulumi.StringPtrOutput)
 }
 
 // Max storage size allowed for a server.
@@ -2230,6 +2352,16 @@ func (o StorageResponsePtrOutput) Iops() pulumi.IntPtrOutput {
 		}
 		return v.Iops
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enable Log On Disk or not.
+func (o StorageResponsePtrOutput) LogOnDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogOnDisk
+	}).(pulumi.StringPtrOutput)
 }
 
 // Max storage size allowed for a server.

@@ -37,11 +37,9 @@ type LookupLedgerResult struct {
 	Name string `pulumi:"name"`
 	// Properties of Confidential Ledger Resource.
 	Properties LedgerPropertiesResponse `pulumi:"properties"`
-	// Object representing RunningState for Ledger.
-	RunningState *string `pulumi:"runningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -106,17 +104,12 @@ func (o LookupLedgerResultOutput) Properties() LedgerPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupLedgerResult) LedgerPropertiesResponse { return v.Properties }).(LedgerPropertiesResponseOutput)
 }
 
-// Object representing RunningState for Ledger.
-func (o LookupLedgerResultOutput) RunningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupLedgerResult) *string { return v.RunningState }).(pulumi.StringPtrOutput)
-}
-
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupLedgerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupLedgerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Additional tags for Confidential Ledger
+// Resource tags.
 func (o LookupLedgerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLedgerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

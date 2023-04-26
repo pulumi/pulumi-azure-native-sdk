@@ -64,8 +64,8 @@ type AmazonMWSLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Amazon MWS server, (i.e. mws.amazonservices.com)
 	Endpoint interface{} `pulumi:"endpoint"`
 	// The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple Marketplace IDs, separate them with a comma (,). (i.e. A2EUQ1WTGCTBG2)
@@ -99,8 +99,8 @@ type AmazonMWSLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Amazon MWS server, (i.e. mws.amazonservices.com)
 	Endpoint interface{} `pulumi:"endpoint"`
 	// The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple Marketplace IDs, separate them with a comma (,). (i.e. A2EUQ1WTGCTBG2)
@@ -222,8 +222,8 @@ type AmazonRdsForOracleLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -243,8 +243,8 @@ type AmazonRdsForOracleLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -386,8 +386,8 @@ type AmazonRdsForSqlServerLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
@@ -411,8 +411,8 @@ type AmazonRdsForSqlServerLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
@@ -542,8 +542,8 @@ type AmazonRedshiftLinkedService struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The password of the Amazon Redshift source.
@@ -569,8 +569,8 @@ type AmazonRedshiftLinkedServiceResponse struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The password of the Amazon Redshift source.
@@ -692,8 +692,8 @@ type AmazonS3CompatibleLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// If true, use S3 path-style access instead of virtual hosted-style access. Default value is false. Type: boolean (or Expression with resultType boolean).
 	ForcePathStyle interface{} `pulumi:"forcePathStyle"`
 	// Parameters for linked service.
@@ -717,8 +717,8 @@ type AmazonS3CompatibleLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// If true, use S3 path-style access instead of virtual hosted-style access. Default value is false. Type: boolean (or Expression with resultType boolean).
 	ForcePathStyle interface{} `pulumi:"forcePathStyle"`
 	// Parameters for linked service.
@@ -768,8 +768,8 @@ type AmazonS3CompatibleReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -799,8 +799,8 @@ type AmazonS3CompatibleReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -910,8 +910,8 @@ type AmazonS3LinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The secret access key of the Amazon S3 Identity and Access Management (IAM) user.
@@ -937,8 +937,8 @@ type AmazonS3LinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The secret access key of the Amazon S3 Identity and Access Management (IAM) user.
@@ -988,8 +988,8 @@ type AmazonS3ReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -1019,8 +1019,8 @@ type AmazonS3ReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -1061,7 +1061,7 @@ type AppFiguresLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'AppFigures'.
 	Type string `pulumi:"type"`
-	// The username of the Appfigures source.
+	// The username of the Appfigures source. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
 }
 
@@ -1082,7 +1082,7 @@ type AppFiguresLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'AppFigures'.
 	Type string `pulumi:"type"`
-	// The username of the Appfigures source.
+	// The username of the Appfigures source. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
 }
 
@@ -1099,7 +1099,7 @@ type AppendVariableActivity struct {
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserProperty `pulumi:"userProperties"`
-	// Value to be appended. Could be a static value or Expression
+	// Value to be appended. Type: could be a static value matching type of the variable item or Expression with resultType matching type of the variable item
 	Value interface{} `pulumi:"value"`
 	// Name of the variable whose value needs to be appended to.
 	VariableName *string `pulumi:"variableName"`
@@ -1118,7 +1118,7 @@ type AppendVariableActivityResponse struct {
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-	// Value to be appended. Could be a static value or Expression
+	// Value to be appended. Type: could be a static value matching type of the variable item or Expression with resultType matching type of the variable item
 	Value interface{} `pulumi:"value"`
 	// Name of the variable whose value needs to be appended to.
 	VariableName *string `pulumi:"variableName"`
@@ -1191,8 +1191,8 @@ type AsanaLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Type of linked service.
@@ -1210,8 +1210,8 @@ type AsanaLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Type of linked service.
@@ -1441,8 +1441,8 @@ type AzureBatchLinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The Azure Storage linked service reference.
 	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Parameters for linked service.
@@ -1470,8 +1470,8 @@ type AzureBatchLinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The Azure Storage linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for linked service.
@@ -1625,8 +1625,8 @@ type AzureBlobFSLinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of sasToken in sas uri.
@@ -1664,8 +1664,8 @@ type AzureBlobFSLinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of sasToken in sas uri.
@@ -1896,7 +1896,7 @@ type AzureBlobStorageLinkedService struct {
 	// The Azure key vault secret reference of accountKey in connection string.
 	AccountKey *AzureKeyVaultSecretReference `pulumi:"accountKey"`
 	// Specify the kind of your storage account. Allowed values are: Storage (general purpose v1), StorageV2 (general purpose v2), BlobStorage, or BlockBlobStorage. Type: string (or Expression with resultType string).
-	AccountKind *string `pulumi:"accountKind"`
+	AccountKind interface{} `pulumi:"accountKind"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
 	// The type used for authentication. Type: string.
@@ -1913,7 +1913,7 @@ type AzureBlobStorageLinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
@@ -1922,7 +1922,7 @@ type AzureBlobStorageLinkedService struct {
 	// SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri interface{} `pulumi:"sasUri"`
 	// Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with connectionString, sasUri property.
-	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
+	ServiceEndpoint interface{} `pulumi:"serviceEndpoint"`
 	// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
@@ -1939,7 +1939,7 @@ type AzureBlobStorageLinkedServiceResponse struct {
 	// The Azure key vault secret reference of accountKey in connection string.
 	AccountKey *AzureKeyVaultSecretReferenceResponse `pulumi:"accountKey"`
 	// Specify the kind of your storage account. Allowed values are: Storage (general purpose v1), StorageV2 (general purpose v2), BlobStorage, or BlockBlobStorage. Type: string (or Expression with resultType string).
-	AccountKind *string `pulumi:"accountKind"`
+	AccountKind interface{} `pulumi:"accountKind"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
 	// The type used for authentication. Type: string.
@@ -1956,7 +1956,7 @@ type AzureBlobStorageLinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
@@ -1965,7 +1965,7 @@ type AzureBlobStorageLinkedServiceResponse struct {
 	// SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri interface{} `pulumi:"sasUri"`
 	// Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with connectionString, sasUri property.
-	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
+	ServiceEndpoint interface{} `pulumi:"serviceEndpoint"`
 	// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
@@ -2009,8 +2009,8 @@ type AzureBlobStorageReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -2040,8 +2040,8 @@ type AzureBlobStorageReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -2349,8 +2349,8 @@ type AzureDataLakeAnalyticsLinkedService struct {
 	DataLakeAnalyticsUri interface{} `pulumi:"dataLakeAnalyticsUri"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Data Lake Analytics account resource group name (if different from Data Factory account). Type: string (or Expression with resultType string).
@@ -2380,8 +2380,8 @@ type AzureDataLakeAnalyticsLinkedServiceResponse struct {
 	DataLakeAnalyticsUri interface{} `pulumi:"dataLakeAnalyticsUri"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Data Lake Analytics account resource group name (if different from Data Factory account). Type: string (or Expression with resultType string).
@@ -2473,8 +2473,8 @@ type AzureDataLakeStoreLinkedService struct {
 	DataLakeStoreUri interface{} `pulumi:"dataLakeStoreUri"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Data Lake Store account resource group name (if different from Data Factory account). Type: string (or Expression with resultType string).
@@ -2508,8 +2508,8 @@ type AzureDataLakeStoreLinkedServiceResponse struct {
 	DataLakeStoreUri interface{} `pulumi:"dataLakeStoreUri"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Data Lake Store account resource group name (if different from Data Factory account). Type: string (or Expression with resultType string).
@@ -2835,8 +2835,8 @@ type AzureDatabricksDeltaLakeLinkedService struct {
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
 	Domain interface{} `pulumi:"domain"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Type of linked service.
@@ -2862,8 +2862,8 @@ type AzureDatabricksDeltaLakeLinkedServiceResponse struct {
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
 	Domain interface{} `pulumi:"domain"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Type of linked service.
@@ -2973,8 +2973,8 @@ type AzureDatabricksLinkedService struct {
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
 	Domain interface{} `pulumi:"domain"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The id of an existing interactive cluster that will be used for all runs of this activity. Type: string (or Expression with resultType string).
 	ExistingClusterId interface{} `pulumi:"existingClusterId"`
 	// The id of an existing instance pool that will be used for all runs of this activity. Type: string (or Expression with resultType string).
@@ -3026,8 +3026,8 @@ type AzureDatabricksLinkedServiceResponse struct {
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
 	Domain interface{} `pulumi:"domain"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The id of an existing interactive cluster that will be used for all runs of this activity. Type: string (or Expression with resultType string).
 	ExistingClusterId interface{} `pulumi:"existingClusterId"`
 	// The id of an existing instance pool that will be used for all runs of this activity. Type: string (or Expression with resultType string).
@@ -3075,8 +3075,8 @@ type AzureFileStorageLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The azure file share name. It is required when auth with accountKey/sasToken. Type: string (or Expression with resultType string).
 	FileShare interface{} `pulumi:"fileShare"`
 	// Host name of the server. Type: string (or Expression with resultType string).
@@ -3110,8 +3110,8 @@ type AzureFileStorageLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The azure file share name. It is required when auth with accountKey/sasToken. Type: string (or Expression with resultType string).
 	FileShare interface{} `pulumi:"fileShare"`
 	// Host name of the server. Type: string (or Expression with resultType string).
@@ -3161,8 +3161,8 @@ type AzureFileStorageReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -3192,8 +3192,8 @@ type AzureFileStorageReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -3309,8 +3309,8 @@ type AzureFunctionLinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net.
 	FunctionAppUrl interface{} `pulumi:"functionAppUrl"`
 	// Function or Host key for Azure Function App.
@@ -3336,8 +3336,8 @@ type AzureFunctionLinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net.
 	FunctionAppUrl interface{} `pulumi:"functionAppUrl"`
 	// Function or Host key for Azure Function App.
@@ -3547,8 +3547,8 @@ type AzureMLLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The Batch Execution REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
 	MlEndpoint interface{} `pulumi:"mlEndpoint"`
 	// Parameters for linked service.
@@ -3578,8 +3578,8 @@ type AzureMLLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The Batch Execution REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
 	MlEndpoint interface{} `pulumi:"mlEndpoint"`
 	// Parameters for linked service.
@@ -3605,8 +3605,8 @@ type AzureMLServiceLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Azure ML Service workspace name. Type: string (or Expression with resultType string).
 	MlWorkspaceName interface{} `pulumi:"mlWorkspaceName"`
 	// Parameters for linked service.
@@ -3634,8 +3634,8 @@ type AzureMLServiceLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Azure ML Service workspace name. Type: string (or Expression with resultType string).
 	MlWorkspaceName interface{} `pulumi:"mlWorkspaceName"`
 	// Parameters for linked service.
@@ -3731,8 +3731,8 @@ type AzureMariaDBLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -3752,8 +3752,8 @@ type AzureMariaDBLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -3861,8 +3861,8 @@ type AzureMySqlLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -3882,8 +3882,8 @@ type AzureMySqlLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4037,8 +4037,8 @@ type AzurePostgreSqlLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4058,8 +4058,8 @@ type AzurePostgreSqlLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4337,8 +4337,8 @@ type AzureSearchLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Admin Key for Azure Search service
 	Key interface{} `pulumi:"key"`
 	// Parameters for linked service.
@@ -4358,8 +4358,8 @@ type AzureSearchLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Admin Key for Azure Search service
 	Key interface{} `pulumi:"key"`
 	// Parameters for linked service.
@@ -4385,8 +4385,8 @@ type AzureSqlDWLinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4416,8 +4416,8 @@ type AzureSqlDWLinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4499,8 +4499,8 @@ type AzureSqlDatabaseLinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4532,8 +4532,8 @@ type AzureSqlDatabaseLinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4565,8 +4565,8 @@ type AzureSqlMILinkedService struct {
 	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4598,8 +4598,8 @@ type AzureSqlMILinkedServiceResponse struct {
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -4863,7 +4863,7 @@ type AzureStorageLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
@@ -4888,7 +4888,7 @@ type AzureStorageLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
@@ -5101,7 +5101,7 @@ type AzureTableStorageLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
@@ -5126,7 +5126,7 @@ type AzureTableStorageLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
@@ -5701,8 +5701,8 @@ type CassandraLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Host name for connection. Type: string (or Expression with resultType string).
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -5728,8 +5728,8 @@ type CassandraLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Host name for connection. Type: string (or Expression with resultType string).
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -5961,8 +5961,8 @@ type CommonDataServiceForAppsLinkedService struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
 	HostName interface{} `pulumi:"hostName"`
 	// The organization name of the Common Data Service for Apps instance. The property is required for on-prem and required for online when there are more than one Common Data Service for Apps instances associated with the user. Type: string (or Expression with resultType string).
@@ -6000,8 +6000,8 @@ type CommonDataServiceForAppsLinkedServiceResponse struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
 	HostName interface{} `pulumi:"hostName"`
 	// The organization name of the Common Data Service for Apps instance. The property is required for on-prem and required for online when there are more than one Common Data Service for Apps instances associated with the user. Type: string (or Expression with resultType string).
@@ -6149,8 +6149,8 @@ type ConcurLinkedService struct {
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The password corresponding to the user name that you provided in the username field.
@@ -6180,8 +6180,8 @@ type ConcurLinkedServiceResponse struct {
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The password corresponding to the user name that you provided in the username field.
@@ -6561,7 +6561,7 @@ type CosmosDbLinkedService struct {
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The connection mode used to access CosmosDB account. Type: string (or Expression with resultType string).
+	// The connection mode used to access CosmosDB account. Type: string.
 	ConnectionMode *string `pulumi:"connectionMode"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
@@ -6571,14 +6571,14 @@ type CosmosDbLinkedService struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
 	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
-	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
-	ServicePrincipalCredentialType *string `pulumi:"servicePrincipalCredentialType"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string.
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
@@ -6600,7 +6600,7 @@ type CosmosDbLinkedServiceResponse struct {
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The connection mode used to access CosmosDB account. Type: string (or Expression with resultType string).
+	// The connection mode used to access CosmosDB account. Type: string.
 	ConnectionMode *string `pulumi:"connectionMode"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
@@ -6610,14 +6610,14 @@ type CosmosDbLinkedServiceResponse struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
 	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
-	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
-	ServicePrincipalCredentialType *string `pulumi:"servicePrincipalCredentialType"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string.
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
@@ -6957,8 +6957,8 @@ type CouchbaseLinkedService struct {
 	CredString *AzureKeyVaultSecretReference `pulumi:"credString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Type of linked service.
@@ -6978,8 +6978,8 @@ type CouchbaseLinkedServiceResponse struct {
 	CredString *AzureKeyVaultSecretReferenceResponse `pulumi:"credString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Type of linked service.
@@ -7715,8 +7715,8 @@ type DataworldLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Type of linked service.
@@ -7734,8 +7734,8 @@ type DataworldLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Type of linked service.
@@ -7759,8 +7759,8 @@ type Db2LinkedService struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. It is mutually exclusive with connectionString property. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Under where packages are created when querying database. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
 	PackageCollection interface{} `pulumi:"packageCollection"`
 	// Parameters for linked service.
@@ -7792,8 +7792,8 @@ type Db2LinkedServiceResponse struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. It is mutually exclusive with connectionString property. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Under where packages are created when querying database. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
 	PackageCollection interface{} `pulumi:"packageCollection"`
 	// Parameters for linked service.
@@ -8353,8 +8353,8 @@ type DrillLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -8374,8 +8374,8 @@ type DrillLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -8487,8 +8487,8 @@ type DynamicsAXLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Specify the application's client ID. Type: string (or Expression with resultType string).
@@ -8514,8 +8514,8 @@ type DynamicsAXLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Specify the application's client ID. Type: string (or Expression with resultType string).
@@ -8681,8 +8681,8 @@ type DynamicsCrmLinkedService struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics CRM server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
 	HostName interface{} `pulumi:"hostName"`
 	// The organization name of the Dynamics CRM instance. The property is required for on-prem and required for online when there are more than one Dynamics CRM instances associated with the user. Type: string (or Expression with resultType string).
@@ -8720,8 +8720,8 @@ type DynamicsCrmLinkedServiceResponse struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics CRM server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
 	HostName interface{} `pulumi:"hostName"`
 	// The organization name of the Dynamics CRM instance. The property is required for on-prem and required for online when there are more than one Dynamics CRM instances associated with the user. Type: string (or Expression with resultType string).
@@ -8895,8 +8895,8 @@ type DynamicsLinkedService struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
 	HostName interface{} `pulumi:"hostName"`
 	// The organization name of the Dynamics instance. The property is required for on-prem and required for online when there are more than one Dynamics instances associated with the user. Type: string (or Expression with resultType string).
@@ -8936,8 +8936,8 @@ type DynamicsLinkedServiceResponse struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
 	HostName interface{} `pulumi:"hostName"`
 	// The organization name of the Dynamics instance. The property is required for on-prem and required for online when there are more than one Dynamics instances associated with the user. Type: string (or Expression with resultType string).
@@ -9059,8 +9059,8 @@ type EloquaLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Eloqua server. (i.e. eloqua.example.com)
 	Endpoint interface{} `pulumi:"endpoint"`
 	// Parameters for linked service.
@@ -9088,8 +9088,8 @@ type EloquaLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Eloqua server. (i.e. eloqua.example.com)
 	Endpoint interface{} `pulumi:"endpoint"`
 	// Parameters for linked service.
@@ -10421,8 +10421,8 @@ type FileServerLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Host name of the server. Type: string (or Expression with resultType string).
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -10444,8 +10444,8 @@ type FileServerLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Host name of the server. Type: string (or Expression with resultType string).
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -10487,8 +10487,8 @@ type FileServerReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Specify a filter to be used to select a subset of files in the folderPath rather than all files. Type: string (or Expression with resultType string).
 	FileFilter interface{} `pulumi:"fileFilter"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
@@ -10518,8 +10518,8 @@ type FileServerReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Specify a filter to be used to select a subset of files in the folderPath rather than all files. Type: string (or Expression with resultType string).
 	FileFilter interface{} `pulumi:"fileFilter"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
@@ -10857,8 +10857,8 @@ type FtpReadSettings struct {
 	DisableChunking interface{} `pulumi:"disableChunking"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -10870,8 +10870,8 @@ type FtpReadSettings struct {
 	// The read setting type.
 	// Expected value is 'FtpReadSettings'.
 	Type string `pulumi:"type"`
-	// Specify whether to use binary transfer mode for FTP stores.
-	UseBinaryTransfer *bool `pulumi:"useBinaryTransfer"`
+	// Specify whether to use binary transfer mode for FTP stores. Type: boolean (or Expression with resultType boolean).
+	UseBinaryTransfer interface{} `pulumi:"useBinaryTransfer"`
 	// Ftp wildcardFileName. Type: string (or Expression with resultType string).
 	WildcardFileName interface{} `pulumi:"wildcardFileName"`
 	// Ftp wildcardFolderPath. Type: string (or Expression with resultType string).
@@ -10886,8 +10886,8 @@ type FtpReadSettingsResponse struct {
 	DisableChunking interface{} `pulumi:"disableChunking"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -10899,8 +10899,8 @@ type FtpReadSettingsResponse struct {
 	// The read setting type.
 	// Expected value is 'FtpReadSettings'.
 	Type string `pulumi:"type"`
-	// Specify whether to use binary transfer mode for FTP stores.
-	UseBinaryTransfer *bool `pulumi:"useBinaryTransfer"`
+	// Specify whether to use binary transfer mode for FTP stores. Type: boolean (or Expression with resultType boolean).
+	UseBinaryTransfer interface{} `pulumi:"useBinaryTransfer"`
 	// Ftp wildcardFileName. Type: string (or Expression with resultType string).
 	WildcardFileName interface{} `pulumi:"wildcardFileName"`
 	// Ftp wildcardFolderPath. Type: string (or Expression with resultType string).
@@ -10921,8 +10921,8 @@ type FtpServerLinkedService struct {
 	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// If true, connect to the FTP server over SSL/TLS channel. Default value is true. Type: boolean (or Expression with resultType boolean).
 	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Host name of the FTP server. Type: string (or Expression with resultType string).
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -10952,8 +10952,8 @@ type FtpServerLinkedServiceResponse struct {
 	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// If true, connect to the FTP server over SSL/TLS channel. Default value is true. Type: boolean (or Expression with resultType boolean).
 	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Host name of the FTP server. Type: string (or Expression with resultType string).
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -11380,7 +11380,7 @@ type GoogleAdWordsLinkedService struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
 	AuthenticationType *string `pulumi:"authenticationType"`
-	// The Client customer ID of the AdWords account that you want to fetch report data for.
+	// The Client customer ID of the AdWords account that you want to fetch report data for. Type: string (or Expression with resultType string).
 	ClientCustomerID interface{} `pulumi:"clientCustomerID"`
 	// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
 	ClientId interface{} `pulumi:"clientId"`
@@ -11394,22 +11394,22 @@ type GoogleAdWordsLinkedService struct {
 	Description *string `pulumi:"description"`
 	// The developer token associated with the manager account that you use to grant access to the AdWords API.
 	DeveloperToken interface{} `pulumi:"developerToken"`
-	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR.
+	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	Email interface{} `pulumi:"email"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
-	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR.
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	KeyFilePath interface{} `pulumi:"keyFilePath"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The refresh token obtained from Google for authorizing access to AdWords for UserAuthentication.
 	RefreshToken interface{} `pulumi:"refreshToken"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'GoogleAdWords'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 }
 
@@ -11419,7 +11419,7 @@ type GoogleAdWordsLinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
 	AuthenticationType *string `pulumi:"authenticationType"`
-	// The Client customer ID of the AdWords account that you want to fetch report data for.
+	// The Client customer ID of the AdWords account that you want to fetch report data for. Type: string (or Expression with resultType string).
 	ClientCustomerID interface{} `pulumi:"clientCustomerID"`
 	// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
 	ClientId interface{} `pulumi:"clientId"`
@@ -11433,22 +11433,22 @@ type GoogleAdWordsLinkedServiceResponse struct {
 	Description *string `pulumi:"description"`
 	// The developer token associated with the manager account that you use to grant access to the AdWords API.
 	DeveloperToken interface{} `pulumi:"developerToken"`
-	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR.
+	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	Email interface{} `pulumi:"email"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
-	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR.
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	KeyFilePath interface{} `pulumi:"keyFilePath"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The refresh token obtained from Google for authorizing access to AdWords for UserAuthentication.
 	RefreshToken interface{} `pulumi:"refreshToken"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'GoogleAdWords'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 }
 
@@ -11542,7 +11542,7 @@ type GoogleAdWordsSourceResponse struct {
 
 // Google BigQuery service linked service.
 type GoogleBigQueryLinkedService struct {
-	// A comma-separated list of public BigQuery projects to access.
+	// A comma-separated list of public BigQuery projects to access. Type: string (or Expression with resultType string).
 	AdditionalProjects interface{} `pulumi:"additionalProjects"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -11556,32 +11556,32 @@ type GoogleBigQueryLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR.
+	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	Email interface{} `pulumi:"email"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
-	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR.
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	KeyFilePath interface{} `pulumi:"keyFilePath"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The default BigQuery project to query against.
+	// The default BigQuery project to query against. Type: string (or Expression with resultType string).
 	Project interface{} `pulumi:"project"`
 	// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
 	RefreshToken interface{} `pulumi:"refreshToken"`
-	// Whether to request access to Google Drive. Allowing Google Drive access enables support for federated tables that combine BigQuery data with data from Google Drive. The default value is false.
+	// Whether to request access to Google Drive. Allowing Google Drive access enables support for federated tables that combine BigQuery data with data from Google Drive. The default value is false. Type: string (or Expression with resultType string).
 	RequestGoogleDriveScope interface{} `pulumi:"requestGoogleDriveScope"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'GoogleBigQuery'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.Type: boolean (or Expression with resultType boolean).
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 }
 
 // Google BigQuery service linked service.
 type GoogleBigQueryLinkedServiceResponse struct {
-	// A comma-separated list of public BigQuery projects to access.
+	// A comma-separated list of public BigQuery projects to access. Type: string (or Expression with resultType string).
 	AdditionalProjects interface{} `pulumi:"additionalProjects"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -11595,26 +11595,26 @@ type GoogleBigQueryLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR.
+	// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	Email interface{} `pulumi:"email"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
-	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR.
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
 	KeyFilePath interface{} `pulumi:"keyFilePath"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The default BigQuery project to query against.
+	// The default BigQuery project to query against. Type: string (or Expression with resultType string).
 	Project interface{} `pulumi:"project"`
 	// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
 	RefreshToken interface{} `pulumi:"refreshToken"`
-	// Whether to request access to Google Drive. Allowing Google Drive access enables support for federated tables that combine BigQuery data with data from Google Drive. The default value is false.
+	// Whether to request access to Google Drive. Allowing Google Drive access enables support for federated tables that combine BigQuery data with data from Google Drive. The default value is false. Type: string (or Expression with resultType string).
 	RequestGoogleDriveScope interface{} `pulumi:"requestGoogleDriveScope"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'GoogleBigQuery'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.Type: boolean (or Expression with resultType boolean).
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 }
 
@@ -11724,8 +11724,8 @@ type GoogleCloudStorageLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The secret access key of the Google Cloud Storage Identity and Access Management (IAM) user.
@@ -11747,8 +11747,8 @@ type GoogleCloudStorageLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The secret access key of the Google Cloud Storage Identity and Access Management (IAM) user.
@@ -11796,8 +11796,8 @@ type GoogleCloudStorageReadSettings struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -11827,8 +11827,8 @@ type GoogleCloudStorageReadSettingsResponse struct {
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery.
-	EnablePartitionDiscovery *bool `pulumi:"enablePartitionDiscovery"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
 	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
 	FileListPath interface{} `pulumi:"fileListPath"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
@@ -11862,8 +11862,8 @@ type GoogleSheetsLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Type of linked service.
@@ -11881,8 +11881,8 @@ type GoogleSheetsLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Type of linked service.
@@ -11900,8 +11900,8 @@ type GreenplumLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -11921,8 +11921,8 @@ type GreenplumLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -12040,8 +12040,8 @@ type HBaseLinkedService struct {
 	Description *string `pulumi:"description"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
 	Host interface{} `pulumi:"host"`
 	// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
@@ -12077,8 +12077,8 @@ type HBaseLinkedServiceResponse struct {
 	Description *string `pulumi:"description"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
 	Host interface{} `pulumi:"host"`
 	// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
@@ -12218,7 +12218,7 @@ type HDInsightHiveActivity struct {
 	// Activity user properties.
 	UserProperties []UserProperty `pulumi:"userProperties"`
 	// User specified arguments under hivevar namespace.
-	Variables []interface{} `pulumi:"variables"`
+	Variables map[string]interface{} `pulumi:"variables"`
 }
 
 // HDInsight Hive activity type.
@@ -12253,7 +12253,7 @@ type HDInsightHiveActivityResponse struct {
 	// Activity user properties.
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
 	// User specified arguments under hivevar namespace.
-	Variables []interface{} `pulumi:"variables"`
+	Variables map[string]interface{} `pulumi:"variables"`
 }
 
 // HDInsight linked service.
@@ -12266,8 +12266,8 @@ type HDInsightLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
 	FileSystem interface{} `pulumi:"fileSystem"`
 	// A reference to the Azure SQL linked service that points to the HCatalog database.
@@ -12297,8 +12297,8 @@ type HDInsightLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
 	FileSystem interface{} `pulumi:"fileSystem"`
 	// A reference to the Azure SQL linked service that points to the HCatalog database.
@@ -12420,8 +12420,8 @@ type HDInsightOnDemandLinkedService struct {
 	DataNodeSize interface{} `pulumi:"dataNodeSize"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
 	HBaseConfiguration interface{} `pulumi:"hBaseConfiguration"`
 	// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
@@ -12503,8 +12503,8 @@ type HDInsightOnDemandLinkedServiceResponse struct {
 	DataNodeSize interface{} `pulumi:"dataNodeSize"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
 	HBaseConfiguration interface{} `pulumi:"hBaseConfiguration"`
 	// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
