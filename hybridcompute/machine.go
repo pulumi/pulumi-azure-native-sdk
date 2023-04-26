@@ -128,6 +128,9 @@ func NewMachine(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcompute/v20221110:Machine"),
 		},
 		{
+			Type: pulumi.String("azure-native:hybridcompute/v20221227:Machine"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:Machine"),
 		},
 	})

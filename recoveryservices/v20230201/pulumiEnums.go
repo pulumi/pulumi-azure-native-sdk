@@ -468,6 +468,15 @@ const (
 	TieringModeDoNotTier       = TieringMode("DoNotTier")
 )
 
+// GroupId for the PrivateEndpointConnection - AzureBackup, AzureBackup_secondary or AzureSiteRecovery
+type VaultSubResourceType string
+
+const (
+	VaultSubResourceTypeAzureBackup            = VaultSubResourceType("AzureBackup")
+	VaultSubResourceType_AzureBackup_secondary = VaultSubResourceType("AzureBackup_secondary")
+	VaultSubResourceTypeAzureSiteRecovery      = VaultSubResourceType("AzureSiteRecovery")
+)
+
 type WeekOfMonth string
 
 const (

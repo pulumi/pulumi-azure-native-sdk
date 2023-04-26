@@ -69,6 +69,12 @@ func NewServer(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.Backup != nil {
+		args.Backup = args.Backup.ToBackupPtrOutput().ApplyT(func(v *Backup) *Backup { return v.Defaults() }).(BackupPtrOutput)
+	}
+	if args.Storage != nil {
+		args.Storage = args.Storage.ToStoragePtrOutput().ApplyT(func(v *Storage) *Storage { return v.Defaults() }).(StoragePtrOutput)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Server"),

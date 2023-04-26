@@ -536,6 +536,8 @@ type Container struct {
 	ReadinessProbe *ContainerProbe `pulumi:"readinessProbe"`
 	// The resource requirements of the container instance.
 	Resources ResourceRequirements `pulumi:"resources"`
+	// The container security properties.
+	SecurityContext *SecurityContextDefinition `pulumi:"securityContext"`
 	// The volume mounts available to the container instance.
 	VolumeMounts []VolumeMount `pulumi:"volumeMounts"`
 }
@@ -569,6 +571,8 @@ type ContainerArgs struct {
 	ReadinessProbe ContainerProbePtrInput `pulumi:"readinessProbe"`
 	// The resource requirements of the container instance.
 	Resources ResourceRequirementsInput `pulumi:"resources"`
+	// The container security properties.
+	SecurityContext SecurityContextDefinitionPtrInput `pulumi:"securityContext"`
 	// The volume mounts available to the container instance.
 	VolumeMounts VolumeMountArrayInput `pulumi:"volumeMounts"`
 }
@@ -663,6 +667,11 @@ func (o ContainerOutput) ReadinessProbe() ContainerProbePtrOutput {
 // The resource requirements of the container instance.
 func (o ContainerOutput) Resources() ResourceRequirementsOutput {
 	return o.ApplyT(func(v Container) ResourceRequirements { return v.Resources }).(ResourceRequirementsOutput)
+}
+
+// The container security properties.
+func (o ContainerOutput) SecurityContext() SecurityContextDefinitionPtrOutput {
+	return o.ApplyT(func(v Container) *SecurityContextDefinition { return v.SecurityContext }).(SecurityContextDefinitionPtrOutput)
 }
 
 // The volume mounts available to the container instance.
@@ -2510,6 +2519,8 @@ type ContainerResponse struct {
 	ReadinessProbe *ContainerProbeResponse `pulumi:"readinessProbe"`
 	// The resource requirements of the container instance.
 	Resources ResourceRequirementsResponse `pulumi:"resources"`
+	// The container security properties.
+	SecurityContext *SecurityContextDefinitionResponse `pulumi:"securityContext"`
 	// The volume mounts available to the container instance.
 	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
 }
@@ -2572,6 +2583,11 @@ func (o ContainerResponseOutput) ReadinessProbe() ContainerProbeResponsePtrOutpu
 // The resource requirements of the container instance.
 func (o ContainerResponseOutput) Resources() ResourceRequirementsResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponseOutput)
+}
+
+// The container security properties.
+func (o ContainerResponseOutput) SecurityContext() SecurityContextDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponse) *SecurityContextDefinitionResponse { return v.SecurityContext }).(SecurityContextDefinitionResponsePtrOutput)
 }
 
 // The volume mounts available to the container instance.
@@ -4592,6 +4608,8 @@ type InitContainerDefinition struct {
 	Image *string `pulumi:"image"`
 	// The name for the init container.
 	Name string `pulumi:"name"`
+	// The container security properties.
+	SecurityContext *SecurityContextDefinition `pulumi:"securityContext"`
 	// The volume mounts available to the init container.
 	VolumeMounts []VolumeMount `pulumi:"volumeMounts"`
 }
@@ -4617,6 +4635,8 @@ type InitContainerDefinitionArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The name for the init container.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The container security properties.
+	SecurityContext SecurityContextDefinitionPtrInput `pulumi:"securityContext"`
 	// The volume mounts available to the init container.
 	VolumeMounts VolumeMountArrayInput `pulumi:"volumeMounts"`
 }
@@ -4693,6 +4713,11 @@ func (o InitContainerDefinitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InitContainerDefinition) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The container security properties.
+func (o InitContainerDefinitionOutput) SecurityContext() SecurityContextDefinitionPtrOutput {
+	return o.ApplyT(func(v InitContainerDefinition) *SecurityContextDefinition { return v.SecurityContext }).(SecurityContextDefinitionPtrOutput)
+}
+
 // The volume mounts available to the init container.
 func (o InitContainerDefinitionOutput) VolumeMounts() VolumeMountArrayOutput {
 	return o.ApplyT(func(v InitContainerDefinition) []VolumeMount { return v.VolumeMounts }).(VolumeMountArrayOutput)
@@ -4730,6 +4755,8 @@ type InitContainerDefinitionResponse struct {
 	InstanceView InitContainerPropertiesDefinitionResponseInstanceView `pulumi:"instanceView"`
 	// The name for the init container.
 	Name string `pulumi:"name"`
+	// The container security properties.
+	SecurityContext *SecurityContextDefinitionResponse `pulumi:"securityContext"`
 	// The volume mounts available to the init container.
 	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
 }
@@ -4774,6 +4801,11 @@ func (o InitContainerDefinitionResponseOutput) InstanceView() InitContainerPrope
 // The name for the init container.
 func (o InitContainerDefinitionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InitContainerDefinitionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The container security properties.
+func (o InitContainerDefinitionResponseOutput) SecurityContext() SecurityContextDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v InitContainerDefinitionResponse) *SecurityContextDefinitionResponse { return v.SecurityContext }).(SecurityContextDefinitionResponsePtrOutput)
 }
 
 // The volume mounts available to the init container.
@@ -6238,6 +6270,624 @@ func (o ResourceRequirementsResponseOutput) Requests() ResourceRequestsResponseO
 	return o.ApplyT(func(v ResourceRequirementsResponse) ResourceRequestsResponse { return v.Requests }).(ResourceRequestsResponseOutput)
 }
 
+// The capabilities to add or drop from a container.
+type SecurityContextCapabilitiesDefinition struct {
+	// The capabilities to add to the container.
+	Add []string `pulumi:"add"`
+	// The capabilities to drop from the container.
+	Drop []string `pulumi:"drop"`
+}
+
+// SecurityContextCapabilitiesDefinitionInput is an input type that accepts SecurityContextCapabilitiesDefinitionArgs and SecurityContextCapabilitiesDefinitionOutput values.
+// You can construct a concrete instance of `SecurityContextCapabilitiesDefinitionInput` via:
+//
+//	SecurityContextCapabilitiesDefinitionArgs{...}
+type SecurityContextCapabilitiesDefinitionInput interface {
+	pulumi.Input
+
+	ToSecurityContextCapabilitiesDefinitionOutput() SecurityContextCapabilitiesDefinitionOutput
+	ToSecurityContextCapabilitiesDefinitionOutputWithContext(context.Context) SecurityContextCapabilitiesDefinitionOutput
+}
+
+// The capabilities to add or drop from a container.
+type SecurityContextCapabilitiesDefinitionArgs struct {
+	// The capabilities to add to the container.
+	Add pulumi.StringArrayInput `pulumi:"add"`
+	// The capabilities to drop from the container.
+	Drop pulumi.StringArrayInput `pulumi:"drop"`
+}
+
+func (SecurityContextCapabilitiesDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextCapabilitiesDefinition)(nil)).Elem()
+}
+
+func (i SecurityContextCapabilitiesDefinitionArgs) ToSecurityContextCapabilitiesDefinitionOutput() SecurityContextCapabilitiesDefinitionOutput {
+	return i.ToSecurityContextCapabilitiesDefinitionOutputWithContext(context.Background())
+}
+
+func (i SecurityContextCapabilitiesDefinitionArgs) ToSecurityContextCapabilitiesDefinitionOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextCapabilitiesDefinitionOutput)
+}
+
+func (i SecurityContextCapabilitiesDefinitionArgs) ToSecurityContextCapabilitiesDefinitionPtrOutput() SecurityContextCapabilitiesDefinitionPtrOutput {
+	return i.ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityContextCapabilitiesDefinitionArgs) ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextCapabilitiesDefinitionOutput).ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(ctx)
+}
+
+// SecurityContextCapabilitiesDefinitionPtrInput is an input type that accepts SecurityContextCapabilitiesDefinitionArgs, SecurityContextCapabilitiesDefinitionPtr and SecurityContextCapabilitiesDefinitionPtrOutput values.
+// You can construct a concrete instance of `SecurityContextCapabilitiesDefinitionPtrInput` via:
+//
+//	        SecurityContextCapabilitiesDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityContextCapabilitiesDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityContextCapabilitiesDefinitionPtrOutput() SecurityContextCapabilitiesDefinitionPtrOutput
+	ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(context.Context) SecurityContextCapabilitiesDefinitionPtrOutput
+}
+
+type securityContextCapabilitiesDefinitionPtrType SecurityContextCapabilitiesDefinitionArgs
+
+func SecurityContextCapabilitiesDefinitionPtr(v *SecurityContextCapabilitiesDefinitionArgs) SecurityContextCapabilitiesDefinitionPtrInput {
+	return (*securityContextCapabilitiesDefinitionPtrType)(v)
+}
+
+func (*securityContextCapabilitiesDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContextCapabilitiesDefinition)(nil)).Elem()
+}
+
+func (i *securityContextCapabilitiesDefinitionPtrType) ToSecurityContextCapabilitiesDefinitionPtrOutput() SecurityContextCapabilitiesDefinitionPtrOutput {
+	return i.ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityContextCapabilitiesDefinitionPtrType) ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextCapabilitiesDefinitionPtrOutput)
+}
+
+// The capabilities to add or drop from a container.
+type SecurityContextCapabilitiesDefinitionOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextCapabilitiesDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextCapabilitiesDefinition)(nil)).Elem()
+}
+
+func (o SecurityContextCapabilitiesDefinitionOutput) ToSecurityContextCapabilitiesDefinitionOutput() SecurityContextCapabilitiesDefinitionOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionOutput) ToSecurityContextCapabilitiesDefinitionOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionOutput) ToSecurityContextCapabilitiesDefinitionPtrOutput() SecurityContextCapabilitiesDefinitionPtrOutput {
+	return o.ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityContextCapabilitiesDefinitionOutput) ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityContextCapabilitiesDefinition) *SecurityContextCapabilitiesDefinition {
+		return &v
+	}).(SecurityContextCapabilitiesDefinitionPtrOutput)
+}
+
+// The capabilities to add to the container.
+func (o SecurityContextCapabilitiesDefinitionOutput) Add() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityContextCapabilitiesDefinition) []string { return v.Add }).(pulumi.StringArrayOutput)
+}
+
+// The capabilities to drop from the container.
+func (o SecurityContextCapabilitiesDefinitionOutput) Drop() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityContextCapabilitiesDefinition) []string { return v.Drop }).(pulumi.StringArrayOutput)
+}
+
+type SecurityContextCapabilitiesDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextCapabilitiesDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContextCapabilitiesDefinition)(nil)).Elem()
+}
+
+func (o SecurityContextCapabilitiesDefinitionPtrOutput) ToSecurityContextCapabilitiesDefinitionPtrOutput() SecurityContextCapabilitiesDefinitionPtrOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionPtrOutput) ToSecurityContextCapabilitiesDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionPtrOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionPtrOutput) Elem() SecurityContextCapabilitiesDefinitionOutput {
+	return o.ApplyT(func(v *SecurityContextCapabilitiesDefinition) SecurityContextCapabilitiesDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityContextCapabilitiesDefinition
+		return ret
+	}).(SecurityContextCapabilitiesDefinitionOutput)
+}
+
+// The capabilities to add to the container.
+func (o SecurityContextCapabilitiesDefinitionPtrOutput) Add() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityContextCapabilitiesDefinition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringArrayOutput)
+}
+
+// The capabilities to drop from the container.
+func (o SecurityContextCapabilitiesDefinitionPtrOutput) Drop() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityContextCapabilitiesDefinition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Drop
+	}).(pulumi.StringArrayOutput)
+}
+
+// The capabilities to add or drop from a container.
+type SecurityContextCapabilitiesDefinitionResponse struct {
+	// The capabilities to add to the container.
+	Add []string `pulumi:"add"`
+	// The capabilities to drop from the container.
+	Drop []string `pulumi:"drop"`
+}
+
+// The capabilities to add or drop from a container.
+type SecurityContextCapabilitiesDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextCapabilitiesDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextCapabilitiesDefinitionResponse)(nil)).Elem()
+}
+
+func (o SecurityContextCapabilitiesDefinitionResponseOutput) ToSecurityContextCapabilitiesDefinitionResponseOutput() SecurityContextCapabilitiesDefinitionResponseOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionResponseOutput) ToSecurityContextCapabilitiesDefinitionResponseOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionResponseOutput {
+	return o
+}
+
+// The capabilities to add to the container.
+func (o SecurityContextCapabilitiesDefinitionResponseOutput) Add() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityContextCapabilitiesDefinitionResponse) []string { return v.Add }).(pulumi.StringArrayOutput)
+}
+
+// The capabilities to drop from the container.
+func (o SecurityContextCapabilitiesDefinitionResponseOutput) Drop() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityContextCapabilitiesDefinitionResponse) []string { return v.Drop }).(pulumi.StringArrayOutput)
+}
+
+type SecurityContextCapabilitiesDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextCapabilitiesDefinitionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContextCapabilitiesDefinitionResponse)(nil)).Elem()
+}
+
+func (o SecurityContextCapabilitiesDefinitionResponsePtrOutput) ToSecurityContextCapabilitiesDefinitionResponsePtrOutput() SecurityContextCapabilitiesDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionResponsePtrOutput) ToSecurityContextCapabilitiesDefinitionResponsePtrOutputWithContext(ctx context.Context) SecurityContextCapabilitiesDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o SecurityContextCapabilitiesDefinitionResponsePtrOutput) Elem() SecurityContextCapabilitiesDefinitionResponseOutput {
+	return o.ApplyT(func(v *SecurityContextCapabilitiesDefinitionResponse) SecurityContextCapabilitiesDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityContextCapabilitiesDefinitionResponse
+		return ret
+	}).(SecurityContextCapabilitiesDefinitionResponseOutput)
+}
+
+// The capabilities to add to the container.
+func (o SecurityContextCapabilitiesDefinitionResponsePtrOutput) Add() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityContextCapabilitiesDefinitionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringArrayOutput)
+}
+
+// The capabilities to drop from the container.
+func (o SecurityContextCapabilitiesDefinitionResponsePtrOutput) Drop() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityContextCapabilitiesDefinitionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Drop
+	}).(pulumi.StringArrayOutput)
+}
+
+// The security context for the container.
+type SecurityContextDefinition struct {
+	// A boolean value indicating whether the init process can elevate its privileges
+	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
+	// The capabilities to add or drop from a container.
+	Capabilities *SecurityContextCapabilitiesDefinition `pulumi:"capabilities"`
+	// The flag to determine if the container permissions is elevated to Privileged.
+	Privileged *bool `pulumi:"privileged"`
+	// Sets the User GID for the container.
+	RunAsGroup *int `pulumi:"runAsGroup"`
+	// Sets the User UID for the container.
+	RunAsUser *int `pulumi:"runAsUser"`
+	// a base64 encoded string containing the contents of the JSON in the seccomp profile
+	SeccompProfile *string `pulumi:"seccompProfile"`
+}
+
+// SecurityContextDefinitionInput is an input type that accepts SecurityContextDefinitionArgs and SecurityContextDefinitionOutput values.
+// You can construct a concrete instance of `SecurityContextDefinitionInput` via:
+//
+//	SecurityContextDefinitionArgs{...}
+type SecurityContextDefinitionInput interface {
+	pulumi.Input
+
+	ToSecurityContextDefinitionOutput() SecurityContextDefinitionOutput
+	ToSecurityContextDefinitionOutputWithContext(context.Context) SecurityContextDefinitionOutput
+}
+
+// The security context for the container.
+type SecurityContextDefinitionArgs struct {
+	// A boolean value indicating whether the init process can elevate its privileges
+	AllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"allowPrivilegeEscalation"`
+	// The capabilities to add or drop from a container.
+	Capabilities SecurityContextCapabilitiesDefinitionPtrInput `pulumi:"capabilities"`
+	// The flag to determine if the container permissions is elevated to Privileged.
+	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
+	// Sets the User GID for the container.
+	RunAsGroup pulumi.IntPtrInput `pulumi:"runAsGroup"`
+	// Sets the User UID for the container.
+	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
+	// a base64 encoded string containing the contents of the JSON in the seccomp profile
+	SeccompProfile pulumi.StringPtrInput `pulumi:"seccompProfile"`
+}
+
+func (SecurityContextDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextDefinition)(nil)).Elem()
+}
+
+func (i SecurityContextDefinitionArgs) ToSecurityContextDefinitionOutput() SecurityContextDefinitionOutput {
+	return i.ToSecurityContextDefinitionOutputWithContext(context.Background())
+}
+
+func (i SecurityContextDefinitionArgs) ToSecurityContextDefinitionOutputWithContext(ctx context.Context) SecurityContextDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextDefinitionOutput)
+}
+
+func (i SecurityContextDefinitionArgs) ToSecurityContextDefinitionPtrOutput() SecurityContextDefinitionPtrOutput {
+	return i.ToSecurityContextDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityContextDefinitionArgs) ToSecurityContextDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextDefinitionOutput).ToSecurityContextDefinitionPtrOutputWithContext(ctx)
+}
+
+// SecurityContextDefinitionPtrInput is an input type that accepts SecurityContextDefinitionArgs, SecurityContextDefinitionPtr and SecurityContextDefinitionPtrOutput values.
+// You can construct a concrete instance of `SecurityContextDefinitionPtrInput` via:
+//
+//	        SecurityContextDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityContextDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityContextDefinitionPtrOutput() SecurityContextDefinitionPtrOutput
+	ToSecurityContextDefinitionPtrOutputWithContext(context.Context) SecurityContextDefinitionPtrOutput
+}
+
+type securityContextDefinitionPtrType SecurityContextDefinitionArgs
+
+func SecurityContextDefinitionPtr(v *SecurityContextDefinitionArgs) SecurityContextDefinitionPtrInput {
+	return (*securityContextDefinitionPtrType)(v)
+}
+
+func (*securityContextDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContextDefinition)(nil)).Elem()
+}
+
+func (i *securityContextDefinitionPtrType) ToSecurityContextDefinitionPtrOutput() SecurityContextDefinitionPtrOutput {
+	return i.ToSecurityContextDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityContextDefinitionPtrType) ToSecurityContextDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextDefinitionPtrOutput)
+}
+
+// The security context for the container.
+type SecurityContextDefinitionOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextDefinition)(nil)).Elem()
+}
+
+func (o SecurityContextDefinitionOutput) ToSecurityContextDefinitionOutput() SecurityContextDefinitionOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionOutput) ToSecurityContextDefinitionOutputWithContext(ctx context.Context) SecurityContextDefinitionOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionOutput) ToSecurityContextDefinitionPtrOutput() SecurityContextDefinitionPtrOutput {
+	return o.ToSecurityContextDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityContextDefinitionOutput) ToSecurityContextDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityContextDefinition) *SecurityContextDefinition {
+		return &v
+	}).(SecurityContextDefinitionPtrOutput)
+}
+
+// A boolean value indicating whether the init process can elevate its privileges
+func (o SecurityContextDefinitionOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinition) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
+}
+
+// The capabilities to add or drop from a container.
+func (o SecurityContextDefinitionOutput) Capabilities() SecurityContextCapabilitiesDefinitionPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinition) *SecurityContextCapabilitiesDefinition { return v.Capabilities }).(SecurityContextCapabilitiesDefinitionPtrOutput)
+}
+
+// The flag to determine if the container permissions is elevated to Privileged.
+func (o SecurityContextDefinitionOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinition) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the User GID for the container.
+func (o SecurityContextDefinitionOutput) RunAsGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinition) *int { return v.RunAsGroup }).(pulumi.IntPtrOutput)
+}
+
+// Sets the User UID for the container.
+func (o SecurityContextDefinitionOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinition) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
+}
+
+// a base64 encoded string containing the contents of the JSON in the seccomp profile
+func (o SecurityContextDefinitionOutput) SeccompProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinition) *string { return v.SeccompProfile }).(pulumi.StringPtrOutput)
+}
+
+type SecurityContextDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContextDefinition)(nil)).Elem()
+}
+
+func (o SecurityContextDefinitionPtrOutput) ToSecurityContextDefinitionPtrOutput() SecurityContextDefinitionPtrOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionPtrOutput) ToSecurityContextDefinitionPtrOutputWithContext(ctx context.Context) SecurityContextDefinitionPtrOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionPtrOutput) Elem() SecurityContextDefinitionOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) SecurityContextDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityContextDefinition
+		return ret
+	}).(SecurityContextDefinitionOutput)
+}
+
+// A boolean value indicating whether the init process can elevate its privileges
+func (o SecurityContextDefinitionPtrOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPrivilegeEscalation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The capabilities to add or drop from a container.
+func (o SecurityContextDefinitionPtrOutput) Capabilities() SecurityContextCapabilitiesDefinitionPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) *SecurityContextCapabilitiesDefinition {
+		if v == nil {
+			return nil
+		}
+		return v.Capabilities
+	}).(SecurityContextCapabilitiesDefinitionPtrOutput)
+}
+
+// The flag to determine if the container permissions is elevated to Privileged.
+func (o SecurityContextDefinitionPtrOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Privileged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets the User GID for the container.
+func (o SecurityContextDefinitionPtrOutput) RunAsGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsGroup
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the User UID for the container.
+func (o SecurityContextDefinitionPtrOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsUser
+	}).(pulumi.IntPtrOutput)
+}
+
+// a base64 encoded string containing the contents of the JSON in the seccomp profile
+func (o SecurityContextDefinitionPtrOutput) SeccompProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeccompProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The security context for the container.
+type SecurityContextDefinitionResponse struct {
+	// A boolean value indicating whether the init process can elevate its privileges
+	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
+	// The capabilities to add or drop from a container.
+	Capabilities *SecurityContextCapabilitiesDefinitionResponse `pulumi:"capabilities"`
+	// The flag to determine if the container permissions is elevated to Privileged.
+	Privileged *bool `pulumi:"privileged"`
+	// Sets the User GID for the container.
+	RunAsGroup *int `pulumi:"runAsGroup"`
+	// Sets the User UID for the container.
+	RunAsUser *int `pulumi:"runAsUser"`
+	// a base64 encoded string containing the contents of the JSON in the seccomp profile
+	SeccompProfile *string `pulumi:"seccompProfile"`
+}
+
+// The security context for the container.
+type SecurityContextDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextDefinitionResponse)(nil)).Elem()
+}
+
+func (o SecurityContextDefinitionResponseOutput) ToSecurityContextDefinitionResponseOutput() SecurityContextDefinitionResponseOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionResponseOutput) ToSecurityContextDefinitionResponseOutputWithContext(ctx context.Context) SecurityContextDefinitionResponseOutput {
+	return o
+}
+
+// A boolean value indicating whether the init process can elevate its privileges
+func (o SecurityContextDefinitionResponseOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinitionResponse) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
+}
+
+// The capabilities to add or drop from a container.
+func (o SecurityContextDefinitionResponseOutput) Capabilities() SecurityContextCapabilitiesDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinitionResponse) *SecurityContextCapabilitiesDefinitionResponse {
+		return v.Capabilities
+	}).(SecurityContextCapabilitiesDefinitionResponsePtrOutput)
+}
+
+// The flag to determine if the container permissions is elevated to Privileged.
+func (o SecurityContextDefinitionResponseOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinitionResponse) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the User GID for the container.
+func (o SecurityContextDefinitionResponseOutput) RunAsGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinitionResponse) *int { return v.RunAsGroup }).(pulumi.IntPtrOutput)
+}
+
+// Sets the User UID for the container.
+func (o SecurityContextDefinitionResponseOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinitionResponse) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
+}
+
+// a base64 encoded string containing the contents of the JSON in the seccomp profile
+func (o SecurityContextDefinitionResponseOutput) SeccompProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityContextDefinitionResponse) *string { return v.SeccompProfile }).(pulumi.StringPtrOutput)
+}
+
+type SecurityContextDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextDefinitionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContextDefinitionResponse)(nil)).Elem()
+}
+
+func (o SecurityContextDefinitionResponsePtrOutput) ToSecurityContextDefinitionResponsePtrOutput() SecurityContextDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionResponsePtrOutput) ToSecurityContextDefinitionResponsePtrOutputWithContext(ctx context.Context) SecurityContextDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o SecurityContextDefinitionResponsePtrOutput) Elem() SecurityContextDefinitionResponseOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) SecurityContextDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityContextDefinitionResponse
+		return ret
+	}).(SecurityContextDefinitionResponseOutput)
+}
+
+// A boolean value indicating whether the init process can elevate its privileges
+func (o SecurityContextDefinitionResponsePtrOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPrivilegeEscalation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The capabilities to add or drop from a container.
+func (o SecurityContextDefinitionResponsePtrOutput) Capabilities() SecurityContextCapabilitiesDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) *SecurityContextCapabilitiesDefinitionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Capabilities
+	}).(SecurityContextCapabilitiesDefinitionResponsePtrOutput)
+}
+
+// The flag to determine if the container permissions is elevated to Privileged.
+func (o SecurityContextDefinitionResponsePtrOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Privileged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets the User GID for the container.
+func (o SecurityContextDefinitionResponsePtrOutput) RunAsGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsGroup
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the User UID for the container.
+func (o SecurityContextDefinitionResponsePtrOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsUser
+	}).(pulumi.IntPtrOutput)
+}
+
+// a base64 encoded string containing the contents of the JSON in the seccomp profile
+func (o SecurityContextDefinitionResponsePtrOutput) SeccompProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityContextDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeccompProfile
+	}).(pulumi.StringPtrOutput)
+}
+
 // The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 type UserAssignedIdentitiesResponse struct {
 	// The client id of user assigned identity.
@@ -6782,6 +7432,14 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRequestsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionOutput{})
+	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecurityContextDefinitionOutput{})
+	pulumi.RegisterOutputType(SecurityContextDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityContextDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(SecurityContextDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseMapOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})

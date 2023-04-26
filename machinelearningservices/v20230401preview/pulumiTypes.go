@@ -19037,7 +19037,7 @@ type ModelPerformanceSignalBase struct {
 	MetricThreshold interface{} `pulumi:"metricThreshold"`
 	// The current notification mode for this signal.
 	Mode *string `pulumi:"mode"`
-	// Expected value is 'ModelPerformanceSignalBase'.
+	// Expected value is 'ModelPerformance'.
 	SignalType string `pulumi:"signalType"`
 	// [Required] The data produced by the production service which drift will be calculated for.
 	TargetData MonitoringInputData `pulumi:"targetData"`
@@ -19067,7 +19067,7 @@ type ModelPerformanceSignalBaseResponse struct {
 	MetricThreshold interface{} `pulumi:"metricThreshold"`
 	// The current notification mode for this signal.
 	Mode *string `pulumi:"mode"`
-	// Expected value is 'ModelPerformanceSignalBase'.
+	// Expected value is 'ModelPerformance'.
 	SignalType string `pulumi:"signalType"`
 	// [Required] The data produced by the production service which drift will be calculated for.
 	TargetData MonitoringInputDataResponse `pulumi:"targetData"`

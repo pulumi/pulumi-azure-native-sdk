@@ -52,9 +52,8 @@ const (
 type IdentityType string
 
 const (
-	IdentityTypeNone           = IdentityType("None")
-	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
-	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+	IdentityTypeNone         = IdentityType("None")
+	IdentityTypeUserAssigned = IdentityType("UserAssigned")
 )
 
 // If Enabled, Password authentication is enabled.

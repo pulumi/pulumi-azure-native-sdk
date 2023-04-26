@@ -12,7 +12,7 @@ import (
 
 // Sql always encrypted properties.
 type SqlAlwaysEncryptedProperties struct {
-	// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
+	// Sql always encrypted AKV authentication type. Type: string.
 	AlwaysEncryptedAkvAuthType string `pulumi:"alwaysEncryptedAkvAuthType"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
@@ -24,7 +24,7 @@ type SqlAlwaysEncryptedProperties struct {
 
 // Sql always encrypted properties.
 type SqlAlwaysEncryptedPropertiesResponse struct {
-	// Sql always encrypted AKV authentication type. Type: string (or Expression with resultType string).
+	// Sql always encrypted AKV authentication type. Type: string.
 	AlwaysEncryptedAkvAuthType string `pulumi:"alwaysEncryptedAkvAuthType"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
@@ -350,8 +350,8 @@ type SqlServerLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
@@ -375,8 +375,8 @@ type SqlServerLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
@@ -790,9 +790,9 @@ type SquareLinkedService struct {
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
-	// The URL of the Square instance. (i.e. mystore.mysquare.com)
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The URL of the Square instance. (i.e. mystore.mysquare.com)
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
@@ -823,9 +823,9 @@ type SquareLinkedServiceResponse struct {
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
-	// The URL of the Square instance. (i.e. mystore.mysquare.com)
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The URL of the Square instance. (i.e. mystore.mysquare.com)
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
@@ -1150,8 +1150,8 @@ type SybaseLinkedService struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Password for authentication.
@@ -1179,8 +1179,8 @@ type SybaseLinkedServiceResponse struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Password for authentication.
@@ -1302,8 +1302,8 @@ type SynapseNotebookActivity struct {
 	Name string `pulumi:"name"`
 	// Synapse notebook reference.
 	Notebook SynapseNotebookReference `pulumi:"notebook"`
-	// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide.
-	NumExecutors *int `pulumi:"numExecutors"`
+	// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide. Type: integer (or Expression with resultType integer).
+	NumExecutors interface{} `pulumi:"numExecutors"`
 	// Notebook parameters.
 	Parameters map[string]NotebookParameter `pulumi:"parameters"`
 	// Activity policy.
@@ -1335,8 +1335,8 @@ type SynapseNotebookActivityResponse struct {
 	Name string `pulumi:"name"`
 	// Synapse notebook reference.
 	Notebook SynapseNotebookReferenceResponse `pulumi:"notebook"`
-	// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide.
-	NumExecutors *int `pulumi:"numExecutors"`
+	// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide. Type: integer (or Expression with resultType integer).
+	NumExecutors interface{} `pulumi:"numExecutors"`
 	// Notebook parameters.
 	Parameters map[string]NotebookParameterResponse `pulumi:"parameters"`
 	// Activity policy.
@@ -1570,8 +1570,8 @@ type TeamDeskLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The password of the TeamDesk source.
@@ -1597,8 +1597,8 @@ type TeamDeskLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The password of the TeamDesk source.
@@ -1624,8 +1624,8 @@ type TeradataLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Password for authentication.
@@ -1651,8 +1651,8 @@ type TeradataLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Password for authentication.
@@ -2023,7 +2023,7 @@ type TwilioLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'Twilio'.
 	Type string `pulumi:"type"`
-	// The Account SID of Twilio service.
+	// The Account SID of Twilio service. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
 }
 
@@ -2042,7 +2042,7 @@ type TwilioLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'Twilio'.
 	Type string `pulumi:"type"`
-	// The Account SID of Twilio service.
+	// The Account SID of Twilio service. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
 }
 
@@ -2058,7 +2058,7 @@ type UntilActivity struct {
 	Expression Expression `pulumi:"expression"`
 	// Activity name.
 	Name string `pulumi:"name"`
-	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])). Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout interface{} `pulumi:"timeout"`
 	// Type of activity.
 	// Expected value is 'Until'.
@@ -2079,7 +2079,7 @@ type UntilActivityResponse struct {
 	Expression ExpressionResponse `pulumi:"expression"`
 	// Activity name.
 	Name string `pulumi:"name"`
-	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])). Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout interface{} `pulumi:"timeout"`
 	// Type of activity.
 	// Expected value is 'Until'.
@@ -2454,8 +2454,8 @@ type VerticaLinkedService struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -2475,8 +2475,8 @@ type VerticaLinkedServiceResponse struct {
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -2591,7 +2591,7 @@ type WaitActivity struct {
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserProperty `pulumi:"userProperties"`
-	// Duration in seconds.
+	// Duration in seconds. Type: integer (or Expression with resultType integer).
 	WaitTimeInSeconds interface{} `pulumi:"waitTimeInSeconds"`
 }
 
@@ -2608,7 +2608,7 @@ type WaitActivityResponse struct {
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-	// Duration in seconds.
+	// Duration in seconds. Type: integer (or Expression with resultType integer).
 	WaitTimeInSeconds interface{} `pulumi:"waitTimeInSeconds"`
 }
 
@@ -3018,8 +3018,8 @@ type XeroLinkedService struct {
 	ConsumerKey interface{} `pulumi:"consumerKey"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Xero server. (i.e. api.xero.com)
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -3050,8 +3050,8 @@ type XeroLinkedServiceResponse struct {
 	ConsumerKey interface{} `pulumi:"consumerKey"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Xero server. (i.e. api.xero.com)
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
@@ -3304,8 +3304,8 @@ type ZendeskLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The password of the Zendesk source.
@@ -3331,8 +3331,8 @@ type ZendeskLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The password of the Zendesk source.
@@ -3376,8 +3376,8 @@ type ZohoLinkedService struct {
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Zoho server. (i.e. crm.zoho.com/crm/private)
 	Endpoint interface{} `pulumi:"endpoint"`
 	// Parameters for linked service.
@@ -3405,8 +3405,8 @@ type ZohoLinkedServiceResponse struct {
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
-	EncryptedCredential interface{} `pulumi:"encryptedCredential"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The endpoint of the Zoho server. (i.e. crm.zoho.com/crm/private)
 	Endpoint interface{} `pulumi:"endpoint"`
 	// Parameters for linked service.

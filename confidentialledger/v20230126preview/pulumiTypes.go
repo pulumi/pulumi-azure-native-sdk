@@ -740,6 +740,8 @@ type LedgerProperties struct {
 	CertBasedSecurityPrincipals []CertBasedSecurityPrincipal `pulumi:"certBasedSecurityPrincipals"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
+	// Object representing RunningState for Ledger.
+	RunningState *string `pulumi:"runningState"`
 }
 
 // LedgerPropertiesInput is an input type that accepts LedgerPropertiesArgs and LedgerPropertiesOutput values.
@@ -761,6 +763,8 @@ type LedgerPropertiesArgs struct {
 	CertBasedSecurityPrincipals CertBasedSecurityPrincipalArrayInput `pulumi:"certBasedSecurityPrincipals"`
 	// Type of Confidential Ledger
 	LedgerType pulumi.StringPtrInput `pulumi:"ledgerType"`
+	// Object representing RunningState for Ledger.
+	RunningState pulumi.StringPtrInput `pulumi:"runningState"`
 }
 
 func (LedgerPropertiesArgs) ElementType() reflect.Type {
@@ -856,6 +860,11 @@ func (o LedgerPropertiesOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerType }).(pulumi.StringPtrOutput)
 }
 
+// Object representing RunningState for Ledger.
+func (o LedgerPropertiesOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerProperties) *string { return v.RunningState }).(pulumi.StringPtrOutput)
+}
+
 type LedgerPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (LedgerPropertiesPtrOutput) ElementType() reflect.Type {
@@ -910,6 +919,16 @@ func (o LedgerPropertiesPtrOutput) LedgerType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Object representing RunningState for Ledger.
+func (o LedgerPropertiesPtrOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LedgerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RunningState
+	}).(pulumi.StringPtrOutput)
+}
+
 // Additional Confidential Ledger properties.
 type LedgerPropertiesResponse struct {
 	// Array of all AAD based Security Principals.
@@ -928,6 +947,8 @@ type LedgerPropertiesResponse struct {
 	LedgerUri string `pulumi:"ledgerUri"`
 	// Provisioning state of Ledger Resource
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Object representing RunningState for Ledger.
+	RunningState *string `pulumi:"runningState"`
 }
 
 // Additional Confidential Ledger properties.
@@ -987,6 +1008,11 @@ func (o LedgerPropertiesResponseOutput) LedgerUri() pulumi.StringOutput {
 // Provisioning state of Ledger Resource
 func (o LedgerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Object representing RunningState for Ledger.
+func (o LedgerPropertiesResponseOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.RunningState }).(pulumi.StringPtrOutput)
 }
 
 // Additional Managed CCF properties.
