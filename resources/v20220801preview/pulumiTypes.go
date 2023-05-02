@@ -57,47 +57,6 @@ func (i DenySettingsArgs) ToDenySettingsOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsOutput)
 }
 
-func (i DenySettingsArgs) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
-	return i.ToDenySettingsPtrOutputWithContext(context.Background())
-}
-
-func (i DenySettingsArgs) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsOutput).ToDenySettingsPtrOutputWithContext(ctx)
-}
-
-// DenySettingsPtrInput is an input type that accepts DenySettingsArgs, DenySettingsPtr and DenySettingsPtrOutput values.
-// You can construct a concrete instance of `DenySettingsPtrInput` via:
-//
-//	        DenySettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type DenySettingsPtrInput interface {
-	pulumi.Input
-
-	ToDenySettingsPtrOutput() DenySettingsPtrOutput
-	ToDenySettingsPtrOutputWithContext(context.Context) DenySettingsPtrOutput
-}
-
-type denySettingsPtrType DenySettingsArgs
-
-func DenySettingsPtr(v *DenySettingsArgs) DenySettingsPtrInput {
-	return (*denySettingsPtrType)(v)
-}
-
-func (*denySettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DenySettings)(nil)).Elem()
-}
-
-func (i *denySettingsPtrType) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
-	return i.ToDenySettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *denySettingsPtrType) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsPtrOutput)
-}
-
 // Defines how resources deployed by the deployment stack are locked.
 type DenySettingsOutput struct{ *pulumi.OutputState }
 
@@ -111,16 +70,6 @@ func (o DenySettingsOutput) ToDenySettingsOutput() DenySettingsOutput {
 
 func (o DenySettingsOutput) ToDenySettingsOutputWithContext(ctx context.Context) DenySettingsOutput {
 	return o
-}
-
-func (o DenySettingsOutput) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
-	return o.ToDenySettingsPtrOutputWithContext(context.Background())
-}
-
-func (o DenySettingsOutput) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenySettings) *DenySettings {
-		return &v
-	}).(DenySettingsPtrOutput)
 }
 
 // DenySettings will be applied to child scopes.
@@ -141,70 +90,6 @@ func (o DenySettingsOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
 // denySettings Mode.
 func (o DenySettingsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenySettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type DenySettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (DenySettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DenySettings)(nil)).Elem()
-}
-
-func (o DenySettingsPtrOutput) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
-	return o
-}
-
-func (o DenySettingsPtrOutput) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
-	return o
-}
-
-func (o DenySettingsPtrOutput) Elem() DenySettingsOutput {
-	return o.ApplyT(func(v *DenySettings) DenySettings {
-		if v != nil {
-			return *v
-		}
-		var ret DenySettings
-		return ret
-	}).(DenySettingsOutput)
-}
-
-// DenySettings will be applied to child scopes.
-func (o DenySettingsPtrOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DenySettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ApplyToChildScopes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
-func (o DenySettingsPtrOutput) ExcludedActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DenySettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedActions
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
-func (o DenySettingsPtrOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DenySettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedPrincipals
-	}).(pulumi.StringArrayOutput)
-}
-
-// denySettings Mode.
-func (o DenySettingsPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DenySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines how resources deployed by the deployment stack are locked.
@@ -252,70 +137,6 @@ func (o DenySettingsResponseOutput) ExcludedPrincipals() pulumi.StringArrayOutpu
 // denySettings Mode.
 func (o DenySettingsResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenySettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type DenySettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DenySettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DenySettingsResponse)(nil)).Elem()
-}
-
-func (o DenySettingsResponsePtrOutput) ToDenySettingsResponsePtrOutput() DenySettingsResponsePtrOutput {
-	return o
-}
-
-func (o DenySettingsResponsePtrOutput) ToDenySettingsResponsePtrOutputWithContext(ctx context.Context) DenySettingsResponsePtrOutput {
-	return o
-}
-
-func (o DenySettingsResponsePtrOutput) Elem() DenySettingsResponseOutput {
-	return o.ApplyT(func(v *DenySettingsResponse) DenySettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DenySettingsResponse
-		return ret
-	}).(DenySettingsResponseOutput)
-}
-
-// DenySettings will be applied to child scopes.
-func (o DenySettingsResponsePtrOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DenySettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ApplyToChildScopes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
-func (o DenySettingsResponsePtrOutput) ExcludedActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DenySettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedActions
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
-func (o DenySettingsResponsePtrOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DenySettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedPrincipals
-	}).(pulumi.StringArrayOutput)
-}
-
-// denySettings Mode.
-func (o DenySettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DenySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the behavior of resources that are not managed immediately after the stack is updated.
@@ -1583,9 +1404,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 func init() {
 	pulumi.RegisterOutputType(DenySettingsOutput{})
-	pulumi.RegisterOutputType(DenySettingsPtrOutput{})
 	pulumi.RegisterOutputType(DenySettingsResponseOutput{})
-	pulumi.RegisterOutputType(DenySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentStackPropertiesActionOnUnmanageOutput{})
 	pulumi.RegisterOutputType(DeploymentStackPropertiesResponseActionOnUnmanageOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingOutput{})

@@ -37403,7 +37403,7 @@ func (o ManagedRuleGroupOverrideResponseArrayOutput) Index(i pulumi.IntInput) Ma
 
 // Defines a managed rule group override setting.
 type ManagedRuleOverride struct {
-	// Describes the override action to be applied when rule matches.
+	// Describes the override action to be applied when rule matches. 'Allow' action is not available for CRS 3.2
 	Action *string `pulumi:"action"`
 	// Identifier for the managed rule.
 	RuleId string `pulumi:"ruleId"`
@@ -37424,7 +37424,7 @@ type ManagedRuleOverrideInput interface {
 
 // Defines a managed rule group override setting.
 type ManagedRuleOverrideArgs struct {
-	// Describes the override action to be applied when rule matches.
+	// Describes the override action to be applied when rule matches. 'Allow' action is not available for CRS 3.2
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Identifier for the managed rule.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
@@ -37484,7 +37484,7 @@ func (o ManagedRuleOverrideOutput) ToManagedRuleOverrideOutputWithContext(ctx co
 	return o
 }
 
-// Describes the override action to be applied when rule matches.
+// Describes the override action to be applied when rule matches. 'Allow' action is not available for CRS 3.2
 func (o ManagedRuleOverrideOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedRuleOverride) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -37521,7 +37521,7 @@ func (o ManagedRuleOverrideArrayOutput) Index(i pulumi.IntInput) ManagedRuleOver
 
 // Defines a managed rule group override setting.
 type ManagedRuleOverrideResponse struct {
-	// Describes the override action to be applied when rule matches.
+	// Describes the override action to be applied when rule matches. 'Allow' action is not available for CRS 3.2
 	Action *string `pulumi:"action"`
 	// Identifier for the managed rule.
 	RuleId string `pulumi:"ruleId"`
@@ -37544,7 +37544,7 @@ func (o ManagedRuleOverrideResponseOutput) ToManagedRuleOverrideResponseOutputWi
 	return o
 }
 
-// Describes the override action to be applied when rule matches.
+// Describes the override action to be applied when rule matches. 'Allow' action is not available for CRS 3.2
 func (o ManagedRuleOverrideResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedRuleOverrideResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
