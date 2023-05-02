@@ -57,6 +57,9 @@ func NewExperiment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:chaos/v20221001preview:Experiment"),
 		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20230415preview:Experiment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Experiment

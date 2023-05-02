@@ -154,6 +154,9 @@ func NewDatabaseAccountSqlContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccountSqlContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccountSqlContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DatabaseAccountSqlContainer

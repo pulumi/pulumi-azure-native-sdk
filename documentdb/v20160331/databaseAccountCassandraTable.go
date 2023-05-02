@@ -141,6 +141,9 @@ func NewDatabaseAccountCassandraTable(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccountCassandraTable"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccountCassandraTable"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DatabaseAccountCassandraTable

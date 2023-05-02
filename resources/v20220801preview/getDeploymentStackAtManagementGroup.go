@@ -36,7 +36,7 @@ type LookupDeploymentStackAtManagementGroupResult struct {
 	// An array of resources that were deleted during the most recent update.
 	DeletedResources []ResourceReferenceResponse `pulumi:"deletedResources"`
 	// Defines how resources deployed by the stack are locked.
-	DenySettings *DenySettingsResponse `pulumi:"denySettings"`
+	DenySettings DenySettingsResponse `pulumi:"denySettings"`
 	// The resourceId of the deployment resource created by the deployment stack.
 	DeploymentId string `pulumi:"deploymentId"`
 	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
@@ -136,8 +136,8 @@ func (o LookupDeploymentStackAtManagementGroupResultOutput) DeletedResources() R
 }
 
 // Defines how resources deployed by the stack are locked.
-func (o LookupDeploymentStackAtManagementGroupResultOutput) DenySettings() DenySettingsResponsePtrOutput {
-	return o.ApplyT(func(v LookupDeploymentStackAtManagementGroupResult) *DenySettingsResponse { return v.DenySettings }).(DenySettingsResponsePtrOutput)
+func (o LookupDeploymentStackAtManagementGroupResultOutput) DenySettings() DenySettingsResponseOutput {
+	return o.ApplyT(func(v LookupDeploymentStackAtManagementGroupResult) DenySettingsResponse { return v.DenySettings }).(DenySettingsResponseOutput)
 }
 
 // The resourceId of the deployment resource created by the deployment stack.

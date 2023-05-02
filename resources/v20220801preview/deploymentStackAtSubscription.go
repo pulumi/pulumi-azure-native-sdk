@@ -22,7 +22,7 @@ type DeploymentStackAtSubscription struct {
 	// An array of resources that were deleted during the most recent update.
 	DeletedResources ResourceReferenceResponseArrayOutput `pulumi:"deletedResources"`
 	// Defines how resources deployed by the stack are locked.
-	DenySettings DenySettingsResponsePtrOutput `pulumi:"denySettings"`
+	DenySettings DenySettingsResponseOutput `pulumi:"denySettings"`
 	// The resourceId of the deployment resource created by the deployment stack.
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
 	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
@@ -69,6 +69,9 @@ func NewDeploymentStackAtSubscription(ctx *pulumi.Context,
 	if args.ActionOnUnmanage == nil {
 		return nil, errors.New("invalid value for required argument 'ActionOnUnmanage'")
 	}
+	if args.DenySettings == nil {
+		return nil, errors.New("invalid value for required argument 'DenySettings'")
+	}
 	var resource DeploymentStackAtSubscription
 	err := ctx.RegisterResource("azure-native:resources/v20220801preview:DeploymentStackAtSubscription", name, args, &resource, opts...)
 	if err != nil {
@@ -106,7 +109,7 @@ type deploymentStackAtSubscriptionArgs struct {
 	// The debug setting of the deployment.
 	DebugSetting *DeploymentStacksDebugSetting `pulumi:"debugSetting"`
 	// Defines how resources deployed by the stack are locked.
-	DenySettings *DenySettings `pulumi:"denySettings"`
+	DenySettings DenySettings `pulumi:"denySettings"`
 	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
 	DeploymentScope *string `pulumi:"deploymentScope"`
 	// Name of the deployment stack.
@@ -134,7 +137,7 @@ type DeploymentStackAtSubscriptionArgs struct {
 	// The debug setting of the deployment.
 	DebugSetting DeploymentStacksDebugSettingPtrInput
 	// Defines how resources deployed by the stack are locked.
-	DenySettings DenySettingsPtrInput
+	DenySettings DenySettingsInput
 	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
 	DeploymentScope pulumi.StringPtrInput
 	// Name of the deployment stack.
@@ -212,8 +215,8 @@ func (o DeploymentStackAtSubscriptionOutput) DeletedResources() ResourceReferenc
 }
 
 // Defines how resources deployed by the stack are locked.
-func (o DeploymentStackAtSubscriptionOutput) DenySettings() DenySettingsResponsePtrOutput {
-	return o.ApplyT(func(v *DeploymentStackAtSubscription) DenySettingsResponsePtrOutput { return v.DenySettings }).(DenySettingsResponsePtrOutput)
+func (o DeploymentStackAtSubscriptionOutput) DenySettings() DenySettingsResponseOutput {
+	return o.ApplyT(func(v *DeploymentStackAtSubscription) DenySettingsResponseOutput { return v.DenySettings }).(DenySettingsResponseOutput)
 }
 
 // The resourceId of the deployment resource created by the deployment stack.
