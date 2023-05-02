@@ -15,6 +15,8 @@ import (
 type Workspace struct {
 	pulumi.CustomResourceState
 
+	// Data plane endpoint.
+	DataPlaneEndpoint pulumi.StringOutput `pulumi:"dataPlaneEndpoint"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -134,6 +136,11 @@ func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
 
 func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return o
+}
+
+// Data plane endpoint.
+func (o WorkspaceOutput) DataPlaneEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.DataPlaneEndpoint }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives
