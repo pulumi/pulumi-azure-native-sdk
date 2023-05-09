@@ -38,7 +38,7 @@ func (val *ContainerServiceAgentPoolProfile) Defaults() *ContainerServiceAgentPo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
@@ -84,7 +84,7 @@ func (val *ContainerServiceAgentPoolProfileArgs) Defaults() *ContainerServiceAge
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -236,7 +236,7 @@ func (val *ContainerServiceAgentPoolProfileResponse) Defaults() *ContainerServic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}

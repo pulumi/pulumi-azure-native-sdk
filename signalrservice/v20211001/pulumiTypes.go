@@ -3210,7 +3210,7 @@ func (val *SignalRTlsSettings) Defaults() *SignalRTlsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}
@@ -3240,7 +3240,7 @@ func (val *SignalRTlsSettingsArgs) Defaults() *SignalRTlsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		tmp.ClientCertEnabled = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -3374,7 +3374,7 @@ func (val *SignalRTlsSettingsResponse) Defaults() *SignalRTlsSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}

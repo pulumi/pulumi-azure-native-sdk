@@ -29,11 +29,11 @@ func (val *AzureFunctionEventSubscriptionDestination) Defaults() *AzureFunctionE
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -59,11 +59,11 @@ func (val *AzureFunctionEventSubscriptionDestinationResponse) Defaults() *AzureF
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -1589,7 +1589,7 @@ func (val *EventSubscriptionFilter) Defaults() *EventSubscriptionFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		isSubjectCaseSensitive_ := false
 		tmp.IsSubjectCaseSensitive = &isSubjectCaseSensitive_
 	}
@@ -1631,7 +1631,7 @@ func (val *EventSubscriptionFilterArgs) Defaults() *EventSubscriptionFilterArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		tmp.IsSubjectCaseSensitive = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1845,7 +1845,7 @@ func (val *EventSubscriptionFilterResponse) Defaults() *EventSubscriptionFilterR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		isSubjectCaseSensitive_ := false
 		tmp.IsSubjectCaseSensitive = &isSubjectCaseSensitive_
 	}
@@ -5256,11 +5256,11 @@ func (val *WebHookEventSubscriptionDestination) Defaults() *WebHookEventSubscrip
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -5292,11 +5292,11 @@ func (val *WebHookEventSubscriptionDestinationResponse) Defaults() *WebHookEvent
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}

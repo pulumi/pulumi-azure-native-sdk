@@ -1839,11 +1839,11 @@ func (val *CacheNetworkSettings) Defaults() *CacheNetworkSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
-	if isZero(tmp.NtpServer) {
+	if tmp.NtpServer == nil {
 		ntpServer_ := "time.windows.com"
 		tmp.NtpServer = &ntpServer_
 	}
@@ -1879,10 +1879,10 @@ func (val *CacheNetworkSettingsArgs) Defaults() *CacheNetworkSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		tmp.Mtu = pulumi.IntPtr(1500)
 	}
-	if isZero(tmp.NtpServer) {
+	if tmp.NtpServer == nil {
 		tmp.NtpServer = pulumi.StringPtr("time.windows.com")
 	}
 	return &tmp
@@ -2069,11 +2069,11 @@ func (val *CacheNetworkSettingsResponse) Defaults() *CacheNetworkSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
-	if isZero(tmp.NtpServer) {
+	if tmp.NtpServer == nil {
 		ntpServer_ := "time.windows.com"
 		tmp.NtpServer = &ntpServer_
 	}
@@ -2916,7 +2916,7 @@ func (val *CacheUsernameDownloadSettings) Defaults() *CacheUsernameDownloadSetti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -2966,7 +2966,7 @@ func (val *CacheUsernameDownloadSettingsArgs) Defaults() *CacheUsernameDownloadS
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		tmp.UsernameSource = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -3431,7 +3431,7 @@ func (val *CacheUsernameDownloadSettingsResponse) Defaults() *CacheUsernameDownl
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -4443,7 +4443,7 @@ func (val *NamespaceJunction) Defaults() *NamespaceJunction {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NfsAccessPolicy) {
+	if tmp.NfsAccessPolicy == nil {
 		nfsAccessPolicy_ := "default"
 		tmp.NfsAccessPolicy = &nfsAccessPolicy_
 	}
@@ -4479,7 +4479,7 @@ func (val *NamespaceJunctionArgs) Defaults() *NamespaceJunctionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NfsAccessPolicy) {
+	if tmp.NfsAccessPolicy == nil {
 		tmp.NfsAccessPolicy = pulumi.StringPtr("default")
 	}
 	return &tmp
@@ -4594,7 +4594,7 @@ func (val *NamespaceJunctionResponse) Defaults() *NamespaceJunctionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NfsAccessPolicy) {
+	if tmp.NfsAccessPolicy == nil {
 		nfsAccessPolicy_ := "default"
 		tmp.NfsAccessPolicy = &nfsAccessPolicy_
 	}

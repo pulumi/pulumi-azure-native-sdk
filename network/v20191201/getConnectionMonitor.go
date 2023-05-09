@@ -77,11 +77,11 @@ func (val *LookupConnectionMonitorResult) Defaults() *LookupConnectionMonitorRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoStart) {
+	if tmp.AutoStart == nil {
 		autoStart_ := true
 		tmp.AutoStart = &autoStart_
 	}
-	if isZero(tmp.MonitoringIntervalInSeconds) {
+	if tmp.MonitoringIntervalInSeconds == nil {
 		monitoringIntervalInSeconds_ := 60
 		tmp.MonitoringIntervalInSeconds = &monitoringIntervalInSeconds_
 	}

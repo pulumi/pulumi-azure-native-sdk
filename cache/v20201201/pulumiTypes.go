@@ -1074,7 +1074,7 @@ func (val *ScheduleEntry) Defaults() *ScheduleEntry {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaintenanceWindow) {
+	if tmp.MaintenanceWindow == nil {
 		maintenanceWindow_ := "PT5H"
 		tmp.MaintenanceWindow = &maintenanceWindow_
 	}
@@ -1108,7 +1108,7 @@ func (val *ScheduleEntryArgs) Defaults() *ScheduleEntryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaintenanceWindow) {
+	if tmp.MaintenanceWindow == nil {
 		tmp.MaintenanceWindow = pulumi.StringPtr("PT5H")
 	}
 	return &tmp
@@ -1216,7 +1216,7 @@ func (val *ScheduleEntryResponse) Defaults() *ScheduleEntryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaintenanceWindow) {
+	if tmp.MaintenanceWindow == nil {
 		maintenanceWindow_ := "PT5H"
 		tmp.MaintenanceWindow = &maintenanceWindow_
 	}

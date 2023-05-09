@@ -81,7 +81,7 @@ func (val *LookupConnectedClusterResult) Defaults() *LookupConnectedClusterResul
 	tmp := *val
 	tmp.Identity = *tmp.Identity.Defaults()
 
-	if isZero(tmp.PrivateLinkState) {
+	if tmp.PrivateLinkState == nil {
 		privateLinkState_ := "Disabled"
 		tmp.PrivateLinkState = &privateLinkState_
 	}

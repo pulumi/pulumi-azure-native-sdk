@@ -1656,7 +1656,7 @@ func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState)
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		actionsRequired_ := "None"
 		tmp.ActionsRequired = &actionsRequired_
 	}
@@ -1690,7 +1690,7 @@ func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		tmp.ActionsRequired = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -2016,7 +2016,7 @@ func (val *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnecti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		actionsRequired_ := "None"
 		tmp.ActionsRequired = &actionsRequired_
 	}

@@ -106,15 +106,15 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxDegreeOfParallelism) {
+	if tmp.MaxDegreeOfParallelism == nil {
 		maxDegreeOfParallelism_ := 30
 		tmp.MaxDegreeOfParallelism = &maxDegreeOfParallelism_
 	}
-	if isZero(tmp.MaxJobCount) {
+	if tmp.MaxJobCount == nil {
 		maxJobCount_ := 3
 		tmp.MaxJobCount = &maxJobCount_
 	}
-	if isZero(tmp.QueryStoreRetention) {
+	if tmp.QueryStoreRetention == nil {
 		queryStoreRetention_ := 30
 		tmp.QueryStoreRetention = &queryStoreRetention_
 	}

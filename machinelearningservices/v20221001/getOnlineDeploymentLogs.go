@@ -40,7 +40,7 @@ func (val *GetOnlineDeploymentLogsArgs) Defaults() *GetOnlineDeploymentLogsArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContainerType) {
+	if tmp.ContainerType == nil {
 		containerType_ := "InferenceServer"
 		tmp.ContainerType = &containerType_
 	}

@@ -404,7 +404,7 @@ func (val *NetworkRuleSet) Defaults() *NetworkRuleSet {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EndpointAccess) {
+	if tmp.EndpointAccess == nil {
 		endpointAccess_ := EndpointAccess("Public")
 		tmp.EndpointAccess = &endpointAccess_
 	}
@@ -436,7 +436,7 @@ func (val *NetworkRuleSetArgs) Defaults() *NetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EndpointAccess) {
+	if tmp.EndpointAccess == nil {
 		tmp.EndpointAccess = EndpointAccess("Public")
 	}
 	return &tmp
@@ -587,7 +587,7 @@ func (val *NetworkRuleSetResponse) Defaults() *NetworkRuleSetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EndpointAccess) {
+	if tmp.EndpointAccess == nil {
 		endpointAccess_ := "Public"
 		tmp.EndpointAccess = &endpointAccess_
 	}
@@ -1002,7 +1002,7 @@ func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState)
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		actionsRequired_ := "None"
 		tmp.ActionsRequired = &actionsRequired_
 	}
@@ -1036,7 +1036,7 @@ func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		tmp.ActionsRequired = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -1362,7 +1362,7 @@ func (val *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnecti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		actionsRequired_ := "None"
 		tmp.ActionsRequired = &actionsRequired_
 	}

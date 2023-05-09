@@ -87,11 +87,11 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}

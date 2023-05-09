@@ -83,7 +83,7 @@ func (val *LookupStorageAccountResult) Defaults() *LookupStorageAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableHttpsTrafficOnly) {
+	if tmp.EnableHttpsTrafficOnly == nil {
 		enableHttpsTrafficOnly_ := false
 		tmp.EnableHttpsTrafficOnly = &enableHttpsTrafficOnly_
 	}

@@ -105,19 +105,19 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableGateway) {
+	if tmp.DisableGateway == nil {
 		disableGateway_ := false
 		tmp.DisableGateway = &disableGateway_
 	}
-	if isZero(tmp.EnableClientCertificate) {
+	if tmp.EnableClientCertificate == nil {
 		enableClientCertificate_ := false
 		tmp.EnableClientCertificate = &enableClientCertificate_
 	}
-	if isZero(tmp.Restore) {
+	if tmp.Restore == nil {
 		restore_ := false
 		tmp.Restore = &restore_
 	}
-	if isZero(tmp.VirtualNetworkType) {
+	if tmp.VirtualNetworkType == nil {
 		virtualNetworkType_ := "None"
 		tmp.VirtualNetworkType = &virtualNetworkType_
 	}

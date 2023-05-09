@@ -4605,7 +4605,7 @@ func (val *VulnerabilityAssessmentRecurringScansProperties) Defaults() *Vulnerab
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
+	if tmp.EmailSubscriptionAdmins == nil {
 		emailSubscriptionAdmins_ := true
 		tmp.EmailSubscriptionAdmins = &emailSubscriptionAdmins_
 	}
@@ -4639,7 +4639,7 @@ func (val *VulnerabilityAssessmentRecurringScansPropertiesArgs) Defaults() *Vuln
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
+	if tmp.EmailSubscriptionAdmins == nil {
 		tmp.EmailSubscriptionAdmins = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -4807,7 +4807,7 @@ func (val *VulnerabilityAssessmentRecurringScansPropertiesResponse) Defaults() *
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
+	if tmp.EmailSubscriptionAdmins == nil {
 		emailSubscriptionAdmins_ := true
 		tmp.EmailSubscriptionAdmins = &emailSubscriptionAdmins_
 	}

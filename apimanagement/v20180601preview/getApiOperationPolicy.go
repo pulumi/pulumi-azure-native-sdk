@@ -53,7 +53,7 @@ func (val *LookupApiOperationPolicyResult) Defaults() *LookupApiOperationPolicyR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContentFormat) {
+	if tmp.ContentFormat == nil {
 		contentFormat_ := "xml"
 		tmp.ContentFormat = &contentFormat_
 	}

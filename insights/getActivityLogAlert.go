@@ -58,11 +58,11 @@ func (val *LookupActivityLogAlertResult) Defaults() *LookupActivityLogAlertResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := true
 		tmp.Enabled = &enabled_
 	}
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,7 +60,7 @@ func NewBackup(ctx *pulumi.Context,
 	if args.VolumeName == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeName'")
 	}
-	if isZero(args.UseExistingSnapshot) {
+	if args.UseExistingSnapshot == nil {
 		args.UseExistingSnapshot = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

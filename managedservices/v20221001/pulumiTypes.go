@@ -607,7 +607,7 @@ func (val *JustInTimeAccessPolicy) Defaults() *JustInTimeAccessPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaximumActivationDuration) {
+	if tmp.MaximumActivationDuration == nil {
 		maximumActivationDuration_ := "PT8H"
 		tmp.MaximumActivationDuration = &maximumActivationDuration_
 	}
@@ -644,10 +644,10 @@ func (val *JustInTimeAccessPolicyArgs) Defaults() *JustInTimeAccessPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaximumActivationDuration) {
+	if tmp.MaximumActivationDuration == nil {
 		tmp.MaximumActivationDuration = pulumi.StringPtr("PT8H")
 	}
-	if isZero(tmp.MultiFactorAuthProvider) {
+	if tmp.MultiFactorAuthProvider == nil {
 		tmp.MultiFactorAuthProvider = pulumi.String("None")
 	}
 	return &tmp
@@ -815,7 +815,7 @@ func (val *JustInTimeAccessPolicyResponse) Defaults() *JustInTimeAccessPolicyRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaximumActivationDuration) {
+	if tmp.MaximumActivationDuration == nil {
 		maximumActivationDuration_ := "PT8H"
 		tmp.MaximumActivationDuration = &maximumActivationDuration_
 	}

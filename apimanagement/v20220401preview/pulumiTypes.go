@@ -34,11 +34,11 @@ func (val *AdditionalLocation) Defaults() *AdditionalLocation {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableGateway) {
+	if tmp.DisableGateway == nil {
 		disableGateway_ := false
 		tmp.DisableGateway = &disableGateway_
 	}
-	if isZero(tmp.NatGatewayState) {
+	if tmp.NatGatewayState == nil {
 		natGatewayState_ := "Disabled"
 		tmp.NatGatewayState = &natGatewayState_
 	}
@@ -80,10 +80,10 @@ func (val *AdditionalLocationArgs) Defaults() *AdditionalLocationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableGateway) {
+	if tmp.DisableGateway == nil {
 		tmp.DisableGateway = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.NatGatewayState) {
+	if tmp.NatGatewayState == nil {
 		tmp.NatGatewayState = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -229,11 +229,11 @@ func (val *AdditionalLocationResponse) Defaults() *AdditionalLocationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableGateway) {
+	if tmp.DisableGateway == nil {
 		disableGateway_ := false
 		tmp.DisableGateway = &disableGateway_
 	}
-	if isZero(tmp.NatGatewayState) {
+	if tmp.NatGatewayState == nil {
 		natGatewayState_ := "Disabled"
 		tmp.NatGatewayState = &natGatewayState_
 	}
@@ -4487,11 +4487,11 @@ func (val *BackendTlsProperties) Defaults() *BackendTlsProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ValidateCertificateChain) {
+	if tmp.ValidateCertificateChain == nil {
 		validateCertificateChain_ := true
 		tmp.ValidateCertificateChain = &validateCertificateChain_
 	}
-	if isZero(tmp.ValidateCertificateName) {
+	if tmp.ValidateCertificateName == nil {
 		validateCertificateName_ := true
 		tmp.ValidateCertificateName = &validateCertificateName_
 	}
@@ -4523,10 +4523,10 @@ func (val *BackendTlsPropertiesArgs) Defaults() *BackendTlsPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ValidateCertificateChain) {
+	if tmp.ValidateCertificateChain == nil {
 		tmp.ValidateCertificateChain = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.ValidateCertificateName) {
+	if tmp.ValidateCertificateName == nil {
 		tmp.ValidateCertificateName = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -4677,11 +4677,11 @@ func (val *BackendTlsPropertiesResponse) Defaults() *BackendTlsPropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ValidateCertificateChain) {
+	if tmp.ValidateCertificateChain == nil {
 		validateCertificateChain_ := true
 		tmp.ValidateCertificateChain = &validateCertificateChain_
 	}
-	if isZero(tmp.ValidateCertificateName) {
+	if tmp.ValidateCertificateName == nil {
 		validateCertificateName_ := true
 		tmp.ValidateCertificateName = &validateCertificateName_
 	}
@@ -6095,11 +6095,11 @@ func (val *HostnameConfiguration) Defaults() *HostnameConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultSslBinding) {
+	if tmp.DefaultSslBinding == nil {
 		defaultSslBinding_ := false
 		tmp.DefaultSslBinding = &defaultSslBinding_
 	}
-	if isZero(tmp.NegotiateClientCertificate) {
+	if tmp.NegotiateClientCertificate == nil {
 		negotiateClientCertificate_ := false
 		tmp.NegotiateClientCertificate = &negotiateClientCertificate_
 	}
@@ -6149,10 +6149,10 @@ func (val *HostnameConfigurationArgs) Defaults() *HostnameConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultSslBinding) {
+	if tmp.DefaultSslBinding == nil {
 		tmp.DefaultSslBinding = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.NegotiateClientCertificate) {
+	if tmp.NegotiateClientCertificate == nil {
 		tmp.NegotiateClientCertificate = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -6316,11 +6316,11 @@ func (val *HostnameConfigurationResponse) Defaults() *HostnameConfigurationRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultSslBinding) {
+	if tmp.DefaultSslBinding == nil {
 		defaultSslBinding_ := false
 		tmp.DefaultSslBinding = &defaultSslBinding_
 	}
-	if isZero(tmp.NegotiateClientCertificate) {
+	if tmp.NegotiateClientCertificate == nil {
 		negotiateClientCertificate_ := false
 		tmp.NegotiateClientCertificate = &negotiateClientCertificate_
 	}

@@ -11538,7 +11538,7 @@ func (val *BackendPoolsSettings) Defaults() *BackendPoolsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := "Enabled"
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
@@ -11568,7 +11568,7 @@ func (val *BackendPoolsSettingsArgs) Defaults() *BackendPoolsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		tmp.EnforceCertificateNameCheck = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -11702,7 +11702,7 @@ func (val *BackendPoolsSettingsResponse) Defaults() *BackendPoolsSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := "Enabled"
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
@@ -27114,7 +27114,7 @@ func (val *PacketCaptureFilter) Defaults() *PacketCaptureFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}
@@ -27152,7 +27152,7 @@ func (val *PacketCaptureFilterArgs) Defaults() *PacketCaptureFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		tmp.Protocol = pulumi.StringPtr("Any")
 	}
 	return &tmp
@@ -27274,7 +27274,7 @@ func (val *PacketCaptureFilterResponse) Defaults() *PacketCaptureFilterResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}

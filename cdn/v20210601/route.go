@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,13 +69,13 @@ func NewRoute(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ForwardingProtocol) {
+	if args.ForwardingProtocol == nil {
 		args.ForwardingProtocol = pulumi.StringPtr("MatchRequest")
 	}
-	if isZero(args.HttpsRedirect) {
+	if args.HttpsRedirect == nil {
 		args.HttpsRedirect = pulumi.StringPtr("Disabled")
 	}
-	if isZero(args.LinkToDefaultDomain) {
+	if args.LinkToDefaultDomain == nil {
 		args.LinkToDefaultDomain = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

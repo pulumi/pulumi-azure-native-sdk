@@ -563,7 +563,7 @@ func (val *KeyAttributes) Defaults() *KeyAttributes {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Exportable) {
+	if tmp.Exportable == nil {
 		exportable_ := false
 		tmp.Exportable = &exportable_
 	}
@@ -599,7 +599,7 @@ func (val *KeyAttributesArgs) Defaults() *KeyAttributesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Exportable) {
+	if tmp.Exportable == nil {
 		tmp.Exportable = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -790,7 +790,7 @@ func (val *KeyAttributesResponse) Defaults() *KeyAttributesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Exportable) {
+	if tmp.Exportable == nil {
 		exportable_ := false
 		tmp.Exportable = &exportable_
 	}
@@ -1082,7 +1082,7 @@ func (val *KeyReleasePolicy) Defaults() *KeyReleasePolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContentType) {
+	if tmp.ContentType == nil {
 		contentType_ := "application/json; charset=utf-8"
 		tmp.ContentType = &contentType_
 	}
@@ -1113,7 +1113,7 @@ func (val *KeyReleasePolicyArgs) Defaults() *KeyReleasePolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContentType) {
+	if tmp.ContentType == nil {
 		tmp.ContentType = pulumi.StringPtr("application/json; charset=utf-8")
 	}
 	return &tmp
@@ -1262,7 +1262,7 @@ func (val *KeyReleasePolicyResponse) Defaults() *KeyReleasePolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContentType) {
+	if tmp.ContentType == nil {
 		contentType_ := "application/json; charset=utf-8"
 		tmp.ContentType = &contentType_
 	}
@@ -2792,19 +2792,19 @@ func (val *ManagedHsmProperties) Defaults() *ManagedHsmProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := true
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -2848,16 +2848,16 @@ func (val *ManagedHsmPropertiesArgs) Defaults() *ManagedHsmPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		tmp.EnablePurgeProtection = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -3120,19 +3120,19 @@ func (val *ManagedHsmPropertiesResponse) Defaults() *ManagedHsmPropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := true
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -5397,19 +5397,19 @@ func (val *VaultProperties) Defaults() *VaultProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -5467,16 +5467,16 @@ func (val *VaultPropertiesArgs) Defaults() *VaultPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		tmp.EnableRbacAuthorization = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("enabled")
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -5625,19 +5625,19 @@ func (val *VaultPropertiesResponse) Defaults() *VaultPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}

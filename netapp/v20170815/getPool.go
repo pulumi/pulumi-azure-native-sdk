@@ -59,11 +59,11 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}
-	if isZero(tmp.Size) {
+	if tmp.Size == nil {
 		size_ := 4398046511104.0
 		tmp.Size = &size_
 	}

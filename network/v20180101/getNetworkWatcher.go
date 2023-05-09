@@ -52,7 +52,7 @@ func (val *LookupNetworkWatcherResult) Defaults() *LookupNetworkWatcherResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Etag) {
+	if tmp.Etag == nil {
 		etag_ := "A unique read-only string that changes whenever the resource is updated."
 		tmp.Etag = &etag_
 	}

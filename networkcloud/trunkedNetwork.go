@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,7 +68,7 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 	if args.Vlans == nil {
 		return nil, errors.New("invalid value for required argument 'Vlans'")
 	}
-	if isZero(args.HybridAksPluginType) {
+	if args.HybridAksPluginType == nil {
 		args.HybridAksPluginType = pulumi.StringPtr("SRIOV")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -80,15 +80,15 @@ func (val *GetagentPoolResult) Defaults() *GetagentPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
