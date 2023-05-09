@@ -155,7 +155,7 @@ func (val *SubscriptionFeatureRegistrationProperties) Defaults() *SubscriptionFe
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ShouldFeatureDisplayInPortal) {
+	if tmp.ShouldFeatureDisplayInPortal == nil {
 		shouldFeatureDisplayInPortal_ := false
 		tmp.ShouldFeatureDisplayInPortal = &shouldFeatureDisplayInPortal_
 	}
@@ -190,7 +190,7 @@ func (val *SubscriptionFeatureRegistrationPropertiesArgs) Defaults() *Subscripti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ShouldFeatureDisplayInPortal) {
+	if tmp.ShouldFeatureDisplayInPortal == nil {
 		tmp.ShouldFeatureDisplayInPortal = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -393,7 +393,7 @@ func (val *SubscriptionFeatureRegistrationResponseProperties) Defaults() *Subscr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ShouldFeatureDisplayInPortal) {
+	if tmp.ShouldFeatureDisplayInPortal == nil {
 		shouldFeatureDisplayInPortal_ := false
 		tmp.ShouldFeatureDisplayInPortal = &shouldFeatureDisplayInPortal_
 	}

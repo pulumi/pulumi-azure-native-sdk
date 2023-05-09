@@ -83,11 +83,11 @@ func (val *LookupManagedClusterResult) Defaults() *LookupManagedClusterResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientConnectionPort) {
+	if tmp.ClientConnectionPort == nil {
 		clientConnectionPort_ := 19000
 		tmp.ClientConnectionPort = &clientConnectionPort_
 	}
-	if isZero(tmp.HttpGatewayConnectionPort) {
+	if tmp.HttpGatewayConnectionPort == nil {
 		httpGatewayConnectionPort_ := 19080
 		tmp.HttpGatewayConnectionPort = &httpGatewayConnectionPort_
 	}

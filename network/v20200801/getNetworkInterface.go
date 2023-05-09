@@ -87,7 +87,7 @@ func (val *LookupNetworkInterfaceResult) Defaults() *LookupNetworkInterfaceResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NicType) {
+	if tmp.NicType == nil {
 		nicType_ := "Standard"
 		tmp.NicType = &nicType_
 	}

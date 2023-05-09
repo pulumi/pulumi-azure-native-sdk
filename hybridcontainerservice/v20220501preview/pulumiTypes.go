@@ -1694,7 +1694,7 @@ func (val *ArcAgentProfile) Defaults() *ArcAgentProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentAutoUpgrade) {
+	if tmp.AgentAutoUpgrade == nil {
 		agentAutoUpgrade_ := "Enabled"
 		tmp.AgentAutoUpgrade = &agentAutoUpgrade_
 	}
@@ -1726,7 +1726,7 @@ func (val *ArcAgentProfileArgs) Defaults() *ArcAgentProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentAutoUpgrade) {
+	if tmp.AgentAutoUpgrade == nil {
 		tmp.AgentAutoUpgrade = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -1877,7 +1877,7 @@ func (val *ArcAgentProfileResponse) Defaults() *ArcAgentProfileResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentAutoUpgrade) {
+	if tmp.AgentAutoUpgrade == nil {
 		agentAutoUpgrade_ := "Enabled"
 		tmp.AgentAutoUpgrade = &agentAutoUpgrade_
 	}
@@ -3031,15 +3031,15 @@ func (val *ControlPlaneProfile) Defaults() *ControlPlaneProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -3097,13 +3097,13 @@ func (val *ControlPlaneProfileArgs) Defaults() *ControlPlaneProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("User")
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
@@ -3477,15 +3477,15 @@ func (val *ControlPlaneProfileResponse) Defaults() *ControlPlaneProfileResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -4738,15 +4738,15 @@ func (val *LoadBalancerProfile) Defaults() *LoadBalancerProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -4802,13 +4802,13 @@ func (val *LoadBalancerProfileArgs) Defaults() *LoadBalancerProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("User")
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
@@ -5163,15 +5163,15 @@ func (val *LoadBalancerProfileResponse) Defaults() *LoadBalancerProfileResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -5463,15 +5463,15 @@ func (val *NamedAgentPoolProfile) Defaults() *NamedAgentPoolProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -5525,13 +5525,13 @@ func (val *NamedAgentPoolProfileArgs) Defaults() *NamedAgentPoolProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("User")
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
@@ -5709,15 +5709,15 @@ func (val *NamedAgentPoolProfileResponse) Defaults() *NamedAgentPoolProfileRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -5852,11 +5852,11 @@ func (val *NetworkProfile) Defaults() *NetworkProfile {
 	tmp := *val
 	tmp.LoadBalancerProfile = tmp.LoadBalancerProfile.Defaults()
 
-	if isZero(tmp.LoadBalancerSku) {
+	if tmp.LoadBalancerSku == nil {
 		loadBalancerSku_ := "unmanaged"
 		tmp.LoadBalancerSku = &loadBalancerSku_
 	}
-	if isZero(tmp.NetworkPolicy) {
+	if tmp.NetworkPolicy == nil {
 		networkPolicy_ := "calico"
 		tmp.NetworkPolicy = &networkPolicy_
 	}
@@ -5901,10 +5901,10 @@ func (val *NetworkProfileArgs) Defaults() *NetworkProfileArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.LoadBalancerSku) {
+	if tmp.LoadBalancerSku == nil {
 		tmp.LoadBalancerSku = pulumi.StringPtr("unmanaged")
 	}
-	if isZero(tmp.NetworkPolicy) {
+	if tmp.NetworkPolicy == nil {
 		tmp.NetworkPolicy = pulumi.StringPtr("calico")
 	}
 	return &tmp
@@ -6159,11 +6159,11 @@ func (val *NetworkProfileResponse) Defaults() *NetworkProfileResponse {
 	tmp := *val
 	tmp.LoadBalancerProfile = tmp.LoadBalancerProfile.Defaults()
 
-	if isZero(tmp.LoadBalancerSku) {
+	if tmp.LoadBalancerSku == nil {
 		loadBalancerSku_ := "unmanaged"
 		tmp.LoadBalancerSku = &loadBalancerSku_
 	}
-	if isZero(tmp.NetworkPolicy) {
+	if tmp.NetworkPolicy == nil {
 		networkPolicy_ := "calico"
 		tmp.NetworkPolicy = &networkPolicy_
 	}

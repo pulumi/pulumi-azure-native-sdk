@@ -3,13 +3,6 @@
 
 package v20170901preview
 
-import (
-	"context"
-	"reflect"
-
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
 // SQL stored procedure parameter.
 type StoredProcedureParameterResponse struct {
 	// Stored procedure parameter type.

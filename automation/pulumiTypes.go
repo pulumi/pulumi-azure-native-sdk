@@ -5445,7 +5445,7 @@ func (val *SUCScheduleProperties) Defaults() *SUCScheduleProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -5499,7 +5499,7 @@ func (val *SUCSchedulePropertiesArgs) Defaults() *SUCSchedulePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		tmp.IsEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5634,7 +5634,7 @@ func (val *SUCSchedulePropertiesResponse) Defaults() *SUCSchedulePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}

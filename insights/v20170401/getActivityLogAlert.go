@@ -57,7 +57,7 @@ func (val *LookupActivityLogAlertResult) Defaults() *LookupActivityLogAlertResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := true
 		tmp.Enabled = &enabled_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,16 +108,16 @@ func NewVirtualMachine(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AllowClaim) {
+	if args.AllowClaim == nil {
 		args.AllowClaim = pulumi.BoolPtr(false)
 	}
-	if isZero(args.DisallowPublicIpAddress) {
+	if args.DisallowPublicIpAddress == nil {
 		args.DisallowPublicIpAddress = pulumi.BoolPtr(false)
 	}
-	if isZero(args.OwnerObjectId) {
+	if args.OwnerObjectId == nil {
 		args.OwnerObjectId = pulumi.StringPtr("dynamicValue")
 	}
-	if isZero(args.StorageType) {
+	if args.StorageType == nil {
 		args.StorageType = pulumi.StringPtr("labStorageType")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

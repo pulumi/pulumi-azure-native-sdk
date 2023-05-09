@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,13 +82,13 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.IsHttpAllowed) {
+	if args.IsHttpAllowed == nil {
 		args.IsHttpAllowed = pulumi.BoolPtr(true)
 	}
-	if isZero(args.IsHttpsAllowed) {
+	if args.IsHttpsAllowed == nil {
 		args.IsHttpsAllowed = pulumi.BoolPtr(true)
 	}
-	if isZero(args.QueryStringCachingBehavior) {
+	if args.QueryStringCachingBehavior == nil {
 		args.QueryStringCachingBehavior = QueryStringCachingBehavior("NotSet")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

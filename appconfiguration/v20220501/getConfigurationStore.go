@@ -71,15 +71,15 @@ func (val *LookupConfigurationStoreResult) Defaults() *LookupConfigurationStoreR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := false
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 7
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}

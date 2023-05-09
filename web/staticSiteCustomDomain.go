@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,7 +46,7 @@ func NewStaticSiteCustomDomain(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ValidationMethod) {
+	if args.ValidationMethod == nil {
 		args.ValidationMethod = pulumi.StringPtr("cname-delegation")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

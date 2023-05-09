@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,10 +47,10 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	if isZero(args.EnforceSSL) {
+	if args.EnforceSSL == nil {
 		args.EnforceSSL = pulumi.BoolPtr(true)
 	}
-	if isZero(args.IncludeSecret) {
+	if args.IncludeSecret == nil {
 		args.IncludeSecret = pulumi.BoolPtr(true)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

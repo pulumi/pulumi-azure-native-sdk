@@ -103,39 +103,39 @@ func (val *LookupClusterResult) Defaults() *LookupClusterResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableAutoStop) {
+	if tmp.EnableAutoStop == nil {
 		enableAutoStop_ := true
 		tmp.EnableAutoStop = &enableAutoStop_
 	}
-	if isZero(tmp.EnableDiskEncryption) {
+	if tmp.EnableDiskEncryption == nil {
 		enableDiskEncryption_ := false
 		tmp.EnableDiskEncryption = &enableDiskEncryption_
 	}
-	if isZero(tmp.EnableDoubleEncryption) {
+	if tmp.EnableDoubleEncryption == nil {
 		enableDoubleEncryption_ := false
 		tmp.EnableDoubleEncryption = &enableDoubleEncryption_
 	}
-	if isZero(tmp.EnablePurge) {
+	if tmp.EnablePurge == nil {
 		enablePurge_ := false
 		tmp.EnablePurge = &enablePurge_
 	}
-	if isZero(tmp.EnableStreamingIngest) {
+	if tmp.EnableStreamingIngest == nil {
 		enableStreamingIngest_ := false
 		tmp.EnableStreamingIngest = &enableStreamingIngest_
 	}
-	if isZero(tmp.EngineType) {
+	if tmp.EngineType == nil {
 		engineType_ := "V3"
 		tmp.EngineType = &engineType_
 	}
-	if isZero(tmp.PublicIPType) {
+	if tmp.PublicIPType == nil {
 		publicIPType_ := "IPv4"
 		tmp.PublicIPType = &publicIPType_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.RestrictOutboundNetworkAccess) {
+	if tmp.RestrictOutboundNetworkAccess == nil {
 		restrictOutboundNetworkAccess_ := "Disabled"
 		tmp.RestrictOutboundNetworkAccess = &restrictOutboundNetworkAccess_
 	}

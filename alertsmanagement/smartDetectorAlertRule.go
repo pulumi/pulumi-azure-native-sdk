@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,7 +70,7 @@ func NewSmartDetectorAlertRule(ctx *pulumi.Context,
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
 	}
-	if isZero(args.Location) {
+	if args.Location == nil {
 		args.Location = pulumi.StringPtr("global")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

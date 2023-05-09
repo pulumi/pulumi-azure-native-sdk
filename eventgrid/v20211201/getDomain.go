@@ -86,23 +86,23 @@ func (val *LookupDomainResult) Defaults() *LookupDomainResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoCreateTopicWithFirstSubscription) {
+	if tmp.AutoCreateTopicWithFirstSubscription == nil {
 		autoCreateTopicWithFirstSubscription_ := true
 		tmp.AutoCreateTopicWithFirstSubscription = &autoCreateTopicWithFirstSubscription_
 	}
-	if isZero(tmp.AutoDeleteTopicWithLastSubscription) {
+	if tmp.AutoDeleteTopicWithLastSubscription == nil {
 		autoDeleteTopicWithLastSubscription_ := true
 		tmp.AutoDeleteTopicWithLastSubscription = &autoDeleteTopicWithLastSubscription_
 	}
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
-	if isZero(tmp.InputSchema) {
+	if tmp.InputSchema == nil {
 		inputSchema_ := "EventGridSchema"
 		tmp.InputSchema = &inputSchema_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

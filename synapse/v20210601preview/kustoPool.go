@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,10 +67,10 @@ func NewKustoPool(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	if isZero(args.EnablePurge) {
+	if args.EnablePurge == nil {
 		args.EnablePurge = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableStreamingIngest) {
+	if args.EnableStreamingIngest == nil {
 		args.EnableStreamingIngest = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

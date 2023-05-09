@@ -76,15 +76,15 @@ func (val *LookupRouteResult) Defaults() *LookupRouteResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ForwardingProtocol) {
+	if tmp.ForwardingProtocol == nil {
 		forwardingProtocol_ := "MatchRequest"
 		tmp.ForwardingProtocol = &forwardingProtocol_
 	}
-	if isZero(tmp.HttpsRedirect) {
+	if tmp.HttpsRedirect == nil {
 		httpsRedirect_ := "Disabled"
 		tmp.HttpsRedirect = &httpsRedirect_
 	}
-	if isZero(tmp.LinkToDefaultDomain) {
+	if tmp.LinkToDefaultDomain == nil {
 		linkToDefaultDomain_ := "Disabled"
 		tmp.LinkToDefaultDomain = &linkToDefaultDomain_
 	}

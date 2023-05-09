@@ -87,11 +87,11 @@ func (val *LookupNodeTypeResult) Defaults() *LookupNodeTypeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsStateless) {
+	if tmp.IsStateless == nil {
 		isStateless_ := false
 		tmp.IsStateless = &isStateless_
 	}
-	if isZero(tmp.MultiplePlacementGroups) {
+	if tmp.MultiplePlacementGroups == nil {
 		multiplePlacementGroups_ := false
 		tmp.MultiplePlacementGroups = &multiplePlacementGroups_
 	}

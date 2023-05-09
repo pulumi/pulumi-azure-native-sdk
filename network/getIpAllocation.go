@@ -66,7 +66,7 @@ func (val *LookupIpAllocationResult) Defaults() *LookupIpAllocationResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrefixLength) {
+	if tmp.PrefixLength == nil {
 		prefixLength_ := 0
 		tmp.PrefixLength = &prefixLength_
 	}

@@ -597,7 +597,7 @@ func (val *MapsAccountProperties) Defaults() *MapsAccountProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
@@ -629,7 +629,7 @@ func (val *MapsAccountPropertiesArgs) Defaults() *MapsAccountPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		tmp.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -784,7 +784,7 @@ func (val *MapsAccountPropertiesResponse) Defaults() *MapsAccountPropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}

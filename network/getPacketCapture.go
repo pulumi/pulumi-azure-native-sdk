@@ -60,15 +60,15 @@ func (val *LookupPacketCaptureResult) Defaults() *LookupPacketCaptureResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BytesToCapturePerPacket) {
+	if tmp.BytesToCapturePerPacket == nil {
 		bytesToCapturePerPacket_ := 0.0
 		tmp.BytesToCapturePerPacket = &bytesToCapturePerPacket_
 	}
-	if isZero(tmp.TimeLimitInSeconds) {
+	if tmp.TimeLimitInSeconds == nil {
 		timeLimitInSeconds_ := 18000
 		tmp.TimeLimitInSeconds = &timeLimitInSeconds_
 	}
-	if isZero(tmp.TotalBytesPerSession) {
+	if tmp.TotalBytesPerSession == nil {
 		totalBytesPerSession_ := 1073741824.0
 		tmp.TotalBytesPerSession = &totalBytesPerSession_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,19 +76,19 @@ func NewCluster(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.EnableDiskEncryption) {
+	if args.EnableDiskEncryption == nil {
 		args.EnableDiskEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableDoubleEncryption) {
+	if args.EnableDoubleEncryption == nil {
 		args.EnableDoubleEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnablePurge) {
+	if args.EnablePurge == nil {
 		args.EnablePurge = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableStreamingIngest) {
+	if args.EnableStreamingIngest == nil {
 		args.EnableStreamingIngest = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EngineType) {
+	if args.EngineType == nil {
 		args.EngineType = pulumi.StringPtr("V3")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

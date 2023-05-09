@@ -97,21 +97,21 @@ func (val *LookupVirtualMachineResult) Defaults() *LookupVirtualMachineResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BootMethod) {
+	if tmp.BootMethod == nil {
 		bootMethod_ := "UEFI"
 		tmp.BootMethod = &bootMethod_
 	}
-	if isZero(tmp.IsolateEmulatorThread) {
+	if tmp.IsolateEmulatorThread == nil {
 		isolateEmulatorThread_ := "True"
 		tmp.IsolateEmulatorThread = &isolateEmulatorThread_
 	}
 	tmp.StorageProfile = *tmp.StorageProfile.Defaults()
 
-	if isZero(tmp.VirtioInterface) {
+	if tmp.VirtioInterface == nil {
 		virtioInterface_ := "Modern"
 		tmp.VirtioInterface = &virtioInterface_
 	}
-	if isZero(tmp.VmDeviceModel) {
+	if tmp.VmDeviceModel == nil {
 		vmDeviceModel_ := "T2"
 		tmp.VmDeviceModel = &vmDeviceModel_
 	}

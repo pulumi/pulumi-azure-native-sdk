@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,10 +64,10 @@ func NewAFDOrigin(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HttpPort) {
+	if args.HttpPort == nil {
 		args.HttpPort = pulumi.IntPtr(80)
 	}
-	if isZero(args.HttpsPort) {
+	if args.HttpsPort == nil {
 		args.HttpsPort = pulumi.IntPtr(443)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

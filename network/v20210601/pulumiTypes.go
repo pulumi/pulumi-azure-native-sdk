@@ -438,7 +438,7 @@ func (val *BackendPoolsSettings) Defaults() *BackendPoolsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := "Enabled"
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
@@ -470,7 +470,7 @@ func (val *BackendPoolsSettingsArgs) Defaults() *BackendPoolsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		tmp.EnforceCertificateNameCheck = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -621,7 +621,7 @@ func (val *BackendPoolsSettingsResponse) Defaults() *BackendPoolsSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := "Enabled"
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
@@ -3305,7 +3305,7 @@ func (val *HealthProbeSettingsModel) Defaults() *HealthProbeSettingsModel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HealthProbeMethod) {
+	if tmp.HealthProbeMethod == nil {
 		healthProbeMethod_ := "HEAD"
 		tmp.HealthProbeMethod = &healthProbeMethod_
 	}
@@ -3347,7 +3347,7 @@ func (val *HealthProbeSettingsModelArgs) Defaults() *HealthProbeSettingsModelArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HealthProbeMethod) {
+	if tmp.HealthProbeMethod == nil {
 		tmp.HealthProbeMethod = pulumi.StringPtr("HEAD")
 	}
 	return &tmp
@@ -3487,7 +3487,7 @@ func (val *HealthProbeSettingsModelResponse) Defaults() *HealthProbeSettingsMode
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HealthProbeMethod) {
+	if tmp.HealthProbeMethod == nil {
 		healthProbeMethod_ := "HEAD"
 		tmp.HealthProbeMethod = &healthProbeMethod_
 	}

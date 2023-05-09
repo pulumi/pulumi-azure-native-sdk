@@ -91,15 +91,15 @@ func (val *LookupEndpointResult) Defaults() *LookupEndpointResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsHttpAllowed) {
+	if tmp.IsHttpAllowed == nil {
 		isHttpAllowed_ := true
 		tmp.IsHttpAllowed = &isHttpAllowed_
 	}
-	if isZero(tmp.IsHttpsAllowed) {
+	if tmp.IsHttpsAllowed == nil {
 		isHttpsAllowed_ := true
 		tmp.IsHttpsAllowed = &isHttpsAllowed_
 	}
-	if isZero(tmp.QueryStringCachingBehavior) {
+	if tmp.QueryStringCachingBehavior == nil {
 		queryStringCachingBehavior_ := "NotSet"
 		tmp.QueryStringCachingBehavior = &queryStringCachingBehavior_
 	}

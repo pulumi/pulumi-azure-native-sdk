@@ -11367,7 +11367,7 @@ func (val *Ingress) Defaults() *Ingress {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.External) {
+	if tmp.External == nil {
 		external_ := false
 		tmp.External = &external_
 	}
@@ -11407,7 +11407,7 @@ func (val *IngressArgs) Defaults() *IngressArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.External) {
+	if tmp.External == nil {
 		tmp.External = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -11628,7 +11628,7 @@ func (val *IngressResponse) Defaults() *IngressResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.External) {
+	if tmp.External == nil {
 		external_ := false
 		tmp.External = &external_
 	}
@@ -15479,7 +15479,7 @@ func (val *Scale) Defaults() *Scale {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		maxReplicas_ := 10
 		tmp.MaxReplicas = &maxReplicas_
 	}
@@ -15513,7 +15513,7 @@ func (val *ScaleArgs) Defaults() *ScaleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		tmp.MaxReplicas = pulumi.IntPtr(10)
 	}
 	return &tmp
@@ -15681,7 +15681,7 @@ func (val *ScaleResponse) Defaults() *ScaleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		maxReplicas_ := 10
 		tmp.MaxReplicas = &maxReplicas_
 	}
@@ -16709,7 +16709,7 @@ func (val *TrafficWeight) Defaults() *TrafficWeight {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LatestRevision) {
+	if tmp.LatestRevision == nil {
 		latestRevision_ := false
 		tmp.LatestRevision = &latestRevision_
 	}
@@ -16743,7 +16743,7 @@ func (val *TrafficWeightArgs) Defaults() *TrafficWeightArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LatestRevision) {
+	if tmp.LatestRevision == nil {
 		tmp.LatestRevision = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -16851,7 +16851,7 @@ func (val *TrafficWeightResponse) Defaults() *TrafficWeightResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LatestRevision) {
+	if tmp.LatestRevision == nil {
 		latestRevision_ := false
 		tmp.LatestRevision = &latestRevision_
 	}

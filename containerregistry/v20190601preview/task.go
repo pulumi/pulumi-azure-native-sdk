@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,10 +67,10 @@ func NewTask(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.IsSystemTask) {
+	if args.IsSystemTask == nil {
 		args.IsSystemTask = pulumi.BoolPtr(false)
 	}
-	if isZero(args.Timeout) {
+	if args.Timeout == nil {
 		args.Timeout = pulumi.IntPtr(3600)
 	}
 	if args.Trigger != nil {

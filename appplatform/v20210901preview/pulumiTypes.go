@@ -38,11 +38,11 @@ func (val *AppResourceProperties) Defaults() *AppResourceProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEndToEndTLS) {
+	if tmp.EnableEndToEndTLS == nil {
 		enableEndToEndTLS_ := false
 		tmp.EnableEndToEndTLS = &enableEndToEndTLS_
 	}
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
@@ -90,10 +90,10 @@ func (val *AppResourcePropertiesArgs) Defaults() *AppResourcePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEndToEndTLS) {
+	if tmp.EnableEndToEndTLS == nil {
 		tmp.EnableEndToEndTLS = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		tmp.HttpsOnly = pulumi.BoolPtr(false)
 	}
 
@@ -370,11 +370,11 @@ func (val *AppResourcePropertiesResponse) Defaults() *AppResourcePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEndToEndTLS) {
+	if tmp.EnableEndToEndTLS == nil {
 		enableEndToEndTLS_ := false
 		tmp.EnableEndToEndTLS = &enableEndToEndTLS_
 	}
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
@@ -3343,15 +3343,15 @@ func (val *DeploymentSettings) Defaults() *DeploymentSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cpu) {
+	if tmp.Cpu == nil {
 		cpu_ := 1
 		tmp.Cpu = &cpu_
 	}
-	if isZero(tmp.MemoryInGB) {
+	if tmp.MemoryInGB == nil {
 		memoryInGB_ := 1
 		tmp.MemoryInGB = &memoryInGB_
 	}
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		runtimeVersion_ := "Java_8"
 		tmp.RuntimeVersion = &runtimeVersion_
 	}
@@ -3395,13 +3395,13 @@ func (val *DeploymentSettingsArgs) Defaults() *DeploymentSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cpu) {
+	if tmp.Cpu == nil {
 		tmp.Cpu = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.MemoryInGB) {
+	if tmp.MemoryInGB == nil {
 		tmp.MemoryInGB = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		tmp.RuntimeVersion = pulumi.StringPtr("Java_8")
 	}
 	return &tmp
@@ -3794,15 +3794,15 @@ func (val *DeploymentSettingsResponse) Defaults() *DeploymentSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cpu) {
+	if tmp.Cpu == nil {
 		cpu_ := 1
 		tmp.Cpu = &cpu_
 	}
-	if isZero(tmp.MemoryInGB) {
+	if tmp.MemoryInGB == nil {
 		memoryInGB_ := 1
 		tmp.MemoryInGB = &memoryInGB_
 	}
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		runtimeVersion_ := "Java_8"
 		tmp.RuntimeVersion = &runtimeVersion_
 	}
@@ -4829,7 +4829,7 @@ func (val *KeyVaultCertificateProperties) Defaults() *KeyVaultCertificatePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExcludePrivateKey) {
+	if tmp.ExcludePrivateKey == nil {
 		excludePrivateKey_ := false
 		tmp.ExcludePrivateKey = &excludePrivateKey_
 	}
@@ -4871,7 +4871,7 @@ func (val *KeyVaultCertificatePropertiesResponse) Defaults() *KeyVaultCertificat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExcludePrivateKey) {
+	if tmp.ExcludePrivateKey == nil {
 		excludePrivateKey_ := false
 		tmp.ExcludePrivateKey = &excludePrivateKey_
 	}
@@ -4892,7 +4892,7 @@ func (val *LoadedCertificate) Defaults() *LoadedCertificate {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LoadTrustStore) {
+	if tmp.LoadTrustStore == nil {
 		loadTrustStore_ := false
 		tmp.LoadTrustStore = &loadTrustStore_
 	}
@@ -4924,7 +4924,7 @@ func (val *LoadedCertificateArgs) Defaults() *LoadedCertificateArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LoadTrustStore) {
+	if tmp.LoadTrustStore == nil {
 		tmp.LoadTrustStore = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5025,7 +5025,7 @@ func (val *LoadedCertificateResponse) Defaults() *LoadedCertificateResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LoadTrustStore) {
+	if tmp.LoadTrustStore == nil {
 		loadTrustStore_ := false
 		tmp.LoadTrustStore = &loadTrustStore_
 	}
@@ -6626,11 +6626,11 @@ func (val *Sku) Defaults() *Sku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "S0"
 		tmp.Name = &name_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Standard"
 		tmp.Tier = &tier_
 	}
@@ -6664,10 +6664,10 @@ func (val *SkuArgs) Defaults() *SkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		tmp.Name = pulumi.StringPtr("S0")
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = pulumi.StringPtr("Standard")
 	}
 	return &tmp
@@ -6835,11 +6835,11 @@ func (val *SkuResponse) Defaults() *SkuResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "S0"
 		tmp.Name = &name_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Standard"
 		tmp.Tier = &tier_
 	}
@@ -7222,7 +7222,7 @@ func (val *TemporaryDisk) Defaults() *TemporaryDisk {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountPath) {
+	if tmp.MountPath == nil {
 		mountPath_ := "/tmp"
 		tmp.MountPath = &mountPath_
 	}
@@ -7254,7 +7254,7 @@ func (val *TemporaryDiskArgs) Defaults() *TemporaryDiskArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountPath) {
+	if tmp.MountPath == nil {
 		tmp.MountPath = pulumi.StringPtr("/tmp")
 	}
 	return &tmp
@@ -7405,7 +7405,7 @@ func (val *TemporaryDiskResponse) Defaults() *TemporaryDiskResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountPath) {
+	if tmp.MountPath == nil {
 		mountPath_ := "/tmp"
 		tmp.MountPath = &mountPath_
 	}

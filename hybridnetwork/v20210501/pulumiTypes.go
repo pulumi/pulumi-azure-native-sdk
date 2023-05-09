@@ -2572,7 +2572,7 @@ func (val *OsProfile) Defaults() *OsProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CustomDataRequired) {
+	if tmp.CustomDataRequired == nil {
 		customDataRequired_ := true
 		tmp.CustomDataRequired = &customDataRequired_
 	}
@@ -2608,7 +2608,7 @@ func (val *OsProfileArgs) Defaults() *OsProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CustomDataRequired) {
+	if tmp.CustomDataRequired == nil {
 		tmp.CustomDataRequired = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -2793,7 +2793,7 @@ func (val *OsProfileResponse) Defaults() *OsProfileResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CustomDataRequired) {
+	if tmp.CustomDataRequired == nil {
 		customDataRequired_ := true
 		tmp.CustomDataRequired = &customDataRequired_
 	}

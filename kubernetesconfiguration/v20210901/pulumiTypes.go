@@ -465,7 +465,7 @@ func (val *ExtensionStatus) Defaults() *ExtensionStatus {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		level_ := "Information"
 		tmp.Level = &level_
 	}
@@ -503,7 +503,7 @@ func (val *ExtensionStatusArgs) Defaults() *ExtensionStatusArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		tmp.Level = pulumi.StringPtr("Information")
 	}
 	return &tmp
@@ -625,7 +625,7 @@ func (val *ExtensionStatusResponse) Defaults() *ExtensionStatusResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		level_ := "Information"
 		tmp.Level = &level_
 	}

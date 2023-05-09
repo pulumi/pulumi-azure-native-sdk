@@ -1587,11 +1587,11 @@ func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -1678,11 +1678,11 @@ func (val *AmlComputeResponseProperties) Defaults() *AmlComputeResponsePropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -6194,7 +6194,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -6217,7 +6217,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}

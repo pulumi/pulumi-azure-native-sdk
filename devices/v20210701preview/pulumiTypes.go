@@ -3928,7 +3928,7 @@ func (val *NetworkRuleSetIpRule) Defaults() *NetworkRuleSetIpRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -3962,7 +3962,7 @@ func (val *NetworkRuleSetIpRuleArgs) Defaults() *NetworkRuleSetIpRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -4070,7 +4070,7 @@ func (val *NetworkRuleSetIpRuleResponse) Defaults() *NetworkRuleSetIpRuleRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -4143,7 +4143,7 @@ func (val *NetworkRuleSetProperties) Defaults() *NetworkRuleSetProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		defaultAction_ := "Deny"
 		tmp.DefaultAction = &defaultAction_
 	}
@@ -4177,7 +4177,7 @@ func (val *NetworkRuleSetPropertiesArgs) Defaults() *NetworkRuleSetPropertiesArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = pulumi.StringPtr("Deny")
 	}
 	return &tmp
@@ -4345,7 +4345,7 @@ func (val *NetworkRuleSetPropertiesResponse) Defaults() *NetworkRuleSetPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		defaultAction_ := "Deny"
 		tmp.DefaultAction = &defaultAction_
 	}

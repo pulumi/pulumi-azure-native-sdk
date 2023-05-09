@@ -90,23 +90,23 @@ func (val *DomainSecuritySettings) Defaults() *DomainSecuritySettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NtlmV1) {
+	if tmp.NtlmV1 == nil {
 		ntlmV1_ := "Enabled"
 		tmp.NtlmV1 = &ntlmV1_
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		syncKerberosPasswords_ := "Enabled"
 		tmp.SyncKerberosPasswords = &syncKerberosPasswords_
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		syncNtlmPasswords_ := "Enabled"
 		tmp.SyncNtlmPasswords = &syncNtlmPasswords_
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		syncOnPremPasswords_ := "Enabled"
 		tmp.SyncOnPremPasswords = &syncOnPremPasswords_
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tlsV1_ := "Enabled"
 		tmp.TlsV1 = &tlsV1_
 	}
@@ -144,19 +144,19 @@ func (val *DomainSecuritySettingsArgs) Defaults() *DomainSecuritySettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NtlmV1) {
+	if tmp.NtlmV1 == nil {
 		tmp.NtlmV1 = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		tmp.SyncKerberosPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		tmp.SyncNtlmPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		tmp.SyncOnPremPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tmp.TlsV1 = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -358,23 +358,23 @@ func (val *DomainSecuritySettingsResponse) Defaults() *DomainSecuritySettingsRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NtlmV1) {
+	if tmp.NtlmV1 == nil {
 		ntlmV1_ := "Enabled"
 		tmp.NtlmV1 = &ntlmV1_
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		syncKerberosPasswords_ := "Enabled"
 		tmp.SyncKerberosPasswords = &syncKerberosPasswords_
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		syncNtlmPasswords_ := "Enabled"
 		tmp.SyncNtlmPasswords = &syncNtlmPasswords_
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		syncOnPremPasswords_ := "Enabled"
 		tmp.SyncOnPremPasswords = &syncOnPremPasswords_
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tlsV1_ := "Enabled"
 		tmp.TlsV1 = &tlsV1_
 	}
@@ -871,11 +871,11 @@ func (val *LdapsSettings) Defaults() *LdapsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		externalAccess_ := "Disabled"
 		tmp.ExternalAccess = &externalAccess_
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		ldaps_ := "Disabled"
 		tmp.Ldaps = &ldaps_
 	}
@@ -911,10 +911,10 @@ func (val *LdapsSettingsArgs) Defaults() *LdapsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		tmp.ExternalAccess = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		tmp.Ldaps = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -1107,11 +1107,11 @@ func (val *LdapsSettingsResponse) Defaults() *LdapsSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		externalAccess_ := "Disabled"
 		tmp.ExternalAccess = &externalAccess_
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		ldaps_ := "Disabled"
 		tmp.Ldaps = &ldaps_
 	}

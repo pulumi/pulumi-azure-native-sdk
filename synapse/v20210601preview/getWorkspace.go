@@ -91,11 +91,11 @@ func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.TrustedServiceBypassEnabled) {
+	if tmp.TrustedServiceBypassEnabled == nil {
 		trustedServiceBypassEnabled_ := false
 		tmp.TrustedServiceBypassEnabled = &trustedServiceBypassEnabled_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,7 +87,7 @@ func NewApiManagementService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	args.Sku = args.Sku.ToApiManagementServiceSkuPropertiesOutput().ApplyT(func(v ApiManagementServiceSkuProperties) ApiManagementServiceSkuProperties { return *v.Defaults() }).(ApiManagementServiceSkuPropertiesOutput)
-	if isZero(args.VirtualNetworkType) {
+	if args.VirtualNetworkType == nil {
 		args.VirtualNetworkType = pulumi.StringPtr("None")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

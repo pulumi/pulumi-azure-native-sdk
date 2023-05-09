@@ -85,7 +85,7 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 	tmp := *val
 	tmp.Sku = *tmp.Sku.Defaults()
 
-	if isZero(tmp.VpnType) {
+	if tmp.VpnType == nil {
 		vpnType_ := "None"
 		tmp.VpnType = &vpnType_
 	}

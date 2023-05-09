@@ -677,7 +677,7 @@ func (val *DataExportDetails) Defaults() *DataExportDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogCollectionLevel) {
+	if tmp.LogCollectionLevel == nil {
 		logCollectionLevel_ := "Error"
 		tmp.LogCollectionLevel = &logCollectionLevel_
 	}
@@ -702,7 +702,7 @@ func (val *DataExportDetailsResponse) Defaults() *DataExportDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogCollectionLevel) {
+	if tmp.LogCollectionLevel == nil {
 		logCollectionLevel_ := "Error"
 		tmp.LogCollectionLevel = &logCollectionLevel_
 	}
@@ -764,7 +764,7 @@ func (val *EncryptionPreferences) Defaults() *EncryptionPreferences {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DoubleEncryption) {
+	if tmp.DoubleEncryption == nil {
 		doubleEncryption_ := "Disabled"
 		tmp.DoubleEncryption = &doubleEncryption_
 	}
@@ -783,7 +783,7 @@ func (val *EncryptionPreferencesResponse) Defaults() *EncryptionPreferencesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DoubleEncryption) {
+	if tmp.DoubleEncryption == nil {
 		doubleEncryption_ := "Disabled"
 		tmp.DoubleEncryption = &doubleEncryption_
 	}
@@ -1249,7 +1249,7 @@ func (val *ResourceIdentity) Defaults() *ResourceIdentity {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "None"
 		tmp.Type = &type_
 	}
@@ -1281,7 +1281,7 @@ func (val *ResourceIdentityArgs) Defaults() *ResourceIdentityArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -1436,7 +1436,7 @@ func (val *ResourceIdentityResponse) Defaults() *ResourceIdentityResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "None"
 		tmp.Type = &type_
 	}
@@ -1588,7 +1588,7 @@ func (val *ShippingAddress) Defaults() *ShippingAddress {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AddressType) {
+	if tmp.AddressType == nil {
 		addressType_ := "None"
 		tmp.AddressType = &addressType_
 	}
@@ -1625,7 +1625,7 @@ func (val *ShippingAddressResponse) Defaults() *ShippingAddressResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AddressType) {
+	if tmp.AddressType == nil {
 		addressType_ := "None"
 		tmp.AddressType = &addressType_
 	}

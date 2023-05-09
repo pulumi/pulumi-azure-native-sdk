@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,7 +65,7 @@ func NewScalingPlan(ctx *pulumi.Context,
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
-	if isZero(args.HostPoolType) {
+	if args.HostPoolType == nil {
 		args.HostPoolType = pulumi.StringPtr("Pooled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

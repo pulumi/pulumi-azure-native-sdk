@@ -102,7 +102,7 @@ func (val *BuildArgumentResponse) Defaults() *BuildArgumentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -197,11 +197,11 @@ func (val *DockerBuildStepResponse) Defaults() *DockerBuildStepResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
@@ -738,7 +738,7 @@ func (val *SourceRepositoryProperties) Defaults() *SourceRepositoryProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsCommitTriggerEnabled) {
+	if tmp.IsCommitTriggerEnabled == nil {
 		isCommitTriggerEnabled_ := false
 		tmp.IsCommitTriggerEnabled = &isCommitTriggerEnabled_
 	}
@@ -774,7 +774,7 @@ func (val *SourceRepositoryPropertiesArgs) Defaults() *SourceRepositoryPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsCommitTriggerEnabled) {
+	if tmp.IsCommitTriggerEnabled == nil {
 		tmp.IsCommitTriggerEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -844,7 +844,7 @@ func (val *SourceRepositoryPropertiesResponse) Defaults() *SourceRepositoryPrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsCommitTriggerEnabled) {
+	if tmp.IsCommitTriggerEnabled == nil {
 		isCommitTriggerEnabled_ := false
 		tmp.IsCommitTriggerEnabled = &isCommitTriggerEnabled_
 	}

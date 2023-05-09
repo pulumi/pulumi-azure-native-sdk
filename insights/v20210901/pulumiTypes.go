@@ -26,7 +26,7 @@ func (val *ArmRoleReceiver) Defaults() *ArmRoleReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -60,7 +60,7 @@ func (val *ArmRoleReceiverArgs) Defaults() *ArmRoleReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -168,7 +168,7 @@ func (val *ArmRoleReceiverResponse) Defaults() *ArmRoleReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -249,7 +249,7 @@ func (val *AutomationRunbookReceiver) Defaults() *AutomationRunbookReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -291,7 +291,7 @@ func (val *AutomationRunbookReceiverArgs) Defaults() *AutomationRunbookReceiverA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -427,7 +427,7 @@ func (val *AutomationRunbookReceiverResponse) Defaults() *AutomationRunbookRecei
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -686,7 +686,7 @@ func (val *AzureFunctionReceiver) Defaults() *AzureFunctionReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -724,7 +724,7 @@ func (val *AzureFunctionReceiverArgs) Defaults() *AzureFunctionReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -846,7 +846,7 @@ func (val *AzureFunctionReceiverResponse) Defaults() *AzureFunctionReceiverRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -929,7 +929,7 @@ func (val *EmailReceiver) Defaults() *EmailReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -963,7 +963,7 @@ func (val *EmailReceiverArgs) Defaults() *EmailReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1073,7 +1073,7 @@ func (val *EmailReceiverResponse) Defaults() *EmailReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -1157,7 +1157,7 @@ func (val *EventHubReceiver) Defaults() *EventHubReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -1197,7 +1197,7 @@ func (val *EventHubReceiverArgs) Defaults() *EventHubReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1326,7 +1326,7 @@ func (val *EventHubReceiverResponse) Defaults() *EventHubReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -1626,7 +1626,7 @@ func (val *LogicAppReceiver) Defaults() *LogicAppReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -1662,7 +1662,7 @@ func (val *LogicAppReceiverArgs) Defaults() *LogicAppReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1777,7 +1777,7 @@ func (val *LogicAppReceiverResponse) Defaults() *LogicAppReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -2226,11 +2226,11 @@ func (val *WebhookReceiver) Defaults() *WebhookReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		useAadAuth_ := false
 		tmp.UseAadAuth = &useAadAuth_
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -2272,10 +2272,10 @@ func (val *WebhookReceiverArgs) Defaults() *WebhookReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		tmp.UseAadAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -2411,11 +2411,11 @@ func (val *WebhookReceiverResponse) Defaults() *WebhookReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		useAadAuth_ := false
 		tmp.UseAadAuth = &useAadAuth_
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
