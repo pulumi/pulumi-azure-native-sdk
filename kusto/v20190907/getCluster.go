@@ -73,7 +73,7 @@ func (val *LookupClusterResult) Defaults() *LookupClusterResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableStreamingIngest) {
+	if tmp.EnableStreamingIngest == nil {
 		enableStreamingIngest_ := false
 		tmp.EnableStreamingIngest = &enableStreamingIngest_
 	}

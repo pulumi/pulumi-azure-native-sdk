@@ -519,7 +519,7 @@ func (val *ContainerServiceMasterProfile) Defaults() *ContainerServiceMasterProf
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
@@ -551,7 +551,7 @@ func (val *ContainerServiceMasterProfileArgs) Defaults() *ContainerServiceMaster
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -609,7 +609,7 @@ func (val *ContainerServiceMasterProfileResponse) Defaults() *ContainerServiceMa
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}

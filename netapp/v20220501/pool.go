@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,16 +63,16 @@ func NewPool(ctx *pulumi.Context,
 	if args.ServiceLevel == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceLevel'")
 	}
-	if isZero(args.CoolAccess) {
+	if args.CoolAccess == nil {
 		args.CoolAccess = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EncryptionType) {
+	if args.EncryptionType == nil {
 		args.EncryptionType = pulumi.StringPtr("Single")
 	}
-	if isZero(args.QosType) {
+	if args.QosType == nil {
 		args.QosType = pulumi.StringPtr("Auto")
 	}
-	if isZero(args.Size) {
+	if args.Size == nil {
 		args.Size = pulumi.Float64(4398046511104.0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

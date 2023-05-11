@@ -73,7 +73,7 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvailabilityZone) {
+	if tmp.AvailabilityZone == nil {
 		availabilityZone_ := ""
 		tmp.AvailabilityZone = &availabilityZone_
 	}

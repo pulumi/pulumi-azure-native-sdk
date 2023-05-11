@@ -69,11 +69,11 @@ func (val *LookupSqlPoolResult) Defaults() *LookupSqlPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Collation) {
+	if tmp.Collation == nil {
 		collation_ := ""
 		tmp.Collation = &collation_
 	}
-	if isZero(tmp.StorageAccountType) {
+	if tmp.StorageAccountType == nil {
 		storageAccountType_ := "GRS"
 		tmp.StorageAccountType = &storageAccountType_
 	}

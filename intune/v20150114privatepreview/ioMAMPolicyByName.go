@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,37 +58,37 @@ func NewIoMAMPolicyByName(ctx *pulumi.Context,
 	if args.HostName == nil {
 		return nil, errors.New("invalid value for required argument 'HostName'")
 	}
-	if isZero(args.AppSharingFromLevel) {
+	if args.AppSharingFromLevel == nil {
 		args.AppSharingFromLevel = pulumi.StringPtr("none")
 	}
-	if isZero(args.AppSharingToLevel) {
+	if args.AppSharingToLevel == nil {
 		args.AppSharingToLevel = pulumi.StringPtr("none")
 	}
-	if isZero(args.Authentication) {
+	if args.Authentication == nil {
 		args.Authentication = pulumi.StringPtr("required")
 	}
-	if isZero(args.ClipboardSharingLevel) {
+	if args.ClipboardSharingLevel == nil {
 		args.ClipboardSharingLevel = pulumi.StringPtr("blocked")
 	}
-	if isZero(args.DataBackup) {
+	if args.DataBackup == nil {
 		args.DataBackup = pulumi.StringPtr("allow")
 	}
-	if isZero(args.DeviceCompliance) {
+	if args.DeviceCompliance == nil {
 		args.DeviceCompliance = pulumi.StringPtr("enable")
 	}
-	if isZero(args.FileEncryptionLevel) {
+	if args.FileEncryptionLevel == nil {
 		args.FileEncryptionLevel = pulumi.StringPtr("deviceLocked")
 	}
-	if isZero(args.FileSharingSaveAs) {
+	if args.FileSharingSaveAs == nil {
 		args.FileSharingSaveAs = pulumi.StringPtr("allow")
 	}
-	if isZero(args.ManagedBrowser) {
+	if args.ManagedBrowser == nil {
 		args.ManagedBrowser = pulumi.StringPtr("required")
 	}
-	if isZero(args.Pin) {
+	if args.Pin == nil {
 		args.Pin = pulumi.StringPtr("required")
 	}
-	if isZero(args.TouchId) {
+	if args.TouchId == nil {
 		args.TouchId = pulumi.StringPtr("enable")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

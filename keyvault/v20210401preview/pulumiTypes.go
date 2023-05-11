@@ -1515,11 +1515,11 @@ func (val *MHSMNetworkRuleSet) Defaults() *MHSMNetworkRuleSet {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		defaultAction_ := "Allow"
 		tmp.DefaultAction = &defaultAction_
 	}
@@ -1555,10 +1555,10 @@ func (val *MHSMNetworkRuleSetArgs) Defaults() *MHSMNetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		tmp.Bypass = pulumi.StringPtr("AzureServices")
 	}
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -1743,11 +1743,11 @@ func (val *MHSMNetworkRuleSetResponse) Defaults() *MHSMNetworkRuleSetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		defaultAction_ := "Allow"
 		tmp.DefaultAction = &defaultAction_
 	}
@@ -2435,21 +2435,21 @@ func (val *ManagedHsmProperties) Defaults() *ManagedHsmProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := true
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
 	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -2493,17 +2493,17 @@ func (val *ManagedHsmPropertiesArgs) Defaults() *ManagedHsmPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		tmp.EnablePurgeProtection = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -2764,21 +2764,21 @@ func (val *ManagedHsmPropertiesResponse) Defaults() *ManagedHsmPropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := true
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
 	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -5034,15 +5034,15 @@ func (val *VaultProperties) Defaults() *VaultProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -5098,13 +5098,13 @@ func (val *VaultPropertiesArgs) Defaults() *VaultPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		tmp.EnableRbacAuthorization = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -5246,15 +5246,15 @@ func (val *VaultPropertiesResponse) Defaults() *VaultPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}

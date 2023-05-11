@@ -67,11 +67,11 @@ func (val *LookupDomainResult) Defaults() *LookupDomainResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InputSchema) {
+	if tmp.InputSchema == nil {
 		inputSchema_ := "EventGridSchema"
 		tmp.InputSchema = &inputSchema_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

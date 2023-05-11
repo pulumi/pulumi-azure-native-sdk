@@ -74,7 +74,7 @@ func (val *LookupSystemTopicEventSubscriptionResult) Defaults() *LookupSystemTop
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EventDeliverySchema) {
+	if tmp.EventDeliverySchema == nil {
 		eventDeliverySchema_ := "EventGridSchema"
 		tmp.EventDeliverySchema = &eventDeliverySchema_
 	}

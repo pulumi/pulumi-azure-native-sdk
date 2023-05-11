@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,13 +68,13 @@ func NewAgentPool(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Count) {
+	if args.Count == nil {
 		args.Count = pulumi.IntPtr(1)
 	}
-	if isZero(args.Mode) {
+	if args.Mode == nil {
 		args.Mode = pulumi.StringPtr("User")
 	}
-	if isZero(args.OsType) {
+	if args.OsType == nil {
 		args.OsType = pulumi.StringPtr("Linux")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

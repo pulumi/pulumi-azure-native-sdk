@@ -65,11 +65,11 @@ func (val *LookupHuntResult) Defaults() *LookupHuntResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HypothesisStatus) {
+	if tmp.HypothesisStatus == nil {
 		hypothesisStatus_ := "Unknown"
 		tmp.HypothesisStatus = &hypothesisStatus_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "New"
 		tmp.Status = &status_
 	}

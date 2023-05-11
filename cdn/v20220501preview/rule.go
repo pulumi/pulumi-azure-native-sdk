@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,7 +58,7 @@ func NewRule(ctx *pulumi.Context,
 	if args.RuleSetName == nil {
 		return nil, errors.New("invalid value for required argument 'RuleSetName'")
 	}
-	if isZero(args.MatchProcessingBehavior) {
+	if args.MatchProcessingBehavior == nil {
 		args.MatchProcessingBehavior = pulumi.StringPtr("Continue")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

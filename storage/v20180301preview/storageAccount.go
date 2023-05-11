@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,13 +79,13 @@ func NewStorageAccount(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.EnableHttpsTrafficOnly) {
+	if args.EnableHttpsTrafficOnly == nil {
 		args.EnableHttpsTrafficOnly = pulumi.BoolPtr(false)
 	}
 	if args.Encryption != nil {
 		args.Encryption = args.Encryption.ToEncryptionPtrOutput().ApplyT(func(v *Encryption) *Encryption { return v.Defaults() }).(EncryptionPtrOutput)
 	}
-	if isZero(args.IsHnsEnabled) {
+	if args.IsHnsEnabled == nil {
 		args.IsHnsEnabled = pulumi.BoolPtr(false)
 	}
 	if args.NetworkRuleSet != nil {

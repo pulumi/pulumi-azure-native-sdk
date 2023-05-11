@@ -65,15 +65,15 @@ func (val *LookupConnectionMonitorResult) Defaults() *LookupConnectionMonitorRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoStart) {
+	if tmp.AutoStart == nil {
 		autoStart_ := true
 		tmp.AutoStart = &autoStart_
 	}
-	if isZero(tmp.Etag) {
+	if tmp.Etag == nil {
 		etag_ := "A unique read-only string that changes whenever the resource is updated."
 		tmp.Etag = &etag_
 	}
-	if isZero(tmp.MonitoringIntervalInSeconds) {
+	if tmp.MonitoringIntervalInSeconds == nil {
 		monitoringIntervalInSeconds_ := 60
 		tmp.MonitoringIntervalInSeconds = &monitoringIntervalInSeconds_
 	}

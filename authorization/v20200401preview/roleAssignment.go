@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,7 +63,7 @@ func NewRoleAssignment(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if isZero(args.PrincipalType) {
+	if args.PrincipalType == nil {
 		args.PrincipalType = pulumi.StringPtr("User")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -2907,7 +2907,7 @@ func (val *ConflictResolutionPolicy) Defaults() *ConflictResolutionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "LastWriterWins"
 		tmp.Mode = &mode_
 	}
@@ -2941,7 +2941,7 @@ func (val *ConflictResolutionPolicyArgs) Defaults() *ConflictResolutionPolicyArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("LastWriterWins")
 	}
 	return &tmp
@@ -3109,7 +3109,7 @@ func (val *ConflictResolutionPolicyResponse) Defaults() *ConflictResolutionPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "LastWriterWins"
 		tmp.Mode = &mode_
 	}
@@ -3488,7 +3488,7 @@ func (val *ContainerPartitionKey) Defaults() *ContainerPartitionKey {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -3522,7 +3522,7 @@ func (val *ContainerPartitionKeyArgs) Defaults() *ContainerPartitionKeyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		tmp.Kind = pulumi.StringPtr("Hash")
 	}
 	return &tmp
@@ -3692,7 +3692,7 @@ func (val *ContainerPartitionKeyResponse) Defaults() *ContainerPartitionKeyRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -5762,11 +5762,11 @@ func (val *Indexes) Defaults() *Indexes {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		dataType_ := "String"
 		tmp.DataType = &dataType_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -5800,10 +5800,10 @@ func (val *IndexesArgs) Defaults() *IndexesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		tmp.DataType = pulumi.StringPtr("String")
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		tmp.Kind = pulumi.StringPtr("Hash")
 	}
 	return &tmp
@@ -5911,11 +5911,11 @@ func (val *IndexesResponse) Defaults() *IndexesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		dataType_ := "String"
 		tmp.DataType = &dataType_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -5994,7 +5994,7 @@ func (val *IndexingPolicy) Defaults() *IndexingPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		indexingMode_ := "consistent"
 		tmp.IndexingMode = &indexingMode_
 	}
@@ -6034,7 +6034,7 @@ func (val *IndexingPolicyArgs) Defaults() *IndexingPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		tmp.IndexingMode = pulumi.StringPtr("consistent")
 	}
 	return &tmp
@@ -6253,7 +6253,7 @@ func (val *IndexingPolicyResponse) Defaults() *IndexingPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		indexingMode_ := "consistent"
 		tmp.IndexingMode = &indexingMode_
 	}

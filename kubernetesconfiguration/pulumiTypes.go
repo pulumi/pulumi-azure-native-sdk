@@ -490,7 +490,7 @@ func (val *ExtensionStatus) Defaults() *ExtensionStatus {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		level_ := "Information"
 		tmp.Level = &level_
 	}
@@ -528,7 +528,7 @@ func (val *ExtensionStatusArgs) Defaults() *ExtensionStatusArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		tmp.Level = pulumi.StringPtr("Information")
 	}
 	return &tmp
@@ -650,7 +650,7 @@ func (val *ExtensionStatusResponse) Defaults() *ExtensionStatusResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		level_ := "Information"
 		tmp.Level = &level_
 	}
@@ -743,11 +743,11 @@ func (val *GitRepositoryDefinition) Defaults() *GitRepositoryDefinition {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SyncIntervalInSeconds) {
+	if tmp.SyncIntervalInSeconds == nil {
 		syncIntervalInSeconds_ := 600.0
 		tmp.SyncIntervalInSeconds = &syncIntervalInSeconds_
 	}
-	if isZero(tmp.TimeoutInSeconds) {
+	if tmp.TimeoutInSeconds == nil {
 		timeoutInSeconds_ := 600.0
 		tmp.TimeoutInSeconds = &timeoutInSeconds_
 	}
@@ -791,10 +791,10 @@ func (val *GitRepositoryDefinitionArgs) Defaults() *GitRepositoryDefinitionArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SyncIntervalInSeconds) {
+	if tmp.SyncIntervalInSeconds == nil {
 		tmp.SyncIntervalInSeconds = pulumi.Float64Ptr(600.0)
 	}
-	if isZero(tmp.TimeoutInSeconds) {
+	if tmp.TimeoutInSeconds == nil {
 		tmp.TimeoutInSeconds = pulumi.Float64Ptr(600.0)
 	}
 	return &tmp
@@ -1047,11 +1047,11 @@ func (val *GitRepositoryDefinitionResponse) Defaults() *GitRepositoryDefinitionR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SyncIntervalInSeconds) {
+	if tmp.SyncIntervalInSeconds == nil {
 		syncIntervalInSeconds_ := 600.0
 		tmp.SyncIntervalInSeconds = &syncIntervalInSeconds_
 	}
-	if isZero(tmp.TimeoutInSeconds) {
+	if tmp.TimeoutInSeconds == nil {
 		timeoutInSeconds_ := 600.0
 		tmp.TimeoutInSeconds = &timeoutInSeconds_
 	}
@@ -1824,23 +1824,23 @@ func (val *KustomizationDefinition) Defaults() *KustomizationDefinition {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Force) {
+	if tmp.Force == nil {
 		force_ := false
 		tmp.Force = &force_
 	}
-	if isZero(tmp.Path) {
+	if tmp.Path == nil {
 		path_ := ""
 		tmp.Path = &path_
 	}
-	if isZero(tmp.Prune) {
+	if tmp.Prune == nil {
 		prune_ := false
 		tmp.Prune = &prune_
 	}
-	if isZero(tmp.SyncIntervalInSeconds) {
+	if tmp.SyncIntervalInSeconds == nil {
 		syncIntervalInSeconds_ := 600.0
 		tmp.SyncIntervalInSeconds = &syncIntervalInSeconds_
 	}
-	if isZero(tmp.TimeoutInSeconds) {
+	if tmp.TimeoutInSeconds == nil {
 		timeoutInSeconds_ := 600.0
 		tmp.TimeoutInSeconds = &timeoutInSeconds_
 	}
@@ -1884,19 +1884,19 @@ func (val *KustomizationDefinitionArgs) Defaults() *KustomizationDefinitionArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Force) {
+	if tmp.Force == nil {
 		tmp.Force = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Path) {
+	if tmp.Path == nil {
 		tmp.Path = pulumi.StringPtr("")
 	}
-	if isZero(tmp.Prune) {
+	if tmp.Prune == nil {
 		tmp.Prune = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SyncIntervalInSeconds) {
+	if tmp.SyncIntervalInSeconds == nil {
 		tmp.SyncIntervalInSeconds = pulumi.Float64Ptr(600.0)
 	}
-	if isZero(tmp.TimeoutInSeconds) {
+	if tmp.TimeoutInSeconds == nil {
 		tmp.TimeoutInSeconds = pulumi.Float64Ptr(600.0)
 	}
 	return &tmp
@@ -2039,23 +2039,23 @@ func (val *KustomizationDefinitionResponse) Defaults() *KustomizationDefinitionR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Force) {
+	if tmp.Force == nil {
 		force_ := false
 		tmp.Force = &force_
 	}
-	if isZero(tmp.Path) {
+	if tmp.Path == nil {
 		path_ := ""
 		tmp.Path = &path_
 	}
-	if isZero(tmp.Prune) {
+	if tmp.Prune == nil {
 		prune_ := false
 		tmp.Prune = &prune_
 	}
-	if isZero(tmp.SyncIntervalInSeconds) {
+	if tmp.SyncIntervalInSeconds == nil {
 		syncIntervalInSeconds_ := 600.0
 		tmp.SyncIntervalInSeconds = &syncIntervalInSeconds_
 	}
-	if isZero(tmp.TimeoutInSeconds) {
+	if tmp.TimeoutInSeconds == nil {
 		timeoutInSeconds_ := 600.0
 		tmp.TimeoutInSeconds = &timeoutInSeconds_
 	}

@@ -81,15 +81,15 @@ func (val *LookupClusterResult) Defaults() *LookupClusterResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDoubleEncryption) {
+	if tmp.EnableDoubleEncryption == nil {
 		enableDoubleEncryption_ := false
 		tmp.EnableDoubleEncryption = &enableDoubleEncryption_
 	}
-	if isZero(tmp.EnablePurge) {
+	if tmp.EnablePurge == nil {
 		enablePurge_ := false
 		tmp.EnablePurge = &enablePurge_
 	}
-	if isZero(tmp.EnableStreamingIngest) {
+	if tmp.EnableStreamingIngest == nil {
 		enableStreamingIngest_ := false
 		tmp.EnableStreamingIngest = &enableStreamingIngest_
 	}

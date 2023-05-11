@@ -67,7 +67,7 @@ func (val *LookupPolicyAssignmentResult) Defaults() *LookupPolicyAssignmentResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforcementMode) {
+	if tmp.EnforcementMode == nil {
 		enforcementMode_ := "Default"
 		tmp.EnforcementMode = &enforcementMode_
 	}

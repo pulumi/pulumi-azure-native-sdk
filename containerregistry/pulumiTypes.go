@@ -312,7 +312,7 @@ func (val *Argument) Defaults() *Argument {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -335,7 +335,7 @@ func (val *ArgumentResponse) Defaults() *ArgumentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -720,7 +720,7 @@ func (val *BaseImageTrigger) Defaults() *BaseImageTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -758,7 +758,7 @@ func (val *BaseImageTriggerArgs) Defaults() *BaseImageTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -960,7 +960,7 @@ func (val *BaseImageTriggerResponse) Defaults() *BaseImageTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -1099,7 +1099,7 @@ func (val *BuildArgumentResponse) Defaults() *BuildArgumentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -1656,19 +1656,19 @@ func (val *DockerBuildRequest) Defaults() *DockerBuildRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1717,19 +1717,19 @@ func (val *DockerBuildRequestResponse) Defaults() *DockerBuildRequestResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1765,11 +1765,11 @@ func (val *DockerBuildStep) Defaults() *DockerBuildStep {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
@@ -1807,11 +1807,11 @@ func (val *DockerBuildStepResponse) Defaults() *DockerBuildStepResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
@@ -1854,11 +1854,11 @@ func (val *EncodedTaskRunRequest) Defaults() *EncodedTaskRunRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1901,11 +1901,11 @@ func (val *EncodedTaskRunRequestResponse) Defaults() *EncodedTaskRunRequestRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -2641,11 +2641,11 @@ func (val *FileTaskRunRequest) Defaults() *FileTaskRunRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -2688,11 +2688,11 @@ func (val *FileTaskRunRequestResponse) Defaults() *FileTaskRunRequestResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -2749,7 +2749,7 @@ func (val *IPRule) Defaults() *IPRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -2781,7 +2781,7 @@ func (val *IPRuleArgs) Defaults() *IPRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -2882,7 +2882,7 @@ func (val *IPRuleResponse) Defaults() *IPRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -3448,7 +3448,7 @@ func (val *ImportPipelineSourceProperties) Defaults() *ImportPipelineSourcePrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlobContainer"
 		tmp.Type = &type_
 	}
@@ -3484,7 +3484,7 @@ func (val *ImportPipelineSourcePropertiesArgs) Defaults() *ImportPipelineSourceP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("AzureStorageBlobContainer")
 	}
 	return &tmp
@@ -3551,7 +3551,7 @@ func (val *ImportPipelineSourcePropertiesResponse) Defaults() *ImportPipelineSou
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlobContainer"
 		tmp.Type = &type_
 	}
@@ -3660,11 +3660,11 @@ func (val *LoggingProperties) Defaults() *LoggingProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuditLogStatus) {
+	if tmp.AuditLogStatus == nil {
 		auditLogStatus_ := "Disabled"
 		tmp.AuditLogStatus = &auditLogStatus_
 	}
-	if isZero(tmp.LogLevel) {
+	if tmp.LogLevel == nil {
 		logLevel_ := "Information"
 		tmp.LogLevel = &logLevel_
 	}
@@ -3696,10 +3696,10 @@ func (val *LoggingPropertiesArgs) Defaults() *LoggingPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuditLogStatus) {
+	if tmp.AuditLogStatus == nil {
 		tmp.AuditLogStatus = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.LogLevel) {
+	if tmp.LogLevel == nil {
 		tmp.LogLevel = pulumi.StringPtr("Information")
 	}
 	return &tmp
@@ -3850,11 +3850,11 @@ func (val *LoggingPropertiesResponse) Defaults() *LoggingPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuditLogStatus) {
+	if tmp.AuditLogStatus == nil {
 		auditLogStatus_ := "Disabled"
 		tmp.AuditLogStatus = &auditLogStatus_
 	}
-	if isZero(tmp.LogLevel) {
+	if tmp.LogLevel == nil {
 		logLevel_ := "Information"
 		tmp.LogLevel = &logLevel_
 	}
@@ -4056,7 +4056,7 @@ func (val *NetworkRuleSetArgs) Defaults() *NetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = pulumi.String("Allow")
 	}
 	return &tmp
@@ -4956,7 +4956,7 @@ func (val *PipelineRunSourceProperties) Defaults() *PipelineRunSourceProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -4987,7 +4987,7 @@ func (val *PipelineRunSourcePropertiesArgs) Defaults() *PipelineRunSourcePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("AzureStorageBlob")
 	}
 	return &tmp
@@ -5136,7 +5136,7 @@ func (val *PipelineRunSourcePropertiesResponse) Defaults() *PipelineRunSourcePro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -5224,7 +5224,7 @@ func (val *PipelineRunTargetProperties) Defaults() *PipelineRunTargetProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -5255,7 +5255,7 @@ func (val *PipelineRunTargetPropertiesArgs) Defaults() *PipelineRunTargetPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("AzureStorageBlob")
 	}
 	return &tmp
@@ -5404,7 +5404,7 @@ func (val *PipelineRunTargetPropertiesResponse) Defaults() *PipelineRunTargetPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -5576,7 +5576,7 @@ func (val *PipelineSourceTriggerPropertiesArgs) Defaults() *PipelineSourceTrigge
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.String("Enabled")
 	}
 	return &tmp
@@ -7180,7 +7180,7 @@ func (val *QuarantinePolicy) Defaults() *QuarantinePolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -7210,7 +7210,7 @@ func (val *QuarantinePolicyArgs) Defaults() *QuarantinePolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
 	return &tmp
@@ -7344,7 +7344,7 @@ func (val *QuarantinePolicyResponse) Defaults() *QuarantinePolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -7600,11 +7600,11 @@ func (val *RetentionPolicy) Defaults() *RetentionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 7
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -7636,10 +7636,10 @@ func (val *RetentionPolicyArgs) Defaults() *RetentionPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		tmp.Days = pulumi.IntPtr(7)
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
 	return &tmp
@@ -7792,11 +7792,11 @@ func (val *RetentionPolicyResponse) Defaults() *RetentionPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 7
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -7949,7 +7949,7 @@ func (val *RunResponse) Defaults() *RunResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
@@ -8374,7 +8374,7 @@ func (val *SetValue) Defaults() *SetValue {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -8397,7 +8397,7 @@ func (val *SetValueResponse) Defaults() *SetValueResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -9063,7 +9063,7 @@ func (val *SourceTrigger) Defaults() *SourceTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -9099,7 +9099,7 @@ func (val *SourceTriggerArgs) Defaults() *SourceTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -9376,7 +9376,7 @@ func (val *SourceTriggerResponse) Defaults() *SourceTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -10175,7 +10175,7 @@ func (val *TaskRunRequest) Defaults() *TaskRunRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
@@ -10205,7 +10205,7 @@ func (val *TaskRunRequestResponse) Defaults() *TaskRunRequestResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
@@ -10228,7 +10228,7 @@ func (val *TimerTrigger) Defaults() *TimerTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -10262,7 +10262,7 @@ func (val *TimerTriggerArgs) Defaults() *TimerTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -10445,7 +10445,7 @@ func (val *TimerTriggerResponse) Defaults() *TimerTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -11569,11 +11569,11 @@ func (val *TrustPolicy) Defaults() *TrustPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Notary"
 		tmp.Type = &type_
 	}
@@ -11605,10 +11605,10 @@ func (val *TrustPolicyArgs) Defaults() *TrustPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("Notary")
 	}
 	return &tmp
@@ -11759,11 +11759,11 @@ func (val *TrustPolicyResponse) Defaults() *TrustPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Notary"
 		tmp.Type = &type_
 	}
@@ -12010,7 +12010,7 @@ func (val *VirtualNetworkRule) Defaults() *VirtualNetworkRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -12042,7 +12042,7 @@ func (val *VirtualNetworkRuleArgs) Defaults() *VirtualNetworkRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -12143,7 +12143,7 @@ func (val *VirtualNetworkRuleResponse) Defaults() *VirtualNetworkRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}

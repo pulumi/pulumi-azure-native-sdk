@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,7 +79,7 @@ func NewDomainService(ctx *pulumi.Context,
 	if args.LdapsSettings != nil {
 		args.LdapsSettings = args.LdapsSettings.ToLdapsSettingsPtrOutput().ApplyT(func(v *LdapsSettings) *LdapsSettings { return v.Defaults() }).(LdapsSettingsPtrOutput)
 	}
-	if isZero(args.SyncScope) {
+	if args.SyncScope == nil {
 		args.SyncScope = pulumi.StringPtr("All")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

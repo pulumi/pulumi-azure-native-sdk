@@ -50,11 +50,11 @@ func (val *ActiveDirectory) Defaults() *ActiveDirectory {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		activeDirectoryId_ := "guid id"
 		tmp.ActiveDirectoryId = &activeDirectoryId_
 	}
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -112,10 +112,10 @@ func (val *ActiveDirectoryArgs) Defaults() *ActiveDirectoryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		tmp.ActiveDirectoryId = pulumi.StringPtr("guid id")
 	}
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		tmp.OrganizationalUnit = pulumi.StringPtr("CN=Computers")
 	}
 	return &tmp
@@ -311,11 +311,11 @@ func (val *ActiveDirectoryResponse) Defaults() *ActiveDirectoryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		activeDirectoryId_ := "guid id"
 		tmp.ActiveDirectoryId = &activeDirectoryId_
 	}
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -788,35 +788,35 @@ func (val *ExportPolicyRule) Defaults() *ExportPolicyRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cifs) {
+	if tmp.Cifs == nil {
 		cifs_ := false
 		tmp.Cifs = &cifs_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -872,28 +872,28 @@ func (val *ExportPolicyRuleArgs) Defaults() *ExportPolicyRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cifs) {
+	if tmp.Cifs == nil {
 		tmp.Cifs = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		tmp.HasRootAccess = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		tmp.Kerberos5ReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		tmp.Kerberos5ReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		tmp.Kerberos5iReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		tmp.Kerberos5iReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		tmp.Kerberos5pReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		tmp.Kerberos5pReadWrite = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1078,35 +1078,35 @@ func (val *ExportPolicyRuleResponse) Defaults() *ExportPolicyRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cifs) {
+	if tmp.Cifs == nil {
 		cifs_ := false
 		tmp.Cifs = &cifs_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}

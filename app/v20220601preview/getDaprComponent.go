@@ -63,7 +63,7 @@ func (val *LookupDaprComponentResult) Defaults() *LookupDaprComponentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IgnoreErrors) {
+	if tmp.IgnoreErrors == nil {
 		ignoreErrors_ := false
 		tmp.IgnoreErrors = &ignoreErrors_
 	}

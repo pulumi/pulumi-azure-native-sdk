@@ -63,7 +63,7 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.QosType) {
+	if tmp.QosType == nil {
 		qosType_ := "Auto"
 		tmp.QosType = &qosType_
 	}

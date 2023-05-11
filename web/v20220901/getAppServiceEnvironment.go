@@ -90,7 +90,7 @@ func (val *LookupAppServiceEnvironmentResult) Defaults() *LookupAppServiceEnviro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UpgradePreference) {
+	if tmp.UpgradePreference == nil {
 		upgradePreference_ := "None"
 		tmp.UpgradePreference = &upgradePreference_
 	}

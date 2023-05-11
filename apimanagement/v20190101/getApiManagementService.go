@@ -95,11 +95,11 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableClientCertificate) {
+	if tmp.EnableClientCertificate == nil {
 		enableClientCertificate_ := false
 		tmp.EnableClientCertificate = &enableClientCertificate_
 	}
-	if isZero(tmp.VirtualNetworkType) {
+	if tmp.VirtualNetworkType == nil {
 		virtualNetworkType_ := "None"
 		tmp.VirtualNetworkType = &virtualNetworkType_
 	}

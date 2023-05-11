@@ -103,7 +103,7 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.QueryStoreRetention) {
+	if tmp.QueryStoreRetention == nil {
 		queryStoreRetention_ := 30
 		tmp.QueryStoreRetention = &queryStoreRetention_
 	}

@@ -1393,7 +1393,7 @@ func (val *CacheNetworkSettings) Defaults() *CacheNetworkSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
@@ -1423,7 +1423,7 @@ func (val *CacheNetworkSettingsArgs) Defaults() *CacheNetworkSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		tmp.Mtu = pulumi.IntPtr(1500)
 	}
 	return &tmp
@@ -1559,7 +1559,7 @@ func (val *CacheNetworkSettingsResponse) Defaults() *CacheNetworkSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
@@ -2195,7 +2195,7 @@ func (val *CacheUsernameDownloadSettings) Defaults() *CacheUsernameDownloadSetti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -2245,7 +2245,7 @@ func (val *CacheUsernameDownloadSettingsArgs) Defaults() *CacheUsernameDownloadS
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		tmp.UsernameSource = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -2710,7 +2710,7 @@ func (val *CacheUsernameDownloadSettingsResponse) Defaults() *CacheUsernameDownl
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -4269,11 +4269,11 @@ func (val *NfsAccessRule) Defaults() *NfsAccessRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousGID) {
+	if tmp.AnonymousGID == nil {
 		anonymousGID_ := "-2"
 		tmp.AnonymousGID = &anonymousGID_
 	}
-	if isZero(tmp.AnonymousUID) {
+	if tmp.AnonymousUID == nil {
 		anonymousUID_ := "-2"
 		tmp.AnonymousUID = &anonymousUID_
 	}
@@ -4317,10 +4317,10 @@ func (val *NfsAccessRuleArgs) Defaults() *NfsAccessRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousGID) {
+	if tmp.AnonymousGID == nil {
 		tmp.AnonymousGID = pulumi.StringPtr("-2")
 	}
-	if isZero(tmp.AnonymousUID) {
+	if tmp.AnonymousUID == nil {
 		tmp.AnonymousUID = pulumi.StringPtr("-2")
 	}
 	return &tmp
@@ -4463,11 +4463,11 @@ func (val *NfsAccessRuleResponse) Defaults() *NfsAccessRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousGID) {
+	if tmp.AnonymousGID == nil {
 		anonymousGID_ := "-2"
 		tmp.AnonymousGID = &anonymousGID_
 	}
-	if isZero(tmp.AnonymousUID) {
+	if tmp.AnonymousUID == nil {
 		anonymousUID_ := "-2"
 		tmp.AnonymousUID = &anonymousUID_
 	}

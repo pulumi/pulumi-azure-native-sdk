@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,19 +74,19 @@ func NewDomain(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoCreateTopicWithFirstSubscription) {
+	if args.AutoCreateTopicWithFirstSubscription == nil {
 		args.AutoCreateTopicWithFirstSubscription = pulumi.BoolPtr(true)
 	}
-	if isZero(args.AutoDeleteTopicWithLastSubscription) {
+	if args.AutoDeleteTopicWithLastSubscription == nil {
 		args.AutoDeleteTopicWithLastSubscription = pulumi.BoolPtr(true)
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.InputSchema) {
+	if args.InputSchema == nil {
 		args.InputSchema = pulumi.StringPtr("EventGridSchema")
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

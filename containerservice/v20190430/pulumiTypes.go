@@ -26,7 +26,7 @@ func (val *NetworkProfile) Defaults() *NetworkProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.VnetCidr) {
+	if tmp.VnetCidr == nil {
 		vnetCidr_ := "10.0.0.0/8"
 		tmp.VnetCidr = &vnetCidr_
 	}
@@ -60,7 +60,7 @@ func (val *NetworkProfileArgs) Defaults() *NetworkProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.VnetCidr) {
+	if tmp.VnetCidr == nil {
 		tmp.VnetCidr = pulumi.StringPtr("10.0.0.0/8")
 	}
 	return &tmp
@@ -228,7 +228,7 @@ func (val *NetworkProfileResponse) Defaults() *NetworkProfileResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.VnetCidr) {
+	if tmp.VnetCidr == nil {
 		vnetCidr_ := "10.0.0.0/8"
 		tmp.VnetCidr = &vnetCidr_
 	}
@@ -692,7 +692,7 @@ func (val *OpenShiftManagedClusterAgentPoolProfile) Defaults() *OpenShiftManaged
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SubnetCidr) {
+	if tmp.SubnetCidr == nil {
 		subnetCidr_ := "10.0.0.0/24"
 		tmp.SubnetCidr = &subnetCidr_
 	}
@@ -732,7 +732,7 @@ func (val *OpenShiftManagedClusterAgentPoolProfileArgs) Defaults() *OpenShiftMan
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SubnetCidr) {
+	if tmp.SubnetCidr == nil {
 		tmp.SubnetCidr = pulumi.StringPtr("10.0.0.0/24")
 	}
 	return &tmp
@@ -861,7 +861,7 @@ func (val *OpenShiftManagedClusterAgentPoolProfileResponse) Defaults() *OpenShif
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SubnetCidr) {
+	if tmp.SubnetCidr == nil {
 		subnetCidr_ := "10.0.0.0/24"
 		tmp.SubnetCidr = &subnetCidr_
 	}

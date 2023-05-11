@@ -32,15 +32,15 @@ func (val *AutoShutdownProfile) Defaults() *AutoShutdownProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ShutdownOnDisconnect) {
+	if tmp.ShutdownOnDisconnect == nil {
 		shutdownOnDisconnect_ := EnableState("Disabled")
 		tmp.ShutdownOnDisconnect = &shutdownOnDisconnect_
 	}
-	if isZero(tmp.ShutdownOnIdle) {
+	if tmp.ShutdownOnIdle == nil {
 		shutdownOnIdle_ := ShutdownOnIdleMode("None")
 		tmp.ShutdownOnIdle = &shutdownOnIdle_
 	}
-	if isZero(tmp.ShutdownWhenNotConnected) {
+	if tmp.ShutdownWhenNotConnected == nil {
 		shutdownWhenNotConnected_ := EnableState("Disabled")
 		tmp.ShutdownWhenNotConnected = &shutdownWhenNotConnected_
 	}
@@ -80,13 +80,13 @@ func (val *AutoShutdownProfileArgs) Defaults() *AutoShutdownProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ShutdownOnDisconnect) {
+	if tmp.ShutdownOnDisconnect == nil {
 		tmp.ShutdownOnDisconnect = EnableState("Disabled")
 	}
-	if isZero(tmp.ShutdownOnIdle) {
+	if tmp.ShutdownOnIdle == nil {
 		tmp.ShutdownOnIdle = ShutdownOnIdleMode("None")
 	}
-	if isZero(tmp.ShutdownWhenNotConnected) {
+	if tmp.ShutdownWhenNotConnected == nil {
 		tmp.ShutdownWhenNotConnected = EnableState("Disabled")
 	}
 	return &tmp
@@ -305,15 +305,15 @@ func (val *AutoShutdownProfileResponse) Defaults() *AutoShutdownProfileResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ShutdownOnDisconnect) {
+	if tmp.ShutdownOnDisconnect == nil {
 		shutdownOnDisconnect_ := "Disabled"
 		tmp.ShutdownOnDisconnect = &shutdownOnDisconnect_
 	}
-	if isZero(tmp.ShutdownOnIdle) {
+	if tmp.ShutdownOnIdle == nil {
 		shutdownOnIdle_ := "None"
 		tmp.ShutdownOnIdle = &shutdownOnIdle_
 	}
-	if isZero(tmp.ShutdownWhenNotConnected) {
+	if tmp.ShutdownWhenNotConnected == nil {
 		shutdownWhenNotConnected_ := "Disabled"
 		tmp.ShutdownWhenNotConnected = &shutdownWhenNotConnected_
 	}
@@ -467,19 +467,19 @@ func (val *ConnectionProfile) Defaults() *ConnectionProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientRdpAccess) {
+	if tmp.ClientRdpAccess == nil {
 		clientRdpAccess_ := ConnectionType("None")
 		tmp.ClientRdpAccess = &clientRdpAccess_
 	}
-	if isZero(tmp.ClientSshAccess) {
+	if tmp.ClientSshAccess == nil {
 		clientSshAccess_ := ConnectionType("None")
 		tmp.ClientSshAccess = &clientSshAccess_
 	}
-	if isZero(tmp.WebRdpAccess) {
+	if tmp.WebRdpAccess == nil {
 		webRdpAccess_ := ConnectionType("None")
 		tmp.WebRdpAccess = &webRdpAccess_
 	}
-	if isZero(tmp.WebSshAccess) {
+	if tmp.WebSshAccess == nil {
 		webSshAccess_ := ConnectionType("None")
 		tmp.WebSshAccess = &webSshAccess_
 	}
@@ -515,16 +515,16 @@ func (val *ConnectionProfileArgs) Defaults() *ConnectionProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientRdpAccess) {
+	if tmp.ClientRdpAccess == nil {
 		tmp.ClientRdpAccess = ConnectionType("None")
 	}
-	if isZero(tmp.ClientSshAccess) {
+	if tmp.ClientSshAccess == nil {
 		tmp.ClientSshAccess = ConnectionType("None")
 	}
-	if isZero(tmp.WebRdpAccess) {
+	if tmp.WebRdpAccess == nil {
 		tmp.WebRdpAccess = ConnectionType("None")
 	}
-	if isZero(tmp.WebSshAccess) {
+	if tmp.WebSshAccess == nil {
 		tmp.WebSshAccess = ConnectionType("None")
 	}
 	return &tmp
@@ -709,19 +709,19 @@ func (val *ConnectionProfileResponse) Defaults() *ConnectionProfileResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientRdpAccess) {
+	if tmp.ClientRdpAccess == nil {
 		clientRdpAccess_ := "None"
 		tmp.ClientRdpAccess = &clientRdpAccess_
 	}
-	if isZero(tmp.ClientSshAccess) {
+	if tmp.ClientSshAccess == nil {
 		clientSshAccess_ := "None"
 		tmp.ClientSshAccess = &clientSshAccess_
 	}
-	if isZero(tmp.WebRdpAccess) {
+	if tmp.WebRdpAccess == nil {
 		webRdpAccess_ := "None"
 		tmp.WebRdpAccess = &webRdpAccess_
 	}
-	if isZero(tmp.WebSshAccess) {
+	if tmp.WebSshAccess == nil {
 		webSshAccess_ := "None"
 		tmp.WebSshAccess = &webSshAccess_
 	}
@@ -2936,7 +2936,7 @@ func (val *VirtualMachineAdditionalCapabilities) Defaults() *VirtualMachineAddit
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstallGpuDrivers) {
+	if tmp.InstallGpuDrivers == nil {
 		installGpuDrivers_ := EnableState("Disabled")
 		tmp.InstallGpuDrivers = &installGpuDrivers_
 	}
@@ -2966,7 +2966,7 @@ func (val *VirtualMachineAdditionalCapabilitiesArgs) Defaults() *VirtualMachineA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstallGpuDrivers) {
+	if tmp.InstallGpuDrivers == nil {
 		tmp.InstallGpuDrivers = EnableState("Disabled")
 	}
 	return &tmp
@@ -3100,7 +3100,7 @@ func (val *VirtualMachineAdditionalCapabilitiesResponse) Defaults() *VirtualMach
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstallGpuDrivers) {
+	if tmp.InstallGpuDrivers == nil {
 		installGpuDrivers_ := "Disabled"
 		tmp.InstallGpuDrivers = &installGpuDrivers_
 	}
@@ -3189,7 +3189,7 @@ func (val *VirtualMachineProfile) Defaults() *VirtualMachineProfile {
 	tmp := *val
 	tmp.AdditionalCapabilities = tmp.AdditionalCapabilities.Defaults()
 
-	if isZero(tmp.UseSharedPassword) {
+	if tmp.UseSharedPassword == nil {
 		useSharedPassword_ := EnableState("Disabled")
 		tmp.UseSharedPassword = &useSharedPassword_
 	}
@@ -3234,7 +3234,7 @@ func (val *VirtualMachineProfileArgs) Defaults() *VirtualMachineProfileArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.UseSharedPassword) {
+	if tmp.UseSharedPassword == nil {
 		tmp.UseSharedPassword = EnableState("Disabled")
 	}
 	return &tmp
@@ -3336,7 +3336,7 @@ func (val *VirtualMachineProfileResponse) Defaults() *VirtualMachineProfileRespo
 	tmp := *val
 	tmp.AdditionalCapabilities = tmp.AdditionalCapabilities.Defaults()
 
-	if isZero(tmp.UseSharedPassword) {
+	if tmp.UseSharedPassword == nil {
 		useSharedPassword_ := "Disabled"
 		tmp.UseSharedPassword = &useSharedPassword_
 	}

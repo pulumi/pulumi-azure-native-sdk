@@ -24,11 +24,11 @@ func (val *Backup) Defaults() *Backup {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BackupRetentionDays) {
+	if tmp.BackupRetentionDays == nil {
 		backupRetentionDays_ := 7
 		tmp.BackupRetentionDays = &backupRetentionDays_
 	}
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		geoRedundantBackup_ := "Disabled"
 		tmp.GeoRedundantBackup = &geoRedundantBackup_
 	}
@@ -60,10 +60,10 @@ func (val *BackupArgs) Defaults() *BackupArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BackupRetentionDays) {
+	if tmp.BackupRetentionDays == nil {
 		tmp.BackupRetentionDays = pulumi.IntPtr(7)
 	}
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		tmp.GeoRedundantBackup = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -216,11 +216,11 @@ func (val *BackupResponse) Defaults() *BackupResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BackupRetentionDays) {
+	if tmp.BackupRetentionDays == nil {
 		backupRetentionDays_ := 7
 		tmp.BackupRetentionDays = &backupRetentionDays_
 	}
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		geoRedundantBackup_ := "Disabled"
 		tmp.GeoRedundantBackup = &geoRedundantBackup_
 	}
@@ -325,11 +325,11 @@ func (val *HighAvailability) Defaults() *HighAvailability {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Disabled"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.StandbyAvailabilityZone) {
+	if tmp.StandbyAvailabilityZone == nil {
 		standbyAvailabilityZone_ := ""
 		tmp.StandbyAvailabilityZone = &standbyAvailabilityZone_
 	}
@@ -361,10 +361,10 @@ func (val *HighAvailabilityArgs) Defaults() *HighAvailabilityArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.StandbyAvailabilityZone) {
+	if tmp.StandbyAvailabilityZone == nil {
 		tmp.StandbyAvailabilityZone = pulumi.StringPtr("")
 	}
 	return &tmp
@@ -517,11 +517,11 @@ func (val *HighAvailabilityResponse) Defaults() *HighAvailabilityResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Disabled"
 		tmp.Mode = &mode_
 	}
-	if isZero(tmp.StandbyAvailabilityZone) {
+	if tmp.StandbyAvailabilityZone == nil {
 		standbyAvailabilityZone_ := ""
 		tmp.StandbyAvailabilityZone = &standbyAvailabilityZone_
 	}
@@ -630,19 +630,19 @@ func (val *MaintenanceWindow) Defaults() *MaintenanceWindow {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CustomWindow) {
+	if tmp.CustomWindow == nil {
 		customWindow_ := "Disabled"
 		tmp.CustomWindow = &customWindow_
 	}
-	if isZero(tmp.DayOfWeek) {
+	if tmp.DayOfWeek == nil {
 		dayOfWeek_ := 0
 		tmp.DayOfWeek = &dayOfWeek_
 	}
-	if isZero(tmp.StartHour) {
+	if tmp.StartHour == nil {
 		startHour_ := 0
 		tmp.StartHour = &startHour_
 	}
-	if isZero(tmp.StartMinute) {
+	if tmp.StartMinute == nil {
 		startMinute_ := 0
 		tmp.StartMinute = &startMinute_
 	}
@@ -678,16 +678,16 @@ func (val *MaintenanceWindowArgs) Defaults() *MaintenanceWindowArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CustomWindow) {
+	if tmp.CustomWindow == nil {
 		tmp.CustomWindow = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.DayOfWeek) {
+	if tmp.DayOfWeek == nil {
 		tmp.DayOfWeek = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.StartHour) {
+	if tmp.StartHour == nil {
 		tmp.StartHour = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.StartMinute) {
+	if tmp.StartMinute == nil {
 		tmp.StartMinute = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -872,19 +872,19 @@ func (val *MaintenanceWindowResponse) Defaults() *MaintenanceWindowResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CustomWindow) {
+	if tmp.CustomWindow == nil {
 		customWindow_ := "Disabled"
 		tmp.CustomWindow = &customWindow_
 	}
-	if isZero(tmp.DayOfWeek) {
+	if tmp.DayOfWeek == nil {
 		dayOfWeek_ := 0
 		tmp.DayOfWeek = &dayOfWeek_
 	}
-	if isZero(tmp.StartHour) {
+	if tmp.StartHour == nil {
 		startHour_ := 0
 		tmp.StartHour = &startHour_
 	}
-	if isZero(tmp.StartMinute) {
+	if tmp.StartMinute == nil {
 		startMinute_ := 0
 		tmp.StartMinute = &startMinute_
 	}
@@ -1004,11 +1004,11 @@ func (val *Network) Defaults() *Network {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelegatedSubnetResourceId) {
+	if tmp.DelegatedSubnetResourceId == nil {
 		delegatedSubnetResourceId_ := ""
 		tmp.DelegatedSubnetResourceId = &delegatedSubnetResourceId_
 	}
-	if isZero(tmp.PrivateDnsZoneArmResourceId) {
+	if tmp.PrivateDnsZoneArmResourceId == nil {
 		privateDnsZoneArmResourceId_ := ""
 		tmp.PrivateDnsZoneArmResourceId = &privateDnsZoneArmResourceId_
 	}
@@ -1040,10 +1040,10 @@ func (val *NetworkArgs) Defaults() *NetworkArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelegatedSubnetResourceId) {
+	if tmp.DelegatedSubnetResourceId == nil {
 		tmp.DelegatedSubnetResourceId = pulumi.StringPtr("")
 	}
-	if isZero(tmp.PrivateDnsZoneArmResourceId) {
+	if tmp.PrivateDnsZoneArmResourceId == nil {
 		tmp.PrivateDnsZoneArmResourceId = pulumi.StringPtr("")
 	}
 	return &tmp
@@ -1196,11 +1196,11 @@ func (val *NetworkResponse) Defaults() *NetworkResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelegatedSubnetResourceId) {
+	if tmp.DelegatedSubnetResourceId == nil {
 		delegatedSubnetResourceId_ := ""
 		tmp.DelegatedSubnetResourceId = &delegatedSubnetResourceId_
 	}
-	if isZero(tmp.PrivateDnsZoneArmResourceId) {
+	if tmp.PrivateDnsZoneArmResourceId == nil {
 		privateDnsZoneArmResourceId_ := ""
 		tmp.PrivateDnsZoneArmResourceId = &privateDnsZoneArmResourceId_
 	}

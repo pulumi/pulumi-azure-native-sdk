@@ -71,15 +71,15 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.EncryptionType) {
+	if tmp.EncryptionType == nil {
 		encryptionType_ := "Single"
 		tmp.EncryptionType = &encryptionType_
 	}
-	if isZero(tmp.QosType) {
+	if tmp.QosType == nil {
 		qosType_ := "Auto"
 		tmp.QosType = &qosType_
 	}

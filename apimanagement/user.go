@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,7 +60,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	if isZero(args.State) {
+	if args.State == nil {
 		args.State = pulumi.StringPtr("active")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

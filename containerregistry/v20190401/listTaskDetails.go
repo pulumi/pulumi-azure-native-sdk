@@ -70,7 +70,7 @@ func (val *ListTaskDetailsResult) Defaults() *ListTaskDetailsResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}

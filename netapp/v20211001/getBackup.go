@@ -69,7 +69,7 @@ func (val *LookupBackupResult) Defaults() *LookupBackupResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseExistingSnapshot) {
+	if tmp.UseExistingSnapshot == nil {
 		useExistingSnapshot_ := false
 		tmp.UseExistingSnapshot = &useExistingSnapshot_
 	}

@@ -49,7 +49,7 @@ func (val *LookupPolicyResult) Defaults() *LookupPolicyResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContentFormat) {
+	if tmp.ContentFormat == nil {
 		contentFormat_ := "xml"
 		tmp.ContentFormat = &contentFormat_
 	}

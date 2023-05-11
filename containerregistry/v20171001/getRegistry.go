@@ -63,7 +63,7 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdminUserEnabled) {
+	if tmp.AdminUserEnabled == nil {
 		adminUserEnabled_ := false
 		tmp.AdminUserEnabled = &adminUserEnabled_
 	}

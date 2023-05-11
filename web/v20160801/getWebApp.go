@@ -115,11 +115,11 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Reserved) {
+	if tmp.Reserved == nil {
 		reserved_ := false
 		tmp.Reserved = &reserved_
 	}
-	if isZero(tmp.ScmSiteAlsoStopped) {
+	if tmp.ScmSiteAlsoStopped == nil {
 		scmSiteAlsoStopped_ := false
 		tmp.ScmSiteAlsoStopped = &scmSiteAlsoStopped_
 	}

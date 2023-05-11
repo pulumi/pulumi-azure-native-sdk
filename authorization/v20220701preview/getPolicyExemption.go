@@ -63,7 +63,7 @@ func (val *LookupPolicyExemptionResult) Defaults() *LookupPolicyExemptionResult 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AssignmentScopeValidation) {
+	if tmp.AssignmentScopeValidation == nil {
 		assignmentScopeValidation_ := "Default"
 		tmp.AssignmentScopeValidation = &assignmentScopeValidation_
 	}

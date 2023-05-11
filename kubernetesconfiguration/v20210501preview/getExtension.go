@@ -77,11 +77,11 @@ func (val *LookupExtensionResult) Defaults() *LookupExtensionResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoUpgradeMinorVersion) {
+	if tmp.AutoUpgradeMinorVersion == nil {
 		autoUpgradeMinorVersion_ := true
 		tmp.AutoUpgradeMinorVersion = &autoUpgradeMinorVersion_
 	}
-	if isZero(tmp.ReleaseTrain) {
+	if tmp.ReleaseTrain == nil {
 		releaseTrain_ := "Stable"
 		tmp.ReleaseTrain = &releaseTrain_
 	}

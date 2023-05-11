@@ -85,11 +85,11 @@ func (val *ConfigurationSetting) Defaults() *ConfigurationSetting {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConfigurationModeFrequencyMins) {
+	if tmp.ConfigurationModeFrequencyMins == nil {
 		configurationModeFrequencyMins_ := 15.0
 		tmp.ConfigurationModeFrequencyMins = &configurationModeFrequencyMins_
 	}
-	if isZero(tmp.RefreshFrequencyMins) {
+	if tmp.RefreshFrequencyMins == nil {
 		refreshFrequencyMins_ := 30.0
 		tmp.RefreshFrequencyMins = &refreshFrequencyMins_
 	}
@@ -129,10 +129,10 @@ func (val *ConfigurationSettingArgs) Defaults() *ConfigurationSettingArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConfigurationModeFrequencyMins) {
+	if tmp.ConfigurationModeFrequencyMins == nil {
 		tmp.ConfigurationModeFrequencyMins = pulumi.Float64Ptr(15.0)
 	}
-	if isZero(tmp.RefreshFrequencyMins) {
+	if tmp.RefreshFrequencyMins == nil {
 		tmp.RefreshFrequencyMins = pulumi.Float64Ptr(30.0)
 	}
 	return &tmp
@@ -351,11 +351,11 @@ func (val *ConfigurationSettingResponse) Defaults() *ConfigurationSettingRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConfigurationModeFrequencyMins) {
+	if tmp.ConfigurationModeFrequencyMins == nil {
 		configurationModeFrequencyMins_ := 15.0
 		tmp.ConfigurationModeFrequencyMins = &configurationModeFrequencyMins_
 	}
-	if isZero(tmp.RefreshFrequencyMins) {
+	if tmp.RefreshFrequencyMins == nil {
 		refreshFrequencyMins_ := 30.0
 		tmp.RefreshFrequencyMins = &refreshFrequencyMins_
 	}

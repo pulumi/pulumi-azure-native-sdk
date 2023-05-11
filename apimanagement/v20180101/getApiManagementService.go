@@ -93,7 +93,7 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 	tmp := *val
 	tmp.Sku = *tmp.Sku.Defaults()
 
-	if isZero(tmp.VirtualNetworkType) {
+	if tmp.VirtualNetworkType == nil {
 		virtualNetworkType_ := "None"
 		tmp.VirtualNetworkType = &virtualNetworkType_
 	}
