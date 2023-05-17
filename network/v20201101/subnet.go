@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,10 +74,10 @@ func NewSubnet(ctx *pulumi.Context,
 	if args.VirtualNetworkName == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualNetworkName'")
 	}
-	if isZero(args.PrivateEndpointNetworkPolicies) {
+	if args.PrivateEndpointNetworkPolicies == nil {
 		args.PrivateEndpointNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
-	if isZero(args.PrivateLinkServiceNetworkPolicies) {
+	if args.PrivateLinkServiceNetworkPolicies == nil {
 		args.PrivateLinkServiceNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -212,6 +212,9 @@ func NewSubnet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
 		},
 	})
 	opts = append(opts, aliases)

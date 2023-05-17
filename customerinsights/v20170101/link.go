@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The link resource format.
-//
-// Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 type Link struct {
 	pulumi.CustomResourceState
 

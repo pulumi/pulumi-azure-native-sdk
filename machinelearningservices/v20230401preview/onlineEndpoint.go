@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +75,12 @@ func NewOnlineEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:OnlineEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:OnlineEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:OnlineEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

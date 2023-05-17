@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a database on the RedisEnterprise cluster
-// API Version: 2021-03-01.
+// API Version: 2022-01-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type Database struct {
 	ClusteringPolicy pulumi.StringPtrOutput `pulumi:"clusteringPolicy"`
 	// Redis eviction policy - default is VolatileLRU
 	EvictionPolicy pulumi.StringPtrOutput `pulumi:"evictionPolicy"`
+	// Optional set of properties to configure geo replication for this database.
+	GeoReplication DatabasePropertiesResponseGeoReplicationPtrOutput `pulumi:"geoReplication"`
 	// Optional set of redis modules to enable in this database - modules can only be added at creation time.
 	Modules ModuleResponseArrayOutput `pulumi:"modules"`
 	// The name of the resource
@@ -117,6 +120,8 @@ type databaseArgs struct {
 	DatabaseName *string `pulumi:"databaseName"`
 	// Redis eviction policy - default is VolatileLRU
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
+	// Optional set of properties to configure geo replication for this database.
+	GeoReplication *DatabasePropertiesGeoReplication `pulumi:"geoReplication"`
 	// Optional set of redis modules to enable in this database - modules can only be added at creation time.
 	Modules []Module `pulumi:"modules"`
 	// Persistence settings
@@ -139,6 +144,8 @@ type DatabaseArgs struct {
 	DatabaseName pulumi.StringPtrInput
 	// Redis eviction policy - default is VolatileLRU
 	EvictionPolicy pulumi.StringPtrInput
+	// Optional set of properties to configure geo replication for this database.
+	GeoReplication DatabasePropertiesGeoReplicationPtrInput
 	// Optional set of redis modules to enable in this database - modules can only be added at creation time.
 	Modules ModuleArrayInput
 	// Persistence settings
@@ -199,6 +206,11 @@ func (o DatabaseOutput) ClusteringPolicy() pulumi.StringPtrOutput {
 // Redis eviction policy - default is VolatileLRU
 func (o DatabaseOutput) EvictionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Optional set of properties to configure geo replication for this database.
+func (o DatabaseOutput) GeoReplication() DatabasePropertiesResponseGeoReplicationPtrOutput {
+	return o.ApplyT(func(v *Database) DatabasePropertiesResponseGeoReplicationPtrOutput { return v.GeoReplication }).(DatabasePropertiesResponseGeoReplicationPtrOutput)
 }
 
 // Optional set of redis modules to enable in this database - modules can only be added at creation time.

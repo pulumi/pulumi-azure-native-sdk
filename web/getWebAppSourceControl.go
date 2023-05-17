@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the source control configuration of an app.
-// API Version: 2020-12-01.
+// Description for Gets the source control configuration of an app.
+// API Version: 2022-09-01.
 func LookupWebAppSourceControl(ctx *pulumi.Context, args *LookupWebAppSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSourceControlResult, error) {
 	var rv LookupWebAppSourceControlResult
 	err := ctx.Invoke("azure-native:web:getWebAppSourceControl", args, &rv, opts...)

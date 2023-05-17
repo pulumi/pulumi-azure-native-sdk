@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an existing remediation at resource scope.
-//
-// Deprecated: Version 2018-07-01-preview will be removed in v2 of the provider.
 func LookupRemediationAtResource(ctx *pulumi.Context, args *LookupRemediationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtResourceResult, error) {
 	var rv LookupRemediationAtResourceResult
 	err := ctx.Invoke("azure-native:policyinsights/v20180701preview:getRemediationAtResource", args, &rv, opts...)

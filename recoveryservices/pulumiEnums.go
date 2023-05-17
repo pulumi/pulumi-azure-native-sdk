@@ -3,12 +3,35 @@
 
 package recoveryservices
 
+// Whether storage account lock is to be acquired for this container or not.
+type AcquireStorageAccountLock string
+
+const (
+	AcquireStorageAccountLockAcquire    = AcquireStorageAccountLock("Acquire")
+	AcquireStorageAccountLockNotAcquire = AcquireStorageAccountLock("NotAcquire")
+)
+
 // A value indicating whether the auto update is enabled.
 type AgentAutoUpdateStatus string
 
 const (
 	AgentAutoUpdateStatusDisabled = AgentAutoUpdateStatus("Disabled")
 	AgentAutoUpdateStatusEnabled  = AgentAutoUpdateStatus("Enabled")
+)
+
+type AlertsState string
+
+const (
+	AlertsStateEnabled  = AlertsState("Enabled")
+	AlertsStateDisabled = AlertsState("Disabled")
+)
+
+// A value indicating the type authentication to use for automation Account.
+type AutomationAccountAuthenticationType string
+
+const (
+	AutomationAccountAuthenticationTypeRunAsAccount           = AutomationAccountAuthenticationType("RunAsAccount")
+	AutomationAccountAuthenticationTypeSystemAssignedIdentity = AutomationAccountAuthenticationType("SystemAssignedIdentity")
 )
 
 // Type of backup items associated with this container.
@@ -30,6 +53,7 @@ const (
 	BackupItemTypeAzureFileShare    = BackupItemType("AzureFileShare")
 	BackupItemTypeSAPHanaDatabase   = BackupItemType("SAPHanaDatabase")
 	BackupItemTypeSAPAseDatabase    = BackupItemType("SAPAseDatabase")
+	BackupItemTypeSAPHanaDBInstance = BackupItemType("SAPHanaDBInstance")
 )
 
 // Type of backup management for the backed up item.
@@ -47,30 +71,6 @@ const (
 	BackupManagementTypeDefaultBackup     = BackupManagementType("DefaultBackup")
 )
 
-// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
-// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
-// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
-// Backup is VMAppContainer
-type ContainerType string
-
-const (
-	ContainerTypeInvalid                    = ContainerType("Invalid")
-	ContainerTypeUnknown                    = ContainerType("Unknown")
-	ContainerTypeIaasVMContainer            = ContainerType("IaasVMContainer")
-	ContainerTypeIaasVMServiceContainer     = ContainerType("IaasVMServiceContainer")
-	ContainerTypeDPMContainer               = ContainerType("DPMContainer")
-	ContainerTypeAzureBackupServerContainer = ContainerType("AzureBackupServerContainer")
-	ContainerTypeMABContainer               = ContainerType("MABContainer")
-	ContainerTypeCluster                    = ContainerType("Cluster")
-	ContainerTypeAzureSqlContainer          = ContainerType("AzureSqlContainer")
-	ContainerTypeWindows                    = ContainerType("Windows")
-	ContainerTypeVCenter                    = ContainerType("VCenter")
-	ContainerTypeVMAppContainer             = ContainerType("VMAppContainer")
-	ContainerTypeSQLAGWorkLoadContainer     = ContainerType("SQLAGWorkLoadContainer")
-	ContainerTypeStorageContainer           = ContainerType("StorageContainer")
-	ContainerTypeGenericContainer           = ContainerType("GenericContainer")
-)
-
 // Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
 type CreateMode string
 
@@ -80,25 +80,12 @@ const (
 	CreateModeRecover = CreateMode("Recover")
 )
 
-// Type of workload this item represents.
-type DataSourceType string
+type CrossSubscriptionRestoreState string
 
 const (
-	DataSourceTypeInvalid           = DataSourceType("Invalid")
-	DataSourceTypeVM                = DataSourceType("VM")
-	DataSourceTypeFileFolder        = DataSourceType("FileFolder")
-	DataSourceTypeAzureSqlDb        = DataSourceType("AzureSqlDb")
-	DataSourceTypeSQLDB             = DataSourceType("SQLDB")
-	DataSourceTypeExchange          = DataSourceType("Exchange")
-	DataSourceTypeSharepoint        = DataSourceType("Sharepoint")
-	DataSourceTypeVMwareVM          = DataSourceType("VMwareVM")
-	DataSourceTypeSystemState       = DataSourceType("SystemState")
-	DataSourceTypeClient            = DataSourceType("Client")
-	DataSourceTypeGenericDataSource = DataSourceType("GenericDataSource")
-	DataSourceTypeSQLDataBase       = DataSourceType("SQLDataBase")
-	DataSourceTypeAzureFileShare    = DataSourceType("AzureFileShare")
-	DataSourceTypeSAPHanaDatabase   = DataSourceType("SAPHanaDatabase")
-	DataSourceTypeSAPAseDatabase    = DataSourceType("SAPAseDatabase")
+	CrossSubscriptionRestoreStateEnabled             = CrossSubscriptionRestoreState("Enabled")
+	CrossSubscriptionRestoreStateDisabled            = CrossSubscriptionRestoreState("Disabled")
+	CrossSubscriptionRestoreStatePermanentlyDisabled = CrossSubscriptionRestoreState("PermanentlyDisabled")
 )
 
 type DayOfWeek string
@@ -122,6 +109,13 @@ const (
 	DiskAccountType_StandardSSD_LRS = DiskAccountType("StandardSSD_LRS")
 )
 
+// The extended location type.
+type ExtendedLocationType string
+
+const (
+	ExtendedLocationTypeEdgeZone = ExtendedLocationType("EdgeZone")
+)
+
 // The failover deployment model.
 type FailoverDeploymentModel string
 
@@ -131,14 +125,20 @@ const (
 	FailoverDeploymentModelResourceManager = FailoverDeploymentModel("ResourceManager")
 )
 
-// Health status of protected item.
-type HealthStatus string
+type IAASVMPolicyType string
 
 const (
-	HealthStatusPassed          = HealthStatus("Passed")
-	HealthStatusActionRequired  = HealthStatus("ActionRequired")
-	HealthStatusActionSuggested = HealthStatus("ActionSuggested")
-	HealthStatusInvalid         = HealthStatus("Invalid")
+	IAASVMPolicyTypeInvalid = IAASVMPolicyType("Invalid")
+	IAASVMPolicyTypeV1      = IAASVMPolicyType("V1")
+	IAASVMPolicyTypeV2      = IAASVMPolicyType("V2")
+)
+
+type ImmutabilityState string
+
+const (
+	ImmutabilityStateDisabled = ImmutabilityState("Disabled")
+	ImmutabilityStateUnlocked = ImmutabilityState("Unlocked")
+	ImmutabilityStateLocked   = ImmutabilityState("Locked")
 )
 
 // Enabling/Disabling the Double Encryption state
@@ -199,12 +199,14 @@ const (
 type PolicyType string
 
 const (
-	PolicyTypeInvalid      = PolicyType("Invalid")
-	PolicyTypeFull         = PolicyType("Full")
-	PolicyTypeDifferential = PolicyType("Differential")
-	PolicyTypeLog          = PolicyType("Log")
-	PolicyTypeCopyOnlyFull = PolicyType("CopyOnlyFull")
-	PolicyTypeIncremental  = PolicyType("Incremental")
+	PolicyTypeInvalid              = PolicyType("Invalid")
+	PolicyTypeFull                 = PolicyType("Full")
+	PolicyTypeDifferential         = PolicyType("Differential")
+	PolicyTypeLog                  = PolicyType("Log")
+	PolicyTypeCopyOnlyFull         = PolicyType("CopyOnlyFull")
+	PolicyTypeIncremental          = PolicyType("Incremental")
+	PolicyTypeSnapshotFull         = PolicyType("SnapshotFull")
+	PolicyTypeSnapshotCopyOnlyFull = PolicyType("SnapshotCopyOnlyFull")
 )
 
 type PossibleOperationsDirections string
@@ -222,6 +224,33 @@ const (
 	PrivateEndpointConnectionStatusApproved     = PrivateEndpointConnectionStatus("Approved")
 	PrivateEndpointConnectionStatusRejected     = PrivateEndpointConnectionStatus("Rejected")
 	PrivateEndpointConnectionStatusDisconnected = PrivateEndpointConnectionStatus("Disconnected")
+)
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+type ProtectableContainerType string
+
+const (
+	ProtectableContainerTypeInvalid                                   = ProtectableContainerType("Invalid")
+	ProtectableContainerTypeUnknown                                   = ProtectableContainerType("Unknown")
+	ProtectableContainerTypeIaasVMContainer                           = ProtectableContainerType("IaasVMContainer")
+	ProtectableContainerTypeIaasVMServiceContainer                    = ProtectableContainerType("IaasVMServiceContainer")
+	ProtectableContainerTypeDPMContainer                              = ProtectableContainerType("DPMContainer")
+	ProtectableContainerTypeAzureBackupServerContainer                = ProtectableContainerType("AzureBackupServerContainer")
+	ProtectableContainerTypeMABContainer                              = ProtectableContainerType("MABContainer")
+	ProtectableContainerTypeCluster                                   = ProtectableContainerType("Cluster")
+	ProtectableContainerTypeAzureSqlContainer                         = ProtectableContainerType("AzureSqlContainer")
+	ProtectableContainerTypeWindows                                   = ProtectableContainerType("Windows")
+	ProtectableContainerTypeVCenter                                   = ProtectableContainerType("VCenter")
+	ProtectableContainerTypeVMAppContainer                            = ProtectableContainerType("VMAppContainer")
+	ProtectableContainerTypeSQLAGWorkLoadContainer                    = ProtectableContainerType("SQLAGWorkLoadContainer")
+	ProtectableContainerTypeStorageContainer                          = ProtectableContainerType("StorageContainer")
+	ProtectableContainerTypeGenericContainer                          = ProtectableContainerType("GenericContainer")
+	ProtectableContainerType_Microsoft_ClassicCompute_virtualMachines = ProtectableContainerType("Microsoft.ClassicCompute/virtualMachines")
+	ProtectableContainerType_Microsoft_Compute_virtualMachines        = ProtectableContainerType("Microsoft.Compute/virtualMachines")
+	ProtectableContainerTypeAzureWorkloadContainer                    = ProtectableContainerType("AzureWorkloadContainer")
 )
 
 // Health status of the backup item, evaluated based on last heartbeat received
@@ -245,6 +274,19 @@ const (
 	ProtectedItemStateEnumProtectionError   = ProtectedItemStateEnum("ProtectionError")
 	ProtectedItemStateEnumProtectionStopped = ProtectedItemStateEnum("ProtectionStopped")
 	ProtectedItemStateEnumProtectionPaused  = ProtectedItemStateEnum("ProtectionPaused")
+	ProtectedItemStateEnumBackupsSuspended  = ProtectedItemStateEnum("BackupsSuspended")
+)
+
+// backup protectionIntent type.
+type ProtectionIntentItemType string
+
+const (
+	ProtectionIntentItemTypeInvalid                                    = ProtectionIntentItemType("Invalid")
+	ProtectionIntentItemTypeAzureResourceItem                          = ProtectionIntentItemType("AzureResourceItem")
+	ProtectionIntentItemTypeRecoveryServiceVaultItem                   = ProtectionIntentItemType("RecoveryServiceVaultItem")
+	ProtectionIntentItemTypeAzureWorkloadContainerAutoProtectionIntent = ProtectionIntentItemType("AzureWorkloadContainerAutoProtectionIntent")
+	ProtectionIntentItemTypeAzureWorkloadAutoProtectionIntent          = ProtectionIntentItemType("AzureWorkloadAutoProtectionIntent")
+	ProtectionIntentItemTypeAzureWorkloadSQLAutoProtectionIntent       = ProtectionIntentItemType("AzureWorkloadSQLAutoProtectionIntent")
 )
 
 // Backup state of this backup item.
@@ -257,6 +299,7 @@ const (
 	ProtectionStateProtectionError   = ProtectionState("ProtectionError")
 	ProtectionStateProtectionStopped = ProtectionState("ProtectionStopped")
 	ProtectionStateProtectionPaused  = ProtectionState("ProtectionPaused")
+	ProtectionStateBackupsSuspended  = ProtectionState("BackupsSuspended")
 )
 
 // Backup state of this backup item.
@@ -280,6 +323,22 @@ const (
 	ProvisioningStatePending   = ProvisioningState("Pending")
 )
 
+// property to enable or disable resource provider inbound network traffic from public clients
+type PublicNetworkAccess string
+
+const (
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+// The fabric location.
+type RecoveryPlanActionLocation string
+
+const (
+	RecoveryPlanActionLocationPrimary  = RecoveryPlanActionLocation("Primary")
+	RecoveryPlanActionLocationRecovery = RecoveryPlanActionLocation("Recovery")
+)
+
 // The group type.
 type RecoveryPlanGroupType string
 
@@ -301,6 +360,7 @@ const (
 	ReplicationProtectedItemOperationTestFailoverCleanup = ReplicationProtectedItemOperation("TestFailoverCleanup")
 	ReplicationProtectedItemOperationFailback            = ReplicationProtectedItemOperation("Failback")
 	ReplicationProtectedItemOperationFinalizeFailback    = ReplicationProtectedItemOperation("FinalizeFailback")
+	ReplicationProtectedItemOperationCancelFailover      = ReplicationProtectedItemOperation("CancelFailover")
 	ReplicationProtectedItemOperationChangePit           = ReplicationProtectedItemOperation("ChangePit")
 	ReplicationProtectedItemOperationRepairReplication   = ReplicationProtectedItemOperation("RepairReplication")
 	ReplicationProtectedItemOperationSwitchProtection    = ReplicationProtectedItemOperation("SwitchProtection")
@@ -329,7 +389,8 @@ const (
 	ResourceIdentityType_SystemAssigned_UserAssigned = ResourceIdentityType("SystemAssigned, UserAssigned")
 )
 
-// Retention duration type of retention policy.
+// Retention duration type: days/weeks/months/years
+// Used only if TieringMode is set to TierAfter
 type RetentionDurationType string
 
 const (
@@ -356,6 +417,16 @@ const (
 	ScheduleRunTypeInvalid = ScheduleRunType("Invalid")
 	ScheduleRunTypeDaily   = ScheduleRunType("Daily")
 	ScheduleRunTypeWeekly  = ScheduleRunType("Weekly")
+	ScheduleRunTypeHourly  = ScheduleRunType("Hourly")
+)
+
+// The target VM security type.
+type SecurityType string
+
+const (
+	SecurityTypeNone           = SecurityType("None")
+	SecurityTypeTrustedLaunch  = SecurityType("TrustedLaunch")
+	SecurityTypeConfidentialVM = SecurityType("ConfidentialVM")
 )
 
 // A value indicating whether multi-VM sync has to be enabled. Value should be 'Enabled' or 'Disabled'.
@@ -366,12 +437,44 @@ const (
 	SetMultiVmSyncStatusDisable = SetMultiVmSyncStatus("Disable")
 )
 
-// The Sku name.
+// Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
 type SkuName string
 
 const (
 	SkuNameStandard = SkuName("Standard")
 	SkuNameRS0      = SkuName("RS0")
+)
+
+// The SQL Server license type.
+type SqlServerLicenseType string
+
+const (
+	SqlServerLicenseTypeNotSpecified  = SqlServerLicenseType("NotSpecified")
+	SqlServerLicenseTypeNoLicenseType = SqlServerLicenseType("NoLicenseType")
+	SqlServerLicenseTypePAYG          = SqlServerLicenseType("PAYG")
+	SqlServerLicenseTypeAHUB          = SqlServerLicenseType("AHUB")
+)
+
+// Tiering Mode to control automatic tiering of recovery points. Supported values are:
+// 1. TierRecommended: Tier all recovery points recommended to be tiered
+// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+// 3. DoNotTier: Do not tier any recovery points
+type TieringMode string
+
+const (
+	TieringModeInvalid         = TieringMode("Invalid")
+	TieringModeTierRecommended = TieringMode("TierRecommended")
+	TieringModeTierAfter       = TieringMode("TierAfter")
+	TieringModeDoNotTier       = TieringMode("DoNotTier")
+)
+
+// GroupId for the PrivateEndpointConnection - AzureBackup, AzureBackup_secondary or AzureSiteRecovery
+type VaultSubResourceType string
+
+const (
+	VaultSubResourceTypeAzureBackup            = VaultSubResourceType("AzureBackup")
+	VaultSubResourceType_AzureBackup_secondary = VaultSubResourceType("AzureBackup_secondary")
+	VaultSubResourceTypeAzureSiteRecovery      = VaultSubResourceType("AzureSiteRecovery")
 )
 
 type WeekOfMonth string
@@ -389,13 +492,14 @@ const (
 type WorkloadItemType string
 
 const (
-	WorkloadItemTypeInvalid         = WorkloadItemType("Invalid")
-	WorkloadItemTypeSQLInstance     = WorkloadItemType("SQLInstance")
-	WorkloadItemTypeSQLDataBase     = WorkloadItemType("SQLDataBase")
-	WorkloadItemTypeSAPHanaSystem   = WorkloadItemType("SAPHanaSystem")
-	WorkloadItemTypeSAPHanaDatabase = WorkloadItemType("SAPHanaDatabase")
-	WorkloadItemTypeSAPAseSystem    = WorkloadItemType("SAPAseSystem")
-	WorkloadItemTypeSAPAseDatabase  = WorkloadItemType("SAPAseDatabase")
+	WorkloadItemTypeInvalid           = WorkloadItemType("Invalid")
+	WorkloadItemTypeSQLInstance       = WorkloadItemType("SQLInstance")
+	WorkloadItemTypeSQLDataBase       = WorkloadItemType("SQLDataBase")
+	WorkloadItemTypeSAPHanaSystem     = WorkloadItemType("SAPHanaSystem")
+	WorkloadItemTypeSAPHanaDatabase   = WorkloadItemType("SAPHanaDatabase")
+	WorkloadItemTypeSAPAseSystem      = WorkloadItemType("SAPAseSystem")
+	WorkloadItemTypeSAPAseDatabase    = WorkloadItemType("SAPAseDatabase")
+	WorkloadItemTypeSAPHanaDBInstance = WorkloadItemType("SAPHanaDBInstance")
 )
 
 // Type of workload for the backup management
@@ -417,6 +521,7 @@ const (
 	WorkloadTypeAzureFileShare    = WorkloadType("AzureFileShare")
 	WorkloadTypeSAPHanaDatabase   = WorkloadType("SAPHanaDatabase")
 	WorkloadTypeSAPAseDatabase    = WorkloadType("SAPAseDatabase")
+	WorkloadTypeSAPHanaDBInstance = WorkloadType("SAPHanaDBInstance")
 )
 
 func init() {

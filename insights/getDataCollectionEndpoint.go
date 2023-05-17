@@ -11,7 +11,7 @@ import (
 )
 
 // Definition of ARM tracked top level resource.
-// API Version: 2021-09-01-preview.
+// API Version: 2022-06-01.
 func LookupDataCollectionEndpoint(ctx *pulumi.Context, args *LookupDataCollectionEndpointArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionEndpointResult, error) {
 	var rv LookupDataCollectionEndpointResult
 	err := ctx.Invoke("azure-native:insights:getDataCollectionEndpoint", args, &rv, opts...)
@@ -36,8 +36,12 @@ type LookupDataCollectionEndpointResult struct {
 	Description *string `pulumi:"description"`
 	// Resource entity tag (ETag).
 	Etag string `pulumi:"etag"`
+	// Failover configuration on this endpoint. This property is READ-ONLY.
+	FailoverConfiguration DataCollectionEndpointResponseFailoverConfiguration `pulumi:"failoverConfiguration"`
 	// Fully qualified ID of the resource.
 	Id string `pulumi:"id"`
+	// Managed service identity of the resource.
+	Identity *DataCollectionEndpointResourceResponseIdentity `pulumi:"identity"`
 	// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
 	ImmutableId *string `pulumi:"immutableId"`
 	// The kind of the resource.
@@ -46,10 +50,16 @@ type LookupDataCollectionEndpointResult struct {
 	Location string `pulumi:"location"`
 	// The endpoint used by clients to ingest logs.
 	LogsIngestion *DataCollectionEndpointResponseLogsIngestion `pulumi:"logsIngestion"`
+	// Metadata for the resource. This property is READ-ONLY.
+	Metadata DataCollectionEndpointResponseMetadata `pulumi:"metadata"`
+	// The endpoint used by clients to ingest metrics.
+	MetricsIngestion *DataCollectionEndpointResponseMetricsIngestion `pulumi:"metricsIngestion"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
 	// Network access control rules for the endpoints.
 	NetworkAcls *DataCollectionEndpointResponseNetworkAcls `pulumi:"networkAcls"`
+	// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
+	PrivateLinkScopedResources []PrivateLinkScopedResourceResponse `pulumi:"privateLinkScopedResources"`
 	// The resource provisioning state. This property is READ-ONLY.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -116,9 +126,23 @@ func (o LookupDataCollectionEndpointResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionEndpointResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Failover configuration on this endpoint. This property is READ-ONLY.
+func (o LookupDataCollectionEndpointResultOutput) FailoverConfiguration() DataCollectionEndpointResponseFailoverConfigurationOutput {
+	return o.ApplyT(func(v LookupDataCollectionEndpointResult) DataCollectionEndpointResponseFailoverConfiguration {
+		return v.FailoverConfiguration
+	}).(DataCollectionEndpointResponseFailoverConfigurationOutput)
+}
+
 // Fully qualified ID of the resource.
 func (o LookupDataCollectionEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionEndpointResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed service identity of the resource.
+func (o LookupDataCollectionEndpointResultOutput) Identity() DataCollectionEndpointResourceResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupDataCollectionEndpointResult) *DataCollectionEndpointResourceResponseIdentity {
+		return v.Identity
+	}).(DataCollectionEndpointResourceResponseIdentityPtrOutput)
 }
 
 // The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
@@ -143,6 +167,18 @@ func (o LookupDataCollectionEndpointResultOutput) LogsIngestion() DataCollection
 	}).(DataCollectionEndpointResponseLogsIngestionPtrOutput)
 }
 
+// Metadata for the resource. This property is READ-ONLY.
+func (o LookupDataCollectionEndpointResultOutput) Metadata() DataCollectionEndpointResponseMetadataOutput {
+	return o.ApplyT(func(v LookupDataCollectionEndpointResult) DataCollectionEndpointResponseMetadata { return v.Metadata }).(DataCollectionEndpointResponseMetadataOutput)
+}
+
+// The endpoint used by clients to ingest metrics.
+func (o LookupDataCollectionEndpointResultOutput) MetricsIngestion() DataCollectionEndpointResponseMetricsIngestionPtrOutput {
+	return o.ApplyT(func(v LookupDataCollectionEndpointResult) *DataCollectionEndpointResponseMetricsIngestion {
+		return v.MetricsIngestion
+	}).(DataCollectionEndpointResponseMetricsIngestionPtrOutput)
+}
+
 // The name of the resource.
 func (o LookupDataCollectionEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionEndpointResult) string { return v.Name }).(pulumi.StringOutput)
@@ -153,6 +189,13 @@ func (o LookupDataCollectionEndpointResultOutput) NetworkAcls() DataCollectionEn
 	return o.ApplyT(func(v LookupDataCollectionEndpointResult) *DataCollectionEndpointResponseNetworkAcls {
 		return v.NetworkAcls
 	}).(DataCollectionEndpointResponseNetworkAclsPtrOutput)
+}
+
+// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
+func (o LookupDataCollectionEndpointResultOutput) PrivateLinkScopedResources() PrivateLinkScopedResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupDataCollectionEndpointResult) []PrivateLinkScopedResourceResponse {
+		return v.PrivateLinkScopedResources
+	}).(PrivateLinkScopedResourceResponseArrayOutput)
 }
 
 // The resource provisioning state. This property is READ-ONLY.

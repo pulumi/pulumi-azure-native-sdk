@@ -89,7 +89,7 @@ func (val *LookupPrivateCloudResult) Defaults() *LookupPrivateCloudResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Internet) {
+	if tmp.Internet == nil {
 		internet_ := "Disabled"
 		tmp.Internet = &internet_
 	}

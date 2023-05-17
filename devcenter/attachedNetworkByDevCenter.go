@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an attached NetworkConnection.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type AttachedNetworkByDevCenter struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +64,9 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:AttachedNetworkByDevCenter"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:AttachedNetworkByDevCenter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AttachedNetworkByDevCenter
@@ -103,7 +107,7 @@ type attachedNetworkByDevCenterArgs struct {
 	DevCenterName string `pulumi:"devCenterName"`
 	// The resource ID of the NetworkConnection you want to attach.
 	NetworkConnectionId string `pulumi:"networkConnectionId"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -115,7 +119,7 @@ type AttachedNetworkByDevCenterArgs struct {
 	DevCenterName pulumi.StringInput
 	// The resource ID of the NetworkConnection you want to attach.
 	NetworkConnectionId pulumi.StringInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +77,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm:VirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:VirtualMachine"),
 		},
 	})
 	opts = append(opts, aliases)

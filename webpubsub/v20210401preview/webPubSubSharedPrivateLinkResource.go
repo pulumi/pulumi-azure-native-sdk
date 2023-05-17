@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,6 +70,9 @@ func NewWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20230201:WebPubSubSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230301preview:WebPubSubSharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)

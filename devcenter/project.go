@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a project resource.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource Id of an associated DevCenter
 	DevCenterId pulumi.StringPtrOutput `pulumi:"devCenterId"`
+	// The URI of the resource.
+	DevCenterUri pulumi.StringOutput `pulumi:"devCenterUri"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -56,6 +59,9 @@ func NewProject(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Project"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -99,7 +105,7 @@ type projectArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the project.
 	ProjectName *string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -115,7 +121,7 @@ type ProjectArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the project.
 	ProjectName pulumi.StringPtrInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -166,6 +172,11 @@ func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 // Resource Id of an associated DevCenter
 func (o ProjectOutput) DevCenterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DevCenterId }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the resource.
+func (o ProjectOutput) DevCenterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DevCenterUri }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

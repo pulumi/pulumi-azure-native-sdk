@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DigitalTwinsInstance endpoint resource.
-//
-// Deprecated: Version 2020-03-01-preview will be removed in v2 of the provider.
 type DigitalTwinsEndpoint struct {
 	pulumi.CustomResourceState
 

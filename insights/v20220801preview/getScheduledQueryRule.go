@@ -95,7 +95,7 @@ func (val *LookupScheduledQueryRuleResult) Defaults() *LookupScheduledQueryRuleR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

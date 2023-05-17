@@ -23,18 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:peering/v20210601:ConnectionMonitorTest":
 		r = &ConnectionMonitorTest{}
-	case "azure-native:peering/v20210601:PeerAsn":
-		r = &PeerAsn{}
-	case "azure-native:peering/v20210601:Peering":
-		r = &Peering{}
-	case "azure-native:peering/v20210601:PeeringService":
-		r = &PeeringService{}
-	case "azure-native:peering/v20210601:Prefix":
-		r = &Prefix{}
-	case "azure-native:peering/v20210601:RegisteredAsn":
-		r = &RegisteredAsn{}
-	case "azure-native:peering/v20210601:RegisteredPrefix":
-		r = &RegisteredPrefix{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

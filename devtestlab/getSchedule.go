@@ -76,7 +76,7 @@ func (val *LookupScheduleResult) Defaults() *LookupScheduleResult {
 	tmp := *val
 	tmp.NotificationSettings = tmp.NotificationSettings.Defaults()
 
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}

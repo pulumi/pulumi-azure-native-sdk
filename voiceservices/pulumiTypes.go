@@ -12,6 +12,10 @@ import (
 
 // The configuration used in this region as primary, and other regions as backup.
 type PrimaryRegionProperties struct {
+	// The allowed source IP address or CIDR ranges for media
+	AllowedMediaSourceAddressPrefixes []string `pulumi:"allowedMediaSourceAddressPrefixes"`
+	// The allowed source IP address or CIDR ranges for signaling
+	AllowedSignalingSourceAddressPrefixes []string `pulumi:"allowedSignalingSourceAddressPrefixes"`
 	// IP address to use to contact the ESRP from this region
 	EsrpAddresses []string `pulumi:"esrpAddresses"`
 	// IP address to use to contact the operator network from this region
@@ -31,6 +35,10 @@ type PrimaryRegionPropertiesInput interface {
 
 // The configuration used in this region as primary, and other regions as backup.
 type PrimaryRegionPropertiesArgs struct {
+	// The allowed source IP address or CIDR ranges for media
+	AllowedMediaSourceAddressPrefixes pulumi.StringArrayInput `pulumi:"allowedMediaSourceAddressPrefixes"`
+	// The allowed source IP address or CIDR ranges for signaling
+	AllowedSignalingSourceAddressPrefixes pulumi.StringArrayInput `pulumi:"allowedSignalingSourceAddressPrefixes"`
 	// IP address to use to contact the ESRP from this region
 	EsrpAddresses pulumi.StringArrayInput `pulumi:"esrpAddresses"`
 	// IP address to use to contact the operator network from this region
@@ -64,6 +72,16 @@ func (o PrimaryRegionPropertiesOutput) ToPrimaryRegionPropertiesOutputWithContex
 	return o
 }
 
+// The allowed source IP address or CIDR ranges for media
+func (o PrimaryRegionPropertiesOutput) AllowedMediaSourceAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrimaryRegionProperties) []string { return v.AllowedMediaSourceAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The allowed source IP address or CIDR ranges for signaling
+func (o PrimaryRegionPropertiesOutput) AllowedSignalingSourceAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrimaryRegionProperties) []string { return v.AllowedSignalingSourceAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
 // IP address to use to contact the ESRP from this region
 func (o PrimaryRegionPropertiesOutput) EsrpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrimaryRegionProperties) []string { return v.EsrpAddresses }).(pulumi.StringArrayOutput)
@@ -76,6 +94,10 @@ func (o PrimaryRegionPropertiesOutput) OperatorAddresses() pulumi.StringArrayOut
 
 // The configuration used in this region as primary, and other regions as backup.
 type PrimaryRegionPropertiesResponse struct {
+	// The allowed source IP address or CIDR ranges for media
+	AllowedMediaSourceAddressPrefixes []string `pulumi:"allowedMediaSourceAddressPrefixes"`
+	// The allowed source IP address or CIDR ranges for signaling
+	AllowedSignalingSourceAddressPrefixes []string `pulumi:"allowedSignalingSourceAddressPrefixes"`
 	// IP address to use to contact the ESRP from this region
 	EsrpAddresses []string `pulumi:"esrpAddresses"`
 	// IP address to use to contact the operator network from this region
@@ -95,6 +117,16 @@ func (o PrimaryRegionPropertiesResponseOutput) ToPrimaryRegionPropertiesResponse
 
 func (o PrimaryRegionPropertiesResponseOutput) ToPrimaryRegionPropertiesResponseOutputWithContext(ctx context.Context) PrimaryRegionPropertiesResponseOutput {
 	return o
+}
+
+// The allowed source IP address or CIDR ranges for media
+func (o PrimaryRegionPropertiesResponseOutput) AllowedMediaSourceAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrimaryRegionPropertiesResponse) []string { return v.AllowedMediaSourceAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The allowed source IP address or CIDR ranges for signaling
+func (o PrimaryRegionPropertiesResponseOutput) AllowedSignalingSourceAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrimaryRegionPropertiesResponse) []string { return v.AllowedSignalingSourceAddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
 // IP address to use to contact the ESRP from this region

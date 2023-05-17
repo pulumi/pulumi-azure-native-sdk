@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization feature.
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type WebAppAuthSettings struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +22,7 @@ type WebAppAuthSettings struct {
 	// Login parameters to send to the OpenID Connect authorization endpoint when
 	// a user logs in. Each parameter must be in the form "key=value".
 	AdditionalLoginParams pulumi.StringArrayOutput `pulumi:"additionalLoginParams"`
-	// Allowed audience values to consider when validating JWTs issued by
+	// Allowed audience values to consider when validating JSON Web Tokens issued by
 	// Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
 	// allowed audience, regardless of this setting.
 	AllowedAudiences pulumi.StringArrayOutput `pulumi:"allowedAudiences"`
@@ -250,7 +251,7 @@ type webAppAuthSettingsArgs struct {
 	// Login parameters to send to the OpenID Connect authorization endpoint when
 	// a user logs in. Each parameter must be in the form "key=value".
 	AdditionalLoginParams []string `pulumi:"additionalLoginParams"`
-	// Allowed audience values to consider when validating JWTs issued by
+	// Allowed audience values to consider when validating JSON Web Tokens issued by
 	// Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
 	// allowed audience, regardless of this setting.
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
@@ -388,7 +389,7 @@ type WebAppAuthSettingsArgs struct {
 	// Login parameters to send to the OpenID Connect authorization endpoint when
 	// a user logs in. Each parameter must be in the form "key=value".
 	AdditionalLoginParams pulumi.StringArrayInput
-	// Allowed audience values to consider when validating JWTs issued by
+	// Allowed audience values to consider when validating JSON Web Tokens issued by
 	// Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
 	// allowed audience, regardless of this setting.
 	AllowedAudiences pulumi.StringArrayInput
@@ -567,7 +568,7 @@ func (o WebAppAuthSettingsOutput) AdditionalLoginParams() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *WebAppAuthSettings) pulumi.StringArrayOutput { return v.AdditionalLoginParams }).(pulumi.StringArrayOutput)
 }
 
-// Allowed audience values to consider when validating JWTs issued by
+// Allowed audience values to consider when validating JSON Web Tokens issued by
 // Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
 // allowed audience, regardless of this setting.
 func (o WebAppAuthSettingsOutput) AllowedAudiences() pulumi.StringArrayOutput {

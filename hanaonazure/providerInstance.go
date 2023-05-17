@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A provider instance associated with a SAP monitor.
 // API Version: 2020-02-07-preview.
+// Previous API Version: 2020-02-07-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 

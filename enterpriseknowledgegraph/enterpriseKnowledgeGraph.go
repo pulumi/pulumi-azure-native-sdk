@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EnterpriseKnowledgeGraph resource definition
 // API Version: 2018-12-03.
+// Previous API Version: 2018-12-03. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type EnterpriseKnowledgeGraph struct {
 	pulumi.CustomResourceState
 

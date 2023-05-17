@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB SQL Role Definition.
-// API Version: 2021-03-01-preview.
+// API Version: 2022-11-15.
+// Previous API Version: 2021-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type SqlResourceSqlRoleDefinition struct {
 	pulumi.CustomResourceState
 
@@ -91,7 +92,16 @@ func NewSqlResourceSqlRoleDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlRoleDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlRoleDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

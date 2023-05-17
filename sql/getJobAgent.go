@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a job agent.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulumi.InvokeOption) (*LookupJobAgentResult, error) {
 	var rv LookupJobAgentResult
 	err := ctx.Invoke("azure-native:sql:getJobAgent", args, &rv, opts...)

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get function secrets for a function in a web site, or a deployment slot.
-// API Version: 2020-12-01.
+// Description for Get function secrets for a function in a web site, or a deployment slot.
+// API Version: 2022-09-01.
 func ListWebAppFunctionSecretsSlot(ctx *pulumi.Context, args *ListWebAppFunctionSecretsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppFunctionSecretsSlotResult, error) {
 	var rv ListWebAppFunctionSecretsSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppFunctionSecretsSlot", args, &rv, opts...)

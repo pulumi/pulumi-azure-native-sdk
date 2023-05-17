@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +87,9 @@ func NewProductGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ProductGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ProductGroup"),
 		},
 	})
 	opts = append(opts, aliases)

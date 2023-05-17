@@ -26,7 +26,7 @@ func (val *DiskPoolProperties) Defaults() *DiskPoolProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxVolumeCapacityGiB) {
+	if tmp.MaxVolumeCapacityGiB == nil {
 		maxVolumeCapacityGiB_ := 512.0
 		tmp.MaxVolumeCapacityGiB = &maxVolumeCapacityGiB_
 	}
@@ -60,7 +60,7 @@ func (val *DiskPoolPropertiesArgs) Defaults() *DiskPoolPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxVolumeCapacityGiB) {
+	if tmp.MaxVolumeCapacityGiB == nil {
 		tmp.MaxVolumeCapacityGiB = pulumi.Float64Ptr(512.0)
 	}
 	return &tmp
@@ -228,7 +228,7 @@ func (val *DiskPoolPropertiesResponse) Defaults() *DiskPoolPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxVolumeCapacityGiB) {
+	if tmp.MaxVolumeCapacityGiB == nil {
 		maxVolumeCapacityGiB_ := 512.0
 		tmp.MaxVolumeCapacityGiB = &maxVolumeCapacityGiB_
 	}
@@ -448,7 +448,7 @@ func (val *EphemeralPoolProperties) Defaults() *EphemeralPoolProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DiskFormat) {
+	if tmp.DiskFormat == nil {
 		diskFormat_ := false
 		tmp.DiskFormat = &diskFormat_
 	}
@@ -482,7 +482,7 @@ func (val *EphemeralPoolPropertiesArgs) Defaults() *EphemeralPoolPropertiesArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DiskFormat) {
+	if tmp.DiskFormat == nil {
 		tmp.DiskFormat = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -650,7 +650,7 @@ func (val *EphemeralPoolPropertiesResponse) Defaults() *EphemeralPoolPropertiesR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DiskFormat) {
+	if tmp.DiskFormat == nil {
 		diskFormat_ := false
 		tmp.DiskFormat = &diskFormat_
 	}

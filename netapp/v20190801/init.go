@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:netapp/v20190801:Account":
-		r = &Account{}
-	case "azure-native:netapp/v20190801:Pool":
-		r = &Pool{}
-	case "azure-native:netapp/v20190801:Snapshot":
-		r = &Snapshot{}
 	case "azure-native:netapp/v20190801:Volume":
 		r = &Volume{}
 	default:

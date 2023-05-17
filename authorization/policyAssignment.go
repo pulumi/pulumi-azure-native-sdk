@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The policy assignment.
-// API Version: 2020-09-01.
+// API Version: 2022-06-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PolicyAssignment struct {
 	pulumi.CustomResourceState
 
@@ -34,12 +35,18 @@ type PolicyAssignment struct {
 	NonComplianceMessages NonComplianceMessageResponseArrayOutput `pulumi:"nonComplianceMessages"`
 	// The policy's excluded scopes.
 	NotScopes pulumi.StringArrayOutput `pulumi:"notScopes"`
+	// The policy property value override.
+	Overrides OverrideResponseArrayOutput `pulumi:"overrides"`
 	// The parameter values for the assigned policy rule. The keys are the parameter names.
 	Parameters ParameterValuesValueResponseMapOutput `pulumi:"parameters"`
 	// The ID of the policy definition or policy set definition being assigned.
 	PolicyDefinitionId pulumi.StringPtrOutput `pulumi:"policyDefinitionId"`
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors ResourceSelectorResponseArrayOutput `pulumi:"resourceSelectors"`
 	// The scope for the policy assignment.
 	Scope pulumi.StringOutput `pulumi:"scope"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the policy assignment.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -54,7 +61,7 @@ func NewPolicyAssignment(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if isZero(args.EnforcementMode) {
+	if args.EnforcementMode == nil {
 		args.EnforcementMode = pulumi.StringPtr("Default")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -147,12 +154,16 @@ type policyAssignmentArgs struct {
 	NonComplianceMessages []NonComplianceMessage `pulumi:"nonComplianceMessages"`
 	// The policy's excluded scopes.
 	NotScopes []string `pulumi:"notScopes"`
+	// The policy property value override.
+	Overrides []Override `pulumi:"overrides"`
 	// The parameter values for the assigned policy rule. The keys are the parameter names.
 	Parameters map[string]ParameterValuesValue `pulumi:"parameters"`
 	// The name of the policy assignment.
 	PolicyAssignmentName *string `pulumi:"policyAssignmentName"`
 	// The ID of the policy definition or policy set definition being assigned.
 	PolicyDefinitionId *string `pulumi:"policyDefinitionId"`
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors []ResourceSelector `pulumi:"resourceSelectors"`
 	// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope string `pulumi:"scope"`
 }
@@ -175,12 +186,16 @@ type PolicyAssignmentArgs struct {
 	NonComplianceMessages NonComplianceMessageArrayInput
 	// The policy's excluded scopes.
 	NotScopes pulumi.StringArrayInput
+	// The policy property value override.
+	Overrides OverrideArrayInput
 	// The parameter values for the assigned policy rule. The keys are the parameter names.
 	Parameters ParameterValuesValueMapInput
 	// The name of the policy assignment.
 	PolicyAssignmentName pulumi.StringPtrInput
 	// The ID of the policy definition or policy set definition being assigned.
 	PolicyDefinitionId pulumi.StringPtrInput
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors ResourceSelectorArrayInput
 	// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope pulumi.StringInput
 }
@@ -267,6 +282,11 @@ func (o PolicyAssignmentOutput) NotScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringArrayOutput { return v.NotScopes }).(pulumi.StringArrayOutput)
 }
 
+// The policy property value override.
+func (o PolicyAssignmentOutput) Overrides() OverrideResponseArrayOutput {
+	return o.ApplyT(func(v *PolicyAssignment) OverrideResponseArrayOutput { return v.Overrides }).(OverrideResponseArrayOutput)
+}
+
 // The parameter values for the assigned policy rule. The keys are the parameter names.
 func (o PolicyAssignmentOutput) Parameters() ParameterValuesValueResponseMapOutput {
 	return o.ApplyT(func(v *PolicyAssignment) ParameterValuesValueResponseMapOutput { return v.Parameters }).(ParameterValuesValueResponseMapOutput)
@@ -277,9 +297,19 @@ func (o PolicyAssignmentOutput) PolicyDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.PolicyDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// The resource selector list to filter policies by resource properties.
+func (o PolicyAssignmentOutput) ResourceSelectors() ResourceSelectorResponseArrayOutput {
+	return o.ApplyT(func(v *PolicyAssignment) ResourceSelectorResponseArrayOutput { return v.ResourceSelectors }).(ResourceSelectorResponseArrayOutput)
+}
+
 // The scope for the policy assignment.
 func (o PolicyAssignmentOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The system metadata relating to this resource.
+func (o PolicyAssignmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PolicyAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the policy assignment.

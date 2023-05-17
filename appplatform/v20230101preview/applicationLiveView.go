@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +41,9 @@ func NewApplicationLiveView(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:ApplicationLiveView"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApplicationLiveView"),
 		},
 	})
 	opts = append(opts, aliases)

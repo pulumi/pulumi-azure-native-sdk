@@ -18,39 +18,11 @@ const (
 	BackupPolicyTypeContinuous = BackupPolicyType("Continuous")
 )
 
-// Sort order for composite paths.
-type CompositePathSortOrder string
-
-const (
-	CompositePathSortOrderAscending  = CompositePathSortOrder("Ascending")
-	CompositePathSortOrderDescending = CompositePathSortOrder("Descending")
-)
-
-// Indicates the conflict resolution mode.
-type ConflictResolutionMode string
-
-const (
-	ConflictResolutionModeLastWriterWins = ConflictResolutionMode("LastWriterWins")
-	ConflictResolutionModeCustom         = ConflictResolutionMode("Custom")
-)
-
 // The cassandra connector offer type for the Cosmos DB database C* account.
 type ConnectorOffer string
 
 const (
 	ConnectorOfferSmall = ConnectorOffer("Small")
-)
-
-// The datatype for which the indexing behavior is applied to.
-type DataType string
-
-const (
-	DataTypeString       = DataType("String")
-	DataTypeNumber       = DataType("Number")
-	DataTypePoint        = DataType("Point")
-	DataTypePolygon      = DataType("Polygon")
-	DataTypeLineString   = DataType("LineString")
-	DataTypeMultiPolygon = DataType("MultiPolygon")
 )
 
 // Indicates the type of database account. This can only be set at database account creation.
@@ -394,67 +366,12 @@ func (in *defaultConsistencyLevelPtr) ToDefaultConsistencyLevelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultConsistencyLevelPtrOutput)
 }
 
-// Indicates the type of index.
-type IndexKind string
-
-const (
-	IndexKindHash    = IndexKind("Hash")
-	IndexKindRange   = IndexKind("Range")
-	IndexKindSpatial = IndexKind("Spatial")
-)
-
-// Indicates the indexing mode.
-type IndexingMode string
-
-const (
-	IndexingModeConsistent = IndexingMode("Consistent")
-	IndexingModeLazy       = IndexingMode("Lazy")
-	IndexingModeNone       = IndexingMode("None")
-)
-
-// Indicates the kind of algorithm used for partitioning
-type PartitionKind string
-
-const (
-	PartitionKindHash  = PartitionKind("Hash")
-	PartitionKindRange = PartitionKind("Range")
-)
-
 // Describes the ServerVersion of an a MongoDB account.
 type ServerVersion string
 
 const (
 	ServerVersion_3_2 = ServerVersion("3.2")
 	ServerVersion_3_6 = ServerVersion("3.6")
-)
-
-// Indicates the spatial type of index.
-type SpatialType string
-
-const (
-	SpatialTypePoint        = SpatialType("Point")
-	SpatialTypeLineString   = SpatialType("LineString")
-	SpatialTypePolygon      = SpatialType("Polygon")
-	SpatialTypeMultiPolygon = SpatialType("MultiPolygon")
-)
-
-// The operation the trigger is associated with
-type TriggerOperation string
-
-const (
-	TriggerOperationAll     = TriggerOperation("All")
-	TriggerOperationCreate  = TriggerOperation("Create")
-	TriggerOperationUpdate  = TriggerOperation("Update")
-	TriggerOperationDelete  = TriggerOperation("Delete")
-	TriggerOperationReplace = TriggerOperation("Replace")
-)
-
-// Type of the Trigger
-type TriggerType string
-
-const (
-	TriggerTypePre  = TriggerType("Pre")
-	TriggerTypePost = TriggerType("Post")
 )
 
 func init() {

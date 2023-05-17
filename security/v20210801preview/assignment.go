@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,12 +59,6 @@ func NewAssignment(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:security:Assignment"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource Assignment
 	err := ctx.RegisterResource("azure-native:security/v20210801preview:Assignment", name, args, &resource, opts...)
 	if err != nil {

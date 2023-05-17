@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,6 +81,9 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227:PrivateLinkScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:PrivateLinkScope"),
 		},
 	})
 	opts = append(opts, aliases)

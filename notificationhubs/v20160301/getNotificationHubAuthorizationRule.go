@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an authorization rule for a NotificationHub by name.
-//
-// Deprecated: Version 2016-03-01 will be removed in v2 of the provider.
 func LookupNotificationHubAuthorizationRule(ctx *pulumi.Context, args *LookupNotificationHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubAuthorizationRuleResult, error) {
 	var rv LookupNotificationHubAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:notificationhubs/v20160301:getNotificationHubAuthorizationRule", args, &rv, opts...)

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine Scale Set.
-//
-// Deprecated: Version 2015-06-15 will be removed in v2 of the provider.
 type VirtualMachineScaleSet struct {
 	pulumi.CustomResourceState
 

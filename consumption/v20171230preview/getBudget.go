@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the budget for a subscription by budget name.
-//
-// Deprecated: Version 2017-12-30-preview will be removed in v2 of the provider.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
 	var rv LookupBudgetResult
 	err := ctx.Invoke("azure-native:consumption/v20171230preview:getBudget", args, &rv, opts...)

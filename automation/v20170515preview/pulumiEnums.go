@@ -211,15 +211,6 @@ const (
 	ScheduleFrequencyMinute = ScheduleFrequency("Minute")
 )
 
-// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
-type SourceType string
-
-const (
-	SourceTypeVsoGit  = SourceType("VsoGit")
-	SourceTypeVsoTfvc = SourceType("VsoTfvc")
-	SourceTypeGitHub  = SourceType("GitHub")
-)
-
 // Filter VMs by Any or All specified tags.
 type TagOperators string
 
@@ -384,14 +375,6 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
 }
-
-// The token type. Must be either PersonalAccessToken or Oauth.
-type TokenType string
-
-const (
-	TokenTypePersonalAccessToken = TokenType("PersonalAccessToken")
-	TokenTypeOauth               = TokenType("Oauth")
-)
 
 // Update classification included in the software update configuration. A comma separated string with required values
 type WindowsUpdateClasses string

@@ -22,33 +22,6 @@ const (
 	ChartTypeTable         = ChartType("Table")
 )
 
-// Connector billing model
-type ConnectorBillingModel string
-
-const (
-	ConnectorBillingModelTrial       = ConnectorBillingModel("trial")
-	ConnectorBillingModelAutoUpgrade = ConnectorBillingModel("autoUpgrade")
-	ConnectorBillingModelPremium     = ConnectorBillingModel("premium")
-	ConnectorBillingModelExpired     = ConnectorBillingModel("expired")
-)
-
-// Method of cost allocation for the rule
-type CostAllocationPolicyType string
-
-const (
-	CostAllocationPolicyTypeFixedProportion = CostAllocationPolicyType("FixedProportion")
-)
-
-// Type of resources contained in this cost allocation rule
-type CostAllocationResourceType string
-
-const (
-	// Indicates an Azure dimension such as a subscription id or resource group name is being used for allocation.
-	CostAllocationResourceTypeDimension = CostAllocationResourceType("Dimension")
-	// Allocates cost based on Azure Tag key value pairs.
-	CostAllocationResourceTypeTag = CostAllocationResourceType("Tag")
-)
-
 // Days of Week.
 type DaysOfWeek string
 
@@ -71,14 +44,14 @@ const (
 	ExportTypeAmortizedCost = ExportType("AmortizedCost")
 )
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. Currently only CSV format is supported.
 type FileFormat string
 
 const (
 	FileFormatCsv = FileFormat("Csv")
 )
 
-// The format of the report being delivered.
+// The format of the export being delivered. Currently only 'Csv' is supported.
 type FormatType string
 
 const (
@@ -89,18 +62,14 @@ const (
 type FunctionType string
 
 const (
-	FunctionTypeAvg = FunctionType("Avg")
-	FunctionTypeMax = FunctionType("Max")
-	FunctionTypeMin = FunctionType("Min")
 	FunctionTypeSum = FunctionType("Sum")
 )
 
-// The granularity of rows in the report.
+// The granularity of rows in the export. Currently only 'Daily' is supported.
 type GranularityType string
 
 const (
-	GranularityTypeDaily  = GranularityType("Daily")
-	GranularityTypeHourly = GranularityType("Hourly")
+	GranularityTypeDaily = GranularityType("Daily")
 )
 
 // KPI type (Forecast, Budget).
@@ -136,6 +105,16 @@ const (
 	PivotTypeTypeTagKey    = PivotTypeType("TagKey")
 )
 
+// Has type of the column to group.
+type QueryColumnType string
+
+const (
+	// The tag associated with the cost data.
+	QueryColumnTypeTagKey = QueryColumnType("TagKey")
+	// The dimension of cost data.
+	QueryColumnTypeDimension = QueryColumnType("Dimension")
+)
+
 // The schedule recurrence.
 type RecurrenceType string
 
@@ -146,20 +125,12 @@ const (
 	RecurrenceTypeAnnually = RecurrenceType("Annually")
 )
 
-// Has type of the column to group.
-type ReportColumnType string
+// Direction of sort.
+type ReportConfigSortingType string
 
 const (
-	ReportColumnTypeTag       = ReportColumnType("Tag")
-	ReportColumnTypeDimension = ReportColumnType("Dimension")
-)
-
-// Has type of the column to group.
-type ReportConfigColumnType string
-
-const (
-	ReportConfigColumnTypeTag       = ReportConfigColumnType("Tag")
-	ReportConfigColumnTypeDimension = ReportConfigColumnType("Dimension")
+	ReportConfigSortingTypeAscending  = ReportConfigSortingType("Ascending")
+	ReportConfigSortingTypeDescending = ReportConfigSortingType("Descending")
 )
 
 // The granularity of rows in the report.
@@ -187,18 +158,6 @@ const (
 	ReportTypeUsage = ReportType("Usage")
 )
 
-// Status of the rule
-type RuleStatus string
-
-const (
-	// Rule is saved but not used to allocate costs.
-	RuleStatusNotActive = RuleStatus("NotActive")
-	// Rule is saved and impacting cost allocation.
-	RuleStatusActive = RuleStatus("Active")
-	// Rule is saved and cost allocation is being updated. Readonly value that cannot be submitted in a put request.
-	RuleStatusProcessing = RuleStatus("Processing")
-)
-
 // Frequency of the schedule.
 type ScheduleFrequency string
 
@@ -217,19 +176,23 @@ type ScheduledActionKind string
 const (
 	// Cost analysis data will be emailed.
 	ScheduledActionKindEmail = ScheduledActionKind("Email")
+	// Cost anomaly information will be emailed. Available only on subscription scope at daily frequency. If no anomaly is detected on the resource, an email won't be sent.
+	ScheduledActionKindInsightAlert = ScheduledActionKind("InsightAlert")
 )
 
 // Status of the scheduled action.
 type ScheduledActionStatus string
 
 const (
-	// Scheduled action is saved but will not be executed.
+	// Scheduled action is saved but will not be run.
 	ScheduledActionStatusDisabled = ScheduledActionStatus("Disabled")
-	// Scheduled action is saved and will be executed.
+	// Scheduled action is saved and will be run.
 	ScheduledActionStatusEnabled = ScheduledActionStatus("Enabled")
+	// Scheduled action is expired.
+	ScheduledActionStatusExpired = ScheduledActionStatus("Expired")
 )
 
-// The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
+// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
 type StatusType string
 
 const (
@@ -237,13 +200,16 @@ const (
 	StatusTypeInactive = StatusType("Inactive")
 )
 
-// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
+// The time frame for pulling data for the export. If custom, then a specific time period must be provided.
 type TimeframeType string
 
 const (
-	TimeframeTypeWeekToDate  = TimeframeType("WeekToDate")
-	TimeframeTypeMonthToDate = TimeframeType("MonthToDate")
-	TimeframeTypeCustom      = TimeframeType("Custom")
+	TimeframeTypeMonthToDate         = TimeframeType("MonthToDate")
+	TimeframeTypeBillingMonthToDate  = TimeframeType("BillingMonthToDate")
+	TimeframeTypeTheLastMonth        = TimeframeType("TheLastMonth")
+	TimeframeTypeTheLastBillingMonth = TimeframeType("TheLastBillingMonth")
+	TimeframeTypeWeekToDate          = TimeframeType("WeekToDate")
+	TimeframeTypeCustom              = TimeframeType("Custom")
 )
 
 // Weeks of month.

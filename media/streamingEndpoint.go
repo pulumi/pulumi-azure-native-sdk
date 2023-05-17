@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The streaming endpoint.
-// API Version: 2020-05-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type StreamingEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +53,8 @@ type StreamingEndpoint struct {
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
 	// The number of scale units. Use the Scale operation to adjust this value.
 	ScaleUnits pulumi.IntOutput `pulumi:"scaleUnits"`
+	// The streaming endpoint sku.
+	Sku ArmStreamingEndpointCurrentSkuResponsePtrOutput `pulumi:"sku"`
 	// The system metadata relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -166,6 +169,8 @@ type streamingEndpointArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The number of scale units. Use the Scale operation to adjust this value.
 	ScaleUnits int `pulumi:"scaleUnits"`
+	// The streaming endpoint sku.
+	Sku *ArmStreamingEndpointCurrentSku `pulumi:"sku"`
 	// The name of the streaming endpoint, maximum length is 24.
 	StreamingEndpointName *string `pulumi:"streamingEndpointName"`
 	// Resource tags.
@@ -202,6 +207,8 @@ type StreamingEndpointArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The number of scale units. Use the Scale operation to adjust this value.
 	ScaleUnits pulumi.IntInput
+	// The streaming endpoint sku.
+	Sku ArmStreamingEndpointCurrentSkuPtrInput
 	// The name of the streaming endpoint, maximum length is 24.
 	StreamingEndpointName pulumi.StringPtrInput
 	// Resource tags.
@@ -333,6 +340,11 @@ func (o StreamingEndpointOutput) ResourceState() pulumi.StringOutput {
 // The number of scale units. Use the Scale operation to adjust this value.
 func (o StreamingEndpointOutput) ScaleUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v *StreamingEndpoint) pulumi.IntOutput { return v.ScaleUnits }).(pulumi.IntOutput)
+}
+
+// The streaming endpoint sku.
+func (o StreamingEndpointOutput) Sku() ArmStreamingEndpointCurrentSkuResponsePtrOutput {
+	return o.ApplyT(func(v *StreamingEndpoint) ArmStreamingEndpointCurrentSkuResponsePtrOutput { return v.Sku }).(ArmStreamingEndpointCurrentSkuResponsePtrOutput)
 }
 
 // The system metadata relating to this resource.

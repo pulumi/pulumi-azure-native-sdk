@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A report config resource.
-//
-// Deprecated: Version 2018-05-31 will be removed in v2 of the provider.
 type ReportConfigByResourceGroupName struct {
 	pulumi.CustomResourceState
 

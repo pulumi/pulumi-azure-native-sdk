@@ -78,11 +78,11 @@ func (val *LookupTaskResult) Defaults() *LookupTaskResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSystemTask) {
+	if tmp.IsSystemTask == nil {
 		isSystemTask_ := false
 		tmp.IsSystemTask = &isSystemTask_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a token for a container registry.
-// API Version: 2020-11-01-preview.
+// API Version: 2022-12-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Token struct {
 	pulumi.CustomResourceState
 
@@ -110,7 +111,7 @@ type tokenArgs struct {
 	Credentials *TokenCredentialsProperties `pulumi:"credentials"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource ID of the scope map to which the token will be associated with.
 	ScopeMapId *string `pulumi:"scopeMapId"`
@@ -126,7 +127,7 @@ type TokenArgs struct {
 	Credentials TokenCredentialsPropertiesPtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource ID of the scope map to which the token will be associated with.
 	ScopeMapId pulumi.StringPtrInput

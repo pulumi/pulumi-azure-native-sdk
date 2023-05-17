@@ -7,20 +7,25 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in List or Get Consumer group operation
-// API Version: 2017-04-01.
+// API Version: 2021-11-01.
+// Previous API Version: 2017-04-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ConsumerGroup struct {
 	pulumi.CustomResourceState
 
 	// Exact time the message was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The exact time the message was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -174,12 +179,22 @@ func (o ConsumerGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The geo-location where the resource lives
+func (o ConsumerGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ConsumerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The system meta data relating to this resource.
+func (o ConsumerGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ConsumerGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o ConsumerGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +63,12 @@ func NewDataController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220301preview:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230315preview:DataController"),
 		},
 	})
 	opts = append(opts, aliases)

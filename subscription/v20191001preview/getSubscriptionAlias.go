@@ -11,8 +11,6 @@ import (
 )
 
 // Get Alias Subscription.
-//
-// Deprecated: Version 2019-10-01-preview will be removed in v2 of the provider.
 func LookupSubscriptionAlias(ctx *pulumi.Context, args *LookupSubscriptionAliasArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionAliasResult, error) {
 	var rv LookupSubscriptionAliasResult
 	err := ctx.Invoke("azure-native:subscription/v20191001preview:getSubscriptionAlias", args, &rv, opts...)

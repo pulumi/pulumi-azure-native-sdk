@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +66,15 @@ func NewMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20221115:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:MongoDBResourceMongoRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

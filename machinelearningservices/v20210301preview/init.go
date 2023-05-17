@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CodeContainer{}
 	case "azure-native:machinelearningservices/v20210301preview:CodeVersion":
 		r = &CodeVersion{}
-	case "azure-native:machinelearningservices/v20210301preview:Compute":
-		r = &Compute{}
 	case "azure-native:machinelearningservices/v20210301preview:DataContainer":
 		r = &DataContainer{}
 	case "azure-native:machinelearningservices/v20210301preview:DataVersion":
@@ -53,12 +51,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OnlineDeployment{}
 	case "azure-native:machinelearningservices/v20210301preview:OnlineEndpoint":
 		r = &OnlineEndpoint{}
-	case "azure-native:machinelearningservices/v20210301preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:machinelearningservices/v20210301preview:Workspace":
-		r = &Workspace{}
-	case "azure-native:machinelearningservices/v20210301preview:WorkspaceConnection":
-		r = &WorkspaceConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

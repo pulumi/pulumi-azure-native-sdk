@@ -148,18 +148,6 @@ const (
 	PercentilePercentile99 = Percentile("Percentile99")
 )
 
-// Provisioning state of the project.
-type ProvisioningState string
-
-const (
-	ProvisioningStateAccepted  = ProvisioningState("Accepted")
-	ProvisioningStateCreating  = ProvisioningState("Creating")
-	ProvisioningStateDeleting  = ProvisioningState("Deleting")
-	ProvisioningStateFailed    = ProvisioningState("Failed")
-	ProvisioningStateMoving    = ProvisioningState("Moving")
-	ProvisioningStateSucceeded = ProvisioningState("Succeeded")
-)
-
 // Time range of performance data used to recommend a size.
 type TimeRange string
 

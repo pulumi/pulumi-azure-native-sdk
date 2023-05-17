@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +62,9 @@ func NewConfigurationService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221201:ConfigurationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ConfigurationService"),
 		},
 	})
 	opts = append(opts, aliases)

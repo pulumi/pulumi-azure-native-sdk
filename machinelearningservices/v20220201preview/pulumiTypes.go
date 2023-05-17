@@ -10,146 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Machine Learning compute based on AKS.
-type AKS struct {
-	// The type of compute
-	// Expected value is 'AKS'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// AKS properties
-	Properties *AKSSchemaProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for AKS
-func (val *AKS) Defaults() *AKS {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// A Machine Learning compute based on AKS.
-type AKSResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'AKS'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// AKS properties
-	Properties *AKSSchemaResponseProperties `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for AKSResponse
-func (val *AKSResponse) Defaults() *AKSResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// AKS properties
-type AKSSchemaProperties struct {
-	// Number of agents
-	AgentCount *int `pulumi:"agentCount"`
-	// Agent virtual machine size
-	AgentVmSize *string `pulumi:"agentVmSize"`
-	// AKS networking configuration for vnet
-	AksNetworkingConfiguration *AksNetworkingConfiguration `pulumi:"aksNetworkingConfiguration"`
-	// Cluster full qualified domain name
-	ClusterFqdn *string `pulumi:"clusterFqdn"`
-	// Intended usage of the cluster
-	ClusterPurpose *string `pulumi:"clusterPurpose"`
-	// Load Balancer Subnet
-	LoadBalancerSubnet *string `pulumi:"loadBalancerSubnet"`
-	// Load Balancer Type
-	LoadBalancerType *string `pulumi:"loadBalancerType"`
-	// SSL configuration
-	SslConfiguration *SslConfiguration `pulumi:"sslConfiguration"`
-}
-
-// Defaults sets the appropriate defaults for AKSSchemaProperties
-func (val *AKSSchemaProperties) Defaults() *AKSSchemaProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
-		clusterPurpose_ := "FastProd"
-		tmp.ClusterPurpose = &clusterPurpose_
-	}
-	if isZero(tmp.LoadBalancerType) {
-		loadBalancerType_ := "PublicIp"
-		tmp.LoadBalancerType = &loadBalancerType_
-	}
-	return &tmp
-}
-
-// AKS properties
-type AKSSchemaResponseProperties struct {
-	// Number of agents
-	AgentCount *int `pulumi:"agentCount"`
-	// Agent virtual machine size
-	AgentVmSize *string `pulumi:"agentVmSize"`
-	// AKS networking configuration for vnet
-	AksNetworkingConfiguration *AksNetworkingConfigurationResponse `pulumi:"aksNetworkingConfiguration"`
-	// Cluster full qualified domain name
-	ClusterFqdn *string `pulumi:"clusterFqdn"`
-	// Intended usage of the cluster
-	ClusterPurpose *string `pulumi:"clusterPurpose"`
-	// Load Balancer Subnet
-	LoadBalancerSubnet *string `pulumi:"loadBalancerSubnet"`
-	// Load Balancer Type
-	LoadBalancerType *string `pulumi:"loadBalancerType"`
-	// SSL configuration
-	SslConfiguration *SslConfigurationResponse `pulumi:"sslConfiguration"`
-	// System services
-	SystemServices []SystemServiceResponse `pulumi:"systemServices"`
-}
-
-// Defaults sets the appropriate defaults for AKSSchemaResponseProperties
-func (val *AKSSchemaResponseProperties) Defaults() *AKSSchemaResponseProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
-		clusterPurpose_ := "FastProd"
-		tmp.ClusterPurpose = &clusterPurpose_
-	}
-	if isZero(tmp.LoadBalancerType) {
-		loadBalancerType_ := "PublicIp"
-		tmp.LoadBalancerType = &loadBalancerType_
-	}
-	return &tmp
-}
-
 // Account key datastore credentials configuration.
 type AccountKeyDatastoreCredentials struct {
 	// Enum to determine the datastore credentials type.
@@ -173,56 +33,6 @@ type AccountKeyDatastoreSecrets struct {
 	// Enum to determine the datastore secrets type.
 	// Expected value is 'AccountKey'.
 	SecretsType string `pulumi:"secretsType"`
-}
-
-// Advance configuration for AKS networking
-type AksNetworkingConfiguration struct {
-	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
-	DnsServiceIP *string `pulumi:"dnsServiceIP"`
-	// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
-	DockerBridgeCidr *string `pulumi:"dockerBridgeCidr"`
-	// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
-	ServiceCidr *string `pulumi:"serviceCidr"`
-	// Virtual network subnet resource ID the compute nodes belong to
-	SubnetId *string `pulumi:"subnetId"`
-}
-
-// Advance configuration for AKS networking
-type AksNetworkingConfigurationResponse struct {
-	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
-	DnsServiceIP *string `pulumi:"dnsServiceIP"`
-	// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
-	DockerBridgeCidr *string `pulumi:"dockerBridgeCidr"`
-	// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
-	ServiceCidr *string `pulumi:"serviceCidr"`
-	// Virtual network subnet resource ID the compute nodes belong to
-	SubnetId *string `pulumi:"subnetId"`
-}
-
-// An Azure Machine Learning compute.
-type AmlCompute struct {
-	// The type of compute
-	// Expected value is 'AmlCompute'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Properties of AmlCompute
-	Properties *AmlComputeProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for AmlCompute
-func (val *AmlCompute) Defaults() *AmlCompute {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
 }
 
 // Compute node information related to a AmlCompute.
@@ -306,154 +116,6 @@ func (o AmlComputeNodeInformationResponseArrayOutput) Index(i pulumi.IntInput) A
 	}).(AmlComputeNodeInformationResponseOutput)
 }
 
-// AML Compute properties
-type AmlComputeProperties struct {
-	// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
-	// Network is isolated or not
-	IsolatedNetwork *bool `pulumi:"isolatedNetwork"`
-	// Compute OS Type
-	OsType *string `pulumi:"osType"`
-	// A property bag containing additional properties.
-	PropertyBag interface{} `pulumi:"propertyBag"`
-	// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-	RemoteLoginPortPublicAccess *string `pulumi:"remoteLoginPortPublicAccess"`
-	// Scale settings for AML Compute
-	ScaleSettings *ScaleSettings `pulumi:"scaleSettings"`
-	// Virtual network subnet resource ID the compute nodes belong to.
-	Subnet *ResourceId `pulumi:"subnet"`
-	// Credentials for an administrator user account that will be created on each compute node.
-	UserAccountCredentials *UserAccountCredentials `pulumi:"userAccountCredentials"`
-	// Virtual Machine image for AML Compute - windows only
-	VirtualMachineImage *VirtualMachineImage `pulumi:"virtualMachineImage"`
-	// Virtual Machine priority
-	VmPriority *string `pulumi:"vmPriority"`
-	// Virtual Machine Size
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// Defaults sets the appropriate defaults for AmlComputeProperties
-func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
-		enableNodePublicIp_ := true
-		tmp.EnableNodePublicIp = &enableNodePublicIp_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
-	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
-		remoteLoginPortPublicAccess_ := "NotSpecified"
-		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
-	}
-	tmp.ScaleSettings = tmp.ScaleSettings.Defaults()
-
-	return &tmp
-}
-
-// AML Compute properties
-type AmlComputePropertiesResponse struct {
-	// Allocation state of the compute. Possible values are: steady - Indicates that the compute is not resizing. There are no changes to the number of compute nodes in the compute in progress. A compute enters this state when it is created and when no operations are being performed on the compute to change the number of compute nodes. resizing - Indicates that the compute is resizing; that is, compute nodes are being added to or removed from the compute.
-	AllocationState string `pulumi:"allocationState"`
-	// The time at which the compute entered its current allocation state.
-	AllocationStateTransitionTime string `pulumi:"allocationStateTransitionTime"`
-	// The number of compute nodes currently assigned to the compute.
-	CurrentNodeCount int `pulumi:"currentNodeCount"`
-	// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
-	// Collection of errors encountered by various compute nodes during node setup.
-	Errors []ErrorResponseResponse `pulumi:"errors"`
-	// Network is isolated or not
-	IsolatedNetwork *bool `pulumi:"isolatedNetwork"`
-	// Counts of various node states on the compute.
-	NodeStateCounts NodeStateCountsResponse `pulumi:"nodeStateCounts"`
-	// Compute OS Type
-	OsType *string `pulumi:"osType"`
-	// A property bag containing additional properties.
-	PropertyBag interface{} `pulumi:"propertyBag"`
-	// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-	RemoteLoginPortPublicAccess *string `pulumi:"remoteLoginPortPublicAccess"`
-	// Scale settings for AML Compute
-	ScaleSettings *ScaleSettingsResponse `pulumi:"scaleSettings"`
-	// Virtual network subnet resource ID the compute nodes belong to.
-	Subnet *ResourceIdResponse `pulumi:"subnet"`
-	// The target number of compute nodes for the compute. If the allocationState is resizing, this property denotes the target node count for the ongoing resize operation. If the allocationState is steady, this property denotes the target node count for the previous resize operation.
-	TargetNodeCount int `pulumi:"targetNodeCount"`
-	// Credentials for an administrator user account that will be created on each compute node.
-	UserAccountCredentials *UserAccountCredentialsResponse `pulumi:"userAccountCredentials"`
-	// Virtual Machine image for AML Compute - windows only
-	VirtualMachineImage *VirtualMachineImageResponse `pulumi:"virtualMachineImage"`
-	// Virtual Machine priority
-	VmPriority *string `pulumi:"vmPriority"`
-	// Virtual Machine Size
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// Defaults sets the appropriate defaults for AmlComputePropertiesResponse
-func (val *AmlComputePropertiesResponse) Defaults() *AmlComputePropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
-		enableNodePublicIp_ := true
-		tmp.EnableNodePublicIp = &enableNodePublicIp_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
-	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
-		remoteLoginPortPublicAccess_ := "NotSpecified"
-		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
-	}
-	tmp.ScaleSettings = tmp.ScaleSettings.Defaults()
-
-	return &tmp
-}
-
-// An Azure Machine Learning compute.
-type AmlComputeResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'AmlCompute'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Properties of AmlCompute
-	Properties *AmlComputePropertiesResponse `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for AmlComputeResponse
-func (val *AmlComputeResponse) Defaults() *AmlComputeResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
 // AML Token identity configuration.
 type AmlToken struct {
 	// Enum to determine identity framework.
@@ -466,22 +128,6 @@ type AmlTokenResponse struct {
 	// Enum to determine identity framework.
 	// Expected value is 'AMLToken'.
 	IdentityType string `pulumi:"identityType"`
-}
-
-// A user that can be assigned to a compute instance.
-type AssignedUser struct {
-	// User’s AAD Object Id.
-	ObjectId string `pulumi:"objectId"`
-	// User’s AAD Tenant Id.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// A user that can be assigned to a compute instance.
-type AssignedUserResponse struct {
-	// User’s AAD Object Id.
-	ObjectId string `pulumi:"objectId"`
-	// User’s AAD Tenant Id.
-	TenantId string `pulumi:"tenantId"`
 }
 
 // Forecast horizon determined automatically by system.
@@ -547,11 +193,11 @@ func (val *AutoMLJob) Defaults() *AutoMLJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -611,11 +257,11 @@ func (val *AutoMLJobResponse) Defaults() *AutoMLJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -636,32 +282,6 @@ type AutoNCrossValidationsResponse struct {
 	// Determines how N-Cross validations value is determined.
 	// Expected value is 'Auto'.
 	Mode string `pulumi:"mode"`
-}
-
-// Auto pause properties
-type AutoPauseProperties struct {
-	DelayInMinutes *int  `pulumi:"delayInMinutes"`
-	Enabled        *bool `pulumi:"enabled"`
-}
-
-// Auto pause properties
-type AutoPausePropertiesResponse struct {
-	DelayInMinutes *int  `pulumi:"delayInMinutes"`
-	Enabled        *bool `pulumi:"enabled"`
-}
-
-// Auto scale properties
-type AutoScaleProperties struct {
-	Enabled      *bool `pulumi:"enabled"`
-	MaxNodeCount *int  `pulumi:"maxNodeCount"`
-	MinNodeCount *int  `pulumi:"minNodeCount"`
-}
-
-// Auto scale properties
-type AutoScalePropertiesResponse struct {
-	Enabled      *bool `pulumi:"enabled"`
-	MaxNodeCount *int  `pulumi:"maxNodeCount"`
-	MinNodeCount *int  `pulumi:"minNodeCount"`
 }
 
 type AutoSeasonality struct {
@@ -733,7 +353,7 @@ func (val *AzureBlobDatastore) Defaults() *AzureBlobDatastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -773,7 +393,7 @@ func (val *AzureBlobDatastoreResponse) Defaults() *AzureBlobDatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -805,7 +425,7 @@ func (val *AzureDataLakeGen1Datastore) Defaults() *AzureDataLakeGen1Datastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -839,7 +459,7 @@ func (val *AzureDataLakeGen1DatastoreResponse) Defaults() *AzureDataLakeGen1Data
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -877,7 +497,7 @@ func (val *AzureDataLakeGen2Datastore) Defaults() *AzureDataLakeGen2Datastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -917,7 +537,7 @@ func (val *AzureDataLakeGen2DatastoreResponse) Defaults() *AzureDataLakeGen2Data
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -955,7 +575,7 @@ func (val *AzureFileDatastore) Defaults() *AzureFileDatastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -995,7 +615,7 @@ func (val *AzureFileDatastoreResponse) Defaults() *AzureFileDatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1022,19 +642,19 @@ func (val *BanditPolicy) Defaults() *BanditPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.SlackAmount) {
+	if tmp.SlackAmount == nil {
 		slackAmount_ := 0.0
 		tmp.SlackAmount = &slackAmount_
 	}
-	if isZero(tmp.SlackFactor) {
+	if tmp.SlackFactor == nil {
 		slackFactor_ := 0.0
 		tmp.SlackFactor = &slackFactor_
 	}
@@ -1061,19 +681,19 @@ func (val *BanditPolicyResponse) Defaults() *BanditPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.SlackAmount) {
+	if tmp.SlackAmount == nil {
 		slackAmount_ := 0.0
 		tmp.SlackAmount = &slackAmount_
 	}
-	if isZero(tmp.SlackFactor) {
+	if tmp.SlackFactor == nil {
 		slackFactor_ := 0.0
 		tmp.SlackFactor = &slackFactor_
 	}
@@ -1128,27 +748,27 @@ func (val *BatchDeploymentType) Defaults() *BatchDeploymentType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ErrorThreshold) {
+	if tmp.ErrorThreshold == nil {
 		errorThreshold_ := -1
 		tmp.ErrorThreshold = &errorThreshold_
 	}
-	if isZero(tmp.LoggingLevel) {
+	if tmp.LoggingLevel == nil {
 		loggingLevel_ := "Info"
 		tmp.LoggingLevel = &loggingLevel_
 	}
-	if isZero(tmp.MaxConcurrencyPerInstance) {
+	if tmp.MaxConcurrencyPerInstance == nil {
 		maxConcurrencyPerInstance_ := 1
 		tmp.MaxConcurrencyPerInstance = &maxConcurrencyPerInstance_
 	}
-	if isZero(tmp.MiniBatchSize) {
+	if tmp.MiniBatchSize == nil {
 		miniBatchSize_ := 10.0
 		tmp.MiniBatchSize = &miniBatchSize_
 	}
-	if isZero(tmp.OutputAction) {
+	if tmp.OutputAction == nil {
 		outputAction_ := "AppendRow"
 		tmp.OutputAction = &outputAction_
 	}
-	if isZero(tmp.OutputFileName) {
+	if tmp.OutputFileName == nil {
 		outputFileName_ := "predictions.csv"
 		tmp.OutputFileName = &outputFileName_
 	}
@@ -1218,22 +838,22 @@ func (val *BatchDeploymentTypeArgs) Defaults() *BatchDeploymentTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ErrorThreshold) {
+	if tmp.ErrorThreshold == nil {
 		tmp.ErrorThreshold = pulumi.IntPtr(-1)
 	}
-	if isZero(tmp.LoggingLevel) {
+	if tmp.LoggingLevel == nil {
 		tmp.LoggingLevel = pulumi.StringPtr("Info")
 	}
-	if isZero(tmp.MaxConcurrencyPerInstance) {
+	if tmp.MaxConcurrencyPerInstance == nil {
 		tmp.MaxConcurrencyPerInstance = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.MiniBatchSize) {
+	if tmp.MiniBatchSize == nil {
 		tmp.MiniBatchSize = pulumi.Float64Ptr(10.0)
 	}
-	if isZero(tmp.OutputAction) {
+	if tmp.OutputAction == nil {
 		tmp.OutputAction = pulumi.StringPtr("AppendRow")
 	}
-	if isZero(tmp.OutputFileName) {
+	if tmp.OutputFileName == nil {
 		tmp.OutputFileName = pulumi.StringPtr("predictions.csv")
 	}
 
@@ -1399,27 +1019,27 @@ func (val *BatchDeploymentResponse) Defaults() *BatchDeploymentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ErrorThreshold) {
+	if tmp.ErrorThreshold == nil {
 		errorThreshold_ := -1
 		tmp.ErrorThreshold = &errorThreshold_
 	}
-	if isZero(tmp.LoggingLevel) {
+	if tmp.LoggingLevel == nil {
 		loggingLevel_ := "Info"
 		tmp.LoggingLevel = &loggingLevel_
 	}
-	if isZero(tmp.MaxConcurrencyPerInstance) {
+	if tmp.MaxConcurrencyPerInstance == nil {
 		maxConcurrencyPerInstance_ := 1
 		tmp.MaxConcurrencyPerInstance = &maxConcurrencyPerInstance_
 	}
-	if isZero(tmp.MiniBatchSize) {
+	if tmp.MiniBatchSize == nil {
 		miniBatchSize_ := 10.0
 		tmp.MiniBatchSize = &miniBatchSize_
 	}
-	if isZero(tmp.OutputAction) {
+	if tmp.OutputAction == nil {
 		outputAction_ := "AppendRow"
 		tmp.OutputAction = &outputAction_
 	}
-	if isZero(tmp.OutputFileName) {
+	if tmp.OutputFileName == nil {
 		outputFileName_ := "predictions.csv"
 		tmp.OutputFileName = &outputFileName_
 	}
@@ -1916,11 +1536,11 @@ func (val *BatchRetrySettings) Defaults() *BatchRetrySettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRetries) {
+	if tmp.MaxRetries == nil {
 		maxRetries_ := 3
 		tmp.MaxRetries = &maxRetries_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT30S"
 		tmp.Timeout = &timeout_
 	}
@@ -1952,10 +1572,10 @@ func (val *BatchRetrySettingsArgs) Defaults() *BatchRetrySettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRetries) {
+	if tmp.MaxRetries == nil {
 		tmp.MaxRetries = pulumi.IntPtr(3)
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		tmp.Timeout = pulumi.StringPtr("PT30S")
 	}
 	return &tmp
@@ -2106,11 +1726,11 @@ func (val *BatchRetrySettingsResponse) Defaults() *BatchRetrySettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRetries) {
+	if tmp.MaxRetries == nil {
 		maxRetries_ := 3
 		tmp.MaxRetries = &maxRetries_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT30S"
 		tmp.Timeout = &timeout_
 	}
@@ -2214,7 +1834,7 @@ func (val *BuildContext) Defaults() *BuildContext {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DockerfilePath) {
+	if tmp.DockerfilePath == nil {
 		dockerfilePath_ := "Dockerfile"
 		tmp.DockerfilePath = &dockerfilePath_
 	}
@@ -2248,7 +1868,7 @@ func (val *BuildContextArgs) Defaults() *BuildContextArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DockerfilePath) {
+	if tmp.DockerfilePath == nil {
 		tmp.DockerfilePath = pulumi.StringPtr("Dockerfile")
 	}
 	return &tmp
@@ -2405,7 +2025,7 @@ func (val *BuildContextResponse) Defaults() *BuildContextResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DockerfilePath) {
+	if tmp.DockerfilePath == nil {
 		dockerfilePath_ := "Dockerfile"
 		tmp.DockerfilePath = &dockerfilePath_
 	}
@@ -2565,11 +2185,11 @@ func (val *Classification) Defaults() *Classification {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "AUCWeighted"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -2613,11 +2233,11 @@ func (val *ClassificationResponse) Defaults() *ClassificationResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "AUCWeighted"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -2880,7 +2500,7 @@ func (val *CodeContainerType) Defaults() *CodeContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -2916,7 +2536,7 @@ func (val *CodeContainerTypeArgs) Defaults() *CodeContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -2990,7 +2610,7 @@ func (val *CodeContainerResponse) Defaults() *CodeContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3064,11 +2684,11 @@ func (val *CodeVersionType) Defaults() *CodeVersionType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3108,10 +2728,10 @@ func (val *CodeVersionTypeArgs) Defaults() *CodeVersionTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3195,11 +2815,11 @@ func (val *CodeVersionResponse) Defaults() *CodeVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3323,11 +2943,11 @@ func (val *CommandJob) Defaults() *CommandJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3410,11 +3030,11 @@ func (val *CommandJobResponse) Defaults() *CommandJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3442,7 +3062,7 @@ func (val *ComponentContainerType) Defaults() *ComponentContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3479,7 +3099,7 @@ func (val *ComponentContainerTypeArgs) Defaults() *ComponentContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3555,7 +3175,7 @@ func (val *ComponentContainerResponse) Defaults() *ComponentContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3631,11 +3251,11 @@ func (val *ComponentVersionType) Defaults() *ComponentVersionType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3676,10 +3296,10 @@ func (val *ComponentVersionTypeArgs) Defaults() *ComponentVersionTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3765,11 +3385,11 @@ func (val *ComponentVersionResponse) Defaults() *ComponentVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3822,349 +3442,6 @@ func (o ComponentVersionResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ComponentVersionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// An Azure Machine Learning compute instance.
-type ComputeInstance struct {
-	// The type of compute
-	// Expected value is 'ComputeInstance'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Properties of ComputeInstance
-	Properties *ComputeInstanceProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstance
-func (val *ComputeInstance) Defaults() *ComputeInstance {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// Defines an Aml Instance application and its connectivity endpoint URI.
-type ComputeInstanceApplicationResponse struct {
-	// Name of the ComputeInstance application.
-	DisplayName *string `pulumi:"displayName"`
-	// Application' endpoint URI.
-	EndpointUri *string `pulumi:"endpointUri"`
-}
-
-// Defines all connectivity endpoints and properties for an ComputeInstance.
-type ComputeInstanceConnectivityEndpointsResponse struct {
-	// Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
-	PrivateIpAddress string `pulumi:"privateIpAddress"`
-	// Public IP Address of this ComputeInstance.
-	PublicIpAddress string `pulumi:"publicIpAddress"`
-}
-
-// Defines an Aml Instance container.
-type ComputeInstanceContainerResponse struct {
-	// Auto save settings.
-	Autosave *string `pulumi:"autosave"`
-	// Environment information of this container.
-	Environment *ComputeInstanceEnvironmentInfoResponse `pulumi:"environment"`
-	// Information of GPU.
-	Gpu *string `pulumi:"gpu"`
-	// Name of the ComputeInstance container.
-	Name *string `pulumi:"name"`
-	// network of this container.
-	Network *string `pulumi:"network"`
-	// services of this containers.
-	Services []interface{} `pulumi:"services"`
-}
-
-// Describes information on user who created this ComputeInstance.
-type ComputeInstanceCreatedByResponse struct {
-	// Uniquely identifies the user within his/her organization.
-	UserId string `pulumi:"userId"`
-	// Name of the user.
-	UserName string `pulumi:"userName"`
-	// Uniquely identifies user' Azure Active Directory organization.
-	UserOrgId string `pulumi:"userOrgId"`
-}
-
-// Defines an Aml Instance DataDisk.
-type ComputeInstanceDataDiskResponse struct {
-	// Caching type of Data Disk.
-	Caching *string `pulumi:"caching"`
-	// The initial disk size in gigabytes.
-	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun.
-	Lun *int `pulumi:"lun"`
-	// type of this storage account.
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstanceDataDiskResponse
-func (val *ComputeInstanceDataDiskResponse) Defaults() *ComputeInstanceDataDiskResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.StorageAccountType) {
-		storageAccountType_ := "Standard_LRS"
-		tmp.StorageAccountType = &storageAccountType_
-	}
-	return &tmp
-}
-
-// Defines an Aml Instance DataMount.
-type ComputeInstanceDataMountResponse struct {
-	// who this data mount created by.
-	CreatedBy *string `pulumi:"createdBy"`
-	// Error of this data mount.
-	Error *string `pulumi:"error"`
-	// Mount Action.
-	MountAction *string `pulumi:"mountAction"`
-	// name of the ComputeInstance data mount.
-	MountName *string `pulumi:"mountName"`
-	// Path of this data mount.
-	MountPath *string `pulumi:"mountPath"`
-	// Mount state.
-	MountState *string `pulumi:"mountState"`
-	// The time when the disk mounted.
-	MountedOn *string `pulumi:"mountedOn"`
-	// Source of the ComputeInstance data mount.
-	Source *string `pulumi:"source"`
-	// Data source type.
-	SourceType *string `pulumi:"sourceType"`
-}
-
-// Environment information
-type ComputeInstanceEnvironmentInfoResponse struct {
-	// name of environment.
-	Name *string `pulumi:"name"`
-	// version of environment.
-	Version *string `pulumi:"version"`
-}
-
-// The last operation on ComputeInstance.
-type ComputeInstanceLastOperationResponse struct {
-	// Name of the last operation.
-	OperationName *string `pulumi:"operationName"`
-	// Operation status.
-	OperationStatus *string `pulumi:"operationStatus"`
-	// Time of the last operation.
-	OperationTime *string `pulumi:"operationTime"`
-	// Trigger of operation.
-	OperationTrigger *string `pulumi:"operationTrigger"`
-}
-
-// Compute Instance properties
-type ComputeInstanceProperties struct {
-	// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
-	ApplicationSharingPolicy *string `pulumi:"applicationSharingPolicy"`
-	// The Compute Instance Authorization type. Available values are personal (default).
-	ComputeInstanceAuthorizationType *string `pulumi:"computeInstanceAuthorizationType"`
-	// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
-	// Settings for a personal compute instance.
-	PersonalComputeInstanceSettings *PersonalComputeInstanceSettings `pulumi:"personalComputeInstanceSettings"`
-	// Details of customized scripts to execute for setting up the cluster.
-	SetupScripts *SetupScripts `pulumi:"setupScripts"`
-	// Specifies policy and settings for SSH access.
-	SshSettings *ComputeInstanceSshSettings `pulumi:"sshSettings"`
-	// Virtual network subnet resource ID the compute nodes belong to.
-	Subnet *ResourceId `pulumi:"subnet"`
-	// Virtual Machine Size
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstanceProperties
-func (val *ComputeInstanceProperties) Defaults() *ComputeInstanceProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
-		applicationSharingPolicy_ := "Shared"
-		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
-	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
-		computeInstanceAuthorizationType_ := "personal"
-		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
-	}
-	tmp.SshSettings = tmp.SshSettings.Defaults()
-
-	return &tmp
-}
-
-// Compute Instance properties
-type ComputeInstancePropertiesResponse struct {
-	// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
-	ApplicationSharingPolicy *string `pulumi:"applicationSharingPolicy"`
-	// Describes available applications and their endpoints on this ComputeInstance.
-	Applications []ComputeInstanceApplicationResponse `pulumi:"applications"`
-	// The Compute Instance Authorization type. Available values are personal (default).
-	ComputeInstanceAuthorizationType *string `pulumi:"computeInstanceAuthorizationType"`
-	// Describes all connectivity endpoints available for this ComputeInstance.
-	ConnectivityEndpoints ComputeInstanceConnectivityEndpointsResponse `pulumi:"connectivityEndpoints"`
-	// Describes informations of containers on this ComputeInstance.
-	Containers []ComputeInstanceContainerResponse `pulumi:"containers"`
-	// Describes information on user who created this ComputeInstance.
-	CreatedBy ComputeInstanceCreatedByResponse `pulumi:"createdBy"`
-	// Describes informations of dataDisks on this ComputeInstance.
-	DataDisks []ComputeInstanceDataDiskResponse `pulumi:"dataDisks"`
-	// Describes informations of dataMounts on this ComputeInstance.
-	DataMounts []ComputeInstanceDataMountResponse `pulumi:"dataMounts"`
-	// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
-	// Collection of errors encountered on this ComputeInstance.
-	Errors []ErrorResponseResponse `pulumi:"errors"`
-	// The last operation on ComputeInstance.
-	LastOperation ComputeInstanceLastOperationResponse `pulumi:"lastOperation"`
-	// Settings for a personal compute instance.
-	PersonalComputeInstanceSettings *PersonalComputeInstanceSettingsResponse `pulumi:"personalComputeInstanceSettings"`
-	// The list of schedules to be applied on the computes.
-	Schedules ComputeSchedulesResponse `pulumi:"schedules"`
-	// Details of customized scripts to execute for setting up the cluster.
-	SetupScripts *SetupScriptsResponse `pulumi:"setupScripts"`
-	// Specifies policy and settings for SSH access.
-	SshSettings *ComputeInstanceSshSettingsResponse `pulumi:"sshSettings"`
-	// The current state of this ComputeInstance.
-	State string `pulumi:"state"`
-	// Virtual network subnet resource ID the compute nodes belong to.
-	Subnet *ResourceIdResponse `pulumi:"subnet"`
-	// ComputeInstance version.
-	Versions ComputeInstanceVersionResponse `pulumi:"versions"`
-	// Virtual Machine Size
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstancePropertiesResponse
-func (val *ComputeInstancePropertiesResponse) Defaults() *ComputeInstancePropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
-		applicationSharingPolicy_ := "Shared"
-		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
-	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
-		computeInstanceAuthorizationType_ := "personal"
-		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
-	}
-	tmp.SshSettings = tmp.SshSettings.Defaults()
-
-	return &tmp
-}
-
-// An Azure Machine Learning compute instance.
-type ComputeInstanceResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'ComputeInstance'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Properties of ComputeInstance
-	Properties *ComputeInstancePropertiesResponse `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstanceResponse
-func (val *ComputeInstanceResponse) Defaults() *ComputeInstanceResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// Specifies policy and settings for SSH access.
-type ComputeInstanceSshSettings struct {
-	// Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
-	AdminPublicKey *string `pulumi:"adminPublicKey"`
-	// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
-	SshPublicAccess *string `pulumi:"sshPublicAccess"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstanceSshSettings
-func (val *ComputeInstanceSshSettings) Defaults() *ComputeInstanceSshSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
-		sshPublicAccess_ := "Disabled"
-		tmp.SshPublicAccess = &sshPublicAccess_
-	}
-	return &tmp
-}
-
-// Specifies policy and settings for SSH access.
-type ComputeInstanceSshSettingsResponse struct {
-	// Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
-	AdminPublicKey *string `pulumi:"adminPublicKey"`
-	// Describes the admin user name.
-	AdminUserName string `pulumi:"adminUserName"`
-	// Describes the port for connecting through SSH.
-	SshPort int `pulumi:"sshPort"`
-	// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
-	SshPublicAccess *string `pulumi:"sshPublicAccess"`
-}
-
-// Defaults sets the appropriate defaults for ComputeInstanceSshSettingsResponse
-func (val *ComputeInstanceSshSettingsResponse) Defaults() *ComputeInstanceSshSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
-		sshPublicAccess_ := "Disabled"
-		tmp.SshPublicAccess = &sshPublicAccess_
-	}
-	return &tmp
-}
-
-// Version of computeInstance.
-type ComputeInstanceVersionResponse struct {
-	// Runtime of compute instance.
-	Runtime *string `pulumi:"runtime"`
-}
-
-// The list of schedules to be applied on the computes
-type ComputeSchedulesResponse struct {
-	// The list of compute start stop schedules to be applied.
-	ComputeStartStop []ComputeStartStopScheduleResponse `pulumi:"computeStartStop"`
-}
-
-// Compute start stop schedule properties
-type ComputeStartStopScheduleResponse struct {
-	// The compute power action.
-	Action *string `pulumi:"action"`
-	// Schedule id.
-	Id string `pulumi:"id"`
-	// The current deployment state of schedule.
-	ProvisioningStatus string `pulumi:"provisioningStatus"`
-	// Base definition of a schedule
-	Schedule interface{} `pulumi:"schedule"`
-}
-
 // Resource requirements for each container instance within an online deployment.
 type ContainerResourceRequirements struct {
 	// Container resource limit info:
@@ -4205,201 +3482,6 @@ type ContainerResourceSettingsResponse struct {
 	Memory *string `pulumi:"memory"`
 }
 
-type CosmosDbSettings struct {
-	// The throughput of the collections in cosmosdb database
-	CollectionsThroughput *int `pulumi:"collectionsThroughput"`
-}
-
-// CosmosDbSettingsInput is an input type that accepts CosmosDbSettingsArgs and CosmosDbSettingsOutput values.
-// You can construct a concrete instance of `CosmosDbSettingsInput` via:
-//
-//	CosmosDbSettingsArgs{...}
-type CosmosDbSettingsInput interface {
-	pulumi.Input
-
-	ToCosmosDbSettingsOutput() CosmosDbSettingsOutput
-	ToCosmosDbSettingsOutputWithContext(context.Context) CosmosDbSettingsOutput
-}
-
-type CosmosDbSettingsArgs struct {
-	// The throughput of the collections in cosmosdb database
-	CollectionsThroughput pulumi.IntPtrInput `pulumi:"collectionsThroughput"`
-}
-
-func (CosmosDbSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CosmosDbSettings)(nil)).Elem()
-}
-
-func (i CosmosDbSettingsArgs) ToCosmosDbSettingsOutput() CosmosDbSettingsOutput {
-	return i.ToCosmosDbSettingsOutputWithContext(context.Background())
-}
-
-func (i CosmosDbSettingsArgs) ToCosmosDbSettingsOutputWithContext(ctx context.Context) CosmosDbSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CosmosDbSettingsOutput)
-}
-
-func (i CosmosDbSettingsArgs) ToCosmosDbSettingsPtrOutput() CosmosDbSettingsPtrOutput {
-	return i.ToCosmosDbSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i CosmosDbSettingsArgs) ToCosmosDbSettingsPtrOutputWithContext(ctx context.Context) CosmosDbSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CosmosDbSettingsOutput).ToCosmosDbSettingsPtrOutputWithContext(ctx)
-}
-
-// CosmosDbSettingsPtrInput is an input type that accepts CosmosDbSettingsArgs, CosmosDbSettingsPtr and CosmosDbSettingsPtrOutput values.
-// You can construct a concrete instance of `CosmosDbSettingsPtrInput` via:
-//
-//	        CosmosDbSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type CosmosDbSettingsPtrInput interface {
-	pulumi.Input
-
-	ToCosmosDbSettingsPtrOutput() CosmosDbSettingsPtrOutput
-	ToCosmosDbSettingsPtrOutputWithContext(context.Context) CosmosDbSettingsPtrOutput
-}
-
-type cosmosDbSettingsPtrType CosmosDbSettingsArgs
-
-func CosmosDbSettingsPtr(v *CosmosDbSettingsArgs) CosmosDbSettingsPtrInput {
-	return (*cosmosDbSettingsPtrType)(v)
-}
-
-func (*cosmosDbSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CosmosDbSettings)(nil)).Elem()
-}
-
-func (i *cosmosDbSettingsPtrType) ToCosmosDbSettingsPtrOutput() CosmosDbSettingsPtrOutput {
-	return i.ToCosmosDbSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *cosmosDbSettingsPtrType) ToCosmosDbSettingsPtrOutputWithContext(ctx context.Context) CosmosDbSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CosmosDbSettingsPtrOutput)
-}
-
-type CosmosDbSettingsOutput struct{ *pulumi.OutputState }
-
-func (CosmosDbSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CosmosDbSettings)(nil)).Elem()
-}
-
-func (o CosmosDbSettingsOutput) ToCosmosDbSettingsOutput() CosmosDbSettingsOutput {
-	return o
-}
-
-func (o CosmosDbSettingsOutput) ToCosmosDbSettingsOutputWithContext(ctx context.Context) CosmosDbSettingsOutput {
-	return o
-}
-
-func (o CosmosDbSettingsOutput) ToCosmosDbSettingsPtrOutput() CosmosDbSettingsPtrOutput {
-	return o.ToCosmosDbSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o CosmosDbSettingsOutput) ToCosmosDbSettingsPtrOutputWithContext(ctx context.Context) CosmosDbSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CosmosDbSettings) *CosmosDbSettings {
-		return &v
-	}).(CosmosDbSettingsPtrOutput)
-}
-
-// The throughput of the collections in cosmosdb database
-func (o CosmosDbSettingsOutput) CollectionsThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CosmosDbSettings) *int { return v.CollectionsThroughput }).(pulumi.IntPtrOutput)
-}
-
-type CosmosDbSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (CosmosDbSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CosmosDbSettings)(nil)).Elem()
-}
-
-func (o CosmosDbSettingsPtrOutput) ToCosmosDbSettingsPtrOutput() CosmosDbSettingsPtrOutput {
-	return o
-}
-
-func (o CosmosDbSettingsPtrOutput) ToCosmosDbSettingsPtrOutputWithContext(ctx context.Context) CosmosDbSettingsPtrOutput {
-	return o
-}
-
-func (o CosmosDbSettingsPtrOutput) Elem() CosmosDbSettingsOutput {
-	return o.ApplyT(func(v *CosmosDbSettings) CosmosDbSettings {
-		if v != nil {
-			return *v
-		}
-		var ret CosmosDbSettings
-		return ret
-	}).(CosmosDbSettingsOutput)
-}
-
-// The throughput of the collections in cosmosdb database
-func (o CosmosDbSettingsPtrOutput) CollectionsThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CosmosDbSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CollectionsThroughput
-	}).(pulumi.IntPtrOutput)
-}
-
-type CosmosDbSettingsResponse struct {
-	// The throughput of the collections in cosmosdb database
-	CollectionsThroughput *int `pulumi:"collectionsThroughput"`
-}
-
-type CosmosDbSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (CosmosDbSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CosmosDbSettingsResponse)(nil)).Elem()
-}
-
-func (o CosmosDbSettingsResponseOutput) ToCosmosDbSettingsResponseOutput() CosmosDbSettingsResponseOutput {
-	return o
-}
-
-func (o CosmosDbSettingsResponseOutput) ToCosmosDbSettingsResponseOutputWithContext(ctx context.Context) CosmosDbSettingsResponseOutput {
-	return o
-}
-
-// The throughput of the collections in cosmosdb database
-func (o CosmosDbSettingsResponseOutput) CollectionsThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CosmosDbSettingsResponse) *int { return v.CollectionsThroughput }).(pulumi.IntPtrOutput)
-}
-
-type CosmosDbSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CosmosDbSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CosmosDbSettingsResponse)(nil)).Elem()
-}
-
-func (o CosmosDbSettingsResponsePtrOutput) ToCosmosDbSettingsResponsePtrOutput() CosmosDbSettingsResponsePtrOutput {
-	return o
-}
-
-func (o CosmosDbSettingsResponsePtrOutput) ToCosmosDbSettingsResponsePtrOutputWithContext(ctx context.Context) CosmosDbSettingsResponsePtrOutput {
-	return o
-}
-
-func (o CosmosDbSettingsResponsePtrOutput) Elem() CosmosDbSettingsResponseOutput {
-	return o.ApplyT(func(v *CosmosDbSettingsResponse) CosmosDbSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CosmosDbSettingsResponse
-		return ret
-	}).(CosmosDbSettingsResponseOutput)
-}
-
-// The throughput of the collections in cosmosdb database
-func (o CosmosDbSettingsResponsePtrOutput) CollectionsThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CosmosDbSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CollectionsThroughput
-	}).(pulumi.IntPtrOutput)
-}
-
 // Cron schedule definition
 type CronSchedule struct {
 	// Specifies end time of schedule in ISO 8601 format.
@@ -4426,11 +3508,11 @@ func (val *CronSchedule) Defaults() *CronSchedule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ScheduleStatus) {
+	if tmp.ScheduleStatus == nil {
 		scheduleStatus_ := "Enabled"
 		tmp.ScheduleStatus = &scheduleStatus_
 	}
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -4463,11 +3545,11 @@ func (val *CronScheduleResponse) Defaults() *CronScheduleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ScheduleStatus) {
+	if tmp.ScheduleStatus == nil {
 		scheduleStatus_ := "Enabled"
 		tmp.ScheduleStatus = &scheduleStatus_
 	}
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -4510,7 +3592,7 @@ func (val *CustomModelJobInput) Defaults() *CustomModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -4535,7 +3617,7 @@ func (val *CustomModelJobInputResponse) Defaults() *CustomModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -4560,7 +3642,7 @@ func (val *CustomModelJobOutput) Defaults() *CustomModelJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -4585,7 +3667,7 @@ func (val *CustomModelJobOutputResponse) Defaults() *CustomModelJobOutputRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -4678,7 +3760,7 @@ func (val *DataContainerType) Defaults() *DataContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4716,7 +3798,7 @@ func (val *DataContainerTypeArgs) Defaults() *DataContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -4797,7 +3879,7 @@ func (val *DataContainerResponse) Defaults() *DataContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4854,94 +3936,6 @@ func (o DataContainerResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DataContainerResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// A DataFactory compute.
-type DataFactory struct {
-	// The type of compute
-	// Expected value is 'DataFactory'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// A DataFactory compute.
-type DataFactoryResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'DataFactory'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// A DataLakeAnalytics compute.
-type DataLakeAnalytics struct {
-	// The type of compute
-	// Expected value is 'DataLakeAnalytics'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool                              `pulumi:"disableLocalAuth"`
-	Properties       *DataLakeAnalyticsSchemaProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// A DataLakeAnalytics compute.
-type DataLakeAnalyticsResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'DataLakeAnalytics'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string                                     `pulumi:"modifiedOn"`
-	Properties *DataLakeAnalyticsSchemaResponseProperties `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-type DataLakeAnalyticsSchemaProperties struct {
-	// DataLake Store Account Name
-	DataLakeStoreAccountName *string `pulumi:"dataLakeStoreAccountName"`
-}
-
-type DataLakeAnalyticsSchemaResponseProperties struct {
-	// DataLake Store Account Name
-	DataLakeStoreAccountName *string `pulumi:"dataLakeStoreAccountName"`
-}
-
 // Reference to an asset via its path in a datastore.
 type DataPathAssetReference struct {
 	// ARM resource ID of the datastore where the asset is located.
@@ -4964,64 +3958,6 @@ type DataPathAssetReferenceResponse struct {
 	ReferenceType string `pulumi:"referenceType"`
 }
 
-// A DataFactory compute.
-type Databricks struct {
-	// The type of compute
-	// Expected value is 'Databricks'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Properties of Databricks
-	Properties *DatabricksProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Properties of Databricks
-type DatabricksProperties struct {
-	// Databricks access token
-	DatabricksAccessToken *string `pulumi:"databricksAccessToken"`
-	// Workspace Url
-	WorkspaceUrl *string `pulumi:"workspaceUrl"`
-}
-
-// Properties of Databricks
-type DatabricksPropertiesResponse struct {
-	// Databricks access token
-	DatabricksAccessToken *string `pulumi:"databricksAccessToken"`
-	// Workspace Url
-	WorkspaceUrl *string `pulumi:"workspaceUrl"`
-}
-
-// A DataFactory compute.
-type DatabricksResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'Databricks'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Properties of Databricks
-	Properties *DatabricksPropertiesResponse `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
 type DefaultScaleSettings struct {
 	// Expected value is 'Default'.
 	ScaleType string `pulumi:"scaleType"`
@@ -5030,540 +3966,6 @@ type DefaultScaleSettings struct {
 type DefaultScaleSettingsResponse struct {
 	// Expected value is 'Default'.
 	ScaleType string `pulumi:"scaleType"`
-}
-
-type EncryptionKeyVaultProperties struct {
-	// For future use - The client id of the identity which will be used to access key vault.
-	IdentityClientId *string `pulumi:"identityClientId"`
-	// Key vault uri to access the encryption key.
-	KeyIdentifier string `pulumi:"keyIdentifier"`
-	// The ArmId of the keyVault where the customer owned encryption key is present.
-	KeyVaultArmId string `pulumi:"keyVaultArmId"`
-}
-
-// EncryptionKeyVaultPropertiesInput is an input type that accepts EncryptionKeyVaultPropertiesArgs and EncryptionKeyVaultPropertiesOutput values.
-// You can construct a concrete instance of `EncryptionKeyVaultPropertiesInput` via:
-//
-//	EncryptionKeyVaultPropertiesArgs{...}
-type EncryptionKeyVaultPropertiesInput interface {
-	pulumi.Input
-
-	ToEncryptionKeyVaultPropertiesOutput() EncryptionKeyVaultPropertiesOutput
-	ToEncryptionKeyVaultPropertiesOutputWithContext(context.Context) EncryptionKeyVaultPropertiesOutput
-}
-
-type EncryptionKeyVaultPropertiesArgs struct {
-	// For future use - The client id of the identity which will be used to access key vault.
-	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
-	// Key vault uri to access the encryption key.
-	KeyIdentifier pulumi.StringInput `pulumi:"keyIdentifier"`
-	// The ArmId of the keyVault where the customer owned encryption key is present.
-	KeyVaultArmId pulumi.StringInput `pulumi:"keyVaultArmId"`
-}
-
-func (EncryptionKeyVaultPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionKeyVaultProperties)(nil)).Elem()
-}
-
-func (i EncryptionKeyVaultPropertiesArgs) ToEncryptionKeyVaultPropertiesOutput() EncryptionKeyVaultPropertiesOutput {
-	return i.ToEncryptionKeyVaultPropertiesOutputWithContext(context.Background())
-}
-
-func (i EncryptionKeyVaultPropertiesArgs) ToEncryptionKeyVaultPropertiesOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyVaultPropertiesOutput)
-}
-
-func (i EncryptionKeyVaultPropertiesArgs) ToEncryptionKeyVaultPropertiesPtrOutput() EncryptionKeyVaultPropertiesPtrOutput {
-	return i.ToEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionKeyVaultPropertiesArgs) ToEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyVaultPropertiesOutput).ToEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx)
-}
-
-// EncryptionKeyVaultPropertiesPtrInput is an input type that accepts EncryptionKeyVaultPropertiesArgs, EncryptionKeyVaultPropertiesPtr and EncryptionKeyVaultPropertiesPtrOutput values.
-// You can construct a concrete instance of `EncryptionKeyVaultPropertiesPtrInput` via:
-//
-//	        EncryptionKeyVaultPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type EncryptionKeyVaultPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToEncryptionKeyVaultPropertiesPtrOutput() EncryptionKeyVaultPropertiesPtrOutput
-	ToEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Context) EncryptionKeyVaultPropertiesPtrOutput
-}
-
-type encryptionKeyVaultPropertiesPtrType EncryptionKeyVaultPropertiesArgs
-
-func EncryptionKeyVaultPropertiesPtr(v *EncryptionKeyVaultPropertiesArgs) EncryptionKeyVaultPropertiesPtrInput {
-	return (*encryptionKeyVaultPropertiesPtrType)(v)
-}
-
-func (*encryptionKeyVaultPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionKeyVaultProperties)(nil)).Elem()
-}
-
-func (i *encryptionKeyVaultPropertiesPtrType) ToEncryptionKeyVaultPropertiesPtrOutput() EncryptionKeyVaultPropertiesPtrOutput {
-	return i.ToEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionKeyVaultPropertiesPtrType) ToEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyVaultPropertiesPtrOutput)
-}
-
-type EncryptionKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
-
-func (EncryptionKeyVaultPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionKeyVaultProperties)(nil)).Elem()
-}
-
-func (o EncryptionKeyVaultPropertiesOutput) ToEncryptionKeyVaultPropertiesOutput() EncryptionKeyVaultPropertiesOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesOutput) ToEncryptionKeyVaultPropertiesOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesOutput) ToEncryptionKeyVaultPropertiesPtrOutput() EncryptionKeyVaultPropertiesPtrOutput {
-	return o.ToEncryptionKeyVaultPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionKeyVaultPropertiesOutput) ToEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionKeyVaultProperties) *EncryptionKeyVaultProperties {
-		return &v
-	}).(EncryptionKeyVaultPropertiesPtrOutput)
-}
-
-// For future use - The client id of the identity which will be used to access key vault.
-func (o EncryptionKeyVaultPropertiesOutput) IdentityClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionKeyVaultProperties) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
-}
-
-// Key vault uri to access the encryption key.
-func (o EncryptionKeyVaultPropertiesOutput) KeyIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionKeyVaultProperties) string { return v.KeyIdentifier }).(pulumi.StringOutput)
-}
-
-// The ArmId of the keyVault where the customer owned encryption key is present.
-func (o EncryptionKeyVaultPropertiesOutput) KeyVaultArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionKeyVaultProperties) string { return v.KeyVaultArmId }).(pulumi.StringOutput)
-}
-
-type EncryptionKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionKeyVaultProperties)(nil)).Elem()
-}
-
-func (o EncryptionKeyVaultPropertiesPtrOutput) ToEncryptionKeyVaultPropertiesPtrOutput() EncryptionKeyVaultPropertiesPtrOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesPtrOutput) ToEncryptionKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesPtrOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesPtrOutput) Elem() EncryptionKeyVaultPropertiesOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultProperties) EncryptionKeyVaultProperties {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionKeyVaultProperties
-		return ret
-	}).(EncryptionKeyVaultPropertiesOutput)
-}
-
-// For future use - The client id of the identity which will be used to access key vault.
-func (o EncryptionKeyVaultPropertiesPtrOutput) IdentityClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdentityClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Key vault uri to access the encryption key.
-func (o EncryptionKeyVaultPropertiesPtrOutput) KeyIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ArmId of the keyVault where the customer owned encryption key is present.
-func (o EncryptionKeyVaultPropertiesPtrOutput) KeyVaultArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVaultArmId
-	}).(pulumi.StringPtrOutput)
-}
-
-type EncryptionKeyVaultPropertiesResponse struct {
-	// For future use - The client id of the identity which will be used to access key vault.
-	IdentityClientId *string `pulumi:"identityClientId"`
-	// Key vault uri to access the encryption key.
-	KeyIdentifier string `pulumi:"keyIdentifier"`
-	// The ArmId of the keyVault where the customer owned encryption key is present.
-	KeyVaultArmId string `pulumi:"keyVaultArmId"`
-}
-
-type EncryptionKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (EncryptionKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionKeyVaultPropertiesResponse)(nil)).Elem()
-}
-
-func (o EncryptionKeyVaultPropertiesResponseOutput) ToEncryptionKeyVaultPropertiesResponseOutput() EncryptionKeyVaultPropertiesResponseOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesResponseOutput) ToEncryptionKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesResponseOutput {
-	return o
-}
-
-// For future use - The client id of the identity which will be used to access key vault.
-func (o EncryptionKeyVaultPropertiesResponseOutput) IdentityClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionKeyVaultPropertiesResponse) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
-}
-
-// Key vault uri to access the encryption key.
-func (o EncryptionKeyVaultPropertiesResponseOutput) KeyIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionKeyVaultPropertiesResponse) string { return v.KeyIdentifier }).(pulumi.StringOutput)
-}
-
-// The ArmId of the keyVault where the customer owned encryption key is present.
-func (o EncryptionKeyVaultPropertiesResponseOutput) KeyVaultArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionKeyVaultPropertiesResponse) string { return v.KeyVaultArmId }).(pulumi.StringOutput)
-}
-
-type EncryptionKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionKeyVaultPropertiesResponse)(nil)).Elem()
-}
-
-func (o EncryptionKeyVaultPropertiesResponsePtrOutput) ToEncryptionKeyVaultPropertiesResponsePtrOutput() EncryptionKeyVaultPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesResponsePtrOutput) ToEncryptionKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) EncryptionKeyVaultPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionKeyVaultPropertiesResponsePtrOutput) Elem() EncryptionKeyVaultPropertiesResponseOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultPropertiesResponse) EncryptionKeyVaultPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionKeyVaultPropertiesResponse
-		return ret
-	}).(EncryptionKeyVaultPropertiesResponseOutput)
-}
-
-// For future use - The client id of the identity which will be used to access key vault.
-func (o EncryptionKeyVaultPropertiesResponsePtrOutput) IdentityClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdentityClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Key vault uri to access the encryption key.
-func (o EncryptionKeyVaultPropertiesResponsePtrOutput) KeyIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ArmId of the keyVault where the customer owned encryption key is present.
-func (o EncryptionKeyVaultPropertiesResponsePtrOutput) KeyVaultArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionKeyVaultPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVaultArmId
-	}).(pulumi.StringPtrOutput)
-}
-
-type EncryptionProperty struct {
-	// The identity that will be used to access the key vault for encryption at rest.
-	Identity *IdentityForCmk `pulumi:"identity"`
-	// Customer Key vault properties.
-	KeyVaultProperties EncryptionKeyVaultProperties `pulumi:"keyVaultProperties"`
-	// Indicates whether or not the encryption is enabled for the workspace.
-	Status string `pulumi:"status"`
-}
-
-// EncryptionPropertyInput is an input type that accepts EncryptionPropertyArgs and EncryptionPropertyOutput values.
-// You can construct a concrete instance of `EncryptionPropertyInput` via:
-//
-//	EncryptionPropertyArgs{...}
-type EncryptionPropertyInput interface {
-	pulumi.Input
-
-	ToEncryptionPropertyOutput() EncryptionPropertyOutput
-	ToEncryptionPropertyOutputWithContext(context.Context) EncryptionPropertyOutput
-}
-
-type EncryptionPropertyArgs struct {
-	// The identity that will be used to access the key vault for encryption at rest.
-	Identity IdentityForCmkPtrInput `pulumi:"identity"`
-	// Customer Key vault properties.
-	KeyVaultProperties EncryptionKeyVaultPropertiesInput `pulumi:"keyVaultProperties"`
-	// Indicates whether or not the encryption is enabled for the workspace.
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (EncryptionPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionProperty)(nil)).Elem()
-}
-
-func (i EncryptionPropertyArgs) ToEncryptionPropertyOutput() EncryptionPropertyOutput {
-	return i.ToEncryptionPropertyOutputWithContext(context.Background())
-}
-
-func (i EncryptionPropertyArgs) ToEncryptionPropertyOutputWithContext(ctx context.Context) EncryptionPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertyOutput)
-}
-
-func (i EncryptionPropertyArgs) ToEncryptionPropertyPtrOutput() EncryptionPropertyPtrOutput {
-	return i.ToEncryptionPropertyPtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionPropertyArgs) ToEncryptionPropertyPtrOutputWithContext(ctx context.Context) EncryptionPropertyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertyOutput).ToEncryptionPropertyPtrOutputWithContext(ctx)
-}
-
-// EncryptionPropertyPtrInput is an input type that accepts EncryptionPropertyArgs, EncryptionPropertyPtr and EncryptionPropertyPtrOutput values.
-// You can construct a concrete instance of `EncryptionPropertyPtrInput` via:
-//
-//	        EncryptionPropertyArgs{...}
-//
-//	or:
-//
-//	        nil
-type EncryptionPropertyPtrInput interface {
-	pulumi.Input
-
-	ToEncryptionPropertyPtrOutput() EncryptionPropertyPtrOutput
-	ToEncryptionPropertyPtrOutputWithContext(context.Context) EncryptionPropertyPtrOutput
-}
-
-type encryptionPropertyPtrType EncryptionPropertyArgs
-
-func EncryptionPropertyPtr(v *EncryptionPropertyArgs) EncryptionPropertyPtrInput {
-	return (*encryptionPropertyPtrType)(v)
-}
-
-func (*encryptionPropertyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionProperty)(nil)).Elem()
-}
-
-func (i *encryptionPropertyPtrType) ToEncryptionPropertyPtrOutput() EncryptionPropertyPtrOutput {
-	return i.ToEncryptionPropertyPtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionPropertyPtrType) ToEncryptionPropertyPtrOutputWithContext(ctx context.Context) EncryptionPropertyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertyPtrOutput)
-}
-
-type EncryptionPropertyOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionProperty)(nil)).Elem()
-}
-
-func (o EncryptionPropertyOutput) ToEncryptionPropertyOutput() EncryptionPropertyOutput {
-	return o
-}
-
-func (o EncryptionPropertyOutput) ToEncryptionPropertyOutputWithContext(ctx context.Context) EncryptionPropertyOutput {
-	return o
-}
-
-func (o EncryptionPropertyOutput) ToEncryptionPropertyPtrOutput() EncryptionPropertyPtrOutput {
-	return o.ToEncryptionPropertyPtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionPropertyOutput) ToEncryptionPropertyPtrOutputWithContext(ctx context.Context) EncryptionPropertyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionProperty) *EncryptionProperty {
-		return &v
-	}).(EncryptionPropertyPtrOutput)
-}
-
-// The identity that will be used to access the key vault for encryption at rest.
-func (o EncryptionPropertyOutput) Identity() IdentityForCmkPtrOutput {
-	return o.ApplyT(func(v EncryptionProperty) *IdentityForCmk { return v.Identity }).(IdentityForCmkPtrOutput)
-}
-
-// Customer Key vault properties.
-func (o EncryptionPropertyOutput) KeyVaultProperties() EncryptionKeyVaultPropertiesOutput {
-	return o.ApplyT(func(v EncryptionProperty) EncryptionKeyVaultProperties { return v.KeyVaultProperties }).(EncryptionKeyVaultPropertiesOutput)
-}
-
-// Indicates whether or not the encryption is enabled for the workspace.
-func (o EncryptionPropertyOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionProperty) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type EncryptionPropertyPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPropertyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionProperty)(nil)).Elem()
-}
-
-func (o EncryptionPropertyPtrOutput) ToEncryptionPropertyPtrOutput() EncryptionPropertyPtrOutput {
-	return o
-}
-
-func (o EncryptionPropertyPtrOutput) ToEncryptionPropertyPtrOutputWithContext(ctx context.Context) EncryptionPropertyPtrOutput {
-	return o
-}
-
-func (o EncryptionPropertyPtrOutput) Elem() EncryptionPropertyOutput {
-	return o.ApplyT(func(v *EncryptionProperty) EncryptionProperty {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionProperty
-		return ret
-	}).(EncryptionPropertyOutput)
-}
-
-// The identity that will be used to access the key vault for encryption at rest.
-func (o EncryptionPropertyPtrOutput) Identity() IdentityForCmkPtrOutput {
-	return o.ApplyT(func(v *EncryptionProperty) *IdentityForCmk {
-		if v == nil {
-			return nil
-		}
-		return v.Identity
-	}).(IdentityForCmkPtrOutput)
-}
-
-// Customer Key vault properties.
-func (o EncryptionPropertyPtrOutput) KeyVaultProperties() EncryptionKeyVaultPropertiesPtrOutput {
-	return o.ApplyT(func(v *EncryptionProperty) *EncryptionKeyVaultProperties {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVaultProperties
-	}).(EncryptionKeyVaultPropertiesPtrOutput)
-}
-
-// Indicates whether or not the encryption is enabled for the workspace.
-func (o EncryptionPropertyPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionProperty) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-type EncryptionPropertyResponse struct {
-	// The identity that will be used to access the key vault for encryption at rest.
-	Identity *IdentityForCmkResponse `pulumi:"identity"`
-	// Customer Key vault properties.
-	KeyVaultProperties EncryptionKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
-	// Indicates whether or not the encryption is enabled for the workspace.
-	Status string `pulumi:"status"`
-}
-
-type EncryptionPropertyResponseOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPropertyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionPropertyResponse)(nil)).Elem()
-}
-
-func (o EncryptionPropertyResponseOutput) ToEncryptionPropertyResponseOutput() EncryptionPropertyResponseOutput {
-	return o
-}
-
-func (o EncryptionPropertyResponseOutput) ToEncryptionPropertyResponseOutputWithContext(ctx context.Context) EncryptionPropertyResponseOutput {
-	return o
-}
-
-// The identity that will be used to access the key vault for encryption at rest.
-func (o EncryptionPropertyResponseOutput) Identity() IdentityForCmkResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionPropertyResponse) *IdentityForCmkResponse { return v.Identity }).(IdentityForCmkResponsePtrOutput)
-}
-
-// Customer Key vault properties.
-func (o EncryptionPropertyResponseOutput) KeyVaultProperties() EncryptionKeyVaultPropertiesResponseOutput {
-	return o.ApplyT(func(v EncryptionPropertyResponse) EncryptionKeyVaultPropertiesResponse { return v.KeyVaultProperties }).(EncryptionKeyVaultPropertiesResponseOutput)
-}
-
-// Indicates whether or not the encryption is enabled for the workspace.
-func (o EncryptionPropertyResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionPropertyResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type EncryptionPropertyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPropertyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionPropertyResponse)(nil)).Elem()
-}
-
-func (o EncryptionPropertyResponsePtrOutput) ToEncryptionPropertyResponsePtrOutput() EncryptionPropertyResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionPropertyResponsePtrOutput) ToEncryptionPropertyResponsePtrOutputWithContext(ctx context.Context) EncryptionPropertyResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionPropertyResponsePtrOutput) Elem() EncryptionPropertyResponseOutput {
-	return o.ApplyT(func(v *EncryptionPropertyResponse) EncryptionPropertyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionPropertyResponse
-		return ret
-	}).(EncryptionPropertyResponseOutput)
-}
-
-// The identity that will be used to access the key vault for encryption at rest.
-func (o EncryptionPropertyResponsePtrOutput) Identity() IdentityForCmkResponsePtrOutput {
-	return o.ApplyT(func(v *EncryptionPropertyResponse) *IdentityForCmkResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Identity
-	}).(IdentityForCmkResponsePtrOutput)
-}
-
-// Customer Key vault properties.
-func (o EncryptionPropertyResponsePtrOutput) KeyVaultProperties() EncryptionKeyVaultPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *EncryptionPropertyResponse) *EncryptionKeyVaultPropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVaultProperties
-	}).(EncryptionKeyVaultPropertiesResponsePtrOutput)
-}
-
-// Indicates whether or not the encryption is enabled for the workspace.
-func (o EncryptionPropertyResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionPropertyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
 }
 
 // Keys for endpoint authentication.
@@ -5743,7 +4145,7 @@ func (val *EnvironmentContainerType) Defaults() *EnvironmentContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -5779,7 +4181,7 @@ func (val *EnvironmentContainerTypeArgs) Defaults() *EnvironmentContainerTypeArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5853,7 +4255,7 @@ func (val *EnvironmentContainerResponse) Defaults() *EnvironmentContainerRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -5939,15 +4341,15 @@ func (val *EnvironmentVersionType) Defaults() *EnvironmentVersionType {
 	tmp := *val
 	tmp.Build = tmp.Build.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -5998,13 +4400,13 @@ func (val *EnvironmentVersionTypeArgs) Defaults() *EnvironmentVersionTypeArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
@@ -6125,15 +4527,15 @@ func (val *EnvironmentVersionResponse) Defaults() *EnvironmentVersionResponse {
 	tmp := *val
 	tmp.Build = tmp.Build.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -6211,34 +4613,6 @@ func (o EnvironmentVersionResponseOutput) Properties() pulumi.StringMapOutput {
 // Tag dictionary. Tags can be added, removed, and updated.
 func (o EnvironmentVersionResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentVersionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// The resource management error additional info.
-type ErrorAdditionalInfoResponse struct {
-	// The additional info.
-	Info interface{} `pulumi:"info"`
-	// The additional info type.
-	Type string `pulumi:"type"`
-}
-
-// The error detail.
-type ErrorDetailResponse struct {
-	// The error additional info.
-	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
-	// The error code.
-	Code string `pulumi:"code"`
-	// The error details.
-	Details []ErrorDetailResponse `pulumi:"details"`
-	// The error message.
-	Message string `pulumi:"message"`
-	// The error target.
-	Target string `pulumi:"target"`
-}
-
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-type ErrorResponseResponse struct {
-	// The error object.
-	Error *ErrorDetailResponse `pulumi:"error"`
 }
 
 type FlavorData struct {
@@ -6421,11 +4795,11 @@ func (val *Forecasting) Defaults() *Forecasting {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -6473,11 +4847,11 @@ func (val *ForecastingResponse) Defaults() *ForecastingResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -6528,19 +4902,19 @@ func (val *ForecastingSettings) Defaults() *ForecastingSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FeatureLags) {
+	if tmp.FeatureLags == nil {
 		featureLags_ := "None"
 		tmp.FeatureLags = &featureLags_
 	}
-	if isZero(tmp.ShortSeriesHandlingConfig) {
+	if tmp.ShortSeriesHandlingConfig == nil {
 		shortSeriesHandlingConfig_ := "Auto"
 		tmp.ShortSeriesHandlingConfig = &shortSeriesHandlingConfig_
 	}
-	if isZero(tmp.TargetAggregateFunction) {
+	if tmp.TargetAggregateFunction == nil {
 		targetAggregateFunction_ := "None"
 		tmp.TargetAggregateFunction = &targetAggregateFunction_
 	}
-	if isZero(tmp.UseStl) {
+	if tmp.UseStl == nil {
 		useStl_ := "None"
 		tmp.UseStl = &useStl_
 	}
@@ -6589,19 +4963,19 @@ func (val *ForecastingSettingsResponse) Defaults() *ForecastingSettingsResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FeatureLags) {
+	if tmp.FeatureLags == nil {
 		featureLags_ := "None"
 		tmp.FeatureLags = &featureLags_
 	}
-	if isZero(tmp.ShortSeriesHandlingConfig) {
+	if tmp.ShortSeriesHandlingConfig == nil {
 		shortSeriesHandlingConfig_ := "Auto"
 		tmp.ShortSeriesHandlingConfig = &shortSeriesHandlingConfig_
 	}
-	if isZero(tmp.TargetAggregateFunction) {
+	if tmp.TargetAggregateFunction == nil {
 		targetAggregateFunction_ := "None"
 		tmp.TargetAggregateFunction = &targetAggregateFunction_
 	}
-	if isZero(tmp.UseStl) {
+	if tmp.UseStl == nil {
 		useStl_ := "None"
 		tmp.UseStl = &useStl_
 	}
@@ -6618,68 +4992,6 @@ type GridSamplingAlgorithm struct {
 type GridSamplingAlgorithmResponse struct {
 	// Expected value is 'Grid'.
 	SamplingAlgorithmType string `pulumi:"samplingAlgorithmType"`
-}
-
-// A HDInsight compute.
-type HDInsight struct {
-	// The type of compute
-	// Expected value is 'HDInsight'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// HDInsight compute properties
-	Properties *HDInsightProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// HDInsight compute properties
-type HDInsightProperties struct {
-	// Public IP address of the master node of the cluster.
-	Address *string `pulumi:"address"`
-	// Admin credentials for master node of the cluster
-	AdministratorAccount *VirtualMachineSshCredentials `pulumi:"administratorAccount"`
-	// Port open for ssh connections on the master node of the cluster.
-	SshPort *int `pulumi:"sshPort"`
-}
-
-// HDInsight compute properties
-type HDInsightPropertiesResponse struct {
-	// Public IP address of the master node of the cluster.
-	Address *string `pulumi:"address"`
-	// Admin credentials for master node of the cluster
-	AdministratorAccount *VirtualMachineSshCredentialsResponse `pulumi:"administratorAccount"`
-	// Port open for ssh connections on the master node of the cluster.
-	SshPort *int `pulumi:"sshPort"`
-}
-
-// A HDInsight compute.
-type HDInsightResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'HDInsight'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// HDInsight compute properties
-	Properties *HDInsightPropertiesResponse `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
 }
 
 type HdfsDatastore struct {
@@ -6708,7 +5020,7 @@ func (val *HdfsDatastore) Defaults() *HdfsDatastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "http"
 		tmp.Protocol = &protocol_
 	}
@@ -6743,7 +5055,7 @@ func (val *HdfsDatastoreResponse) Defaults() *HdfsDatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "http"
 		tmp.Protocol = &protocol_
 	}
@@ -6766,206 +5078,6 @@ type IdAssetReferenceResponse struct {
 	// Enum to determine which reference method to use for an asset.
 	// Expected value is 'Id'.
 	ReferenceType string `pulumi:"referenceType"`
-}
-
-// Identity that will be used to access key vault for encryption at rest
-type IdentityForCmk struct {
-	// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
-}
-
-// IdentityForCmkInput is an input type that accepts IdentityForCmkArgs and IdentityForCmkOutput values.
-// You can construct a concrete instance of `IdentityForCmkInput` via:
-//
-//	IdentityForCmkArgs{...}
-type IdentityForCmkInput interface {
-	pulumi.Input
-
-	ToIdentityForCmkOutput() IdentityForCmkOutput
-	ToIdentityForCmkOutputWithContext(context.Context) IdentityForCmkOutput
-}
-
-// Identity that will be used to access key vault for encryption at rest
-type IdentityForCmkArgs struct {
-	// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
-}
-
-func (IdentityForCmkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityForCmk)(nil)).Elem()
-}
-
-func (i IdentityForCmkArgs) ToIdentityForCmkOutput() IdentityForCmkOutput {
-	return i.ToIdentityForCmkOutputWithContext(context.Background())
-}
-
-func (i IdentityForCmkArgs) ToIdentityForCmkOutputWithContext(ctx context.Context) IdentityForCmkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityForCmkOutput)
-}
-
-func (i IdentityForCmkArgs) ToIdentityForCmkPtrOutput() IdentityForCmkPtrOutput {
-	return i.ToIdentityForCmkPtrOutputWithContext(context.Background())
-}
-
-func (i IdentityForCmkArgs) ToIdentityForCmkPtrOutputWithContext(ctx context.Context) IdentityForCmkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityForCmkOutput).ToIdentityForCmkPtrOutputWithContext(ctx)
-}
-
-// IdentityForCmkPtrInput is an input type that accepts IdentityForCmkArgs, IdentityForCmkPtr and IdentityForCmkPtrOutput values.
-// You can construct a concrete instance of `IdentityForCmkPtrInput` via:
-//
-//	        IdentityForCmkArgs{...}
-//
-//	or:
-//
-//	        nil
-type IdentityForCmkPtrInput interface {
-	pulumi.Input
-
-	ToIdentityForCmkPtrOutput() IdentityForCmkPtrOutput
-	ToIdentityForCmkPtrOutputWithContext(context.Context) IdentityForCmkPtrOutput
-}
-
-type identityForCmkPtrType IdentityForCmkArgs
-
-func IdentityForCmkPtr(v *IdentityForCmkArgs) IdentityForCmkPtrInput {
-	return (*identityForCmkPtrType)(v)
-}
-
-func (*identityForCmkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityForCmk)(nil)).Elem()
-}
-
-func (i *identityForCmkPtrType) ToIdentityForCmkPtrOutput() IdentityForCmkPtrOutput {
-	return i.ToIdentityForCmkPtrOutputWithContext(context.Background())
-}
-
-func (i *identityForCmkPtrType) ToIdentityForCmkPtrOutputWithContext(ctx context.Context) IdentityForCmkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityForCmkPtrOutput)
-}
-
-// Identity that will be used to access key vault for encryption at rest
-type IdentityForCmkOutput struct{ *pulumi.OutputState }
-
-func (IdentityForCmkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityForCmk)(nil)).Elem()
-}
-
-func (o IdentityForCmkOutput) ToIdentityForCmkOutput() IdentityForCmkOutput {
-	return o
-}
-
-func (o IdentityForCmkOutput) ToIdentityForCmkOutputWithContext(ctx context.Context) IdentityForCmkOutput {
-	return o
-}
-
-func (o IdentityForCmkOutput) ToIdentityForCmkPtrOutput() IdentityForCmkPtrOutput {
-	return o.ToIdentityForCmkPtrOutputWithContext(context.Background())
-}
-
-func (o IdentityForCmkOutput) ToIdentityForCmkPtrOutputWithContext(ctx context.Context) IdentityForCmkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityForCmk) *IdentityForCmk {
-		return &v
-	}).(IdentityForCmkPtrOutput)
-}
-
-// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-func (o IdentityForCmkOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IdentityForCmk) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
-}
-
-type IdentityForCmkPtrOutput struct{ *pulumi.OutputState }
-
-func (IdentityForCmkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityForCmk)(nil)).Elem()
-}
-
-func (o IdentityForCmkPtrOutput) ToIdentityForCmkPtrOutput() IdentityForCmkPtrOutput {
-	return o
-}
-
-func (o IdentityForCmkPtrOutput) ToIdentityForCmkPtrOutputWithContext(ctx context.Context) IdentityForCmkPtrOutput {
-	return o
-}
-
-func (o IdentityForCmkPtrOutput) Elem() IdentityForCmkOutput {
-	return o.ApplyT(func(v *IdentityForCmk) IdentityForCmk {
-		if v != nil {
-			return *v
-		}
-		var ret IdentityForCmk
-		return ret
-	}).(IdentityForCmkOutput)
-}
-
-// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-func (o IdentityForCmkPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IdentityForCmk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identity that will be used to access key vault for encryption at rest
-type IdentityForCmkResponse struct {
-	// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
-}
-
-// Identity that will be used to access key vault for encryption at rest
-type IdentityForCmkResponseOutput struct{ *pulumi.OutputState }
-
-func (IdentityForCmkResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityForCmkResponse)(nil)).Elem()
-}
-
-func (o IdentityForCmkResponseOutput) ToIdentityForCmkResponseOutput() IdentityForCmkResponseOutput {
-	return o
-}
-
-func (o IdentityForCmkResponseOutput) ToIdentityForCmkResponseOutputWithContext(ctx context.Context) IdentityForCmkResponseOutput {
-	return o
-}
-
-// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-func (o IdentityForCmkResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IdentityForCmkResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
-}
-
-type IdentityForCmkResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IdentityForCmkResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityForCmkResponse)(nil)).Elem()
-}
-
-func (o IdentityForCmkResponsePtrOutput) ToIdentityForCmkResponsePtrOutput() IdentityForCmkResponsePtrOutput {
-	return o
-}
-
-func (o IdentityForCmkResponsePtrOutput) ToIdentityForCmkResponsePtrOutputWithContext(ctx context.Context) IdentityForCmkResponsePtrOutput {
-	return o
-}
-
-func (o IdentityForCmkResponsePtrOutput) Elem() IdentityForCmkResponseOutput {
-	return o.ApplyT(func(v *IdentityForCmkResponse) IdentityForCmkResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IdentityForCmkResponse
-		return ret
-	}).(IdentityForCmkResponseOutput)
-}
-
-// The ArmId of the user assigned identity that will be used to access the customer managed key vault
-func (o IdentityForCmkResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IdentityForCmkResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(pulumi.StringPtrOutput)
 }
 
 // Image Classification. Multi-class image classification is used when an image is classified with only a single label
@@ -7000,13 +5112,13 @@ func (val *ImageClassification) Defaults() *ImageClassification {
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7045,13 +5157,13 @@ func (val *ImageClassificationMultilabel) Defaults() *ImageClassificationMultila
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "IOU"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7090,13 +5202,13 @@ func (val *ImageClassificationMultilabelResponse) Defaults() *ImageClassificatio
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "IOU"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7135,13 +5247,13 @@ func (val *ImageClassificationResponse) Defaults() *ImageClassificationResponse 
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7180,13 +5292,13 @@ func (val *ImageInstanceSegmentation) Defaults() *ImageInstanceSegmentation {
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7225,13 +5337,13 @@ func (val *ImageInstanceSegmentationResponse) Defaults() *ImageInstanceSegmentat
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7254,11 +5366,11 @@ func (val *ImageLimitSettings) Defaults() *ImageLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
@@ -7281,11 +5393,11 @@ func (val *ImageLimitSettingsResponse) Defaults() *ImageLimitSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
@@ -7831,11 +5943,11 @@ func (val *ImageModelSettingsClassification) Defaults() *ImageModelSettingsClass
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
@@ -7943,11 +6055,11 @@ func (val *ImageModelSettingsClassificationResponse) Defaults() *ImageModelSetti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
@@ -8089,19 +6201,19 @@ func (val *ImageModelSettingsObjectDetection) Defaults() *ImageModelSettingsObje
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.ModelSize) {
+	if tmp.ModelSize == nil {
 		modelSize_ := "None"
 		tmp.ModelSize = &modelSize_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
-	if isZero(tmp.ValidationMetricType) {
+	if tmp.ValidationMetricType == nil {
 		validationMetricType_ := "None"
 		tmp.ValidationMetricType = &validationMetricType_
 	}
@@ -8243,19 +6355,19 @@ func (val *ImageModelSettingsObjectDetectionResponse) Defaults() *ImageModelSett
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.ModelSize) {
+	if tmp.ModelSize == nil {
 		modelSize_ := "None"
 		tmp.ModelSize = &modelSize_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
-	if isZero(tmp.ValidationMetricType) {
+	if tmp.ValidationMetricType == nil {
 		validationMetricType_ := "None"
 		tmp.ValidationMetricType = &validationMetricType_
 	}
@@ -8294,13 +6406,13 @@ func (val *ImageObjectDetection) Defaults() *ImageObjectDetection {
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8339,13 +6451,13 @@ func (val *ImageObjectDetectionResponse) Defaults() *ImageObjectDetectionRespons
 
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8751,38 +6863,6 @@ func (o InferenceContainerPropertiesResponsePtrOutput) ScoringRoute() RouteRespo
 	}).(RouteResponsePtrOutput)
 }
 
-// Instance type schema.
-type InstanceTypeSchema struct {
-	// Node Selector
-	NodeSelector map[string]string `pulumi:"nodeSelector"`
-	// Resource requests/limits for this instance type
-	Resources *InstanceTypeSchemaResources `pulumi:"resources"`
-}
-
-// Resource requests/limits for this instance type
-type InstanceTypeSchemaResources struct {
-	// Resource limits for this instance type
-	Limits map[string]string `pulumi:"limits"`
-	// Resource requests for this instance type
-	Requests map[string]string `pulumi:"requests"`
-}
-
-// Instance type schema.
-type InstanceTypeSchemaResponse struct {
-	// Node Selector
-	NodeSelector map[string]string `pulumi:"nodeSelector"`
-	// Resource requests/limits for this instance type
-	Resources *InstanceTypeSchemaResponseResources `pulumi:"resources"`
-}
-
-// Resource requests/limits for this instance type
-type InstanceTypeSchemaResponseResources struct {
-	// Resource limits for this instance type
-	Limits map[string]string `pulumi:"limits"`
-	// Resource requests for this instance type
-	Requests map[string]string `pulumi:"requests"`
-}
-
 // Job endpoint definition
 type JobService struct {
 	// Url for endpoint.
@@ -8879,32 +6959,6 @@ type KerberosPasswordSecrets struct {
 	SecretsType string `pulumi:"secretsType"`
 }
 
-// A Machine Learning compute based on Kubernetes Compute.
-type Kubernetes struct {
-	// The type of compute
-	// Expected value is 'Kubernetes'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Properties of Kubernetes
-	Properties *KubernetesProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for Kubernetes
-func (val *Kubernetes) Defaults() *Kubernetes {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
 // Properties specific to a KubernetesOnlineDeployment.
 type KubernetesOnlineDeployment struct {
 	// If true, enables Application Insights logging.
@@ -8954,17 +7008,17 @@ func (val *KubernetesOnlineDeployment) Defaults() *KubernetesOnlineDeployment {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
-	if isZero(tmp.PrivateNetworkConnection) {
+	if tmp.PrivateNetworkConnection == nil {
 		privateNetworkConnection_ := false
 		tmp.PrivateNetworkConnection = &privateNetworkConnection_
 	}
@@ -9026,127 +7080,23 @@ func (val *KubernetesOnlineDeploymentResponse) Defaults() *KubernetesOnlineDeplo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
-	if isZero(tmp.PrivateNetworkConnection) {
+	if tmp.PrivateNetworkConnection == nil {
 		privateNetworkConnection_ := false
 		tmp.PrivateNetworkConnection = &privateNetworkConnection_
 	}
 	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
 
 	tmp.RequestSettings = tmp.RequestSettings.Defaults()
-
-	return &tmp
-}
-
-// Kubernetes properties
-type KubernetesProperties struct {
-	// Default instance type
-	DefaultInstanceType *string `pulumi:"defaultInstanceType"`
-	// Extension instance release train.
-	ExtensionInstanceReleaseTrain *string `pulumi:"extensionInstanceReleaseTrain"`
-	// Extension principal-id.
-	ExtensionPrincipalId *string `pulumi:"extensionPrincipalId"`
-	// Instance Type Schema
-	InstanceTypes map[string]InstanceTypeSchema `pulumi:"instanceTypes"`
-	// Compute namespace
-	Namespace *string `pulumi:"namespace"`
-	// Relay connection string.
-	RelayConnectionString *string `pulumi:"relayConnectionString"`
-	// ServiceBus connection string.
-	ServiceBusConnectionString *string `pulumi:"serviceBusConnectionString"`
-	// VC name.
-	VcName *string `pulumi:"vcName"`
-}
-
-// Defaults sets the appropriate defaults for KubernetesProperties
-func (val *KubernetesProperties) Defaults() *KubernetesProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Namespace) {
-		namespace_ := "default"
-		tmp.Namespace = &namespace_
-	}
-	return &tmp
-}
-
-// Kubernetes properties
-type KubernetesPropertiesResponse struct {
-	// Default instance type
-	DefaultInstanceType *string `pulumi:"defaultInstanceType"`
-	// Extension instance release train.
-	ExtensionInstanceReleaseTrain *string `pulumi:"extensionInstanceReleaseTrain"`
-	// Extension principal-id.
-	ExtensionPrincipalId *string `pulumi:"extensionPrincipalId"`
-	// Instance Type Schema
-	InstanceTypes map[string]InstanceTypeSchemaResponse `pulumi:"instanceTypes"`
-	// Compute namespace
-	Namespace *string `pulumi:"namespace"`
-	// Relay connection string.
-	RelayConnectionString *string `pulumi:"relayConnectionString"`
-	// ServiceBus connection string.
-	ServiceBusConnectionString *string `pulumi:"serviceBusConnectionString"`
-	// VC name.
-	VcName *string `pulumi:"vcName"`
-}
-
-// Defaults sets the appropriate defaults for KubernetesPropertiesResponse
-func (val *KubernetesPropertiesResponse) Defaults() *KubernetesPropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Namespace) {
-		namespace_ := "default"
-		tmp.Namespace = &namespace_
-	}
-	return &tmp
-}
-
-// A Machine Learning compute based on Kubernetes Compute.
-type KubernetesResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'Kubernetes'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Properties of Kubernetes
-	Properties *KubernetesPropertiesResponse `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Defaults sets the appropriate defaults for KubernetesResponse
-func (val *KubernetesResponse) Defaults() *KubernetesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = tmp.Properties.Defaults()
 
 	return &tmp
 }
@@ -9218,7 +7168,7 @@ func (val *MLFlowModelJobInput) Defaults() *MLFlowModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -9243,7 +7193,7 @@ func (val *MLFlowModelJobInputResponse) Defaults() *MLFlowModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -9268,7 +7218,7 @@ func (val *MLFlowModelJobOutput) Defaults() *MLFlowModelJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -9293,7 +7243,7 @@ func (val *MLFlowModelJobOutputResponse) Defaults() *MLFlowModelJobOutputRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -9327,11 +7277,11 @@ func (val *MLTableData) Defaults() *MLTableData {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -9365,11 +7315,11 @@ func (val *MLTableDataResponse) Defaults() *MLTableDataResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -9394,7 +7344,7 @@ func (val *MLTableJobInput) Defaults() *MLTableJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -9419,7 +7369,7 @@ func (val *MLTableJobInputResponse) Defaults() *MLTableJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -9444,7 +7394,7 @@ func (val *MLTableJobOutput) Defaults() *MLTableJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -9469,7 +7419,7 @@ func (val *MLTableJobOutputResponse) Defaults() *MLTableJobOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -9549,17 +7499,17 @@ func (val *ManagedOnlineDeployment) Defaults() *ManagedOnlineDeployment {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
-	if isZero(tmp.PrivateNetworkConnection) {
+	if tmp.PrivateNetworkConnection == nil {
 		privateNetworkConnection_ := false
 		tmp.PrivateNetworkConnection = &privateNetworkConnection_
 	}
@@ -9619,17 +7569,17 @@ func (val *ManagedOnlineDeploymentResponse) Defaults() *ManagedOnlineDeploymentR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
-	if isZero(tmp.PrivateNetworkConnection) {
+	if tmp.PrivateNetworkConnection == nil {
 		privateNetworkConnection_ := false
 		tmp.PrivateNetworkConnection = &privateNetworkConnection_
 	}
@@ -9928,11 +7878,11 @@ func (val *MedianStoppingPolicy) Defaults() *MedianStoppingPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
@@ -9955,11 +7905,11 @@ func (val *MedianStoppingPolicyResponse) Defaults() *MedianStoppingPolicyRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
@@ -9983,7 +7933,7 @@ func (val *ModelContainerType) Defaults() *ModelContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -10018,7 +7968,7 @@ func (val *ModelContainerTypeArgs) Defaults() *ModelContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -10090,7 +8040,7 @@ func (val *ModelContainerResponse) Defaults() *ModelContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -10169,15 +8119,15 @@ func (val *ModelVersionType) Defaults() *ModelVersionType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	if isZero(tmp.ModelType) {
+	if tmp.ModelType == nil {
 		modelType_ := "CustomModel"
 		tmp.ModelType = &modelType_
 	}
@@ -10223,13 +8173,13 @@ func (val *ModelVersionTypeArgs) Defaults() *ModelVersionTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.ModelType) {
+	if tmp.ModelType == nil {
 		tmp.ModelType = pulumi.StringPtr("CustomModel")
 	}
 	return &tmp
@@ -10334,15 +8284,15 @@ func (val *ModelVersionResponse) Defaults() *ModelVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	if isZero(tmp.ModelType) {
+	if tmp.ModelType == nil {
 		modelType_ := "CustomModel"
 		tmp.ModelType = &modelType_
 	}
@@ -10511,11 +8461,11 @@ func (val *NlpVerticalLimitSettings) Defaults() *NlpVerticalLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
@@ -10538,11 +8488,11 @@ func (val *NlpVerticalLimitSettingsResponse) Defaults() *NlpVerticalLimitSetting
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
@@ -10589,22 +8539,6 @@ func (val *NlpVerticalValidationDataSettingsResponse) Defaults() *NlpVerticalVal
 	return &tmp
 }
 
-// Counts of various compute node states on the amlCompute.
-type NodeStateCountsResponse struct {
-	// Number of compute nodes in idle state.
-	IdleNodeCount int `pulumi:"idleNodeCount"`
-	// Number of compute nodes which are leaving the amlCompute.
-	LeavingNodeCount int `pulumi:"leavingNodeCount"`
-	// Number of compute nodes which are in preempted state.
-	PreemptedNodeCount int `pulumi:"preemptedNodeCount"`
-	// Number of compute nodes which are being prepared.
-	PreparingNodeCount int `pulumi:"preparingNodeCount"`
-	// Number of compute nodes which are running jobs.
-	RunningNodeCount int `pulumi:"runningNodeCount"`
-	// Number of compute nodes which are in unusable state.
-	UnusableNodeCount int `pulumi:"unusableNodeCount"`
-}
-
 // Empty/none datastore credentials.
 type NoneDatastoreCredentials struct {
 	// Enum to determine the datastore credentials type.
@@ -10617,113 +8551,6 @@ type NoneDatastoreCredentialsResponse struct {
 	// Enum to determine the datastore credentials type.
 	// Expected value is 'None'.
 	CredentialsType string `pulumi:"credentialsType"`
-}
-
-type NotebookPreparationErrorResponse struct {
-	ErrorMessage *string `pulumi:"errorMessage"`
-	StatusCode   *int    `pulumi:"statusCode"`
-}
-
-type NotebookPreparationErrorResponseOutput struct{ *pulumi.OutputState }
-
-func (NotebookPreparationErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotebookPreparationErrorResponse)(nil)).Elem()
-}
-
-func (o NotebookPreparationErrorResponseOutput) ToNotebookPreparationErrorResponseOutput() NotebookPreparationErrorResponseOutput {
-	return o
-}
-
-func (o NotebookPreparationErrorResponseOutput) ToNotebookPreparationErrorResponseOutputWithContext(ctx context.Context) NotebookPreparationErrorResponseOutput {
-	return o
-}
-
-func (o NotebookPreparationErrorResponseOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotebookPreparationErrorResponse) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-func (o NotebookPreparationErrorResponseOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NotebookPreparationErrorResponse) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
-}
-
-type NotebookPreparationErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NotebookPreparationErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotebookPreparationErrorResponse)(nil)).Elem()
-}
-
-func (o NotebookPreparationErrorResponsePtrOutput) ToNotebookPreparationErrorResponsePtrOutput() NotebookPreparationErrorResponsePtrOutput {
-	return o
-}
-
-func (o NotebookPreparationErrorResponsePtrOutput) ToNotebookPreparationErrorResponsePtrOutputWithContext(ctx context.Context) NotebookPreparationErrorResponsePtrOutput {
-	return o
-}
-
-func (o NotebookPreparationErrorResponsePtrOutput) Elem() NotebookPreparationErrorResponseOutput {
-	return o.ApplyT(func(v *NotebookPreparationErrorResponse) NotebookPreparationErrorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NotebookPreparationErrorResponse
-		return ret
-	}).(NotebookPreparationErrorResponseOutput)
-}
-
-func (o NotebookPreparationErrorResponsePtrOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotebookPreparationErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotebookPreparationErrorResponsePtrOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NotebookPreparationErrorResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.StatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-type NotebookResourceInfoResponse struct {
-	Fqdn *string `pulumi:"fqdn"`
-	// The error that occurs when preparing notebook.
-	NotebookPreparationError *NotebookPreparationErrorResponse `pulumi:"notebookPreparationError"`
-	// the data plane resourceId that used to initialize notebook component
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-type NotebookResourceInfoResponseOutput struct{ *pulumi.OutputState }
-
-func (NotebookResourceInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotebookResourceInfoResponse)(nil)).Elem()
-}
-
-func (o NotebookResourceInfoResponseOutput) ToNotebookResourceInfoResponseOutput() NotebookResourceInfoResponseOutput {
-	return o
-}
-
-func (o NotebookResourceInfoResponseOutput) ToNotebookResourceInfoResponseOutputWithContext(ctx context.Context) NotebookResourceInfoResponseOutput {
-	return o
-}
-
-func (o NotebookResourceInfoResponseOutput) Fqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotebookResourceInfoResponse) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
-}
-
-// The error that occurs when preparing notebook.
-func (o NotebookResourceInfoResponseOutput) NotebookPreparationError() NotebookPreparationErrorResponsePtrOutput {
-	return o.ApplyT(func(v NotebookResourceInfoResponse) *NotebookPreparationErrorResponse {
-		return v.NotebookPreparationError
-	}).(NotebookPreparationErrorResponsePtrOutput)
-}
-
-// the data plane resourceId that used to initialize notebook component
-func (o NotebookResourceInfoResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotebookResourceInfoResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Optimization objective.
@@ -10770,7 +8597,7 @@ func (val *OnlineEndpointType) Defaults() *OnlineEndpointType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
@@ -10816,7 +8643,7 @@ func (val *OnlineEndpointTypeArgs) Defaults() *OnlineEndpointTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -10921,7 +8748,7 @@ func (val *OnlineEndpointResponse) Defaults() *OnlineEndpointResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
@@ -11012,15 +8839,15 @@ func (val *OnlineRequestSettings) Defaults() *OnlineRequestSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentRequestsPerInstance) {
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
 		maxConcurrentRequestsPerInstance_ := 1
 		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
 	}
-	if isZero(tmp.MaxQueueWait) {
+	if tmp.MaxQueueWait == nil {
 		maxQueueWait_ := "PT0.5S"
 		tmp.MaxQueueWait = &maxQueueWait_
 	}
-	if isZero(tmp.RequestTimeout) {
+	if tmp.RequestTimeout == nil {
 		requestTimeout_ := "PT5S"
 		tmp.RequestTimeout = &requestTimeout_
 	}
@@ -11045,15 +8872,15 @@ func (val *OnlineRequestSettingsResponse) Defaults() *OnlineRequestSettingsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentRequestsPerInstance) {
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
 		maxConcurrentRequestsPerInstance_ := 1
 		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
 	}
-	if isZero(tmp.MaxQueueWait) {
+	if tmp.MaxQueueWait == nil {
 		maxQueueWait_ := "PT0.5S"
 		tmp.MaxQueueWait = &maxQueueWait_
 	}
-	if isZero(tmp.RequestTimeout) {
+	if tmp.RequestTimeout == nil {
 		requestTimeout_ := "PT5S"
 		tmp.RequestTimeout = &requestTimeout_
 	}
@@ -11129,18 +8956,6 @@ func (o PasswordResponseArrayOutput) Index(i pulumi.IntInput) PasswordResponseOu
 	}).(PasswordResponseOutput)
 }
 
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettings struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser *AssignedUser `pulumi:"assignedUser"`
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponse struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser *AssignedUserResponse `pulumi:"assignedUser"`
-}
-
 // Pipeline Job definition: defines generic to MFE attributes.
 type PipelineJob struct {
 	// ARM resource ID of the compute resource.
@@ -11185,11 +9000,11 @@ func (val *PipelineJob) Defaults() *PipelineJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -11242,323 +9057,15 @@ func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
 	return &tmp
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// The identity of the resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The sku of the workspace.
-	Sku *SkuResponse `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Contains resource tags defined as key/value pairs.
-	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The identity of the resource.
-func (o PrivateEndpointConnectionResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
-}
-
-// Specifies the location of the resource.
-func (o PrivateEndpointConnectionResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource of private end point.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The sku of the workspace.
-func (o PrivateEndpointConnectionResponseOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Contains resource tags defined as key/value pairs.
-func (o PrivateEndpointConnectionResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
-		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-	// The ARM identifier for Subnet resource that private endpoint links to
-	SubnetArmId string `pulumi:"subnetArmId"`
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The ARM identifier for Subnet resource that private endpoint links to
-func (o PrivateEndpointResponseOutput) SubnetArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.SubnetArmId }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ARM identifier for Subnet resource that private endpoint links to
-func (o PrivateEndpointResponsePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubnetArmId
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Deployment container liveness/readiness probe configuration.
@@ -11581,19 +9088,19 @@ func (val *ProbeSettings) Defaults() *ProbeSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FailureThreshold) {
+	if tmp.FailureThreshold == nil {
 		failureThreshold_ := 30
 		tmp.FailureThreshold = &failureThreshold_
 	}
-	if isZero(tmp.Period) {
+	if tmp.Period == nil {
 		period_ := "PT10S"
 		tmp.Period = &period_
 	}
-	if isZero(tmp.SuccessThreshold) {
+	if tmp.SuccessThreshold == nil {
 		successThreshold_ := 1
 		tmp.SuccessThreshold = &successThreshold_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT2S"
 		tmp.Timeout = &timeout_
 	}
@@ -11620,19 +9127,19 @@ func (val *ProbeSettingsResponse) Defaults() *ProbeSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FailureThreshold) {
+	if tmp.FailureThreshold == nil {
 		failureThreshold_ := 30
 		tmp.FailureThreshold = &failureThreshold_
 	}
-	if isZero(tmp.Period) {
+	if tmp.Period == nil {
 		period_ := "PT10S"
 		tmp.Period = &period_
 	}
-	if isZero(tmp.SuccessThreshold) {
+	if tmp.SuccessThreshold == nil {
 		successThreshold_ := 1
 		tmp.SuccessThreshold = &successThreshold_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT2S"
 		tmp.Timeout = &timeout_
 	}
@@ -11673,7 +9180,7 @@ func (val *RandomSamplingAlgorithm) Defaults() *RandomSamplingAlgorithm {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Rule) {
+	if tmp.Rule == nil {
 		rule_ := "Random"
 		tmp.Rule = &rule_
 	}
@@ -11696,7 +9203,7 @@ func (val *RandomSamplingAlgorithmResponse) Defaults() *RandomSamplingAlgorithmR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Rule) {
+	if tmp.Rule == nil {
 		rule_ := "Random"
 		tmp.Rule = &rule_
 	}
@@ -11752,11 +9259,11 @@ func (val *RecurrenceSchedule) Defaults() *RecurrenceSchedule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ScheduleStatus) {
+	if tmp.ScheduleStatus == nil {
 		scheduleStatus_ := "Enabled"
 		tmp.ScheduleStatus = &scheduleStatus_
 	}
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -11792,11 +9299,11 @@ func (val *RecurrenceScheduleResponse) Defaults() *RecurrenceScheduleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ScheduleStatus) {
+	if tmp.ScheduleStatus == nil {
 		scheduleStatus_ := "Enabled"
 		tmp.ScheduleStatus = &scheduleStatus_
 	}
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -11870,11 +9377,11 @@ func (val *Regression) Defaults() *Regression {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -11918,11 +9425,11 @@ func (val *RegressionResponse) Defaults() *RegressionResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -11946,7 +9453,7 @@ func (val *ResourceConfiguration) Defaults() *ResourceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		instanceCount_ := 1
 		tmp.InstanceCount = &instanceCount_
 	}
@@ -11979,7 +9486,7 @@ func (val *ResourceConfigurationArgs) Defaults() *ResourceConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		tmp.InstanceCount = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -12145,7 +9652,7 @@ func (val *ResourceConfigurationResponse) Defaults() *ResourceConfigurationRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		instanceCount_ := 1
 		tmp.InstanceCount = &instanceCount_
 	}
@@ -12233,18 +9740,6 @@ func (o ResourceConfigurationResponsePtrOutput) Properties() pulumi.MapOutput {
 		}
 		return v.Properties
 	}).(pulumi.MapOutput)
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceId struct {
-	// The ID of the resource
-	Id string `pulumi:"id"`
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceIdResponse struct {
-	// The ID of the resource
-	Id string `pulumi:"id"`
 }
 
 type Route struct {
@@ -12503,287 +9998,6 @@ type SasDatastoreSecrets struct {
 	SecretsType string `pulumi:"secretsType"`
 }
 
-// scale settings for AML Compute
-type ScaleSettings struct {
-	// Max number of nodes to use
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Min number of nodes to use
-	MinNodeCount *int `pulumi:"minNodeCount"`
-	// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-	NodeIdleTimeBeforeScaleDown *string `pulumi:"nodeIdleTimeBeforeScaleDown"`
-}
-
-// Defaults sets the appropriate defaults for ScaleSettings
-func (val *ScaleSettings) Defaults() *ScaleSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.MinNodeCount) {
-		minNodeCount_ := 0
-		tmp.MinNodeCount = &minNodeCount_
-	}
-	return &tmp
-}
-
-// scale settings for AML Compute
-type ScaleSettingsResponse struct {
-	// Max number of nodes to use
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Min number of nodes to use
-	MinNodeCount *int `pulumi:"minNodeCount"`
-	// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-	NodeIdleTimeBeforeScaleDown *string `pulumi:"nodeIdleTimeBeforeScaleDown"`
-}
-
-// Defaults sets the appropriate defaults for ScaleSettingsResponse
-func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.MinNodeCount) {
-		minNodeCount_ := 0
-		tmp.MinNodeCount = &minNodeCount_
-	}
-	return &tmp
-}
-
-// Script reference
-type ScriptReference struct {
-	// Optional command line arguments passed to the script to run.
-	ScriptArguments *string `pulumi:"scriptArguments"`
-	// The location of scripts in the mounted volume.
-	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
-	ScriptSource *string `pulumi:"scriptSource"`
-	// Optional time period passed to timeout command.
-	Timeout *string `pulumi:"timeout"`
-}
-
-// Script reference
-type ScriptReferenceResponse struct {
-	// Optional command line arguments passed to the script to run.
-	ScriptArguments *string `pulumi:"scriptArguments"`
-	// The location of scripts in the mounted volume.
-	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
-	ScriptSource *string `pulumi:"scriptSource"`
-	// Optional time period passed to timeout command.
-	Timeout *string `pulumi:"timeout"`
-}
-
-// Customized setup scripts
-type ScriptsToExecute struct {
-	// Script that's run only once during provision of the compute.
-	CreationScript *ScriptReference `pulumi:"creationScript"`
-	// Script that's run every time the machine starts.
-	StartupScript *ScriptReference `pulumi:"startupScript"`
-}
-
-// Customized setup scripts
-type ScriptsToExecuteResponse struct {
-	// Script that's run only once during provision of the compute.
-	CreationScript *ScriptReferenceResponse `pulumi:"creationScript"`
-	// Script that's run every time the machine starts.
-	StartupScript *ScriptReferenceResponse `pulumi:"startupScript"`
-}
-
-type ServiceManagedResourcesSettings struct {
-	// The settings for the service managed cosmosdb account.
-	CosmosDb *CosmosDbSettings `pulumi:"cosmosDb"`
-}
-
-// ServiceManagedResourcesSettingsInput is an input type that accepts ServiceManagedResourcesSettingsArgs and ServiceManagedResourcesSettingsOutput values.
-// You can construct a concrete instance of `ServiceManagedResourcesSettingsInput` via:
-//
-//	ServiceManagedResourcesSettingsArgs{...}
-type ServiceManagedResourcesSettingsInput interface {
-	pulumi.Input
-
-	ToServiceManagedResourcesSettingsOutput() ServiceManagedResourcesSettingsOutput
-	ToServiceManagedResourcesSettingsOutputWithContext(context.Context) ServiceManagedResourcesSettingsOutput
-}
-
-type ServiceManagedResourcesSettingsArgs struct {
-	// The settings for the service managed cosmosdb account.
-	CosmosDb CosmosDbSettingsPtrInput `pulumi:"cosmosDb"`
-}
-
-func (ServiceManagedResourcesSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsOutput() ServiceManagedResourcesSettingsOutput {
-	return i.ToServiceManagedResourcesSettingsOutputWithContext(context.Background())
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedResourcesSettingsOutput)
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return i.ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedResourcesSettingsOutput).ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx)
-}
-
-// ServiceManagedResourcesSettingsPtrInput is an input type that accepts ServiceManagedResourcesSettingsArgs, ServiceManagedResourcesSettingsPtr and ServiceManagedResourcesSettingsPtrOutput values.
-// You can construct a concrete instance of `ServiceManagedResourcesSettingsPtrInput` via:
-//
-//	        ServiceManagedResourcesSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServiceManagedResourcesSettingsPtrInput interface {
-	pulumi.Input
-
-	ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput
-	ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Context) ServiceManagedResourcesSettingsPtrOutput
-}
-
-type serviceManagedResourcesSettingsPtrType ServiceManagedResourcesSettingsArgs
-
-func ServiceManagedResourcesSettingsPtr(v *ServiceManagedResourcesSettingsArgs) ServiceManagedResourcesSettingsPtrInput {
-	return (*serviceManagedResourcesSettingsPtrType)(v)
-}
-
-func (*serviceManagedResourcesSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (i *serviceManagedResourcesSettingsPtrType) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return i.ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceManagedResourcesSettingsPtrType) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedResourcesSettingsPtrOutput)
-}
-
-type ServiceManagedResourcesSettingsOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsOutput() ServiceManagedResourcesSettingsOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return o.ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceManagedResourcesSettings) *ServiceManagedResourcesSettings {
-		return &v
-	}).(ServiceManagedResourcesSettingsPtrOutput)
-}
-
-// The settings for the service managed cosmosdb account.
-func (o ServiceManagedResourcesSettingsOutput) CosmosDb() CosmosDbSettingsPtrOutput {
-	return o.ApplyT(func(v ServiceManagedResourcesSettings) *CosmosDbSettings { return v.CosmosDb }).(CosmosDbSettingsPtrOutput)
-}
-
-type ServiceManagedResourcesSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) Elem() ServiceManagedResourcesSettingsOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettings) ServiceManagedResourcesSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceManagedResourcesSettings
-		return ret
-	}).(ServiceManagedResourcesSettingsOutput)
-}
-
-// The settings for the service managed cosmosdb account.
-func (o ServiceManagedResourcesSettingsPtrOutput) CosmosDb() CosmosDbSettingsPtrOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettings) *CosmosDbSettings {
-		if v == nil {
-			return nil
-		}
-		return v.CosmosDb
-	}).(CosmosDbSettingsPtrOutput)
-}
-
-type ServiceManagedResourcesSettingsResponse struct {
-	// The settings for the service managed cosmosdb account.
-	CosmosDb *CosmosDbSettingsResponse `pulumi:"cosmosDb"`
-}
-
-type ServiceManagedResourcesSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceManagedResourcesSettingsResponse)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsResponseOutput) ToServiceManagedResourcesSettingsResponseOutput() ServiceManagedResourcesSettingsResponseOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponseOutput) ToServiceManagedResourcesSettingsResponseOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsResponseOutput {
-	return o
-}
-
-// The settings for the service managed cosmosdb account.
-func (o ServiceManagedResourcesSettingsResponseOutput) CosmosDb() CosmosDbSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ServiceManagedResourcesSettingsResponse) *CosmosDbSettingsResponse { return v.CosmosDb }).(CosmosDbSettingsResponsePtrOutput)
-}
-
-type ServiceManagedResourcesSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceManagedResourcesSettingsResponse)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) ToServiceManagedResourcesSettingsResponsePtrOutput() ServiceManagedResourcesSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) ToServiceManagedResourcesSettingsResponsePtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) Elem() ServiceManagedResourcesSettingsResponseOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettingsResponse) ServiceManagedResourcesSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceManagedResourcesSettingsResponse
-		return ret
-	}).(ServiceManagedResourcesSettingsResponseOutput)
-}
-
-// The settings for the service managed cosmosdb account.
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) CosmosDb() CosmosDbSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettingsResponse) *CosmosDbSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CosmosDb
-	}).(CosmosDbSettingsResponsePtrOutput)
-}
-
 // Service Principal datastore credentials configuration.
 type ServicePrincipalDatastoreCredentials struct {
 	// Authority URL used for authentication.
@@ -12823,223 +10037,6 @@ type ServicePrincipalDatastoreSecrets struct {
 	// Enum to determine the datastore secrets type.
 	// Expected value is 'ServicePrincipal'.
 	SecretsType string `pulumi:"secretsType"`
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScripts struct {
-	// Customized setup scripts
-	Scripts *ScriptsToExecute `pulumi:"scripts"`
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScriptsResponse struct {
-	// Customized setup scripts
-	Scripts *ScriptsToExecuteResponse `pulumi:"scripts"`
-}
-
-type SharedPrivateLinkResource struct {
-	// The private link resource group id.
-	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link.
-	Name *string `pulumi:"name"`
-	// The resource id that private link links to.
-	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message.
-	RequestMessage *string `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// SharedPrivateLinkResourceInput is an input type that accepts SharedPrivateLinkResourceArgs and SharedPrivateLinkResourceOutput values.
-// You can construct a concrete instance of `SharedPrivateLinkResourceInput` via:
-//
-//	SharedPrivateLinkResourceArgs{...}
-type SharedPrivateLinkResourceInput interface {
-	pulumi.Input
-
-	ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput
-	ToSharedPrivateLinkResourceOutputWithContext(context.Context) SharedPrivateLinkResourceOutput
-}
-
-type SharedPrivateLinkResourceArgs struct {
-	// The private link resource group id.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Unique name of the private link.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource id that private link links to.
-	PrivateLinkResourceId pulumi.StringPtrInput `pulumi:"privateLinkResourceId"`
-	// Request message.
-	RequestMessage pulumi.StringPtrInput `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (SharedPrivateLinkResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
-	return i.ToSharedPrivateLinkResourceOutputWithContext(context.Background())
-}
-
-func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceOutput)
-}
-
-// SharedPrivateLinkResourceArrayInput is an input type that accepts SharedPrivateLinkResourceArray and SharedPrivateLinkResourceArrayOutput values.
-// You can construct a concrete instance of `SharedPrivateLinkResourceArrayInput` via:
-//
-//	SharedPrivateLinkResourceArray{ SharedPrivateLinkResourceArgs{...} }
-type SharedPrivateLinkResourceArrayInput interface {
-	pulumi.Input
-
-	ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput
-	ToSharedPrivateLinkResourceArrayOutputWithContext(context.Context) SharedPrivateLinkResourceArrayOutput
-}
-
-type SharedPrivateLinkResourceArray []SharedPrivateLinkResourceInput
-
-func (SharedPrivateLinkResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput {
-	return i.ToSharedPrivateLinkResourceArrayOutputWithContext(context.Background())
-}
-
-func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceArrayOutput)
-}
-
-type SharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
-	return o
-}
-
-// The private link resource group id.
-func (o SharedPrivateLinkResourceOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-// Unique name of the private link.
-func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id that private link links to.
-func (o SharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Request message.
-func (o SharedPrivateLinkResourceOutput) RequestMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o SharedPrivateLinkResourceOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SharedPrivateLinkResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResource {
-		return vs[0].([]SharedPrivateLinkResource)[vs[1].(int)]
-	}).(SharedPrivateLinkResourceOutput)
-}
-
-type SharedPrivateLinkResourceResponse struct {
-	// The private link resource group id.
-	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link.
-	Name *string `pulumi:"name"`
-	// The resource id that private link links to.
-	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message.
-	RequestMessage *string `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-type SharedPrivateLinkResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResourceResponse)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutput() SharedPrivateLinkResourceResponseOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseOutput {
-	return o
-}
-
-// The private link resource group id.
-func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-// Unique name of the private link.
-func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id that private link links to.
-func (o SharedPrivateLinkResourceResponseOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Request message.
-func (o SharedPrivateLinkResourceResponseOutput) RequestMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SharedPrivateLinkResourceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SharedPrivateLinkResourceResponse)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutput() SharedPrivateLinkResourceResponseArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResourceResponse {
-		return vs[0].([]SharedPrivateLinkResourceResponse)[vs[1].(int)]
-	}).(SharedPrivateLinkResourceResponseOutput)
 }
 
 // The resource model definition representing SKU
@@ -13386,38 +10383,6 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ssl configuration for scoring
-type SslConfiguration struct {
-	// Cert data
-	Cert *string `pulumi:"cert"`
-	// CNAME of the cert
-	Cname *string `pulumi:"cname"`
-	// Key data
-	Key *string `pulumi:"key"`
-	// Leaf domain label of public endpoint
-	LeafDomainLabel *string `pulumi:"leafDomainLabel"`
-	// Indicates whether to overwrite existing domain label.
-	OverwriteExistingDomain *bool `pulumi:"overwriteExistingDomain"`
-	// Enable or disable ssl for scoring
-	Status *string `pulumi:"status"`
-}
-
-// The ssl configuration for scoring
-type SslConfigurationResponse struct {
-	// Cert data
-	Cert *string `pulumi:"cert"`
-	// CNAME of the cert
-	Cname *string `pulumi:"cname"`
-	// Key data
-	Key *string `pulumi:"key"`
-	// Leaf domain label of public endpoint
-	LeafDomainLabel *string `pulumi:"leafDomainLabel"`
-	// Indicates whether to overwrite existing domain label.
-	OverwriteExistingDomain *bool `pulumi:"overwriteExistingDomain"`
-	// Enable or disable ssl for scoring
-	Status *string `pulumi:"status"`
-}
-
 // Advances setting to customize StackEnsemble run.
 type StackEnsembleSettings struct {
 	// Optional parameters to pass to the initializer of the meta-learner.
@@ -13434,11 +10399,11 @@ func (val *StackEnsembleSettings) Defaults() *StackEnsembleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StackMetaLearnerTrainPercentage) {
+	if tmp.StackMetaLearnerTrainPercentage == nil {
 		stackMetaLearnerTrainPercentage_ := 0.2
 		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
 	}
-	if isZero(tmp.StackMetaLearnerType) {
+	if tmp.StackMetaLearnerType == nil {
 		stackMetaLearnerType_ := "None"
 		tmp.StackMetaLearnerType = &stackMetaLearnerType_
 	}
@@ -13461,11 +10426,11 @@ func (val *StackEnsembleSettingsResponse) Defaults() *StackEnsembleSettingsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StackMetaLearnerTrainPercentage) {
+	if tmp.StackMetaLearnerTrainPercentage == nil {
 		stackMetaLearnerTrainPercentage_ := 0.2
 		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
 	}
-	if isZero(tmp.StackMetaLearnerType) {
+	if tmp.StackMetaLearnerType == nil {
 		stackMetaLearnerType_ := "None"
 		tmp.StackMetaLearnerType = &stackMetaLearnerType_
 	}
@@ -13524,11 +10489,11 @@ func (val *SweepJob) Defaults() *SweepJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -13619,103 +10584,17 @@ func (val *SweepJobResponse) Defaults() *SweepJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
 	tmp.Trial = *tmp.Trial.Defaults()
 
 	return &tmp
-}
-
-// A SynapseSpark compute.
-type SynapseSpark struct {
-	// The type of compute
-	// Expected value is 'SynapseSpark'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool                   `pulumi:"disableLocalAuth"`
-	Properties       *SynapseSparkProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-type SynapseSparkProperties struct {
-	// Auto pause properties.
-	AutoPauseProperties *AutoPauseProperties `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties *AutoScaleProperties `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize *string `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName *string `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion *string `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName *string `pulumi:"workspaceName"`
-}
-
-// A SynapseSpark compute.
-type SynapseSparkResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'SynapseSpark'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string                          `pulumi:"modifiedOn"`
-	Properties *SynapseSparkResponseProperties `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-type SynapseSparkResponseProperties struct {
-	// Auto pause properties.
-	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize *string `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName *string `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion *string `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName *string `pulumi:"workspaceName"`
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -13777,16 +10656,6 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// A system service running on a compute.
-type SystemServiceResponse struct {
-	// Public IP address
-	PublicIpAddress string `pulumi:"publicIpAddress"`
-	// The type of this system service.
-	SystemServiceType string `pulumi:"systemServiceType"`
-	// The version for this type.
-	Version string `pulumi:"version"`
 }
 
 // Class for data inputs.
@@ -13875,11 +10744,11 @@ func (val *TableVerticalFeaturizationSettings) Defaults() *TableVerticalFeaturiz
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnFeaturization) {
+	if tmp.EnableDnnFeaturization == nil {
 		enableDnnFeaturization_ := false
 		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Auto"
 		tmp.Mode = &mode_
 	}
@@ -13912,11 +10781,11 @@ func (val *TableVerticalFeaturizationSettingsResponse) Defaults() *TableVertical
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnFeaturization) {
+	if tmp.EnableDnnFeaturization == nil {
 		enableDnnFeaturization_ := false
 		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Auto"
 		tmp.Mode = &mode_
 	}
@@ -13947,27 +10816,27 @@ func (val *TableVerticalLimitSettings) Defaults() *TableVerticalLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEarlyTermination) {
+	if tmp.EnableEarlyTermination == nil {
 		enableEarlyTermination_ := true
 		tmp.EnableEarlyTermination = &enableEarlyTermination_
 	}
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxCoresPerTrial) {
+	if tmp.MaxCoresPerTrial == nil {
 		maxCoresPerTrial_ := -1
 		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1000
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT6H"
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.TrialTimeout) {
+	if tmp.TrialTimeout == nil {
 		trialTimeout_ := "PT30M"
 		tmp.TrialTimeout = &trialTimeout_
 	}
@@ -13998,27 +10867,27 @@ func (val *TableVerticalLimitSettingsResponse) Defaults() *TableVerticalLimitSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEarlyTermination) {
+	if tmp.EnableEarlyTermination == nil {
 		enableEarlyTermination_ := true
 		tmp.EnableEarlyTermination = &enableEarlyTermination_
 	}
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxCoresPerTrial) {
+	if tmp.MaxCoresPerTrial == nil {
 		maxCoresPerTrial_ := -1
 		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1000
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT6H"
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.TrialTimeout) {
+	if tmp.TrialTimeout == nil {
 		trialTimeout_ := "PT30M"
 		tmp.TrialTimeout = &trialTimeout_
 	}
@@ -14096,19 +10965,19 @@ func (val *TargetUtilizationScaleSettings) Defaults() *TargetUtilizationScaleSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxInstances) {
+	if tmp.MaxInstances == nil {
 		maxInstances_ := 1
 		tmp.MaxInstances = &maxInstances_
 	}
-	if isZero(tmp.MinInstances) {
+	if tmp.MinInstances == nil {
 		minInstances_ := 1
 		tmp.MinInstances = &minInstances_
 	}
-	if isZero(tmp.PollingInterval) {
+	if tmp.PollingInterval == nil {
 		pollingInterval_ := "PT1S"
 		tmp.PollingInterval = &pollingInterval_
 	}
-	if isZero(tmp.TargetUtilizationPercentage) {
+	if tmp.TargetUtilizationPercentage == nil {
 		targetUtilizationPercentage_ := 70
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
@@ -14134,19 +11003,19 @@ func (val *TargetUtilizationScaleSettingsResponse) Defaults() *TargetUtilization
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxInstances) {
+	if tmp.MaxInstances == nil {
 		maxInstances_ := 1
 		tmp.MaxInstances = &maxInstances_
 	}
-	if isZero(tmp.MinInstances) {
+	if tmp.MinInstances == nil {
 		minInstances_ := 1
 		tmp.MinInstances = &minInstances_
 	}
-	if isZero(tmp.PollingInterval) {
+	if tmp.PollingInterval == nil {
 		pollingInterval_ := "PT1S"
 		tmp.PollingInterval = &pollingInterval_
 	}
-	if isZero(tmp.TargetUtilizationPercentage) {
+	if tmp.TargetUtilizationPercentage == nil {
 		targetUtilizationPercentage_ := 70
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
@@ -14170,7 +11039,7 @@ func (val *TensorFlow) Defaults() *TensorFlow {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ParameterServerCount) {
+	if tmp.ParameterServerCount == nil {
 		parameterServerCount_ := 0
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
@@ -14194,7 +11063,7 @@ func (val *TensorFlowResponse) Defaults() *TensorFlowResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ParameterServerCount) {
+	if tmp.ParameterServerCount == nil {
 		parameterServerCount_ := 0
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
@@ -14271,11 +11140,11 @@ func (val *TextClassification) Defaults() *TextClassification {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -14308,7 +11177,7 @@ func (val *TextClassificationMultilabel) Defaults() *TextClassificationMultilabe
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -14344,7 +11213,7 @@ func (val *TextClassificationMultilabelResponse) Defaults() *TextClassificationM
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -14379,11 +11248,11 @@ func (val *TextClassificationResponse) Defaults() *TextClassificationResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -14417,7 +11286,7 @@ func (val *TextNer) Defaults() *TextNer {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -14454,7 +11323,7 @@ func (val *TextNerResponse) Defaults() *TextNerResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -14520,27 +11389,27 @@ func (val *TrainingSettings) Defaults() *TrainingSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := false
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -14574,27 +11443,27 @@ func (val *TrainingSettingsResponse) Defaults() *TrainingSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := false
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -14675,7 +11544,7 @@ func (val *TritonModelJobInput) Defaults() *TritonModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -14700,7 +11569,7 @@ func (val *TritonModelJobInputResponse) Defaults() *TritonModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -14725,7 +11594,7 @@ func (val *TritonModelJobOutput) Defaults() *TritonModelJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -14750,7 +11619,7 @@ func (val *TritonModelJobOutputResponse) Defaults() *TritonModelJobOutputRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -14775,15 +11644,15 @@ func (val *TruncationSelectionPolicy) Defaults() *TruncationSelectionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.TruncationPercentage) {
+	if tmp.TruncationPercentage == nil {
 		truncationPercentage_ := 0
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
@@ -14808,15 +11677,15 @@ func (val *TruncationSelectionPolicyResponse) Defaults() *TruncationSelectionPol
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.TruncationPercentage) {
+	if tmp.TruncationPercentage == nil {
 		truncationPercentage_ := 0
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
@@ -14848,11 +11717,11 @@ func (val *UriFileDataVersion) Defaults() *UriFileDataVersion {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -14884,11 +11753,11 @@ func (val *UriFileDataVersionResponse) Defaults() *UriFileDataVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -14913,7 +11782,7 @@ func (val *UriFileJobInput) Defaults() *UriFileJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -14938,7 +11807,7 @@ func (val *UriFileJobInputResponse) Defaults() *UriFileJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -14963,7 +11832,7 @@ func (val *UriFileJobOutput) Defaults() *UriFileJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -14988,7 +11857,7 @@ func (val *UriFileJobOutputResponse) Defaults() *UriFileJobOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -15020,11 +11889,11 @@ func (val *UriFolderDataVersion) Defaults() *UriFolderDataVersion {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -15056,11 +11925,11 @@ func (val *UriFolderDataVersionResponse) Defaults() *UriFolderDataVersionRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -15085,7 +11954,7 @@ func (val *UriFolderJobInput) Defaults() *UriFolderJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -15110,7 +11979,7 @@ func (val *UriFolderJobInputResponse) Defaults() *UriFolderJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -15135,7 +12004,7 @@ func (val *UriFolderJobOutput) Defaults() *UriFolderJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -15160,31 +12029,11 @@ func (val *UriFolderJobOutputResponse) Defaults() *UriFolderJobOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
 	return &tmp
-}
-
-// Settings for user account that gets created on each on the nodes of a compute.
-type UserAccountCredentials struct {
-	// Name of the administrator user account which can be used to SSH to nodes.
-	AdminUserName string `pulumi:"adminUserName"`
-	// Password of the administrator user account.
-	AdminUserPassword *string `pulumi:"adminUserPassword"`
-	// SSH public key of the administrator user account.
-	AdminUserSshPublicKey *string `pulumi:"adminUserSshPublicKey"`
-}
-
-// Settings for user account that gets created on each on the nodes of a compute.
-type UserAccountCredentialsResponse struct {
-	// Name of the administrator user account which can be used to SSH to nodes.
-	AdminUserName string `pulumi:"adminUserName"`
-	// Password of the administrator user account.
-	AdminUserPassword *string `pulumi:"adminUserPassword"`
-	// SSH public key of the administrator user account.
-	AdminUserSshPublicKey *string `pulumi:"adminUserSshPublicKey"`
 }
 
 // User assigned identity properties
@@ -15254,112 +12103,6 @@ type UserIdentityResponse struct {
 	IdentityType string `pulumi:"identityType"`
 }
 
-// A Machine Learning compute based on Azure Virtual Machines.
-type VirtualMachine struct {
-	// The type of compute
-	// Expected value is 'VirtualMachine'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool                           `pulumi:"disableLocalAuth"`
-	Properties       *VirtualMachineSchemaProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Virtual Machine image for Windows AML Compute
-type VirtualMachineImage struct {
-	// Virtual Machine image path
-	Id string `pulumi:"id"`
-}
-
-// Virtual Machine image for Windows AML Compute
-type VirtualMachineImageResponse struct {
-	// Virtual Machine image path
-	Id string `pulumi:"id"`
-}
-
-// A Machine Learning compute based on Azure Virtual Machines.
-type VirtualMachineResponse struct {
-	// Location for the underlying compute
-	ComputeLocation string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'VirtualMachine'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string                                  `pulumi:"modifiedOn"`
-	Properties *VirtualMachineSchemaResponseProperties `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-type VirtualMachineSchemaProperties struct {
-	// Public IP address of the virtual machine.
-	Address *string `pulumi:"address"`
-	// Admin credentials for virtual machine
-	AdministratorAccount *VirtualMachineSshCredentials `pulumi:"administratorAccount"`
-	// Indicates whether this compute will be used for running notebooks.
-	IsNotebookInstanceCompute *bool `pulumi:"isNotebookInstanceCompute"`
-	// Notebook server port open for ssh connections.
-	NotebookServerPort *int `pulumi:"notebookServerPort"`
-	// Port open for ssh connections.
-	SshPort *int `pulumi:"sshPort"`
-	// Virtual Machine size
-	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
-}
-
-type VirtualMachineSchemaResponseProperties struct {
-	// Public IP address of the virtual machine.
-	Address *string `pulumi:"address"`
-	// Admin credentials for virtual machine
-	AdministratorAccount *VirtualMachineSshCredentialsResponse `pulumi:"administratorAccount"`
-	// Indicates whether this compute will be used for running notebooks.
-	IsNotebookInstanceCompute *bool `pulumi:"isNotebookInstanceCompute"`
-	// Notebook server port open for ssh connections.
-	NotebookServerPort *int `pulumi:"notebookServerPort"`
-	// Port open for ssh connections.
-	SshPort *int `pulumi:"sshPort"`
-	// Virtual Machine size
-	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
-}
-
-// Admin credentials for virtual machine
-type VirtualMachineSshCredentials struct {
-	// Password of admin account
-	Password *string `pulumi:"password"`
-	// Private key data
-	PrivateKeyData *string `pulumi:"privateKeyData"`
-	// Public key data
-	PublicKeyData *string `pulumi:"publicKeyData"`
-	// Username of admin account
-	Username *string `pulumi:"username"`
-}
-
-// Admin credentials for virtual machine
-type VirtualMachineSshCredentialsResponse struct {
-	// Password of admin account
-	Password *string `pulumi:"password"`
-	// Private key data
-	PrivateKeyData *string `pulumi:"privateKeyData"`
-	// Public key data
-	PublicKeyData *string `pulumi:"publicKeyData"`
-	// Username of admin account
-	Username *string `pulumi:"username"`
-}
-
 func init() {
 	pulumi.RegisterOutputType(AmlComputeNodeInformationResponseOutput{})
 	pulumi.RegisterOutputType(AmlComputeNodeInformationResponseArrayOutput{})
@@ -15391,20 +12134,8 @@ func init() {
 	pulumi.RegisterOutputType(ComponentContainerResponseOutput{})
 	pulumi.RegisterOutputType(ComponentVersionTypeOutput{})
 	pulumi.RegisterOutputType(ComponentVersionResponseOutput{})
-	pulumi.RegisterOutputType(CosmosDbSettingsOutput{})
-	pulumi.RegisterOutputType(CosmosDbSettingsPtrOutput{})
-	pulumi.RegisterOutputType(CosmosDbSettingsResponseOutput{})
-	pulumi.RegisterOutputType(CosmosDbSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataContainerTypeOutput{})
 	pulumi.RegisterOutputType(DataContainerResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionKeyVaultPropertiesOutput{})
-	pulumi.RegisterOutputType(EncryptionKeyVaultPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(EncryptionKeyVaultPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionKeyVaultPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(EncryptionPropertyOutput{})
-	pulumi.RegisterOutputType(EncryptionPropertyPtrOutput{})
-	pulumi.RegisterOutputType(EncryptionPropertyResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionPropertyResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointAuthKeysOutput{})
 	pulumi.RegisterOutputType(EndpointAuthKeysPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentContainerTypeOutput{})
@@ -15415,10 +12146,6 @@ func init() {
 	pulumi.RegisterOutputType(FlavorDataMapOutput{})
 	pulumi.RegisterOutputType(FlavorDataResponseOutput{})
 	pulumi.RegisterOutputType(FlavorDataResponseMapOutput{})
-	pulumi.RegisterOutputType(IdentityForCmkOutput{})
-	pulumi.RegisterOutputType(IdentityForCmkPtrOutput{})
-	pulumi.RegisterOutputType(IdentityForCmkResponseOutput{})
-	pulumi.RegisterOutputType(IdentityForCmkResponsePtrOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesResponseOutput{})
@@ -15432,19 +12159,10 @@ func init() {
 	pulumi.RegisterOutputType(ModelContainerResponseOutput{})
 	pulumi.RegisterOutputType(ModelVersionTypeOutput{})
 	pulumi.RegisterOutputType(ModelVersionResponseOutput{})
-	pulumi.RegisterOutputType(NotebookPreparationErrorResponseOutput{})
-	pulumi.RegisterOutputType(NotebookPreparationErrorResponsePtrOutput{})
-	pulumi.RegisterOutputType(NotebookResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(OnlineEndpointTypeOutput{})
 	pulumi.RegisterOutputType(OnlineEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PasswordResponseOutput{})
 	pulumi.RegisterOutputType(PasswordResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(RegistryListCredentialsResultResponseOutput{})
 	pulumi.RegisterOutputType(ResourceConfigurationOutput{})
 	pulumi.RegisterOutputType(ResourceConfigurationPtrOutput{})
@@ -15454,14 +12172,6 @@ func init() {
 	pulumi.RegisterOutputType(RoutePtrOutput{})
 	pulumi.RegisterOutputType(RouteResponseOutput{})
 	pulumi.RegisterOutputType(RouteResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceArrayOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})

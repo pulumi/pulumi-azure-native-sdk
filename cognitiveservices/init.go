@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "azure-native:cognitiveservices:CommitmentPlan":
 		r = &CommitmentPlan{}
+	case "azure-native:cognitiveservices:CommitmentPlanAssociation":
+		r = &CommitmentPlanAssociation{}
 	case "azure-native:cognitiveservices:Deployment":
 		r = &Deployment{}
 	case "azure-native:cognitiveservices:PrivateEndpointConnection":

@@ -75,11 +75,11 @@ func (val *LookupKustoPoolResult) Defaults() *LookupKustoPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurge) {
+	if tmp.EnablePurge == nil {
 		enablePurge_ := false
 		tmp.EnablePurge = &enablePurge_
 	}
-	if isZero(tmp.EnableStreamingIngest) {
+	if tmp.EnableStreamingIngest == nil {
 		enableStreamingIngest_ := false
 		tmp.EnableStreamingIngest = &enableStreamingIngest_
 	}

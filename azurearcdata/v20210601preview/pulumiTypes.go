@@ -1318,11 +1318,11 @@ func (val *PostgresInstanceSku) Defaults() *PostgresInstanceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := PostgresInstanceSkuTier("Hyperscale")
 		tmp.Tier = &tier_
 	}
@@ -1362,10 +1362,10 @@ func (val *PostgresInstanceSkuArgs) Defaults() *PostgresInstanceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		tmp.Dev = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = PostgresInstanceSkuTier("Hyperscale")
 	}
 	return &tmp
@@ -1584,11 +1584,11 @@ func (val *PostgresInstanceSkuResponse) Defaults() *PostgresInstanceSkuResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Hyperscale"
 		tmp.Tier = &tier_
 	}
@@ -1930,11 +1930,11 @@ func (val *SqlManagedInstanceSku) Defaults() *SqlManagedInstanceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := SqlManagedInstanceSkuTier("GeneralPurpose")
 		tmp.Tier = &tier_
 	}
@@ -1974,10 +1974,10 @@ func (val *SqlManagedInstanceSkuArgs) Defaults() *SqlManagedInstanceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		tmp.Dev = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = SqlManagedInstanceSkuTier("GeneralPurpose")
 	}
 	return &tmp
@@ -2196,11 +2196,11 @@ func (val *SqlManagedInstanceSkuResponse) Defaults() *SqlManagedInstanceSkuRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "GeneralPurpose"
 		tmp.Tier = &tier_
 	}

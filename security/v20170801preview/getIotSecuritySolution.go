@@ -65,7 +65,7 @@ func (val *LookupIotSecuritySolutionResult) Defaults() *LookupIotSecuritySolutio
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}

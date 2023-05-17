@@ -11,7 +11,7 @@ import (
 )
 
 // List stop sell notifications for both stop sell offers and stop sell plans
-// API Version: 2021-12-01.
+// API Version: 2022-09-01.
 func ListPrivateStoreStopSellOffersPlansNotifications(ctx *pulumi.Context, args *ListPrivateStoreStopSellOffersPlansNotificationsArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreStopSellOffersPlansNotificationsResult, error) {
 	var rv ListPrivateStoreStopSellOffersPlansNotificationsResult
 	err := ctx.Invoke("azure-native:marketplace:listPrivateStoreStopSellOffersPlansNotifications", args, &rv, opts...)

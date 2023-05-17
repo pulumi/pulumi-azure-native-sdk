@@ -11,8 +11,6 @@ import (
 )
 
 // Get formula.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupFormula(ctx *pulumi.Context, args *LookupFormulaArgs, opts ...pulumi.InvokeOption) (*LookupFormulaResult, error) {
 	var rv LookupFormulaResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getFormula", args, &rv, opts...)

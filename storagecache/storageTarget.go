@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Type of the Storage Target.
-// API Version: 2021-03-01.
+// API Version: 2023-01-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
+	// The percentage of cache space allocated for this storage target
+	AllocationPercentage pulumi.IntOutput `pulumi:"allocationPercentage"`
 	// Properties when targetType is blobNfs.
 	BlobNfs BlobNfsTargetResponsePtrOutput `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
@@ -29,7 +32,9 @@ type StorageTarget struct {
 	// Properties when targetType is nfs3.
 	Nfs3 Nfs3TargetResponsePtrOutput `pulumi:"nfs3"`
 	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Storage target operational state.
+	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the Storage Target.
@@ -90,6 +95,9 @@ func NewStorageTarget(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:StorageTarget"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:StorageTarget"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageTarget
@@ -134,10 +142,10 @@ type storageTargetArgs struct {
 	Junctions []NamespaceJunction `pulumi:"junctions"`
 	// Properties when targetType is nfs3.
 	Nfs3 *Nfs3Target `pulumi:"nfs3"`
-	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Target resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Storage target operational state.
+	State *string `pulumi:"state"`
 	// Name of Storage Target.
 	StorageTargetName *string `pulumi:"storageTargetName"`
 	// Type of the Storage Target.
@@ -158,10 +166,10 @@ type StorageTargetArgs struct {
 	Junctions NamespaceJunctionArrayInput
 	// Properties when targetType is nfs3.
 	Nfs3 Nfs3TargetPtrInput
-	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState pulumi.StringPtrInput
 	// Target resource group.
 	ResourceGroupName pulumi.StringInput
+	// Storage target operational state.
+	State pulumi.StringPtrInput
 	// Name of Storage Target.
 	StorageTargetName pulumi.StringPtrInput
 	// Type of the Storage Target.
@@ -207,6 +215,11 @@ func (o StorageTargetOutput) ToStorageTargetOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The percentage of cache space allocated for this storage target
+func (o StorageTargetOutput) AllocationPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.IntOutput { return v.AllocationPercentage }).(pulumi.IntOutput)
+}
+
 // Properties when targetType is blobNfs.
 func (o StorageTargetOutput) BlobNfs() BlobNfsTargetResponsePtrOutput {
 	return o.ApplyT(func(v *StorageTarget) BlobNfsTargetResponsePtrOutput { return v.BlobNfs }).(BlobNfsTargetResponsePtrOutput)
@@ -238,8 +251,13 @@ func (o StorageTargetOutput) Nfs3() Nfs3TargetResponsePtrOutput {
 }
 
 // ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-func (o StorageTargetOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageTarget) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o StorageTargetOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Storage target operational state.
+func (o StorageTargetOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The system meta data relating to this resource.

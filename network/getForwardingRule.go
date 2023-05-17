@@ -11,7 +11,7 @@ import (
 )
 
 // Gets properties of a forwarding rule in a DNS forwarding ruleset.
-// API Version: 2020-04-01-preview.
+// API Version: 2022-07-01.
 func LookupForwardingRule(ctx *pulumi.Context, args *LookupForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupForwardingRuleResult, error) {
 	var rv LookupForwardingRuleResult
 	err := ctx.Invoke("azure-native:network:getForwardingRule", args, &rv, opts...)

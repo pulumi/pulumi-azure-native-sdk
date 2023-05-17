@@ -1393,7 +1393,7 @@ func (val *CacheNetworkSettings) Defaults() *CacheNetworkSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
@@ -1423,7 +1423,7 @@ func (val *CacheNetworkSettingsArgs) Defaults() *CacheNetworkSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		tmp.Mtu = pulumi.IntPtr(1500)
 	}
 	return &tmp
@@ -1559,7 +1559,7 @@ func (val *CacheNetworkSettingsResponse) Defaults() *CacheNetworkSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
@@ -2195,7 +2195,7 @@ func (val *CacheUsernameDownloadSettings) Defaults() *CacheUsernameDownloadSetti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -2245,7 +2245,7 @@ func (val *CacheUsernameDownloadSettingsArgs) Defaults() *CacheUsernameDownloadS
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		tmp.UsernameSource = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -2710,7 +2710,7 @@ func (val *CacheUsernameDownloadSettingsResponse) Defaults() *CacheUsernameDownl
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -3012,206 +3012,6 @@ func (o CacheUsernameDownloadSettingsResponseCredentialsPtrOutput) BindPassword(
 			return nil
 		}
 		return v.BindPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties pertaining to the ClfsTarget
-type ClfsTarget struct {
-	// Resource ID of storage container.
-	Target *string `pulumi:"target"`
-}
-
-// ClfsTargetInput is an input type that accepts ClfsTargetArgs and ClfsTargetOutput values.
-// You can construct a concrete instance of `ClfsTargetInput` via:
-//
-//	ClfsTargetArgs{...}
-type ClfsTargetInput interface {
-	pulumi.Input
-
-	ToClfsTargetOutput() ClfsTargetOutput
-	ToClfsTargetOutputWithContext(context.Context) ClfsTargetOutput
-}
-
-// Properties pertaining to the ClfsTarget
-type ClfsTargetArgs struct {
-	// Resource ID of storage container.
-	Target pulumi.StringPtrInput `pulumi:"target"`
-}
-
-func (ClfsTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClfsTarget)(nil)).Elem()
-}
-
-func (i ClfsTargetArgs) ToClfsTargetOutput() ClfsTargetOutput {
-	return i.ToClfsTargetOutputWithContext(context.Background())
-}
-
-func (i ClfsTargetArgs) ToClfsTargetOutputWithContext(ctx context.Context) ClfsTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClfsTargetOutput)
-}
-
-func (i ClfsTargetArgs) ToClfsTargetPtrOutput() ClfsTargetPtrOutput {
-	return i.ToClfsTargetPtrOutputWithContext(context.Background())
-}
-
-func (i ClfsTargetArgs) ToClfsTargetPtrOutputWithContext(ctx context.Context) ClfsTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClfsTargetOutput).ToClfsTargetPtrOutputWithContext(ctx)
-}
-
-// ClfsTargetPtrInput is an input type that accepts ClfsTargetArgs, ClfsTargetPtr and ClfsTargetPtrOutput values.
-// You can construct a concrete instance of `ClfsTargetPtrInput` via:
-//
-//	        ClfsTargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClfsTargetPtrInput interface {
-	pulumi.Input
-
-	ToClfsTargetPtrOutput() ClfsTargetPtrOutput
-	ToClfsTargetPtrOutputWithContext(context.Context) ClfsTargetPtrOutput
-}
-
-type clfsTargetPtrType ClfsTargetArgs
-
-func ClfsTargetPtr(v *ClfsTargetArgs) ClfsTargetPtrInput {
-	return (*clfsTargetPtrType)(v)
-}
-
-func (*clfsTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClfsTarget)(nil)).Elem()
-}
-
-func (i *clfsTargetPtrType) ToClfsTargetPtrOutput() ClfsTargetPtrOutput {
-	return i.ToClfsTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *clfsTargetPtrType) ToClfsTargetPtrOutputWithContext(ctx context.Context) ClfsTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClfsTargetPtrOutput)
-}
-
-// Properties pertaining to the ClfsTarget
-type ClfsTargetOutput struct{ *pulumi.OutputState }
-
-func (ClfsTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClfsTarget)(nil)).Elem()
-}
-
-func (o ClfsTargetOutput) ToClfsTargetOutput() ClfsTargetOutput {
-	return o
-}
-
-func (o ClfsTargetOutput) ToClfsTargetOutputWithContext(ctx context.Context) ClfsTargetOutput {
-	return o
-}
-
-func (o ClfsTargetOutput) ToClfsTargetPtrOutput() ClfsTargetPtrOutput {
-	return o.ToClfsTargetPtrOutputWithContext(context.Background())
-}
-
-func (o ClfsTargetOutput) ToClfsTargetPtrOutputWithContext(ctx context.Context) ClfsTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClfsTarget) *ClfsTarget {
-		return &v
-	}).(ClfsTargetPtrOutput)
-}
-
-// Resource ID of storage container.
-func (o ClfsTargetOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClfsTarget) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-type ClfsTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (ClfsTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClfsTarget)(nil)).Elem()
-}
-
-func (o ClfsTargetPtrOutput) ToClfsTargetPtrOutput() ClfsTargetPtrOutput {
-	return o
-}
-
-func (o ClfsTargetPtrOutput) ToClfsTargetPtrOutputWithContext(ctx context.Context) ClfsTargetPtrOutput {
-	return o
-}
-
-func (o ClfsTargetPtrOutput) Elem() ClfsTargetOutput {
-	return o.ApplyT(func(v *ClfsTarget) ClfsTarget {
-		if v != nil {
-			return *v
-		}
-		var ret ClfsTarget
-		return ret
-	}).(ClfsTargetOutput)
-}
-
-// Resource ID of storage container.
-func (o ClfsTargetPtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClfsTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties pertaining to the ClfsTarget
-type ClfsTargetResponse struct {
-	// Resource ID of storage container.
-	Target *string `pulumi:"target"`
-}
-
-// Properties pertaining to the ClfsTarget
-type ClfsTargetResponseOutput struct{ *pulumi.OutputState }
-
-func (ClfsTargetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClfsTargetResponse)(nil)).Elem()
-}
-
-func (o ClfsTargetResponseOutput) ToClfsTargetResponseOutput() ClfsTargetResponseOutput {
-	return o
-}
-
-func (o ClfsTargetResponseOutput) ToClfsTargetResponseOutputWithContext(ctx context.Context) ClfsTargetResponseOutput {
-	return o
-}
-
-// Resource ID of storage container.
-func (o ClfsTargetResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClfsTargetResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-type ClfsTargetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClfsTargetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClfsTargetResponse)(nil)).Elem()
-}
-
-func (o ClfsTargetResponsePtrOutput) ToClfsTargetResponsePtrOutput() ClfsTargetResponsePtrOutput {
-	return o
-}
-
-func (o ClfsTargetResponsePtrOutput) ToClfsTargetResponsePtrOutputWithContext(ctx context.Context) ClfsTargetResponsePtrOutput {
-	return o
-}
-
-func (o ClfsTargetResponsePtrOutput) Elem() ClfsTargetResponseOutput {
-	return o.ApplyT(func(v *ClfsTargetResponse) ClfsTargetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClfsTargetResponse
-		return ret
-	}).(ClfsTargetResponseOutput)
-}
-
-// Resource ID of storage container.
-func (o ClfsTargetResponsePtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClfsTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Target
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3651,436 +3451,6 @@ func (o KeyVaultKeyReferenceSourceVaultPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A namespace junction.
-type NamespaceJunction struct {
-	// Namespace path on a Cache for a Storage Target.
-	NamespacePath *string `pulumi:"namespacePath"`
-	// Name of the access policy applied to this junction.
-	NfsAccessPolicy *string `pulumi:"nfsAccessPolicy"`
-	// NFS export where targetPath exists.
-	NfsExport *string `pulumi:"nfsExport"`
-	// Path in Storage Target to which namespacePath points.
-	TargetPath *string `pulumi:"targetPath"`
-}
-
-// NamespaceJunctionInput is an input type that accepts NamespaceJunctionArgs and NamespaceJunctionOutput values.
-// You can construct a concrete instance of `NamespaceJunctionInput` via:
-//
-//	NamespaceJunctionArgs{...}
-type NamespaceJunctionInput interface {
-	pulumi.Input
-
-	ToNamespaceJunctionOutput() NamespaceJunctionOutput
-	ToNamespaceJunctionOutputWithContext(context.Context) NamespaceJunctionOutput
-}
-
-// A namespace junction.
-type NamespaceJunctionArgs struct {
-	// Namespace path on a Cache for a Storage Target.
-	NamespacePath pulumi.StringPtrInput `pulumi:"namespacePath"`
-	// Name of the access policy applied to this junction.
-	NfsAccessPolicy pulumi.StringPtrInput `pulumi:"nfsAccessPolicy"`
-	// NFS export where targetPath exists.
-	NfsExport pulumi.StringPtrInput `pulumi:"nfsExport"`
-	// Path in Storage Target to which namespacePath points.
-	TargetPath pulumi.StringPtrInput `pulumi:"targetPath"`
-}
-
-func (NamespaceJunctionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceJunction)(nil)).Elem()
-}
-
-func (i NamespaceJunctionArgs) ToNamespaceJunctionOutput() NamespaceJunctionOutput {
-	return i.ToNamespaceJunctionOutputWithContext(context.Background())
-}
-
-func (i NamespaceJunctionArgs) ToNamespaceJunctionOutputWithContext(ctx context.Context) NamespaceJunctionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceJunctionOutput)
-}
-
-// NamespaceJunctionArrayInput is an input type that accepts NamespaceJunctionArray and NamespaceJunctionArrayOutput values.
-// You can construct a concrete instance of `NamespaceJunctionArrayInput` via:
-//
-//	NamespaceJunctionArray{ NamespaceJunctionArgs{...} }
-type NamespaceJunctionArrayInput interface {
-	pulumi.Input
-
-	ToNamespaceJunctionArrayOutput() NamespaceJunctionArrayOutput
-	ToNamespaceJunctionArrayOutputWithContext(context.Context) NamespaceJunctionArrayOutput
-}
-
-type NamespaceJunctionArray []NamespaceJunctionInput
-
-func (NamespaceJunctionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceJunction)(nil)).Elem()
-}
-
-func (i NamespaceJunctionArray) ToNamespaceJunctionArrayOutput() NamespaceJunctionArrayOutput {
-	return i.ToNamespaceJunctionArrayOutputWithContext(context.Background())
-}
-
-func (i NamespaceJunctionArray) ToNamespaceJunctionArrayOutputWithContext(ctx context.Context) NamespaceJunctionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceJunctionArrayOutput)
-}
-
-// A namespace junction.
-type NamespaceJunctionOutput struct{ *pulumi.OutputState }
-
-func (NamespaceJunctionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceJunction)(nil)).Elem()
-}
-
-func (o NamespaceJunctionOutput) ToNamespaceJunctionOutput() NamespaceJunctionOutput {
-	return o
-}
-
-func (o NamespaceJunctionOutput) ToNamespaceJunctionOutputWithContext(ctx context.Context) NamespaceJunctionOutput {
-	return o
-}
-
-// Namespace path on a Cache for a Storage Target.
-func (o NamespaceJunctionOutput) NamespacePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunction) *string { return v.NamespacePath }).(pulumi.StringPtrOutput)
-}
-
-// Name of the access policy applied to this junction.
-func (o NamespaceJunctionOutput) NfsAccessPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunction) *string { return v.NfsAccessPolicy }).(pulumi.StringPtrOutput)
-}
-
-// NFS export where targetPath exists.
-func (o NamespaceJunctionOutput) NfsExport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunction) *string { return v.NfsExport }).(pulumi.StringPtrOutput)
-}
-
-// Path in Storage Target to which namespacePath points.
-func (o NamespaceJunctionOutput) TargetPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunction) *string { return v.TargetPath }).(pulumi.StringPtrOutput)
-}
-
-type NamespaceJunctionArrayOutput struct{ *pulumi.OutputState }
-
-func (NamespaceJunctionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceJunction)(nil)).Elem()
-}
-
-func (o NamespaceJunctionArrayOutput) ToNamespaceJunctionArrayOutput() NamespaceJunctionArrayOutput {
-	return o
-}
-
-func (o NamespaceJunctionArrayOutput) ToNamespaceJunctionArrayOutputWithContext(ctx context.Context) NamespaceJunctionArrayOutput {
-	return o
-}
-
-func (o NamespaceJunctionArrayOutput) Index(i pulumi.IntInput) NamespaceJunctionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceJunction {
-		return vs[0].([]NamespaceJunction)[vs[1].(int)]
-	}).(NamespaceJunctionOutput)
-}
-
-// A namespace junction.
-type NamespaceJunctionResponse struct {
-	// Namespace path on a Cache for a Storage Target.
-	NamespacePath *string `pulumi:"namespacePath"`
-	// Name of the access policy applied to this junction.
-	NfsAccessPolicy *string `pulumi:"nfsAccessPolicy"`
-	// NFS export where targetPath exists.
-	NfsExport *string `pulumi:"nfsExport"`
-	// Path in Storage Target to which namespacePath points.
-	TargetPath *string `pulumi:"targetPath"`
-}
-
-// A namespace junction.
-type NamespaceJunctionResponseOutput struct{ *pulumi.OutputState }
-
-func (NamespaceJunctionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceJunctionResponse)(nil)).Elem()
-}
-
-func (o NamespaceJunctionResponseOutput) ToNamespaceJunctionResponseOutput() NamespaceJunctionResponseOutput {
-	return o
-}
-
-func (o NamespaceJunctionResponseOutput) ToNamespaceJunctionResponseOutputWithContext(ctx context.Context) NamespaceJunctionResponseOutput {
-	return o
-}
-
-// Namespace path on a Cache for a Storage Target.
-func (o NamespaceJunctionResponseOutput) NamespacePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunctionResponse) *string { return v.NamespacePath }).(pulumi.StringPtrOutput)
-}
-
-// Name of the access policy applied to this junction.
-func (o NamespaceJunctionResponseOutput) NfsAccessPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunctionResponse) *string { return v.NfsAccessPolicy }).(pulumi.StringPtrOutput)
-}
-
-// NFS export where targetPath exists.
-func (o NamespaceJunctionResponseOutput) NfsExport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunctionResponse) *string { return v.NfsExport }).(pulumi.StringPtrOutput)
-}
-
-// Path in Storage Target to which namespacePath points.
-func (o NamespaceJunctionResponseOutput) TargetPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceJunctionResponse) *string { return v.TargetPath }).(pulumi.StringPtrOutput)
-}
-
-type NamespaceJunctionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NamespaceJunctionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceJunctionResponse)(nil)).Elem()
-}
-
-func (o NamespaceJunctionResponseArrayOutput) ToNamespaceJunctionResponseArrayOutput() NamespaceJunctionResponseArrayOutput {
-	return o
-}
-
-func (o NamespaceJunctionResponseArrayOutput) ToNamespaceJunctionResponseArrayOutputWithContext(ctx context.Context) NamespaceJunctionResponseArrayOutput {
-	return o
-}
-
-func (o NamespaceJunctionResponseArrayOutput) Index(i pulumi.IntInput) NamespaceJunctionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceJunctionResponse {
-		return vs[0].([]NamespaceJunctionResponse)[vs[1].(int)]
-	}).(NamespaceJunctionResponseOutput)
-}
-
-// Properties pertaining to the Nfs3Target
-type Nfs3Target struct {
-	// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-	Target *string `pulumi:"target"`
-	// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-	UsageModel *string `pulumi:"usageModel"`
-}
-
-// Nfs3TargetInput is an input type that accepts Nfs3TargetArgs and Nfs3TargetOutput values.
-// You can construct a concrete instance of `Nfs3TargetInput` via:
-//
-//	Nfs3TargetArgs{...}
-type Nfs3TargetInput interface {
-	pulumi.Input
-
-	ToNfs3TargetOutput() Nfs3TargetOutput
-	ToNfs3TargetOutputWithContext(context.Context) Nfs3TargetOutput
-}
-
-// Properties pertaining to the Nfs3Target
-type Nfs3TargetArgs struct {
-	// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-	UsageModel pulumi.StringPtrInput `pulumi:"usageModel"`
-}
-
-func (Nfs3TargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Nfs3Target)(nil)).Elem()
-}
-
-func (i Nfs3TargetArgs) ToNfs3TargetOutput() Nfs3TargetOutput {
-	return i.ToNfs3TargetOutputWithContext(context.Background())
-}
-
-func (i Nfs3TargetArgs) ToNfs3TargetOutputWithContext(ctx context.Context) Nfs3TargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Nfs3TargetOutput)
-}
-
-func (i Nfs3TargetArgs) ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput {
-	return i.ToNfs3TargetPtrOutputWithContext(context.Background())
-}
-
-func (i Nfs3TargetArgs) ToNfs3TargetPtrOutputWithContext(ctx context.Context) Nfs3TargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Nfs3TargetOutput).ToNfs3TargetPtrOutputWithContext(ctx)
-}
-
-// Nfs3TargetPtrInput is an input type that accepts Nfs3TargetArgs, Nfs3TargetPtr and Nfs3TargetPtrOutput values.
-// You can construct a concrete instance of `Nfs3TargetPtrInput` via:
-//
-//	        Nfs3TargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type Nfs3TargetPtrInput interface {
-	pulumi.Input
-
-	ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput
-	ToNfs3TargetPtrOutputWithContext(context.Context) Nfs3TargetPtrOutput
-}
-
-type nfs3TargetPtrType Nfs3TargetArgs
-
-func Nfs3TargetPtr(v *Nfs3TargetArgs) Nfs3TargetPtrInput {
-	return (*nfs3TargetPtrType)(v)
-}
-
-func (*nfs3TargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Nfs3Target)(nil)).Elem()
-}
-
-func (i *nfs3TargetPtrType) ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput {
-	return i.ToNfs3TargetPtrOutputWithContext(context.Background())
-}
-
-func (i *nfs3TargetPtrType) ToNfs3TargetPtrOutputWithContext(ctx context.Context) Nfs3TargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Nfs3TargetPtrOutput)
-}
-
-// Properties pertaining to the Nfs3Target
-type Nfs3TargetOutput struct{ *pulumi.OutputState }
-
-func (Nfs3TargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Nfs3Target)(nil)).Elem()
-}
-
-func (o Nfs3TargetOutput) ToNfs3TargetOutput() Nfs3TargetOutput {
-	return o
-}
-
-func (o Nfs3TargetOutput) ToNfs3TargetOutputWithContext(ctx context.Context) Nfs3TargetOutput {
-	return o
-}
-
-func (o Nfs3TargetOutput) ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput {
-	return o.ToNfs3TargetPtrOutputWithContext(context.Background())
-}
-
-func (o Nfs3TargetOutput) ToNfs3TargetPtrOutputWithContext(ctx context.Context) Nfs3TargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Nfs3Target) *Nfs3Target {
-		return &v
-	}).(Nfs3TargetPtrOutput)
-}
-
-// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-func (o Nfs3TargetOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Nfs3Target) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-func (o Nfs3TargetOutput) UsageModel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Nfs3Target) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
-}
-
-type Nfs3TargetPtrOutput struct{ *pulumi.OutputState }
-
-func (Nfs3TargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Nfs3Target)(nil)).Elem()
-}
-
-func (o Nfs3TargetPtrOutput) ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput {
-	return o
-}
-
-func (o Nfs3TargetPtrOutput) ToNfs3TargetPtrOutputWithContext(ctx context.Context) Nfs3TargetPtrOutput {
-	return o
-}
-
-func (o Nfs3TargetPtrOutput) Elem() Nfs3TargetOutput {
-	return o.ApplyT(func(v *Nfs3Target) Nfs3Target {
-		if v != nil {
-			return *v
-		}
-		var ret Nfs3Target
-		return ret
-	}).(Nfs3TargetOutput)
-}
-
-// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-func (o Nfs3TargetPtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Nfs3Target) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-func (o Nfs3TargetPtrOutput) UsageModel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Nfs3Target) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsageModel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties pertaining to the Nfs3Target
-type Nfs3TargetResponse struct {
-	// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-	Target *string `pulumi:"target"`
-	// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-	UsageModel *string `pulumi:"usageModel"`
-}
-
-// Properties pertaining to the Nfs3Target
-type Nfs3TargetResponseOutput struct{ *pulumi.OutputState }
-
-func (Nfs3TargetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Nfs3TargetResponse)(nil)).Elem()
-}
-
-func (o Nfs3TargetResponseOutput) ToNfs3TargetResponseOutput() Nfs3TargetResponseOutput {
-	return o
-}
-
-func (o Nfs3TargetResponseOutput) ToNfs3TargetResponseOutputWithContext(ctx context.Context) Nfs3TargetResponseOutput {
-	return o
-}
-
-// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-func (o Nfs3TargetResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Nfs3TargetResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-func (o Nfs3TargetResponseOutput) UsageModel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Nfs3TargetResponse) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
-}
-
-type Nfs3TargetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (Nfs3TargetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Nfs3TargetResponse)(nil)).Elem()
-}
-
-func (o Nfs3TargetResponsePtrOutput) ToNfs3TargetResponsePtrOutput() Nfs3TargetResponsePtrOutput {
-	return o
-}
-
-func (o Nfs3TargetResponsePtrOutput) ToNfs3TargetResponsePtrOutputWithContext(ctx context.Context) Nfs3TargetResponsePtrOutput {
-	return o
-}
-
-func (o Nfs3TargetResponsePtrOutput) Elem() Nfs3TargetResponseOutput {
-	return o.ApplyT(func(v *Nfs3TargetResponse) Nfs3TargetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret Nfs3TargetResponse
-		return ret
-	}).(Nfs3TargetResponseOutput)
-}
-
-// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-func (o Nfs3TargetResponsePtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Nfs3TargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
-func (o Nfs3TargetResponsePtrOutput) UsageModel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Nfs3TargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsageModel
-	}).(pulumi.StringPtrOutput)
-}
-
 // A set of rules describing access policies applied to NFSv3 clients of the cache.
 type NfsAccessPolicy struct {
 	// The set of rules describing client accesses allowed under this policy.
@@ -4269,11 +3639,11 @@ func (val *NfsAccessRule) Defaults() *NfsAccessRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousGID) {
+	if tmp.AnonymousGID == nil {
 		anonymousGID_ := "-2"
 		tmp.AnonymousGID = &anonymousGID_
 	}
-	if isZero(tmp.AnonymousUID) {
+	if tmp.AnonymousUID == nil {
 		anonymousUID_ := "-2"
 		tmp.AnonymousUID = &anonymousUID_
 	}
@@ -4317,10 +3687,10 @@ func (val *NfsAccessRuleArgs) Defaults() *NfsAccessRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousGID) {
+	if tmp.AnonymousGID == nil {
 		tmp.AnonymousGID = pulumi.StringPtr("-2")
 	}
-	if isZero(tmp.AnonymousUID) {
+	if tmp.AnonymousUID == nil {
 		tmp.AnonymousUID = pulumi.StringPtr("-2")
 	}
 	return &tmp
@@ -4463,11 +3833,11 @@ func (val *NfsAccessRuleResponse) Defaults() *NfsAccessRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousGID) {
+	if tmp.AnonymousGID == nil {
 		anonymousGID_ := "-2"
 		tmp.AnonymousGID = &anonymousGID_
 	}
-	if isZero(tmp.AnonymousUID) {
+	if tmp.AnonymousUID == nil {
 		anonymousUID_ := "-2"
 		tmp.AnonymousUID = &anonymousUID_
 	}
@@ -4610,206 +3980,6 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Properties pertaining to the UnknownTarget
-type UnknownTarget struct {
-	// Dictionary of string->string pairs containing information about the Storage Target.
-	UnknownMap map[string]string `pulumi:"unknownMap"`
-}
-
-// UnknownTargetInput is an input type that accepts UnknownTargetArgs and UnknownTargetOutput values.
-// You can construct a concrete instance of `UnknownTargetInput` via:
-//
-//	UnknownTargetArgs{...}
-type UnknownTargetInput interface {
-	pulumi.Input
-
-	ToUnknownTargetOutput() UnknownTargetOutput
-	ToUnknownTargetOutputWithContext(context.Context) UnknownTargetOutput
-}
-
-// Properties pertaining to the UnknownTarget
-type UnknownTargetArgs struct {
-	// Dictionary of string->string pairs containing information about the Storage Target.
-	UnknownMap pulumi.StringMapInput `pulumi:"unknownMap"`
-}
-
-func (UnknownTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UnknownTarget)(nil)).Elem()
-}
-
-func (i UnknownTargetArgs) ToUnknownTargetOutput() UnknownTargetOutput {
-	return i.ToUnknownTargetOutputWithContext(context.Background())
-}
-
-func (i UnknownTargetArgs) ToUnknownTargetOutputWithContext(ctx context.Context) UnknownTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UnknownTargetOutput)
-}
-
-func (i UnknownTargetArgs) ToUnknownTargetPtrOutput() UnknownTargetPtrOutput {
-	return i.ToUnknownTargetPtrOutputWithContext(context.Background())
-}
-
-func (i UnknownTargetArgs) ToUnknownTargetPtrOutputWithContext(ctx context.Context) UnknownTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UnknownTargetOutput).ToUnknownTargetPtrOutputWithContext(ctx)
-}
-
-// UnknownTargetPtrInput is an input type that accepts UnknownTargetArgs, UnknownTargetPtr and UnknownTargetPtrOutput values.
-// You can construct a concrete instance of `UnknownTargetPtrInput` via:
-//
-//	        UnknownTargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type UnknownTargetPtrInput interface {
-	pulumi.Input
-
-	ToUnknownTargetPtrOutput() UnknownTargetPtrOutput
-	ToUnknownTargetPtrOutputWithContext(context.Context) UnknownTargetPtrOutput
-}
-
-type unknownTargetPtrType UnknownTargetArgs
-
-func UnknownTargetPtr(v *UnknownTargetArgs) UnknownTargetPtrInput {
-	return (*unknownTargetPtrType)(v)
-}
-
-func (*unknownTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UnknownTarget)(nil)).Elem()
-}
-
-func (i *unknownTargetPtrType) ToUnknownTargetPtrOutput() UnknownTargetPtrOutput {
-	return i.ToUnknownTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *unknownTargetPtrType) ToUnknownTargetPtrOutputWithContext(ctx context.Context) UnknownTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UnknownTargetPtrOutput)
-}
-
-// Properties pertaining to the UnknownTarget
-type UnknownTargetOutput struct{ *pulumi.OutputState }
-
-func (UnknownTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UnknownTarget)(nil)).Elem()
-}
-
-func (o UnknownTargetOutput) ToUnknownTargetOutput() UnknownTargetOutput {
-	return o
-}
-
-func (o UnknownTargetOutput) ToUnknownTargetOutputWithContext(ctx context.Context) UnknownTargetOutput {
-	return o
-}
-
-func (o UnknownTargetOutput) ToUnknownTargetPtrOutput() UnknownTargetPtrOutput {
-	return o.ToUnknownTargetPtrOutputWithContext(context.Background())
-}
-
-func (o UnknownTargetOutput) ToUnknownTargetPtrOutputWithContext(ctx context.Context) UnknownTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnknownTarget) *UnknownTarget {
-		return &v
-	}).(UnknownTargetPtrOutput)
-}
-
-// Dictionary of string->string pairs containing information about the Storage Target.
-func (o UnknownTargetOutput) UnknownMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v UnknownTarget) map[string]string { return v.UnknownMap }).(pulumi.StringMapOutput)
-}
-
-type UnknownTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (UnknownTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UnknownTarget)(nil)).Elem()
-}
-
-func (o UnknownTargetPtrOutput) ToUnknownTargetPtrOutput() UnknownTargetPtrOutput {
-	return o
-}
-
-func (o UnknownTargetPtrOutput) ToUnknownTargetPtrOutputWithContext(ctx context.Context) UnknownTargetPtrOutput {
-	return o
-}
-
-func (o UnknownTargetPtrOutput) Elem() UnknownTargetOutput {
-	return o.ApplyT(func(v *UnknownTarget) UnknownTarget {
-		if v != nil {
-			return *v
-		}
-		var ret UnknownTarget
-		return ret
-	}).(UnknownTargetOutput)
-}
-
-// Dictionary of string->string pairs containing information about the Storage Target.
-func (o UnknownTargetPtrOutput) UnknownMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *UnknownTarget) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.UnknownMap
-	}).(pulumi.StringMapOutput)
-}
-
-// Properties pertaining to the UnknownTarget
-type UnknownTargetResponse struct {
-	// Dictionary of string->string pairs containing information about the Storage Target.
-	UnknownMap map[string]string `pulumi:"unknownMap"`
-}
-
-// Properties pertaining to the UnknownTarget
-type UnknownTargetResponseOutput struct{ *pulumi.OutputState }
-
-func (UnknownTargetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UnknownTargetResponse)(nil)).Elem()
-}
-
-func (o UnknownTargetResponseOutput) ToUnknownTargetResponseOutput() UnknownTargetResponseOutput {
-	return o
-}
-
-func (o UnknownTargetResponseOutput) ToUnknownTargetResponseOutputWithContext(ctx context.Context) UnknownTargetResponseOutput {
-	return o
-}
-
-// Dictionary of string->string pairs containing information about the Storage Target.
-func (o UnknownTargetResponseOutput) UnknownMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v UnknownTargetResponse) map[string]string { return v.UnknownMap }).(pulumi.StringMapOutput)
-}
-
-type UnknownTargetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UnknownTargetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UnknownTargetResponse)(nil)).Elem()
-}
-
-func (o UnknownTargetResponsePtrOutput) ToUnknownTargetResponsePtrOutput() UnknownTargetResponsePtrOutput {
-	return o
-}
-
-func (o UnknownTargetResponsePtrOutput) ToUnknownTargetResponsePtrOutputWithContext(ctx context.Context) UnknownTargetResponsePtrOutput {
-	return o
-}
-
-func (o UnknownTargetResponsePtrOutput) Elem() UnknownTargetResponseOutput {
-	return o.ApplyT(func(v *UnknownTargetResponse) UnknownTargetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UnknownTargetResponse
-		return ret
-	}).(UnknownTargetResponseOutput)
-}
-
-// Dictionary of string->string pairs containing information about the Storage Target.
-func (o UnknownTargetResponsePtrOutput) UnknownMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *UnknownTargetResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.UnknownMap
-	}).(pulumi.StringMapOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(CacheActiveDirectorySettingsOutput{})
 	pulumi.RegisterOutputType(CacheActiveDirectorySettingsPtrOutput{})
@@ -4854,10 +4024,6 @@ func init() {
 	pulumi.RegisterOutputType(CacheUsernameDownloadSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CacheUsernameDownloadSettingsResponseCredentialsOutput{})
 	pulumi.RegisterOutputType(CacheUsernameDownloadSettingsResponseCredentialsPtrOutput{})
-	pulumi.RegisterOutputType(ClfsTargetOutput{})
-	pulumi.RegisterOutputType(ClfsTargetPtrOutput{})
-	pulumi.RegisterOutputType(ClfsTargetResponseOutput{})
-	pulumi.RegisterOutputType(ClfsTargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyReferenceOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyReferencePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyReferenceResponseOutput{})
@@ -4866,14 +4032,6 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultKeyReferenceResponseSourceVaultPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyReferenceSourceVaultOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyReferenceSourceVaultPtrOutput{})
-	pulumi.RegisterOutputType(NamespaceJunctionOutput{})
-	pulumi.RegisterOutputType(NamespaceJunctionArrayOutput{})
-	pulumi.RegisterOutputType(NamespaceJunctionResponseOutput{})
-	pulumi.RegisterOutputType(NamespaceJunctionResponseArrayOutput{})
-	pulumi.RegisterOutputType(Nfs3TargetOutput{})
-	pulumi.RegisterOutputType(Nfs3TargetPtrOutput{})
-	pulumi.RegisterOutputType(Nfs3TargetResponseOutput{})
-	pulumi.RegisterOutputType(Nfs3TargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(NfsAccessPolicyOutput{})
 	pulumi.RegisterOutputType(NfsAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(NfsAccessPolicyResponseOutput{})
@@ -4883,8 +4041,4 @@ func init() {
 	pulumi.RegisterOutputType(NfsAccessRuleResponseOutput{})
 	pulumi.RegisterOutputType(NfsAccessRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(UnknownTargetOutput{})
-	pulumi.RegisterOutputType(UnknownTargetPtrOutput{})
-	pulumi.RegisterOutputType(UnknownTargetResponseOutput{})
-	pulumi.RegisterOutputType(UnknownTargetResponsePtrOutput{})
 }

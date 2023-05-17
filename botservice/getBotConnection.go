@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Connection Setting registration for a Bot Service
-// API Version: 2021-03-01.
+// API Version: 2022-09-15.
 func LookupBotConnection(ctx *pulumi.Context, args *LookupBotConnectionArgs, opts ...pulumi.InvokeOption) (*LookupBotConnectionResult, error) {
 	var rv LookupBotConnectionResult
 	err := ctx.Invoke("azure-native:botservice:getBotConnection", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupBotConnectionArgs struct {
 
 // Bot channel resource definition
 type LookupBotConnectionResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -106,7 +106,7 @@ func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutputWithCo
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o LookupBotConnectionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

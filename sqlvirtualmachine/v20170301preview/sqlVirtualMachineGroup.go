@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +67,9 @@ func NewSqlVirtualMachineGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachineGroup"),
 		},
 	})
 	opts = append(opts, aliases)

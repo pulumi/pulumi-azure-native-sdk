@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:relay/v20180101preview:Namespace":
-		r = &Namespace{}
 	case "azure-native:relay/v20180101preview:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	default:

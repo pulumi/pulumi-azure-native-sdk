@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB SQL database.
-//
-// Deprecated: Version 2016-03-31 will be removed in v2 of the provider.
 type DatabaseAccountSqlDatabase struct {
 	pulumi.CustomResourceState
 
@@ -142,7 +140,16 @@ func NewDatabaseAccountSqlDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:DatabaseAccountSqlDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:DatabaseAccountSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:DatabaseAccountSqlDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccountSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccountSqlDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

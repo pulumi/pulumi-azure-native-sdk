@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB storedProcedure.
-//
-// Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
 type SqlResourceSqlStoredProcedure struct {
 	pulumi.CustomResourceState
 
@@ -124,7 +122,16 @@ func NewSqlResourceSqlStoredProcedure(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlStoredProcedure"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlStoredProcedure"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlStoredProcedure"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlStoredProcedure"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlStoredProcedure"),
 		},
 	})
 	opts = append(opts, aliases)

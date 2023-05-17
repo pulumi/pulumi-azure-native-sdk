@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Custom Locations definition.
-// API Version: 2021-03-15-preview.
+// API Version: 2021-08-15.
+// Previous API Version: 2021-03-15-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type CustomLocation struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type CustomLocation struct {
 	HostResourceId pulumi.StringPtrOutput `pulumi:"hostResourceId"`
 	// Type of host the Custom Locations is referencing (Kubernetes, etc...).
 	HostType pulumi.StringPtrOutput `pulumi:"hostType"`
+	// Identity for the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -106,6 +109,8 @@ type customLocationArgs struct {
 	HostResourceId *string `pulumi:"hostResourceId"`
 	// Type of host the Custom Locations is referencing (Kubernetes, etc...).
 	HostType *string `pulumi:"hostType"`
+	// Identity for the resource.
+	Identity *Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Kubernetes namespace that will be created on the specified cluster.
@@ -132,6 +137,8 @@ type CustomLocationArgs struct {
 	HostResourceId pulumi.StringPtrInput
 	// Type of host the Custom Locations is referencing (Kubernetes, etc...).
 	HostType pulumi.StringPtrInput
+	// Identity for the resource.
+	Identity IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Kubernetes namespace that will be created on the specified cluster.
@@ -208,6 +215,11 @@ func (o CustomLocationOutput) HostResourceId() pulumi.StringPtrOutput {
 // Type of host the Custom Locations is referencing (Kubernetes, etc...).
 func (o CustomLocationOutput) HostType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomLocation) pulumi.StringPtrOutput { return v.HostType }).(pulumi.StringPtrOutput)
+}
+
+// Identity for the resource.
+func (o CustomLocationOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *CustomLocation) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

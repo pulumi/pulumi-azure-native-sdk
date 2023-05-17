@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtualNetworks resource definition.
-// API Version: 2022-05-01-preview.
+// API Version: 2022-09-01-preview.
+// Previous API Version: 2022-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type VirtualNetworkRetrieve struct {
 	pulumi.CustomResourceState
 
@@ -43,12 +44,24 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:virtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:virtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkRetrieve
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice:virtualNetworkRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice:VirtualNetworkRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +73,7 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 func GetVirtualNetworkRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VirtualNetworkRetrieveState, opts ...pulumi.ResourceOption) (*VirtualNetworkRetrieve, error) {
 	var resource VirtualNetworkRetrieve
-	err := ctx.ReadResource("azure-native:hybridcontainerservice:virtualNetworkRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice:VirtualNetworkRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

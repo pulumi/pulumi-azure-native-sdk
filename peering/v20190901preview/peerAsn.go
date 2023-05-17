@@ -11,8 +11,6 @@ import (
 )
 
 // The essential information related to the peer's ASN.
-//
-// Deprecated: Version 2019-09-01-preview will be removed in v2 of the provider.
 type PeerAsn struct {
 	pulumi.CustomResourceState
 

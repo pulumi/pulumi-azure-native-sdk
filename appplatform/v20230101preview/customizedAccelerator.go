@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +49,9 @@ func NewCustomizedAccelerator(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:CustomizedAccelerator"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:CustomizedAccelerator"),
 		},
 	})
 	opts = append(opts, aliases)

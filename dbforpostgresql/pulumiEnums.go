@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// If Enabled, Azure Active Directory authentication is enabled.
+type ActiveDirectoryAuthEnum string
+
+const (
+	ActiveDirectoryAuthEnumEnabled  = ActiveDirectoryAuthEnum("Enabled")
+	ActiveDirectoryAuthEnumDisabled = ActiveDirectoryAuthEnum("Disabled")
+)
+
 // The type of administrator.
 type AdministratorType string
 
@@ -17,57 +25,86 @@ const (
 	AdministratorTypeActiveDirectory = AdministratorType("ActiveDirectory")
 )
 
-// The mode to create a new server.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
+type ArmServerKeyType string
+
+const (
+	ArmServerKeyTypeSystemManaged = ArmServerKeyType("SystemManaged")
+	ArmServerKeyTypeAzureKeyVault = ArmServerKeyType("AzureKeyVault")
+)
+
+// The mode to create a new PostgreSQL server.
 type CreateMode string
 
 const (
 	CreateModeDefault            = CreateMode("Default")
+	CreateModeCreate             = CreateMode("Create")
+	CreateModeUpdate             = CreateMode("Update")
 	CreateModePointInTimeRestore = CreateMode("PointInTimeRestore")
 	CreateModeGeoRestore         = CreateMode("GeoRestore")
 	CreateModeReplica            = CreateMode("Replica")
 )
 
-// Enable Geo-redundant or not for server backup.
-type GeoRedundantBackup string
+// A value indicating whether Geo-Redundant backup is enabled on the server.
+type GeoRedundantBackupEnum string
 
 const (
-	GeoRedundantBackupEnabled  = GeoRedundantBackup("Enabled")
-	GeoRedundantBackupDisabled = GeoRedundantBackup("Disabled")
+	GeoRedundantBackupEnumEnabled  = GeoRedundantBackupEnum("Enabled")
+	GeoRedundantBackupEnumDisabled = GeoRedundantBackupEnum("Disabled")
 )
 
-// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+// The HA mode for the server.
+type HighAvailabilityMode string
+
+const (
+	HighAvailabilityModeDisabled      = HighAvailabilityMode("Disabled")
+	HighAvailabilityModeZoneRedundant = HighAvailabilityMode("ZoneRedundant")
+	HighAvailabilityModeSameZone      = HighAvailabilityMode("SameZone")
+)
+
+// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
 type IdentityType string
 
 const (
-	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeNone         = IdentityType("None")
+	IdentityTypeUserAssigned = IdentityType("UserAssigned")
 )
 
-// Status showing whether the server enabled infrastructure encryption.
-type InfrastructureEncryption string
+// If Enabled, Password authentication is enabled.
+type PasswordAuthEnum string
 
 const (
-	// Default value for single layer of encryption for data at rest.
-	InfrastructureEncryptionEnabled = InfrastructureEncryption("Enabled")
-	// Additional (2nd) layer of encryption for data at rest
-	InfrastructureEncryptionDisabled = InfrastructureEncryption("Disabled")
+	PasswordAuthEnumEnabled  = PasswordAuthEnum("Enabled")
+	PasswordAuthEnumDisabled = PasswordAuthEnum("Disabled")
 )
 
-// Enforce a minimal Tls version for the server.
-type MinimalTlsVersionEnum string
+// The principal type used to represent the type of Active Directory Administrator.
+type PrincipalType string
 
 const (
-	MinimalTlsVersionEnum_TLS1_0                = MinimalTlsVersionEnum("TLS1_0")
-	MinimalTlsVersionEnum_TLS1_1                = MinimalTlsVersionEnum("TLS1_1")
-	MinimalTlsVersionEnum_TLS1_2                = MinimalTlsVersionEnum("TLS1_2")
-	MinimalTlsVersionEnumTLSEnforcementDisabled = MinimalTlsVersionEnum("TLSEnforcementDisabled")
+	PrincipalTypeUnknown          = PrincipalType("Unknown")
+	PrincipalTypeUser             = PrincipalType("User")
+	PrincipalTypeGroup            = PrincipalType("Group")
+	PrincipalTypeServicePrincipal = PrincipalType("ServicePrincipal")
 )
 
-// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
-type PublicNetworkAccessEnum string
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+type PrivateEndpointServiceConnectionStatus string
 
 const (
-	PublicNetworkAccessEnumEnabled  = PublicNetworkAccessEnum("Enabled")
-	PublicNetworkAccessEnumDisabled = PublicNetworkAccessEnum("Disabled")
+	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
+)
+
+// Replication role of the server
+type ReplicationRole string
+
+const (
+	ReplicationRoleNone            = ReplicationRole("None")
+	ReplicationRolePrimary         = ReplicationRole("Primary")
+	ReplicationRoleAsyncReplica    = ReplicationRole("AsyncReplica")
+	ReplicationRoleGeoAsyncReplica = ReplicationRole("GeoAsyncReplica")
 )
 
 // The key type like 'AzureKeyVault'.
@@ -242,41 +279,23 @@ func (in *serverSecurityAlertPolicyStateEnumPtr) ToServerSecurityAlertPolicyStat
 	return pulumi.ToOutputWithContext(ctx, in).(ServerSecurityAlertPolicyStateEnumPtrOutput)
 }
 
-// Server version.
+// PostgreSQL Server version.
 type ServerVersion string
 
 const (
-	ServerVersion_9_5  = ServerVersion("9.5")
-	ServerVersion_9_6  = ServerVersion("9.6")
-	ServerVersion_10   = ServerVersion("10")
-	ServerVersion_10_0 = ServerVersion("10.0")
-	ServerVersion_10_2 = ServerVersion("10.2")
-	ServerVersion_11   = ServerVersion("11")
+	ServerVersion_14 = ServerVersion("14")
+	ServerVersion_13 = ServerVersion("13")
+	ServerVersion_12 = ServerVersion("12")
+	ServerVersion_11 = ServerVersion("11")
 )
 
-// The tier of the particular SKU, e.g. Basic.
+// The tier of the particular SKU, e.g. Burstable.
 type SkuTier string
 
 const (
-	SkuTierBasic           = SkuTier("Basic")
+	SkuTierBurstable       = SkuTier("Burstable")
 	SkuTierGeneralPurpose  = SkuTier("GeneralPurpose")
 	SkuTierMemoryOptimized = SkuTier("MemoryOptimized")
-)
-
-// Enable ssl enforcement or not when connect to server.
-type SslEnforcementEnum string
-
-const (
-	SslEnforcementEnumEnabled  = SslEnforcementEnum("Enabled")
-	SslEnforcementEnumDisabled = SslEnforcementEnum("Disabled")
-)
-
-// Enable Storage Auto Grow.
-type StorageAutogrow string
-
-const (
-	StorageAutogrowEnabled  = StorageAutogrow("Enabled")
-	StorageAutogrowDisabled = StorageAutogrow("Disabled")
 )
 
 func init() {

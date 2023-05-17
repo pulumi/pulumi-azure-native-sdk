@@ -11,8 +11,6 @@ import (
 )
 
 // The Get ExpressRouteCircuit operation retrieves information about the specified ExpressRouteCircuit.
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupExpressRouteCircuit(ctx *pulumi.Context, args *LookupExpressRouteCircuitArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitResult, error) {
 	var rv LookupExpressRouteCircuitResult
 	err := ctx.Invoke("azure-native:network/v20150501preview:getExpressRouteCircuit", args, &rv, opts...)

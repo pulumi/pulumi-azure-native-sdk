@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the certificate identified by certificate name.
-// API Version: 2019-06-01.
+// API Version: 2022-08-08.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:automation:getCertificate", args, &rv, opts...)

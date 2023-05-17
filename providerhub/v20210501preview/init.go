@@ -21,24 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:providerhub/v20210501preview:DefaultRollout":
-		r = &DefaultRollout{}
-	case "azure-native:providerhub/v20210501preview:NotificationRegistration":
-		r = &NotificationRegistration{}
 	case "azure-native:providerhub/v20210501preview:OperationByProviderRegistration":
 		r = &OperationByProviderRegistration{}
-	case "azure-native:providerhub/v20210501preview:ProviderRegistration":
-		r = &ProviderRegistration{}
-	case "azure-native:providerhub/v20210501preview:ResourceTypeRegistration":
-		r = &ResourceTypeRegistration{}
-	case "azure-native:providerhub/v20210501preview:Skus":
-		r = &Skus{}
-	case "azure-native:providerhub/v20210501preview:SkusNestedResourceTypeFirst":
-		r = &SkusNestedResourceTypeFirst{}
-	case "azure-native:providerhub/v20210501preview:SkusNestedResourceTypeSecond":
-		r = &SkusNestedResourceTypeSecond{}
-	case "azure-native:providerhub/v20210501preview:SkusNestedResourceTypeThird":
-		r = &SkusNestedResourceTypeThird{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

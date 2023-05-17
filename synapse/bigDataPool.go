@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Big Data pool
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type BigDataPool struct {
 	pulumi.CustomResourceState
 
@@ -21,15 +22,17 @@ type BigDataPool struct {
 	// Auto-scaling properties
 	AutoScale AutoScalePropertiesResponsePtrOutput `pulumi:"autoScale"`
 	// The cache size
-	CacheSize pulumi.IntPtrOutput `pulumi:"cacheSize"`
+	CacheSize pulumi.IntOutput `pulumi:"cacheSize"`
 	// The time when the Big Data pool was created.
-	CreationDate pulumi.StringPtrOutput `pulumi:"creationDate"`
+	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// List of custom libraries/packages associated with the spark pool.
 	CustomLibraries LibraryInfoResponseArrayOutput `pulumi:"customLibraries"`
 	// The default folder where Spark logs will be written.
 	DefaultSparkLogFolder pulumi.StringPtrOutput `pulumi:"defaultSparkLogFolder"`
 	// Dynamic Executor Allocation
 	DynamicExecutorAllocation DynamicExecutorAllocationResponsePtrOutput `pulumi:"dynamicExecutorAllocation"`
+	// Whether autotune is required or not.
+	IsAutotuneEnabled pulumi.BoolPtrOutput `pulumi:"isAutotuneEnabled"`
 	// Whether compute isolation is required or not.
 	IsComputeIsolationEnabled pulumi.BoolPtrOutput `pulumi:"isComputeIsolationEnabled"`
 	// The time when the Big Data pool was updated successfully.
@@ -51,7 +54,7 @@ type BigDataPool struct {
 	// Whether session level packages enabled.
 	SessionLevelPackagesEnabled pulumi.BoolPtrOutput `pulumi:"sessionLevelPackagesEnabled"`
 	// Spark configuration file to specify additional properties
-	SparkConfigProperties LibraryRequirementsResponsePtrOutput `pulumi:"sparkConfigProperties"`
+	SparkConfigProperties SparkConfigPropertiesResponsePtrOutput `pulumi:"sparkConfigProperties"`
 	// The Spark events folder
 	SparkEventsFolder pulumi.StringPtrOutput `pulumi:"sparkEventsFolder"`
 	// The Apache Spark version.
@@ -137,10 +140,6 @@ type bigDataPoolArgs struct {
 	AutoScale *AutoScaleProperties `pulumi:"autoScale"`
 	// Big Data pool name
 	BigDataPoolName *string `pulumi:"bigDataPoolName"`
-	// The cache size
-	CacheSize *int `pulumi:"cacheSize"`
-	// The time when the Big Data pool was created.
-	CreationDate *string `pulumi:"creationDate"`
 	// List of custom libraries/packages associated with the spark pool.
 	CustomLibraries []LibraryInfo `pulumi:"customLibraries"`
 	// The default folder where Spark logs will be written.
@@ -149,6 +148,8 @@ type bigDataPoolArgs struct {
 	DynamicExecutorAllocation *DynamicExecutorAllocation `pulumi:"dynamicExecutorAllocation"`
 	// Whether to stop any running jobs in the Big Data pool
 	Force *bool `pulumi:"force"`
+	// Whether autotune is required or not.
+	IsAutotuneEnabled *bool `pulumi:"isAutotuneEnabled"`
 	// Whether compute isolation is required or not.
 	IsComputeIsolationEnabled *bool `pulumi:"isComputeIsolationEnabled"`
 	// Library version requirements
@@ -168,14 +169,14 @@ type bigDataPoolArgs struct {
 	// Whether session level packages enabled.
 	SessionLevelPackagesEnabled *bool `pulumi:"sessionLevelPackagesEnabled"`
 	// Spark configuration file to specify additional properties
-	SparkConfigProperties *LibraryRequirements `pulumi:"sparkConfigProperties"`
+	SparkConfigProperties *SparkConfigProperties `pulumi:"sparkConfigProperties"`
 	// The Spark events folder
 	SparkEventsFolder *string `pulumi:"sparkEventsFolder"`
 	// The Apache Spark version.
 	SparkVersion *string `pulumi:"sparkVersion"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -187,10 +188,6 @@ type BigDataPoolArgs struct {
 	AutoScale AutoScalePropertiesPtrInput
 	// Big Data pool name
 	BigDataPoolName pulumi.StringPtrInput
-	// The cache size
-	CacheSize pulumi.IntPtrInput
-	// The time when the Big Data pool was created.
-	CreationDate pulumi.StringPtrInput
 	// List of custom libraries/packages associated with the spark pool.
 	CustomLibraries LibraryInfoArrayInput
 	// The default folder where Spark logs will be written.
@@ -199,6 +196,8 @@ type BigDataPoolArgs struct {
 	DynamicExecutorAllocation DynamicExecutorAllocationPtrInput
 	// Whether to stop any running jobs in the Big Data pool
 	Force pulumi.BoolPtrInput
+	// Whether autotune is required or not.
+	IsAutotuneEnabled pulumi.BoolPtrInput
 	// Whether compute isolation is required or not.
 	IsComputeIsolationEnabled pulumi.BoolPtrInput
 	// Library version requirements
@@ -218,14 +217,14 @@ type BigDataPoolArgs struct {
 	// Whether session level packages enabled.
 	SessionLevelPackagesEnabled pulumi.BoolPtrInput
 	// Spark configuration file to specify additional properties
-	SparkConfigProperties LibraryRequirementsPtrInput
+	SparkConfigProperties SparkConfigPropertiesPtrInput
 	// The Spark events folder
 	SparkEventsFolder pulumi.StringPtrInput
 	// The Apache Spark version.
 	SparkVersion pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -277,13 +276,13 @@ func (o BigDataPoolOutput) AutoScale() AutoScalePropertiesResponsePtrOutput {
 }
 
 // The cache size
-func (o BigDataPoolOutput) CacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BigDataPool) pulumi.IntPtrOutput { return v.CacheSize }).(pulumi.IntPtrOutput)
+func (o BigDataPoolOutput) CacheSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *BigDataPool) pulumi.IntOutput { return v.CacheSize }).(pulumi.IntOutput)
 }
 
 // The time when the Big Data pool was created.
-func (o BigDataPoolOutput) CreationDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BigDataPool) pulumi.StringPtrOutput { return v.CreationDate }).(pulumi.StringPtrOutput)
+func (o BigDataPoolOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *BigDataPool) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
 // List of custom libraries/packages associated with the spark pool.
@@ -299,6 +298,11 @@ func (o BigDataPoolOutput) DefaultSparkLogFolder() pulumi.StringPtrOutput {
 // Dynamic Executor Allocation
 func (o BigDataPoolOutput) DynamicExecutorAllocation() DynamicExecutorAllocationResponsePtrOutput {
 	return o.ApplyT(func(v *BigDataPool) DynamicExecutorAllocationResponsePtrOutput { return v.DynamicExecutorAllocation }).(DynamicExecutorAllocationResponsePtrOutput)
+}
+
+// Whether autotune is required or not.
+func (o BigDataPoolOutput) IsAutotuneEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigDataPool) pulumi.BoolPtrOutput { return v.IsAutotuneEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether compute isolation is required or not.
@@ -352,8 +356,8 @@ func (o BigDataPoolOutput) SessionLevelPackagesEnabled() pulumi.BoolPtrOutput {
 }
 
 // Spark configuration file to specify additional properties
-func (o BigDataPoolOutput) SparkConfigProperties() LibraryRequirementsResponsePtrOutput {
-	return o.ApplyT(func(v *BigDataPool) LibraryRequirementsResponsePtrOutput { return v.SparkConfigProperties }).(LibraryRequirementsResponsePtrOutput)
+func (o BigDataPoolOutput) SparkConfigProperties() SparkConfigPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *BigDataPool) SparkConfigPropertiesResponsePtrOutput { return v.SparkConfigProperties }).(SparkConfigPropertiesResponsePtrOutput)
 }
 
 // The Spark events folder

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,9 +77,6 @@ func NewSourceControl(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:SourceControl"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20210901preview:SourceControl"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewSourceControl(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:SourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:SourceControl"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:SourceControl"),

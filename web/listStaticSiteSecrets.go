@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists the secrets for an existing static site.
-// API Version: 2020-12-01.
+// Description for Lists the secrets for an existing static site.
+// API Version: 2022-09-01.
 func ListStaticSiteSecrets(ctx *pulumi.Context, args *ListStaticSiteSecretsArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteSecretsResult, error) {
 	var rv ListStaticSiteSecretsResult
 	err := ctx.Invoke("azure-native:web:listStaticSiteSecrets", args, &rv, opts...)

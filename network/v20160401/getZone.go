@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
-//
-// Deprecated: Version 2016-04-01 will be removed in v2 of the provider.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	var rv LookupZoneResult
 	err := ctx.Invoke("azure-native:network/v20160401:getZone", args, &rv, opts...)
@@ -61,7 +59,7 @@ func (val *LookupZoneResult) Defaults() *LookupZoneResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ZoneType) {
+	if tmp.ZoneType == nil {
 		zoneType_ := "Public"
 		tmp.ZoneType = &zoneType_
 	}

@@ -21,38 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:storage/v20210801:BlobContainer":
-		r = &BlobContainer{}
-	case "azure-native:storage/v20210801:BlobContainerImmutabilityPolicy":
-		r = &BlobContainerImmutabilityPolicy{}
-	case "azure-native:storage/v20210801:BlobInventoryPolicy":
-		r = &BlobInventoryPolicy{}
-	case "azure-native:storage/v20210801:BlobServiceProperties":
-		r = &BlobServiceProperties{}
-	case "azure-native:storage/v20210801:EncryptionScope":
-		r = &EncryptionScope{}
-	case "azure-native:storage/v20210801:FileServiceProperties":
-		r = &FileServiceProperties{}
-	case "azure-native:storage/v20210801:FileShare":
-		r = &FileShare{}
 	case "azure-native:storage/v20210801:LocalUser":
 		r = &LocalUser{}
-	case "azure-native:storage/v20210801:ManagementPolicy":
-		r = &ManagementPolicy{}
-	case "azure-native:storage/v20210801:ObjectReplicationPolicy":
-		r = &ObjectReplicationPolicy{}
-	case "azure-native:storage/v20210801:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:storage/v20210801:Queue":
-		r = &Queue{}
-	case "azure-native:storage/v20210801:QueueServiceProperties":
-		r = &QueueServiceProperties{}
-	case "azure-native:storage/v20210801:StorageAccount":
-		r = &StorageAccount{}
-	case "azure-native:storage/v20210801:Table":
-		r = &Table{}
-	case "azure-native:storage/v20210801:TableServiceProperties":
-		r = &TableServiceProperties{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -21,8 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:redhatopenshift:MachinePool":
+		r = &MachinePool{}
 	case "azure-native:redhatopenshift:OpenShiftCluster":
 		r = &OpenShiftCluster{}
+	case "azure-native:redhatopenshift:Secret":
+		r = &Secret{}
+	case "azure-native:redhatopenshift:SyncIdentityProvider":
+		r = &SyncIdentityProvider{}
+	case "azure-native:redhatopenshift:SyncSet":
+		r = &SyncSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

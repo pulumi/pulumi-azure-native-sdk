@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,7 +80,7 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 	if args.StorageAccountResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'StorageAccountResourceId'")
 	}
-	if isZero(args.DatabaseRouting) {
+	if args.DatabaseRouting == nil {
 		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("EventGrid")

@@ -10,11 +10,180 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+type AadAuthFailureMode string
+
+const (
+	// Indicates that requests that failed authentication should be presented with an HTTP status code of 403 (Forbidden).
+	AadAuthFailureModeHttp403 = AadAuthFailureMode("http403")
+	// Indicates that requests that failed authentication should be presented with an HTTP status code of 401 (Unauthorized) and present a Bearer Challenge.
+	AadAuthFailureModeHttp401WithBearerChallenge = AadAuthFailureMode("http401WithBearerChallenge")
+)
+
+func (AadAuthFailureMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*AadAuthFailureMode)(nil)).Elem()
+}
+
+func (e AadAuthFailureMode) ToAadAuthFailureModeOutput() AadAuthFailureModeOutput {
+	return pulumi.ToOutput(e).(AadAuthFailureModeOutput)
+}
+
+func (e AadAuthFailureMode) ToAadAuthFailureModeOutputWithContext(ctx context.Context) AadAuthFailureModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AadAuthFailureModeOutput)
+}
+
+func (e AadAuthFailureMode) ToAadAuthFailureModePtrOutput() AadAuthFailureModePtrOutput {
+	return e.ToAadAuthFailureModePtrOutputWithContext(context.Background())
+}
+
+func (e AadAuthFailureMode) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
+	return AadAuthFailureMode(e).ToAadAuthFailureModeOutputWithContext(ctx).ToAadAuthFailureModePtrOutputWithContext(ctx)
+}
+
+func (e AadAuthFailureMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AadAuthFailureMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AadAuthFailureMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AadAuthFailureMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AadAuthFailureModeOutput struct{ *pulumi.OutputState }
+
+func (AadAuthFailureModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AadAuthFailureMode)(nil)).Elem()
+}
+
+func (o AadAuthFailureModeOutput) ToAadAuthFailureModeOutput() AadAuthFailureModeOutput {
+	return o
+}
+
+func (o AadAuthFailureModeOutput) ToAadAuthFailureModeOutputWithContext(ctx context.Context) AadAuthFailureModeOutput {
+	return o
+}
+
+func (o AadAuthFailureModeOutput) ToAadAuthFailureModePtrOutput() AadAuthFailureModePtrOutput {
+	return o.ToAadAuthFailureModePtrOutputWithContext(context.Background())
+}
+
+func (o AadAuthFailureModeOutput) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AadAuthFailureMode) *AadAuthFailureMode {
+		return &v
+	}).(AadAuthFailureModePtrOutput)
+}
+
+func (o AadAuthFailureModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AadAuthFailureModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AadAuthFailureMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AadAuthFailureModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AadAuthFailureModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AadAuthFailureMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AadAuthFailureModePtrOutput struct{ *pulumi.OutputState }
+
+func (AadAuthFailureModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AadAuthFailureMode)(nil)).Elem()
+}
+
+func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutput() AadAuthFailureModePtrOutput {
+	return o
+}
+
+func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
+	return o
+}
+
+func (o AadAuthFailureModePtrOutput) Elem() AadAuthFailureModeOutput {
+	return o.ApplyT(func(v *AadAuthFailureMode) AadAuthFailureMode {
+		if v != nil {
+			return *v
+		}
+		var ret AadAuthFailureMode
+		return ret
+	}).(AadAuthFailureModeOutput)
+}
+
+func (o AadAuthFailureModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AadAuthFailureModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AadAuthFailureMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AadAuthFailureModeInput is an input type that accepts AadAuthFailureModeArgs and AadAuthFailureModeOutput values.
+// You can construct a concrete instance of `AadAuthFailureModeInput` via:
+//
+//	AadAuthFailureModeArgs{...}
+type AadAuthFailureModeInput interface {
+	pulumi.Input
+
+	ToAadAuthFailureModeOutput() AadAuthFailureModeOutput
+	ToAadAuthFailureModeOutputWithContext(context.Context) AadAuthFailureModeOutput
+}
+
+var aadAuthFailureModePtrType = reflect.TypeOf((**AadAuthFailureMode)(nil)).Elem()
+
+type AadAuthFailureModePtrInput interface {
+	pulumi.Input
+
+	ToAadAuthFailureModePtrOutput() AadAuthFailureModePtrOutput
+	ToAadAuthFailureModePtrOutputWithContext(context.Context) AadAuthFailureModePtrOutput
+}
+
+type aadAuthFailureModePtr string
+
+func AadAuthFailureModePtr(v string) AadAuthFailureModePtrInput {
+	return (*aadAuthFailureModePtr)(&v)
+}
+
+func (*aadAuthFailureModePtr) ElementType() reflect.Type {
+	return aadAuthFailureModePtrType
+}
+
+func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutput() AadAuthFailureModePtrOutput {
+	return pulumi.ToOutput(in).(AadAuthFailureModePtrOutput)
+}
+
+func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AadAuthFailureModePtrOutput)
+}
+
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 type HostingMode string
 
 const (
-	HostingModeDefault     = HostingMode("default")
+	// The limit on number of indexes is determined by the default limits for the SKU.
+	HostingModeDefault = HostingMode("default")
+	// Only application for standard3 SKU, where the search service can have up to 1000 indexes.
 	HostingModeHighDensity = HostingMode("highDensity")
 )
 
@@ -340,13 +509,35 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
+// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+type PrivateLinkServiceConnectionProvisioningState string
+
+const (
+	// The private link service connection is in the process of being created along with other resources for it to be fully functional.
+	PrivateLinkServiceConnectionProvisioningStateUpdating = PrivateLinkServiceConnectionProvisioningState("Updating")
+	// The private link service connection is in the process of being deleted.
+	PrivateLinkServiceConnectionProvisioningStateDeleting = PrivateLinkServiceConnectionProvisioningState("Deleting")
+	// The private link service connection has failed to be provisioned or deleted.
+	PrivateLinkServiceConnectionProvisioningStateFailed = PrivateLinkServiceConnectionProvisioningState("Failed")
+	// The private link service connection has finished provisioning and is ready for approval.
+	PrivateLinkServiceConnectionProvisioningStateSucceeded = PrivateLinkServiceConnectionProvisioningState("Succeeded")
+	// Provisioning request for the private link service connection resource has been accepted but the process of creation has not commenced yet.
+	PrivateLinkServiceConnectionProvisioningStateIncomplete = PrivateLinkServiceConnectionProvisioningState("Incomplete")
+	// Provisioning request for the private link service connection resource has been canceled
+	PrivateLinkServiceConnectionProvisioningStateCanceled = PrivateLinkServiceConnectionProvisioningState("Canceled")
+)
+
 // Status of the the private link service connection. Can be Pending, Approved, Rejected, or Disconnected.
 type PrivateLinkServiceConnectionStatus string
 
 const (
-	PrivateLinkServiceConnectionStatusPending      = PrivateLinkServiceConnectionStatus("Pending")
-	PrivateLinkServiceConnectionStatusApproved     = PrivateLinkServiceConnectionStatus("Approved")
-	PrivateLinkServiceConnectionStatusRejected     = PrivateLinkServiceConnectionStatus("Rejected")
+	// The private endpoint connection has been created and is pending approval.
+	PrivateLinkServiceConnectionStatusPending = PrivateLinkServiceConnectionStatus("Pending")
+	// The private endpoint connection is approved and is ready for use.
+	PrivateLinkServiceConnectionStatusApproved = PrivateLinkServiceConnectionStatus("Approved")
+	// The private endpoint connection has been rejected and cannot be used.
+	PrivateLinkServiceConnectionStatusRejected = PrivateLinkServiceConnectionStatus("Rejected")
+	// The private endpoint connection has been removed from the service.
 	PrivateLinkServiceConnectionStatusDisconnected = PrivateLinkServiceConnectionStatus("Disconnected")
 )
 
@@ -670,6 +861,175 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
+}
+
+// Describes how a search service should enforce having one or more non customer encrypted resources.
+type SearchEncryptionWithCmk string
+
+const (
+	// No enforcement will be made and the search service can have non customer encrypted resources.
+	SearchEncryptionWithCmkDisabled = SearchEncryptionWithCmk("Disabled")
+	// Search service will be marked as non-compliant if there are one or more non customer encrypted resources.
+	SearchEncryptionWithCmkEnabled = SearchEncryptionWithCmk("Enabled")
+	// Enforcement policy is not explicitly specified, with the behavior being the same as if it were set to 'Disabled'.
+	SearchEncryptionWithCmkUnspecified = SearchEncryptionWithCmk("Unspecified")
+)
+
+func (SearchEncryptionWithCmk) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEncryptionWithCmk)(nil)).Elem()
+}
+
+func (e SearchEncryptionWithCmk) ToSearchEncryptionWithCmkOutput() SearchEncryptionWithCmkOutput {
+	return pulumi.ToOutput(e).(SearchEncryptionWithCmkOutput)
+}
+
+func (e SearchEncryptionWithCmk) ToSearchEncryptionWithCmkOutputWithContext(ctx context.Context) SearchEncryptionWithCmkOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchEncryptionWithCmkOutput)
+}
+
+func (e SearchEncryptionWithCmk) ToSearchEncryptionWithCmkPtrOutput() SearchEncryptionWithCmkPtrOutput {
+	return e.ToSearchEncryptionWithCmkPtrOutputWithContext(context.Background())
+}
+
+func (e SearchEncryptionWithCmk) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
+	return SearchEncryptionWithCmk(e).ToSearchEncryptionWithCmkOutputWithContext(ctx).ToSearchEncryptionWithCmkPtrOutputWithContext(ctx)
+}
+
+func (e SearchEncryptionWithCmk) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchEncryptionWithCmk) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchEncryptionWithCmk) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchEncryptionWithCmk) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchEncryptionWithCmkOutput struct{ *pulumi.OutputState }
+
+func (SearchEncryptionWithCmkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEncryptionWithCmk)(nil)).Elem()
+}
+
+func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkOutput() SearchEncryptionWithCmkOutput {
+	return o
+}
+
+func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkOutputWithContext(ctx context.Context) SearchEncryptionWithCmkOutput {
+	return o
+}
+
+func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkPtrOutput() SearchEncryptionWithCmkPtrOutput {
+	return o.ToSearchEncryptionWithCmkPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchEncryptionWithCmk) *SearchEncryptionWithCmk {
+		return &v
+	}).(SearchEncryptionWithCmkPtrOutput)
+}
+
+func (o SearchEncryptionWithCmkOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchEncryptionWithCmkOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchEncryptionWithCmk) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchEncryptionWithCmkOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEncryptionWithCmkOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchEncryptionWithCmk) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchEncryptionWithCmkPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchEncryptionWithCmkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEncryptionWithCmk)(nil)).Elem()
+}
+
+func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutput() SearchEncryptionWithCmkPtrOutput {
+	return o
+}
+
+func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
+	return o
+}
+
+func (o SearchEncryptionWithCmkPtrOutput) Elem() SearchEncryptionWithCmkOutput {
+	return o.ApplyT(func(v *SearchEncryptionWithCmk) SearchEncryptionWithCmk {
+		if v != nil {
+			return *v
+		}
+		var ret SearchEncryptionWithCmk
+		return ret
+	}).(SearchEncryptionWithCmkOutput)
+}
+
+func (o SearchEncryptionWithCmkPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEncryptionWithCmkPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchEncryptionWithCmk) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchEncryptionWithCmkInput is an input type that accepts SearchEncryptionWithCmkArgs and SearchEncryptionWithCmkOutput values.
+// You can construct a concrete instance of `SearchEncryptionWithCmkInput` via:
+//
+//	SearchEncryptionWithCmkArgs{...}
+type SearchEncryptionWithCmkInput interface {
+	pulumi.Input
+
+	ToSearchEncryptionWithCmkOutput() SearchEncryptionWithCmkOutput
+	ToSearchEncryptionWithCmkOutputWithContext(context.Context) SearchEncryptionWithCmkOutput
+}
+
+var searchEncryptionWithCmkPtrType = reflect.TypeOf((**SearchEncryptionWithCmk)(nil)).Elem()
+
+type SearchEncryptionWithCmkPtrInput interface {
+	pulumi.Input
+
+	ToSearchEncryptionWithCmkPtrOutput() SearchEncryptionWithCmkPtrOutput
+	ToSearchEncryptionWithCmkPtrOutputWithContext(context.Context) SearchEncryptionWithCmkPtrOutput
+}
+
+type searchEncryptionWithCmkPtr string
+
+func SearchEncryptionWithCmkPtr(v string) SearchEncryptionWithCmkPtrInput {
+	return (*searchEncryptionWithCmkPtr)(&v)
+}
+
+func (*searchEncryptionWithCmkPtr) ElementType() reflect.Type {
+	return searchEncryptionWithCmkPtrType
+}
+
+func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutput() SearchEncryptionWithCmkPtrOutput {
+	return pulumi.ToOutput(in).(SearchEncryptionWithCmkPtrOutput)
+}
+
+func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchEncryptionWithCmkPtrOutput)
 }
 
 // The provisioning state of the shared private link resource. Can be Updating, Deleting, Failed, Succeeded or Incomplete.
@@ -1011,13 +1371,20 @@ func (in *sharedPrivateLinkResourceStatusPtr) ToSharedPrivateLinkResourceStatusP
 type SkuName string
 
 const (
-	SkuNameFree                  = SkuName("free")
-	SkuNameBasic                 = SkuName("basic")
-	SkuNameStandard              = SkuName("standard")
-	SkuNameStandard2             = SkuName("standard2")
-	SkuNameStandard3             = SkuName("standard3")
-	SkuName_Storage_optimized_l1 = SkuName("storage_optimized_l1")
-	SkuName_Storage_optimized_l2 = SkuName("storage_optimized_l2")
+	// Free tier, with no SLA guarantees and a subset of features offered to paid tiers.
+	SkuNameFree = SkuName("free")
+	// Paid tier dedicated service with up to 3 replicas.
+	SkuNameBasic = SkuName("basic")
+	// Paid tier dedicated service with up to 12 partitions and 12 replicas.
+	SkuNameStandard = SkuName("standard")
+	// Similar to 'standard', but with more capacity per search unit.
+	SkuNameStandard2 = SkuName("standard2")
+	//  The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity').
+	SkuNameStandard3 = SkuName("standard3")
+	// Paid tier dedicated service that supports 1TB per partition, up to 12 partitions.
+	SkuNameStorageOptimizedL1 = SkuName("storage_optimized_l1")
+	// Paid tier dedicated service that supports 2TB per partition, up to 12 partitions.
+	SkuNameStorageOptimizedL2 = SkuName("storage_optimized_l2")
 )
 
 func (SkuName) ElementType() reflect.Type {
@@ -1178,6 +1545,8 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 }
 
 func init() {
+	pulumi.RegisterOutputType(AadAuthFailureModeOutput{})
+	pulumi.RegisterOutputType(AadAuthFailureModePtrOutput{})
 	pulumi.RegisterOutputType(HostingModeOutput{})
 	pulumi.RegisterOutputType(HostingModePtrOutput{})
 	pulumi.RegisterOutputType(IdentityTypeOutput{})
@@ -1186,6 +1555,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(SearchEncryptionWithCmkOutput{})
+	pulumi.RegisterOutputType(SearchEncryptionWithCmkPtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceProvisioningStateOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceStatusOutput{})

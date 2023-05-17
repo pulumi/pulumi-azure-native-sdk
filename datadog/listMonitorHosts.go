@@ -11,7 +11,7 @@ import (
 )
 
 // Response of a list operation.
-// API Version: 2021-03-01.
+// API Version: 2022-06-01.
 func ListMonitorHosts(ctx *pulumi.Context, args *ListMonitorHostsArgs, opts ...pulumi.InvokeOption) (*ListMonitorHostsResult, error) {
 	var rv ListMonitorHostsResult
 	err := ctx.Invoke("azure-native:datadog:listMonitorHosts", args, &rv, opts...)

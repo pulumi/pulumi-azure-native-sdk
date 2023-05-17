@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +47,9 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice:HybridIdentityMetadatum"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:HybridIdentityMetadatum"),
 		},
 	})
 	opts = append(opts, aliases)

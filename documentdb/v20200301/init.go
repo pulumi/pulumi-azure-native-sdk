@@ -21,34 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:documentdb/v20200301:CassandraResourceCassandraKeyspace":
-		r = &CassandraResourceCassandraKeyspace{}
-	case "azure-native:documentdb/v20200301:CassandraResourceCassandraTable":
-		r = &CassandraResourceCassandraTable{}
 	case "azure-native:documentdb/v20200301:DatabaseAccount":
 		r = &DatabaseAccount{}
-	case "azure-native:documentdb/v20200301:GremlinResourceGremlinDatabase":
-		r = &GremlinResourceGremlinDatabase{}
-	case "azure-native:documentdb/v20200301:GremlinResourceGremlinGraph":
-		r = &GremlinResourceGremlinGraph{}
-	case "azure-native:documentdb/v20200301:MongoDBResourceMongoDBCollection":
-		r = &MongoDBResourceMongoDBCollection{}
-	case "azure-native:documentdb/v20200301:MongoDBResourceMongoDBDatabase":
-		r = &MongoDBResourceMongoDBDatabase{}
-	case "azure-native:documentdb/v20200301:NotebookWorkspace":
-		r = &NotebookWorkspace{}
-	case "azure-native:documentdb/v20200301:SqlResourceSqlContainer":
-		r = &SqlResourceSqlContainer{}
-	case "azure-native:documentdb/v20200301:SqlResourceSqlDatabase":
-		r = &SqlResourceSqlDatabase{}
-	case "azure-native:documentdb/v20200301:SqlResourceSqlStoredProcedure":
-		r = &SqlResourceSqlStoredProcedure{}
-	case "azure-native:documentdb/v20200301:SqlResourceSqlTrigger":
-		r = &SqlResourceSqlTrigger{}
-	case "azure-native:documentdb/v20200301:SqlResourceSqlUserDefinedFunction":
-		r = &SqlResourceSqlUserDefinedFunction{}
-	case "azure-native:documentdb/v20200301:TableResourceTable":
-		r = &TableResourceTable{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of an Analysis Services resource.
 // API Version: 2017-08-01.
+// Previous API Version: 2017-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ServerDetails struct {
 	pulumi.CustomResourceState
 
@@ -61,13 +62,13 @@ func NewServerDetails(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.ManagedMode) {
+	if args.ManagedMode == nil {
 		args.ManagedMode = pulumi.IntPtr(1)
 	}
-	if isZero(args.QuerypoolConnectionMode) {
+	if args.QuerypoolConnectionMode == nil {
 		args.QuerypoolConnectionMode = ConnectionMode("All")
 	}
-	if isZero(args.ServerMonitorMode) {
+	if args.ServerMonitorMode == nil {
 		args.ServerMonitorMode = pulumi.IntPtr(1)
 	}
 	args.Sku = args.Sku.ToResourceSkuOutput().ApplyT(func(v ResourceSku) ResourceSku { return *v.Defaults() }).(ResourceSkuOutput)

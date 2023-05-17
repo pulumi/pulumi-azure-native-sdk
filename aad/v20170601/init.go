@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:aad/v20170601:DomainService":
 		r = &DomainService{}
-	case "azure-native:aad/v20170601:OuContainer":
-		r = &OuContainer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

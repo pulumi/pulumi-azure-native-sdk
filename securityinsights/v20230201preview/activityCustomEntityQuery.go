@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,9 +69,6 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Activity")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:ActivityCustomEntityQuery"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20210301preview:ActivityCustomEntityQuery"),
 		},
 		{
@@ -109,6 +106,9 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20221201preview:ActivityCustomEntityQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:ActivityCustomEntityQuery"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:ActivityCustomEntityQuery"),

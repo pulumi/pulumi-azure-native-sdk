@@ -11,14 +11,14 @@ import (
 )
 
 // Gets the current version of the specified key from the specified key vault.
-// API Version: 2019-09-01.
+// API Version: 2023-02-01.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
 	var rv LookupKeyResult
 	err := ctx.Invoke("azure-native:keyvault:getKey", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupKeyArgs struct {
@@ -51,10 +51,27 @@ type LookupKeyResult struct {
 	Location string `pulumi:"location"`
 	// Name of the key vault resource.
 	Name string `pulumi:"name"`
+	// Key release policy in response. It will be used for both output and input. Omitted if empty
+	ReleasePolicy *KeyReleasePolicyResponse `pulumi:"releasePolicy"`
+	// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+	RotationPolicy *RotationPolicyResponse `pulumi:"rotationPolicy"`
 	// Tags assigned to the key vault resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type of the key vault resource.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupKeyResult
+func (val *LookupKeyResult) Defaults() *LookupKeyResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Attributes = tmp.Attributes.Defaults()
+
+	tmp.ReleasePolicy = tmp.ReleasePolicy.Defaults()
+
+	return &tmp
 }
 
 func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKeyResultOutput {
@@ -145,6 +162,16 @@ func (o LookupKeyResultOutput) Location() pulumi.StringOutput {
 // Name of the key vault resource.
 func (o LookupKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Key release policy in response. It will be used for both output and input. Omitted if empty
+func (o LookupKeyResultOutput) ReleasePolicy() KeyReleasePolicyResponsePtrOutput {
+	return o.ApplyT(func(v LookupKeyResult) *KeyReleasePolicyResponse { return v.ReleasePolicy }).(KeyReleasePolicyResponsePtrOutput)
+}
+
+// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+func (o LookupKeyResultOutput) RotationPolicy() RotationPolicyResponsePtrOutput {
+	return o.ApplyT(func(v LookupKeyResult) *RotationPolicyResponse { return v.RotationPolicy }).(RotationPolicyResponsePtrOutput)
 }
 
 // Tags assigned to the key vault resource.

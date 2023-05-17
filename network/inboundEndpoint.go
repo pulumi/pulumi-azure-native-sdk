@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes an inbound endpoint for a DNS resolver.
-// API Version: 2020-04-01-preview.
+// API Version: 2022-07-01.
+// Previous API Version: 2020-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type InboundEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +46,9 @@ func NewInboundEndpoint(ctx *pulumi.Context,
 
 	if args.DnsResolverName == nil {
 		return nil, errors.New("invalid value for required argument 'DnsResolverName'")
+	}
+	if args.IpConfigurations == nil {
+		return nil, errors.New("invalid value for required argument 'IpConfigurations'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")

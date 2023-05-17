@@ -29,27 +29,11 @@ const (
 	DnsServiceLogLevelEnumFATAL   = DnsServiceLogLevelEnum("FATAL")
 )
 
-// Connectivity to internet is enabled or disabled
-type InternetEnum string
-
-const (
-	InternetEnumEnabled  = InternetEnum("Enabled")
-	InternetEnumDisabled = InternetEnum("Disabled")
-)
-
 // Direction of port mirroring profile.
 type PortMirroringDirectionEnum string
 
 const (
 	PortMirroringDirectionEnum_INGRESS_EGRESS_BIDIRECTIONAL = PortMirroringDirectionEnum("INGRESS, EGRESS, BIDIRECTIONAL")
-)
-
-// Protect LDAP communication using SSL certificate (LDAPS)
-type SslEnum string
-
-const (
-	SslEnumEnabled  = SslEnum("Enabled")
-	SslEnumDisabled = SslEnum("Disabled")
 )
 
 func init() {

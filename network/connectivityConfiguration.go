@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The network manager connectivity configuration resource
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ConnectivityConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +25,6 @@ type ConnectivityConfiguration struct {
 	DeleteExistingPeering pulumi.StringPtrOutput `pulumi:"deleteExistingPeering"`
 	// A description of the connectivity configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A friendly name for the resource.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// List of hubItems
@@ -49,6 +48,9 @@ func NewConnectivityConfiguration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AppliesToGroups == nil {
+		return nil, errors.New("invalid value for required argument 'AppliesToGroups'")
+	}
 	if args.ConnectivityTopology == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectivityTopology'")
 	}
@@ -82,6 +84,9 @@ func NewConnectivityConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ConnectivityConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ConnectivityConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -127,8 +132,6 @@ type connectivityConfigurationArgs struct {
 	DeleteExistingPeering *string `pulumi:"deleteExistingPeering"`
 	// A description of the connectivity configuration.
 	Description *string `pulumi:"description"`
-	// A friendly name for the resource.
-	DisplayName *string `pulumi:"displayName"`
 	// List of hubItems
 	Hubs []Hub `pulumi:"hubs"`
 	// Flag if global mesh is supported.
@@ -151,8 +154,6 @@ type ConnectivityConfigurationArgs struct {
 	DeleteExistingPeering pulumi.StringPtrInput
 	// A description of the connectivity configuration.
 	Description pulumi.StringPtrInput
-	// A friendly name for the resource.
-	DisplayName pulumi.StringPtrInput
 	// List of hubItems
 	Hubs HubArrayInput
 	// Flag if global mesh is supported.
@@ -218,11 +219,6 @@ func (o ConnectivityConfigurationOutput) DeleteExistingPeering() pulumi.StringPt
 // A description of the connectivity configuration.
 func (o ConnectivityConfigurationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A friendly name for the resource.
-func (o ConnectivityConfigurationOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

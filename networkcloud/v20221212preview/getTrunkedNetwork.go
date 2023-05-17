@@ -70,7 +70,7 @@ func (val *LookupTrunkedNetworkResult) Defaults() *LookupTrunkedNetworkResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HybridAksPluginType) {
+	if tmp.HybridAksPluginType == nil {
 		hybridAksPluginType_ := "SRIOV"
 		tmp.HybridAksPluginType = &hybridAksPluginType_
 	}

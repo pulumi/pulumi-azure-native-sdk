@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the information about the volume resource with a given name. This information includes the volume description and other runtime information.
-//
-// Deprecated: Version 2018-07-01-preview will be removed in v2 of the provider.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:servicefabricmesh/v20180701preview:getVolume", args, &rv, opts...)

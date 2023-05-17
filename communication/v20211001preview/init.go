@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:communication/v20211001preview:CommunicationService":
-		r = &CommunicationService{}
 	case "azure-native:communication/v20211001preview:Domain":
 		r = &Domain{}
 	case "azure-native:communication/v20211001preview:EmailService":

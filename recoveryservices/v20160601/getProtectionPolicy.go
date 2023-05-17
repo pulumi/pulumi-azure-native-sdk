@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the backup policy associated with the Recovery Services vault. This is an asynchronous operation. Use the GetPolicyOperationResult API to Get the operation status.
-//
-// Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
 	var rv LookupProtectionPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20160601:getProtectionPolicy", args, &rv, opts...)

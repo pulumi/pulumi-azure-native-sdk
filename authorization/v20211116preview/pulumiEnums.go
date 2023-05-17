@@ -31,14 +31,5 @@ const (
 	AccessReviewResultNotNotified = AccessReviewResult("NotNotified")
 )
 
-// This specifies the behavior for the autoReview feature when an access review completes.
-type DefaultDecisionType string
-
-const (
-	DefaultDecisionTypeApprove        = DefaultDecisionType("Approve")
-	DefaultDecisionTypeDeny           = DefaultDecisionType("Deny")
-	DefaultDecisionTypeRecommendation = DefaultDecisionType("Recommendation")
-)
-
 func init() {
 }

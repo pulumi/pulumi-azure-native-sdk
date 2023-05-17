@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Monitor resource.
-// API Version: 2020-07-01.
+// API Version: 2023-02-01-preview.
+// Previous API Version: 2020-07-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +66,9 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20220901preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230201preview:Monitor"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,20 +7,21 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
-// API Version: 2021-03-01-preview.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type CodeContainer struct {
 	pulumi.CustomResourceState
 
+	// [Required] Additional attributes of the entity.
+	CodeContainerProperties CodeContainerResponseOutput `pulumi:"codeContainerProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties CodeContainerResponseOutput `pulumi:"properties"`
-	// System data associated with resource provider
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -33,8 +34,8 @@ func NewCodeContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.CodeContainerProperties == nil {
+		return nil, errors.New("invalid value for required argument 'CodeContainerProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -42,6 +43,7 @@ func NewCodeContainer(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	args.CodeContainerProperties = args.CodeContainerProperties.ToCodeContainerTypeOutput().ApplyT(func(v CodeContainerType) CodeContainerType { return *v.Defaults() }).(CodeContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:CodeContainer"),
@@ -63,6 +65,12 @@ func NewCodeContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:CodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:CodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:CodeContainer"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:CodeContainer"),
@@ -101,10 +109,10 @@ func (CodeContainerState) ElementType() reflect.Type {
 }
 
 type codeContainerArgs struct {
-	// Container name.
-	Name *string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties CodeContainerType `pulumi:"properties"`
+	CodeContainerProperties CodeContainerType `pulumi:"codeContainerProperties"`
+	// Container name. This is case-sensitive.
+	Name *string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -113,10 +121,10 @@ type codeContainerArgs struct {
 
 // The set of arguments for constructing a CodeContainer resource.
 type CodeContainerArgs struct {
-	// Container name.
-	Name pulumi.StringPtrInput
 	// [Required] Additional attributes of the entity.
-	Properties CodeContainerTypeInput
+	CodeContainerProperties CodeContainerTypeInput
+	// Container name. This is case-sensitive.
+	Name pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Azure Machine Learning workspace.
@@ -160,17 +168,17 @@ func (o CodeContainerOutput) ToCodeContainerOutputWithContext(ctx context.Contex
 	return o
 }
 
+// [Required] Additional attributes of the entity.
+func (o CodeContainerOutput) CodeContainerProperties() CodeContainerResponseOutput {
+	return o.ApplyT(func(v *CodeContainer) CodeContainerResponseOutput { return v.CodeContainerProperties }).(CodeContainerResponseOutput)
+}
+
 // The name of the resource
 func (o CodeContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o CodeContainerOutput) Properties() CodeContainerResponseOutput {
-	return o.ApplyT(func(v *CodeContainer) CodeContainerResponseOutput { return v.Properties }).(CodeContainerResponseOutput)
-}
-
-// System data associated with resource provider
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o CodeContainerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *CodeContainer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an image.
-// API Version: 2020-12-01.
+// API Version: 2022-11-01.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	var rv LookupImageResult
 	err := ctx.Invoke("azure-native:compute:getImage", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the SAP Database Instance resource.
-// API Version: 2021-12-01-preview.
+// API Version: 2023-04-01.
 func LookupSAPDatabaseInstance(ctx *pulumi.Context, args *LookupSAPDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPDatabaseInstanceResult, error) {
 	var rv LookupSAPDatabaseInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getSAPDatabaseInstance", args, &rv, opts...)

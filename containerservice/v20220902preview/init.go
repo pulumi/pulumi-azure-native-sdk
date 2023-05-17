@@ -21,24 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:containerservice/v20220902preview:AgentPool":
-		r = &AgentPool{}
 	case "azure-native:containerservice/v20220902preview:Fleet":
 		r = &Fleet{}
 	case "azure-native:containerservice/v20220902preview:FleetMember":
 		r = &FleetMember{}
-	case "azure-native:containerservice/v20220902preview:MaintenanceConfiguration":
-		r = &MaintenanceConfiguration{}
-	case "azure-native:containerservice/v20220902preview:ManagedCluster":
-		r = &ManagedCluster{}
-	case "azure-native:containerservice/v20220902preview:ManagedClusterSnapshot":
-		r = &ManagedClusterSnapshot{}
-	case "azure-native:containerservice/v20220902preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:containerservice/v20220902preview:Snapshot":
-		r = &Snapshot{}
-	case "azure-native:containerservice/v20220902preview:TrustedAccessRoleBinding":
-		r = &TrustedAccessRoleBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

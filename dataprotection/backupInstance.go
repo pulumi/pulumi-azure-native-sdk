@@ -7,22 +7,25 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // BackupInstance Resource
-// API Version: 2021-01-01.
+// API Version: 2023-01-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type BackupInstance struct {
 	pulumi.CustomResourceState
 
-	// Resource name associated with the resource.
+	// Proxy Resource name associated with the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// BackupInstanceResource properties
 	Properties BackupInstanceResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+	// Proxy Resource tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -125,24 +128,28 @@ func (BackupInstanceState) ElementType() reflect.Type {
 }
 
 type backupInstanceArgs struct {
-	// The name of the backup instance
+	// The name of the backup instance.
 	BackupInstanceName *string `pulumi:"backupInstanceName"`
 	// BackupInstanceResource properties
 	Properties *BackupInstanceType `pulumi:"properties"`
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Proxy Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the backup vault.
 	VaultName string `pulumi:"vaultName"`
 }
 
 // The set of arguments for constructing a BackupInstance resource.
 type BackupInstanceArgs struct {
-	// The name of the backup instance
+	// The name of the backup instance.
 	BackupInstanceName pulumi.StringPtrInput
 	// BackupInstanceResource properties
 	Properties BackupInstanceTypePtrInput
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Proxy Resource tags.
+	Tags pulumi.StringMapInput
 	// The name of the backup vault.
 	VaultName pulumi.StringInput
 }
@@ -184,7 +191,7 @@ func (o BackupInstanceOutput) ToBackupInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Resource name associated with the resource.
+// Proxy Resource name associated with the resource.
 func (o BackupInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -199,7 +206,12 @@ func (o BackupInstanceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *BackupInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+// Proxy Resource tags.
+func (o BackupInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BackupInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 func (o BackupInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // List Paths supported by this Streaming Locator
-// API Version: 2020-05-01.
+// API Version: 2022-08-01.
 func ListStreamingLocatorPaths(ctx *pulumi.Context, args *ListStreamingLocatorPathsArgs, opts ...pulumi.InvokeOption) (*ListStreamingLocatorPathsResult, error) {
 	var rv ListStreamingLocatorPathsResult
 	err := ctx.Invoke("azure-native:media:listStreamingLocatorPaths", args, &rv, opts...)

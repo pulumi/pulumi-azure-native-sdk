@@ -2398,7 +2398,7 @@ func (val *InputPort) Defaults() *InputPort {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Dataset"
 		tmp.Type = &type_
 	}
@@ -2428,7 +2428,7 @@ func (val *InputPortArgs) Defaults() *InputPortArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("Dataset")
 	}
 	return &tmp
@@ -2522,7 +2522,7 @@ func (val *InputPortResponse) Defaults() *InputPortResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Dataset"
 		tmp.Type = &type_
 	}
@@ -3121,7 +3121,7 @@ func (val *OutputPort) Defaults() *OutputPort {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Dataset"
 		tmp.Type = &type_
 	}
@@ -3151,7 +3151,7 @@ func (val *OutputPortArgs) Defaults() *OutputPortArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("Dataset")
 	}
 	return &tmp
@@ -3245,7 +3245,7 @@ func (val *OutputPortResponse) Defaults() *OutputPortResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Dataset"
 		tmp.Type = &type_
 	}
@@ -3545,7 +3545,7 @@ func (val *ServiceInputOutputSpecificationArgs) Defaults() *ServiceInputOutputSp
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.String("object")
 	}
 	return &tmp
@@ -4130,7 +4130,7 @@ func (val *TableSpecificationArgs) Defaults() *TableSpecificationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.String("object")
 	}
 	return &tmp

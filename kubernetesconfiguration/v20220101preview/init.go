@@ -21,12 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:kubernetesconfiguration/v20220101preview:Extension":
-		r = &Extension{}
 	case "azure-native:kubernetesconfiguration/v20220101preview:FluxConfiguration":
 		r = &FluxConfiguration{}
-	case "azure-native:kubernetesconfiguration/v20220101preview:SourceControlConfiguration":
-		r = &SourceControlConfiguration{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

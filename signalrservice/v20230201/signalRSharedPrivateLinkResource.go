@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +73,9 @@ func NewSignalRSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220801preview:SignalRSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalRSharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)

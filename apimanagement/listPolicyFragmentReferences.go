@@ -11,7 +11,7 @@ import (
 )
 
 // Lists policy resources that reference the policy fragment.
-// API Version: 2021-12-01-preview.
+// API Version: 2022-08-01.
 func ListPolicyFragmentReferences(ctx *pulumi.Context, args *ListPolicyFragmentReferencesArgs, opts ...pulumi.InvokeOption) (*ListPolicyFragmentReferencesResult, error) {
 	var rv ListPolicyFragmentReferencesResult
 	err := ctx.Invoke("azure-native:apimanagement:listPolicyFragmentReferences", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListPolicyFragmentReferences(ctx *pulumi.Context, args *ListPolicyFragmentR
 type ListPolicyFragmentReferencesArgs struct {
 	// A resource identifier.
 	Id string `pulumi:"id"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -60,7 +60,7 @@ func ListPolicyFragmentReferencesOutput(ctx *pulumi.Context, args ListPolicyFrag
 type ListPolicyFragmentReferencesOutputArgs struct {
 	// A resource identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

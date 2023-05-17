@@ -11,7 +11,7 @@ import (
 )
 
 // List the primary and secondary keys for a provisioning service.
-// API Version: 2020-03-01.
+// API Version: 2022-12-12.
 func ListIotDpsResourceKeys(ctx *pulumi.Context, args *ListIotDpsResourceKeysArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysResult, error) {
 	var rv ListIotDpsResourceKeysResult
 	err := ctx.Invoke("azure-native:devices:listIotDpsResourceKeys", args, &rv, opts...)

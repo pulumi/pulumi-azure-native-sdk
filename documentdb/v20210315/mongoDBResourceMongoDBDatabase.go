@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -129,7 +129,16 @@ func NewMongoDBResourceMongoDBDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:MongoDBResourceMongoDBDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:MongoDBResourceMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoDBResourceMongoDBDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:MongoDBResourceMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:MongoDBResourceMongoDBDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
-//
-// Deprecated: Version 2019-02-01-preview will be removed in v2 of the provider.
 type ConfigurationStore struct {
 	pulumi.CustomResourceState
 

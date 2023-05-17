@@ -12,8 +12,25 @@ import (
 
 // Encryption settings
 type AccountEncryption struct {
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity *EncryptionIdentity `pulumi:"identity"`
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 	KeySource *string `pulumi:"keySource"`
+	// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	KeyVaultProperties *KeyVaultProperties `pulumi:"keyVaultProperties"`
+}
+
+// Defaults sets the appropriate defaults for AccountEncryption
+func (val *AccountEncryption) Defaults() *AccountEncryption {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeySource == nil {
+		keySource_ := "Microsoft.NetApp"
+		tmp.KeySource = &keySource_
+	}
+	return &tmp
 }
 
 // AccountEncryptionInput is an input type that accepts AccountEncryptionArgs and AccountEncryptionOutput values.
@@ -29,10 +46,25 @@ type AccountEncryptionInput interface {
 
 // Encryption settings
 type AccountEncryptionArgs struct {
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity EncryptionIdentityPtrInput `pulumi:"identity"`
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 	KeySource pulumi.StringPtrInput `pulumi:"keySource"`
+	// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	KeyVaultProperties KeyVaultPropertiesPtrInput `pulumi:"keyVaultProperties"`
 }
 
+// Defaults sets the appropriate defaults for AccountEncryptionArgs
+func (val *AccountEncryptionArgs) Defaults() *AccountEncryptionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeySource == nil {
+		tmp.KeySource = pulumi.StringPtr("Microsoft.NetApp")
+	}
+	return &tmp
+}
 func (AccountEncryptionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountEncryption)(nil)).Elem()
 }
@@ -111,9 +143,19 @@ func (o AccountEncryptionOutput) ToAccountEncryptionPtrOutputWithContext(ctx con
 	}).(AccountEncryptionPtrOutput)
 }
 
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionOutput) Identity() EncryptionIdentityPtrOutput {
+	return o.ApplyT(func(v AccountEncryption) *EncryptionIdentity { return v.Identity }).(EncryptionIdentityPtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 func (o AccountEncryptionOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountEncryption) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+}
+
+// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionOutput) KeyVaultProperties() KeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v AccountEncryption) *KeyVaultProperties { return v.KeyVaultProperties }).(KeyVaultPropertiesPtrOutput)
 }
 
 type AccountEncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -140,7 +182,17 @@ func (o AccountEncryptionPtrOutput) Elem() AccountEncryptionOutput {
 	}).(AccountEncryptionOutput)
 }
 
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionPtrOutput) Identity() EncryptionIdentityPtrOutput {
+	return o.ApplyT(func(v *AccountEncryption) *EncryptionIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(EncryptionIdentityPtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 func (o AccountEncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountEncryption) *string {
 		if v == nil {
@@ -150,10 +202,37 @@ func (o AccountEncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionPtrOutput) KeyVaultProperties() KeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *AccountEncryption) *KeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(KeyVaultPropertiesPtrOutput)
+}
+
 // Encryption settings
 type AccountEncryptionResponse struct {
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity *EncryptionIdentityResponse `pulumi:"identity"`
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 	KeySource *string `pulumi:"keySource"`
+	// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	KeyVaultProperties *KeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+}
+
+// Defaults sets the appropriate defaults for AccountEncryptionResponse
+func (val *AccountEncryptionResponse) Defaults() *AccountEncryptionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeySource == nil {
+		keySource_ := "Microsoft.NetApp"
+		tmp.KeySource = &keySource_
+	}
+	return &tmp
 }
 
 // Encryption settings
@@ -171,9 +250,19 @@ func (o AccountEncryptionResponseOutput) ToAccountEncryptionResponseOutputWithCo
 	return o
 }
 
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionResponseOutput) Identity() EncryptionIdentityResponsePtrOutput {
+	return o.ApplyT(func(v AccountEncryptionResponse) *EncryptionIdentityResponse { return v.Identity }).(EncryptionIdentityResponsePtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 func (o AccountEncryptionResponseOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountEncryptionResponse) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+}
+
+// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionResponseOutput) KeyVaultProperties() KeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AccountEncryptionResponse) *KeyVaultPropertiesResponse { return v.KeyVaultProperties }).(KeyVaultPropertiesResponsePtrOutput)
 }
 
 type AccountEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -200,7 +289,17 @@ func (o AccountEncryptionResponsePtrOutput) Elem() AccountEncryptionResponseOutp
 	}).(AccountEncryptionResponseOutput)
 }
 
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionResponsePtrOutput) Identity() EncryptionIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AccountEncryptionResponse) *EncryptionIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(EncryptionIdentityResponsePtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
 func (o AccountEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountEncryptionResponse) *string {
 		if v == nil {
@@ -210,12 +309,24 @@ func (o AccountEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o AccountEncryptionResponsePtrOutput) KeyVaultProperties() KeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *AccountEncryptionResponse) *KeyVaultPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(KeyVaultPropertiesResponsePtrOutput)
+}
+
 // Active Directory
 type ActiveDirectory struct {
 	// Id of the Active Directory
 	ActiveDirectoryId *string `pulumi:"activeDirectoryId"`
 	// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
 	AdName *string `pulumi:"adName"`
+	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+	Administrators []string `pulumi:"administrators"`
 	// If enabled, AES encryption will be enabled for SMB communication.
 	AesEncryption *bool `pulumi:"aesEncryption"`
 	//  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
@@ -226,16 +337,22 @@ type ActiveDirectory struct {
 	Dns *string `pulumi:"dns"`
 	// Name of the Active Directory domain
 	Domain *string `pulumi:"domain"`
+	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
+	EncryptDCConnections *bool `pulumi:"encryptDCConnections"`
 	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 	KdcIP *string `pulumi:"kdcIP"`
 	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 	LdapOverTLS *bool `pulumi:"ldapOverTLS"`
+	// LDAP Search scope options
+	LdapSearchScope *LdapSearchScopeOpt `pulumi:"ldapSearchScope"`
 	// Specifies whether or not the LDAP traffic needs to be signed.
 	LdapSigning *bool `pulumi:"ldapSigning"`
 	// The Organizational Unit (OU) within the Windows Active Directory
 	OrganizationalUnit *string `pulumi:"organizationalUnit"`
 	// Plain text password of Active Directory domain administrator, value is masked in the response
 	Password *string `pulumi:"password"`
+	// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+	PreferredServersForLdapClient *string `pulumi:"preferredServersForLdapClient"`
 	// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
 	SecurityOperators []string `pulumi:"securityOperators"`
 	// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
@@ -254,7 +371,7 @@ func (val *ActiveDirectory) Defaults() *ActiveDirectory {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -278,6 +395,8 @@ type ActiveDirectoryArgs struct {
 	ActiveDirectoryId pulumi.StringPtrInput `pulumi:"activeDirectoryId"`
 	// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
 	AdName pulumi.StringPtrInput `pulumi:"adName"`
+	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+	Administrators pulumi.StringArrayInput `pulumi:"administrators"`
 	// If enabled, AES encryption will be enabled for SMB communication.
 	AesEncryption pulumi.BoolPtrInput `pulumi:"aesEncryption"`
 	//  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
@@ -288,16 +407,22 @@ type ActiveDirectoryArgs struct {
 	Dns pulumi.StringPtrInput `pulumi:"dns"`
 	// Name of the Active Directory domain
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
+	EncryptDCConnections pulumi.BoolPtrInput `pulumi:"encryptDCConnections"`
 	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 	KdcIP pulumi.StringPtrInput `pulumi:"kdcIP"`
 	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 	LdapOverTLS pulumi.BoolPtrInput `pulumi:"ldapOverTLS"`
+	// LDAP Search scope options
+	LdapSearchScope LdapSearchScopeOptPtrInput `pulumi:"ldapSearchScope"`
 	// Specifies whether or not the LDAP traffic needs to be signed.
 	LdapSigning pulumi.BoolPtrInput `pulumi:"ldapSigning"`
 	// The Organizational Unit (OU) within the Windows Active Directory
 	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
 	// Plain text password of Active Directory domain administrator, value is masked in the response
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+	PreferredServersForLdapClient pulumi.StringPtrInput `pulumi:"preferredServersForLdapClient"`
 	// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
 	SecurityOperators pulumi.StringArrayInput `pulumi:"securityOperators"`
 	// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
@@ -316,7 +441,7 @@ func (val *ActiveDirectoryArgs) Defaults() *ActiveDirectoryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		tmp.OrganizationalUnit = pulumi.StringPtr("CN=Computers")
 	}
 	return &tmp
@@ -383,6 +508,11 @@ func (o ActiveDirectoryOutput) AdName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.AdName }).(pulumi.StringPtrOutput)
 }
 
+// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryOutput) Administrators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectory) []string { return v.Administrators }).(pulumi.StringArrayOutput)
+}
+
 // If enabled, AES encryption will be enabled for SMB communication.
 func (o ActiveDirectoryOutput) AesEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *bool { return v.AesEncryption }).(pulumi.BoolPtrOutput)
@@ -408,6 +538,11 @@ func (o ActiveDirectoryOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
+func (o ActiveDirectoryOutput) EncryptDCConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActiveDirectory) *bool { return v.EncryptDCConnections }).(pulumi.BoolPtrOutput)
+}
+
 // kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 func (o ActiveDirectoryOutput) KdcIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.KdcIP }).(pulumi.StringPtrOutput)
@@ -416,6 +551,11 @@ func (o ActiveDirectoryOutput) KdcIP() pulumi.StringPtrOutput {
 // Specifies whether or not the LDAP traffic needs to be secured via TLS.
 func (o ActiveDirectoryOutput) LdapOverTLS() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *bool { return v.LdapOverTLS }).(pulumi.BoolPtrOutput)
+}
+
+// LDAP Search scope options
+func (o ActiveDirectoryOutput) LdapSearchScope() LdapSearchScopeOptPtrOutput {
+	return o.ApplyT(func(v ActiveDirectory) *LdapSearchScopeOpt { return v.LdapSearchScope }).(LdapSearchScopeOptPtrOutput)
 }
 
 // Specifies whether or not the LDAP traffic needs to be signed.
@@ -431,6 +571,11 @@ func (o ActiveDirectoryOutput) OrganizationalUnit() pulumi.StringPtrOutput {
 // Plain text password of Active Directory domain administrator, value is masked in the response
 func (o ActiveDirectoryOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+func (o ActiveDirectoryOutput) PreferredServersForLdapClient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectory) *string { return v.PreferredServersForLdapClient }).(pulumi.StringPtrOutput)
 }
 
 // Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
@@ -484,6 +629,8 @@ type ActiveDirectoryResponse struct {
 	ActiveDirectoryId *string `pulumi:"activeDirectoryId"`
 	// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
 	AdName *string `pulumi:"adName"`
+	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+	Administrators []string `pulumi:"administrators"`
 	// If enabled, AES encryption will be enabled for SMB communication.
 	AesEncryption *bool `pulumi:"aesEncryption"`
 	//  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
@@ -494,16 +641,22 @@ type ActiveDirectoryResponse struct {
 	Dns *string `pulumi:"dns"`
 	// Name of the Active Directory domain
 	Domain *string `pulumi:"domain"`
+	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
+	EncryptDCConnections *bool `pulumi:"encryptDCConnections"`
 	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 	KdcIP *string `pulumi:"kdcIP"`
 	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 	LdapOverTLS *bool `pulumi:"ldapOverTLS"`
+	// LDAP Search scope options
+	LdapSearchScope *LdapSearchScopeOptResponse `pulumi:"ldapSearchScope"`
 	// Specifies whether or not the LDAP traffic needs to be signed.
 	LdapSigning *bool `pulumi:"ldapSigning"`
 	// The Organizational Unit (OU) within the Windows Active Directory
 	OrganizationalUnit *string `pulumi:"organizationalUnit"`
 	// Plain text password of Active Directory domain administrator, value is masked in the response
 	Password *string `pulumi:"password"`
+	// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+	PreferredServersForLdapClient *string `pulumi:"preferredServersForLdapClient"`
 	// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
 	SecurityOperators []string `pulumi:"securityOperators"`
 	// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
@@ -526,7 +679,7 @@ func (val *ActiveDirectoryResponse) Defaults() *ActiveDirectoryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -558,6 +711,11 @@ func (o ActiveDirectoryResponseOutput) AdName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.AdName }).(pulumi.StringPtrOutput)
 }
 
+// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryResponseOutput) Administrators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryResponse) []string { return v.Administrators }).(pulumi.StringArrayOutput)
+}
+
 // If enabled, AES encryption will be enabled for SMB communication.
 func (o ActiveDirectoryResponseOutput) AesEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.AesEncryption }).(pulumi.BoolPtrOutput)
@@ -583,6 +741,11 @@ func (o ActiveDirectoryResponseOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
+func (o ActiveDirectoryResponseOutput) EncryptDCConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.EncryptDCConnections }).(pulumi.BoolPtrOutput)
+}
+
 // kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 func (o ActiveDirectoryResponseOutput) KdcIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.KdcIP }).(pulumi.StringPtrOutput)
@@ -591,6 +754,11 @@ func (o ActiveDirectoryResponseOutput) KdcIP() pulumi.StringPtrOutput {
 // Specifies whether or not the LDAP traffic needs to be secured via TLS.
 func (o ActiveDirectoryResponseOutput) LdapOverTLS() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.LdapOverTLS }).(pulumi.BoolPtrOutput)
+}
+
+// LDAP Search scope options
+func (o ActiveDirectoryResponseOutput) LdapSearchScope() LdapSearchScopeOptResponsePtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryResponse) *LdapSearchScopeOptResponse { return v.LdapSearchScope }).(LdapSearchScopeOptResponsePtrOutput)
 }
 
 // Specifies whether or not the LDAP traffic needs to be signed.
@@ -606,6 +774,11 @@ func (o ActiveDirectoryResponseOutput) OrganizationalUnit() pulumi.StringPtrOutp
 // Plain text password of Active Directory domain administrator, value is masked in the response
 func (o ActiveDirectoryResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+func (o ActiveDirectoryResponseOutput) PreferredServersForLdapClient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.PreferredServersForLdapClient }).(pulumi.StringPtrOutput)
 }
 
 // Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
@@ -971,6 +1144,223 @@ func (o DailyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Identity used to authenticate with key vault.
+type EncryptionIdentity struct {
+	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// EncryptionIdentityInput is an input type that accepts EncryptionIdentityArgs and EncryptionIdentityOutput values.
+// You can construct a concrete instance of `EncryptionIdentityInput` via:
+//
+//	EncryptionIdentityArgs{...}
+type EncryptionIdentityInput interface {
+	pulumi.Input
+
+	ToEncryptionIdentityOutput() EncryptionIdentityOutput
+	ToEncryptionIdentityOutputWithContext(context.Context) EncryptionIdentityOutput
+}
+
+// Identity used to authenticate with key vault.
+type EncryptionIdentityArgs struct {
+	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (EncryptionIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionIdentity)(nil)).Elem()
+}
+
+func (i EncryptionIdentityArgs) ToEncryptionIdentityOutput() EncryptionIdentityOutput {
+	return i.ToEncryptionIdentityOutputWithContext(context.Background())
+}
+
+func (i EncryptionIdentityArgs) ToEncryptionIdentityOutputWithContext(ctx context.Context) EncryptionIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionIdentityOutput)
+}
+
+func (i EncryptionIdentityArgs) ToEncryptionIdentityPtrOutput() EncryptionIdentityPtrOutput {
+	return i.ToEncryptionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionIdentityArgs) ToEncryptionIdentityPtrOutputWithContext(ctx context.Context) EncryptionIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionIdentityOutput).ToEncryptionIdentityPtrOutputWithContext(ctx)
+}
+
+// EncryptionIdentityPtrInput is an input type that accepts EncryptionIdentityArgs, EncryptionIdentityPtr and EncryptionIdentityPtrOutput values.
+// You can construct a concrete instance of `EncryptionIdentityPtrInput` via:
+//
+//	        EncryptionIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionIdentityPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionIdentityPtrOutput() EncryptionIdentityPtrOutput
+	ToEncryptionIdentityPtrOutputWithContext(context.Context) EncryptionIdentityPtrOutput
+}
+
+type encryptionIdentityPtrType EncryptionIdentityArgs
+
+func EncryptionIdentityPtr(v *EncryptionIdentityArgs) EncryptionIdentityPtrInput {
+	return (*encryptionIdentityPtrType)(v)
+}
+
+func (*encryptionIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionIdentity)(nil)).Elem()
+}
+
+func (i *encryptionIdentityPtrType) ToEncryptionIdentityPtrOutput() EncryptionIdentityPtrOutput {
+	return i.ToEncryptionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionIdentityPtrType) ToEncryptionIdentityPtrOutputWithContext(ctx context.Context) EncryptionIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionIdentityPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type EncryptionIdentityOutput struct{ *pulumi.OutputState }
+
+func (EncryptionIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionIdentity)(nil)).Elem()
+}
+
+func (o EncryptionIdentityOutput) ToEncryptionIdentityOutput() EncryptionIdentityOutput {
+	return o
+}
+
+func (o EncryptionIdentityOutput) ToEncryptionIdentityOutputWithContext(ctx context.Context) EncryptionIdentityOutput {
+	return o
+}
+
+func (o EncryptionIdentityOutput) ToEncryptionIdentityPtrOutput() EncryptionIdentityPtrOutput {
+	return o.ToEncryptionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionIdentityOutput) ToEncryptionIdentityPtrOutputWithContext(ctx context.Context) EncryptionIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionIdentity) *EncryptionIdentity {
+		return &v
+	}).(EncryptionIdentityPtrOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o EncryptionIdentityOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionIdentity) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionIdentity)(nil)).Elem()
+}
+
+func (o EncryptionIdentityPtrOutput) ToEncryptionIdentityPtrOutput() EncryptionIdentityPtrOutput {
+	return o
+}
+
+func (o EncryptionIdentityPtrOutput) ToEncryptionIdentityPtrOutputWithContext(ctx context.Context) EncryptionIdentityPtrOutput {
+	return o
+}
+
+func (o EncryptionIdentityPtrOutput) Elem() EncryptionIdentityOutput {
+	return o.ApplyT(func(v *EncryptionIdentity) EncryptionIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionIdentity
+		return ret
+	}).(EncryptionIdentityOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o EncryptionIdentityPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type EncryptionIdentityResponse struct {
+	// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+	PrincipalId string `pulumi:"principalId"`
+	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// Identity used to authenticate with key vault.
+type EncryptionIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionIdentityResponse)(nil)).Elem()
+}
+
+func (o EncryptionIdentityResponseOutput) ToEncryptionIdentityResponseOutput() EncryptionIdentityResponseOutput {
+	return o
+}
+
+func (o EncryptionIdentityResponseOutput) ToEncryptionIdentityResponseOutputWithContext(ctx context.Context) EncryptionIdentityResponseOutput {
+	return o
+}
+
+// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+func (o EncryptionIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o EncryptionIdentityResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionIdentityResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionIdentityResponse)(nil)).Elem()
+}
+
+func (o EncryptionIdentityResponsePtrOutput) ToEncryptionIdentityResponsePtrOutput() EncryptionIdentityResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionIdentityResponsePtrOutput) ToEncryptionIdentityResponsePtrOutputWithContext(ctx context.Context) EncryptionIdentityResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionIdentityResponsePtrOutput) Elem() EncryptionIdentityResponseOutput {
+	return o.ApplyT(func(v *EncryptionIdentityResponse) EncryptionIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionIdentityResponse
+		return ret
+	}).(EncryptionIdentityResponseOutput)
+}
+
+// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+func (o EncryptionIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o EncryptionIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Volume Export Policy Rule
 type ExportPolicyRule struct {
 	// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
@@ -1011,35 +1401,35 @@ func (val *ExportPolicyRule) Defaults() *ExportPolicyRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		chownMode_ := "Restricted"
 		tmp.ChownMode = &chownMode_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -1097,28 +1487,28 @@ func (val *ExportPolicyRuleArgs) Defaults() *ExportPolicyRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		tmp.ChownMode = pulumi.StringPtr("Restricted")
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		tmp.HasRootAccess = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		tmp.Kerberos5ReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		tmp.Kerberos5ReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		tmp.Kerberos5iReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		tmp.Kerberos5iReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		tmp.Kerberos5pReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		tmp.Kerberos5pReadWrite = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1310,35 +1700,35 @@ func (val *ExportPolicyRuleResponse) Defaults() *ExportPolicyRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		chownMode_ := "Restricted"
 		tmp.ChownMode = &chownMode_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -1725,6 +2115,856 @@ func (o HourlyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
 		}
 		return v.UsedBytes
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Properties of key vault.
+type KeyVaultProperties struct {
+	// The name of KeyVault key.
+	KeyName string `pulumi:"keyName"`
+	// The resource ID of KeyVault.
+	KeyVaultResourceId string `pulumi:"keyVaultResourceId"`
+	// The Uri of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+}
+
+// KeyVaultPropertiesInput is an input type that accepts KeyVaultPropertiesArgs and KeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `KeyVaultPropertiesInput` via:
+//
+//	KeyVaultPropertiesArgs{...}
+type KeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToKeyVaultPropertiesOutput() KeyVaultPropertiesOutput
+	ToKeyVaultPropertiesOutputWithContext(context.Context) KeyVaultPropertiesOutput
+}
+
+// Properties of key vault.
+type KeyVaultPropertiesArgs struct {
+	// The name of KeyVault key.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The resource ID of KeyVault.
+	KeyVaultResourceId pulumi.StringInput `pulumi:"keyVaultResourceId"`
+	// The Uri of KeyVault.
+	KeyVaultUri pulumi.StringInput `pulumi:"keyVaultUri"`
+}
+
+func (KeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultProperties)(nil)).Elem()
+}
+
+func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutput() KeyVaultPropertiesOutput {
+	return i.ToKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx context.Context) KeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
+}
+
+func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
+	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput).ToKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// KeyVaultPropertiesPtrInput is an input type that accepts KeyVaultPropertiesArgs, KeyVaultPropertiesPtr and KeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `KeyVaultPropertiesPtrInput` via:
+//
+//	        KeyVaultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput
+	ToKeyVaultPropertiesPtrOutputWithContext(context.Context) KeyVaultPropertiesPtrOutput
+}
+
+type keyVaultPropertiesPtrType KeyVaultPropertiesArgs
+
+func KeyVaultPropertiesPtr(v *KeyVaultPropertiesArgs) KeyVaultPropertiesPtrInput {
+	return (*keyVaultPropertiesPtrType)(v)
+}
+
+func (*keyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultProperties)(nil)).Elem()
+}
+
+func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
+	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesPtrOutput)
+}
+
+// Properties of key vault.
+type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultProperties)(nil)).Elem()
+}
+
+func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesOutput() KeyVaultPropertiesOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesOutputWithContext(ctx context.Context) KeyVaultPropertiesOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
+	return o.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultProperties) *KeyVaultProperties {
+		return &v
+	}).(KeyVaultPropertiesPtrOutput)
+}
+
+// The name of KeyVault key.
+func (o KeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The resource ID of KeyVault.
+func (o KeyVaultPropertiesOutput) KeyVaultResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyVaultResourceId }).(pulumi.StringOutput)
+}
+
+// The Uri of KeyVault.
+func (o KeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+type KeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultProperties)(nil)).Elem()
+}
+
+func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *KeyVaultProperties) KeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultProperties
+		return ret
+	}).(KeyVaultPropertiesOutput)
+}
+
+// The name of KeyVault key.
+func (o KeyVaultPropertiesPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of KeyVault.
+func (o KeyVaultPropertiesPtrOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o KeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of key vault.
+type KeyVaultPropertiesResponse struct {
+	// The name of KeyVault key.
+	KeyName string `pulumi:"keyName"`
+	// UUID v4 used to identify the Azure Key Vault configuration
+	KeyVaultId string `pulumi:"keyVaultId"`
+	// The resource ID of KeyVault.
+	KeyVaultResourceId string `pulumi:"keyVaultResourceId"`
+	// The Uri of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// Status of the KeyVault connection.
+	Status string `pulumi:"status"`
+}
+
+// Properties of key vault.
+type KeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutput() KeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) KeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// The name of KeyVault key.
+func (o KeyVaultPropertiesResponseOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// UUID v4 used to identify the Azure Key Vault configuration
+func (o KeyVaultPropertiesResponseOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// The resource ID of KeyVault.
+func (o KeyVaultPropertiesResponseOutput) KeyVaultResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyVaultResourceId }).(pulumi.StringOutput)
+}
+
+// The Uri of KeyVault.
+func (o KeyVaultPropertiesResponseOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// Status of the KeyVault connection.
+func (o KeyVaultPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type KeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutput() KeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *KeyVaultPropertiesResponse) KeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultPropertiesResponse
+		return ret
+	}).(KeyVaultPropertiesResponseOutput)
+}
+
+// The name of KeyVault key.
+func (o KeyVaultPropertiesResponsePtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID v4 used to identify the Azure Key Vault configuration
+func (o KeyVaultPropertiesResponsePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of KeyVault.
+func (o KeyVaultPropertiesResponsePtrOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o KeyVaultPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the KeyVault connection.
+func (o KeyVaultPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP search scope
+type LdapSearchScopeOpt struct {
+	// This specifies the group DN, which overrides the base DN for group lookups.
+	GroupDN *string `pulumi:"groupDN"`
+	// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+	GroupMembershipFilter *string `pulumi:"groupMembershipFilter"`
+	// This specifies the user DN, which overrides the base DN for user lookups.
+	UserDN *string `pulumi:"userDN"`
+}
+
+// LdapSearchScopeOptInput is an input type that accepts LdapSearchScopeOptArgs and LdapSearchScopeOptOutput values.
+// You can construct a concrete instance of `LdapSearchScopeOptInput` via:
+//
+//	LdapSearchScopeOptArgs{...}
+type LdapSearchScopeOptInput interface {
+	pulumi.Input
+
+	ToLdapSearchScopeOptOutput() LdapSearchScopeOptOutput
+	ToLdapSearchScopeOptOutputWithContext(context.Context) LdapSearchScopeOptOutput
+}
+
+// LDAP search scope
+type LdapSearchScopeOptArgs struct {
+	// This specifies the group DN, which overrides the base DN for group lookups.
+	GroupDN pulumi.StringPtrInput `pulumi:"groupDN"`
+	// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+	GroupMembershipFilter pulumi.StringPtrInput `pulumi:"groupMembershipFilter"`
+	// This specifies the user DN, which overrides the base DN for user lookups.
+	UserDN pulumi.StringPtrInput `pulumi:"userDN"`
+}
+
+func (LdapSearchScopeOptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LdapSearchScopeOpt)(nil)).Elem()
+}
+
+func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptOutput() LdapSearchScopeOptOutput {
+	return i.ToLdapSearchScopeOptOutputWithContext(context.Background())
+}
+
+func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptOutputWithContext(ctx context.Context) LdapSearchScopeOptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LdapSearchScopeOptOutput)
+}
+
+func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
+	return i.ToLdapSearchScopeOptPtrOutputWithContext(context.Background())
+}
+
+func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LdapSearchScopeOptOutput).ToLdapSearchScopeOptPtrOutputWithContext(ctx)
+}
+
+// LdapSearchScopeOptPtrInput is an input type that accepts LdapSearchScopeOptArgs, LdapSearchScopeOptPtr and LdapSearchScopeOptPtrOutput values.
+// You can construct a concrete instance of `LdapSearchScopeOptPtrInput` via:
+//
+//	        LdapSearchScopeOptArgs{...}
+//
+//	or:
+//
+//	        nil
+type LdapSearchScopeOptPtrInput interface {
+	pulumi.Input
+
+	ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput
+	ToLdapSearchScopeOptPtrOutputWithContext(context.Context) LdapSearchScopeOptPtrOutput
+}
+
+type ldapSearchScopeOptPtrType LdapSearchScopeOptArgs
+
+func LdapSearchScopeOptPtr(v *LdapSearchScopeOptArgs) LdapSearchScopeOptPtrInput {
+	return (*ldapSearchScopeOptPtrType)(v)
+}
+
+func (*ldapSearchScopeOptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LdapSearchScopeOpt)(nil)).Elem()
+}
+
+func (i *ldapSearchScopeOptPtrType) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
+	return i.ToLdapSearchScopeOptPtrOutputWithContext(context.Background())
+}
+
+func (i *ldapSearchScopeOptPtrType) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LdapSearchScopeOptPtrOutput)
+}
+
+// LDAP search scope
+type LdapSearchScopeOptOutput struct{ *pulumi.OutputState }
+
+func (LdapSearchScopeOptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LdapSearchScopeOpt)(nil)).Elem()
+}
+
+func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptOutput() LdapSearchScopeOptOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptOutputWithContext(ctx context.Context) LdapSearchScopeOptOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
+	return o.ToLdapSearchScopeOptPtrOutputWithContext(context.Background())
+}
+
+func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LdapSearchScopeOpt) *LdapSearchScopeOpt {
+		return &v
+	}).(LdapSearchScopeOptPtrOutput)
+}
+
+// This specifies the group DN, which overrides the base DN for group lookups.
+func (o LdapSearchScopeOptOutput) GroupDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LdapSearchScopeOpt) *string { return v.GroupDN }).(pulumi.StringPtrOutput)
+}
+
+// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+func (o LdapSearchScopeOptOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LdapSearchScopeOpt) *string { return v.GroupMembershipFilter }).(pulumi.StringPtrOutput)
+}
+
+// This specifies the user DN, which overrides the base DN for user lookups.
+func (o LdapSearchScopeOptOutput) UserDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LdapSearchScopeOpt) *string { return v.UserDN }).(pulumi.StringPtrOutput)
+}
+
+type LdapSearchScopeOptPtrOutput struct{ *pulumi.OutputState }
+
+func (LdapSearchScopeOptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LdapSearchScopeOpt)(nil)).Elem()
+}
+
+func (o LdapSearchScopeOptPtrOutput) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptPtrOutput) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptPtrOutput) Elem() LdapSearchScopeOptOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOpt) LdapSearchScopeOpt {
+		if v != nil {
+			return *v
+		}
+		var ret LdapSearchScopeOpt
+		return ret
+	}).(LdapSearchScopeOptOutput)
+}
+
+// This specifies the group DN, which overrides the base DN for group lookups.
+func (o LdapSearchScopeOptPtrOutput) GroupDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOpt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupDN
+	}).(pulumi.StringPtrOutput)
+}
+
+// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+func (o LdapSearchScopeOptPtrOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOpt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupMembershipFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// This specifies the user DN, which overrides the base DN for user lookups.
+func (o LdapSearchScopeOptPtrOutput) UserDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOpt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserDN
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP search scope
+type LdapSearchScopeOptResponse struct {
+	// This specifies the group DN, which overrides the base DN for group lookups.
+	GroupDN *string `pulumi:"groupDN"`
+	// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+	GroupMembershipFilter *string `pulumi:"groupMembershipFilter"`
+	// This specifies the user DN, which overrides the base DN for user lookups.
+	UserDN *string `pulumi:"userDN"`
+}
+
+// LDAP search scope
+type LdapSearchScopeOptResponseOutput struct{ *pulumi.OutputState }
+
+func (LdapSearchScopeOptResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LdapSearchScopeOptResponse)(nil)).Elem()
+}
+
+func (o LdapSearchScopeOptResponseOutput) ToLdapSearchScopeOptResponseOutput() LdapSearchScopeOptResponseOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptResponseOutput) ToLdapSearchScopeOptResponseOutputWithContext(ctx context.Context) LdapSearchScopeOptResponseOutput {
+	return o
+}
+
+// This specifies the group DN, which overrides the base DN for group lookups.
+func (o LdapSearchScopeOptResponseOutput) GroupDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LdapSearchScopeOptResponse) *string { return v.GroupDN }).(pulumi.StringPtrOutput)
+}
+
+// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+func (o LdapSearchScopeOptResponseOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LdapSearchScopeOptResponse) *string { return v.GroupMembershipFilter }).(pulumi.StringPtrOutput)
+}
+
+// This specifies the user DN, which overrides the base DN for user lookups.
+func (o LdapSearchScopeOptResponseOutput) UserDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LdapSearchScopeOptResponse) *string { return v.UserDN }).(pulumi.StringPtrOutput)
+}
+
+type LdapSearchScopeOptResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LdapSearchScopeOptResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LdapSearchScopeOptResponse)(nil)).Elem()
+}
+
+func (o LdapSearchScopeOptResponsePtrOutput) ToLdapSearchScopeOptResponsePtrOutput() LdapSearchScopeOptResponsePtrOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptResponsePtrOutput) ToLdapSearchScopeOptResponsePtrOutputWithContext(ctx context.Context) LdapSearchScopeOptResponsePtrOutput {
+	return o
+}
+
+func (o LdapSearchScopeOptResponsePtrOutput) Elem() LdapSearchScopeOptResponseOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOptResponse) LdapSearchScopeOptResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LdapSearchScopeOptResponse
+		return ret
+	}).(LdapSearchScopeOptResponseOutput)
+}
+
+// This specifies the group DN, which overrides the base DN for group lookups.
+func (o LdapSearchScopeOptResponsePtrOutput) GroupDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOptResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupDN
+	}).(pulumi.StringPtrOutput)
+}
+
+// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
+func (o LdapSearchScopeOptResponsePtrOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOptResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupMembershipFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// This specifies the user DN, which overrides the base DN for user lookups.
+func (o LdapSearchScopeOptResponsePtrOutput) UserDN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LdapSearchScopeOptResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserDN
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.MapOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Monthly Schedule properties
@@ -2772,6 +4012,59 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 // Volume Backup Properties
 type VolumeBackupProperties struct {
 	// Backup Enabled
@@ -2780,8 +4073,6 @@ type VolumeBackupProperties struct {
 	BackupPolicyId *string `pulumi:"backupPolicyId"`
 	// Policy Enforced
 	PolicyEnforced *bool `pulumi:"policyEnforced"`
-	// Vault Resource ID
-	VaultId *string `pulumi:"vaultId"`
 }
 
 // VolumeBackupPropertiesInput is an input type that accepts VolumeBackupPropertiesArgs and VolumeBackupPropertiesOutput values.
@@ -2803,8 +4094,6 @@ type VolumeBackupPropertiesArgs struct {
 	BackupPolicyId pulumi.StringPtrInput `pulumi:"backupPolicyId"`
 	// Policy Enforced
 	PolicyEnforced pulumi.BoolPtrInput `pulumi:"policyEnforced"`
-	// Vault Resource ID
-	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 
 func (VolumeBackupPropertiesArgs) ElementType() reflect.Type {
@@ -2900,11 +4189,6 @@ func (o VolumeBackupPropertiesOutput) PolicyEnforced() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeBackupProperties) *bool { return v.PolicyEnforced }).(pulumi.BoolPtrOutput)
 }
 
-// Vault Resource ID
-func (o VolumeBackupPropertiesOutput) VaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackupProperties) *string { return v.VaultId }).(pulumi.StringPtrOutput)
-}
-
 type VolumeBackupPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (VolumeBackupPropertiesPtrOutput) ElementType() reflect.Type {
@@ -2959,16 +4243,6 @@ func (o VolumeBackupPropertiesPtrOutput) PolicyEnforced() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Vault Resource ID
-func (o VolumeBackupPropertiesPtrOutput) VaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeBackupProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VaultId
-	}).(pulumi.StringPtrOutput)
-}
-
 // Volume Backup Properties
 type VolumeBackupPropertiesResponse struct {
 	// Backup Enabled
@@ -2977,8 +4251,6 @@ type VolumeBackupPropertiesResponse struct {
 	BackupPolicyId *string `pulumi:"backupPolicyId"`
 	// Policy Enforced
 	PolicyEnforced *bool `pulumi:"policyEnforced"`
-	// Vault Resource ID
-	VaultId *string `pulumi:"vaultId"`
 }
 
 // Volume Backup Properties
@@ -3009,11 +4281,6 @@ func (o VolumeBackupPropertiesResponseOutput) BackupPolicyId() pulumi.StringPtrO
 // Policy Enforced
 func (o VolumeBackupPropertiesResponseOutput) PolicyEnforced() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeBackupPropertiesResponse) *bool { return v.PolicyEnforced }).(pulumi.BoolPtrOutput)
-}
-
-// Vault Resource ID
-func (o VolumeBackupPropertiesResponseOutput) VaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackupPropertiesResponse) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }
 
 type VolumeBackupPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3068,134 +4335,6 @@ func (o VolumeBackupPropertiesResponsePtrOutput) PolicyEnforced() pulumi.BoolPtr
 		}
 		return v.PolicyEnforced
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Vault Resource ID
-func (o VolumeBackupPropertiesResponsePtrOutput) VaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeBackupPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VaultId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Volume details using the backup policy
-type VolumeBackups struct {
-	// Total count of backups for volume
-	BackupsCount *int `pulumi:"backupsCount"`
-	// Policy enabled
-	PolicyEnabled *bool `pulumi:"policyEnabled"`
-	// Volume name
-	VolumeName *string `pulumi:"volumeName"`
-}
-
-// VolumeBackupsInput is an input type that accepts VolumeBackupsArgs and VolumeBackupsOutput values.
-// You can construct a concrete instance of `VolumeBackupsInput` via:
-//
-//	VolumeBackupsArgs{...}
-type VolumeBackupsInput interface {
-	pulumi.Input
-
-	ToVolumeBackupsOutput() VolumeBackupsOutput
-	ToVolumeBackupsOutputWithContext(context.Context) VolumeBackupsOutput
-}
-
-// Volume details using the backup policy
-type VolumeBackupsArgs struct {
-	// Total count of backups for volume
-	BackupsCount pulumi.IntPtrInput `pulumi:"backupsCount"`
-	// Policy enabled
-	PolicyEnabled pulumi.BoolPtrInput `pulumi:"policyEnabled"`
-	// Volume name
-	VolumeName pulumi.StringPtrInput `pulumi:"volumeName"`
-}
-
-func (VolumeBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeBackups)(nil)).Elem()
-}
-
-func (i VolumeBackupsArgs) ToVolumeBackupsOutput() VolumeBackupsOutput {
-	return i.ToVolumeBackupsOutputWithContext(context.Background())
-}
-
-func (i VolumeBackupsArgs) ToVolumeBackupsOutputWithContext(ctx context.Context) VolumeBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupsOutput)
-}
-
-// VolumeBackupsArrayInput is an input type that accepts VolumeBackupsArray and VolumeBackupsArrayOutput values.
-// You can construct a concrete instance of `VolumeBackupsArrayInput` via:
-//
-//	VolumeBackupsArray{ VolumeBackupsArgs{...} }
-type VolumeBackupsArrayInput interface {
-	pulumi.Input
-
-	ToVolumeBackupsArrayOutput() VolumeBackupsArrayOutput
-	ToVolumeBackupsArrayOutputWithContext(context.Context) VolumeBackupsArrayOutput
-}
-
-type VolumeBackupsArray []VolumeBackupsInput
-
-func (VolumeBackupsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeBackups)(nil)).Elem()
-}
-
-func (i VolumeBackupsArray) ToVolumeBackupsArrayOutput() VolumeBackupsArrayOutput {
-	return i.ToVolumeBackupsArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeBackupsArray) ToVolumeBackupsArrayOutputWithContext(ctx context.Context) VolumeBackupsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupsArrayOutput)
-}
-
-// Volume details using the backup policy
-type VolumeBackupsOutput struct{ *pulumi.OutputState }
-
-func (VolumeBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeBackups)(nil)).Elem()
-}
-
-func (o VolumeBackupsOutput) ToVolumeBackupsOutput() VolumeBackupsOutput {
-	return o
-}
-
-func (o VolumeBackupsOutput) ToVolumeBackupsOutputWithContext(ctx context.Context) VolumeBackupsOutput {
-	return o
-}
-
-// Total count of backups for volume
-func (o VolumeBackupsOutput) BackupsCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VolumeBackups) *int { return v.BackupsCount }).(pulumi.IntPtrOutput)
-}
-
-// Policy enabled
-func (o VolumeBackupsOutput) PolicyEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VolumeBackups) *bool { return v.PolicyEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Volume name
-func (o VolumeBackupsOutput) VolumeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackups) *string { return v.VolumeName }).(pulumi.StringPtrOutput)
-}
-
-type VolumeBackupsArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeBackupsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeBackups)(nil)).Elem()
-}
-
-func (o VolumeBackupsArrayOutput) ToVolumeBackupsArrayOutput() VolumeBackupsArrayOutput {
-	return o
-}
-
-func (o VolumeBackupsArrayOutput) ToVolumeBackupsArrayOutputWithContext(ctx context.Context) VolumeBackupsArrayOutput {
-	return o
-}
-
-func (o VolumeBackupsArrayOutput) Index(i pulumi.IntInput) VolumeBackupsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeBackups {
-		return vs[0].([]VolumeBackups)[vs[1].(int)]
-	}).(VolumeBackupsOutput)
 }
 
 // Volume details using the backup policy
@@ -3639,18 +4778,24 @@ type VolumeGroupVolumeProperties struct {
 	DefaultGroupQuotaInKiBs *float64 `pulumi:"defaultGroupQuotaInKiBs"`
 	// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
 	DefaultUserQuotaInKiBs *float64 `pulumi:"defaultUserQuotaInKiBs"`
+	// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+	DeleteBaseSnapshot *bool `pulumi:"deleteBaseSnapshot"`
 	// Flag indicating whether subvolume operations are enabled on the volume
 	EnableSubvolumes *string `pulumi:"enableSubvolumes"`
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'
+	// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
 	EncryptionKeySource *string `pulumi:"encryptionKeySource"`
 	// Set of export policy rules
 	ExportPolicy *VolumePropertiesExportPolicy `pulumi:"exportPolicy"`
 	// Specifies if default quota is enabled for the volume.
 	IsDefaultQuotaEnabled *bool `pulumi:"isDefaultQuotaEnabled"`
+	// Specifies whether volume is a Large Volume or Regular Volume.
+	IsLargeVolume *bool `pulumi:"isLargeVolume"`
 	// Restoring
 	IsRestoring *bool `pulumi:"isRestoring"`
 	// Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
 	KerberosEnabled *bool `pulumi:"kerberosEnabled"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId *string `pulumi:"keyVaultPrivateEndpointResourceId"`
 	// Specifies whether LDAP is enabled or not for a given NFS volume.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Resource name
@@ -3667,10 +4812,14 @@ type VolumeGroupVolumeProperties struct {
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel *string `pulumi:"serviceLevel"`
+	// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbAccessBasedEnumeration *string `pulumi:"smbAccessBasedEnumeration"`
 	// Enables continuously available share property for smb volume. Only applicable for SMB volume
 	SmbContinuouslyAvailable *bool `pulumi:"smbContinuouslyAvailable"`
 	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 	SmbEncryption *bool `pulumi:"smbEncryption"`
+	// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -3682,7 +4831,7 @@ type VolumeGroupVolumeProperties struct {
 	ThroughputMibps *float64          `pulumi:"throughputMibps"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
 	VolumeSpecName *string `pulumi:"volumeSpecName"`
@@ -3696,59 +4845,67 @@ func (val *VolumeGroupVolumeProperties) Defaults() *VolumeGroupVolumeProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		avsDataStore_ := "Disabled"
 		tmp.AvsDataStore = &avsDataStore_
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		defaultGroupQuotaInKiBs_ := 0.0
 		tmp.DefaultGroupQuotaInKiBs = &defaultGroupQuotaInKiBs_
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		defaultUserQuotaInKiBs_ := 0.0
 		tmp.DefaultUserQuotaInKiBs = &defaultUserQuotaInKiBs_
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		enableSubvolumes_ := "Disabled"
 		tmp.EnableSubvolumes = &enableSubvolumes_
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.EncryptionKeySource == nil {
+		encryptionKeySource_ := "Microsoft.NetApp"
+		tmp.EncryptionKeySource = &encryptionKeySource_
+	}
+	if tmp.IsDefaultQuotaEnabled == nil {
 		isDefaultQuotaEnabled_ := false
 		tmp.IsDefaultQuotaEnabled = &isDefaultQuotaEnabled_
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.IsLargeVolume == nil {
+		isLargeVolume_ := false
+		tmp.IsLargeVolume = &isLargeVolume_
+	}
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
@@ -3789,18 +4946,24 @@ type VolumeGroupVolumePropertiesArgs struct {
 	DefaultGroupQuotaInKiBs pulumi.Float64PtrInput `pulumi:"defaultGroupQuotaInKiBs"`
 	// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
 	DefaultUserQuotaInKiBs pulumi.Float64PtrInput `pulumi:"defaultUserQuotaInKiBs"`
+	// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+	DeleteBaseSnapshot pulumi.BoolPtrInput `pulumi:"deleteBaseSnapshot"`
 	// Flag indicating whether subvolume operations are enabled on the volume
 	EnableSubvolumes pulumi.StringPtrInput `pulumi:"enableSubvolumes"`
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'
+	// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
 	EncryptionKeySource pulumi.StringPtrInput `pulumi:"encryptionKeySource"`
 	// Set of export policy rules
 	ExportPolicy VolumePropertiesExportPolicyPtrInput `pulumi:"exportPolicy"`
 	// Specifies if default quota is enabled for the volume.
 	IsDefaultQuotaEnabled pulumi.BoolPtrInput `pulumi:"isDefaultQuotaEnabled"`
+	// Specifies whether volume is a Large Volume or Regular Volume.
+	IsLargeVolume pulumi.BoolPtrInput `pulumi:"isLargeVolume"`
 	// Restoring
 	IsRestoring pulumi.BoolPtrInput `pulumi:"isRestoring"`
 	// Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
 	KerberosEnabled pulumi.BoolPtrInput `pulumi:"kerberosEnabled"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId pulumi.StringPtrInput `pulumi:"keyVaultPrivateEndpointResourceId"`
 	// Specifies whether LDAP is enabled or not for a given NFS volume.
 	LdapEnabled pulumi.BoolPtrInput `pulumi:"ldapEnabled"`
 	// Resource name
@@ -3817,10 +4980,14 @@ type VolumeGroupVolumePropertiesArgs struct {
 	SecurityStyle pulumi.StringPtrInput `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel pulumi.StringPtrInput `pulumi:"serviceLevel"`
+	// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbAccessBasedEnumeration pulumi.StringPtrInput `pulumi:"smbAccessBasedEnumeration"`
 	// Enables continuously available share property for smb volume. Only applicable for SMB volume
 	SmbContinuouslyAvailable pulumi.BoolPtrInput `pulumi:"smbContinuouslyAvailable"`
 	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 	SmbEncryption pulumi.BoolPtrInput `pulumi:"smbEncryption"`
+	// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbNonBrowsable pulumi.StringPtrInput `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible pulumi.BoolPtrInput `pulumi:"snapshotDirectoryVisible"`
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -3832,7 +4999,7 @@ type VolumeGroupVolumePropertiesArgs struct {
 	ThroughputMibps pulumi.Float64PtrInput `pulumi:"throughputMibps"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions pulumi.StringPtrInput `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold pulumi.Float64Input `pulumi:"usageThreshold"`
 	// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
 	VolumeSpecName pulumi.StringPtrInput `pulumi:"volumeSpecName"`
@@ -3846,49 +5013,55 @@ func (val *VolumeGroupVolumePropertiesArgs) Defaults() *VolumeGroupVolumePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		tmp.AvsDataStore = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		tmp.CoolAccess = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		tmp.DefaultGroupQuotaInKiBs = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		tmp.DefaultUserQuotaInKiBs = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		tmp.EnableSubvolumes = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.EncryptionKeySource == nil {
+		tmp.EncryptionKeySource = pulumi.StringPtr("Microsoft.NetApp")
+	}
+	if tmp.IsDefaultQuotaEnabled == nil {
 		tmp.IsDefaultQuotaEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.IsLargeVolume == nil {
+		tmp.IsLargeVolume = pulumi.BoolPtr(false)
+	}
+	if tmp.KerberosEnabled == nil {
 		tmp.KerberosEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		tmp.LdapEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		tmp.NetworkFeatures = pulumi.StringPtr("Basic")
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		tmp.SecurityStyle = pulumi.StringPtr("unix")
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		tmp.SmbContinuouslyAvailable = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		tmp.SmbEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		tmp.SnapshotDirectoryVisible = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		tmp.UnixPermissions = pulumi.StringPtr("0770")
 	}
-	if isZero(tmp.UsageThreshold) {
+	if tmp.UsageThreshold == nil {
 		tmp.UsageThreshold = pulumi.Float64(107374182400.0)
 	}
 	return &tmp
@@ -3990,12 +5163,17 @@ func (o VolumeGroupVolumePropertiesOutput) DefaultUserQuotaInKiBs() pulumi.Float
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *float64 { return v.DefaultUserQuotaInKiBs }).(pulumi.Float64PtrOutput)
 }
 
+// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+func (o VolumeGroupVolumePropertiesOutput) DeleteBaseSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.DeleteBaseSnapshot }).(pulumi.BoolPtrOutput)
+}
+
 // Flag indicating whether subvolume operations are enabled on the volume
 func (o VolumeGroupVolumePropertiesOutput) EnableSubvolumes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.EnableSubvolumes }).(pulumi.StringPtrOutput)
 }
 
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'
+// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
 func (o VolumeGroupVolumePropertiesOutput) EncryptionKeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.EncryptionKeySource }).(pulumi.StringPtrOutput)
 }
@@ -4010,6 +5188,11 @@ func (o VolumeGroupVolumePropertiesOutput) IsDefaultQuotaEnabled() pulumi.BoolPt
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.IsDefaultQuotaEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether volume is a Large Volume or Regular Volume.
+func (o VolumeGroupVolumePropertiesOutput) IsLargeVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.IsLargeVolume }).(pulumi.BoolPtrOutput)
+}
+
 // Restoring
 func (o VolumeGroupVolumePropertiesOutput) IsRestoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.IsRestoring }).(pulumi.BoolPtrOutput)
@@ -4018,6 +5201,11 @@ func (o VolumeGroupVolumePropertiesOutput) IsRestoring() pulumi.BoolPtrOutput {
 // Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
 func (o VolumeGroupVolumePropertiesOutput) KerberosEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.KerberosEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o VolumeGroupVolumePropertiesOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.KeyVaultPrivateEndpointResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether LDAP is enabled or not for a given NFS volume.
@@ -4060,6 +5248,11 @@ func (o VolumeGroupVolumePropertiesOutput) ServiceLevel() pulumi.StringPtrOutput
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
+// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o VolumeGroupVolumePropertiesOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.SmbAccessBasedEnumeration }).(pulumi.StringPtrOutput)
+}
+
 // Enables continuously available share property for smb volume. Only applicable for SMB volume
 func (o VolumeGroupVolumePropertiesOutput) SmbContinuouslyAvailable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.SmbContinuouslyAvailable }).(pulumi.BoolPtrOutput)
@@ -4068,6 +5261,11 @@ func (o VolumeGroupVolumePropertiesOutput) SmbContinuouslyAvailable() pulumi.Boo
 // Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 func (o VolumeGroupVolumePropertiesOutput) SmbEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.SmbEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o VolumeGroupVolumePropertiesOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.SmbNonBrowsable }).(pulumi.StringPtrOutput)
 }
 
 // If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
@@ -4099,7 +5297,7 @@ func (o VolumeGroupVolumePropertiesOutput) UnixPermissions() pulumi.StringPtrOut
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o VolumeGroupVolumePropertiesOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }
@@ -4154,26 +5352,38 @@ type VolumeGroupVolumePropertiesResponse struct {
 	CreationToken string `pulumi:"creationToken"`
 	// DataProtection type volumes include an object containing details of the replication
 	DataProtection *VolumePropertiesResponseDataProtection `pulumi:"dataProtection"`
+	// Data store resource unique identifier
+	DataStoreResourceId []string `pulumi:"dataStoreResourceId"`
 	// Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
 	DefaultGroupQuotaInKiBs *float64 `pulumi:"defaultGroupQuotaInKiBs"`
 	// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
 	DefaultUserQuotaInKiBs *float64 `pulumi:"defaultUserQuotaInKiBs"`
+	// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+	DeleteBaseSnapshot *bool `pulumi:"deleteBaseSnapshot"`
 	// Flag indicating whether subvolume operations are enabled on the volume
 	EnableSubvolumes *string `pulumi:"enableSubvolumes"`
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'
+	// Specifies if the volume is encrypted or not. Only available on volumes created or updated after 2022-01-01.
+	Encrypted bool `pulumi:"encrypted"`
+	// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
 	EncryptionKeySource *string `pulumi:"encryptionKeySource"`
 	// Set of export policy rules
 	ExportPolicy *VolumePropertiesResponseExportPolicy `pulumi:"exportPolicy"`
+	// Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
+	FileAccessLogs string `pulumi:"fileAccessLogs"`
 	// Unique FileSystem Identifier.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Specifies if default quota is enabled for the volume.
 	IsDefaultQuotaEnabled *bool `pulumi:"isDefaultQuotaEnabled"`
+	// Specifies whether volume is a Large Volume or Regular Volume.
+	IsLargeVolume *bool `pulumi:"isLargeVolume"`
 	// Restoring
 	IsRestoring *bool `pulumi:"isRestoring"`
 	// Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
 	KerberosEnabled *bool `pulumi:"kerberosEnabled"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId *string `pulumi:"keyVaultPrivateEndpointResourceId"`
 	// Specifies whether LDAP is enabled or not for a given NFS volume.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Maximum number of files allowed. Needs a service request in order to be changed. Only allowed to be changed if volume quota is more than 4TiB.
@@ -4190,6 +5400,8 @@ type VolumeGroupVolumePropertiesResponse struct {
 	PlacementRules []PlacementKeyValuePairsResponse `pulumi:"placementRules"`
 	// Set of protocol types, default NFSv3, CIFS for SMB protocol
 	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// The availability zone where the volume is provisioned. This refers to the logical availability zone where the volume resides.
+	ProvisionedAvailabilityZone string `pulumi:"provisionedAvailabilityZone"`
 	// Azure lifecycle management
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Proximity placement group associated with the volume
@@ -4198,10 +5410,14 @@ type VolumeGroupVolumePropertiesResponse struct {
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel *string `pulumi:"serviceLevel"`
+	// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbAccessBasedEnumeration *string `pulumi:"smbAccessBasedEnumeration"`
 	// Enables continuously available share property for smb volume. Only applicable for SMB volume
 	SmbContinuouslyAvailable *bool `pulumi:"smbContinuouslyAvailable"`
 	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 	SmbEncryption *bool `pulumi:"smbEncryption"`
+	// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -4219,7 +5435,7 @@ type VolumeGroupVolumePropertiesResponse struct {
 	Type string `pulumi:"type"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume Group Name
 	VolumeGroupName string `pulumi:"volumeGroupName"`
@@ -4235,59 +5451,70 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		avsDataStore_ := "Disabled"
 		tmp.AvsDataStore = &avsDataStore_
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		defaultGroupQuotaInKiBs_ := 0.0
 		tmp.DefaultGroupQuotaInKiBs = &defaultGroupQuotaInKiBs_
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		defaultUserQuotaInKiBs_ := 0.0
 		tmp.DefaultUserQuotaInKiBs = &defaultUserQuotaInKiBs_
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		enableSubvolumes_ := "Disabled"
 		tmp.EnableSubvolumes = &enableSubvolumes_
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.EncryptionKeySource == nil {
+		encryptionKeySource_ := "Microsoft.NetApp"
+		tmp.EncryptionKeySource = &encryptionKeySource_
+	}
+	if isZero(tmp.FileAccessLogs) {
+		tmp.FileAccessLogs = "Disabled"
+	}
+	if tmp.IsDefaultQuotaEnabled == nil {
 		isDefaultQuotaEnabled_ := false
 		tmp.IsDefaultQuotaEnabled = &isDefaultQuotaEnabled_
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.IsLargeVolume == nil {
+		isLargeVolume_ := false
+		tmp.IsLargeVolume = &isLargeVolume_
+	}
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
@@ -4359,6 +5586,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) DataProtection() VolumeProper
 	}).(VolumePropertiesResponseDataProtectionPtrOutput)
 }
 
+// Data store resource unique identifier
+func (o VolumeGroupVolumePropertiesResponseOutput) DataStoreResourceId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) []string { return v.DataStoreResourceId }).(pulumi.StringArrayOutput)
+}
+
 // Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
 func (o VolumeGroupVolumePropertiesResponseOutput) DefaultGroupQuotaInKiBs() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *float64 { return v.DefaultGroupQuotaInKiBs }).(pulumi.Float64PtrOutput)
@@ -4369,12 +5601,22 @@ func (o VolumeGroupVolumePropertiesResponseOutput) DefaultUserQuotaInKiBs() pulu
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *float64 { return v.DefaultUserQuotaInKiBs }).(pulumi.Float64PtrOutput)
 }
 
+// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+func (o VolumeGroupVolumePropertiesResponseOutput) DeleteBaseSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.DeleteBaseSnapshot }).(pulumi.BoolPtrOutput)
+}
+
 // Flag indicating whether subvolume operations are enabled on the volume
 func (o VolumeGroupVolumePropertiesResponseOutput) EnableSubvolumes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.EnableSubvolumes }).(pulumi.StringPtrOutput)
 }
 
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'
+// Specifies if the volume is encrypted or not. Only available on volumes created or updated after 2022-01-01.
+func (o VolumeGroupVolumePropertiesResponseOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
 func (o VolumeGroupVolumePropertiesResponseOutput) EncryptionKeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.EncryptionKeySource }).(pulumi.StringPtrOutput)
 }
@@ -4384,6 +5626,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ExportPolicy() VolumeProperti
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *VolumePropertiesResponseExportPolicy {
 		return v.ExportPolicy
 	}).(VolumePropertiesResponseExportPolicyPtrOutput)
+}
+
+// Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
+func (o VolumeGroupVolumePropertiesResponseOutput) FileAccessLogs() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) string { return v.FileAccessLogs }).(pulumi.StringOutput)
 }
 
 // Unique FileSystem Identifier.
@@ -4401,6 +5648,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) IsDefaultQuotaEnabled() pulum
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.IsDefaultQuotaEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether volume is a Large Volume or Regular Volume.
+func (o VolumeGroupVolumePropertiesResponseOutput) IsLargeVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.IsLargeVolume }).(pulumi.BoolPtrOutput)
+}
+
 // Restoring
 func (o VolumeGroupVolumePropertiesResponseOutput) IsRestoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.IsRestoring }).(pulumi.BoolPtrOutput)
@@ -4409,6 +5661,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) IsRestoring() pulumi.BoolPtrO
 // Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
 func (o VolumeGroupVolumePropertiesResponseOutput) KerberosEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.KerberosEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o VolumeGroupVolumePropertiesResponseOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.KeyVaultPrivateEndpointResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether LDAP is enabled or not for a given NFS volume.
@@ -4451,6 +5708,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ProtocolTypes() pulumi.String
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
 }
 
+// The availability zone where the volume is provisioned. This refers to the logical availability zone where the volume resides.
+func (o VolumeGroupVolumePropertiesResponseOutput) ProvisionedAvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) string { return v.ProvisionedAvailabilityZone }).(pulumi.StringOutput)
+}
+
 // Azure lifecycle management
 func (o VolumeGroupVolumePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -4471,6 +5733,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ServiceLevel() pulumi.StringP
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
+// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o VolumeGroupVolumePropertiesResponseOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SmbAccessBasedEnumeration }).(pulumi.StringPtrOutput)
+}
+
 // Enables continuously available share property for smb volume. Only applicable for SMB volume
 func (o VolumeGroupVolumePropertiesResponseOutput) SmbContinuouslyAvailable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.SmbContinuouslyAvailable }).(pulumi.BoolPtrOutput)
@@ -4479,6 +5746,11 @@ func (o VolumeGroupVolumePropertiesResponseOutput) SmbContinuouslyAvailable() pu
 // Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 func (o VolumeGroupVolumePropertiesResponseOutput) SmbEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.SmbEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o VolumeGroupVolumePropertiesResponseOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SmbNonBrowsable }).(pulumi.StringPtrOutput)
 }
 
 // If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (default to true).
@@ -4525,7 +5797,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) UnixPermissions() pulumi.Stri
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o VolumeGroupVolumePropertiesResponseOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }
@@ -4573,6 +5845,8 @@ type VolumePropertiesDataProtection struct {
 	Replication *ReplicationObject `pulumi:"replication"`
 	// Snapshot properties.
 	Snapshot *VolumeSnapshotProperties `pulumi:"snapshot"`
+	// VolumeRelocation properties
+	VolumeRelocation *VolumeRelocationProperties `pulumi:"volumeRelocation"`
 }
 
 // VolumePropertiesDataProtectionInput is an input type that accepts VolumePropertiesDataProtectionArgs and VolumePropertiesDataProtectionOutput values.
@@ -4594,6 +5868,8 @@ type VolumePropertiesDataProtectionArgs struct {
 	Replication ReplicationObjectPtrInput `pulumi:"replication"`
 	// Snapshot properties.
 	Snapshot VolumeSnapshotPropertiesPtrInput `pulumi:"snapshot"`
+	// VolumeRelocation properties
+	VolumeRelocation VolumeRelocationPropertiesPtrInput `pulumi:"volumeRelocation"`
 }
 
 func (VolumePropertiesDataProtectionArgs) ElementType() reflect.Type {
@@ -4689,6 +5965,11 @@ func (o VolumePropertiesDataProtectionOutput) Snapshot() VolumeSnapshotPropertie
 	return o.ApplyT(func(v VolumePropertiesDataProtection) *VolumeSnapshotProperties { return v.Snapshot }).(VolumeSnapshotPropertiesPtrOutput)
 }
 
+// VolumeRelocation properties
+func (o VolumePropertiesDataProtectionOutput) VolumeRelocation() VolumeRelocationPropertiesPtrOutput {
+	return o.ApplyT(func(v VolumePropertiesDataProtection) *VolumeRelocationProperties { return v.VolumeRelocation }).(VolumeRelocationPropertiesPtrOutput)
+}
+
 type VolumePropertiesDataProtectionPtrOutput struct{ *pulumi.OutputState }
 
 func (VolumePropertiesDataProtectionPtrOutput) ElementType() reflect.Type {
@@ -4741,6 +6022,16 @@ func (o VolumePropertiesDataProtectionPtrOutput) Snapshot() VolumeSnapshotProper
 		}
 		return v.Snapshot
 	}).(VolumeSnapshotPropertiesPtrOutput)
+}
+
+// VolumeRelocation properties
+func (o VolumePropertiesDataProtectionPtrOutput) VolumeRelocation() VolumeRelocationPropertiesPtrOutput {
+	return o.ApplyT(func(v *VolumePropertiesDataProtection) *VolumeRelocationProperties {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeRelocation
+	}).(VolumeRelocationPropertiesPtrOutput)
 }
 
 // Set of export policy rules
@@ -4891,6 +6182,8 @@ type VolumePropertiesResponseDataProtection struct {
 	Replication *ReplicationObjectResponse `pulumi:"replication"`
 	// Snapshot properties.
 	Snapshot *VolumeSnapshotPropertiesResponse `pulumi:"snapshot"`
+	// VolumeRelocation properties
+	VolumeRelocation *VolumeRelocationPropertiesResponse `pulumi:"volumeRelocation"`
 }
 
 // DataProtection type volumes include an object containing details of the replication
@@ -4921,6 +6214,13 @@ func (o VolumePropertiesResponseDataProtectionOutput) Replication() ReplicationO
 // Snapshot properties.
 func (o VolumePropertiesResponseDataProtectionOutput) Snapshot() VolumeSnapshotPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v VolumePropertiesResponseDataProtection) *VolumeSnapshotPropertiesResponse { return v.Snapshot }).(VolumeSnapshotPropertiesResponsePtrOutput)
+}
+
+// VolumeRelocation properties
+func (o VolumePropertiesResponseDataProtectionOutput) VolumeRelocation() VolumeRelocationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VolumePropertiesResponseDataProtection) *VolumeRelocationPropertiesResponse {
+		return v.VolumeRelocation
+	}).(VolumeRelocationPropertiesResponsePtrOutput)
 }
 
 type VolumePropertiesResponseDataProtectionPtrOutput struct{ *pulumi.OutputState }
@@ -4975,6 +6275,16 @@ func (o VolumePropertiesResponseDataProtectionPtrOutput) Snapshot() VolumeSnapsh
 		}
 		return v.Snapshot
 	}).(VolumeSnapshotPropertiesResponsePtrOutput)
+}
+
+// VolumeRelocation properties
+func (o VolumePropertiesResponseDataProtectionPtrOutput) VolumeRelocation() VolumeRelocationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *VolumePropertiesResponseDataProtection) *VolumeRelocationPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeRelocation
+	}).(VolumeRelocationPropertiesResponsePtrOutput)
 }
 
 // Set of export policy rules
@@ -5035,6 +6345,223 @@ func (o VolumePropertiesResponseExportPolicyPtrOutput) Rules() ExportPolicyRuleR
 		}
 		return v.Rules
 	}).(ExportPolicyRuleResponseArrayOutput)
+}
+
+// Volume relocation properties
+type VolumeRelocationProperties struct {
+	// Has relocation been requested for this volume
+	RelocationRequested *bool `pulumi:"relocationRequested"`
+}
+
+// VolumeRelocationPropertiesInput is an input type that accepts VolumeRelocationPropertiesArgs and VolumeRelocationPropertiesOutput values.
+// You can construct a concrete instance of `VolumeRelocationPropertiesInput` via:
+//
+//	VolumeRelocationPropertiesArgs{...}
+type VolumeRelocationPropertiesInput interface {
+	pulumi.Input
+
+	ToVolumeRelocationPropertiesOutput() VolumeRelocationPropertiesOutput
+	ToVolumeRelocationPropertiesOutputWithContext(context.Context) VolumeRelocationPropertiesOutput
+}
+
+// Volume relocation properties
+type VolumeRelocationPropertiesArgs struct {
+	// Has relocation been requested for this volume
+	RelocationRequested pulumi.BoolPtrInput `pulumi:"relocationRequested"`
+}
+
+func (VolumeRelocationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeRelocationProperties)(nil)).Elem()
+}
+
+func (i VolumeRelocationPropertiesArgs) ToVolumeRelocationPropertiesOutput() VolumeRelocationPropertiesOutput {
+	return i.ToVolumeRelocationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VolumeRelocationPropertiesArgs) ToVolumeRelocationPropertiesOutputWithContext(ctx context.Context) VolumeRelocationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeRelocationPropertiesOutput)
+}
+
+func (i VolumeRelocationPropertiesArgs) ToVolumeRelocationPropertiesPtrOutput() VolumeRelocationPropertiesPtrOutput {
+	return i.ToVolumeRelocationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeRelocationPropertiesArgs) ToVolumeRelocationPropertiesPtrOutputWithContext(ctx context.Context) VolumeRelocationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeRelocationPropertiesOutput).ToVolumeRelocationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VolumeRelocationPropertiesPtrInput is an input type that accepts VolumeRelocationPropertiesArgs, VolumeRelocationPropertiesPtr and VolumeRelocationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VolumeRelocationPropertiesPtrInput` via:
+//
+//	        VolumeRelocationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeRelocationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVolumeRelocationPropertiesPtrOutput() VolumeRelocationPropertiesPtrOutput
+	ToVolumeRelocationPropertiesPtrOutputWithContext(context.Context) VolumeRelocationPropertiesPtrOutput
+}
+
+type volumeRelocationPropertiesPtrType VolumeRelocationPropertiesArgs
+
+func VolumeRelocationPropertiesPtr(v *VolumeRelocationPropertiesArgs) VolumeRelocationPropertiesPtrInput {
+	return (*volumeRelocationPropertiesPtrType)(v)
+}
+
+func (*volumeRelocationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeRelocationProperties)(nil)).Elem()
+}
+
+func (i *volumeRelocationPropertiesPtrType) ToVolumeRelocationPropertiesPtrOutput() VolumeRelocationPropertiesPtrOutput {
+	return i.ToVolumeRelocationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeRelocationPropertiesPtrType) ToVolumeRelocationPropertiesPtrOutputWithContext(ctx context.Context) VolumeRelocationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeRelocationPropertiesPtrOutput)
+}
+
+// Volume relocation properties
+type VolumeRelocationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VolumeRelocationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeRelocationProperties)(nil)).Elem()
+}
+
+func (o VolumeRelocationPropertiesOutput) ToVolumeRelocationPropertiesOutput() VolumeRelocationPropertiesOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesOutput) ToVolumeRelocationPropertiesOutputWithContext(ctx context.Context) VolumeRelocationPropertiesOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesOutput) ToVolumeRelocationPropertiesPtrOutput() VolumeRelocationPropertiesPtrOutput {
+	return o.ToVolumeRelocationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeRelocationPropertiesOutput) ToVolumeRelocationPropertiesPtrOutputWithContext(ctx context.Context) VolumeRelocationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeRelocationProperties) *VolumeRelocationProperties {
+		return &v
+	}).(VolumeRelocationPropertiesPtrOutput)
+}
+
+// Has relocation been requested for this volume
+func (o VolumeRelocationPropertiesOutput) RelocationRequested() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeRelocationProperties) *bool { return v.RelocationRequested }).(pulumi.BoolPtrOutput)
+}
+
+type VolumeRelocationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeRelocationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeRelocationProperties)(nil)).Elem()
+}
+
+func (o VolumeRelocationPropertiesPtrOutput) ToVolumeRelocationPropertiesPtrOutput() VolumeRelocationPropertiesPtrOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesPtrOutput) ToVolumeRelocationPropertiesPtrOutputWithContext(ctx context.Context) VolumeRelocationPropertiesPtrOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesPtrOutput) Elem() VolumeRelocationPropertiesOutput {
+	return o.ApplyT(func(v *VolumeRelocationProperties) VolumeRelocationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeRelocationProperties
+		return ret
+	}).(VolumeRelocationPropertiesOutput)
+}
+
+// Has relocation been requested for this volume
+func (o VolumeRelocationPropertiesPtrOutput) RelocationRequested() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeRelocationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RelocationRequested
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Volume relocation properties
+type VolumeRelocationPropertiesResponse struct {
+	// Has relocation finished and is ready to be cleaned up
+	ReadyToBeFinalized bool `pulumi:"readyToBeFinalized"`
+	// Has relocation been requested for this volume
+	RelocationRequested *bool `pulumi:"relocationRequested"`
+}
+
+// Volume relocation properties
+type VolumeRelocationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeRelocationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeRelocationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VolumeRelocationPropertiesResponseOutput) ToVolumeRelocationPropertiesResponseOutput() VolumeRelocationPropertiesResponseOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesResponseOutput) ToVolumeRelocationPropertiesResponseOutputWithContext(ctx context.Context) VolumeRelocationPropertiesResponseOutput {
+	return o
+}
+
+// Has relocation finished and is ready to be cleaned up
+func (o VolumeRelocationPropertiesResponseOutput) ReadyToBeFinalized() pulumi.BoolOutput {
+	return o.ApplyT(func(v VolumeRelocationPropertiesResponse) bool { return v.ReadyToBeFinalized }).(pulumi.BoolOutput)
+}
+
+// Has relocation been requested for this volume
+func (o VolumeRelocationPropertiesResponseOutput) RelocationRequested() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeRelocationPropertiesResponse) *bool { return v.RelocationRequested }).(pulumi.BoolPtrOutput)
+}
+
+type VolumeRelocationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeRelocationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeRelocationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VolumeRelocationPropertiesResponsePtrOutput) ToVolumeRelocationPropertiesResponsePtrOutput() VolumeRelocationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesResponsePtrOutput) ToVolumeRelocationPropertiesResponsePtrOutputWithContext(ctx context.Context) VolumeRelocationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VolumeRelocationPropertiesResponsePtrOutput) Elem() VolumeRelocationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VolumeRelocationPropertiesResponse) VolumeRelocationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeRelocationPropertiesResponse
+		return ret
+	}).(VolumeRelocationPropertiesResponseOutput)
+}
+
+// Has relocation finished and is ready to be cleaned up
+func (o VolumeRelocationPropertiesResponsePtrOutput) ReadyToBeFinalized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeRelocationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadyToBeFinalized
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Has relocation been requested for this volume
+func (o VolumeRelocationPropertiesResponsePtrOutput) RelocationRequested() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeRelocationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RelocationRequested
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Volume Snapshot Properties
@@ -5594,6 +7121,10 @@ func init() {
 	pulumi.RegisterOutputType(DailySchedulePtrOutput{})
 	pulumi.RegisterOutputType(DailyScheduleResponseOutput{})
 	pulumi.RegisterOutputType(DailyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionIdentityOutput{})
+	pulumi.RegisterOutputType(EncryptionIdentityPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionIdentityResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseOutput{})
@@ -5602,6 +7133,18 @@ func init() {
 	pulumi.RegisterOutputType(HourlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleResponseOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(KeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(LdapSearchScopeOptOutput{})
+	pulumi.RegisterOutputType(LdapSearchScopeOptPtrOutput{})
+	pulumi.RegisterOutputType(LdapSearchScopeOptResponseOutput{})
+	pulumi.RegisterOutputType(LdapSearchScopeOptResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonthlyScheduleOutput{})
 	pulumi.RegisterOutputType(MonthlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(MonthlyScheduleResponseOutput{})
@@ -5619,12 +7162,12 @@ func init() {
 	pulumi.RegisterOutputType(ReplicationResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VolumeBackupPropertiesOutput{})
 	pulumi.RegisterOutputType(VolumeBackupPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeBackupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VolumeBackupPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(VolumeBackupsOutput{})
-	pulumi.RegisterOutputType(VolumeBackupsArrayOutput{})
 	pulumi.RegisterOutputType(VolumeBackupsResponseOutput{})
 	pulumi.RegisterOutputType(VolumeBackupsResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeGroupMetaDataOutput{})
@@ -5643,6 +7186,10 @@ func init() {
 	pulumi.RegisterOutputType(VolumePropertiesResponseDataProtectionPtrOutput{})
 	pulumi.RegisterOutputType(VolumePropertiesResponseExportPolicyOutput{})
 	pulumi.RegisterOutputType(VolumePropertiesResponseExportPolicyPtrOutput{})
+	pulumi.RegisterOutputType(VolumeRelocationPropertiesOutput{})
+	pulumi.RegisterOutputType(VolumeRelocationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VolumeRelocationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VolumeRelocationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPropertiesOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPropertiesResponseOutput{})

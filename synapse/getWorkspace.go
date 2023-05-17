@@ -11,20 +11,20 @@ import (
 )
 
 // Gets a workspace
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:synapse:getWorkspace", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupWorkspaceArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -34,12 +34,14 @@ type LookupWorkspaceResult struct {
 	AdlaResourceId string `pulumi:"adlaResourceId"`
 	// Connectivity endpoints
 	ConnectivityEndpoints map[string]string `pulumi:"connectivityEndpoints"`
+	// Initial workspace AAD admin properties for a CSP subscription
+	CspWorkspaceAdminProperties *CspWorkspaceAdminPropertiesResponse `pulumi:"cspWorkspaceAdminProperties"`
 	// Workspace default data lake storage account details
 	DefaultDataLakeStorage *DataLakeStorageAccountDetailsResponse `pulumi:"defaultDataLakeStorage"`
 	// The encryption details of the workspace
 	Encryption *EncryptionDetailsResponse `pulumi:"encryption"`
 	// Workspace level configs and feature flags
-	ExtraProperties map[string]interface{} `pulumi:"extraProperties"`
+	ExtraProperties interface{} `pulumi:"extraProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Identity of the workspace
@@ -62,12 +64,16 @@ type LookupWorkspaceResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Purview Configuration
 	PurviewConfiguration *PurviewConfigurationResponse `pulumi:"purviewConfiguration"`
+	// Workspace settings
+	Settings map[string]interface{} `pulumi:"settings"`
 	// Login for workspace SQL active directory administrator
 	SqlAdministratorLogin *string `pulumi:"sqlAdministratorLogin"`
 	// SQL administrator login password
 	SqlAdministratorLoginPassword *string `pulumi:"sqlAdministratorLoginPassword"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Is trustedServiceBypassEnabled for the workspace
+	TrustedServiceBypassEnabled *bool `pulumi:"trustedServiceBypassEnabled"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Virtual Network profile
@@ -76,6 +82,23 @@ type LookupWorkspaceResult struct {
 	WorkspaceRepositoryConfiguration *WorkspaceRepositoryConfigurationResponse `pulumi:"workspaceRepositoryConfiguration"`
 	// The workspace unique identifier
 	WorkspaceUID string `pulumi:"workspaceUID"`
+}
+
+// Defaults sets the appropriate defaults for LookupWorkspaceResult
+func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.TrustedServiceBypassEnabled == nil {
+		trustedServiceBypassEnabled_ := false
+		tmp.TrustedServiceBypassEnabled = &trustedServiceBypassEnabled_
+	}
+	return &tmp
 }
 
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
@@ -94,7 +117,7 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 type LookupWorkspaceOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -127,6 +150,13 @@ func (o LookupWorkspaceResultOutput) ConnectivityEndpoints() pulumi.StringMapOut
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.ConnectivityEndpoints }).(pulumi.StringMapOutput)
 }
 
+// Initial workspace AAD admin properties for a CSP subscription
+func (o LookupWorkspaceResultOutput) CspWorkspaceAdminProperties() CspWorkspaceAdminPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *CspWorkspaceAdminPropertiesResponse {
+		return v.CspWorkspaceAdminProperties
+	}).(CspWorkspaceAdminPropertiesResponsePtrOutput)
+}
+
 // Workspace default data lake storage account details
 func (o LookupWorkspaceResultOutput) DefaultDataLakeStorage() DataLakeStorageAccountDetailsResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *DataLakeStorageAccountDetailsResponse { return v.DefaultDataLakeStorage }).(DataLakeStorageAccountDetailsResponsePtrOutput)
@@ -138,8 +168,8 @@ func (o LookupWorkspaceResultOutput) Encryption() EncryptionDetailsResponsePtrOu
 }
 
 // Workspace level configs and feature flags
-func (o LookupWorkspaceResultOutput) ExtraProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) map[string]interface{} { return v.ExtraProperties }).(pulumi.MapOutput)
+func (o LookupWorkspaceResultOutput) ExtraProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) interface{} { return v.ExtraProperties }).(pulumi.AnyOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -199,6 +229,11 @@ func (o LookupWorkspaceResultOutput) PurviewConfiguration() PurviewConfiguration
 	return o.ApplyT(func(v LookupWorkspaceResult) *PurviewConfigurationResponse { return v.PurviewConfiguration }).(PurviewConfigurationResponsePtrOutput)
 }
 
+// Workspace settings
+func (o LookupWorkspaceResultOutput) Settings() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) map[string]interface{} { return v.Settings }).(pulumi.MapOutput)
+}
+
 // Login for workspace SQL active directory administrator
 func (o LookupWorkspaceResultOutput) SqlAdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.SqlAdministratorLogin }).(pulumi.StringPtrOutput)
@@ -212,6 +247,11 @@ func (o LookupWorkspaceResultOutput) SqlAdministratorLoginPassword() pulumi.Stri
 // Resource tags.
 func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Is trustedServiceBypassEnabled for the workspace
+func (o LookupWorkspaceResultOutput) TrustedServiceBypassEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *bool { return v.TrustedServiceBypassEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

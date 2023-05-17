@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:azurestack:CustomerSubscription":
 		r = &CustomerSubscription{}
-	case "azure-native:azurestack:LinkedSubscription":
-		r = &LinkedSubscription{}
 	case "azure-native:azurestack:Registration":
 		r = &Registration{}
 	default:

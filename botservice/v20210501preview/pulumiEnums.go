@@ -3,26 +3,6 @@
 
 package v20210501preview
 
-// Required. Gets or sets the Kind of the resource.
-type Kind string
-
-const (
-	KindSdk      = Kind("sdk")
-	KindDesigner = Kind("designer")
-	KindBot      = Kind("bot")
-	KindFunction = Kind("function")
-	KindAzurebot = Kind("azurebot")
-)
-
-// Microsoft App Type for the bot
-type MsaAppType string
-
-const (
-	MsaAppTypeUserAssignedMSI = MsaAppType("UserAssignedMSI")
-	MsaAppTypeSingleTenant    = MsaAppType("SingleTenant")
-	MsaAppTypeMultiTenant     = MsaAppType("MultiTenant")
-)
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -30,22 +10,6 @@ const (
 	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
 	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
 	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
-)
-
-// Whether the bot is in an isolated network
-type PublicNetworkAccess string
-
-const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
-)
-
-// The sku name
-type SkuName string
-
-const (
-	SkuNameF0 = SkuName("F0")
-	SkuNameS1 = SkuName("S1")
 )
 
 func init() {

@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "azure-native:communication:EmailService":
 		r = &EmailService{}
+	case "azure-native:communication:SenderUsername":
+		r = &SenderUsername{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

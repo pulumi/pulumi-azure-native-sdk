@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The key resource.
-// API Version: 2019-09-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2019-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Key struct {
 	pulumi.CustomResourceState
 
@@ -33,6 +34,10 @@ type Key struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the key vault resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Key release policy in response. It will be used for both output and input. Omitted if empty
+	ReleasePolicy KeyReleasePolicyResponsePtrOutput `pulumi:"releasePolicy"`
+	// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+	RotationPolicy RotationPolicyResponsePtrOutput `pulumi:"rotationPolicy"`
 	// Tags assigned to the key vault resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type of the key vault resource.
@@ -55,6 +60,7 @@ func NewKey(ctx *pulumi.Context,
 	if args.VaultName == nil {
 		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
+	args.Properties = args.Properties.ToKeyPropertiesOutput().ApplyT(func(v KeyProperties) KeyProperties { return *v.Defaults() }).(KeyPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:keyvault/v20190901:Key"),
@@ -120,7 +126,7 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
-	// The name of the key to be created.
+	// The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	KeyName *string `pulumi:"keyName"`
 	// The properties of the key to be created.
 	Properties KeyProperties `pulumi:"properties"`
@@ -134,7 +140,7 @@ type keyArgs struct {
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
-	// The name of the key to be created.
+	// The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	KeyName pulumi.StringPtrInput
 	// The properties of the key to be created.
 	Properties KeyPropertiesInput
@@ -225,6 +231,16 @@ func (o KeyOutput) Location() pulumi.StringOutput {
 // Name of the key vault resource.
 func (o KeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Key release policy in response. It will be used for both output and input. Omitted if empty
+func (o KeyOutput) ReleasePolicy() KeyReleasePolicyResponsePtrOutput {
+	return o.ApplyT(func(v *Key) KeyReleasePolicyResponsePtrOutput { return v.ReleasePolicy }).(KeyReleasePolicyResponsePtrOutput)
+}
+
+// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+func (o KeyOutput) RotationPolicy() RotationPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *Key) RotationPolicyResponsePtrOutput { return v.RotationPolicy }).(RotationPolicyResponsePtrOutput)
 }
 
 // Tags assigned to the key vault resource.

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of Fhir Service
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
+// Previous API Version: 2022-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type FhirService struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +33,10 @@ type FhirService struct {
 	ExportConfiguration FhirServiceExportConfigurationResponsePtrOutput `pulumi:"exportConfiguration"`
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity ServiceManagedIdentityResponseIdentityPtrOutput `pulumi:"identity"`
+	// Implementation Guides configuration.
+	ImplementationGuidesConfiguration ImplementationGuidesConfigurationResponsePtrOutput `pulumi:"implementationGuidesConfiguration"`
+	// Fhir Service import configuration.
+	ImportConfiguration FhirServiceImportConfigurationResponsePtrOutput `pulumi:"importConfiguration"`
 	// The kind of the service.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The resource location.
@@ -89,6 +94,9 @@ func NewFhirService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:FhirService"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:FhirService"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FhirService
@@ -137,6 +145,10 @@ type fhirServiceArgs struct {
 	FhirServiceName *string `pulumi:"fhirServiceName"`
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity *ServiceManagedIdentityIdentity `pulumi:"identity"`
+	// Implementation Guides configuration.
+	ImplementationGuidesConfiguration *ImplementationGuidesConfiguration `pulumi:"implementationGuidesConfiguration"`
+	// Fhir Service import configuration.
+	ImportConfiguration *FhirServiceImportConfiguration `pulumi:"importConfiguration"`
 	// The kind of the service.
 	Kind *string `pulumi:"kind"`
 	// The resource location.
@@ -167,6 +179,10 @@ type FhirServiceArgs struct {
 	FhirServiceName pulumi.StringPtrInput
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity ServiceManagedIdentityIdentityPtrInput
+	// Implementation Guides configuration.
+	ImplementationGuidesConfiguration ImplementationGuidesConfigurationPtrInput
+	// Fhir Service import configuration.
+	ImportConfiguration FhirServiceImportConfigurationPtrInput
 	// The kind of the service.
 	Kind pulumi.StringPtrInput
 	// The resource location.
@@ -258,6 +274,18 @@ func (o FhirServiceOutput) ExportConfiguration() FhirServiceExportConfigurationR
 // Setting indicating whether the service has a managed identity associated with it.
 func (o FhirServiceOutput) Identity() ServiceManagedIdentityResponseIdentityPtrOutput {
 	return o.ApplyT(func(v *FhirService) ServiceManagedIdentityResponseIdentityPtrOutput { return v.Identity }).(ServiceManagedIdentityResponseIdentityPtrOutput)
+}
+
+// Implementation Guides configuration.
+func (o FhirServiceOutput) ImplementationGuidesConfiguration() ImplementationGuidesConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *FhirService) ImplementationGuidesConfigurationResponsePtrOutput {
+		return v.ImplementationGuidesConfiguration
+	}).(ImplementationGuidesConfigurationResponsePtrOutput)
+}
+
+// Fhir Service import configuration.
+func (o FhirServiceOutput) ImportConfiguration() FhirServiceImportConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *FhirService) FhirServiceImportConfigurationResponsePtrOutput { return v.ImportConfiguration }).(FhirServiceImportConfigurationResponsePtrOutput)
 }
 
 // The kind of the service.

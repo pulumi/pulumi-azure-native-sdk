@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +39,15 @@ func NewApiWiki(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiWiki"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiWiki"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ApiWiki
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:ApiWiki", name, args, &resource, opts...)
 	if err != nil {

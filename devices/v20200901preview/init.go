@@ -21,12 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:devices/v20200901preview:DpsCertificate":
-		r = &DpsCertificate{}
 	case "azure-native:devices/v20200901preview:IotDpsResource":
 		r = &IotDpsResource{}
-	case "azure-native:devices/v20200901preview:IotDpsResourcePrivateEndpointConnection":
-		r = &IotDpsResourcePrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

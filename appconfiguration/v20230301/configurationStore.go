@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,13 +62,13 @@ func NewConfigurationStore(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnablePurgeProtection) {
+	if args.EnablePurgeProtection == nil {
 		args.EnablePurgeProtection = pulumi.BoolPtr(false)
 	}
-	if isZero(args.SoftDeleteRetentionInDays) {
+	if args.SoftDeleteRetentionInDays == nil {
 		args.SoftDeleteRetentionInDays = pulumi.IntPtr(7)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

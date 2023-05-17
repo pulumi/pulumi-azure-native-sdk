@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A DDoS protection plan in a resource group.
-//
-// Deprecated: Version 2018-02-01 will be removed in v2 of the provider.
 type DdosProtectionPlan struct {
 	pulumi.CustomResourceState
 
@@ -138,6 +136,9 @@ func NewDdosProtectionPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:DdosProtectionPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:DdosProtectionPlan"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +55,9 @@ func NewGallery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Gallery"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Gallery"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -23,22 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:sql/v20180601preview:DatabaseSecurityAlertPolicy":
 		r = &DatabaseSecurityAlertPolicy{}
-	case "azure-native:sql/v20180601preview:InstancePool":
-		r = &InstancePool{}
-	case "azure-native:sql/v20180601preview:ManagedDatabase":
-		r = &ManagedDatabase{}
-	case "azure-native:sql/v20180601preview:ManagedDatabaseSensitivityLabel":
-		r = &ManagedDatabaseSensitivityLabel{}
-	case "azure-native:sql/v20180601preview:ManagedInstance":
-		r = &ManagedInstance{}
-	case "azure-native:sql/v20180601preview:ManagedInstanceVulnerabilityAssessment":
-		r = &ManagedInstanceVulnerabilityAssessment{}
-	case "azure-native:sql/v20180601preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:sql/v20180601preview:ServerAzureADAdministrator":
-		r = &ServerAzureADAdministrator{}
-	case "azure-native:sql/v20180601preview:ServerVulnerabilityAssessment":
-		r = &ServerVulnerabilityAssessment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

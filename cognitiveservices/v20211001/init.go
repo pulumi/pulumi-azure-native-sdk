@@ -21,14 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:cognitiveservices/v20211001:Account":
-		r = &Account{}
 	case "azure-native:cognitiveservices/v20211001:CommitmentPlan":
 		r = &CommitmentPlan{}
 	case "azure-native:cognitiveservices/v20211001:Deployment":
 		r = &Deployment{}
-	case "azure-native:cognitiveservices/v20211001:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

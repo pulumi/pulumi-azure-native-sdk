@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capacity pool resource
-//
-// Deprecated: Version 2017-08-15 will be removed in v2 of the provider.
 type Pool struct {
 	pulumi.CustomResourceState
 
@@ -48,10 +46,10 @@ func NewPool(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ServiceLevel) {
+	if args.ServiceLevel == nil {
 		args.ServiceLevel = pulumi.StringPtr("Premium")
 	}
-	if isZero(args.Size) {
+	if args.Size == nil {
 		args.Size = pulumi.Float64Ptr(4398046511104.0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

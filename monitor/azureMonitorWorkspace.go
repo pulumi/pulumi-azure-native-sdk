@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Monitor Workspace definition
 // API Version: 2021-06-03-preview.
+// Previous API Version: 2021-06-03-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 

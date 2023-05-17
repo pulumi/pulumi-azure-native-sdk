@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // User details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type User struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +27,7 @@ type User struct {
 	Identities UserIdentityContractResponseArrayOutput `pulumi:"identities"`
 	// Last name.
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional note about a user set by the administrator.
 	Note pulumi.StringPtrOutput `pulumi:"note"`
@@ -34,7 +35,7 @@ type User struct {
 	RegistrationDate pulumi.StringPtrOutput `pulumi:"registrationDate"`
 	// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
 	State pulumi.StringPtrOutput `pulumi:"state"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -60,7 +61,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	if isZero(args.State) {
+	if args.State == nil {
 		args.State = pulumi.StringPtr("active")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -111,6 +112,9 @@ func NewUser(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:User"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:User"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -164,7 +168,7 @@ type userArgs struct {
 	Notify *bool `pulumi:"notify"`
 	// User Password. If no value is provided, a default password is generated.
 	Password *string `pulumi:"password"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -194,7 +198,7 @@ type UserArgs struct {
 	Notify pulumi.BoolPtrInput
 	// User Password. If no value is provided, a default password is generated.
 	Password pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -266,7 +270,7 @@ func (o UserOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o UserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -286,7 +290,7 @@ func (o UserOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o UserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

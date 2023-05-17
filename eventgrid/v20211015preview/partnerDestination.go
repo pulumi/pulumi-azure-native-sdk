@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,12 +52,6 @@ func NewPartnerDestination(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:eventgrid:PartnerDestination"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource PartnerDestination
 	err := ctx.RegisterResource("azure-native:eventgrid/v20211015preview:PartnerDestination", name, args, &resource, opts...)
 	if err != nil {

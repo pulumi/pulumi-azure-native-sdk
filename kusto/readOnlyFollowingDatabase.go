@@ -7,17 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a read only following database.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ReadOnlyFollowingDatabase struct {
 	pulumi.CustomResourceState
 
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName pulumi.StringOutput `pulumi:"attachedDatabaseConfigurationName"`
+	// The origin of the following setup.
+	DatabaseShareOrigin pulumi.StringOutput `pulumi:"databaseShareOrigin"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod pulumi.StringPtrOutput `pulumi:"hotCachePeriod"`
 	// Kind of the database
@@ -29,6 +32,8 @@ type ReadOnlyFollowingDatabase struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The original database name, before databaseNameOverride or databaseNamePrefix where applied.
+	OriginalDatabaseName pulumi.StringOutput `pulumi:"originalDatabaseName"`
 	// The principals modification kind of the database
 	PrincipalsModificationKind pulumi.StringOutput `pulumi:"principalsModificationKind"`
 	// The provisioned state of the resource.
@@ -37,6 +42,8 @@ type ReadOnlyFollowingDatabase struct {
 	SoftDeletePeriod pulumi.StringOutput `pulumi:"softDeletePeriod"`
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponseOutput `pulumi:"statistics"`
+	// Table level sharing specifications
+	TableLevelSharingProperties TableLevelSharingPropertiesResponseOutput `pulumi:"tableLevelSharingProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -138,6 +145,8 @@ func (ReadOnlyFollowingDatabaseState) ElementType() reflect.Type {
 }
 
 type readOnlyFollowingDatabaseArgs struct {
+	// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
+	CallerRole *string `pulumi:"callerRole"`
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
@@ -155,6 +164,8 @@ type readOnlyFollowingDatabaseArgs struct {
 
 // The set of arguments for constructing a ReadOnlyFollowingDatabase resource.
 type ReadOnlyFollowingDatabaseArgs struct {
+	// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
+	CallerRole pulumi.StringPtrInput
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput
 	// The name of the database in the Kusto cluster.
@@ -212,6 +223,11 @@ func (o ReadOnlyFollowingDatabaseOutput) AttachedDatabaseConfigurationName() pul
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
 }
 
+// The origin of the following setup.
+func (o ReadOnlyFollowingDatabaseOutput) DatabaseShareOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.DatabaseShareOrigin }).(pulumi.StringOutput)
+}
+
 // The time the data should be kept in cache for fast queries in TimeSpan.
 func (o ReadOnlyFollowingDatabaseOutput) HotCachePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringPtrOutput { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
@@ -238,6 +254,11 @@ func (o ReadOnlyFollowingDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The original database name, before databaseNameOverride or databaseNamePrefix where applied.
+func (o ReadOnlyFollowingDatabaseOutput) OriginalDatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.OriginalDatabaseName }).(pulumi.StringOutput)
+}
+
 // The principals modification kind of the database
 func (o ReadOnlyFollowingDatabaseOutput) PrincipalsModificationKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.PrincipalsModificationKind }).(pulumi.StringOutput)
@@ -256,6 +277,13 @@ func (o ReadOnlyFollowingDatabaseOutput) SoftDeletePeriod() pulumi.StringOutput 
 // The statistics of the database.
 func (o ReadOnlyFollowingDatabaseOutput) Statistics() DatabaseStatisticsResponseOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) DatabaseStatisticsResponseOutput { return v.Statistics }).(DatabaseStatisticsResponseOutput)
+}
+
+// Table level sharing specifications
+func (o ReadOnlyFollowingDatabaseOutput) TableLevelSharingProperties() TableLevelSharingPropertiesResponseOutput {
+	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) TableLevelSharingPropertiesResponseOutput {
+		return v.TableLevelSharingProperties
+	}).(TableLevelSharingPropertiesResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

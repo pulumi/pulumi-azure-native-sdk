@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,9 +72,6 @@ func NewDefaultUserRule(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("Default")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network:DefaultUserRule"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20210201preview:DefaultUserRule"),
 		},

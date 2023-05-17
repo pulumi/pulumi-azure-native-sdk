@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve protection policy with specified name within a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupWebApplicationFirewallPolicy(ctx *pulumi.Context, args *LookupWebApplicationFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebApplicationFirewallPolicyResult, error) {
 	var rv LookupWebApplicationFirewallPolicyResult
 	err := ctx.Invoke("azure-native:network:getWebApplicationFirewallPolicy", args, &rv, opts...)

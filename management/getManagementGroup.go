@@ -12,7 +12,7 @@ import (
 
 // Get the details of the management group.
 //
-// API Version: 2020-05-01.
+// API Version: 2021-04-01.
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {
 	var rv LookupManagementGroupResult
 	err := ctx.Invoke("azure-native:management:getManagementGroup", args, &rv, opts...)
@@ -23,7 +23,7 @@ func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs,
 }
 
 type LookupManagementGroupArgs struct {
-	// The $expand=children query string parameter allows clients to request inclusion of children in the response payload.  $expand=path includes the path from the root group to the current group.
+	// The $expand=children query string parameter allows clients to request inclusion of children in the response payload.  $expand=path includes the path from the root group to the current group.  $expand=ancestors includes the ancestor Ids of the current group.
 	Expand *string `pulumi:"expand"`
 	// A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
 	Filter *string `pulumi:"filter"`
@@ -65,7 +65,7 @@ func LookupManagementGroupOutput(ctx *pulumi.Context, args LookupManagementGroup
 }
 
 type LookupManagementGroupOutputArgs struct {
-	// The $expand=children query string parameter allows clients to request inclusion of children in the response payload.  $expand=path includes the path from the root group to the current group.
+	// The $expand=children query string parameter allows clients to request inclusion of children in the response payload.  $expand=path includes the path from the root group to the current group.  $expand=ancestors includes the ancestor Ids of the current group.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
 	Filter pulumi.StringPtrInput `pulumi:"filter"`

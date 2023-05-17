@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an existing custom domain within an endpoint.
-//
-// Deprecated: Version 2016-10-02 will be removed in v2 of the provider.
 func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	var rv LookupCustomDomainResult
 	err := ctx.Invoke("azure-native:cdn/v20161002:getCustomDomain", args, &rv, opts...)

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A lab.
 // API Version: 2018-09-15.
+// Previous API Version: 2018-09-15. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Lab struct {
 	pulumi.CustomResourceState
 
@@ -78,7 +79,7 @@ func NewLab(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.LabStorageType) {
+	if args.LabStorageType == nil {
 		args.LabStorageType = pulumi.StringPtr("Premium")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

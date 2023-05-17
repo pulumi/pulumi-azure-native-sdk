@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A schedule.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 type VirtualMachineSchedule struct {
 	pulumi.CustomResourceState
 

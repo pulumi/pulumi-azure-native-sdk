@@ -7,25 +7,30 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Restore Point details.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type RestorePoint struct {
 	pulumi.CustomResourceState
 
-	// Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints for more details.
-	ConsistencyMode pulumi.StringOutput `pulumi:"consistencyMode"`
+	// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+	ConsistencyMode pulumi.StringPtrOutput `pulumi:"consistencyMode"`
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks ApiEntityReferenceResponseArrayOutput `pulumi:"excludeDisks"`
+	// The restore point instance view.
+	InstanceView RestorePointInstanceViewResponseOutput `pulumi:"instanceView"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets the provisioning state of the restore point.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Gets the details of the VM captured at the time of the restore point creation.
 	SourceMetadata RestorePointSourceMetadataResponseOutput `pulumi:"sourceMetadata"`
+	// Resource Id of the source restore point from which a copy needs to be created.
+	SourceRestorePoint ApiEntityReferenceResponsePtrOutput `pulumi:"sourceRestorePoint"`
 	// Gets the creation time of the restore point.
 	TimeCreated pulumi.StringPtrOutput `pulumi:"timeCreated"`
 	// Resource type
@@ -104,6 +109,8 @@ func (RestorePointState) ElementType() reflect.Type {
 }
 
 type restorePointArgs struct {
+	// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+	ConsistencyMode *string `pulumi:"consistencyMode"`
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks []ApiEntityReference `pulumi:"excludeDisks"`
 	// The name of the resource group.
@@ -112,12 +119,16 @@ type restorePointArgs struct {
 	RestorePointCollectionName string `pulumi:"restorePointCollectionName"`
 	// The name of the restore point.
 	RestorePointName *string `pulumi:"restorePointName"`
+	// Resource Id of the source restore point from which a copy needs to be created.
+	SourceRestorePoint *ApiEntityReference `pulumi:"sourceRestorePoint"`
 	// Gets the creation time of the restore point.
 	TimeCreated *string `pulumi:"timeCreated"`
 }
 
 // The set of arguments for constructing a RestorePoint resource.
 type RestorePointArgs struct {
+	// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+	ConsistencyMode pulumi.StringPtrInput
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks ApiEntityReferenceArrayInput
 	// The name of the resource group.
@@ -126,6 +137,8 @@ type RestorePointArgs struct {
 	RestorePointCollectionName pulumi.StringInput
 	// The name of the restore point.
 	RestorePointName pulumi.StringPtrInput
+	// Resource Id of the source restore point from which a copy needs to be created.
+	SourceRestorePoint ApiEntityReferencePtrInput
 	// Gets the creation time of the restore point.
 	TimeCreated pulumi.StringPtrInput
 }
@@ -167,14 +180,19 @@ func (o RestorePointOutput) ToRestorePointOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints for more details.
-func (o RestorePointOutput) ConsistencyMode() pulumi.StringOutput {
-	return o.ApplyT(func(v *RestorePoint) pulumi.StringOutput { return v.ConsistencyMode }).(pulumi.StringOutput)
+// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+func (o RestorePointOutput) ConsistencyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePoint) pulumi.StringPtrOutput { return v.ConsistencyMode }).(pulumi.StringPtrOutput)
 }
 
 // List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 func (o RestorePointOutput) ExcludeDisks() ApiEntityReferenceResponseArrayOutput {
 	return o.ApplyT(func(v *RestorePoint) ApiEntityReferenceResponseArrayOutput { return v.ExcludeDisks }).(ApiEntityReferenceResponseArrayOutput)
+}
+
+// The restore point instance view.
+func (o RestorePointOutput) InstanceView() RestorePointInstanceViewResponseOutput {
+	return o.ApplyT(func(v *RestorePoint) RestorePointInstanceViewResponseOutput { return v.InstanceView }).(RestorePointInstanceViewResponseOutput)
 }
 
 // Resource name
@@ -190,6 +208,11 @@ func (o RestorePointOutput) ProvisioningState() pulumi.StringOutput {
 // Gets the details of the VM captured at the time of the restore point creation.
 func (o RestorePointOutput) SourceMetadata() RestorePointSourceMetadataResponseOutput {
 	return o.ApplyT(func(v *RestorePoint) RestorePointSourceMetadataResponseOutput { return v.SourceMetadata }).(RestorePointSourceMetadataResponseOutput)
+}
+
+// Resource Id of the source restore point from which a copy needs to be created.
+func (o RestorePointOutput) SourceRestorePoint() ApiEntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *RestorePoint) ApiEntityReferenceResponsePtrOutput { return v.SourceRestorePoint }).(ApiEntityReferenceResponsePtrOutput)
 }
 
 // Gets the creation time of the restore point.

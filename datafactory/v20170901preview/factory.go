@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Factory resource type.
-//
-// Deprecated: Version 2017-09-01-preview will be removed in v2 of the provider.
 type Factory struct {
 	pulumi.CustomResourceState
 

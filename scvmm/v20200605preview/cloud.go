@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +59,9 @@ func NewCloud(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm:Cloud"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:Cloud"),
 		},
 	})
 	opts = append(opts, aliases)

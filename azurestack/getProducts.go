@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a list of products.
-// API Version: 2017-06-01.
+// API Version: 2022-06-01.
 func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.InvokeOption) (*GetProductsResult, error) {
 	var rv GetProductsResult
 	err := ctx.Invoke("azure-native:azurestack:getProducts", args, &rv, opts...)

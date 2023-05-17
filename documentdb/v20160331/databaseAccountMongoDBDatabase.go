@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB MongoDB database.
-//
-// Deprecated: Version 2016-03-31 will be removed in v2 of the provider.
 type DatabaseAccountMongoDBDatabase struct {
 	pulumi.CustomResourceState
 
@@ -132,7 +130,16 @@ func NewDatabaseAccountMongoDBDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:DatabaseAccountMongoDBDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:DatabaseAccountMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:DatabaseAccountMongoDBDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccountMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccountMongoDBDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

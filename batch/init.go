@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationPackage{}
 	case "azure-native:batch:BatchAccount":
 		r = &BatchAccount{}
-	case "azure-native:batch:Certificate":
-		r = &Certificate{}
 	case "azure-native:batch:Pool":
 		r = &Pool{}
 	default:

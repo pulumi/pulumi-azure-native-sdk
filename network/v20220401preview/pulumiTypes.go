@@ -520,133 +520,6 @@ func (o ConfigurationGroupResponseArrayOutput) Index(i pulumi.IntInput) Configur
 }
 
 // Connectivity group item.
-type ConnectivityGroupItem struct {
-	// Group connectivity type.
-	GroupConnectivity string `pulumi:"groupConnectivity"`
-	// Flag if global is supported.
-	IsGlobal *string `pulumi:"isGlobal"`
-	// Network group Id.
-	NetworkGroupId string `pulumi:"networkGroupId"`
-	// Flag if need to use hub gateway.
-	UseHubGateway *string `pulumi:"useHubGateway"`
-}
-
-// ConnectivityGroupItemInput is an input type that accepts ConnectivityGroupItemArgs and ConnectivityGroupItemOutput values.
-// You can construct a concrete instance of `ConnectivityGroupItemInput` via:
-//
-//	ConnectivityGroupItemArgs{...}
-type ConnectivityGroupItemInput interface {
-	pulumi.Input
-
-	ToConnectivityGroupItemOutput() ConnectivityGroupItemOutput
-	ToConnectivityGroupItemOutputWithContext(context.Context) ConnectivityGroupItemOutput
-}
-
-// Connectivity group item.
-type ConnectivityGroupItemArgs struct {
-	// Group connectivity type.
-	GroupConnectivity pulumi.StringInput `pulumi:"groupConnectivity"`
-	// Flag if global is supported.
-	IsGlobal pulumi.StringPtrInput `pulumi:"isGlobal"`
-	// Network group Id.
-	NetworkGroupId pulumi.StringInput `pulumi:"networkGroupId"`
-	// Flag if need to use hub gateway.
-	UseHubGateway pulumi.StringPtrInput `pulumi:"useHubGateway"`
-}
-
-func (ConnectivityGroupItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectivityGroupItem)(nil)).Elem()
-}
-
-func (i ConnectivityGroupItemArgs) ToConnectivityGroupItemOutput() ConnectivityGroupItemOutput {
-	return i.ToConnectivityGroupItemOutputWithContext(context.Background())
-}
-
-func (i ConnectivityGroupItemArgs) ToConnectivityGroupItemOutputWithContext(ctx context.Context) ConnectivityGroupItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityGroupItemOutput)
-}
-
-// ConnectivityGroupItemArrayInput is an input type that accepts ConnectivityGroupItemArray and ConnectivityGroupItemArrayOutput values.
-// You can construct a concrete instance of `ConnectivityGroupItemArrayInput` via:
-//
-//	ConnectivityGroupItemArray{ ConnectivityGroupItemArgs{...} }
-type ConnectivityGroupItemArrayInput interface {
-	pulumi.Input
-
-	ToConnectivityGroupItemArrayOutput() ConnectivityGroupItemArrayOutput
-	ToConnectivityGroupItemArrayOutputWithContext(context.Context) ConnectivityGroupItemArrayOutput
-}
-
-type ConnectivityGroupItemArray []ConnectivityGroupItemInput
-
-func (ConnectivityGroupItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectivityGroupItem)(nil)).Elem()
-}
-
-func (i ConnectivityGroupItemArray) ToConnectivityGroupItemArrayOutput() ConnectivityGroupItemArrayOutput {
-	return i.ToConnectivityGroupItemArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectivityGroupItemArray) ToConnectivityGroupItemArrayOutputWithContext(ctx context.Context) ConnectivityGroupItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityGroupItemArrayOutput)
-}
-
-// Connectivity group item.
-type ConnectivityGroupItemOutput struct{ *pulumi.OutputState }
-
-func (ConnectivityGroupItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectivityGroupItem)(nil)).Elem()
-}
-
-func (o ConnectivityGroupItemOutput) ToConnectivityGroupItemOutput() ConnectivityGroupItemOutput {
-	return o
-}
-
-func (o ConnectivityGroupItemOutput) ToConnectivityGroupItemOutputWithContext(ctx context.Context) ConnectivityGroupItemOutput {
-	return o
-}
-
-// Group connectivity type.
-func (o ConnectivityGroupItemOutput) GroupConnectivity() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectivityGroupItem) string { return v.GroupConnectivity }).(pulumi.StringOutput)
-}
-
-// Flag if global is supported.
-func (o ConnectivityGroupItemOutput) IsGlobal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectivityGroupItem) *string { return v.IsGlobal }).(pulumi.StringPtrOutput)
-}
-
-// Network group Id.
-func (o ConnectivityGroupItemOutput) NetworkGroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectivityGroupItem) string { return v.NetworkGroupId }).(pulumi.StringOutput)
-}
-
-// Flag if need to use hub gateway.
-func (o ConnectivityGroupItemOutput) UseHubGateway() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectivityGroupItem) *string { return v.UseHubGateway }).(pulumi.StringPtrOutput)
-}
-
-type ConnectivityGroupItemArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectivityGroupItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectivityGroupItem)(nil)).Elem()
-}
-
-func (o ConnectivityGroupItemArrayOutput) ToConnectivityGroupItemArrayOutput() ConnectivityGroupItemArrayOutput {
-	return o
-}
-
-func (o ConnectivityGroupItemArrayOutput) ToConnectivityGroupItemArrayOutputWithContext(ctx context.Context) ConnectivityGroupItemArrayOutput {
-	return o
-}
-
-func (o ConnectivityGroupItemArrayOutput) Index(i pulumi.IntInput) ConnectivityGroupItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectivityGroupItem {
-		return vs[0].([]ConnectivityGroupItem)[vs[1].(int)]
-	}).(ConnectivityGroupItemOutput)
-}
-
-// Connectivity group item.
 type ConnectivityGroupItemResponse struct {
 	// Group connectivity type.
 	GroupConnectivity string `pulumi:"groupConnectivity"`
@@ -711,66 +584,6 @@ func (o ConnectivityGroupItemResponseArrayOutput) Index(i pulumi.IntInput) Conne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectivityGroupItemResponse {
 		return vs[0].([]ConnectivityGroupItemResponse)[vs[1].(int)]
 	}).(ConnectivityGroupItemResponseOutput)
-}
-
-// Cross tenant scopes.
-type CrossTenantScopesResponse struct {
-	// List of management groups.
-	ManagementGroups []string `pulumi:"managementGroups"`
-	// List of subscriptions.
-	Subscriptions []string `pulumi:"subscriptions"`
-	// Tenant ID.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// Cross tenant scopes.
-type CrossTenantScopesResponseOutput struct{ *pulumi.OutputState }
-
-func (CrossTenantScopesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CrossTenantScopesResponse)(nil)).Elem()
-}
-
-func (o CrossTenantScopesResponseOutput) ToCrossTenantScopesResponseOutput() CrossTenantScopesResponseOutput {
-	return o
-}
-
-func (o CrossTenantScopesResponseOutput) ToCrossTenantScopesResponseOutputWithContext(ctx context.Context) CrossTenantScopesResponseOutput {
-	return o
-}
-
-// List of management groups.
-func (o CrossTenantScopesResponseOutput) ManagementGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CrossTenantScopesResponse) []string { return v.ManagementGroups }).(pulumi.StringArrayOutput)
-}
-
-// List of subscriptions.
-func (o CrossTenantScopesResponseOutput) Subscriptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CrossTenantScopesResponse) []string { return v.Subscriptions }).(pulumi.StringArrayOutput)
-}
-
-// Tenant ID.
-func (o CrossTenantScopesResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v CrossTenantScopesResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-type CrossTenantScopesResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CrossTenantScopesResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CrossTenantScopesResponse)(nil)).Elem()
-}
-
-func (o CrossTenantScopesResponseArrayOutput) ToCrossTenantScopesResponseArrayOutput() CrossTenantScopesResponseArrayOutput {
-	return o
-}
-
-func (o CrossTenantScopesResponseArrayOutput) ToCrossTenantScopesResponseArrayOutputWithContext(ctx context.Context) CrossTenantScopesResponseArrayOutput {
-	return o
-}
-
-func (o CrossTenantScopesResponseArrayOutput) Index(i pulumi.IntInput) CrossTenantScopesResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrossTenantScopesResponse {
-		return vs[0].([]CrossTenantScopesResponse)[vs[1].(int)]
-	}).(CrossTenantScopesResponseOutput)
 }
 
 // Class containing DNS settings in a Traffic Manager profile.
@@ -2011,115 +1824,6 @@ func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOu
 }
 
 // Hub Item.
-type Hub struct {
-	// Resource Id.
-	ResourceId *string `pulumi:"resourceId"`
-	// Resource Type.
-	ResourceType *string `pulumi:"resourceType"`
-}
-
-// HubInput is an input type that accepts HubArgs and HubOutput values.
-// You can construct a concrete instance of `HubInput` via:
-//
-//	HubArgs{...}
-type HubInput interface {
-	pulumi.Input
-
-	ToHubOutput() HubOutput
-	ToHubOutputWithContext(context.Context) HubOutput
-}
-
-// Hub Item.
-type HubArgs struct {
-	// Resource Id.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Resource Type.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
-}
-
-func (HubArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hub)(nil)).Elem()
-}
-
-func (i HubArgs) ToHubOutput() HubOutput {
-	return i.ToHubOutputWithContext(context.Background())
-}
-
-func (i HubArgs) ToHubOutputWithContext(ctx context.Context) HubOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubOutput)
-}
-
-// HubArrayInput is an input type that accepts HubArray and HubArrayOutput values.
-// You can construct a concrete instance of `HubArrayInput` via:
-//
-//	HubArray{ HubArgs{...} }
-type HubArrayInput interface {
-	pulumi.Input
-
-	ToHubArrayOutput() HubArrayOutput
-	ToHubArrayOutputWithContext(context.Context) HubArrayOutput
-}
-
-type HubArray []HubInput
-
-func (HubArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hub)(nil)).Elem()
-}
-
-func (i HubArray) ToHubArrayOutput() HubArrayOutput {
-	return i.ToHubArrayOutputWithContext(context.Background())
-}
-
-func (i HubArray) ToHubArrayOutputWithContext(ctx context.Context) HubArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubArrayOutput)
-}
-
-// Hub Item.
-type HubOutput struct{ *pulumi.OutputState }
-
-func (HubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hub)(nil)).Elem()
-}
-
-func (o HubOutput) ToHubOutput() HubOutput {
-	return o
-}
-
-func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
-	return o
-}
-
-// Resource Id.
-func (o HubOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Hub) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Resource Type.
-func (o HubOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Hub) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
-}
-
-type HubArrayOutput struct{ *pulumi.OutputState }
-
-func (HubArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hub)(nil)).Elem()
-}
-
-func (o HubArrayOutput) ToHubArrayOutput() HubArrayOutput {
-	return o
-}
-
-func (o HubArrayOutput) ToHubArrayOutputWithContext(ctx context.Context) HubArrayOutput {
-	return o
-}
-
-func (o HubArrayOutput) Index(i pulumi.IntInput) HubOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hub {
-		return vs[0].([]Hub)[vs[1].(int)]
-	}).(HubOutput)
-}
-
-// Hub Item.
 type HubResponse struct {
 	// Resource Id.
 	ResourceId *string `pulumi:"resourceId"`
@@ -3067,112 +2771,6 @@ func (o NetworkManagerDeploymentStatusResponseArrayOutput) Index(i pulumi.IntInp
 	}).(NetworkManagerDeploymentStatusResponseOutput)
 }
 
-// Scope of Network Manager.
-type NetworkManagerPropertiesNetworkManagerScopes struct {
-	// List of management groups.
-	ManagementGroups []string `pulumi:"managementGroups"`
-	// List of subscriptions.
-	Subscriptions []string `pulumi:"subscriptions"`
-}
-
-// NetworkManagerPropertiesNetworkManagerScopesInput is an input type that accepts NetworkManagerPropertiesNetworkManagerScopesArgs and NetworkManagerPropertiesNetworkManagerScopesOutput values.
-// You can construct a concrete instance of `NetworkManagerPropertiesNetworkManagerScopesInput` via:
-//
-//	NetworkManagerPropertiesNetworkManagerScopesArgs{...}
-type NetworkManagerPropertiesNetworkManagerScopesInput interface {
-	pulumi.Input
-
-	ToNetworkManagerPropertiesNetworkManagerScopesOutput() NetworkManagerPropertiesNetworkManagerScopesOutput
-	ToNetworkManagerPropertiesNetworkManagerScopesOutputWithContext(context.Context) NetworkManagerPropertiesNetworkManagerScopesOutput
-}
-
-// Scope of Network Manager.
-type NetworkManagerPropertiesNetworkManagerScopesArgs struct {
-	// List of management groups.
-	ManagementGroups pulumi.StringArrayInput `pulumi:"managementGroups"`
-	// List of subscriptions.
-	Subscriptions pulumi.StringArrayInput `pulumi:"subscriptions"`
-}
-
-func (NetworkManagerPropertiesNetworkManagerScopesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkManagerPropertiesNetworkManagerScopes)(nil)).Elem()
-}
-
-func (i NetworkManagerPropertiesNetworkManagerScopesArgs) ToNetworkManagerPropertiesNetworkManagerScopesOutput() NetworkManagerPropertiesNetworkManagerScopesOutput {
-	return i.ToNetworkManagerPropertiesNetworkManagerScopesOutputWithContext(context.Background())
-}
-
-func (i NetworkManagerPropertiesNetworkManagerScopesArgs) ToNetworkManagerPropertiesNetworkManagerScopesOutputWithContext(ctx context.Context) NetworkManagerPropertiesNetworkManagerScopesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkManagerPropertiesNetworkManagerScopesOutput)
-}
-
-// Scope of Network Manager.
-type NetworkManagerPropertiesNetworkManagerScopesOutput struct{ *pulumi.OutputState }
-
-func (NetworkManagerPropertiesNetworkManagerScopesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkManagerPropertiesNetworkManagerScopes)(nil)).Elem()
-}
-
-func (o NetworkManagerPropertiesNetworkManagerScopesOutput) ToNetworkManagerPropertiesNetworkManagerScopesOutput() NetworkManagerPropertiesNetworkManagerScopesOutput {
-	return o
-}
-
-func (o NetworkManagerPropertiesNetworkManagerScopesOutput) ToNetworkManagerPropertiesNetworkManagerScopesOutputWithContext(ctx context.Context) NetworkManagerPropertiesNetworkManagerScopesOutput {
-	return o
-}
-
-// List of management groups.
-func (o NetworkManagerPropertiesNetworkManagerScopesOutput) ManagementGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkManagerPropertiesNetworkManagerScopes) []string { return v.ManagementGroups }).(pulumi.StringArrayOutput)
-}
-
-// List of subscriptions.
-func (o NetworkManagerPropertiesNetworkManagerScopesOutput) Subscriptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkManagerPropertiesNetworkManagerScopes) []string { return v.Subscriptions }).(pulumi.StringArrayOutput)
-}
-
-// Scope of Network Manager.
-type NetworkManagerPropertiesResponseNetworkManagerScopes struct {
-	// List of cross tenant scopes.
-	CrossTenantScopes []CrossTenantScopesResponse `pulumi:"crossTenantScopes"`
-	// List of management groups.
-	ManagementGroups []string `pulumi:"managementGroups"`
-	// List of subscriptions.
-	Subscriptions []string `pulumi:"subscriptions"`
-}
-
-// Scope of Network Manager.
-type NetworkManagerPropertiesResponseNetworkManagerScopesOutput struct{ *pulumi.OutputState }
-
-func (NetworkManagerPropertiesResponseNetworkManagerScopesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkManagerPropertiesResponseNetworkManagerScopes)(nil)).Elem()
-}
-
-func (o NetworkManagerPropertiesResponseNetworkManagerScopesOutput) ToNetworkManagerPropertiesResponseNetworkManagerScopesOutput() NetworkManagerPropertiesResponseNetworkManagerScopesOutput {
-	return o
-}
-
-func (o NetworkManagerPropertiesResponseNetworkManagerScopesOutput) ToNetworkManagerPropertiesResponseNetworkManagerScopesOutputWithContext(ctx context.Context) NetworkManagerPropertiesResponseNetworkManagerScopesOutput {
-	return o
-}
-
-// List of cross tenant scopes.
-func (o NetworkManagerPropertiesResponseNetworkManagerScopesOutput) CrossTenantScopes() CrossTenantScopesResponseArrayOutput {
-	return o.ApplyT(func(v NetworkManagerPropertiesResponseNetworkManagerScopes) []CrossTenantScopesResponse {
-		return v.CrossTenantScopes
-	}).(CrossTenantScopesResponseArrayOutput)
-}
-
-// List of management groups.
-func (o NetworkManagerPropertiesResponseNetworkManagerScopesOutput) ManagementGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkManagerPropertiesResponseNetworkManagerScopes) []string { return v.ManagementGroups }).(pulumi.StringArrayOutput)
-}
-
-// List of subscriptions.
-func (o NetworkManagerPropertiesResponseNetworkManagerScopesOutput) Subscriptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkManagerPropertiesResponseNetworkManagerScopes) []string { return v.Subscriptions }).(pulumi.StringArrayOutput)
-}
-
 // Network manager security group item.
 type NetworkManagerSecurityGroupItem struct {
 	// Network manager group Id.
@@ -3389,12 +2987,8 @@ func init() {
 	pulumi.RegisterOutputType(AddressPrefixItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigurationGroupResponseOutput{})
 	pulumi.RegisterOutputType(ConfigurationGroupResponseArrayOutput{})
-	pulumi.RegisterOutputType(ConnectivityGroupItemOutput{})
-	pulumi.RegisterOutputType(ConnectivityGroupItemArrayOutput{})
 	pulumi.RegisterOutputType(ConnectivityGroupItemResponseOutput{})
 	pulumi.RegisterOutputType(ConnectivityGroupItemResponseArrayOutput{})
-	pulumi.RegisterOutputType(CrossTenantScopesResponseOutput{})
-	pulumi.RegisterOutputType(CrossTenantScopesResponseArrayOutput{})
 	pulumi.RegisterOutputType(DnsConfigOutput{})
 	pulumi.RegisterOutputType(DnsConfigPtrOutput{})
 	pulumi.RegisterOutputType(DnsConfigResponseOutput{})
@@ -3415,8 +3009,6 @@ func init() {
 	pulumi.RegisterOutputType(EndpointPropertiesSubnetsArrayOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
-	pulumi.RegisterOutputType(HubOutput{})
-	pulumi.RegisterOutputType(HubArrayOutput{})
 	pulumi.RegisterOutputType(HubResponseOutput{})
 	pulumi.RegisterOutputType(HubResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitorConfigOutput{})
@@ -3433,8 +3025,6 @@ func init() {
 	pulumi.RegisterOutputType(MonitorConfigResponseExpectedStatusCodeRangesArrayOutput{})
 	pulumi.RegisterOutputType(NetworkManagerDeploymentStatusResponseOutput{})
 	pulumi.RegisterOutputType(NetworkManagerDeploymentStatusResponseArrayOutput{})
-	pulumi.RegisterOutputType(NetworkManagerPropertiesNetworkManagerScopesOutput{})
-	pulumi.RegisterOutputType(NetworkManagerPropertiesResponseNetworkManagerScopesOutput{})
 	pulumi.RegisterOutputType(NetworkManagerSecurityGroupItemOutput{})
 	pulumi.RegisterOutputType(NetworkManagerSecurityGroupItemArrayOutput{})
 	pulumi.RegisterOutputType(NetworkManagerSecurityGroupItemResponseOutput{})

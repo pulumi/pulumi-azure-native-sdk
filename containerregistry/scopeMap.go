@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a scope map for a container registry.
-// API Version: 2020-11-01-preview.
+// API Version: 2022-12-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ScopeMap struct {
 	pulumi.CustomResourceState
 
@@ -117,7 +118,7 @@ type scopeMapArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the scope map.
 	ScopeMapName *string `pulumi:"scopeMapName"`
@@ -133,7 +134,7 @@ type ScopeMapArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the scope map.
 	ScopeMapName pulumi.StringPtrInput

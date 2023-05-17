@@ -13,6 +13,14 @@ const (
 	CreatedByTypeKey             = CreatedByType("Key")
 )
 
+// Name of the service.
+type ServiceName string
+
+const (
+	ServiceNameSSH = ServiceName("SSH")
+	ServiceNameWAC = ServiceName("WAC")
+)
+
 // The type of endpoint.
 type Type string
 

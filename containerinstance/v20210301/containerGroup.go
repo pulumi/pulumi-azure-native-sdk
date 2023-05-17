@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +122,9 @@ func NewContainerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20221001preview:ContainerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20230201preview:ContainerGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20230501:ContainerGroup"),

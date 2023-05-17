@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
-//
-// Deprecated: Version 2020-10-01 will be removed in v2 of the provider.
 type Cache struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +100,9 @@ func NewCache(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:Cache"),
 		},
 	})
 	opts = append(opts, aliases)

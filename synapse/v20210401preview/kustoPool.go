@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,7 +63,10 @@ func NewKustoPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:kustoPool"),
+			Type: pulumi.String("azure-native:synapse/v20210401preview:kustoPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:KustoPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:kustoPool"),
@@ -71,7 +74,7 @@ func NewKustoPool(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource KustoPool
-	err := ctx.RegisterResource("azure-native:synapse/v20210401preview:kustoPool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:synapse/v20210401preview:KustoPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +86,7 @@ func NewKustoPool(ctx *pulumi.Context,
 func GetKustoPool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KustoPoolState, opts ...pulumi.ResourceOption) (*KustoPool, error) {
 	var resource KustoPool
-	err := ctx.ReadResource("azure-native:synapse/v20210401preview:kustoPool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:synapse/v20210401preview:KustoPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

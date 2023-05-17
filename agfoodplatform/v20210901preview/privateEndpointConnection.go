@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +47,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:agfoodplatform:PrivateEndpointConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource PrivateEndpointConnection
 	err := ctx.RegisterResource("azure-native:agfoodplatform/v20210901preview:PrivateEndpointConnection", name, args, &resource, opts...)
 	if err != nil {

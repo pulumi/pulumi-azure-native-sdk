@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:authorization/v20150701:RoleAssignment":
 		r = &RoleAssignment{}
-	case "azure-native:authorization/v20150701:RoleDefinition":
-		r = &RoleDefinition{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

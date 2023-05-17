@@ -25,10 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationGateway{}
 	case "azure-native:network/v20150501preview:ExpressRouteCircuit":
 		r = &ExpressRouteCircuit{}
-	case "azure-native:network/v20150501preview:ExpressRouteCircuitAuthorization":
-		r = &ExpressRouteCircuitAuthorization{}
-	case "azure-native:network/v20150501preview:ExpressRouteCircuitPeering":
-		r = &ExpressRouteCircuitPeering{}
 	case "azure-native:network/v20150501preview:LoadBalancer":
 		r = &LoadBalancer{}
 	case "azure-native:network/v20150501preview:NetworkInterface":
@@ -37,12 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkSecurityGroup{}
 	case "azure-native:network/v20150501preview:PublicIpAddress":
 		r = &PublicIpAddress{}
-	case "azure-native:network/v20150501preview:Route":
-		r = &Route{}
 	case "azure-native:network/v20150501preview:RouteTable":
 		r = &RouteTable{}
-	case "azure-native:network/v20150501preview:SecurityRule":
-		r = &SecurityRule{}
 	case "azure-native:network/v20150501preview:Subnet":
 		r = &Subnet{}
 	case "azure-native:network/v20150501preview:VirtualNetwork":

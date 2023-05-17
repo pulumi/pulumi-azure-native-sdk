@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine Extension.
-//
-// Deprecated: Version 2019-12-01 will be removed in v2 of the provider.
 type VirtualMachineScaleSetVMExtension struct {
 	pulumi.CustomResourceState
 

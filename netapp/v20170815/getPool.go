@@ -11,8 +11,6 @@ import (
 )
 
 // Get a capacity pool
-//
-// Deprecated: Version 2017-08-15 will be removed in v2 of the provider.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:netapp/v20170815:getPool", args, &rv, opts...)
@@ -59,11 +57,11 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}
-	if isZero(tmp.Size) {
+	if tmp.Size == nil {
 		size_ := 4398046511104.0
 		tmp.Size = &size_
 	}

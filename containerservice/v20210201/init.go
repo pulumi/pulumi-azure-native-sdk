@@ -23,12 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerservice/v20210201:AgentPool":
 		r = &AgentPool{}
-	case "azure-native:containerservice/v20210201:MaintenanceConfiguration":
-		r = &MaintenanceConfiguration{}
-	case "azure-native:containerservice/v20210201:ManagedCluster":
-		r = &ManagedCluster{}
-	case "azure-native:containerservice/v20210201:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

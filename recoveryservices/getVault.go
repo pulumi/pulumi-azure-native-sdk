@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Vault details.
-// API Version: 2021-01-01.
+// API Version: 2023-02-01.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	var rv LookupVaultResult
 	err := ctx.Invoke("azure-native:recoveryservices:getVault", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.Invo
 }
 
 type LookupVaultArgs struct {
-	// The name of the resource group where the recovery services vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the recovery services vault.
 	VaultName string `pulumi:"vaultName"`
@@ -66,7 +66,7 @@ func LookupVaultOutput(ctx *pulumi.Context, args LookupVaultOutputArgs, opts ...
 }
 
 type LookupVaultOutputArgs struct {
-	// The name of the resource group where the recovery services vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the recovery services vault.
 	VaultName pulumi.StringInput `pulumi:"vaultName"`

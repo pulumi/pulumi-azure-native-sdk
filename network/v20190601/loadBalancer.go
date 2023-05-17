@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -189,6 +189,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)

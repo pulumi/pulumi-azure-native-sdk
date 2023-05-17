@@ -23,30 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:avs/v20210101preview:Addon":
 		r = &Addon{}
-	case "azure-native:avs/v20210101preview:Authorization":
-		r = &Authorization{}
-	case "azure-native:avs/v20210101preview:Cluster":
-		r = &Cluster{}
 	case "azure-native:avs/v20210101preview:Datastore":
 		r = &Datastore{}
-	case "azure-native:avs/v20210101preview:GlobalReachConnection":
-		r = &GlobalReachConnection{}
-	case "azure-native:avs/v20210101preview:HcxEnterpriseSite":
-		r = &HcxEnterpriseSite{}
-	case "azure-native:avs/v20210101preview:PrivateCloud":
-		r = &PrivateCloud{}
 	case "azure-native:avs/v20210101preview:WorkloadNetworkDhcp":
 		r = &WorkloadNetworkDhcp{}
-	case "azure-native:avs/v20210101preview:WorkloadNetworkDnsService":
-		r = &WorkloadNetworkDnsService{}
-	case "azure-native:avs/v20210101preview:WorkloadNetworkDnsZone":
-		r = &WorkloadNetworkDnsZone{}
-	case "azure-native:avs/v20210101preview:WorkloadNetworkPortMirroring":
-		r = &WorkloadNetworkPortMirroring{}
-	case "azure-native:avs/v20210101preview:WorkloadNetworkSegment":
-		r = &WorkloadNetworkSegment{}
-	case "azure-native:avs/v20210101preview:WorkloadNetworkVMGroup":
-		r = &WorkloadNetworkVMGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

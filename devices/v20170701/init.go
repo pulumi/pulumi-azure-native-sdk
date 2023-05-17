@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:devices/v20170701:Certificate":
-		r = &Certificate{}
 	case "azure-native:devices/v20170701:IotHubResource":
 		r = &IotHubResource{}
 	case "azure-native:devices/v20170701:IotHubResourceEventHubConsumerGroup":

@@ -7,20 +7,21 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Content type contract details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ContentItem struct {
 	pulumi.CustomResourceState
 
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the content item.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -68,6 +69,9 @@ func NewContentItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ContentItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ContentItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ContentItem
@@ -106,7 +110,9 @@ type contentItemArgs struct {
 	ContentItemId *string `pulumi:"contentItemId"`
 	// Content type identifier.
 	ContentTypeId string `pulumi:"contentTypeId"`
-	// The name of the resource group.
+	// Properties of the content item.
+	Properties interface{} `pulumi:"properties"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -118,7 +124,9 @@ type ContentItemArgs struct {
 	ContentItemId pulumi.StringPtrInput
 	// Content type identifier.
 	ContentTypeId pulumi.StringInput
-	// The name of the resource group.
+	// Properties of the content item.
+	Properties pulumi.Input
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -161,7 +169,7 @@ func (o ContentItemOutput) ToContentItemOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// Resource name.
+// The name of the resource
 func (o ContentItemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentItem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -171,7 +179,7 @@ func (o ContentItemOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *ContentItem) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ContentItemOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentItem) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

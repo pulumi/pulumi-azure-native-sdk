@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
-// API Version: 2021-02-01.
+// API Version: 2022-09-01.
 func ListStorageAccountKeys(ctx *pulumi.Context, args *ListStorageAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountKeysResult, error) {
 	var rv ListStorageAccountKeysResult
 	err := ctx.Invoke("azure-native:storage:listStorageAccountKeys", args, &rv, opts...)

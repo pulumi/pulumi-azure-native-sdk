@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,9 +56,6 @@ func NewEventChannel(ctx *pulumi.Context,
 		args.Filter = args.Filter.ToEventChannelFilterPtrOutput().ApplyT(func(v *EventChannelFilter) *EventChannelFilter { return v.Defaults() }).(EventChannelFilterPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:eventgrid:EventChannel"),
-		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20200401preview:EventChannel"),
 		},

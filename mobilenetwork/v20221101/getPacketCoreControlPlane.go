@@ -75,7 +75,7 @@ func (val *LookupPacketCoreControlPlaneResult) Defaults() *LookupPacketCoreContr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UeMtu) {
+	if tmp.UeMtu == nil {
 		ueMtu_ := 1440
 		tmp.UeMtu = &ueMtu_
 	}

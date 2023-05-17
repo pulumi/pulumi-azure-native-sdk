@@ -11,8 +11,6 @@ import (
 )
 
 // Get artifact source.
-//
-// Deprecated: Version 2015-05-21-preview will be removed in v2 of the provider.
 func LookupArtifactSourceResource(ctx *pulumi.Context, args *LookupArtifactSourceResourceArgs, opts ...pulumi.InvokeOption) (*LookupArtifactSourceResourceResult, error) {
 	var rv LookupArtifactSourceResourceResult
 	err := ctx.Invoke("azure-native:devtestlab/v20150521preview:getArtifactSourceResource", args, &rv, opts...)

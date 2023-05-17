@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the status of service.
-// API Version: 2021-04-01-preview.
+// API Version: 2022-11-15.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:documentdb:getService", args, &rv, opts...)

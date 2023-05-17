@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:azurestackhci/v20210101preview:ArcSetting":
 		r = &ArcSetting{}
-	case "azure-native:azurestackhci/v20210101preview:Cluster":
-		r = &Cluster{}
 	case "azure-native:azurestackhci/v20210101preview:Extension":
 		r = &Extension{}
 	default:

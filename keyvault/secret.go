@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource information with extended details.
-// API Version: 2019-09-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2019-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Secret struct {
 	pulumi.CustomResourceState
 
@@ -122,7 +123,7 @@ type secretArgs struct {
 	Properties SecretProperties `pulumi:"properties"`
 	// The name of the Resource Group to which the vault belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the secret
+	// Name of the secret. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	SecretName *string `pulumi:"secretName"`
 	// The tags that will be assigned to the secret.
 	Tags map[string]string `pulumi:"tags"`
@@ -136,7 +137,7 @@ type SecretArgs struct {
 	Properties SecretPropertiesInput
 	// The name of the Resource Group to which the vault belongs.
 	ResourceGroupName pulumi.StringInput
-	// Name of the secret
+	// Name of the secret. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
 	SecretName pulumi.StringPtrInput
 	// The tags that will be assigned to the secret.
 	Tags pulumi.StringMapInput

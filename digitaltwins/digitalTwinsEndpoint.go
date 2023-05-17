@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DigitalTwinsInstance endpoint resource.
-// API Version: 2020-12-01.
+// API Version: 2023-01-31.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type DigitalTwinsEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type DigitalTwinsEndpoint struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// DigitalTwinsInstance endpoint resource properties.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -163,6 +166,11 @@ func (o DigitalTwinsEndpointOutput) Name() pulumi.StringOutput {
 // DigitalTwinsInstance endpoint resource properties.
 func (o DigitalTwinsEndpointOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *DigitalTwinsEndpoint) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DigitalTwinsEndpointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DigitalTwinsEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource type.

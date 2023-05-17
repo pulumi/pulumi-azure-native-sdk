@@ -11,7 +11,7 @@ import (
 )
 
 // Get details of the specified volume group
-// API Version: 2021-10-01.
+// API Version: 2022-09-01.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	var rv LookupVolumeGroupResult
 	err := ctx.Invoke("azure-native:netapp:getVolumeGroup", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ..
 type LookupVolumeGroupArgs struct {
 	// The name of the NetApp account
 	AccountName string `pulumi:"accountName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the volumeGroup
 	VolumeGroupName string `pulumi:"volumeGroupName"`
@@ -42,8 +42,6 @@ type LookupVolumeGroupResult struct {
 	Name string `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource tags
-	Tags map[string]string `pulumi:"tags"`
 	// Resource type
 	Type string `pulumi:"type"`
 	// List of volumes from group
@@ -66,7 +64,7 @@ func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputAr
 type LookupVolumeGroupOutputArgs struct {
 	// The name of the NetApp account
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the volumeGroup
 	VolumeGroupName pulumi.StringInput `pulumi:"volumeGroupName"`
@@ -114,11 +112,6 @@ func (o LookupVolumeGroupResultOutput) Name() pulumi.StringOutput {
 // Azure lifecycle management
 func (o LookupVolumeGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Resource tags
-func (o LookupVolumeGroupResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupVolumeGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Resource type

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified public IP prefix in a specified resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupPublicIPPrefix(ctx *pulumi.Context, args *LookupPublicIPPrefixArgs, opts ...pulumi.InvokeOption) (*LookupPublicIPPrefixResult, error) {
 	var rv LookupPublicIPPrefixResult
 	err := ctx.Invoke("azure-native:network:getPublicIPPrefix", args, &rv, opts...)

@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:search/v20191001preview:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
-	case "azure-native:search/v20191001preview:Service":
-		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

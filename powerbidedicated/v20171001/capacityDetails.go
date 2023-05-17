@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of a Dedicated Capacity resource.
-//
-// Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
 type CapacityDetails struct {
 	pulumi.CustomResourceState
 

@@ -30,11 +30,11 @@ func (val *AcsClusterProperties) Defaults() *AcsClusterProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentCount) {
+	if tmp.AgentCount == nil {
 		agentCount_ := 2
 		tmp.AgentCount = &agentCount_
 	}
-	if isZero(tmp.AgentVmSize) {
+	if tmp.AgentVmSize == nil {
 		agentVmSize_ := "Standard_D2_v2"
 		tmp.AgentVmSize = &agentVmSize_
 	}
@@ -72,10 +72,10 @@ func (val *AcsClusterPropertiesArgs) Defaults() *AcsClusterPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentCount) {
+	if tmp.AgentCount == nil {
 		tmp.AgentCount = pulumi.IntPtr(2)
 	}
-	if isZero(tmp.AgentVmSize) {
+	if tmp.AgentVmSize == nil {
 		tmp.AgentVmSize = pulumi.StringPtr("Standard_D2_v2")
 	}
 	return &tmp
@@ -154,11 +154,11 @@ func (val *AcsClusterPropertiesResponse) Defaults() *AcsClusterPropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentCount) {
+	if tmp.AgentCount == nil {
 		agentCount_ := 2
 		tmp.AgentCount = &agentCount_
 	}
-	if isZero(tmp.AgentVmSize) {
+	if tmp.AgentVmSize == nil {
 		agentVmSize_ := "Standard_D2_v2"
 		tmp.AgentVmSize = &agentVmSize_
 	}
@@ -468,15 +468,15 @@ func (val *AutoScaleConfiguration) Defaults() *AutoScaleConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		maxReplicas_ := 100
 		tmp.MaxReplicas = &maxReplicas_
 	}
-	if isZero(tmp.MinReplicas) {
+	if tmp.MinReplicas == nil {
 		minReplicas_ := 1
 		tmp.MinReplicas = &minReplicas_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}
@@ -514,13 +514,13 @@ func (val *AutoScaleConfigurationArgs) Defaults() *AutoScaleConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		tmp.MaxReplicas = pulumi.IntPtr(100)
 	}
-	if isZero(tmp.MinReplicas) {
+	if tmp.MinReplicas == nil {
 		tmp.MinReplicas = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -722,15 +722,15 @@ func (val *AutoScaleConfigurationResponse) Defaults() *AutoScaleConfigurationRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		maxReplicas_ := 100
 		tmp.MaxReplicas = &maxReplicas_
 	}
-	if isZero(tmp.MinReplicas) {
+	if tmp.MinReplicas == nil {
 		minReplicas_ := 1
 		tmp.MinReplicas = &minReplicas_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}
@@ -2060,7 +2060,7 @@ func (val *SslConfiguration) Defaults() *SslConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -2094,7 +2094,7 @@ func (val *SslConfigurationArgs) Defaults() *SslConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -2262,7 +2262,7 @@ func (val *SslConfigurationResponse) Defaults() *SslConfigurationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}

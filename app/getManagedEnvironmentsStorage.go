@@ -11,7 +11,7 @@ import (
 )
 
 // Get storage for a managedEnvironment.
-// API Version: 2022-03-01.
+// API Version: 2022-10-01.
 func LookupManagedEnvironmentsStorage(ctx *pulumi.Context, args *LookupManagedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentsStorageResult, error) {
 	var rv LookupManagedEnvironmentsStorageResult
 	err := ctx.Invoke("azure-native:app:getManagedEnvironmentsStorage", args, &rv, opts...)

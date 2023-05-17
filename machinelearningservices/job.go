@@ -7,20 +7,21 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
-// API Version: 2021-03-01-preview.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// [Required] Additional attributes of the entity.
+	JobBaseProperties pulumi.AnyOutput `pulumi:"jobBaseProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// System data associated with resource provider
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -33,8 +34,8 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.JobBaseProperties == nil {
+		return nil, errors.New("invalid value for required argument 'JobBaseProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -63,6 +64,12 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Job"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Job"),
@@ -101,10 +108,10 @@ func (JobState) ElementType() reflect.Type {
 }
 
 type jobArgs struct {
-	// The name and identifier for the Job.
+	// The name and identifier for the Job. This is case-sensitive.
 	Id *string `pulumi:"id"`
 	// [Required] Additional attributes of the entity.
-	Properties interface{} `pulumi:"properties"`
+	JobBaseProperties interface{} `pulumi:"jobBaseProperties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -113,10 +120,10 @@ type jobArgs struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
-	// The name and identifier for the Job.
+	// The name and identifier for the Job. This is case-sensitive.
 	Id pulumi.StringPtrInput
 	// [Required] Additional attributes of the entity.
-	Properties pulumi.Input
+	JobBaseProperties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Azure Machine Learning workspace.
@@ -160,17 +167,17 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// [Required] Additional attributes of the entity.
+func (o JobOutput) JobBaseProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Job) pulumi.AnyOutput { return v.JobBaseProperties }).(pulumi.AnyOutput)
+}
+
 // The name of the resource
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o JobOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *Job) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
-}
-
-// System data associated with resource provider
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o JobOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Job) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

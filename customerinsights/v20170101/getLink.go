@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a link in the hub.
-//
-// Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
 func LookupLink(ctx *pulumi.Context, args *LookupLinkArgs, opts ...pulumi.InvokeOption) (*LookupLinkResult, error) {
 	var rv LookupLinkResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getLink", args, &rv, opts...)

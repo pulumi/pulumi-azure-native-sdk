@@ -3,6 +3,14 @@
 
 package appplatform
 
+// How ingress should communicate with this app backend service.
+type BackendProtocol string
+
+const (
+	BackendProtocolGRPC    = BackendProtocol("GRPC")
+	BackendProtocolDefault = BackendProtocol("Default")
+)
+
 // Buildpack Binding Type
 type BindingType string
 
@@ -15,6 +23,26 @@ const (
 	BindingTypeElasticAPM          = BindingType("ElasticAPM")
 )
 
+// Protocol of routed Azure Spring Apps applications.
+type GatewayRouteConfigProtocol string
+
+const (
+	GatewayRouteConfigProtocolHTTP  = GatewayRouteConfigProtocol("HTTP")
+	GatewayRouteConfigProtocolHTTPS = GatewayRouteConfigProtocol("HTTPS")
+)
+
+// Scheme to use for connecting to the host. Defaults to HTTP.
+//
+// Possible enum values:
+//   - `"HTTP"` means that the scheme used will be http://
+//   - `"HTTPS"` means that the scheme used will be https://
+type HTTPSchemeType string
+
+const (
+	HTTPSchemeTypeHTTP  = HTTPSchemeType("HTTP")
+	HTTPSchemeTypeHTTPS = HTTPSchemeType("HTTPS")
+)
+
 // Type of the managed identity
 type ManagedIdentityType string
 
@@ -25,13 +53,21 @@ const (
 	ManagedIdentityType_SystemAssigned_UserAssigned = ManagedIdentityType("SystemAssigned,UserAssigned")
 )
 
-// Runtime version
-type RuntimeVersion string
+// The type of the action to take to perform the health check.
+type ProbeActionType string
 
 const (
-	RuntimeVersion_Java_8     = RuntimeVersion("Java_8")
-	RuntimeVersion_Java_11    = RuntimeVersion("Java_11")
-	RuntimeVersion_NetCore_31 = RuntimeVersion("NetCore_31")
+	ProbeActionTypeHTTPGetAction   = ProbeActionType("HTTPGetAction")
+	ProbeActionTypeTCPSocketAction = ProbeActionType("TCPSocketAction")
+	ProbeActionTypeExecAction      = ProbeActionType("ExecAction")
+)
+
+// Type of the affinity, set this to Cookie to enable session affinity.
+type SessionAffinity string
+
+const (
+	SessionAffinityCookie = SessionAffinity("Cookie")
+	SessionAffinityNone   = SessionAffinity("None")
 )
 
 // The type of the storage.
@@ -41,13 +77,11 @@ const (
 	StorageTypeStorageAccount = StorageType("StorageAccount")
 )
 
-// Type of the source uploaded
-type UserSourceType string
+// The type of the underlying resource to mount as a persistent disk.
+type Type string
 
 const (
-	UserSourceTypeJar        = UserSourceType("Jar")
-	UserSourceTypeNetCoreZip = UserSourceType("NetCoreZip")
-	UserSourceTypeSource     = UserSourceType("Source")
+	TypeAzureFileVolume = Type("AzureFileVolume")
 )
 
 func init() {

@@ -33,17 +33,17 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnectionsForSCCPowershell{}
 	case "azure-native:m365securityandcompliance/v20210325preview:PrivateEndpointConnectionsSec":
 		r = &PrivateEndpointConnectionsSec{}
-	case "azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForEDMUpload":
+	case "azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForEDMUpload":
 		r = &PrivateLinkServicesForEDMUpload{}
-	case "azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForM365ComplianceCenter":
+	case "azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForM365ComplianceCenter":
 		r = &PrivateLinkServicesForM365ComplianceCenter{}
-	case "azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForM365SecurityCenter":
+	case "azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForM365SecurityCenter":
 		r = &PrivateLinkServicesForM365SecurityCenter{}
-	case "azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForMIPPolicySync":
+	case "azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForMIPPolicySync":
 		r = &PrivateLinkServicesForMIPPolicySync{}
-	case "azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForO365ManagementActivityAPI":
+	case "azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForO365ManagementActivityAPI":
 		r = &PrivateLinkServicesForO365ManagementActivityAPI{}
-	case "azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForSCCPowershell":
+	case "azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForSCCPowershell":
 		r = &PrivateLinkServicesForSCCPowershell{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

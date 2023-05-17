@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,7 +106,7 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Kind) {
+	if args.Kind == nil {
 		args.Kind = pulumi.StringPtr("GlobalDocumentDB")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -195,7 +195,16 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:DatabaseAccount"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:DatabaseAccount"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccount"),
 		},
 	})
 	opts = append(opts, aliases)

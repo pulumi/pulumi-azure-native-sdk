@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +62,9 @@ func NewGatewayCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:GatewayCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:GatewayCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

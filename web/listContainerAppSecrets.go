@@ -11,7 +11,7 @@ import (
 )
 
 // Container App Secrets Collection ARM resource.
-// API Version: 2021-03-01.
+// API Version: 2022-09-01.
 func ListContainerAppSecrets(ctx *pulumi.Context, args *ListContainerAppSecretsArgs, opts ...pulumi.InvokeOption) (*ListContainerAppSecretsResult, error) {
 	var rv ListContainerAppSecretsResult
 	err := ctx.Invoke("azure-native:web:listContainerAppSecrets", args, &rv, opts...)

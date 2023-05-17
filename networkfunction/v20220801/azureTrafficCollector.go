@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,7 +95,7 @@ type azureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName *string `pulumi:"azureTrafficCollectorName"`
 	// Collector Policies for Azure Traffic Collector.
-	CollectorPolicies []CollectorPolicyType `pulumi:"collectorPolicies"`
+	CollectorPolicies []CollectorPolicy `pulumi:"collectorPolicies"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
@@ -109,7 +109,7 @@ type AzureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName pulumi.StringPtrInput
 	// Collector Policies for Azure Traffic Collector.
-	CollectorPolicies CollectorPolicyTypeArrayInput
+	CollectorPolicies CollectorPolicyArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// The name of the resource group.

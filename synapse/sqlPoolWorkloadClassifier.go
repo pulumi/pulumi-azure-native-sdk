@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workload classifier operations for a data warehouse
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type SqlPoolWorkloadClassifier struct {
 	pulumi.CustomResourceState
 
@@ -132,7 +133,7 @@ type sqlPoolWorkloadClassifierArgs struct {
 	WorkloadClassifierName *string `pulumi:"workloadClassifierName"`
 	// The name of the workload group.
 	WorkloadGroupName string `pulumi:"workloadGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -158,7 +159,7 @@ type SqlPoolWorkloadClassifierArgs struct {
 	WorkloadClassifierName pulumi.StringPtrInput
 	// The name of the workload group.
 	WorkloadGroupName pulumi.StringInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

@@ -23,14 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:storagesync/v20181001:CloudEndpoint":
 		r = &CloudEndpoint{}
-	case "azure-native:storagesync/v20181001:RegisteredServer":
-		r = &RegisteredServer{}
 	case "azure-native:storagesync/v20181001:ServerEndpoint":
 		r = &ServerEndpoint{}
-	case "azure-native:storagesync/v20181001:StorageSyncService":
-		r = &StorageSyncService{}
-	case "azure-native:storagesync/v20181001:SyncGroup":
-		r = &SyncGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

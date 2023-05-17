@@ -23,6 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:app:Certificate":
 		r = &Certificate{}
+	case "azure-native:app:ConnectedEnvironment":
+		r = &ConnectedEnvironment{}
+	case "azure-native:app:ConnectedEnvironmentsCertificate":
+		r = &ConnectedEnvironmentsCertificate{}
+	case "azure-native:app:ConnectedEnvironmentsDaprComponent":
+		r = &ConnectedEnvironmentsDaprComponent{}
+	case "azure-native:app:ConnectedEnvironmentsStorage":
+		r = &ConnectedEnvironmentsStorage{}
 	case "azure-native:app:ContainerApp":
 		r = &ContainerApp{}
 	case "azure-native:app:ContainerAppsAuthConfig":

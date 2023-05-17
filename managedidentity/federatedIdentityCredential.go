@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a federated identity credential.
-// API Version: 2022-01-31-preview.
+// API Version: 2023-01-31.
+// Previous API Version: 2022-01-31-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type FederatedIdentityCredential struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type FederatedIdentityCredential struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identifier of the external identity.
 	Subject pulumi.StringOutput `pulumi:"subject"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -97,7 +100,7 @@ type federatedIdentityCredentialArgs struct {
 	FederatedIdentityCredentialResourceName *string `pulumi:"federatedIdentityCredentialResourceName"`
 	// The URL of the issuer to be trusted.
 	Issuer string `pulumi:"issuer"`
-	// The name of the Resource Group to which the identity belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the identity resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -113,7 +116,7 @@ type FederatedIdentityCredentialArgs struct {
 	FederatedIdentityCredentialResourceName pulumi.StringPtrInput
 	// The URL of the issuer to be trusted.
 	Issuer pulumi.StringInput
-	// The name of the Resource Group to which the identity belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the identity resource.
 	ResourceName pulumi.StringInput
@@ -176,6 +179,11 @@ func (o FederatedIdentityCredentialOutput) Name() pulumi.StringOutput {
 // The identifier of the external identity.
 func (o FederatedIdentityCredentialOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v *FederatedIdentityCredential) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o FederatedIdentityCredentialOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FederatedIdentityCredential) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -131,6 +131,18 @@ func NewSnapshot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230101:Snapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:Snapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:Snapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:Snapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:Snapshot"),
 		},
 	})
 	opts = append(opts, aliases)

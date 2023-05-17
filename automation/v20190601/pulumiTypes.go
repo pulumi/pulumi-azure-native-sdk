@@ -3490,7 +3490,7 @@ func (val *SUCScheduleProperties) Defaults() *SUCScheduleProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -3544,7 +3544,7 @@ func (val *SUCSchedulePropertiesArgs) Defaults() *SUCSchedulePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		tmp.IsEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3679,7 +3679,7 @@ func (val *SUCSchedulePropertiesResponse) Defaults() *SUCSchedulePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -3883,278 +3883,6 @@ func (o ScheduleAssociationPropertyResponsePtrOutput) Name() pulumi.StringPtrOut
 			return nil
 		}
 		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The account SKU.
-type Sku struct {
-	// Gets or sets the SKU capacity.
-	Capacity *int `pulumi:"capacity"`
-	// Gets or sets the SKU family.
-	Family *string `pulumi:"family"`
-	// Gets or sets the SKU name of the account.
-	Name string `pulumi:"name"`
-}
-
-// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
-// You can construct a concrete instance of `SkuInput` via:
-//
-//	SkuArgs{...}
-type SkuInput interface {
-	pulumi.Input
-
-	ToSkuOutput() SkuOutput
-	ToSkuOutputWithContext(context.Context) SkuOutput
-}
-
-// The account SKU.
-type SkuArgs struct {
-	// Gets or sets the SKU capacity.
-	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// Gets or sets the SKU family.
-	Family pulumi.StringPtrInput `pulumi:"family"`
-	// Gets or sets the SKU name of the account.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (SkuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (i SkuArgs) ToSkuOutput() SkuOutput {
-	return i.ToSkuOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
-}
-
-func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
-}
-
-// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
-// You can construct a concrete instance of `SkuPtrInput` via:
-//
-//	        SkuArgs{...}
-//
-//	or:
-//
-//	        nil
-type SkuPtrInput interface {
-	pulumi.Input
-
-	ToSkuPtrOutput() SkuPtrOutput
-	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
-}
-
-type skuPtrType SkuArgs
-
-func SkuPtr(v *SkuArgs) SkuPtrInput {
-	return (*skuPtrType)(v)
-}
-
-func (*skuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
-}
-
-// The account SKU.
-type SkuOutput struct{ *pulumi.OutputState }
-
-func (SkuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (o SkuOutput) ToSkuOutput() SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
-		return &v
-	}).(SkuPtrOutput)
-}
-
-// Gets or sets the SKU capacity.
-func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// Gets or sets the SKU family.
-func (o SkuOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the SKU name of the account.
-func (o SkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type SkuPtrOutput struct{ *pulumi.OutputState }
-
-func (SkuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) Elem() SkuOutput {
-	return o.ApplyT(func(v *Sku) Sku {
-		if v != nil {
-			return *v
-		}
-		var ret Sku
-		return ret
-	}).(SkuOutput)
-}
-
-// Gets or sets the SKU capacity.
-func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Sku) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// Gets or sets the SKU family.
-func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the SKU name of the account.
-func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The account SKU.
-type SkuResponse struct {
-	// Gets or sets the SKU capacity.
-	Capacity *int `pulumi:"capacity"`
-	// Gets or sets the SKU family.
-	Family *string `pulumi:"family"`
-	// Gets or sets the SKU name of the account.
-	Name string `pulumi:"name"`
-}
-
-// The account SKU.
-type SkuResponseOutput struct{ *pulumi.OutputState }
-
-func (SkuResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
-	return o
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
-	return o
-}
-
-// Gets or sets the SKU capacity.
-func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// Gets or sets the SKU family.
-func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the SKU name of the account.
-func (o SkuResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type SkuResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SkuResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
-	return o.ApplyT(func(v *SkuResponse) SkuResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SkuResponse
-		return ret
-	}).(SkuResponseOutput)
-}
-
-// Gets or sets the SKU capacity.
-func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// Gets or sets the SKU family.
-func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the SKU name of the account.
-func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5832,10 +5560,6 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleAssociationPropertyOutput{})
 	pulumi.RegisterOutputType(ScheduleAssociationPropertyResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleAssociationPropertyResponsePtrOutput{})
-	pulumi.RegisterOutputType(SkuOutput{})
-	pulumi.RegisterOutputType(SkuPtrOutput{})
-	pulumi.RegisterOutputType(SkuResponseOutput{})
-	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksResponseOutput{})

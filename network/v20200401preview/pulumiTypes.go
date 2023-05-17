@@ -26,7 +26,7 @@ func (val *InboundEndpointIPConfiguration) Defaults() *InboundEndpointIPConfigur
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIpAllocationMethod) {
+	if tmp.PrivateIpAllocationMethod == nil {
 		privateIpAllocationMethod_ := "Dynamic"
 		tmp.PrivateIpAllocationMethod = &privateIpAllocationMethod_
 	}
@@ -60,7 +60,7 @@ func (val *InboundEndpointIPConfigurationArgs) Defaults() *InboundEndpointIPConf
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIpAllocationMethod) {
+	if tmp.PrivateIpAllocationMethod == nil {
 		tmp.PrivateIpAllocationMethod = pulumi.StringPtr("Dynamic")
 	}
 	return &tmp
@@ -168,7 +168,7 @@ func (val *InboundEndpointIPConfigurationResponse) Defaults() *InboundEndpointIP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIpAllocationMethod) {
+	if tmp.PrivateIpAllocationMethod == nil {
 		privateIpAllocationMethod_ := "Dynamic"
 		tmp.PrivateIpAllocationMethod = &privateIpAllocationMethod_
 	}
@@ -565,7 +565,7 @@ func (val *TargetDnsServer) Defaults() *TargetDnsServer {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Port) {
+	if tmp.Port == nil {
 		port_ := 53
 		tmp.Port = &port_
 	}
@@ -597,7 +597,7 @@ func (val *TargetDnsServerArgs) Defaults() *TargetDnsServerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Port) {
+	if tmp.Port == nil {
 		tmp.Port = pulumi.IntPtr(53)
 	}
 	return &tmp
@@ -698,7 +698,7 @@ func (val *TargetDnsServerResponse) Defaults() *TargetDnsServerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Port) {
+	if tmp.Port == nil {
 		port_ := 53
 		tmp.Port = &port_
 	}

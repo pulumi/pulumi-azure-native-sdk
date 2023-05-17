@@ -11,8 +11,6 @@ import (
 )
 
 // Get environment.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	var rv LookupEnvironmentResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getEnvironment", args, &rv, opts...)

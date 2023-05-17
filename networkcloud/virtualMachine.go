@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API Version: 2022-12-12-preview.
+// Previous API Version: 2022-12-12-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -106,17 +107,17 @@ func NewVirtualMachine(ctx *pulumi.Context,
 	if args.VmImage == nil {
 		return nil, errors.New("invalid value for required argument 'VmImage'")
 	}
-	if isZero(args.BootMethod) {
+	if args.BootMethod == nil {
 		args.BootMethod = pulumi.StringPtr("UEFI")
 	}
-	if isZero(args.IsolateEmulatorThread) {
+	if args.IsolateEmulatorThread == nil {
 		args.IsolateEmulatorThread = pulumi.StringPtr("True")
 	}
 	args.StorageProfile = args.StorageProfile.ToStorageProfileOutput().ApplyT(func(v StorageProfile) StorageProfile { return *v.Defaults() }).(StorageProfileOutput)
-	if isZero(args.VirtioInterface) {
+	if args.VirtioInterface == nil {
 		args.VirtioInterface = pulumi.StringPtr("Modern")
 	}
-	if isZero(args.VmDeviceModel) {
+	if args.VmDeviceModel == nil {
 		args.VmDeviceModel = pulumi.StringPtr("T2")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

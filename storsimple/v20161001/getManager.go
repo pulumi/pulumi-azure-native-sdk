@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified manager name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupManager(ctx *pulumi.Context, args *LookupManagerArgs, opts ...pulumi.InvokeOption) (*LookupManagerResult, error) {
 	var rv LookupManagerResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getManager", args, &rv, opts...)

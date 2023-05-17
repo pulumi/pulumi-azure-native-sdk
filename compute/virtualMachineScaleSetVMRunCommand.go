@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine run command.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type VirtualMachineScaleSetVMRunCommand struct {
 	pulumi.CustomResourceState
 
@@ -64,7 +65,7 @@ func NewVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context,
 	if args.VmScaleSetName == nil {
 		return nil, errors.New("invalid value for required argument 'VmScaleSetName'")
 	}
-	if isZero(args.AsyncExecution) {
+	if args.AsyncExecution == nil {
 		args.AsyncExecution = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

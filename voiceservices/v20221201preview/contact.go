@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,12 +59,6 @@ func NewContact(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:voiceservices:Contact"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource Contact
 	err := ctx.RegisterResource("azure-native:voiceservices/v20221201preview:Contact", name, args, &resource, opts...)
 	if err != nil {

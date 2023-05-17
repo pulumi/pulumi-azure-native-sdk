@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Event Subscription
-//
-// Deprecated: Version 2017-06-15-preview will be removed in v2 of the provider.
 type EventSubscription struct {
 	pulumi.CustomResourceState
 

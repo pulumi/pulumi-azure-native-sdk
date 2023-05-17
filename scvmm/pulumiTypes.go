@@ -480,6 +480,225 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username / Password Credentials to connect to guest.
+type GuestCredential struct {
+	// Gets or sets the password to connect with the guest.
+	Password *string `pulumi:"password"`
+	// Gets or sets username to connect with the guest.
+	Username *string `pulumi:"username"`
+}
+
+// GuestCredentialInput is an input type that accepts GuestCredentialArgs and GuestCredentialOutput values.
+// You can construct a concrete instance of `GuestCredentialInput` via:
+//
+//	GuestCredentialArgs{...}
+type GuestCredentialInput interface {
+	pulumi.Input
+
+	ToGuestCredentialOutput() GuestCredentialOutput
+	ToGuestCredentialOutputWithContext(context.Context) GuestCredentialOutput
+}
+
+// Username / Password Credentials to connect to guest.
+type GuestCredentialArgs struct {
+	// Gets or sets the password to connect with the guest.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Gets or sets username to connect with the guest.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GuestCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestCredential)(nil)).Elem()
+}
+
+func (i GuestCredentialArgs) ToGuestCredentialOutput() GuestCredentialOutput {
+	return i.ToGuestCredentialOutputWithContext(context.Background())
+}
+
+func (i GuestCredentialArgs) ToGuestCredentialOutputWithContext(ctx context.Context) GuestCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestCredentialOutput)
+}
+
+func (i GuestCredentialArgs) ToGuestCredentialPtrOutput() GuestCredentialPtrOutput {
+	return i.ToGuestCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i GuestCredentialArgs) ToGuestCredentialPtrOutputWithContext(ctx context.Context) GuestCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestCredentialOutput).ToGuestCredentialPtrOutputWithContext(ctx)
+}
+
+// GuestCredentialPtrInput is an input type that accepts GuestCredentialArgs, GuestCredentialPtr and GuestCredentialPtrOutput values.
+// You can construct a concrete instance of `GuestCredentialPtrInput` via:
+//
+//	        GuestCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuestCredentialPtrInput interface {
+	pulumi.Input
+
+	ToGuestCredentialPtrOutput() GuestCredentialPtrOutput
+	ToGuestCredentialPtrOutputWithContext(context.Context) GuestCredentialPtrOutput
+}
+
+type guestCredentialPtrType GuestCredentialArgs
+
+func GuestCredentialPtr(v *GuestCredentialArgs) GuestCredentialPtrInput {
+	return (*guestCredentialPtrType)(v)
+}
+
+func (*guestCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestCredential)(nil)).Elem()
+}
+
+func (i *guestCredentialPtrType) ToGuestCredentialPtrOutput() GuestCredentialPtrOutput {
+	return i.ToGuestCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *guestCredentialPtrType) ToGuestCredentialPtrOutputWithContext(ctx context.Context) GuestCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestCredentialPtrOutput)
+}
+
+// Username / Password Credentials to connect to guest.
+type GuestCredentialOutput struct{ *pulumi.OutputState }
+
+func (GuestCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestCredential)(nil)).Elem()
+}
+
+func (o GuestCredentialOutput) ToGuestCredentialOutput() GuestCredentialOutput {
+	return o
+}
+
+func (o GuestCredentialOutput) ToGuestCredentialOutputWithContext(ctx context.Context) GuestCredentialOutput {
+	return o
+}
+
+func (o GuestCredentialOutput) ToGuestCredentialPtrOutput() GuestCredentialPtrOutput {
+	return o.ToGuestCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o GuestCredentialOutput) ToGuestCredentialPtrOutputWithContext(ctx context.Context) GuestCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestCredential) *GuestCredential {
+		return &v
+	}).(GuestCredentialPtrOutput)
+}
+
+// Gets or sets the password to connect with the guest.
+func (o GuestCredentialOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets username to connect with the guest.
+func (o GuestCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GuestCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestCredential)(nil)).Elem()
+}
+
+func (o GuestCredentialPtrOutput) ToGuestCredentialPtrOutput() GuestCredentialPtrOutput {
+	return o
+}
+
+func (o GuestCredentialPtrOutput) ToGuestCredentialPtrOutputWithContext(ctx context.Context) GuestCredentialPtrOutput {
+	return o
+}
+
+func (o GuestCredentialPtrOutput) Elem() GuestCredentialOutput {
+	return o.ApplyT(func(v *GuestCredential) GuestCredential {
+		if v != nil {
+			return *v
+		}
+		var ret GuestCredential
+		return ret
+	}).(GuestCredentialOutput)
+}
+
+// Gets or sets the password to connect with the guest.
+func (o GuestCredentialPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets username to connect with the guest.
+func (o GuestCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username / Password Credentials to connect to guest.
+type GuestCredentialResponse struct {
+	// Gets or sets username to connect with the guest.
+	Username *string `pulumi:"username"`
+}
+
+// Username / Password Credentials to connect to guest.
+type GuestCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (GuestCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestCredentialResponse)(nil)).Elem()
+}
+
+func (o GuestCredentialResponseOutput) ToGuestCredentialResponseOutput() GuestCredentialResponseOutput {
+	return o
+}
+
+func (o GuestCredentialResponseOutput) ToGuestCredentialResponseOutputWithContext(ctx context.Context) GuestCredentialResponseOutput {
+	return o
+}
+
+// Gets or sets username to connect with the guest.
+func (o GuestCredentialResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestCredentialResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GuestCredentialResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GuestCredentialResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestCredentialResponse)(nil)).Elem()
+}
+
+func (o GuestCredentialResponsePtrOutput) ToGuestCredentialResponsePtrOutput() GuestCredentialResponsePtrOutput {
+	return o
+}
+
+func (o GuestCredentialResponsePtrOutput) ToGuestCredentialResponsePtrOutputWithContext(ctx context.Context) GuestCredentialResponsePtrOutput {
+	return o
+}
+
+func (o GuestCredentialResponsePtrOutput) Elem() GuestCredentialResponseOutput {
+	return o.ApplyT(func(v *GuestCredentialResponse) GuestCredentialResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GuestCredentialResponse
+		return ret
+	}).(GuestCredentialResponseOutput)
+}
+
+// Gets or sets username to connect with the guest.
+func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestCredentialResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the resource properties.
 type HardwareProfile struct {
 	// Gets or sets the number of vCPUs for the vm.
@@ -894,6 +1113,487 @@ func (o HardwareProfileResponsePtrOutput) MemoryMB() pulumi.IntPtrOutput {
 		}
 		return v.MemoryMB
 	}).(pulumi.IntPtrOutput)
+}
+
+// HTTP Proxy configuration for the VM.
+type HttpProxyConfiguration struct {
+	// Gets or sets httpsProxy url.
+	HttpsProxy *string `pulumi:"httpsProxy"`
+}
+
+// HttpProxyConfigurationInput is an input type that accepts HttpProxyConfigurationArgs and HttpProxyConfigurationOutput values.
+// You can construct a concrete instance of `HttpProxyConfigurationInput` via:
+//
+//	HttpProxyConfigurationArgs{...}
+type HttpProxyConfigurationInput interface {
+	pulumi.Input
+
+	ToHttpProxyConfigurationOutput() HttpProxyConfigurationOutput
+	ToHttpProxyConfigurationOutputWithContext(context.Context) HttpProxyConfigurationOutput
+}
+
+// HTTP Proxy configuration for the VM.
+type HttpProxyConfigurationArgs struct {
+	// Gets or sets httpsProxy url.
+	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
+}
+
+func (HttpProxyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpProxyConfiguration)(nil)).Elem()
+}
+
+func (i HttpProxyConfigurationArgs) ToHttpProxyConfigurationOutput() HttpProxyConfigurationOutput {
+	return i.ToHttpProxyConfigurationOutputWithContext(context.Background())
+}
+
+func (i HttpProxyConfigurationArgs) ToHttpProxyConfigurationOutputWithContext(ctx context.Context) HttpProxyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpProxyConfigurationOutput)
+}
+
+func (i HttpProxyConfigurationArgs) ToHttpProxyConfigurationPtrOutput() HttpProxyConfigurationPtrOutput {
+	return i.ToHttpProxyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i HttpProxyConfigurationArgs) ToHttpProxyConfigurationPtrOutputWithContext(ctx context.Context) HttpProxyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpProxyConfigurationOutput).ToHttpProxyConfigurationPtrOutputWithContext(ctx)
+}
+
+// HttpProxyConfigurationPtrInput is an input type that accepts HttpProxyConfigurationArgs, HttpProxyConfigurationPtr and HttpProxyConfigurationPtrOutput values.
+// You can construct a concrete instance of `HttpProxyConfigurationPtrInput` via:
+//
+//	        HttpProxyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpProxyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToHttpProxyConfigurationPtrOutput() HttpProxyConfigurationPtrOutput
+	ToHttpProxyConfigurationPtrOutputWithContext(context.Context) HttpProxyConfigurationPtrOutput
+}
+
+type httpProxyConfigurationPtrType HttpProxyConfigurationArgs
+
+func HttpProxyConfigurationPtr(v *HttpProxyConfigurationArgs) HttpProxyConfigurationPtrInput {
+	return (*httpProxyConfigurationPtrType)(v)
+}
+
+func (*httpProxyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpProxyConfiguration)(nil)).Elem()
+}
+
+func (i *httpProxyConfigurationPtrType) ToHttpProxyConfigurationPtrOutput() HttpProxyConfigurationPtrOutput {
+	return i.ToHttpProxyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *httpProxyConfigurationPtrType) ToHttpProxyConfigurationPtrOutputWithContext(ctx context.Context) HttpProxyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpProxyConfigurationPtrOutput)
+}
+
+// HTTP Proxy configuration for the VM.
+type HttpProxyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (HttpProxyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpProxyConfiguration)(nil)).Elem()
+}
+
+func (o HttpProxyConfigurationOutput) ToHttpProxyConfigurationOutput() HttpProxyConfigurationOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationOutput) ToHttpProxyConfigurationOutputWithContext(ctx context.Context) HttpProxyConfigurationOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationOutput) ToHttpProxyConfigurationPtrOutput() HttpProxyConfigurationPtrOutput {
+	return o.ToHttpProxyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o HttpProxyConfigurationOutput) ToHttpProxyConfigurationPtrOutputWithContext(ctx context.Context) HttpProxyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpProxyConfiguration) *HttpProxyConfiguration {
+		return &v
+	}).(HttpProxyConfigurationPtrOutput)
+}
+
+// Gets or sets httpsProxy url.
+func (o HttpProxyConfigurationOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpProxyConfiguration) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
+}
+
+type HttpProxyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpProxyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpProxyConfiguration)(nil)).Elem()
+}
+
+func (o HttpProxyConfigurationPtrOutput) ToHttpProxyConfigurationPtrOutput() HttpProxyConfigurationPtrOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationPtrOutput) ToHttpProxyConfigurationPtrOutputWithContext(ctx context.Context) HttpProxyConfigurationPtrOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationPtrOutput) Elem() HttpProxyConfigurationOutput {
+	return o.ApplyT(func(v *HttpProxyConfiguration) HttpProxyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret HttpProxyConfiguration
+		return ret
+	}).(HttpProxyConfigurationOutput)
+}
+
+// Gets or sets httpsProxy url.
+func (o HttpProxyConfigurationPtrOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpProxyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsProxy
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP Proxy configuration for the VM.
+type HttpProxyConfigurationResponse struct {
+	// Gets or sets httpsProxy url.
+	HttpsProxy *string `pulumi:"httpsProxy"`
+}
+
+// HTTP Proxy configuration for the VM.
+type HttpProxyConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpProxyConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpProxyConfigurationResponse)(nil)).Elem()
+}
+
+func (o HttpProxyConfigurationResponseOutput) ToHttpProxyConfigurationResponseOutput() HttpProxyConfigurationResponseOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationResponseOutput) ToHttpProxyConfigurationResponseOutputWithContext(ctx context.Context) HttpProxyConfigurationResponseOutput {
+	return o
+}
+
+// Gets or sets httpsProxy url.
+func (o HttpProxyConfigurationResponseOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpProxyConfigurationResponse) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
+}
+
+type HttpProxyConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpProxyConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpProxyConfigurationResponse)(nil)).Elem()
+}
+
+func (o HttpProxyConfigurationResponsePtrOutput) ToHttpProxyConfigurationResponsePtrOutput() HttpProxyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationResponsePtrOutput) ToHttpProxyConfigurationResponsePtrOutputWithContext(ctx context.Context) HttpProxyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o HttpProxyConfigurationResponsePtrOutput) Elem() HttpProxyConfigurationResponseOutput {
+	return o.ApplyT(func(v *HttpProxyConfigurationResponse) HttpProxyConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpProxyConfigurationResponse
+		return ret
+	}).(HttpProxyConfigurationResponseOutput)
+}
+
+// Gets or sets httpsProxy url.
+func (o HttpProxyConfigurationResponsePtrOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpProxyConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsProxy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed service identity.
+type IdentityResponse struct {
+	// The principal id of managed service identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant of managed service identity.
+	TenantId string `pulumi:"tenantId"`
+	// The type of managed service identity.
+	Type string `pulumi:"type"`
+}
+
+// Managed service identity.
+type IdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutput() IdentityResponseOutput {
+	return o
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
+	return o
+}
+
+// The principal id of managed service identity.
+func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant of managed service identity.
+func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of managed service identity.
+func (o IdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Instance view status.
+type MachineExtensionInstanceViewResponseStatus struct {
+	// The status code.
+	Code string `pulumi:"code"`
+	// The short localizable label for the status.
+	DisplayStatus string `pulumi:"displayStatus"`
+	// The level code.
+	Level string `pulumi:"level"`
+	// The detailed status message, including for alerts and error messages.
+	Message string `pulumi:"message"`
+	// The time of the status.
+	Time string `pulumi:"time"`
+}
+
+// Instance view status.
+type MachineExtensionInstanceViewResponseStatusOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionInstanceViewResponseStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineExtensionInstanceViewResponseStatus)(nil)).Elem()
+}
+
+func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInstanceViewResponseStatusOutput() MachineExtensionInstanceViewResponseStatusOutput {
+	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInstanceViewResponseStatusOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusOutput {
+	return o
+}
+
+// The status code.
+func (o MachineExtensionInstanceViewResponseStatusOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionInstanceViewResponseStatus) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The short localizable label for the status.
+func (o MachineExtensionInstanceViewResponseStatusOutput) DisplayStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionInstanceViewResponseStatus) string { return v.DisplayStatus }).(pulumi.StringOutput)
+}
+
+// The level code.
+func (o MachineExtensionInstanceViewResponseStatusOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionInstanceViewResponseStatus) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The detailed status message, including for alerts and error messages.
+func (o MachineExtensionInstanceViewResponseStatusOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionInstanceViewResponseStatus) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The time of the status.
+func (o MachineExtensionInstanceViewResponseStatusOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionInstanceViewResponseStatus) string { return v.Time }).(pulumi.StringOutput)
+}
+
+type MachineExtensionInstanceViewResponseStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionInstanceViewResponseStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineExtensionInstanceViewResponseStatus)(nil)).Elem()
+}
+
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionInstanceViewResponseStatusPtrOutput() MachineExtensionInstanceViewResponseStatusPtrOutput {
+	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionInstanceViewResponseStatusPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusPtrOutput {
+	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Elem() MachineExtensionInstanceViewResponseStatusOutput {
+	return o.ApplyT(func(v *MachineExtensionInstanceViewResponseStatus) MachineExtensionInstanceViewResponseStatus {
+		if v != nil {
+			return *v
+		}
+		var ret MachineExtensionInstanceViewResponseStatus
+		return ret
+	}).(MachineExtensionInstanceViewResponseStatusOutput)
+}
+
+// The status code.
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionInstanceViewResponseStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The short localizable label for the status.
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) DisplayStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionInstanceViewResponseStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The level code.
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionInstanceViewResponseStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// The detailed status message, including for alerts and error messages.
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionInstanceViewResponseStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time of the status.
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionInstanceViewResponseStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Time
+	}).(pulumi.StringPtrOutput)
+}
+
+// The machine extension instance view.
+type MachineExtensionPropertiesResponseInstanceView struct {
+	// The machine extension name.
+	Name string `pulumi:"name"`
+	// Instance view status.
+	Status *MachineExtensionInstanceViewResponseStatus `pulumi:"status"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type string `pulumi:"type"`
+	// Specifies the version of the script handler.
+	TypeHandlerVersion string `pulumi:"typeHandlerVersion"`
+}
+
+// The machine extension instance view.
+type MachineExtensionPropertiesResponseInstanceViewOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionPropertiesResponseInstanceViewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineExtensionPropertiesResponseInstanceView)(nil)).Elem()
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToMachineExtensionPropertiesResponseInstanceViewOutput() MachineExtensionPropertiesResponseInstanceViewOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToMachineExtensionPropertiesResponseInstanceViewOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseInstanceViewOutput {
+	return o
+}
+
+// The machine extension name.
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Instance view status.
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) Status() MachineExtensionInstanceViewResponseStatusPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) *MachineExtensionInstanceViewResponseStatus {
+		return v.Status
+	}).(MachineExtensionInstanceViewResponseStatusPtrOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Specifies the version of the script handler.
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) TypeHandlerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.TypeHandlerVersion }).(pulumi.StringOutput)
+}
+
+type MachineExtensionPropertiesResponseInstanceViewPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionPropertiesResponseInstanceViewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineExtensionPropertiesResponseInstanceView)(nil)).Elem()
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtensionPropertiesResponseInstanceViewPtrOutput() MachineExtensionPropertiesResponseInstanceViewPtrOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtensionPropertiesResponseInstanceViewPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseInstanceViewPtrOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Elem() MachineExtensionPropertiesResponseInstanceViewOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) MachineExtensionPropertiesResponseInstanceView {
+		if v != nil {
+			return *v
+		}
+		var ret MachineExtensionPropertiesResponseInstanceView
+		return ret
+	}).(MachineExtensionPropertiesResponseInstanceViewOutput)
+}
+
+// The machine extension name.
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance view status.
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Status() MachineExtensionInstanceViewResponseStatusPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *MachineExtensionInstanceViewResponseStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(MachineExtensionInstanceViewResponseStatusPtrOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TypeHandlerVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // Network Interface model
@@ -2906,10 +3606,23 @@ func init() {
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(GuestCredentialOutput{})
+	pulumi.RegisterOutputType(GuestCredentialPtrOutput{})
+	pulumi.RegisterOutputType(GuestCredentialResponseOutput{})
+	pulumi.RegisterOutputType(GuestCredentialResponsePtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileOutput{})
 	pulumi.RegisterOutputType(HardwareProfilePtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileResponseOutput{})
 	pulumi.RegisterOutputType(HardwareProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpProxyConfigurationOutput{})
+	pulumi.RegisterOutputType(HttpProxyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(HttpProxyConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(HttpProxyConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityResponseOutput{})
+	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusOutput{})
+	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusPtrOutput{})
+	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewOutput{})
+	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewPtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfacesOutput{})
 	pulumi.RegisterOutputType(NetworkInterfacesArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfacesResponseOutput{})

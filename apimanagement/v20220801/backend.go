@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,6 +109,9 @@ func NewBackend(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Backend"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Backend"),
 		},
 	})
 	opts = append(opts, aliases)

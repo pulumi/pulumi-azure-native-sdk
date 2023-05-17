@@ -11,8 +11,6 @@ import (
 )
 
 // Get a workspace.
-//
-// Deprecated: Version 2020-11-10-preview will be removed in v2 of the provider.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20201110preview:getWorkspace", args, &rv, opts...)

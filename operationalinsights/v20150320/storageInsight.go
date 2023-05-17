@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The top level storage insight resource container.
-//
-// Deprecated: Version 2015-03-20 will be removed in v2 of the provider.
 type StorageInsight struct {
 	pulumi.CustomResourceState
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +38,12 @@ func NewSecret(ctx *pulumi.Context,
 	if args.ResourceName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:redhatopenshift:Secret"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Secret
 	err := ctx.RegisterResource("azure-native:redhatopenshift/v20220904:Secret", name, args, &resource, opts...)
 	if err != nil {

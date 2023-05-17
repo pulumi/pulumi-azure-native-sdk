@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +130,9 @@ func NewMetadata(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)

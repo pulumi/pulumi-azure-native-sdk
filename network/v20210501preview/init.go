@@ -37,16 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkGroup{}
 	case "azure-native:network/v20210501preview:NetworkManager":
 		r = &NetworkManager{}
-	case "azure-native:network/v20210501preview:ScopeConnection":
-		r = &ScopeConnection{}
 	case "azure-native:network/v20210501preview:SecurityAdminConfiguration":
 		r = &SecurityAdminConfiguration{}
 	case "azure-native:network/v20210501preview:SecurityUserConfiguration":
 		r = &SecurityUserConfiguration{}
-	case "azure-native:network/v20210501preview:StaticMember":
-		r = &StaticMember{}
-	case "azure-native:network/v20210501preview:SubscriptionNetworkManagerConnection":
-		r = &SubscriptionNetworkManagerConnection{}
 	case "azure-native:network/v20210501preview:UserRule":
 		r = &UserRule{}
 	case "azure-native:network/v20210501preview:UserRuleCollection":

@@ -21,24 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:netapp/v20220101:Account":
-		r = &Account{}
-	case "azure-native:netapp/v20220101:Backup":
-		r = &Backup{}
-	case "azure-native:netapp/v20220101:BackupPolicy":
-		r = &BackupPolicy{}
-	case "azure-native:netapp/v20220101:Pool":
-		r = &Pool{}
-	case "azure-native:netapp/v20220101:Snapshot":
-		r = &Snapshot{}
-	case "azure-native:netapp/v20220101:SnapshotPolicy":
-		r = &SnapshotPolicy{}
-	case "azure-native:netapp/v20220101:Subvolume":
-		r = &Subvolume{}
-	case "azure-native:netapp/v20220101:Volume":
-		r = &Volume{}
-	case "azure-native:netapp/v20220101:VolumeGroup":
-		r = &VolumeGroup{}
 	case "azure-native:netapp/v20220101:VolumeQuotaRule":
 		r = &VolumeQuotaRule{}
 	default:

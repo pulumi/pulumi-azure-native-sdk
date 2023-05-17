@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:databricks/v20180401:VNetPeering":
+		r = &VNetPeering{}
 	case "azure-native:databricks/v20180401:Workspace":
 		r = &Workspace{}
-	case "azure-native:databricks/v20180401:vNetPeering":
-		r = &VNetPeering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

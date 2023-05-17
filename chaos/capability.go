@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Model that represents a Capability resource.
-// API Version: 2021-09-15-preview.
+// API Version: 2022-10-01-preview.
+// Previous API Version: 2021-09-15-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Capability struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +61,9 @@ func NewCapability(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:chaos/v20230401preview:Capability"),
+		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20230415preview:Capability"),
 		},
 	})
 	opts = append(opts, aliases)

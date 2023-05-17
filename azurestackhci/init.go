@@ -27,6 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:azurestackhci:Extension":
 		r = &Extension{}
+	case "azure-native:azurestackhci:Update":
+		r = &Update{}
+	case "azure-native:azurestackhci:UpdateRun":
+		r = &UpdateRun{}
+	case "azure-native:azurestackhci:UpdateSummary":
+		r = &UpdateSummary{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about a proximity placement group .
-// API Version: 2020-12-01.
+// API Version: 2022-11-01.
 func LookupProximityPlacementGroup(ctx *pulumi.Context, args *LookupProximityPlacementGroupArgs, opts ...pulumi.InvokeOption) (*LookupProximityPlacementGroupResult, error) {
 	var rv LookupProximityPlacementGroupResult
 	err := ctx.Invoke("azure-native:compute:getProximityPlacementGroup", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupProximityPlacementGroupResult struct {
 	ColocationStatus *InstanceViewStatusResponse `pulumi:"colocationStatus"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// Specifies the user intent of the proximity placement group.
+	Intent *ProximityPlacementGroupPropertiesResponseIntent `pulumi:"intent"`
 	// Resource location
 	Location string `pulumi:"location"`
 	// Resource name
@@ -52,6 +54,8 @@ type LookupProximityPlacementGroupResult struct {
 	VirtualMachineScaleSets []SubResourceWithColocationStatusResponse `pulumi:"virtualMachineScaleSets"`
 	// A list of references to all virtual machines in the proximity placement group.
 	VirtualMachines []SubResourceWithColocationStatusResponse `pulumi:"virtualMachines"`
+	// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
+	Zones []string `pulumi:"zones"`
 }
 
 func LookupProximityPlacementGroupOutput(ctx *pulumi.Context, args LookupProximityPlacementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupProximityPlacementGroupResultOutput {
@@ -112,6 +116,13 @@ func (o LookupProximityPlacementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies the user intent of the proximity placement group.
+func (o LookupProximityPlacementGroupResultOutput) Intent() ProximityPlacementGroupPropertiesResponseIntentPtrOutput {
+	return o.ApplyT(func(v LookupProximityPlacementGroupResult) *ProximityPlacementGroupPropertiesResponseIntent {
+		return v.Intent
+	}).(ProximityPlacementGroupPropertiesResponseIntentPtrOutput)
+}
+
 // Resource location
 func (o LookupProximityPlacementGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.Location }).(pulumi.StringOutput)
@@ -149,6 +160,11 @@ func (o LookupProximityPlacementGroupResultOutput) VirtualMachines() SubResource
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) []SubResourceWithColocationStatusResponse {
 		return v.VirtualMachines
 	}).(SubResourceWithColocationStatusResponseArrayOutput)
+}
+
+// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
+func (o LookupProximityPlacementGroupResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupProximityPlacementGroupResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

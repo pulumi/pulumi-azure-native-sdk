@@ -545,7 +545,7 @@ func (val *AutoStorageBaseProperties) Defaults() *AutoStorageBaseProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuthenticationMode) {
+	if tmp.AuthenticationMode == nil {
 		authenticationMode_ := AutoStorageAuthenticationMode("StorageKeys")
 		tmp.AuthenticationMode = &authenticationMode_
 	}
@@ -579,7 +579,7 @@ func (val *AutoStorageBasePropertiesArgs) Defaults() *AutoStorageBasePropertiesA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuthenticationMode) {
+	if tmp.AuthenticationMode == nil {
 		tmp.AuthenticationMode = AutoStorageAuthenticationMode("StorageKeys")
 	}
 	return &tmp
@@ -749,7 +749,7 @@ func (val *AutoStoragePropertiesResponse) Defaults() *AutoStoragePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuthenticationMode) {
+	if tmp.AuthenticationMode == nil {
 		authenticationMode_ := "StorageKeys"
 		tmp.AuthenticationMode = &authenticationMode_
 	}
@@ -9349,8 +9349,6 @@ func (o ResizeErrorResponseArrayOutput) Index(i pulumi.IntInput) ResizeErrorResp
 type ResizeOperationStatusResponse struct {
 	// This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady.
 	Errors []ResizeErrorResponse `pulumi:"errors"`
-	// The default value is requeue.
-	NodeDeallocationOption *string `pulumi:"nodeDeallocationOption"`
 	// The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
 	ResizeTimeout          *string `pulumi:"resizeTimeout"`
 	StartTime              *string `pulumi:"startTime"`
@@ -9376,11 +9374,6 @@ func (o ResizeOperationStatusResponseOutput) ToResizeOperationStatusResponseOutp
 // This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady.
 func (o ResizeOperationStatusResponseOutput) Errors() ResizeErrorResponseArrayOutput {
 	return o.ApplyT(func(v ResizeOperationStatusResponse) []ResizeErrorResponse { return v.Errors }).(ResizeErrorResponseArrayOutput)
-}
-
-// The default value is requeue.
-func (o ResizeOperationStatusResponseOutput) NodeDeallocationOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResizeOperationStatusResponse) *string { return v.NodeDeallocationOption }).(pulumi.StringPtrOutput)
 }
 
 // The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).

@@ -18,15 +18,6 @@ const (
 	ApplicationGroupTypeDesktop   = ApplicationGroupType("Desktop")
 )
 
-// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
-type CommandLineSetting string
-
-const (
-	CommandLineSettingDoNotAllow = CommandLineSetting("DoNotAllow")
-	CommandLineSettingAllow      = CommandLineSetting("Allow")
-	CommandLineSettingRequire    = CommandLineSetting("Require")
-)
-
 type DayOfWeek string
 
 const (
@@ -260,23 +251,6 @@ const (
 	PreferredAppGroupTypeRailApplications = PreferredAppGroupType("RailApplications")
 )
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-type PrivateEndpointServiceConnectionStatus string
-
-const (
-	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
-	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
-	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
-)
-
-// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
-type PublicNetworkAccess string
-
-const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
-)
-
 // The type of resetting the token.
 type RegistrationTokenOperation string
 
@@ -284,14 +258,6 @@ const (
 	RegistrationTokenOperationDelete = RegistrationTokenOperation("Delete")
 	RegistrationTokenOperationNone   = RegistrationTokenOperation("None")
 	RegistrationTokenOperationUpdate = RegistrationTokenOperation("Update")
-)
-
-// Resource Type of Application.
-type RemoteApplicationType string
-
-const (
-	RemoteApplicationTypeInBuilt         = RemoteApplicationType("InBuilt")
-	RemoteApplicationTypeMsixApplication = RemoteApplicationType("MsixApplication")
 )
 
 // The identity type.
@@ -466,14 +432,6 @@ const (
 	SSOSecretTypeCertificate           = SSOSecretType("Certificate")
 	SSOSecretTypeSharedKeyInKeyVault   = SSOSecretType("SharedKeyInKeyVault")
 	SSOSecretTypeCertificateInKeyVault = SSOSecretType("CertificateInKeyVault")
-)
-
-// HostPool type for desktop.
-type ScalingHostPoolType string
-
-const (
-	// Users get a new (random) SessionHost every time it connects to the HostPool.
-	ScalingHostPoolTypePooled = ScalingHostPoolType("Pooled")
 )
 
 // The type of maintenance for session host components.

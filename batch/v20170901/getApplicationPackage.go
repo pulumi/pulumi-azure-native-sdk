@@ -11,8 +11,6 @@ import (
 )
 
 // Gets information about the specified application package.
-//
-// Deprecated: Version 2017-09-01 will be removed in v2 of the provider.
 func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackageArgs, opts ...pulumi.InvokeOption) (*LookupApplicationPackageResult, error) {
 	var rv LookupApplicationPackageResult
 	err := ctx.Invoke("azure-native:batch/v20170901:getApplicationPackage", args, &rv, opts...)

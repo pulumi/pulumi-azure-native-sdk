@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents ASC (Azure Security Center) data connector.
-// API Version: 2020-01-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ASCDataConnector struct {
 	pulumi.CustomResourceState
 
@@ -23,11 +24,13 @@ type ASCDataConnector struct {
 	// The kind of the data connector
 	// Expected value is 'AzureSecurityCenter'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The subscription id to connect to, and get the data from.
 	SubscriptionId pulumi.StringPtrOutput `pulumi:"subscriptionId"`
-	// Azure resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -110,6 +113,9 @@ func NewASCDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:ASCDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:ASCDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:ASCDataConnector"),
 		},
 	})
@@ -153,7 +159,7 @@ type ascdataConnectorArgs struct {
 	// The kind of the data connector
 	// Expected value is 'AzureSecurityCenter'.
 	Kind string `pulumi:"kind"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The subscription id to connect to, and get the data from.
 	SubscriptionId *string `pulumi:"subscriptionId"`
@@ -170,7 +176,7 @@ type ASCDataConnectorArgs struct {
 	// The kind of the data connector
 	// Expected value is 'AzureSecurityCenter'.
 	Kind pulumi.StringInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The subscription id to connect to, and get the data from.
 	SubscriptionId pulumi.StringPtrInput
@@ -231,7 +237,7 @@ func (o ASCDataConnectorOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ASCDataConnector) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o ASCDataConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ASCDataConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -241,7 +247,12 @@ func (o ASCDataConnectorOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ASCDataConnector) pulumi.StringPtrOutput { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ASCDataConnectorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ASCDataConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ASCDataConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ASCDataConnector) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

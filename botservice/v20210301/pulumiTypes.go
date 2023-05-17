@@ -27,7 +27,7 @@ func (val *AcsChatChannel) Defaults() *AcsChatChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -53,7 +53,7 @@ func (val *AcsChatChannelResponse) Defaults() *AcsChatChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -79,7 +79,7 @@ func (val *AlexaChannel) Defaults() *AlexaChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -127,7 +127,7 @@ func (val *AlexaChannelResponse) Defaults() *AlexaChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -198,19 +198,19 @@ func (val *BotProperties) Defaults() *BotProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IconUrl) {
+	if tmp.IconUrl == nil {
 		iconUrl_ := ""
 		tmp.IconUrl = &iconUrl_
 	}
-	if isZero(tmp.IsCmekEnabled) {
+	if tmp.IsCmekEnabled == nil {
 		isCmekEnabled_ := false
 		tmp.IsCmekEnabled = &isCmekEnabled_
 	}
-	if isZero(tmp.IsStreamingSupported) {
+	if tmp.IsStreamingSupported == nil {
 		isStreamingSupported_ := false
 		tmp.IsStreamingSupported = &isStreamingSupported_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
@@ -292,16 +292,16 @@ func (val *BotPropertiesArgs) Defaults() *BotPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IconUrl) {
+	if tmp.IconUrl == nil {
 		tmp.IconUrl = pulumi.StringPtr("")
 	}
-	if isZero(tmp.IsCmekEnabled) {
+	if tmp.IsCmekEnabled == nil {
 		tmp.IsCmekEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsStreamingSupported) {
+	if tmp.IsStreamingSupported == nil {
 		tmp.IsStreamingSupported = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -891,19 +891,19 @@ func (val *BotPropertiesResponse) Defaults() *BotPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IconUrl) {
+	if tmp.IconUrl == nil {
 		iconUrl_ := ""
 		tmp.IconUrl = &iconUrl_
 	}
-	if isZero(tmp.IsCmekEnabled) {
+	if tmp.IsCmekEnabled == nil {
 		isCmekEnabled_ := false
 		tmp.IsCmekEnabled = &isCmekEnabled_
 	}
-	if isZero(tmp.IsStreamingSupported) {
+	if tmp.IsStreamingSupported == nil {
 		isStreamingSupported_ := false
 		tmp.IsStreamingSupported = &isStreamingSupported_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
@@ -1125,11 +1125,11 @@ func (val *ChannelSettingsResponse) Defaults() *ChannelSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExtensionKey1) {
+	if tmp.ExtensionKey1 == nil {
 		extensionKey1_ := ""
 		tmp.ExtensionKey1 = &extensionKey1_
 	}
-	if isZero(tmp.ExtensionKey2) {
+	if tmp.ExtensionKey2 == nil {
 		extensionKey2_ := ""
 		tmp.ExtensionKey2 = &extensionKey2_
 	}
@@ -1511,7 +1511,7 @@ func (val *ConnectionSettingProperties) Defaults() *ConnectionSettingProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Scopes) {
+	if tmp.Scopes == nil {
 		scopes_ := ""
 		tmp.Scopes = &scopes_
 	}
@@ -1553,7 +1553,7 @@ func (val *ConnectionSettingPropertiesArgs) Defaults() *ConnectionSettingPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Scopes) {
+	if tmp.Scopes == nil {
 		tmp.Scopes = pulumi.StringPtr("")
 	}
 	return &tmp
@@ -1791,7 +1791,7 @@ func (val *ConnectionSettingPropertiesResponse) Defaults() *ConnectionSettingPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Scopes) {
+	if tmp.Scopes == nil {
 		scopes_ := ""
 		tmp.Scopes = &scopes_
 	}
@@ -1872,7 +1872,7 @@ func (val *DirectLineChannel) Defaults() *DirectLineChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -1899,11 +1899,11 @@ func (val *DirectLineChannelProperties) Defaults() *DirectLineChannelProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExtensionKey1) {
+	if tmp.ExtensionKey1 == nil {
 		extensionKey1_ := ""
 		tmp.ExtensionKey1 = &extensionKey1_
 	}
-	if isZero(tmp.ExtensionKey2) {
+	if tmp.ExtensionKey2 == nil {
 		extensionKey2_ := ""
 		tmp.ExtensionKey2 = &extensionKey2_
 	}
@@ -1928,11 +1928,11 @@ func (val *DirectLineChannelPropertiesResponse) Defaults() *DirectLineChannelPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExtensionKey1) {
+	if tmp.ExtensionKey1 == nil {
 		extensionKey1_ := ""
 		tmp.ExtensionKey1 = &extensionKey1_
 	}
-	if isZero(tmp.ExtensionKey2) {
+	if tmp.ExtensionKey2 == nil {
 		extensionKey2_ := ""
 		tmp.ExtensionKey2 = &extensionKey2_
 	}
@@ -1960,7 +1960,7 @@ func (val *DirectLineChannelResponse) Defaults() *DirectLineChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2009,11 +2009,11 @@ func (val *DirectLineSite) Defaults() *DirectLineSite {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if tmp.IsWebchatPreviewEnabled == nil {
 		isWebchatPreviewEnabled_ := false
 		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
@@ -2068,11 +2068,11 @@ func (val *DirectLineSiteResponse) Defaults() *DirectLineSiteResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if tmp.IsWebchatPreviewEnabled == nil {
 		isWebchatPreviewEnabled_ := false
 		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
@@ -2098,7 +2098,7 @@ func (val *DirectLineSpeechChannel) Defaults() *DirectLineSpeechChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2162,7 +2162,7 @@ func (val *DirectLineSpeechChannelResponse) Defaults() *DirectLineSpeechChannelR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2188,7 +2188,7 @@ func (val *EmailChannel) Defaults() *EmailChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2244,7 +2244,7 @@ func (val *EmailChannelResponse) Defaults() *EmailChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2270,7 +2270,7 @@ func (val *FacebookChannel) Defaults() *FacebookChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2326,7 +2326,7 @@ func (val *FacebookChannelResponse) Defaults() *FacebookChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2368,7 +2368,7 @@ func (val *KikChannel) Defaults() *KikChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2420,7 +2420,7 @@ func (val *KikChannelResponse) Defaults() *KikChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2446,7 +2446,7 @@ func (val *LineChannel) Defaults() *LineChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2490,7 +2490,7 @@ func (val *LineChannelResponse) Defaults() *LineChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2532,7 +2532,7 @@ func (val *M365Extensions) Defaults() *M365Extensions {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2558,7 +2558,7 @@ func (val *M365ExtensionsResponse) Defaults() *M365ExtensionsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2584,7 +2584,7 @@ func (val *MsTeamsChannel) Defaults() *MsTeamsChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2615,11 +2615,11 @@ func (val *MsTeamsChannelProperties) Defaults() *MsTeamsChannelProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DeploymentEnvironment) {
+	if tmp.DeploymentEnvironment == nil {
 		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
-	if isZero(tmp.EnableCalling) {
+	if tmp.EnableCalling == nil {
 		enableCalling_ := false
 		tmp.EnableCalling = &enableCalling_
 	}
@@ -2648,11 +2648,11 @@ func (val *MsTeamsChannelPropertiesResponse) Defaults() *MsTeamsChannelPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DeploymentEnvironment) {
+	if tmp.DeploymentEnvironment == nil {
 		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
-	if isZero(tmp.EnableCalling) {
+	if tmp.EnableCalling == nil {
 		enableCalling_ := false
 		tmp.EnableCalling = &enableCalling_
 	}
@@ -2680,7 +2680,7 @@ func (val *MsTeamsChannelResponse) Defaults() *MsTeamsChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2706,7 +2706,7 @@ func (val *Omnichannel) Defaults() *Omnichannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2732,7 +2732,7 @@ func (val *OmnichannelResponse) Defaults() *OmnichannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2756,7 +2756,7 @@ func (val *OutlookChannel) Defaults() *OutlookChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2782,7 +2782,7 @@ func (val *OutlookChannelResponse) Defaults() *OutlookChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2806,7 +2806,7 @@ func (val *SearchAssistant) Defaults() *SearchAssistant {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2832,7 +2832,7 @@ func (val *SearchAssistantResponse) Defaults() *SearchAssistantResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2891,7 +2891,7 @@ func (val *ServiceProviderPropertiesResponse) Defaults() *ServiceProviderPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IconUrl) {
+	if tmp.IconUrl == nil {
 		iconUrl_ := ""
 		tmp.IconUrl = &iconUrl_
 	}
@@ -2963,11 +2963,11 @@ func (val *SiteResponse) Defaults() *SiteResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if tmp.IsWebchatPreviewEnabled == nil {
 		isWebchatPreviewEnabled_ := false
 		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
@@ -3340,7 +3340,7 @@ func (val *SkypeChannel) Defaults() *SkypeChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3379,7 +3379,7 @@ func (val *SkypeChannelProperties) Defaults() *SkypeChannelProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableCalling) {
+	if tmp.EnableCalling == nil {
 		enableCalling_ := false
 		tmp.EnableCalling = &enableCalling_
 	}
@@ -3416,7 +3416,7 @@ func (val *SkypeChannelPropertiesResponse) Defaults() *SkypeChannelPropertiesRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableCalling) {
+	if tmp.EnableCalling == nil {
 		enableCalling_ := false
 		tmp.EnableCalling = &enableCalling_
 	}
@@ -3444,7 +3444,7 @@ func (val *SkypeChannelResponse) Defaults() *SkypeChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3472,7 +3472,7 @@ func (val *SlackChannel) Defaults() *SlackChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3544,7 +3544,7 @@ func (val *SlackChannelResponse) Defaults() *SlackChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3570,7 +3570,7 @@ func (val *SmsChannel) Defaults() *SmsChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3626,7 +3626,7 @@ func (val *SmsChannelResponse) Defaults() *SmsChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3652,7 +3652,7 @@ func (val *TelegramChannel) Defaults() *TelegramChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3700,7 +3700,7 @@ func (val *TelegramChannelResponse) Defaults() *TelegramChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3726,7 +3726,7 @@ func (val *TelephonyChannel) Defaults() *TelephonyChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3822,7 +3822,7 @@ func (val *TelephonyChannelResponse) Defaults() *TelephonyChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3896,7 +3896,7 @@ func (val *WebChatChannel) Defaults() *WebChatChannel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3938,7 +3938,7 @@ func (val *WebChatChannelResponse) Defaults() *WebChatChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3985,7 +3985,7 @@ func (val *WebChatSite) Defaults() *WebChatSite {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
@@ -4043,7 +4043,7 @@ func (val *WebChatSiteResponse) Defaults() *WebChatSiteResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}

@@ -21,14 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:desktopvirtualization/v20201110preview:Application":
-		r = &Application{}
 	case "azure-native:desktopvirtualization/v20201110preview:ApplicationGroup":
 		r = &ApplicationGroup{}
 	case "azure-native:desktopvirtualization/v20201110preview:HostPool":
 		r = &HostPool{}
-	case "azure-native:desktopvirtualization/v20201110preview:MSIXPackage":
-		r = &MSIXPackage{}
 	case "azure-native:desktopvirtualization/v20201110preview:ScalingPlan":
 		r = &ScalingPlan{}
 	case "azure-native:desktopvirtualization/v20201110preview:Workspace":

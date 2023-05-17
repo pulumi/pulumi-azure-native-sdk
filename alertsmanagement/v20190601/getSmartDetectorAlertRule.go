@@ -65,7 +65,7 @@ func (val *LookupSmartDetectorAlertRuleResult) Defaults() *LookupSmartDetectorAl
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}

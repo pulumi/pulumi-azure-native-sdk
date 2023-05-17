@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,6 +117,9 @@ func NewMTPDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:MTPDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:MTPDataConnector"),

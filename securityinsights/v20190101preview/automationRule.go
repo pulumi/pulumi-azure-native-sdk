@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,6 +121,9 @@ func NewAutomationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:AutomationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:AutomationRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:AutomationRule"),

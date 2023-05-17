@@ -13,19 +13,5 @@ const (
 	PrivateEndpointServiceConnectionStatusDisconnected = PrivateEndpointServiceConnectionStatus("Disconnected")
 )
 
-// Name of this SKU.
-type SkuName string
-
-const (
-	SkuNameStandard = SkuName("Standard")
-)
-
-// The tier of this SKU.
-type SkuTier string
-
-const (
-	SkuTierStandard = SkuTier("Standard")
-)
-
 func init() {
 }

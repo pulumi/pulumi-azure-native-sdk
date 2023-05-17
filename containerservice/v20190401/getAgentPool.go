@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the agent pool by managed cluster and resource group.
-//
-// Deprecated: Version 2019-04-01 will be removed in v2 of the provider.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	var rv LookupAgentPoolResult
 	err := ctx.Invoke("azure-native:containerservice/v20190401:getAgentPool", args, &rv, opts...)

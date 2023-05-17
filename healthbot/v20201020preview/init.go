@@ -21,7 +21,7 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:healthbot/v20201020preview:getbot":
+	case "azure-native:healthbot/v20201020preview:Getbot":
 		r = &Getbot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

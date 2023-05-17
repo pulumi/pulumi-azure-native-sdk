@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get function information by its ID for web site, or a deployment slot.
-// API Version: 2020-12-01.
+// Description for Get function information by its ID for web site, or a deployment slot.
+// API Version: 2022-09-01.
 func LookupWebAppInstanceFunctionSlot(ctx *pulumi.Context, args *LookupWebAppInstanceFunctionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppInstanceFunctionSlotResult, error) {
 	var rv LookupWebAppInstanceFunctionSlotResult
 	err := ctx.Invoke("azure-native:web:getWebAppInstanceFunctionSlot", args, &rv, opts...)

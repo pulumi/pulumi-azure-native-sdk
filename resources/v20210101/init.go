@@ -31,12 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeploymentAtSubscriptionScope{}
 	case "azure-native:resources/v20210101:DeploymentAtTenantScope":
 		r = &DeploymentAtTenantScope{}
-	case "azure-native:resources/v20210101:Resource":
-		r = &Resource{}
-	case "azure-native:resources/v20210101:ResourceGroup":
-		r = &ResourceGroup{}
-	case "azure-native:resources/v20210101:TagAtScope":
-		r = &TagAtScope{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

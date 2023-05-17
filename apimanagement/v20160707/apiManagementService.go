@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of an API Management service resource.
-//
-// Deprecated: Version 2016-07-07 will be removed in v2 of the provider.
 type ApiManagementService struct {
 	pulumi.CustomResourceState
 
@@ -83,7 +81,7 @@ func NewApiManagementService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	args.Sku = args.Sku.ToApiManagementServiceSkuPropertiesOutput().ApplyT(func(v ApiManagementServiceSkuProperties) ApiManagementServiceSkuProperties { return *v.Defaults() }).(ApiManagementServiceSkuPropertiesOutput)
-	if isZero(args.VpnType) {
+	if args.VpnType == nil {
 		args.VpnType = VirtualNetworkType("None")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -134,6 +132,9 @@ func NewApiManagementService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiManagementService"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiManagementService"),
 		},
 	})
 	opts = append(opts, aliases)

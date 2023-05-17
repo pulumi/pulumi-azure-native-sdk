@@ -949,7 +949,7 @@ func (val *LocationResponse) Defaults() *LocationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Role) {
+	if tmp.Role == nil {
 		role_ := "Primary"
 		tmp.Role = &role_
 	}

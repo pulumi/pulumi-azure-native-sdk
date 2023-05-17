@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,12 +54,6 @@ func NewMachineGroup(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	args.Kind = pulumi.String("machineGroup")
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:operationalinsights:MachineGroup"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource MachineGroup
 	err := ctx.RegisterResource("azure-native:operationalinsights/v20151101preview:MachineGroup", name, args, &resource, opts...)
 	if err != nil {

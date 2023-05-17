@@ -23,12 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerservice/v20210801:AgentPool":
 		r = &AgentPool{}
-	case "azure-native:containerservice/v20210801:MaintenanceConfiguration":
-		r = &MaintenanceConfiguration{}
-	case "azure-native:containerservice/v20210801:ManagedCluster":
-		r = &ManagedCluster{}
-	case "azure-native:containerservice/v20210801:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:containerservice/v20210801:Snapshot":
 		r = &Snapshot{}
 	default:

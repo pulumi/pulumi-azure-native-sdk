@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +55,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:VirtualNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -3,7 +3,7 @@
 
 package digitaltwins
 
-// Specifies the authentication type being used for connecting to the endpoint.
+// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 type AuthenticationType string
 
 const (
@@ -18,12 +18,14 @@ const (
 	ConnectionTypeAzureDataExplorer = ConnectionType("AzureDataExplorer")
 )
 
-// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+// The type of Managed Identity used by the DigitalTwinsInstance.
 type DigitalTwinsIdentityType string
 
 const (
-	DigitalTwinsIdentityTypeNone           = DigitalTwinsIdentityType("None")
-	DigitalTwinsIdentityTypeSystemAssigned = DigitalTwinsIdentityType("SystemAssigned")
+	DigitalTwinsIdentityTypeNone                         = DigitalTwinsIdentityType("None")
+	DigitalTwinsIdentityTypeSystemAssigned               = DigitalTwinsIdentityType("SystemAssigned")
+	DigitalTwinsIdentityTypeUserAssigned                 = DigitalTwinsIdentityType("UserAssigned")
+	DigitalTwinsIdentityType_SystemAssigned_UserAssigned = DigitalTwinsIdentityType("SystemAssigned,UserAssigned")
 )
 
 // The type of Digital Twins endpoint
@@ -33,6 +35,14 @@ const (
 	EndpointTypeEventHub   = EndpointType("EventHub")
 	EndpointTypeEventGrid  = EndpointType("EventGrid")
 	EndpointTypeServiceBus = EndpointType("ServiceBus")
+)
+
+// The type of managed identity used.
+type IdentityType string
+
+const (
+	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
 )
 
 // The status of a private endpoint connection.
@@ -51,6 +61,14 @@ type PublicNetworkAccess string
 const (
 	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+type RecordPropertyAndItemRemovals string
+
+const (
+	RecordPropertyAndItemRemovalsTrue  = RecordPropertyAndItemRemovals("true")
+	RecordPropertyAndItemRemovalsFalse = RecordPropertyAndItemRemovals("false")
 )
 
 func init() {

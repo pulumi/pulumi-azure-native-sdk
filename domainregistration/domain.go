@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about a domain.
-// API Version: 2020-10-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -50,8 +51,6 @@ type Domain struct {
 	ReadyForDnsRecordManagement pulumi.BoolOutput `pulumi:"readyForDnsRecordManagement"`
 	// Domain registration status.
 	RegistrationStatus pulumi.StringOutput `pulumi:"registrationStatus"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Target DNS type (would be used for migration)
@@ -85,7 +84,7 @@ func NewDomain(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoRenew) {
+	if args.AutoRenew == nil {
 		args.AutoRenew = pulumi.BoolPtr(true)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -351,11 +350,6 @@ func (o DomainOutput) ReadyForDnsRecordManagement() pulumi.BoolOutput {
 // Domain registration status.
 func (o DomainOutput) RegistrationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.RegistrationStatus }).(pulumi.StringOutput)
-}
-
-// The system metadata relating to this resource.
-func (o DomainOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Domain) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

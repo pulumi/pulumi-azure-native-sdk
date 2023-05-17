@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Job Definition resource.
-// API Version: 2022-07-01-preview.
+// API Version: 2023-03-01.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	var rv LookupJobDefinitionResult
 	err := ctx.Invoke("azure-native:storagemover:getJobDefinition", args, &rv, opts...)

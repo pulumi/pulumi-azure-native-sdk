@@ -7,17 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the IoT hub.
-// API Version: 2020-08-31.
+// API Version: 2021-07-02.
+// Previous API Version: 2020-08-31. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type IotHubResource struct {
 	pulumi.CustomResourceState
 
 	// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// The managed identities for the IotHub.
+	Identity ArmIdentityResponsePtrOutput `pulumi:"identity"`
 	// The resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name.
@@ -26,6 +29,8 @@ type IotHubResource struct {
 	Properties IotHubPropertiesResponseOutput `pulumi:"properties"`
 	// IotHub SKU info
 	Sku IotHubSkuInfoResponseOutput `pulumi:"sku"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
@@ -124,6 +129,9 @@ func NewIotHubResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devices/v20220430preview:IotHubResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:IotHubResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IotHubResource
@@ -158,6 +166,8 @@ func (IotHubResourceState) ElementType() reflect.Type {
 }
 
 type iotHubResourceArgs struct {
+	// The managed identities for the IotHub.
+	Identity *ArmIdentity `pulumi:"identity"`
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// IotHub properties
@@ -174,6 +184,8 @@ type iotHubResourceArgs struct {
 
 // The set of arguments for constructing a IotHubResource resource.
 type IotHubResourceArgs struct {
+	// The managed identities for the IotHub.
+	Identity ArmIdentityPtrInput
 	// The resource location.
 	Location pulumi.StringPtrInput
 	// IotHub properties
@@ -230,6 +242,11 @@ func (o IotHubResourceOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IotHubResource) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The managed identities for the IotHub.
+func (o IotHubResourceOutput) Identity() ArmIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *IotHubResource) ArmIdentityResponsePtrOutput { return v.Identity }).(ArmIdentityResponsePtrOutput)
+}
+
 // The resource location.
 func (o IotHubResourceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *IotHubResource) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -248,6 +265,11 @@ func (o IotHubResourceOutput) Properties() IotHubPropertiesResponseOutput {
 // IotHub SKU info
 func (o IotHubResourceOutput) Sku() IotHubSkuInfoResponseOutput {
 	return o.ApplyT(func(v *IotHubResource) IotHubSkuInfoResponseOutput { return v.Sku }).(IotHubSkuInfoResponseOutput)
+}
+
+// The system meta data relating to this resource.
+func (o IotHubResourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *IotHubResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

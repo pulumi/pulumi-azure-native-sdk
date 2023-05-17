@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -163,6 +163,9 @@ func NewRouteFilter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:RouteFilter"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteFilter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RouteFilter
@@ -210,7 +213,7 @@ type routeFilterArgs struct {
 	// The name of the route filter.
 	RouteFilterName *string `pulumi:"routeFilterName"`
 	// Collection of RouteFilterRules contained within a route filter.
-	Rules []RouteFilterRuleType `pulumi:"rules"`
+	Rules []RouteFilterRule `pulumi:"rules"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -230,7 +233,7 @@ type RouteFilterArgs struct {
 	// The name of the route filter.
 	RouteFilterName pulumi.StringPtrInput
 	// Collection of RouteFilterRules contained within a route filter.
-	Rules RouteFilterRuleTypeArrayInput
+	Rules RouteFilterRuleArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }

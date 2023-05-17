@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A global reach connection resource
-// API Version: 2020-07-17-preview.
+// API Version: 2022-05-01.
+// Previous API Version: 2020-07-17-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type GlobalReachConnection struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type GlobalReachConnection struct {
 	AuthorizationKey pulumi.StringPtrOutput `pulumi:"authorizationKey"`
 	// The connection status of the global reach connection
 	CircuitConnectionStatus pulumi.StringOutput `pulumi:"circuitConnectionStatus"`
+	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+	ExpressRouteId pulumi.StringPtrOutput `pulumi:"expressRouteId"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
@@ -97,6 +100,8 @@ func (GlobalReachConnectionState) ElementType() reflect.Type {
 type globalReachConnectionArgs struct {
 	// Authorization key from the peer express route used for the global reach connection
 	AuthorizationKey *string `pulumi:"authorizationKey"`
+	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+	ExpressRouteId *string `pulumi:"expressRouteId"`
 	// Name of the global reach connection in the private cloud
 	GlobalReachConnectionName *string `pulumi:"globalReachConnectionName"`
 	// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
@@ -111,6 +116,8 @@ type globalReachConnectionArgs struct {
 type GlobalReachConnectionArgs struct {
 	// Authorization key from the peer express route used for the global reach connection
 	AuthorizationKey pulumi.StringPtrInput
+	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+	ExpressRouteId pulumi.StringPtrInput
 	// Name of the global reach connection in the private cloud
 	GlobalReachConnectionName pulumi.StringPtrInput
 	// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
@@ -171,6 +178,11 @@ func (o GlobalReachConnectionOutput) AuthorizationKey() pulumi.StringPtrOutput {
 // The connection status of the global reach connection
 func (o GlobalReachConnectionOutput) CircuitConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.CircuitConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+func (o GlobalReachConnectionOutput) ExpressRouteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringPtrOutput { return v.ExpressRouteId }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

@@ -11,8 +11,6 @@ import (
 )
 
 // Get details of the specified snapshot
-//
-// Deprecated: Version 2019-11-01 will be removed in v2 of the provider.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("azure-native:netapp/v20191101:getSnapshot", args, &rv, opts...)

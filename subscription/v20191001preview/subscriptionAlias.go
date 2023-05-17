@@ -11,8 +11,6 @@ import (
 )
 
 // Subscription Information with the alias.
-//
-// Deprecated: Version 2019-10-01-preview will be removed in v2 of the provider.
 type SubscriptionAlias struct {
 	pulumi.CustomResourceState
 

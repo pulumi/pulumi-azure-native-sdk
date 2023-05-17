@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of an Asset in the Media Services account
-// API Version: 2020-05-01.
+// API Version: 2022-08-01.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	var rv LookupAssetResult
 	err := ctx.Invoke("azure-native:media:getAsset", args, &rv, opts...)

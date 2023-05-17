@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +49,9 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201:VirtualNetworkRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:VirtualNetworkRule"),
 		},
 	})
 	opts = append(opts, aliases)
