@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,7 +73,7 @@ func NewNetworkInterface(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.NicType) {
+	if args.NicType == nil {
 		args.NicType = pulumi.StringPtr("Standard")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,7 +68,7 @@ func NewSourceControlConfiguration(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.OperatorNamespace) {
+	if args.OperatorNamespace == nil {
 		args.OperatorNamespace = pulumi.StringPtr("default")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

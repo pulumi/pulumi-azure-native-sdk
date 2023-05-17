@@ -74,15 +74,15 @@ func (val *LookupAFDOriginResult) Defaults() *LookupAFDOriginResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := true
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
-	if isZero(tmp.HttpPort) {
+	if tmp.HttpPort == nil {
 		httpPort_ := 80
 		tmp.HttpPort = &httpPort_
 	}
-	if isZero(tmp.HttpsPort) {
+	if tmp.HttpsPort == nil {
 		httpsPort_ := 443
 		tmp.HttpsPort = &httpsPort_
 	}

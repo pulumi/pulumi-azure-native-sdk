@@ -65,7 +65,7 @@ func (val *LookupBuildTaskResult) Defaults() *LookupBuildTaskResult {
 	tmp := *val
 	tmp.SourceRepository = *tmp.SourceRepository.Defaults()
 
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}

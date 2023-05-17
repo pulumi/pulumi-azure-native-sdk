@@ -81,7 +81,7 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}

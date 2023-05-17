@@ -1793,7 +1793,7 @@ func (val *ArmRoleReceiver) Defaults() *ArmRoleReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -1827,7 +1827,7 @@ func (val *ArmRoleReceiverArgs) Defaults() *ArmRoleReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1935,7 +1935,7 @@ func (val *ArmRoleReceiverResponse) Defaults() *ArmRoleReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -2016,7 +2016,7 @@ func (val *AutomationRunbookReceiver) Defaults() *AutomationRunbookReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -2058,7 +2058,7 @@ func (val *AutomationRunbookReceiverArgs) Defaults() *AutomationRunbookReceiverA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -2194,7 +2194,7 @@ func (val *AutomationRunbookReceiverResponse) Defaults() *AutomationRunbookRecei
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -2892,7 +2892,7 @@ func (val *AzureFunctionReceiver) Defaults() *AzureFunctionReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -2930,7 +2930,7 @@ func (val *AzureFunctionReceiverArgs) Defaults() *AzureFunctionReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3052,7 +3052,7 @@ func (val *AzureFunctionReceiverResponse) Defaults() *AzureFunctionReceiverRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -4828,11 +4828,11 @@ func (val *EmailNotification) Defaults() *EmailNotification {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendToSubscriptionAdministrator) {
+	if tmp.SendToSubscriptionAdministrator == nil {
 		sendToSubscriptionAdministrator_ := false
 		tmp.SendToSubscriptionAdministrator = &sendToSubscriptionAdministrator_
 	}
-	if isZero(tmp.SendToSubscriptionCoAdministrators) {
+	if tmp.SendToSubscriptionCoAdministrators == nil {
 		sendToSubscriptionCoAdministrators_ := false
 		tmp.SendToSubscriptionCoAdministrators = &sendToSubscriptionCoAdministrators_
 	}
@@ -4866,10 +4866,10 @@ func (val *EmailNotificationArgs) Defaults() *EmailNotificationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendToSubscriptionAdministrator) {
+	if tmp.SendToSubscriptionAdministrator == nil {
 		tmp.SendToSubscriptionAdministrator = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SendToSubscriptionCoAdministrators) {
+	if tmp.SendToSubscriptionCoAdministrators == nil {
 		tmp.SendToSubscriptionCoAdministrators = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5037,11 +5037,11 @@ func (val *EmailNotificationResponse) Defaults() *EmailNotificationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendToSubscriptionAdministrator) {
+	if tmp.SendToSubscriptionAdministrator == nil {
 		sendToSubscriptionAdministrator_ := false
 		tmp.SendToSubscriptionAdministrator = &sendToSubscriptionAdministrator_
 	}
-	if isZero(tmp.SendToSubscriptionCoAdministrators) {
+	if tmp.SendToSubscriptionCoAdministrators == nil {
 		sendToSubscriptionCoAdministrators_ := false
 		tmp.SendToSubscriptionCoAdministrators = &sendToSubscriptionCoAdministrators_
 	}
@@ -5148,7 +5148,7 @@ func (val *EmailReceiver) Defaults() *EmailReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -5182,7 +5182,7 @@ func (val *EmailReceiverArgs) Defaults() *EmailReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5292,7 +5292,7 @@ func (val *EmailReceiverResponse) Defaults() *EmailReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -6679,7 +6679,7 @@ func (val *LogicAppReceiver) Defaults() *LogicAppReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -6715,7 +6715,7 @@ func (val *LogicAppReceiverArgs) Defaults() *LogicAppReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -6830,7 +6830,7 @@ func (val *LogicAppReceiverResponse) Defaults() *LogicAppReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -10027,7 +10027,7 @@ func (val *ScaleAction) Defaults() *ScaleAction {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Value) {
+	if tmp.Value == nil {
 		value_ := "1"
 		tmp.Value = &value_
 	}
@@ -10063,7 +10063,7 @@ func (val *ScaleActionArgs) Defaults() *ScaleActionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Value) {
+	if tmp.Value == nil {
 		tmp.Value = pulumi.StringPtr("1")
 	}
 	return &tmp
@@ -10133,7 +10133,7 @@ func (val *ScaleActionResponse) Defaults() *ScaleActionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Value) {
+	if tmp.Value == nil {
 		value_ := "1"
 		tmp.Value = &value_
 	}
@@ -12752,11 +12752,11 @@ func (val *WebhookReceiver) Defaults() *WebhookReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		useAadAuth_ := false
 		tmp.UseAadAuth = &useAadAuth_
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -12798,10 +12798,10 @@ func (val *WebhookReceiverArgs) Defaults() *WebhookReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		tmp.UseAadAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -12937,11 +12937,11 @@ func (val *WebhookReceiverResponse) Defaults() *WebhookReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		useAadAuth_ := false
 		tmp.UseAadAuth = &useAadAuth_
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}

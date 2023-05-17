@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,10 +56,10 @@ func NewPool(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
-	if isZero(args.QosType) {
+	if args.QosType == nil {
 		args.QosType = pulumi.StringPtr("Auto")
 	}
-	if isZero(args.ServiceLevel) {
+	if args.ServiceLevel == nil {
 		args.ServiceLevel = pulumi.String("Premium")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -226,7 +226,7 @@ func (val *Argument) Defaults() *Argument {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -249,7 +249,7 @@ func (val *ArgumentResponse) Defaults() *ArgumentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -634,7 +634,7 @@ func (val *BaseImageTrigger) Defaults() *BaseImageTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -672,7 +672,7 @@ func (val *BaseImageTriggerArgs) Defaults() *BaseImageTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -874,7 +874,7 @@ func (val *BaseImageTriggerResponse) Defaults() *BaseImageTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -1490,19 +1490,19 @@ func (val *DockerBuildRequest) Defaults() *DockerBuildRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1551,19 +1551,19 @@ func (val *DockerBuildRequestResponse) Defaults() *DockerBuildRequestResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1599,11 +1599,11 @@ func (val *DockerBuildStep) Defaults() *DockerBuildStep {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
@@ -1641,11 +1641,11 @@ func (val *DockerBuildStepResponse) Defaults() *DockerBuildStepResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
@@ -1688,11 +1688,11 @@ func (val *EncodedTaskRunRequest) Defaults() *EncodedTaskRunRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1735,11 +1735,11 @@ func (val *EncodedTaskRunRequestResponse) Defaults() *EncodedTaskRunRequestRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1818,11 +1818,11 @@ func (val *FileTaskRunRequest) Defaults() *FileTaskRunRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -1865,11 +1865,11 @@ func (val *FileTaskRunRequestResponse) Defaults() *FileTaskRunRequestResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 3600
 		tmp.Timeout = &timeout_
 	}
@@ -2774,7 +2774,7 @@ func (val *RunResponse) Defaults() *RunResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
@@ -3199,7 +3199,7 @@ func (val *SetValue) Defaults() *SetValue {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -3222,7 +3222,7 @@ func (val *SetValueResponse) Defaults() *SetValueResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -3595,7 +3595,7 @@ func (val *SourceTrigger) Defaults() *SourceTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -3631,7 +3631,7 @@ func (val *SourceTriggerArgs) Defaults() *SourceTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -3908,7 +3908,7 @@ func (val *SourceTriggerResponse) Defaults() *SourceTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -4054,7 +4054,7 @@ func (val *TaskRunRequest) Defaults() *TaskRunRequest {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
@@ -4084,7 +4084,7 @@ func (val *TaskRunRequestResponse) Defaults() *TaskRunRequestResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchiveEnabled) {
+	if tmp.IsArchiveEnabled == nil {
 		isArchiveEnabled_ := false
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
@@ -4107,7 +4107,7 @@ func (val *TimerTrigger) Defaults() *TimerTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -4141,7 +4141,7 @@ func (val *TimerTriggerArgs) Defaults() *TimerTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -4324,7 +4324,7 @@ func (val *TimerTriggerResponse) Defaults() *TimerTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}

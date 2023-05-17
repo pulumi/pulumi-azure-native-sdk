@@ -82,11 +82,11 @@ func (val *LookupFluxConfigurationResult) Defaults() *LookupFluxConfigurationRes
 	tmp := *val
 	tmp.GitRepository = tmp.GitRepository.Defaults()
 
-	if isZero(tmp.Namespace) {
+	if tmp.Namespace == nil {
 		namespace_ := "default"
 		tmp.Namespace = &namespace_
 	}
-	if isZero(tmp.Suspend) {
+	if tmp.Suspend == nil {
 		suspend_ := false
 		tmp.Suspend = &suspend_
 	}

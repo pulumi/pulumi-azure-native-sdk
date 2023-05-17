@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,16 +82,16 @@ func NewAppServicePlan(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HyperV) {
+	if args.HyperV == nil {
 		args.HyperV = pulumi.BoolPtr(false)
 	}
-	if isZero(args.IsXenon) {
+	if args.IsXenon == nil {
 		args.IsXenon = pulumi.BoolPtr(false)
 	}
-	if isZero(args.PerSiteScaling) {
+	if args.PerSiteScaling == nil {
 		args.PerSiteScaling = pulumi.BoolPtr(false)
 	}
-	if isZero(args.Reserved) {
+	if args.Reserved == nil {
 		args.Reserved = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

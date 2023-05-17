@@ -63,7 +63,7 @@ func (val *LookupApplianceResult) Defaults() *LookupApplianceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Distro) {
+	if tmp.Distro == nil {
 		distro_ := "AKSEdge"
 		tmp.Distro = &distro_
 	}

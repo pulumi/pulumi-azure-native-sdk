@@ -85,13 +85,13 @@ func (val *LookupStorageAccountResult) Defaults() *LookupStorageAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableHttpsTrafficOnly) {
+	if tmp.EnableHttpsTrafficOnly == nil {
 		enableHttpsTrafficOnly_ := false
 		tmp.EnableHttpsTrafficOnly = &enableHttpsTrafficOnly_
 	}
 	tmp.Encryption = *tmp.Encryption.Defaults()
 
-	if isZero(tmp.IsHnsEnabled) {
+	if tmp.IsHnsEnabled == nil {
 		isHnsEnabled_ := false
 		tmp.IsHnsEnabled = &isHnsEnabled_
 	}

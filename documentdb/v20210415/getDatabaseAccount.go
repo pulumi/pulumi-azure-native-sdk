@@ -107,7 +107,7 @@ func (val *LookupDatabaseAccountResult) Defaults() *LookupDatabaseAccountResult 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "GlobalDocumentDB"
 		tmp.Kind = &kind_
 	}

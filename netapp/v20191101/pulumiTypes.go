@@ -38,7 +38,7 @@ func (val *ActiveDirectory) Defaults() *ActiveDirectory {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		activeDirectoryId_ := "guid id"
 		tmp.ActiveDirectoryId = &activeDirectoryId_
 	}
@@ -84,7 +84,7 @@ func (val *ActiveDirectoryArgs) Defaults() *ActiveDirectoryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		tmp.ActiveDirectoryId = pulumi.StringPtr("guid id")
 	}
 	return &tmp
@@ -234,7 +234,7 @@ func (val *ActiveDirectoryResponse) Defaults() *ActiveDirectoryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		activeDirectoryId_ := "guid id"
 		tmp.ActiveDirectoryId = &activeDirectoryId_
 	}

@@ -57,7 +57,7 @@ func (val *LookupScriptResult) Defaults() *LookupScriptResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ContinueOnErrors) {
+	if tmp.ContinueOnErrors == nil {
 		continueOnErrors_ := false
 		tmp.ContinueOnErrors = &continueOnErrors_
 	}

@@ -70,7 +70,7 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 	if isZero(tmp.ServiceLevel) {
 		tmp.ServiceLevel = "Premium"
 	}
-	if isZero(tmp.UsageThreshold) {
+	if tmp.UsageThreshold == nil {
 		usageThreshold_ := 107374182400.0
 		tmp.UsageThreshold = &usageThreshold_
 	}

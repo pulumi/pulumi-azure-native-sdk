@@ -48,7 +48,7 @@ func (val *ListBuildTaskSourceRepositoryPropertiesResult) Defaults() *ListBuildT
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsCommitTriggerEnabled) {
+	if tmp.IsCommitTriggerEnabled == nil {
 		isCommitTriggerEnabled_ := false
 		tmp.IsCommitTriggerEnabled = &isCommitTriggerEnabled_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,7 +64,7 @@ func NewSchedule(ctx *pulumi.Context,
 	if args.NotificationSettings != nil {
 		args.NotificationSettings = args.NotificationSettings.ToNotificationSettingsPtrOutput().ApplyT(func(v *NotificationSettings) *NotificationSettings { return v.Defaults() }).(NotificationSettingsPtrOutput)
 	}
-	if isZero(args.Status) {
+	if args.Status == nil {
 		args.Status = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

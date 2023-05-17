@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,10 +58,10 @@ func NewSqlPool(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	if isZero(args.Collation) {
+	if args.Collation == nil {
 		args.Collation = pulumi.StringPtr("")
 	}
-	if isZero(args.StorageAccountType) {
+	if args.StorageAccountType == nil {
 		args.StorageAccountType = pulumi.StringPtr("GRS")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

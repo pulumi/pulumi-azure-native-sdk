@@ -674,7 +674,7 @@ func (val *ResourceSku) Defaults() *ResourceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Capacity) {
+	if tmp.Capacity == nil {
 		capacity_ := 1
 		tmp.Capacity = &capacity_
 	}
@@ -708,7 +708,7 @@ func (val *ResourceSkuArgs) Defaults() *ResourceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Capacity) {
+	if tmp.Capacity == nil {
 		tmp.Capacity = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -771,7 +771,7 @@ func (val *ResourceSkuResponse) Defaults() *ResourceSkuResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Capacity) {
+	if tmp.Capacity == nil {
 		capacity_ := 1
 		tmp.Capacity = &capacity_
 	}

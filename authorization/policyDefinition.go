@@ -42,7 +42,7 @@ func NewPolicyDefinition(ctx *pulumi.Context,
 		args = &PolicyDefinitionArgs{}
 	}
 
-	if isZero(args.Mode) {
+	if args.Mode == nil {
 		args.Mode = pulumi.StringPtr("Indexed")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

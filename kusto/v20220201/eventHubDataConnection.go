@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,7 +73,7 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DatabaseRouting) {
+	if args.DatabaseRouting == nil {
 		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("EventHub")

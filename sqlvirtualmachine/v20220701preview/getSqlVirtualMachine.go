@@ -87,11 +87,11 @@ func (val *LookupSqlVirtualMachineResult) Defaults() *LookupSqlVirtualMachineRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableAutomaticUpgrade) {
+	if tmp.EnableAutomaticUpgrade == nil {
 		enableAutomaticUpgrade_ := false
 		tmp.EnableAutomaticUpgrade = &enableAutomaticUpgrade_
 	}
-	if isZero(tmp.LeastPrivilegeMode) {
+	if tmp.LeastPrivilegeMode == nil {
 		leastPrivilegeMode_ := "NotSet"
 		tmp.LeastPrivilegeMode = &leastPrivilegeMode_
 	}

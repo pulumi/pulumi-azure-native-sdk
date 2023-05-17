@@ -79,7 +79,7 @@ func (val *LookupDomainResult) Defaults() *LookupDomainResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoRenew) {
+	if tmp.AutoRenew == nil {
 		autoRenew_ := true
 		tmp.AutoRenew = &autoRenew_
 	}

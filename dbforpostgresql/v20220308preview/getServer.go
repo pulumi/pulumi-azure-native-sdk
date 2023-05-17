@@ -85,7 +85,7 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 	tmp := *val
 	tmp.AuthConfig = tmp.AuthConfig.Defaults()
 
-	if isZero(tmp.AvailabilityZone) {
+	if tmp.AvailabilityZone == nil {
 		availabilityZone_ := ""
 		tmp.AvailabilityZone = &availabilityZone_
 	}

@@ -336,25 +336,25 @@ func (val *ConnectToSourceSqlServerTaskInput) Defaults() *ConnectToSourceSqlServ
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CollectAgentJobs) {
+	if tmp.CollectAgentJobs == nil {
 		collectAgentJobs_ := false
 		tmp.CollectAgentJobs = &collectAgentJobs_
 	}
-	if isZero(tmp.CollectDatabases) {
+	if tmp.CollectDatabases == nil {
 		collectDatabases_ := true
 		tmp.CollectDatabases = &collectDatabases_
 	}
-	if isZero(tmp.CollectLogins) {
+	if tmp.CollectLogins == nil {
 		collectLogins_ := false
 		tmp.CollectLogins = &collectLogins_
 	}
-	if isZero(tmp.CollectTdeCertificateInfo) {
+	if tmp.CollectTdeCertificateInfo == nil {
 		collectTdeCertificateInfo_ := false
 		tmp.CollectTdeCertificateInfo = &collectTdeCertificateInfo_
 	}
 	tmp.SourceConnectionInfo = *tmp.SourceConnectionInfo.Defaults()
 
-	if isZero(tmp.ValidateSsisCatalogOnly) {
+	if tmp.ValidateSsisCatalogOnly == nil {
 		validateSsisCatalogOnly_ := false
 		tmp.ValidateSsisCatalogOnly = &validateSsisCatalogOnly_
 	}
@@ -385,25 +385,25 @@ func (val *ConnectToSourceSqlServerTaskInputResponse) Defaults() *ConnectToSourc
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CollectAgentJobs) {
+	if tmp.CollectAgentJobs == nil {
 		collectAgentJobs_ := false
 		tmp.CollectAgentJobs = &collectAgentJobs_
 	}
-	if isZero(tmp.CollectDatabases) {
+	if tmp.CollectDatabases == nil {
 		collectDatabases_ := true
 		tmp.CollectDatabases = &collectDatabases_
 	}
-	if isZero(tmp.CollectLogins) {
+	if tmp.CollectLogins == nil {
 		collectLogins_ := false
 		tmp.CollectLogins = &collectLogins_
 	}
-	if isZero(tmp.CollectTdeCertificateInfo) {
+	if tmp.CollectTdeCertificateInfo == nil {
 		collectTdeCertificateInfo_ := false
 		tmp.CollectTdeCertificateInfo = &collectTdeCertificateInfo_
 	}
 	tmp.SourceConnectionInfo = *tmp.SourceConnectionInfo.Defaults()
 
-	if isZero(tmp.ValidateSsisCatalogOnly) {
+	if tmp.ValidateSsisCatalogOnly == nil {
 		validateSsisCatalogOnly_ := false
 		tmp.ValidateSsisCatalogOnly = &validateSsisCatalogOnly_
 	}
@@ -991,17 +991,17 @@ func (val *ConnectToTargetSqlMITaskInput) Defaults() *ConnectToTargetSqlMITaskIn
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CollectAgentJobs) {
+	if tmp.CollectAgentJobs == nil {
 		collectAgentJobs_ := true
 		tmp.CollectAgentJobs = &collectAgentJobs_
 	}
-	if isZero(tmp.CollectLogins) {
+	if tmp.CollectLogins == nil {
 		collectLogins_ := true
 		tmp.CollectLogins = &collectLogins_
 	}
 	tmp.TargetConnectionInfo = *tmp.TargetConnectionInfo.Defaults()
 
-	if isZero(tmp.ValidateSsisCatalogOnly) {
+	if tmp.ValidateSsisCatalogOnly == nil {
 		validateSsisCatalogOnly_ := false
 		tmp.ValidateSsisCatalogOnly = &validateSsisCatalogOnly_
 	}
@@ -1026,17 +1026,17 @@ func (val *ConnectToTargetSqlMITaskInputResponse) Defaults() *ConnectToTargetSql
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CollectAgentJobs) {
+	if tmp.CollectAgentJobs == nil {
 		collectAgentJobs_ := true
 		tmp.CollectAgentJobs = &collectAgentJobs_
 	}
-	if isZero(tmp.CollectLogins) {
+	if tmp.CollectLogins == nil {
 		collectLogins_ := true
 		tmp.CollectLogins = &collectLogins_
 	}
 	tmp.TargetConnectionInfo = *tmp.TargetConnectionInfo.Defaults()
 
-	if isZero(tmp.ValidateSsisCatalogOnly) {
+	if tmp.ValidateSsisCatalogOnly == nil {
 		validateSsisCatalogOnly_ := false
 		tmp.ValidateSsisCatalogOnly = &validateSsisCatalogOnly_
 	}
@@ -4347,11 +4347,11 @@ func (val *PostgreSqlConnectionInfo) Defaults() *PostgreSqlConnectionInfo {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}
@@ -4385,11 +4385,11 @@ func (val *PostgreSqlConnectionInfoResponse) Defaults() *PostgreSqlConnectionInf
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}
@@ -5033,11 +5033,11 @@ func (val *SqlConnectionInfo) Defaults() *SqlConnectionInfo {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}
@@ -5073,11 +5073,11 @@ func (val *SqlConnectionInfoResponse) Defaults() *SqlConnectionInfoResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}

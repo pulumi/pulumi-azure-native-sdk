@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,17 +106,17 @@ func NewVirtualMachine(ctx *pulumi.Context,
 	if args.VmImage == nil {
 		return nil, errors.New("invalid value for required argument 'VmImage'")
 	}
-	if isZero(args.BootMethod) {
+	if args.BootMethod == nil {
 		args.BootMethod = pulumi.StringPtr("UEFI")
 	}
-	if isZero(args.IsolateEmulatorThread) {
+	if args.IsolateEmulatorThread == nil {
 		args.IsolateEmulatorThread = pulumi.StringPtr("True")
 	}
 	args.StorageProfile = args.StorageProfile.ToStorageProfileOutput().ApplyT(func(v StorageProfile) StorageProfile { return *v.Defaults() }).(StorageProfileOutput)
-	if isZero(args.VirtioInterface) {
+	if args.VirtioInterface == nil {
 		args.VirtioInterface = pulumi.StringPtr("Modern")
 	}
-	if isZero(args.VmDeviceModel) {
+	if args.VmDeviceModel == nil {
 		args.VmDeviceModel = pulumi.StringPtr("T2")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

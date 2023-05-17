@@ -69,7 +69,7 @@ func (val *LookupRoleAssignmentResult) Defaults() *LookupRoleAssignmentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrincipalType) {
+	if tmp.PrincipalType == nil {
 		principalType_ := "User"
 		tmp.PrincipalType = &principalType_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,13 +95,13 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AllowPublicAccessWhenBehindVnet) {
+	if args.AllowPublicAccessWhenBehindVnet == nil {
 		args.AllowPublicAccessWhenBehindVnet = pulumi.BoolPtr(false)
 	}
-	if isZero(args.HbiWorkspace) {
+	if args.HbiWorkspace == nil {
 		args.HbiWorkspace = pulumi.BoolPtr(false)
 	}
-	if isZero(args.V1LegacyMode) {
+	if args.V1LegacyMode == nil {
 		args.V1LegacyMode = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

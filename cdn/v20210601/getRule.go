@@ -62,7 +62,7 @@ func (val *LookupRuleResult) Defaults() *LookupRuleResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MatchProcessingBehavior) {
+	if tmp.MatchProcessingBehavior == nil {
 		matchProcessingBehavior_ := "Continue"
 		tmp.MatchProcessingBehavior = &matchProcessingBehavior_
 	}

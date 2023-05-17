@@ -90,19 +90,19 @@ func (val *LookupAppServicePlanResult) Defaults() *LookupAppServicePlanResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HyperV) {
+	if tmp.HyperV == nil {
 		hyperV_ := false
 		tmp.HyperV = &hyperV_
 	}
-	if isZero(tmp.IsXenon) {
+	if tmp.IsXenon == nil {
 		isXenon_ := false
 		tmp.IsXenon = &isXenon_
 	}
-	if isZero(tmp.PerSiteScaling) {
+	if tmp.PerSiteScaling == nil {
 		perSiteScaling_ := false
 		tmp.PerSiteScaling = &perSiteScaling_
 	}
-	if isZero(tmp.Reserved) {
+	if tmp.Reserved == nil {
 		reserved_ := false
 		tmp.Reserved = &reserved_
 	}

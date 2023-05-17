@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,7 +68,7 @@ func NewWorkbook(ctx *pulumi.Context,
 	if args.WorkbookId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkbookId'")
 	}
-	if isZero(args.SharedTypeKind) {
+	if args.SharedTypeKind == nil {
 		args.SharedTypeKind = pulumi.String("shared")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
