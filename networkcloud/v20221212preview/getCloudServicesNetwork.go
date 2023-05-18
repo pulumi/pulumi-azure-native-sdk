@@ -74,7 +74,7 @@ func (val *LookupCloudServicesNetworkResult) Defaults() *LookupCloudServicesNetw
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDefaultEgressEndpoints) {
+	if tmp.EnableDefaultEgressEndpoints == nil {
 		enableDefaultEgressEndpoints_ := "True"
 		tmp.EnableDefaultEgressEndpoints = &enableDefaultEgressEndpoints_
 	}

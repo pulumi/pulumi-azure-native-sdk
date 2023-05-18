@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,12 +60,18 @@ func NewHunt(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	if isZero(args.HypothesisStatus) {
+	if args.HypothesisStatus == nil {
 		args.HypothesisStatus = pulumi.StringPtr("Unknown")
 	}
-	if isZero(args.Status) {
+	if args.Status == nil {
 		args.Status = pulumi.StringPtr("New")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Hunt"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Hunt
 	err := ctx.RegisterResource("azure-native:securityinsights/v20230401preview:Hunt", name, args, &resource, opts...)
 	if err != nil {

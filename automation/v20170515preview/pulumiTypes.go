@@ -1366,7 +1366,7 @@ func (val *ScheduleProperties) Defaults() *ScheduleProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -1420,7 +1420,7 @@ func (val *SchedulePropertiesArgs) Defaults() *SchedulePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		tmp.IsEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1555,7 +1555,7 @@ func (val *SchedulePropertiesResponse) Defaults() *SchedulePropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}

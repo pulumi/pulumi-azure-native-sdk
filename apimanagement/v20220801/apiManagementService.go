@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,19 +114,19 @@ func NewApiManagementService(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.DisableGateway) {
+	if args.DisableGateway == nil {
 		args.DisableGateway = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableClientCertificate) {
+	if args.EnableClientCertificate == nil {
 		args.EnableClientCertificate = pulumi.BoolPtr(false)
 	}
-	if isZero(args.NatGatewayState) {
+	if args.NatGatewayState == nil {
 		args.NatGatewayState = pulumi.StringPtr("Disabled")
 	}
-	if isZero(args.Restore) {
+	if args.Restore == nil {
 		args.Restore = pulumi.BoolPtr(false)
 	}
-	if isZero(args.VirtualNetworkType) {
+	if args.VirtualNetworkType == nil {
 		args.VirtualNetworkType = pulumi.StringPtr("None")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

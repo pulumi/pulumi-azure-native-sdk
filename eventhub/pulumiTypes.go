@@ -1184,7 +1184,7 @@ func (val *NWRuleSetIpRules) Defaults() *NWRuleSetIpRules {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -1216,7 +1216,7 @@ func (val *NWRuleSetIpRulesArgs) Defaults() *NWRuleSetIpRulesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -1317,7 +1317,7 @@ func (val *NWRuleSetIpRulesResponse) Defaults() *NWRuleSetIpRulesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}

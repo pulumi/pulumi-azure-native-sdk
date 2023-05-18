@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,7 +54,7 @@ func NewMachineLearningDataset(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	args.Parameters = args.Parameters.ToDatasetCreateRequestParametersOutput().ApplyT(func(v DatasetCreateRequestParameters) DatasetCreateRequestParameters { return *v.Defaults() }).(DatasetCreateRequestParametersOutput)
-	if isZero(args.SkipValidation) {
+	if args.SkipValidation == nil {
 		args.SkipValidation = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

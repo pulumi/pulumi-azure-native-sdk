@@ -3151,7 +3151,7 @@ func (val *NetworkConfiguration) Defaults() *NetworkConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecondaryIpEnabled) {
+	if tmp.IsSecondaryIpEnabled == nil {
 		isSecondaryIpEnabled_ := false
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
@@ -3170,7 +3170,7 @@ func (val *NetworkConfigurationResponse) Defaults() *NetworkConfigurationRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecondaryIpEnabled) {
+	if tmp.IsSecondaryIpEnabled == nil {
 		isSecondaryIpEnabled_ := false
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}

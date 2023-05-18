@@ -96,31 +96,31 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.ThroughputMibps) {
+	if tmp.ThroughputMibps == nil {
 		throughputMibps_ := 0.0
 		tmp.ThroughputMibps = &throughputMibps_
 	}

@@ -89,15 +89,15 @@ func (val *LookupAppServiceCertificateOrderResult) Defaults() *LookupAppServiceC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoRenew) {
+	if tmp.AutoRenew == nil {
 		autoRenew_ := true
 		tmp.AutoRenew = &autoRenew_
 	}
-	if isZero(tmp.KeySize) {
+	if tmp.KeySize == nil {
 		keySize_ := 2048
 		tmp.KeySize = &keySize_
 	}
-	if isZero(tmp.ValidityInYears) {
+	if tmp.ValidityInYears == nil {
 		validityInYears_ := 1
 		tmp.ValidityInYears = &validityInYears_
 	}

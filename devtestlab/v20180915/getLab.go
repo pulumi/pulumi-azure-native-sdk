@@ -91,7 +91,7 @@ func (val *LookupLabResult) Defaults() *LookupLabResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LabStorageType) {
+	if tmp.LabStorageType == nil {
 		labStorageType_ := "Premium"
 		tmp.LabStorageType = &labStorageType_
 	}

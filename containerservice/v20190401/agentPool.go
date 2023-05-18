@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,7 +63,7 @@ func NewAgentPool(ctx *pulumi.Context,
 	if args.VmSize == nil {
 		return nil, errors.New("invalid value for required argument 'VmSize'")
 	}
-	if isZero(args.Count) {
+	if args.Count == nil {
 		args.Count = pulumi.Int(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

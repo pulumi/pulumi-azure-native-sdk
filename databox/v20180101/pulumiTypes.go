@@ -629,7 +629,7 @@ func (val *ShippingAddress) Defaults() *ShippingAddress {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AddressType) {
+	if tmp.AddressType == nil {
 		addressType_ := "None"
 		tmp.AddressType = &addressType_
 	}
@@ -666,7 +666,7 @@ func (val *ShippingAddressResponse) Defaults() *ShippingAddressResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AddressType) {
+	if tmp.AddressType == nil {
 		addressType_ := "None"
 		tmp.AddressType = &addressType_
 	}

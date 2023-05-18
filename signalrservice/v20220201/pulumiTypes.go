@@ -210,7 +210,7 @@ func (val *LiveTraceConfiguration) Defaults() *LiveTraceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := "false"
 		tmp.Enabled = &enabled_
 	}
@@ -246,7 +246,7 @@ func (val *LiveTraceConfigurationArgs) Defaults() *LiveTraceConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.StringPtr("false")
 	}
 	return &tmp
@@ -409,7 +409,7 @@ func (val *LiveTraceConfigurationResponse) Defaults() *LiveTraceConfigurationRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := "false"
 		tmp.Enabled = &enabled_
 	}
@@ -3774,7 +3774,7 @@ func (val *SignalRTlsSettings) Defaults() *SignalRTlsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}
@@ -3804,7 +3804,7 @@ func (val *SignalRTlsSettingsArgs) Defaults() *SignalRTlsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		tmp.ClientCertEnabled = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -3938,7 +3938,7 @@ func (val *SignalRTlsSettingsResponse) Defaults() *SignalRTlsSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}

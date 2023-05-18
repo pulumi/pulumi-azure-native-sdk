@@ -63,11 +63,11 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.Sku) {
+	if tmp.Sku == nil {
 		sku_ := "Standard"
 		tmp.Sku = &sku_
 	}

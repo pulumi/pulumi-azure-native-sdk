@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +97,9 @@ func NewBackupVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230101:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:BackupVault"),
 		},
 	})
 	opts = append(opts, aliases)

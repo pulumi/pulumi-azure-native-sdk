@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,10 +74,10 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 	if args.GitRepository != nil {
 		args.GitRepository = args.GitRepository.ToGitRepositoryDefinitionPtrOutput().ApplyT(func(v *GitRepositoryDefinition) *GitRepositoryDefinition { return v.Defaults() }).(GitRepositoryDefinitionPtrOutput)
 	}
-	if isZero(args.Namespace) {
+	if args.Namespace == nil {
 		args.Namespace = pulumi.StringPtr("default")
 	}
-	if isZero(args.Suspend) {
+	if args.Suspend == nil {
 		args.Suspend = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

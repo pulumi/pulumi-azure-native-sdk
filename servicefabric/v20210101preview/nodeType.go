@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,6 +115,9 @@ func NewNodeType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230201preview:NodeType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:NodeType"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -26,7 +26,7 @@ func (val *Action) Defaults() *Action {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		requiresPreprocessing_ := true
 		tmp.RequiresPreprocessing = &requiresPreprocessing_
 	}
@@ -60,7 +60,7 @@ func (val *ActionArgs) Defaults() *ActionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		tmp.RequiresPreprocessing = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -228,7 +228,7 @@ func (val *ActionResponse) Defaults() *ActionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		requiresPreprocessing_ := true
 		tmp.RequiresPreprocessing = &requiresPreprocessing_
 	}
@@ -585,7 +585,7 @@ func (val *CorrelationFilter) Defaults() *CorrelationFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		requiresPreprocessing_ := true
 		tmp.RequiresPreprocessing = &requiresPreprocessing_
 	}
@@ -633,7 +633,7 @@ func (val *CorrelationFilterArgs) Defaults() *CorrelationFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		tmp.RequiresPreprocessing = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -920,7 +920,7 @@ func (val *CorrelationFilterResponse) Defaults() *CorrelationFilterResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		requiresPreprocessing_ := true
 		tmp.RequiresPreprocessing = &requiresPreprocessing_
 	}
@@ -1184,7 +1184,7 @@ func (val *NWRuleSetIpRules) Defaults() *NWRuleSetIpRules {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -1216,7 +1216,7 @@ func (val *NWRuleSetIpRulesArgs) Defaults() *NWRuleSetIpRulesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -1317,7 +1317,7 @@ func (val *NWRuleSetIpRulesResponse) Defaults() *NWRuleSetIpRulesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -2019,11 +2019,11 @@ func (val *SqlFilter) Defaults() *SqlFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CompatibilityLevel) {
+	if tmp.CompatibilityLevel == nil {
 		compatibilityLevel_ := 20
 		tmp.CompatibilityLevel = &compatibilityLevel_
 	}
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		requiresPreprocessing_ := true
 		tmp.RequiresPreprocessing = &requiresPreprocessing_
 	}
@@ -2057,10 +2057,10 @@ func (val *SqlFilterArgs) Defaults() *SqlFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CompatibilityLevel) {
+	if tmp.CompatibilityLevel == nil {
 		tmp.CompatibilityLevel = pulumi.IntPtr(20)
 	}
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		tmp.RequiresPreprocessing = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -2228,11 +2228,11 @@ func (val *SqlFilterResponse) Defaults() *SqlFilterResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CompatibilityLevel) {
+	if tmp.CompatibilityLevel == nil {
 		compatibilityLevel_ := 20
 		tmp.CompatibilityLevel = &compatibilityLevel_
 	}
-	if isZero(tmp.RequiresPreprocessing) {
+	if tmp.RequiresPreprocessing == nil {
 		requiresPreprocessing_ := true
 		tmp.RequiresPreprocessing = &requiresPreprocessing_
 	}

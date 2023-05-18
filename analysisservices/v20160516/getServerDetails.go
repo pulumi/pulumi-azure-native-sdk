@@ -65,11 +65,11 @@ func (val *LookupServerDetailsResult) Defaults() *LookupServerDetailsResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ManagedMode) {
+	if tmp.ManagedMode == nil {
 		managedMode_ := 1
 		tmp.ManagedMode = &managedMode_
 	}
-	if isZero(tmp.ServerMonitorMode) {
+	if tmp.ServerMonitorMode == nil {
 		serverMonitorMode_ := 1
 		tmp.ServerMonitorMode = &serverMonitorMode_
 	}

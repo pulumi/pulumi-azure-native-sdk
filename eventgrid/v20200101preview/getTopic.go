@@ -59,7 +59,7 @@ func (val *LookupTopicResult) Defaults() *LookupTopicResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InputSchema) {
+	if tmp.InputSchema == nil {
 		inputSchema_ := "EventGridSchema"
 		tmp.InputSchema = &inputSchema_
 	}

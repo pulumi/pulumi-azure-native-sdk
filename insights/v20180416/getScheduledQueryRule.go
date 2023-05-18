@@ -73,7 +73,7 @@ func (val *LookupScheduledQueryRuleResult) Defaults() *LookupScheduledQueryRuleR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoMitigate) {
+	if tmp.AutoMitigate == nil {
 		autoMitigate_ := false
 		tmp.AutoMitigate = &autoMitigate_
 	}

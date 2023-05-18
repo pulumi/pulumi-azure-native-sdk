@@ -18020,7 +18020,7 @@ func (val *PacketCaptureFilter) Defaults() *PacketCaptureFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}
@@ -18058,7 +18058,7 @@ func (val *PacketCaptureFilterArgs) Defaults() *PacketCaptureFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		tmp.Protocol = pulumi.StringPtr("Any")
 	}
 	return &tmp
@@ -18180,7 +18180,7 @@ func (val *PacketCaptureFilterResponse) Defaults() *PacketCaptureFilterResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}

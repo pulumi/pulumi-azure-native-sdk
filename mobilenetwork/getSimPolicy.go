@@ -76,7 +76,7 @@ func (val *LookupSimPolicyResult) Defaults() *LookupSimPolicyResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RegistrationTimer) {
+	if tmp.RegistrationTimer == nil {
 		registrationTimer_ := 3240
 		tmp.RegistrationTimer = &registrationTimer_
 	}

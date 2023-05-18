@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,9 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:ProjectEnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:ProjectEnvironmentType"),
 		},
 	})
 	opts = append(opts, aliases)

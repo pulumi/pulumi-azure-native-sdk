@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +78,9 @@ func NewExport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20221001:Export"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:Export"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,7 +116,7 @@ type mongoDBResourceMongoRoleDefinitionArgs struct {
 	// The set of roles inherited by this Role Definition.
 	Roles []Role `pulumi:"roles"`
 	// Indicates whether the Role Definition was built-in or user created.
-	Type *MongoRoleDefinitionType `pulumi:"type"`
+	Type *float64 `pulumi:"type"`
 }
 
 // The set of arguments for constructing a MongoDBResourceMongoRoleDefinition resource.
@@ -136,7 +136,7 @@ type MongoDBResourceMongoRoleDefinitionArgs struct {
 	// The set of roles inherited by this Role Definition.
 	Roles RoleArrayInput
 	// Indicates whether the Role Definition was built-in or user created.
-	Type MongoRoleDefinitionTypePtrInput
+	Type pulumi.Float64PtrInput
 }
 
 func (MongoDBResourceMongoRoleDefinitionArgs) ElementType() reflect.Type {

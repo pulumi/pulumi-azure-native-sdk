@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +50,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hdinsight:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20230415preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

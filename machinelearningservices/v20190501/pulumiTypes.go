@@ -857,7 +857,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -880,7 +880,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}

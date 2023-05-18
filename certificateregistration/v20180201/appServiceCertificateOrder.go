@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,13 +80,13 @@ func NewAppServiceCertificateOrder(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoRenew) {
+	if args.AutoRenew == nil {
 		args.AutoRenew = pulumi.BoolPtr(true)
 	}
-	if isZero(args.KeySize) {
+	if args.KeySize == nil {
 		args.KeySize = pulumi.IntPtr(2048)
 	}
-	if isZero(args.ValidityInYears) {
+	if args.ValidityInYears == nil {
 		args.ValidityInYears = pulumi.IntPtr(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

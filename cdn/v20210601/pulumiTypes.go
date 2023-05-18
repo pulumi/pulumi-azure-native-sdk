@@ -874,7 +874,7 @@ func (val *ClientPortMatchConditionParameters) Defaults() *ClientPortMatchCondit
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -900,7 +900,7 @@ func (val *ClientPortMatchConditionParametersResponse) Defaults() *ClientPortMat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -1164,7 +1164,7 @@ func (val *CookiesMatchConditionParameters) Defaults() *CookiesMatchConditionPar
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -1192,7 +1192,7 @@ func (val *CookiesMatchConditionParametersResponse) Defaults() *CookiesMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -4296,7 +4296,7 @@ func (val *HostNameMatchConditionParameters) Defaults() *HostNameMatchConditionP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -4322,7 +4322,7 @@ func (val *HostNameMatchConditionParametersResponse) Defaults() *HostNameMatchCo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -4510,7 +4510,7 @@ func (val *HttpVersionMatchConditionParameters) Defaults() *HttpVersionMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -4536,7 +4536,7 @@ func (val *HttpVersionMatchConditionParametersResponse) Defaults() *HttpVersionM
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -4562,7 +4562,7 @@ func (val *IsDeviceMatchConditionParameters) Defaults() *IsDeviceMatchConditionP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -4588,7 +4588,7 @@ func (val *IsDeviceMatchConditionParametersResponse) Defaults() *IsDeviceMatchCo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -6433,7 +6433,7 @@ func (val *PostArgsMatchConditionParameters) Defaults() *PostArgsMatchConditionP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -6461,7 +6461,7 @@ func (val *PostArgsMatchConditionParametersResponse) Defaults() *PostArgsMatchCo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -6487,7 +6487,7 @@ func (val *QueryStringMatchConditionParameters) Defaults() *QueryStringMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -6513,7 +6513,7 @@ func (val *QueryStringMatchConditionParametersResponse) Defaults() *QueryStringM
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -6981,7 +6981,7 @@ func (val *RemoteAddressMatchConditionParameters) Defaults() *RemoteAddressMatch
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7007,7 +7007,7 @@ func (val *RemoteAddressMatchConditionParametersResponse) Defaults() *RemoteAddr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7033,7 +7033,7 @@ func (val *RequestBodyMatchConditionParameters) Defaults() *RequestBodyMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7059,7 +7059,7 @@ func (val *RequestBodyMatchConditionParametersResponse) Defaults() *RequestBodyM
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7087,7 +7087,7 @@ func (val *RequestHeaderMatchConditionParameters) Defaults() *RequestHeaderMatch
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7115,7 +7115,7 @@ func (val *RequestHeaderMatchConditionParametersResponse) Defaults() *RequestHea
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7141,7 +7141,7 @@ func (val *RequestMethodMatchConditionParameters) Defaults() *RequestMethodMatch
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7167,7 +7167,7 @@ func (val *RequestMethodMatchConditionParametersResponse) Defaults() *RequestMet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7193,7 +7193,7 @@ func (val *RequestSchemeMatchConditionParameters) Defaults() *RequestSchemeMatch
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7219,7 +7219,7 @@ func (val *RequestSchemeMatchConditionParametersResponse) Defaults() *RequestSch
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7245,7 +7245,7 @@ func (val *RequestUriMatchConditionParameters) Defaults() *RequestUriMatchCondit
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -7271,7 +7271,7 @@ func (val *RequestUriMatchConditionParametersResponse) Defaults() *RequestUriMat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -8313,7 +8313,7 @@ func (val *ServerPortMatchConditionParameters) Defaults() *ServerPortMatchCondit
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -8339,7 +8339,7 @@ func (val *ServerPortMatchConditionParametersResponse) Defaults() *ServerPortMat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -8850,7 +8850,7 @@ func (val *SocketAddrMatchConditionParameters) Defaults() *SocketAddrMatchCondit
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -8876,7 +8876,7 @@ func (val *SocketAddrMatchConditionParametersResponse) Defaults() *SocketAddrMat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -8902,7 +8902,7 @@ func (val *SslProtocolMatchConditionParameters) Defaults() *SslProtocolMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -8928,7 +8928,7 @@ func (val *SslProtocolMatchConditionParametersResponse) Defaults() *SslProtocolM
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -9015,7 +9015,7 @@ func (val *UrlFileExtensionMatchConditionParameters) Defaults() *UrlFileExtensio
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -9041,7 +9041,7 @@ func (val *UrlFileExtensionMatchConditionParametersResponse) Defaults() *UrlFile
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -9067,7 +9067,7 @@ func (val *UrlFileNameMatchConditionParameters) Defaults() *UrlFileNameMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -9093,7 +9093,7 @@ func (val *UrlFileNameMatchConditionParametersResponse) Defaults() *UrlFileNameM
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -9119,7 +9119,7 @@ func (val *UrlPathMatchConditionParameters) Defaults() *UrlPathMatchConditionPar
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}
@@ -9145,7 +9145,7 @@ func (val *UrlPathMatchConditionParametersResponse) Defaults() *UrlPathMatchCond
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NegateCondition) {
+	if tmp.NegateCondition == nil {
 		negateCondition_ := false
 		tmp.NegateCondition = &negateCondition_
 	}

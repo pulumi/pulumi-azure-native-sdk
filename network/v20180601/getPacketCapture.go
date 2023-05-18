@@ -57,19 +57,19 @@ func (val *LookupPacketCaptureResult) Defaults() *LookupPacketCaptureResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BytesToCapturePerPacket) {
+	if tmp.BytesToCapturePerPacket == nil {
 		bytesToCapturePerPacket_ := 0
 		tmp.BytesToCapturePerPacket = &bytesToCapturePerPacket_
 	}
-	if isZero(tmp.Etag) {
+	if tmp.Etag == nil {
 		etag_ := "A unique read-only string that changes whenever the resource is updated."
 		tmp.Etag = &etag_
 	}
-	if isZero(tmp.TimeLimitInSeconds) {
+	if tmp.TimeLimitInSeconds == nil {
 		timeLimitInSeconds_ := 18000
 		tmp.TimeLimitInSeconds = &timeLimitInSeconds_
 	}
-	if isZero(tmp.TotalBytesPerSession) {
+	if tmp.TotalBytesPerSession == nil {
 		totalBytesPerSession_ := 1073741824
 		tmp.TotalBytesPerSession = &totalBytesPerSession_
 	}

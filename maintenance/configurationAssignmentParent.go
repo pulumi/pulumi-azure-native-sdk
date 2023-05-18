@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +67,9 @@ func NewConfigurationAssignmentParent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20221101preview:ConfigurationAssignmentParent"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20230401:ConfigurationAssignmentParent"),
 		},
 	})
 	opts = append(opts, aliases)

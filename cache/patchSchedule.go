@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,6 +64,12 @@ func NewPatchSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:PatchSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

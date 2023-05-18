@@ -76,7 +76,7 @@ func (val *LookupVirtualMachineScaleSetVMRunCommandResult) Defaults() *LookupVir
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AsyncExecution) {
+	if tmp.AsyncExecution == nil {
 		asyncExecution_ := false
 		tmp.AsyncExecution = &asyncExecution_
 	}

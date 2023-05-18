@@ -71,15 +71,15 @@ func (val *LookupWebTestResult) Defaults() *LookupWebTestResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Frequency) {
+	if tmp.Frequency == nil {
 		frequency_ := 300
 		tmp.Frequency = &frequency_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "ping"
 		tmp.Kind = &kind_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 30
 		tmp.Timeout = &timeout_
 	}

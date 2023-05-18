@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,10 +58,10 @@ func NewServerDetails(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.ManagedMode) {
+	if args.ManagedMode == nil {
 		args.ManagedMode = pulumi.IntPtr(1)
 	}
-	if isZero(args.ServerMonitorMode) {
+	if args.ServerMonitorMode == nil {
 		args.ServerMonitorMode = pulumi.IntPtr(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

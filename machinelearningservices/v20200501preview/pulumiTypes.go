@@ -1579,7 +1579,7 @@ func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -1658,7 +1658,7 @@ func (val *AmlComputeResponseProperties) Defaults() *AmlComputeResponsePropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -4424,7 +4424,7 @@ func (val *DatasetCreateRequestParameters) Defaults() *DatasetCreateRequestParam
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IncludePath) {
+	if tmp.IncludePath == nil {
 		includePath_ := false
 		tmp.IncludePath = &includePath_
 	}
@@ -4463,7 +4463,7 @@ func (val *DatasetCreateRequestParametersArgs) Defaults() *DatasetCreateRequestP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IncludePath) {
+	if tmp.IncludePath == nil {
 		tmp.IncludePath = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -6145,7 +6145,7 @@ func (val *DatastoreResponse) Defaults() *DatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HasBeenValidated) {
+	if tmp.HasBeenValidated == nil {
 		hasBeenValidated_ := false
 		tmp.HasBeenValidated = &hasBeenValidated_
 	}
@@ -10060,7 +10060,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -10083,7 +10083,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}

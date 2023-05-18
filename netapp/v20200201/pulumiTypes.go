@@ -40,11 +40,11 @@ func (val *ActiveDirectory) Defaults() *ActiveDirectory {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		activeDirectoryId_ := "guid id"
 		tmp.ActiveDirectoryId = &activeDirectoryId_
 	}
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -92,10 +92,10 @@ func (val *ActiveDirectoryArgs) Defaults() *ActiveDirectoryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		tmp.ActiveDirectoryId = pulumi.StringPtr("guid id")
 	}
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		tmp.OrganizationalUnit = pulumi.StringPtr("CN=Computers")
 	}
 	return &tmp
@@ -252,11 +252,11 @@ func (val *ActiveDirectoryResponse) Defaults() *ActiveDirectoryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveDirectoryId) {
+	if tmp.ActiveDirectoryId == nil {
 		activeDirectoryId_ := "guid id"
 		tmp.ActiveDirectoryId = &activeDirectoryId_
 	}
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -372,7 +372,7 @@ func (val *ExportPolicyRule) Defaults() *ExportPolicyRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cifs) {
+	if tmp.Cifs == nil {
 		cifs_ := false
 		tmp.Cifs = &cifs_
 	}
@@ -414,7 +414,7 @@ func (val *ExportPolicyRuleArgs) Defaults() *ExportPolicyRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cifs) {
+	if tmp.Cifs == nil {
 		tmp.Cifs = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -550,7 +550,7 @@ func (val *ExportPolicyRuleResponse) Defaults() *ExportPolicyRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cifs) {
+	if tmp.Cifs == nil {
 		cifs_ := false
 		tmp.Cifs = &cifs_
 	}

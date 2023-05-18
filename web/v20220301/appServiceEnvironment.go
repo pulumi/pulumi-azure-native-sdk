@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,7 +81,7 @@ func NewAppServiceEnvironment(ctx *pulumi.Context,
 	if args.VirtualNetwork == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualNetwork'")
 	}
-	if isZero(args.UpgradePreference) {
+	if args.UpgradePreference == nil {
 		args.UpgradePreference = pulumi.StringPtr("None")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

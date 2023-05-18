@@ -121,15 +121,15 @@ func (val *LookupNodeTypeResult) Defaults() *LookupNodeTypeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEncryptionAtHost) {
+	if tmp.EnableEncryptionAtHost == nil {
 		enableEncryptionAtHost_ := false
 		tmp.EnableEncryptionAtHost = &enableEncryptionAtHost_
 	}
-	if isZero(tmp.IsStateless) {
+	if tmp.IsStateless == nil {
 		isStateless_ := false
 		tmp.IsStateless = &isStateless_
 	}
-	if isZero(tmp.MultiplePlacementGroups) {
+	if tmp.MultiplePlacementGroups == nil {
 		multiplePlacementGroups_ := false
 		tmp.MultiplePlacementGroups = &multiplePlacementGroups_
 	}

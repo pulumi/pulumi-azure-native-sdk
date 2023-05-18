@@ -81,7 +81,7 @@ func (val *LookupNamespaceResult) Defaults() *LookupNamespaceResult {
 	tmp := *val
 	tmp.Encryption = tmp.Encryption.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

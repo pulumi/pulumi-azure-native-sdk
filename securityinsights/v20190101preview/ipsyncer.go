@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,6 +95,9 @@ func NewIPSyncer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:IPSyncer"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:IPSyncer"),
 		},
 	})
 	opts = append(opts, aliases)

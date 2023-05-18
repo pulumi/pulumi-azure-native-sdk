@@ -80,15 +80,15 @@ func (val *LookupL3NetworkResult) Defaults() *LookupL3NetworkResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HybridAksIpamEnabled) {
+	if tmp.HybridAksIpamEnabled == nil {
 		hybridAksIpamEnabled_ := "True"
 		tmp.HybridAksIpamEnabled = &hybridAksIpamEnabled_
 	}
-	if isZero(tmp.HybridAksPluginType) {
+	if tmp.HybridAksPluginType == nil {
 		hybridAksPluginType_ := "SRIOV"
 		tmp.HybridAksPluginType = &hybridAksPluginType_
 	}
-	if isZero(tmp.IpAllocationType) {
+	if tmp.IpAllocationType == nil {
 		ipAllocationType_ := "DualStack"
 		tmp.IpAllocationType = &ipAllocationType_
 	}

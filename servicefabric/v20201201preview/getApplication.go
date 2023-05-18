@@ -75,7 +75,7 @@ func (val *LookupApplicationResult) Defaults() *LookupApplicationResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaximumNodes) {
+	if tmp.MaximumNodes == nil {
 		maximumNodes_ := 0.0
 		tmp.MaximumNodes = &maximumNodes_
 	}
