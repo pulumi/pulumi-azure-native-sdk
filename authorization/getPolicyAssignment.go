@@ -11,7 +11,7 @@ import (
 )
 
 // This operation retrieves a single policy assignment, given its name and the scope it was created at.
-// API Version: 2020-09-01.
+// API Version: 2022-06-01.
 func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentResult, error) {
 	var rv LookupPolicyAssignmentResult
 	err := ctx.Invoke("azure-native:authorization:getPolicyAssignment", args, &rv, opts...)
@@ -50,12 +50,18 @@ type LookupPolicyAssignmentResult struct {
 	NonComplianceMessages []NonComplianceMessageResponse `pulumi:"nonComplianceMessages"`
 	// The policy's excluded scopes.
 	NotScopes []string `pulumi:"notScopes"`
+	// The policy property value override.
+	Overrides []OverrideResponse `pulumi:"overrides"`
 	// The parameter values for the assigned policy rule. The keys are the parameter names.
 	Parameters map[string]ParameterValuesValueResponse `pulumi:"parameters"`
 	// The ID of the policy definition or policy set definition being assigned.
 	PolicyDefinitionId *string `pulumi:"policyDefinitionId"`
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors []ResourceSelectorResponse `pulumi:"resourceSelectors"`
 	// The scope for the policy assignment.
 	Scope string `pulumi:"scope"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the policy assignment.
 	Type string `pulumi:"type"`
 }
@@ -66,7 +72,7 @@ func (val *LookupPolicyAssignmentResult) Defaults() *LookupPolicyAssignmentResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforcementMode) {
+	if tmp.EnforcementMode == nil {
 		enforcementMode_ := "Default"
 		tmp.EnforcementMode = &enforcementMode_
 	}
@@ -162,6 +168,11 @@ func (o LookupPolicyAssignmentResultOutput) NotScopes() pulumi.StringArrayOutput
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) []string { return v.NotScopes }).(pulumi.StringArrayOutput)
 }
 
+// The policy property value override.
+func (o LookupPolicyAssignmentResultOutput) Overrides() OverrideResponseArrayOutput {
+	return o.ApplyT(func(v LookupPolicyAssignmentResult) []OverrideResponse { return v.Overrides }).(OverrideResponseArrayOutput)
+}
+
 // The parameter values for the assigned policy rule. The keys are the parameter names.
 func (o LookupPolicyAssignmentResultOutput) Parameters() ParameterValuesValueResponseMapOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) map[string]ParameterValuesValueResponse { return v.Parameters }).(ParameterValuesValueResponseMapOutput)
@@ -172,9 +183,19 @@ func (o LookupPolicyAssignmentResultOutput) PolicyDefinitionId() pulumi.StringPt
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.PolicyDefinitionId }).(pulumi.StringPtrOutput)
 }
 
+// The resource selector list to filter policies by resource properties.
+func (o LookupPolicyAssignmentResultOutput) ResourceSelectors() ResourceSelectorResponseArrayOutput {
+	return o.ApplyT(func(v LookupPolicyAssignmentResult) []ResourceSelectorResponse { return v.ResourceSelectors }).(ResourceSelectorResponseArrayOutput)
+}
+
 // The scope for the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The system metadata relating to this resource.
+func (o LookupPolicyAssignmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPolicyAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the policy assignment.

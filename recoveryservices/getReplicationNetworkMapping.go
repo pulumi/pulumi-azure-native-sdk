@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the details of an ASR network mapping
-// API Version: 2018-07-10.
+// Gets the details of an ASR network mapping.
+// API Version: 2023-02-01.
 func LookupReplicationNetworkMapping(ctx *pulumi.Context, args *LookupReplicationNetworkMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationNetworkMappingResult, error) {
 	var rv LookupReplicationNetworkMappingResult
 	err := ctx.Invoke("azure-native:recoveryservices:getReplicationNetworkMapping", args, &rv, opts...)

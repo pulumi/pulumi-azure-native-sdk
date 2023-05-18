@@ -11,7 +11,7 @@ import (
 )
 
 // Get the metadata of a service instance.
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis:getService", args, &rv, opts...)

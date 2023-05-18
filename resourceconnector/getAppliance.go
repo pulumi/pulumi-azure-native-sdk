@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of an Appliance with a specified resource group and name.
-// API Version: 2021-10-31-preview.
+// API Version: 2022-10-27.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	var rv LookupApplianceResult
 	err := ctx.Invoke("azure-native:resourceconnector:getAppliance", args, &rv, opts...)
@@ -44,18 +44,18 @@ type LookupApplianceResult struct {
 	Name string `pulumi:"name"`
 	// The current deployment or provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Certificates pair used to download MSI certificate from HIS
+	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey *string `pulumi:"publicKey"`
 	// Appliance’s health and state of connection to on-prem
 	Status string `pulumi:"status"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Version of the Appliance
-	Version string `pulumi:"version"`
+	Version *string `pulumi:"version"`
 }
 
 // Defaults sets the appropriate defaults for LookupApplianceResult
@@ -64,7 +64,7 @@ func (val *LookupApplianceResult) Defaults() *LookupApplianceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Distro) {
+	if tmp.Distro == nil {
 		distro_ := "AKSEdge"
 		tmp.Distro = &distro_
 	}
@@ -147,7 +147,7 @@ func (o LookupApplianceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Certificates pair used to download MSI certificate from HIS
+// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 func (o LookupApplianceResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
@@ -157,7 +157,7 @@ func (o LookupApplianceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupApplianceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApplianceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -173,8 +173,8 @@ func (o LookupApplianceResultOutput) Type() pulumi.StringOutput {
 }
 
 // Version of the Appliance
-func (o LookupApplianceResultOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApplianceResult) string { return v.Version }).(pulumi.StringOutput)
+func (o LookupApplianceResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApplianceResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 func init() {

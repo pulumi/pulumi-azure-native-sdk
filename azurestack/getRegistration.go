@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the properties of an Azure Stack registration.
-// API Version: 2017-06-01.
+// API Version: 2022-06-01.
 func LookupRegistration(ctx *pulumi.Context, args *LookupRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationResult, error) {
 	var rv LookupRegistrationResult
 	err := ctx.Invoke("azure-native:azurestack:getRegistration", args, &rv, opts...)

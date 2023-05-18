@@ -30,546 +30,78 @@ type ApplicationServerConfigurationResponse struct {
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
-// Backup profile
-type BackupProfile struct {
-	// Whether to enable Azure backup for the workload
-	BackupEnabled string `pulumi:"backupEnabled"`
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNames struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
 }
 
-// BackupProfileInput is an input type that accepts BackupProfileArgs and BackupProfileOutput values.
-// You can construct a concrete instance of `BackupProfileInput` via:
-//
-//	BackupProfileArgs{...}
-type BackupProfileInput interface {
-	pulumi.Input
-
-	ToBackupProfileOutput() BackupProfileOutput
-	ToBackupProfileOutputWithContext(context.Context) BackupProfileOutput
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNamesResponse struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
 }
 
-// Backup profile
-type BackupProfileArgs struct {
-	// Whether to enable Azure backup for the workload
-	BackupEnabled pulumi.StringInput `pulumi:"backupEnabled"`
+// The Application Server VM Details.
+type ApplicationServerVmDetailsResponse struct {
+	// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
+	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
+	// Defines the type of application server VM.
+	Type             string `pulumi:"type"`
+	VirtualMachineId string `pulumi:"virtualMachineId"`
 }
 
-func (BackupProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupProfile)(nil)).Elem()
+// The Application Server VM Details.
+type ApplicationServerVmDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerVmDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerVmDetailsResponse)(nil)).Elem()
 }
 
-func (i BackupProfileArgs) ToBackupProfileOutput() BackupProfileOutput {
-	return i.ToBackupProfileOutputWithContext(context.Background())
-}
-
-func (i BackupProfileArgs) ToBackupProfileOutputWithContext(ctx context.Context) BackupProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupProfileOutput)
-}
-
-func (i BackupProfileArgs) ToBackupProfilePtrOutput() BackupProfilePtrOutput {
-	return i.ToBackupProfilePtrOutputWithContext(context.Background())
-}
-
-func (i BackupProfileArgs) ToBackupProfilePtrOutputWithContext(ctx context.Context) BackupProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupProfileOutput).ToBackupProfilePtrOutputWithContext(ctx)
-}
-
-// BackupProfilePtrInput is an input type that accepts BackupProfileArgs, BackupProfilePtr and BackupProfilePtrOutput values.
-// You can construct a concrete instance of `BackupProfilePtrInput` via:
-//
-//	        BackupProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type BackupProfilePtrInput interface {
-	pulumi.Input
-
-	ToBackupProfilePtrOutput() BackupProfilePtrOutput
-	ToBackupProfilePtrOutputWithContext(context.Context) BackupProfilePtrOutput
-}
-
-type backupProfilePtrType BackupProfileArgs
-
-func BackupProfilePtr(v *BackupProfileArgs) BackupProfilePtrInput {
-	return (*backupProfilePtrType)(v)
-}
-
-func (*backupProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupProfile)(nil)).Elem()
-}
-
-func (i *backupProfilePtrType) ToBackupProfilePtrOutput() BackupProfilePtrOutput {
-	return i.ToBackupProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *backupProfilePtrType) ToBackupProfilePtrOutputWithContext(ctx context.Context) BackupProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupProfilePtrOutput)
-}
-
-// Backup profile
-type BackupProfileOutput struct{ *pulumi.OutputState }
-
-func (BackupProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupProfile)(nil)).Elem()
-}
-
-func (o BackupProfileOutput) ToBackupProfileOutput() BackupProfileOutput {
+func (o ApplicationServerVmDetailsResponseOutput) ToApplicationServerVmDetailsResponseOutput() ApplicationServerVmDetailsResponseOutput {
 	return o
 }
 
-func (o BackupProfileOutput) ToBackupProfileOutputWithContext(ctx context.Context) BackupProfileOutput {
+func (o ApplicationServerVmDetailsResponseOutput) ToApplicationServerVmDetailsResponseOutputWithContext(ctx context.Context) ApplicationServerVmDetailsResponseOutput {
 	return o
 }
 
-func (o BackupProfileOutput) ToBackupProfilePtrOutput() BackupProfilePtrOutput {
-	return o.ToBackupProfilePtrOutputWithContext(context.Background())
+// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
+func (o ApplicationServerVmDetailsResponseOutput) StorageDetails() StorageInformationResponseArrayOutput {
+	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
 }
 
-func (o BackupProfileOutput) ToBackupProfilePtrOutputWithContext(ctx context.Context) BackupProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupProfile) *BackupProfile {
-		return &v
-	}).(BackupProfilePtrOutput)
+// Defines the type of application server VM.
+func (o ApplicationServerVmDetailsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Whether to enable Azure backup for the workload
-func (o BackupProfileOutput) BackupEnabled() pulumi.StringOutput {
-	return o.ApplyT(func(v BackupProfile) string { return v.BackupEnabled }).(pulumi.StringOutput)
+func (o ApplicationServerVmDetailsResponseOutput) VirtualMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) string { return v.VirtualMachineId }).(pulumi.StringOutput)
 }
 
-type BackupProfilePtrOutput struct{ *pulumi.OutputState }
+type ApplicationServerVmDetailsResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (BackupProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupProfile)(nil)).Elem()
+func (ApplicationServerVmDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationServerVmDetailsResponse)(nil)).Elem()
 }
 
-func (o BackupProfilePtrOutput) ToBackupProfilePtrOutput() BackupProfilePtrOutput {
+func (o ApplicationServerVmDetailsResponseArrayOutput) ToApplicationServerVmDetailsResponseArrayOutput() ApplicationServerVmDetailsResponseArrayOutput {
 	return o
 }
 
-func (o BackupProfilePtrOutput) ToBackupProfilePtrOutputWithContext(ctx context.Context) BackupProfilePtrOutput {
+func (o ApplicationServerVmDetailsResponseArrayOutput) ToApplicationServerVmDetailsResponseArrayOutputWithContext(ctx context.Context) ApplicationServerVmDetailsResponseArrayOutput {
 	return o
 }
 
-func (o BackupProfilePtrOutput) Elem() BackupProfileOutput {
-	return o.ApplyT(func(v *BackupProfile) BackupProfile {
-		if v != nil {
-			return *v
-		}
-		var ret BackupProfile
-		return ret
-	}).(BackupProfileOutput)
-}
-
-// Whether to enable Azure backup for the workload
-func (o BackupProfilePtrOutput) BackupEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BackupEnabled
-	}).(pulumi.StringPtrOutput)
-}
-
-// Backup profile
-type BackupProfileResponse struct {
-	// Whether to enable Azure backup for the workload
-	BackupEnabled string `pulumi:"backupEnabled"`
-	// Backup vault resource Id
-	VaultResourceId string `pulumi:"vaultResourceId"`
-}
-
-// Backup profile
-type BackupProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (BackupProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupProfileResponse)(nil)).Elem()
-}
-
-func (o BackupProfileResponseOutput) ToBackupProfileResponseOutput() BackupProfileResponseOutput {
-	return o
-}
-
-func (o BackupProfileResponseOutput) ToBackupProfileResponseOutputWithContext(ctx context.Context) BackupProfileResponseOutput {
-	return o
-}
-
-// Whether to enable Azure backup for the workload
-func (o BackupProfileResponseOutput) BackupEnabled() pulumi.StringOutput {
-	return o.ApplyT(func(v BackupProfileResponse) string { return v.BackupEnabled }).(pulumi.StringOutput)
-}
-
-// Backup vault resource Id
-func (o BackupProfileResponseOutput) VaultResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v BackupProfileResponse) string { return v.VaultResourceId }).(pulumi.StringOutput)
-}
-
-type BackupProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BackupProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupProfileResponse)(nil)).Elem()
-}
-
-func (o BackupProfileResponsePtrOutput) ToBackupProfileResponsePtrOutput() BackupProfileResponsePtrOutput {
-	return o
-}
-
-func (o BackupProfileResponsePtrOutput) ToBackupProfileResponsePtrOutputWithContext(ctx context.Context) BackupProfileResponsePtrOutput {
-	return o
-}
-
-func (o BackupProfileResponsePtrOutput) Elem() BackupProfileResponseOutput {
-	return o.ApplyT(func(v *BackupProfileResponse) BackupProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BackupProfileResponse
-		return ret
-	}).(BackupProfileResponseOutput)
-}
-
-// Whether to enable Azure backup for the workload
-func (o BackupProfileResponsePtrOutput) BackupEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BackupEnabled
-	}).(pulumi.StringPtrOutput)
-}
-
-// Backup vault resource Id
-func (o BackupProfileResponsePtrOutput) VaultResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VaultResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache profile
-type CacheProfile struct {
-	// Cache capacity
-	Capacity float64 `pulumi:"capacity"`
-	// Cache family
-	Family string `pulumi:"family"`
-	// Cache name
-	Name *string `pulumi:"name"`
-	// Cache SKU name
-	SkuName string `pulumi:"skuName"`
-}
-
-// CacheProfileInput is an input type that accepts CacheProfileArgs and CacheProfileOutput values.
-// You can construct a concrete instance of `CacheProfileInput` via:
-//
-//	CacheProfileArgs{...}
-type CacheProfileInput interface {
-	pulumi.Input
-
-	ToCacheProfileOutput() CacheProfileOutput
-	ToCacheProfileOutputWithContext(context.Context) CacheProfileOutput
-}
-
-// Cache profile
-type CacheProfileArgs struct {
-	// Cache capacity
-	Capacity pulumi.Float64Input `pulumi:"capacity"`
-	// Cache family
-	Family pulumi.StringInput `pulumi:"family"`
-	// Cache name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cache SKU name
-	SkuName pulumi.StringInput `pulumi:"skuName"`
-}
-
-func (CacheProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CacheProfile)(nil)).Elem()
-}
-
-func (i CacheProfileArgs) ToCacheProfileOutput() CacheProfileOutput {
-	return i.ToCacheProfileOutputWithContext(context.Background())
-}
-
-func (i CacheProfileArgs) ToCacheProfileOutputWithContext(ctx context.Context) CacheProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CacheProfileOutput)
-}
-
-func (i CacheProfileArgs) ToCacheProfilePtrOutput() CacheProfilePtrOutput {
-	return i.ToCacheProfilePtrOutputWithContext(context.Background())
-}
-
-func (i CacheProfileArgs) ToCacheProfilePtrOutputWithContext(ctx context.Context) CacheProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CacheProfileOutput).ToCacheProfilePtrOutputWithContext(ctx)
-}
-
-// CacheProfilePtrInput is an input type that accepts CacheProfileArgs, CacheProfilePtr and CacheProfilePtrOutput values.
-// You can construct a concrete instance of `CacheProfilePtrInput` via:
-//
-//	        CacheProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type CacheProfilePtrInput interface {
-	pulumi.Input
-
-	ToCacheProfilePtrOutput() CacheProfilePtrOutput
-	ToCacheProfilePtrOutputWithContext(context.Context) CacheProfilePtrOutput
-}
-
-type cacheProfilePtrType CacheProfileArgs
-
-func CacheProfilePtr(v *CacheProfileArgs) CacheProfilePtrInput {
-	return (*cacheProfilePtrType)(v)
-}
-
-func (*cacheProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CacheProfile)(nil)).Elem()
-}
-
-func (i *cacheProfilePtrType) ToCacheProfilePtrOutput() CacheProfilePtrOutput {
-	return i.ToCacheProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *cacheProfilePtrType) ToCacheProfilePtrOutputWithContext(ctx context.Context) CacheProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CacheProfilePtrOutput)
-}
-
-// Cache profile
-type CacheProfileOutput struct{ *pulumi.OutputState }
-
-func (CacheProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CacheProfile)(nil)).Elem()
-}
-
-func (o CacheProfileOutput) ToCacheProfileOutput() CacheProfileOutput {
-	return o
-}
-
-func (o CacheProfileOutput) ToCacheProfileOutputWithContext(ctx context.Context) CacheProfileOutput {
-	return o
-}
-
-func (o CacheProfileOutput) ToCacheProfilePtrOutput() CacheProfilePtrOutput {
-	return o.ToCacheProfilePtrOutputWithContext(context.Background())
-}
-
-func (o CacheProfileOutput) ToCacheProfilePtrOutputWithContext(ctx context.Context) CacheProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheProfile) *CacheProfile {
-		return &v
-	}).(CacheProfilePtrOutput)
-}
-
-// Cache capacity
-func (o CacheProfileOutput) Capacity() pulumi.Float64Output {
-	return o.ApplyT(func(v CacheProfile) float64 { return v.Capacity }).(pulumi.Float64Output)
-}
-
-// Cache family
-func (o CacheProfileOutput) Family() pulumi.StringOutput {
-	return o.ApplyT(func(v CacheProfile) string { return v.Family }).(pulumi.StringOutput)
-}
-
-// Cache name
-func (o CacheProfileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CacheProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Cache SKU name
-func (o CacheProfileOutput) SkuName() pulumi.StringOutput {
-	return o.ApplyT(func(v CacheProfile) string { return v.SkuName }).(pulumi.StringOutput)
-}
-
-type CacheProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (CacheProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CacheProfile)(nil)).Elem()
-}
-
-func (o CacheProfilePtrOutput) ToCacheProfilePtrOutput() CacheProfilePtrOutput {
-	return o
-}
-
-func (o CacheProfilePtrOutput) ToCacheProfilePtrOutputWithContext(ctx context.Context) CacheProfilePtrOutput {
-	return o
-}
-
-func (o CacheProfilePtrOutput) Elem() CacheProfileOutput {
-	return o.ApplyT(func(v *CacheProfile) CacheProfile {
-		if v != nil {
-			return *v
-		}
-		var ret CacheProfile
-		return ret
-	}).(CacheProfileOutput)
-}
-
-// Cache capacity
-func (o CacheProfilePtrOutput) Capacity() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CacheProfile) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Capacity
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Cache family
-func (o CacheProfilePtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache name
-func (o CacheProfilePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache SKU name
-func (o CacheProfilePtrOutput) SkuName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SkuName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache profile
-type CacheProfileResponse struct {
-	// Cache resource Id
-	CacheResourceId string `pulumi:"cacheResourceId"`
-	// Cache capacity
-	Capacity float64 `pulumi:"capacity"`
-	// Cache family
-	Family string `pulumi:"family"`
-	// Cache name
-	Name *string `pulumi:"name"`
-	// Cache SKU name
-	SkuName string `pulumi:"skuName"`
-}
-
-// Cache profile
-type CacheProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (CacheProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CacheProfileResponse)(nil)).Elem()
-}
-
-func (o CacheProfileResponseOutput) ToCacheProfileResponseOutput() CacheProfileResponseOutput {
-	return o
-}
-
-func (o CacheProfileResponseOutput) ToCacheProfileResponseOutputWithContext(ctx context.Context) CacheProfileResponseOutput {
-	return o
-}
-
-// Cache resource Id
-func (o CacheProfileResponseOutput) CacheResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v CacheProfileResponse) string { return v.CacheResourceId }).(pulumi.StringOutput)
-}
-
-// Cache capacity
-func (o CacheProfileResponseOutput) Capacity() pulumi.Float64Output {
-	return o.ApplyT(func(v CacheProfileResponse) float64 { return v.Capacity }).(pulumi.Float64Output)
-}
-
-// Cache family
-func (o CacheProfileResponseOutput) Family() pulumi.StringOutput {
-	return o.ApplyT(func(v CacheProfileResponse) string { return v.Family }).(pulumi.StringOutput)
-}
-
-// Cache name
-func (o CacheProfileResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CacheProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Cache SKU name
-func (o CacheProfileResponseOutput) SkuName() pulumi.StringOutput {
-	return o.ApplyT(func(v CacheProfileResponse) string { return v.SkuName }).(pulumi.StringOutput)
-}
-
-type CacheProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CacheProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CacheProfileResponse)(nil)).Elem()
-}
-
-func (o CacheProfileResponsePtrOutput) ToCacheProfileResponsePtrOutput() CacheProfileResponsePtrOutput {
-	return o
-}
-
-func (o CacheProfileResponsePtrOutput) ToCacheProfileResponsePtrOutputWithContext(ctx context.Context) CacheProfileResponsePtrOutput {
-	return o
-}
-
-func (o CacheProfileResponsePtrOutput) Elem() CacheProfileResponseOutput {
-	return o.ApplyT(func(v *CacheProfileResponse) CacheProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CacheProfileResponse
-		return ret
-	}).(CacheProfileResponseOutput)
-}
-
-// Cache resource Id
-func (o CacheProfileResponsePtrOutput) CacheResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CacheResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache capacity
-func (o CacheProfileResponsePtrOutput) Capacity() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CacheProfileResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Capacity
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Cache family
-func (o CacheProfileResponsePtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache name
-func (o CacheProfileResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cache SKU name
-func (o CacheProfileResponsePtrOutput) SkuName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SkuName
-	}).(pulumi.StringPtrOutput)
+func (o ApplicationServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) ApplicationServerVmDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationServerVmDetailsResponse {
+		return vs[0].([]ApplicationServerVmDetailsResponse)[vs[1].(int)]
+	}).(ApplicationServerVmDetailsResponseOutput)
 }
 
 // Gets or sets the central server configuration.
@@ -590,6 +122,26 @@ type CentralServerConfigurationResponse struct {
 	SubnetId string `pulumi:"subnetId"`
 	// Gets or sets the virtual machine configuration.
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
+}
+
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNames struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNames `pulumi:"loadBalancer"`
+	// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNamesResponse struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNamesResponse `pulumi:"loadBalancer"`
+	// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
 }
 
 // The SAP Central Services Instance VM details.
@@ -650,23 +202,23 @@ func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Cent
 	}).(CentralServerVmDetailsResponseOutput)
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
 type CreateAndMountFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
 	ConfigurationType string `pulumi:"configurationType"`
-	// The name of file share resource group. The app rg is used in case of missing input.
+	// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// The name of file share storage account name . A custom name is used in case of missing input.
 	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
 type CreateAndMountFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
 	ConfigurationType string `pulumi:"configurationType"`
-	// The name of file share resource group. The app rg is used in case of missing input.
+	// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// The name of file share storage account name . A custom name is used in case of missing input.
 	StorageAccountName *string `pulumi:"storageAccountName"`
@@ -750,252 +302,24 @@ type DatabaseConfigurationResponse struct {
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
-// Workload database profile
-type DatabaseProfile struct {
-	// Backup retention days for the server
-	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
-	// Whether to enable HA for the server
-	HaEnabled *string `pulumi:"haEnabled"`
-	// Database server name
-	ServerName *string `pulumi:"serverName"`
-	// The name of the server SKU, e.g. Standard_D32s_v4
-	Sku string `pulumi:"sku"`
-	// Whether to enable SSL enforcement on the database
-	SslEnforcementEnabled *string `pulumi:"sslEnforcementEnabled"`
-	// Database storage size in GB
-	StorageInGB *float64 `pulumi:"storageInGB"`
-	// Storage IOPS for the server
-	StorageIops *float64 `pulumi:"storageIops"`
-	// SKU name for database storage
-	StorageSku *string `pulumi:"storageSku"`
-	// Tier of the server SKU
-	Tier DatabaseTier `pulumi:"tier"`
-	// Database type
-	Type string `pulumi:"type"`
-	// Database version
-	Version *string `pulumi:"version"`
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNames struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNames `pulumi:"loadBalancer"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
 }
 
-// DatabaseProfileInput is an input type that accepts DatabaseProfileArgs and DatabaseProfileOutput values.
-// You can construct a concrete instance of `DatabaseProfileInput` via:
-//
-//	DatabaseProfileArgs{...}
-type DatabaseProfileInput interface {
-	pulumi.Input
-
-	ToDatabaseProfileOutput() DatabaseProfileOutput
-	ToDatabaseProfileOutputWithContext(context.Context) DatabaseProfileOutput
-}
-
-// Workload database profile
-type DatabaseProfileArgs struct {
-	// Backup retention days for the server
-	BackupRetentionDays pulumi.IntPtrInput `pulumi:"backupRetentionDays"`
-	// Whether to enable HA for the server
-	HaEnabled pulumi.StringPtrInput `pulumi:"haEnabled"`
-	// Database server name
-	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
-	// The name of the server SKU, e.g. Standard_D32s_v4
-	Sku pulumi.StringInput `pulumi:"sku"`
-	// Whether to enable SSL enforcement on the database
-	SslEnforcementEnabled pulumi.StringPtrInput `pulumi:"sslEnforcementEnabled"`
-	// Database storage size in GB
-	StorageInGB pulumi.Float64PtrInput `pulumi:"storageInGB"`
-	// Storage IOPS for the server
-	StorageIops pulumi.Float64PtrInput `pulumi:"storageIops"`
-	// SKU name for database storage
-	StorageSku pulumi.StringPtrInput `pulumi:"storageSku"`
-	// Tier of the server SKU
-	Tier DatabaseTierInput `pulumi:"tier"`
-	// Database type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Database version
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (DatabaseProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseProfile)(nil)).Elem()
-}
-
-func (i DatabaseProfileArgs) ToDatabaseProfileOutput() DatabaseProfileOutput {
-	return i.ToDatabaseProfileOutputWithContext(context.Background())
-}
-
-func (i DatabaseProfileArgs) ToDatabaseProfileOutputWithContext(ctx context.Context) DatabaseProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseProfileOutput)
-}
-
-// Workload database profile
-type DatabaseProfileOutput struct{ *pulumi.OutputState }
-
-func (DatabaseProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseProfile)(nil)).Elem()
-}
-
-func (o DatabaseProfileOutput) ToDatabaseProfileOutput() DatabaseProfileOutput {
-	return o
-}
-
-func (o DatabaseProfileOutput) ToDatabaseProfileOutputWithContext(ctx context.Context) DatabaseProfileOutput {
-	return o
-}
-
-// Backup retention days for the server
-func (o DatabaseProfileOutput) BackupRetentionDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
-}
-
-// Whether to enable HA for the server
-func (o DatabaseProfileOutput) HaEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *string { return v.HaEnabled }).(pulumi.StringPtrOutput)
-}
-
-// Database server name
-func (o DatabaseProfileOutput) ServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *string { return v.ServerName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the server SKU, e.g. Standard_D32s_v4
-func (o DatabaseProfileOutput) Sku() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseProfile) string { return v.Sku }).(pulumi.StringOutput)
-}
-
-// Whether to enable SSL enforcement on the database
-func (o DatabaseProfileOutput) SslEnforcementEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *string { return v.SslEnforcementEnabled }).(pulumi.StringPtrOutput)
-}
-
-// Database storage size in GB
-func (o DatabaseProfileOutput) StorageInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *float64 { return v.StorageInGB }).(pulumi.Float64PtrOutput)
-}
-
-// Storage IOPS for the server
-func (o DatabaseProfileOutput) StorageIops() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *float64 { return v.StorageIops }).(pulumi.Float64PtrOutput)
-}
-
-// SKU name for database storage
-func (o DatabaseProfileOutput) StorageSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *string { return v.StorageSku }).(pulumi.StringPtrOutput)
-}
-
-// Tier of the server SKU
-func (o DatabaseProfileOutput) Tier() DatabaseTierOutput {
-	return o.ApplyT(func(v DatabaseProfile) DatabaseTier { return v.Tier }).(DatabaseTierOutput)
-}
-
-// Database type
-func (o DatabaseProfileOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseProfile) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Database version
-func (o DatabaseProfileOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfile) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-// Workload database profile
-type DatabaseProfileResponse struct {
-	// Backup retention days for the server
-	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
-	// Whether to enable HA for the server
-	HaEnabled *string `pulumi:"haEnabled"`
-	// Database server name
-	ServerName *string `pulumi:"serverName"`
-	// Azure Database Server resource Id
-	ServerResourceId string `pulumi:"serverResourceId"`
-	// The name of the server SKU, e.g. Standard_D32s_v4
-	Sku string `pulumi:"sku"`
-	// Whether to enable SSL enforcement on the database
-	SslEnforcementEnabled *string `pulumi:"sslEnforcementEnabled"`
-	// Database storage size in GB
-	StorageInGB *float64 `pulumi:"storageInGB"`
-	// Storage IOPS for the server
-	StorageIops *float64 `pulumi:"storageIops"`
-	// SKU name for database storage
-	StorageSku *string `pulumi:"storageSku"`
-	// Tier of the server SKU
-	Tier string `pulumi:"tier"`
-	// Database type
-	Type string `pulumi:"type"`
-	// Database version
-	Version *string `pulumi:"version"`
-}
-
-// Workload database profile
-type DatabaseProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (DatabaseProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseProfileResponse)(nil)).Elem()
-}
-
-func (o DatabaseProfileResponseOutput) ToDatabaseProfileResponseOutput() DatabaseProfileResponseOutput {
-	return o
-}
-
-func (o DatabaseProfileResponseOutput) ToDatabaseProfileResponseOutputWithContext(ctx context.Context) DatabaseProfileResponseOutput {
-	return o
-}
-
-// Backup retention days for the server
-func (o DatabaseProfileResponseOutput) BackupRetentionDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
-}
-
-// Whether to enable HA for the server
-func (o DatabaseProfileResponseOutput) HaEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *string { return v.HaEnabled }).(pulumi.StringPtrOutput)
-}
-
-// Database server name
-func (o DatabaseProfileResponseOutput) ServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
-}
-
-// Azure Database Server resource Id
-func (o DatabaseProfileResponseOutput) ServerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) string { return v.ServerResourceId }).(pulumi.StringOutput)
-}
-
-// The name of the server SKU, e.g. Standard_D32s_v4
-func (o DatabaseProfileResponseOutput) Sku() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) string { return v.Sku }).(pulumi.StringOutput)
-}
-
-// Whether to enable SSL enforcement on the database
-func (o DatabaseProfileResponseOutput) SslEnforcementEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *string { return v.SslEnforcementEnabled }).(pulumi.StringPtrOutput)
-}
-
-// Database storage size in GB
-func (o DatabaseProfileResponseOutput) StorageInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *float64 { return v.StorageInGB }).(pulumi.Float64PtrOutput)
-}
-
-// Storage IOPS for the server
-func (o DatabaseProfileResponseOutput) StorageIops() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *float64 { return v.StorageIops }).(pulumi.Float64PtrOutput)
-}
-
-// SKU name for database storage
-func (o DatabaseProfileResponseOutput) StorageSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *string { return v.StorageSku }).(pulumi.StringPtrOutput)
-}
-
-// Tier of the server SKU
-func (o DatabaseProfileResponseOutput) Tier() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) string { return v.Tier }).(pulumi.StringOutput)
-}
-
-// Database type
-func (o DatabaseProfileResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Database version
-func (o DatabaseProfileResponseOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseProfileResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNamesResponse struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNamesResponse `pulumi:"loadBalancer"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
 }
 
 // Database VM details.
@@ -1135,6 +459,8 @@ type DiscoveryConfiguration struct {
 	// The configuration Type.
 	// Expected value is 'Discovery'.
 	ConfigurationType string `pulumi:"configurationType"`
+	// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+	ManagedRgStorageAccountName *string `pulumi:"managedRgStorageAccountName"`
 }
 
 // Discovery Details.
@@ -1146,6 +472,8 @@ type DiscoveryConfigurationResponse struct {
 	// The configuration Type.
 	// Expected value is 'Discovery'.
 	ConfigurationType string `pulumi:"configurationType"`
+	// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+	ManagedRgStorageAccountName *string `pulumi:"managedRgStorageAccountName"`
 }
 
 // The Disk Configuration Details.
@@ -1160,317 +488,158 @@ type DiskConfigurationResponse struct {
 	DiskVolumeConfigurations map[string]DiskVolumeConfigurationResponse `pulumi:"diskVolumeConfigurations"`
 }
 
-// Disk resource creation details
-type DiskInfo struct {
-	// Disk size in GB
-	SizeInGB *float64 `pulumi:"sizeInGB"`
-	// Storage type
-	StorageType DiskStorageType `pulumi:"storageType"`
+// The supported disk size details for a disk type.
+type DiskDetailsResponse struct {
+	// The disk tier, e.g. P10, E10.
+	DiskTier *string `pulumi:"diskTier"`
+	// The disk Iops.
+	IopsReadWrite *float64 `pulumi:"iopsReadWrite"`
+	// The maximum supported disk count.
+	MaximumSupportedDiskCount *float64 `pulumi:"maximumSupportedDiskCount"`
+	// The disk provisioned throughput in MBps.
+	MbpsReadWrite *float64 `pulumi:"mbpsReadWrite"`
+	// The minimum supported disk count.
+	MinimumSupportedDiskCount *float64 `pulumi:"minimumSupportedDiskCount"`
+	// The disk size in GB.
+	SizeGB *float64 `pulumi:"sizeGB"`
+	// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+	Sku *DiskSkuResponse `pulumi:"sku"`
 }
 
-// DiskInfoInput is an input type that accepts DiskInfoArgs and DiskInfoOutput values.
-// You can construct a concrete instance of `DiskInfoInput` via:
-//
-//	DiskInfoArgs{...}
-type DiskInfoInput interface {
-	pulumi.Input
+// The supported disk size details for a disk type.
+type DiskDetailsResponseOutput struct{ *pulumi.OutputState }
 
-	ToDiskInfoOutput() DiskInfoOutput
-	ToDiskInfoOutputWithContext(context.Context) DiskInfoOutput
+func (DiskDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskDetailsResponse)(nil)).Elem()
 }
 
-// Disk resource creation details
-type DiskInfoArgs struct {
-	// Disk size in GB
-	SizeInGB pulumi.Float64PtrInput `pulumi:"sizeInGB"`
-	// Storage type
-	StorageType DiskStorageTypeInput `pulumi:"storageType"`
-}
-
-func (DiskInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskInfo)(nil)).Elem()
-}
-
-func (i DiskInfoArgs) ToDiskInfoOutput() DiskInfoOutput {
-	return i.ToDiskInfoOutputWithContext(context.Background())
-}
-
-func (i DiskInfoArgs) ToDiskInfoOutputWithContext(ctx context.Context) DiskInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoOutput)
-}
-
-func (i DiskInfoArgs) ToDiskInfoPtrOutput() DiskInfoPtrOutput {
-	return i.ToDiskInfoPtrOutputWithContext(context.Background())
-}
-
-func (i DiskInfoArgs) ToDiskInfoPtrOutputWithContext(ctx context.Context) DiskInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoOutput).ToDiskInfoPtrOutputWithContext(ctx)
-}
-
-// DiskInfoPtrInput is an input type that accepts DiskInfoArgs, DiskInfoPtr and DiskInfoPtrOutput values.
-// You can construct a concrete instance of `DiskInfoPtrInput` via:
-//
-//	        DiskInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type DiskInfoPtrInput interface {
-	pulumi.Input
-
-	ToDiskInfoPtrOutput() DiskInfoPtrOutput
-	ToDiskInfoPtrOutputWithContext(context.Context) DiskInfoPtrOutput
-}
-
-type diskInfoPtrType DiskInfoArgs
-
-func DiskInfoPtr(v *DiskInfoArgs) DiskInfoPtrInput {
-	return (*diskInfoPtrType)(v)
-}
-
-func (*diskInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskInfo)(nil)).Elem()
-}
-
-func (i *diskInfoPtrType) ToDiskInfoPtrOutput() DiskInfoPtrOutput {
-	return i.ToDiskInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *diskInfoPtrType) ToDiskInfoPtrOutputWithContext(ctx context.Context) DiskInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoPtrOutput)
-}
-
-// DiskInfoArrayInput is an input type that accepts DiskInfoArray and DiskInfoArrayOutput values.
-// You can construct a concrete instance of `DiskInfoArrayInput` via:
-//
-//	DiskInfoArray{ DiskInfoArgs{...} }
-type DiskInfoArrayInput interface {
-	pulumi.Input
-
-	ToDiskInfoArrayOutput() DiskInfoArrayOutput
-	ToDiskInfoArrayOutputWithContext(context.Context) DiskInfoArrayOutput
-}
-
-type DiskInfoArray []DiskInfoInput
-
-func (DiskInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DiskInfo)(nil)).Elem()
-}
-
-func (i DiskInfoArray) ToDiskInfoArrayOutput() DiskInfoArrayOutput {
-	return i.ToDiskInfoArrayOutputWithContext(context.Background())
-}
-
-func (i DiskInfoArray) ToDiskInfoArrayOutputWithContext(ctx context.Context) DiskInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoArrayOutput)
-}
-
-// Disk resource creation details
-type DiskInfoOutput struct{ *pulumi.OutputState }
-
-func (DiskInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskInfo)(nil)).Elem()
-}
-
-func (o DiskInfoOutput) ToDiskInfoOutput() DiskInfoOutput {
+func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutput() DiskDetailsResponseOutput {
 	return o
 }
 
-func (o DiskInfoOutput) ToDiskInfoOutputWithContext(ctx context.Context) DiskInfoOutput {
+func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutputWithContext(ctx context.Context) DiskDetailsResponseOutput {
 	return o
 }
 
-func (o DiskInfoOutput) ToDiskInfoPtrOutput() DiskInfoPtrOutput {
-	return o.ToDiskInfoPtrOutputWithContext(context.Background())
+// The disk tier, e.g. P10, E10.
+func (o DiskDetailsResponseOutput) DiskTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *string { return v.DiskTier }).(pulumi.StringPtrOutput)
 }
 
-func (o DiskInfoOutput) ToDiskInfoPtrOutputWithContext(ctx context.Context) DiskInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskInfo) *DiskInfo {
-		return &v
-	}).(DiskInfoPtrOutput)
+// The disk Iops.
+func (o DiskDetailsResponseOutput) IopsReadWrite() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.IopsReadWrite }).(pulumi.Float64PtrOutput)
 }
 
-// Disk size in GB
-func (o DiskInfoOutput) SizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DiskInfo) *float64 { return v.SizeInGB }).(pulumi.Float64PtrOutput)
+// The maximum supported disk count.
+func (o DiskDetailsResponseOutput) MaximumSupportedDiskCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.MaximumSupportedDiskCount }).(pulumi.Float64PtrOutput)
 }
 
-// Storage type
-func (o DiskInfoOutput) StorageType() DiskStorageTypeOutput {
-	return o.ApplyT(func(v DiskInfo) DiskStorageType { return v.StorageType }).(DiskStorageTypeOutput)
+// The disk provisioned throughput in MBps.
+func (o DiskDetailsResponseOutput) MbpsReadWrite() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.MbpsReadWrite }).(pulumi.Float64PtrOutput)
 }
 
-type DiskInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (DiskInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskInfo)(nil)).Elem()
+// The minimum supported disk count.
+func (o DiskDetailsResponseOutput) MinimumSupportedDiskCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.MinimumSupportedDiskCount }).(pulumi.Float64PtrOutput)
 }
 
-func (o DiskInfoPtrOutput) ToDiskInfoPtrOutput() DiskInfoPtrOutput {
+// The disk size in GB.
+func (o DiskDetailsResponseOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.SizeGB }).(pulumi.Float64PtrOutput)
+}
+
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+func (o DiskDetailsResponseOutput) Sku() DiskSkuResponsePtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *DiskSkuResponse { return v.Sku }).(DiskSkuResponsePtrOutput)
+}
+
+type DiskDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiskDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiskDetailsResponse)(nil)).Elem()
+}
+
+func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutput() DiskDetailsResponseArrayOutput {
 	return o
 }
 
-func (o DiskInfoPtrOutput) ToDiskInfoPtrOutputWithContext(ctx context.Context) DiskInfoPtrOutput {
+func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutputWithContext(ctx context.Context) DiskDetailsResponseArrayOutput {
 	return o
 }
 
-func (o DiskInfoPtrOutput) Elem() DiskInfoOutput {
-	return o.ApplyT(func(v *DiskInfo) DiskInfo {
-		if v != nil {
-			return *v
-		}
-		var ret DiskInfo
-		return ret
-	}).(DiskInfoOutput)
+func (o DiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) DiskDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskDetailsResponse {
+		return vs[0].([]DiskDetailsResponse)[vs[1].(int)]
+	}).(DiskDetailsResponseOutput)
 }
 
-// Disk size in GB
-func (o DiskInfoPtrOutput) SizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *DiskInfo) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SizeInGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Storage type
-func (o DiskInfoPtrOutput) StorageType() DiskStorageTypePtrOutput {
-	return o.ApplyT(func(v *DiskInfo) *DiskStorageType {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageType
-	}).(DiskStorageTypePtrOutput)
-}
-
-type DiskInfoArrayOutput struct{ *pulumi.OutputState }
-
-func (DiskInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DiskInfo)(nil)).Elem()
-}
-
-func (o DiskInfoArrayOutput) ToDiskInfoArrayOutput() DiskInfoArrayOutput {
-	return o
-}
-
-func (o DiskInfoArrayOutput) ToDiskInfoArrayOutputWithContext(ctx context.Context) DiskInfoArrayOutput {
-	return o
-}
-
-func (o DiskInfoArrayOutput) Index(i pulumi.IntInput) DiskInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInfo {
-		return vs[0].([]DiskInfo)[vs[1].(int)]
-	}).(DiskInfoOutput)
-}
-
-// Disk resource creation details
-type DiskInfoResponse struct {
-	// Disk size in GB
-	SizeInGB *float64 `pulumi:"sizeInGB"`
-	// Storage type
-	StorageType string `pulumi:"storageType"`
-}
-
-// Disk resource creation details
-type DiskInfoResponseOutput struct{ *pulumi.OutputState }
-
-func (DiskInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskInfoResponse)(nil)).Elem()
-}
-
-func (o DiskInfoResponseOutput) ToDiskInfoResponseOutput() DiskInfoResponseOutput {
-	return o
-}
-
-func (o DiskInfoResponseOutput) ToDiskInfoResponseOutputWithContext(ctx context.Context) DiskInfoResponseOutput {
-	return o
-}
-
-// Disk size in GB
-func (o DiskInfoResponseOutput) SizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DiskInfoResponse) *float64 { return v.SizeInGB }).(pulumi.Float64PtrOutput)
-}
-
-// Storage type
-func (o DiskInfoResponseOutput) StorageType() pulumi.StringOutput {
-	return o.ApplyT(func(v DiskInfoResponse) string { return v.StorageType }).(pulumi.StringOutput)
-}
-
-type DiskInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DiskInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskInfoResponse)(nil)).Elem()
-}
-
-func (o DiskInfoResponsePtrOutput) ToDiskInfoResponsePtrOutput() DiskInfoResponsePtrOutput {
-	return o
-}
-
-func (o DiskInfoResponsePtrOutput) ToDiskInfoResponsePtrOutputWithContext(ctx context.Context) DiskInfoResponsePtrOutput {
-	return o
-}
-
-func (o DiskInfoResponsePtrOutput) Elem() DiskInfoResponseOutput {
-	return o.ApplyT(func(v *DiskInfoResponse) DiskInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DiskInfoResponse
-		return ret
-	}).(DiskInfoResponseOutput)
-}
-
-// Disk size in GB
-func (o DiskInfoResponsePtrOutput) SizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *DiskInfoResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SizeInGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Storage type
-func (o DiskInfoResponsePtrOutput) StorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiskInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageType
-	}).(pulumi.StringPtrOutput)
-}
-
-type DiskInfoResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DiskInfoResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DiskInfoResponse)(nil)).Elem()
-}
-
-func (o DiskInfoResponseArrayOutput) ToDiskInfoResponseArrayOutput() DiskInfoResponseArrayOutput {
-	return o
-}
-
-func (o DiskInfoResponseArrayOutput) ToDiskInfoResponseArrayOutputWithContext(ctx context.Context) DiskInfoResponseArrayOutput {
-	return o
-}
-
-func (o DiskInfoResponseArrayOutput) Index(i pulumi.IntInput) DiskInfoResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInfoResponse {
-		return vs[0].([]DiskInfoResponse)[vs[1].(int)]
-	}).(DiskInfoResponseOutput)
-}
-
-// The disk sku.
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 type DiskSku struct {
 	// Defines the disk sku name.
 	Name *string `pulumi:"name"`
 }
 
-// The disk sku.
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 type DiskSkuResponse struct {
 	// Defines the disk sku name.
 	Name *string `pulumi:"name"`
+}
+
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+type DiskSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskSkuResponse)(nil)).Elem()
+}
+
+func (o DiskSkuResponseOutput) ToDiskSkuResponseOutput() DiskSkuResponseOutput {
+	return o
+}
+
+func (o DiskSkuResponseOutput) ToDiskSkuResponseOutputWithContext(ctx context.Context) DiskSkuResponseOutput {
+	return o
+}
+
+// Defines the disk sku name.
+func (o DiskSkuResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DiskSkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskSkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskSkuResponse)(nil)).Elem()
+}
+
+func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutput() DiskSkuResponsePtrOutput {
+	return o
+}
+
+func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutputWithContext(ctx context.Context) DiskSkuResponsePtrOutput {
+	return o
+}
+
+func (o DiskSkuResponsePtrOutput) Elem() DiskSkuResponseOutput {
+	return o.ApplyT(func(v *DiskSkuResponse) DiskSkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskSkuResponse
+		return ret
+	}).(DiskSkuResponseOutput)
+}
+
+// Defines the disk sku name.
+func (o DiskSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // The disk configuration required for the selected volume.
@@ -1491,6 +660,90 @@ type DiskVolumeConfigurationResponse struct {
 	SizeGB *float64 `pulumi:"sizeGB"`
 	// The disk SKU details.
 	Sku *DiskSkuResponse `pulumi:"sku"`
+}
+
+// The disk configuration required for the selected volume.
+type DiskVolumeConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskVolumeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationResponseOutput) ToDiskVolumeConfigurationResponseOutput() DiskVolumeConfigurationResponseOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponseOutput) ToDiskVolumeConfigurationResponseOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponseOutput {
+	return o
+}
+
+// The total number of disks required for the concerned volume.
+func (o DiskVolumeConfigurationResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The disk size in GB.
+func (o DiskVolumeConfigurationResponseOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *float64 { return v.SizeGB }).(pulumi.Float64PtrOutput)
+}
+
+// The disk SKU details.
+func (o DiskVolumeConfigurationResponseOutput) Sku() DiskSkuResponsePtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *DiskSkuResponse { return v.Sku }).(DiskSkuResponsePtrOutput)
+}
+
+type DiskVolumeConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskVolumeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationResponsePtrOutput() DiskVolumeConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) Elem() DiskVolumeConfigurationResponseOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) DiskVolumeConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskVolumeConfigurationResponse
+		return ret
+	}).(DiskVolumeConfigurationResponseOutput)
+}
+
+// The total number of disks required for the concerned volume.
+func (o DiskVolumeConfigurationResponsePtrOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The disk size in GB.
+func (o DiskVolumeConfigurationResponsePtrOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The disk SKU details.
+func (o DiskVolumeConfigurationResponsePtrOutput) Sku() DiskSkuResponsePtrOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) *DiskSkuResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(DiskSkuResponsePtrOutput)
 }
 
 // Defines the SAP Enqueue Replication Server (ERS) properties.
@@ -2106,312 +1359,6 @@ type ExternalInstallationSoftwareConfigurationResponse struct {
 	SoftwareInstallationType string `pulumi:"softwareInstallationType"`
 }
 
-// File share profile
-type FileshareProfile struct {
-	// File share size in GB
-	ShareSizeInGB *float64 `pulumi:"shareSizeInGB"`
-	// Share type
-	ShareType string `pulumi:"shareType"`
-	// File share backing storage type
-	StorageType string `pulumi:"storageType"`
-}
-
-// FileshareProfileInput is an input type that accepts FileshareProfileArgs and FileshareProfileOutput values.
-// You can construct a concrete instance of `FileshareProfileInput` via:
-//
-//	FileshareProfileArgs{...}
-type FileshareProfileInput interface {
-	pulumi.Input
-
-	ToFileshareProfileOutput() FileshareProfileOutput
-	ToFileshareProfileOutputWithContext(context.Context) FileshareProfileOutput
-}
-
-// File share profile
-type FileshareProfileArgs struct {
-	// File share size in GB
-	ShareSizeInGB pulumi.Float64PtrInput `pulumi:"shareSizeInGB"`
-	// Share type
-	ShareType pulumi.StringInput `pulumi:"shareType"`
-	// File share backing storage type
-	StorageType pulumi.StringInput `pulumi:"storageType"`
-}
-
-func (FileshareProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileshareProfile)(nil)).Elem()
-}
-
-func (i FileshareProfileArgs) ToFileshareProfileOutput() FileshareProfileOutput {
-	return i.ToFileshareProfileOutputWithContext(context.Background())
-}
-
-func (i FileshareProfileArgs) ToFileshareProfileOutputWithContext(ctx context.Context) FileshareProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileshareProfileOutput)
-}
-
-func (i FileshareProfileArgs) ToFileshareProfilePtrOutput() FileshareProfilePtrOutput {
-	return i.ToFileshareProfilePtrOutputWithContext(context.Background())
-}
-
-func (i FileshareProfileArgs) ToFileshareProfilePtrOutputWithContext(ctx context.Context) FileshareProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileshareProfileOutput).ToFileshareProfilePtrOutputWithContext(ctx)
-}
-
-// FileshareProfilePtrInput is an input type that accepts FileshareProfileArgs, FileshareProfilePtr and FileshareProfilePtrOutput values.
-// You can construct a concrete instance of `FileshareProfilePtrInput` via:
-//
-//	        FileshareProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type FileshareProfilePtrInput interface {
-	pulumi.Input
-
-	ToFileshareProfilePtrOutput() FileshareProfilePtrOutput
-	ToFileshareProfilePtrOutputWithContext(context.Context) FileshareProfilePtrOutput
-}
-
-type fileshareProfilePtrType FileshareProfileArgs
-
-func FileshareProfilePtr(v *FileshareProfileArgs) FileshareProfilePtrInput {
-	return (*fileshareProfilePtrType)(v)
-}
-
-func (*fileshareProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileshareProfile)(nil)).Elem()
-}
-
-func (i *fileshareProfilePtrType) ToFileshareProfilePtrOutput() FileshareProfilePtrOutput {
-	return i.ToFileshareProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *fileshareProfilePtrType) ToFileshareProfilePtrOutputWithContext(ctx context.Context) FileshareProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileshareProfilePtrOutput)
-}
-
-// File share profile
-type FileshareProfileOutput struct{ *pulumi.OutputState }
-
-func (FileshareProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileshareProfile)(nil)).Elem()
-}
-
-func (o FileshareProfileOutput) ToFileshareProfileOutput() FileshareProfileOutput {
-	return o
-}
-
-func (o FileshareProfileOutput) ToFileshareProfileOutputWithContext(ctx context.Context) FileshareProfileOutput {
-	return o
-}
-
-func (o FileshareProfileOutput) ToFileshareProfilePtrOutput() FileshareProfilePtrOutput {
-	return o.ToFileshareProfilePtrOutputWithContext(context.Background())
-}
-
-func (o FileshareProfileOutput) ToFileshareProfilePtrOutputWithContext(ctx context.Context) FileshareProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileshareProfile) *FileshareProfile {
-		return &v
-	}).(FileshareProfilePtrOutput)
-}
-
-// File share size in GB
-func (o FileshareProfileOutput) ShareSizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FileshareProfile) *float64 { return v.ShareSizeInGB }).(pulumi.Float64PtrOutput)
-}
-
-// Share type
-func (o FileshareProfileOutput) ShareType() pulumi.StringOutput {
-	return o.ApplyT(func(v FileshareProfile) string { return v.ShareType }).(pulumi.StringOutput)
-}
-
-// File share backing storage type
-func (o FileshareProfileOutput) StorageType() pulumi.StringOutput {
-	return o.ApplyT(func(v FileshareProfile) string { return v.StorageType }).(pulumi.StringOutput)
-}
-
-type FileshareProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (FileshareProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileshareProfile)(nil)).Elem()
-}
-
-func (o FileshareProfilePtrOutput) ToFileshareProfilePtrOutput() FileshareProfilePtrOutput {
-	return o
-}
-
-func (o FileshareProfilePtrOutput) ToFileshareProfilePtrOutputWithContext(ctx context.Context) FileshareProfilePtrOutput {
-	return o
-}
-
-func (o FileshareProfilePtrOutput) Elem() FileshareProfileOutput {
-	return o.ApplyT(func(v *FileshareProfile) FileshareProfile {
-		if v != nil {
-			return *v
-		}
-		var ret FileshareProfile
-		return ret
-	}).(FileshareProfileOutput)
-}
-
-// File share size in GB
-func (o FileshareProfilePtrOutput) ShareSizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FileshareProfile) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.ShareSizeInGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Share type
-func (o FileshareProfilePtrOutput) ShareType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileshareProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ShareType
-	}).(pulumi.StringPtrOutput)
-}
-
-// File share backing storage type
-func (o FileshareProfilePtrOutput) StorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileshareProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageType
-	}).(pulumi.StringPtrOutput)
-}
-
-// File share profile
-type FileshareProfileResponse struct {
-	// File share name
-	ShareName string `pulumi:"shareName"`
-	// File share size in GB
-	ShareSizeInGB *float64 `pulumi:"shareSizeInGB"`
-	// Share type
-	ShareType string `pulumi:"shareType"`
-	// File share storage resource id
-	StorageResourceId string `pulumi:"storageResourceId"`
-	// File share backing storage type
-	StorageType string `pulumi:"storageType"`
-}
-
-// File share profile
-type FileshareProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (FileshareProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileshareProfileResponse)(nil)).Elem()
-}
-
-func (o FileshareProfileResponseOutput) ToFileshareProfileResponseOutput() FileshareProfileResponseOutput {
-	return o
-}
-
-func (o FileshareProfileResponseOutput) ToFileshareProfileResponseOutputWithContext(ctx context.Context) FileshareProfileResponseOutput {
-	return o
-}
-
-// File share name
-func (o FileshareProfileResponseOutput) ShareName() pulumi.StringOutput {
-	return o.ApplyT(func(v FileshareProfileResponse) string { return v.ShareName }).(pulumi.StringOutput)
-}
-
-// File share size in GB
-func (o FileshareProfileResponseOutput) ShareSizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FileshareProfileResponse) *float64 { return v.ShareSizeInGB }).(pulumi.Float64PtrOutput)
-}
-
-// Share type
-func (o FileshareProfileResponseOutput) ShareType() pulumi.StringOutput {
-	return o.ApplyT(func(v FileshareProfileResponse) string { return v.ShareType }).(pulumi.StringOutput)
-}
-
-// File share storage resource id
-func (o FileshareProfileResponseOutput) StorageResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v FileshareProfileResponse) string { return v.StorageResourceId }).(pulumi.StringOutput)
-}
-
-// File share backing storage type
-func (o FileshareProfileResponseOutput) StorageType() pulumi.StringOutput {
-	return o.ApplyT(func(v FileshareProfileResponse) string { return v.StorageType }).(pulumi.StringOutput)
-}
-
-type FileshareProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FileshareProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileshareProfileResponse)(nil)).Elem()
-}
-
-func (o FileshareProfileResponsePtrOutput) ToFileshareProfileResponsePtrOutput() FileshareProfileResponsePtrOutput {
-	return o
-}
-
-func (o FileshareProfileResponsePtrOutput) ToFileshareProfileResponsePtrOutputWithContext(ctx context.Context) FileshareProfileResponsePtrOutput {
-	return o
-}
-
-func (o FileshareProfileResponsePtrOutput) Elem() FileshareProfileResponseOutput {
-	return o.ApplyT(func(v *FileshareProfileResponse) FileshareProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FileshareProfileResponse
-		return ret
-	}).(FileshareProfileResponseOutput)
-}
-
-// File share name
-func (o FileshareProfileResponsePtrOutput) ShareName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileshareProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ShareName
-	}).(pulumi.StringPtrOutput)
-}
-
-// File share size in GB
-func (o FileshareProfileResponsePtrOutput) ShareSizeInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FileshareProfileResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.ShareSizeInGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Share type
-func (o FileshareProfileResponsePtrOutput) ShareType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileshareProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ShareType
-	}).(pulumi.StringPtrOutput)
-}
-
-// File share storage resource id
-func (o FileshareProfileResponsePtrOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileshareProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// File share backing storage type
-func (o FileshareProfileResponsePtrOutput) StorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileshareProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Defines the SAP Gateway Server properties.
 type GatewayServerPropertiesResponse struct {
 	// Defines the health of SAP Instances.
@@ -2497,8 +1444,6 @@ type HanaDbProviderInstanceProperties struct {
 	DbPassword *string `pulumi:"dbPassword"`
 	// Gets or sets the key vault URI to secret with the database password.
 	DbPasswordUri *string `pulumi:"dbPasswordUri"`
-	// Gets or sets the blob URI to SSL certificate for the DB.
-	DbSslCertificateUri *string `pulumi:"dbSslCertificateUri"`
 	// Gets or sets the database user name.
 	DbUsername *string `pulumi:"dbUsername"`
 	// Gets or sets the target virtual machine size.
@@ -2508,6 +1453,8 @@ type HanaDbProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'SapHana'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the database sql port.
 	SqlPort *string `pulumi:"sqlPort"`
 	// Gets or sets the blob URI to SSL certificate for the DB.
@@ -2526,8 +1473,6 @@ type HanaDbProviderInstancePropertiesResponse struct {
 	DbPassword *string `pulumi:"dbPassword"`
 	// Gets or sets the key vault URI to secret with the database password.
 	DbPasswordUri *string `pulumi:"dbPasswordUri"`
-	// Gets or sets the blob URI to SSL certificate for the DB.
-	DbSslCertificateUri *string `pulumi:"dbSslCertificateUri"`
 	// Gets or sets the database user name.
 	DbUsername *string `pulumi:"dbUsername"`
 	// Gets or sets the target virtual machine size.
@@ -2537,6 +1482,8 @@ type HanaDbProviderInstancePropertiesResponse struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'SapHana'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the database sql port.
 	SqlPort *string `pulumi:"sqlPort"`
 	// Gets or sets the blob URI to SSL certificate for the DB.
@@ -2581,8 +1528,6 @@ type ImageReference struct {
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku *string `pulumi:"sku"`
 	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
@@ -2591,14 +1536,10 @@ type ImageReference struct {
 
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceResponse struct {
-	// Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
-	ExactVersion string `pulumi:"exactVersion"`
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku *string `pulumi:"sku"`
 	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
@@ -2653,6 +1594,30 @@ func (o LoadBalancerDetailsResponseOutput) ToLoadBalancerDetailsResponseOutputWi
 
 func (o LoadBalancerDetailsResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerDetailsResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNames struct {
+	// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+	BackendPoolNames []string `pulumi:"backendPoolNames"`
+	// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	FrontendIpConfigurationNames []string `pulumi:"frontendIpConfigurationNames"`
+	// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	HealthProbeNames []string `pulumi:"healthProbeNames"`
+	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNamesResponse struct {
+	// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+	BackendPoolNames []string `pulumi:"backendPoolNames"`
+	// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	FrontendIpConfigurationNames []string `pulumi:"frontendIpConfigurationNames"`
+	// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	HealthProbeNames []string `pulumi:"healthProbeNames"`
+	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
 }
 
 // Managed resource group configuration
@@ -3151,7 +2116,7 @@ func (val *NetworkConfiguration) Defaults() *NetworkConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecondaryIpEnabled) {
+	if tmp.IsSecondaryIpEnabled == nil {
 		isSecondaryIpEnabled_ := false
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
@@ -3170,592 +2135,23 @@ func (val *NetworkConfigurationResponse) Defaults() *NetworkConfigurationRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecondaryIpEnabled) {
+	if tmp.IsSecondaryIpEnabled == nil {
 		isSecondaryIpEnabled_ := false
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
 	return &tmp
 }
 
-// Network profile
-type NetworkProfile struct {
-	// Whether to enable Azure front door
-	AzureFrontDoorEnabled *string `pulumi:"azureFrontDoorEnabled"`
-	// Capacity, applicable only for Application Gateway
-	Capacity *int `pulumi:"capacity"`
-	// Load balancer SKU
-	LoadBalancerSku *string `pulumi:"loadBalancerSku"`
-	// Load balancer tier
-	LoadBalancerTier *string `pulumi:"loadBalancerTier"`
-	// Load balancer type
-	LoadBalancerType string `pulumi:"loadBalancerType"`
-}
-
-// NetworkProfileInput is an input type that accepts NetworkProfileArgs and NetworkProfileOutput values.
-// You can construct a concrete instance of `NetworkProfileInput` via:
-//
-//	NetworkProfileArgs{...}
-type NetworkProfileInput interface {
-	pulumi.Input
-
-	ToNetworkProfileOutput() NetworkProfileOutput
-	ToNetworkProfileOutputWithContext(context.Context) NetworkProfileOutput
-}
-
-// Network profile
-type NetworkProfileArgs struct {
-	// Whether to enable Azure front door
-	AzureFrontDoorEnabled pulumi.StringPtrInput `pulumi:"azureFrontDoorEnabled"`
-	// Capacity, applicable only for Application Gateway
-	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// Load balancer SKU
-	LoadBalancerSku pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
-	// Load balancer tier
-	LoadBalancerTier pulumi.StringPtrInput `pulumi:"loadBalancerTier"`
-	// Load balancer type
-	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
-}
-
-func (NetworkProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkProfile)(nil)).Elem()
-}
-
-func (i NetworkProfileArgs) ToNetworkProfileOutput() NetworkProfileOutput {
-	return i.ToNetworkProfileOutputWithContext(context.Background())
-}
-
-func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
-}
-
-func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
-	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
-}
-
-func (i NetworkProfileArgs) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput).ToNetworkProfilePtrOutputWithContext(ctx)
-}
-
-// NetworkProfilePtrInput is an input type that accepts NetworkProfileArgs, NetworkProfilePtr and NetworkProfilePtrOutput values.
-// You can construct a concrete instance of `NetworkProfilePtrInput` via:
-//
-//	        NetworkProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type NetworkProfilePtrInput interface {
-	pulumi.Input
-
-	ToNetworkProfilePtrOutput() NetworkProfilePtrOutput
-	ToNetworkProfilePtrOutputWithContext(context.Context) NetworkProfilePtrOutput
-}
-
-type networkProfilePtrType NetworkProfileArgs
-
-func NetworkProfilePtr(v *NetworkProfileArgs) NetworkProfilePtrInput {
-	return (*networkProfilePtrType)(v)
-}
-
-func (*networkProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkProfile)(nil)).Elem()
-}
-
-func (i *networkProfilePtrType) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
-	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
-}
-
-// Network profile
-type NetworkProfileOutput struct{ *pulumi.OutputState }
-
-func (NetworkProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkProfile)(nil)).Elem()
-}
-
-func (o NetworkProfileOutput) ToNetworkProfileOutput() NetworkProfileOutput {
-	return o
-}
-
-func (o NetworkProfileOutput) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
-	return o
-}
-
-func (o NetworkProfileOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
-	return o.ToNetworkProfilePtrOutputWithContext(context.Background())
-}
-
-func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProfile) *NetworkProfile {
-		return &v
-	}).(NetworkProfilePtrOutput)
-}
-
-// Whether to enable Azure front door
-func (o NetworkProfileOutput) AzureFrontDoorEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkProfile) *string { return v.AzureFrontDoorEnabled }).(pulumi.StringPtrOutput)
-}
-
-// Capacity, applicable only for Application Gateway
-func (o NetworkProfileOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworkProfile) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// Load balancer SKU
-func (o NetworkProfileOutput) LoadBalancerSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkProfile) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
-}
-
-// Load balancer tier
-func (o NetworkProfileOutput) LoadBalancerTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkProfile) *string { return v.LoadBalancerTier }).(pulumi.StringPtrOutput)
-}
-
-// Load balancer type
-func (o NetworkProfileOutput) LoadBalancerType() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkProfile) string { return v.LoadBalancerType }).(pulumi.StringOutput)
-}
-
-type NetworkProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkProfile)(nil)).Elem()
-}
-
-func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
-	return o
-}
-
-func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
-	return o
-}
-
-func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
-	return o.ApplyT(func(v *NetworkProfile) NetworkProfile {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkProfile
-		return ret
-	}).(NetworkProfileOutput)
-}
-
-// Whether to enable Azure front door
-func (o NetworkProfilePtrOutput) AzureFrontDoorEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureFrontDoorEnabled
-	}).(pulumi.StringPtrOutput)
-}
-
-// Capacity, applicable only for Application Gateway
-func (o NetworkProfilePtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NetworkProfile) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// Load balancer SKU
-func (o NetworkProfilePtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LoadBalancerSku
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancer tier
-func (o NetworkProfilePtrOutput) LoadBalancerTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LoadBalancerTier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancer type
-func (o NetworkProfilePtrOutput) LoadBalancerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LoadBalancerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Network profile
-type NetworkProfileResponse struct {
-	// Whether to enable Azure front door
-	AzureFrontDoorEnabled *string `pulumi:"azureFrontDoorEnabled"`
-	// Azure front door resource id
-	AzureFrontDoorResourceId string `pulumi:"azureFrontDoorResourceId"`
-	// Capacity, applicable only for Application Gateway
-	Capacity *int `pulumi:"capacity"`
-	// Loadbalancer front-end IP address resource Id
-	FrontEndPublicIpResourceId string `pulumi:"frontEndPublicIpResourceId"`
-	// Azure Loadbalancer or ApplicationGateway resource Id
-	LoadBalancerResourceId string `pulumi:"loadBalancerResourceId"`
-	// Load balancer SKU
-	LoadBalancerSku *string `pulumi:"loadBalancerSku"`
-	// Load balancer tier
-	LoadBalancerTier *string `pulumi:"loadBalancerTier"`
-	// Load balancer type
-	LoadBalancerType string `pulumi:"loadBalancerType"`
-	// List of outbound public IP resource IDs
-	OutboundPublicIpResourceIds []string `pulumi:"outboundPublicIpResourceIds"`
-	// Virtual network resource Id
-	VNetResourceId string `pulumi:"vNetResourceId"`
-}
-
-// Network profile
-type NetworkProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkProfileResponse)(nil)).Elem()
-}
-
-func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutput() NetworkProfileResponseOutput {
-	return o
-}
-
-func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(ctx context.Context) NetworkProfileResponseOutput {
-	return o
-}
-
-// Whether to enable Azure front door
-func (o NetworkProfileResponseOutput) AzureFrontDoorEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.AzureFrontDoorEnabled }).(pulumi.StringPtrOutput)
-}
-
-// Azure front door resource id
-func (o NetworkProfileResponseOutput) AzureFrontDoorResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) string { return v.AzureFrontDoorResourceId }).(pulumi.StringOutput)
-}
-
-// Capacity, applicable only for Application Gateway
-func (o NetworkProfileResponseOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// Loadbalancer front-end IP address resource Id
-func (o NetworkProfileResponseOutput) FrontEndPublicIpResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) string { return v.FrontEndPublicIpResourceId }).(pulumi.StringOutput)
-}
-
-// Azure Loadbalancer or ApplicationGateway resource Id
-func (o NetworkProfileResponseOutput) LoadBalancerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) string { return v.LoadBalancerResourceId }).(pulumi.StringOutput)
-}
-
-// Load balancer SKU
-func (o NetworkProfileResponseOutput) LoadBalancerSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
-}
-
-// Load balancer tier
-func (o NetworkProfileResponseOutput) LoadBalancerTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.LoadBalancerTier }).(pulumi.StringPtrOutput)
-}
-
-// Load balancer type
-func (o NetworkProfileResponseOutput) LoadBalancerType() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) string { return v.LoadBalancerType }).(pulumi.StringOutput)
-}
-
-// List of outbound public IP resource IDs
-func (o NetworkProfileResponseOutput) OutboundPublicIpResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) []string { return v.OutboundPublicIpResourceIds }).(pulumi.StringArrayOutput)
-}
-
-// Virtual network resource Id
-func (o NetworkProfileResponseOutput) VNetResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) string { return v.VNetResourceId }).(pulumi.StringOutput)
-}
-
-type NetworkProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkProfileResponse)(nil)).Elem()
-}
-
-func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() NetworkProfileResponsePtrOutput {
-	return o
-}
-
-func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
-	return o
-}
-
-func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) NetworkProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkProfileResponse
-		return ret
-	}).(NetworkProfileResponseOutput)
-}
-
-// Whether to enable Azure front door
-func (o NetworkProfileResponsePtrOutput) AzureFrontDoorEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureFrontDoorEnabled
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure front door resource id
-func (o NetworkProfileResponsePtrOutput) AzureFrontDoorResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AzureFrontDoorResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Capacity, applicable only for Application Gateway
-func (o NetworkProfileResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// Loadbalancer front-end IP address resource Id
-func (o NetworkProfileResponsePtrOutput) FrontEndPublicIpResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FrontEndPublicIpResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Loadbalancer or ApplicationGateway resource Id
-func (o NetworkProfileResponsePtrOutput) LoadBalancerResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LoadBalancerResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancer SKU
-func (o NetworkProfileResponsePtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LoadBalancerSku
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancer tier
-func (o NetworkProfileResponsePtrOutput) LoadBalancerTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LoadBalancerTier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancer type
-func (o NetworkProfileResponsePtrOutput) LoadBalancerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LoadBalancerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of outbound public IP resource IDs
-func (o NetworkProfileResponsePtrOutput) OutboundPublicIpResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.OutboundPublicIpResourceIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// Virtual network resource Id
-func (o NetworkProfileResponsePtrOutput) VNetResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VNetResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM or VMSS node profile
-type NodeProfile struct {
-	// Data disks details. This property is not in use right now
-	DataDisks []DiskInfo `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name *string `pulumi:"name"`
-	// VM SKU for node(s)
-	NodeSku string `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfo `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfile `pulumi:"osImage"`
-}
-
-// NodeProfileInput is an input type that accepts NodeProfileArgs and NodeProfileOutput values.
-// You can construct a concrete instance of `NodeProfileInput` via:
-//
-//	NodeProfileArgs{...}
-type NodeProfileInput interface {
-	pulumi.Input
-
-	ToNodeProfileOutput() NodeProfileOutput
-	ToNodeProfileOutputWithContext(context.Context) NodeProfileOutput
-}
-
-// VM or VMSS node profile
-type NodeProfileArgs struct {
-	// Data disks details. This property is not in use right now
-	DataDisks DiskInfoArrayInput `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// VM SKU for node(s)
-	NodeSku pulumi.StringInput `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfoInput `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfileInput `pulumi:"osImage"`
-}
-
-func (NodeProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeProfile)(nil)).Elem()
-}
-
-func (i NodeProfileArgs) ToNodeProfileOutput() NodeProfileOutput {
-	return i.ToNodeProfileOutputWithContext(context.Background())
-}
-
-func (i NodeProfileArgs) ToNodeProfileOutputWithContext(ctx context.Context) NodeProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeProfileOutput)
-}
-
-// VM or VMSS node profile
-type NodeProfileOutput struct{ *pulumi.OutputState }
-
-func (NodeProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeProfile)(nil)).Elem()
-}
-
-func (o NodeProfileOutput) ToNodeProfileOutput() NodeProfileOutput {
-	return o
-}
-
-func (o NodeProfileOutput) ToNodeProfileOutputWithContext(ctx context.Context) NodeProfileOutput {
-	return o
-}
-
-// Data disks details. This property is not in use right now
-func (o NodeProfileOutput) DataDisks() DiskInfoArrayOutput {
-	return o.ApplyT(func(v NodeProfile) []DiskInfo { return v.DataDisks }).(DiskInfoArrayOutput)
-}
-
-// VM or VMSS name
-func (o NodeProfileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// VM SKU for node(s)
-func (o NodeProfileOutput) NodeSku() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeProfile) string { return v.NodeSku }).(pulumi.StringOutput)
-}
-
-// OS disk details
-func (o NodeProfileOutput) OsDisk() DiskInfoOutput {
-	return o.ApplyT(func(v NodeProfile) DiskInfo { return v.OsDisk }).(DiskInfoOutput)
-}
-
-// OS image used for creating the nodes
-func (o NodeProfileOutput) OsImage() OsImageProfileOutput {
-	return o.ApplyT(func(v NodeProfile) OsImageProfile { return v.OsImage }).(OsImageProfileOutput)
-}
-
-// VM or VMSS node profile
-type NodeProfileResponse struct {
-	// Data disks details. This property is not in use right now
-	DataDisks []DiskInfoResponse `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name *string `pulumi:"name"`
-	// VM/VMSS resource ARM Ids
-	NodeResourceIds []string `pulumi:"nodeResourceIds"`
-	// VM SKU for node(s)
-	NodeSku string `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfoResponse `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfileResponse `pulumi:"osImage"`
-}
-
-// VM or VMSS node profile
-type NodeProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (NodeProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeProfileResponse)(nil)).Elem()
-}
-
-func (o NodeProfileResponseOutput) ToNodeProfileResponseOutput() NodeProfileResponseOutput {
-	return o
-}
-
-func (o NodeProfileResponseOutput) ToNodeProfileResponseOutputWithContext(ctx context.Context) NodeProfileResponseOutput {
-	return o
-}
-
-// Data disks details. This property is not in use right now
-func (o NodeProfileResponseOutput) DataDisks() DiskInfoResponseArrayOutput {
-	return o.ApplyT(func(v NodeProfileResponse) []DiskInfoResponse { return v.DataDisks }).(DiskInfoResponseArrayOutput)
-}
-
-// VM or VMSS name
-func (o NodeProfileResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// VM/VMSS resource ARM Ids
-func (o NodeProfileResponseOutput) NodeResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NodeProfileResponse) []string { return v.NodeResourceIds }).(pulumi.StringArrayOutput)
-}
-
-// VM SKU for node(s)
-func (o NodeProfileResponseOutput) NodeSku() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeProfileResponse) string { return v.NodeSku }).(pulumi.StringOutput)
-}
-
-// OS disk details
-func (o NodeProfileResponseOutput) OsDisk() DiskInfoResponseOutput {
-	return o.ApplyT(func(v NodeProfileResponse) DiskInfoResponse { return v.OsDisk }).(DiskInfoResponseOutput)
-}
-
-// OS image used for creating the nodes
-func (o NodeProfileResponseOutput) OsImage() OsImageProfileResponseOutput {
-	return o.ApplyT(func(v NodeProfileResponse) OsImageProfileResponse { return v.OsImage }).(OsImageProfileResponseOutput)
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNames struct {
+	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+}
+
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNamesResponse struct {
+	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 }
 
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
@@ -3778,314 +2174,6 @@ type OSProfileResponse struct {
 	OsConfiguration interface{} `pulumi:"osConfiguration"`
 }
 
-// OS image profile
-type OsImageProfile struct {
-	// OS image offer
-	Offer *string `pulumi:"offer"`
-	// OS image publisher
-	Publisher *string `pulumi:"publisher"`
-	// OS image sku
-	Sku *string `pulumi:"sku"`
-	// OS image version
-	Version *string `pulumi:"version"`
-}
-
-// OsImageProfileInput is an input type that accepts OsImageProfileArgs and OsImageProfileOutput values.
-// You can construct a concrete instance of `OsImageProfileInput` via:
-//
-//	OsImageProfileArgs{...}
-type OsImageProfileInput interface {
-	pulumi.Input
-
-	ToOsImageProfileOutput() OsImageProfileOutput
-	ToOsImageProfileOutputWithContext(context.Context) OsImageProfileOutput
-}
-
-// OS image profile
-type OsImageProfileArgs struct {
-	// OS image offer
-	Offer pulumi.StringPtrInput `pulumi:"offer"`
-	// OS image publisher
-	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// OS image sku
-	Sku pulumi.StringPtrInput `pulumi:"sku"`
-	// OS image version
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (OsImageProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsImageProfile)(nil)).Elem()
-}
-
-func (i OsImageProfileArgs) ToOsImageProfileOutput() OsImageProfileOutput {
-	return i.ToOsImageProfileOutputWithContext(context.Background())
-}
-
-func (i OsImageProfileArgs) ToOsImageProfileOutputWithContext(ctx context.Context) OsImageProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsImageProfileOutput)
-}
-
-func (i OsImageProfileArgs) ToOsImageProfilePtrOutput() OsImageProfilePtrOutput {
-	return i.ToOsImageProfilePtrOutputWithContext(context.Background())
-}
-
-func (i OsImageProfileArgs) ToOsImageProfilePtrOutputWithContext(ctx context.Context) OsImageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsImageProfileOutput).ToOsImageProfilePtrOutputWithContext(ctx)
-}
-
-// OsImageProfilePtrInput is an input type that accepts OsImageProfileArgs, OsImageProfilePtr and OsImageProfilePtrOutput values.
-// You can construct a concrete instance of `OsImageProfilePtrInput` via:
-//
-//	        OsImageProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type OsImageProfilePtrInput interface {
-	pulumi.Input
-
-	ToOsImageProfilePtrOutput() OsImageProfilePtrOutput
-	ToOsImageProfilePtrOutputWithContext(context.Context) OsImageProfilePtrOutput
-}
-
-type osImageProfilePtrType OsImageProfileArgs
-
-func OsImageProfilePtr(v *OsImageProfileArgs) OsImageProfilePtrInput {
-	return (*osImageProfilePtrType)(v)
-}
-
-func (*osImageProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsImageProfile)(nil)).Elem()
-}
-
-func (i *osImageProfilePtrType) ToOsImageProfilePtrOutput() OsImageProfilePtrOutput {
-	return i.ToOsImageProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *osImageProfilePtrType) ToOsImageProfilePtrOutputWithContext(ctx context.Context) OsImageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsImageProfilePtrOutput)
-}
-
-// OS image profile
-type OsImageProfileOutput struct{ *pulumi.OutputState }
-
-func (OsImageProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsImageProfile)(nil)).Elem()
-}
-
-func (o OsImageProfileOutput) ToOsImageProfileOutput() OsImageProfileOutput {
-	return o
-}
-
-func (o OsImageProfileOutput) ToOsImageProfileOutputWithContext(ctx context.Context) OsImageProfileOutput {
-	return o
-}
-
-func (o OsImageProfileOutput) ToOsImageProfilePtrOutput() OsImageProfilePtrOutput {
-	return o.ToOsImageProfilePtrOutputWithContext(context.Background())
-}
-
-func (o OsImageProfileOutput) ToOsImageProfilePtrOutputWithContext(ctx context.Context) OsImageProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsImageProfile) *OsImageProfile {
-		return &v
-	}).(OsImageProfilePtrOutput)
-}
-
-// OS image offer
-func (o OsImageProfileOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfile) *string { return v.Offer }).(pulumi.StringPtrOutput)
-}
-
-// OS image publisher
-func (o OsImageProfileOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfile) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// OS image sku
-func (o OsImageProfileOutput) Sku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfile) *string { return v.Sku }).(pulumi.StringPtrOutput)
-}
-
-// OS image version
-func (o OsImageProfileOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfile) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type OsImageProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (OsImageProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsImageProfile)(nil)).Elem()
-}
-
-func (o OsImageProfilePtrOutput) ToOsImageProfilePtrOutput() OsImageProfilePtrOutput {
-	return o
-}
-
-func (o OsImageProfilePtrOutput) ToOsImageProfilePtrOutputWithContext(ctx context.Context) OsImageProfilePtrOutput {
-	return o
-}
-
-func (o OsImageProfilePtrOutput) Elem() OsImageProfileOutput {
-	return o.ApplyT(func(v *OsImageProfile) OsImageProfile {
-		if v != nil {
-			return *v
-		}
-		var ret OsImageProfile
-		return ret
-	}).(OsImageProfileOutput)
-}
-
-// OS image offer
-func (o OsImageProfilePtrOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Offer
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image publisher
-func (o OsImageProfilePtrOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Publisher
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image sku
-func (o OsImageProfilePtrOutput) Sku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sku
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image version
-func (o OsImageProfilePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image profile
-type OsImageProfileResponse struct {
-	// OS image offer
-	Offer *string `pulumi:"offer"`
-	// OS image publisher
-	Publisher *string `pulumi:"publisher"`
-	// OS image sku
-	Sku *string `pulumi:"sku"`
-	// OS image version
-	Version *string `pulumi:"version"`
-}
-
-// OS image profile
-type OsImageProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (OsImageProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsImageProfileResponse)(nil)).Elem()
-}
-
-func (o OsImageProfileResponseOutput) ToOsImageProfileResponseOutput() OsImageProfileResponseOutput {
-	return o
-}
-
-func (o OsImageProfileResponseOutput) ToOsImageProfileResponseOutputWithContext(ctx context.Context) OsImageProfileResponseOutput {
-	return o
-}
-
-// OS image offer
-func (o OsImageProfileResponseOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfileResponse) *string { return v.Offer }).(pulumi.StringPtrOutput)
-}
-
-// OS image publisher
-func (o OsImageProfileResponseOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfileResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// OS image sku
-func (o OsImageProfileResponseOutput) Sku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfileResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
-}
-
-// OS image version
-func (o OsImageProfileResponseOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsImageProfileResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type OsImageProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OsImageProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsImageProfileResponse)(nil)).Elem()
-}
-
-func (o OsImageProfileResponsePtrOutput) ToOsImageProfileResponsePtrOutput() OsImageProfileResponsePtrOutput {
-	return o
-}
-
-func (o OsImageProfileResponsePtrOutput) ToOsImageProfileResponsePtrOutputWithContext(ctx context.Context) OsImageProfileResponsePtrOutput {
-	return o
-}
-
-func (o OsImageProfileResponsePtrOutput) Elem() OsImageProfileResponseOutput {
-	return o.ApplyT(func(v *OsImageProfileResponse) OsImageProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OsImageProfileResponse
-		return ret
-	}).(OsImageProfileResponseOutput)
-}
-
-// OS image offer
-func (o OsImageProfileResponsePtrOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Offer
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image publisher
-func (o OsImageProfileResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Publisher
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image sku
-func (o OsImageProfileResponsePtrOutput) Sku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sku
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS image version
-func (o OsImageProfileResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsImageProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
 // Defines the OS and SAP Configurations for Deployment
 type OsSapConfiguration struct {
 	// The url and storage account ID where deployer VM packages are uploaded
@@ -4100,444 +2188,6 @@ type OsSapConfigurationResponse struct {
 	DeployerVmPackages *DeployerVmPackagesResponse `pulumi:"deployerVmPackages"`
 	// The FQDN to set for the SAP system
 	SapFqdn *string `pulumi:"sapFqdn"`
-}
-
-// PHP profile
-type PhpProfile struct {
-	// PHP version
-	Version string `pulumi:"version"`
-}
-
-// PhpProfileInput is an input type that accepts PhpProfileArgs and PhpProfileOutput values.
-// You can construct a concrete instance of `PhpProfileInput` via:
-//
-//	PhpProfileArgs{...}
-type PhpProfileInput interface {
-	pulumi.Input
-
-	ToPhpProfileOutput() PhpProfileOutput
-	ToPhpProfileOutputWithContext(context.Context) PhpProfileOutput
-}
-
-// PHP profile
-type PhpProfileArgs struct {
-	// PHP version
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (PhpProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpProfile)(nil)).Elem()
-}
-
-func (i PhpProfileArgs) ToPhpProfileOutput() PhpProfileOutput {
-	return i.ToPhpProfileOutputWithContext(context.Background())
-}
-
-func (i PhpProfileArgs) ToPhpProfileOutputWithContext(ctx context.Context) PhpProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhpProfileOutput)
-}
-
-func (i PhpProfileArgs) ToPhpProfilePtrOutput() PhpProfilePtrOutput {
-	return i.ToPhpProfilePtrOutputWithContext(context.Background())
-}
-
-func (i PhpProfileArgs) ToPhpProfilePtrOutputWithContext(ctx context.Context) PhpProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhpProfileOutput).ToPhpProfilePtrOutputWithContext(ctx)
-}
-
-// PhpProfilePtrInput is an input type that accepts PhpProfileArgs, PhpProfilePtr and PhpProfilePtrOutput values.
-// You can construct a concrete instance of `PhpProfilePtrInput` via:
-//
-//	        PhpProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type PhpProfilePtrInput interface {
-	pulumi.Input
-
-	ToPhpProfilePtrOutput() PhpProfilePtrOutput
-	ToPhpProfilePtrOutputWithContext(context.Context) PhpProfilePtrOutput
-}
-
-type phpProfilePtrType PhpProfileArgs
-
-func PhpProfilePtr(v *PhpProfileArgs) PhpProfilePtrInput {
-	return (*phpProfilePtrType)(v)
-}
-
-func (*phpProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhpProfile)(nil)).Elem()
-}
-
-func (i *phpProfilePtrType) ToPhpProfilePtrOutput() PhpProfilePtrOutput {
-	return i.ToPhpProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *phpProfilePtrType) ToPhpProfilePtrOutputWithContext(ctx context.Context) PhpProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhpProfilePtrOutput)
-}
-
-// PHP profile
-type PhpProfileOutput struct{ *pulumi.OutputState }
-
-func (PhpProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpProfile)(nil)).Elem()
-}
-
-func (o PhpProfileOutput) ToPhpProfileOutput() PhpProfileOutput {
-	return o
-}
-
-func (o PhpProfileOutput) ToPhpProfileOutputWithContext(ctx context.Context) PhpProfileOutput {
-	return o
-}
-
-func (o PhpProfileOutput) ToPhpProfilePtrOutput() PhpProfilePtrOutput {
-	return o.ToPhpProfilePtrOutputWithContext(context.Background())
-}
-
-func (o PhpProfileOutput) ToPhpProfilePtrOutputWithContext(ctx context.Context) PhpProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhpProfile) *PhpProfile {
-		return &v
-	}).(PhpProfilePtrOutput)
-}
-
-// PHP version
-func (o PhpProfileOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v PhpProfile) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type PhpProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (PhpProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhpProfile)(nil)).Elem()
-}
-
-func (o PhpProfilePtrOutput) ToPhpProfilePtrOutput() PhpProfilePtrOutput {
-	return o
-}
-
-func (o PhpProfilePtrOutput) ToPhpProfilePtrOutputWithContext(ctx context.Context) PhpProfilePtrOutput {
-	return o
-}
-
-func (o PhpProfilePtrOutput) Elem() PhpProfileOutput {
-	return o.ApplyT(func(v *PhpProfile) PhpProfile {
-		if v != nil {
-			return *v
-		}
-		var ret PhpProfile
-		return ret
-	}).(PhpProfileOutput)
-}
-
-// PHP version
-func (o PhpProfilePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PhpProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// PHP profile
-type PhpProfileResponse struct {
-	// PHP version
-	Version string `pulumi:"version"`
-}
-
-// PHP profile
-type PhpProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (PhpProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpProfileResponse)(nil)).Elem()
-}
-
-func (o PhpProfileResponseOutput) ToPhpProfileResponseOutput() PhpProfileResponseOutput {
-	return o
-}
-
-func (o PhpProfileResponseOutput) ToPhpProfileResponseOutputWithContext(ctx context.Context) PhpProfileResponseOutput {
-	return o
-}
-
-// PHP version
-func (o PhpProfileResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v PhpProfileResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type PhpProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PhpProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhpProfileResponse)(nil)).Elem()
-}
-
-func (o PhpProfileResponsePtrOutput) ToPhpProfileResponsePtrOutput() PhpProfileResponsePtrOutput {
-	return o
-}
-
-func (o PhpProfileResponsePtrOutput) ToPhpProfileResponsePtrOutputWithContext(ctx context.Context) PhpProfileResponsePtrOutput {
-	return o
-}
-
-func (o PhpProfileResponsePtrOutput) Elem() PhpProfileResponseOutput {
-	return o.ApplyT(func(v *PhpProfileResponse) PhpProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PhpProfileResponse
-		return ret
-	}).(PhpProfileResponseOutput)
-}
-
-// PHP version
-func (o PhpProfileResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PhpProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identity for the resource. Currently not supported
-type PhpWorkloadResourceIdentity struct {
-	// Type of manage identity
-	Type string `pulumi:"type"`
-	// User assigned identities dictionary
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
-}
-
-// PhpWorkloadResourceIdentityInput is an input type that accepts PhpWorkloadResourceIdentityArgs and PhpWorkloadResourceIdentityOutput values.
-// You can construct a concrete instance of `PhpWorkloadResourceIdentityInput` via:
-//
-//	PhpWorkloadResourceIdentityArgs{...}
-type PhpWorkloadResourceIdentityInput interface {
-	pulumi.Input
-
-	ToPhpWorkloadResourceIdentityOutput() PhpWorkloadResourceIdentityOutput
-	ToPhpWorkloadResourceIdentityOutputWithContext(context.Context) PhpWorkloadResourceIdentityOutput
-}
-
-// Identity for the resource. Currently not supported
-type PhpWorkloadResourceIdentityArgs struct {
-	// Type of manage identity
-	Type pulumi.StringInput `pulumi:"type"`
-	// User assigned identities dictionary
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
-}
-
-func (PhpWorkloadResourceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpWorkloadResourceIdentity)(nil)).Elem()
-}
-
-func (i PhpWorkloadResourceIdentityArgs) ToPhpWorkloadResourceIdentityOutput() PhpWorkloadResourceIdentityOutput {
-	return i.ToPhpWorkloadResourceIdentityOutputWithContext(context.Background())
-}
-
-func (i PhpWorkloadResourceIdentityArgs) ToPhpWorkloadResourceIdentityOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhpWorkloadResourceIdentityOutput)
-}
-
-func (i PhpWorkloadResourceIdentityArgs) ToPhpWorkloadResourceIdentityPtrOutput() PhpWorkloadResourceIdentityPtrOutput {
-	return i.ToPhpWorkloadResourceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i PhpWorkloadResourceIdentityArgs) ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhpWorkloadResourceIdentityOutput).ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx)
-}
-
-// PhpWorkloadResourceIdentityPtrInput is an input type that accepts PhpWorkloadResourceIdentityArgs, PhpWorkloadResourceIdentityPtr and PhpWorkloadResourceIdentityPtrOutput values.
-// You can construct a concrete instance of `PhpWorkloadResourceIdentityPtrInput` via:
-//
-//	        PhpWorkloadResourceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type PhpWorkloadResourceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToPhpWorkloadResourceIdentityPtrOutput() PhpWorkloadResourceIdentityPtrOutput
-	ToPhpWorkloadResourceIdentityPtrOutputWithContext(context.Context) PhpWorkloadResourceIdentityPtrOutput
-}
-
-type phpWorkloadResourceIdentityPtrType PhpWorkloadResourceIdentityArgs
-
-func PhpWorkloadResourceIdentityPtr(v *PhpWorkloadResourceIdentityArgs) PhpWorkloadResourceIdentityPtrInput {
-	return (*phpWorkloadResourceIdentityPtrType)(v)
-}
-
-func (*phpWorkloadResourceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhpWorkloadResourceIdentity)(nil)).Elem()
-}
-
-func (i *phpWorkloadResourceIdentityPtrType) ToPhpWorkloadResourceIdentityPtrOutput() PhpWorkloadResourceIdentityPtrOutput {
-	return i.ToPhpWorkloadResourceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *phpWorkloadResourceIdentityPtrType) ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhpWorkloadResourceIdentityPtrOutput)
-}
-
-// Identity for the resource. Currently not supported
-type PhpWorkloadResourceIdentityOutput struct{ *pulumi.OutputState }
-
-func (PhpWorkloadResourceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpWorkloadResourceIdentity)(nil)).Elem()
-}
-
-func (o PhpWorkloadResourceIdentityOutput) ToPhpWorkloadResourceIdentityOutput() PhpWorkloadResourceIdentityOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceIdentityOutput) ToPhpWorkloadResourceIdentityOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceIdentityOutput) ToPhpWorkloadResourceIdentityPtrOutput() PhpWorkloadResourceIdentityPtrOutput {
-	return o.ToPhpWorkloadResourceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o PhpWorkloadResourceIdentityOutput) ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhpWorkloadResourceIdentity) *PhpWorkloadResourceIdentity {
-		return &v
-	}).(PhpWorkloadResourceIdentityPtrOutput)
-}
-
-// Type of manage identity
-func (o PhpWorkloadResourceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PhpWorkloadResourceIdentity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// User assigned identities dictionary
-func (o PhpWorkloadResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v PhpWorkloadResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
-}
-
-type PhpWorkloadResourceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (PhpWorkloadResourceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhpWorkloadResourceIdentity)(nil)).Elem()
-}
-
-func (o PhpWorkloadResourceIdentityPtrOutput) ToPhpWorkloadResourceIdentityPtrOutput() PhpWorkloadResourceIdentityPtrOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceIdentityPtrOutput) ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityPtrOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceIdentityPtrOutput) Elem() PhpWorkloadResourceIdentityOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceIdentity) PhpWorkloadResourceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret PhpWorkloadResourceIdentity
-		return ret
-	}).(PhpWorkloadResourceIdentityOutput)
-}
-
-// Type of manage identity
-func (o PhpWorkloadResourceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// User assigned identities dictionary
-func (o PhpWorkloadResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceIdentity) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
-}
-
-// Identity for the resource. Currently not supported
-type PhpWorkloadResourceResponseIdentity struct {
-	// Type of manage identity
-	Type string `pulumi:"type"`
-	// User assigned identities dictionary
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// Identity for the resource. Currently not supported
-type PhpWorkloadResourceResponseIdentityOutput struct{ *pulumi.OutputState }
-
-func (PhpWorkloadResourceResponseIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpWorkloadResourceResponseIdentity)(nil)).Elem()
-}
-
-func (o PhpWorkloadResourceResponseIdentityOutput) ToPhpWorkloadResourceResponseIdentityOutput() PhpWorkloadResourceResponseIdentityOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceResponseIdentityOutput) ToPhpWorkloadResourceResponseIdentityOutputWithContext(ctx context.Context) PhpWorkloadResourceResponseIdentityOutput {
-	return o
-}
-
-// Type of manage identity
-func (o PhpWorkloadResourceResponseIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PhpWorkloadResourceResponseIdentity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// User assigned identities dictionary
-func (o PhpWorkloadResourceResponseIdentityOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v PhpWorkloadResourceResponseIdentity) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type PhpWorkloadResourceResponseIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (PhpWorkloadResourceResponseIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhpWorkloadResourceResponseIdentity)(nil)).Elem()
-}
-
-func (o PhpWorkloadResourceResponseIdentityPtrOutput) ToPhpWorkloadResourceResponseIdentityPtrOutput() PhpWorkloadResourceResponseIdentityPtrOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceResponseIdentityPtrOutput) ToPhpWorkloadResourceResponseIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceResponseIdentityPtrOutput {
-	return o
-}
-
-func (o PhpWorkloadResourceResponseIdentityPtrOutput) Elem() PhpWorkloadResourceResponseIdentityOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceResponseIdentity) PhpWorkloadResourceResponseIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret PhpWorkloadResourceResponseIdentity
-		return ret
-	}).(PhpWorkloadResourceResponseIdentityOutput)
-}
-
-// Type of manage identity
-func (o PhpWorkloadResourceResponseIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceResponseIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// User assigned identities dictionary
-func (o PhpWorkloadResourceResponseIdentityPtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceResponseIdentity) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Gets or sets the PrometheusHaCluster provider properties.
@@ -4585,6 +2235,8 @@ type PrometheusOSProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'PrometheusOS'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
@@ -4598,6 +2250,8 @@ type PrometheusOSProviderInstancePropertiesResponse struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'PrometheusOS'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
@@ -4711,25 +2365,15 @@ func (o SAPAvailabilityZonePairResponseArrayOutput) Index(i pulumi.IntInput) SAP
 	}).(SAPAvailabilityZonePairResponseOutput)
 }
 
-// The SAP Disk Configuration.
+// The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type.
 type SAPDiskConfigurationResponse struct {
-	// The disk count.
-	DiskCount *float64 `pulumi:"diskCount"`
-	// The disk Iops.
-	DiskIopsReadWrite *float64 `pulumi:"diskIopsReadWrite"`
-	// The disk provisioned throughput in MBps.
-	DiskMBpsReadWrite *float64 `pulumi:"diskMBpsReadWrite"`
-	// The disk size in GB.
-	DiskSizeGB *float64 `pulumi:"diskSizeGB"`
-	// The disk storage type
-	DiskStorageType *string `pulumi:"diskStorageType"`
-	// The disk type.
-	DiskType *string `pulumi:"diskType"`
-	// The volume name.
-	Volume *string `pulumi:"volume"`
+	// The recommended disk details for a given VM Sku.
+	RecommendedConfiguration *DiskVolumeConfigurationResponse `pulumi:"recommendedConfiguration"`
+	// The list of supported disks for a given VM Sku.
+	SupportedConfigurations []DiskDetailsResponse `pulumi:"supportedConfigurations"`
 }
 
-// The SAP Disk Configuration.
+// The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type.
 type SAPDiskConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (SAPDiskConfigurationResponseOutput) ElementType() reflect.Type {
@@ -4744,58 +2388,35 @@ func (o SAPDiskConfigurationResponseOutput) ToSAPDiskConfigurationResponseOutput
 	return o
 }
 
-// The disk count.
-func (o SAPDiskConfigurationResponseOutput) DiskCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskCount }).(pulumi.Float64PtrOutput)
+// The recommended disk details for a given VM Sku.
+func (o SAPDiskConfigurationResponseOutput) RecommendedConfiguration() DiskVolumeConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SAPDiskConfigurationResponse) *DiskVolumeConfigurationResponse {
+		return v.RecommendedConfiguration
+	}).(DiskVolumeConfigurationResponsePtrOutput)
 }
 
-// The disk Iops.
-func (o SAPDiskConfigurationResponseOutput) DiskIopsReadWrite() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskIopsReadWrite }).(pulumi.Float64PtrOutput)
+// The list of supported disks for a given VM Sku.
+func (o SAPDiskConfigurationResponseOutput) SupportedConfigurations() DiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v SAPDiskConfigurationResponse) []DiskDetailsResponse { return v.SupportedConfigurations }).(DiskDetailsResponseArrayOutput)
 }
 
-// The disk provisioned throughput in MBps.
-func (o SAPDiskConfigurationResponseOutput) DiskMBpsReadWrite() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskMBpsReadWrite }).(pulumi.Float64PtrOutput)
+type SAPDiskConfigurationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SAPDiskConfigurationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SAPDiskConfigurationResponse)(nil)).Elem()
 }
 
-// The disk size in GB.
-func (o SAPDiskConfigurationResponseOutput) DiskSizeGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskSizeGB }).(pulumi.Float64PtrOutput)
-}
-
-// The disk storage type
-func (o SAPDiskConfigurationResponseOutput) DiskStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *string { return v.DiskStorageType }).(pulumi.StringPtrOutput)
-}
-
-// The disk type.
-func (o SAPDiskConfigurationResponseOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *string { return v.DiskType }).(pulumi.StringPtrOutput)
-}
-
-// The volume name.
-func (o SAPDiskConfigurationResponseOutput) Volume() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *string { return v.Volume }).(pulumi.StringPtrOutput)
-}
-
-type SAPDiskConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SAPDiskConfigurationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SAPDiskConfigurationResponse)(nil)).Elem()
-}
-
-func (o SAPDiskConfigurationResponseArrayOutput) ToSAPDiskConfigurationResponseArrayOutput() SAPDiskConfigurationResponseArrayOutput {
+func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMapOutput() SAPDiskConfigurationResponseMapOutput {
 	return o
 }
 
-func (o SAPDiskConfigurationResponseArrayOutput) ToSAPDiskConfigurationResponseArrayOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseArrayOutput {
+func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMapOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseMapOutput {
 	return o
 }
 
-func (o SAPDiskConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SAPDiskConfigurationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SAPDiskConfigurationResponse {
-		return vs[0].([]SAPDiskConfigurationResponse)[vs[1].(int)]
+func (o SAPDiskConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) SAPDiskConfigurationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SAPDiskConfigurationResponse {
+		return vs[0].(map[string]SAPDiskConfigurationResponse)[vs[1].(string)]
 	}).(SAPDiskConfigurationResponseOutput)
 }
 
@@ -4915,6 +2536,602 @@ func (o SAPVirtualInstanceErrorResponseOutput) Properties() ErrorDefinitionRespo
 	return o.ApplyT(func(v SAPVirtualInstanceErrorResponse) *ErrorDefinitionResponse { return v.Properties }).(ErrorDefinitionResponsePtrOutput)
 }
 
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholds struct {
+	// Gets or sets the threshold value for Green.
+	Green *float64 `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name *string `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red *float64 `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow *float64 `pulumi:"yellow"`
+}
+
+// SapLandscapeMonitorMetricThresholdsInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArgs and SapLandscapeMonitorMetricThresholdsOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsInput` via:
+//
+//	SapLandscapeMonitorMetricThresholdsArgs{...}
+type SapLandscapeMonitorMetricThresholdsInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput
+	ToSapLandscapeMonitorMetricThresholdsOutputWithContext(context.Context) SapLandscapeMonitorMetricThresholdsOutput
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsArgs struct {
+	// Gets or sets the threshold value for Green.
+	Green pulumi.Float64PtrInput `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red pulumi.Float64PtrInput `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow pulumi.Float64PtrInput `pulumi:"yellow"`
+}
+
+func (SapLandscapeMonitorMetricThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput {
+	return i.ToSapLandscapeMonitorMetricThresholdsOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsOutput)
+}
+
+// SapLandscapeMonitorMetricThresholdsArrayInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArray and SapLandscapeMonitorMetricThresholdsArrayOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsArrayInput` via:
+//
+//	SapLandscapeMonitorMetricThresholdsArray{ SapLandscapeMonitorMetricThresholdsArgs{...} }
+type SapLandscapeMonitorMetricThresholdsArrayInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput
+	ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput
+}
+
+type SapLandscapeMonitorMetricThresholdsArray []SapLandscapeMonitorMetricThresholdsInput
+
+func (SapLandscapeMonitorMetricThresholdsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return i.ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsArrayOutput)
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
+	return o
+}
+
+// Gets or sets the threshold value for Green.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the name of the threshold.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the threshold value for Red.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the threshold value for Yellow.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Yellow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Yellow }).(pulumi.Float64PtrOutput)
+}
+
+type SapLandscapeMonitorMetricThresholdsArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholds {
+		return vs[0].([]SapLandscapeMonitorMetricThresholds)[vs[1].(int)]
+	}).(SapLandscapeMonitorMetricThresholdsOutput)
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsResponse struct {
+	// Gets or sets the threshold value for Green.
+	Green *float64 `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name *string `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red *float64 `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow *float64 `pulumi:"yellow"`
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsResponseOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholdsResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutput() SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return o
+}
+
+// Gets or sets the threshold value for Green.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the name of the threshold.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the threshold value for Red.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the threshold value for Yellow.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Yellow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Yellow }).(pulumi.Float64PtrOutput)
+}
+
+type SapLandscapeMonitorMetricThresholdsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholdsResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutput() SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholdsResponse {
+		return vs[0].([]SapLandscapeMonitorMetricThresholdsResponse)[vs[1].(int)]
+	}).(SapLandscapeMonitorMetricThresholdsResponseOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGrouping struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape []SapLandscapeMonitorSidMapping `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication []SapLandscapeMonitorSidMapping `pulumi:"sapApplication"`
+}
+
+// SapLandscapeMonitorPropertiesGroupingInput is an input type that accepts SapLandscapeMonitorPropertiesGroupingArgs and SapLandscapeMonitorPropertiesGroupingOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorPropertiesGroupingInput` via:
+//
+//	SapLandscapeMonitorPropertiesGroupingArgs{...}
+type SapLandscapeMonitorPropertiesGroupingInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput
+	ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(context.Context) SapLandscapeMonitorPropertiesGroupingOutput
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGroupingArgs struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape SapLandscapeMonitorSidMappingArrayInput `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication SapLandscapeMonitorSidMappingArrayInput `pulumi:"sapApplication"`
+}
+
+func (SapLandscapeMonitorPropertiesGroupingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput)
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput).ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx)
+}
+
+// SapLandscapeMonitorPropertiesGroupingPtrInput is an input type that accepts SapLandscapeMonitorPropertiesGroupingArgs, SapLandscapeMonitorPropertiesGroupingPtr and SapLandscapeMonitorPropertiesGroupingPtrOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorPropertiesGroupingPtrInput` via:
+//
+//	        SapLandscapeMonitorPropertiesGroupingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SapLandscapeMonitorPropertiesGroupingPtrInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput
+	ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput
+}
+
+type sapLandscapeMonitorPropertiesGroupingPtrType SapLandscapeMonitorPropertiesGroupingArgs
+
+func SapLandscapeMonitorPropertiesGroupingPtr(v *SapLandscapeMonitorPropertiesGroupingArgs) SapLandscapeMonitorPropertiesGroupingPtrInput {
+	return (*sapLandscapeMonitorPropertiesGroupingPtrType)(v)
+}
+
+func (*sapLandscapeMonitorPropertiesGroupingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGroupingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesGroupingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SapLandscapeMonitorPropertiesGrouping) *SapLandscapeMonitorPropertiesGrouping {
+		return &v
+	}).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.Landscape }).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.SapApplication }).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+type SapLandscapeMonitorPropertiesGroupingPtrOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesGroupingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesGroupingOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) SapLandscapeMonitorPropertiesGrouping {
+		if v != nil {
+			return *v
+		}
+		var ret SapLandscapeMonitorPropertiesGrouping
+		return ret
+	}).(SapLandscapeMonitorPropertiesGroupingOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping {
+		if v == nil {
+			return nil
+		}
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesResponseGrouping struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape []SapLandscapeMonitorSidMappingResponse `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication []SapLandscapeMonitorSidMappingResponse `pulumi:"sapApplication"`
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesResponseGroupingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesResponseGroupingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutput() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+type SapLandscapeMonitorPropertiesResponseGroupingPtrOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutput() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) SapLandscapeMonitorPropertiesResponseGrouping {
+		if v != nil {
+			return *v
+		}
+		var ret SapLandscapeMonitorPropertiesResponseGrouping
+		return ret
+	}).(SapLandscapeMonitorPropertiesResponseGroupingOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMapping struct {
+	// Gets or sets the name of the grouping.
+	Name *string `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid []string `pulumi:"topSid"`
+}
+
+// SapLandscapeMonitorSidMappingInput is an input type that accepts SapLandscapeMonitorSidMappingArgs and SapLandscapeMonitorSidMappingOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorSidMappingInput` via:
+//
+//	SapLandscapeMonitorSidMappingArgs{...}
+type SapLandscapeMonitorSidMappingInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput
+	ToSapLandscapeMonitorSidMappingOutputWithContext(context.Context) SapLandscapeMonitorSidMappingOutput
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingArgs struct {
+	// Gets or sets the name of the grouping.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid pulumi.StringArrayInput `pulumi:"topSid"`
+}
+
+func (SapLandscapeMonitorSidMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput {
+	return i.ToSapLandscapeMonitorSidMappingOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingOutput)
+}
+
+// SapLandscapeMonitorSidMappingArrayInput is an input type that accepts SapLandscapeMonitorSidMappingArray and SapLandscapeMonitorSidMappingArrayOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorSidMappingArrayInput` via:
+//
+//	SapLandscapeMonitorSidMappingArray{ SapLandscapeMonitorSidMappingArgs{...} }
+type SapLandscapeMonitorSidMappingArrayInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput
+	ToSapLandscapeMonitorSidMappingArrayOutputWithContext(context.Context) SapLandscapeMonitorSidMappingArrayOutput
+}
+
+type SapLandscapeMonitorSidMappingArray []SapLandscapeMonitorSidMappingInput
+
+func (SapLandscapeMonitorSidMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput {
+	return i.ToSapLandscapeMonitorSidMappingArrayOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
+	return o
+}
+
+// Gets or sets the name of the grouping.
+func (o SapLandscapeMonitorSidMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of SID's.
+func (o SapLandscapeMonitorSidMappingOutput) TopSid() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMapping) []string { return v.TopSid }).(pulumi.StringArrayOutput)
+}
+
+type SapLandscapeMonitorSidMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorSidMapping {
+		return vs[0].([]SapLandscapeMonitorSidMapping)[vs[1].(int)]
+	}).(SapLandscapeMonitorSidMappingOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingResponse struct {
+	// Gets or sets the name of the grouping.
+	Name *string `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid []string `pulumi:"topSid"`
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMappingResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMappingResponseOutput() SapLandscapeMonitorSidMappingResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMappingResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseOutput {
+	return o
+}
+
+// Gets or sets the name of the grouping.
+func (o SapLandscapeMonitorSidMappingResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of SID's.
+func (o SapLandscapeMonitorSidMappingResponseOutput) TopSid() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) []string { return v.TopSid }).(pulumi.StringArrayOutput)
+}
+
+type SapLandscapeMonitorSidMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMappingResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutput() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorSidMappingResponse {
+		return vs[0].([]SapLandscapeMonitorSidMappingResponse)[vs[1].(int)]
+	}).(SapLandscapeMonitorSidMappingResponseOutput)
+}
+
 // Gets or sets the provider properties.
 type SapNetWeaverProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
@@ -4936,8 +3153,6 @@ type SapNetWeaverProviderInstanceProperties struct {
 	SapPortNumber *string `pulumi:"sapPortNumber"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the SAP system.
-	SapSslCertificateUri *string `pulumi:"sapSslCertificateUri"`
 	// Gets or sets the SAP user name.
 	SapUsername *string `pulumi:"sapUsername"`
 	// Gets or sets the blob URI to SSL certificate for the SAP system.
@@ -4967,411 +3182,12 @@ type SapNetWeaverProviderInstancePropertiesResponse struct {
 	SapPortNumber *string `pulumi:"sapPortNumber"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the SAP system.
-	SapSslCertificateUri *string `pulumi:"sapSslCertificateUri"`
 	// Gets or sets the SAP user name.
 	SapUsername *string `pulumi:"sapUsername"`
 	// Gets or sets the blob URI to SSL certificate for the SAP system.
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
 	SslPreference *string `pulumi:"sslPreference"`
-}
-
-// Search profile
-type SearchProfile struct {
-	// Data disks details. This property is not in use right now
-	DataDisks []DiskInfo `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name *string `pulumi:"name"`
-	// VM SKU for node(s)
-	NodeSku string `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfo `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfile `pulumi:"osImage"`
-	// Search type
-	SearchType string `pulumi:"searchType"`
-}
-
-// SearchProfileInput is an input type that accepts SearchProfileArgs and SearchProfileOutput values.
-// You can construct a concrete instance of `SearchProfileInput` via:
-//
-//	SearchProfileArgs{...}
-type SearchProfileInput interface {
-	pulumi.Input
-
-	ToSearchProfileOutput() SearchProfileOutput
-	ToSearchProfileOutputWithContext(context.Context) SearchProfileOutput
-}
-
-// Search profile
-type SearchProfileArgs struct {
-	// Data disks details. This property is not in use right now
-	DataDisks DiskInfoArrayInput `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// VM SKU for node(s)
-	NodeSku pulumi.StringInput `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfoInput `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfileInput `pulumi:"osImage"`
-	// Search type
-	SearchType pulumi.StringInput `pulumi:"searchType"`
-}
-
-func (SearchProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SearchProfile)(nil)).Elem()
-}
-
-func (i SearchProfileArgs) ToSearchProfileOutput() SearchProfileOutput {
-	return i.ToSearchProfileOutputWithContext(context.Background())
-}
-
-func (i SearchProfileArgs) ToSearchProfileOutputWithContext(ctx context.Context) SearchProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchProfileOutput)
-}
-
-func (i SearchProfileArgs) ToSearchProfilePtrOutput() SearchProfilePtrOutput {
-	return i.ToSearchProfilePtrOutputWithContext(context.Background())
-}
-
-func (i SearchProfileArgs) ToSearchProfilePtrOutputWithContext(ctx context.Context) SearchProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchProfileOutput).ToSearchProfilePtrOutputWithContext(ctx)
-}
-
-// SearchProfilePtrInput is an input type that accepts SearchProfileArgs, SearchProfilePtr and SearchProfilePtrOutput values.
-// You can construct a concrete instance of `SearchProfilePtrInput` via:
-//
-//	        SearchProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type SearchProfilePtrInput interface {
-	pulumi.Input
-
-	ToSearchProfilePtrOutput() SearchProfilePtrOutput
-	ToSearchProfilePtrOutputWithContext(context.Context) SearchProfilePtrOutput
-}
-
-type searchProfilePtrType SearchProfileArgs
-
-func SearchProfilePtr(v *SearchProfileArgs) SearchProfilePtrInput {
-	return (*searchProfilePtrType)(v)
-}
-
-func (*searchProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SearchProfile)(nil)).Elem()
-}
-
-func (i *searchProfilePtrType) ToSearchProfilePtrOutput() SearchProfilePtrOutput {
-	return i.ToSearchProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *searchProfilePtrType) ToSearchProfilePtrOutputWithContext(ctx context.Context) SearchProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchProfilePtrOutput)
-}
-
-// Search profile
-type SearchProfileOutput struct{ *pulumi.OutputState }
-
-func (SearchProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SearchProfile)(nil)).Elem()
-}
-
-func (o SearchProfileOutput) ToSearchProfileOutput() SearchProfileOutput {
-	return o
-}
-
-func (o SearchProfileOutput) ToSearchProfileOutputWithContext(ctx context.Context) SearchProfileOutput {
-	return o
-}
-
-func (o SearchProfileOutput) ToSearchProfilePtrOutput() SearchProfilePtrOutput {
-	return o.ToSearchProfilePtrOutputWithContext(context.Background())
-}
-
-func (o SearchProfileOutput) ToSearchProfilePtrOutputWithContext(ctx context.Context) SearchProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchProfile) *SearchProfile {
-		return &v
-	}).(SearchProfilePtrOutput)
-}
-
-// Data disks details. This property is not in use right now
-func (o SearchProfileOutput) DataDisks() DiskInfoArrayOutput {
-	return o.ApplyT(func(v SearchProfile) []DiskInfo { return v.DataDisks }).(DiskInfoArrayOutput)
-}
-
-// VM or VMSS name
-func (o SearchProfileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SearchProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// VM SKU for node(s)
-func (o SearchProfileOutput) NodeSku() pulumi.StringOutput {
-	return o.ApplyT(func(v SearchProfile) string { return v.NodeSku }).(pulumi.StringOutput)
-}
-
-// OS disk details
-func (o SearchProfileOutput) OsDisk() DiskInfoOutput {
-	return o.ApplyT(func(v SearchProfile) DiskInfo { return v.OsDisk }).(DiskInfoOutput)
-}
-
-// OS image used for creating the nodes
-func (o SearchProfileOutput) OsImage() OsImageProfileOutput {
-	return o.ApplyT(func(v SearchProfile) OsImageProfile { return v.OsImage }).(OsImageProfileOutput)
-}
-
-// Search type
-func (o SearchProfileOutput) SearchType() pulumi.StringOutput {
-	return o.ApplyT(func(v SearchProfile) string { return v.SearchType }).(pulumi.StringOutput)
-}
-
-type SearchProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (SearchProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SearchProfile)(nil)).Elem()
-}
-
-func (o SearchProfilePtrOutput) ToSearchProfilePtrOutput() SearchProfilePtrOutput {
-	return o
-}
-
-func (o SearchProfilePtrOutput) ToSearchProfilePtrOutputWithContext(ctx context.Context) SearchProfilePtrOutput {
-	return o
-}
-
-func (o SearchProfilePtrOutput) Elem() SearchProfileOutput {
-	return o.ApplyT(func(v *SearchProfile) SearchProfile {
-		if v != nil {
-			return *v
-		}
-		var ret SearchProfile
-		return ret
-	}).(SearchProfileOutput)
-}
-
-// Data disks details. This property is not in use right now
-func (o SearchProfilePtrOutput) DataDisks() DiskInfoArrayOutput {
-	return o.ApplyT(func(v *SearchProfile) []DiskInfo {
-		if v == nil {
-			return nil
-		}
-		return v.DataDisks
-	}).(DiskInfoArrayOutput)
-}
-
-// VM or VMSS name
-func (o SearchProfilePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SearchProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM SKU for node(s)
-func (o SearchProfilePtrOutput) NodeSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SearchProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeSku
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS disk details
-func (o SearchProfilePtrOutput) OsDisk() DiskInfoPtrOutput {
-	return o.ApplyT(func(v *SearchProfile) *DiskInfo {
-		if v == nil {
-			return nil
-		}
-		return &v.OsDisk
-	}).(DiskInfoPtrOutput)
-}
-
-// OS image used for creating the nodes
-func (o SearchProfilePtrOutput) OsImage() OsImageProfilePtrOutput {
-	return o.ApplyT(func(v *SearchProfile) *OsImageProfile {
-		if v == nil {
-			return nil
-		}
-		return &v.OsImage
-	}).(OsImageProfilePtrOutput)
-}
-
-// Search type
-func (o SearchProfilePtrOutput) SearchType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SearchProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SearchType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Search profile
-type SearchProfileResponse struct {
-	// Data disks details. This property is not in use right now
-	DataDisks []DiskInfoResponse `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name *string `pulumi:"name"`
-	// VM/VMSS resource ARM Ids
-	NodeResourceIds []string `pulumi:"nodeResourceIds"`
-	// VM SKU for node(s)
-	NodeSku string `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfoResponse `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfileResponse `pulumi:"osImage"`
-	// Search type
-	SearchType string `pulumi:"searchType"`
-}
-
-// Search profile
-type SearchProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (SearchProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SearchProfileResponse)(nil)).Elem()
-}
-
-func (o SearchProfileResponseOutput) ToSearchProfileResponseOutput() SearchProfileResponseOutput {
-	return o
-}
-
-func (o SearchProfileResponseOutput) ToSearchProfileResponseOutputWithContext(ctx context.Context) SearchProfileResponseOutput {
-	return o
-}
-
-// Data disks details. This property is not in use right now
-func (o SearchProfileResponseOutput) DataDisks() DiskInfoResponseArrayOutput {
-	return o.ApplyT(func(v SearchProfileResponse) []DiskInfoResponse { return v.DataDisks }).(DiskInfoResponseArrayOutput)
-}
-
-// VM or VMSS name
-func (o SearchProfileResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SearchProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// VM/VMSS resource ARM Ids
-func (o SearchProfileResponseOutput) NodeResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SearchProfileResponse) []string { return v.NodeResourceIds }).(pulumi.StringArrayOutput)
-}
-
-// VM SKU for node(s)
-func (o SearchProfileResponseOutput) NodeSku() pulumi.StringOutput {
-	return o.ApplyT(func(v SearchProfileResponse) string { return v.NodeSku }).(pulumi.StringOutput)
-}
-
-// OS disk details
-func (o SearchProfileResponseOutput) OsDisk() DiskInfoResponseOutput {
-	return o.ApplyT(func(v SearchProfileResponse) DiskInfoResponse { return v.OsDisk }).(DiskInfoResponseOutput)
-}
-
-// OS image used for creating the nodes
-func (o SearchProfileResponseOutput) OsImage() OsImageProfileResponseOutput {
-	return o.ApplyT(func(v SearchProfileResponse) OsImageProfileResponse { return v.OsImage }).(OsImageProfileResponseOutput)
-}
-
-// Search type
-func (o SearchProfileResponseOutput) SearchType() pulumi.StringOutput {
-	return o.ApplyT(func(v SearchProfileResponse) string { return v.SearchType }).(pulumi.StringOutput)
-}
-
-type SearchProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SearchProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SearchProfileResponse)(nil)).Elem()
-}
-
-func (o SearchProfileResponsePtrOutput) ToSearchProfileResponsePtrOutput() SearchProfileResponsePtrOutput {
-	return o
-}
-
-func (o SearchProfileResponsePtrOutput) ToSearchProfileResponsePtrOutputWithContext(ctx context.Context) SearchProfileResponsePtrOutput {
-	return o
-}
-
-func (o SearchProfileResponsePtrOutput) Elem() SearchProfileResponseOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) SearchProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SearchProfileResponse
-		return ret
-	}).(SearchProfileResponseOutput)
-}
-
-// Data disks details. This property is not in use right now
-func (o SearchProfileResponsePtrOutput) DataDisks() DiskInfoResponseArrayOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) []DiskInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DataDisks
-	}).(DiskInfoResponseArrayOutput)
-}
-
-// VM or VMSS name
-func (o SearchProfileResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM/VMSS resource ARM Ids
-func (o SearchProfileResponsePtrOutput) NodeResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeResourceIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// VM SKU for node(s)
-func (o SearchProfileResponsePtrOutput) NodeSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeSku
-	}).(pulumi.StringPtrOutput)
-}
-
-// OS disk details
-func (o SearchProfileResponsePtrOutput) OsDisk() DiskInfoResponsePtrOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) *DiskInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OsDisk
-	}).(DiskInfoResponsePtrOutput)
-}
-
-// OS image used for creating the nodes
-func (o SearchProfileResponsePtrOutput) OsImage() OsImageProfileResponsePtrOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) *OsImageProfileResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OsImage
-	}).(OsImageProfileResponsePtrOutput)
-}
-
-// Search type
-func (o SearchProfileResponsePtrOutput) SearchType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SearchProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SearchType
-	}).(pulumi.StringPtrOutput)
 }
 
 // The SAP Software configuration Input when the software is to be installed by service.
@@ -5412,10 +3228,28 @@ type ServiceInitiatedSoftwareConfigurationResponse struct {
 	SshPrivateKey string `pulumi:"sshPrivateKey"`
 }
 
-// Gets or sets the single server configuration.
+// The resource names object for shared storage.
+type SharedStorageResourceNames struct {
+	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+	SharedStorageAccountName *string `pulumi:"sharedStorageAccountName"`
+	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+// The resource names object for shared storage.
+type SharedStorageResourceNamesResponse struct {
+	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+	SharedStorageAccountName *string `pulumi:"sharedStorageAccountName"`
+	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type SingleServerConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *SingleServerFullResourceNames `pulumi:"customResourceNames"`
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
 	// Gets or sets the disk configuration.
@@ -5442,10 +3276,12 @@ func (val *SingleServerConfiguration) Defaults() *SingleServerConfiguration {
 	return &tmp
 }
 
-// Gets or sets the single server configuration.
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type SingleServerConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *SingleServerFullResourceNamesResponse `pulumi:"customResourceNames"`
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
 	// Gets or sets the disk configuration.
@@ -5472,204 +3308,22 @@ func (val *SingleServerConfigurationResponse) Defaults() *SingleServerConfigurat
 	return &tmp
 }
 
-// Workload website profile
-type SiteProfile struct {
-	// Domain name for the application site URL
-	DomainName *string `pulumi:"domainName"`
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNames struct {
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for virtual machine and related resources.
+	VirtualMachine *VirtualMachineResourceNames `pulumi:"virtualMachine"`
 }
 
-// SiteProfileInput is an input type that accepts SiteProfileArgs and SiteProfileOutput values.
-// You can construct a concrete instance of `SiteProfileInput` via:
-//
-//	SiteProfileArgs{...}
-type SiteProfileInput interface {
-	pulumi.Input
-
-	ToSiteProfileOutput() SiteProfileOutput
-	ToSiteProfileOutputWithContext(context.Context) SiteProfileOutput
-}
-
-// Workload website profile
-type SiteProfileArgs struct {
-	// Domain name for the application site URL
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
-}
-
-func (SiteProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteProfile)(nil)).Elem()
-}
-
-func (i SiteProfileArgs) ToSiteProfileOutput() SiteProfileOutput {
-	return i.ToSiteProfileOutputWithContext(context.Background())
-}
-
-func (i SiteProfileArgs) ToSiteProfileOutputWithContext(ctx context.Context) SiteProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SiteProfileOutput)
-}
-
-func (i SiteProfileArgs) ToSiteProfilePtrOutput() SiteProfilePtrOutput {
-	return i.ToSiteProfilePtrOutputWithContext(context.Background())
-}
-
-func (i SiteProfileArgs) ToSiteProfilePtrOutputWithContext(ctx context.Context) SiteProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SiteProfileOutput).ToSiteProfilePtrOutputWithContext(ctx)
-}
-
-// SiteProfilePtrInput is an input type that accepts SiteProfileArgs, SiteProfilePtr and SiteProfilePtrOutput values.
-// You can construct a concrete instance of `SiteProfilePtrInput` via:
-//
-//	        SiteProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type SiteProfilePtrInput interface {
-	pulumi.Input
-
-	ToSiteProfilePtrOutput() SiteProfilePtrOutput
-	ToSiteProfilePtrOutputWithContext(context.Context) SiteProfilePtrOutput
-}
-
-type siteProfilePtrType SiteProfileArgs
-
-func SiteProfilePtr(v *SiteProfileArgs) SiteProfilePtrInput {
-	return (*siteProfilePtrType)(v)
-}
-
-func (*siteProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SiteProfile)(nil)).Elem()
-}
-
-func (i *siteProfilePtrType) ToSiteProfilePtrOutput() SiteProfilePtrOutput {
-	return i.ToSiteProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *siteProfilePtrType) ToSiteProfilePtrOutputWithContext(ctx context.Context) SiteProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SiteProfilePtrOutput)
-}
-
-// Workload website profile
-type SiteProfileOutput struct{ *pulumi.OutputState }
-
-func (SiteProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteProfile)(nil)).Elem()
-}
-
-func (o SiteProfileOutput) ToSiteProfileOutput() SiteProfileOutput {
-	return o
-}
-
-func (o SiteProfileOutput) ToSiteProfileOutputWithContext(ctx context.Context) SiteProfileOutput {
-	return o
-}
-
-func (o SiteProfileOutput) ToSiteProfilePtrOutput() SiteProfilePtrOutput {
-	return o.ToSiteProfilePtrOutputWithContext(context.Background())
-}
-
-func (o SiteProfileOutput) ToSiteProfilePtrOutputWithContext(ctx context.Context) SiteProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteProfile) *SiteProfile {
-		return &v
-	}).(SiteProfilePtrOutput)
-}
-
-// Domain name for the application site URL
-func (o SiteProfileOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SiteProfile) *string { return v.DomainName }).(pulumi.StringPtrOutput)
-}
-
-type SiteProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (SiteProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SiteProfile)(nil)).Elem()
-}
-
-func (o SiteProfilePtrOutput) ToSiteProfilePtrOutput() SiteProfilePtrOutput {
-	return o
-}
-
-func (o SiteProfilePtrOutput) ToSiteProfilePtrOutputWithContext(ctx context.Context) SiteProfilePtrOutput {
-	return o
-}
-
-func (o SiteProfilePtrOutput) Elem() SiteProfileOutput {
-	return o.ApplyT(func(v *SiteProfile) SiteProfile {
-		if v != nil {
-			return *v
-		}
-		var ret SiteProfile
-		return ret
-	}).(SiteProfileOutput)
-}
-
-// Domain name for the application site URL
-func (o SiteProfilePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SiteProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Workload website profile
-type SiteProfileResponse struct {
-	// Domain name for the application site URL
-	DomainName *string `pulumi:"domainName"`
-}
-
-// Workload website profile
-type SiteProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (SiteProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteProfileResponse)(nil)).Elem()
-}
-
-func (o SiteProfileResponseOutput) ToSiteProfileResponseOutput() SiteProfileResponseOutput {
-	return o
-}
-
-func (o SiteProfileResponseOutput) ToSiteProfileResponseOutputWithContext(ctx context.Context) SiteProfileResponseOutput {
-	return o
-}
-
-// Domain name for the application site URL
-func (o SiteProfileResponseOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SiteProfileResponse) *string { return v.DomainName }).(pulumi.StringPtrOutput)
-}
-
-type SiteProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SiteProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SiteProfileResponse)(nil)).Elem()
-}
-
-func (o SiteProfileResponsePtrOutput) ToSiteProfileResponsePtrOutput() SiteProfileResponsePtrOutput {
-	return o
-}
-
-func (o SiteProfileResponsePtrOutput) ToSiteProfileResponsePtrOutputWithContext(ctx context.Context) SiteProfileResponsePtrOutput {
-	return o
-}
-
-func (o SiteProfileResponsePtrOutput) Elem() SiteProfileResponseOutput {
-	return o.ApplyT(func(v *SiteProfileResponse) SiteProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SiteProfileResponse
-		return ret
-	}).(SiteProfileResponseOutput)
-}
-
-// Domain name for the application site URL
-func (o SiteProfileResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SiteProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainName
-	}).(pulumi.StringPtrOutput)
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNamesResponse struct {
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for virtual machine and related resources.
+	VirtualMachine *VirtualMachineResourceNamesResponse `pulumi:"virtualMachine"`
 }
 
 // Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
@@ -5684,350 +3338,6 @@ type SkipFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'Skip'.
 	ConfigurationType string `pulumi:"configurationType"`
-}
-
-// The resource model definition representing SKU
-type Sku struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity *int `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family *string `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
-	Name string `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *SkuTier `pulumi:"tier"`
-}
-
-// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
-// You can construct a concrete instance of `SkuInput` via:
-//
-//	SkuArgs{...}
-type SkuInput interface {
-	pulumi.Input
-
-	ToSkuOutput() SkuOutput
-	ToSkuOutputWithContext(context.Context) SkuOutput
-}
-
-// The resource model definition representing SKU
-type SkuArgs struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
-	Name pulumi.StringInput `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size pulumi.StringPtrInput `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier SkuTierPtrInput `pulumi:"tier"`
-}
-
-func (SkuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (i SkuArgs) ToSkuOutput() SkuOutput {
-	return i.ToSkuOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
-}
-
-func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
-}
-
-// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
-// You can construct a concrete instance of `SkuPtrInput` via:
-//
-//	        SkuArgs{...}
-//
-//	or:
-//
-//	        nil
-type SkuPtrInput interface {
-	pulumi.Input
-
-	ToSkuPtrOutput() SkuPtrOutput
-	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
-}
-
-type skuPtrType SkuArgs
-
-func SkuPtr(v *SkuArgs) SkuPtrInput {
-	return (*skuPtrType)(v)
-}
-
-func (*skuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
-}
-
-// The resource model definition representing SKU
-type SkuOutput struct{ *pulumi.OutputState }
-
-func (SkuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (o SkuOutput) ToSkuOutput() SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
-		return &v
-	}).(SkuPtrOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
-}
-
-type SkuPtrOutput struct{ *pulumi.OutputState }
-
-func (SkuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) Elem() SkuOutput {
-	return o.ApplyT(func(v *Sku) Sku {
-		if v != nil {
-			return *v
-		}
-		var ret Sku
-		return ret
-	}).(SkuOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Sku) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v *Sku) *SkuTier {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(SkuTierPtrOutput)
-}
-
-// The resource model definition representing SKU
-type SkuResponse struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity *int `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family *string `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
-	Name string `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *string `pulumi:"tier"`
-}
-
-// The resource model definition representing SKU
-type SkuResponseOutput struct{ *pulumi.OutputState }
-
-func (SkuResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
-	return o
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
-	return o
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
-}
-
-type SkuResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SkuResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
-	return o.ApplyT(func(v *SkuResponse) SkuResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SkuResponse
-		return ret
-	}).(SkuResponseOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(pulumi.StringPtrOutput)
 }
 
 // SSH configuration for Linux based VMs running on Azure
@@ -6187,7 +3497,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration.
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type ThreeTierConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -6195,6 +3505,8 @@ type ThreeTierConfiguration struct {
 	ApplicationServer ApplicationServerConfiguration `pulumi:"applicationServer"`
 	// The central server configuration.
 	CentralServer CentralServerConfiguration `pulumi:"centralServer"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *ThreeTierFullResourceNames `pulumi:"customResourceNames"`
 	// The database configuration.
 	DatabaseServer DatabaseConfiguration `pulumi:"databaseServer"`
 	// The type of SAP deployment, single server or Three tier.
@@ -6219,7 +3531,7 @@ func (val *ThreeTierConfiguration) Defaults() *ThreeTierConfiguration {
 	return &tmp
 }
 
-// Gets or sets the three tier SAP configuration.
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type ThreeTierConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -6227,6 +3539,8 @@ type ThreeTierConfigurationResponse struct {
 	ApplicationServer ApplicationServerConfigurationResponse `pulumi:"applicationServer"`
 	// The central server configuration.
 	CentralServer CentralServerConfigurationResponse `pulumi:"centralServer"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *ThreeTierFullResourceNamesResponse `pulumi:"customResourceNames"`
 	// The database configuration.
 	DatabaseServer DatabaseConfigurationResponse `pulumi:"databaseServer"`
 	// The type of SAP deployment, single server or Three tier.
@@ -6249,6 +3563,36 @@ func (val *ThreeTierConfigurationResponse) Defaults() *ThreeTierConfigurationRes
 	tmp.NetworkConfiguration = tmp.NetworkConfiguration.Defaults()
 
 	return &tmp
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNames struct {
+	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+	ApplicationServer *ApplicationServerFullResourceNames `pulumi:"applicationServer"`
+	// The full resource names object for central server layer resources.
+	CentralServer *CentralServerFullResourceNames `pulumi:"centralServer"`
+	// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+	DatabaseServer *DatabaseServerFullResourceNames `pulumi:"databaseServer"`
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for shared storage.
+	SharedStorage *SharedStorageResourceNames `pulumi:"sharedStorage"`
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNamesResponse struct {
+	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+	ApplicationServer *ApplicationServerFullResourceNamesResponse `pulumi:"applicationServer"`
+	// The full resource names object for central server layer resources.
+	CentralServer *CentralServerFullResourceNamesResponse `pulumi:"centralServer"`
+	// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+	DatabaseServer *DatabaseServerFullResourceNamesResponse `pulumi:"databaseServer"`
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for shared storage.
+	SharedStorage *SharedStorageResourceNamesResponse `pulumi:"sharedStorage"`
 }
 
 // User assigned identity properties
@@ -6304,7 +3648,7 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentity struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
@@ -6323,7 +3667,7 @@ type UserAssignedServiceIdentityInput interface {
 	ToUserAssignedServiceIdentityOutputWithContext(context.Context) UserAssignedServiceIdentityOutput
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityArgs struct {
 	// Type of manage identity
 	Type pulumi.StringInput `pulumi:"type"`
@@ -6384,7 +3728,7 @@ func (i *userAssignedServiceIdentityPtrType) ToUserAssignedServiceIdentityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedServiceIdentityPtrOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedServiceIdentityOutput) ElementType() reflect.Type {
@@ -6463,7 +3807,7 @@ func (o UserAssignedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.Ma
 	}).(pulumi.MapOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityResponse struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
@@ -6471,7 +3815,7 @@ type UserAssignedServiceIdentityResponse struct {
 	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedServiceIdentityResponseOutput) ElementType() reflect.Type {
@@ -6542,103 +3886,6 @@ func (o UserAssignedServiceIdentityResponsePtrOutput) UserAssignedIdentities() U
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// User profile to configure on a compute resources such as VM, VMSS
-type UserProfile struct {
-	// SSH public key data
-	SshPublicKey string `pulumi:"sshPublicKey"`
-	// User name
-	UserName string `pulumi:"userName"`
-}
-
-// UserProfileInput is an input type that accepts UserProfileArgs and UserProfileOutput values.
-// You can construct a concrete instance of `UserProfileInput` via:
-//
-//	UserProfileArgs{...}
-type UserProfileInput interface {
-	pulumi.Input
-
-	ToUserProfileOutput() UserProfileOutput
-	ToUserProfileOutputWithContext(context.Context) UserProfileOutput
-}
-
-// User profile to configure on a compute resources such as VM, VMSS
-type UserProfileArgs struct {
-	// SSH public key data
-	SshPublicKey pulumi.StringInput `pulumi:"sshPublicKey"`
-	// User name
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (UserProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserProfile)(nil)).Elem()
-}
-
-func (i UserProfileArgs) ToUserProfileOutput() UserProfileOutput {
-	return i.ToUserProfileOutputWithContext(context.Background())
-}
-
-func (i UserProfileArgs) ToUserProfileOutputWithContext(ctx context.Context) UserProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserProfileOutput)
-}
-
-// User profile to configure on a compute resources such as VM, VMSS
-type UserProfileOutput struct{ *pulumi.OutputState }
-
-func (UserProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserProfile)(nil)).Elem()
-}
-
-func (o UserProfileOutput) ToUserProfileOutput() UserProfileOutput {
-	return o
-}
-
-func (o UserProfileOutput) ToUserProfileOutputWithContext(ctx context.Context) UserProfileOutput {
-	return o
-}
-
-// SSH public key data
-func (o UserProfileOutput) SshPublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v UserProfile) string { return v.SshPublicKey }).(pulumi.StringOutput)
-}
-
-// User name
-func (o UserProfileOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v UserProfile) string { return v.UserName }).(pulumi.StringOutput)
-}
-
-// User profile to configure on a compute resources such as VM, VMSS
-type UserProfileResponse struct {
-	// SSH public key data
-	SshPublicKey string `pulumi:"sshPublicKey"`
-	// User name
-	UserName string `pulumi:"userName"`
-}
-
-// User profile to configure on a compute resources such as VM, VMSS
-type UserProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (UserProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserProfileResponse)(nil)).Elem()
-}
-
-func (o UserProfileResponseOutput) ToUserProfileResponseOutput() UserProfileResponseOutput {
-	return o
-}
-
-func (o UserProfileResponseOutput) ToUserProfileResponseOutputWithContext(ctx context.Context) UserProfileResponseOutput {
-	return o
-}
-
-// SSH public key data
-func (o UserProfileResponseOutput) SshPublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v UserProfileResponse) string { return v.SshPublicKey }).(pulumi.StringOutput)
-}
-
-// User name
-func (o UserProfileResponseOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v UserProfileResponse) string { return v.UserName }).(pulumi.StringOutput)
-}
-
 // Defines the virtual machine configuration.
 type VirtualMachineConfiguration struct {
 	// The image reference.
@@ -6659,188 +3906,32 @@ type VirtualMachineConfigurationResponse struct {
 	VmSize string `pulumi:"vmSize"`
 }
 
-// VMSS profile
-type VmssNodesProfile struct {
-	// Maximum number of nodes for autoscale
-	AutoScaleMaxCount *int `pulumi:"autoScaleMaxCount"`
-	// Minimum number of nodes for autoscale
-	AutoScaleMinCount *int `pulumi:"autoScaleMinCount"`
-	// Data disks details. This property is not in use right now
-	DataDisks []DiskInfo `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name *string `pulumi:"name"`
-	// VM SKU for node(s)
-	NodeSku string `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfo `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfile `pulumi:"osImage"`
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNames struct {
+	// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+	DataDiskNames map[string][]string `pulumi:"dataDiskNames"`
+	// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+	HostName *string `pulumi:"hostName"`
+	// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+	NetworkInterfaces []NetworkInterfaceResourceNames `pulumi:"networkInterfaces"`
+	// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+	OsDiskName *string `pulumi:"osDiskName"`
+	// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+	VmName *string `pulumi:"vmName"`
 }
 
-// VmssNodesProfileInput is an input type that accepts VmssNodesProfileArgs and VmssNodesProfileOutput values.
-// You can construct a concrete instance of `VmssNodesProfileInput` via:
-//
-//	VmssNodesProfileArgs{...}
-type VmssNodesProfileInput interface {
-	pulumi.Input
-
-	ToVmssNodesProfileOutput() VmssNodesProfileOutput
-	ToVmssNodesProfileOutputWithContext(context.Context) VmssNodesProfileOutput
-}
-
-// VMSS profile
-type VmssNodesProfileArgs struct {
-	// Maximum number of nodes for autoscale
-	AutoScaleMaxCount pulumi.IntPtrInput `pulumi:"autoScaleMaxCount"`
-	// Minimum number of nodes for autoscale
-	AutoScaleMinCount pulumi.IntPtrInput `pulumi:"autoScaleMinCount"`
-	// Data disks details. This property is not in use right now
-	DataDisks DiskInfoArrayInput `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// VM SKU for node(s)
-	NodeSku pulumi.StringInput `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfoInput `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfileInput `pulumi:"osImage"`
-}
-
-func (VmssNodesProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmssNodesProfile)(nil)).Elem()
-}
-
-func (i VmssNodesProfileArgs) ToVmssNodesProfileOutput() VmssNodesProfileOutput {
-	return i.ToVmssNodesProfileOutputWithContext(context.Background())
-}
-
-func (i VmssNodesProfileArgs) ToVmssNodesProfileOutputWithContext(ctx context.Context) VmssNodesProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmssNodesProfileOutput)
-}
-
-// VMSS profile
-type VmssNodesProfileOutput struct{ *pulumi.OutputState }
-
-func (VmssNodesProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmssNodesProfile)(nil)).Elem()
-}
-
-func (o VmssNodesProfileOutput) ToVmssNodesProfileOutput() VmssNodesProfileOutput {
-	return o
-}
-
-func (o VmssNodesProfileOutput) ToVmssNodesProfileOutputWithContext(ctx context.Context) VmssNodesProfileOutput {
-	return o
-}
-
-// Maximum number of nodes for autoscale
-func (o VmssNodesProfileOutput) AutoScaleMaxCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmssNodesProfile) *int { return v.AutoScaleMaxCount }).(pulumi.IntPtrOutput)
-}
-
-// Minimum number of nodes for autoscale
-func (o VmssNodesProfileOutput) AutoScaleMinCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmssNodesProfile) *int { return v.AutoScaleMinCount }).(pulumi.IntPtrOutput)
-}
-
-// Data disks details. This property is not in use right now
-func (o VmssNodesProfileOutput) DataDisks() DiskInfoArrayOutput {
-	return o.ApplyT(func(v VmssNodesProfile) []DiskInfo { return v.DataDisks }).(DiskInfoArrayOutput)
-}
-
-// VM or VMSS name
-func (o VmssNodesProfileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmssNodesProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// VM SKU for node(s)
-func (o VmssNodesProfileOutput) NodeSku() pulumi.StringOutput {
-	return o.ApplyT(func(v VmssNodesProfile) string { return v.NodeSku }).(pulumi.StringOutput)
-}
-
-// OS disk details
-func (o VmssNodesProfileOutput) OsDisk() DiskInfoOutput {
-	return o.ApplyT(func(v VmssNodesProfile) DiskInfo { return v.OsDisk }).(DiskInfoOutput)
-}
-
-// OS image used for creating the nodes
-func (o VmssNodesProfileOutput) OsImage() OsImageProfileOutput {
-	return o.ApplyT(func(v VmssNodesProfile) OsImageProfile { return v.OsImage }).(OsImageProfileOutput)
-}
-
-// VMSS profile
-type VmssNodesProfileResponse struct {
-	// Maximum number of nodes for autoscale
-	AutoScaleMaxCount *int `pulumi:"autoScaleMaxCount"`
-	// Minimum number of nodes for autoscale
-	AutoScaleMinCount *int `pulumi:"autoScaleMinCount"`
-	// Data disks details. This property is not in use right now
-	DataDisks []DiskInfoResponse `pulumi:"dataDisks"`
-	// VM or VMSS name
-	Name *string `pulumi:"name"`
-	// VM/VMSS resource ARM Ids
-	NodeResourceIds []string `pulumi:"nodeResourceIds"`
-	// VM SKU for node(s)
-	NodeSku string `pulumi:"nodeSku"`
-	// OS disk details
-	OsDisk DiskInfoResponse `pulumi:"osDisk"`
-	// OS image used for creating the nodes
-	OsImage OsImageProfileResponse `pulumi:"osImage"`
-}
-
-// VMSS profile
-type VmssNodesProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (VmssNodesProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmssNodesProfileResponse)(nil)).Elem()
-}
-
-func (o VmssNodesProfileResponseOutput) ToVmssNodesProfileResponseOutput() VmssNodesProfileResponseOutput {
-	return o
-}
-
-func (o VmssNodesProfileResponseOutput) ToVmssNodesProfileResponseOutputWithContext(ctx context.Context) VmssNodesProfileResponseOutput {
-	return o
-}
-
-// Maximum number of nodes for autoscale
-func (o VmssNodesProfileResponseOutput) AutoScaleMaxCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) *int { return v.AutoScaleMaxCount }).(pulumi.IntPtrOutput)
-}
-
-// Minimum number of nodes for autoscale
-func (o VmssNodesProfileResponseOutput) AutoScaleMinCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) *int { return v.AutoScaleMinCount }).(pulumi.IntPtrOutput)
-}
-
-// Data disks details. This property is not in use right now
-func (o VmssNodesProfileResponseOutput) DataDisks() DiskInfoResponseArrayOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) []DiskInfoResponse { return v.DataDisks }).(DiskInfoResponseArrayOutput)
-}
-
-// VM or VMSS name
-func (o VmssNodesProfileResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// VM/VMSS resource ARM Ids
-func (o VmssNodesProfileResponseOutput) NodeResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) []string { return v.NodeResourceIds }).(pulumi.StringArrayOutput)
-}
-
-// VM SKU for node(s)
-func (o VmssNodesProfileResponseOutput) NodeSku() pulumi.StringOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) string { return v.NodeSku }).(pulumi.StringOutput)
-}
-
-// OS disk details
-func (o VmssNodesProfileResponseOutput) OsDisk() DiskInfoResponseOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) DiskInfoResponse { return v.OsDisk }).(DiskInfoResponseOutput)
-}
-
-// OS image used for creating the nodes
-func (o VmssNodesProfileResponseOutput) OsImage() OsImageProfileResponseOutput {
-	return o.ApplyT(func(v VmssNodesProfileResponse) OsImageProfileResponse { return v.OsImage }).(OsImageProfileResponseOutput)
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNamesResponse struct {
+	// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+	DataDiskNames map[string][]string `pulumi:"dataDiskNames"`
+	// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+	HostName *string `pulumi:"hostName"`
+	// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+	NetworkInterfaces []NetworkInterfaceResourceNamesResponse `pulumi:"networkInterfaces"`
+	// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+	OsDiskName *string `pulumi:"osDiskName"`
+	// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+	VmName *string `pulumi:"vmName"`
 }
 
 // Specifies Windows operating system settings on the virtual machine.
@@ -6858,26 +3949,18 @@ type WindowsConfigurationResponse struct {
 }
 
 func init() {
-	pulumi.RegisterOutputType(BackupProfileOutput{})
-	pulumi.RegisterOutputType(BackupProfilePtrOutput{})
-	pulumi.RegisterOutputType(BackupProfileResponseOutput{})
-	pulumi.RegisterOutputType(BackupProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(CacheProfileOutput{})
-	pulumi.RegisterOutputType(CacheProfilePtrOutput{})
-	pulumi.RegisterOutputType(CacheProfileResponseOutput{})
-	pulumi.RegisterOutputType(CacheProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseArrayOutput{})
-	pulumi.RegisterOutputType(DatabaseProfileOutput{})
-	pulumi.RegisterOutputType(DatabaseProfileResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseArrayOutput{})
-	pulumi.RegisterOutputType(DiskInfoOutput{})
-	pulumi.RegisterOutputType(DiskInfoPtrOutput{})
-	pulumi.RegisterOutputType(DiskInfoArrayOutput{})
-	pulumi.RegisterOutputType(DiskInfoResponseOutput{})
-	pulumi.RegisterOutputType(DiskInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(DiskInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskDetailsResponseOutput{})
+	pulumi.RegisterOutputType(DiskDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskSkuResponseOutput{})
+	pulumi.RegisterOutputType(DiskSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnqueueServerPropertiesResponseOutput{})
@@ -6890,10 +3973,6 @@ func init() {
 	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorResponseInnerErrorOutput{})
 	pulumi.RegisterOutputType(ErrorResponseInnerErrorPtrOutput{})
-	pulumi.RegisterOutputType(FileshareProfileOutput{})
-	pulumi.RegisterOutputType(FileshareProfilePtrOutput{})
-	pulumi.RegisterOutputType(FileshareProfileResponseOutput{})
-	pulumi.RegisterOutputType(FileshareProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerDetailsResponseOutput{})
@@ -6904,44 +3983,26 @@ func init() {
 	pulumi.RegisterOutputType(MessageServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MessageServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesResponseErrorsOutput{})
-	pulumi.RegisterOutputType(NetworkProfileOutput{})
-	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
-	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
-	pulumi.RegisterOutputType(NetworkProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(NodeProfileOutput{})
-	pulumi.RegisterOutputType(NodeProfileResponseOutput{})
-	pulumi.RegisterOutputType(OsImageProfileOutput{})
-	pulumi.RegisterOutputType(OsImageProfilePtrOutput{})
-	pulumi.RegisterOutputType(OsImageProfileResponseOutput{})
-	pulumi.RegisterOutputType(OsImageProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(PhpProfileOutput{})
-	pulumi.RegisterOutputType(PhpProfilePtrOutput{})
-	pulumi.RegisterOutputType(PhpProfileResponseOutput{})
-	pulumi.RegisterOutputType(PhpProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(PhpWorkloadResourceIdentityOutput{})
-	pulumi.RegisterOutputType(PhpWorkloadResourceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(PhpWorkloadResourceResponseIdentityOutput{})
-	pulumi.RegisterOutputType(PhpWorkloadResourceResponseIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ProviderInstancePropertiesResponseErrorsOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPDiskConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(SAPDiskConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SAPDiskConfigurationResponseMapOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})
-	pulumi.RegisterOutputType(SearchProfileOutput{})
-	pulumi.RegisterOutputType(SearchProfilePtrOutput{})
-	pulumi.RegisterOutputType(SearchProfileResponseOutput{})
-	pulumi.RegisterOutputType(SearchProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(SiteProfileOutput{})
-	pulumi.RegisterOutputType(SiteProfilePtrOutput{})
-	pulumi.RegisterOutputType(SiteProfileResponseOutput{})
-	pulumi.RegisterOutputType(SiteProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(SkuOutput{})
-	pulumi.RegisterOutputType(SkuPtrOutput{})
-	pulumi.RegisterOutputType(SkuResponseOutput{})
-	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageInformationResponseOutput{})
 	pulumi.RegisterOutputType(StorageInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
@@ -6951,8 +4012,4 @@ func init() {
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(UserProfileOutput{})
-	pulumi.RegisterOutputType(UserProfileResponseOutput{})
-	pulumi.RegisterOutputType(VmssNodesProfileOutput{})
-	pulumi.RegisterOutputType(VmssNodesProfileResponseOutput{})
 }

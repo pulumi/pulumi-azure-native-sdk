@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of Dicom Service
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
+// Previous API Version: 2022-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type DicomService struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type DicomService struct {
 	CorsConfiguration CorsConfigurationResponsePtrOutput `pulumi:"corsConfiguration"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// DICOM Service event support status.
+	EventState pulumi.StringOutput `pulumi:"eventState"`
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity ServiceManagedIdentityResponseIdentityPtrOutput `pulumi:"identity"`
 	// The resource location.
@@ -78,6 +81,9 @@ func NewDicomService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:DicomService"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:DicomService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -199,6 +205,11 @@ func (o DicomServiceOutput) CorsConfiguration() CorsConfigurationResponsePtrOutp
 // An etag associated with the resource, used for optimistic concurrency when editing it.
 func (o DicomServiceOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DicomService) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// DICOM Service event support status.
+func (o DicomServiceOutput) EventState() pulumi.StringOutput {
+	return o.ApplyT(func(v *DicomService) pulumi.StringOutput { return v.EventState }).(pulumi.StringOutput)
 }
 
 // Setting indicating whether the service has a managed identity associated with it.

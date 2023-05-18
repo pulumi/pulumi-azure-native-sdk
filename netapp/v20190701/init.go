@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "azure-native:netapp/v20190701:Pool":
 		r = &Pool{}
-	case "azure-native:netapp/v20190701:Snapshot":
-		r = &Snapshot{}
 	case "azure-native:netapp/v20190701:Volume":
 		r = &Volume{}
 	default:

@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:networkfunction/v20220801:AzureTrafficCollector":
 		r = &AzureTrafficCollector{}
-	case "azure-native:networkfunction/v20220801:CollectorPolicy":
-		r = &CollectorPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

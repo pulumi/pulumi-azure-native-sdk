@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An attestation resource.
-// API Version: 2021-01-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type AttestationAtSubscription struct {
 	pulumi.CustomResourceState
 
+	// The time the evidence was assessed
+	AssessmentDate pulumi.StringPtrOutput `pulumi:"assessmentDate"`
 	// Comments describing why this attestation was created.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -26,6 +29,8 @@ type AttestationAtSubscription struct {
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// The time the compliance state was last changed in this attestation.
 	LastComplianceStateChangeAt pulumi.StringOutput `pulumi:"lastComplianceStateChangeAt"`
+	// Additional metadata for this attestation
+	Metadata pulumi.AnyOutput `pulumi:"metadata"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
@@ -93,6 +98,8 @@ func (AttestationAtSubscriptionState) ElementType() reflect.Type {
 }
 
 type attestationAtSubscriptionArgs struct {
+	// The time the evidence was assessed
+	AssessmentDate *string `pulumi:"assessmentDate"`
 	// The name of the attestation.
 	AttestationName *string `pulumi:"attestationName"`
 	// Comments describing why this attestation was created.
@@ -103,6 +110,8 @@ type attestationAtSubscriptionArgs struct {
 	Evidence []AttestationEvidence `pulumi:"evidence"`
 	// The time the compliance state should expire.
 	ExpiresOn *string `pulumi:"expiresOn"`
+	// Additional metadata for this attestation
+	Metadata interface{} `pulumi:"metadata"`
 	// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
 	Owner *string `pulumi:"owner"`
 	// The resource ID of the policy assignment that the attestation is setting the state for.
@@ -113,6 +122,8 @@ type attestationAtSubscriptionArgs struct {
 
 // The set of arguments for constructing a AttestationAtSubscription resource.
 type AttestationAtSubscriptionArgs struct {
+	// The time the evidence was assessed
+	AssessmentDate pulumi.StringPtrInput
 	// The name of the attestation.
 	AttestationName pulumi.StringPtrInput
 	// Comments describing why this attestation was created.
@@ -123,6 +134,8 @@ type AttestationAtSubscriptionArgs struct {
 	Evidence AttestationEvidenceArrayInput
 	// The time the compliance state should expire.
 	ExpiresOn pulumi.StringPtrInput
+	// Additional metadata for this attestation
+	Metadata pulumi.Input
 	// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
 	Owner pulumi.StringPtrInput
 	// The resource ID of the policy assignment that the attestation is setting the state for.
@@ -168,6 +181,11 @@ func (o AttestationAtSubscriptionOutput) ToAttestationAtSubscriptionOutputWithCo
 	return o
 }
 
+// The time the evidence was assessed
+func (o AttestationAtSubscriptionOutput) AssessmentDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.StringPtrOutput { return v.AssessmentDate }).(pulumi.StringPtrOutput)
+}
+
 // Comments describing why this attestation was created.
 func (o AttestationAtSubscriptionOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.StringPtrOutput { return v.Comments }).(pulumi.StringPtrOutput)
@@ -191,6 +209,11 @@ func (o AttestationAtSubscriptionOutput) ExpiresOn() pulumi.StringPtrOutput {
 // The time the compliance state was last changed in this attestation.
 func (o AttestationAtSubscriptionOutput) LastComplianceStateChangeAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.StringOutput { return v.LastComplianceStateChangeAt }).(pulumi.StringOutput)
+}
+
+// Additional metadata for this attestation
+func (o AttestationAtSubscriptionOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.AnyOutput { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The name of the resource

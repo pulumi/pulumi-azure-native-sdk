@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:signalrservice/v20210401preview:SignalR":
-		r = &SignalR{}
-	case "azure-native:signalrservice/v20210401preview:SignalRPrivateEndpointConnection":
-		r = &SignalRPrivateEndpointConnection{}
 	case "azure-native:signalrservice/v20210401preview:SignalRSharedPrivateLinkResource":
 		r = &SignalRSharedPrivateLinkResource{}
 	default:

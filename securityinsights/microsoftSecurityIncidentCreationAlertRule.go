@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents MicrosoftSecurityIncidentCreation rule.
-// API Version: 2020-01-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type MicrosoftSecurityIncidentCreationAlertRule struct {
 	pulumi.CustomResourceState
 
@@ -35,13 +36,15 @@ type MicrosoftSecurityIncidentCreationAlertRule struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The last time that this alert has been modified.
 	LastModifiedUtc pulumi.StringOutput `pulumi:"lastModifiedUtc"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The alerts' productName on which the cases will be generated
 	ProductFilter pulumi.StringOutput `pulumi:"productFilter"`
 	// the alerts' severities on which the cases will be generated
 	SeveritiesFilter pulumi.StringArrayOutput `pulumi:"severitiesFilter"`
-	// Azure resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -133,6 +136,9 @@ func NewMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:MicrosoftSecurityIncidentCreationAlertRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
 	})
@@ -186,7 +192,7 @@ type microsoftSecurityIncidentCreationAlertRuleArgs struct {
 	Kind string `pulumi:"kind"`
 	// The alerts' productName on which the cases will be generated
 	ProductFilter string `pulumi:"productFilter"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
 	RuleId *string `pulumi:"ruleId"`
@@ -215,7 +221,7 @@ type MicrosoftSecurityIncidentCreationAlertRuleArgs struct {
 	Kind pulumi.StringInput
 	// The alerts' productName on which the cases will be generated
 	ProductFilter pulumi.StringInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Alert rule ID
 	RuleId pulumi.StringPtrInput
@@ -314,7 +320,7 @@ func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) LastModifiedUtc() pulu
 	return o.ApplyT(func(v *MicrosoftSecurityIncidentCreationAlertRule) pulumi.StringOutput { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MicrosoftSecurityIncidentCreationAlertRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -331,7 +337,12 @@ func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) SeveritiesFilter() pul
 	}).(pulumi.StringArrayOutput)
 }
 
-// Azure resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MicrosoftSecurityIncidentCreationAlertRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MicrosoftSecurityIncidentCreationAlertRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

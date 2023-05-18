@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenShift Managed cluster.
 // API Version: 2019-04-30.
+// Previous API Version: 2019-04-30. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type OpenShiftManagedCluster struct {
 	pulumi.CustomResourceState
 

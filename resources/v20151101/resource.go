@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource information.
-//
-// Deprecated: Version 2015-11-01 will be removed in v2 of the provider.
 type Resource struct {
 	pulumi.CustomResourceState
 

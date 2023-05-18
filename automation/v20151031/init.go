@@ -21,32 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:automation/v20151031:AutomationAccount":
-		r = &AutomationAccount{}
-	case "azure-native:automation/v20151031:Certificate":
-		r = &Certificate{}
-	case "azure-native:automation/v20151031:Connection":
-		r = &Connection{}
-	case "azure-native:automation/v20151031:ConnectionType":
-		r = &ConnectionType{}
-	case "azure-native:automation/v20151031:Credential":
-		r = &Credential{}
-	case "azure-native:automation/v20151031:DscConfiguration":
-		r = &DscConfiguration{}
-	case "azure-native:automation/v20151031:DscNodeConfiguration":
-		r = &DscNodeConfiguration{}
-	case "azure-native:automation/v20151031:JobSchedule":
-		r = &JobSchedule{}
-	case "azure-native:automation/v20151031:Module":
-		r = &Module{}
-	case "azure-native:automation/v20151031:Runbook":
-		r = &Runbook{}
-	case "azure-native:automation/v20151031:Schedule":
-		r = &Schedule{}
-	case "azure-native:automation/v20151031:Variable":
-		r = &Variable{}
-	case "azure-native:automation/v20151031:Watcher":
-		r = &Watcher{}
 	case "azure-native:automation/v20151031:Webhook":
 		r = &Webhook{}
 	default:

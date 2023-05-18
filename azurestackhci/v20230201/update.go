@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,7 +74,13 @@ func NewUpdate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci:Update"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221201:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230301:Update"),
 		},
 	})
 	opts = append(opts, aliases)

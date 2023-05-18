@@ -28,15 +28,6 @@ const (
 	CreatedByTypeKey             = CreatedByType("Key")
 )
 
-// Desired level of diagnostic data emitted by the cluster.
-type DiagnosticLevel string
-
-const (
-	DiagnosticLevelOff      = DiagnosticLevel("Off")
-	DiagnosticLevelBasic    = DiagnosticLevel("Basic")
-	DiagnosticLevelEnhanced = DiagnosticLevel("Enhanced")
-)
-
 // The format of the actual VHD file [vhd, vhdx]
 type DiskFileFormat string
 
@@ -601,14 +592,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
-
-// Desired state of Windows Server Subscription.
-type WindowsServerSubscription string
-
-const (
-	WindowsServerSubscriptionDisabled = WindowsServerSubscription("Disabled")
-	WindowsServerSubscriptionEnabled  = WindowsServerSubscription("Enabled")
-)
 
 func init() {
 	pulumi.RegisterOutputType(IPPoolTypeEnumOutput{})

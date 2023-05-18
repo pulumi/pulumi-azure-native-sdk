@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an Agent resource.
-// API Version: 2022-07-01-preview.
+// API Version: 2023-03-01.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
 	var rv LookupAgentResult
 	err := ctx.Invoke("azure-native:storagemover:getAgent", args, &rv, opts...)

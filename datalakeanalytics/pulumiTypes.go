@@ -135,7 +135,7 @@ func (val *AddStorageAccountWithAccountParameters) Defaults() *AddStorageAccount
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Suffix) {
+	if tmp.Suffix == nil {
 		suffix_ := "azuredatalakestore.net"
 		tmp.Suffix = &suffix_
 	}
@@ -169,7 +169,7 @@ func (val *AddStorageAccountWithAccountParametersArgs) Defaults() *AddStorageAcc
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Suffix) {
+	if tmp.Suffix == nil {
 		tmp.Suffix = pulumi.StringPtr("azuredatalakestore.net")
 	}
 	return &tmp

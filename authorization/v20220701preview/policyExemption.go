@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,13 +57,10 @@ func NewPolicyExemption(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if isZero(args.AssignmentScopeValidation) {
+	if args.AssignmentScopeValidation == nil {
 		args.AssignmentScopeValidation = pulumi.StringPtr("Default")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:authorization:PolicyExemption"),
-		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20200701preview:PolicyExemption"),
 		},

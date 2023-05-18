@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/managementpartner
+module github.com/pulumi/pulumi-azure-native-sdk/managementpartner/v2
 
 go 1.17
 
@@ -58,3 +58,4 @@ require (
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20190731080439-ebfcffb1b5c0 // indirect
 )
 
+replace github.com/pulumi/pulumi-azure-native-sdk/v2 v2.0.0-alpha => ../

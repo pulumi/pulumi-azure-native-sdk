@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Cassandra table.
-// API Version: 2021-03-15.
+// API Version: 2022-11-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type CassandraResourceCassandraTable struct {
 	pulumi.CustomResourceState
 
@@ -133,7 +134,16 @@ func NewCassandraResourceCassandraTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraResourceCassandraTable"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraResourceCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraResourceCassandraTable"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:CassandraResourceCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraResourceCassandraTable"),
 		},
 	})
 	opts = append(opts, aliases)

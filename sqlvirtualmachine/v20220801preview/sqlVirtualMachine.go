@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,10 +75,10 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.EnableAutomaticUpgrade) {
+	if args.EnableAutomaticUpgrade == nil {
 		args.EnableAutomaticUpgrade = pulumi.BoolPtr(false)
 	}
-	if isZero(args.LeastPrivilegeMode) {
+	if args.LeastPrivilegeMode == nil {
 		args.LeastPrivilegeMode = pulumi.StringPtr("NotSet")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -99,6 +99,9 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20220701preview:SqlVirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachine"),
 		},
 	})
 	opts = append(opts, aliases)

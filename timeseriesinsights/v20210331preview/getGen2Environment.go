@@ -74,7 +74,7 @@ func (val *LookupGen2EnvironmentResult) Defaults() *LookupGen2EnvironmentResult 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

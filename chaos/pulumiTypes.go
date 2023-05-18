@@ -669,6 +669,8 @@ func (o ResourceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 
 // Model that represents a selector in the Experiment resource.
 type Selector struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter *SimpleFilter `pulumi:"filter"`
 	// String of the selector ID.
 	Id string `pulumi:"id"`
 	// List of Target references.
@@ -690,6 +692,8 @@ type SelectorInput interface {
 
 // Model that represents a selector in the Experiment resource.
 type SelectorArgs struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter SimpleFilterPtrInput `pulumi:"filter"`
 	// String of the selector ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// List of Target references.
@@ -750,6 +754,11 @@ func (o SelectorOutput) ToSelectorOutputWithContext(ctx context.Context) Selecto
 	return o
 }
 
+// Model that represents available filter types that can be applied to a targets list.
+func (o SelectorOutput) Filter() SimpleFilterPtrOutput {
+	return o.ApplyT(func(v Selector) *SimpleFilter { return v.Filter }).(SimpleFilterPtrOutput)
+}
+
 // String of the selector ID.
 func (o SelectorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v Selector) string { return v.Id }).(pulumi.StringOutput)
@@ -787,6 +796,8 @@ func (o SelectorArrayOutput) Index(i pulumi.IntInput) SelectorOutput {
 
 // Model that represents a selector in the Experiment resource.
 type SelectorResponse struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter *SimpleFilterResponse `pulumi:"filter"`
 	// String of the selector ID.
 	Id string `pulumi:"id"`
 	// List of Target references.
@@ -808,6 +819,11 @@ func (o SelectorResponseOutput) ToSelectorResponseOutput() SelectorResponseOutpu
 
 func (o SelectorResponseOutput) ToSelectorResponseOutputWithContext(ctx context.Context) SelectorResponseOutput {
 	return o
+}
+
+// Model that represents available filter types that can be applied to a targets list.
+func (o SelectorResponseOutput) Filter() SimpleFilterResponsePtrOutput {
+	return o.ApplyT(func(v SelectorResponse) *SimpleFilterResponse { return v.Filter }).(SimpleFilterResponsePtrOutput)
 }
 
 // String of the selector ID.
@@ -843,6 +859,449 @@ func (o SelectorResponseArrayOutput) Index(i pulumi.IntInput) SelectorResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelectorResponse {
 		return vs[0].([]SelectorResponse)[vs[1].(int)]
 	}).(SelectorResponseOutput)
+}
+
+// Model that represents a simple target filter.
+type SimpleFilter struct {
+	// Model that represents the Simple filter parameters.
+	Parameters *SimpleFilterParameters `pulumi:"parameters"`
+	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+	// Expected value is 'Simple'.
+	Type string `pulumi:"type"`
+}
+
+// SimpleFilterInput is an input type that accepts SimpleFilterArgs and SimpleFilterOutput values.
+// You can construct a concrete instance of `SimpleFilterInput` via:
+//
+//	SimpleFilterArgs{...}
+type SimpleFilterInput interface {
+	pulumi.Input
+
+	ToSimpleFilterOutput() SimpleFilterOutput
+	ToSimpleFilterOutputWithContext(context.Context) SimpleFilterOutput
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterArgs struct {
+	// Model that represents the Simple filter parameters.
+	Parameters SimpleFilterParametersPtrInput `pulumi:"parameters"`
+	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+	// Expected value is 'Simple'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SimpleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilter)(nil)).Elem()
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterOutput() SimpleFilterOutput {
+	return i.ToSimpleFilterOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterOutputWithContext(ctx context.Context) SimpleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterOutput)
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return i.ToSimpleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterOutput).ToSimpleFilterPtrOutputWithContext(ctx)
+}
+
+// SimpleFilterPtrInput is an input type that accepts SimpleFilterArgs, SimpleFilterPtr and SimpleFilterPtrOutput values.
+// You can construct a concrete instance of `SimpleFilterPtrInput` via:
+//
+//	        SimpleFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type SimpleFilterPtrInput interface {
+	pulumi.Input
+
+	ToSimpleFilterPtrOutput() SimpleFilterPtrOutput
+	ToSimpleFilterPtrOutputWithContext(context.Context) SimpleFilterPtrOutput
+}
+
+type simpleFilterPtrType SimpleFilterArgs
+
+func SimpleFilterPtr(v *SimpleFilterArgs) SimpleFilterPtrInput {
+	return (*simpleFilterPtrType)(v)
+}
+
+func (*simpleFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilter)(nil)).Elem()
+}
+
+func (i *simpleFilterPtrType) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return i.ToSimpleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *simpleFilterPtrType) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterPtrOutput)
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilter)(nil)).Elem()
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterOutput() SimpleFilterOutput {
+	return o
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterOutputWithContext(ctx context.Context) SimpleFilterOutput {
+	return o
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return o.ToSimpleFilterPtrOutputWithContext(context.Background())
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SimpleFilter) *SimpleFilter {
+		return &v
+	}).(SimpleFilterPtrOutput)
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterOutput) Parameters() SimpleFilterParametersPtrOutput {
+	return o.ApplyT(func(v SimpleFilter) *SimpleFilterParameters { return v.Parameters }).(SimpleFilterParametersPtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SimpleFilter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SimpleFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilter)(nil)).Elem()
+}
+
+func (o SimpleFilterPtrOutput) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return o
+}
+
+func (o SimpleFilterPtrOutput) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return o
+}
+
+func (o SimpleFilterPtrOutput) Elem() SimpleFilterOutput {
+	return o.ApplyT(func(v *SimpleFilter) SimpleFilter {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilter
+		return ret
+	}).(SimpleFilterOutput)
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterPtrOutput) Parameters() SimpleFilterParametersPtrOutput {
+	return o.ApplyT(func(v *SimpleFilter) *SimpleFilterParameters {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(SimpleFilterParametersPtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParameters struct {
+	// List of Azure availability zones to filter targets by.
+	Zones []string `pulumi:"zones"`
+}
+
+// SimpleFilterParametersInput is an input type that accepts SimpleFilterParametersArgs and SimpleFilterParametersOutput values.
+// You can construct a concrete instance of `SimpleFilterParametersInput` via:
+//
+//	SimpleFilterParametersArgs{...}
+type SimpleFilterParametersInput interface {
+	pulumi.Input
+
+	ToSimpleFilterParametersOutput() SimpleFilterParametersOutput
+	ToSimpleFilterParametersOutputWithContext(context.Context) SimpleFilterParametersOutput
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersArgs struct {
+	// List of Azure availability zones to filter targets by.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (SimpleFilterParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterParameters)(nil)).Elem()
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersOutput() SimpleFilterParametersOutput {
+	return i.ToSimpleFilterParametersOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersOutputWithContext(ctx context.Context) SimpleFilterParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterParametersOutput)
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return i.ToSimpleFilterParametersPtrOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterParametersOutput).ToSimpleFilterParametersPtrOutputWithContext(ctx)
+}
+
+// SimpleFilterParametersPtrInput is an input type that accepts SimpleFilterParametersArgs, SimpleFilterParametersPtr and SimpleFilterParametersPtrOutput values.
+// You can construct a concrete instance of `SimpleFilterParametersPtrInput` via:
+//
+//	        SimpleFilterParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SimpleFilterParametersPtrInput interface {
+	pulumi.Input
+
+	ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput
+	ToSimpleFilterParametersPtrOutputWithContext(context.Context) SimpleFilterParametersPtrOutput
+}
+
+type simpleFilterParametersPtrType SimpleFilterParametersArgs
+
+func SimpleFilterParametersPtr(v *SimpleFilterParametersArgs) SimpleFilterParametersPtrInput {
+	return (*simpleFilterParametersPtrType)(v)
+}
+
+func (*simpleFilterParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterParameters)(nil)).Elem()
+}
+
+func (i *simpleFilterParametersPtrType) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return i.ToSimpleFilterParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *simpleFilterParametersPtrType) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterParametersPtrOutput)
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterParameters)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersOutput() SimpleFilterParametersOutput {
+	return o
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersOutputWithContext(ctx context.Context) SimpleFilterParametersOutput {
+	return o
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return o.ToSimpleFilterParametersPtrOutputWithContext(context.Background())
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SimpleFilterParameters) *SimpleFilterParameters {
+		return &v
+	}).(SimpleFilterParametersPtrOutput)
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SimpleFilterParameters) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type SimpleFilterParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterParameters)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersPtrOutput) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersPtrOutput) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersPtrOutput) Elem() SimpleFilterParametersOutput {
+	return o.ApplyT(func(v *SimpleFilterParameters) SimpleFilterParameters {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilterParameters
+		return ret
+	}).(SimpleFilterParametersOutput)
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SimpleFilterParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersResponse struct {
+	// List of Azure availability zones to filter targets by.
+	Zones []string `pulumi:"zones"`
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterParametersResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersResponseOutput) ToSimpleFilterParametersResponseOutput() SimpleFilterParametersResponseOutput {
+	return o
+}
+
+func (o SimpleFilterParametersResponseOutput) ToSimpleFilterParametersResponseOutputWithContext(ctx context.Context) SimpleFilterParametersResponseOutput {
+	return o
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersResponseOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SimpleFilterParametersResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type SimpleFilterParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterParametersResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersResponsePtrOutput) ToSimpleFilterParametersResponsePtrOutput() SimpleFilterParametersResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersResponsePtrOutput) ToSimpleFilterParametersResponsePtrOutputWithContext(ctx context.Context) SimpleFilterParametersResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersResponsePtrOutput) Elem() SimpleFilterParametersResponseOutput {
+	return o.ApplyT(func(v *SimpleFilterParametersResponse) SimpleFilterParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilterParametersResponse
+		return ret
+	}).(SimpleFilterParametersResponseOutput)
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersResponsePtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SimpleFilterParametersResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterResponse struct {
+	// Model that represents the Simple filter parameters.
+	Parameters *SimpleFilterParametersResponse `pulumi:"parameters"`
+	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+	// Expected value is 'Simple'.
+	Type string `pulumi:"type"`
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterResponseOutput) ToSimpleFilterResponseOutput() SimpleFilterResponseOutput {
+	return o
+}
+
+func (o SimpleFilterResponseOutput) ToSimpleFilterResponseOutputWithContext(ctx context.Context) SimpleFilterResponseOutput {
+	return o
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterResponseOutput) Parameters() SimpleFilterParametersResponsePtrOutput {
+	return o.ApplyT(func(v SimpleFilterResponse) *SimpleFilterParametersResponse { return v.Parameters }).(SimpleFilterParametersResponsePtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SimpleFilterResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SimpleFilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterResponsePtrOutput) ToSimpleFilterResponsePtrOutput() SimpleFilterResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterResponsePtrOutput) ToSimpleFilterResponsePtrOutputWithContext(ctx context.Context) SimpleFilterResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterResponsePtrOutput) Elem() SimpleFilterResponseOutput {
+	return o.ApplyT(func(v *SimpleFilterResponse) SimpleFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilterResponse
+		return ret
+	}).(SimpleFilterResponseOutput)
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterResponsePtrOutput) Parameters() SimpleFilterParametersResponsePtrOutput {
+	return o.ApplyT(func(v *SimpleFilterResponse) *SimpleFilterParametersResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(SimpleFilterParametersResponsePtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleFilterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Model that represents a step in the Experiment resource.
@@ -1246,6 +1705,14 @@ func init() {
 	pulumi.RegisterOutputType(SelectorArrayOutput{})
 	pulumi.RegisterOutputType(SelectorResponseOutput{})
 	pulumi.RegisterOutputType(SelectorResponseArrayOutput{})
+	pulumi.RegisterOutputType(SimpleFilterOutput{})
+	pulumi.RegisterOutputType(SimpleFilterPtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersPtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersResponseOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterResponseOutput{})
+	pulumi.RegisterOutputType(SimpleFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(StepOutput{})
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})

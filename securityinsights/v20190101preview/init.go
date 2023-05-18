@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AATPDataConnector{}
 	case "azure-native:securityinsights/v20190101preview:ASCDataConnector":
 		r = &ASCDataConnector{}
-	case "azure-native:securityinsights/v20190101preview:Action":
-		r = &Action{}
 	case "azure-native:securityinsights/v20190101preview:Anomalies":
 		r = &Anomalies{}
 	case "azure-native:securityinsights/v20190101preview:AutomationRule":
@@ -49,12 +47,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FusionAlertRule{}
 	case "azure-native:securityinsights/v20190101preview:IPSyncer":
 		r = &IPSyncer{}
-	case "azure-native:securityinsights/v20190101preview:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20190101preview:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20190101preview:IncidentRelation":
-		r = &IncidentRelation{}
 	case "azure-native:securityinsights/v20190101preview:MCASDataConnector":
 		r = &MCASDataConnector{}
 	case "azure-native:securityinsights/v20190101preview:MDATPDataConnector":
@@ -85,8 +77,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Ueba{}
 	case "azure-native:securityinsights/v20190101preview:Watchlist":
 		r = &Watchlist{}
-	case "azure-native:securityinsights/v20190101preview:WatchlistItem":
-		r = &WatchlistItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

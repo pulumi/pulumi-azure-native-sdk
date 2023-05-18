@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a server trust certificate that was uploaded from box to Sql Managed Instance.
-// API Version: 2021-05-01-preview.
+// API Version: 2021-11-01.
 func LookupServerTrustCertificate(ctx *pulumi.Context, args *LookupServerTrustCertificateArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustCertificateResult, error) {
 	var rv LookupServerTrustCertificateResult
 	err := ctx.Invoke("azure-native:sql:getServerTrustCertificate", args, &rv, opts...)

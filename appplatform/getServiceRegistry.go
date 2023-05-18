@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Service Registry and its properties.
-// API Version: 2022-01-01-preview.
+// API Version: 2022-12-01.
 func LookupServiceRegistry(ctx *pulumi.Context, args *LookupServiceRegistryArgs, opts ...pulumi.InvokeOption) (*LookupServiceRegistryResult, error) {
 	var rv LookupServiceRegistryResult
 	err := ctx.Invoke("azure-native:appplatform:getServiceRegistry", args, &rv, opts...)

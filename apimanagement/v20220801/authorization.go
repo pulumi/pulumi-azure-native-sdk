@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,7 +49,13 @@ func NewAuthorization(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:apimanagement:Authorization"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Authorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Authorization"),
 		},
 	})
 	opts = append(opts, aliases)

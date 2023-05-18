@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:authorization/v20161201:PolicyAssignment":
 		r = &PolicyAssignment{}
-	case "azure-native:authorization/v20161201:PolicyDefinition":
-		r = &PolicyDefinition{}
-	case "azure-native:authorization/v20161201:PolicyDefinitionAtManagementGroup":
-		r = &PolicyDefinitionAtManagementGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

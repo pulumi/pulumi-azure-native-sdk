@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes an identity resource.
-// API Version: 2018-11-30.
+// API Version: 2023-01-31.
+// Previous API Version: 2018-11-30. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type UserAssignedIdentity struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type UserAssignedIdentity struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The id of the service principal object associated with the created identity.
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The id of the tenant which the identity belongs to.
@@ -169,6 +172,11 @@ func (o UserAssignedIdentityOutput) Name() pulumi.StringOutput {
 // The id of the service principal object associated with the created identity.
 func (o UserAssignedIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAssignedIdentity) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o UserAssignedIdentityOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *UserAssignedIdentity) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

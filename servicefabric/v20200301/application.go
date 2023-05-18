@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,16 +62,13 @@ func NewApplication(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.MaximumNodes) {
+	if args.MaximumNodes == nil {
 		args.MaximumNodes = pulumi.Float64Ptr(0.0)
 	}
 	if args.UpgradePolicy != nil {
 		args.UpgradePolicy = args.UpgradePolicy.ToApplicationUpgradePolicyPtrOutput().ApplyT(func(v *ApplicationUpgradePolicy) *ApplicationUpgradePolicy { return v.Defaults() }).(ApplicationUpgradePolicyPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:servicefabric:Application"),
-		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20170701preview:Application"),
 		},

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Express Route Circuit Connection from the specified express route circuit.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupExpressRouteCircuitConnection(ctx *pulumi.Context, args *LookupExpressRouteCircuitConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitConnectionResult, error) {
 	var rv LookupExpressRouteCircuitConnectionResult
 	err := ctx.Invoke("azure-native:network:getExpressRouteCircuitConnection", args, &rv, opts...)

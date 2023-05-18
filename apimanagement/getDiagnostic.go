@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the Diagnostic specified by its identifier.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupDiagnostic(ctx *pulumi.Context, args *LookupDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticResult, error) {
 	var rv LookupDiagnosticResult
 	err := ctx.Invoke("azure-native:apimanagement:getDiagnostic", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupDiagnostic(ctx *pulumi.Context, args *LookupDiagnosticArgs, opts ...p
 type LookupDiagnosticArgs struct {
 	// Diagnostic identifier. Must be unique in the current API Management service instance.
 	DiagnosticId string `pulumi:"diagnosticId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -40,7 +40,7 @@ type LookupDiagnosticResult struct {
 	Frontend *PipelineDiagnosticSettingsResponse `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Log the ClientIP. Default is false.
 	LogClientIp *bool `pulumi:"logClientIp"`
@@ -48,13 +48,13 @@ type LookupDiagnosticResult struct {
 	LoggerId string `pulumi:"loggerId"`
 	// Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
 	Metrics *bool `pulumi:"metrics"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The format of the Operation Name for Application Insights telemetries. Default is Name.
 	OperationNameFormat *string `pulumi:"operationNameFormat"`
 	// Sampling settings for Diagnostic.
 	Sampling *SamplingSettingsResponse `pulumi:"sampling"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The verbosity level applied to traces emitted by trace policies.
 	Verbosity *string `pulumi:"verbosity"`
@@ -76,7 +76,7 @@ func LookupDiagnosticOutput(ctx *pulumi.Context, args LookupDiagnosticOutputArgs
 type LookupDiagnosticOutputArgs struct {
 	// Diagnostic identifier. Must be unique in the current API Management service instance.
 	DiagnosticId pulumi.StringInput `pulumi:"diagnosticId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -121,7 +121,7 @@ func (o LookupDiagnosticResultOutput) HttpCorrelationProtocol() pulumi.StringPtr
 	return o.ApplyT(func(v LookupDiagnosticResult) *string { return v.HttpCorrelationProtocol }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDiagnosticResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupDiagnosticResultOutput) Metrics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) *bool { return v.Metrics }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupDiagnosticResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -156,7 +156,7 @@ func (o LookupDiagnosticResultOutput) Sampling() SamplingSettingsResponsePtrOutp
 	return o.ApplyT(func(v LookupDiagnosticResult) *SamplingSettingsResponse { return v.Sampling }).(SamplingSettingsResponsePtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDiagnosticResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticResult) string { return v.Type }).(pulumi.StringOutput)
 }

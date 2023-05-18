@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,6 +115,9 @@ func NewDynamics365DataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Dynamics365DataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Dynamics365DataConnector"),

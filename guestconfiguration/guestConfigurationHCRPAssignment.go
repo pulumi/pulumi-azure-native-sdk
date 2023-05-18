@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
-// API Version: 2020-06-25.
+// API Version: 2022-01-25.
+// Previous API Version: 2020-06-25. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type GuestConfigurationHCRPAssignment struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type GuestConfigurationHCRPAssignment struct {
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -38,11 +41,6 @@ func NewGuestConfigurationHCRPAssignment(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.Properties != nil {
-		args.Properties = args.Properties.ToGuestConfigurationAssignmentPropertiesPtrOutput().ApplyT(func(v *GuestConfigurationAssignmentProperties) *GuestConfigurationAssignmentProperties {
-			return v.Defaults()
-		}).(GuestConfigurationAssignmentPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -173,6 +171,11 @@ func (o GuestConfigurationHCRPAssignmentOutput) Properties() GuestConfigurationA
 	return o.ApplyT(func(v *GuestConfigurationHCRPAssignment) GuestConfigurationAssignmentPropertiesResponseOutput {
 		return v.Properties
 	}).(GuestConfigurationAssignmentPropertiesResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GuestConfigurationHCRPAssignmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GuestConfigurationHCRPAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,7 +51,7 @@ func NewIpAllocation(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.PrefixLength) {
+	if args.PrefixLength == nil {
 		args.PrefixLength = pulumi.IntPtr(0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -99,6 +99,9 @@ func NewIpAllocation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:IpAllocation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:IpAllocation"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Capability resource that extends a Target resource.
-// API Version: 2021-09-15-preview.
+// API Version: 2022-10-01-preview.
 func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityResult, error) {
 	var rv LookupCapabilityResult
 	err := ctx.Invoke("azure-native:chaos:getCapability", args, &rv, opts...)

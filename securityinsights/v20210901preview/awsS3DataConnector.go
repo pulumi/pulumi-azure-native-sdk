@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -125,6 +125,9 @@ func NewAwsS3DataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:AwsS3DataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:AwsS3DataConnector"),

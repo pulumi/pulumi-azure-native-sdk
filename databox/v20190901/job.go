@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Job Resource.
-//
-// Deprecated: Version 2019-09-01 will be removed in v2 of the provider.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -64,7 +62,7 @@ func NewJob(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.DeliveryType) {
+	if args.DeliveryType == nil {
 		args.DeliveryType = pulumi.StringPtr("NonScheduled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // disk encryption set resource.
-//
-// Deprecated: Version 2020-06-30 will be removed in v2 of the provider.
 type DiskEncryptionSet struct {
 	pulumi.CustomResourceState
 

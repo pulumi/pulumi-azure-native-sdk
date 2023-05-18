@@ -11,7 +11,7 @@ import (
 )
 
 // Get an invitation in a share
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
 func LookupInvitation(ctx *pulumi.Context, args *LookupInvitationArgs, opts ...pulumi.InvokeOption) (*LookupInvitationResult, error) {
 	var rv LookupInvitationResult
 	err := ctx.Invoke("azure-native:datashare:getInvitation", args, &rv, opts...)

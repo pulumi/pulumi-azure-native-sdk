@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Guest Usages Resource
-// API Version: 2020-05-01-preview.
+// API Version: 2021-04-01.
+// Previous API Version: 2020-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type GuestUsage struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type GuestUsage struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the Guest Usages resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Key-value pairs of additional resource provisioning properties.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// An identifier for the tenant for which the resource is being created
@@ -86,7 +89,7 @@ type guestUsageArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The initial domain name of the AAD tenant.
+	// The initial domain name of the Azure AD B2C tenant.
 	ResourceName *string `pulumi:"resourceName"`
 	// Key-value pairs of additional resource provisioning properties.
 	Tags map[string]string `pulumi:"tags"`
@@ -100,7 +103,7 @@ type GuestUsageArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// The initial domain name of the AAD tenant.
+	// The initial domain name of the Azure AD B2C tenant.
 	ResourceName pulumi.StringPtrInput
 	// Key-value pairs of additional resource provisioning properties.
 	Tags pulumi.StringMapInput
@@ -153,6 +156,11 @@ func (o GuestUsageOutput) Location() pulumi.StringPtrOutput {
 // The name of the Guest Usages resource.
 func (o GuestUsageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestUsage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o GuestUsageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GuestUsage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Key-value pairs of additional resource provisioning properties.

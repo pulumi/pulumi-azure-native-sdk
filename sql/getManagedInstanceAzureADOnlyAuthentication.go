@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a specific Azure Active Directory only authentication property.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupManagedInstanceAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupManagedInstanceAzureADOnlyAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceAzureADOnlyAuthenticationResult, error) {
 	var rv LookupManagedInstanceAzureADOnlyAuthenticationResult
 	err := ctx.Invoke("azure-native:sql:getManagedInstanceAzureADOnlyAuthentication", args, &rv, opts...)

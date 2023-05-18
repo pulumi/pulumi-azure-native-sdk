@@ -27,22 +27,6 @@ const (
 	BackupTypeContinuous = BackupType("Continuous")
 )
 
-// Sort order for composite paths.
-type CompositePathSortOrder string
-
-const (
-	CompositePathSortOrderAscending  = CompositePathSortOrder("Ascending")
-	CompositePathSortOrderDescending = CompositePathSortOrder("Descending")
-)
-
-// Indicates the conflict resolution mode.
-type ConflictResolutionMode string
-
-const (
-	ConflictResolutionModeLastWriterWins = ConflictResolutionMode("LastWriterWins")
-	ConflictResolutionModeCustom         = ConflictResolutionMode("Custom")
-)
-
 // The cassandra connector offer type for the Cosmos DB database C* account.
 type ConnectorOffer string
 
@@ -56,18 +40,6 @@ type CreateMode string
 const (
 	CreateModeDefault = CreateMode("Default")
 	CreateModeRestore = CreateMode("Restore")
-)
-
-// The datatype for which the indexing behavior is applied to.
-type DataType string
-
-const (
-	DataTypeString       = DataType("String")
-	DataTypeNumber       = DataType("Number")
-	DataTypePoint        = DataType("Point")
-	DataTypePolygon      = DataType("Polygon")
-	DataTypeLineString   = DataType("LineString")
-	DataTypeMultiPolygon = DataType("MultiPolygon")
 )
 
 // Indicates the type of database account. This can only be set at database account creation.
@@ -95,32 +67,6 @@ const (
 	DefaultConsistencyLevelBoundedStaleness = DefaultConsistencyLevel("BoundedStaleness")
 	DefaultConsistencyLevelStrong           = DefaultConsistencyLevel("Strong")
 	DefaultConsistencyLevelConsistentPrefix = DefaultConsistencyLevel("ConsistentPrefix")
-)
-
-// Indicates the type of index.
-type IndexKind string
-
-const (
-	IndexKindHash    = IndexKind("Hash")
-	IndexKindRange   = IndexKind("Range")
-	IndexKindSpatial = IndexKind("Spatial")
-)
-
-// Indicates the indexing mode.
-type IndexingMode string
-
-const (
-	IndexingModeConsistent = IndexingMode("Consistent")
-	IndexingModeLazy       = IndexingMode("Lazy")
-	IndexingModeNone       = IndexingMode("None")
-)
-
-// Indicates the kind of algorithm used for partitioning
-type PartitionKind string
-
-const (
-	PartitionKindHash  = PartitionKind("Hash")
-	PartitionKindRange = PartitionKind("Range")
 )
 
 // The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -297,171 +243,6 @@ const (
 	RestoreModePointInTime = RestoreMode("PointInTime")
 )
 
-// Indicates whether the Role Definition was built-in or user created.
-type RoleDefinitionType string
-
-const (
-	RoleDefinitionTypeBuiltInRole = RoleDefinitionType("BuiltInRole")
-	RoleDefinitionTypeCustomRole  = RoleDefinitionType("CustomRole")
-)
-
-func (RoleDefinitionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleDefinitionType)(nil)).Elem()
-}
-
-func (e RoleDefinitionType) ToRoleDefinitionTypeOutput() RoleDefinitionTypeOutput {
-	return pulumi.ToOutput(e).(RoleDefinitionTypeOutput)
-}
-
-func (e RoleDefinitionType) ToRoleDefinitionTypeOutputWithContext(ctx context.Context) RoleDefinitionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RoleDefinitionTypeOutput)
-}
-
-func (e RoleDefinitionType) ToRoleDefinitionTypePtrOutput() RoleDefinitionTypePtrOutput {
-	return e.ToRoleDefinitionTypePtrOutputWithContext(context.Background())
-}
-
-func (e RoleDefinitionType) ToRoleDefinitionTypePtrOutputWithContext(ctx context.Context) RoleDefinitionTypePtrOutput {
-	return RoleDefinitionType(e).ToRoleDefinitionTypeOutputWithContext(ctx).ToRoleDefinitionTypePtrOutputWithContext(ctx)
-}
-
-func (e RoleDefinitionType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RoleDefinitionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RoleDefinitionType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RoleDefinitionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type RoleDefinitionTypeOutput struct{ *pulumi.OutputState }
-
-func (RoleDefinitionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleDefinitionType)(nil)).Elem()
-}
-
-func (o RoleDefinitionTypeOutput) ToRoleDefinitionTypeOutput() RoleDefinitionTypeOutput {
-	return o
-}
-
-func (o RoleDefinitionTypeOutput) ToRoleDefinitionTypeOutputWithContext(ctx context.Context) RoleDefinitionTypeOutput {
-	return o
-}
-
-func (o RoleDefinitionTypeOutput) ToRoleDefinitionTypePtrOutput() RoleDefinitionTypePtrOutput {
-	return o.ToRoleDefinitionTypePtrOutputWithContext(context.Background())
-}
-
-func (o RoleDefinitionTypeOutput) ToRoleDefinitionTypePtrOutputWithContext(ctx context.Context) RoleDefinitionTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleDefinitionType) *RoleDefinitionType {
-		return &v
-	}).(RoleDefinitionTypePtrOutput)
-}
-
-func (o RoleDefinitionTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o RoleDefinitionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoleDefinitionType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o RoleDefinitionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RoleDefinitionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoleDefinitionType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type RoleDefinitionTypePtrOutput struct{ *pulumi.OutputState }
-
-func (RoleDefinitionTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleDefinitionType)(nil)).Elem()
-}
-
-func (o RoleDefinitionTypePtrOutput) ToRoleDefinitionTypePtrOutput() RoleDefinitionTypePtrOutput {
-	return o
-}
-
-func (o RoleDefinitionTypePtrOutput) ToRoleDefinitionTypePtrOutputWithContext(ctx context.Context) RoleDefinitionTypePtrOutput {
-	return o
-}
-
-func (o RoleDefinitionTypePtrOutput) Elem() RoleDefinitionTypeOutput {
-	return o.ApplyT(func(v *RoleDefinitionType) RoleDefinitionType {
-		if v != nil {
-			return *v
-		}
-		var ret RoleDefinitionType
-		return ret
-	}).(RoleDefinitionTypeOutput)
-}
-
-func (o RoleDefinitionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RoleDefinitionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoleDefinitionType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// RoleDefinitionTypeInput is an input type that accepts RoleDefinitionTypeArgs and RoleDefinitionTypeOutput values.
-// You can construct a concrete instance of `RoleDefinitionTypeInput` via:
-//
-//	RoleDefinitionTypeArgs{...}
-type RoleDefinitionTypeInput interface {
-	pulumi.Input
-
-	ToRoleDefinitionTypeOutput() RoleDefinitionTypeOutput
-	ToRoleDefinitionTypeOutputWithContext(context.Context) RoleDefinitionTypeOutput
-}
-
-var roleDefinitionTypePtrType = reflect.TypeOf((**RoleDefinitionType)(nil)).Elem()
-
-type RoleDefinitionTypePtrInput interface {
-	pulumi.Input
-
-	ToRoleDefinitionTypePtrOutput() RoleDefinitionTypePtrOutput
-	ToRoleDefinitionTypePtrOutputWithContext(context.Context) RoleDefinitionTypePtrOutput
-}
-
-type roleDefinitionTypePtr string
-
-func RoleDefinitionTypePtr(v string) RoleDefinitionTypePtrInput {
-	return (*roleDefinitionTypePtr)(&v)
-}
-
-func (*roleDefinitionTypePtr) ElementType() reflect.Type {
-	return roleDefinitionTypePtrType
-}
-
-func (in *roleDefinitionTypePtr) ToRoleDefinitionTypePtrOutput() RoleDefinitionTypePtrOutput {
-	return pulumi.ToOutput(in).(RoleDefinitionTypePtrOutput)
-}
-
-func (in *roleDefinitionTypePtr) ToRoleDefinitionTypePtrOutputWithContext(ctx context.Context) RoleDefinitionTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RoleDefinitionTypePtrOutput)
-}
-
 // Describes the ServerVersion of an a MongoDB account.
 type ServerVersion string
 
@@ -470,38 +251,7 @@ const (
 	ServerVersion_3_6 = ServerVersion("3.6")
 )
 
-// Indicates the spatial type of index.
-type SpatialType string
-
-const (
-	SpatialTypePoint        = SpatialType("Point")
-	SpatialTypeLineString   = SpatialType("LineString")
-	SpatialTypePolygon      = SpatialType("Polygon")
-	SpatialTypeMultiPolygon = SpatialType("MultiPolygon")
-)
-
-// The operation the trigger is associated with
-type TriggerOperation string
-
-const (
-	TriggerOperationAll     = TriggerOperation("All")
-	TriggerOperationCreate  = TriggerOperation("Create")
-	TriggerOperationUpdate  = TriggerOperation("Update")
-	TriggerOperationDelete  = TriggerOperation("Delete")
-	TriggerOperationReplace = TriggerOperation("Replace")
-)
-
-// Type of the Trigger
-type TriggerType string
-
-const (
-	TriggerTypePre  = TriggerType("Pre")
-	TriggerTypePost = TriggerType("Post")
-)
-
 func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
-	pulumi.RegisterOutputType(RoleDefinitionTypeOutput{})
-	pulumi.RegisterOutputType(RoleDefinitionTypePtrOutput{})
 }

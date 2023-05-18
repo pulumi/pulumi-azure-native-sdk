@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a published Blueprint.
-//
-// Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
 type PublishedBlueprint struct {
 	pulumi.CustomResourceState
 

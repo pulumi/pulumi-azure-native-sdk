@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery Application Version that you want to create or update.
-// API Version: 2020-09-30.
+// API Version: 2022-03-03.
+// Previous API Version: 2020-09-30. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type GalleryApplicationVersion struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type GalleryApplicationVersion struct {
 	PublishingProfile GalleryApplicationVersionPublishingProfileResponseOutput `pulumi:"publishingProfile"`
 	// This is the replication status of the gallery image version.
 	ReplicationStatus ReplicationStatusResponseOutput `pulumi:"replicationStatus"`
+	// The safety profile of the Gallery Application Version.
+	SafetyProfile GalleryApplicationVersionSafetyProfileResponsePtrOutput `pulumi:"safetyProfile"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -122,6 +125,8 @@ type galleryApplicationVersionArgs struct {
 	PublishingProfile GalleryApplicationVersionPublishingProfile `pulumi:"publishingProfile"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The safety profile of the Gallery Application Version.
+	SafetyProfile *GalleryApplicationVersionSafetyProfile `pulumi:"safetyProfile"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -140,6 +145,8 @@ type GalleryApplicationVersionArgs struct {
 	PublishingProfile GalleryApplicationVersionPublishingProfileInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// The safety profile of the Gallery Application Version.
+	SafetyProfile GalleryApplicationVersionSafetyProfilePtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
 }
@@ -206,6 +213,13 @@ func (o GalleryApplicationVersionOutput) PublishingProfile() GalleryApplicationV
 // This is the replication status of the gallery image version.
 func (o GalleryApplicationVersionOutput) ReplicationStatus() ReplicationStatusResponseOutput {
 	return o.ApplyT(func(v *GalleryApplicationVersion) ReplicationStatusResponseOutput { return v.ReplicationStatus }).(ReplicationStatusResponseOutput)
+}
+
+// The safety profile of the Gallery Application Version.
+func (o GalleryApplicationVersionOutput) SafetyProfile() GalleryApplicationVersionSafetyProfileResponsePtrOutput {
+	return o.ApplyT(func(v *GalleryApplicationVersion) GalleryApplicationVersionSafetyProfileResponsePtrOutput {
+		return v.SafetyProfile
+	}).(GalleryApplicationVersionSafetyProfileResponsePtrOutput)
 }
 
 // Resource tags

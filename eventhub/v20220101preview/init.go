@@ -23,24 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:eventhub/v20220101preview:ApplicationGroup":
 		r = &ApplicationGroup{}
-	case "azure-native:eventhub/v20220101preview:Cluster":
-		r = &Cluster{}
-	case "azure-native:eventhub/v20220101preview:ConsumerGroup":
-		r = &ConsumerGroup{}
-	case "azure-native:eventhub/v20220101preview:DisasterRecoveryConfig":
-		r = &DisasterRecoveryConfig{}
-	case "azure-native:eventhub/v20220101preview:EventHub":
-		r = &EventHub{}
-	case "azure-native:eventhub/v20220101preview:EventHubAuthorizationRule":
-		r = &EventHubAuthorizationRule{}
-	case "azure-native:eventhub/v20220101preview:Namespace":
-		r = &Namespace{}
-	case "azure-native:eventhub/v20220101preview:NamespaceAuthorizationRule":
-		r = &NamespaceAuthorizationRule{}
-	case "azure-native:eventhub/v20220101preview:NamespaceNetworkRuleSet":
-		r = &NamespaceNetworkRuleSet{}
-	case "azure-native:eventhub/v20220101preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:eventhub/v20220101preview:SchemaRegistry":
 		r = &SchemaRegistry{}
 	default:

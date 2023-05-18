@@ -25,12 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Agreement{}
 	case "azure-native:logic/v20160601:Certificate":
 		r = &Certificate{}
-	case "azure-native:logic/v20160601:IntegrationAccount":
-		r = &IntegrationAccount{}
-	case "azure-native:logic/v20160601:IntegrationAccountAssembly":
-		r = &IntegrationAccountAssembly{}
-	case "azure-native:logic/v20160601:IntegrationAccountBatchConfiguration":
-		r = &IntegrationAccountBatchConfiguration{}
 	case "azure-native:logic/v20160601:Map":
 		r = &Map{}
 	case "azure-native:logic/v20160601:Partner":

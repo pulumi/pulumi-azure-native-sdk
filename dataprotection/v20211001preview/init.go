@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:dataprotection/v20211001preview:BackupInstance":
-		r = &BackupInstance{}
-	case "azure-native:dataprotection/v20211001preview:BackupPolicy":
-		r = &BackupPolicy{}
-	case "azure-native:dataprotection/v20211001preview:BackupVault":
-		r = &BackupVault{}
 	case "azure-native:dataprotection/v20211001preview:ResourceGuard":
 		r = &ResourceGuard{}
 	default:

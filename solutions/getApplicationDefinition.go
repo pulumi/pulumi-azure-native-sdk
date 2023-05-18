@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the managed application definition.
-// API Version: 2019-07-01.
+// API Version: 2021-07-01.
 func LookupApplicationDefinition(ctx *pulumi.Context, args *LookupApplicationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationDefinitionResult, error) {
 	var rv LookupApplicationDefinitionResult
 	err := ctx.Invoke("azure-native:solutions:getApplicationDefinition", args, &rv, opts...)
@@ -70,6 +70,8 @@ type LookupApplicationDefinitionResult struct {
 	Sku *SkuResponse `pulumi:"sku"`
 	// The storage account id for bring your own storage scenario.
 	StorageAccountId *string `pulumi:"storageAccountId"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -221,6 +223,11 @@ func (o LookupApplicationDefinitionResultOutput) Sku() SkuResponsePtrOutput {
 // The storage account id for bring your own storage scenario.
 func (o LookupApplicationDefinitionResultOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupApplicationDefinitionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

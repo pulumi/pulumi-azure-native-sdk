@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:cache/v20190701:FirewallRule":
-		r = &FirewallRule{}
-	case "azure-native:cache/v20190701:LinkedServer":
-		r = &LinkedServer{}
-	case "azure-native:cache/v20190701:PatchSchedule":
-		r = &PatchSchedule{}
 	case "azure-native:cache/v20190701:Redis":
 		r = &Redis{}
 	default:

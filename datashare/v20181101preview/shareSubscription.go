@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A share subscription data transfer object.
-//
-// Deprecated: Version 2018-11-01-preview will be removed in v2 of the provider.
 type ShareSubscription struct {
 	pulumi.CustomResourceState
 

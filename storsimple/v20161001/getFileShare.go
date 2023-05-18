@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified file share name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupFileShare(ctx *pulumi.Context, args *LookupFileShareArgs, opts ...pulumi.InvokeOption) (*LookupFileShareResult, error) {
 	var rv LookupFileShareResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getFileShare", args, &rv, opts...)

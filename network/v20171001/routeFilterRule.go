@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Route Filter Rule Resource
-//
-// Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
 type RouteFilterRule struct {
 	pulumi.CustomResourceState
 
@@ -174,6 +172,9 @@ func NewRouteFilterRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:RouteFilterRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteFilterRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an environment type.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ProjectEnvironmentType struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +67,9 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:ProjectEnvironmentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:ProjectEnvironmentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ProjectEnvironmentType
@@ -112,7 +116,7 @@ type projectEnvironmentTypeArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Defines whether this Environment Type can be used in this Project.
 	Status *string `pulumi:"status"`
@@ -136,7 +140,7 @@ type ProjectEnvironmentTypeArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the project.
 	ProjectName pulumi.StringInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Defines whether this Environment Type can be used in this Project.
 	Status pulumi.StringPtrInput

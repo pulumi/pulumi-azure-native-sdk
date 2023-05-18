@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConfigurationAssignment{}
 	case "azure-native:maintenance/v20210401preview:ConfigurationAssignmentParent":
 		r = &ConfigurationAssignmentParent{}
-	case "azure-native:maintenance/v20210401preview:MaintenanceConfiguration":
-		r = &MaintenanceConfiguration{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

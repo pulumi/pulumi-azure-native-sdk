@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BotConnection{}
 	case "azure-native:botservice:Channel":
 		r = &Channel{}
-	case "azure-native:botservice:EnterpriseChannel":
-		r = &EnterpriseChannel{}
 	case "azure-native:botservice:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	default:

@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:kusto/v20190907:AttachedDatabaseConfiguration":
-		r = &AttachedDatabaseConfiguration{}
-	case "azure-native:kusto/v20190907:Cluster":
-		r = &Cluster{}
 	case "azure-native:kusto/v20190907:EventGridDataConnection":
 		r = &EventGridDataConnection{}
 	case "azure-native:kusto/v20190907:EventHubDataConnection":

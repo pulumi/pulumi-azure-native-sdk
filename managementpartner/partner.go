@@ -12,6 +12,7 @@ import (
 
 // this is the management partner operations response
 // API Version: 2018-02-01.
+// Previous API Version: 2018-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Partner struct {
 	pulumi.CustomResourceState
 

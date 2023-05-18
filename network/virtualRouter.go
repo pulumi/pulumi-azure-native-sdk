@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // VirtualRouter Resource.
-// API Version: 2022-01-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2022-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type VirtualRouter struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +111,9 @@ func NewVirtualRouter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualRouter"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualRouter"),
 		},
 	})
 	opts = append(opts, aliases)

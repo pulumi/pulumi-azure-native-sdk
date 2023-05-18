@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +59,9 @@ func NewTagRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20220901preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230201preview:TagRule"),
 		},
 	})
 	opts = append(opts, aliases)

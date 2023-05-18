@@ -10,17 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The type of compute
-type ComputeType string
-
-const (
-	ComputeTypeAKS            = ComputeType("AKS")
-	ComputeTypeBatchAI        = ComputeType("BatchAI")
-	ComputeTypeDataFactory    = ComputeType("DataFactory")
-	ComputeTypeVirtualMachine = ComputeType("VirtualMachine")
-	ComputeTypeHDInsight      = ComputeType("HDInsight")
-)
-
 // The identity type.
 type ResourceIdentityType string
 

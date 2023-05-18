@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The agentPool resource definition
-// API Version: 2022-05-01-preview.
+// API Version: 2022-09-01-preview.
+// Previous API Version: 2022-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
@@ -63,29 +64,38 @@ func NewAgentPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProvisionedClustersName == nil {
-		return nil, errors.New("invalid value for required argument 'ProvisionedClustersName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Count) {
+	if args.ResourceName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceName'")
+	}
+	if args.Count == nil {
 		args.Count = pulumi.IntPtr(1)
 	}
-	if isZero(args.Mode) {
+	if args.Mode == nil {
 		args.Mode = pulumi.StringPtr("User")
-	}
-	if isZero(args.OsType) {
-		args.OsType = pulumi.StringPtr("Linux")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:agentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:AgentPool"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:agentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:agentPool"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource AgentPool
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice:agentPool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice:AgentPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +107,7 @@ func NewAgentPool(ctx *pulumi.Context,
 func GetAgentPool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AgentPoolState, opts ...pulumi.ResourceOption) (*AgentPool, error) {
 	var resource AgentPool
-	err := ctx.ReadResource("azure-native:hybridcontainerservice:agentPool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice:AgentPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -143,10 +153,10 @@ type agentPoolArgs struct {
 	NodeTaints []string `pulumi:"nodeTaints"`
 	// OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
 	OsType *string `pulumi:"osType"`
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName string `pulumi:"provisionedClustersName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName string `pulumi:"resourceName"`
 	// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
 	Status *AgentPoolProvisioningStatusStatus `pulumi:"status"`
 	// Resource tags
@@ -184,10 +194,10 @@ type AgentPoolArgs struct {
 	NodeTaints pulumi.StringArrayInput
 	// OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
 	OsType pulumi.StringPtrInput
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Parameter for the name of the provisioned cluster
+	ResourceName pulumi.StringInput
 	// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
 	Status AgentPoolProvisioningStatusStatusPtrInput
 	// Resource tags

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Agent Pool.
-//
-// Deprecated: Version 2019-02-01 will be removed in v2 of the provider.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
@@ -63,7 +61,7 @@ func NewAgentPool(ctx *pulumi.Context,
 	if args.VmSize == nil {
 		return nil, errors.New("invalid value for required argument 'VmSize'")
 	}
-	if isZero(args.Count) {
+	if args.Count == nil {
 		args.Count = pulumi.Int(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -201,6 +199,18 @@ func NewAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

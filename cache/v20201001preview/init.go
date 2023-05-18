@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:cache/v20201001preview:Database":
-		r = &Database{}
-	case "azure-native:cache/v20201001preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:cache/v20201001preview:RedisEnterprise":
 		r = &RedisEnterprise{}
 	default:

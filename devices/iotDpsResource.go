@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the provisioning service.
-// API Version: 2020-03-01.
+// API Version: 2022-12-12.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type IotDpsResource struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +25,14 @@ type IotDpsResource struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Service specific properties for a provisioning service
 	Properties IotDpsPropertiesDescriptionResponseOutput `pulumi:"properties"`
+	// The resource group of the resource.
+	Resourcegroup pulumi.StringPtrOutput `pulumi:"resourcegroup"`
 	// Sku info for a provisioning Service.
 	Sku IotDpsSkuInfoResponseOutput `pulumi:"sku"`
+	// The subscription id of the resource.
+	Subscriptionid pulumi.StringPtrOutput `pulumi:"subscriptionid"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
@@ -121,8 +128,12 @@ type iotDpsResourceArgs struct {
 	ProvisioningServiceName *string `pulumi:"provisioningServiceName"`
 	// Resource group identifier.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource group of the resource.
+	Resourcegroup *string `pulumi:"resourcegroup"`
 	// Sku info for a provisioning Service.
 	Sku IotDpsSkuInfo `pulumi:"sku"`
+	// The subscription id of the resource.
+	Subscriptionid *string `pulumi:"subscriptionid"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -137,8 +148,12 @@ type IotDpsResourceArgs struct {
 	ProvisioningServiceName pulumi.StringPtrInput
 	// Resource group identifier.
 	ResourceGroupName pulumi.StringInput
+	// The resource group of the resource.
+	Resourcegroup pulumi.StringPtrInput
 	// Sku info for a provisioning Service.
 	Sku IotDpsSkuInfoInput
+	// The subscription id of the resource.
+	Subscriptionid pulumi.StringPtrInput
 	// The resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -200,9 +215,24 @@ func (o IotDpsResourceOutput) Properties() IotDpsPropertiesDescriptionResponseOu
 	return o.ApplyT(func(v *IotDpsResource) IotDpsPropertiesDescriptionResponseOutput { return v.Properties }).(IotDpsPropertiesDescriptionResponseOutput)
 }
 
+// The resource group of the resource.
+func (o IotDpsResourceOutput) Resourcegroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IotDpsResource) pulumi.StringPtrOutput { return v.Resourcegroup }).(pulumi.StringPtrOutput)
+}
+
 // Sku info for a provisioning Service.
 func (o IotDpsResourceOutput) Sku() IotDpsSkuInfoResponseOutput {
 	return o.ApplyT(func(v *IotDpsResource) IotDpsSkuInfoResponseOutput { return v.Sku }).(IotDpsSkuInfoResponseOutput)
+}
+
+// The subscription id of the resource.
+func (o IotDpsResourceOutput) Subscriptionid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IotDpsResource) pulumi.StringPtrOutput { return v.Subscriptionid }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o IotDpsResourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *IotDpsResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

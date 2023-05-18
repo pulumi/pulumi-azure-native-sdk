@@ -11,8 +11,6 @@ import (
 )
 
 // Lists the notification hubs associated with a namespace.
-//
-// Deprecated: Version 2016-03-01 will be removed in v2 of the provider.
 func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubResult, error) {
 	var rv LookupNotificationHubResult
 	err := ctx.Invoke("azure-native:notificationhubs/v20160301:getNotificationHub", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,6 +64,9 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20220901preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230201preview:Monitor"),
 		},
 	})
 	opts = append(opts, aliases)

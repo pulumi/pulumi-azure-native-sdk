@@ -11,8 +11,6 @@ import (
 )
 
 // Get policy.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getPolicy", args, &rv, opts...)

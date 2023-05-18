@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API Version: 2022-12-12-preview.
+// Previous API Version: 2022-12-12-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type L3Network struct {
 	pulumi.CustomResourceState
 
@@ -78,13 +79,13 @@ func NewL3Network(ctx *pulumi.Context,
 	if args.Vlan == nil {
 		return nil, errors.New("invalid value for required argument 'Vlan'")
 	}
-	if isZero(args.HybridAksIpamEnabled) {
+	if args.HybridAksIpamEnabled == nil {
 		args.HybridAksIpamEnabled = pulumi.StringPtr("True")
 	}
-	if isZero(args.HybridAksPluginType) {
+	if args.HybridAksPluginType == nil {
 		args.HybridAksPluginType = pulumi.StringPtr("SRIOV")
 	}
-	if isZero(args.IpAllocationType) {
+	if args.IpAllocationType == nil {
 		args.IpAllocationType = pulumi.StringPtr("DualStack")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

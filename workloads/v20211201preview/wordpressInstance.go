@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,12 +49,6 @@ func NewWordpressInstance(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:workloads:WordpressInstance"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource WordpressInstance
 	err := ctx.RegisterResource("azure-native:workloads/v20211201preview:WordpressInstance", name, args, &resource, opts...)
 	if err != nil {

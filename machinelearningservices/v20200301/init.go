@@ -23,12 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:machinelearningservices/v20200301:LinkedWorkspace":
 		r = &LinkedWorkspace{}
-	case "azure-native:machinelearningservices/v20200301:MachineLearningCompute":
-		r = &MachineLearningCompute{}
-	case "azure-native:machinelearningservices/v20200301:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:machinelearningservices/v20200301:Workspace":
-		r = &Workspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

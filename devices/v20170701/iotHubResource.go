@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the IoT hub.
-//
-// Deprecated: Version 2017-07-01 will be removed in v2 of the provider.
 type IotHubResource struct {
 	pulumi.CustomResourceState
 
@@ -131,6 +129,9 @@ func NewIotHubResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20220430preview:IotHubResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:IotHubResource"),
 		},
 	})
 	opts = append(opts, aliases)

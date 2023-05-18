@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container group.
-//
-// Deprecated: Version 2017-12-01-preview will be removed in v2 of the provider.
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +108,9 @@ func NewContainerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20221001preview:ContainerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20230201preview:ContainerGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20230501:ContainerGroup"),

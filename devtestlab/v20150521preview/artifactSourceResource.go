@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties of an artifact source.
-//
-// Deprecated: Version 2015-05-21-preview will be removed in v2 of the provider.
 type ArtifactSourceResource struct {
 	pulumi.CustomResourceState
 

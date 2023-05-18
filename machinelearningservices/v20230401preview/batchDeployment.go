@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +78,12 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:BatchDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:BatchDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:BatchDeployment"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LinkedServer{}
 	case "azure-native:cache/v20200601:PatchSchedule":
 		r = &PatchSchedule{}
-	case "azure-native:cache/v20200601:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:cache/v20200601:Redis":
 		r = &Redis{}
 	default:

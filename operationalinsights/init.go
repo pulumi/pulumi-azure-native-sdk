@@ -31,8 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LinkedService{}
 	case "azure-native:operationalinsights:LinkedStorageAccount":
 		r = &LinkedStorageAccount{}
-	case "azure-native:operationalinsights:MachineGroup":
-		r = &MachineGroup{}
 	case "azure-native:operationalinsights:Query":
 		r = &Query{}
 	case "azure-native:operationalinsights:QueryPack":

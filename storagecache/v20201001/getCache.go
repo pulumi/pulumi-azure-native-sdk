@@ -11,8 +11,6 @@ import (
 )
 
 // Returns a Cache.
-//
-// Deprecated: Version 2020-10-01 will be removed in v2 of the provider.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
 	var rv LookupCacheResult
 	err := ctx.Invoke("azure-native:storagecache/v20201001:getCache", args, &rv, opts...)

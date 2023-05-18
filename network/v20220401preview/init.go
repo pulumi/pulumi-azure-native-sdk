@@ -21,36 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:network/v20220401preview:AdminRule":
-		r = &AdminRule{}
-	case "azure-native:network/v20220401preview:AdminRuleCollection":
-		r = &AdminRuleCollection{}
-	case "azure-native:network/v20220401preview:ConnectivityConfiguration":
-		r = &ConnectivityConfiguration{}
-	case "azure-native:network/v20220401preview:DefaultAdminRule":
-		r = &DefaultAdminRule{}
 	case "azure-native:network/v20220401preview:DefaultUserRule":
 		r = &DefaultUserRule{}
 	case "azure-native:network/v20220401preview:Endpoint":
 		r = &Endpoint{}
-	case "azure-native:network/v20220401preview:ManagementGroupNetworkManagerConnection":
-		r = &ManagementGroupNetworkManagerConnection{}
 	case "azure-native:network/v20220401preview:NetworkGroup":
 		r = &NetworkGroup{}
-	case "azure-native:network/v20220401preview:NetworkManager":
-		r = &NetworkManager{}
 	case "azure-native:network/v20220401preview:Profile":
 		r = &Profile{}
-	case "azure-native:network/v20220401preview:ScopeConnection":
-		r = &ScopeConnection{}
-	case "azure-native:network/v20220401preview:SecurityAdminConfiguration":
-		r = &SecurityAdminConfiguration{}
 	case "azure-native:network/v20220401preview:SecurityUserConfiguration":
 		r = &SecurityUserConfiguration{}
-	case "azure-native:network/v20220401preview:StaticMember":
-		r = &StaticMember{}
-	case "azure-native:network/v20220401preview:SubscriptionNetworkManagerConnection":
-		r = &SubscriptionNetworkManagerConnection{}
 	case "azure-native:network/v20220401preview:TrafficManagerUserMetricsKey":
 		r = &TrafficManagerUserMetricsKey{}
 	case "azure-native:network/v20220401preview:UserRule":

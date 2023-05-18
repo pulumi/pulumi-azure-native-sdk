@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about a dedicated host group.
-// API Version: 2020-12-01.
+// API Version: 2022-11-01.
 func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostGroupResult, error) {
 	var rv LookupDedicatedHostGroupResult
 	err := ctx.Invoke("azure-native:compute:getDedicatedHostGroup", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGrou
 }
 
 type LookupDedicatedHostGroupArgs struct {
-	// The expand expression to apply on the operation. The response shows the list of instance view of the dedicated hosts under the dedicated host group.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated hosts under the dedicated host group. 'UserData' is not supported for dedicated host group.
 	Expand *string `pulumi:"expand"`
 	// The name of the dedicated host group.
 	HostGroupName string `pulumi:"hostGroupName"`
@@ -32,6 +32,8 @@ type LookupDedicatedHostGroupArgs struct {
 
 // Specifies information about the dedicated host group that the dedicated hosts should be assigned to. <br><br> Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
 type LookupDedicatedHostGroupResult struct {
+	// Enables or disables a capability on the dedicated host group.<br><br>Minimum api-version: 2022-03-01.
+	AdditionalCapabilities *DedicatedHostGroupPropertiesResponseAdditionalCapabilities `pulumi:"additionalCapabilities"`
 	// A list of references to all dedicated hosts in the dedicated host group.
 	Hosts []SubResourceReadOnlyResponse `pulumi:"hosts"`
 	// Resource Id
@@ -68,7 +70,7 @@ func LookupDedicatedHostGroupOutput(ctx *pulumi.Context, args LookupDedicatedHos
 }
 
 type LookupDedicatedHostGroupOutputArgs struct {
-	// The expand expression to apply on the operation. The response shows the list of instance view of the dedicated hosts under the dedicated host group.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated hosts under the dedicated host group. 'UserData' is not supported for dedicated host group.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the dedicated host group.
 	HostGroupName pulumi.StringInput `pulumi:"hostGroupName"`
@@ -93,6 +95,13 @@ func (o LookupDedicatedHostGroupResultOutput) ToLookupDedicatedHostGroupResultOu
 
 func (o LookupDedicatedHostGroupResultOutput) ToLookupDedicatedHostGroupResultOutputWithContext(ctx context.Context) LookupDedicatedHostGroupResultOutput {
 	return o
+}
+
+// Enables or disables a capability on the dedicated host group.<br><br>Minimum api-version: 2022-03-01.
+func (o LookupDedicatedHostGroupResultOutput) AdditionalCapabilities() DedicatedHostGroupPropertiesResponseAdditionalCapabilitiesPtrOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) *DedicatedHostGroupPropertiesResponseAdditionalCapabilities {
+		return v.AdditionalCapabilities
+	}).(DedicatedHostGroupPropertiesResponseAdditionalCapabilitiesPtrOutput)
 }
 
 // A list of references to all dedicated hosts in the dedicated host group.

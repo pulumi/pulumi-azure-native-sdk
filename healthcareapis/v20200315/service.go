@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the service.
-//
-// Deprecated: Version 2020-03-15 will be removed in v2 of the provider.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +82,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:Service"),
 		},
 	})
 	opts = append(opts, aliases)

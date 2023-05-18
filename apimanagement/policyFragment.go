@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Policy fragment contract details.
-// API Version: 2021-12-01-preview.
+// API Version: 2022-08-01.
+// Previous API Version: 2021-12-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PolicyFragment struct {
 	pulumi.CustomResourceState
 
@@ -44,7 +45,7 @@ func NewPolicyFragment(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
-	if isZero(args.Format) {
+	if args.Format == nil {
 		args.Format = pulumi.StringPtr("xml")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -56,6 +57,9 @@ func NewPolicyFragment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:PolicyFragment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:PolicyFragment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -97,7 +101,7 @@ type policyFragmentArgs struct {
 	Format *string `pulumi:"format"`
 	// A resource identifier.
 	Id *string `pulumi:"id"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -113,7 +117,7 @@ type PolicyFragmentArgs struct {
 	Format pulumi.StringPtrInput
 	// A resource identifier.
 	Id pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput

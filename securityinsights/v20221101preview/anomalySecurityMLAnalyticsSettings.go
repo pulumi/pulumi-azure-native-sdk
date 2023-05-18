@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,6 +124,9 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:AnomalySecurityMLAnalyticsSettings"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:AnomalySecurityMLAnalyticsSettings"),

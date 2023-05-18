@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class representing a Domains resource.
-// API Version: 2021-10-01-preview.
+// API Version: 2023-03-01-preview.
+// Previous API Version: 2021-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -38,8 +39,6 @@ type Domain struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Describes whether user engagement tracking is enabled or disabled.
 	UserEngagementTracking pulumi.StringPtrOutput `pulumi:"userEngagementTracking"`
-	// Collection of valid sender usernames. This is a key-value pair where key=username and value=display name.
-	ValidSenderUsernames pulumi.StringMapOutput `pulumi:"validSenderUsernames"`
 	// List of DnsRecord
 	VerificationRecords DomainPropertiesResponseVerificationRecordsOutput `pulumi:"verificationRecords"`
 	// List of VerificationStatusRecord
@@ -68,6 +67,9 @@ func NewDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20220701preview:Domain"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230301preview:Domain"),
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230331:Domain"),
@@ -120,8 +122,6 @@ type domainArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Describes whether user engagement tracking is enabled or disabled.
 	UserEngagementTracking *string `pulumi:"userEngagementTracking"`
-	// Collection of valid sender usernames. This is a key-value pair where key=username and value=display name.
-	ValidSenderUsernames map[string]string `pulumi:"validSenderUsernames"`
 }
 
 // The set of arguments for constructing a Domain resource.
@@ -140,8 +140,6 @@ type DomainArgs struct {
 	Tags pulumi.StringMapInput
 	// Describes whether user engagement tracking is enabled or disabled.
 	UserEngagementTracking pulumi.StringPtrInput
-	// Collection of valid sender usernames. This is a key-value pair where key=username and value=display name.
-	ValidSenderUsernames pulumi.StringMapInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {
@@ -234,11 +232,6 @@ func (o DomainOutput) Type() pulumi.StringOutput {
 // Describes whether user engagement tracking is enabled or disabled.
 func (o DomainOutput) UserEngagementTracking() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.UserEngagementTracking }).(pulumi.StringPtrOutput)
-}
-
-// Collection of valid sender usernames. This is a key-value pair where key=username and value=display name.
-func (o DomainOutput) ValidSenderUsernames() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.ValidSenderUsernames }).(pulumi.StringMapOutput)
 }
 
 // List of DnsRecord

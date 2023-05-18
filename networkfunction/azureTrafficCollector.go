@@ -7,21 +7,22 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Traffic Collector resource.
-// API Version: 2022-05-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type AzureTrafficCollector struct {
 	pulumi.CustomResourceState
 
 	// Collector Policies for Azure Traffic Collector.
-	CollectorPolicies CollectorPolicyResponseArrayOutput `pulumi:"collectorPolicies"`
+	CollectorPolicies ResourceReferenceResponseArrayOutput `pulumi:"collectorPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource location.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the application rule collection resource.
@@ -95,8 +96,6 @@ func (AzureTrafficCollectorState) ElementType() reflect.Type {
 type azureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName *string `pulumi:"azureTrafficCollectorName"`
-	// Collector Policies for Azure Traffic Collector.
-	CollectorPolicies []CollectorPolicyType `pulumi:"collectorPolicies"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
@@ -109,8 +108,6 @@ type azureTrafficCollectorArgs struct {
 type AzureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName pulumi.StringPtrInput
-	// Collector Policies for Azure Traffic Collector.
-	CollectorPolicies CollectorPolicyTypeArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// The name of the resource group.
@@ -157,8 +154,8 @@ func (o AzureTrafficCollectorOutput) ToAzureTrafficCollectorOutputWithContext(ct
 }
 
 // Collector Policies for Azure Traffic Collector.
-func (o AzureTrafficCollectorOutput) CollectorPolicies() CollectorPolicyResponseArrayOutput {
-	return o.ApplyT(func(v *AzureTrafficCollector) CollectorPolicyResponseArrayOutput { return v.CollectorPolicies }).(CollectorPolicyResponseArrayOutput)
+func (o AzureTrafficCollectorOutput) CollectorPolicies() ResourceReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *AzureTrafficCollector) ResourceReferenceResponseArrayOutput { return v.CollectorPolicies }).(ResourceReferenceResponseArrayOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -167,8 +164,8 @@ func (o AzureTrafficCollectorOutput) Etag() pulumi.StringOutput {
 }
 
 // Resource location.
-func (o AzureTrafficCollectorOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o AzureTrafficCollectorOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Resource name.

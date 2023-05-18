@@ -59,14 +59,6 @@ const (
 	RecurrenceIntervalDay  = RecurrenceInterval("Day")
 )
 
-// Share kind.
-type ShareKind string
-
-const (
-	ShareKindCopyBased = ShareKind("CopyBased")
-	ShareKindInPlace   = ShareKind("InPlace")
-)
-
 // Synchronization mode
 type SynchronizationMode string
 
@@ -87,13 +79,6 @@ type TriggerKind string
 
 const (
 	TriggerKindScheduleBased = TriggerKind("ScheduleBased")
-)
-
-// Identity Type
-type Type string
-
-const (
-	TypeSystemAssigned = Type("SystemAssigned")
 )
 
 func init() {

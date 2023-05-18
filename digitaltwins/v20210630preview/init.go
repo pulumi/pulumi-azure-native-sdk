@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:digitaltwins/v20210630preview:DigitalTwin":
-		r = &DigitalTwin{}
-	case "azure-native:digitaltwins/v20210630preview:DigitalTwinsEndpoint":
-		r = &DigitalTwinsEndpoint{}
-	case "azure-native:digitaltwins/v20210630preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:digitaltwins/v20210630preview:TimeSeriesDatabaseConnection":
 		r = &TimeSeriesDatabaseConnection{}
 	default:

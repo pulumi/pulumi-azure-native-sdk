@@ -11,8 +11,6 @@ import (
 )
 
 // Obtains the details of a suppression.
-//
-// Deprecated: Version 2016-07-12-preview will be removed in v2 of the provider.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	var rv LookupSuppressionResult
 	err := ctx.Invoke("azure-native:advisor/v20160712preview:getSuppression", args, &rv, opts...)

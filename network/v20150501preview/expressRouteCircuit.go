@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ExpressRouteCircuit resource
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 type ExpressRouteCircuit struct {
 	pulumi.CustomResourceState
 
@@ -193,6 +191,9 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuit"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuit"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteCircuit
@@ -228,7 +229,7 @@ func (ExpressRouteCircuitState) ElementType() reflect.Type {
 
 type expressRouteCircuitArgs struct {
 	// Gets or sets list of authorizations
-	Authorizations []ExpressRouteCircuitAuthorizationType `pulumi:"authorizations"`
+	Authorizations []ExpressRouteCircuitAuthorization `pulumi:"authorizations"`
 	// The name of the circuit.
 	CircuitName string `pulumi:"circuitName"`
 	// Gets or sets CircuitProvisioningState state of the resource
@@ -236,7 +237,7 @@ type expressRouteCircuitArgs struct {
 	// Resource location
 	Location *string `pulumi:"location"`
 	// Gets or sets list of peerings
-	Peerings []ExpressRouteCircuitPeeringType `pulumi:"peerings"`
+	Peerings []ExpressRouteCircuitPeering `pulumi:"peerings"`
 	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The name of the resource group.
@@ -258,7 +259,7 @@ type expressRouteCircuitArgs struct {
 // The set of arguments for constructing a ExpressRouteCircuit resource.
 type ExpressRouteCircuitArgs struct {
 	// Gets or sets list of authorizations
-	Authorizations ExpressRouteCircuitAuthorizationTypeArrayInput
+	Authorizations ExpressRouteCircuitAuthorizationArrayInput
 	// The name of the circuit.
 	CircuitName pulumi.StringInput
 	// Gets or sets CircuitProvisioningState state of the resource
@@ -266,7 +267,7 @@ type ExpressRouteCircuitArgs struct {
 	// Resource location
 	Location pulumi.StringPtrInput
 	// Gets or sets list of peerings
-	Peerings ExpressRouteCircuitPeeringTypeArrayInput
+	Peerings ExpressRouteCircuitPeeringArrayInput
 	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
 	ProvisioningState pulumi.StringPtrInput
 	// The name of the resource group.

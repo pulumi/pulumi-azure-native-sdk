@@ -21,26 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:customerinsights/v20170101:Connector":
-		r = &Connector{}
-	case "azure-native:customerinsights/v20170101:ConnectorMapping":
-		r = &ConnectorMapping{}
-	case "azure-native:customerinsights/v20170101:Hub":
-		r = &Hub{}
-	case "azure-native:customerinsights/v20170101:Kpi":
-		r = &Kpi{}
 	case "azure-native:customerinsights/v20170101:Link":
 		r = &Link{}
-	case "azure-native:customerinsights/v20170101:Profile":
-		r = &Profile{}
-	case "azure-native:customerinsights/v20170101:Relationship":
-		r = &Relationship{}
 	case "azure-native:customerinsights/v20170101:RelationshipLink":
 		r = &RelationshipLink{}
-	case "azure-native:customerinsights/v20170101:RoleAssignment":
-		r = &RoleAssignment{}
-	case "azure-native:customerinsights/v20170101:View":
-		r = &View{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:botservice/v20210501preview:Bot":
-		r = &Bot{}
-	case "azure-native:botservice/v20210501preview:BotConnection":
-		r = &BotConnection{}
-	case "azure-native:botservice/v20210501preview:Channel":
-		r = &Channel{}
 	case "azure-native:botservice/v20210501preview:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	default:

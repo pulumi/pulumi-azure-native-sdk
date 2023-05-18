@@ -11,8 +11,6 @@ import (
 )
 
 // VNETInfo contract. This contract is public and is a stripped down version of VNETInfoInternal
-//
-// Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
 func LookupSiteVNETConnectionSlot(ctx *pulumi.Context, args *LookupSiteVNETConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupSiteVNETConnectionSlotResult, error) {
 	var rv LookupSiteVNETConnectionSlotResult
 	err := ctx.Invoke("azure-native:web/v20150801:getSiteVNETConnectionSlot", args, &rv, opts...)

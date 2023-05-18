@@ -113,8 +113,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SyncGroup{}
 	case "azure-native:sql/v20201101preview:SyncMember":
 		r = &SyncMember{}
-	case "azure-native:sql/v20201101preview:TransparentDataEncryption":
-		r = &TransparentDataEncryption{}
 	case "azure-native:sql/v20201101preview:VirtualNetworkRule":
 		r = &VirtualNetworkRule{}
 	case "azure-native:sql/v20201101preview:WorkloadClassifier":

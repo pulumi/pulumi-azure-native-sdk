@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +88,9 @@ func NewVirtualHubIpConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:VirtualHubIpConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualHubIpConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

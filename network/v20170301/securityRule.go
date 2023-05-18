@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network security rule.
-//
-// Deprecated: Version 2017-03-01 will be removed in v2 of the provider.
 type SecurityRule struct {
 	pulumi.CustomResourceState
 
@@ -203,6 +201,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:SecurityRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:SecurityRule"),
 		},
 	})
 	opts = append(opts, aliases)

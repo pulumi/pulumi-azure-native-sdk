@@ -11,8 +11,6 @@ import (
 )
 
 // Get virtual machine.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getVirtualMachine", args, &rv, opts...)

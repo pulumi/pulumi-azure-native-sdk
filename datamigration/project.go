@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A project resource
-// API Version: 2018-04-19.
+// API Version: 2021-06-30.
+// Previous API Version: 2018-04-19. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -30,6 +31,8 @@ type Project struct {
 	SourceConnectionInfo pulumi.AnyOutput `pulumi:"sourceConnectionInfo"`
 	// Source platform for the project
 	SourcePlatform pulumi.StringOutput `pulumi:"sourcePlatform"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Information for connecting to target
@@ -237,6 +240,11 @@ func (o ProjectOutput) SourceConnectionInfo() pulumi.AnyOutput {
 // Source platform for the project
 func (o ProjectOutput) SourcePlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SourcePlatform }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ProjectOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Project) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

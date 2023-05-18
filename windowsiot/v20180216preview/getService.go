@@ -11,8 +11,6 @@ import (
 )
 
 // Get the non-security related metadata of a Windows IoT Device Service.
-//
-// Deprecated: Version 2018-02-16-preview will be removed in v2 of the provider.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:windowsiot/v20180216preview:getService", args, &rv, opts...)

@@ -1694,7 +1694,7 @@ func (val *ArcAgentProfile) Defaults() *ArcAgentProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentAutoUpgrade) {
+	if tmp.AgentAutoUpgrade == nil {
 		agentAutoUpgrade_ := "Enabled"
 		tmp.AgentAutoUpgrade = &agentAutoUpgrade_
 	}
@@ -1726,7 +1726,7 @@ func (val *ArcAgentProfileArgs) Defaults() *ArcAgentProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentAutoUpgrade) {
+	if tmp.AgentAutoUpgrade == nil {
 		tmp.AgentAutoUpgrade = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -1877,7 +1877,7 @@ func (val *ArcAgentProfileResponse) Defaults() *ArcAgentProfileResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AgentAutoUpgrade) {
+	if tmp.AgentAutoUpgrade == nil {
 		agentAutoUpgrade_ := "Enabled"
 		tmp.AgentAutoUpgrade = &agentAutoUpgrade_
 	}
@@ -3031,17 +3031,13 @@ func (val *ControlPlaneProfile) Defaults() *ControlPlaneProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
 	}
 	return &tmp
 }
@@ -3097,14 +3093,11 @@ func (val *ControlPlaneProfileArgs) Defaults() *ControlPlaneProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("User")
-	}
-	if isZero(tmp.OsType) {
-		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
 }
@@ -3477,17 +3470,13 @@ func (val *ControlPlaneProfileResponse) Defaults() *ControlPlaneProfileResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
 	}
 	return &tmp
 }
@@ -4738,17 +4727,13 @@ func (val *LoadBalancerProfile) Defaults() *LoadBalancerProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
 	}
 	return &tmp
 }
@@ -4802,14 +4787,11 @@ func (val *LoadBalancerProfileArgs) Defaults() *LoadBalancerProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("User")
-	}
-	if isZero(tmp.OsType) {
-		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
 }
@@ -5163,17 +5145,13 @@ func (val *LoadBalancerProfileResponse) Defaults() *LoadBalancerProfileResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
 	}
 	return &tmp
 }
@@ -5463,17 +5441,13 @@ func (val *NamedAgentPoolProfile) Defaults() *NamedAgentPoolProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
 	}
 	return &tmp
 }
@@ -5525,14 +5499,11 @@ func (val *NamedAgentPoolProfileArgs) Defaults() *NamedAgentPoolProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("User")
-	}
-	if isZero(tmp.OsType) {
-		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
 }
@@ -5709,17 +5680,13 @@ func (val *NamedAgentPoolProfileResponse) Defaults() *NamedAgentPoolProfileRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "User"
 		tmp.Mode = &mode_
-	}
-	if isZero(tmp.OsType) {
-		osType_ := "Linux"
-		tmp.OsType = &osType_
 	}
 	return &tmp
 }
@@ -5852,11 +5819,11 @@ func (val *NetworkProfile) Defaults() *NetworkProfile {
 	tmp := *val
 	tmp.LoadBalancerProfile = tmp.LoadBalancerProfile.Defaults()
 
-	if isZero(tmp.LoadBalancerSku) {
+	if tmp.LoadBalancerSku == nil {
 		loadBalancerSku_ := "unmanaged"
 		tmp.LoadBalancerSku = &loadBalancerSku_
 	}
-	if isZero(tmp.NetworkPolicy) {
+	if tmp.NetworkPolicy == nil {
 		networkPolicy_ := "calico"
 		tmp.NetworkPolicy = &networkPolicy_
 	}
@@ -5901,10 +5868,10 @@ func (val *NetworkProfileArgs) Defaults() *NetworkProfileArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.LoadBalancerSku) {
+	if tmp.LoadBalancerSku == nil {
 		tmp.LoadBalancerSku = pulumi.StringPtr("unmanaged")
 	}
-	if isZero(tmp.NetworkPolicy) {
+	if tmp.NetworkPolicy == nil {
 		tmp.NetworkPolicy = pulumi.StringPtr("calico")
 	}
 	return &tmp
@@ -6159,11 +6126,11 @@ func (val *NetworkProfileResponse) Defaults() *NetworkProfileResponse {
 	tmp := *val
 	tmp.LoadBalancerProfile = tmp.LoadBalancerProfile.Defaults()
 
-	if isZero(tmp.LoadBalancerSku) {
+	if tmp.LoadBalancerSku == nil {
 		loadBalancerSku_ := "unmanaged"
 		tmp.LoadBalancerSku = &loadBalancerSku_
 	}
-	if isZero(tmp.NetworkPolicy) {
+	if tmp.NetworkPolicy == nil {
 		networkPolicy_ := "calico"
 		tmp.NetworkPolicy = &networkPolicy_
 	}
@@ -9809,7 +9776,13 @@ func (o VirtualNetworksExtendedLocationPtrOutput) Type() pulumi.StringPtrOutput 
 
 // HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
 type VirtualNetworksProperties struct {
+	// Address of the DNS servers associated with the network
+	DnsServers []string `pulumi:"dnsServers"`
+	// Address of the Gateway associated with the network
+	Gateway          *string                                    `pulumi:"gateway"`
 	InfraVnetProfile *VirtualNetworksPropertiesInfraVnetProfile `pulumi:"infraVnetProfile"`
+	// IP Address Prefix of the network
+	IpAddressPrefix *string `pulumi:"ipAddressPrefix"`
 	// Virtual IP Pool for Kubernetes
 	VipPool []VirtualNetworksPropertiesVipPool `pulumi:"vipPool"`
 	// IP Pool for Virtual Machines
@@ -9829,7 +9802,13 @@ type VirtualNetworksPropertiesInput interface {
 
 // HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
 type VirtualNetworksPropertiesArgs struct {
+	// Address of the DNS servers associated with the network
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Address of the Gateway associated with the network
+	Gateway          pulumi.StringPtrInput                             `pulumi:"gateway"`
 	InfraVnetProfile VirtualNetworksPropertiesInfraVnetProfilePtrInput `pulumi:"infraVnetProfile"`
+	// IP Address Prefix of the network
+	IpAddressPrefix pulumi.StringPtrInput `pulumi:"ipAddressPrefix"`
 	// Virtual IP Pool for Kubernetes
 	VipPool VirtualNetworksPropertiesVipPoolArrayInput `pulumi:"vipPool"`
 	// IP Pool for Virtual Machines
@@ -9914,10 +9893,25 @@ func (o VirtualNetworksPropertiesOutput) ToVirtualNetworksPropertiesPtrOutputWit
 	}).(VirtualNetworksPropertiesPtrOutput)
 }
 
+// Address of the DNS servers associated with the network
+func (o VirtualNetworksPropertiesOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworksProperties) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Address of the Gateway associated with the network
+func (o VirtualNetworksPropertiesOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksProperties) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualNetworksPropertiesOutput) InfraVnetProfile() VirtualNetworksPropertiesInfraVnetProfilePtrOutput {
 	return o.ApplyT(func(v VirtualNetworksProperties) *VirtualNetworksPropertiesInfraVnetProfile {
 		return v.InfraVnetProfile
 	}).(VirtualNetworksPropertiesInfraVnetProfilePtrOutput)
+}
+
+// IP Address Prefix of the network
+func (o VirtualNetworksPropertiesOutput) IpAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksProperties) *string { return v.IpAddressPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Virtual IP Pool for Kubernetes
@@ -9954,6 +9948,26 @@ func (o VirtualNetworksPropertiesPtrOutput) Elem() VirtualNetworksPropertiesOutp
 	}).(VirtualNetworksPropertiesOutput)
 }
 
+// Address of the DNS servers associated with the network
+func (o VirtualNetworksPropertiesPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworksProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Address of the Gateway associated with the network
+func (o VirtualNetworksPropertiesPtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworksProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualNetworksPropertiesPtrOutput) InfraVnetProfile() VirtualNetworksPropertiesInfraVnetProfilePtrOutput {
 	return o.ApplyT(func(v *VirtualNetworksProperties) *VirtualNetworksPropertiesInfraVnetProfile {
 		if v == nil {
@@ -9961,6 +9975,16 @@ func (o VirtualNetworksPropertiesPtrOutput) InfraVnetProfile() VirtualNetworksPr
 		}
 		return v.InfraVnetProfile
 	}).(VirtualNetworksPropertiesInfraVnetProfilePtrOutput)
+}
+
+// IP Address Prefix of the network
+func (o VirtualNetworksPropertiesPtrOutput) IpAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworksProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 // Virtual IP Pool for Kubernetes
@@ -10164,8 +10188,8 @@ func (o VirtualNetworksPropertiesHciPtrOutput) MocVnetName() pulumi.StringPtrOut
 type VirtualNetworksPropertiesInfraVnetProfile struct {
 	// Infra network profile for HCI platform
 	Hci *VirtualNetworksPropertiesHci `pulumi:"hci"`
-	// Infra network profile for KubeVirt platform
-	Kubevirt *VirtualNetworksPropertiesKubevirt `pulumi:"kubevirt"`
+	// Infra network profile for the NetworkCloud platform
+	NetworkCloud *VirtualNetworksPropertiesNetworkCloud `pulumi:"networkCloud"`
 	// Infra network profile for VMware platform
 	Vmware *VirtualNetworksPropertiesVmware `pulumi:"vmware"`
 }
@@ -10184,8 +10208,8 @@ type VirtualNetworksPropertiesInfraVnetProfileInput interface {
 type VirtualNetworksPropertiesInfraVnetProfileArgs struct {
 	// Infra network profile for HCI platform
 	Hci VirtualNetworksPropertiesHciPtrInput `pulumi:"hci"`
-	// Infra network profile for KubeVirt platform
-	Kubevirt VirtualNetworksPropertiesKubevirtPtrInput `pulumi:"kubevirt"`
+	// Infra network profile for the NetworkCloud platform
+	NetworkCloud VirtualNetworksPropertiesNetworkCloudPtrInput `pulumi:"networkCloud"`
 	// Infra network profile for VMware platform
 	Vmware VirtualNetworksPropertiesVmwarePtrInput `pulumi:"vmware"`
 }
@@ -10272,11 +10296,11 @@ func (o VirtualNetworksPropertiesInfraVnetProfileOutput) Hci() VirtualNetworksPr
 	return o.ApplyT(func(v VirtualNetworksPropertiesInfraVnetProfile) *VirtualNetworksPropertiesHci { return v.Hci }).(VirtualNetworksPropertiesHciPtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-func (o VirtualNetworksPropertiesInfraVnetProfileOutput) Kubevirt() VirtualNetworksPropertiesKubevirtPtrOutput {
-	return o.ApplyT(func(v VirtualNetworksPropertiesInfraVnetProfile) *VirtualNetworksPropertiesKubevirt {
-		return v.Kubevirt
-	}).(VirtualNetworksPropertiesKubevirtPtrOutput)
+// Infra network profile for the NetworkCloud platform
+func (o VirtualNetworksPropertiesInfraVnetProfileOutput) NetworkCloud() VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksPropertiesInfraVnetProfile) *VirtualNetworksPropertiesNetworkCloud {
+		return v.NetworkCloud
+	}).(VirtualNetworksPropertiesNetworkCloudPtrOutput)
 }
 
 // Infra network profile for VMware platform
@@ -10318,14 +10342,14 @@ func (o VirtualNetworksPropertiesInfraVnetProfilePtrOutput) Hci() VirtualNetwork
 	}).(VirtualNetworksPropertiesHciPtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-func (o VirtualNetworksPropertiesInfraVnetProfilePtrOutput) Kubevirt() VirtualNetworksPropertiesKubevirtPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworksPropertiesInfraVnetProfile) *VirtualNetworksPropertiesKubevirt {
+// Infra network profile for the NetworkCloud platform
+func (o VirtualNetworksPropertiesInfraVnetProfilePtrOutput) NetworkCloud() VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworksPropertiesInfraVnetProfile) *VirtualNetworksPropertiesNetworkCloud {
 		if v == nil {
 			return nil
 		}
-		return v.Kubevirt
-	}).(VirtualNetworksPropertiesKubevirtPtrOutput)
+		return v.NetworkCloud
+	}).(VirtualNetworksPropertiesNetworkCloudPtrOutput)
 }
 
 // Infra network profile for VMware platform
@@ -10338,143 +10362,143 @@ func (o VirtualNetworksPropertiesInfraVnetProfilePtrOutput) Vmware() VirtualNetw
 	}).(VirtualNetworksPropertiesVmwarePtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-type VirtualNetworksPropertiesKubevirt struct {
-	// Name of the network in KubeVirt
-	VnetName *string `pulumi:"vnetName"`
+// Infra network profile for the NetworkCloud platform
+type VirtualNetworksPropertiesNetworkCloud struct {
+	// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+	NetworkId *string `pulumi:"networkId"`
 }
 
-// VirtualNetworksPropertiesKubevirtInput is an input type that accepts VirtualNetworksPropertiesKubevirtArgs and VirtualNetworksPropertiesKubevirtOutput values.
-// You can construct a concrete instance of `VirtualNetworksPropertiesKubevirtInput` via:
+// VirtualNetworksPropertiesNetworkCloudInput is an input type that accepts VirtualNetworksPropertiesNetworkCloudArgs and VirtualNetworksPropertiesNetworkCloudOutput values.
+// You can construct a concrete instance of `VirtualNetworksPropertiesNetworkCloudInput` via:
 //
-//	VirtualNetworksPropertiesKubevirtArgs{...}
-type VirtualNetworksPropertiesKubevirtInput interface {
+//	VirtualNetworksPropertiesNetworkCloudArgs{...}
+type VirtualNetworksPropertiesNetworkCloudInput interface {
 	pulumi.Input
 
-	ToVirtualNetworksPropertiesKubevirtOutput() VirtualNetworksPropertiesKubevirtOutput
-	ToVirtualNetworksPropertiesKubevirtOutputWithContext(context.Context) VirtualNetworksPropertiesKubevirtOutput
+	ToVirtualNetworksPropertiesNetworkCloudOutput() VirtualNetworksPropertiesNetworkCloudOutput
+	ToVirtualNetworksPropertiesNetworkCloudOutputWithContext(context.Context) VirtualNetworksPropertiesNetworkCloudOutput
 }
 
-// Infra network profile for KubeVirt platform
-type VirtualNetworksPropertiesKubevirtArgs struct {
-	// Name of the network in KubeVirt
-	VnetName pulumi.StringPtrInput `pulumi:"vnetName"`
+// Infra network profile for the NetworkCloud platform
+type VirtualNetworksPropertiesNetworkCloudArgs struct {
+	// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
 }
 
-func (VirtualNetworksPropertiesKubevirtArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworksPropertiesKubevirt)(nil)).Elem()
+func (VirtualNetworksPropertiesNetworkCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworksPropertiesNetworkCloud)(nil)).Elem()
 }
 
-func (i VirtualNetworksPropertiesKubevirtArgs) ToVirtualNetworksPropertiesKubevirtOutput() VirtualNetworksPropertiesKubevirtOutput {
-	return i.ToVirtualNetworksPropertiesKubevirtOutputWithContext(context.Background())
+func (i VirtualNetworksPropertiesNetworkCloudArgs) ToVirtualNetworksPropertiesNetworkCloudOutput() VirtualNetworksPropertiesNetworkCloudOutput {
+	return i.ToVirtualNetworksPropertiesNetworkCloudOutputWithContext(context.Background())
 }
 
-func (i VirtualNetworksPropertiesKubevirtArgs) ToVirtualNetworksPropertiesKubevirtOutputWithContext(ctx context.Context) VirtualNetworksPropertiesKubevirtOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworksPropertiesKubevirtOutput)
+func (i VirtualNetworksPropertiesNetworkCloudArgs) ToVirtualNetworksPropertiesNetworkCloudOutputWithContext(ctx context.Context) VirtualNetworksPropertiesNetworkCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworksPropertiesNetworkCloudOutput)
 }
 
-func (i VirtualNetworksPropertiesKubevirtArgs) ToVirtualNetworksPropertiesKubevirtPtrOutput() VirtualNetworksPropertiesKubevirtPtrOutput {
-	return i.ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(context.Background())
+func (i VirtualNetworksPropertiesNetworkCloudArgs) ToVirtualNetworksPropertiesNetworkCloudPtrOutput() VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return i.ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(context.Background())
 }
 
-func (i VirtualNetworksPropertiesKubevirtArgs) ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesKubevirtPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworksPropertiesKubevirtOutput).ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(ctx)
+func (i VirtualNetworksPropertiesNetworkCloudArgs) ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworksPropertiesNetworkCloudOutput).ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(ctx)
 }
 
-// VirtualNetworksPropertiesKubevirtPtrInput is an input type that accepts VirtualNetworksPropertiesKubevirtArgs, VirtualNetworksPropertiesKubevirtPtr and VirtualNetworksPropertiesKubevirtPtrOutput values.
-// You can construct a concrete instance of `VirtualNetworksPropertiesKubevirtPtrInput` via:
+// VirtualNetworksPropertiesNetworkCloudPtrInput is an input type that accepts VirtualNetworksPropertiesNetworkCloudArgs, VirtualNetworksPropertiesNetworkCloudPtr and VirtualNetworksPropertiesNetworkCloudPtrOutput values.
+// You can construct a concrete instance of `VirtualNetworksPropertiesNetworkCloudPtrInput` via:
 //
-//	        VirtualNetworksPropertiesKubevirtArgs{...}
+//	        VirtualNetworksPropertiesNetworkCloudArgs{...}
 //
 //	or:
 //
 //	        nil
-type VirtualNetworksPropertiesKubevirtPtrInput interface {
+type VirtualNetworksPropertiesNetworkCloudPtrInput interface {
 	pulumi.Input
 
-	ToVirtualNetworksPropertiesKubevirtPtrOutput() VirtualNetworksPropertiesKubevirtPtrOutput
-	ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(context.Context) VirtualNetworksPropertiesKubevirtPtrOutput
+	ToVirtualNetworksPropertiesNetworkCloudPtrOutput() VirtualNetworksPropertiesNetworkCloudPtrOutput
+	ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(context.Context) VirtualNetworksPropertiesNetworkCloudPtrOutput
 }
 
-type virtualNetworksPropertiesKubevirtPtrType VirtualNetworksPropertiesKubevirtArgs
+type virtualNetworksPropertiesNetworkCloudPtrType VirtualNetworksPropertiesNetworkCloudArgs
 
-func VirtualNetworksPropertiesKubevirtPtr(v *VirtualNetworksPropertiesKubevirtArgs) VirtualNetworksPropertiesKubevirtPtrInput {
-	return (*virtualNetworksPropertiesKubevirtPtrType)(v)
+func VirtualNetworksPropertiesNetworkCloudPtr(v *VirtualNetworksPropertiesNetworkCloudArgs) VirtualNetworksPropertiesNetworkCloudPtrInput {
+	return (*virtualNetworksPropertiesNetworkCloudPtrType)(v)
 }
 
-func (*virtualNetworksPropertiesKubevirtPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworksPropertiesKubevirt)(nil)).Elem()
+func (*virtualNetworksPropertiesNetworkCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworksPropertiesNetworkCloud)(nil)).Elem()
 }
 
-func (i *virtualNetworksPropertiesKubevirtPtrType) ToVirtualNetworksPropertiesKubevirtPtrOutput() VirtualNetworksPropertiesKubevirtPtrOutput {
-	return i.ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(context.Background())
+func (i *virtualNetworksPropertiesNetworkCloudPtrType) ToVirtualNetworksPropertiesNetworkCloudPtrOutput() VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return i.ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(context.Background())
 }
 
-func (i *virtualNetworksPropertiesKubevirtPtrType) ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesKubevirtPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworksPropertiesKubevirtPtrOutput)
+func (i *virtualNetworksPropertiesNetworkCloudPtrType) ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworksPropertiesNetworkCloudPtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-type VirtualNetworksPropertiesKubevirtOutput struct{ *pulumi.OutputState }
+// Infra network profile for the NetworkCloud platform
+type VirtualNetworksPropertiesNetworkCloudOutput struct{ *pulumi.OutputState }
 
-func (VirtualNetworksPropertiesKubevirtOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworksPropertiesKubevirt)(nil)).Elem()
+func (VirtualNetworksPropertiesNetworkCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworksPropertiesNetworkCloud)(nil)).Elem()
 }
 
-func (o VirtualNetworksPropertiesKubevirtOutput) ToVirtualNetworksPropertiesKubevirtOutput() VirtualNetworksPropertiesKubevirtOutput {
+func (o VirtualNetworksPropertiesNetworkCloudOutput) ToVirtualNetworksPropertiesNetworkCloudOutput() VirtualNetworksPropertiesNetworkCloudOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesKubevirtOutput) ToVirtualNetworksPropertiesKubevirtOutputWithContext(ctx context.Context) VirtualNetworksPropertiesKubevirtOutput {
+func (o VirtualNetworksPropertiesNetworkCloudOutput) ToVirtualNetworksPropertiesNetworkCloudOutputWithContext(ctx context.Context) VirtualNetworksPropertiesNetworkCloudOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesKubevirtOutput) ToVirtualNetworksPropertiesKubevirtPtrOutput() VirtualNetworksPropertiesKubevirtPtrOutput {
-	return o.ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(context.Background())
+func (o VirtualNetworksPropertiesNetworkCloudOutput) ToVirtualNetworksPropertiesNetworkCloudPtrOutput() VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return o.ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(context.Background())
 }
 
-func (o VirtualNetworksPropertiesKubevirtOutput) ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesKubevirtPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworksPropertiesKubevirt) *VirtualNetworksPropertiesKubevirt {
+func (o VirtualNetworksPropertiesNetworkCloudOutput) ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesNetworkCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworksPropertiesNetworkCloud) *VirtualNetworksPropertiesNetworkCloud {
 		return &v
-	}).(VirtualNetworksPropertiesKubevirtPtrOutput)
+	}).(VirtualNetworksPropertiesNetworkCloudPtrOutput)
 }
 
-// Name of the network in KubeVirt
-func (o VirtualNetworksPropertiesKubevirtOutput) VnetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworksPropertiesKubevirt) *string { return v.VnetName }).(pulumi.StringPtrOutput)
+// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+func (o VirtualNetworksPropertiesNetworkCloudOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksPropertiesNetworkCloud) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-type VirtualNetworksPropertiesKubevirtPtrOutput struct{ *pulumi.OutputState }
+type VirtualNetworksPropertiesNetworkCloudPtrOutput struct{ *pulumi.OutputState }
 
-func (VirtualNetworksPropertiesKubevirtPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworksPropertiesKubevirt)(nil)).Elem()
+func (VirtualNetworksPropertiesNetworkCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworksPropertiesNetworkCloud)(nil)).Elem()
 }
 
-func (o VirtualNetworksPropertiesKubevirtPtrOutput) ToVirtualNetworksPropertiesKubevirtPtrOutput() VirtualNetworksPropertiesKubevirtPtrOutput {
+func (o VirtualNetworksPropertiesNetworkCloudPtrOutput) ToVirtualNetworksPropertiesNetworkCloudPtrOutput() VirtualNetworksPropertiesNetworkCloudPtrOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesKubevirtPtrOutput) ToVirtualNetworksPropertiesKubevirtPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesKubevirtPtrOutput {
+func (o VirtualNetworksPropertiesNetworkCloudPtrOutput) ToVirtualNetworksPropertiesNetworkCloudPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesNetworkCloudPtrOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesKubevirtPtrOutput) Elem() VirtualNetworksPropertiesKubevirtOutput {
-	return o.ApplyT(func(v *VirtualNetworksPropertiesKubevirt) VirtualNetworksPropertiesKubevirt {
+func (o VirtualNetworksPropertiesNetworkCloudPtrOutput) Elem() VirtualNetworksPropertiesNetworkCloudOutput {
+	return o.ApplyT(func(v *VirtualNetworksPropertiesNetworkCloud) VirtualNetworksPropertiesNetworkCloud {
 		if v != nil {
 			return *v
 		}
-		var ret VirtualNetworksPropertiesKubevirt
+		var ret VirtualNetworksPropertiesNetworkCloud
 		return ret
-	}).(VirtualNetworksPropertiesKubevirtOutput)
+	}).(VirtualNetworksPropertiesNetworkCloudOutput)
 }
 
-// Name of the network in KubeVirt
-func (o VirtualNetworksPropertiesKubevirtPtrOutput) VnetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworksPropertiesKubevirt) *string {
+// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+func (o VirtualNetworksPropertiesNetworkCloudPtrOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworksPropertiesNetworkCloud) *string {
 		if v == nil {
 			return nil
 		}
-		return v.VnetName
+		return v.NetworkId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10485,11 +10509,11 @@ type VirtualNetworksPropertiesResponse struct {
 	// Address of the DNS servers associated with the network
 	DnsServers []string `pulumi:"dnsServers"`
 	// Address of the Gateway associated with the network
-	Gateway          string                                             `pulumi:"gateway"`
+	Gateway          *string                                            `pulumi:"gateway"`
 	InfraVnetProfile *VirtualNetworksPropertiesResponseInfraVnetProfile `pulumi:"infraVnetProfile"`
 	// IP Address Prefix of the network
-	IpAddressPrefix   string `pulumi:"ipAddressPrefix"`
-	ProvisioningState string `pulumi:"provisioningState"`
+	IpAddressPrefix   *string `pulumi:"ipAddressPrefix"`
+	ProvisioningState string  `pulumi:"provisioningState"`
 	// HybridAKSNetworkStatus defines the observed state of HybridAKSNetwork
 	Status VirtualNetworksPropertiesResponseStatus `pulumi:"status"`
 	// Virtual IP Pool for Kubernetes
@@ -10526,8 +10550,8 @@ func (o VirtualNetworksPropertiesResponseOutput) DnsServers() pulumi.StringArray
 }
 
 // Address of the Gateway associated with the network
-func (o VirtualNetworksPropertiesResponseOutput) Gateway() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualNetworksPropertiesResponse) string { return v.Gateway }).(pulumi.StringOutput)
+func (o VirtualNetworksPropertiesResponseOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksPropertiesResponse) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualNetworksPropertiesResponseOutput) InfraVnetProfile() VirtualNetworksPropertiesResponseInfraVnetProfilePtrOutput {
@@ -10537,8 +10561,8 @@ func (o VirtualNetworksPropertiesResponseOutput) InfraVnetProfile() VirtualNetwo
 }
 
 // IP Address Prefix of the network
-func (o VirtualNetworksPropertiesResponseOutput) IpAddressPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualNetworksPropertiesResponse) string { return v.IpAddressPrefix }).(pulumi.StringOutput)
+func (o VirtualNetworksPropertiesResponseOutput) IpAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksPropertiesResponse) *string { return v.IpAddressPrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualNetworksPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
@@ -10733,8 +10757,8 @@ func (o VirtualNetworksPropertiesResponseHciPtrOutput) MocVnetName() pulumi.Stri
 type VirtualNetworksPropertiesResponseInfraVnetProfile struct {
 	// Infra network profile for HCI platform
 	Hci *VirtualNetworksPropertiesResponseHci `pulumi:"hci"`
-	// Infra network profile for KubeVirt platform
-	Kubevirt *VirtualNetworksPropertiesResponseKubevirt `pulumi:"kubevirt"`
+	// Infra network profile for the NetworkCloud platform
+	NetworkCloud *VirtualNetworksPropertiesResponseNetworkCloud `pulumi:"networkCloud"`
 	// Infra network profile for VMware platform
 	Vmware *VirtualNetworksPropertiesResponseVmware `pulumi:"vmware"`
 }
@@ -10760,11 +10784,11 @@ func (o VirtualNetworksPropertiesResponseInfraVnetProfileOutput) Hci() VirtualNe
 	}).(VirtualNetworksPropertiesResponseHciPtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-func (o VirtualNetworksPropertiesResponseInfraVnetProfileOutput) Kubevirt() VirtualNetworksPropertiesResponseKubevirtPtrOutput {
-	return o.ApplyT(func(v VirtualNetworksPropertiesResponseInfraVnetProfile) *VirtualNetworksPropertiesResponseKubevirt {
-		return v.Kubevirt
-	}).(VirtualNetworksPropertiesResponseKubevirtPtrOutput)
+// Infra network profile for the NetworkCloud platform
+func (o VirtualNetworksPropertiesResponseInfraVnetProfileOutput) NetworkCloud() VirtualNetworksPropertiesResponseNetworkCloudPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksPropertiesResponseInfraVnetProfile) *VirtualNetworksPropertiesResponseNetworkCloud {
+		return v.NetworkCloud
+	}).(VirtualNetworksPropertiesResponseNetworkCloudPtrOutput)
 }
 
 // Infra network profile for VMware platform
@@ -10808,14 +10832,14 @@ func (o VirtualNetworksPropertiesResponseInfraVnetProfilePtrOutput) Hci() Virtua
 	}).(VirtualNetworksPropertiesResponseHciPtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-func (o VirtualNetworksPropertiesResponseInfraVnetProfilePtrOutput) Kubevirt() VirtualNetworksPropertiesResponseKubevirtPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworksPropertiesResponseInfraVnetProfile) *VirtualNetworksPropertiesResponseKubevirt {
+// Infra network profile for the NetworkCloud platform
+func (o VirtualNetworksPropertiesResponseInfraVnetProfilePtrOutput) NetworkCloud() VirtualNetworksPropertiesResponseNetworkCloudPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworksPropertiesResponseInfraVnetProfile) *VirtualNetworksPropertiesResponseNetworkCloud {
 		if v == nil {
 			return nil
 		}
-		return v.Kubevirt
-	}).(VirtualNetworksPropertiesResponseKubevirtPtrOutput)
+		return v.NetworkCloud
+	}).(VirtualNetworksPropertiesResponseNetworkCloudPtrOutput)
 }
 
 // Infra network profile for VMware platform
@@ -10828,63 +10852,63 @@ func (o VirtualNetworksPropertiesResponseInfraVnetProfilePtrOutput) Vmware() Vir
 	}).(VirtualNetworksPropertiesResponseVmwarePtrOutput)
 }
 
-// Infra network profile for KubeVirt platform
-type VirtualNetworksPropertiesResponseKubevirt struct {
-	// Name of the network in KubeVirt
-	VnetName *string `pulumi:"vnetName"`
+// Infra network profile for the NetworkCloud platform
+type VirtualNetworksPropertiesResponseNetworkCloud struct {
+	// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+	NetworkId *string `pulumi:"networkId"`
 }
 
-// Infra network profile for KubeVirt platform
-type VirtualNetworksPropertiesResponseKubevirtOutput struct{ *pulumi.OutputState }
+// Infra network profile for the NetworkCloud platform
+type VirtualNetworksPropertiesResponseNetworkCloudOutput struct{ *pulumi.OutputState }
 
-func (VirtualNetworksPropertiesResponseKubevirtOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworksPropertiesResponseKubevirt)(nil)).Elem()
+func (VirtualNetworksPropertiesResponseNetworkCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworksPropertiesResponseNetworkCloud)(nil)).Elem()
 }
 
-func (o VirtualNetworksPropertiesResponseKubevirtOutput) ToVirtualNetworksPropertiesResponseKubevirtOutput() VirtualNetworksPropertiesResponseKubevirtOutput {
+func (o VirtualNetworksPropertiesResponseNetworkCloudOutput) ToVirtualNetworksPropertiesResponseNetworkCloudOutput() VirtualNetworksPropertiesResponseNetworkCloudOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesResponseKubevirtOutput) ToVirtualNetworksPropertiesResponseKubevirtOutputWithContext(ctx context.Context) VirtualNetworksPropertiesResponseKubevirtOutput {
+func (o VirtualNetworksPropertiesResponseNetworkCloudOutput) ToVirtualNetworksPropertiesResponseNetworkCloudOutputWithContext(ctx context.Context) VirtualNetworksPropertiesResponseNetworkCloudOutput {
 	return o
 }
 
-// Name of the network in KubeVirt
-func (o VirtualNetworksPropertiesResponseKubevirtOutput) VnetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworksPropertiesResponseKubevirt) *string { return v.VnetName }).(pulumi.StringPtrOutput)
+// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+func (o VirtualNetworksPropertiesResponseNetworkCloudOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworksPropertiesResponseNetworkCloud) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-type VirtualNetworksPropertiesResponseKubevirtPtrOutput struct{ *pulumi.OutputState }
+type VirtualNetworksPropertiesResponseNetworkCloudPtrOutput struct{ *pulumi.OutputState }
 
-func (VirtualNetworksPropertiesResponseKubevirtPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworksPropertiesResponseKubevirt)(nil)).Elem()
+func (VirtualNetworksPropertiesResponseNetworkCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworksPropertiesResponseNetworkCloud)(nil)).Elem()
 }
 
-func (o VirtualNetworksPropertiesResponseKubevirtPtrOutput) ToVirtualNetworksPropertiesResponseKubevirtPtrOutput() VirtualNetworksPropertiesResponseKubevirtPtrOutput {
+func (o VirtualNetworksPropertiesResponseNetworkCloudPtrOutput) ToVirtualNetworksPropertiesResponseNetworkCloudPtrOutput() VirtualNetworksPropertiesResponseNetworkCloudPtrOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesResponseKubevirtPtrOutput) ToVirtualNetworksPropertiesResponseKubevirtPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesResponseKubevirtPtrOutput {
+func (o VirtualNetworksPropertiesResponseNetworkCloudPtrOutput) ToVirtualNetworksPropertiesResponseNetworkCloudPtrOutputWithContext(ctx context.Context) VirtualNetworksPropertiesResponseNetworkCloudPtrOutput {
 	return o
 }
 
-func (o VirtualNetworksPropertiesResponseKubevirtPtrOutput) Elem() VirtualNetworksPropertiesResponseKubevirtOutput {
-	return o.ApplyT(func(v *VirtualNetworksPropertiesResponseKubevirt) VirtualNetworksPropertiesResponseKubevirt {
+func (o VirtualNetworksPropertiesResponseNetworkCloudPtrOutput) Elem() VirtualNetworksPropertiesResponseNetworkCloudOutput {
+	return o.ApplyT(func(v *VirtualNetworksPropertiesResponseNetworkCloud) VirtualNetworksPropertiesResponseNetworkCloud {
 		if v != nil {
 			return *v
 		}
-		var ret VirtualNetworksPropertiesResponseKubevirt
+		var ret VirtualNetworksPropertiesResponseNetworkCloud
 		return ret
-	}).(VirtualNetworksPropertiesResponseKubevirtOutput)
+	}).(VirtualNetworksPropertiesResponseNetworkCloudOutput)
 }
 
-// Name of the network in KubeVirt
-func (o VirtualNetworksPropertiesResponseKubevirtPtrOutput) VnetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworksPropertiesResponseKubevirt) *string {
+// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
+func (o VirtualNetworksPropertiesResponseNetworkCloudPtrOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworksPropertiesResponseNetworkCloud) *string {
 		if v == nil {
 			return nil
 		}
-		return v.VnetName
+		return v.NetworkId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12039,8 +12063,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesHciPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesInfraVnetProfileOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesInfraVnetProfilePtrOutput{})
-	pulumi.RegisterOutputType(VirtualNetworksPropertiesKubevirtOutput{})
-	pulumi.RegisterOutputType(VirtualNetworksPropertiesKubevirtPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworksPropertiesNetworkCloudOutput{})
+	pulumi.RegisterOutputType(VirtualNetworksPropertiesNetworkCloudPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseErrorOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseErrorPtrOutput{})
@@ -12048,8 +12072,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseHciPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseInfraVnetProfileOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseInfraVnetProfilePtrOutput{})
-	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseKubevirtOutput{})
-	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseKubevirtPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseNetworkCloudOutput{})
+	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseNetworkCloudPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseProvisioningStatusPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesResponseStatusOutput{})

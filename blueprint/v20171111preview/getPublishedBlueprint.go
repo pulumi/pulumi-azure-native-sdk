@@ -11,8 +11,6 @@ import (
 )
 
 // Get a published Blueprint.
-//
-// Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
 func LookupPublishedBlueprint(ctx *pulumi.Context, args *LookupPublishedBlueprintArgs, opts ...pulumi.InvokeOption) (*LookupPublishedBlueprintResult, error) {
 	var rv LookupPublishedBlueprintResult
 	err := ctx.Invoke("azure-native:blueprint/v20171111preview:getPublishedBlueprint", args, &rv, opts...)

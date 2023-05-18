@@ -11,7 +11,7 @@ import (
 )
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
-// API Version: 2021-12-01.
+// API Version: 2022-05-01.
 func LookupPlacementPolicy(ctx *pulumi.Context, args *LookupPlacementPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPlacementPolicyResult, error) {
 	var rv LookupPlacementPolicyResult
 	err := ctx.Invoke("azure-native:avs:getPlacementPolicy", args, &rv, opts...)

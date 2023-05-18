@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,6 +103,9 @@ func NewGatewayApiEntityTag(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:GatewayApiEntityTag"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GatewayApiEntityTag"),
 		},
 	})
 	opts = append(opts, aliases)

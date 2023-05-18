@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the service.
 // API Version: 2021-03-08.
+// Previous API Version: 2021-03-08. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PrivateLinkServicesForEDMUpload struct {
 	pulumi.CustomResourceState
 
@@ -51,7 +52,16 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForEDMUpload"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForEDMUpload"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForEDMUpload"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForEDMUpload"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForEDMUpload"),
@@ -59,7 +69,7 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForEDMUpload
-	err := ctx.RegisterResource("azure-native:securityandcompliance:privateLinkServicesForEDMUpload", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:securityandcompliance:PrivateLinkServicesForEDMUpload", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +81,7 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 func GetPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForEDMUploadState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForEDMUpload, error) {
 	var resource PrivateLinkServicesForEDMUpload
-	err := ctx.ReadResource("azure-native:securityandcompliance:privateLinkServicesForEDMUpload", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:securityandcompliance:PrivateLinkServicesForEDMUpload", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

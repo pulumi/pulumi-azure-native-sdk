@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a scaling plan definition.
-//
-// Deprecated: Version 2020-11-10-preview will be removed in v2 of the provider.
 type ScalingPlan struct {
 	pulumi.CustomResourceState
 

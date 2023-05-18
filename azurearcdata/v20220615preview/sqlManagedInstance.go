@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,6 +68,12 @@ func NewSqlManagedInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220301preview:SqlManagedInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:SqlManagedInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230315preview:SqlManagedInstance"),
 		},
 	})
 	opts = append(opts, aliases)

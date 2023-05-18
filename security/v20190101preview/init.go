@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:security/v20190101preview:AlertsSuppressionRule":
 		r = &AlertsSuppressionRule{}
-	case "azure-native:security/v20190101preview:Assessment":
-		r = &Assessment{}
 	case "azure-native:security/v20190101preview:AssessmentsMetadataSubscription":
 		r = &AssessmentsMetadataSubscription{}
 	case "azure-native:security/v20190101preview:Automation":

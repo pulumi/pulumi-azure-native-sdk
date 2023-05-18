@@ -3,38 +3,12 @@
 
 package v20210201
 
-// Type of storage accessed on the storage account.
-type AccountType string
-
-const (
-	AccountTypeGeneralPurposeStorage = AccountType("GeneralPurposeStorage")
-	AccountTypeBlobStorage           = AccountType("BlobStorage")
-)
-
 // Addon type.
 type AddonType string
 
 const (
 	AddonTypeIotEdge          = AddonType("IotEdge")
 	AddonTypeArcForKubernetes = AddonType("ArcForKubernetes")
-)
-
-// Storage format used for the file represented by the share.
-type AzureContainerDataFormat string
-
-const (
-	AzureContainerDataFormatBlockBlob = AzureContainerDataFormat("BlockBlob")
-	AzureContainerDataFormatPageBlob  = AzureContainerDataFormat("PageBlob")
-	AzureContainerDataFormatAzureFile = AzureContainerDataFormat("AzureFile")
-)
-
-// Type of access to be allowed for the client.
-type ClientPermissionType string
-
-const (
-	ClientPermissionTypeNoAccess  = ClientPermissionType("NoAccess")
-	ClientPermissionTypeReadOnly  = ClientPermissionType("ReadOnly")
-	ClientPermissionTypeReadWrite = ClientPermissionType("ReadWrite")
 )
 
 // The kind of the device.
@@ -60,32 +34,12 @@ const (
 	DataBoxEdgeDeviceStatusMaintenance           = DataBoxEdgeDeviceStatus("Maintenance")
 )
 
-// Data policy of the storage Account.
-type DataPolicy string
-
-const (
-	DataPolicyCloud = DataPolicy("Cloud")
-	DataPolicyLocal = DataPolicy("Local")
-)
-
 // DataResidencyType enum
 type DataResidencyType string
 
 const (
 	DataResidencyTypeGeoZoneReplication = DataResidencyType("GeoZoneReplication")
 	DataResidencyTypeZoneReplication    = DataResidencyType("ZoneReplication")
-)
-
-type DayOfWeek string
-
-const (
-	DayOfWeekSunday    = DayOfWeek("Sunday")
-	DayOfWeekMonday    = DayOfWeek("Monday")
-	DayOfWeekTuesday   = DayOfWeek("Tuesday")
-	DayOfWeekWednesday = DayOfWeek("Wednesday")
-	DayOfWeekThursday  = DayOfWeek("Thursday")
-	DayOfWeekFriday    = DayOfWeek("Friday")
-	DayOfWeekSaturday  = DayOfWeek("Saturday")
 )
 
 // The algorithm used to encrypt "Value".
@@ -95,14 +49,6 @@ const (
 	EncryptionAlgorithmNone               = EncryptionAlgorithm("None")
 	EncryptionAlgorithmAES256             = EncryptionAlgorithm("AES256")
 	EncryptionAlgorithm_RSAES_PKCS1_v_1_5 = EncryptionAlgorithm("RSAES_PKCS1_v_1_5")
-)
-
-// Current monitoring status of the share.
-type MonitoringStatus string
-
-const (
-	MonitoringStatusEnabled  = MonitoringStatus("Enabled")
-	MonitoringStatusDisabled = MonitoringStatus("Disabled")
 )
 
 // Identity type
@@ -143,51 +89,6 @@ const (
 	RoleTypesKubernetes          = RoleTypes("Kubernetes")
 )
 
-// Signifies whether SSL needs to be enabled or not.
-type SSLStatus string
-
-const (
-	SSLStatusEnabled  = SSLStatus("Enabled")
-	SSLStatusDisabled = SSLStatus("Disabled")
-)
-
-// Access protocol to be used by the share.
-type ShareAccessProtocol string
-
-const (
-	ShareAccessProtocolSMB = ShareAccessProtocol("SMB")
-	ShareAccessProtocolNFS = ShareAccessProtocol("NFS")
-)
-
-// Type of access to be allowed for the user.
-type ShareAccessType string
-
-const (
-	ShareAccessTypeChange = ShareAccessType("Change")
-	ShareAccessTypeRead   = ShareAccessType("Read")
-	ShareAccessTypeCustom = ShareAccessType("Custom")
-)
-
-// Current status of the share.
-type ShareStatus string
-
-const (
-	ShareStatusOffline        = ShareStatus("Offline")
-	ShareStatusUnknown        = ShareStatus("Unknown")
-	ShareStatusOK             = ShareStatus("OK")
-	ShareStatusUpdating       = ShareStatus("Updating")
-	ShareStatusNeedsAttention = ShareStatus("NeedsAttention")
-)
-
-// ShipmentType of the order
-type ShipmentType string
-
-const (
-	ShipmentTypeNotApplicable     = ShipmentType("NotApplicable")
-	ShipmentTypeShippedToCustomer = ShipmentType("ShippedToCustomer")
-	ShipmentTypeSelfPickup        = ShipmentType("SelfPickup")
-)
-
 // SKU name.
 type SkuName string
 
@@ -226,32 +127,12 @@ const (
 	SkuTierStandard = SkuTier("Standard")
 )
 
-// Current status of the storage account
-type StorageAccountStatus string
-
-const (
-	StorageAccountStatusOK             = StorageAccountStatus("OK")
-	StorageAccountStatusOffline        = StorageAccountStatus("Offline")
-	StorageAccountStatusUnknown        = StorageAccountStatus("Unknown")
-	StorageAccountStatusUpdating       = StorageAccountStatus("Updating")
-	StorageAccountStatusNeedsAttention = StorageAccountStatus("NeedsAttention")
-)
-
 // Trigger Kind.
 type TriggerEventType string
 
 const (
 	TriggerEventTypeFileEvent          = TriggerEventType("FileEvent")
 	TriggerEventTypePeriodicTimerEvent = TriggerEventType("PeriodicTimerEvent")
-)
-
-// Type of the user.
-type UserType string
-
-const (
-	UserTypeShare           = UserType("Share")
-	UserTypeLocalManagement = UserType("LocalManagement")
-	UserTypeARM             = UserType("ARM")
 )
 
 func init() {

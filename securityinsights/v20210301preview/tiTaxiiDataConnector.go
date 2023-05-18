@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -137,6 +137,9 @@ func NewTiTaxiiDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:TiTaxiiDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:TiTaxiiDataConnector"),

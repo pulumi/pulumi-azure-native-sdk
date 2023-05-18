@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Data Lake Analytics account object, containing all information associated with the named Data Lake Analytics account.
-// API Version: 2016-11-01.
+// API Version: 2019-11-01-preview.
+// Previous API Version: 2016-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -30,6 +31,8 @@ type Account struct {
 	DebugDataAccessLevel pulumi.StringOutput `pulumi:"debugDataAccessLevel"`
 	// The default Data Lake Store account associated with this account.
 	DefaultDataLakeStoreAccount pulumi.StringOutput `pulumi:"defaultDataLakeStoreAccount"`
+	// The type of the default Data Lake Store account associated with this account.
+	DefaultDataLakeStoreAccountType pulumi.StringOutput `pulumi:"defaultDataLakeStoreAccountType"`
 	// The full CName endpoint for this account.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
@@ -100,25 +103,25 @@ func NewAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.FirewallAllowAzureIps) {
+	if args.FirewallAllowAzureIps == nil {
 		args.FirewallAllowAzureIps = FirewallAllowAzureIpsState("Disabled")
 	}
-	if isZero(args.FirewallState) {
+	if args.FirewallState == nil {
 		args.FirewallState = FirewallState("Disabled")
 	}
-	if isZero(args.MaxDegreeOfParallelism) {
+	if args.MaxDegreeOfParallelism == nil {
 		args.MaxDegreeOfParallelism = pulumi.IntPtr(30)
 	}
-	if isZero(args.MaxDegreeOfParallelismPerJob) {
+	if args.MaxDegreeOfParallelismPerJob == nil {
 		args.MaxDegreeOfParallelismPerJob = pulumi.IntPtr(32)
 	}
-	if isZero(args.MaxJobCount) {
+	if args.MaxJobCount == nil {
 		args.MaxJobCount = pulumi.IntPtr(3)
 	}
-	if isZero(args.NewTier) {
+	if args.NewTier == nil {
 		args.NewTier = TierType("Consumption")
 	}
-	if isZero(args.QueryStoreRetention) {
+	if args.QueryStoreRetention == nil {
 		args.QueryStoreRetention = pulumi.IntPtr(30)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -309,6 +312,11 @@ func (o AccountOutput) DebugDataAccessLevel() pulumi.StringOutput {
 // The default Data Lake Store account associated with this account.
 func (o AccountOutput) DefaultDataLakeStoreAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DefaultDataLakeStoreAccount }).(pulumi.StringOutput)
+}
+
+// The type of the default Data Lake Store account associated with this account.
+func (o AccountOutput) DefaultDataLakeStoreAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DefaultDataLakeStoreAccountType }).(pulumi.StringOutput)
 }
 
 // The full CName endpoint for this account.

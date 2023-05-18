@@ -31,14 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LabelingJob{}
 	case "azure-native:machinelearningservices/v20200901preview:LinkedService":
 		r = &LinkedService{}
-	case "azure-native:machinelearningservices/v20200901preview:MachineLearningCompute":
-		r = &MachineLearningCompute{}
-	case "azure-native:machinelearningservices/v20200901preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:machinelearningservices/v20200901preview:Workspace":
 		r = &Workspace{}
-	case "azure-native:machinelearningservices/v20200901preview:WorkspaceConnection":
-		r = &WorkspaceConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

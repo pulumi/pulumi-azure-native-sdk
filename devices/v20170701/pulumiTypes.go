@@ -10,67 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The description of an X509 CA Certificate.
-type CertificatePropertiesResponse struct {
-	// The certificate's create date and time.
-	Created string `pulumi:"created"`
-	// The certificate's expiration date and time.
-	Expiry string `pulumi:"expiry"`
-	// Determines whether certificate has been verified.
-	IsVerified bool `pulumi:"isVerified"`
-	// The certificate's subject name.
-	Subject string `pulumi:"subject"`
-	// The certificate's thumbprint.
-	Thumbprint string `pulumi:"thumbprint"`
-	// The certificate's last update date and time.
-	Updated string `pulumi:"updated"`
-}
-
-// The description of an X509 CA Certificate.
-type CertificatePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (CertificatePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificatePropertiesResponse)(nil)).Elem()
-}
-
-func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutput() CertificatePropertiesResponseOutput {
-	return o
-}
-
-func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutputWithContext(ctx context.Context) CertificatePropertiesResponseOutput {
-	return o
-}
-
-// The certificate's create date and time.
-func (o CertificatePropertiesResponseOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The certificate's expiration date and time.
-func (o CertificatePropertiesResponseOutput) Expiry() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Expiry }).(pulumi.StringOutput)
-}
-
-// Determines whether certificate has been verified.
-func (o CertificatePropertiesResponseOutput) IsVerified() pulumi.BoolOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) bool { return v.IsVerified }).(pulumi.BoolOutput)
-}
-
-// The certificate's subject name.
-func (o CertificatePropertiesResponseOutput) Subject() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Subject }).(pulumi.StringOutput)
-}
-
-// The certificate's thumbprint.
-func (o CertificatePropertiesResponseOutput) Thumbprint() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
-}
-
-// The certificate's last update date and time.
-func (o CertificatePropertiesResponseOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Updated }).(pulumi.StringOutput)
-}
-
 // The IoT hub cloud-to-device messaging properties.
 type CloudToDeviceProperties struct {
 	// The default time to live for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
@@ -4232,7 +4171,6 @@ func (o StorageEndpointPropertiesResponseMapOutput) MapIndex(k pulumi.StringInpu
 }
 
 func init() {
-	pulumi.RegisterOutputType(CertificatePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CloudToDevicePropertiesOutput{})
 	pulumi.RegisterOutputType(CloudToDevicePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CloudToDevicePropertiesResponseOutput{})

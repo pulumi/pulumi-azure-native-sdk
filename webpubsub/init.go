@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:webpubsub:WebPubSub":
 		r = &WebPubSub{}
+	case "azure-native:webpubsub:WebPubSubCustomCertificate":
+		r = &WebPubSubCustomCertificate{}
+	case "azure-native:webpubsub:WebPubSubCustomDomain":
+		r = &WebPubSubCustomDomain{}
 	case "azure-native:webpubsub:WebPubSubHub":
 		r = &WebPubSubHub{}
 	case "azure-native:webpubsub:WebPubSubPrivateEndpointConnection":

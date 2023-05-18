@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +146,9 @@ func NewExpressRouteCircuitConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuitConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuitConnection"),
 		},
 	})
 	opts = append(opts, aliases)

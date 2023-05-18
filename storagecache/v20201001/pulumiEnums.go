@@ -205,15 +205,6 @@ const (
 	ProvisioningStateTypeUpdating  = ProvisioningStateType("Updating")
 )
 
-// Type of the Storage Target.
-type StorageTargetType string
-
-const (
-	StorageTargetTypeNfs3    = StorageTargetType("nfs3")
-	StorageTargetTypeClfs    = StorageTargetType("clfs")
-	StorageTargetTypeUnknown = StorageTargetType("unknown")
-)
-
 // This setting determines how the cache gets username and group names for clients.
 type UsernameSource string
 

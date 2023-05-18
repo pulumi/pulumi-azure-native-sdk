@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get an event subscription of a partner topic.
-// API Version: 2020-04-01-preview.
+// Get properties of an event subscription of a partner topic.
+// API Version: 2022-06-15.
 func LookupPartnerTopicEventSubscription(ctx *pulumi.Context, args *LookupPartnerTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupPartnerTopicEventSubscriptionResult, error) {
 	var rv LookupPartnerTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid:getPartnerTopicEventSubscription", args, &rv, opts...)
@@ -74,7 +74,7 @@ func (val *LookupPartnerTopicEventSubscriptionResult) Defaults() *LookupPartnerT
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EventDeliverySchema) {
+	if tmp.EventDeliverySchema == nil {
 		eventDeliverySchema_ := "EventGridSchema"
 		tmp.EventDeliverySchema = &eventDeliverySchema_
 	}

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
-//
-// Deprecated: Version 2017-12-01-preview will be removed in v2 of the provider.
 func LookupContainerGroup(ctx *pulumi.Context, args *LookupContainerGroupArgs, opts ...pulumi.InvokeOption) (*LookupContainerGroupResult, error) {
 	var rv LookupContainerGroupResult
 	err := ctx.Invoke("azure-native:containerinstance/v20171201preview:getContainerGroup", args, &rv, opts...)

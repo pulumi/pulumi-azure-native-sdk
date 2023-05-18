@@ -21,14 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:webpubsub/v20211001:WebPubSub":
-		r = &WebPubSub{}
 	case "azure-native:webpubsub/v20211001:WebPubSubHub":
 		r = &WebPubSubHub{}
-	case "azure-native:webpubsub/v20211001:WebPubSubPrivateEndpointConnection":
-		r = &WebPubSubPrivateEndpointConnection{}
-	case "azure-native:webpubsub/v20211001:WebPubSubSharedPrivateLinkResource":
-		r = &WebPubSubSharedPrivateLinkResource{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

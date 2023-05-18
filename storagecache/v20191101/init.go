@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:storagecache/v20191101:Cache":
-		r = &Cache{}
 	case "azure-native:storagecache/v20191101:StorageTarget":
 		r = &StorageTarget{}
 	default:

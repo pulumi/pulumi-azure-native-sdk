@@ -25,14 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AvailabilitySet{}
 	case "azure-native:compute/v20160430preview:Disk":
 		r = &Disk{}
-	case "azure-native:compute/v20160430preview:Image":
-		r = &Image{}
 	case "azure-native:compute/v20160430preview:Snapshot":
 		r = &Snapshot{}
-	case "azure-native:compute/v20160430preview:VirtualMachine":
-		r = &VirtualMachine{}
-	case "azure-native:compute/v20160430preview:VirtualMachineExtension":
-		r = &VirtualMachineExtension{}
 	case "azure-native:compute/v20160430preview:VirtualMachineScaleSet":
 		r = &VirtualMachineScaleSet{}
 	default:

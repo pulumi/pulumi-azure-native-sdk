@@ -11,8 +11,6 @@ import (
 )
 
 // Retrieve a Spatial Anchors Account.
-//
-// Deprecated: Version 2019-02-28-preview will be removed in v2 of the provider.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {
 	var rv LookupSpatialAnchorsAccountResult
 	err := ctx.Invoke("azure-native:mixedreality/v20190228preview:getSpatialAnchorsAccount", args, &rv, opts...)

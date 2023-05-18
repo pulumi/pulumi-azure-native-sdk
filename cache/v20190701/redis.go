@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A single Redis item in List or Get Operation.
-//
-// Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 type Redis struct {
 	pulumi.CustomResourceState
 

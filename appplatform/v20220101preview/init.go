@@ -25,40 +25,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiPortal{}
 	case "azure-native:appplatform/v20220101preview:ApiPortalCustomDomain":
 		r = &ApiPortalCustomDomain{}
-	case "azure-native:appplatform/v20220101preview:App":
-		r = &App{}
-	case "azure-native:appplatform/v20220101preview:Binding":
-		r = &Binding{}
 	case "azure-native:appplatform/v20220101preview:BuildServiceAgentPool":
 		r = &BuildServiceAgentPool{}
 	case "azure-native:appplatform/v20220101preview:BuildServiceBuilder":
 		r = &BuildServiceBuilder{}
 	case "azure-native:appplatform/v20220101preview:BuildpackBinding":
 		r = &BuildpackBinding{}
-	case "azure-native:appplatform/v20220101preview:Certificate":
-		r = &Certificate{}
-	case "azure-native:appplatform/v20220101preview:ConfigServer":
-		r = &ConfigServer{}
 	case "azure-native:appplatform/v20220101preview:ConfigurationService":
 		r = &ConfigurationService{}
-	case "azure-native:appplatform/v20220101preview:CustomDomain":
-		r = &CustomDomain{}
-	case "azure-native:appplatform/v20220101preview:Deployment":
-		r = &Deployment{}
 	case "azure-native:appplatform/v20220101preview:Gateway":
 		r = &Gateway{}
 	case "azure-native:appplatform/v20220101preview:GatewayCustomDomain":
 		r = &GatewayCustomDomain{}
 	case "azure-native:appplatform/v20220101preview:GatewayRouteConfig":
 		r = &GatewayRouteConfig{}
-	case "azure-native:appplatform/v20220101preview:MonitoringSetting":
-		r = &MonitoringSetting{}
-	case "azure-native:appplatform/v20220101preview:Service":
-		r = &Service{}
 	case "azure-native:appplatform/v20220101preview:ServiceRegistry":
 		r = &ServiceRegistry{}
-	case "azure-native:appplatform/v20220101preview:Storage":
-		r = &Storage{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

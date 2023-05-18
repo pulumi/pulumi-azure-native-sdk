@@ -21,20 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:netapp/v20210401:Account":
-		r = &Account{}
-	case "azure-native:netapp/v20210401:Backup":
-		r = &Backup{}
 	case "azure-native:netapp/v20210401:BackupPolicy":
 		r = &BackupPolicy{}
-	case "azure-native:netapp/v20210401:Pool":
-		r = &Pool{}
-	case "azure-native:netapp/v20210401:Snapshot":
-		r = &Snapshot{}
-	case "azure-native:netapp/v20210401:SnapshotPolicy":
-		r = &SnapshotPolicy{}
-	case "azure-native:netapp/v20210401:Volume":
-		r = &Volume{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:portal/v20190101preview:Dashboard":
 		r = &Dashboard{}
-	case "azure-native:portal/v20190101preview:TenantConfiguration":
-		r = &TenantConfiguration{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

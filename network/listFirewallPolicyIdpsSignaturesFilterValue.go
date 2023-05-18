@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the current filter values for the signatures overrides
-// API Version: 2022-01-01.
+// API Version: 2022-09-01.
 func ListFirewallPolicyIdpsSignaturesFilterValue(ctx *pulumi.Context, args *ListFirewallPolicyIdpsSignaturesFilterValueArgs, opts ...pulumi.InvokeOption) (*ListFirewallPolicyIdpsSignaturesFilterValueResult, error) {
 	var rv ListFirewallPolicyIdpsSignaturesFilterValueResult
 	err := ctx.Invoke("azure-native:network:listFirewallPolicyIdpsSignaturesFilterValue", args, &rv, opts...)

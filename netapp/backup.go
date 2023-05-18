@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Backup of a Volume
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Backup struct {
 	pulumi.CustomResourceState
 
@@ -28,14 +29,18 @@ type Backup struct {
 	Label pulumi.StringPtrOutput `pulumi:"label"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Size of backup
 	Size pulumi.Float64Output `pulumi:"size"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
+	UseExistingSnapshot pulumi.BoolPtrOutput `pulumi:"useExistingSnapshot"`
 	// Volume name
 	VolumeName pulumi.StringOutput `pulumi:"volumeName"`
 }
@@ -58,6 +63,9 @@ func NewBackup(ctx *pulumi.Context,
 	}
 	if args.VolumeName == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeName'")
+	}
+	if args.UseExistingSnapshot == nil {
+		args.UseExistingSnapshot = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -155,8 +163,10 @@ type backupArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the capacity pool
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
+	UseExistingSnapshot *bool `pulumi:"useExistingSnapshot"`
 	// The name of the volume
 	VolumeName string `pulumi:"volumeName"`
 }
@@ -173,8 +183,10 @@ type BackupArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the capacity pool
 	PoolName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
+	UseExistingSnapshot pulumi.BoolPtrInput
 	// The name of the volume
 	VolumeName pulumi.StringInput
 }
@@ -246,7 +258,7 @@ func (o BackupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -261,9 +273,19 @@ func (o BackupOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v *Backup) pulumi.Float64Output { return v.Size }).(pulumi.Float64Output)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o BackupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Backup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o BackupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
+func (o BackupOutput) UseExistingSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolPtrOutput { return v.UseExistingSnapshot }).(pulumi.BoolPtrOutput)
 }
 
 // Volume name

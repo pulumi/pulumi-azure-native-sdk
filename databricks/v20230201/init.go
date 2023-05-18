@@ -23,10 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:databricks/v20230201:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:databricks/v20230201:VNetPeering":
+		r = &VNetPeering{}
 	case "azure-native:databricks/v20230201:Workspace":
 		r = &Workspace{}
-	case "azure-native:databricks/v20230201:vNetPeering":
-		r = &VNetPeering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

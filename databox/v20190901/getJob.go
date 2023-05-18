@@ -11,8 +11,6 @@ import (
 )
 
 // Gets information about the specified job.
-//
-// Deprecated: Version 2019-09-01 will be removed in v2 of the provider.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:databox/v20190901:getJob", args, &rv, opts...)
@@ -75,7 +73,7 @@ func (val *LookupJobResult) Defaults() *LookupJobResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DeliveryType) {
+	if tmp.DeliveryType == nil {
 		deliveryType_ := "NonScheduled"
 		tmp.DeliveryType = &deliveryType_
 	}

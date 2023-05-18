@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A budget resource.
-//
-// Deprecated: Version 2017-12-30-preview will be removed in v2 of the provider.
 type Budget struct {
 	pulumi.CustomResourceState
 

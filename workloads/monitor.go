@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
-// API Version: 2021-12-01-preview.
+// API Version: 2023-04-01.
+// Previous API Version: 2021-12-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -20,7 +21,7 @@ type Monitor struct {
 	AppLocation pulumi.StringPtrOutput `pulumi:"appLocation"`
 	// Defines the SAP monitor errors.
 	Errors MonitorPropertiesResponseErrorsOutput `pulumi:"errors"`
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity UserAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -62,10 +63,22 @@ func NewMonitor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:workloads:monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20211201preview:Monitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:monitor"),
 		},
 		{
+			Type: pulumi.String("azure-native:workloads/v20221101preview:Monitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:workloads/v20221101preview:monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20230401:Monitor"),
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20230401:monitor"),
@@ -73,7 +86,7 @@ func NewMonitor(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource Monitor
-	err := ctx.RegisterResource("azure-native:workloads:monitor", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:workloads:Monitor", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +98,7 @@ func NewMonitor(ctx *pulumi.Context,
 func GetMonitor(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MonitorState, opts ...pulumi.ResourceOption) (*Monitor, error) {
 	var resource Monitor
-	err := ctx.ReadResource("azure-native:workloads:monitor", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:workloads:Monitor", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -106,7 +119,7 @@ func (MonitorState) ElementType() reflect.Type {
 type monitorArgs struct {
 	// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
 	AppLocation *string `pulumi:"appLocation"`
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity *UserAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -132,7 +145,7 @@ type monitorArgs struct {
 type MonitorArgs struct {
 	// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
 	AppLocation pulumi.StringPtrInput
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity UserAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -201,7 +214,7 @@ func (o MonitorOutput) Errors() MonitorPropertiesResponseErrorsOutput {
 	return o.ApplyT(func(v *Monitor) MonitorPropertiesResponseErrorsOutput { return v.Errors }).(MonitorPropertiesResponseErrorsOutput)
 }
 
-// Managed service identity (user assigned identities)
+// [currently not in use] Managed service identity(user assigned identities)
 func (o MonitorOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Monitor) UserAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }

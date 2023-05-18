@@ -11,15 +11,6 @@ const (
 	ApplicationGroupTypeDesktop   = ApplicationGroupType("Desktop")
 )
 
-// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
-type CommandLineSetting string
-
-const (
-	CommandLineSettingDoNotAllow = CommandLineSetting("DoNotAllow")
-	CommandLineSettingAllow      = CommandLineSetting("Allow")
-	CommandLineSettingRequire    = CommandLineSetting("Require")
-)
-
 // HostPool type for scaling plan.
 type HostPoolType string
 
@@ -61,14 +52,6 @@ const (
 	RegistrationTokenOperationDelete = RegistrationTokenOperation("Delete")
 	RegistrationTokenOperationNone   = RegistrationTokenOperation("None")
 	RegistrationTokenOperationUpdate = RegistrationTokenOperation("Update")
-)
-
-// Resource Type of Application.
-type RemoteApplicationType string
-
-const (
-	RemoteApplicationTypeInBuilt         = RemoteApplicationType("InBuilt")
-	RemoteApplicationTypeMsixApplication = RemoteApplicationType("MsixApplication")
 )
 
 // The type of single sign on Secret Type.

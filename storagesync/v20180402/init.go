@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegisteredServer{}
 	case "azure-native:storagesync/v20180402:ServerEndpoint":
 		r = &ServerEndpoint{}
-	case "azure-native:storagesync/v20180402:StorageSyncService":
-		r = &StorageSyncService{}
 	case "azure-native:storagesync/v20180402:SyncGroup":
 		r = &SyncGroup{}
 	default:

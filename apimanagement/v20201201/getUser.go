@@ -61,7 +61,7 @@ func (val *LookupUserResult) Defaults() *LookupUserResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		state_ := "active"
 		tmp.State = &state_
 	}

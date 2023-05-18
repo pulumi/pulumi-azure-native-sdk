@@ -322,7 +322,7 @@ func (val *Encryption) Defaults() *Encryption {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Default"
 		tmp.KeySource = &keySource_
 	}
@@ -358,7 +358,7 @@ func (val *EncryptionArgs) Defaults() *EncryptionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		tmp.KeySource = pulumi.StringPtr("Default")
 	}
 	return &tmp
@@ -543,7 +543,7 @@ func (val *EncryptionResponse) Defaults() *EncryptionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Default"
 		tmp.KeySource = &keySource_
 	}

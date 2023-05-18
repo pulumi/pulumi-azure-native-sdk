@@ -21,16 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:deploymentmanager/v20180901preview:ArtifactSource":
-		r = &ArtifactSource{}
 	case "azure-native:deploymentmanager/v20180901preview:Rollout":
 		r = &Rollout{}
-	case "azure-native:deploymentmanager/v20180901preview:Service":
-		r = &Service{}
-	case "azure-native:deploymentmanager/v20180901preview:ServiceTopology":
-		r = &ServiceTopology{}
-	case "azure-native:deploymentmanager/v20180901preview:ServiceUnit":
-		r = &ServiceUnit{}
 	case "azure-native:deploymentmanager/v20180901preview:Step":
 		r = &Step{}
 	default:

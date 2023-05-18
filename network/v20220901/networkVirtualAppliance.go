@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,6 +117,9 @@ func NewNetworkVirtualAppliance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:NetworkVirtualAppliance"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkVirtualAppliance"),
 		},
 	})
 	opts = append(opts, aliases)

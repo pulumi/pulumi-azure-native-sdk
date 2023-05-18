@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing peering with the specified name under the given subscription and resource group.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
 func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.InvokeOption) (*LookupPeeringResult, error) {
 	var rv LookupPeeringResult
 	err := ctx.Invoke("azure-native:peering:getPeering", args, &rv, opts...)

@@ -7,23 +7,32 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cognitive Services account commitment plan.
-// API Version: 2021-10-01.
+// API Version: 2022-12-01.
+// Previous API Version: 2021-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type CommitmentPlan struct {
 	pulumi.CustomResourceState
 
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The Kind of the resource.
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of Cognitive Services account commitment plan.
 	Properties CommitmentPlanPropertiesResponseOutput `pulumi:"properties"`
+	// The resource model definition representing SKU
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -35,21 +44,12 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountName == nil {
-		return nil, errors.New("invalid value for required argument 'AccountName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20211001:CommitmentPlan"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20220301:CommitmentPlan"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20221001:CommitmentPlan"),
+			Type: pulumi.String("azure-native:cognitiveservices/v20221201:CommitmentPlan"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -85,26 +85,38 @@ func (CommitmentPlanState) ElementType() reflect.Type {
 }
 
 type commitmentPlanArgs struct {
-	// The name of Cognitive Services account.
-	AccountName string `pulumi:"accountName"`
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName *string `pulumi:"commitmentPlanName"`
+	// The Kind of the resource.
+	Kind *string `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location *string `pulumi:"location"`
 	// Properties of Cognitive Services account commitment plan.
 	Properties *CommitmentPlanProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource model definition representing SKU
+	Sku *Sku `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CommitmentPlan resource.
 type CommitmentPlanArgs struct {
-	// The name of Cognitive Services account.
-	AccountName pulumi.StringInput
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName pulumi.StringPtrInput
+	// The Kind of the resource.
+	Kind pulumi.StringPtrInput
+	// The geo-location where the resource lives
+	Location pulumi.StringPtrInput
 	// Properties of Cognitive Services account commitment plan.
 	Properties CommitmentPlanPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// The resource model definition representing SKU
+	Sku SkuPtrInput
+	// Resource tags.
+	Tags pulumi.StringMapInput
 }
 
 func (CommitmentPlanArgs) ElementType() reflect.Type {
@@ -149,6 +161,16 @@ func (o CommitmentPlanOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The Kind of the resource.
+func (o CommitmentPlanOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The geo-location where the resource lives
+func (o CommitmentPlanOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o CommitmentPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -159,9 +181,19 @@ func (o CommitmentPlanOutput) Properties() CommitmentPlanPropertiesResponseOutpu
 	return o.ApplyT(func(v *CommitmentPlan) CommitmentPlanPropertiesResponseOutput { return v.Properties }).(CommitmentPlanPropertiesResponseOutput)
 }
 
+// The resource model definition representing SKU
+func (o CommitmentPlanOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *CommitmentPlan) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 func (o CommitmentPlanOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *CommitmentPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o CommitmentPlanOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

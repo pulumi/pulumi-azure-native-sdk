@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Describes the types of schema for analytical storage.
+type AnalyticalStorageSchemaType string
+
+const (
+	AnalyticalStorageSchemaTypeWellDefined  = AnalyticalStorageSchemaType("WellDefined")
+	AnalyticalStorageSchemaTypeFullFidelity = AnalyticalStorageSchemaType("FullFidelity")
+)
+
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 type AuthenticationMethod string
 
@@ -18,12 +26,31 @@ const (
 	AuthenticationMethodCassandra = AuthenticationMethod("Cassandra")
 )
 
+// Describes the status of migration between backup policy types.
+type BackupPolicyMigrationStatus string
+
+const (
+	BackupPolicyMigrationStatusInvalid    = BackupPolicyMigrationStatus("Invalid")
+	BackupPolicyMigrationStatusInProgress = BackupPolicyMigrationStatus("InProgress")
+	BackupPolicyMigrationStatusCompleted  = BackupPolicyMigrationStatus("Completed")
+	BackupPolicyMigrationStatusFailed     = BackupPolicyMigrationStatus("Failed")
+)
+
 // Describes the mode of backups.
 type BackupPolicyType string
 
 const (
 	BackupPolicyTypePeriodic   = BackupPolicyType("Periodic")
 	BackupPolicyTypeContinuous = BackupPolicyType("Continuous")
+)
+
+// Enum to indicate type of backup residency
+type BackupStorageRedundancy string
+
+const (
+	BackupStorageRedundancyGeo   = BackupStorageRedundancy("Geo")
+	BackupStorageRedundancyLocal = BackupStorageRedundancy("Local")
+	BackupStorageRedundancyZone  = BackupStorageRedundancy("Zone")
 )
 
 // Sort order for composite paths.
@@ -47,6 +74,14 @@ type ConnectorOffer string
 
 const (
 	ConnectorOfferSmall = ConnectorOffer("Small")
+)
+
+// Enum to indicate the mode of account creation.
+type CreateMode string
+
+const (
+	CreateModeDefault = CreateMode("Default")
+	CreateModeRestore = CreateMode("Restore")
 )
 
 // The datatype for which the indexing behavior is applied to.
@@ -430,6 +465,23 @@ const (
 	ManagedCassandraProvisioningStateSucceeded = ManagedCassandraProvisioningState("Succeeded")
 	ManagedCassandraProvisioningStateFailed    = ManagedCassandraProvisioningState("Failed")
 	ManagedCassandraProvisioningStateCanceled  = ManagedCassandraProvisioningState("Canceled")
+)
+
+// The type of the resource.
+type ManagedCassandraResourceIdentityType string
+
+const (
+	ManagedCassandraResourceIdentityTypeSystemAssigned = ManagedCassandraResourceIdentityType("SystemAssigned")
+	ManagedCassandraResourceIdentityTypeNone           = ManagedCassandraResourceIdentityType("None")
+)
+
+// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+type MinimalTlsVersion string
+
+const (
+	MinimalTlsVersionTls   = MinimalTlsVersion("Tls")
+	MinimalTlsVersionTls11 = MinimalTlsVersion("Tls11")
+	MinimalTlsVersionTls12 = MinimalTlsVersion("Tls12")
 )
 
 // Indicates whether the Role Definition was built-in or user created.
@@ -946,6 +998,13 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
+// Describes the mode of the restore.
+type RestoreMode string
+
+const (
+	RestoreModePointInTime = RestoreMode("PointInTime")
+)
+
 // Indicates whether the Role Definition was built-in or user created.
 type RoleDefinitionType string
 
@@ -1118,6 +1177,7 @@ const (
 	ServerVersion_3_2 = ServerVersion("3.2")
 	ServerVersion_3_6 = ServerVersion("3.6")
 	ServerVersion_4_0 = ServerVersion("4.0")
+	ServerVersion_4_2 = ServerVersion("4.2")
 )
 
 // Instance type for the service.
@@ -1133,8 +1193,10 @@ const (
 type ServiceType string
 
 const (
-	ServiceTypeSqlDedicatedGateway = ServiceType("SqlDedicatedGateway")
-	ServiceTypeDataTransfer        = ServiceType("DataTransfer")
+	ServiceTypeSqlDedicatedGateway      = ServiceType("SqlDedicatedGateway")
+	ServiceTypeDataTransfer             = ServiceType("DataTransfer")
+	ServiceTypeGraphAPICompute          = ServiceType("GraphAPICompute")
+	ServiceTypeMaterializedViewsBuilder = ServiceType("MaterializedViewsBuilder")
 )
 
 // Indicates the spatial type of index.

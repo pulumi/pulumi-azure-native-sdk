@@ -11,7 +11,7 @@ import (
 )
 
 // Gets properties of an outbound endpoint for a DNS resolver.
-// API Version: 2020-04-01-preview.
+// API Version: 2022-07-01.
 func LookupOutboundEndpoint(ctx *pulumi.Context, args *LookupOutboundEndpointArgs, opts ...pulumi.InvokeOption) (*LookupOutboundEndpointResult, error) {
 	var rv LookupOutboundEndpointResult
 	err := ctx.Invoke("azure-native:network:getOutboundEndpoint", args, &rv, opts...)
@@ -45,7 +45,7 @@ type LookupOutboundEndpointResult struct {
 	// The resourceGuid property of the outbound endpoint resource.
 	ResourceGuid string `pulumi:"resourceGuid"`
 	// The reference to the subnet used for the outbound endpoint.
-	Subnet *SubResourceResponse `pulumi:"subnet"`
+	Subnet SubResourceResponse `pulumi:"subnet"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -126,8 +126,8 @@ func (o LookupOutboundEndpointResultOutput) ResourceGuid() pulumi.StringOutput {
 }
 
 // The reference to the subnet used for the outbound endpoint.
-func (o LookupOutboundEndpointResultOutput) Subnet() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v LookupOutboundEndpointResult) *SubResourceResponse { return v.Subnet }).(SubResourceResponsePtrOutput)
+func (o LookupOutboundEndpointResultOutput) Subnet() SubResourceResponseOutput {
+	return o.ApplyT(func(v LookupOutboundEndpointResult) SubResourceResponse { return v.Subnet }).(SubResourceResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

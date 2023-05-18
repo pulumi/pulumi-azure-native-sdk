@@ -11,7 +11,7 @@ import (
 )
 
 // Implements cluster GET method.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getCluster", args, &rv, opts...)

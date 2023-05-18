@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Big Data pool.
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
 func LookupBigDataPool(ctx *pulumi.Context, args *LookupBigDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupBigDataPoolResult, error) {
 	var rv LookupBigDataPoolResult
 	err := ctx.Invoke("azure-native:synapse:getBigDataPool", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupBigDataPoolArgs struct {
 	BigDataPoolName string `pulumi:"bigDataPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -37,9 +37,9 @@ type LookupBigDataPoolResult struct {
 	// Auto-scaling properties
 	AutoScale *AutoScalePropertiesResponse `pulumi:"autoScale"`
 	// The cache size
-	CacheSize *int `pulumi:"cacheSize"`
+	CacheSize int `pulumi:"cacheSize"`
 	// The time when the Big Data pool was created.
-	CreationDate *string `pulumi:"creationDate"`
+	CreationDate string `pulumi:"creationDate"`
 	// List of custom libraries/packages associated with the spark pool.
 	CustomLibraries []LibraryInfoResponse `pulumi:"customLibraries"`
 	// The default folder where Spark logs will be written.
@@ -48,6 +48,8 @@ type LookupBigDataPoolResult struct {
 	DynamicExecutorAllocation *DynamicExecutorAllocationResponse `pulumi:"dynamicExecutorAllocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// Whether autotune is required or not.
+	IsAutotuneEnabled *bool `pulumi:"isAutotuneEnabled"`
 	// Whether compute isolation is required or not.
 	IsComputeIsolationEnabled *bool `pulumi:"isComputeIsolationEnabled"`
 	// The time when the Big Data pool was updated successfully.
@@ -69,7 +71,7 @@ type LookupBigDataPoolResult struct {
 	// Whether session level packages enabled.
 	SessionLevelPackagesEnabled *bool `pulumi:"sessionLevelPackagesEnabled"`
 	// Spark configuration file to specify additional properties
-	SparkConfigProperties *LibraryRequirementsResponse `pulumi:"sparkConfigProperties"`
+	SparkConfigProperties *SparkConfigPropertiesResponse `pulumi:"sparkConfigProperties"`
 	// The Spark events folder
 	SparkEventsFolder *string `pulumi:"sparkEventsFolder"`
 	// The Apache Spark version.
@@ -98,7 +100,7 @@ type LookupBigDataPoolOutputArgs struct {
 	BigDataPoolName pulumi.StringInput `pulumi:"bigDataPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -132,13 +134,13 @@ func (o LookupBigDataPoolResultOutput) AutoScale() AutoScalePropertiesResponsePt
 }
 
 // The cache size
-func (o LookupBigDataPoolResultOutput) CacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupBigDataPoolResult) *int { return v.CacheSize }).(pulumi.IntPtrOutput)
+func (o LookupBigDataPoolResultOutput) CacheSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBigDataPoolResult) int { return v.CacheSize }).(pulumi.IntOutput)
 }
 
 // The time when the Big Data pool was created.
-func (o LookupBigDataPoolResultOutput) CreationDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupBigDataPoolResult) *string { return v.CreationDate }).(pulumi.StringPtrOutput)
+func (o LookupBigDataPoolResultOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBigDataPoolResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
 // List of custom libraries/packages associated with the spark pool.
@@ -159,6 +161,11 @@ func (o LookupBigDataPoolResultOutput) DynamicExecutorAllocation() DynamicExecut
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupBigDataPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBigDataPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether autotune is required or not.
+func (o LookupBigDataPoolResultOutput) IsAutotuneEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupBigDataPoolResult) *bool { return v.IsAutotuneEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether compute isolation is required or not.
@@ -212,8 +219,8 @@ func (o LookupBigDataPoolResultOutput) SessionLevelPackagesEnabled() pulumi.Bool
 }
 
 // Spark configuration file to specify additional properties
-func (o LookupBigDataPoolResultOutput) SparkConfigProperties() LibraryRequirementsResponsePtrOutput {
-	return o.ApplyT(func(v LookupBigDataPoolResult) *LibraryRequirementsResponse { return v.SparkConfigProperties }).(LibraryRequirementsResponsePtrOutput)
+func (o LookupBigDataPoolResultOutput) SparkConfigProperties() SparkConfigPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupBigDataPoolResult) *SparkConfigPropertiesResponse { return v.SparkConfigProperties }).(SparkConfigPropertiesResponsePtrOutput)
 }
 
 // The Spark events folder

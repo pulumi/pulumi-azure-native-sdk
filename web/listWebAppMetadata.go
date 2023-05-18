@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the metadata of an app.
-// API Version: 2020-12-01.
+// Description for Gets the metadata of an app.
+// API Version: 2022-09-01.
 func ListWebAppMetadata(ctx *pulumi.Context, args *ListWebAppMetadataArgs, opts ...pulumi.InvokeOption) (*ListWebAppMetadataResult, error) {
 	var rv ListWebAppMetadataResult
 	err := ctx.Invoke("azure-native:web:listWebAppMetadata", args, &rv, opts...)

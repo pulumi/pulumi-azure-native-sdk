@@ -20,29 +20,6 @@ const (
 	EnforcementModeDoNotEnforce = EnforcementMode("DoNotEnforce")
 )
 
-// The data type of the parameter.
-type ParameterType string
-
-const (
-	ParameterTypeString   = ParameterType("String")
-	ParameterTypeArray    = ParameterType("Array")
-	ParameterTypeObject   = ParameterType("Object")
-	ParameterTypeBoolean  = ParameterType("Boolean")
-	ParameterTypeInteger  = ParameterType("Integer")
-	ParameterTypeFloat    = ParameterType("Float")
-	ParameterTypeDateTime = ParameterType("DateTime")
-)
-
-// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-type PolicyType string
-
-const (
-	PolicyTypeNotSpecified = PolicyType("NotSpecified")
-	PolicyTypeBuiltIn      = PolicyType("BuiltIn")
-	PolicyTypeCustom       = PolicyType("Custom")
-	PolicyTypeStatic       = PolicyType("Static")
-)
-
 // The identity type. This is the only required field when adding a system assigned identity to a resource.
 type ResourceIdentityType string
 

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storage account credential
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 type StorageAccountCredential struct {
 	pulumi.CustomResourceState
 

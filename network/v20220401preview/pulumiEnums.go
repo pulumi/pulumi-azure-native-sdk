@@ -11,14 +11,6 @@ const (
 	AddressPrefixTypeServiceTag = AddressPrefixType("ServiceTag")
 )
 
-// Whether the rule is custom or default.
-type AdminRuleKind string
-
-const (
-	AdminRuleKindCustom  = AdminRuleKind("Custom")
-	AdminRuleKindDefault = AdminRuleKind("Default")
-)
-
 // The allowed type DNS record types for this profile.
 type AllowedEndpointRecordType string
 
@@ -46,28 +38,12 @@ const (
 	ConfigurationTypeConnectivity  = ConfigurationType("Connectivity")
 )
 
-// Connectivity topology type.
-type ConnectivityTopology string
-
-const (
-	ConnectivityTopologyHubAndSpoke = ConnectivityTopology("HubAndSpoke")
-	ConnectivityTopologyMesh        = ConnectivityTopology("Mesh")
-)
-
 // Flag if need to delete existing network security groups.
 type DeleteExistingNSGs string
 
 const (
 	DeleteExistingNSGsFalse = DeleteExistingNSGs("False")
 	DeleteExistingNSGsTrue  = DeleteExistingNSGs("True")
-)
-
-// Flag if need to remove current existing peerings.
-type DeleteExistingPeering string
-
-const (
-	DeleteExistingPeeringFalse = DeleteExistingPeering("False")
-	DeleteExistingPeeringTrue  = DeleteExistingPeering("True")
 )
 
 // The monitoring status of the endpoint.
@@ -90,22 +66,6 @@ const (
 	EndpointStatusDisabled = EndpointStatus("Disabled")
 )
 
-// Group connectivity type.
-type GroupConnectivity string
-
-const (
-	GroupConnectivityNone              = GroupConnectivity("None")
-	GroupConnectivityDirectlyConnected = GroupConnectivity("DirectlyConnected")
-)
-
-// Flag if global mesh is supported.
-type IsGlobal string
-
-const (
-	IsGlobalFalse = IsGlobal("False")
-	IsGlobalTrue  = IsGlobal("True")
-)
-
 // The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
 type MonitorProtocol string
 
@@ -113,14 +73,6 @@ const (
 	MonitorProtocolHTTP  = MonitorProtocol("HTTP")
 	MonitorProtocolHTTPS = MonitorProtocol("HTTPS")
 	MonitorProtocolTCP   = MonitorProtocol("TCP")
-)
-
-// Network intent policy based services.
-type NetworkIntentPolicyBasedService string
-
-const (
-	NetworkIntentPolicyBasedServiceNone = NetworkIntentPolicyBasedService("None")
-	NetworkIntentPolicyBasedServiceAll  = NetworkIntentPolicyBasedService("All")
 )
 
 // The profile-level monitoring status of the Traffic Manager profile.
@@ -140,15 +92,6 @@ type ProfileStatus string
 const (
 	ProfileStatusEnabled  = ProfileStatus("Enabled")
 	ProfileStatusDisabled = ProfileStatus("Disabled")
-)
-
-// Indicates the access allowed for this particular rule
-type SecurityConfigurationRuleAccess string
-
-const (
-	SecurityConfigurationRuleAccessAllow       = SecurityConfigurationRuleAccess("Allow")
-	SecurityConfigurationRuleAccessDeny        = SecurityConfigurationRuleAccess("Deny")
-	SecurityConfigurationRuleAccessAlwaysAllow = SecurityConfigurationRuleAccess("AlwaysAllow")
 )
 
 // Indicates if the traffic matched against the rule in inbound or outbound.
@@ -189,14 +132,6 @@ type TrafficViewEnrollmentStatus string
 const (
 	TrafficViewEnrollmentStatusEnabled  = TrafficViewEnrollmentStatus("Enabled")
 	TrafficViewEnrollmentStatusDisabled = TrafficViewEnrollmentStatus("Disabled")
-)
-
-// Flag if need to use hub gateway.
-type UseHubGateway string
-
-const (
-	UseHubGatewayFalse = UseHubGateway("False")
-	UseHubGatewayTrue  = UseHubGateway("True")
 )
 
 // Whether the rule is custom or default.

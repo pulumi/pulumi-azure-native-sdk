@@ -31,16 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PipelineRun{}
 	case "azure-native:containerregistry/v20201101preview:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
-	case "azure-native:containerregistry/v20201101preview:Registry":
-		r = &Registry{}
-	case "azure-native:containerregistry/v20201101preview:Replication":
-		r = &Replication{}
 	case "azure-native:containerregistry/v20201101preview:ScopeMap":
 		r = &ScopeMap{}
 	case "azure-native:containerregistry/v20201101preview:Token":
 		r = &Token{}
-	case "azure-native:containerregistry/v20201101preview:Webhook":
-		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

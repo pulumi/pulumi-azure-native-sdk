@@ -21,12 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:azurestackhci/v20220101:ArcSetting":
-		r = &ArcSetting{}
 	case "azure-native:azurestackhci/v20220101:Cluster":
 		r = &Cluster{}
-	case "azure-native:azurestackhci/v20220101:Extension":
-		r = &Extension{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified network interface.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceResult, error) {
 	var rv LookupNetworkInterfaceResult
 	err := ctx.Invoke("azure-native:network:getNetworkInterface", args, &rv, opts...)
@@ -32,11 +32,15 @@ type LookupNetworkInterfaceArgs struct {
 
 // A network interface in a resource group.
 type LookupNetworkInterfaceResult struct {
+	// Auxiliary mode of Network Interface resource.
+	AuxiliaryMode *string `pulumi:"auxiliaryMode"`
+	// Indicates whether to disable tcp state tracking.
+	DisableTcpStateTracking *bool `pulumi:"disableTcpStateTracking"`
 	// The DNS settings in network interface.
 	DnsSettings *NetworkInterfaceDnsSettingsResponse `pulumi:"dnsSettings"`
 	// A reference to the dscp configuration to which the network interface is linked.
 	DscpConfiguration SubResourceResponse `pulumi:"dscpConfiguration"`
-	// If the network interface is accelerated networking enabled.
+	// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
 	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
 	// Indicates whether IP forwarding is enabled on this network interface.
 	EnableIPForwarding *bool `pulumi:"enableIPForwarding"`
@@ -80,6 +84,10 @@ type LookupNetworkInterfaceResult struct {
 	Type string `pulumi:"type"`
 	// The reference to a virtual machine.
 	VirtualMachine SubResourceResponse `pulumi:"virtualMachine"`
+	// Whether the virtual machine this nic is attached to supports encryption.
+	VnetEncryptionSupported bool `pulumi:"vnetEncryptionSupported"`
+	// WorkloadType of the NetworkInterface for BareMetal resources
+	WorkloadType *string `pulumi:"workloadType"`
 }
 
 // Defaults sets the appropriate defaults for LookupNetworkInterfaceResult
@@ -134,6 +142,16 @@ func (o LookupNetworkInterfaceResultOutput) ToLookupNetworkInterfaceResultOutput
 	return o
 }
 
+// Auxiliary mode of Network Interface resource.
+func (o LookupNetworkInterfaceResultOutput) AuxiliaryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) *string { return v.AuxiliaryMode }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to disable tcp state tracking.
+func (o LookupNetworkInterfaceResultOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) *bool { return v.DisableTcpStateTracking }).(pulumi.BoolPtrOutput)
+}
+
 // The DNS settings in network interface.
 func (o LookupNetworkInterfaceResultOutput) DnsSettings() NetworkInterfaceDnsSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) *NetworkInterfaceDnsSettingsResponse { return v.DnsSettings }).(NetworkInterfaceDnsSettingsResponsePtrOutput)
@@ -144,7 +162,7 @@ func (o LookupNetworkInterfaceResultOutput) DscpConfiguration() SubResourceRespo
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) SubResourceResponse { return v.DscpConfiguration }).(SubResourceResponseOutput)
 }
 
-// If the network interface is accelerated networking enabled.
+// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
 func (o LookupNetworkInterfaceResultOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
 }
@@ -256,6 +274,16 @@ func (o LookupNetworkInterfaceResultOutput) Type() pulumi.StringOutput {
 // The reference to a virtual machine.
 func (o LookupNetworkInterfaceResultOutput) VirtualMachine() SubResourceResponseOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) SubResourceResponse { return v.VirtualMachine }).(SubResourceResponseOutput)
+}
+
+// Whether the virtual machine this nic is attached to supports encryption.
+func (o LookupNetworkInterfaceResultOutput) VnetEncryptionSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) bool { return v.VnetEncryptionSupported }).(pulumi.BoolOutput)
+}
+
+// WorkloadType of the NetworkInterface for BareMetal resources
+func (o LookupNetworkInterfaceResultOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

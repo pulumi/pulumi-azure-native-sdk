@@ -11,7 +11,7 @@ import (
 )
 
 // The Get Domain Service operation retrieves a json representation of the Domain Service.
-// API Version: 2021-03-01.
+// API Version: 2022-12-01.
 func LookupDomainService(ctx *pulumi.Context, args *LookupDomainServiceArgs, opts ...pulumi.InvokeOption) (*LookupDomainServiceResult, error) {
 	var rv LookupDomainServiceResult
 	err := ctx.Invoke("azure-native:aad:getDomainService", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupDomainServiceArgs struct {
 
 // Domain service.
 type LookupDomainServiceResult struct {
+	// Configuration diagnostics data containing latest execution from client.
+	ConfigDiagnostics *ConfigDiagnosticsResponse `pulumi:"configDiagnostics"`
 	// Deployment Id
 	DeploymentId string `pulumi:"deploymentId"`
 	// Domain Configuration Type
@@ -62,8 +64,12 @@ type LookupDomainServiceResult struct {
 	ResourceForestSettings *ResourceForestSettingsResponse `pulumi:"resourceForestSettings"`
 	// Sku Type
 	Sku *string `pulumi:"sku"`
+	// The unique sync application id of the Azure AD Domain Services deployment.
+	SyncApplicationId string `pulumi:"syncApplicationId"`
 	// SyncOwner ReplicaSet Id
 	SyncOwner string `pulumi:"syncOwner"`
+	// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+	SyncScope *string `pulumi:"syncScope"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
@@ -86,6 +92,10 @@ func (val *LookupDomainServiceResult) Defaults() *LookupDomainServiceResult {
 
 	tmp.LdapsSettings = tmp.LdapsSettings.Defaults()
 
+	if tmp.SyncScope == nil {
+		syncScope_ := "All"
+		tmp.SyncScope = &syncScope_
+	}
 	return &tmp
 }
 
@@ -126,6 +136,11 @@ func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutput() Loo
 
 func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutputWithContext(ctx context.Context) LookupDomainServiceResultOutput {
 	return o
+}
+
+// Configuration diagnostics data containing latest execution from client.
+func (o LookupDomainServiceResultOutput) ConfigDiagnostics() ConfigDiagnosticsResponsePtrOutput {
+	return o.ApplyT(func(v LookupDomainServiceResult) *ConfigDiagnosticsResponse { return v.ConfigDiagnostics }).(ConfigDiagnosticsResponsePtrOutput)
 }
 
 // Deployment Id
@@ -208,9 +223,19 @@ func (o LookupDomainServiceResultOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainServiceResult) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// The unique sync application id of the Azure AD Domain Services deployment.
+func (o LookupDomainServiceResultOutput) SyncApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainServiceResult) string { return v.SyncApplicationId }).(pulumi.StringOutput)
+}
+
 // SyncOwner ReplicaSet Id
 func (o LookupDomainServiceResultOutput) SyncOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainServiceResult) string { return v.SyncOwner }).(pulumi.StringOutput)
+}
+
+// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+func (o LookupDomainServiceResultOutput) SyncScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainServiceResult) *string { return v.SyncScope }).(pulumi.StringPtrOutput)
 }
 
 // The system meta data relating to this resource.

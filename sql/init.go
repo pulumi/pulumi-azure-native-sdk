@@ -37,8 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseVulnerabilityAssessment{}
 	case "azure-native:sql:DatabaseVulnerabilityAssessmentRuleBaseline":
 		r = &DatabaseVulnerabilityAssessmentRuleBaseline{}
-	case "azure-native:sql:DisasterRecoveryConfiguration":
-		r = &DisasterRecoveryConfiguration{}
 	case "azure-native:sql:DistributedAvailabilityGroup":
 		r = &DistributedAvailabilityGroup{}
 	case "azure-native:sql:ElasticPool":
@@ -111,8 +109,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerAzureADOnlyAuthentication{}
 	case "azure-native:sql:ServerBlobAuditingPolicy":
 		r = &ServerBlobAuditingPolicy{}
-	case "azure-native:sql:ServerCommunicationLink":
-		r = &ServerCommunicationLink{}
 	case "azure-native:sql:ServerDnsAlias":
 		r = &ServerDnsAlias{}
 	case "azure-native:sql:ServerKey":

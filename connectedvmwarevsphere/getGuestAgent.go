@@ -11,7 +11,7 @@ import (
 )
 
 // Implements GuestAgent GET method.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
 func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupGuestAgentResult, error) {
 	var rv LookupGuestAgentResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getGuestAgent", args, &rv, opts...)

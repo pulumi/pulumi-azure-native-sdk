@@ -10,12 +10,1387 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Information about the AML file system archive
+type AmlFilesystemArchiveResponse struct {
+	// Lustre file system path to archive relative to the file system root.  Specify '/' to archive all modified data.
+	FilesystemPath string `pulumi:"filesystemPath"`
+	// The status of the archive
+	Status AmlFilesystemArchiveResponseStatus `pulumi:"status"`
+}
+
+// Information about the AML file system archive
+type AmlFilesystemArchiveResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemArchiveResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemArchiveResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemArchiveResponseOutput) ToAmlFilesystemArchiveResponseOutput() AmlFilesystemArchiveResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemArchiveResponseOutput) ToAmlFilesystemArchiveResponseOutputWithContext(ctx context.Context) AmlFilesystemArchiveResponseOutput {
+	return o
+}
+
+// Lustre file system path to archive relative to the file system root.  Specify '/' to archive all modified data.
+func (o AmlFilesystemArchiveResponseOutput) FilesystemPath() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponse) string { return v.FilesystemPath }).(pulumi.StringOutput)
+}
+
+// The status of the archive
+func (o AmlFilesystemArchiveResponseOutput) Status() AmlFilesystemArchiveResponseStatusOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponse) AmlFilesystemArchiveResponseStatus { return v.Status }).(AmlFilesystemArchiveResponseStatusOutput)
+}
+
+type AmlFilesystemArchiveResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemArchiveResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AmlFilesystemArchiveResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemArchiveResponseArrayOutput) ToAmlFilesystemArchiveResponseArrayOutput() AmlFilesystemArchiveResponseArrayOutput {
+	return o
+}
+
+func (o AmlFilesystemArchiveResponseArrayOutput) ToAmlFilesystemArchiveResponseArrayOutputWithContext(ctx context.Context) AmlFilesystemArchiveResponseArrayOutput {
+	return o
+}
+
+func (o AmlFilesystemArchiveResponseArrayOutput) Index(i pulumi.IntInput) AmlFilesystemArchiveResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AmlFilesystemArchiveResponse {
+		return vs[0].([]AmlFilesystemArchiveResponse)[vs[1].(int)]
+	}).(AmlFilesystemArchiveResponseOutput)
+}
+
+// The status of the archive
+type AmlFilesystemArchiveResponseStatus struct {
+	// Server-defined error code for the archive operation
+	ErrorCode string `pulumi:"errorCode"`
+	// Server-defined error message for the archive operation
+	ErrorMessage string `pulumi:"errorMessage"`
+	// The time of the last completed archive operation
+	LastCompletionTime string `pulumi:"lastCompletionTime"`
+	// The time the latest archive operation started
+	LastStartedTime string `pulumi:"lastStartedTime"`
+	// The completion percentage of the archive operation
+	PercentComplete int `pulumi:"percentComplete"`
+	// The state of the archive operation
+	State string `pulumi:"state"`
+}
+
+// The status of the archive
+type AmlFilesystemArchiveResponseStatusOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemArchiveResponseStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemArchiveResponseStatus)(nil)).Elem()
+}
+
+func (o AmlFilesystemArchiveResponseStatusOutput) ToAmlFilesystemArchiveResponseStatusOutput() AmlFilesystemArchiveResponseStatusOutput {
+	return o
+}
+
+func (o AmlFilesystemArchiveResponseStatusOutput) ToAmlFilesystemArchiveResponseStatusOutputWithContext(ctx context.Context) AmlFilesystemArchiveResponseStatusOutput {
+	return o
+}
+
+// Server-defined error code for the archive operation
+func (o AmlFilesystemArchiveResponseStatusOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponseStatus) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Server-defined error message for the archive operation
+func (o AmlFilesystemArchiveResponseStatusOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponseStatus) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// The time of the last completed archive operation
+func (o AmlFilesystemArchiveResponseStatusOutput) LastCompletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponseStatus) string { return v.LastCompletionTime }).(pulumi.StringOutput)
+}
+
+// The time the latest archive operation started
+func (o AmlFilesystemArchiveResponseStatusOutput) LastStartedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponseStatus) string { return v.LastStartedTime }).(pulumi.StringOutput)
+}
+
+// The completion percentage of the archive operation
+func (o AmlFilesystemArchiveResponseStatusOutput) PercentComplete() pulumi.IntOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponseStatus) int { return v.PercentComplete }).(pulumi.IntOutput)
+}
+
+// The state of the archive operation
+func (o AmlFilesystemArchiveResponseStatusOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemArchiveResponseStatus) string { return v.State }).(pulumi.StringOutput)
+}
+
+// AML file system client information
+type AmlFilesystemClientInfoResponse struct {
+	// Container Storage Interface information for the AML file system.
+	ContainerStorageInterface AmlFilesystemContainerStorageInterfaceResponse `pulumi:"containerStorageInterface"`
+	// The version of Lustre running in the AML file system
+	LustreVersion string `pulumi:"lustreVersion"`
+	// The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS).
+	MgsAddress string `pulumi:"mgsAddress"`
+	// Recommended command to mount the AML file system
+	MountCommand string `pulumi:"mountCommand"`
+}
+
+// AML file system client information
+type AmlFilesystemClientInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemClientInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemClientInfoResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemClientInfoResponseOutput) ToAmlFilesystemClientInfoResponseOutput() AmlFilesystemClientInfoResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemClientInfoResponseOutput) ToAmlFilesystemClientInfoResponseOutputWithContext(ctx context.Context) AmlFilesystemClientInfoResponseOutput {
+	return o
+}
+
+// Container Storage Interface information for the AML file system.
+func (o AmlFilesystemClientInfoResponseOutput) ContainerStorageInterface() AmlFilesystemContainerStorageInterfaceResponseOutput {
+	return o.ApplyT(func(v AmlFilesystemClientInfoResponse) AmlFilesystemContainerStorageInterfaceResponse {
+		return v.ContainerStorageInterface
+	}).(AmlFilesystemContainerStorageInterfaceResponseOutput)
+}
+
+// The version of Lustre running in the AML file system
+func (o AmlFilesystemClientInfoResponseOutput) LustreVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemClientInfoResponse) string { return v.LustreVersion }).(pulumi.StringOutput)
+}
+
+// The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS).
+func (o AmlFilesystemClientInfoResponseOutput) MgsAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemClientInfoResponse) string { return v.MgsAddress }).(pulumi.StringOutput)
+}
+
+// Recommended command to mount the AML file system
+func (o AmlFilesystemClientInfoResponseOutput) MountCommand() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemClientInfoResponse) string { return v.MountCommand }).(pulumi.StringOutput)
+}
+
+// AML file system container storage interface information
+type AmlFilesystemContainerStorageInterfaceResponse struct {
+	// Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML
+	PersistentVolume string `pulumi:"persistentVolume"`
+	// Recommended AKS Persistent Volume Claim for the CSI driver, in Base64 encoded YAML
+	PersistentVolumeClaim string `pulumi:"persistentVolumeClaim"`
+	// Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// AML file system container storage interface information
+type AmlFilesystemContainerStorageInterfaceResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemContainerStorageInterfaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemContainerStorageInterfaceResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemContainerStorageInterfaceResponseOutput) ToAmlFilesystemContainerStorageInterfaceResponseOutput() AmlFilesystemContainerStorageInterfaceResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemContainerStorageInterfaceResponseOutput) ToAmlFilesystemContainerStorageInterfaceResponseOutputWithContext(ctx context.Context) AmlFilesystemContainerStorageInterfaceResponseOutput {
+	return o
+}
+
+// Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML
+func (o AmlFilesystemContainerStorageInterfaceResponseOutput) PersistentVolume() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemContainerStorageInterfaceResponse) string { return v.PersistentVolume }).(pulumi.StringOutput)
+}
+
+// Recommended AKS Persistent Volume Claim for the CSI driver, in Base64 encoded YAML
+func (o AmlFilesystemContainerStorageInterfaceResponseOutput) PersistentVolumeClaim() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemContainerStorageInterfaceResponse) string { return v.PersistentVolumeClaim }).(pulumi.StringOutput)
+}
+
+// Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML
+func (o AmlFilesystemContainerStorageInterfaceResponseOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemContainerStorageInterfaceResponse) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// AML file system encryption settings.
+type AmlFilesystemEncryptionSettings struct {
+	// Specifies the location of the encryption key in Key Vault.
+	KeyEncryptionKey *KeyVaultKeyReference `pulumi:"keyEncryptionKey"`
+}
+
+// AmlFilesystemEncryptionSettingsInput is an input type that accepts AmlFilesystemEncryptionSettingsArgs and AmlFilesystemEncryptionSettingsOutput values.
+// You can construct a concrete instance of `AmlFilesystemEncryptionSettingsInput` via:
+//
+//	AmlFilesystemEncryptionSettingsArgs{...}
+type AmlFilesystemEncryptionSettingsInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemEncryptionSettingsOutput() AmlFilesystemEncryptionSettingsOutput
+	ToAmlFilesystemEncryptionSettingsOutputWithContext(context.Context) AmlFilesystemEncryptionSettingsOutput
+}
+
+// AML file system encryption settings.
+type AmlFilesystemEncryptionSettingsArgs struct {
+	// Specifies the location of the encryption key in Key Vault.
+	KeyEncryptionKey KeyVaultKeyReferencePtrInput `pulumi:"keyEncryptionKey"`
+}
+
+func (AmlFilesystemEncryptionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemEncryptionSettings)(nil)).Elem()
+}
+
+func (i AmlFilesystemEncryptionSettingsArgs) ToAmlFilesystemEncryptionSettingsOutput() AmlFilesystemEncryptionSettingsOutput {
+	return i.ToAmlFilesystemEncryptionSettingsOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemEncryptionSettingsArgs) ToAmlFilesystemEncryptionSettingsOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemEncryptionSettingsOutput)
+}
+
+func (i AmlFilesystemEncryptionSettingsArgs) ToAmlFilesystemEncryptionSettingsPtrOutput() AmlFilesystemEncryptionSettingsPtrOutput {
+	return i.ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemEncryptionSettingsArgs) ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemEncryptionSettingsOutput).ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(ctx)
+}
+
+// AmlFilesystemEncryptionSettingsPtrInput is an input type that accepts AmlFilesystemEncryptionSettingsArgs, AmlFilesystemEncryptionSettingsPtr and AmlFilesystemEncryptionSettingsPtrOutput values.
+// You can construct a concrete instance of `AmlFilesystemEncryptionSettingsPtrInput` via:
+//
+//	        AmlFilesystemEncryptionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AmlFilesystemEncryptionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemEncryptionSettingsPtrOutput() AmlFilesystemEncryptionSettingsPtrOutput
+	ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(context.Context) AmlFilesystemEncryptionSettingsPtrOutput
+}
+
+type amlFilesystemEncryptionSettingsPtrType AmlFilesystemEncryptionSettingsArgs
+
+func AmlFilesystemEncryptionSettingsPtr(v *AmlFilesystemEncryptionSettingsArgs) AmlFilesystemEncryptionSettingsPtrInput {
+	return (*amlFilesystemEncryptionSettingsPtrType)(v)
+}
+
+func (*amlFilesystemEncryptionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemEncryptionSettings)(nil)).Elem()
+}
+
+func (i *amlFilesystemEncryptionSettingsPtrType) ToAmlFilesystemEncryptionSettingsPtrOutput() AmlFilesystemEncryptionSettingsPtrOutput {
+	return i.ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *amlFilesystemEncryptionSettingsPtrType) ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemEncryptionSettingsPtrOutput)
+}
+
+// AML file system encryption settings.
+type AmlFilesystemEncryptionSettingsOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemEncryptionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemEncryptionSettings)(nil)).Elem()
+}
+
+func (o AmlFilesystemEncryptionSettingsOutput) ToAmlFilesystemEncryptionSettingsOutput() AmlFilesystemEncryptionSettingsOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsOutput) ToAmlFilesystemEncryptionSettingsOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsOutput) ToAmlFilesystemEncryptionSettingsPtrOutput() AmlFilesystemEncryptionSettingsPtrOutput {
+	return o.ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemEncryptionSettingsOutput) ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemEncryptionSettings) *AmlFilesystemEncryptionSettings {
+		return &v
+	}).(AmlFilesystemEncryptionSettingsPtrOutput)
+}
+
+// Specifies the location of the encryption key in Key Vault.
+func (o AmlFilesystemEncryptionSettingsOutput) KeyEncryptionKey() KeyVaultKeyReferencePtrOutput {
+	return o.ApplyT(func(v AmlFilesystemEncryptionSettings) *KeyVaultKeyReference { return v.KeyEncryptionKey }).(KeyVaultKeyReferencePtrOutput)
+}
+
+type AmlFilesystemEncryptionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemEncryptionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemEncryptionSettings)(nil)).Elem()
+}
+
+func (o AmlFilesystemEncryptionSettingsPtrOutput) ToAmlFilesystemEncryptionSettingsPtrOutput() AmlFilesystemEncryptionSettingsPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsPtrOutput) ToAmlFilesystemEncryptionSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsPtrOutput) Elem() AmlFilesystemEncryptionSettingsOutput {
+	return o.ApplyT(func(v *AmlFilesystemEncryptionSettings) AmlFilesystemEncryptionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemEncryptionSettings
+		return ret
+	}).(AmlFilesystemEncryptionSettingsOutput)
+}
+
+// Specifies the location of the encryption key in Key Vault.
+func (o AmlFilesystemEncryptionSettingsPtrOutput) KeyEncryptionKey() KeyVaultKeyReferencePtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemEncryptionSettings) *KeyVaultKeyReference {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKey
+	}).(KeyVaultKeyReferencePtrOutput)
+}
+
+// AML file system encryption settings.
+type AmlFilesystemEncryptionSettingsResponse struct {
+	// Specifies the location of the encryption key in Key Vault.
+	KeyEncryptionKey *KeyVaultKeyReferenceResponse `pulumi:"keyEncryptionKey"`
+}
+
+// AML file system encryption settings.
+type AmlFilesystemEncryptionSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemEncryptionSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemEncryptionSettingsResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemEncryptionSettingsResponseOutput) ToAmlFilesystemEncryptionSettingsResponseOutput() AmlFilesystemEncryptionSettingsResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsResponseOutput) ToAmlFilesystemEncryptionSettingsResponseOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsResponseOutput {
+	return o
+}
+
+// Specifies the location of the encryption key in Key Vault.
+func (o AmlFilesystemEncryptionSettingsResponseOutput) KeyEncryptionKey() KeyVaultKeyReferenceResponsePtrOutput {
+	return o.ApplyT(func(v AmlFilesystemEncryptionSettingsResponse) *KeyVaultKeyReferenceResponse {
+		return v.KeyEncryptionKey
+	}).(KeyVaultKeyReferenceResponsePtrOutput)
+}
+
+type AmlFilesystemEncryptionSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemEncryptionSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemEncryptionSettingsResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemEncryptionSettingsResponsePtrOutput) ToAmlFilesystemEncryptionSettingsResponsePtrOutput() AmlFilesystemEncryptionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsResponsePtrOutput) ToAmlFilesystemEncryptionSettingsResponsePtrOutputWithContext(ctx context.Context) AmlFilesystemEncryptionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemEncryptionSettingsResponsePtrOutput) Elem() AmlFilesystemEncryptionSettingsResponseOutput {
+	return o.ApplyT(func(v *AmlFilesystemEncryptionSettingsResponse) AmlFilesystemEncryptionSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemEncryptionSettingsResponse
+		return ret
+	}).(AmlFilesystemEncryptionSettingsResponseOutput)
+}
+
+// Specifies the location of the encryption key in Key Vault.
+func (o AmlFilesystemEncryptionSettingsResponsePtrOutput) KeyEncryptionKey() KeyVaultKeyReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemEncryptionSettingsResponse) *KeyVaultKeyReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKey
+	}).(KeyVaultKeyReferenceResponsePtrOutput)
+}
+
+// An indication of AML file system health. Gives more information about health than just that related to provisioning.
+type AmlFilesystemHealthResponse struct {
+	// List of AML file system health states.
+	State *string `pulumi:"state"`
+	// Server-defined error code for the AML file system health
+	StatusCode *string `pulumi:"statusCode"`
+	// Describes the health state.
+	StatusDescription *string `pulumi:"statusDescription"`
+}
+
+// An indication of AML file system health. Gives more information about health than just that related to provisioning.
+type AmlFilesystemHealthResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHealthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemHealthResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemHealthResponseOutput) ToAmlFilesystemHealthResponseOutput() AmlFilesystemHealthResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemHealthResponseOutput) ToAmlFilesystemHealthResponseOutputWithContext(ctx context.Context) AmlFilesystemHealthResponseOutput {
+	return o
+}
+
+// List of AML file system health states.
+func (o AmlFilesystemHealthResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemHealthResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Server-defined error code for the AML file system health
+func (o AmlFilesystemHealthResponseOutput) StatusCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemHealthResponse) *string { return v.StatusCode }).(pulumi.StringPtrOutput)
+}
+
+// Describes the health state.
+func (o AmlFilesystemHealthResponseOutput) StatusDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemHealthResponse) *string { return v.StatusDescription }).(pulumi.StringPtrOutput)
+}
+
+// Hydration and archive settings and status
+type AmlFilesystemHsm struct {
+	// Specifies HSM settings of the AML file system.
+	Settings *AmlFilesystemHsmSettings `pulumi:"settings"`
+}
+
+// Defaults sets the appropriate defaults for AmlFilesystemHsm
+func (val *AmlFilesystemHsm) Defaults() *AmlFilesystemHsm {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Settings = tmp.Settings.Defaults()
+
+	return &tmp
+}
+
+// AmlFilesystemHsmInput is an input type that accepts AmlFilesystemHsmArgs and AmlFilesystemHsmOutput values.
+// You can construct a concrete instance of `AmlFilesystemHsmInput` via:
+//
+//	AmlFilesystemHsmArgs{...}
+type AmlFilesystemHsmInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemHsmOutput() AmlFilesystemHsmOutput
+	ToAmlFilesystemHsmOutputWithContext(context.Context) AmlFilesystemHsmOutput
+}
+
+// Hydration and archive settings and status
+type AmlFilesystemHsmArgs struct {
+	// Specifies HSM settings of the AML file system.
+	Settings AmlFilesystemHsmSettingsPtrInput `pulumi:"settings"`
+}
+
+// Defaults sets the appropriate defaults for AmlFilesystemHsmArgs
+func (val *AmlFilesystemHsmArgs) Defaults() *AmlFilesystemHsmArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (AmlFilesystemHsmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemHsm)(nil)).Elem()
+}
+
+func (i AmlFilesystemHsmArgs) ToAmlFilesystemHsmOutput() AmlFilesystemHsmOutput {
+	return i.ToAmlFilesystemHsmOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemHsmArgs) ToAmlFilesystemHsmOutputWithContext(ctx context.Context) AmlFilesystemHsmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemHsmOutput)
+}
+
+func (i AmlFilesystemHsmArgs) ToAmlFilesystemHsmPtrOutput() AmlFilesystemHsmPtrOutput {
+	return i.ToAmlFilesystemHsmPtrOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemHsmArgs) ToAmlFilesystemHsmPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemHsmOutput).ToAmlFilesystemHsmPtrOutputWithContext(ctx)
+}
+
+// AmlFilesystemHsmPtrInput is an input type that accepts AmlFilesystemHsmArgs, AmlFilesystemHsmPtr and AmlFilesystemHsmPtrOutput values.
+// You can construct a concrete instance of `AmlFilesystemHsmPtrInput` via:
+//
+//	        AmlFilesystemHsmArgs{...}
+//
+//	or:
+//
+//	        nil
+type AmlFilesystemHsmPtrInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemHsmPtrOutput() AmlFilesystemHsmPtrOutput
+	ToAmlFilesystemHsmPtrOutputWithContext(context.Context) AmlFilesystemHsmPtrOutput
+}
+
+type amlFilesystemHsmPtrType AmlFilesystemHsmArgs
+
+func AmlFilesystemHsmPtr(v *AmlFilesystemHsmArgs) AmlFilesystemHsmPtrInput {
+	return (*amlFilesystemHsmPtrType)(v)
+}
+
+func (*amlFilesystemHsmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemHsm)(nil)).Elem()
+}
+
+func (i *amlFilesystemHsmPtrType) ToAmlFilesystemHsmPtrOutput() AmlFilesystemHsmPtrOutput {
+	return i.ToAmlFilesystemHsmPtrOutputWithContext(context.Background())
+}
+
+func (i *amlFilesystemHsmPtrType) ToAmlFilesystemHsmPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemHsmPtrOutput)
+}
+
+// Hydration and archive settings and status
+type AmlFilesystemHsmOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHsmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemHsm)(nil)).Elem()
+}
+
+func (o AmlFilesystemHsmOutput) ToAmlFilesystemHsmOutput() AmlFilesystemHsmOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmOutput) ToAmlFilesystemHsmOutputWithContext(ctx context.Context) AmlFilesystemHsmOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmOutput) ToAmlFilesystemHsmPtrOutput() AmlFilesystemHsmPtrOutput {
+	return o.ToAmlFilesystemHsmPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemHsmOutput) ToAmlFilesystemHsmPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemHsm) *AmlFilesystemHsm {
+		return &v
+	}).(AmlFilesystemHsmPtrOutput)
+}
+
+// Specifies HSM settings of the AML file system.
+func (o AmlFilesystemHsmOutput) Settings() AmlFilesystemHsmSettingsPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemHsm) *AmlFilesystemHsmSettings { return v.Settings }).(AmlFilesystemHsmSettingsPtrOutput)
+}
+
+type AmlFilesystemHsmPtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHsmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemHsm)(nil)).Elem()
+}
+
+func (o AmlFilesystemHsmPtrOutput) ToAmlFilesystemHsmPtrOutput() AmlFilesystemHsmPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmPtrOutput) ToAmlFilesystemHsmPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmPtrOutput) Elem() AmlFilesystemHsmOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsm) AmlFilesystemHsm {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemHsm
+		return ret
+	}).(AmlFilesystemHsmOutput)
+}
+
+// Specifies HSM settings of the AML file system.
+func (o AmlFilesystemHsmPtrOutput) Settings() AmlFilesystemHsmSettingsPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsm) *AmlFilesystemHsmSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(AmlFilesystemHsmSettingsPtrOutput)
+}
+
+// AML file system HSM settings.
+type AmlFilesystemHsmSettings struct {
+	// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+	Container string `pulumi:"container"`
+	// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+	ImportPrefix *string `pulumi:"importPrefix"`
+	// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+	LoggingContainer string `pulumi:"loggingContainer"`
+}
+
+// Defaults sets the appropriate defaults for AmlFilesystemHsmSettings
+func (val *AmlFilesystemHsmSettings) Defaults() *AmlFilesystemHsmSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ImportPrefix == nil {
+		importPrefix_ := "/"
+		tmp.ImportPrefix = &importPrefix_
+	}
+	return &tmp
+}
+
+// AmlFilesystemHsmSettingsInput is an input type that accepts AmlFilesystemHsmSettingsArgs and AmlFilesystemHsmSettingsOutput values.
+// You can construct a concrete instance of `AmlFilesystemHsmSettingsInput` via:
+//
+//	AmlFilesystemHsmSettingsArgs{...}
+type AmlFilesystemHsmSettingsInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemHsmSettingsOutput() AmlFilesystemHsmSettingsOutput
+	ToAmlFilesystemHsmSettingsOutputWithContext(context.Context) AmlFilesystemHsmSettingsOutput
+}
+
+// AML file system HSM settings.
+type AmlFilesystemHsmSettingsArgs struct {
+	// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+	Container pulumi.StringInput `pulumi:"container"`
+	// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+	ImportPrefix pulumi.StringPtrInput `pulumi:"importPrefix"`
+	// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+	LoggingContainer pulumi.StringInput `pulumi:"loggingContainer"`
+}
+
+// Defaults sets the appropriate defaults for AmlFilesystemHsmSettingsArgs
+func (val *AmlFilesystemHsmSettingsArgs) Defaults() *AmlFilesystemHsmSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ImportPrefix == nil {
+		tmp.ImportPrefix = pulumi.StringPtr("/")
+	}
+	return &tmp
+}
+func (AmlFilesystemHsmSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemHsmSettings)(nil)).Elem()
+}
+
+func (i AmlFilesystemHsmSettingsArgs) ToAmlFilesystemHsmSettingsOutput() AmlFilesystemHsmSettingsOutput {
+	return i.ToAmlFilesystemHsmSettingsOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemHsmSettingsArgs) ToAmlFilesystemHsmSettingsOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemHsmSettingsOutput)
+}
+
+func (i AmlFilesystemHsmSettingsArgs) ToAmlFilesystemHsmSettingsPtrOutput() AmlFilesystemHsmSettingsPtrOutput {
+	return i.ToAmlFilesystemHsmSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemHsmSettingsArgs) ToAmlFilesystemHsmSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemHsmSettingsOutput).ToAmlFilesystemHsmSettingsPtrOutputWithContext(ctx)
+}
+
+// AmlFilesystemHsmSettingsPtrInput is an input type that accepts AmlFilesystemHsmSettingsArgs, AmlFilesystemHsmSettingsPtr and AmlFilesystemHsmSettingsPtrOutput values.
+// You can construct a concrete instance of `AmlFilesystemHsmSettingsPtrInput` via:
+//
+//	        AmlFilesystemHsmSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AmlFilesystemHsmSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemHsmSettingsPtrOutput() AmlFilesystemHsmSettingsPtrOutput
+	ToAmlFilesystemHsmSettingsPtrOutputWithContext(context.Context) AmlFilesystemHsmSettingsPtrOutput
+}
+
+type amlFilesystemHsmSettingsPtrType AmlFilesystemHsmSettingsArgs
+
+func AmlFilesystemHsmSettingsPtr(v *AmlFilesystemHsmSettingsArgs) AmlFilesystemHsmSettingsPtrInput {
+	return (*amlFilesystemHsmSettingsPtrType)(v)
+}
+
+func (*amlFilesystemHsmSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemHsmSettings)(nil)).Elem()
+}
+
+func (i *amlFilesystemHsmSettingsPtrType) ToAmlFilesystemHsmSettingsPtrOutput() AmlFilesystemHsmSettingsPtrOutput {
+	return i.ToAmlFilesystemHsmSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *amlFilesystemHsmSettingsPtrType) ToAmlFilesystemHsmSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemHsmSettingsPtrOutput)
+}
+
+// AML file system HSM settings.
+type AmlFilesystemHsmSettingsOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHsmSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemHsmSettings)(nil)).Elem()
+}
+
+func (o AmlFilesystemHsmSettingsOutput) ToAmlFilesystemHsmSettingsOutput() AmlFilesystemHsmSettingsOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsOutput) ToAmlFilesystemHsmSettingsOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsOutput) ToAmlFilesystemHsmSettingsPtrOutput() AmlFilesystemHsmSettingsPtrOutput {
+	return o.ToAmlFilesystemHsmSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemHsmSettingsOutput) ToAmlFilesystemHsmSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemHsmSettings) *AmlFilesystemHsmSettings {
+		return &v
+	}).(AmlFilesystemHsmSettingsPtrOutput)
+}
+
+// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemHsmSettings) string { return v.Container }).(pulumi.StringOutput)
+}
+
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+func (o AmlFilesystemHsmSettingsOutput) ImportPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemHsmSettings) *string { return v.ImportPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsOutput) LoggingContainer() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemHsmSettings) string { return v.LoggingContainer }).(pulumi.StringOutput)
+}
+
+type AmlFilesystemHsmSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHsmSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemHsmSettings)(nil)).Elem()
+}
+
+func (o AmlFilesystemHsmSettingsPtrOutput) ToAmlFilesystemHsmSettingsPtrOutput() AmlFilesystemHsmSettingsPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsPtrOutput) ToAmlFilesystemHsmSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsPtrOutput) Elem() AmlFilesystemHsmSettingsOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettings) AmlFilesystemHsmSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemHsmSettings
+		return ret
+	}).(AmlFilesystemHsmSettingsOutput)
+}
+
+// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsPtrOutput) Container() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Container
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+func (o AmlFilesystemHsmSettingsPtrOutput) ImportPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsPtrOutput) LoggingContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingContainer
+	}).(pulumi.StringPtrOutput)
+}
+
+// AML file system HSM settings.
+type AmlFilesystemHsmSettingsResponse struct {
+	// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+	Container string `pulumi:"container"`
+	// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+	ImportPrefix *string `pulumi:"importPrefix"`
+	// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+	LoggingContainer string `pulumi:"loggingContainer"`
+}
+
+// Defaults sets the appropriate defaults for AmlFilesystemHsmSettingsResponse
+func (val *AmlFilesystemHsmSettingsResponse) Defaults() *AmlFilesystemHsmSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ImportPrefix == nil {
+		importPrefix_ := "/"
+		tmp.ImportPrefix = &importPrefix_
+	}
+	return &tmp
+}
+
+// AML file system HSM settings.
+type AmlFilesystemHsmSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHsmSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemHsmSettingsResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemHsmSettingsResponseOutput) ToAmlFilesystemHsmSettingsResponseOutput() AmlFilesystemHsmSettingsResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsResponseOutput) ToAmlFilesystemHsmSettingsResponseOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsResponseOutput {
+	return o
+}
+
+// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsResponseOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemHsmSettingsResponse) string { return v.Container }).(pulumi.StringOutput)
+}
+
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+func (o AmlFilesystemHsmSettingsResponseOutput) ImportPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemHsmSettingsResponse) *string { return v.ImportPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsResponseOutput) LoggingContainer() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemHsmSettingsResponse) string { return v.LoggingContainer }).(pulumi.StringOutput)
+}
+
+type AmlFilesystemHsmSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemHsmSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemHsmSettingsResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemHsmSettingsResponsePtrOutput) ToAmlFilesystemHsmSettingsResponsePtrOutput() AmlFilesystemHsmSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsResponsePtrOutput) ToAmlFilesystemHsmSettingsResponsePtrOutputWithContext(ctx context.Context) AmlFilesystemHsmSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemHsmSettingsResponsePtrOutput) Elem() AmlFilesystemHsmSettingsResponseOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettingsResponse) AmlFilesystemHsmSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemHsmSettingsResponse
+		return ret
+	}).(AmlFilesystemHsmSettingsResponseOutput)
+}
+
+// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsResponsePtrOutput) Container() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Container
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+func (o AmlFilesystemHsmSettingsResponsePtrOutput) ImportPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
+func (o AmlFilesystemHsmSettingsResponsePtrOutput) LoggingContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemHsmSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingContainer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed Identity properties.
+type AmlFilesystemIdentity struct {
+	// The type of identity used for the resource.
+	Type *AmlFilesystemIdentityType `pulumi:"type"`
+	// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+}
+
+// AmlFilesystemIdentityInput is an input type that accepts AmlFilesystemIdentityArgs and AmlFilesystemIdentityOutput values.
+// You can construct a concrete instance of `AmlFilesystemIdentityInput` via:
+//
+//	AmlFilesystemIdentityArgs{...}
+type AmlFilesystemIdentityInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemIdentityOutput() AmlFilesystemIdentityOutput
+	ToAmlFilesystemIdentityOutputWithContext(context.Context) AmlFilesystemIdentityOutput
+}
+
+// Managed Identity properties.
+type AmlFilesystemIdentityArgs struct {
+	// The type of identity used for the resource.
+	Type AmlFilesystemIdentityTypePtrInput `pulumi:"type"`
+	// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+}
+
+func (AmlFilesystemIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemIdentity)(nil)).Elem()
+}
+
+func (i AmlFilesystemIdentityArgs) ToAmlFilesystemIdentityOutput() AmlFilesystemIdentityOutput {
+	return i.ToAmlFilesystemIdentityOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemIdentityArgs) ToAmlFilesystemIdentityOutputWithContext(ctx context.Context) AmlFilesystemIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemIdentityOutput)
+}
+
+func (i AmlFilesystemIdentityArgs) ToAmlFilesystemIdentityPtrOutput() AmlFilesystemIdentityPtrOutput {
+	return i.ToAmlFilesystemIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemIdentityArgs) ToAmlFilesystemIdentityPtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemIdentityOutput).ToAmlFilesystemIdentityPtrOutputWithContext(ctx)
+}
+
+// AmlFilesystemIdentityPtrInput is an input type that accepts AmlFilesystemIdentityArgs, AmlFilesystemIdentityPtr and AmlFilesystemIdentityPtrOutput values.
+// You can construct a concrete instance of `AmlFilesystemIdentityPtrInput` via:
+//
+//	        AmlFilesystemIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AmlFilesystemIdentityPtrInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemIdentityPtrOutput() AmlFilesystemIdentityPtrOutput
+	ToAmlFilesystemIdentityPtrOutputWithContext(context.Context) AmlFilesystemIdentityPtrOutput
+}
+
+type amlFilesystemIdentityPtrType AmlFilesystemIdentityArgs
+
+func AmlFilesystemIdentityPtr(v *AmlFilesystemIdentityArgs) AmlFilesystemIdentityPtrInput {
+	return (*amlFilesystemIdentityPtrType)(v)
+}
+
+func (*amlFilesystemIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemIdentity)(nil)).Elem()
+}
+
+func (i *amlFilesystemIdentityPtrType) ToAmlFilesystemIdentityPtrOutput() AmlFilesystemIdentityPtrOutput {
+	return i.ToAmlFilesystemIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *amlFilesystemIdentityPtrType) ToAmlFilesystemIdentityPtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemIdentityPtrOutput)
+}
+
+// Managed Identity properties.
+type AmlFilesystemIdentityOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemIdentity)(nil)).Elem()
+}
+
+func (o AmlFilesystemIdentityOutput) ToAmlFilesystemIdentityOutput() AmlFilesystemIdentityOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityOutput) ToAmlFilesystemIdentityOutputWithContext(ctx context.Context) AmlFilesystemIdentityOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityOutput) ToAmlFilesystemIdentityPtrOutput() AmlFilesystemIdentityPtrOutput {
+	return o.ToAmlFilesystemIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemIdentityOutput) ToAmlFilesystemIdentityPtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemIdentity) *AmlFilesystemIdentity {
+		return &v
+	}).(AmlFilesystemIdentityPtrOutput)
+}
+
+// The type of identity used for the resource.
+func (o AmlFilesystemIdentityOutput) Type() AmlFilesystemIdentityTypePtrOutput {
+	return o.ApplyT(func(v AmlFilesystemIdentity) *AmlFilesystemIdentityType { return v.Type }).(AmlFilesystemIdentityTypePtrOutput)
+}
+
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o AmlFilesystemIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v AmlFilesystemIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+}
+
+type AmlFilesystemIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemIdentity)(nil)).Elem()
+}
+
+func (o AmlFilesystemIdentityPtrOutput) ToAmlFilesystemIdentityPtrOutput() AmlFilesystemIdentityPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityPtrOutput) ToAmlFilesystemIdentityPtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityPtrOutput) Elem() AmlFilesystemIdentityOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentity) AmlFilesystemIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemIdentity
+		return ret
+	}).(AmlFilesystemIdentityOutput)
+}
+
+// The type of identity used for the resource.
+func (o AmlFilesystemIdentityPtrOutput) Type() AmlFilesystemIdentityTypePtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentity) *AmlFilesystemIdentityType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(AmlFilesystemIdentityTypePtrOutput)
+}
+
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o AmlFilesystemIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentity) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.MapOutput)
+}
+
+// Managed Identity properties.
+type AmlFilesystemIdentityResponse struct {
+	// The principal ID for the user-assigned identity of the resource.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID associated with the resource.
+	TenantId string `pulumi:"tenantId"`
+	// The type of identity used for the resource.
+	Type *string `pulumi:"type"`
+	// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+	UserAssignedIdentities map[string]UserAssignedIdentitiesResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+}
+
+// Managed Identity properties.
+type AmlFilesystemIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemIdentityResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemIdentityResponseOutput) ToAmlFilesystemIdentityResponseOutput() AmlFilesystemIdentityResponseOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityResponseOutput) ToAmlFilesystemIdentityResponseOutputWithContext(ctx context.Context) AmlFilesystemIdentityResponseOutput {
+	return o
+}
+
+// The principal ID for the user-assigned identity of the resource.
+func (o AmlFilesystemIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID associated with the resource.
+func (o AmlFilesystemIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v AmlFilesystemIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of identity used for the resource.
+func (o AmlFilesystemIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o AmlFilesystemIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
+	return o.ApplyT(func(v AmlFilesystemIdentityResponse) map[string]UserAssignedIdentitiesResponseUserAssignedIdentities {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput)
+}
+
+type AmlFilesystemIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemIdentityResponse)(nil)).Elem()
+}
+
+func (o AmlFilesystemIdentityResponsePtrOutput) ToAmlFilesystemIdentityResponsePtrOutput() AmlFilesystemIdentityResponsePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityResponsePtrOutput) ToAmlFilesystemIdentityResponsePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityResponsePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityResponsePtrOutput) Elem() AmlFilesystemIdentityResponseOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentityResponse) AmlFilesystemIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemIdentityResponse
+		return ret
+	}).(AmlFilesystemIdentityResponseOutput)
+}
+
+// The principal ID for the user-assigned identity of the resource.
+func (o AmlFilesystemIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID associated with the resource.
+func (o AmlFilesystemIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity used for the resource.
+func (o AmlFilesystemIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o AmlFilesystemIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentityResponse) map[string]UserAssignedIdentitiesResponseUserAssignedIdentities {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput)
+}
+
+// Start time of a 30-minute weekly maintenance window.
+type AmlFilesystemMaintenanceWindow struct {
+	// Day of the week on which the maintenance window will occur.
+	DayOfWeek *MaintenanceDayOfWeekType `pulumi:"dayOfWeek"`
+	// The time of day (in UTC) to start the maintenance window.
+	TimeOfDayUTC *string `pulumi:"timeOfDayUTC"`
+}
+
+// AmlFilesystemMaintenanceWindowInput is an input type that accepts AmlFilesystemMaintenanceWindowArgs and AmlFilesystemMaintenanceWindowOutput values.
+// You can construct a concrete instance of `AmlFilesystemMaintenanceWindowInput` via:
+//
+//	AmlFilesystemMaintenanceWindowArgs{...}
+type AmlFilesystemMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemMaintenanceWindowOutput() AmlFilesystemMaintenanceWindowOutput
+	ToAmlFilesystemMaintenanceWindowOutputWithContext(context.Context) AmlFilesystemMaintenanceWindowOutput
+}
+
+// Start time of a 30-minute weekly maintenance window.
+type AmlFilesystemMaintenanceWindowArgs struct {
+	// Day of the week on which the maintenance window will occur.
+	DayOfWeek MaintenanceDayOfWeekTypePtrInput `pulumi:"dayOfWeek"`
+	// The time of day (in UTC) to start the maintenance window.
+	TimeOfDayUTC pulumi.StringPtrInput `pulumi:"timeOfDayUTC"`
+}
+
+func (AmlFilesystemMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemMaintenanceWindow)(nil)).Elem()
+}
+
+func (i AmlFilesystemMaintenanceWindowArgs) ToAmlFilesystemMaintenanceWindowOutput() AmlFilesystemMaintenanceWindowOutput {
+	return i.ToAmlFilesystemMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i AmlFilesystemMaintenanceWindowArgs) ToAmlFilesystemMaintenanceWindowOutputWithContext(ctx context.Context) AmlFilesystemMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemMaintenanceWindowOutput)
+}
+
+// Start time of a 30-minute weekly maintenance window.
+type AmlFilesystemMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemMaintenanceWindow)(nil)).Elem()
+}
+
+func (o AmlFilesystemMaintenanceWindowOutput) ToAmlFilesystemMaintenanceWindowOutput() AmlFilesystemMaintenanceWindowOutput {
+	return o
+}
+
+func (o AmlFilesystemMaintenanceWindowOutput) ToAmlFilesystemMaintenanceWindowOutputWithContext(ctx context.Context) AmlFilesystemMaintenanceWindowOutput {
+	return o
+}
+
+// Day of the week on which the maintenance window will occur.
+func (o AmlFilesystemMaintenanceWindowOutput) DayOfWeek() MaintenanceDayOfWeekTypePtrOutput {
+	return o.ApplyT(func(v AmlFilesystemMaintenanceWindow) *MaintenanceDayOfWeekType { return v.DayOfWeek }).(MaintenanceDayOfWeekTypePtrOutput)
+}
+
+// The time of day (in UTC) to start the maintenance window.
+func (o AmlFilesystemMaintenanceWindowOutput) TimeOfDayUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemMaintenanceWindow) *string { return v.TimeOfDayUTC }).(pulumi.StringPtrOutput)
+}
+
+// Hydration and archive settings and status
+type AmlFilesystemResponseHsm struct {
+	// Archive status
+	ArchiveStatus []AmlFilesystemArchiveResponse `pulumi:"archiveStatus"`
+	// Specifies HSM settings of the AML file system.
+	Settings *AmlFilesystemHsmSettingsResponse `pulumi:"settings"`
+}
+
+// Defaults sets the appropriate defaults for AmlFilesystemResponseHsm
+func (val *AmlFilesystemResponseHsm) Defaults() *AmlFilesystemResponseHsm {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Settings = tmp.Settings.Defaults()
+
+	return &tmp
+}
+
+// Hydration and archive settings and status
+type AmlFilesystemResponseHsmOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemResponseHsmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemResponseHsm)(nil)).Elem()
+}
+
+func (o AmlFilesystemResponseHsmOutput) ToAmlFilesystemResponseHsmOutput() AmlFilesystemResponseHsmOutput {
+	return o
+}
+
+func (o AmlFilesystemResponseHsmOutput) ToAmlFilesystemResponseHsmOutputWithContext(ctx context.Context) AmlFilesystemResponseHsmOutput {
+	return o
+}
+
+// Archive status
+func (o AmlFilesystemResponseHsmOutput) ArchiveStatus() AmlFilesystemArchiveResponseArrayOutput {
+	return o.ApplyT(func(v AmlFilesystemResponseHsm) []AmlFilesystemArchiveResponse { return v.ArchiveStatus }).(AmlFilesystemArchiveResponseArrayOutput)
+}
+
+// Specifies HSM settings of the AML file system.
+func (o AmlFilesystemResponseHsmOutput) Settings() AmlFilesystemHsmSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AmlFilesystemResponseHsm) *AmlFilesystemHsmSettingsResponse { return v.Settings }).(AmlFilesystemHsmSettingsResponsePtrOutput)
+}
+
+type AmlFilesystemResponseHsmPtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemResponseHsmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemResponseHsm)(nil)).Elem()
+}
+
+func (o AmlFilesystemResponseHsmPtrOutput) ToAmlFilesystemResponseHsmPtrOutput() AmlFilesystemResponseHsmPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemResponseHsmPtrOutput) ToAmlFilesystemResponseHsmPtrOutputWithContext(ctx context.Context) AmlFilesystemResponseHsmPtrOutput {
+	return o
+}
+
+func (o AmlFilesystemResponseHsmPtrOutput) Elem() AmlFilesystemResponseHsmOutput {
+	return o.ApplyT(func(v *AmlFilesystemResponseHsm) AmlFilesystemResponseHsm {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemResponseHsm
+		return ret
+	}).(AmlFilesystemResponseHsmOutput)
+}
+
+// Archive status
+func (o AmlFilesystemResponseHsmPtrOutput) ArchiveStatus() AmlFilesystemArchiveResponseArrayOutput {
+	return o.ApplyT(func(v *AmlFilesystemResponseHsm) []AmlFilesystemArchiveResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveStatus
+	}).(AmlFilesystemArchiveResponseArrayOutput)
+}
+
+// Specifies HSM settings of the AML file system.
+func (o AmlFilesystemResponseHsmPtrOutput) Settings() AmlFilesystemHsmSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AmlFilesystemResponseHsm) *AmlFilesystemHsmSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(AmlFilesystemHsmSettingsResponsePtrOutput)
+}
+
+// Start time of a 30-minute weekly maintenance window.
+type AmlFilesystemResponseMaintenanceWindow struct {
+	// Day of the week on which the maintenance window will occur.
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// The time of day (in UTC) to start the maintenance window.
+	TimeOfDayUTC *string `pulumi:"timeOfDayUTC"`
+}
+
+// Start time of a 30-minute weekly maintenance window.
+type AmlFilesystemResponseMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemResponseMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemResponseMaintenanceWindow)(nil)).Elem()
+}
+
+func (o AmlFilesystemResponseMaintenanceWindowOutput) ToAmlFilesystemResponseMaintenanceWindowOutput() AmlFilesystemResponseMaintenanceWindowOutput {
+	return o
+}
+
+func (o AmlFilesystemResponseMaintenanceWindowOutput) ToAmlFilesystemResponseMaintenanceWindowOutputWithContext(ctx context.Context) AmlFilesystemResponseMaintenanceWindowOutput {
+	return o
+}
+
+// Day of the week on which the maintenance window will occur.
+func (o AmlFilesystemResponseMaintenanceWindowOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemResponseMaintenanceWindow) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+}
+
+// The time of day (in UTC) to start the maintenance window.
+func (o AmlFilesystemResponseMaintenanceWindowOutput) TimeOfDayUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmlFilesystemResponseMaintenanceWindow) *string { return v.TimeOfDayUTC }).(pulumi.StringPtrOutput)
+}
+
 // Properties pertaining to the BlobNfsTarget.
 type BlobNfsTarget struct {
 	// Resource ID of the storage container.
 	Target *string `pulumi:"target"`
 	// Identifies the StorageCache usage model to be used for this storage target.
 	UsageModel *string `pulumi:"usageModel"`
+	// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+	VerificationTimer *int `pulumi:"verificationTimer"`
+	// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+	WriteBackTimer *int `pulumi:"writeBackTimer"`
 }
 
 // BlobNfsTargetInput is an input type that accepts BlobNfsTargetArgs and BlobNfsTargetOutput values.
@@ -35,6 +1410,10 @@ type BlobNfsTargetArgs struct {
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// Identifies the StorageCache usage model to be used for this storage target.
 	UsageModel pulumi.StringPtrInput `pulumi:"usageModel"`
+	// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+	VerificationTimer pulumi.IntPtrInput `pulumi:"verificationTimer"`
+	// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+	WriteBackTimer pulumi.IntPtrInput `pulumi:"writeBackTimer"`
 }
 
 func (BlobNfsTargetArgs) ElementType() reflect.Type {
@@ -125,6 +1504,16 @@ func (o BlobNfsTargetOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobNfsTarget) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
 }
 
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o BlobNfsTargetOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlobNfsTarget) *int { return v.VerificationTimer }).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o BlobNfsTargetOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlobNfsTarget) *int { return v.WriteBackTimer }).(pulumi.IntPtrOutput)
+}
+
 type BlobNfsTargetPtrOutput struct{ *pulumi.OutputState }
 
 func (BlobNfsTargetPtrOutput) ElementType() reflect.Type {
@@ -169,12 +1558,36 @@ func (o BlobNfsTargetPtrOutput) UsageModel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o BlobNfsTargetPtrOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BlobNfsTarget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationTimer
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o BlobNfsTargetPtrOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BlobNfsTarget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WriteBackTimer
+	}).(pulumi.IntPtrOutput)
+}
+
 // Properties pertaining to the BlobNfsTarget.
 type BlobNfsTargetResponse struct {
 	// Resource ID of the storage container.
 	Target *string `pulumi:"target"`
 	// Identifies the StorageCache usage model to be used for this storage target.
 	UsageModel *string `pulumi:"usageModel"`
+	// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+	VerificationTimer *int `pulumi:"verificationTimer"`
+	// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+	WriteBackTimer *int `pulumi:"writeBackTimer"`
 }
 
 // Properties pertaining to the BlobNfsTarget.
@@ -200,6 +1613,16 @@ func (o BlobNfsTargetResponseOutput) Target() pulumi.StringPtrOutput {
 // Identifies the StorageCache usage model to be used for this storage target.
 func (o BlobNfsTargetResponseOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobNfsTargetResponse) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o BlobNfsTargetResponseOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlobNfsTargetResponse) *int { return v.VerificationTimer }).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o BlobNfsTargetResponseOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlobNfsTargetResponse) *int { return v.WriteBackTimer }).(pulumi.IntPtrOutput)
 }
 
 type BlobNfsTargetResponsePtrOutput struct{ *pulumi.OutputState }
@@ -244,6 +1667,26 @@ func (o BlobNfsTargetResponsePtrOutput) UsageModel() pulumi.StringPtrOutput {
 		}
 		return v.UsageModel
 	}).(pulumi.StringPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o BlobNfsTargetResponsePtrOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BlobNfsTargetResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationTimer
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o BlobNfsTargetResponsePtrOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BlobNfsTargetResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WriteBackTimer
+	}).(pulumi.IntPtrOutput)
 }
 
 // Active Directory settings used to join a cache to a domain.
@@ -1154,6 +2597,8 @@ func (o CacheDirectorySettingsResponsePtrOutput) UsernameDownload() CacheUsernam
 type CacheEncryptionSettings struct {
 	// Specifies the location of the key encryption key in Key Vault.
 	KeyEncryptionKey *KeyVaultKeyReference `pulumi:"keyEncryptionKey"`
+	// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+	RotationToLatestKeyVersionEnabled *bool `pulumi:"rotationToLatestKeyVersionEnabled"`
 }
 
 // CacheEncryptionSettingsInput is an input type that accepts CacheEncryptionSettingsArgs and CacheEncryptionSettingsOutput values.
@@ -1171,6 +2616,8 @@ type CacheEncryptionSettingsInput interface {
 type CacheEncryptionSettingsArgs struct {
 	// Specifies the location of the key encryption key in Key Vault.
 	KeyEncryptionKey KeyVaultKeyReferencePtrInput `pulumi:"keyEncryptionKey"`
+	// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+	RotationToLatestKeyVersionEnabled pulumi.BoolPtrInput `pulumi:"rotationToLatestKeyVersionEnabled"`
 }
 
 func (CacheEncryptionSettingsArgs) ElementType() reflect.Type {
@@ -1256,6 +2703,11 @@ func (o CacheEncryptionSettingsOutput) KeyEncryptionKey() KeyVaultKeyReferencePt
 	return o.ApplyT(func(v CacheEncryptionSettings) *KeyVaultKeyReference { return v.KeyEncryptionKey }).(KeyVaultKeyReferencePtrOutput)
 }
 
+// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+func (o CacheEncryptionSettingsOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CacheEncryptionSettings) *bool { return v.RotationToLatestKeyVersionEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type CacheEncryptionSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (CacheEncryptionSettingsPtrOutput) ElementType() reflect.Type {
@@ -1290,10 +2742,22 @@ func (o CacheEncryptionSettingsPtrOutput) KeyEncryptionKey() KeyVaultKeyReferenc
 	}).(KeyVaultKeyReferencePtrOutput)
 }
 
+// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+func (o CacheEncryptionSettingsPtrOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CacheEncryptionSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RotationToLatestKeyVersionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Cache encryption settings.
 type CacheEncryptionSettingsResponse struct {
 	// Specifies the location of the key encryption key in Key Vault.
 	KeyEncryptionKey *KeyVaultKeyReferenceResponse `pulumi:"keyEncryptionKey"`
+	// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+	RotationToLatestKeyVersionEnabled *bool `pulumi:"rotationToLatestKeyVersionEnabled"`
 }
 
 // Cache encryption settings.
@@ -1314,6 +2778,11 @@ func (o CacheEncryptionSettingsResponseOutput) ToCacheEncryptionSettingsResponse
 // Specifies the location of the key encryption key in Key Vault.
 func (o CacheEncryptionSettingsResponseOutput) KeyEncryptionKey() KeyVaultKeyReferenceResponsePtrOutput {
 	return o.ApplyT(func(v CacheEncryptionSettingsResponse) *KeyVaultKeyReferenceResponse { return v.KeyEncryptionKey }).(KeyVaultKeyReferenceResponsePtrOutput)
+}
+
+// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+func (o CacheEncryptionSettingsResponseOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CacheEncryptionSettingsResponse) *bool { return v.RotationToLatestKeyVersionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type CacheEncryptionSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1348,6 +2817,16 @@ func (o CacheEncryptionSettingsResponsePtrOutput) KeyEncryptionKey() KeyVaultKey
 		}
 		return v.KeyEncryptionKey
 	}).(KeyVaultKeyReferenceResponsePtrOutput)
+}
+
+// Specifies whether the service will automatically rotate to the newest version of the key in the Key Vault.
+func (o CacheEncryptionSettingsResponsePtrOutput) RotationToLatestKeyVersionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CacheEncryptionSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RotationToLatestKeyVersionEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // An indication of Cache health. Gives more information about health than just that related to provisioning.
@@ -1394,6 +2873,8 @@ func (o CacheHealthResponseOutput) StatusDescription() pulumi.StringPtrOutput {
 type CacheIdentity struct {
 	// The type of identity used for the cache
 	Type *CacheIdentityType `pulumi:"type"`
+	// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
 }
 
 // CacheIdentityInput is an input type that accepts CacheIdentityArgs and CacheIdentityOutput values.
@@ -1411,6 +2892,8 @@ type CacheIdentityInput interface {
 type CacheIdentityArgs struct {
 	// The type of identity used for the cache
 	Type CacheIdentityTypePtrInput `pulumi:"type"`
+	// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
 }
 
 func (CacheIdentityArgs) ElementType() reflect.Type {
@@ -1496,6 +2979,11 @@ func (o CacheIdentityOutput) Type() CacheIdentityTypePtrOutput {
 	return o.ApplyT(func(v CacheIdentity) *CacheIdentityType { return v.Type }).(CacheIdentityTypePtrOutput)
 }
 
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o CacheIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v CacheIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+}
+
 type CacheIdentityPtrOutput struct{ *pulumi.OutputState }
 
 func (CacheIdentityPtrOutput) ElementType() reflect.Type {
@@ -1530,14 +3018,26 @@ func (o CacheIdentityPtrOutput) Type() CacheIdentityTypePtrOutput {
 	}).(CacheIdentityTypePtrOutput)
 }
 
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o CacheIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v *CacheIdentity) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.MapOutput)
+}
+
 // Cache identity properties.
 type CacheIdentityResponse struct {
-	// The principal id of the cache.
+	// The principal ID for the system-assigned identity of the cache.
 	PrincipalId string `pulumi:"principalId"`
-	// The tenant id associated with the cache.
+	// The tenant ID associated with the cache.
 	TenantId string `pulumi:"tenantId"`
 	// The type of identity used for the cache
 	Type *string `pulumi:"type"`
+	// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+	UserAssignedIdentities map[string]CacheIdentityResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
 }
 
 // Cache identity properties.
@@ -1555,12 +3055,12 @@ func (o CacheIdentityResponseOutput) ToCacheIdentityResponseOutputWithContext(ct
 	return o
 }
 
-// The principal id of the cache.
+// The principal ID for the system-assigned identity of the cache.
 func (o CacheIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// The tenant id associated with the cache.
+// The tenant ID associated with the cache.
 func (o CacheIdentityResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -1568,6 +3068,13 @@ func (o CacheIdentityResponseOutput) TenantId() pulumi.StringOutput {
 // The type of identity used for the cache
 func (o CacheIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o CacheIdentityResponseOutput) UserAssignedIdentities() CacheIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o.ApplyT(func(v CacheIdentityResponse) map[string]CacheIdentityResponseUserAssignedIdentities {
+		return v.UserAssignedIdentities
+	}).(CacheIdentityResponseUserAssignedIdentitiesMapOutput)
 }
 
 type CacheIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1594,7 +3101,7 @@ func (o CacheIdentityResponsePtrOutput) Elem() CacheIdentityResponseOutput {
 	}).(CacheIdentityResponseOutput)
 }
 
-// The principal id of the cache.
+// The principal ID for the system-assigned identity of the cache.
 func (o CacheIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheIdentityResponse) *string {
 		if v == nil {
@@ -1604,7 +3111,7 @@ func (o CacheIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tenant id associated with the cache.
+// The tenant ID associated with the cache.
 func (o CacheIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheIdentityResponse) *string {
 		if v == nil {
@@ -1622,6 +3129,67 @@ func (o CacheIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
+func (o CacheIdentityResponsePtrOutput) UserAssignedIdentities() CacheIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o.ApplyT(func(v *CacheIdentityResponse) map[string]CacheIdentityResponseUserAssignedIdentities {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(CacheIdentityResponseUserAssignedIdentitiesMapOutput)
+}
+
+type CacheIdentityResponseUserAssignedIdentities struct {
+	// The client ID of the user-assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the user-assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+type CacheIdentityResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
+
+func (CacheIdentityResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheIdentityResponseUserAssignedIdentities)(nil)).Elem()
+}
+
+func (o CacheIdentityResponseUserAssignedIdentitiesOutput) ToCacheIdentityResponseUserAssignedIdentitiesOutput() CacheIdentityResponseUserAssignedIdentitiesOutput {
+	return o
+}
+
+func (o CacheIdentityResponseUserAssignedIdentitiesOutput) ToCacheIdentityResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) CacheIdentityResponseUserAssignedIdentitiesOutput {
+	return o
+}
+
+// The client ID of the user-assigned identity.
+func (o CacheIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the user-assigned identity.
+func (o CacheIdentityResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheIdentityResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type CacheIdentityResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
+
+func (CacheIdentityResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CacheIdentityResponseUserAssignedIdentities)(nil)).Elem()
+}
+
+func (o CacheIdentityResponseUserAssignedIdentitiesMapOutput) ToCacheIdentityResponseUserAssignedIdentitiesMapOutput() CacheIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o
+}
+
+func (o CacheIdentityResponseUserAssignedIdentitiesMapOutput) ToCacheIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) CacheIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o
+}
+
+func (o CacheIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) CacheIdentityResponseUserAssignedIdentitiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CacheIdentityResponseUserAssignedIdentities {
+		return vs[0].(map[string]CacheIdentityResponseUserAssignedIdentities)[vs[1].(string)]
+	}).(CacheIdentityResponseUserAssignedIdentitiesOutput)
 }
 
 // Cache network settings.
@@ -1642,11 +3210,11 @@ func (val *CacheNetworkSettings) Defaults() *CacheNetworkSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
-	if isZero(tmp.NtpServer) {
+	if tmp.NtpServer == nil {
 		ntpServer_ := "time.windows.com"
 		tmp.NtpServer = &ntpServer_
 	}
@@ -1682,10 +3250,10 @@ func (val *CacheNetworkSettingsArgs) Defaults() *CacheNetworkSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		tmp.Mtu = pulumi.IntPtr(1500)
 	}
-	if isZero(tmp.NtpServer) {
+	if tmp.NtpServer == nil {
 		tmp.NtpServer = pulumi.StringPtr("time.windows.com")
 	}
 	return &tmp
@@ -1872,11 +3440,11 @@ func (val *CacheNetworkSettingsResponse) Defaults() *CacheNetworkSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
-	if isZero(tmp.NtpServer) {
+	if tmp.NtpServer == nil {
 		ntpServer_ := "time.windows.com"
 		tmp.NtpServer = &ntpServer_
 	}
@@ -2397,6 +3965,242 @@ func (o CacheSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cache Upgrade Settings.
+type CacheUpgradeSettings struct {
+	// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+	ScheduledTime *string `pulumi:"scheduledTime"`
+	// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+	UpgradeScheduleEnabled *bool `pulumi:"upgradeScheduleEnabled"`
+}
+
+// CacheUpgradeSettingsInput is an input type that accepts CacheUpgradeSettingsArgs and CacheUpgradeSettingsOutput values.
+// You can construct a concrete instance of `CacheUpgradeSettingsInput` via:
+//
+//	CacheUpgradeSettingsArgs{...}
+type CacheUpgradeSettingsInput interface {
+	pulumi.Input
+
+	ToCacheUpgradeSettingsOutput() CacheUpgradeSettingsOutput
+	ToCacheUpgradeSettingsOutputWithContext(context.Context) CacheUpgradeSettingsOutput
+}
+
+// Cache Upgrade Settings.
+type CacheUpgradeSettingsArgs struct {
+	// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+	ScheduledTime pulumi.StringPtrInput `pulumi:"scheduledTime"`
+	// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+	UpgradeScheduleEnabled pulumi.BoolPtrInput `pulumi:"upgradeScheduleEnabled"`
+}
+
+func (CacheUpgradeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheUpgradeSettings)(nil)).Elem()
+}
+
+func (i CacheUpgradeSettingsArgs) ToCacheUpgradeSettingsOutput() CacheUpgradeSettingsOutput {
+	return i.ToCacheUpgradeSettingsOutputWithContext(context.Background())
+}
+
+func (i CacheUpgradeSettingsArgs) ToCacheUpgradeSettingsOutputWithContext(ctx context.Context) CacheUpgradeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheUpgradeSettingsOutput)
+}
+
+func (i CacheUpgradeSettingsArgs) ToCacheUpgradeSettingsPtrOutput() CacheUpgradeSettingsPtrOutput {
+	return i.ToCacheUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CacheUpgradeSettingsArgs) ToCacheUpgradeSettingsPtrOutputWithContext(ctx context.Context) CacheUpgradeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheUpgradeSettingsOutput).ToCacheUpgradeSettingsPtrOutputWithContext(ctx)
+}
+
+// CacheUpgradeSettingsPtrInput is an input type that accepts CacheUpgradeSettingsArgs, CacheUpgradeSettingsPtr and CacheUpgradeSettingsPtrOutput values.
+// You can construct a concrete instance of `CacheUpgradeSettingsPtrInput` via:
+//
+//	        CacheUpgradeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CacheUpgradeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCacheUpgradeSettingsPtrOutput() CacheUpgradeSettingsPtrOutput
+	ToCacheUpgradeSettingsPtrOutputWithContext(context.Context) CacheUpgradeSettingsPtrOutput
+}
+
+type cacheUpgradeSettingsPtrType CacheUpgradeSettingsArgs
+
+func CacheUpgradeSettingsPtr(v *CacheUpgradeSettingsArgs) CacheUpgradeSettingsPtrInput {
+	return (*cacheUpgradeSettingsPtrType)(v)
+}
+
+func (*cacheUpgradeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheUpgradeSettings)(nil)).Elem()
+}
+
+func (i *cacheUpgradeSettingsPtrType) ToCacheUpgradeSettingsPtrOutput() CacheUpgradeSettingsPtrOutput {
+	return i.ToCacheUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cacheUpgradeSettingsPtrType) ToCacheUpgradeSettingsPtrOutputWithContext(ctx context.Context) CacheUpgradeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheUpgradeSettingsPtrOutput)
+}
+
+// Cache Upgrade Settings.
+type CacheUpgradeSettingsOutput struct{ *pulumi.OutputState }
+
+func (CacheUpgradeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheUpgradeSettings)(nil)).Elem()
+}
+
+func (o CacheUpgradeSettingsOutput) ToCacheUpgradeSettingsOutput() CacheUpgradeSettingsOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsOutput) ToCacheUpgradeSettingsOutputWithContext(ctx context.Context) CacheUpgradeSettingsOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsOutput) ToCacheUpgradeSettingsPtrOutput() CacheUpgradeSettingsPtrOutput {
+	return o.ToCacheUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CacheUpgradeSettingsOutput) ToCacheUpgradeSettingsPtrOutputWithContext(ctx context.Context) CacheUpgradeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheUpgradeSettings) *CacheUpgradeSettings {
+		return &v
+	}).(CacheUpgradeSettingsPtrOutput)
+}
+
+// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+func (o CacheUpgradeSettingsOutput) ScheduledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheUpgradeSettings) *string { return v.ScheduledTime }).(pulumi.StringPtrOutput)
+}
+
+// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+func (o CacheUpgradeSettingsOutput) UpgradeScheduleEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CacheUpgradeSettings) *bool { return v.UpgradeScheduleEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type CacheUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CacheUpgradeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheUpgradeSettings)(nil)).Elem()
+}
+
+func (o CacheUpgradeSettingsPtrOutput) ToCacheUpgradeSettingsPtrOutput() CacheUpgradeSettingsPtrOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsPtrOutput) ToCacheUpgradeSettingsPtrOutputWithContext(ctx context.Context) CacheUpgradeSettingsPtrOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsPtrOutput) Elem() CacheUpgradeSettingsOutput {
+	return o.ApplyT(func(v *CacheUpgradeSettings) CacheUpgradeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CacheUpgradeSettings
+		return ret
+	}).(CacheUpgradeSettingsOutput)
+}
+
+// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+func (o CacheUpgradeSettingsPtrOutput) ScheduledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheUpgradeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+func (o CacheUpgradeSettingsPtrOutput) UpgradeScheduleEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CacheUpgradeSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeScheduleEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cache Upgrade Settings.
+type CacheUpgradeSettingsResponse struct {
+	// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+	ScheduledTime *string `pulumi:"scheduledTime"`
+	// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+	UpgradeScheduleEnabled *bool `pulumi:"upgradeScheduleEnabled"`
+}
+
+// Cache Upgrade Settings.
+type CacheUpgradeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (CacheUpgradeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheUpgradeSettingsResponse)(nil)).Elem()
+}
+
+func (o CacheUpgradeSettingsResponseOutput) ToCacheUpgradeSettingsResponseOutput() CacheUpgradeSettingsResponseOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsResponseOutput) ToCacheUpgradeSettingsResponseOutputWithContext(ctx context.Context) CacheUpgradeSettingsResponseOutput {
+	return o
+}
+
+// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+func (o CacheUpgradeSettingsResponseOutput) ScheduledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheUpgradeSettingsResponse) *string { return v.ScheduledTime }).(pulumi.StringPtrOutput)
+}
+
+// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+func (o CacheUpgradeSettingsResponseOutput) UpgradeScheduleEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CacheUpgradeSettingsResponse) *bool { return v.UpgradeScheduleEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type CacheUpgradeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CacheUpgradeSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheUpgradeSettingsResponse)(nil)).Elem()
+}
+
+func (o CacheUpgradeSettingsResponsePtrOutput) ToCacheUpgradeSettingsResponsePtrOutput() CacheUpgradeSettingsResponsePtrOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsResponsePtrOutput) ToCacheUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) CacheUpgradeSettingsResponsePtrOutput {
+	return o
+}
+
+func (o CacheUpgradeSettingsResponsePtrOutput) Elem() CacheUpgradeSettingsResponseOutput {
+	return o.ApplyT(func(v *CacheUpgradeSettingsResponse) CacheUpgradeSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CacheUpgradeSettingsResponse
+		return ret
+	}).(CacheUpgradeSettingsResponseOutput)
+}
+
+// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
+func (o CacheUpgradeSettingsResponsePtrOutput) ScheduledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheUpgradeSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+func (o CacheUpgradeSettingsResponsePtrOutput) UpgradeScheduleEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CacheUpgradeSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeScheduleEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Properties describing the software upgrade state of the Cache.
 type CacheUpgradeStatusResponse struct {
 	// Version string of the firmware currently installed on this Cache.
@@ -2451,80 +4255,6 @@ func (o CacheUpgradeStatusResponseOutput) PendingFirmwareVersion() pulumi.String
 	return o.ApplyT(func(v CacheUpgradeStatusResponse) string { return v.PendingFirmwareVersion }).(pulumi.StringOutput)
 }
 
-type CacheUpgradeStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CacheUpgradeStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CacheUpgradeStatusResponse)(nil)).Elem()
-}
-
-func (o CacheUpgradeStatusResponsePtrOutput) ToCacheUpgradeStatusResponsePtrOutput() CacheUpgradeStatusResponsePtrOutput {
-	return o
-}
-
-func (o CacheUpgradeStatusResponsePtrOutput) ToCacheUpgradeStatusResponsePtrOutputWithContext(ctx context.Context) CacheUpgradeStatusResponsePtrOutput {
-	return o
-}
-
-func (o CacheUpgradeStatusResponsePtrOutput) Elem() CacheUpgradeStatusResponseOutput {
-	return o.ApplyT(func(v *CacheUpgradeStatusResponse) CacheUpgradeStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CacheUpgradeStatusResponse
-		return ret
-	}).(CacheUpgradeStatusResponseOutput)
-}
-
-// Version string of the firmware currently installed on this Cache.
-func (o CacheUpgradeStatusResponsePtrOutput) CurrentFirmwareVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheUpgradeStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CurrentFirmwareVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time at which the pending firmware update will automatically be installed on the Cache.
-func (o CacheUpgradeStatusResponsePtrOutput) FirmwareUpdateDeadline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheUpgradeStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FirmwareUpdateDeadline
-	}).(pulumi.StringPtrOutput)
-}
-
-// True if there is a firmware update ready to install on this Cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
-func (o CacheUpgradeStatusResponsePtrOutput) FirmwareUpdateStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheUpgradeStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FirmwareUpdateStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time of the last successful firmware update.
-func (o CacheUpgradeStatusResponsePtrOutput) LastFirmwareUpdate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheUpgradeStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastFirmwareUpdate
-	}).(pulumi.StringPtrOutput)
-}
-
-// When firmwareUpdateAvailable is true, this field holds the version string for the update.
-func (o CacheUpgradeStatusResponsePtrOutput) PendingFirmwareVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CacheUpgradeStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PendingFirmwareVersion
-	}).(pulumi.StringPtrOutput)
-}
-
 // Settings for Extended Groups username and group download.
 type CacheUsernameDownloadSettings struct {
 	// Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
@@ -2557,7 +4287,7 @@ func (val *CacheUsernameDownloadSettings) Defaults() *CacheUsernameDownloadSetti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -2607,7 +4337,7 @@ func (val *CacheUsernameDownloadSettingsArgs) Defaults() *CacheUsernameDownloadS
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		tmp.UsernameSource = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -3072,7 +4802,7 @@ func (val *CacheUsernameDownloadSettingsResponse) Defaults() *CacheUsernameDownl
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UsernameSource) {
+	if tmp.UsernameSource == nil {
 		usernameSource_ := "None"
 		tmp.UsernameSource = &usernameSource_
 	}
@@ -3630,11 +5360,11 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 	}).(ConditionResponseOutput)
 }
 
-// Describes a reference to Key Vault Key.
+// Describes a reference to key vault key.
 type KeyVaultKeyReference struct {
-	// The URL referencing a key encryption key in Key Vault.
+	// The URL referencing a key encryption key in key vault.
 	KeyUrl string `pulumi:"keyUrl"`
-	// Describes a resource Id to source Key Vault.
+	// Describes a resource Id to source key vault.
 	SourceVault KeyVaultKeyReferenceSourceVault `pulumi:"sourceVault"`
 }
 
@@ -3649,11 +5379,11 @@ type KeyVaultKeyReferenceInput interface {
 	ToKeyVaultKeyReferenceOutputWithContext(context.Context) KeyVaultKeyReferenceOutput
 }
 
-// Describes a reference to Key Vault Key.
+// Describes a reference to key vault key.
 type KeyVaultKeyReferenceArgs struct {
-	// The URL referencing a key encryption key in Key Vault.
+	// The URL referencing a key encryption key in key vault.
 	KeyUrl pulumi.StringInput `pulumi:"keyUrl"`
-	// Describes a resource Id to source Key Vault.
+	// Describes a resource Id to source key vault.
 	SourceVault KeyVaultKeyReferenceSourceVaultInput `pulumi:"sourceVault"`
 }
 
@@ -3710,7 +5440,7 @@ func (i *keyVaultKeyReferencePtrType) ToKeyVaultKeyReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferencePtrOutput)
 }
 
-// Describes a reference to Key Vault Key.
+// Describes a reference to key vault key.
 type KeyVaultKeyReferenceOutput struct{ *pulumi.OutputState }
 
 func (KeyVaultKeyReferenceOutput) ElementType() reflect.Type {
@@ -3735,12 +5465,12 @@ func (o KeyVaultKeyReferenceOutput) ToKeyVaultKeyReferencePtrOutputWithContext(c
 	}).(KeyVaultKeyReferencePtrOutput)
 }
 
-// The URL referencing a key encryption key in Key Vault.
+// The URL referencing a key encryption key in key vault.
 func (o KeyVaultKeyReferenceOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultKeyReference) string { return v.KeyUrl }).(pulumi.StringOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 func (o KeyVaultKeyReferenceOutput) SourceVault() KeyVaultKeyReferenceSourceVaultOutput {
 	return o.ApplyT(func(v KeyVaultKeyReference) KeyVaultKeyReferenceSourceVault { return v.SourceVault }).(KeyVaultKeyReferenceSourceVaultOutput)
 }
@@ -3769,7 +5499,7 @@ func (o KeyVaultKeyReferencePtrOutput) Elem() KeyVaultKeyReferenceOutput {
 	}).(KeyVaultKeyReferenceOutput)
 }
 
-// The URL referencing a key encryption key in Key Vault.
+// The URL referencing a key encryption key in key vault.
 func (o KeyVaultKeyReferencePtrOutput) KeyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultKeyReference) *string {
 		if v == nil {
@@ -3779,7 +5509,7 @@ func (o KeyVaultKeyReferencePtrOutput) KeyUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 func (o KeyVaultKeyReferencePtrOutput) SourceVault() KeyVaultKeyReferenceSourceVaultPtrOutput {
 	return o.ApplyT(func(v *KeyVaultKeyReference) *KeyVaultKeyReferenceSourceVault {
 		if v == nil {
@@ -3789,15 +5519,15 @@ func (o KeyVaultKeyReferencePtrOutput) SourceVault() KeyVaultKeyReferenceSourceV
 	}).(KeyVaultKeyReferenceSourceVaultPtrOutput)
 }
 
-// Describes a reference to Key Vault Key.
+// Describes a reference to key vault key.
 type KeyVaultKeyReferenceResponse struct {
-	// The URL referencing a key encryption key in Key Vault.
+	// The URL referencing a key encryption key in key vault.
 	KeyUrl string `pulumi:"keyUrl"`
-	// Describes a resource Id to source Key Vault.
+	// Describes a resource Id to source key vault.
 	SourceVault KeyVaultKeyReferenceResponseSourceVault `pulumi:"sourceVault"`
 }
 
-// Describes a reference to Key Vault Key.
+// Describes a reference to key vault key.
 type KeyVaultKeyReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (KeyVaultKeyReferenceResponseOutput) ElementType() reflect.Type {
@@ -3812,12 +5542,12 @@ func (o KeyVaultKeyReferenceResponseOutput) ToKeyVaultKeyReferenceResponseOutput
 	return o
 }
 
-// The URL referencing a key encryption key in Key Vault.
+// The URL referencing a key encryption key in key vault.
 func (o KeyVaultKeyReferenceResponseOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponse) string { return v.KeyUrl }).(pulumi.StringOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 func (o KeyVaultKeyReferenceResponseOutput) SourceVault() KeyVaultKeyReferenceResponseSourceVaultOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponse) KeyVaultKeyReferenceResponseSourceVault { return v.SourceVault }).(KeyVaultKeyReferenceResponseSourceVaultOutput)
 }
@@ -3846,7 +5576,7 @@ func (o KeyVaultKeyReferenceResponsePtrOutput) Elem() KeyVaultKeyReferenceRespon
 	}).(KeyVaultKeyReferenceResponseOutput)
 }
 
-// The URL referencing a key encryption key in Key Vault.
+// The URL referencing a key encryption key in key vault.
 func (o KeyVaultKeyReferenceResponsePtrOutput) KeyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultKeyReferenceResponse) *string {
 		if v == nil {
@@ -3856,7 +5586,7 @@ func (o KeyVaultKeyReferenceResponsePtrOutput) KeyUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 func (o KeyVaultKeyReferenceResponsePtrOutput) SourceVault() KeyVaultKeyReferenceResponseSourceVaultPtrOutput {
 	return o.ApplyT(func(v *KeyVaultKeyReferenceResponse) *KeyVaultKeyReferenceResponseSourceVault {
 		if v == nil {
@@ -3866,13 +5596,13 @@ func (o KeyVaultKeyReferenceResponsePtrOutput) SourceVault() KeyVaultKeyReferenc
 	}).(KeyVaultKeyReferenceResponseSourceVaultPtrOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 type KeyVaultKeyReferenceResponseSourceVault struct {
 	// Resource Id.
 	Id *string `pulumi:"id"`
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 type KeyVaultKeyReferenceResponseSourceVaultOutput struct{ *pulumi.OutputState }
 
 func (KeyVaultKeyReferenceResponseSourceVaultOutput) ElementType() reflect.Type {
@@ -3926,7 +5656,7 @@ func (o KeyVaultKeyReferenceResponseSourceVaultPtrOutput) Id() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 type KeyVaultKeyReferenceSourceVault struct {
 	// Resource Id.
 	Id *string `pulumi:"id"`
@@ -3943,7 +5673,7 @@ type KeyVaultKeyReferenceSourceVaultInput interface {
 	ToKeyVaultKeyReferenceSourceVaultOutputWithContext(context.Context) KeyVaultKeyReferenceSourceVaultOutput
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 type KeyVaultKeyReferenceSourceVaultArgs struct {
 	// Resource Id.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -4002,7 +5732,7 @@ func (i *keyVaultKeyReferenceSourceVaultPtrType) ToKeyVaultKeyReferenceSourceVau
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceSourceVaultPtrOutput)
 }
 
-// Describes a resource Id to source Key Vault.
+// Describes a resource Id to source key vault.
 type KeyVaultKeyReferenceSourceVaultOutput struct{ *pulumi.OutputState }
 
 func (KeyVaultKeyReferenceSourceVaultOutput) ElementType() reflect.Type {
@@ -4084,7 +5814,7 @@ func (val *NamespaceJunction) Defaults() *NamespaceJunction {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NfsAccessPolicy) {
+	if tmp.NfsAccessPolicy == nil {
 		nfsAccessPolicy_ := "default"
 		tmp.NfsAccessPolicy = &nfsAccessPolicy_
 	}
@@ -4120,7 +5850,7 @@ func (val *NamespaceJunctionArgs) Defaults() *NamespaceJunctionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NfsAccessPolicy) {
+	if tmp.NfsAccessPolicy == nil {
 		tmp.NfsAccessPolicy = pulumi.StringPtr("default")
 	}
 	return &tmp
@@ -4235,7 +5965,7 @@ func (val *NamespaceJunctionResponse) Defaults() *NamespaceJunctionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NfsAccessPolicy) {
+	if tmp.NfsAccessPolicy == nil {
 		nfsAccessPolicy_ := "default"
 		tmp.NfsAccessPolicy = &nfsAccessPolicy_
 	}
@@ -4303,6 +6033,10 @@ type Nfs3Target struct {
 	Target *string `pulumi:"target"`
 	// Identifies the StorageCache usage model to be used for this storage target.
 	UsageModel *string `pulumi:"usageModel"`
+	// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+	VerificationTimer *int `pulumi:"verificationTimer"`
+	// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+	WriteBackTimer *int `pulumi:"writeBackTimer"`
 }
 
 // Nfs3TargetInput is an input type that accepts Nfs3TargetArgs and Nfs3TargetOutput values.
@@ -4322,6 +6056,10 @@ type Nfs3TargetArgs struct {
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// Identifies the StorageCache usage model to be used for this storage target.
 	UsageModel pulumi.StringPtrInput `pulumi:"usageModel"`
+	// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+	VerificationTimer pulumi.IntPtrInput `pulumi:"verificationTimer"`
+	// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+	WriteBackTimer pulumi.IntPtrInput `pulumi:"writeBackTimer"`
 }
 
 func (Nfs3TargetArgs) ElementType() reflect.Type {
@@ -4412,6 +6150,16 @@ func (o Nfs3TargetOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Nfs3Target) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
 }
 
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o Nfs3TargetOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Nfs3Target) *int { return v.VerificationTimer }).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o Nfs3TargetOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Nfs3Target) *int { return v.WriteBackTimer }).(pulumi.IntPtrOutput)
+}
+
 type Nfs3TargetPtrOutput struct{ *pulumi.OutputState }
 
 func (Nfs3TargetPtrOutput) ElementType() reflect.Type {
@@ -4456,12 +6204,36 @@ func (o Nfs3TargetPtrOutput) UsageModel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o Nfs3TargetPtrOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Nfs3Target) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationTimer
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o Nfs3TargetPtrOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Nfs3Target) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WriteBackTimer
+	}).(pulumi.IntPtrOutput)
+}
+
 // Properties pertaining to the Nfs3Target
 type Nfs3TargetResponse struct {
 	// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
 	Target *string `pulumi:"target"`
 	// Identifies the StorageCache usage model to be used for this storage target.
 	UsageModel *string `pulumi:"usageModel"`
+	// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+	VerificationTimer *int `pulumi:"verificationTimer"`
+	// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+	WriteBackTimer *int `pulumi:"writeBackTimer"`
 }
 
 // Properties pertaining to the Nfs3Target
@@ -4487,6 +6259,16 @@ func (o Nfs3TargetResponseOutput) Target() pulumi.StringPtrOutput {
 // Identifies the StorageCache usage model to be used for this storage target.
 func (o Nfs3TargetResponseOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Nfs3TargetResponse) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o Nfs3TargetResponseOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Nfs3TargetResponse) *int { return v.VerificationTimer }).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o Nfs3TargetResponseOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Nfs3TargetResponse) *int { return v.WriteBackTimer }).(pulumi.IntPtrOutput)
 }
 
 type Nfs3TargetResponsePtrOutput struct{ *pulumi.OutputState }
@@ -4531,6 +6313,26 @@ func (o Nfs3TargetResponsePtrOutput) UsageModel() pulumi.StringPtrOutput {
 		}
 		return v.UsageModel
 	}).(pulumi.StringPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
+func (o Nfs3TargetResponsePtrOutput) VerificationTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Nfs3TargetResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationTimer
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
+func (o Nfs3TargetResponsePtrOutput) WriteBackTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Nfs3TargetResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WriteBackTimer
+	}).(pulumi.IntPtrOutput)
 }
 
 // A set of rules describing access policies applied to NFSv3 clients of the cache.
@@ -4953,6 +6755,340 @@ func (o NfsAccessRuleResponseArrayOutput) Index(i pulumi.IntInput) NfsAccessRule
 	}).(NfsAccessRuleResponseOutput)
 }
 
+// A priming job instance.
+type PrimingJobResponse struct {
+	// The job details or error information if any.
+	PrimingJobDetails string `pulumi:"primingJobDetails"`
+	// The unique identifier of the priming job.
+	PrimingJobId string `pulumi:"primingJobId"`
+	// The priming job name.
+	PrimingJobName string `pulumi:"primingJobName"`
+	// The current progress of the priming job, as a percentage.
+	PrimingJobPercentComplete float64 `pulumi:"primingJobPercentComplete"`
+	// The state of the priming operation.
+	PrimingJobState string `pulumi:"primingJobState"`
+	// The status code of the priming job.
+	PrimingJobStatus string `pulumi:"primingJobStatus"`
+}
+
+// A priming job instance.
+type PrimingJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PrimingJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrimingJobResponse)(nil)).Elem()
+}
+
+func (o PrimingJobResponseOutput) ToPrimingJobResponseOutput() PrimingJobResponseOutput {
+	return o
+}
+
+func (o PrimingJobResponseOutput) ToPrimingJobResponseOutputWithContext(ctx context.Context) PrimingJobResponseOutput {
+	return o
+}
+
+// The job details or error information if any.
+func (o PrimingJobResponseOutput) PrimingJobDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimingJobResponse) string { return v.PrimingJobDetails }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the priming job.
+func (o PrimingJobResponseOutput) PrimingJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimingJobResponse) string { return v.PrimingJobId }).(pulumi.StringOutput)
+}
+
+// The priming job name.
+func (o PrimingJobResponseOutput) PrimingJobName() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimingJobResponse) string { return v.PrimingJobName }).(pulumi.StringOutput)
+}
+
+// The current progress of the priming job, as a percentage.
+func (o PrimingJobResponseOutput) PrimingJobPercentComplete() pulumi.Float64Output {
+	return o.ApplyT(func(v PrimingJobResponse) float64 { return v.PrimingJobPercentComplete }).(pulumi.Float64Output)
+}
+
+// The state of the priming operation.
+func (o PrimingJobResponseOutput) PrimingJobState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimingJobResponse) string { return v.PrimingJobState }).(pulumi.StringOutput)
+}
+
+// The status code of the priming job.
+func (o PrimingJobResponseOutput) PrimingJobStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimingJobResponse) string { return v.PrimingJobStatus }).(pulumi.StringOutput)
+}
+
+type PrimingJobResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrimingJobResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrimingJobResponse)(nil)).Elem()
+}
+
+func (o PrimingJobResponseArrayOutput) ToPrimingJobResponseArrayOutput() PrimingJobResponseArrayOutput {
+	return o
+}
+
+func (o PrimingJobResponseArrayOutput) ToPrimingJobResponseArrayOutputWithContext(ctx context.Context) PrimingJobResponseArrayOutput {
+	return o
+}
+
+func (o PrimingJobResponseArrayOutput) Index(i pulumi.IntInput) PrimingJobResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrimingJobResponse {
+		return vs[0].([]PrimingJobResponse)[vs[1].(int)]
+	}).(PrimingJobResponseOutput)
+}
+
+// SKU for the resource.
+type SkuName struct {
+	// SKU name for this resource.
+	Name *string `pulumi:"name"`
+}
+
+// SkuNameInput is an input type that accepts SkuNameArgs and SkuNameOutput values.
+// You can construct a concrete instance of `SkuNameInput` via:
+//
+//	SkuNameArgs{...}
+type SkuNameInput interface {
+	pulumi.Input
+
+	ToSkuNameOutput() SkuNameOutput
+	ToSkuNameOutputWithContext(context.Context) SkuNameOutput
+}
+
+// SKU for the resource.
+type SkuNameArgs struct {
+	// SKU name for this resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (SkuNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuName)(nil)).Elem()
+}
+
+func (i SkuNameArgs) ToSkuNameOutput() SkuNameOutput {
+	return i.ToSkuNameOutputWithContext(context.Background())
+}
+
+func (i SkuNameArgs) ToSkuNameOutputWithContext(ctx context.Context) SkuNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuNameOutput)
+}
+
+func (i SkuNameArgs) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return i.ToSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (i SkuNameArgs) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuNameOutput).ToSkuNamePtrOutputWithContext(ctx)
+}
+
+// SkuNamePtrInput is an input type that accepts SkuNameArgs, SkuNamePtr and SkuNamePtrOutput values.
+// You can construct a concrete instance of `SkuNamePtrInput` via:
+//
+//	        SkuNameArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkuNamePtrInput interface {
+	pulumi.Input
+
+	ToSkuNamePtrOutput() SkuNamePtrOutput
+	ToSkuNamePtrOutputWithContext(context.Context) SkuNamePtrOutput
+}
+
+type skuNamePtrType SkuNameArgs
+
+func SkuNamePtr(v *SkuNameArgs) SkuNamePtrInput {
+	return (*skuNamePtrType)(v)
+}
+
+func (*skuNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuName)(nil)).Elem()
+}
+
+func (i *skuNamePtrType) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return i.ToSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (i *skuNamePtrType) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuNamePtrOutput)
+}
+
+// SKU for the resource.
+type SkuNameOutput struct{ *pulumi.OutputState }
+
+func (SkuNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuName)(nil)).Elem()
+}
+
+func (o SkuNameOutput) ToSkuNameOutput() SkuNameOutput {
+	return o
+}
+
+func (o SkuNameOutput) ToSkuNameOutputWithContext(ctx context.Context) SkuNameOutput {
+	return o
+}
+
+func (o SkuNameOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return o.ToSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuName) *SkuName {
+		return &v
+	}).(SkuNamePtrOutput)
+}
+
+// SKU name for this resource.
+func (o SkuNameOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuName) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type SkuNamePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuName)(nil)).Elem()
+}
+
+func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return o
+}
+
+func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return o
+}
+
+func (o SkuNamePtrOutput) Elem() SkuNameOutput {
+	return o.ApplyT(func(v *SkuName) SkuName {
+		if v != nil {
+			return *v
+		}
+		var ret SkuName
+		return ret
+	}).(SkuNameOutput)
+}
+
+// SKU name for this resource.
+func (o SkuNamePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuName) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// SKU for the resource.
+type SkuNameResponse struct {
+	// SKU name for this resource.
+	Name *string `pulumi:"name"`
+}
+
+// SKU for the resource.
+type SkuNameResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuNameResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuNameResponse)(nil)).Elem()
+}
+
+func (o SkuNameResponseOutput) ToSkuNameResponseOutput() SkuNameResponseOutput {
+	return o
+}
+
+func (o SkuNameResponseOutput) ToSkuNameResponseOutputWithContext(ctx context.Context) SkuNameResponseOutput {
+	return o
+}
+
+// SKU name for this resource.
+func (o SkuNameResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuNameResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type SkuNameResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuNameResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuNameResponse)(nil)).Elem()
+}
+
+func (o SkuNameResponsePtrOutput) ToSkuNameResponsePtrOutput() SkuNameResponsePtrOutput {
+	return o
+}
+
+func (o SkuNameResponsePtrOutput) ToSkuNameResponsePtrOutputWithContext(ctx context.Context) SkuNameResponsePtrOutput {
+	return o
+}
+
+func (o SkuNameResponsePtrOutput) Elem() SkuNameResponseOutput {
+	return o.ApplyT(func(v *SkuNameResponse) SkuNameResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuNameResponse
+		return ret
+	}).(SkuNameResponseOutput)
+}
+
+// SKU name for this resource.
+func (o SkuNameResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuNameResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Target space allocation properties.
+type StorageTargetSpaceAllocationResponse struct {
+	// The percentage of cache space allocated for this storage target
+	AllocationPercentage *int `pulumi:"allocationPercentage"`
+	// Name of the storage target.
+	Name *string `pulumi:"name"`
+}
+
+// Storage Target space allocation properties.
+type StorageTargetSpaceAllocationResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageTargetSpaceAllocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageTargetSpaceAllocationResponse)(nil)).Elem()
+}
+
+func (o StorageTargetSpaceAllocationResponseOutput) ToStorageTargetSpaceAllocationResponseOutput() StorageTargetSpaceAllocationResponseOutput {
+	return o
+}
+
+func (o StorageTargetSpaceAllocationResponseOutput) ToStorageTargetSpaceAllocationResponseOutputWithContext(ctx context.Context) StorageTargetSpaceAllocationResponseOutput {
+	return o
+}
+
+// The percentage of cache space allocated for this storage target
+func (o StorageTargetSpaceAllocationResponseOutput) AllocationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StorageTargetSpaceAllocationResponse) *int { return v.AllocationPercentage }).(pulumi.IntPtrOutput)
+}
+
+// Name of the storage target.
+func (o StorageTargetSpaceAllocationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageTargetSpaceAllocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type StorageTargetSpaceAllocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageTargetSpaceAllocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageTargetSpaceAllocationResponse)(nil)).Elem()
+}
+
+func (o StorageTargetSpaceAllocationResponseArrayOutput) ToStorageTargetSpaceAllocationResponseArrayOutput() StorageTargetSpaceAllocationResponseArrayOutput {
+	return o
+}
+
+func (o StorageTargetSpaceAllocationResponseArrayOutput) ToStorageTargetSpaceAllocationResponseArrayOutputWithContext(ctx context.Context) StorageTargetSpaceAllocationResponseArrayOutput {
+	return o
+}
+
+func (o StorageTargetSpaceAllocationResponseArrayOutput) Index(i pulumi.IntInput) StorageTargetSpaceAllocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageTargetSpaceAllocationResponse {
+		return vs[0].([]StorageTargetSpaceAllocationResponse)[vs[1].(int)]
+	}).(StorageTargetSpaceAllocationResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -5214,7 +7350,82 @@ func (o UnknownTargetResponsePtrOutput) Attributes() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type UserAssignedIdentitiesResponseUserAssignedIdentities struct {
+	// The client ID of the user-assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the user-assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+type UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentitiesResponseUserAssignedIdentities)(nil)).Elem()
+}
+
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesOutput() UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {
+	return o
+}
+
+// The client ID of the user-assigned identity.
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentitiesResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the user-assigned identity.
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentitiesResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentitiesResponseUserAssignedIdentities)(nil)).Elem()
+}
+
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput() UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentitiesResponseUserAssignedIdentities {
+		return vs[0].(map[string]UserAssignedIdentitiesResponseUserAssignedIdentities)[vs[1].(string)]
+	}).(UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AmlFilesystemArchiveResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemArchiveResponseArrayOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemArchiveResponseStatusOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemClientInfoResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemContainerStorageInterfaceResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemEncryptionSettingsOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemEncryptionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemEncryptionSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemEncryptionSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHealthResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHsmOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHsmPtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHsmSettingsOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHsmSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHsmSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemHsmSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemIdentityOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemIdentityPtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemIdentityResponseOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemResponseHsmOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemResponseHsmPtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemResponseMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetPtrOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetResponseOutput{})
@@ -5240,6 +7451,8 @@ func init() {
 	pulumi.RegisterOutputType(CacheIdentityPtrOutput{})
 	pulumi.RegisterOutputType(CacheIdentityResponseOutput{})
 	pulumi.RegisterOutputType(CacheIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(CacheIdentityResponseUserAssignedIdentitiesOutput{})
+	pulumi.RegisterOutputType(CacheIdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(CacheNetworkSettingsOutput{})
 	pulumi.RegisterOutputType(CacheNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CacheNetworkSettingsResponseOutput{})
@@ -5252,8 +7465,11 @@ func init() {
 	pulumi.RegisterOutputType(CacheSecuritySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CacheSkuOutput{})
 	pulumi.RegisterOutputType(CacheSkuPtrOutput{})
+	pulumi.RegisterOutputType(CacheUpgradeSettingsOutput{})
+	pulumi.RegisterOutputType(CacheUpgradeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CacheUpgradeSettingsResponseOutput{})
+	pulumi.RegisterOutputType(CacheUpgradeSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CacheUpgradeStatusResponseOutput{})
-	pulumi.RegisterOutputType(CacheUpgradeStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(CacheUsernameDownloadSettingsOutput{})
 	pulumi.RegisterOutputType(CacheUsernameDownloadSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CacheUsernameDownloadSettingsCredentialsOutput{})
@@ -5292,9 +7508,19 @@ func init() {
 	pulumi.RegisterOutputType(NfsAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(NfsAccessRuleResponseOutput{})
 	pulumi.RegisterOutputType(NfsAccessRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrimingJobResponseOutput{})
+	pulumi.RegisterOutputType(PrimingJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(SkuNameOutput{})
+	pulumi.RegisterOutputType(SkuNamePtrOutput{})
+	pulumi.RegisterOutputType(SkuNameResponseOutput{})
+	pulumi.RegisterOutputType(SkuNameResponsePtrOutput{})
+	pulumi.RegisterOutputType(StorageTargetSpaceAllocationResponseOutput{})
+	pulumi.RegisterOutputType(StorageTargetSpaceAllocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UnknownTargetOutput{})
 	pulumi.RegisterOutputType(UnknownTargetPtrOutput{})
 	pulumi.RegisterOutputType(UnknownTargetResponseOutput{})
 	pulumi.RegisterOutputType(UnknownTargetResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput{})
 }

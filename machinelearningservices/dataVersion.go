@@ -7,20 +7,21 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
-// API Version: 2021-03-01-preview.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type DataVersion struct {
 	pulumi.CustomResourceState
 
+	// [Required] Additional attributes of the entity.
+	DataVersionBaseProperties pulumi.AnyOutput `pulumi:"dataVersionBaseProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties DataVersionResponseOutput `pulumi:"properties"`
-	// System data associated with resource provider
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -33,11 +34,11 @@ func NewDataVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DataVersionBaseProperties == nil {
+		return nil, errors.New("invalid value for required argument 'DataVersionBaseProperties'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -66,6 +67,12 @@ func NewDataVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:DataVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:DataVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:DataVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:DataVersion"),
@@ -104,10 +111,10 @@ func (DataVersionState) ElementType() reflect.Type {
 }
 
 type dataVersionArgs struct {
+	// [Required] Additional attributes of the entity.
+	DataVersionBaseProperties interface{} `pulumi:"dataVersionBaseProperties"`
 	// Container name.
 	Name string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties DataVersionType `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Version identifier.
@@ -118,10 +125,10 @@ type dataVersionArgs struct {
 
 // The set of arguments for constructing a DataVersion resource.
 type DataVersionArgs struct {
+	// [Required] Additional attributes of the entity.
+	DataVersionBaseProperties pulumi.Input
 	// Container name.
 	Name pulumi.StringInput
-	// [Required] Additional attributes of the entity.
-	Properties DataVersionTypeInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Version identifier.
@@ -167,17 +174,17 @@ func (o DataVersionOutput) ToDataVersionOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// [Required] Additional attributes of the entity.
+func (o DataVersionOutput) DataVersionBaseProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataVersion) pulumi.AnyOutput { return v.DataVersionBaseProperties }).(pulumi.AnyOutput)
+}
+
 // The name of the resource
 func (o DataVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o DataVersionOutput) Properties() DataVersionResponseOutput {
-	return o.ApplyT(func(v *DataVersion) DataVersionResponseOutput { return v.Properties }).(DataVersionResponseOutput)
-}
-
-// System data associated with resource provider
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DataVersionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DataVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a specified connection created by this management group.
-// API Version: 2021-05-01-preview.
+// API Version: 2022-09-01.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
 	var rv LookupManagementGroupNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network:getManagementGroupNetworkManagerConnection", args, &rv, opts...)
@@ -30,7 +30,7 @@ type LookupManagementGroupNetworkManagerConnectionArgs struct {
 
 // The Network Manager Connection resource
 type LookupManagementGroupNetworkManagerConnectionResult struct {
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
@@ -85,7 +85,7 @@ func (o LookupManagementGroupNetworkManagerConnectionResultOutput) ToLookupManag
 	return o
 }
 
-// A description of the scope connection.
+// A description of the network manager connection.
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

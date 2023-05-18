@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +89,9 @@ func NewExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221201:Extension"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230301:Extension"),
 		},
 	})
 	opts = append(opts, aliases)

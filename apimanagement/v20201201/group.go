@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,6 +93,9 @@ func NewGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Group"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Group"),
 		},
 	})
 	opts = append(opts, aliases)

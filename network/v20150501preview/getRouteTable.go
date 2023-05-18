@@ -11,8 +11,6 @@ import (
 )
 
 // The Get RouteTables operation retrieves information about the specified route table.
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	var rv LookupRouteTableResult
 	err := ctx.Invoke("azure-native:network/v20150501preview:getRouteTable", args, &rv, opts...)

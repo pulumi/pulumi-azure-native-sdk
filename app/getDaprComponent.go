@@ -11,7 +11,7 @@ import (
 )
 
 // Dapr Component.
-// API Version: 2022-03-01.
+// API Version: 2022-10-01.
 func LookupDaprComponent(ctx *pulumi.Context, args *LookupDaprComponentArgs, opts ...pulumi.InvokeOption) (*LookupDaprComponentResult, error) {
 	var rv LookupDaprComponentResult
 	err := ctx.Invoke("azure-native:app:getDaprComponent", args, &rv, opts...)
@@ -46,6 +46,8 @@ type LookupDaprComponentResult struct {
 	Name string `pulumi:"name"`
 	// Names of container apps that can use this Dapr component
 	Scopes []string `pulumi:"scopes"`
+	// Name of a Dapr component to retrieve component secrets from
+	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
 	// Collection of secrets used by a Dapr component
 	Secrets []SecretResponse `pulumi:"secrets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -62,7 +64,7 @@ func (val *LookupDaprComponentResult) Defaults() *LookupDaprComponentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IgnoreErrors) {
+	if tmp.IgnoreErrors == nil {
 		ignoreErrors_ := false
 		tmp.IgnoreErrors = &ignoreErrors_
 	}
@@ -143,6 +145,11 @@ func (o LookupDaprComponentResultOutput) Name() pulumi.StringOutput {
 // Names of container apps that can use this Dapr component
 func (o LookupDaprComponentResultOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDaprComponentResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Name of a Dapr component to retrieve component secrets from
+func (o LookupDaprComponentResultOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDaprComponentResult) *string { return v.SecretStoreComponent }).(pulumi.StringPtrOutput)
 }
 
 // Collection of secrets used by a Dapr component

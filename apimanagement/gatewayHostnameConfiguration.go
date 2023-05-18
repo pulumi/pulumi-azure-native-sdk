@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gateway hostname configuration details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type GatewayHostnameConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type GatewayHostnameConfiguration struct {
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// Specifies if HTTP/2.0 is supported
 	Http2Enabled pulumi.BoolPtrOutput `pulumi:"http2Enabled"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Determines whether gateway requests client certificate
 	NegotiateClientCertificate pulumi.BoolPtrOutput `pulumi:"negotiateClientCertificate"`
@@ -30,7 +31,7 @@ type GatewayHostnameConfiguration struct {
 	Tls10Enabled pulumi.BoolPtrOutput `pulumi:"tls10Enabled"`
 	// Specifies if TLS 1.1 is supported
 	Tls11Enabled pulumi.BoolPtrOutput `pulumi:"tls11Enabled"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -81,6 +82,9 @@ func NewGatewayHostnameConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:GatewayHostnameConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GatewayHostnameConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource GatewayHostnameConfiguration
@@ -127,7 +131,7 @@ type gatewayHostnameConfigurationArgs struct {
 	Http2Enabled *bool `pulumi:"http2Enabled"`
 	// Determines whether gateway requests client certificate
 	NegotiateClientCertificate *bool `pulumi:"negotiateClientCertificate"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -151,7 +155,7 @@ type GatewayHostnameConfigurationArgs struct {
 	Http2Enabled pulumi.BoolPtrInput
 	// Determines whether gateway requests client certificate
 	NegotiateClientCertificate pulumi.BoolPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -213,7 +217,7 @@ func (o GatewayHostnameConfigurationOutput) Http2Enabled() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *GatewayHostnameConfiguration) pulumi.BoolPtrOutput { return v.Http2Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o GatewayHostnameConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayHostnameConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -233,7 +237,7 @@ func (o GatewayHostnameConfigurationOutput) Tls11Enabled() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *GatewayHostnameConfiguration) pulumi.BoolPtrOutput { return v.Tls11Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GatewayHostnameConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayHostnameConfiguration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

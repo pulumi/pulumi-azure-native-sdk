@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:recoveryservices/v20160601:ProtectionPolicy":
 		r = &ProtectionPolicy{}
-	case "azure-native:recoveryservices/v20160601:Vault":
-		r = &Vault{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
-//
-// Deprecated: Version 2019-05-01-preview will be removed in v2 of the provider.
 type VirtualMachineImageTemplate struct {
 	pulumi.CustomResourceState
 

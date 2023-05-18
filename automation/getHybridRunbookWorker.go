@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve a hybrid runbook worker.
-// API Version: 2021-06-22.
+// API Version: 2022-08-08.
 func LookupHybridRunbookWorker(ctx *pulumi.Context, args *LookupHybridRunbookWorkerArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerResult, error) {
 	var rv LookupHybridRunbookWorkerResult
 	err := ctx.Invoke("azure-native:automation:getHybridRunbookWorker", args, &rv, opts...)

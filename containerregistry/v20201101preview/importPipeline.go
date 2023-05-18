@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,9 +56,6 @@ func NewImportPipeline(ctx *pulumi.Context,
 		args.Trigger = args.Trigger.ToPipelineTriggerPropertiesPtrOutput().ApplyT(func(v *PipelineTriggerProperties) *PipelineTriggerProperties { return v.Defaults() }).(PipelineTriggerPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:containerregistry:ImportPipeline"),
-		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20191201preview:ImportPipeline"),
 		},

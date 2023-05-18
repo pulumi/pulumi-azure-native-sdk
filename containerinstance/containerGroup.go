@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container group.
-// API Version: 2021-03-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type ContainerGroup struct {
 	DnsConfig DnsConfigurationResponsePtrOutput `pulumi:"dnsConfig"`
 	// The encryption properties for a container group.
 	EncryptionProperties EncryptionPropertiesResponsePtrOutput `pulumi:"encryptionProperties"`
+	// extensions used by virtual kubelet
+	Extensions DeploymentExtensionSpecResponseArrayOutput `pulumi:"extensions"`
 	// The identity of the container group, if configured.
 	Identity ContainerGroupIdentityResponsePtrOutput `pulumi:"identity"`
 	// The image registry credentials by which the container group is created from.
@@ -31,15 +34,13 @@ type ContainerGroup struct {
 	// The init containers for a container group.
 	InitContainers InitContainerDefinitionResponseArrayOutput `pulumi:"initContainers"`
 	// The instance view of the container group. Only valid in response.
-	InstanceView ContainerGroupResponseInstanceViewOutput `pulumi:"instanceView"`
+	InstanceView ContainerGroupPropertiesResponseInstanceViewOutput `pulumi:"instanceView"`
 	// The IP address type of the container group.
 	IpAddress IpAddressResponsePtrOutput `pulumi:"ipAddress"`
 	// The resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network profile information for a container group.
-	NetworkProfile ContainerGroupNetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
 	// The operating system type required by the containers in the container group.
 	OsType pulumi.StringOutput `pulumi:"osType"`
 	// The provisioning state of the container group. This only appears in the response.
@@ -51,12 +52,16 @@ type ContainerGroup struct {
 	RestartPolicy pulumi.StringPtrOutput `pulumi:"restartPolicy"`
 	// The SKU for a container group.
 	Sku pulumi.StringPtrOutput `pulumi:"sku"`
+	// The subnet resource IDs for a container group.
+	SubnetIds ContainerGroupSubnetIdResponseArrayOutput `pulumi:"subnetIds"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The list of volumes that can be mounted by containers in this container group.
 	Volumes VolumeResponseArrayOutput `pulumi:"volumes"`
+	// The zones for the container group.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewContainerGroup registers a new resource with the given unique name, arguments, and options.
@@ -74,6 +79,9 @@ func NewContainerGroup(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.IpAddress != nil {
+		args.IpAddress = args.IpAddress.ToIpAddressPtrOutput().ApplyT(func(v *IpAddress) *IpAddress { return v.Defaults() }).(IpAddressPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -125,6 +133,9 @@ func NewContainerGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerinstance/v20221001preview:ContainerGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:containerinstance/v20230201preview:ContainerGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerinstance/v20230501:ContainerGroup"),
 		},
 	})
@@ -171,6 +182,8 @@ type containerGroupArgs struct {
 	DnsConfig *DnsConfiguration `pulumi:"dnsConfig"`
 	// The encryption properties for a container group.
 	EncryptionProperties *EncryptionProperties `pulumi:"encryptionProperties"`
+	// extensions used by virtual kubelet
+	Extensions []DeploymentExtensionSpec `pulumi:"extensions"`
 	// The identity of the container group, if configured.
 	Identity *ContainerGroupIdentity `pulumi:"identity"`
 	// The image registry credentials by which the container group is created from.
@@ -181,8 +194,6 @@ type containerGroupArgs struct {
 	IpAddress *IpAddress `pulumi:"ipAddress"`
 	// The resource location.
 	Location *string `pulumi:"location"`
-	// The network profile information for a container group.
-	NetworkProfile *ContainerGroupNetworkProfile `pulumi:"networkProfile"`
 	// The operating system type required by the containers in the container group.
 	OsType string `pulumi:"osType"`
 	// The name of the resource group.
@@ -194,10 +205,14 @@ type containerGroupArgs struct {
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The SKU for a container group.
 	Sku *string `pulumi:"sku"`
+	// The subnet resource IDs for a container group.
+	SubnetIds []ContainerGroupSubnetId `pulumi:"subnetIds"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The list of volumes that can be mounted by containers in this container group.
 	Volumes []Volume `pulumi:"volumes"`
+	// The zones for the container group.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a ContainerGroup resource.
@@ -212,6 +227,8 @@ type ContainerGroupArgs struct {
 	DnsConfig DnsConfigurationPtrInput
 	// The encryption properties for a container group.
 	EncryptionProperties EncryptionPropertiesPtrInput
+	// extensions used by virtual kubelet
+	Extensions DeploymentExtensionSpecArrayInput
 	// The identity of the container group, if configured.
 	Identity ContainerGroupIdentityPtrInput
 	// The image registry credentials by which the container group is created from.
@@ -222,8 +239,6 @@ type ContainerGroupArgs struct {
 	IpAddress IpAddressPtrInput
 	// The resource location.
 	Location pulumi.StringPtrInput
-	// The network profile information for a container group.
-	NetworkProfile ContainerGroupNetworkProfilePtrInput
 	// The operating system type required by the containers in the container group.
 	OsType pulumi.StringInput
 	// The name of the resource group.
@@ -235,10 +250,14 @@ type ContainerGroupArgs struct {
 	RestartPolicy pulumi.StringPtrInput
 	// The SKU for a container group.
 	Sku pulumi.StringPtrInput
+	// The subnet resource IDs for a container group.
+	SubnetIds ContainerGroupSubnetIdArrayInput
 	// The resource tags.
 	Tags pulumi.StringMapInput
 	// The list of volumes that can be mounted by containers in this container group.
 	Volumes VolumeArrayInput
+	// The zones for the container group.
+	Zones pulumi.StringArrayInput
 }
 
 func (ContainerGroupArgs) ElementType() reflect.Type {
@@ -298,6 +317,11 @@ func (o ContainerGroupOutput) EncryptionProperties() EncryptionPropertiesRespons
 	return o.ApplyT(func(v *ContainerGroup) EncryptionPropertiesResponsePtrOutput { return v.EncryptionProperties }).(EncryptionPropertiesResponsePtrOutput)
 }
 
+// extensions used by virtual kubelet
+func (o ContainerGroupOutput) Extensions() DeploymentExtensionSpecResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) DeploymentExtensionSpecResponseArrayOutput { return v.Extensions }).(DeploymentExtensionSpecResponseArrayOutput)
+}
+
 // The identity of the container group, if configured.
 func (o ContainerGroupOutput) Identity() ContainerGroupIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupIdentityResponsePtrOutput { return v.Identity }).(ContainerGroupIdentityResponsePtrOutput)
@@ -314,8 +338,8 @@ func (o ContainerGroupOutput) InitContainers() InitContainerDefinitionResponseAr
 }
 
 // The instance view of the container group. Only valid in response.
-func (o ContainerGroupOutput) InstanceView() ContainerGroupResponseInstanceViewOutput {
-	return o.ApplyT(func(v *ContainerGroup) ContainerGroupResponseInstanceViewOutput { return v.InstanceView }).(ContainerGroupResponseInstanceViewOutput)
+func (o ContainerGroupOutput) InstanceView() ContainerGroupPropertiesResponseInstanceViewOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupPropertiesResponseInstanceViewOutput { return v.InstanceView }).(ContainerGroupPropertiesResponseInstanceViewOutput)
 }
 
 // The IP address type of the container group.
@@ -331,11 +355,6 @@ func (o ContainerGroupOutput) Location() pulumi.StringPtrOutput {
 // The resource name.
 func (o ContainerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// The network profile information for a container group.
-func (o ContainerGroupOutput) NetworkProfile() ContainerGroupNetworkProfileResponsePtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) ContainerGroupNetworkProfileResponsePtrOutput { return v.NetworkProfile }).(ContainerGroupNetworkProfileResponsePtrOutput)
 }
 
 // The operating system type required by the containers in the container group.
@@ -361,6 +380,11 @@ func (o ContainerGroupOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// The subnet resource IDs for a container group.
+func (o ContainerGroupOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupSubnetIdResponseArrayOutput { return v.SubnetIds }).(ContainerGroupSubnetIdResponseArrayOutput)
+}
+
 // The resource tags.
 func (o ContainerGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -374,6 +398,11 @@ func (o ContainerGroupOutput) Type() pulumi.StringOutput {
 // The list of volumes that can be mounted by containers in this container group.
 func (o ContainerGroupOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) VolumeResponseArrayOutput { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// The zones for the container group.
+func (o ContainerGroupOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

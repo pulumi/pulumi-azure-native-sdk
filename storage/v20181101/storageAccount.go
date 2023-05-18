@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storage account.
-//
-// Deprecated: Version 2018-11-01 will be removed in v2 of the provider.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 

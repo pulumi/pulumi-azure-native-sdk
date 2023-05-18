@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified chap setting name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupChapSetting(ctx *pulumi.Context, args *LookupChapSettingArgs, opts ...pulumi.InvokeOption) (*LookupChapSettingResult, error) {
 	var rv LookupChapSettingResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getChapSetting", args, &rv, opts...)

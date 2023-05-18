@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The base class for backup policy. Workload-specific backup policies are derived from this class.
-//
-// Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 type ProtectionPolicy struct {
 	pulumi.CustomResourceState
 

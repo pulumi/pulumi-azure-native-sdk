@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:compute/v20150615:AvailabilitySet":
-		r = &AvailabilitySet{}
-	case "azure-native:compute/v20150615:VirtualMachine":
-		r = &VirtualMachine{}
-	case "azure-native:compute/v20150615:VirtualMachineExtension":
-		r = &VirtualMachineExtension{}
 	case "azure-native:compute/v20150615:VirtualMachineScaleSet":
 		r = &VirtualMachineScaleSet{}
 	default:

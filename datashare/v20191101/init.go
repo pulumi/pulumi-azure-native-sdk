@@ -37,8 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ADLSGen2FolderDataSet{}
 	case "azure-native:datashare/v20191101:ADLSGen2FolderDataSetMapping":
 		r = &ADLSGen2FolderDataSetMapping{}
-	case "azure-native:datashare/v20191101:Account":
-		r = &Account{}
 	case "azure-native:datashare/v20191101:BlobContainerDataSet":
 		r = &BlobContainerDataSet{}
 	case "azure-native:datashare/v20191101:BlobContainerDataSetMapping":
@@ -51,8 +49,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BlobFolderDataSet{}
 	case "azure-native:datashare/v20191101:BlobFolderDataSetMapping":
 		r = &BlobFolderDataSetMapping{}
-	case "azure-native:datashare/v20191101:Invitation":
-		r = &Invitation{}
 	case "azure-native:datashare/v20191101:KustoClusterDataSet":
 		r = &KustoClusterDataSet{}
 	case "azure-native:datashare/v20191101:KustoClusterDataSetMapping":
@@ -65,10 +61,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScheduledSynchronizationSetting{}
 	case "azure-native:datashare/v20191101:ScheduledTrigger":
 		r = &ScheduledTrigger{}
-	case "azure-native:datashare/v20191101:Share":
-		r = &Share{}
-	case "azure-native:datashare/v20191101:ShareSubscription":
-		r = &ShareSubscription{}
 	case "azure-native:datashare/v20191101:SqlDBTableDataSet":
 		r = &SqlDBTableDataSet{}
 	case "azure-native:datashare/v20191101:SqlDBTableDataSetMapping":

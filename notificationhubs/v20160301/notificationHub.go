@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a NotificationHub Resource.
-//
-// Deprecated: Version 2016-03-01 will be removed in v2 of the provider.
 type NotificationHub struct {
 	pulumi.CustomResourceState
 

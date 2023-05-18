@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -154,6 +154,9 @@ func NewVirtualHub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualHub"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualHub"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualHub
@@ -215,7 +218,7 @@ type virtualHubArgs struct {
 	// The name of the VirtualHub.
 	VirtualHubName *string `pulumi:"virtualHubName"`
 	// List of all virtual hub route table v2s associated with this VirtualHub.
-	VirtualHubRouteTableV2s []VirtualHubRouteTableV2Type `pulumi:"virtualHubRouteTableV2s"`
+	VirtualHubRouteTableV2s []VirtualHubRouteTableV2 `pulumi:"virtualHubRouteTableV2s"`
 	// List of all vnet connections with this VirtualHub.
 	VirtualNetworkConnections []HubVirtualNetworkConnection `pulumi:"virtualNetworkConnections"`
 	// The VirtualWAN to which the VirtualHub belongs.
@@ -253,7 +256,7 @@ type VirtualHubArgs struct {
 	// The name of the VirtualHub.
 	VirtualHubName pulumi.StringPtrInput
 	// List of all virtual hub route table v2s associated with this VirtualHub.
-	VirtualHubRouteTableV2s VirtualHubRouteTableV2TypeArrayInput
+	VirtualHubRouteTableV2s VirtualHubRouteTableV2ArrayInput
 	// List of all vnet connections with this VirtualHub.
 	VirtualNetworkConnections HubVirtualNetworkConnectionArrayInput
 	// The VirtualWAN to which the VirtualHub belongs.

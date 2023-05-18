@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
-// API Version: 2020-08-01.
+// API Version: 2022-09-01.
 func ListAdminKey(ctx *pulumi.Context, args *ListAdminKeyArgs, opts ...pulumi.InvokeOption) (*ListAdminKeyResult, error) {
 	var rv ListAdminKeyResult
 	err := ctx.Invoke("azure-native:search:listAdminKey", args, &rv, opts...)

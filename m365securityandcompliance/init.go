@@ -33,17 +33,17 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnectionsForSCCPowershell{}
 	case "azure-native:m365securityandcompliance:PrivateEndpointConnectionsSec":
 		r = &PrivateEndpointConnectionsSec{}
-	case "azure-native:m365securityandcompliance:privateLinkServicesForEDMUpload":
+	case "azure-native:m365securityandcompliance:PrivateLinkServicesForEDMUpload":
 		r = &PrivateLinkServicesForEDMUpload{}
-	case "azure-native:m365securityandcompliance:privateLinkServicesForM365ComplianceCenter":
+	case "azure-native:m365securityandcompliance:PrivateLinkServicesForM365ComplianceCenter":
 		r = &PrivateLinkServicesForM365ComplianceCenter{}
-	case "azure-native:m365securityandcompliance:privateLinkServicesForM365SecurityCenter":
+	case "azure-native:m365securityandcompliance:PrivateLinkServicesForM365SecurityCenter":
 		r = &PrivateLinkServicesForM365SecurityCenter{}
-	case "azure-native:m365securityandcompliance:privateLinkServicesForMIPPolicySync":
+	case "azure-native:m365securityandcompliance:PrivateLinkServicesForMIPPolicySync":
 		r = &PrivateLinkServicesForMIPPolicySync{}
-	case "azure-native:m365securityandcompliance:privateLinkServicesForO365ManagementActivityAPI":
+	case "azure-native:m365securityandcompliance:PrivateLinkServicesForO365ManagementActivityAPI":
 		r = &PrivateLinkServicesForO365ManagementActivityAPI{}
-	case "azure-native:m365securityandcompliance:privateLinkServicesForSCCPowershell":
+	case "azure-native:m365securityandcompliance:PrivateLinkServicesForSCCPowershell":
 		r = &PrivateLinkServicesForSCCPowershell{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

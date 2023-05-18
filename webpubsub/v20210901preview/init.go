@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:webpubsub/v20210901preview:WebPubSub":
 		r = &WebPubSub{}
-	case "azure-native:webpubsub/v20210901preview:WebPubSubPrivateEndpointConnection":
-		r = &WebPubSubPrivateEndpointConnection{}
-	case "azure-native:webpubsub/v20210901preview:WebPubSubSharedPrivateLinkResource":
-		r = &WebPubSubSharedPrivateLinkResource{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

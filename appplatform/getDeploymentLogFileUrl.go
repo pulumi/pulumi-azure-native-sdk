@@ -11,7 +11,7 @@ import (
 )
 
 // Get deployment log file URL
-// API Version: 2020-07-01.
+// API Version: 2022-12-01.
 func GetDeploymentLogFileUrl(ctx *pulumi.Context, args *GetDeploymentLogFileUrlArgs, opts ...pulumi.InvokeOption) (*GetDeploymentLogFileUrlResult, error) {
 	var rv GetDeploymentLogFileUrlResult
 	err := ctx.Invoke("azure-native:appplatform:getDeploymentLogFileUrl", args, &rv, opts...)

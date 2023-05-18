@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a disk encryption set.
-// API Version: 2020-12-01.
+// API Version: 2022-07-02.
 func LookupDiskEncryptionSet(ctx *pulumi.Context, args *LookupDiskEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupDiskEncryptionSetResult, error) {
 	var rv LookupDiskEncryptionSetResult
 	err := ctx.Invoke("azure-native:compute:getDiskEncryptionSet", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDiskEncryptionSet(ctx *pulumi.Context, args *LookupDiskEncryptionSetA
 }
 
 type LookupDiskEncryptionSetArgs struct {
-	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskEncryptionSetName string `pulumi:"diskEncryptionSetName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -32,8 +32,12 @@ type LookupDiskEncryptionSetArgs struct {
 type LookupDiskEncryptionSetResult struct {
 	// The key vault key which is currently used by this disk encryption set.
 	ActiveKey *KeyForDiskEncryptionSetResponse `pulumi:"activeKey"`
+	// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
+	AutoKeyRotationError ApiErrorResponse `pulumi:"autoKeyRotationError"`
 	// The type of key used to encrypt the data of the disk.
 	EncryptionType *string `pulumi:"encryptionType"`
+	// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
+	FederatedClientId *string `pulumi:"federatedClientId"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
@@ -70,7 +74,7 @@ func LookupDiskEncryptionSetOutput(ctx *pulumi.Context, args LookupDiskEncryptio
 }
 
 type LookupDiskEncryptionSetOutputArgs struct {
-	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskEncryptionSetName pulumi.StringInput `pulumi:"diskEncryptionSetName"`
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -100,9 +104,19 @@ func (o LookupDiskEncryptionSetResultOutput) ActiveKey() KeyForDiskEncryptionSet
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) *KeyForDiskEncryptionSetResponse { return v.ActiveKey }).(KeyForDiskEncryptionSetResponsePtrOutput)
 }
 
+// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
+func (o LookupDiskEncryptionSetResultOutput) AutoKeyRotationError() ApiErrorResponseOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) ApiErrorResponse { return v.AutoKeyRotationError }).(ApiErrorResponseOutput)
+}
+
 // The type of key used to encrypt the data of the disk.
 func (o LookupDiskEncryptionSetResultOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
+func (o LookupDiskEncryptionSetResultOutput) FederatedClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) *string { return v.FederatedClientId }).(pulumi.StringPtrOutput)
 }
 
 // Resource Id

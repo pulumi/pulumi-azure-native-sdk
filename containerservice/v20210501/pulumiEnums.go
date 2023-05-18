@@ -30,16 +30,6 @@ const (
 	AgentPoolTypeAvailabilitySet = AgentPoolType("AvailabilitySet")
 )
 
-// The private link service connection status.
-type ConnectionStatus string
-
-const (
-	ConnectionStatusPending      = ConnectionStatus("Pending")
-	ConnectionStatusApproved     = ConnectionStatus("Approved")
-	ConnectionStatusRejected     = ConnectionStatus("Rejected")
-	ConnectionStatusDisconnected = ConnectionStatus("Disconnected")
-)
-
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 type Expander string
 
@@ -390,19 +380,6 @@ const (
 	UpgradeChannel_Node_Image = UpgradeChannel("node-image")
 	// Disables auto-upgrades and keeps the cluster at its current version of Kubernetes.
 	UpgradeChannelNone = UpgradeChannel("none")
-)
-
-// The day of the week.
-type WeekDay string
-
-const (
-	WeekDaySunday    = WeekDay("Sunday")
-	WeekDayMonday    = WeekDay("Monday")
-	WeekDayTuesday   = WeekDay("Tuesday")
-	WeekDayWednesday = WeekDay("Wednesday")
-	WeekDayThursday  = WeekDay("Thursday")
-	WeekDayFriday    = WeekDay("Friday")
-	WeekDaySaturday  = WeekDay("Saturday")
 )
 
 func init() {

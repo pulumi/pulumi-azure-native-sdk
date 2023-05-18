@@ -25,22 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureCliScript{}
 	case "azure-native:resources/v20201001:AzurePowerShellScript":
 		r = &AzurePowerShellScript{}
-	case "azure-native:resources/v20201001:Deployment":
-		r = &Deployment{}
-	case "azure-native:resources/v20201001:DeploymentAtManagementGroupScope":
-		r = &DeploymentAtManagementGroupScope{}
-	case "azure-native:resources/v20201001:DeploymentAtScope":
-		r = &DeploymentAtScope{}
-	case "azure-native:resources/v20201001:DeploymentAtSubscriptionScope":
-		r = &DeploymentAtSubscriptionScope{}
-	case "azure-native:resources/v20201001:DeploymentAtTenantScope":
-		r = &DeploymentAtTenantScope{}
-	case "azure-native:resources/v20201001:Resource":
-		r = &Resource{}
-	case "azure-native:resources/v20201001:ResourceGroup":
-		r = &ResourceGroup{}
-	case "azure-native:resources/v20201001:TagAtScope":
-		r = &TagAtScope{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

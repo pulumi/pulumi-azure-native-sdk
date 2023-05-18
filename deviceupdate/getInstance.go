@@ -11,7 +11,7 @@ import (
 )
 
 // Returns instance details for the given instance and account name.
-// API Version: 2020-03-01-preview.
+// API Version: 2022-10-01.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult
 	err := ctx.Invoke("azure-native:deviceupdate:getInstance", args, &rv, opts...)

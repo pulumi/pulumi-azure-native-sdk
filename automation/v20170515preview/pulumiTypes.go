@@ -1366,7 +1366,7 @@ func (val *ScheduleProperties) Defaults() *ScheduleProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -1420,7 +1420,7 @@ func (val *SchedulePropertiesArgs) Defaults() *SchedulePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		tmp.IsEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1555,7 +1555,7 @@ func (val *SchedulePropertiesResponse) Defaults() *SchedulePropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -1881,181 +1881,6 @@ func (o SoftwareUpdateConfigurationTasksResponsePtrOutput) PreTask() TaskPropert
 		}
 		return v.PreTask
 	}).(TaskPropertiesResponsePtrOutput)
-}
-
-type SourceControlSecurityTokenProperties struct {
-	// The access token.
-	AccessToken *string `pulumi:"accessToken"`
-	// The refresh token.
-	RefreshToken *string `pulumi:"refreshToken"`
-	// The token type. Must be either PersonalAccessToken or Oauth.
-	TokenType *string `pulumi:"tokenType"`
-}
-
-// SourceControlSecurityTokenPropertiesInput is an input type that accepts SourceControlSecurityTokenPropertiesArgs and SourceControlSecurityTokenPropertiesOutput values.
-// You can construct a concrete instance of `SourceControlSecurityTokenPropertiesInput` via:
-//
-//	SourceControlSecurityTokenPropertiesArgs{...}
-type SourceControlSecurityTokenPropertiesInput interface {
-	pulumi.Input
-
-	ToSourceControlSecurityTokenPropertiesOutput() SourceControlSecurityTokenPropertiesOutput
-	ToSourceControlSecurityTokenPropertiesOutputWithContext(context.Context) SourceControlSecurityTokenPropertiesOutput
-}
-
-type SourceControlSecurityTokenPropertiesArgs struct {
-	// The access token.
-	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
-	// The refresh token.
-	RefreshToken pulumi.StringPtrInput `pulumi:"refreshToken"`
-	// The token type. Must be either PersonalAccessToken or Oauth.
-	TokenType pulumi.StringPtrInput `pulumi:"tokenType"`
-}
-
-func (SourceControlSecurityTokenPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceControlSecurityTokenProperties)(nil)).Elem()
-}
-
-func (i SourceControlSecurityTokenPropertiesArgs) ToSourceControlSecurityTokenPropertiesOutput() SourceControlSecurityTokenPropertiesOutput {
-	return i.ToSourceControlSecurityTokenPropertiesOutputWithContext(context.Background())
-}
-
-func (i SourceControlSecurityTokenPropertiesArgs) ToSourceControlSecurityTokenPropertiesOutputWithContext(ctx context.Context) SourceControlSecurityTokenPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceControlSecurityTokenPropertiesOutput)
-}
-
-func (i SourceControlSecurityTokenPropertiesArgs) ToSourceControlSecurityTokenPropertiesPtrOutput() SourceControlSecurityTokenPropertiesPtrOutput {
-	return i.ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i SourceControlSecurityTokenPropertiesArgs) ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(ctx context.Context) SourceControlSecurityTokenPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceControlSecurityTokenPropertiesOutput).ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(ctx)
-}
-
-// SourceControlSecurityTokenPropertiesPtrInput is an input type that accepts SourceControlSecurityTokenPropertiesArgs, SourceControlSecurityTokenPropertiesPtr and SourceControlSecurityTokenPropertiesPtrOutput values.
-// You can construct a concrete instance of `SourceControlSecurityTokenPropertiesPtrInput` via:
-//
-//	        SourceControlSecurityTokenPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type SourceControlSecurityTokenPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToSourceControlSecurityTokenPropertiesPtrOutput() SourceControlSecurityTokenPropertiesPtrOutput
-	ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(context.Context) SourceControlSecurityTokenPropertiesPtrOutput
-}
-
-type sourceControlSecurityTokenPropertiesPtrType SourceControlSecurityTokenPropertiesArgs
-
-func SourceControlSecurityTokenPropertiesPtr(v *SourceControlSecurityTokenPropertiesArgs) SourceControlSecurityTokenPropertiesPtrInput {
-	return (*sourceControlSecurityTokenPropertiesPtrType)(v)
-}
-
-func (*sourceControlSecurityTokenPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceControlSecurityTokenProperties)(nil)).Elem()
-}
-
-func (i *sourceControlSecurityTokenPropertiesPtrType) ToSourceControlSecurityTokenPropertiesPtrOutput() SourceControlSecurityTokenPropertiesPtrOutput {
-	return i.ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *sourceControlSecurityTokenPropertiesPtrType) ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(ctx context.Context) SourceControlSecurityTokenPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceControlSecurityTokenPropertiesPtrOutput)
-}
-
-type SourceControlSecurityTokenPropertiesOutput struct{ *pulumi.OutputState }
-
-func (SourceControlSecurityTokenPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceControlSecurityTokenProperties)(nil)).Elem()
-}
-
-func (o SourceControlSecurityTokenPropertiesOutput) ToSourceControlSecurityTokenPropertiesOutput() SourceControlSecurityTokenPropertiesOutput {
-	return o
-}
-
-func (o SourceControlSecurityTokenPropertiesOutput) ToSourceControlSecurityTokenPropertiesOutputWithContext(ctx context.Context) SourceControlSecurityTokenPropertiesOutput {
-	return o
-}
-
-func (o SourceControlSecurityTokenPropertiesOutput) ToSourceControlSecurityTokenPropertiesPtrOutput() SourceControlSecurityTokenPropertiesPtrOutput {
-	return o.ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o SourceControlSecurityTokenPropertiesOutput) ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(ctx context.Context) SourceControlSecurityTokenPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceControlSecurityTokenProperties) *SourceControlSecurityTokenProperties {
-		return &v
-	}).(SourceControlSecurityTokenPropertiesPtrOutput)
-}
-
-// The access token.
-func (o SourceControlSecurityTokenPropertiesOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceControlSecurityTokenProperties) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
-}
-
-// The refresh token.
-func (o SourceControlSecurityTokenPropertiesOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceControlSecurityTokenProperties) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
-}
-
-// The token type. Must be either PersonalAccessToken or Oauth.
-func (o SourceControlSecurityTokenPropertiesOutput) TokenType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceControlSecurityTokenProperties) *string { return v.TokenType }).(pulumi.StringPtrOutput)
-}
-
-type SourceControlSecurityTokenPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (SourceControlSecurityTokenPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceControlSecurityTokenProperties)(nil)).Elem()
-}
-
-func (o SourceControlSecurityTokenPropertiesPtrOutput) ToSourceControlSecurityTokenPropertiesPtrOutput() SourceControlSecurityTokenPropertiesPtrOutput {
-	return o
-}
-
-func (o SourceControlSecurityTokenPropertiesPtrOutput) ToSourceControlSecurityTokenPropertiesPtrOutputWithContext(ctx context.Context) SourceControlSecurityTokenPropertiesPtrOutput {
-	return o
-}
-
-func (o SourceControlSecurityTokenPropertiesPtrOutput) Elem() SourceControlSecurityTokenPropertiesOutput {
-	return o.ApplyT(func(v *SourceControlSecurityTokenProperties) SourceControlSecurityTokenProperties {
-		if v != nil {
-			return *v
-		}
-		var ret SourceControlSecurityTokenProperties
-		return ret
-	}).(SourceControlSecurityTokenPropertiesOutput)
-}
-
-// The access token.
-func (o SourceControlSecurityTokenPropertiesPtrOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControlSecurityTokenProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// The refresh token.
-func (o SourceControlSecurityTokenPropertiesPtrOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControlSecurityTokenProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// The token type. Must be either PersonalAccessToken or Oauth.
-func (o SourceControlSecurityTokenPropertiesPtrOutput) TokenType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControlSecurityTokenProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TokenType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Tag filter information for the VM.
@@ -3282,8 +3107,6 @@ func init() {
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksResponsePtrOutput{})
-	pulumi.RegisterOutputType(SourceControlSecurityTokenPropertiesOutput{})
-	pulumi.RegisterOutputType(SourceControlSecurityTokenPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesResponseOutput{})

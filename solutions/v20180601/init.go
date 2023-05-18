@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:solutions/v20180601:Application":
 		r = &Application{}
-	case "azure-native:solutions/v20180601:ApplicationDefinition":
-		r = &ApplicationDefinition{}
-	case "azure-native:solutions/v20180601:JitRequest":
-		r = &JitRequest{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

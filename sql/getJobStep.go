@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a job step in a job's current version.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupJobStep(ctx *pulumi.Context, args *LookupJobStepArgs, opts ...pulumi.InvokeOption) (*LookupJobStepResult, error) {
 	var rv LookupJobStepResult
 	err := ctx.Invoke("azure-native:sql:getJobStep", args, &rv, opts...)

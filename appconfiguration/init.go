@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KeyValue{}
 	case "azure-native:appconfiguration:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:appconfiguration:Replica":
+		r = &Replica{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

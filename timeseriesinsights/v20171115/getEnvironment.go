@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the environment with the specified name in the specified subscription and resource group.
-//
-// Deprecated: Version 2017-11-15 will be removed in v2 of the provider.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	var rv LookupEnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20171115:getEnvironment", args, &rv, opts...)

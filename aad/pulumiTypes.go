@@ -10,6 +10,639 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Configuration Diagnostics
+type ConfigDiagnostics struct {
+	// Last domain configuration diagnostics DateTime
+	LastExecuted *string `pulumi:"lastExecuted"`
+	// List of Configuration Diagnostics validator results.
+	ValidatorResults []ConfigDiagnosticsValidatorResult `pulumi:"validatorResults"`
+}
+
+// ConfigDiagnosticsInput is an input type that accepts ConfigDiagnosticsArgs and ConfigDiagnosticsOutput values.
+// You can construct a concrete instance of `ConfigDiagnosticsInput` via:
+//
+//	ConfigDiagnosticsArgs{...}
+type ConfigDiagnosticsInput interface {
+	pulumi.Input
+
+	ToConfigDiagnosticsOutput() ConfigDiagnosticsOutput
+	ToConfigDiagnosticsOutputWithContext(context.Context) ConfigDiagnosticsOutput
+}
+
+// Configuration Diagnostics
+type ConfigDiagnosticsArgs struct {
+	// Last domain configuration diagnostics DateTime
+	LastExecuted pulumi.StringPtrInput `pulumi:"lastExecuted"`
+	// List of Configuration Diagnostics validator results.
+	ValidatorResults ConfigDiagnosticsValidatorResultArrayInput `pulumi:"validatorResults"`
+}
+
+func (ConfigDiagnosticsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnostics)(nil)).Elem()
+}
+
+func (i ConfigDiagnosticsArgs) ToConfigDiagnosticsOutput() ConfigDiagnosticsOutput {
+	return i.ToConfigDiagnosticsOutputWithContext(context.Background())
+}
+
+func (i ConfigDiagnosticsArgs) ToConfigDiagnosticsOutputWithContext(ctx context.Context) ConfigDiagnosticsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsOutput)
+}
+
+func (i ConfigDiagnosticsArgs) ToConfigDiagnosticsPtrOutput() ConfigDiagnosticsPtrOutput {
+	return i.ToConfigDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigDiagnosticsArgs) ToConfigDiagnosticsPtrOutputWithContext(ctx context.Context) ConfigDiagnosticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsOutput).ToConfigDiagnosticsPtrOutputWithContext(ctx)
+}
+
+// ConfigDiagnosticsPtrInput is an input type that accepts ConfigDiagnosticsArgs, ConfigDiagnosticsPtr and ConfigDiagnosticsPtrOutput values.
+// You can construct a concrete instance of `ConfigDiagnosticsPtrInput` via:
+//
+//	        ConfigDiagnosticsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigDiagnosticsPtrInput interface {
+	pulumi.Input
+
+	ToConfigDiagnosticsPtrOutput() ConfigDiagnosticsPtrOutput
+	ToConfigDiagnosticsPtrOutputWithContext(context.Context) ConfigDiagnosticsPtrOutput
+}
+
+type configDiagnosticsPtrType ConfigDiagnosticsArgs
+
+func ConfigDiagnosticsPtr(v *ConfigDiagnosticsArgs) ConfigDiagnosticsPtrInput {
+	return (*configDiagnosticsPtrType)(v)
+}
+
+func (*configDiagnosticsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigDiagnostics)(nil)).Elem()
+}
+
+func (i *configDiagnosticsPtrType) ToConfigDiagnosticsPtrOutput() ConfigDiagnosticsPtrOutput {
+	return i.ToConfigDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (i *configDiagnosticsPtrType) ToConfigDiagnosticsPtrOutputWithContext(ctx context.Context) ConfigDiagnosticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsPtrOutput)
+}
+
+// Configuration Diagnostics
+type ConfigDiagnosticsOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnostics)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsOutput) ToConfigDiagnosticsOutput() ConfigDiagnosticsOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsOutput) ToConfigDiagnosticsOutputWithContext(ctx context.Context) ConfigDiagnosticsOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsOutput) ToConfigDiagnosticsPtrOutput() ConfigDiagnosticsPtrOutput {
+	return o.ToConfigDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigDiagnosticsOutput) ToConfigDiagnosticsPtrOutputWithContext(ctx context.Context) ConfigDiagnosticsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigDiagnostics) *ConfigDiagnostics {
+		return &v
+	}).(ConfigDiagnosticsPtrOutput)
+}
+
+// Last domain configuration diagnostics DateTime
+func (o ConfigDiagnosticsOutput) LastExecuted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnostics) *string { return v.LastExecuted }).(pulumi.StringPtrOutput)
+}
+
+// List of Configuration Diagnostics validator results.
+func (o ConfigDiagnosticsOutput) ValidatorResults() ConfigDiagnosticsValidatorResultArrayOutput {
+	return o.ApplyT(func(v ConfigDiagnostics) []ConfigDiagnosticsValidatorResult { return v.ValidatorResults }).(ConfigDiagnosticsValidatorResultArrayOutput)
+}
+
+type ConfigDiagnosticsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigDiagnostics)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsPtrOutput) ToConfigDiagnosticsPtrOutput() ConfigDiagnosticsPtrOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsPtrOutput) ToConfigDiagnosticsPtrOutputWithContext(ctx context.Context) ConfigDiagnosticsPtrOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsPtrOutput) Elem() ConfigDiagnosticsOutput {
+	return o.ApplyT(func(v *ConfigDiagnostics) ConfigDiagnostics {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigDiagnostics
+		return ret
+	}).(ConfigDiagnosticsOutput)
+}
+
+// Last domain configuration diagnostics DateTime
+func (o ConfigDiagnosticsPtrOutput) LastExecuted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigDiagnostics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastExecuted
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Configuration Diagnostics validator results.
+func (o ConfigDiagnosticsPtrOutput) ValidatorResults() ConfigDiagnosticsValidatorResultArrayOutput {
+	return o.ApplyT(func(v *ConfigDiagnostics) []ConfigDiagnosticsValidatorResult {
+		if v == nil {
+			return nil
+		}
+		return v.ValidatorResults
+	}).(ConfigDiagnosticsValidatorResultArrayOutput)
+}
+
+// Configuration Diagnostics
+type ConfigDiagnosticsResponse struct {
+	// Last domain configuration diagnostics DateTime
+	LastExecuted *string `pulumi:"lastExecuted"`
+	// List of Configuration Diagnostics validator results.
+	ValidatorResults []ConfigDiagnosticsValidatorResultResponse `pulumi:"validatorResults"`
+}
+
+// Configuration Diagnostics
+type ConfigDiagnosticsResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsResponse)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsResponseOutput) ToConfigDiagnosticsResponseOutput() ConfigDiagnosticsResponseOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsResponseOutput) ToConfigDiagnosticsResponseOutputWithContext(ctx context.Context) ConfigDiagnosticsResponseOutput {
+	return o
+}
+
+// Last domain configuration diagnostics DateTime
+func (o ConfigDiagnosticsResponseOutput) LastExecuted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsResponse) *string { return v.LastExecuted }).(pulumi.StringPtrOutput)
+}
+
+// List of Configuration Diagnostics validator results.
+func (o ConfigDiagnosticsResponseOutput) ValidatorResults() ConfigDiagnosticsValidatorResultResponseArrayOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsResponse) []ConfigDiagnosticsValidatorResultResponse {
+		return v.ValidatorResults
+	}).(ConfigDiagnosticsValidatorResultResponseArrayOutput)
+}
+
+type ConfigDiagnosticsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigDiagnosticsResponse)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsResponsePtrOutput) ToConfigDiagnosticsResponsePtrOutput() ConfigDiagnosticsResponsePtrOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsResponsePtrOutput) ToConfigDiagnosticsResponsePtrOutputWithContext(ctx context.Context) ConfigDiagnosticsResponsePtrOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsResponsePtrOutput) Elem() ConfigDiagnosticsResponseOutput {
+	return o.ApplyT(func(v *ConfigDiagnosticsResponse) ConfigDiagnosticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigDiagnosticsResponse
+		return ret
+	}).(ConfigDiagnosticsResponseOutput)
+}
+
+// Last domain configuration diagnostics DateTime
+func (o ConfigDiagnosticsResponsePtrOutput) LastExecuted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigDiagnosticsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastExecuted
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Configuration Diagnostics validator results.
+func (o ConfigDiagnosticsResponsePtrOutput) ValidatorResults() ConfigDiagnosticsValidatorResultResponseArrayOutput {
+	return o.ApplyT(func(v *ConfigDiagnosticsResponse) []ConfigDiagnosticsValidatorResultResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ValidatorResults
+	}).(ConfigDiagnosticsValidatorResultResponseArrayOutput)
+}
+
+// Config Diagnostics validator result data
+type ConfigDiagnosticsValidatorResult struct {
+	// List of resource config validation issues.
+	Issues []ConfigDiagnosticsValidatorResultIssue `pulumi:"issues"`
+	// Replica set location and subnet name
+	ReplicaSetSubnetDisplayName *string `pulumi:"replicaSetSubnetDisplayName"`
+	// Status for individual validator after running diagnostics.
+	Status *string `pulumi:"status"`
+	// Validator identifier
+	ValidatorId *string `pulumi:"validatorId"`
+}
+
+// Defaults sets the appropriate defaults for ConfigDiagnosticsValidatorResult
+func (val *ConfigDiagnosticsValidatorResult) Defaults() *ConfigDiagnosticsValidatorResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Status == nil {
+		status_ := "None"
+		tmp.Status = &status_
+	}
+	return &tmp
+}
+
+// ConfigDiagnosticsValidatorResultInput is an input type that accepts ConfigDiagnosticsValidatorResultArgs and ConfigDiagnosticsValidatorResultOutput values.
+// You can construct a concrete instance of `ConfigDiagnosticsValidatorResultInput` via:
+//
+//	ConfigDiagnosticsValidatorResultArgs{...}
+type ConfigDiagnosticsValidatorResultInput interface {
+	pulumi.Input
+
+	ToConfigDiagnosticsValidatorResultOutput() ConfigDiagnosticsValidatorResultOutput
+	ToConfigDiagnosticsValidatorResultOutputWithContext(context.Context) ConfigDiagnosticsValidatorResultOutput
+}
+
+// Config Diagnostics validator result data
+type ConfigDiagnosticsValidatorResultArgs struct {
+	// List of resource config validation issues.
+	Issues ConfigDiagnosticsValidatorResultIssueArrayInput `pulumi:"issues"`
+	// Replica set location and subnet name
+	ReplicaSetSubnetDisplayName pulumi.StringPtrInput `pulumi:"replicaSetSubnetDisplayName"`
+	// Status for individual validator after running diagnostics.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Validator identifier
+	ValidatorId pulumi.StringPtrInput `pulumi:"validatorId"`
+}
+
+// Defaults sets the appropriate defaults for ConfigDiagnosticsValidatorResultArgs
+func (val *ConfigDiagnosticsValidatorResultArgs) Defaults() *ConfigDiagnosticsValidatorResultArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Status == nil {
+		tmp.Status = pulumi.StringPtr("None")
+	}
+	return &tmp
+}
+func (ConfigDiagnosticsValidatorResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsValidatorResult)(nil)).Elem()
+}
+
+func (i ConfigDiagnosticsValidatorResultArgs) ToConfigDiagnosticsValidatorResultOutput() ConfigDiagnosticsValidatorResultOutput {
+	return i.ToConfigDiagnosticsValidatorResultOutputWithContext(context.Background())
+}
+
+func (i ConfigDiagnosticsValidatorResultArgs) ToConfigDiagnosticsValidatorResultOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsValidatorResultOutput)
+}
+
+// ConfigDiagnosticsValidatorResultArrayInput is an input type that accepts ConfigDiagnosticsValidatorResultArray and ConfigDiagnosticsValidatorResultArrayOutput values.
+// You can construct a concrete instance of `ConfigDiagnosticsValidatorResultArrayInput` via:
+//
+//	ConfigDiagnosticsValidatorResultArray{ ConfigDiagnosticsValidatorResultArgs{...} }
+type ConfigDiagnosticsValidatorResultArrayInput interface {
+	pulumi.Input
+
+	ToConfigDiagnosticsValidatorResultArrayOutput() ConfigDiagnosticsValidatorResultArrayOutput
+	ToConfigDiagnosticsValidatorResultArrayOutputWithContext(context.Context) ConfigDiagnosticsValidatorResultArrayOutput
+}
+
+type ConfigDiagnosticsValidatorResultArray []ConfigDiagnosticsValidatorResultInput
+
+func (ConfigDiagnosticsValidatorResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigDiagnosticsValidatorResult)(nil)).Elem()
+}
+
+func (i ConfigDiagnosticsValidatorResultArray) ToConfigDiagnosticsValidatorResultArrayOutput() ConfigDiagnosticsValidatorResultArrayOutput {
+	return i.ToConfigDiagnosticsValidatorResultArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigDiagnosticsValidatorResultArray) ToConfigDiagnosticsValidatorResultArrayOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsValidatorResultArrayOutput)
+}
+
+// Config Diagnostics validator result data
+type ConfigDiagnosticsValidatorResultOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsValidatorResult)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultOutput) ToConfigDiagnosticsValidatorResultOutput() ConfigDiagnosticsValidatorResultOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultOutput) ToConfigDiagnosticsValidatorResultOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultOutput {
+	return o
+}
+
+// List of resource config validation issues.
+func (o ConfigDiagnosticsValidatorResultOutput) Issues() ConfigDiagnosticsValidatorResultIssueArrayOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResult) []ConfigDiagnosticsValidatorResultIssue { return v.Issues }).(ConfigDiagnosticsValidatorResultIssueArrayOutput)
+}
+
+// Replica set location and subnet name
+func (o ConfigDiagnosticsValidatorResultOutput) ReplicaSetSubnetDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResult) *string { return v.ReplicaSetSubnetDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Status for individual validator after running diagnostics.
+func (o ConfigDiagnosticsValidatorResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Validator identifier
+func (o ConfigDiagnosticsValidatorResultOutput) ValidatorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResult) *string { return v.ValidatorId }).(pulumi.StringPtrOutput)
+}
+
+type ConfigDiagnosticsValidatorResultArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigDiagnosticsValidatorResult)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultArrayOutput) ToConfigDiagnosticsValidatorResultArrayOutput() ConfigDiagnosticsValidatorResultArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultArrayOutput) ToConfigDiagnosticsValidatorResultArrayOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultArrayOutput) Index(i pulumi.IntInput) ConfigDiagnosticsValidatorResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigDiagnosticsValidatorResult {
+		return vs[0].([]ConfigDiagnosticsValidatorResult)[vs[1].(int)]
+	}).(ConfigDiagnosticsValidatorResultOutput)
+}
+
+// Specific issue for a particular config diagnostics validator
+type ConfigDiagnosticsValidatorResultIssue struct {
+	// List of domain resource property name or values used to compose a rich description.
+	DescriptionParams []string `pulumi:"descriptionParams"`
+	// Validation issue identifier.
+	Id *string `pulumi:"id"`
+}
+
+// ConfigDiagnosticsValidatorResultIssueInput is an input type that accepts ConfigDiagnosticsValidatorResultIssueArgs and ConfigDiagnosticsValidatorResultIssueOutput values.
+// You can construct a concrete instance of `ConfigDiagnosticsValidatorResultIssueInput` via:
+//
+//	ConfigDiagnosticsValidatorResultIssueArgs{...}
+type ConfigDiagnosticsValidatorResultIssueInput interface {
+	pulumi.Input
+
+	ToConfigDiagnosticsValidatorResultIssueOutput() ConfigDiagnosticsValidatorResultIssueOutput
+	ToConfigDiagnosticsValidatorResultIssueOutputWithContext(context.Context) ConfigDiagnosticsValidatorResultIssueOutput
+}
+
+// Specific issue for a particular config diagnostics validator
+type ConfigDiagnosticsValidatorResultIssueArgs struct {
+	// List of domain resource property name or values used to compose a rich description.
+	DescriptionParams pulumi.StringArrayInput `pulumi:"descriptionParams"`
+	// Validation issue identifier.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (ConfigDiagnosticsValidatorResultIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsValidatorResultIssue)(nil)).Elem()
+}
+
+func (i ConfigDiagnosticsValidatorResultIssueArgs) ToConfigDiagnosticsValidatorResultIssueOutput() ConfigDiagnosticsValidatorResultIssueOutput {
+	return i.ToConfigDiagnosticsValidatorResultIssueOutputWithContext(context.Background())
+}
+
+func (i ConfigDiagnosticsValidatorResultIssueArgs) ToConfigDiagnosticsValidatorResultIssueOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsValidatorResultIssueOutput)
+}
+
+// ConfigDiagnosticsValidatorResultIssueArrayInput is an input type that accepts ConfigDiagnosticsValidatorResultIssueArray and ConfigDiagnosticsValidatorResultIssueArrayOutput values.
+// You can construct a concrete instance of `ConfigDiagnosticsValidatorResultIssueArrayInput` via:
+//
+//	ConfigDiagnosticsValidatorResultIssueArray{ ConfigDiagnosticsValidatorResultIssueArgs{...} }
+type ConfigDiagnosticsValidatorResultIssueArrayInput interface {
+	pulumi.Input
+
+	ToConfigDiagnosticsValidatorResultIssueArrayOutput() ConfigDiagnosticsValidatorResultIssueArrayOutput
+	ToConfigDiagnosticsValidatorResultIssueArrayOutputWithContext(context.Context) ConfigDiagnosticsValidatorResultIssueArrayOutput
+}
+
+type ConfigDiagnosticsValidatorResultIssueArray []ConfigDiagnosticsValidatorResultIssueInput
+
+func (ConfigDiagnosticsValidatorResultIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigDiagnosticsValidatorResultIssue)(nil)).Elem()
+}
+
+func (i ConfigDiagnosticsValidatorResultIssueArray) ToConfigDiagnosticsValidatorResultIssueArrayOutput() ConfigDiagnosticsValidatorResultIssueArrayOutput {
+	return i.ToConfigDiagnosticsValidatorResultIssueArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigDiagnosticsValidatorResultIssueArray) ToConfigDiagnosticsValidatorResultIssueArrayOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigDiagnosticsValidatorResultIssueArrayOutput)
+}
+
+// Specific issue for a particular config diagnostics validator
+type ConfigDiagnosticsValidatorResultIssueOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsValidatorResultIssue)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueOutput) ToConfigDiagnosticsValidatorResultIssueOutput() ConfigDiagnosticsValidatorResultIssueOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueOutput) ToConfigDiagnosticsValidatorResultIssueOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultIssueOutput {
+	return o
+}
+
+// List of domain resource property name or values used to compose a rich description.
+func (o ConfigDiagnosticsValidatorResultIssueOutput) DescriptionParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultIssue) []string { return v.DescriptionParams }).(pulumi.StringArrayOutput)
+}
+
+// Validation issue identifier.
+func (o ConfigDiagnosticsValidatorResultIssueOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultIssue) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ConfigDiagnosticsValidatorResultIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigDiagnosticsValidatorResultIssue)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueArrayOutput) ToConfigDiagnosticsValidatorResultIssueArrayOutput() ConfigDiagnosticsValidatorResultIssueArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueArrayOutput) ToConfigDiagnosticsValidatorResultIssueArrayOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultIssueArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueArrayOutput) Index(i pulumi.IntInput) ConfigDiagnosticsValidatorResultIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigDiagnosticsValidatorResultIssue {
+		return vs[0].([]ConfigDiagnosticsValidatorResultIssue)[vs[1].(int)]
+	}).(ConfigDiagnosticsValidatorResultIssueOutput)
+}
+
+// Specific issue for a particular config diagnostics validator
+type ConfigDiagnosticsValidatorResultIssueResponse struct {
+	// List of domain resource property name or values used to compose a rich description.
+	DescriptionParams []string `pulumi:"descriptionParams"`
+	// Validation issue identifier.
+	Id *string `pulumi:"id"`
+}
+
+// Specific issue for a particular config diagnostics validator
+type ConfigDiagnosticsValidatorResultIssueResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultIssueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsValidatorResultIssueResponse)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueResponseOutput) ToConfigDiagnosticsValidatorResultIssueResponseOutput() ConfigDiagnosticsValidatorResultIssueResponseOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueResponseOutput) ToConfigDiagnosticsValidatorResultIssueResponseOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultIssueResponseOutput {
+	return o
+}
+
+// List of domain resource property name or values used to compose a rich description.
+func (o ConfigDiagnosticsValidatorResultIssueResponseOutput) DescriptionParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultIssueResponse) []string { return v.DescriptionParams }).(pulumi.StringArrayOutput)
+}
+
+// Validation issue identifier.
+func (o ConfigDiagnosticsValidatorResultIssueResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultIssueResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ConfigDiagnosticsValidatorResultIssueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultIssueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigDiagnosticsValidatorResultIssueResponse)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueResponseArrayOutput) ToConfigDiagnosticsValidatorResultIssueResponseArrayOutput() ConfigDiagnosticsValidatorResultIssueResponseArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueResponseArrayOutput) ToConfigDiagnosticsValidatorResultIssueResponseArrayOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultIssueResponseArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultIssueResponseArrayOutput) Index(i pulumi.IntInput) ConfigDiagnosticsValidatorResultIssueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigDiagnosticsValidatorResultIssueResponse {
+		return vs[0].([]ConfigDiagnosticsValidatorResultIssueResponse)[vs[1].(int)]
+	}).(ConfigDiagnosticsValidatorResultIssueResponseOutput)
+}
+
+// Config Diagnostics validator result data
+type ConfigDiagnosticsValidatorResultResponse struct {
+	// List of resource config validation issues.
+	Issues []ConfigDiagnosticsValidatorResultIssueResponse `pulumi:"issues"`
+	// Replica set location and subnet name
+	ReplicaSetSubnetDisplayName *string `pulumi:"replicaSetSubnetDisplayName"`
+	// Status for individual validator after running diagnostics.
+	Status *string `pulumi:"status"`
+	// Validator identifier
+	ValidatorId *string `pulumi:"validatorId"`
+}
+
+// Defaults sets the appropriate defaults for ConfigDiagnosticsValidatorResultResponse
+func (val *ConfigDiagnosticsValidatorResultResponse) Defaults() *ConfigDiagnosticsValidatorResultResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Status == nil {
+		status_ := "None"
+		tmp.Status = &status_
+	}
+	return &tmp
+}
+
+// Config Diagnostics validator result data
+type ConfigDiagnosticsValidatorResultResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigDiagnosticsValidatorResultResponse)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultResponseOutput) ToConfigDiagnosticsValidatorResultResponseOutput() ConfigDiagnosticsValidatorResultResponseOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultResponseOutput) ToConfigDiagnosticsValidatorResultResponseOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultResponseOutput {
+	return o
+}
+
+// List of resource config validation issues.
+func (o ConfigDiagnosticsValidatorResultResponseOutput) Issues() ConfigDiagnosticsValidatorResultIssueResponseArrayOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultResponse) []ConfigDiagnosticsValidatorResultIssueResponse {
+		return v.Issues
+	}).(ConfigDiagnosticsValidatorResultIssueResponseArrayOutput)
+}
+
+// Replica set location and subnet name
+func (o ConfigDiagnosticsValidatorResultResponseOutput) ReplicaSetSubnetDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultResponse) *string { return v.ReplicaSetSubnetDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Status for individual validator after running diagnostics.
+func (o ConfigDiagnosticsValidatorResultResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Validator identifier
+func (o ConfigDiagnosticsValidatorResultResponseOutput) ValidatorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigDiagnosticsValidatorResultResponse) *string { return v.ValidatorId }).(pulumi.StringPtrOutput)
+}
+
+type ConfigDiagnosticsValidatorResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigDiagnosticsValidatorResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigDiagnosticsValidatorResultResponse)(nil)).Elem()
+}
+
+func (o ConfigDiagnosticsValidatorResultResponseArrayOutput) ToConfigDiagnosticsValidatorResultResponseArrayOutput() ConfigDiagnosticsValidatorResultResponseArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultResponseArrayOutput) ToConfigDiagnosticsValidatorResultResponseArrayOutputWithContext(ctx context.Context) ConfigDiagnosticsValidatorResultResponseArrayOutput {
+	return o
+}
+
+func (o ConfigDiagnosticsValidatorResultResponseArrayOutput) Index(i pulumi.IntInput) ConfigDiagnosticsValidatorResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigDiagnosticsValidatorResultResponse {
+		return vs[0].([]ConfigDiagnosticsValidatorResultResponse)[vs[1].(int)]
+	}).(ConfigDiagnosticsValidatorResultResponseOutput)
+}
+
 // Container Account Description
 type ContainerAccountResponse struct {
 	// The account name
@@ -72,10 +705,14 @@ func (o ContainerAccountResponseArrayOutput) Index(i pulumi.IntInput) ContainerA
 
 // Domain Security Settings
 type DomainSecuritySettings struct {
+	// A flag to determine whether or not ChannelBinding is enabled or disabled.
+	ChannelBinding *string `pulumi:"channelBinding"`
 	// A flag to determine whether or not KerberosArmoring is enabled or disabled.
 	KerberosArmoring *string `pulumi:"kerberosArmoring"`
 	// A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
 	KerberosRc4Encryption *string `pulumi:"kerberosRc4Encryption"`
+	// A flag to determine whether or not LdapSigning is enabled or disabled.
+	LdapSigning *string `pulumi:"ldapSigning"`
 	// A flag to determine whether or not NtlmV1 is enabled or disabled.
 	NtlmV1 *string `pulumi:"ntlmV1"`
 	// A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
@@ -94,31 +731,39 @@ func (val *DomainSecuritySettings) Defaults() *DomainSecuritySettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KerberosArmoring) {
+	if tmp.ChannelBinding == nil {
+		channelBinding_ := "Disabled"
+		tmp.ChannelBinding = &channelBinding_
+	}
+	if tmp.KerberosArmoring == nil {
 		kerberosArmoring_ := "Disabled"
 		tmp.KerberosArmoring = &kerberosArmoring_
 	}
-	if isZero(tmp.KerberosRc4Encryption) {
+	if tmp.KerberosRc4Encryption == nil {
 		kerberosRc4Encryption_ := "Enabled"
 		tmp.KerberosRc4Encryption = &kerberosRc4Encryption_
 	}
-	if isZero(tmp.NtlmV1) {
+	if tmp.LdapSigning == nil {
+		ldapSigning_ := "Disabled"
+		tmp.LdapSigning = &ldapSigning_
+	}
+	if tmp.NtlmV1 == nil {
 		ntlmV1_ := "Enabled"
 		tmp.NtlmV1 = &ntlmV1_
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		syncKerberosPasswords_ := "Enabled"
 		tmp.SyncKerberosPasswords = &syncKerberosPasswords_
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		syncNtlmPasswords_ := "Enabled"
 		tmp.SyncNtlmPasswords = &syncNtlmPasswords_
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		syncOnPremPasswords_ := "Enabled"
 		tmp.SyncOnPremPasswords = &syncOnPremPasswords_
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tlsV1_ := "Enabled"
 		tmp.TlsV1 = &tlsV1_
 	}
@@ -138,10 +783,14 @@ type DomainSecuritySettingsInput interface {
 
 // Domain Security Settings
 type DomainSecuritySettingsArgs struct {
+	// A flag to determine whether or not ChannelBinding is enabled or disabled.
+	ChannelBinding pulumi.StringPtrInput `pulumi:"channelBinding"`
 	// A flag to determine whether or not KerberosArmoring is enabled or disabled.
 	KerberosArmoring pulumi.StringPtrInput `pulumi:"kerberosArmoring"`
 	// A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
 	KerberosRc4Encryption pulumi.StringPtrInput `pulumi:"kerberosRc4Encryption"`
+	// A flag to determine whether or not LdapSigning is enabled or disabled.
+	LdapSigning pulumi.StringPtrInput `pulumi:"ldapSigning"`
 	// A flag to determine whether or not NtlmV1 is enabled or disabled.
 	NtlmV1 pulumi.StringPtrInput `pulumi:"ntlmV1"`
 	// A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
@@ -160,25 +809,31 @@ func (val *DomainSecuritySettingsArgs) Defaults() *DomainSecuritySettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KerberosArmoring) {
+	if tmp.ChannelBinding == nil {
+		tmp.ChannelBinding = pulumi.StringPtr("Disabled")
+	}
+	if tmp.KerberosArmoring == nil {
 		tmp.KerberosArmoring = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.KerberosRc4Encryption) {
+	if tmp.KerberosRc4Encryption == nil {
 		tmp.KerberosRc4Encryption = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.NtlmV1) {
+	if tmp.LdapSigning == nil {
+		tmp.LdapSigning = pulumi.StringPtr("Disabled")
+	}
+	if tmp.NtlmV1 == nil {
 		tmp.NtlmV1 = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		tmp.SyncKerberosPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		tmp.SyncNtlmPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		tmp.SyncOnPremPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tmp.TlsV1 = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -261,6 +916,11 @@ func (o DomainSecuritySettingsOutput) ToDomainSecuritySettingsPtrOutputWithConte
 	}).(DomainSecuritySettingsPtrOutput)
 }
 
+// A flag to determine whether or not ChannelBinding is enabled or disabled.
+func (o DomainSecuritySettingsOutput) ChannelBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSecuritySettings) *string { return v.ChannelBinding }).(pulumi.StringPtrOutput)
+}
+
 // A flag to determine whether or not KerberosArmoring is enabled or disabled.
 func (o DomainSecuritySettingsOutput) KerberosArmoring() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSecuritySettings) *string { return v.KerberosArmoring }).(pulumi.StringPtrOutput)
@@ -269,6 +929,11 @@ func (o DomainSecuritySettingsOutput) KerberosArmoring() pulumi.StringPtrOutput 
 // A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
 func (o DomainSecuritySettingsOutput) KerberosRc4Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSecuritySettings) *string { return v.KerberosRc4Encryption }).(pulumi.StringPtrOutput)
+}
+
+// A flag to determine whether or not LdapSigning is enabled or disabled.
+func (o DomainSecuritySettingsOutput) LdapSigning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSecuritySettings) *string { return v.LdapSigning }).(pulumi.StringPtrOutput)
 }
 
 // A flag to determine whether or not NtlmV1 is enabled or disabled.
@@ -320,6 +985,16 @@ func (o DomainSecuritySettingsPtrOutput) Elem() DomainSecuritySettingsOutput {
 	}).(DomainSecuritySettingsOutput)
 }
 
+// A flag to determine whether or not ChannelBinding is enabled or disabled.
+func (o DomainSecuritySettingsPtrOutput) ChannelBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainSecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelBinding
+	}).(pulumi.StringPtrOutput)
+}
+
 // A flag to determine whether or not KerberosArmoring is enabled or disabled.
 func (o DomainSecuritySettingsPtrOutput) KerberosArmoring() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainSecuritySettings) *string {
@@ -337,6 +1012,16 @@ func (o DomainSecuritySettingsPtrOutput) KerberosRc4Encryption() pulumi.StringPt
 			return nil
 		}
 		return v.KerberosRc4Encryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// A flag to determine whether or not LdapSigning is enabled or disabled.
+func (o DomainSecuritySettingsPtrOutput) LdapSigning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainSecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LdapSigning
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -392,10 +1077,14 @@ func (o DomainSecuritySettingsPtrOutput) TlsV1() pulumi.StringPtrOutput {
 
 // Domain Security Settings
 type DomainSecuritySettingsResponse struct {
+	// A flag to determine whether or not ChannelBinding is enabled or disabled.
+	ChannelBinding *string `pulumi:"channelBinding"`
 	// A flag to determine whether or not KerberosArmoring is enabled or disabled.
 	KerberosArmoring *string `pulumi:"kerberosArmoring"`
 	// A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
 	KerberosRc4Encryption *string `pulumi:"kerberosRc4Encryption"`
+	// A flag to determine whether or not LdapSigning is enabled or disabled.
+	LdapSigning *string `pulumi:"ldapSigning"`
 	// A flag to determine whether or not NtlmV1 is enabled or disabled.
 	NtlmV1 *string `pulumi:"ntlmV1"`
 	// A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
@@ -414,31 +1103,39 @@ func (val *DomainSecuritySettingsResponse) Defaults() *DomainSecuritySettingsRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KerberosArmoring) {
+	if tmp.ChannelBinding == nil {
+		channelBinding_ := "Disabled"
+		tmp.ChannelBinding = &channelBinding_
+	}
+	if tmp.KerberosArmoring == nil {
 		kerberosArmoring_ := "Disabled"
 		tmp.KerberosArmoring = &kerberosArmoring_
 	}
-	if isZero(tmp.KerberosRc4Encryption) {
+	if tmp.KerberosRc4Encryption == nil {
 		kerberosRc4Encryption_ := "Enabled"
 		tmp.KerberosRc4Encryption = &kerberosRc4Encryption_
 	}
-	if isZero(tmp.NtlmV1) {
+	if tmp.LdapSigning == nil {
+		ldapSigning_ := "Disabled"
+		tmp.LdapSigning = &ldapSigning_
+	}
+	if tmp.NtlmV1 == nil {
 		ntlmV1_ := "Enabled"
 		tmp.NtlmV1 = &ntlmV1_
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		syncKerberosPasswords_ := "Enabled"
 		tmp.SyncKerberosPasswords = &syncKerberosPasswords_
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		syncNtlmPasswords_ := "Enabled"
 		tmp.SyncNtlmPasswords = &syncNtlmPasswords_
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		syncOnPremPasswords_ := "Enabled"
 		tmp.SyncOnPremPasswords = &syncOnPremPasswords_
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tlsV1_ := "Enabled"
 		tmp.TlsV1 = &tlsV1_
 	}
@@ -460,6 +1157,11 @@ func (o DomainSecuritySettingsResponseOutput) ToDomainSecuritySettingsResponseOu
 	return o
 }
 
+// A flag to determine whether or not ChannelBinding is enabled or disabled.
+func (o DomainSecuritySettingsResponseOutput) ChannelBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSecuritySettingsResponse) *string { return v.ChannelBinding }).(pulumi.StringPtrOutput)
+}
+
 // A flag to determine whether or not KerberosArmoring is enabled or disabled.
 func (o DomainSecuritySettingsResponseOutput) KerberosArmoring() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSecuritySettingsResponse) *string { return v.KerberosArmoring }).(pulumi.StringPtrOutput)
@@ -468,6 +1170,11 @@ func (o DomainSecuritySettingsResponseOutput) KerberosArmoring() pulumi.StringPt
 // A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
 func (o DomainSecuritySettingsResponseOutput) KerberosRc4Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSecuritySettingsResponse) *string { return v.KerberosRc4Encryption }).(pulumi.StringPtrOutput)
+}
+
+// A flag to determine whether or not LdapSigning is enabled or disabled.
+func (o DomainSecuritySettingsResponseOutput) LdapSigning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSecuritySettingsResponse) *string { return v.LdapSigning }).(pulumi.StringPtrOutput)
 }
 
 // A flag to determine whether or not NtlmV1 is enabled or disabled.
@@ -519,6 +1226,16 @@ func (o DomainSecuritySettingsResponsePtrOutput) Elem() DomainSecuritySettingsRe
 	}).(DomainSecuritySettingsResponseOutput)
 }
 
+// A flag to determine whether or not ChannelBinding is enabled or disabled.
+func (o DomainSecuritySettingsResponsePtrOutput) ChannelBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainSecuritySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelBinding
+	}).(pulumi.StringPtrOutput)
+}
+
 // A flag to determine whether or not KerberosArmoring is enabled or disabled.
 func (o DomainSecuritySettingsResponsePtrOutput) KerberosArmoring() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainSecuritySettingsResponse) *string {
@@ -536,6 +1253,16 @@ func (o DomainSecuritySettingsResponsePtrOutput) KerberosRc4Encryption() pulumi.
 			return nil
 		}
 		return v.KerberosRc4Encryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// A flag to determine whether or not LdapSigning is enabled or disabled.
+func (o DomainSecuritySettingsResponsePtrOutput) LdapSigning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainSecuritySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LdapSigning
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -965,11 +1692,11 @@ func (val *LdapsSettings) Defaults() *LdapsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		externalAccess_ := "Disabled"
 		tmp.ExternalAccess = &externalAccess_
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		ldaps_ := "Disabled"
 		tmp.Ldaps = &ldaps_
 	}
@@ -1005,10 +1732,10 @@ func (val *LdapsSettingsArgs) Defaults() *LdapsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		tmp.ExternalAccess = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		tmp.Ldaps = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -1199,11 +1926,11 @@ func (val *LdapsSettingsResponse) Defaults() *LdapsSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		externalAccess_ := "Disabled"
 		tmp.ExternalAccess = &externalAccess_
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		ldaps_ := "Disabled"
 		tmp.Ldaps = &ldaps_
 	}
@@ -2215,6 +2942,18 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ConfigDiagnosticsOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsPtrOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsResponseOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultArrayOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultIssueOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultIssueArrayOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultIssueResponseOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultIssueResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultResponseOutput{})
+	pulumi.RegisterOutputType(ConfigDiagnosticsValidatorResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContainerAccountResponseOutput{})
 	pulumi.RegisterOutputType(ContainerAccountResponseArrayOutput{})
 	pulumi.RegisterOutputType(DomainSecuritySettingsOutput{})

@@ -508,14 +508,6 @@ func (in *projectTargetPlatformPtr) ToProjectTargetPlatformPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectTargetPlatformPtrOutput)
 }
 
-// Permission group for validations
-type ServerLevelPermissionsGroup string
-
-const (
-	ServerLevelPermissionsGroupDefault                         = ServerLevelPermissionsGroup("Default")
-	ServerLevelPermissionsGroupMigrationFromSqlServerToAzureDB = ServerLevelPermissionsGroup("MigrationFromSqlServerToAzureDB")
-)
-
 func init() {
 	pulumi.RegisterOutputType(AuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(AuthenticationTypePtrOutput{})

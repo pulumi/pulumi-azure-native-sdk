@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +130,15 @@ func NewTableResourceTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20221115:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:TableResourceTable"),
 		},
 	})
 	opts = append(opts, aliases)

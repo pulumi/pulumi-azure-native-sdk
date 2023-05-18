@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,12 +47,6 @@ func NewCustomAssessmentAutomation(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:security:CustomAssessmentAutomation"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource CustomAssessmentAutomation
 	err := ctx.RegisterResource("azure-native:security/v20210701preview:CustomAssessmentAutomation", name, args, &resource, opts...)
 	if err != nil {

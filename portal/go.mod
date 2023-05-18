@@ -1,10 +1,9 @@
-module github.com/pulumi/pulumi-azure-native-sdk/portal
+module github.com/pulumi/pulumi-azure-native-sdk/portal/v2
 
 go 1.17
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pkg/errors v0.9.1
 	github.com/pulumi/pulumi-azure-native-sdk v1.102.0
 	github.com/pulumi/pulumi/sdk/v3 v3.37.2
 )
@@ -29,6 +28,7 @@ require (
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/opentracing/basictracer-go v1.0.0 // indirect
 	github.com/opentracing/opentracing-go v1.1.0 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.8.1 // indirect
@@ -58,3 +58,4 @@ require (
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20190731080439-ebfcffb1b5c0 // indirect
 )
 
+replace github.com/pulumi/pulumi-azure-native-sdk/v2 v2.0.0-alpha => ../

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about packet capture session.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PacketCapture struct {
 	pulumi.CustomResourceState
 
@@ -26,10 +27,14 @@ type PacketCapture struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the packet capture session.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
+	Scope PacketCaptureMachineScopeResponsePtrOutput `pulumi:"scope"`
 	// The storage location for a packet capture session.
 	StorageLocation PacketCaptureStorageLocationResponseOutput `pulumi:"storageLocation"`
-	// The ID of the targeted resource, only VM is currently supported.
+	// The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
 	Target pulumi.StringOutput `pulumi:"target"`
+	// Target type of the resource provided.
+	TargetType pulumi.StringPtrOutput `pulumi:"targetType"`
 	// Maximum duration of the capture session in seconds.
 	TimeLimitInSeconds pulumi.IntPtrOutput `pulumi:"timeLimitInSeconds"`
 	// Maximum size of the capture output.
@@ -55,13 +60,13 @@ func NewPacketCapture(ctx *pulumi.Context,
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
 	}
-	if isZero(args.BytesToCapturePerPacket) {
+	if args.BytesToCapturePerPacket == nil {
 		args.BytesToCapturePerPacket = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(args.TimeLimitInSeconds) {
+	if args.TimeLimitInSeconds == nil {
 		args.TimeLimitInSeconds = pulumi.IntPtr(18000)
 	}
-	if isZero(args.TotalBytesPerSession) {
+	if args.TotalBytesPerSession == nil {
 		args.TotalBytesPerSession = pulumi.Float64Ptr(1073741824.0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -185,6 +190,9 @@ func NewPacketCapture(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:PacketCapture"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:PacketCapture"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PacketCapture
@@ -229,10 +237,14 @@ type packetCaptureArgs struct {
 	PacketCaptureName *string `pulumi:"packetCaptureName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
+	Scope *PacketCaptureMachineScope `pulumi:"scope"`
 	// The storage location for a packet capture session.
 	StorageLocation PacketCaptureStorageLocation `pulumi:"storageLocation"`
-	// The ID of the targeted resource, only VM is currently supported.
+	// The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
 	Target string `pulumi:"target"`
+	// Target type of the resource provided.
+	TargetType *PacketCaptureTargetType `pulumi:"targetType"`
 	// Maximum duration of the capture session in seconds.
 	TimeLimitInSeconds *int `pulumi:"timeLimitInSeconds"`
 	// Maximum size of the capture output.
@@ -251,10 +263,14 @@ type PacketCaptureArgs struct {
 	PacketCaptureName pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
+	Scope PacketCaptureMachineScopePtrInput
 	// The storage location for a packet capture session.
 	StorageLocation PacketCaptureStorageLocationInput
-	// The ID of the targeted resource, only VM is currently supported.
+	// The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
 	Target pulumi.StringInput
+	// Target type of the resource provided.
+	TargetType PacketCaptureTargetTypePtrInput
 	// Maximum duration of the capture session in seconds.
 	TimeLimitInSeconds pulumi.IntPtrInput
 	// Maximum size of the capture output.
@@ -323,14 +339,24 @@ func (o PacketCaptureOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCapture) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
+func (o PacketCaptureOutput) Scope() PacketCaptureMachineScopeResponsePtrOutput {
+	return o.ApplyT(func(v *PacketCapture) PacketCaptureMachineScopeResponsePtrOutput { return v.Scope }).(PacketCaptureMachineScopeResponsePtrOutput)
+}
+
 // The storage location for a packet capture session.
 func (o PacketCaptureOutput) StorageLocation() PacketCaptureStorageLocationResponseOutput {
 	return o.ApplyT(func(v *PacketCapture) PacketCaptureStorageLocationResponseOutput { return v.StorageLocation }).(PacketCaptureStorageLocationResponseOutput)
 }
 
-// The ID of the targeted resource, only VM is currently supported.
+// The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
 func (o PacketCaptureOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCapture) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
+}
+
+// Target type of the resource provided.
+func (o PacketCaptureOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PacketCapture) pulumi.StringPtrOutput { return v.TargetType }).(pulumi.StringPtrOutput)
 }
 
 // Maximum duration of the capture session in seconds.

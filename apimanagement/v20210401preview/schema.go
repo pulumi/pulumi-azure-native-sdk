@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +58,9 @@ func NewSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Schema"),
 		},
 	})
 	opts = append(opts, aliases)

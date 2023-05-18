@@ -28,11 +28,11 @@ func (val *ActiveDirectoryConnectorDNSDetails) Defaults() *ActiveDirectoryConnec
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PreferK8sDnsForPtrLookups) {
+	if tmp.PreferK8sDnsForPtrLookups == nil {
 		preferK8sDnsForPtrLookups_ := true
 		tmp.PreferK8sDnsForPtrLookups = &preferK8sDnsForPtrLookups_
 	}
-	if isZero(tmp.Replicas) {
+	if tmp.Replicas == nil {
 		replicas_ := 1.0
 		tmp.Replicas = &replicas_
 	}
@@ -68,10 +68,10 @@ func (val *ActiveDirectoryConnectorDNSDetailsArgs) Defaults() *ActiveDirectoryCo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PreferK8sDnsForPtrLookups) {
+	if tmp.PreferK8sDnsForPtrLookups == nil {
 		tmp.PreferK8sDnsForPtrLookups = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Replicas) {
+	if tmp.Replicas == nil {
 		tmp.Replicas = pulumi.Float64Ptr(1.0)
 	}
 	return &tmp
@@ -141,11 +141,11 @@ func (val *ActiveDirectoryConnectorDNSDetailsResponse) Defaults() *ActiveDirecto
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PreferK8sDnsForPtrLookups) {
+	if tmp.PreferK8sDnsForPtrLookups == nil {
 		preferK8sDnsForPtrLookups_ := true
 		tmp.PreferK8sDnsForPtrLookups = &preferK8sDnsForPtrLookups_
 	}
-	if isZero(tmp.Replicas) {
+	if tmp.Replicas == nil {
 		replicas_ := 1.0
 		tmp.Replicas = &replicas_
 	}
@@ -190,7 +190,7 @@ func (o ActiveDirectoryConnectorDNSDetailsResponseOutput) Replicas() pulumi.Floa
 // Active Directory domain details
 type ActiveDirectoryConnectorDomainDetails struct {
 	// null
-	DomainControllers ActiveDirectoryDomainControllers `pulumi:"domainControllers"`
+	DomainControllers *ActiveDirectoryDomainControllers `pulumi:"domainControllers"`
 	// NETBIOS name of the Active Directory domain.
 	NetbiosDomainName *string `pulumi:"netbiosDomainName"`
 	// The distinguished name of the Active Directory Organizational Unit.
@@ -207,7 +207,7 @@ func (val *ActiveDirectoryConnectorDomainDetails) Defaults() *ActiveDirectoryCon
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceAccountProvisioning) {
+	if tmp.ServiceAccountProvisioning == nil {
 		serviceAccountProvisioning_ := "manual"
 		tmp.ServiceAccountProvisioning = &serviceAccountProvisioning_
 	}
@@ -228,7 +228,7 @@ type ActiveDirectoryConnectorDomainDetailsInput interface {
 // Active Directory domain details
 type ActiveDirectoryConnectorDomainDetailsArgs struct {
 	// null
-	DomainControllers ActiveDirectoryDomainControllersInput `pulumi:"domainControllers"`
+	DomainControllers ActiveDirectoryDomainControllersPtrInput `pulumi:"domainControllers"`
 	// NETBIOS name of the Active Directory domain.
 	NetbiosDomainName pulumi.StringPtrInput `pulumi:"netbiosDomainName"`
 	// The distinguished name of the Active Directory Organizational Unit.
@@ -245,7 +245,7 @@ func (val *ActiveDirectoryConnectorDomainDetailsArgs) Defaults() *ActiveDirector
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceAccountProvisioning) {
+	if tmp.ServiceAccountProvisioning == nil {
 		tmp.ServiceAccountProvisioning = pulumi.StringPtr("manual")
 	}
 	return &tmp
@@ -278,10 +278,10 @@ func (o ActiveDirectoryConnectorDomainDetailsOutput) ToActiveDirectoryConnectorD
 }
 
 // null
-func (o ActiveDirectoryConnectorDomainDetailsOutput) DomainControllers() ActiveDirectoryDomainControllersOutput {
-	return o.ApplyT(func(v ActiveDirectoryConnectorDomainDetails) ActiveDirectoryDomainControllers {
+func (o ActiveDirectoryConnectorDomainDetailsOutput) DomainControllers() ActiveDirectoryDomainControllersPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConnectorDomainDetails) *ActiveDirectoryDomainControllers {
 		return v.DomainControllers
-	}).(ActiveDirectoryDomainControllersOutput)
+	}).(ActiveDirectoryDomainControllersPtrOutput)
 }
 
 // NETBIOS name of the Active Directory domain.
@@ -307,7 +307,7 @@ func (o ActiveDirectoryConnectorDomainDetailsOutput) ServiceAccountProvisioning(
 // Active Directory domain details
 type ActiveDirectoryConnectorDomainDetailsResponse struct {
 	// null
-	DomainControllers ActiveDirectoryDomainControllersResponse `pulumi:"domainControllers"`
+	DomainControllers *ActiveDirectoryDomainControllersResponse `pulumi:"domainControllers"`
 	// NETBIOS name of the Active Directory domain.
 	NetbiosDomainName *string `pulumi:"netbiosDomainName"`
 	// The distinguished name of the Active Directory Organizational Unit.
@@ -324,7 +324,7 @@ func (val *ActiveDirectoryConnectorDomainDetailsResponse) Defaults() *ActiveDire
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceAccountProvisioning) {
+	if tmp.ServiceAccountProvisioning == nil {
 		serviceAccountProvisioning_ := "manual"
 		tmp.ServiceAccountProvisioning = &serviceAccountProvisioning_
 	}
@@ -347,10 +347,10 @@ func (o ActiveDirectoryConnectorDomainDetailsResponseOutput) ToActiveDirectoryCo
 }
 
 // null
-func (o ActiveDirectoryConnectorDomainDetailsResponseOutput) DomainControllers() ActiveDirectoryDomainControllersResponseOutput {
-	return o.ApplyT(func(v ActiveDirectoryConnectorDomainDetailsResponse) ActiveDirectoryDomainControllersResponse {
+func (o ActiveDirectoryConnectorDomainDetailsResponseOutput) DomainControllers() ActiveDirectoryDomainControllersResponsePtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConnectorDomainDetailsResponse) *ActiveDirectoryDomainControllersResponse {
 		return v.DomainControllers
-	}).(ActiveDirectoryDomainControllersResponseOutput)
+	}).(ActiveDirectoryDomainControllersResponsePtrOutput)
 }
 
 // NETBIOS name of the Active Directory domain.
@@ -1240,6 +1240,47 @@ func (i ActiveDirectoryDomainControllersArgs) ToActiveDirectoryDomainControllers
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryDomainControllersOutput)
 }
 
+func (i ActiveDirectoryDomainControllersArgs) ToActiveDirectoryDomainControllersPtrOutput() ActiveDirectoryDomainControllersPtrOutput {
+	return i.ToActiveDirectoryDomainControllersPtrOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryDomainControllersArgs) ToActiveDirectoryDomainControllersPtrOutputWithContext(ctx context.Context) ActiveDirectoryDomainControllersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryDomainControllersOutput).ToActiveDirectoryDomainControllersPtrOutputWithContext(ctx)
+}
+
+// ActiveDirectoryDomainControllersPtrInput is an input type that accepts ActiveDirectoryDomainControllersArgs, ActiveDirectoryDomainControllersPtr and ActiveDirectoryDomainControllersPtrOutput values.
+// You can construct a concrete instance of `ActiveDirectoryDomainControllersPtrInput` via:
+//
+//	        ActiveDirectoryDomainControllersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActiveDirectoryDomainControllersPtrInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryDomainControllersPtrOutput() ActiveDirectoryDomainControllersPtrOutput
+	ToActiveDirectoryDomainControllersPtrOutputWithContext(context.Context) ActiveDirectoryDomainControllersPtrOutput
+}
+
+type activeDirectoryDomainControllersPtrType ActiveDirectoryDomainControllersArgs
+
+func ActiveDirectoryDomainControllersPtr(v *ActiveDirectoryDomainControllersArgs) ActiveDirectoryDomainControllersPtrInput {
+	return (*activeDirectoryDomainControllersPtrType)(v)
+}
+
+func (*activeDirectoryDomainControllersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryDomainControllers)(nil)).Elem()
+}
+
+func (i *activeDirectoryDomainControllersPtrType) ToActiveDirectoryDomainControllersPtrOutput() ActiveDirectoryDomainControllersPtrOutput {
+	return i.ToActiveDirectoryDomainControllersPtrOutputWithContext(context.Background())
+}
+
+func (i *activeDirectoryDomainControllersPtrType) ToActiveDirectoryDomainControllersPtrOutputWithContext(ctx context.Context) ActiveDirectoryDomainControllersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryDomainControllersPtrOutput)
+}
+
 // Details about the Active Directory domain controllers associated with this AD connector instance
 type ActiveDirectoryDomainControllersOutput struct{ *pulumi.OutputState }
 
@@ -1255,6 +1296,16 @@ func (o ActiveDirectoryDomainControllersOutput) ToActiveDirectoryDomainControlle
 	return o
 }
 
+func (o ActiveDirectoryDomainControllersOutput) ToActiveDirectoryDomainControllersPtrOutput() ActiveDirectoryDomainControllersPtrOutput {
+	return o.ToActiveDirectoryDomainControllersPtrOutputWithContext(context.Background())
+}
+
+func (o ActiveDirectoryDomainControllersOutput) ToActiveDirectoryDomainControllersPtrOutputWithContext(ctx context.Context) ActiveDirectoryDomainControllersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActiveDirectoryDomainControllers) *ActiveDirectoryDomainControllers {
+		return &v
+	}).(ActiveDirectoryDomainControllersPtrOutput)
+}
+
 // Information about the Primary Domain Controller (PDC) in the AD domain.
 func (o ActiveDirectoryDomainControllersOutput) PrimaryDomainController() ActiveDirectoryDomainControllerPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryDomainControllers) *ActiveDirectoryDomainController {
@@ -1265,6 +1316,50 @@ func (o ActiveDirectoryDomainControllersOutput) PrimaryDomainController() Active
 // null
 func (o ActiveDirectoryDomainControllersOutput) SecondaryDomainControllers() ActiveDirectoryDomainControllerArrayOutput {
 	return o.ApplyT(func(v ActiveDirectoryDomainControllers) []ActiveDirectoryDomainController {
+		return v.SecondaryDomainControllers
+	}).(ActiveDirectoryDomainControllerArrayOutput)
+}
+
+type ActiveDirectoryDomainControllersPtrOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryDomainControllersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryDomainControllers)(nil)).Elem()
+}
+
+func (o ActiveDirectoryDomainControllersPtrOutput) ToActiveDirectoryDomainControllersPtrOutput() ActiveDirectoryDomainControllersPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryDomainControllersPtrOutput) ToActiveDirectoryDomainControllersPtrOutputWithContext(ctx context.Context) ActiveDirectoryDomainControllersPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryDomainControllersPtrOutput) Elem() ActiveDirectoryDomainControllersOutput {
+	return o.ApplyT(func(v *ActiveDirectoryDomainControllers) ActiveDirectoryDomainControllers {
+		if v != nil {
+			return *v
+		}
+		var ret ActiveDirectoryDomainControllers
+		return ret
+	}).(ActiveDirectoryDomainControllersOutput)
+}
+
+// Information about the Primary Domain Controller (PDC) in the AD domain.
+func (o ActiveDirectoryDomainControllersPtrOutput) PrimaryDomainController() ActiveDirectoryDomainControllerPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryDomainControllers) *ActiveDirectoryDomainController {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryDomainController
+	}).(ActiveDirectoryDomainControllerPtrOutput)
+}
+
+// null
+func (o ActiveDirectoryDomainControllersPtrOutput) SecondaryDomainControllers() ActiveDirectoryDomainControllerArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectoryDomainControllers) []ActiveDirectoryDomainController {
+		if v == nil {
+			return nil
+		}
 		return v.SecondaryDomainControllers
 	}).(ActiveDirectoryDomainControllerArrayOutput)
 }
@@ -1304,6 +1399,1202 @@ func (o ActiveDirectoryDomainControllersResponseOutput) SecondaryDomainControlle
 	return o.ApplyT(func(v ActiveDirectoryDomainControllersResponse) []ActiveDirectoryDomainControllerResponse {
 		return v.SecondaryDomainControllers
 	}).(ActiveDirectoryDomainControllerResponseArrayOutput)
+}
+
+type ActiveDirectoryDomainControllersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryDomainControllersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryDomainControllersResponse)(nil)).Elem()
+}
+
+func (o ActiveDirectoryDomainControllersResponsePtrOutput) ToActiveDirectoryDomainControllersResponsePtrOutput() ActiveDirectoryDomainControllersResponsePtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryDomainControllersResponsePtrOutput) ToActiveDirectoryDomainControllersResponsePtrOutputWithContext(ctx context.Context) ActiveDirectoryDomainControllersResponsePtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryDomainControllersResponsePtrOutput) Elem() ActiveDirectoryDomainControllersResponseOutput {
+	return o.ApplyT(func(v *ActiveDirectoryDomainControllersResponse) ActiveDirectoryDomainControllersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ActiveDirectoryDomainControllersResponse
+		return ret
+	}).(ActiveDirectoryDomainControllersResponseOutput)
+}
+
+// Information about the Primary Domain Controller (PDC) in the AD domain.
+func (o ActiveDirectoryDomainControllersResponsePtrOutput) PrimaryDomainController() ActiveDirectoryDomainControllerResponsePtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryDomainControllersResponse) *ActiveDirectoryDomainControllerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryDomainController
+	}).(ActiveDirectoryDomainControllerResponsePtrOutput)
+}
+
+// null
+func (o ActiveDirectoryDomainControllersResponsePtrOutput) SecondaryDomainControllers() ActiveDirectoryDomainControllerResponseArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectoryDomainControllersResponse) []ActiveDirectoryDomainControllerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryDomainControllers
+	}).(ActiveDirectoryDomainControllerResponseArrayOutput)
+}
+
+// Active Directory information that related to the resource.
+type ActiveDirectoryInformation struct {
+	// Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
+	KeytabInformation *KeytabInformation `pulumi:"keytabInformation"`
+}
+
+// ActiveDirectoryInformationInput is an input type that accepts ActiveDirectoryInformationArgs and ActiveDirectoryInformationOutput values.
+// You can construct a concrete instance of `ActiveDirectoryInformationInput` via:
+//
+//	ActiveDirectoryInformationArgs{...}
+type ActiveDirectoryInformationInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryInformationOutput() ActiveDirectoryInformationOutput
+	ToActiveDirectoryInformationOutputWithContext(context.Context) ActiveDirectoryInformationOutput
+}
+
+// Active Directory information that related to the resource.
+type ActiveDirectoryInformationArgs struct {
+	// Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
+	KeytabInformation KeytabInformationPtrInput `pulumi:"keytabInformation"`
+}
+
+func (ActiveDirectoryInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryInformation)(nil)).Elem()
+}
+
+func (i ActiveDirectoryInformationArgs) ToActiveDirectoryInformationOutput() ActiveDirectoryInformationOutput {
+	return i.ToActiveDirectoryInformationOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryInformationArgs) ToActiveDirectoryInformationOutputWithContext(ctx context.Context) ActiveDirectoryInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryInformationOutput)
+}
+
+func (i ActiveDirectoryInformationArgs) ToActiveDirectoryInformationPtrOutput() ActiveDirectoryInformationPtrOutput {
+	return i.ToActiveDirectoryInformationPtrOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryInformationArgs) ToActiveDirectoryInformationPtrOutputWithContext(ctx context.Context) ActiveDirectoryInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryInformationOutput).ToActiveDirectoryInformationPtrOutputWithContext(ctx)
+}
+
+// ActiveDirectoryInformationPtrInput is an input type that accepts ActiveDirectoryInformationArgs, ActiveDirectoryInformationPtr and ActiveDirectoryInformationPtrOutput values.
+// You can construct a concrete instance of `ActiveDirectoryInformationPtrInput` via:
+//
+//	        ActiveDirectoryInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActiveDirectoryInformationPtrInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryInformationPtrOutput() ActiveDirectoryInformationPtrOutput
+	ToActiveDirectoryInformationPtrOutputWithContext(context.Context) ActiveDirectoryInformationPtrOutput
+}
+
+type activeDirectoryInformationPtrType ActiveDirectoryInformationArgs
+
+func ActiveDirectoryInformationPtr(v *ActiveDirectoryInformationArgs) ActiveDirectoryInformationPtrInput {
+	return (*activeDirectoryInformationPtrType)(v)
+}
+
+func (*activeDirectoryInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryInformation)(nil)).Elem()
+}
+
+func (i *activeDirectoryInformationPtrType) ToActiveDirectoryInformationPtrOutput() ActiveDirectoryInformationPtrOutput {
+	return i.ToActiveDirectoryInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *activeDirectoryInformationPtrType) ToActiveDirectoryInformationPtrOutputWithContext(ctx context.Context) ActiveDirectoryInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryInformationPtrOutput)
+}
+
+// Active Directory information that related to the resource.
+type ActiveDirectoryInformationOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryInformation)(nil)).Elem()
+}
+
+func (o ActiveDirectoryInformationOutput) ToActiveDirectoryInformationOutput() ActiveDirectoryInformationOutput {
+	return o
+}
+
+func (o ActiveDirectoryInformationOutput) ToActiveDirectoryInformationOutputWithContext(ctx context.Context) ActiveDirectoryInformationOutput {
+	return o
+}
+
+func (o ActiveDirectoryInformationOutput) ToActiveDirectoryInformationPtrOutput() ActiveDirectoryInformationPtrOutput {
+	return o.ToActiveDirectoryInformationPtrOutputWithContext(context.Background())
+}
+
+func (o ActiveDirectoryInformationOutput) ToActiveDirectoryInformationPtrOutputWithContext(ctx context.Context) ActiveDirectoryInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActiveDirectoryInformation) *ActiveDirectoryInformation {
+		return &v
+	}).(ActiveDirectoryInformationPtrOutput)
+}
+
+// Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
+func (o ActiveDirectoryInformationOutput) KeytabInformation() KeytabInformationPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryInformation) *KeytabInformation { return v.KeytabInformation }).(KeytabInformationPtrOutput)
+}
+
+type ActiveDirectoryInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryInformation)(nil)).Elem()
+}
+
+func (o ActiveDirectoryInformationPtrOutput) ToActiveDirectoryInformationPtrOutput() ActiveDirectoryInformationPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryInformationPtrOutput) ToActiveDirectoryInformationPtrOutputWithContext(ctx context.Context) ActiveDirectoryInformationPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryInformationPtrOutput) Elem() ActiveDirectoryInformationOutput {
+	return o.ApplyT(func(v *ActiveDirectoryInformation) ActiveDirectoryInformation {
+		if v != nil {
+			return *v
+		}
+		var ret ActiveDirectoryInformation
+		return ret
+	}).(ActiveDirectoryInformationOutput)
+}
+
+// Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
+func (o ActiveDirectoryInformationPtrOutput) KeytabInformation() KeytabInformationPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryInformation) *KeytabInformation {
+		if v == nil {
+			return nil
+		}
+		return v.KeytabInformation
+	}).(KeytabInformationPtrOutput)
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigure struct {
+	// Availability Synchronization mode description of availability group replica.
+	AvailabilityModeDesc *string `pulumi:"availabilityModeDesc"`
+	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+	BackupPriority *int `pulumi:"backupPriority"`
+	// Date that the replica was created.
+	CreateDate *string `pulumi:"createDate"`
+	// Mirroring endpoint URL of availability group replica
+	EndpointUrl *string `pulumi:"endpointUrl"`
+	// failover mode description of the availability group replica.
+	FailoverModeDesc *string `pulumi:"failoverModeDesc"`
+	// Date that the replica was modified.
+	ModifyDate *string `pulumi:"modifyDate"`
+	// Allowed the connections for primary role of the availability group replica.
+	PrimaryRoleAllowConnectionsDesc *string `pulumi:"primaryRoleAllowConnectionsDesc"`
+	// Connectivity endpoint (URL) of the read only availability replica.
+	ReadOnlyRoutingUrl *string `pulumi:"readOnlyRoutingUrl"`
+	// Connectivity endpoint (URL) of the read write availability replica.
+	ReadWriteRoutingUrl *string `pulumi:"readWriteRoutingUrl"`
+	// Allowed the connections for secondary role of availability group replica.
+	SecondaryRoleAllowConnectionsDesc *string `pulumi:"secondaryRoleAllowConnectionsDesc"`
+	// Describes seeding mode.
+	SeedingModeDesc *string `pulumi:"seedingModeDesc"`
+	// The time-out period of availability group session replica, in seconds.
+	SessionTimeout *int `pulumi:"sessionTimeout"`
+}
+
+// AvailabilityGroupConfigureInput is an input type that accepts AvailabilityGroupConfigureArgs and AvailabilityGroupConfigureOutput values.
+// You can construct a concrete instance of `AvailabilityGroupConfigureInput` via:
+//
+//	AvailabilityGroupConfigureArgs{...}
+type AvailabilityGroupConfigureInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupConfigureOutput() AvailabilityGroupConfigureOutput
+	ToAvailabilityGroupConfigureOutputWithContext(context.Context) AvailabilityGroupConfigureOutput
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureArgs struct {
+	// Availability Synchronization mode description of availability group replica.
+	AvailabilityModeDesc pulumi.StringPtrInput `pulumi:"availabilityModeDesc"`
+	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+	BackupPriority pulumi.IntPtrInput `pulumi:"backupPriority"`
+	// Date that the replica was created.
+	CreateDate pulumi.StringPtrInput `pulumi:"createDate"`
+	// Mirroring endpoint URL of availability group replica
+	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
+	// failover mode description of the availability group replica.
+	FailoverModeDesc pulumi.StringPtrInput `pulumi:"failoverModeDesc"`
+	// Date that the replica was modified.
+	ModifyDate pulumi.StringPtrInput `pulumi:"modifyDate"`
+	// Allowed the connections for primary role of the availability group replica.
+	PrimaryRoleAllowConnectionsDesc pulumi.StringPtrInput `pulumi:"primaryRoleAllowConnectionsDesc"`
+	// Connectivity endpoint (URL) of the read only availability replica.
+	ReadOnlyRoutingUrl pulumi.StringPtrInput `pulumi:"readOnlyRoutingUrl"`
+	// Connectivity endpoint (URL) of the read write availability replica.
+	ReadWriteRoutingUrl pulumi.StringPtrInput `pulumi:"readWriteRoutingUrl"`
+	// Allowed the connections for secondary role of availability group replica.
+	SecondaryRoleAllowConnectionsDesc pulumi.StringPtrInput `pulumi:"secondaryRoleAllowConnectionsDesc"`
+	// Describes seeding mode.
+	SeedingModeDesc pulumi.StringPtrInput `pulumi:"seedingModeDesc"`
+	// The time-out period of availability group session replica, in seconds.
+	SessionTimeout pulumi.IntPtrInput `pulumi:"sessionTimeout"`
+}
+
+func (AvailabilityGroupConfigureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigureOutput() AvailabilityGroupConfigureOutput {
+	return i.ToAvailabilityGroupConfigureOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigureOutputWithContext(ctx context.Context) AvailabilityGroupConfigureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupConfigureOutput)
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return i.ToAvailabilityGroupConfigurePtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupConfigureOutput).ToAvailabilityGroupConfigurePtrOutputWithContext(ctx)
+}
+
+// AvailabilityGroupConfigurePtrInput is an input type that accepts AvailabilityGroupConfigureArgs, AvailabilityGroupConfigurePtr and AvailabilityGroupConfigurePtrOutput values.
+// You can construct a concrete instance of `AvailabilityGroupConfigurePtrInput` via:
+//
+//	        AvailabilityGroupConfigureArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvailabilityGroupConfigurePtrInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput
+	ToAvailabilityGroupConfigurePtrOutputWithContext(context.Context) AvailabilityGroupConfigurePtrOutput
+}
+
+type availabilityGroupConfigurePtrType AvailabilityGroupConfigureArgs
+
+func AvailabilityGroupConfigurePtr(v *AvailabilityGroupConfigureArgs) AvailabilityGroupConfigurePtrInput {
+	return (*availabilityGroupConfigurePtrType)(v)
+}
+
+func (*availabilityGroupConfigurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (i *availabilityGroupConfigurePtrType) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return i.ToAvailabilityGroupConfigurePtrOutputWithContext(context.Background())
+}
+
+func (i *availabilityGroupConfigurePtrType) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigureOutput() AvailabilityGroupConfigureOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigureOutputWithContext(ctx context.Context) AvailabilityGroupConfigureOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return o.ToAvailabilityGroupConfigurePtrOutputWithContext(context.Background())
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilityGroupConfigure) *AvailabilityGroupConfigure {
+		return &v
+	}).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// Availability Synchronization mode description of availability group replica.
+func (o AvailabilityGroupConfigureOutput) AvailabilityModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.AvailabilityModeDesc }).(pulumi.StringPtrOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigureOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *int { return v.BackupPriority }).(pulumi.IntPtrOutput)
+}
+
+// Date that the replica was created.
+func (o AvailabilityGroupConfigureOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.CreateDate }).(pulumi.StringPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigureOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// failover mode description of the availability group replica.
+func (o AvailabilityGroupConfigureOutput) FailoverModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.FailoverModeDesc }).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was modified.
+func (o AvailabilityGroupConfigureOutput) ModifyDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.ModifyDate }).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for primary role of the availability group replica.
+func (o AvailabilityGroupConfigureOutput) PrimaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.PrimaryRoleAllowConnectionsDesc }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigureOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.ReadOnlyRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigureOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.ReadWriteRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for secondary role of availability group replica.
+func (o AvailabilityGroupConfigureOutput) SecondaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.SecondaryRoleAllowConnectionsDesc }).(pulumi.StringPtrOutput)
+}
+
+// Describes seeding mode.
+func (o AvailabilityGroupConfigureOutput) SeedingModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.SeedingModeDesc }).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigureOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *int { return v.SessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilityGroupConfigurePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigurePtrOutput) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigurePtrOutput) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigurePtrOutput) Elem() AvailabilityGroupConfigureOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) AvailabilityGroupConfigure {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupConfigure
+		return ret
+	}).(AvailabilityGroupConfigureOutput)
+}
+
+// Availability Synchronization mode description of availability group replica.
+func (o AvailabilityGroupConfigurePtrOutput) AvailabilityModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityModeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigurePtrOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupPriority
+	}).(pulumi.IntPtrOutput)
+}
+
+// Date that the replica was created.
+func (o AvailabilityGroupConfigurePtrOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigurePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// failover mode description of the availability group replica.
+func (o AvailabilityGroupConfigurePtrOutput) FailoverModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverModeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was modified.
+func (o AvailabilityGroupConfigurePtrOutput) ModifyDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModifyDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for primary role of the availability group replica.
+func (o AvailabilityGroupConfigurePtrOutput) PrimaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryRoleAllowConnectionsDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigurePtrOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigurePtrOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadWriteRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for secondary role of availability group replica.
+func (o AvailabilityGroupConfigurePtrOutput) SecondaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryRoleAllowConnectionsDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes seeding mode.
+func (o AvailabilityGroupConfigurePtrOutput) SeedingModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeedingModeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigurePtrOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureResponse struct {
+	// Availability Synchronization mode description of availability group replica.
+	AvailabilityModeDesc *string `pulumi:"availabilityModeDesc"`
+	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+	BackupPriority *int `pulumi:"backupPriority"`
+	// Date that the replica was created.
+	CreateDate *string `pulumi:"createDate"`
+	// Mirroring endpoint URL of availability group replica
+	EndpointUrl *string `pulumi:"endpointUrl"`
+	// failover mode description of the availability group replica.
+	FailoverModeDesc *string `pulumi:"failoverModeDesc"`
+	// Date that the replica was modified.
+	ModifyDate *string `pulumi:"modifyDate"`
+	// Allowed the connections for primary role of the availability group replica.
+	PrimaryRoleAllowConnectionsDesc *string `pulumi:"primaryRoleAllowConnectionsDesc"`
+	// Connectivity endpoint (URL) of the read only availability replica.
+	ReadOnlyRoutingUrl *string `pulumi:"readOnlyRoutingUrl"`
+	// Connectivity endpoint (URL) of the read write availability replica.
+	ReadWriteRoutingUrl *string `pulumi:"readWriteRoutingUrl"`
+	// Allowed the connections for secondary role of availability group replica.
+	SecondaryRoleAllowConnectionsDesc *string `pulumi:"secondaryRoleAllowConnectionsDesc"`
+	// Describes seeding mode.
+	SeedingModeDesc *string `pulumi:"seedingModeDesc"`
+	// The time-out period of availability group session replica, in seconds.
+	SessionTimeout *int `pulumi:"sessionTimeout"`
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupConfigureResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigureResponseOutput) ToAvailabilityGroupConfigureResponseOutput() AvailabilityGroupConfigureResponseOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureResponseOutput) ToAvailabilityGroupConfigureResponseOutputWithContext(ctx context.Context) AvailabilityGroupConfigureResponseOutput {
+	return o
+}
+
+// Availability Synchronization mode description of availability group replica.
+func (o AvailabilityGroupConfigureResponseOutput) AvailabilityModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.AvailabilityModeDesc }).(pulumi.StringPtrOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigureResponseOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *int { return v.BackupPriority }).(pulumi.IntPtrOutput)
+}
+
+// Date that the replica was created.
+func (o AvailabilityGroupConfigureResponseOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.CreateDate }).(pulumi.StringPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigureResponseOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// failover mode description of the availability group replica.
+func (o AvailabilityGroupConfigureResponseOutput) FailoverModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.FailoverModeDesc }).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was modified.
+func (o AvailabilityGroupConfigureResponseOutput) ModifyDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.ModifyDate }).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for primary role of the availability group replica.
+func (o AvailabilityGroupConfigureResponseOutput) PrimaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.PrimaryRoleAllowConnectionsDesc }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigureResponseOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.ReadOnlyRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigureResponseOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.ReadWriteRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for secondary role of availability group replica.
+func (o AvailabilityGroupConfigureResponseOutput) SecondaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.SecondaryRoleAllowConnectionsDesc }).(pulumi.StringPtrOutput)
+}
+
+// Describes seeding mode.
+func (o AvailabilityGroupConfigureResponseOutput) SeedingModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.SeedingModeDesc }).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigureResponseOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *int { return v.SessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilityGroupConfigureResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigureResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupConfigureResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigureResponsePtrOutput) ToAvailabilityGroupConfigureResponsePtrOutput() AvailabilityGroupConfigureResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureResponsePtrOutput) ToAvailabilityGroupConfigureResponsePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigureResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureResponsePtrOutput) Elem() AvailabilityGroupConfigureResponseOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) AvailabilityGroupConfigureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupConfigureResponse
+		return ret
+	}).(AvailabilityGroupConfigureResponseOutput)
+}
+
+// Availability Synchronization mode description of availability group replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) AvailabilityModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityModeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigureResponsePtrOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupPriority
+	}).(pulumi.IntPtrOutput)
+}
+
+// Date that the replica was created.
+func (o AvailabilityGroupConfigureResponsePtrOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// failover mode description of the availability group replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) FailoverModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverModeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was modified.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ModifyDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModifyDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for primary role of the availability group replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) PrimaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryRoleAllowConnectionsDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadWriteRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed the connections for secondary role of availability group replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SecondaryRoleAllowConnectionsDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryRoleAllowConnectionsDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes seeding mode.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SeedingModeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeedingModeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupState struct {
+	// Role description of the availability group replica.
+	AvailabilityGroupReplicaRole *string `pulumi:"availabilityGroupReplicaRole"`
+	// Connected state description of the availability group replica.
+	ConnectedStateDesc *string `pulumi:"connectedStateDesc"`
+	// Last connect error description of the availability group replica.
+	LastConnectErrorDescription *string `pulumi:"lastConnectErrorDescription"`
+	// Last connect error time stamp of the availability group replica.
+	LastConnectErrorTimestamp *string `pulumi:"lastConnectErrorTimestamp"`
+	// Operation state description of the availability group replica
+	OperationalStateDesc *string `pulumi:"operationalStateDesc"`
+	// Recovery health description of the availability group replica.
+	RecoveryHealthDesc *string `pulumi:"recoveryHealthDesc"`
+	// Synchronization health description of the availability group replica.
+	SynchronizationHealthDesc *string `pulumi:"synchronizationHealthDesc"`
+}
+
+// AvailabilityGroupStateInput is an input type that accepts AvailabilityGroupStateArgs and AvailabilityGroupStateOutput values.
+// You can construct a concrete instance of `AvailabilityGroupStateInput` via:
+//
+//	AvailabilityGroupStateArgs{...}
+type AvailabilityGroupStateInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupStateOutput() AvailabilityGroupStateOutput
+	ToAvailabilityGroupStateOutputWithContext(context.Context) AvailabilityGroupStateOutput
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupStateArgs struct {
+	// Role description of the availability group replica.
+	AvailabilityGroupReplicaRole pulumi.StringPtrInput `pulumi:"availabilityGroupReplicaRole"`
+	// Connected state description of the availability group replica.
+	ConnectedStateDesc pulumi.StringPtrInput `pulumi:"connectedStateDesc"`
+	// Last connect error description of the availability group replica.
+	LastConnectErrorDescription pulumi.StringPtrInput `pulumi:"lastConnectErrorDescription"`
+	// Last connect error time stamp of the availability group replica.
+	LastConnectErrorTimestamp pulumi.StringPtrInput `pulumi:"lastConnectErrorTimestamp"`
+	// Operation state description of the availability group replica
+	OperationalStateDesc pulumi.StringPtrInput `pulumi:"operationalStateDesc"`
+	// Recovery health description of the availability group replica.
+	RecoveryHealthDesc pulumi.StringPtrInput `pulumi:"recoveryHealthDesc"`
+	// Synchronization health description of the availability group replica.
+	SynchronizationHealthDesc pulumi.StringPtrInput `pulumi:"synchronizationHealthDesc"`
+}
+
+func (AvailabilityGroupStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupState)(nil)).Elem()
+}
+
+func (i AvailabilityGroupStateArgs) ToAvailabilityGroupStateOutput() AvailabilityGroupStateOutput {
+	return i.ToAvailabilityGroupStateOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupStateArgs) ToAvailabilityGroupStateOutputWithContext(ctx context.Context) AvailabilityGroupStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupStateOutput)
+}
+
+func (i AvailabilityGroupStateArgs) ToAvailabilityGroupStatePtrOutput() AvailabilityGroupStatePtrOutput {
+	return i.ToAvailabilityGroupStatePtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupStateArgs) ToAvailabilityGroupStatePtrOutputWithContext(ctx context.Context) AvailabilityGroupStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupStateOutput).ToAvailabilityGroupStatePtrOutputWithContext(ctx)
+}
+
+// AvailabilityGroupStatePtrInput is an input type that accepts AvailabilityGroupStateArgs, AvailabilityGroupStatePtr and AvailabilityGroupStatePtrOutput values.
+// You can construct a concrete instance of `AvailabilityGroupStatePtrInput` via:
+//
+//	        AvailabilityGroupStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvailabilityGroupStatePtrInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupStatePtrOutput() AvailabilityGroupStatePtrOutput
+	ToAvailabilityGroupStatePtrOutputWithContext(context.Context) AvailabilityGroupStatePtrOutput
+}
+
+type availabilityGroupStatePtrType AvailabilityGroupStateArgs
+
+func AvailabilityGroupStatePtr(v *AvailabilityGroupStateArgs) AvailabilityGroupStatePtrInput {
+	return (*availabilityGroupStatePtrType)(v)
+}
+
+func (*availabilityGroupStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupState)(nil)).Elem()
+}
+
+func (i *availabilityGroupStatePtrType) ToAvailabilityGroupStatePtrOutput() AvailabilityGroupStatePtrOutput {
+	return i.ToAvailabilityGroupStatePtrOutputWithContext(context.Background())
+}
+
+func (i *availabilityGroupStatePtrType) ToAvailabilityGroupStatePtrOutputWithContext(ctx context.Context) AvailabilityGroupStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupStatePtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupStateOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupState)(nil)).Elem()
+}
+
+func (o AvailabilityGroupStateOutput) ToAvailabilityGroupStateOutput() AvailabilityGroupStateOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateOutput) ToAvailabilityGroupStateOutputWithContext(ctx context.Context) AvailabilityGroupStateOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateOutput) ToAvailabilityGroupStatePtrOutput() AvailabilityGroupStatePtrOutput {
+	return o.ToAvailabilityGroupStatePtrOutputWithContext(context.Background())
+}
+
+func (o AvailabilityGroupStateOutput) ToAvailabilityGroupStatePtrOutputWithContext(ctx context.Context) AvailabilityGroupStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilityGroupState) *AvailabilityGroupState {
+		return &v
+	}).(AvailabilityGroupStatePtrOutput)
+}
+
+// Role description of the availability group replica.
+func (o AvailabilityGroupStateOutput) AvailabilityGroupReplicaRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.AvailabilityGroupReplicaRole }).(pulumi.StringPtrOutput)
+}
+
+// Connected state description of the availability group replica.
+func (o AvailabilityGroupStateOutput) ConnectedStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.ConnectedStateDesc }).(pulumi.StringPtrOutput)
+}
+
+// Last connect error description of the availability group replica.
+func (o AvailabilityGroupStateOutput) LastConnectErrorDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.LastConnectErrorDescription }).(pulumi.StringPtrOutput)
+}
+
+// Last connect error time stamp of the availability group replica.
+func (o AvailabilityGroupStateOutput) LastConnectErrorTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.LastConnectErrorTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Operation state description of the availability group replica
+func (o AvailabilityGroupStateOutput) OperationalStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.OperationalStateDesc }).(pulumi.StringPtrOutput)
+}
+
+// Recovery health description of the availability group replica.
+func (o AvailabilityGroupStateOutput) RecoveryHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.RecoveryHealthDesc }).(pulumi.StringPtrOutput)
+}
+
+// Synchronization health description of the availability group replica.
+func (o AvailabilityGroupStateOutput) SynchronizationHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupState) *string { return v.SynchronizationHealthDesc }).(pulumi.StringPtrOutput)
+}
+
+type AvailabilityGroupStatePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupState)(nil)).Elem()
+}
+
+func (o AvailabilityGroupStatePtrOutput) ToAvailabilityGroupStatePtrOutput() AvailabilityGroupStatePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupStatePtrOutput) ToAvailabilityGroupStatePtrOutputWithContext(ctx context.Context) AvailabilityGroupStatePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupStatePtrOutput) Elem() AvailabilityGroupStateOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) AvailabilityGroupState {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupState
+		return ret
+	}).(AvailabilityGroupStateOutput)
+}
+
+// Role description of the availability group replica.
+func (o AvailabilityGroupStatePtrOutput) AvailabilityGroupReplicaRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityGroupReplicaRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connected state description of the availability group replica.
+func (o AvailabilityGroupStatePtrOutput) ConnectedStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectedStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last connect error description of the availability group replica.
+func (o AvailabilityGroupStatePtrOutput) LastConnectErrorDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastConnectErrorDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last connect error time stamp of the availability group replica.
+func (o AvailabilityGroupStatePtrOutput) LastConnectErrorTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastConnectErrorTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operation state description of the availability group replica
+func (o AvailabilityGroupStatePtrOutput) OperationalStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationalStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Recovery health description of the availability group replica.
+func (o AvailabilityGroupStatePtrOutput) RecoveryHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryHealthDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Synchronization health description of the availability group replica.
+func (o AvailabilityGroupStatePtrOutput) SynchronizationHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynchronizationHealthDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupStateResponse struct {
+	// Role description of the availability group replica.
+	AvailabilityGroupReplicaRole *string `pulumi:"availabilityGroupReplicaRole"`
+	// Connected state description of the availability group replica.
+	ConnectedStateDesc *string `pulumi:"connectedStateDesc"`
+	// Last connect error description of the availability group replica.
+	LastConnectErrorDescription *string `pulumi:"lastConnectErrorDescription"`
+	// Last connect error time stamp of the availability group replica.
+	LastConnectErrorTimestamp *string `pulumi:"lastConnectErrorTimestamp"`
+	// Operation state description of the availability group replica
+	OperationalStateDesc *string `pulumi:"operationalStateDesc"`
+	// Recovery health description of the availability group replica.
+	RecoveryHealthDesc *string `pulumi:"recoveryHealthDesc"`
+	// Synchronization health description of the availability group replica.
+	SynchronizationHealthDesc *string `pulumi:"synchronizationHealthDesc"`
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupStateResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupStateResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupStateResponseOutput) ToAvailabilityGroupStateResponseOutput() AvailabilityGroupStateResponseOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateResponseOutput) ToAvailabilityGroupStateResponseOutputWithContext(ctx context.Context) AvailabilityGroupStateResponseOutput {
+	return o
+}
+
+// Role description of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) AvailabilityGroupReplicaRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.AvailabilityGroupReplicaRole }).(pulumi.StringPtrOutput)
+}
+
+// Connected state description of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) ConnectedStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.ConnectedStateDesc }).(pulumi.StringPtrOutput)
+}
+
+// Last connect error description of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) LastConnectErrorDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.LastConnectErrorDescription }).(pulumi.StringPtrOutput)
+}
+
+// Last connect error time stamp of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) LastConnectErrorTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.LastConnectErrorTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Operation state description of the availability group replica
+func (o AvailabilityGroupStateResponseOutput) OperationalStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.OperationalStateDesc }).(pulumi.StringPtrOutput)
+}
+
+// Recovery health description of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) RecoveryHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.RecoveryHealthDesc }).(pulumi.StringPtrOutput)
+}
+
+// Synchronization health description of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) SynchronizationHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) *string { return v.SynchronizationHealthDesc }).(pulumi.StringPtrOutput)
+}
+
+type AvailabilityGroupStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupStateResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupStateResponsePtrOutput) ToAvailabilityGroupStateResponsePtrOutput() AvailabilityGroupStateResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateResponsePtrOutput) ToAvailabilityGroupStateResponsePtrOutputWithContext(ctx context.Context) AvailabilityGroupStateResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateResponsePtrOutput) Elem() AvailabilityGroupStateResponseOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) AvailabilityGroupStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupStateResponse
+		return ret
+	}).(AvailabilityGroupStateResponseOutput)
+}
+
+// Role description of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) AvailabilityGroupReplicaRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityGroupReplicaRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connected state description of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) ConnectedStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectedStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last connect error description of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) LastConnectErrorDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastConnectErrorDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last connect error time stamp of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) LastConnectErrorTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastConnectErrorTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operation state description of the availability group replica
+func (o AvailabilityGroupStateResponsePtrOutput) OperationalStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationalStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Recovery health description of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) RecoveryHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryHealthDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Synchronization health description of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) SynchronizationHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynchronizationHealthDesc
+	}).(pulumi.StringPtrOutput)
 }
 
 // Username and password for basic login authentication.
@@ -1527,20 +2818,43 @@ func (o BasicLoginInformationResponsePtrOutput) Username() pulumi.StringPtrOutpu
 
 // The data controller properties.
 type DataControllerProperties struct {
-	// Username and password for basic login authentication.
+	// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
 	BasicLoginInformation *BasicLoginInformation `pulumi:"basicLoginInformation"`
+	// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+	ClusterId *string `pulumi:"clusterId"`
+	// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+	ExtensionId *string `pulumi:"extensionId"`
+	// The infrastructure the data controller is running on.
+	Infrastructure *Infrastructure `pulumi:"infrastructure"`
 	// The raw kubernetes information
 	K8sRaw interface{} `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
 	LastUploadedDate *string `pulumi:"lastUploadedDate"`
 	// Log analytics workspace id and primary key
 	LogAnalyticsWorkspaceConfig *LogAnalyticsWorkspaceConfig `pulumi:"logAnalyticsWorkspaceConfig"`
+	// Login credential for logs dashboard on the Kubernetes cluster.
+	LogsDashboardCredential *BasicLoginInformation `pulumi:"logsDashboardCredential"`
+	// Login credential for metrics dashboard on the Kubernetes cluster.
+	MetricsDashboardCredential *BasicLoginInformation `pulumi:"metricsDashboardCredential"`
 	// Properties from the Kubernetes data controller
 	OnPremiseProperty *OnPremiseProperty `pulumi:"onPremiseProperty"`
-	// Service principal for uploading billing, metrics and logs.
+	// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
 	UploadServicePrincipal *UploadServicePrincipal `pulumi:"uploadServicePrincipal"`
 	// Properties on upload watermark.  Mostly timestamp for each upload data type
 	UploadWatermark *UploadWatermark `pulumi:"uploadWatermark"`
+}
+
+// Defaults sets the appropriate defaults for DataControllerProperties
+func (val *DataControllerProperties) Defaults() *DataControllerProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Infrastructure == nil {
+		infrastructure_ := Infrastructure("other")
+		tmp.Infrastructure = &infrastructure_
+	}
+	return &tmp
 }
 
 // DataControllerPropertiesInput is an input type that accepts DataControllerPropertiesArgs and DataControllerPropertiesOutput values.
@@ -1556,22 +2870,43 @@ type DataControllerPropertiesInput interface {
 
 // The data controller properties.
 type DataControllerPropertiesArgs struct {
-	// Username and password for basic login authentication.
+	// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
 	BasicLoginInformation BasicLoginInformationPtrInput `pulumi:"basicLoginInformation"`
+	// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+	ExtensionId pulumi.StringPtrInput `pulumi:"extensionId"`
+	// The infrastructure the data controller is running on.
+	Infrastructure InfrastructurePtrInput `pulumi:"infrastructure"`
 	// The raw kubernetes information
 	K8sRaw pulumi.Input `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
 	LastUploadedDate pulumi.StringPtrInput `pulumi:"lastUploadedDate"`
 	// Log analytics workspace id and primary key
 	LogAnalyticsWorkspaceConfig LogAnalyticsWorkspaceConfigPtrInput `pulumi:"logAnalyticsWorkspaceConfig"`
+	// Login credential for logs dashboard on the Kubernetes cluster.
+	LogsDashboardCredential BasicLoginInformationPtrInput `pulumi:"logsDashboardCredential"`
+	// Login credential for metrics dashboard on the Kubernetes cluster.
+	MetricsDashboardCredential BasicLoginInformationPtrInput `pulumi:"metricsDashboardCredential"`
 	// Properties from the Kubernetes data controller
 	OnPremiseProperty OnPremisePropertyPtrInput `pulumi:"onPremiseProperty"`
-	// Service principal for uploading billing, metrics and logs.
+	// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
 	UploadServicePrincipal UploadServicePrincipalPtrInput `pulumi:"uploadServicePrincipal"`
 	// Properties on upload watermark.  Mostly timestamp for each upload data type
 	UploadWatermark UploadWatermarkPtrInput `pulumi:"uploadWatermark"`
 }
 
+// Defaults sets the appropriate defaults for DataControllerPropertiesArgs
+func (val *DataControllerPropertiesArgs) Defaults() *DataControllerPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Infrastructure == nil {
+		tmp.Infrastructure = Infrastructure("other")
+	}
+	return &tmp
+}
 func (DataControllerPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataControllerProperties)(nil)).Elem()
 }
@@ -1599,9 +2934,24 @@ func (o DataControllerPropertiesOutput) ToDataControllerPropertiesOutputWithCont
 	return o
 }
 
-// Username and password for basic login authentication.
+// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
 func (o DataControllerPropertiesOutput) BasicLoginInformation() BasicLoginInformationPtrOutput {
 	return o.ApplyT(func(v DataControllerProperties) *BasicLoginInformation { return v.BasicLoginInformation }).(BasicLoginInformationPtrOutput)
+}
+
+// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+func (o DataControllerPropertiesOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataControllerProperties) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+func (o DataControllerPropertiesOutput) ExtensionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataControllerProperties) *string { return v.ExtensionId }).(pulumi.StringPtrOutput)
+}
+
+// The infrastructure the data controller is running on.
+func (o DataControllerPropertiesOutput) Infrastructure() InfrastructurePtrOutput {
+	return o.ApplyT(func(v DataControllerProperties) *Infrastructure { return v.Infrastructure }).(InfrastructurePtrOutput)
 }
 
 // The raw kubernetes information
@@ -1619,12 +2969,22 @@ func (o DataControllerPropertiesOutput) LogAnalyticsWorkspaceConfig() LogAnalyti
 	return o.ApplyT(func(v DataControllerProperties) *LogAnalyticsWorkspaceConfig { return v.LogAnalyticsWorkspaceConfig }).(LogAnalyticsWorkspaceConfigPtrOutput)
 }
 
+// Login credential for logs dashboard on the Kubernetes cluster.
+func (o DataControllerPropertiesOutput) LogsDashboardCredential() BasicLoginInformationPtrOutput {
+	return o.ApplyT(func(v DataControllerProperties) *BasicLoginInformation { return v.LogsDashboardCredential }).(BasicLoginInformationPtrOutput)
+}
+
+// Login credential for metrics dashboard on the Kubernetes cluster.
+func (o DataControllerPropertiesOutput) MetricsDashboardCredential() BasicLoginInformationPtrOutput {
+	return o.ApplyT(func(v DataControllerProperties) *BasicLoginInformation { return v.MetricsDashboardCredential }).(BasicLoginInformationPtrOutput)
+}
+
 // Properties from the Kubernetes data controller
 func (o DataControllerPropertiesOutput) OnPremiseProperty() OnPremisePropertyPtrOutput {
 	return o.ApplyT(func(v DataControllerProperties) *OnPremiseProperty { return v.OnPremiseProperty }).(OnPremisePropertyPtrOutput)
 }
 
-// Service principal for uploading billing, metrics and logs.
+// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
 func (o DataControllerPropertiesOutput) UploadServicePrincipal() UploadServicePrincipalPtrOutput {
 	return o.ApplyT(func(v DataControllerProperties) *UploadServicePrincipal { return v.UploadServicePrincipal }).(UploadServicePrincipalPtrOutput)
 }
@@ -1636,21 +2996,45 @@ func (o DataControllerPropertiesOutput) UploadWatermark() UploadWatermarkPtrOutp
 
 // The data controller properties.
 type DataControllerPropertiesResponse struct {
-	// Username and password for basic login authentication.
+	// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
 	BasicLoginInformation *BasicLoginInformationResponse `pulumi:"basicLoginInformation"`
+	// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+	ClusterId *string `pulumi:"clusterId"`
+	// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+	ExtensionId *string `pulumi:"extensionId"`
+	// The infrastructure the data controller is running on.
+	Infrastructure *string `pulumi:"infrastructure"`
 	// The raw kubernetes information
 	K8sRaw interface{} `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
 	LastUploadedDate *string `pulumi:"lastUploadedDate"`
 	// Log analytics workspace id and primary key
 	LogAnalyticsWorkspaceConfig *LogAnalyticsWorkspaceConfigResponse `pulumi:"logAnalyticsWorkspaceConfig"`
+	// Login credential for logs dashboard on the Kubernetes cluster.
+	LogsDashboardCredential *BasicLoginInformationResponse `pulumi:"logsDashboardCredential"`
+	// Login credential for metrics dashboard on the Kubernetes cluster.
+	MetricsDashboardCredential *BasicLoginInformationResponse `pulumi:"metricsDashboardCredential"`
 	// Properties from the Kubernetes data controller
 	OnPremiseProperty *OnPremisePropertyResponse `pulumi:"onPremiseProperty"`
-	ProvisioningState string                     `pulumi:"provisioningState"`
-	// Service principal for uploading billing, metrics and logs.
+	// The provisioning state of the Arc Data Controller resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
 	UploadServicePrincipal *UploadServicePrincipalResponse `pulumi:"uploadServicePrincipal"`
 	// Properties on upload watermark.  Mostly timestamp for each upload data type
 	UploadWatermark *UploadWatermarkResponse `pulumi:"uploadWatermark"`
+}
+
+// Defaults sets the appropriate defaults for DataControllerPropertiesResponse
+func (val *DataControllerPropertiesResponse) Defaults() *DataControllerPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Infrastructure == nil {
+		infrastructure_ := "other"
+		tmp.Infrastructure = &infrastructure_
+	}
+	return &tmp
 }
 
 // The data controller properties.
@@ -1668,11 +3052,26 @@ func (o DataControllerPropertiesResponseOutput) ToDataControllerPropertiesRespon
 	return o
 }
 
-// Username and password for basic login authentication.
+// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
 func (o DataControllerPropertiesResponseOutput) BasicLoginInformation() BasicLoginInformationResponsePtrOutput {
 	return o.ApplyT(func(v DataControllerPropertiesResponse) *BasicLoginInformationResponse {
 		return v.BasicLoginInformation
 	}).(BasicLoginInformationResponsePtrOutput)
+}
+
+// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+func (o DataControllerPropertiesResponseOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataControllerPropertiesResponse) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+func (o DataControllerPropertiesResponseOutput) ExtensionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataControllerPropertiesResponse) *string { return v.ExtensionId }).(pulumi.StringPtrOutput)
+}
+
+// The infrastructure the data controller is running on.
+func (o DataControllerPropertiesResponseOutput) Infrastructure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataControllerPropertiesResponse) *string { return v.Infrastructure }).(pulumi.StringPtrOutput)
 }
 
 // The raw kubernetes information
@@ -1692,16 +3091,31 @@ func (o DataControllerPropertiesResponseOutput) LogAnalyticsWorkspaceConfig() Lo
 	}).(LogAnalyticsWorkspaceConfigResponsePtrOutput)
 }
 
+// Login credential for logs dashboard on the Kubernetes cluster.
+func (o DataControllerPropertiesResponseOutput) LogsDashboardCredential() BasicLoginInformationResponsePtrOutput {
+	return o.ApplyT(func(v DataControllerPropertiesResponse) *BasicLoginInformationResponse {
+		return v.LogsDashboardCredential
+	}).(BasicLoginInformationResponsePtrOutput)
+}
+
+// Login credential for metrics dashboard on the Kubernetes cluster.
+func (o DataControllerPropertiesResponseOutput) MetricsDashboardCredential() BasicLoginInformationResponsePtrOutput {
+	return o.ApplyT(func(v DataControllerPropertiesResponse) *BasicLoginInformationResponse {
+		return v.MetricsDashboardCredential
+	}).(BasicLoginInformationResponsePtrOutput)
+}
+
 // Properties from the Kubernetes data controller
 func (o DataControllerPropertiesResponseOutput) OnPremiseProperty() OnPremisePropertyResponsePtrOutput {
 	return o.ApplyT(func(v DataControllerPropertiesResponse) *OnPremisePropertyResponse { return v.OnPremiseProperty }).(OnPremisePropertyResponsePtrOutput)
 }
 
+// The provisioning state of the Arc Data Controller resource.
 func (o DataControllerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v DataControllerPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Service principal for uploading billing, metrics and logs.
+// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
 func (o DataControllerPropertiesResponseOutput) UploadServicePrincipal() UploadServicePrincipalResponsePtrOutput {
 	return o.ApplyT(func(v DataControllerPropertiesResponse) *UploadServicePrincipalResponse {
 		return v.UploadServicePrincipal
@@ -1946,6 +3360,1156 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of a failover group resource.
+type FailoverGroupProperties struct {
+	// The resource ID of the partner SQL managed instance.
+	PartnerManagedInstanceId string `pulumi:"partnerManagedInstanceId"`
+	// The specifications of the failover group resource.
+	Spec FailoverGroupSpec `pulumi:"spec"`
+	// The status of the failover group custom resource.
+	Status interface{} `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for FailoverGroupProperties
+func (val *FailoverGroupProperties) Defaults() *FailoverGroupProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Spec = *tmp.Spec.Defaults()
+
+	return &tmp
+}
+
+// FailoverGroupPropertiesInput is an input type that accepts FailoverGroupPropertiesArgs and FailoverGroupPropertiesOutput values.
+// You can construct a concrete instance of `FailoverGroupPropertiesInput` via:
+//
+//	FailoverGroupPropertiesArgs{...}
+type FailoverGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToFailoverGroupPropertiesOutput() FailoverGroupPropertiesOutput
+	ToFailoverGroupPropertiesOutputWithContext(context.Context) FailoverGroupPropertiesOutput
+}
+
+// The properties of a failover group resource.
+type FailoverGroupPropertiesArgs struct {
+	// The resource ID of the partner SQL managed instance.
+	PartnerManagedInstanceId pulumi.StringInput `pulumi:"partnerManagedInstanceId"`
+	// The specifications of the failover group resource.
+	Spec FailoverGroupSpecInput `pulumi:"spec"`
+	// The status of the failover group custom resource.
+	Status pulumi.Input `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for FailoverGroupPropertiesArgs
+func (val *FailoverGroupPropertiesArgs) Defaults() *FailoverGroupPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (FailoverGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroupProperties)(nil)).Elem()
+}
+
+func (i FailoverGroupPropertiesArgs) ToFailoverGroupPropertiesOutput() FailoverGroupPropertiesOutput {
+	return i.ToFailoverGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i FailoverGroupPropertiesArgs) ToFailoverGroupPropertiesOutputWithContext(ctx context.Context) FailoverGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupPropertiesOutput)
+}
+
+// The properties of a failover group resource.
+type FailoverGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (FailoverGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroupProperties)(nil)).Elem()
+}
+
+func (o FailoverGroupPropertiesOutput) ToFailoverGroupPropertiesOutput() FailoverGroupPropertiesOutput {
+	return o
+}
+
+func (o FailoverGroupPropertiesOutput) ToFailoverGroupPropertiesOutputWithContext(ctx context.Context) FailoverGroupPropertiesOutput {
+	return o
+}
+
+// The resource ID of the partner SQL managed instance.
+func (o FailoverGroupPropertiesOutput) PartnerManagedInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverGroupProperties) string { return v.PartnerManagedInstanceId }).(pulumi.StringOutput)
+}
+
+// The specifications of the failover group resource.
+func (o FailoverGroupPropertiesOutput) Spec() FailoverGroupSpecOutput {
+	return o.ApplyT(func(v FailoverGroupProperties) FailoverGroupSpec { return v.Spec }).(FailoverGroupSpecOutput)
+}
+
+// The status of the failover group custom resource.
+func (o FailoverGroupPropertiesOutput) Status() pulumi.AnyOutput {
+	return o.ApplyT(func(v FailoverGroupProperties) interface{} { return v.Status }).(pulumi.AnyOutput)
+}
+
+// The properties of a failover group resource.
+type FailoverGroupPropertiesResponse struct {
+	// The resource ID of the partner SQL managed instance.
+	PartnerManagedInstanceId string `pulumi:"partnerManagedInstanceId"`
+	// The provisioning state of the failover group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The specifications of the failover group resource.
+	Spec FailoverGroupSpecResponse `pulumi:"spec"`
+	// The status of the failover group custom resource.
+	Status interface{} `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for FailoverGroupPropertiesResponse
+func (val *FailoverGroupPropertiesResponse) Defaults() *FailoverGroupPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Spec = *tmp.Spec.Defaults()
+
+	return &tmp
+}
+
+// The properties of a failover group resource.
+type FailoverGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FailoverGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o FailoverGroupPropertiesResponseOutput) ToFailoverGroupPropertiesResponseOutput() FailoverGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o FailoverGroupPropertiesResponseOutput) ToFailoverGroupPropertiesResponseOutputWithContext(ctx context.Context) FailoverGroupPropertiesResponseOutput {
+	return o
+}
+
+// The resource ID of the partner SQL managed instance.
+func (o FailoverGroupPropertiesResponseOutput) PartnerManagedInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverGroupPropertiesResponse) string { return v.PartnerManagedInstanceId }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the failover group resource.
+func (o FailoverGroupPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverGroupPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The specifications of the failover group resource.
+func (o FailoverGroupPropertiesResponseOutput) Spec() FailoverGroupSpecResponseOutput {
+	return o.ApplyT(func(v FailoverGroupPropertiesResponse) FailoverGroupSpecResponse { return v.Spec }).(FailoverGroupSpecResponseOutput)
+}
+
+// The status of the failover group custom resource.
+func (o FailoverGroupPropertiesResponseOutput) Status() pulumi.AnyOutput {
+	return o.ApplyT(func(v FailoverGroupPropertiesResponse) interface{} { return v.Status }).(pulumi.AnyOutput)
+}
+
+// The specifications of the failover group resource.
+type FailoverGroupSpec struct {
+	// The name of the partner SQL managed instance.
+	PartnerMI *string `pulumi:"partnerMI"`
+	// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
+	PartnerMirroringCert *string `pulumi:"partnerMirroringCert"`
+	// The mirroring endpoint URL of the partner SQL managed instance.
+	PartnerMirroringURL *string `pulumi:"partnerMirroringURL"`
+	// The partner sync mode of the SQL managed instance.
+	PartnerSyncMode *string `pulumi:"partnerSyncMode"`
+	// The role of the SQL managed instance in this failover group.
+	Role string `pulumi:"role"`
+	// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
+	SharedName *string `pulumi:"sharedName"`
+	// The name of the SQL managed instance with this failover group role.
+	SourceMI *string `pulumi:"sourceMI"`
+}
+
+// Defaults sets the appropriate defaults for FailoverGroupSpec
+func (val *FailoverGroupSpec) Defaults() *FailoverGroupSpec {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PartnerSyncMode == nil {
+		partnerSyncMode_ := "async"
+		tmp.PartnerSyncMode = &partnerSyncMode_
+	}
+	if isZero(tmp.Role) {
+		tmp.Role = "primary"
+	}
+	return &tmp
+}
+
+// FailoverGroupSpecInput is an input type that accepts FailoverGroupSpecArgs and FailoverGroupSpecOutput values.
+// You can construct a concrete instance of `FailoverGroupSpecInput` via:
+//
+//	FailoverGroupSpecArgs{...}
+type FailoverGroupSpecInput interface {
+	pulumi.Input
+
+	ToFailoverGroupSpecOutput() FailoverGroupSpecOutput
+	ToFailoverGroupSpecOutputWithContext(context.Context) FailoverGroupSpecOutput
+}
+
+// The specifications of the failover group resource.
+type FailoverGroupSpecArgs struct {
+	// The name of the partner SQL managed instance.
+	PartnerMI pulumi.StringPtrInput `pulumi:"partnerMI"`
+	// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
+	PartnerMirroringCert pulumi.StringPtrInput `pulumi:"partnerMirroringCert"`
+	// The mirroring endpoint URL of the partner SQL managed instance.
+	PartnerMirroringURL pulumi.StringPtrInput `pulumi:"partnerMirroringURL"`
+	// The partner sync mode of the SQL managed instance.
+	PartnerSyncMode pulumi.StringPtrInput `pulumi:"partnerSyncMode"`
+	// The role of the SQL managed instance in this failover group.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
+	SharedName pulumi.StringPtrInput `pulumi:"sharedName"`
+	// The name of the SQL managed instance with this failover group role.
+	SourceMI pulumi.StringPtrInput `pulumi:"sourceMI"`
+}
+
+// Defaults sets the appropriate defaults for FailoverGroupSpecArgs
+func (val *FailoverGroupSpecArgs) Defaults() *FailoverGroupSpecArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PartnerSyncMode == nil {
+		tmp.PartnerSyncMode = pulumi.StringPtr("async")
+	}
+	if tmp.Role == nil {
+		tmp.Role = pulumi.String("primary")
+	}
+	return &tmp
+}
+func (FailoverGroupSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroupSpec)(nil)).Elem()
+}
+
+func (i FailoverGroupSpecArgs) ToFailoverGroupSpecOutput() FailoverGroupSpecOutput {
+	return i.ToFailoverGroupSpecOutputWithContext(context.Background())
+}
+
+func (i FailoverGroupSpecArgs) ToFailoverGroupSpecOutputWithContext(ctx context.Context) FailoverGroupSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupSpecOutput)
+}
+
+// The specifications of the failover group resource.
+type FailoverGroupSpecOutput struct{ *pulumi.OutputState }
+
+func (FailoverGroupSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroupSpec)(nil)).Elem()
+}
+
+func (o FailoverGroupSpecOutput) ToFailoverGroupSpecOutput() FailoverGroupSpecOutput {
+	return o
+}
+
+func (o FailoverGroupSpecOutput) ToFailoverGroupSpecOutputWithContext(ctx context.Context) FailoverGroupSpecOutput {
+	return o
+}
+
+// The name of the partner SQL managed instance.
+func (o FailoverGroupSpecOutput) PartnerMI() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) *string { return v.PartnerMI }).(pulumi.StringPtrOutput)
+}
+
+// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
+func (o FailoverGroupSpecOutput) PartnerMirroringCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) *string { return v.PartnerMirroringCert }).(pulumi.StringPtrOutput)
+}
+
+// The mirroring endpoint URL of the partner SQL managed instance.
+func (o FailoverGroupSpecOutput) PartnerMirroringURL() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) *string { return v.PartnerMirroringURL }).(pulumi.StringPtrOutput)
+}
+
+// The partner sync mode of the SQL managed instance.
+func (o FailoverGroupSpecOutput) PartnerSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) *string { return v.PartnerSyncMode }).(pulumi.StringPtrOutput)
+}
+
+// The role of the SQL managed instance in this failover group.
+func (o FailoverGroupSpecOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
+func (o FailoverGroupSpecOutput) SharedName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) *string { return v.SharedName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SQL managed instance with this failover group role.
+func (o FailoverGroupSpecOutput) SourceMI() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpec) *string { return v.SourceMI }).(pulumi.StringPtrOutput)
+}
+
+// The specifications of the failover group resource.
+type FailoverGroupSpecResponse struct {
+	// The name of the partner SQL managed instance.
+	PartnerMI *string `pulumi:"partnerMI"`
+	// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
+	PartnerMirroringCert *string `pulumi:"partnerMirroringCert"`
+	// The mirroring endpoint URL of the partner SQL managed instance.
+	PartnerMirroringURL *string `pulumi:"partnerMirroringURL"`
+	// The partner sync mode of the SQL managed instance.
+	PartnerSyncMode *string `pulumi:"partnerSyncMode"`
+	// The role of the SQL managed instance in this failover group.
+	Role string `pulumi:"role"`
+	// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
+	SharedName *string `pulumi:"sharedName"`
+	// The name of the SQL managed instance with this failover group role.
+	SourceMI *string `pulumi:"sourceMI"`
+}
+
+// Defaults sets the appropriate defaults for FailoverGroupSpecResponse
+func (val *FailoverGroupSpecResponse) Defaults() *FailoverGroupSpecResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PartnerSyncMode == nil {
+		partnerSyncMode_ := "async"
+		tmp.PartnerSyncMode = &partnerSyncMode_
+	}
+	if isZero(tmp.Role) {
+		tmp.Role = "primary"
+	}
+	return &tmp
+}
+
+// The specifications of the failover group resource.
+type FailoverGroupSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (FailoverGroupSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroupSpecResponse)(nil)).Elem()
+}
+
+func (o FailoverGroupSpecResponseOutput) ToFailoverGroupSpecResponseOutput() FailoverGroupSpecResponseOutput {
+	return o
+}
+
+func (o FailoverGroupSpecResponseOutput) ToFailoverGroupSpecResponseOutputWithContext(ctx context.Context) FailoverGroupSpecResponseOutput {
+	return o
+}
+
+// The name of the partner SQL managed instance.
+func (o FailoverGroupSpecResponseOutput) PartnerMI() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.PartnerMI }).(pulumi.StringPtrOutput)
+}
+
+// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
+func (o FailoverGroupSpecResponseOutput) PartnerMirroringCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.PartnerMirroringCert }).(pulumi.StringPtrOutput)
+}
+
+// The mirroring endpoint URL of the partner SQL managed instance.
+func (o FailoverGroupSpecResponseOutput) PartnerMirroringURL() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.PartnerMirroringURL }).(pulumi.StringPtrOutput)
+}
+
+// The partner sync mode of the SQL managed instance.
+func (o FailoverGroupSpecResponseOutput) PartnerSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.PartnerSyncMode }).(pulumi.StringPtrOutput)
+}
+
+// The role of the SQL managed instance in this failover group.
+func (o FailoverGroupSpecResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
+func (o FailoverGroupSpecResponseOutput) SharedName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.SharedName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SQL managed instance with this failover group role.
+func (o FailoverGroupSpecResponseOutput) SourceMI() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.SourceMI }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+type K8sResourceRequirements struct {
+	// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+	Limits map[string]string `pulumi:"limits"`
+	// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+	Requests map[string]string `pulumi:"requests"`
+}
+
+// K8sResourceRequirementsInput is an input type that accepts K8sResourceRequirementsArgs and K8sResourceRequirementsOutput values.
+// You can construct a concrete instance of `K8sResourceRequirementsInput` via:
+//
+//	K8sResourceRequirementsArgs{...}
+type K8sResourceRequirementsInput interface {
+	pulumi.Input
+
+	ToK8sResourceRequirementsOutput() K8sResourceRequirementsOutput
+	ToK8sResourceRequirementsOutputWithContext(context.Context) K8sResourceRequirementsOutput
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+type K8sResourceRequirementsArgs struct {
+	// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+	Requests pulumi.StringMapInput `pulumi:"requests"`
+}
+
+func (K8sResourceRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sResourceRequirements)(nil)).Elem()
+}
+
+func (i K8sResourceRequirementsArgs) ToK8sResourceRequirementsOutput() K8sResourceRequirementsOutput {
+	return i.ToK8sResourceRequirementsOutputWithContext(context.Background())
+}
+
+func (i K8sResourceRequirementsArgs) ToK8sResourceRequirementsOutputWithContext(ctx context.Context) K8sResourceRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sResourceRequirementsOutput)
+}
+
+func (i K8sResourceRequirementsArgs) ToK8sResourceRequirementsPtrOutput() K8sResourceRequirementsPtrOutput {
+	return i.ToK8sResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i K8sResourceRequirementsArgs) ToK8sResourceRequirementsPtrOutputWithContext(ctx context.Context) K8sResourceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sResourceRequirementsOutput).ToK8sResourceRequirementsPtrOutputWithContext(ctx)
+}
+
+// K8sResourceRequirementsPtrInput is an input type that accepts K8sResourceRequirementsArgs, K8sResourceRequirementsPtr and K8sResourceRequirementsPtrOutput values.
+// You can construct a concrete instance of `K8sResourceRequirementsPtrInput` via:
+//
+//	        K8sResourceRequirementsArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8sResourceRequirementsPtrInput interface {
+	pulumi.Input
+
+	ToK8sResourceRequirementsPtrOutput() K8sResourceRequirementsPtrOutput
+	ToK8sResourceRequirementsPtrOutputWithContext(context.Context) K8sResourceRequirementsPtrOutput
+}
+
+type k8sResourceRequirementsPtrType K8sResourceRequirementsArgs
+
+func K8sResourceRequirementsPtr(v *K8sResourceRequirementsArgs) K8sResourceRequirementsPtrInput {
+	return (*k8sResourceRequirementsPtrType)(v)
+}
+
+func (*k8sResourceRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sResourceRequirements)(nil)).Elem()
+}
+
+func (i *k8sResourceRequirementsPtrType) ToK8sResourceRequirementsPtrOutput() K8sResourceRequirementsPtrOutput {
+	return i.ToK8sResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sResourceRequirementsPtrType) ToK8sResourceRequirementsPtrOutputWithContext(ctx context.Context) K8sResourceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sResourceRequirementsPtrOutput)
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+type K8sResourceRequirementsOutput struct{ *pulumi.OutputState }
+
+func (K8sResourceRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sResourceRequirements)(nil)).Elem()
+}
+
+func (o K8sResourceRequirementsOutput) ToK8sResourceRequirementsOutput() K8sResourceRequirementsOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsOutput) ToK8sResourceRequirementsOutputWithContext(ctx context.Context) K8sResourceRequirementsOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsOutput) ToK8sResourceRequirementsPtrOutput() K8sResourceRequirementsPtrOutput {
+	return o.ToK8sResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (o K8sResourceRequirementsOutput) ToK8sResourceRequirementsPtrOutputWithContext(ctx context.Context) K8sResourceRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sResourceRequirements) *K8sResourceRequirements {
+		return &v
+	}).(K8sResourceRequirementsPtrOutput)
+}
+
+// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsOutput) Requests() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sResourceRequirements) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
+}
+
+type K8sResourceRequirementsPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sResourceRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sResourceRequirements)(nil)).Elem()
+}
+
+func (o K8sResourceRequirementsPtrOutput) ToK8sResourceRequirementsPtrOutput() K8sResourceRequirementsPtrOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsPtrOutput) ToK8sResourceRequirementsPtrOutputWithContext(ctx context.Context) K8sResourceRequirementsPtrOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsPtrOutput) Elem() K8sResourceRequirementsOutput {
+	return o.ApplyT(func(v *K8sResourceRequirements) K8sResourceRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret K8sResourceRequirements
+		return ret
+	}).(K8sResourceRequirementsOutput)
+}
+
+// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sResourceRequirements) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(pulumi.StringMapOutput)
+}
+
+// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sResourceRequirements) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(pulumi.StringMapOutput)
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+type K8sResourceRequirementsResponse struct {
+	// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+	Limits map[string]string `pulumi:"limits"`
+	// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+	Requests map[string]string `pulumi:"requests"`
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+type K8sResourceRequirementsResponseOutput struct{ *pulumi.OutputState }
+
+func (K8sResourceRequirementsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sResourceRequirementsResponse)(nil)).Elem()
+}
+
+func (o K8sResourceRequirementsResponseOutput) ToK8sResourceRequirementsResponseOutput() K8sResourceRequirementsResponseOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsResponseOutput) ToK8sResourceRequirementsResponseOutputWithContext(ctx context.Context) K8sResourceRequirementsResponseOutput {
+	return o
+}
+
+// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
+}
+
+type K8sResourceRequirementsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (K8sResourceRequirementsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sResourceRequirementsResponse)(nil)).Elem()
+}
+
+func (o K8sResourceRequirementsResponsePtrOutput) ToK8sResourceRequirementsResponsePtrOutput() K8sResourceRequirementsResponsePtrOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsResponsePtrOutput) ToK8sResourceRequirementsResponsePtrOutputWithContext(ctx context.Context) K8sResourceRequirementsResponsePtrOutput {
+	return o
+}
+
+func (o K8sResourceRequirementsResponsePtrOutput) Elem() K8sResourceRequirementsResponseOutput {
+	return o.ApplyT(func(v *K8sResourceRequirementsResponse) K8sResourceRequirementsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret K8sResourceRequirementsResponse
+		return ret
+	}).(K8sResourceRequirementsResponseOutput)
+}
+
+// Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsResponsePtrOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sResourceRequirementsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(pulumi.StringMapOutput)
+}
+
+// Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
+func (o K8sResourceRequirementsResponsePtrOutput) Requests() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sResourceRequirementsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(pulumi.StringMapOutput)
+}
+
+// The kubernetes scheduling information.
+type K8sScheduling struct {
+	// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+	Default *K8sSchedulingOptions `pulumi:"default"`
+}
+
+// K8sSchedulingInput is an input type that accepts K8sSchedulingArgs and K8sSchedulingOutput values.
+// You can construct a concrete instance of `K8sSchedulingInput` via:
+//
+//	K8sSchedulingArgs{...}
+type K8sSchedulingInput interface {
+	pulumi.Input
+
+	ToK8sSchedulingOutput() K8sSchedulingOutput
+	ToK8sSchedulingOutputWithContext(context.Context) K8sSchedulingOutput
+}
+
+// The kubernetes scheduling information.
+type K8sSchedulingArgs struct {
+	// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+	Default K8sSchedulingOptionsPtrInput `pulumi:"default"`
+}
+
+func (K8sSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sScheduling)(nil)).Elem()
+}
+
+func (i K8sSchedulingArgs) ToK8sSchedulingOutput() K8sSchedulingOutput {
+	return i.ToK8sSchedulingOutputWithContext(context.Background())
+}
+
+func (i K8sSchedulingArgs) ToK8sSchedulingOutputWithContext(ctx context.Context) K8sSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sSchedulingOutput)
+}
+
+func (i K8sSchedulingArgs) ToK8sSchedulingPtrOutput() K8sSchedulingPtrOutput {
+	return i.ToK8sSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i K8sSchedulingArgs) ToK8sSchedulingPtrOutputWithContext(ctx context.Context) K8sSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sSchedulingOutput).ToK8sSchedulingPtrOutputWithContext(ctx)
+}
+
+// K8sSchedulingPtrInput is an input type that accepts K8sSchedulingArgs, K8sSchedulingPtr and K8sSchedulingPtrOutput values.
+// You can construct a concrete instance of `K8sSchedulingPtrInput` via:
+//
+//	        K8sSchedulingArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8sSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToK8sSchedulingPtrOutput() K8sSchedulingPtrOutput
+	ToK8sSchedulingPtrOutputWithContext(context.Context) K8sSchedulingPtrOutput
+}
+
+type k8sSchedulingPtrType K8sSchedulingArgs
+
+func K8sSchedulingPtr(v *K8sSchedulingArgs) K8sSchedulingPtrInput {
+	return (*k8sSchedulingPtrType)(v)
+}
+
+func (*k8sSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sScheduling)(nil)).Elem()
+}
+
+func (i *k8sSchedulingPtrType) ToK8sSchedulingPtrOutput() K8sSchedulingPtrOutput {
+	return i.ToK8sSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sSchedulingPtrType) ToK8sSchedulingPtrOutputWithContext(ctx context.Context) K8sSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sSchedulingPtrOutput)
+}
+
+// The kubernetes scheduling information.
+type K8sSchedulingOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sScheduling)(nil)).Elem()
+}
+
+func (o K8sSchedulingOutput) ToK8sSchedulingOutput() K8sSchedulingOutput {
+	return o
+}
+
+func (o K8sSchedulingOutput) ToK8sSchedulingOutputWithContext(ctx context.Context) K8sSchedulingOutput {
+	return o
+}
+
+func (o K8sSchedulingOutput) ToK8sSchedulingPtrOutput() K8sSchedulingPtrOutput {
+	return o.ToK8sSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o K8sSchedulingOutput) ToK8sSchedulingPtrOutputWithContext(ctx context.Context) K8sSchedulingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sScheduling) *K8sScheduling {
+		return &v
+	}).(K8sSchedulingPtrOutput)
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+func (o K8sSchedulingOutput) Default() K8sSchedulingOptionsPtrOutput {
+	return o.ApplyT(func(v K8sScheduling) *K8sSchedulingOptions { return v.Default }).(K8sSchedulingOptionsPtrOutput)
+}
+
+type K8sSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sScheduling)(nil)).Elem()
+}
+
+func (o K8sSchedulingPtrOutput) ToK8sSchedulingPtrOutput() K8sSchedulingPtrOutput {
+	return o
+}
+
+func (o K8sSchedulingPtrOutput) ToK8sSchedulingPtrOutputWithContext(ctx context.Context) K8sSchedulingPtrOutput {
+	return o
+}
+
+func (o K8sSchedulingPtrOutput) Elem() K8sSchedulingOutput {
+	return o.ApplyT(func(v *K8sScheduling) K8sScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret K8sScheduling
+		return ret
+	}).(K8sSchedulingOutput)
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+func (o K8sSchedulingPtrOutput) Default() K8sSchedulingOptionsPtrOutput {
+	return o.ApplyT(func(v *K8sScheduling) *K8sSchedulingOptions {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(K8sSchedulingOptionsPtrOutput)
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+type K8sSchedulingOptions struct {
+	// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+	Resources *K8sResourceRequirements `pulumi:"resources"`
+}
+
+// K8sSchedulingOptionsInput is an input type that accepts K8sSchedulingOptionsArgs and K8sSchedulingOptionsOutput values.
+// You can construct a concrete instance of `K8sSchedulingOptionsInput` via:
+//
+//	K8sSchedulingOptionsArgs{...}
+type K8sSchedulingOptionsInput interface {
+	pulumi.Input
+
+	ToK8sSchedulingOptionsOutput() K8sSchedulingOptionsOutput
+	ToK8sSchedulingOptionsOutputWithContext(context.Context) K8sSchedulingOptionsOutput
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+type K8sSchedulingOptionsArgs struct {
+	// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+	Resources K8sResourceRequirementsPtrInput `pulumi:"resources"`
+}
+
+func (K8sSchedulingOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sSchedulingOptions)(nil)).Elem()
+}
+
+func (i K8sSchedulingOptionsArgs) ToK8sSchedulingOptionsOutput() K8sSchedulingOptionsOutput {
+	return i.ToK8sSchedulingOptionsOutputWithContext(context.Background())
+}
+
+func (i K8sSchedulingOptionsArgs) ToK8sSchedulingOptionsOutputWithContext(ctx context.Context) K8sSchedulingOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sSchedulingOptionsOutput)
+}
+
+func (i K8sSchedulingOptionsArgs) ToK8sSchedulingOptionsPtrOutput() K8sSchedulingOptionsPtrOutput {
+	return i.ToK8sSchedulingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i K8sSchedulingOptionsArgs) ToK8sSchedulingOptionsPtrOutputWithContext(ctx context.Context) K8sSchedulingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sSchedulingOptionsOutput).ToK8sSchedulingOptionsPtrOutputWithContext(ctx)
+}
+
+// K8sSchedulingOptionsPtrInput is an input type that accepts K8sSchedulingOptionsArgs, K8sSchedulingOptionsPtr and K8sSchedulingOptionsPtrOutput values.
+// You can construct a concrete instance of `K8sSchedulingOptionsPtrInput` via:
+//
+//	        K8sSchedulingOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8sSchedulingOptionsPtrInput interface {
+	pulumi.Input
+
+	ToK8sSchedulingOptionsPtrOutput() K8sSchedulingOptionsPtrOutput
+	ToK8sSchedulingOptionsPtrOutputWithContext(context.Context) K8sSchedulingOptionsPtrOutput
+}
+
+type k8sSchedulingOptionsPtrType K8sSchedulingOptionsArgs
+
+func K8sSchedulingOptionsPtr(v *K8sSchedulingOptionsArgs) K8sSchedulingOptionsPtrInput {
+	return (*k8sSchedulingOptionsPtrType)(v)
+}
+
+func (*k8sSchedulingOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sSchedulingOptions)(nil)).Elem()
+}
+
+func (i *k8sSchedulingOptionsPtrType) ToK8sSchedulingOptionsPtrOutput() K8sSchedulingOptionsPtrOutput {
+	return i.ToK8sSchedulingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sSchedulingOptionsPtrType) ToK8sSchedulingOptionsPtrOutputWithContext(ctx context.Context) K8sSchedulingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sSchedulingOptionsPtrOutput)
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+type K8sSchedulingOptionsOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sSchedulingOptions)(nil)).Elem()
+}
+
+func (o K8sSchedulingOptionsOutput) ToK8sSchedulingOptionsOutput() K8sSchedulingOptionsOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsOutput) ToK8sSchedulingOptionsOutputWithContext(ctx context.Context) K8sSchedulingOptionsOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsOutput) ToK8sSchedulingOptionsPtrOutput() K8sSchedulingOptionsPtrOutput {
+	return o.ToK8sSchedulingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o K8sSchedulingOptionsOutput) ToK8sSchedulingOptionsPtrOutputWithContext(ctx context.Context) K8sSchedulingOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sSchedulingOptions) *K8sSchedulingOptions {
+		return &v
+	}).(K8sSchedulingOptionsPtrOutput)
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+func (o K8sSchedulingOptionsOutput) Resources() K8sResourceRequirementsPtrOutput {
+	return o.ApplyT(func(v K8sSchedulingOptions) *K8sResourceRequirements { return v.Resources }).(K8sResourceRequirementsPtrOutput)
+}
+
+type K8sSchedulingOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sSchedulingOptions)(nil)).Elem()
+}
+
+func (o K8sSchedulingOptionsPtrOutput) ToK8sSchedulingOptionsPtrOutput() K8sSchedulingOptionsPtrOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsPtrOutput) ToK8sSchedulingOptionsPtrOutputWithContext(ctx context.Context) K8sSchedulingOptionsPtrOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsPtrOutput) Elem() K8sSchedulingOptionsOutput {
+	return o.ApplyT(func(v *K8sSchedulingOptions) K8sSchedulingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret K8sSchedulingOptions
+		return ret
+	}).(K8sSchedulingOptionsOutput)
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+func (o K8sSchedulingOptionsPtrOutput) Resources() K8sResourceRequirementsPtrOutput {
+	return o.ApplyT(func(v *K8sSchedulingOptions) *K8sResourceRequirements {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(K8sResourceRequirementsPtrOutput)
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+type K8sSchedulingOptionsResponse struct {
+	// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+	Resources *K8sResourceRequirementsResponse `pulumi:"resources"`
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+type K8sSchedulingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sSchedulingOptionsResponse)(nil)).Elem()
+}
+
+func (o K8sSchedulingOptionsResponseOutput) ToK8sSchedulingOptionsResponseOutput() K8sSchedulingOptionsResponseOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsResponseOutput) ToK8sSchedulingOptionsResponseOutputWithContext(ctx context.Context) K8sSchedulingOptionsResponseOutput {
+	return o
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+func (o K8sSchedulingOptionsResponseOutput) Resources() K8sResourceRequirementsResponsePtrOutput {
+	return o.ApplyT(func(v K8sSchedulingOptionsResponse) *K8sResourceRequirementsResponse { return v.Resources }).(K8sResourceRequirementsResponsePtrOutput)
+}
+
+type K8sSchedulingOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sSchedulingOptionsResponse)(nil)).Elem()
+}
+
+func (o K8sSchedulingOptionsResponsePtrOutput) ToK8sSchedulingOptionsResponsePtrOutput() K8sSchedulingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsResponsePtrOutput) ToK8sSchedulingOptionsResponsePtrOutputWithContext(ctx context.Context) K8sSchedulingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o K8sSchedulingOptionsResponsePtrOutput) Elem() K8sSchedulingOptionsResponseOutput {
+	return o.ApplyT(func(v *K8sSchedulingOptionsResponse) K8sSchedulingOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret K8sSchedulingOptionsResponse
+		return ret
+	}).(K8sSchedulingOptionsResponseOutput)
+}
+
+// The kubernetes resource limits and requests used to restrict or reserve resource usage.
+func (o K8sSchedulingOptionsResponsePtrOutput) Resources() K8sResourceRequirementsResponsePtrOutput {
+	return o.ApplyT(func(v *K8sSchedulingOptionsResponse) *K8sResourceRequirementsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(K8sResourceRequirementsResponsePtrOutput)
+}
+
+// The kubernetes scheduling information.
+type K8sSchedulingResponse struct {
+	// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+	Default *K8sSchedulingOptionsResponse `pulumi:"default"`
+}
+
+// The kubernetes scheduling information.
+type K8sSchedulingResponseOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sSchedulingResponse)(nil)).Elem()
+}
+
+func (o K8sSchedulingResponseOutput) ToK8sSchedulingResponseOutput() K8sSchedulingResponseOutput {
+	return o
+}
+
+func (o K8sSchedulingResponseOutput) ToK8sSchedulingResponseOutputWithContext(ctx context.Context) K8sSchedulingResponseOutput {
+	return o
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+func (o K8sSchedulingResponseOutput) Default() K8sSchedulingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v K8sSchedulingResponse) *K8sSchedulingOptionsResponse { return v.Default }).(K8sSchedulingOptionsResponsePtrOutput)
+}
+
+type K8sSchedulingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (K8sSchedulingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sSchedulingResponse)(nil)).Elem()
+}
+
+func (o K8sSchedulingResponsePtrOutput) ToK8sSchedulingResponsePtrOutput() K8sSchedulingResponsePtrOutput {
+	return o
+}
+
+func (o K8sSchedulingResponsePtrOutput) ToK8sSchedulingResponsePtrOutputWithContext(ctx context.Context) K8sSchedulingResponsePtrOutput {
+	return o
+}
+
+func (o K8sSchedulingResponsePtrOutput) Elem() K8sSchedulingResponseOutput {
+	return o.ApplyT(func(v *K8sSchedulingResponse) K8sSchedulingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret K8sSchedulingResponse
+		return ret
+	}).(K8sSchedulingResponseOutput)
+}
+
+// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
+func (o K8sSchedulingResponsePtrOutput) Default() K8sSchedulingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *K8sSchedulingResponse) *K8sSchedulingOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(K8sSchedulingOptionsResponsePtrOutput)
+}
+
+// Keytab used for authenticate with Active Directory.
+type KeytabInformation struct {
+	// A base64-encoded keytab.
+	Keytab *string `pulumi:"keytab"`
+}
+
+// KeytabInformationInput is an input type that accepts KeytabInformationArgs and KeytabInformationOutput values.
+// You can construct a concrete instance of `KeytabInformationInput` via:
+//
+//	KeytabInformationArgs{...}
+type KeytabInformationInput interface {
+	pulumi.Input
+
+	ToKeytabInformationOutput() KeytabInformationOutput
+	ToKeytabInformationOutputWithContext(context.Context) KeytabInformationOutput
+}
+
+// Keytab used for authenticate with Active Directory.
+type KeytabInformationArgs struct {
+	// A base64-encoded keytab.
+	Keytab pulumi.StringPtrInput `pulumi:"keytab"`
+}
+
+func (KeytabInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeytabInformation)(nil)).Elem()
+}
+
+func (i KeytabInformationArgs) ToKeytabInformationOutput() KeytabInformationOutput {
+	return i.ToKeytabInformationOutputWithContext(context.Background())
+}
+
+func (i KeytabInformationArgs) ToKeytabInformationOutputWithContext(ctx context.Context) KeytabInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeytabInformationOutput)
+}
+
+func (i KeytabInformationArgs) ToKeytabInformationPtrOutput() KeytabInformationPtrOutput {
+	return i.ToKeytabInformationPtrOutputWithContext(context.Background())
+}
+
+func (i KeytabInformationArgs) ToKeytabInformationPtrOutputWithContext(ctx context.Context) KeytabInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeytabInformationOutput).ToKeytabInformationPtrOutputWithContext(ctx)
+}
+
+// KeytabInformationPtrInput is an input type that accepts KeytabInformationArgs, KeytabInformationPtr and KeytabInformationPtrOutput values.
+// You can construct a concrete instance of `KeytabInformationPtrInput` via:
+//
+//	        KeytabInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeytabInformationPtrInput interface {
+	pulumi.Input
+
+	ToKeytabInformationPtrOutput() KeytabInformationPtrOutput
+	ToKeytabInformationPtrOutputWithContext(context.Context) KeytabInformationPtrOutput
+}
+
+type keytabInformationPtrType KeytabInformationArgs
+
+func KeytabInformationPtr(v *KeytabInformationArgs) KeytabInformationPtrInput {
+	return (*keytabInformationPtrType)(v)
+}
+
+func (*keytabInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeytabInformation)(nil)).Elem()
+}
+
+func (i *keytabInformationPtrType) ToKeytabInformationPtrOutput() KeytabInformationPtrOutput {
+	return i.ToKeytabInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *keytabInformationPtrType) ToKeytabInformationPtrOutputWithContext(ctx context.Context) KeytabInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeytabInformationPtrOutput)
+}
+
+// Keytab used for authenticate with Active Directory.
+type KeytabInformationOutput struct{ *pulumi.OutputState }
+
+func (KeytabInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeytabInformation)(nil)).Elem()
+}
+
+func (o KeytabInformationOutput) ToKeytabInformationOutput() KeytabInformationOutput {
+	return o
+}
+
+func (o KeytabInformationOutput) ToKeytabInformationOutputWithContext(ctx context.Context) KeytabInformationOutput {
+	return o
+}
+
+func (o KeytabInformationOutput) ToKeytabInformationPtrOutput() KeytabInformationPtrOutput {
+	return o.ToKeytabInformationPtrOutputWithContext(context.Background())
+}
+
+func (o KeytabInformationOutput) ToKeytabInformationPtrOutputWithContext(ctx context.Context) KeytabInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeytabInformation) *KeytabInformation {
+		return &v
+	}).(KeytabInformationPtrOutput)
+}
+
+// A base64-encoded keytab.
+func (o KeytabInformationOutput) Keytab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeytabInformation) *string { return v.Keytab }).(pulumi.StringPtrOutput)
+}
+
+type KeytabInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (KeytabInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeytabInformation)(nil)).Elem()
+}
+
+func (o KeytabInformationPtrOutput) ToKeytabInformationPtrOutput() KeytabInformationPtrOutput {
+	return o
+}
+
+func (o KeytabInformationPtrOutput) ToKeytabInformationPtrOutputWithContext(ctx context.Context) KeytabInformationPtrOutput {
+	return o
+}
+
+func (o KeytabInformationPtrOutput) Elem() KeytabInformationOutput {
+	return o.ApplyT(func(v *KeytabInformation) KeytabInformation {
+		if v != nil {
+			return *v
+		}
+		var ret KeytabInformation
+		return ret
+	}).(KeytabInformationOutput)
+}
+
+// A base64-encoded keytab.
+func (o KeytabInformationPtrOutput) Keytab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeytabInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Keytab
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2542,8 +5106,9 @@ type PostgresInstancePropertiesResponse struct {
 	// The raw kubernetes information
 	K8sRaw interface{} `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
-	LastUploadedDate  *string `pulumi:"lastUploadedDate"`
-	ProvisioningState string  `pulumi:"provisioningState"`
+	LastUploadedDate *string `pulumi:"lastUploadedDate"`
+	// The provisioning state of the Azure Arc-enabled PostgreSQL instance.
+	ProvisioningState string `pulumi:"provisioningState"`
 }
 
 // Postgres Instance properties.
@@ -2588,6 +5153,7 @@ func (o PostgresInstancePropertiesResponseOutput) LastUploadedDate() pulumi.Stri
 	return o.ApplyT(func(v PostgresInstancePropertiesResponse) *string { return v.LastUploadedDate }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the Azure Arc-enabled PostgreSQL instance.
 func (o PostgresInstancePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresInstancePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -2614,11 +5180,11 @@ func (val *PostgresInstanceSku) Defaults() *PostgresInstanceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := PostgresInstanceSkuTier("Hyperscale")
 		tmp.Tier = &tier_
 	}
@@ -2658,10 +5224,10 @@ func (val *PostgresInstanceSkuArgs) Defaults() *PostgresInstanceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		tmp.Dev = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = PostgresInstanceSkuTier("Hyperscale")
 	}
 	return &tmp
@@ -2880,11 +5446,11 @@ func (val *PostgresInstanceSkuResponse) Defaults() *PostgresInstanceSkuResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Hyperscale"
 		tmp.Tier = &tier_
 	}
@@ -3020,22 +5586,1480 @@ func (o PostgresInstanceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourceProperties struct {
+	// Description of the database state of the availability replica.
+	DatabaseStateDesc *string `pulumi:"databaseStateDesc"`
+	// Whether this replica is transaction committer.
+	IsCommitParticipant *bool `pulumi:"isCommitParticipant"`
+	// Whether the availability database is local.
+	IsLocal *bool `pulumi:"isLocal"`
+	// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+	IsPrimaryReplica *bool `pulumi:"isPrimaryReplica"`
+	// Whether this data movement is suspended.
+	IsSuspended *bool `pulumi:"isSuspended"`
+	// the database replica name.
+	ReplicaName *string `pulumi:"replicaName"`
+	// Description of the database suspended state reason.
+	SuspendReasonDesc *string `pulumi:"suspendReasonDesc"`
+	// Description of the health of database.
+	SynchronizationHealthDesc *string `pulumi:"synchronizationHealthDesc"`
+	// Description of the data-movement state.
+	SynchronizationStateDesc *string `pulumi:"synchronizationStateDesc"`
+}
+
+// SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput is an input type that accepts SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs and SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput` via:
+//
+//	SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs{...}
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs struct {
+	// Description of the database state of the availability replica.
+	DatabaseStateDesc pulumi.StringPtrInput `pulumi:"databaseStateDesc"`
+	// Whether this replica is transaction committer.
+	IsCommitParticipant pulumi.BoolPtrInput `pulumi:"isCommitParticipant"`
+	// Whether the availability database is local.
+	IsLocal pulumi.BoolPtrInput `pulumi:"isLocal"`
+	// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+	IsPrimaryReplica pulumi.BoolPtrInput `pulumi:"isPrimaryReplica"`
+	// Whether this data movement is suspended.
+	IsSuspended pulumi.BoolPtrInput `pulumi:"isSuspended"`
+	// the database replica name.
+	ReplicaName pulumi.StringPtrInput `pulumi:"replicaName"`
+	// Description of the database suspended state reason.
+	SuspendReasonDesc pulumi.StringPtrInput `pulumi:"suspendReasonDesc"`
+	// Description of the health of database.
+	SynchronizationHealthDesc pulumi.StringPtrInput `pulumi:"synchronizationHealthDesc"`
+	// Description of the data-movement state.
+	SynchronizationStateDesc pulumi.StringPtrInput `pulumi:"synchronizationStateDesc"`
+}
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return i.ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput)
+}
+
+// SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput is an input type that accepts SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray and SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput` via:
+//
+//	SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray{ SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs{...} }
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput
+}
+
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return i.ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput)
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return o
+}
+
+// Description of the database state of the availability replica.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) DatabaseStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *string { return v.DatabaseStateDesc }).(pulumi.StringPtrOutput)
+}
+
+// Whether this replica is transaction committer.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) IsCommitParticipant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *bool { return v.IsCommitParticipant }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the availability database is local.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) IsLocal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *bool { return v.IsLocal }).(pulumi.BoolPtrOutput)
+}
+
+// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) IsPrimaryReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *bool { return v.IsPrimaryReplica }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this data movement is suspended.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) IsSuspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *bool { return v.IsSuspended }).(pulumi.BoolPtrOutput)
+}
+
+// the database replica name.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// Description of the database suspended state reason.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) SuspendReasonDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *string { return v.SuspendReasonDesc }).(pulumi.StringPtrOutput)
+}
+
+// Description of the health of database.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) SynchronizationHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *string {
+		return v.SynchronizationHealthDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the data-movement state.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) SynchronizationStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *string {
+		return v.SynchronizationStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupDatabaseReplicaResourceProperties {
+		return vs[0].([]SqlAvailabilityGroupDatabaseReplicaResourceProperties)[vs[1].(int)]
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse struct {
+	// Description of the database state of the availability replica.
+	DatabaseStateDesc *string `pulumi:"databaseStateDesc"`
+	// Whether this replica is transaction committer.
+	IsCommitParticipant *bool `pulumi:"isCommitParticipant"`
+	// Whether the availability database is local.
+	IsLocal *bool `pulumi:"isLocal"`
+	// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+	IsPrimaryReplica *bool `pulumi:"isPrimaryReplica"`
+	// Whether this data movement is suspended.
+	IsSuspended *bool `pulumi:"isSuspended"`
+	// The provisioning state of the Arc-enabled SQL Server availability group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// the database replica name.
+	ReplicaName *string `pulumi:"replicaName"`
+	// Description of the database suspended state reason.
+	SuspendReasonDesc *string `pulumi:"suspendReasonDesc"`
+	// Description of the health of database.
+	SynchronizationHealthDesc *string `pulumi:"synchronizationHealthDesc"`
+	// Description of the data-movement state.
+	SynchronizationStateDesc *string `pulumi:"synchronizationStateDesc"`
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+// Description of the database state of the availability replica.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) DatabaseStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *string {
+		return v.DatabaseStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether this replica is transaction committer.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsCommitParticipant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *bool {
+		return v.IsCommitParticipant
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the availability database is local.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsLocal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *bool { return v.IsLocal }).(pulumi.BoolPtrOutput)
+}
+
+// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsPrimaryReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *bool { return v.IsPrimaryReplica }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this data movement is suspended.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsSuspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *bool { return v.IsSuspended }).(pulumi.BoolPtrOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Server availability group resource.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) string {
+		return v.ProvisioningState
+	}).(pulumi.StringOutput)
+}
+
+// the database replica name.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// Description of the database suspended state reason.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) SuspendReasonDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *string {
+		return v.SuspendReasonDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the health of database.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) SynchronizationHealthDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *string {
+		return v.SynchronizationHealthDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the data-movement state.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) SynchronizationStateDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *string {
+		return v.SynchronizationStateDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
+		return vs[0].([]SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse)[vs[1].(int)]
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput)
+}
+
+// The properties of Arc Sql availability group multiple database replica resource
+type SqlAvailabilityGroupMultiDatabaseReplicaResourceProperties struct {
+	// ID GUID of the database for availability group.
+	GroupDatabaseId *string `pulumi:"groupDatabaseId"`
+	// Array of  Arc Sql Availability Group Database Replicas.
+	Value []SqlAvailabilityGroupDatabaseReplicaResourceProperties `pulumi:"value"`
+}
+
+// SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesInput is an input type that accepts SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesArgs and SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesInput` via:
+//
+//	SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesArgs{...}
+type SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput
+	ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutputWithContext(context.Context) SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput
+}
+
+// The properties of Arc Sql availability group multiple database replica resource
+type SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesArgs struct {
+	// ID GUID of the database for availability group.
+	GroupDatabaseId pulumi.StringPtrInput `pulumi:"groupDatabaseId"`
+	// Array of  Arc Sql Availability Group Database Replicas.
+	Value SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput `pulumi:"value"`
+}
+
+func (SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupMultiDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput {
+	return i.ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql availability group multiple database replica resource
+type SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupMultiDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput {
+	return o
+}
+
+// ID GUID of the database for availability group.
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput) GroupDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupMultiDatabaseReplicaResourceProperties) *string { return v.GroupDatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// Array of  Arc Sql Availability Group Database Replicas.
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput) Value() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupMultiDatabaseReplicaResourceProperties) []SqlAvailabilityGroupDatabaseReplicaResourceProperties {
+		return v.Value
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput)
+}
+
+// The properties of Arc Sql availability group multiple database replica resource
+type SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponse struct {
+	// ID GUID of the database for availability group.
+	GroupDatabaseId *string `pulumi:"groupDatabaseId"`
+	// The provisioning state of the Arc-enabled SQL Server availability group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Array of  Arc Sql Availability Group Database Replicas.
+	Value []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse `pulumi:"value"`
+}
+
+// The properties of Arc Sql availability group multiple database replica resource
+type SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput() SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+// ID GUID of the database for availability group.
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput) GroupDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponse) *string {
+		return v.GroupDatabaseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Server availability group resource.
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponse) string {
+		return v.ProvisioningState
+	}).(pulumi.StringOutput)
+}
+
+// Array of  Arc Sql Availability Group Database Replicas.
+func (o SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput) Value() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponse) []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
+		return v.Value
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput)
+}
+
+// Properties of SqlAvailabilityGroup.
+type SqlAvailabilityGroupProperties struct {
+	// Id GUID of the availability group.
+	AvailabilityGroupId string `pulumi:"availabilityGroupId"`
+	// The name of the availability group.
+	AvailabilityGroupName string `pulumi:"availabilityGroupName"`
+	// SQL Server basic availability group.
+	BasicFeatures *bool `pulumi:"basicFeatures"`
+	// SQL Server availability group cluster type description
+	ClusterTypeDesc *string `pulumi:"clusterTypeDesc"`
+	// Timestamp for when the data was collected from the client machine.
+	CollectionTimestamp *string `pulumi:"collectionTimestamp"`
+	// SQL Server availability group failover for database health conditions.
+	DbFailover *bool `pulumi:"dbFailover"`
+	// SQL Server availability group DTC support enabled.
+	DtcSupport *bool `pulumi:"dtcSupport"`
+	// The name of the instance name which availability group primary is on.
+	InstanceName *string `pulumi:"instanceName"`
+	// SQL Server availability group contained system databases.
+	IsContained *bool `pulumi:"isContained"`
+	// SQL Server distributed availability group.
+	IsDistributed *bool `pulumi:"isDistributed"`
+	// Availability group required the number of synchronized secondary to commit.
+	RequiredSynchronizedSecondariesCommit *int `pulumi:"requiredSynchronizedSecondariesCommit"`
+	// SQL Server availability group current version.
+	Version *int `pulumi:"version"`
+}
+
+// SqlAvailabilityGroupPropertiesInput is an input type that accepts SqlAvailabilityGroupPropertiesArgs and SqlAvailabilityGroupPropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupPropertiesInput` via:
+//
+//	SqlAvailabilityGroupPropertiesArgs{...}
+type SqlAvailabilityGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupPropertiesOutput() SqlAvailabilityGroupPropertiesOutput
+	ToSqlAvailabilityGroupPropertiesOutputWithContext(context.Context) SqlAvailabilityGroupPropertiesOutput
+}
+
+// Properties of SqlAvailabilityGroup.
+type SqlAvailabilityGroupPropertiesArgs struct {
+	// Id GUID of the availability group.
+	AvailabilityGroupId pulumi.StringInput `pulumi:"availabilityGroupId"`
+	// The name of the availability group.
+	AvailabilityGroupName pulumi.StringInput `pulumi:"availabilityGroupName"`
+	// SQL Server basic availability group.
+	BasicFeatures pulumi.BoolPtrInput `pulumi:"basicFeatures"`
+	// SQL Server availability group cluster type description
+	ClusterTypeDesc pulumi.StringPtrInput `pulumi:"clusterTypeDesc"`
+	// Timestamp for when the data was collected from the client machine.
+	CollectionTimestamp pulumi.StringPtrInput `pulumi:"collectionTimestamp"`
+	// SQL Server availability group failover for database health conditions.
+	DbFailover pulumi.BoolPtrInput `pulumi:"dbFailover"`
+	// SQL Server availability group DTC support enabled.
+	DtcSupport pulumi.BoolPtrInput `pulumi:"dtcSupport"`
+	// The name of the instance name which availability group primary is on.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
+	// SQL Server availability group contained system databases.
+	IsContained pulumi.BoolPtrInput `pulumi:"isContained"`
+	// SQL Server distributed availability group.
+	IsDistributed pulumi.BoolPtrInput `pulumi:"isDistributed"`
+	// Availability group required the number of synchronized secondary to commit.
+	RequiredSynchronizedSecondariesCommit pulumi.IntPtrInput `pulumi:"requiredSynchronizedSecondariesCommit"`
+	// SQL Server availability group current version.
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (SqlAvailabilityGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupPropertiesArgs) ToSqlAvailabilityGroupPropertiesOutput() SqlAvailabilityGroupPropertiesOutput {
+	return i.ToSqlAvailabilityGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupPropertiesArgs) ToSqlAvailabilityGroupPropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupPropertiesOutput)
+}
+
+func (i SqlAvailabilityGroupPropertiesArgs) ToSqlAvailabilityGroupPropertiesPtrOutput() SqlAvailabilityGroupPropertiesPtrOutput {
+	return i.ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupPropertiesArgs) ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupPropertiesOutput).ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlAvailabilityGroupPropertiesPtrInput is an input type that accepts SqlAvailabilityGroupPropertiesArgs, SqlAvailabilityGroupPropertiesPtr and SqlAvailabilityGroupPropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupPropertiesPtrInput` via:
+//
+//	        SqlAvailabilityGroupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlAvailabilityGroupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupPropertiesPtrOutput() SqlAvailabilityGroupPropertiesPtrOutput
+	ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(context.Context) SqlAvailabilityGroupPropertiesPtrOutput
+}
+
+type sqlAvailabilityGroupPropertiesPtrType SqlAvailabilityGroupPropertiesArgs
+
+func SqlAvailabilityGroupPropertiesPtr(v *SqlAvailabilityGroupPropertiesArgs) SqlAvailabilityGroupPropertiesPtrInput {
+	return (*sqlAvailabilityGroupPropertiesPtrType)(v)
+}
+
+func (*sqlAvailabilityGroupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAvailabilityGroupProperties)(nil)).Elem()
+}
+
+func (i *sqlAvailabilityGroupPropertiesPtrType) ToSqlAvailabilityGroupPropertiesPtrOutput() SqlAvailabilityGroupPropertiesPtrOutput {
+	return i.ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlAvailabilityGroupPropertiesPtrType) ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupPropertiesPtrOutput)
+}
+
+// Properties of SqlAvailabilityGroup.
+type SqlAvailabilityGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupPropertiesOutput) ToSqlAvailabilityGroupPropertiesOutput() SqlAvailabilityGroupPropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupPropertiesOutput) ToSqlAvailabilityGroupPropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupPropertiesOutput) ToSqlAvailabilityGroupPropertiesPtrOutput() SqlAvailabilityGroupPropertiesPtrOutput {
+	return o.ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlAvailabilityGroupPropertiesOutput) ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlAvailabilityGroupProperties) *SqlAvailabilityGroupProperties {
+		return &v
+	}).(SqlAvailabilityGroupPropertiesPtrOutput)
+}
+
+// Id GUID of the availability group.
+func (o SqlAvailabilityGroupPropertiesOutput) AvailabilityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) string { return v.AvailabilityGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the availability group.
+func (o SqlAvailabilityGroupPropertiesOutput) AvailabilityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) string { return v.AvailabilityGroupName }).(pulumi.StringOutput)
+}
+
+// SQL Server basic availability group.
+func (o SqlAvailabilityGroupPropertiesOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *bool { return v.BasicFeatures }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group cluster type description
+func (o SqlAvailabilityGroupPropertiesOutput) ClusterTypeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *string { return v.ClusterTypeDesc }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp for when the data was collected from the client machine.
+func (o SqlAvailabilityGroupPropertiesOutput) CollectionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *string { return v.CollectionTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group failover for database health conditions.
+func (o SqlAvailabilityGroupPropertiesOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *bool { return v.DbFailover }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group DTC support enabled.
+func (o SqlAvailabilityGroupPropertiesOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *bool { return v.DtcSupport }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the instance name which availability group primary is on.
+func (o SqlAvailabilityGroupPropertiesOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o SqlAvailabilityGroupPropertiesOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *bool { return v.IsContained }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server distributed availability group.
+func (o SqlAvailabilityGroupPropertiesOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *bool { return v.IsDistributed }).(pulumi.BoolPtrOutput)
+}
+
+// Availability group required the number of synchronized secondary to commit.
+func (o SqlAvailabilityGroupPropertiesOutput) RequiredSynchronizedSecondariesCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *int { return v.RequiredSynchronizedSecondariesCommit }).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group current version.
+func (o SqlAvailabilityGroupPropertiesOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupProperties) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type SqlAvailabilityGroupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAvailabilityGroupProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupPropertiesPtrOutput) ToSqlAvailabilityGroupPropertiesPtrOutput() SqlAvailabilityGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupPropertiesPtrOutput) ToSqlAvailabilityGroupPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupPropertiesPtrOutput) Elem() SqlAvailabilityGroupPropertiesOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) SqlAvailabilityGroupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAvailabilityGroupProperties
+		return ret
+	}).(SqlAvailabilityGroupPropertiesOutput)
+}
+
+// Id GUID of the availability group.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) AvailabilityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailabilityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the availability group.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailabilityGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server basic availability group.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BasicFeatures
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group cluster type description
+func (o SqlAvailabilityGroupPropertiesPtrOutput) ClusterTypeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterTypeDesc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp for when the data was collected from the client machine.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) CollectionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CollectionTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group failover for database health conditions.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DbFailover
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group DTC support enabled.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DtcSupport
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the instance name which availability group primary is on.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsContained
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server distributed availability group.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsDistributed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Availability group required the number of synchronized secondary to commit.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) RequiredSynchronizedSecondariesCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredSynchronizedSecondariesCommit
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group current version.
+func (o SqlAvailabilityGroupPropertiesPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.IntPtrOutput)
+}
+
+// Properties of SqlAvailabilityGroup.
+type SqlAvailabilityGroupPropertiesResponse struct {
+	// Id GUID of the availability group.
+	AvailabilityGroupId string `pulumi:"availabilityGroupId"`
+	// The name of the availability group.
+	AvailabilityGroupName string `pulumi:"availabilityGroupName"`
+	// SQL Server basic availability group.
+	BasicFeatures *bool `pulumi:"basicFeatures"`
+	// SQL Server availability group cluster type description
+	ClusterTypeDesc *string `pulumi:"clusterTypeDesc"`
+	// Timestamp for when the data was collected from the client machine.
+	CollectionTimestamp *string `pulumi:"collectionTimestamp"`
+	// SQL Server availability group failover for database health conditions.
+	DbFailover *bool `pulumi:"dbFailover"`
+	// SQL Server availability group DTC support enabled.
+	DtcSupport *bool `pulumi:"dtcSupport"`
+	// The name of the instance name which availability group primary is on.
+	InstanceName *string `pulumi:"instanceName"`
+	// SQL Server availability group contained system databases.
+	IsContained *bool `pulumi:"isContained"`
+	// SQL Server distributed availability group.
+	IsDistributed *bool `pulumi:"isDistributed"`
+	// Availability group required the number of synchronized secondary to commit.
+	RequiredSynchronizedSecondariesCommit *int `pulumi:"requiredSynchronizedSecondariesCommit"`
+	// SQL Server availability group current version.
+	Version *int `pulumi:"version"`
+}
+
+// Properties of SqlAvailabilityGroup.
+type SqlAvailabilityGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupPropertiesResponseOutput) ToSqlAvailabilityGroupPropertiesResponseOutput() SqlAvailabilityGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupPropertiesResponseOutput) ToSqlAvailabilityGroupPropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupPropertiesResponseOutput {
+	return o
+}
+
+// Id GUID of the availability group.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) AvailabilityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) string { return v.AvailabilityGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the availability group.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) AvailabilityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) string { return v.AvailabilityGroupName }).(pulumi.StringOutput)
+}
+
+// SQL Server basic availability group.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *bool { return v.BasicFeatures }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group cluster type description
+func (o SqlAvailabilityGroupPropertiesResponseOutput) ClusterTypeDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *string { return v.ClusterTypeDesc }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp for when the data was collected from the client machine.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) CollectionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *string { return v.CollectionTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group failover for database health conditions.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *bool { return v.DbFailover }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group DTC support enabled.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *bool { return v.DtcSupport }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the instance name which availability group primary is on.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *bool { return v.IsContained }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server distributed availability group.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *bool { return v.IsDistributed }).(pulumi.BoolPtrOutput)
+}
+
+// Availability group required the number of synchronized secondary to commit.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) RequiredSynchronizedSecondariesCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *int { return v.RequiredSynchronizedSecondariesCommit }).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group current version.
+func (o SqlAvailabilityGroupPropertiesResponseOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupPropertiesResponse) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourceProperties struct {
+	// null
+	Configure *AvailabilityGroupConfigure `pulumi:"configure"`
+	// ID GUID of the availability group.
+	ReplicaId *string `pulumi:"replicaId"`
+	// the replica name.
+	ReplicaName *string `pulumi:"replicaName"`
+	// null
+	State *AvailabilityGroupState `pulumi:"state"`
+}
+
+// SqlAvailabilityGroupReplicaResourcePropertiesInput is an input type that accepts SqlAvailabilityGroupReplicaResourcePropertiesArgs and SqlAvailabilityGroupReplicaResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupReplicaResourcePropertiesInput` via:
+//
+//	SqlAvailabilityGroupReplicaResourcePropertiesArgs{...}
+type SqlAvailabilityGroupReplicaResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupReplicaResourcePropertiesOutput() SqlAvailabilityGroupReplicaResourcePropertiesOutput
+	ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(context.Context) SqlAvailabilityGroupReplicaResourcePropertiesOutput
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesArgs struct {
+	// null
+	Configure AvailabilityGroupConfigurePtrInput `pulumi:"configure"`
+	// ID GUID of the availability group.
+	ReplicaId pulumi.StringPtrInput `pulumi:"replicaId"`
+	// the replica name.
+	ReplicaName pulumi.StringPtrInput `pulumi:"replicaName"`
+	// null
+	State AvailabilityGroupStatePtrInput `pulumi:"state"`
+}
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupReplicaResourcePropertiesOutput() SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return i.ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupReplicaResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesOutput() SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return o
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) Configure() AvailabilityGroupConfigurePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *AvailabilityGroupConfigure { return v.Configure }).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// ID GUID of the availability group.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ReplicaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *string { return v.ReplicaId }).(pulumi.StringPtrOutput)
+}
+
+// the replica name.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) State() AvailabilityGroupStatePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *AvailabilityGroupState { return v.State }).(AvailabilityGroupStatePtrOutput)
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesResponse struct {
+	// null
+	Configure *AvailabilityGroupConfigureResponse `pulumi:"configure"`
+	// The provisioning state of the Arc-enabled SQL Server availability group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// ID GUID of the availability group.
+	ReplicaId *string `pulumi:"replicaId"`
+	// the replica name.
+	ReplicaName *string `pulumi:"replicaName"`
+	// null
+	State *AvailabilityGroupStateResponse `pulumi:"state"`
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesResponseOutput() SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) Configure() AvailabilityGroupConfigureResponsePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *AvailabilityGroupConfigureResponse {
+		return v.Configure
+	}).(AvailabilityGroupConfigureResponsePtrOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Server availability group resource.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ID GUID of the availability group.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *string { return v.ReplicaId }).(pulumi.StringPtrOutput)
+}
+
+// the replica name.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) State() AvailabilityGroupStateResponsePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *AvailabilityGroupStateResponse {
+		return v.State
+	}).(AvailabilityGroupStateResponsePtrOutput)
+}
+
+// The raw kubernetes information.
+type SqlManagedInstanceK8sRaw struct {
+	// The kubernetes spec information.
+	Spec *SqlManagedInstanceK8sSpec `pulumi:"spec"`
+}
+
+// SqlManagedInstanceK8sRawInput is an input type that accepts SqlManagedInstanceK8sRawArgs and SqlManagedInstanceK8sRawOutput values.
+// You can construct a concrete instance of `SqlManagedInstanceK8sRawInput` via:
+//
+//	SqlManagedInstanceK8sRawArgs{...}
+type SqlManagedInstanceK8sRawInput interface {
+	pulumi.Input
+
+	ToSqlManagedInstanceK8sRawOutput() SqlManagedInstanceK8sRawOutput
+	ToSqlManagedInstanceK8sRawOutputWithContext(context.Context) SqlManagedInstanceK8sRawOutput
+}
+
+// The raw kubernetes information.
+type SqlManagedInstanceK8sRawArgs struct {
+	// The kubernetes spec information.
+	Spec SqlManagedInstanceK8sSpecPtrInput `pulumi:"spec"`
+}
+
+func (SqlManagedInstanceK8sRawArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlManagedInstanceK8sRaw)(nil)).Elem()
+}
+
+func (i SqlManagedInstanceK8sRawArgs) ToSqlManagedInstanceK8sRawOutput() SqlManagedInstanceK8sRawOutput {
+	return i.ToSqlManagedInstanceK8sRawOutputWithContext(context.Background())
+}
+
+func (i SqlManagedInstanceK8sRawArgs) ToSqlManagedInstanceK8sRawOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceK8sRawOutput)
+}
+
+func (i SqlManagedInstanceK8sRawArgs) ToSqlManagedInstanceK8sRawPtrOutput() SqlManagedInstanceK8sRawPtrOutput {
+	return i.ToSqlManagedInstanceK8sRawPtrOutputWithContext(context.Background())
+}
+
+func (i SqlManagedInstanceK8sRawArgs) ToSqlManagedInstanceK8sRawPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceK8sRawOutput).ToSqlManagedInstanceK8sRawPtrOutputWithContext(ctx)
+}
+
+// SqlManagedInstanceK8sRawPtrInput is an input type that accepts SqlManagedInstanceK8sRawArgs, SqlManagedInstanceK8sRawPtr and SqlManagedInstanceK8sRawPtrOutput values.
+// You can construct a concrete instance of `SqlManagedInstanceK8sRawPtrInput` via:
+//
+//	        SqlManagedInstanceK8sRawArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlManagedInstanceK8sRawPtrInput interface {
+	pulumi.Input
+
+	ToSqlManagedInstanceK8sRawPtrOutput() SqlManagedInstanceK8sRawPtrOutput
+	ToSqlManagedInstanceK8sRawPtrOutputWithContext(context.Context) SqlManagedInstanceK8sRawPtrOutput
+}
+
+type sqlManagedInstanceK8sRawPtrType SqlManagedInstanceK8sRawArgs
+
+func SqlManagedInstanceK8sRawPtr(v *SqlManagedInstanceK8sRawArgs) SqlManagedInstanceK8sRawPtrInput {
+	return (*sqlManagedInstanceK8sRawPtrType)(v)
+}
+
+func (*sqlManagedInstanceK8sRawPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlManagedInstanceK8sRaw)(nil)).Elem()
+}
+
+func (i *sqlManagedInstanceK8sRawPtrType) ToSqlManagedInstanceK8sRawPtrOutput() SqlManagedInstanceK8sRawPtrOutput {
+	return i.ToSqlManagedInstanceK8sRawPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlManagedInstanceK8sRawPtrType) ToSqlManagedInstanceK8sRawPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceK8sRawPtrOutput)
+}
+
+// The raw kubernetes information.
+type SqlManagedInstanceK8sRawOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sRawOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlManagedInstanceK8sRaw)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sRawOutput) ToSqlManagedInstanceK8sRawOutput() SqlManagedInstanceK8sRawOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawOutput) ToSqlManagedInstanceK8sRawOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawOutput) ToSqlManagedInstanceK8sRawPtrOutput() SqlManagedInstanceK8sRawPtrOutput {
+	return o.ToSqlManagedInstanceK8sRawPtrOutputWithContext(context.Background())
+}
+
+func (o SqlManagedInstanceK8sRawOutput) ToSqlManagedInstanceK8sRawPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlManagedInstanceK8sRaw) *SqlManagedInstanceK8sRaw {
+		return &v
+	}).(SqlManagedInstanceK8sRawPtrOutput)
+}
+
+// The kubernetes spec information.
+func (o SqlManagedInstanceK8sRawOutput) Spec() SqlManagedInstanceK8sSpecPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceK8sRaw) *SqlManagedInstanceK8sSpec { return v.Spec }).(SqlManagedInstanceK8sSpecPtrOutput)
+}
+
+type SqlManagedInstanceK8sRawPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sRawPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlManagedInstanceK8sRaw)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sRawPtrOutput) ToSqlManagedInstanceK8sRawPtrOutput() SqlManagedInstanceK8sRawPtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawPtrOutput) ToSqlManagedInstanceK8sRawPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawPtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawPtrOutput) Elem() SqlManagedInstanceK8sRawOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sRaw) SqlManagedInstanceK8sRaw {
+		if v != nil {
+			return *v
+		}
+		var ret SqlManagedInstanceK8sRaw
+		return ret
+	}).(SqlManagedInstanceK8sRawOutput)
+}
+
+// The kubernetes spec information.
+func (o SqlManagedInstanceK8sRawPtrOutput) Spec() SqlManagedInstanceK8sSpecPtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sRaw) *SqlManagedInstanceK8sSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(SqlManagedInstanceK8sSpecPtrOutput)
+}
+
+// The raw kubernetes information.
+type SqlManagedInstanceK8sRawResponse struct {
+	// The kubernetes spec information.
+	Spec *SqlManagedInstanceK8sSpecResponse `pulumi:"spec"`
+}
+
+// The raw kubernetes information.
+type SqlManagedInstanceK8sRawResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sRawResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlManagedInstanceK8sRawResponse)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sRawResponseOutput) ToSqlManagedInstanceK8sRawResponseOutput() SqlManagedInstanceK8sRawResponseOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawResponseOutput) ToSqlManagedInstanceK8sRawResponseOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawResponseOutput {
+	return o
+}
+
+// The kubernetes spec information.
+func (o SqlManagedInstanceK8sRawResponseOutput) Spec() SqlManagedInstanceK8sSpecResponsePtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceK8sRawResponse) *SqlManagedInstanceK8sSpecResponse { return v.Spec }).(SqlManagedInstanceK8sSpecResponsePtrOutput)
+}
+
+type SqlManagedInstanceK8sRawResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sRawResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlManagedInstanceK8sRawResponse)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sRawResponsePtrOutput) ToSqlManagedInstanceK8sRawResponsePtrOutput() SqlManagedInstanceK8sRawResponsePtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawResponsePtrOutput) ToSqlManagedInstanceK8sRawResponsePtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sRawResponsePtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sRawResponsePtrOutput) Elem() SqlManagedInstanceK8sRawResponseOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sRawResponse) SqlManagedInstanceK8sRawResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlManagedInstanceK8sRawResponse
+		return ret
+	}).(SqlManagedInstanceK8sRawResponseOutput)
+}
+
+// The kubernetes spec information.
+func (o SqlManagedInstanceK8sRawResponsePtrOutput) Spec() SqlManagedInstanceK8sSpecResponsePtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sRawResponse) *SqlManagedInstanceK8sSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(SqlManagedInstanceK8sSpecResponsePtrOutput)
+}
+
+// The kubernetes spec information.
+type SqlManagedInstanceK8sSpec struct {
+	// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+	Replicas *int `pulumi:"replicas"`
+	// The kubernetes scheduling information.
+	Scheduling *K8sScheduling `pulumi:"scheduling"`
+}
+
+// SqlManagedInstanceK8sSpecInput is an input type that accepts SqlManagedInstanceK8sSpecArgs and SqlManagedInstanceK8sSpecOutput values.
+// You can construct a concrete instance of `SqlManagedInstanceK8sSpecInput` via:
+//
+//	SqlManagedInstanceK8sSpecArgs{...}
+type SqlManagedInstanceK8sSpecInput interface {
+	pulumi.Input
+
+	ToSqlManagedInstanceK8sSpecOutput() SqlManagedInstanceK8sSpecOutput
+	ToSqlManagedInstanceK8sSpecOutputWithContext(context.Context) SqlManagedInstanceK8sSpecOutput
+}
+
+// The kubernetes spec information.
+type SqlManagedInstanceK8sSpecArgs struct {
+	// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// The kubernetes scheduling information.
+	Scheduling K8sSchedulingPtrInput `pulumi:"scheduling"`
+}
+
+func (SqlManagedInstanceK8sSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlManagedInstanceK8sSpec)(nil)).Elem()
+}
+
+func (i SqlManagedInstanceK8sSpecArgs) ToSqlManagedInstanceK8sSpecOutput() SqlManagedInstanceK8sSpecOutput {
+	return i.ToSqlManagedInstanceK8sSpecOutputWithContext(context.Background())
+}
+
+func (i SqlManagedInstanceK8sSpecArgs) ToSqlManagedInstanceK8sSpecOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceK8sSpecOutput)
+}
+
+func (i SqlManagedInstanceK8sSpecArgs) ToSqlManagedInstanceK8sSpecPtrOutput() SqlManagedInstanceK8sSpecPtrOutput {
+	return i.ToSqlManagedInstanceK8sSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SqlManagedInstanceK8sSpecArgs) ToSqlManagedInstanceK8sSpecPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceK8sSpecOutput).ToSqlManagedInstanceK8sSpecPtrOutputWithContext(ctx)
+}
+
+// SqlManagedInstanceK8sSpecPtrInput is an input type that accepts SqlManagedInstanceK8sSpecArgs, SqlManagedInstanceK8sSpecPtr and SqlManagedInstanceK8sSpecPtrOutput values.
+// You can construct a concrete instance of `SqlManagedInstanceK8sSpecPtrInput` via:
+//
+//	        SqlManagedInstanceK8sSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlManagedInstanceK8sSpecPtrInput interface {
+	pulumi.Input
+
+	ToSqlManagedInstanceK8sSpecPtrOutput() SqlManagedInstanceK8sSpecPtrOutput
+	ToSqlManagedInstanceK8sSpecPtrOutputWithContext(context.Context) SqlManagedInstanceK8sSpecPtrOutput
+}
+
+type sqlManagedInstanceK8sSpecPtrType SqlManagedInstanceK8sSpecArgs
+
+func SqlManagedInstanceK8sSpecPtr(v *SqlManagedInstanceK8sSpecArgs) SqlManagedInstanceK8sSpecPtrInput {
+	return (*sqlManagedInstanceK8sSpecPtrType)(v)
+}
+
+func (*sqlManagedInstanceK8sSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlManagedInstanceK8sSpec)(nil)).Elem()
+}
+
+func (i *sqlManagedInstanceK8sSpecPtrType) ToSqlManagedInstanceK8sSpecPtrOutput() SqlManagedInstanceK8sSpecPtrOutput {
+	return i.ToSqlManagedInstanceK8sSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlManagedInstanceK8sSpecPtrType) ToSqlManagedInstanceK8sSpecPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceK8sSpecPtrOutput)
+}
+
+// The kubernetes spec information.
+type SqlManagedInstanceK8sSpecOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlManagedInstanceK8sSpec)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sSpecOutput) ToSqlManagedInstanceK8sSpecOutput() SqlManagedInstanceK8sSpecOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecOutput) ToSqlManagedInstanceK8sSpecOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecOutput) ToSqlManagedInstanceK8sSpecPtrOutput() SqlManagedInstanceK8sSpecPtrOutput {
+	return o.ToSqlManagedInstanceK8sSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SqlManagedInstanceK8sSpecOutput) ToSqlManagedInstanceK8sSpecPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlManagedInstanceK8sSpec) *SqlManagedInstanceK8sSpec {
+		return &v
+	}).(SqlManagedInstanceK8sSpecPtrOutput)
+}
+
+// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+func (o SqlManagedInstanceK8sSpecOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceK8sSpec) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// The kubernetes scheduling information.
+func (o SqlManagedInstanceK8sSpecOutput) Scheduling() K8sSchedulingPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceK8sSpec) *K8sScheduling { return v.Scheduling }).(K8sSchedulingPtrOutput)
+}
+
+type SqlManagedInstanceK8sSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlManagedInstanceK8sSpec)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sSpecPtrOutput) ToSqlManagedInstanceK8sSpecPtrOutput() SqlManagedInstanceK8sSpecPtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecPtrOutput) ToSqlManagedInstanceK8sSpecPtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecPtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecPtrOutput) Elem() SqlManagedInstanceK8sSpecOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sSpec) SqlManagedInstanceK8sSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SqlManagedInstanceK8sSpec
+		return ret
+	}).(SqlManagedInstanceK8sSpecOutput)
+}
+
+// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+func (o SqlManagedInstanceK8sSpecPtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// The kubernetes scheduling information.
+func (o SqlManagedInstanceK8sSpecPtrOutput) Scheduling() K8sSchedulingPtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sSpec) *K8sScheduling {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduling
+	}).(K8sSchedulingPtrOutput)
+}
+
+// The kubernetes spec information.
+type SqlManagedInstanceK8sSpecResponse struct {
+	// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+	Replicas *int `pulumi:"replicas"`
+	// The kubernetes scheduling information.
+	Scheduling *K8sSchedulingResponse `pulumi:"scheduling"`
+}
+
+// The kubernetes spec information.
+type SqlManagedInstanceK8sSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlManagedInstanceK8sSpecResponse)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sSpecResponseOutput) ToSqlManagedInstanceK8sSpecResponseOutput() SqlManagedInstanceK8sSpecResponseOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecResponseOutput) ToSqlManagedInstanceK8sSpecResponseOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecResponseOutput {
+	return o
+}
+
+// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+func (o SqlManagedInstanceK8sSpecResponseOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceK8sSpecResponse) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// The kubernetes scheduling information.
+func (o SqlManagedInstanceK8sSpecResponseOutput) Scheduling() K8sSchedulingResponsePtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceK8sSpecResponse) *K8sSchedulingResponse { return v.Scheduling }).(K8sSchedulingResponsePtrOutput)
+}
+
+type SqlManagedInstanceK8sSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlManagedInstanceK8sSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlManagedInstanceK8sSpecResponse)(nil)).Elem()
+}
+
+func (o SqlManagedInstanceK8sSpecResponsePtrOutput) ToSqlManagedInstanceK8sSpecResponsePtrOutput() SqlManagedInstanceK8sSpecResponsePtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecResponsePtrOutput) ToSqlManagedInstanceK8sSpecResponsePtrOutputWithContext(ctx context.Context) SqlManagedInstanceK8sSpecResponsePtrOutput {
+	return o
+}
+
+func (o SqlManagedInstanceK8sSpecResponsePtrOutput) Elem() SqlManagedInstanceK8sSpecResponseOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sSpecResponse) SqlManagedInstanceK8sSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlManagedInstanceK8sSpecResponse
+		return ret
+	}).(SqlManagedInstanceK8sSpecResponseOutput)
+}
+
+// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
+func (o SqlManagedInstanceK8sSpecResponsePtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// The kubernetes scheduling information.
+func (o SqlManagedInstanceK8sSpecResponsePtrOutput) Scheduling() K8sSchedulingResponsePtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceK8sSpecResponse) *K8sSchedulingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduling
+	}).(K8sSchedulingResponsePtrOutput)
+}
+
 // Properties of sqlManagedInstance.
 type SqlManagedInstanceProperties struct {
+	// Active Directory information related to this SQL Managed Instance.
+	ActiveDirectoryInformation *ActiveDirectoryInformation `pulumi:"activeDirectoryInformation"`
 	// The instance admin user
 	Admin *string `pulumi:"admin"`
 	// Username and password for basic authentication.
 	BasicLoginInformation *BasicLoginInformation `pulumi:"basicLoginInformation"`
+	// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+	ClusterId *string `pulumi:"clusterId"`
 	// null
 	DataControllerId *string `pulumi:"dataControllerId"`
 	// The instance end time
 	EndTime *string `pulumi:"endTime"`
+	// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+	ExtensionId *string `pulumi:"extensionId"`
 	// The raw kubernetes information
-	K8sRaw interface{} `pulumi:"k8sRaw"`
+	K8sRaw *SqlManagedInstanceK8sRaw `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
 	LastUploadedDate *string `pulumi:"lastUploadedDate"`
+	// The license type to apply for this managed instance.
+	LicenseType *string `pulumi:"licenseType"`
 	// The instance start time
 	StartTime *string `pulumi:"startTime"`
+}
+
+// Defaults sets the appropriate defaults for SqlManagedInstanceProperties
+func (val *SqlManagedInstanceProperties) Defaults() *SqlManagedInstanceProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LicenseType == nil {
+		licenseType_ := "BasePrice"
+		tmp.LicenseType = &licenseType_
+	}
+	return &tmp
 }
 
 // SqlManagedInstancePropertiesInput is an input type that accepts SqlManagedInstancePropertiesArgs and SqlManagedInstancePropertiesOutput values.
@@ -3051,22 +7075,41 @@ type SqlManagedInstancePropertiesInput interface {
 
 // Properties of sqlManagedInstance.
 type SqlManagedInstancePropertiesArgs struct {
+	// Active Directory information related to this SQL Managed Instance.
+	ActiveDirectoryInformation ActiveDirectoryInformationPtrInput `pulumi:"activeDirectoryInformation"`
 	// The instance admin user
 	Admin pulumi.StringPtrInput `pulumi:"admin"`
 	// Username and password for basic authentication.
 	BasicLoginInformation BasicLoginInformationPtrInput `pulumi:"basicLoginInformation"`
+	// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// null
 	DataControllerId pulumi.StringPtrInput `pulumi:"dataControllerId"`
 	// The instance end time
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+	ExtensionId pulumi.StringPtrInput `pulumi:"extensionId"`
 	// The raw kubernetes information
-	K8sRaw pulumi.Input `pulumi:"k8sRaw"`
+	K8sRaw SqlManagedInstanceK8sRawPtrInput `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
 	LastUploadedDate pulumi.StringPtrInput `pulumi:"lastUploadedDate"`
+	// The license type to apply for this managed instance.
+	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
 	// The instance start time
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
+// Defaults sets the appropriate defaults for SqlManagedInstancePropertiesArgs
+func (val *SqlManagedInstancePropertiesArgs) Defaults() *SqlManagedInstancePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LicenseType == nil {
+		tmp.LicenseType = pulumi.StringPtr("BasePrice")
+	}
+	return &tmp
+}
 func (SqlManagedInstancePropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*SqlManagedInstanceProperties)(nil)).Elem()
 }
@@ -3094,6 +7137,11 @@ func (o SqlManagedInstancePropertiesOutput) ToSqlManagedInstancePropertiesOutput
 	return o
 }
 
+// Active Directory information related to this SQL Managed Instance.
+func (o SqlManagedInstancePropertiesOutput) ActiveDirectoryInformation() ActiveDirectoryInformationPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceProperties) *ActiveDirectoryInformation { return v.ActiveDirectoryInformation }).(ActiveDirectoryInformationPtrOutput)
+}
+
 // The instance admin user
 func (o SqlManagedInstancePropertiesOutput) Admin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceProperties) *string { return v.Admin }).(pulumi.StringPtrOutput)
@@ -3102,6 +7150,11 @@ func (o SqlManagedInstancePropertiesOutput) Admin() pulumi.StringPtrOutput {
 // Username and password for basic authentication.
 func (o SqlManagedInstancePropertiesOutput) BasicLoginInformation() BasicLoginInformationPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceProperties) *BasicLoginInformation { return v.BasicLoginInformation }).(BasicLoginInformationPtrOutput)
+}
+
+// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+func (o SqlManagedInstancePropertiesOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceProperties) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
 // null
@@ -3114,14 +7167,24 @@ func (o SqlManagedInstancePropertiesOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceProperties) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+func (o SqlManagedInstancePropertiesOutput) ExtensionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceProperties) *string { return v.ExtensionId }).(pulumi.StringPtrOutput)
+}
+
 // The raw kubernetes information
-func (o SqlManagedInstancePropertiesOutput) K8sRaw() pulumi.AnyOutput {
-	return o.ApplyT(func(v SqlManagedInstanceProperties) interface{} { return v.K8sRaw }).(pulumi.AnyOutput)
+func (o SqlManagedInstancePropertiesOutput) K8sRaw() SqlManagedInstanceK8sRawPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceProperties) *SqlManagedInstanceK8sRaw { return v.K8sRaw }).(SqlManagedInstanceK8sRawPtrOutput)
 }
 
 // Last uploaded date from Kubernetes cluster. Defaults to current date time
 func (o SqlManagedInstancePropertiesOutput) LastUploadedDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceProperties) *string { return v.LastUploadedDate }).(pulumi.StringPtrOutput)
+}
+
+// The license type to apply for this managed instance.
+func (o SqlManagedInstancePropertiesOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstanceProperties) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
 // The instance start time
@@ -3135,17 +7198,37 @@ type SqlManagedInstancePropertiesResponse struct {
 	Admin *string `pulumi:"admin"`
 	// Username and password for basic authentication.
 	BasicLoginInformation *BasicLoginInformationResponse `pulumi:"basicLoginInformation"`
+	// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+	ClusterId *string `pulumi:"clusterId"`
 	// null
 	DataControllerId *string `pulumi:"dataControllerId"`
 	// The instance end time
 	EndTime *string `pulumi:"endTime"`
+	// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+	ExtensionId *string `pulumi:"extensionId"`
 	// The raw kubernetes information
-	K8sRaw interface{} `pulumi:"k8sRaw"`
+	K8sRaw *SqlManagedInstanceK8sRawResponse `pulumi:"k8sRaw"`
 	// Last uploaded date from Kubernetes cluster. Defaults to current date time
-	LastUploadedDate  *string `pulumi:"lastUploadedDate"`
-	ProvisioningState string  `pulumi:"provisioningState"`
+	LastUploadedDate *string `pulumi:"lastUploadedDate"`
+	// The license type to apply for this managed instance.
+	LicenseType *string `pulumi:"licenseType"`
+	// The provisioning state of the Arc-enabled SQL Managed Instance resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The instance start time
 	StartTime *string `pulumi:"startTime"`
+}
+
+// Defaults sets the appropriate defaults for SqlManagedInstancePropertiesResponse
+func (val *SqlManagedInstancePropertiesResponse) Defaults() *SqlManagedInstancePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LicenseType == nil {
+		licenseType_ := "BasePrice"
+		tmp.LicenseType = &licenseType_
+	}
+	return &tmp
 }
 
 // Properties of sqlManagedInstance.
@@ -3175,6 +7258,11 @@ func (o SqlManagedInstancePropertiesResponseOutput) BasicLoginInformation() Basi
 	}).(BasicLoginInformationResponsePtrOutput)
 }
 
+// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
+func (o SqlManagedInstancePropertiesResponseOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
 // null
 func (o SqlManagedInstancePropertiesResponseOutput) DataControllerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *string { return v.DataControllerId }).(pulumi.StringPtrOutput)
@@ -3185,9 +7273,14 @@ func (o SqlManagedInstancePropertiesResponseOutput) EndTime() pulumi.StringPtrOu
 	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
+func (o SqlManagedInstancePropertiesResponseOutput) ExtensionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *string { return v.ExtensionId }).(pulumi.StringPtrOutput)
+}
+
 // The raw kubernetes information
-func (o SqlManagedInstancePropertiesResponseOutput) K8sRaw() pulumi.AnyOutput {
-	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) interface{} { return v.K8sRaw }).(pulumi.AnyOutput)
+func (o SqlManagedInstancePropertiesResponseOutput) K8sRaw() SqlManagedInstanceK8sRawResponsePtrOutput {
+	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *SqlManagedInstanceK8sRawResponse { return v.K8sRaw }).(SqlManagedInstanceK8sRawResponsePtrOutput)
 }
 
 // Last uploaded date from Kubernetes cluster. Defaults to current date time
@@ -3195,6 +7288,12 @@ func (o SqlManagedInstancePropertiesResponseOutput) LastUploadedDate() pulumi.St
 	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *string { return v.LastUploadedDate }).(pulumi.StringPtrOutput)
 }
 
+// The license type to apply for this managed instance.
+func (o SqlManagedInstancePropertiesResponseOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Managed Instance resource.
 func (o SqlManagedInstancePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlManagedInstancePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -3206,17 +7305,17 @@ func (o SqlManagedInstancePropertiesResponseOutput) StartTime() pulumi.StringPtr
 
 // The resource model definition representing SKU for Azure Managed Instance - Azure Arc
 type SqlManagedInstanceSku struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	// The SKU capacity
 	Capacity *int `pulumi:"capacity"`
 	// Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
 	Dev *bool `pulumi:"dev"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	// The SKU family
 	Family *string `pulumi:"family"`
-	// The name of the SKU.  It is typically a letter+number code
-	Name string `pulumi:"name"`
+	// The name of the SKU.
+	Name SqlManagedInstanceSkuName `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+	// The pricing tier for the instance.
 	Tier *SqlManagedInstanceSkuTier `pulumi:"tier"`
 }
 
@@ -3226,11 +7325,11 @@ func (val *SqlManagedInstanceSku) Defaults() *SqlManagedInstanceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := SqlManagedInstanceSkuTier("GeneralPurpose")
 		tmp.Tier = &tier_
 	}
@@ -3250,17 +7349,17 @@ type SqlManagedInstanceSkuInput interface {
 
 // The resource model definition representing SKU for Azure Managed Instance - Azure Arc
 type SqlManagedInstanceSkuArgs struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	// The SKU capacity
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
 	// Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
 	Dev pulumi.BoolPtrInput `pulumi:"dev"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	// The SKU family
 	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The name of the SKU.  It is typically a letter+number code
-	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the SKU.
+	Name SqlManagedInstanceSkuNameInput `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size pulumi.StringPtrInput `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+	// The pricing tier for the instance.
 	Tier SqlManagedInstanceSkuTierPtrInput `pulumi:"tier"`
 }
 
@@ -3270,10 +7369,10 @@ func (val *SqlManagedInstanceSkuArgs) Defaults() *SqlManagedInstanceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		tmp.Dev = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = SqlManagedInstanceSkuTier("GeneralPurpose")
 	}
 	return &tmp
@@ -3356,7 +7455,7 @@ func (o SqlManagedInstanceSkuOutput) ToSqlManagedInstanceSkuPtrOutputWithContext
 	}).(SqlManagedInstanceSkuPtrOutput)
 }
 
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+// The SKU capacity
 func (o SqlManagedInstanceSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
@@ -3366,14 +7465,14 @@ func (o SqlManagedInstanceSkuOutput) Dev() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSku) *bool { return v.Dev }).(pulumi.BoolPtrOutput)
 }
 
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+// The SKU family
 func (o SqlManagedInstanceSkuOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSku) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU.  It is typically a letter+number code
-func (o SqlManagedInstanceSkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlManagedInstanceSku) string { return v.Name }).(pulumi.StringOutput)
+// The name of the SKU.
+func (o SqlManagedInstanceSkuOutput) Name() SqlManagedInstanceSkuNameOutput {
+	return o.ApplyT(func(v SqlManagedInstanceSku) SqlManagedInstanceSkuName { return v.Name }).(SqlManagedInstanceSkuNameOutput)
 }
 
 // The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
@@ -3381,7 +7480,7 @@ func (o SqlManagedInstanceSkuOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSku) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
-// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+// The pricing tier for the instance.
 func (o SqlManagedInstanceSkuOutput) Tier() SqlManagedInstanceSkuTierPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSku) *SqlManagedInstanceSkuTier { return v.Tier }).(SqlManagedInstanceSkuTierPtrOutput)
 }
@@ -3410,7 +7509,7 @@ func (o SqlManagedInstanceSkuPtrOutput) Elem() SqlManagedInstanceSkuOutput {
 	}).(SqlManagedInstanceSkuOutput)
 }
 
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+// The SKU capacity
 func (o SqlManagedInstanceSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSku) *int {
 		if v == nil {
@@ -3430,7 +7529,7 @@ func (o SqlManagedInstanceSkuPtrOutput) Dev() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+// The SKU family
 func (o SqlManagedInstanceSkuPtrOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSku) *string {
 		if v == nil {
@@ -3440,14 +7539,14 @@ func (o SqlManagedInstanceSkuPtrOutput) Family() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU.  It is typically a letter+number code
-func (o SqlManagedInstanceSkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlManagedInstanceSku) *string {
+// The name of the SKU.
+func (o SqlManagedInstanceSkuPtrOutput) Name() SqlManagedInstanceSkuNamePtrOutput {
+	return o.ApplyT(func(v *SqlManagedInstanceSku) *SqlManagedInstanceSkuName {
 		if v == nil {
 			return nil
 		}
 		return &v.Name
-	}).(pulumi.StringPtrOutput)
+	}).(SqlManagedInstanceSkuNamePtrOutput)
 }
 
 // The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
@@ -3460,7 +7559,7 @@ func (o SqlManagedInstanceSkuPtrOutput) Size() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+// The pricing tier for the instance.
 func (o SqlManagedInstanceSkuPtrOutput) Tier() SqlManagedInstanceSkuTierPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSku) *SqlManagedInstanceSkuTier {
 		if v == nil {
@@ -3472,17 +7571,17 @@ func (o SqlManagedInstanceSkuPtrOutput) Tier() SqlManagedInstanceSkuTierPtrOutpu
 
 // The resource model definition representing SKU for Azure Managed Instance - Azure Arc
 type SqlManagedInstanceSkuResponse struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	// The SKU capacity
 	Capacity *int `pulumi:"capacity"`
 	// Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
 	Dev *bool `pulumi:"dev"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	// The SKU family
 	Family *string `pulumi:"family"`
-	// The name of the SKU.  It is typically a letter+number code
+	// The name of the SKU.
 	Name string `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+	// The pricing tier for the instance.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -3492,11 +7591,11 @@ func (val *SqlManagedInstanceSkuResponse) Defaults() *SqlManagedInstanceSkuRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "GeneralPurpose"
 		tmp.Tier = &tier_
 	}
@@ -3518,7 +7617,7 @@ func (o SqlManagedInstanceSkuResponseOutput) ToSqlManagedInstanceSkuResponseOutp
 	return o
 }
 
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+// The SKU capacity
 func (o SqlManagedInstanceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
@@ -3528,12 +7627,12 @@ func (o SqlManagedInstanceSkuResponseOutput) Dev() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSkuResponse) *bool { return v.Dev }).(pulumi.BoolPtrOutput)
 }
 
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+// The SKU family
 func (o SqlManagedInstanceSkuResponseOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU.  It is typically a letter+number code
+// The name of the SKU.
 func (o SqlManagedInstanceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3543,7 +7642,7 @@ func (o SqlManagedInstanceSkuResponseOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
-// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+// The pricing tier for the instance.
 func (o SqlManagedInstanceSkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlManagedInstanceSkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -3572,7 +7671,7 @@ func (o SqlManagedInstanceSkuResponsePtrOutput) Elem() SqlManagedInstanceSkuResp
 	}).(SqlManagedInstanceSkuResponseOutput)
 }
 
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+// The SKU capacity
 func (o SqlManagedInstanceSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSkuResponse) *int {
 		if v == nil {
@@ -3592,7 +7691,7 @@ func (o SqlManagedInstanceSkuResponsePtrOutput) Dev() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+// The SKU family
 func (o SqlManagedInstanceSkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSkuResponse) *string {
 		if v == nil {
@@ -3602,7 +7701,7 @@ func (o SqlManagedInstanceSkuResponsePtrOutput) Family() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU.  It is typically a letter+number code
+// The name of the SKU.
 func (o SqlManagedInstanceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSkuResponse) *string {
 		if v == nil {
@@ -3622,7 +7721,7 @@ func (o SqlManagedInstanceSkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field is required to be implemented by the Resource Provider if the service has more than one tier.
+// The pricing tier for the instance.
 func (o SqlManagedInstanceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstanceSkuResponse) *string {
 		if v == nil {
@@ -3632,16 +7731,1030 @@ func (o SqlManagedInstanceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourceProperties struct {
+	// ID GUID of the availability group.
+	AvailabilityGroupId string `pulumi:"availabilityGroupId"`
+	// the availability group name.
+	AvailabilityGroupName *string `pulumi:"availabilityGroupName"`
+	// null
+	Configure *AvailabilityGroupConfigure `pulumi:"configure"`
+	// null
+	State *AvailabilityGroupState `pulumi:"state"`
+}
+
+// SqlServerAvailabilityGroupResourcePropertiesInput is an input type that accepts SqlServerAvailabilityGroupResourcePropertiesArgs and SqlServerAvailabilityGroupResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlServerAvailabilityGroupResourcePropertiesInput` via:
+//
+//	SqlServerAvailabilityGroupResourcePropertiesArgs{...}
+type SqlServerAvailabilityGroupResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlServerAvailabilityGroupResourcePropertiesOutput() SqlServerAvailabilityGroupResourcePropertiesOutput
+	ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(context.Context) SqlServerAvailabilityGroupResourcePropertiesOutput
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesArgs struct {
+	// ID GUID of the availability group.
+	AvailabilityGroupId pulumi.StringInput `pulumi:"availabilityGroupId"`
+	// the availability group name.
+	AvailabilityGroupName pulumi.StringPtrInput `pulumi:"availabilityGroupName"`
+	// null
+	Configure AvailabilityGroupConfigurePtrInput `pulumi:"configure"`
+	// null
+	State AvailabilityGroupStatePtrInput `pulumi:"state"`
+}
+
+func (SqlServerAvailabilityGroupResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourceProperties)(nil)).Elem()
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesArgs) ToSqlServerAvailabilityGroupResourcePropertiesOutput() SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesArgs) ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourceProperties)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) ToSqlServerAvailabilityGroupResourcePropertiesOutput() SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return o
+}
+
+// ID GUID of the availability group.
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) AvailabilityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) string { return v.AvailabilityGroupId }).(pulumi.StringOutput)
+}
+
+// the availability group name.
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) *string { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// null
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) Configure() AvailabilityGroupConfigurePtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) *AvailabilityGroupConfigure { return v.Configure }).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// null
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) State() AvailabilityGroupStatePtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) *AvailabilityGroupState { return v.State }).(AvailabilityGroupStatePtrOutput)
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesResponse struct {
+	// ID GUID of the availability group.
+	AvailabilityGroupId string `pulumi:"availabilityGroupId"`
+	// the availability group name.
+	AvailabilityGroupName *string `pulumi:"availabilityGroupName"`
+	// null
+	Configure *AvailabilityGroupConfigureResponse `pulumi:"configure"`
+	// The provisioning state of the Arc-enabled SQL Server availability group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// null
+	State *AvailabilityGroupStateResponse `pulumi:"state"`
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseOutput() SqlServerAvailabilityGroupResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesResponseOutput {
+	return o
+}
+
+// ID GUID of the availability group.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) AvailabilityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.AvailabilityGroupId }).(pulumi.StringOutput)
+}
+
+// the availability group name.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) *string { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// null
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) Configure() AvailabilityGroupConfigureResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) *AvailabilityGroupConfigureResponse {
+		return v.Configure
+	}).(AvailabilityGroupConfigureResponsePtrOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Server availability group resource.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// null
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) State() AvailabilityGroupStateResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) *AvailabilityGroupStateResponse {
+		return v.State
+	}).(AvailabilityGroupStateResponsePtrOutput)
+}
+
+// The properties of Arc Sql Server database resource
+type SqlServerDatabaseResourceProperties struct {
+	BackupInformation *SqlServerDatabaseResourcePropertiesBackupInformation `pulumi:"backupInformation"`
+	// Collation of the database.
+	CollationName *string `pulumi:"collationName"`
+	// Compatibility level of the database
+	CompatibilityLevel *int `pulumi:"compatibilityLevel"`
+	// Creation date of the database.
+	DatabaseCreationDate *string `pulumi:"databaseCreationDate"`
+	// List of features that are enabled for the database
+	DatabaseOptions *SqlServerDatabaseResourcePropertiesDatabaseOptions `pulumi:"databaseOptions"`
+	// Whether the database is read only or not.
+	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// Status of the database.
+	RecoveryMode *string `pulumi:"recoveryMode"`
+	// Size of the database.
+	SizeMB *float64 `pulumi:"sizeMB"`
+	// Space left of the database.
+	SpaceAvailableMB *float64 `pulumi:"spaceAvailableMB"`
+	// State of the database.
+	State *string `pulumi:"state"`
+}
+
+// SqlServerDatabaseResourcePropertiesInput is an input type that accepts SqlServerDatabaseResourcePropertiesArgs and SqlServerDatabaseResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseResourcePropertiesInput` via:
+//
+//	SqlServerDatabaseResourcePropertiesArgs{...}
+type SqlServerDatabaseResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseResourcePropertiesOutput() SqlServerDatabaseResourcePropertiesOutput
+	ToSqlServerDatabaseResourcePropertiesOutputWithContext(context.Context) SqlServerDatabaseResourcePropertiesOutput
+}
+
+// The properties of Arc Sql Server database resource
+type SqlServerDatabaseResourcePropertiesArgs struct {
+	BackupInformation SqlServerDatabaseResourcePropertiesBackupInformationPtrInput `pulumi:"backupInformation"`
+	// Collation of the database.
+	CollationName pulumi.StringPtrInput `pulumi:"collationName"`
+	// Compatibility level of the database
+	CompatibilityLevel pulumi.IntPtrInput `pulumi:"compatibilityLevel"`
+	// Creation date of the database.
+	DatabaseCreationDate pulumi.StringPtrInput `pulumi:"databaseCreationDate"`
+	// List of features that are enabled for the database
+	DatabaseOptions SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrInput `pulumi:"databaseOptions"`
+	// Whether the database is read only or not.
+	IsReadOnly pulumi.BoolPtrInput `pulumi:"isReadOnly"`
+	// Status of the database.
+	RecoveryMode pulumi.StringPtrInput `pulumi:"recoveryMode"`
+	// Size of the database.
+	SizeMB pulumi.Float64PtrInput `pulumi:"sizeMB"`
+	// Space left of the database.
+	SpaceAvailableMB pulumi.Float64PtrInput `pulumi:"spaceAvailableMB"`
+	// State of the database.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (SqlServerDatabaseResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourceProperties)(nil)).Elem()
+}
+
+func (i SqlServerDatabaseResourcePropertiesArgs) ToSqlServerDatabaseResourcePropertiesOutput() SqlServerDatabaseResourcePropertiesOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseResourcePropertiesArgs) ToSqlServerDatabaseResourcePropertiesOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql Server database resource
+type SqlServerDatabaseResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourceProperties)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesOutput) ToSqlServerDatabaseResourcePropertiesOutput() SqlServerDatabaseResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesOutput) ToSqlServerDatabaseResourcePropertiesOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesOutput) BackupInformation() SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *SqlServerDatabaseResourcePropertiesBackupInformation {
+		return v.BackupInformation
+	}).(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput)
+}
+
+// Collation of the database.
+func (o SqlServerDatabaseResourcePropertiesOutput) CollationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.CollationName }).(pulumi.StringPtrOutput)
+}
+
+// Compatibility level of the database
+func (o SqlServerDatabaseResourcePropertiesOutput) CompatibilityLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *int { return v.CompatibilityLevel }).(pulumi.IntPtrOutput)
+}
+
+// Creation date of the database.
+func (o SqlServerDatabaseResourcePropertiesOutput) DatabaseCreationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.DatabaseCreationDate }).(pulumi.StringPtrOutput)
+}
+
+// List of features that are enabled for the database
+func (o SqlServerDatabaseResourcePropertiesOutput) DatabaseOptions() SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *SqlServerDatabaseResourcePropertiesDatabaseOptions {
+		return v.DatabaseOptions
+	}).(SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput)
+}
+
+// Whether the database is read only or not.
+func (o SqlServerDatabaseResourcePropertiesOutput) IsReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Status of the database.
+func (o SqlServerDatabaseResourcePropertiesOutput) RecoveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.RecoveryMode }).(pulumi.StringPtrOutput)
+}
+
+// Size of the database.
+func (o SqlServerDatabaseResourcePropertiesOutput) SizeMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *float64 { return v.SizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// Space left of the database.
+func (o SqlServerDatabaseResourcePropertiesOutput) SpaceAvailableMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *float64 { return v.SpaceAvailableMB }).(pulumi.Float64PtrOutput)
+}
+
+// State of the database.
+func (o SqlServerDatabaseResourcePropertiesOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesBackupInformation struct {
+	// Date time of last full backup.
+	LastFullBackup *string `pulumi:"lastFullBackup"`
+	// Date time of last log backup.
+	LastLogBackup *string `pulumi:"lastLogBackup"`
+}
+
+// SqlServerDatabaseResourcePropertiesBackupInformationInput is an input type that accepts SqlServerDatabaseResourcePropertiesBackupInformationArgs and SqlServerDatabaseResourcePropertiesBackupInformationOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseResourcePropertiesBackupInformationInput` via:
+//
+//	SqlServerDatabaseResourcePropertiesBackupInformationArgs{...}
+type SqlServerDatabaseResourcePropertiesBackupInformationInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseResourcePropertiesBackupInformationOutput() SqlServerDatabaseResourcePropertiesBackupInformationOutput
+	ToSqlServerDatabaseResourcePropertiesBackupInformationOutputWithContext(context.Context) SqlServerDatabaseResourcePropertiesBackupInformationOutput
+}
+
+type SqlServerDatabaseResourcePropertiesBackupInformationArgs struct {
+	// Date time of last full backup.
+	LastFullBackup pulumi.StringPtrInput `pulumi:"lastFullBackup"`
+	// Date time of last log backup.
+	LastLogBackup pulumi.StringPtrInput `pulumi:"lastLogBackup"`
+}
+
+func (SqlServerDatabaseResourcePropertiesBackupInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesBackupInformation)(nil)).Elem()
+}
+
+func (i SqlServerDatabaseResourcePropertiesBackupInformationArgs) ToSqlServerDatabaseResourcePropertiesBackupInformationOutput() SqlServerDatabaseResourcePropertiesBackupInformationOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesBackupInformationOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseResourcePropertiesBackupInformationArgs) ToSqlServerDatabaseResourcePropertiesBackupInformationOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesBackupInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesBackupInformationOutput)
+}
+
+func (i SqlServerDatabaseResourcePropertiesBackupInformationArgs) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutput() SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseResourcePropertiesBackupInformationArgs) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesBackupInformationOutput).ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(ctx)
+}
+
+// SqlServerDatabaseResourcePropertiesBackupInformationPtrInput is an input type that accepts SqlServerDatabaseResourcePropertiesBackupInformationArgs, SqlServerDatabaseResourcePropertiesBackupInformationPtr and SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseResourcePropertiesBackupInformationPtrInput` via:
+//
+//	        SqlServerDatabaseResourcePropertiesBackupInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerDatabaseResourcePropertiesBackupInformationPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutput() SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput
+	ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(context.Context) SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput
+}
+
+type sqlServerDatabaseResourcePropertiesBackupInformationPtrType SqlServerDatabaseResourcePropertiesBackupInformationArgs
+
+func SqlServerDatabaseResourcePropertiesBackupInformationPtr(v *SqlServerDatabaseResourcePropertiesBackupInformationArgs) SqlServerDatabaseResourcePropertiesBackupInformationPtrInput {
+	return (*sqlServerDatabaseResourcePropertiesBackupInformationPtrType)(v)
+}
+
+func (*sqlServerDatabaseResourcePropertiesBackupInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseResourcePropertiesBackupInformation)(nil)).Elem()
+}
+
+func (i *sqlServerDatabaseResourcePropertiesBackupInformationPtrType) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutput() SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerDatabaseResourcePropertiesBackupInformationPtrType) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesBackupInformationOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesBackupInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesBackupInformation)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationOutput) ToSqlServerDatabaseResourcePropertiesBackupInformationOutput() SqlServerDatabaseResourcePropertiesBackupInformationOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationOutput) ToSqlServerDatabaseResourcePropertiesBackupInformationOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesBackupInformationOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationOutput) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutput() SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return o.ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationOutput) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerDatabaseResourcePropertiesBackupInformation) *SqlServerDatabaseResourcePropertiesBackupInformation {
+		return &v
+	}).(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput)
+}
+
+// Date time of last full backup.
+func (o SqlServerDatabaseResourcePropertiesBackupInformationOutput) LastFullBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesBackupInformation) *string { return v.LastFullBackup }).(pulumi.StringPtrOutput)
+}
+
+// Date time of last log backup.
+func (o SqlServerDatabaseResourcePropertiesBackupInformationOutput) LastLogBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesBackupInformation) *string { return v.LastLogBackup }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseResourcePropertiesBackupInformation)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutput() SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput) ToSqlServerDatabaseResourcePropertiesBackupInformationPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput) Elem() SqlServerDatabaseResourcePropertiesBackupInformationOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesBackupInformation) SqlServerDatabaseResourcePropertiesBackupInformation {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerDatabaseResourcePropertiesBackupInformation
+		return ret
+	}).(SqlServerDatabaseResourcePropertiesBackupInformationOutput)
+}
+
+// Date time of last full backup.
+func (o SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput) LastFullBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesBackupInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastFullBackup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date time of last log backup.
+func (o SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput) LastLogBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesBackupInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastLogBackup
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of features that are enabled for the database
+type SqlServerDatabaseResourcePropertiesDatabaseOptions struct {
+	IsAutoCloseOn               *bool `pulumi:"isAutoCloseOn"`
+	IsAutoCreateStatsOn         *bool `pulumi:"isAutoCreateStatsOn"`
+	IsAutoShrinkOn              *bool `pulumi:"isAutoShrinkOn"`
+	IsAutoUpdateStatsOn         *bool `pulumi:"isAutoUpdateStatsOn"`
+	IsEncrypted                 *bool `pulumi:"isEncrypted"`
+	IsMemoryOptimizationEnabled *bool `pulumi:"isMemoryOptimizationEnabled"`
+	IsRemoteDataArchiveEnabled  *bool `pulumi:"isRemoteDataArchiveEnabled"`
+	IsTrustworthyOn             *bool `pulumi:"isTrustworthyOn"`
+}
+
+// SqlServerDatabaseResourcePropertiesDatabaseOptionsInput is an input type that accepts SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs and SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseResourcePropertiesDatabaseOptionsInput` via:
+//
+//	SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs{...}
+type SqlServerDatabaseResourcePropertiesDatabaseOptionsInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput
+	ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutputWithContext(context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput
+}
+
+// List of features that are enabled for the database
+type SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs struct {
+	IsAutoCloseOn               pulumi.BoolPtrInput `pulumi:"isAutoCloseOn"`
+	IsAutoCreateStatsOn         pulumi.BoolPtrInput `pulumi:"isAutoCreateStatsOn"`
+	IsAutoShrinkOn              pulumi.BoolPtrInput `pulumi:"isAutoShrinkOn"`
+	IsAutoUpdateStatsOn         pulumi.BoolPtrInput `pulumi:"isAutoUpdateStatsOn"`
+	IsEncrypted                 pulumi.BoolPtrInput `pulumi:"isEncrypted"`
+	IsMemoryOptimizationEnabled pulumi.BoolPtrInput `pulumi:"isMemoryOptimizationEnabled"`
+	IsRemoteDataArchiveEnabled  pulumi.BoolPtrInput `pulumi:"isRemoteDataArchiveEnabled"`
+	IsTrustworthyOn             pulumi.BoolPtrInput `pulumi:"isTrustworthyOn"`
+}
+
+func (SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesDatabaseOptions)(nil)).Elem()
+}
+
+func (i SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput)
+}
+
+func (i SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput).ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(ctx)
+}
+
+// SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrInput is an input type that accepts SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs, SqlServerDatabaseResourcePropertiesDatabaseOptionsPtr and SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrInput` via:
+//
+//	        SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput
+	ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput
+}
+
+type sqlServerDatabaseResourcePropertiesDatabaseOptionsPtrType SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs
+
+func SqlServerDatabaseResourcePropertiesDatabaseOptionsPtr(v *SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs) SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrInput {
+	return (*sqlServerDatabaseResourcePropertiesDatabaseOptionsPtrType)(v)
+}
+
+func (*sqlServerDatabaseResourcePropertiesDatabaseOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseResourcePropertiesDatabaseOptions)(nil)).Elem()
+}
+
+func (i *sqlServerDatabaseResourcePropertiesDatabaseOptionsPtrType) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return i.ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerDatabaseResourcePropertiesDatabaseOptionsPtrType) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput)
+}
+
+// List of features that are enabled for the database
+type SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesDatabaseOptions)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return o.ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerDatabaseResourcePropertiesDatabaseOptions) *SqlServerDatabaseResourcePropertiesDatabaseOptions {
+		return &v
+	}).(SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsAutoCloseOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsAutoCloseOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsAutoCreateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsAutoCreateStatsOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsAutoShrinkOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsAutoShrinkOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsAutoUpdateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsAutoUpdateStatsOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsMemoryOptimizationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsMemoryOptimizationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsRemoteDataArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsRemoteDataArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput) IsTrustworthyOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool { return v.IsTrustworthyOn }).(pulumi.BoolPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseResourcePropertiesDatabaseOptions)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput() SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) ToSqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) Elem() SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) SqlServerDatabaseResourcePropertiesDatabaseOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerDatabaseResourcePropertiesDatabaseOptions
+		return ret
+	}).(SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsAutoCloseOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoCloseOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsAutoCreateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoCreateStatsOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsAutoShrinkOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoShrinkOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsAutoUpdateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoUpdateStatsOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEncrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsMemoryOptimizationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsMemoryOptimizationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsRemoteDataArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsRemoteDataArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsTrustworthyOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsTrustworthyOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The properties of Arc Sql Server database resource
+type SqlServerDatabaseResourcePropertiesResponse struct {
+	BackupInformation *SqlServerDatabaseResourcePropertiesResponseBackupInformation `pulumi:"backupInformation"`
+	// Collation of the database.
+	CollationName *string `pulumi:"collationName"`
+	// Compatibility level of the database
+	CompatibilityLevel *int `pulumi:"compatibilityLevel"`
+	// Creation date of the database.
+	DatabaseCreationDate *string `pulumi:"databaseCreationDate"`
+	// List of features that are enabled for the database
+	DatabaseOptions *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions `pulumi:"databaseOptions"`
+	// Whether the database is read only or not.
+	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// The provisioning state of the Arc-enabled SQL Server database resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Status of the database.
+	RecoveryMode *string `pulumi:"recoveryMode"`
+	// Size of the database.
+	SizeMB *float64 `pulumi:"sizeMB"`
+	// Space left of the database.
+	SpaceAvailableMB *float64 `pulumi:"spaceAvailableMB"`
+	// State of the database.
+	State *string `pulumi:"state"`
+}
+
+// The properties of Arc Sql Server database resource
+type SqlServerDatabaseResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) ToSqlServerDatabaseResourcePropertiesResponseOutput() SqlServerDatabaseResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) ToSqlServerDatabaseResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) BackupInformation() SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *SqlServerDatabaseResourcePropertiesResponseBackupInformation {
+		return v.BackupInformation
+	}).(SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput)
+}
+
+// Collation of the database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) CollationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.CollationName }).(pulumi.StringPtrOutput)
+}
+
+// Compatibility level of the database
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) CompatibilityLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *int { return v.CompatibilityLevel }).(pulumi.IntPtrOutput)
+}
+
+// Creation date of the database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) DatabaseCreationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.DatabaseCreationDate }).(pulumi.StringPtrOutput)
+}
+
+// List of features that are enabled for the database
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) DatabaseOptions() SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
+		return v.DatabaseOptions
+	}).(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput)
+}
+
+// Whether the database is read only or not.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) IsReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Server database resource.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Status of the database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) RecoveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.RecoveryMode }).(pulumi.StringPtrOutput)
+}
+
+// Size of the database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) SizeMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *float64 { return v.SizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// Space left of the database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) SpaceAvailableMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *float64 { return v.SpaceAvailableMB }).(pulumi.Float64PtrOutput)
+}
+
+// State of the database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesResponseBackupInformation struct {
+	// Date time of last full backup.
+	LastFullBackup *string `pulumi:"lastFullBackup"`
+	// Date time of last log backup.
+	LastLogBackup *string `pulumi:"lastLogBackup"`
+}
+
+type SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesResponseBackupInformation)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput) ToSqlServerDatabaseResourcePropertiesResponseBackupInformationOutput() SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput) ToSqlServerDatabaseResourcePropertiesResponseBackupInformationOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput {
+	return o
+}
+
+// Date time of last full backup.
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput) LastFullBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseBackupInformation) *string { return v.LastFullBackup }).(pulumi.StringPtrOutput)
+}
+
+// Date time of last log backup.
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput) LastLogBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseBackupInformation) *string { return v.LastLogBackup }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseResourcePropertiesResponseBackupInformation)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput) ToSqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput() SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput) ToSqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput) Elem() SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseBackupInformation) SqlServerDatabaseResourcePropertiesResponseBackupInformation {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerDatabaseResourcePropertiesResponseBackupInformation
+		return ret
+	}).(SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput)
+}
+
+// Date time of last full backup.
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput) LastFullBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseBackupInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastFullBackup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date time of last log backup.
+func (o SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput) LastLogBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseBackupInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastLogBackup
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of features that are enabled for the database
+type SqlServerDatabaseResourcePropertiesResponseDatabaseOptions struct {
+	IsAutoCloseOn               *bool `pulumi:"isAutoCloseOn"`
+	IsAutoCreateStatsOn         *bool `pulumi:"isAutoCreateStatsOn"`
+	IsAutoShrinkOn              *bool `pulumi:"isAutoShrinkOn"`
+	IsAutoUpdateStatsOn         *bool `pulumi:"isAutoUpdateStatsOn"`
+	IsEncrypted                 *bool `pulumi:"isEncrypted"`
+	IsMemoryOptimizationEnabled *bool `pulumi:"isMemoryOptimizationEnabled"`
+	IsRemoteDataArchiveEnabled  *bool `pulumi:"isRemoteDataArchiveEnabled"`
+	IsTrustworthyOn             *bool `pulumi:"isTrustworthyOn"`
+}
+
+// List of features that are enabled for the database
+type SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseResourcePropertiesResponseDatabaseOptions)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) ToSqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput() SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) ToSqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsAutoCloseOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool { return v.IsAutoCloseOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsAutoCreateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool { return v.IsAutoCreateStatsOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsAutoShrinkOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool { return v.IsAutoShrinkOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsAutoUpdateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool { return v.IsAutoUpdateStatsOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool { return v.IsEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsMemoryOptimizationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		return v.IsMemoryOptimizationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsRemoteDataArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		return v.IsRemoteDataArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput) IsTrustworthyOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool { return v.IsTrustworthyOn }).(pulumi.BoolPtrOutput)
+}
+
+type SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseResourcePropertiesResponseDatabaseOptions)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) ToSqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput() SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) ToSqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutputWithContext(ctx context.Context) SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) Elem() SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerDatabaseResourcePropertiesResponseDatabaseOptions
+		return ret
+	}).(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsAutoCloseOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoCloseOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsAutoCreateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoCreateStatsOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsAutoShrinkOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoShrinkOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsAutoUpdateStatsOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoUpdateStatsOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEncrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsMemoryOptimizationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsMemoryOptimizationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsRemoteDataArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsRemoteDataArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsTrustworthyOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsTrustworthyOn
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Properties of SqlServerInstance.
 type SqlServerInstanceProperties struct {
+	// Status of Azure Defender.
+	AzureDefenderStatus *string `pulumi:"azureDefenderStatus"`
+	// Timestamp of last Azure Defender status update.
+	AzureDefenderStatusLastUpdated *string `pulumi:"azureDefenderStatusLastUpdated"`
 	// SQL Server collation.
 	Collation *string `pulumi:"collation"`
 	// ARM Resource id of the container resource (Azure Arc for Servers).
 	ContainerResourceId string `pulumi:"containerResourceId"`
+	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
+	Cores *string `pulumi:"cores"`
 	// SQL Server current version.
 	CurrentVersion *string `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition *string `pulumi:"edition"`
+	// Type of host for Azure Arc SQL Server
+	HostType *string `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName *string `pulumi:"instanceName"`
 	// SQL Server license type.
@@ -3675,14 +8788,22 @@ type SqlServerInstancePropertiesInput interface {
 
 // Properties of SqlServerInstance.
 type SqlServerInstancePropertiesArgs struct {
+	// Status of Azure Defender.
+	AzureDefenderStatus pulumi.StringPtrInput `pulumi:"azureDefenderStatus"`
+	// Timestamp of last Azure Defender status update.
+	AzureDefenderStatusLastUpdated pulumi.StringPtrInput `pulumi:"azureDefenderStatusLastUpdated"`
 	// SQL Server collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
 	// ARM Resource id of the container resource (Azure Arc for Servers).
 	ContainerResourceId pulumi.StringInput `pulumi:"containerResourceId"`
+	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
+	Cores pulumi.StringPtrInput `pulumi:"cores"`
 	// SQL Server current version.
 	CurrentVersion pulumi.StringPtrInput `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Type of host for Azure Arc SQL Server
+	HostType pulumi.StringPtrInput `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// SQL Server license type.
@@ -3781,6 +8902,16 @@ func (o SqlServerInstancePropertiesOutput) ToSqlServerInstancePropertiesPtrOutpu
 	}).(SqlServerInstancePropertiesPtrOutput)
 }
 
+// Status of Azure Defender.
+func (o SqlServerInstancePropertiesOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.AzureDefenderStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of last Azure Defender status update.
+func (o SqlServerInstancePropertiesOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringPtrOutput)
+}
+
 // SQL Server collation.
 func (o SqlServerInstancePropertiesOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Collation }).(pulumi.StringPtrOutput)
@@ -3791,6 +8922,11 @@ func (o SqlServerInstancePropertiesOutput) ContainerResourceId() pulumi.StringOu
 	return o.ApplyT(func(v SqlServerInstanceProperties) string { return v.ContainerResourceId }).(pulumi.StringOutput)
 }
 
+// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
+func (o SqlServerInstancePropertiesOutput) Cores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Cores }).(pulumi.StringPtrOutput)
+}
+
 // SQL Server current version.
 func (o SqlServerInstancePropertiesOutput) CurrentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.CurrentVersion }).(pulumi.StringPtrOutput)
@@ -3799,6 +8935,11 @@ func (o SqlServerInstancePropertiesOutput) CurrentVersion() pulumi.StringPtrOutp
 // SQL Server edition.
 func (o SqlServerInstancePropertiesOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Type of host for Azure Arc SQL Server
+func (o SqlServerInstancePropertiesOutput) HostType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.HostType }).(pulumi.StringPtrOutput)
 }
 
 // SQL Server instance name.
@@ -3870,6 +9011,26 @@ func (o SqlServerInstancePropertiesPtrOutput) Elem() SqlServerInstanceProperties
 	}).(SqlServerInstancePropertiesOutput)
 }
 
+// Status of Azure Defender.
+func (o SqlServerInstancePropertiesPtrOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDefenderStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of last Azure Defender status update.
+func (o SqlServerInstancePropertiesPtrOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDefenderStatusLastUpdated
+	}).(pulumi.StringPtrOutput)
+}
+
 // SQL Server collation.
 func (o SqlServerInstancePropertiesPtrOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
@@ -3890,6 +9051,16 @@ func (o SqlServerInstancePropertiesPtrOutput) ContainerResourceId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
+func (o SqlServerInstancePropertiesPtrOutput) Cores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.StringPtrOutput)
+}
+
 // SQL Server current version.
 func (o SqlServerInstancePropertiesPtrOutput) CurrentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
@@ -3907,6 +9078,16 @@ func (o SqlServerInstancePropertiesPtrOutput) Edition() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of host for Azure Arc SQL Server
+func (o SqlServerInstancePropertiesPtrOutput) HostType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4002,16 +9183,24 @@ func (o SqlServerInstancePropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Properties of SqlServerInstance.
 type SqlServerInstancePropertiesResponse struct {
+	// Status of Azure Defender.
+	AzureDefenderStatus *string `pulumi:"azureDefenderStatus"`
+	// Timestamp of last Azure Defender status update.
+	AzureDefenderStatusLastUpdated *string `pulumi:"azureDefenderStatusLastUpdated"`
 	// SQL Server collation.
 	Collation *string `pulumi:"collation"`
 	// ARM Resource id of the container resource (Azure Arc for Servers).
 	ContainerResourceId string `pulumi:"containerResourceId"`
+	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
+	Cores *string `pulumi:"cores"`
 	// The time when the resource was created.
 	CreateTime string `pulumi:"createTime"`
 	// SQL Server current version.
 	CurrentVersion *string `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition *string `pulumi:"edition"`
+	// Type of host for Azure Arc SQL Server
+	HostType *string `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName *string `pulumi:"instanceName"`
 	// SQL Server license type.
@@ -4019,8 +9208,9 @@ type SqlServerInstancePropertiesResponse struct {
 	// SQL Server update level.
 	PatchLevel *string `pulumi:"patchLevel"`
 	// SQL Server product ID.
-	ProductId         *string `pulumi:"productId"`
-	ProvisioningState string  `pulumi:"provisioningState"`
+	ProductId *string `pulumi:"productId"`
+	// The provisioning state of the Arc-enabled SQL Server resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The cloud connectivity status.
 	Status string `pulumi:"status"`
 	// Dynamic TCP ports used by SQL Server.
@@ -4048,6 +9238,16 @@ func (o SqlServerInstancePropertiesResponseOutput) ToSqlServerInstanceProperties
 	return o
 }
 
+// Status of Azure Defender.
+func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.AzureDefenderStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of last Azure Defender status update.
+func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringPtrOutput)
+}
+
 // SQL Server collation.
 func (o SqlServerInstancePropertiesResponseOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Collation }).(pulumi.StringPtrOutput)
@@ -4056,6 +9256,11 @@ func (o SqlServerInstancePropertiesResponseOutput) Collation() pulumi.StringPtrO
 // ARM Resource id of the container resource (Azure Arc for Servers).
 func (o SqlServerInstancePropertiesResponseOutput) ContainerResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.ContainerResourceId }).(pulumi.StringOutput)
+}
+
+// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
+func (o SqlServerInstancePropertiesResponseOutput) Cores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Cores }).(pulumi.StringPtrOutput)
 }
 
 // The time when the resource was created.
@@ -4071,6 +9276,11 @@ func (o SqlServerInstancePropertiesResponseOutput) CurrentVersion() pulumi.Strin
 // SQL Server edition.
 func (o SqlServerInstancePropertiesResponseOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Type of host for Azure Arc SQL Server
+func (o SqlServerInstancePropertiesResponseOutput) HostType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.HostType }).(pulumi.StringPtrOutput)
 }
 
 // SQL Server instance name.
@@ -4093,6 +9303,7 @@ func (o SqlServerInstancePropertiesResponseOutput) ProductId() pulumi.StringPtrO
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
 }
 
+// The provisioning state of the Arc-enabled SQL Server resource.
 func (o SqlServerInstancePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -4122,23 +9333,23 @@ func (o SqlServerInstancePropertiesResponseOutput) Version() pulumi.StringPtrOut
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Read only system data
+// Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC)
+	// The timestamp of resource creation (UTC).
 	CreatedAt *string `pulumi:"createdAt"`
-	// An identifier for the identity that created the resource
+	// The identity that created the resource.
 	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource
+	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
 	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// An identifier for the identity that last modified the resource
+	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource
+	// The type of identity that last modified the resource.
 	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 }
 
-// Read only system data
+// Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponseOutput struct{ *pulumi.OutputState }
 
 func (SystemDataResponseOutput) ElementType() reflect.Type {
@@ -4153,17 +9364,17 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The timestamp of resource creation (UTC)
+// The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// An identifier for the identity that created the resource
+// The identity that created the resource.
 func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that created the resource
+// The type of identity that created the resource.
 func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
@@ -4173,12 +9384,12 @@ func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
 
-// An identifier for the identity that last modified the resource
+// The identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource
+// The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
@@ -4766,7 +9977,19 @@ func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryDomainControllerResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryDomainControllerResponseArrayOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryDomainControllersOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryDomainControllersPtrOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryDomainControllersResponseOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryDomainControllersResponsePtrOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryInformationOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryInformationPtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigureOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigurePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigureResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigureResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupStateOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupStatePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupStateResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationPtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationResponseOutput{})
@@ -4777,6 +10000,24 @@ func init() {
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FailoverGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(FailoverGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(FailoverGroupSpecOutput{})
+	pulumi.RegisterOutputType(FailoverGroupSpecResponseOutput{})
+	pulumi.RegisterOutputType(K8sResourceRequirementsOutput{})
+	pulumi.RegisterOutputType(K8sResourceRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(K8sResourceRequirementsResponseOutput{})
+	pulumi.RegisterOutputType(K8sResourceRequirementsResponsePtrOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingOptionsOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingOptionsResponseOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(K8sSchedulingResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeytabInformationOutput{})
+	pulumi.RegisterOutputType(KeytabInformationPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigResponseOutput{})
@@ -4791,12 +10032,43 @@ func init() {
 	pulumi.RegisterOutputType(PostgresInstanceSkuPtrOutput{})
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponseOutput{})
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupMultiDatabaseReplicaResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawPtrOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawResponseOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sSpecOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sSpecPtrOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sSpecResponseOutput{})
+	pulumi.RegisterOutputType(SqlManagedInstanceK8sSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstancePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuPtrOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuResponseOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesBackupInformationOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesDatabaseOptionsOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseBackupInformationOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesResponseOutput{})

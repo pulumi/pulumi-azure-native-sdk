@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
-// API Version: 2016-03-01.
+// API Version: 2020-03-01.
+// Previous API Version: 2016-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Input struct {
 	pulumi.CustomResourceState
 
@@ -92,7 +93,7 @@ type inputArgs struct {
 	Name *string `pulumi:"name"`
 	// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
 	Properties interface{} `pulumi:"properties"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -106,7 +107,7 @@ type InputArgs struct {
 	Name pulumi.StringPtrInput
 	// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
 	Properties pulumi.Input
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 

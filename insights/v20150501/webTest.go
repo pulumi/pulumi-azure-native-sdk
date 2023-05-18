@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,16 +65,16 @@ func NewWebTest(ctx *pulumi.Context,
 	if args.SyntheticMonitorId == nil {
 		return nil, errors.New("invalid value for required argument 'SyntheticMonitorId'")
 	}
-	if isZero(args.Frequency) {
+	if args.Frequency == nil {
 		args.Frequency = pulumi.IntPtr(300)
 	}
-	if isZero(args.Kind) {
+	if args.Kind == nil {
 		args.Kind = WebTestKind("ping")
 	}
-	if isZero(args.Timeout) {
+	if args.Timeout == nil {
 		args.Timeout = pulumi.IntPtr(30)
 	}
-	if isZero(args.WebTestKind) {
+	if args.WebTestKind == nil {
 		args.WebTestKind = WebTestKind("ping")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

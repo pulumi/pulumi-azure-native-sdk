@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about a pool.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Pool struct {
 	pulumi.CustomResourceState
 
@@ -25,10 +26,13 @@ type Pool struct {
 	// This property is set only if the pool automatically scales, i.e. autoScaleSettings are used.
 	AutoScaleRun AutoScaleRunResponseOutput `pulumi:"autoScaleRun"`
 	// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
-	Certificates            CertificateReferenceResponseArrayOutput `pulumi:"certificates"`
-	CreationTime            pulumi.StringOutput                     `pulumi:"creationTime"`
-	CurrentDedicatedNodes   pulumi.IntOutput                        `pulumi:"currentDedicatedNodes"`
-	CurrentLowPriorityNodes pulumi.IntOutput                        `pulumi:"currentLowPriorityNodes"`
+	//
+	// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
+	Certificates                 CertificateReferenceResponseArrayOutput `pulumi:"certificates"`
+	CreationTime                 pulumi.StringOutput                     `pulumi:"creationTime"`
+	CurrentDedicatedNodes        pulumi.IntOutput                        `pulumi:"currentDedicatedNodes"`
+	CurrentLowPriorityNodes      pulumi.IntOutput                        `pulumi:"currentLowPriorityNodes"`
+	CurrentNodeCommunicationMode pulumi.StringOutput                     `pulumi:"currentNodeCommunicationMode"`
 	// Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
 	DeploymentConfiguration DeploymentConfigurationResponsePtrOutput `pulumi:"deploymentConfiguration"`
 	// The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -57,6 +61,8 @@ type Pool struct {
 	ScaleSettings ScaleSettingsResponsePtrOutput `pulumi:"scaleSettings"`
 	// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 	StartTask StartTaskResponsePtrOutput `pulumi:"startTask"`
+	// If omitted, the default value is Default.
+	TargetNodeCommunicationMode pulumi.StringPtrOutput `pulumi:"targetNodeCommunicationMode"`
 	// If not specified, the default is spread.
 	TaskSchedulingPolicy TaskSchedulingPolicyResponsePtrOutput `pulumi:"taskSchedulingPolicy"`
 	// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
@@ -159,6 +165,8 @@ type poolArgs struct {
 	// Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool.
 	ApplicationPackages []ApplicationPackageReference `pulumi:"applicationPackages"`
 	// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+	//
+	// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 	Certificates []CertificateReference `pulumi:"certificates"`
 	// Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
 	DeploymentConfiguration *DeploymentConfiguration `pulumi:"deploymentConfiguration"`
@@ -182,6 +190,8 @@ type poolArgs struct {
 	ScaleSettings *ScaleSettings `pulumi:"scaleSettings"`
 	// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 	StartTask *StartTask `pulumi:"startTask"`
+	// If omitted, the default value is Default.
+	TargetNodeCommunicationMode *NodeCommunicationMode `pulumi:"targetNodeCommunicationMode"`
 	// If not specified, the default is spread.
 	TaskSchedulingPolicy *TaskSchedulingPolicy `pulumi:"taskSchedulingPolicy"`
 	// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
@@ -200,6 +210,8 @@ type PoolArgs struct {
 	// Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool.
 	ApplicationPackages ApplicationPackageReferenceArrayInput
 	// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+	//
+	// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 	Certificates CertificateReferenceArrayInput
 	// Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
 	DeploymentConfiguration DeploymentConfigurationPtrInput
@@ -223,6 +235,8 @@ type PoolArgs struct {
 	ScaleSettings ScaleSettingsPtrInput
 	// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 	StartTask StartTaskPtrInput
+	// If omitted, the default value is Default.
+	TargetNodeCommunicationMode NodeCommunicationModePtrInput
 	// If not specified, the default is spread.
 	TaskSchedulingPolicy TaskSchedulingPolicyPtrInput
 	// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
@@ -293,6 +307,8 @@ func (o PoolOutput) AutoScaleRun() AutoScaleRunResponseOutput {
 }
 
 // For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+//
+// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 func (o PoolOutput) Certificates() CertificateReferenceResponseArrayOutput {
 	return o.ApplyT(func(v *Pool) CertificateReferenceResponseArrayOutput { return v.Certificates }).(CertificateReferenceResponseArrayOutput)
 }
@@ -307,6 +323,10 @@ func (o PoolOutput) CurrentDedicatedNodes() pulumi.IntOutput {
 
 func (o PoolOutput) CurrentLowPriorityNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.CurrentLowPriorityNodes }).(pulumi.IntOutput)
+}
+
+func (o PoolOutput) CurrentNodeCommunicationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.CurrentNodeCommunicationMode }).(pulumi.StringOutput)
 }
 
 // Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
@@ -380,6 +400,11 @@ func (o PoolOutput) ScaleSettings() ScaleSettingsResponsePtrOutput {
 // In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 func (o PoolOutput) StartTask() StartTaskResponsePtrOutput {
 	return o.ApplyT(func(v *Pool) StartTaskResponsePtrOutput { return v.StartTask }).(StartTaskResponsePtrOutput)
+}
+
+// If omitted, the default value is Default.
+func (o PoolOutput) TargetNodeCommunicationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.TargetNodeCommunicationMode }).(pulumi.StringPtrOutput)
 }
 
 // If not specified, the default is spread.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,7 +77,7 @@ func NewCache(ctx *pulumi.Context,
 	if args.NetworkSettings != nil {
 		args.NetworkSettings = args.NetworkSettings.ToCacheNetworkSettingsPtrOutput().ApplyT(func(v *CacheNetworkSettings) *CacheNetworkSettings { return v.Defaults() }).(CacheNetworkSettingsPtrOutput)
 	}
-	if isZero(args.ScalingFactor) {
+	if args.ScalingFactor == nil {
 		args.ScalingFactor = pulumi.Float64Ptr(1.0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -113,6 +113,9 @@ func NewCache(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230101:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:Cache"),
 		},
 	})
 	opts = append(opts, aliases)

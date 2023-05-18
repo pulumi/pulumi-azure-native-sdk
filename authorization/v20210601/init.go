@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:authorization/v20210601:PolicyAssignment":
-		r = &PolicyAssignment{}
 	case "azure-native:authorization/v20210601:PolicyDefinition":
 		r = &PolicyDefinition{}
 	case "azure-native:authorization/v20210601:PolicyDefinitionAtManagementGroup":

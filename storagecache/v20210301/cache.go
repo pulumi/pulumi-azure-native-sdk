@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +100,9 @@ func NewCache(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:Cache"),
 		},
 	})
 	opts = append(opts, aliases)

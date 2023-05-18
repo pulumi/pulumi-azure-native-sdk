@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the details of an API release.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupApiRelease(ctx *pulumi.Context, args *LookupApiReleaseArgs, opts ...pulumi.InvokeOption) (*LookupApiReleaseResult, error) {
 	var rv LookupApiReleaseResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiRelease", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupApiReleaseArgs struct {
 	ApiId string `pulumi:"apiId"`
 	// Release identifier within an API. Must be unique in the current API Management service instance.
 	ReleaseId string `pulumi:"releaseId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -38,13 +38,13 @@ type LookupApiReleaseResult struct {
 	ApiId *string `pulumi:"apiId"`
 	// The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
 	CreatedDateTime string `pulumi:"createdDateTime"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Release Notes
 	Notes *string `pulumi:"notes"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The time the API release was updated.
 	UpdatedDateTime string `pulumi:"updatedDateTime"`
@@ -68,7 +68,7 @@ type LookupApiReleaseOutputArgs struct {
 	ApiId pulumi.StringInput `pulumi:"apiId"`
 	// Release identifier within an API. Must be unique in the current API Management service instance.
 	ReleaseId pulumi.StringInput `pulumi:"releaseId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -103,12 +103,12 @@ func (o LookupApiReleaseResultOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupApiReleaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupApiReleaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -118,7 +118,7 @@ func (o LookupApiReleaseResultOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupApiReleaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiReleaseResult) string { return v.Type }).(pulumi.StringOutput)
 }
