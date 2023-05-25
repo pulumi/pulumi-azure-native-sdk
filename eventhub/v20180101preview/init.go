@@ -23,22 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:eventhub/v20180101preview:Cluster":
 		r = &Cluster{}
-	case "azure-native:eventhub/v20180101preview:ConsumerGroup":
-		r = &ConsumerGroup{}
-	case "azure-native:eventhub/v20180101preview:DisasterRecoveryConfig":
-		r = &DisasterRecoveryConfig{}
-	case "azure-native:eventhub/v20180101preview:EventHub":
-		r = &EventHub{}
-	case "azure-native:eventhub/v20180101preview:EventHubAuthorizationRule":
-		r = &EventHubAuthorizationRule{}
-	case "azure-native:eventhub/v20180101preview:Namespace":
-		r = &Namespace{}
-	case "azure-native:eventhub/v20180101preview:NamespaceAuthorizationRule":
-		r = &NamespaceAuthorizationRule{}
 	case "azure-native:eventhub/v20180101preview:NamespaceIpFilterRule":
 		r = &NamespaceIpFilterRule{}
-	case "azure-native:eventhub/v20180101preview:NamespaceNetworkRuleSet":
-		r = &NamespaceNetworkRuleSet{}
 	case "azure-native:eventhub/v20180101preview:NamespaceVirtualNetworkRule":
 		r = &NamespaceVirtualNetworkRule{}
 	case "azure-native:eventhub/v20180101preview:PrivateEndpointConnection":

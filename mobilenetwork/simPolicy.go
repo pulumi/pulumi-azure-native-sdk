@@ -7,29 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SIM policy resource.
-// API Version: 2022-04-01-preview.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type SimPolicy struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
-	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map.
+	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
 	DefaultSlice SliceResourceIdResponseOutput `pulumi:"defaultSlice"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -40,6 +29,8 @@ type SimPolicy struct {
 	RegistrationTimer pulumi.IntPtrOutput `pulumi:"registrationTimer"`
 	// RAT/Frequency Selection Priority Index, defined in 3GPP TS 36.413. This is an optional setting and by default is unspecified.
 	RfspIndex pulumi.IntPtrOutput `pulumi:"rfspIndex"`
+	// A dictionary of sites to the provisioning state of this SIM policy on that site.
+	SiteProvisioningState pulumi.StringMapOutput `pulumi:"siteProvisioningState"`
 	// The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
 	SliceConfigurations SliceConfigurationResponseArrayOutput `pulumi:"sliceConfigurations"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -74,7 +65,7 @@ func NewSimPolicy(ctx *pulumi.Context,
 	if args.UeAmbr == nil {
 		return nil, errors.New("invalid value for required argument 'UeAmbr'")
 	}
-	if isZero(args.RegistrationTimer) {
+	if args.RegistrationTimer == nil {
 		args.RegistrationTimer = pulumi.IntPtr(3240)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -121,20 +112,8 @@ func (SimPolicyState) ElementType() reflect.Type {
 }
 
 type simPolicyArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map.
+	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
 	DefaultSlice SliceResourceId `pulumi:"defaultSlice"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the mobile network.
@@ -157,20 +136,8 @@ type simPolicyArgs struct {
 
 // The set of arguments for constructing a SimPolicy resource.
 type SimPolicyArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
-	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map.
+	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
 	DefaultSlice SliceResourceIdInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the mobile network.
@@ -228,39 +195,9 @@ func (o SimPolicyOutput) ToSimPolicyOutputWithContext(ctx context.Context) SimPo
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SimPolicyOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SimPolicyOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SimPolicyOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map.
+// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
 func (o SimPolicyOutput) DefaultSlice() SliceResourceIdResponseOutput {
 	return o.ApplyT(func(v *SimPolicy) SliceResourceIdResponseOutput { return v.DefaultSlice }).(SliceResourceIdResponseOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SimPolicyOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SimPolicyOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SimPolicyOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -286,6 +223,11 @@ func (o SimPolicyOutput) RegistrationTimer() pulumi.IntPtrOutput {
 // RAT/Frequency Selection Priority Index, defined in 3GPP TS 36.413. This is an optional setting and by default is unspecified.
 func (o SimPolicyOutput) RfspIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SimPolicy) pulumi.IntPtrOutput { return v.RfspIndex }).(pulumi.IntPtrOutput)
+}
+
+// A dictionary of sites to the provisioning state of this SIM policy on that site.
+func (o SimPolicyOutput) SiteProvisioningState() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SimPolicy) pulumi.StringMapOutput { return v.SiteProvisioningState }).(pulumi.StringMapOutput)
 }
 
 // The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.

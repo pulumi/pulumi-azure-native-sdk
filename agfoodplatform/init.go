@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Extension{}
 	case "azure-native:agfoodplatform:FarmBeatsModel":
 		r = &FarmBeatsModel{}
+	case "azure-native:agfoodplatform:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
+	case "azure-native:agfoodplatform:Solution":
+		r = &Solution{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

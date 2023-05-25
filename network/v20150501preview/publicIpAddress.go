@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // PublicIPAddress resource
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 type PublicIpAddress struct {
 	pulumi.CustomResourceState
 
@@ -191,6 +189,9 @@ func NewPublicIpAddress(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:PublicIpAddress"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:PublicIpAddress"),
 		},
 	})
 	opts = append(opts, aliases)

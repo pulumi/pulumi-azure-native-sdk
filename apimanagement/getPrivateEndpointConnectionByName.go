@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the Private Endpoint Connection specified by its identifier.
-// API Version: 2021-04-01-preview.
+// API Version: 2022-08-01.
 func LookupPrivateEndpointConnectionByName(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByNameArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByNameResult, error) {
 	var rv LookupPrivateEndpointConnectionByNameResult
 	err := ctx.Invoke("azure-native:apimanagement:getPrivateEndpointConnectionByName", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupPrivateEndpointConnectionByName(ctx *pulumi.Context, args *LookupPriv
 type LookupPrivateEndpointConnectionByNameArgs struct {
 	// Name of the private endpoint connection.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -62,7 +62,7 @@ func LookupPrivateEndpointConnectionByNameOutput(ctx *pulumi.Context, args Looku
 type LookupPrivateEndpointConnectionByNameOutputArgs struct {
 	// Name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

@@ -21,12 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:resources/v20151101:Deployment":
-		r = &Deployment{}
 	case "azure-native:resources/v20151101:Resource":
 		r = &Resource{}
-	case "azure-native:resources/v20151101:ResourceGroup":
-		r = &ResourceGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

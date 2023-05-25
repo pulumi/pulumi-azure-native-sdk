@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:machinelearningservices:ACIService":
-		r = &ACIService{}
-	case "azure-native:machinelearningservices:AKSService":
-		r = &AKSService{}
 	case "azure-native:machinelearningservices:BatchDeployment":
 		r = &BatchDeployment{}
 	case "azure-native:machinelearningservices:BatchEndpoint":
@@ -37,30 +33,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComponentContainer{}
 	case "azure-native:machinelearningservices:ComponentVersion":
 		r = &ComponentVersion{}
+	case "azure-native:machinelearningservices:Compute":
+		r = &Compute{}
 	case "azure-native:machinelearningservices:DataContainer":
 		r = &DataContainer{}
 	case "azure-native:machinelearningservices:DataVersion":
 		r = &DataVersion{}
-	case "azure-native:machinelearningservices:EndpointVariant":
-		r = &EndpointVariant{}
+	case "azure-native:machinelearningservices:Datastore":
+		r = &Datastore{}
 	case "azure-native:machinelearningservices:EnvironmentContainer":
 		r = &EnvironmentContainer{}
-	case "azure-native:machinelearningservices:EnvironmentSpecificationVersion":
-		r = &EnvironmentSpecificationVersion{}
+	case "azure-native:machinelearningservices:EnvironmentVersion":
+		r = &EnvironmentVersion{}
 	case "azure-native:machinelearningservices:Job":
 		r = &Job{}
-	case "azure-native:machinelearningservices:LabelingJob":
-		r = &LabelingJob{}
-	case "azure-native:machinelearningservices:LinkedService":
-		r = &LinkedService{}
-	case "azure-native:machinelearningservices:LinkedWorkspace":
-		r = &LinkedWorkspace{}
-	case "azure-native:machinelearningservices:MachineLearningCompute":
-		r = &MachineLearningCompute{}
-	case "azure-native:machinelearningservices:MachineLearningDataset":
-		r = &MachineLearningDataset{}
-	case "azure-native:machinelearningservices:MachineLearningDatastore":
-		r = &MachineLearningDatastore{}
 	case "azure-native:machinelearningservices:ModelContainer":
 		r = &ModelContainer{}
 	case "azure-native:machinelearningservices:ModelVersion":
@@ -71,6 +57,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OnlineEndpoint{}
 	case "azure-native:machinelearningservices:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:machinelearningservices:Registry":
+		r = &Registry{}
+	case "azure-native:machinelearningservices:RegistryCodeContainer":
+		r = &RegistryCodeContainer{}
+	case "azure-native:machinelearningservices:RegistryCodeVersion":
+		r = &RegistryCodeVersion{}
+	case "azure-native:machinelearningservices:RegistryComponentContainer":
+		r = &RegistryComponentContainer{}
+	case "azure-native:machinelearningservices:RegistryComponentVersion":
+		r = &RegistryComponentVersion{}
+	case "azure-native:machinelearningservices:RegistryDataContainer":
+		r = &RegistryDataContainer{}
+	case "azure-native:machinelearningservices:RegistryDataVersion":
+		r = &RegistryDataVersion{}
+	case "azure-native:machinelearningservices:RegistryEnvironmentContainer":
+		r = &RegistryEnvironmentContainer{}
+	case "azure-native:machinelearningservices:RegistryEnvironmentVersion":
+		r = &RegistryEnvironmentVersion{}
+	case "azure-native:machinelearningservices:RegistryModelContainer":
+		r = &RegistryModelContainer{}
+	case "azure-native:machinelearningservices:RegistryModelVersion":
+		r = &RegistryModelVersion{}
+	case "azure-native:machinelearningservices:Schedule":
+		r = &Schedule{}
 	case "azure-native:machinelearningservices:Workspace":
 		r = &Workspace{}
 	case "azure-native:machinelearningservices:WorkspaceConnection":

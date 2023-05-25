@@ -11,8 +11,6 @@ import (
 )
 
 // Gets information about the specified pool.
-//
-// Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:batch/v20200501:getPool", args, &rv, opts...)

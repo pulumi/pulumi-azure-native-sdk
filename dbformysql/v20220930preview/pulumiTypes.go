@@ -24,7 +24,7 @@ func (val *Backup) Defaults() *Backup {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		geoRedundantBackup_ := "Disabled"
 		tmp.GeoRedundantBackup = &geoRedundantBackup_
 	}
@@ -56,7 +56,7 @@ func (val *BackupArgs) Defaults() *BackupArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		tmp.GeoRedundantBackup = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -209,7 +209,7 @@ func (val *BackupResponse) Defaults() *BackupResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		geoRedundantBackup_ := "Disabled"
 		tmp.GeoRedundantBackup = &geoRedundantBackup_
 	}
@@ -902,7 +902,7 @@ type Identity struct {
 	// Type of managed service identity.
 	Type *string `pulumi:"type"`
 	// Metadata of user assigned identity.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -921,7 +921,7 @@ type IdentityArgs struct {
 	// Type of managed service identity.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Metadata of user assigned identity.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -1008,8 +1008,8 @@ func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Metadata of user assigned identity.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1047,13 +1047,13 @@ func (o IdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Metadata of user assigned identity.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Properties to configure Identity for Bring your Own Keys
@@ -2176,15 +2176,15 @@ func (val *Storage) Defaults() *Storage {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoGrow) {
+	if tmp.AutoGrow == nil {
 		autoGrow_ := "Disabled"
 		tmp.AutoGrow = &autoGrow_
 	}
-	if isZero(tmp.AutoIoScaling) {
+	if tmp.AutoIoScaling == nil {
 		autoIoScaling_ := "Disabled"
 		tmp.AutoIoScaling = &autoIoScaling_
 	}
-	if isZero(tmp.LogOnDisk) {
+	if tmp.LogOnDisk == nil {
 		logOnDisk_ := "Disabled"
 		tmp.LogOnDisk = &logOnDisk_
 	}
@@ -2222,13 +2222,13 @@ func (val *StorageArgs) Defaults() *StorageArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoGrow) {
+	if tmp.AutoGrow == nil {
 		tmp.AutoGrow = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.AutoIoScaling) {
+	if tmp.AutoIoScaling == nil {
 		tmp.AutoIoScaling = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.LogOnDisk) {
+	if tmp.LogOnDisk == nil {
 		tmp.LogOnDisk = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -2432,15 +2432,15 @@ func (val *StorageResponse) Defaults() *StorageResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoGrow) {
+	if tmp.AutoGrow == nil {
 		autoGrow_ := "Disabled"
 		tmp.AutoGrow = &autoGrow_
 	}
-	if isZero(tmp.AutoIoScaling) {
+	if tmp.AutoIoScaling == nil {
 		autoIoScaling_ := "Disabled"
 		tmp.AutoIoScaling = &autoIoScaling_
 	}
-	if isZero(tmp.LogOnDisk) {
+	if tmp.LogOnDisk == nil {
 		logOnDisk_ := "Disabled"
 		tmp.LogOnDisk = &logOnDisk_
 	}

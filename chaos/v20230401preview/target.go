@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +61,9 @@ func NewTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:chaos/v20221001preview:Target"),
+		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20230415preview:Target"),
 		},
 	})
 	opts = append(opts, aliases)

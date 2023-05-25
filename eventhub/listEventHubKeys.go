@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the ACS and SAS connection strings for the Event Hub.
-// API Version: 2017-04-01.
+// API Version: 2021-11-01.
 func ListEventHubKeys(ctx *pulumi.Context, args *ListEventHubKeysArgs, opts ...pulumi.InvokeOption) (*ListEventHubKeysResult, error) {
 	var rv ListEventHubKeysResult
 	err := ctx.Invoke("azure-native:eventhub:listEventHubKeys", args, &rv, opts...)

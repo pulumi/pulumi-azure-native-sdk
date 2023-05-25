@@ -665,7 +665,7 @@ func (val *DataExportDetails) Defaults() *DataExportDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogCollectionLevel) {
+	if tmp.LogCollectionLevel == nil {
 		logCollectionLevel_ := "Error"
 		tmp.LogCollectionLevel = &logCollectionLevel_
 	}
@@ -690,7 +690,7 @@ func (val *DataExportDetailsResponse) Defaults() *DataExportDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogCollectionLevel) {
+	if tmp.LogCollectionLevel == nil {
 		logCollectionLevel_ := "Error"
 		tmp.LogCollectionLevel = &logCollectionLevel_
 	}
@@ -752,7 +752,7 @@ func (val *EncryptionPreferences) Defaults() *EncryptionPreferences {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DoubleEncryption) {
+	if tmp.DoubleEncryption == nil {
 		doubleEncryption_ := "Disabled"
 		tmp.DoubleEncryption = &doubleEncryption_
 	}
@@ -771,7 +771,7 @@ func (val *EncryptionPreferencesResponse) Defaults() *EncryptionPreferencesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DoubleEncryption) {
+	if tmp.DoubleEncryption == nil {
 		doubleEncryption_ := "Disabled"
 		tmp.DoubleEncryption = &doubleEncryption_
 	}
@@ -1217,7 +1217,7 @@ type ResourceIdentity struct {
 	// Identity type
 	Type *string `pulumi:"type"`
 	// User Assigned Identities
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // Defaults sets the appropriate defaults for ResourceIdentity
@@ -1226,7 +1226,7 @@ func (val *ResourceIdentity) Defaults() *ResourceIdentity {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "None"
 		tmp.Type = &type_
 	}
@@ -1249,7 +1249,7 @@ type ResourceIdentityArgs struct {
 	// Identity type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// User Assigned Identities
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 // Defaults sets the appropriate defaults for ResourceIdentityArgs
@@ -1258,7 +1258,7 @@ func (val *ResourceIdentityArgs) Defaults() *ResourceIdentityArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -1347,8 +1347,8 @@ func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User Assigned Identities
-func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1386,13 +1386,13 @@ func (o ResourceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User Assigned Identities
-func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ResourceIdentity) map[string]interface{} {
+func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Msi identity details of the resource
@@ -1413,7 +1413,7 @@ func (val *ResourceIdentityResponse) Defaults() *ResourceIdentityResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "None"
 		tmp.Type = &type_
 	}
@@ -1565,7 +1565,7 @@ func (val *ShippingAddress) Defaults() *ShippingAddress {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AddressType) {
+	if tmp.AddressType == nil {
 		addressType_ := "None"
 		tmp.AddressType = &addressType_
 	}
@@ -1602,7 +1602,7 @@ func (val *ShippingAddressResponse) Defaults() *ShippingAddressResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AddressType) {
+	if tmp.AddressType == nil {
 		addressType_ := "None"
 		tmp.AddressType = &addressType_
 	}

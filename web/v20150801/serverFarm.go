@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // App Service Plan Model
-//
-// Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
 type ServerFarm struct {
 	pulumi.CustomResourceState
 

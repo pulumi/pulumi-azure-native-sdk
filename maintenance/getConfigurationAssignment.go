@@ -11,7 +11,7 @@ import (
 )
 
 // Get configuration for resource.
-// API Version: 2021-04-01-preview.
+// API Version: 2022-11-01-preview.
 func LookupConfigurationAssignment(ctx *pulumi.Context, args *LookupConfigurationAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentResult, error) {
 	var rv LookupConfigurationAssignmentResult
 	err := ctx.Invoke("azure-native:maintenance:getConfigurationAssignment", args, &rv, opts...)

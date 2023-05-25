@@ -2116,7 +2116,7 @@ func (val *NetworkConfiguration) Defaults() *NetworkConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecondaryIpEnabled) {
+	if tmp.IsSecondaryIpEnabled == nil {
 		isSecondaryIpEnabled_ := false
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
@@ -2135,7 +2135,7 @@ func (val *NetworkConfigurationResponse) Defaults() *NetworkConfigurationRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecondaryIpEnabled) {
+	if tmp.IsSecondaryIpEnabled == nil {
 		isSecondaryIpEnabled_ := false
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
@@ -3653,7 +3653,7 @@ type UserAssignedServiceIdentity struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
 	// User assigned identities dictionary
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // UserAssignedServiceIdentityInput is an input type that accepts UserAssignedServiceIdentityArgs and UserAssignedServiceIdentityOutput values.
@@ -3672,7 +3672,7 @@ type UserAssignedServiceIdentityArgs struct {
 	// Type of manage identity
 	Type pulumi.StringInput `pulumi:"type"`
 	// User assigned identities dictionary
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (UserAssignedServiceIdentityArgs) ElementType() reflect.Type {
@@ -3759,8 +3759,8 @@ func (o UserAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // User assigned identities dictionary
-func (o UserAssignedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v UserAssignedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o UserAssignedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAssignedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type UserAssignedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -3798,13 +3798,13 @@ func (o UserAssignedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User assigned identities dictionary
-func (o UserAssignedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *UserAssignedServiceIdentity) map[string]interface{} {
+func (o UserAssignedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAssignedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.

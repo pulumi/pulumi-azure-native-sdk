@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,19 +79,19 @@ func NewServerEndpoint(ctx *pulumi.Context,
 	if args.SyncGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'SyncGroupName'")
 	}
-	if isZero(args.InitialDownloadPolicy) {
+	if args.InitialDownloadPolicy == nil {
 		args.InitialDownloadPolicy = pulumi.StringPtr("NamespaceThenModifiedFiles")
 	}
-	if isZero(args.InitialUploadPolicy) {
+	if args.InitialUploadPolicy == nil {
 		args.InitialUploadPolicy = pulumi.StringPtr("Merge")
 	}
-	if isZero(args.LocalCacheMode) {
+	if args.LocalCacheMode == nil {
 		args.LocalCacheMode = pulumi.StringPtr("UpdateLocallyCachedFiles")
 	}
-	if isZero(args.TierFilesOlderThanDays) {
+	if args.TierFilesOlderThanDays == nil {
 		args.TierFilesOlderThanDays = pulumi.IntPtr(0)
 	}
-	if isZero(args.VolumeFreeSpacePercent) {
+	if args.VolumeFreeSpacePercent == nil {
 		args.VolumeFreeSpacePercent = pulumi.IntPtr(20)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

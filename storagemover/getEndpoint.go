@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an Endpoint resource.
-// API Version: 2022-07-01-preview.
+// API Version: 2023-03-01.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:storagemover:getEndpoint", args, &rv, opts...)

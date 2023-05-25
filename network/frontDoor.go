@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
-// API Version: 2020-05-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type FrontDoor struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type FrontDoor struct {
 	Cname pulumi.StringOutput `pulumi:"cname"`
 	// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 	EnabledState pulumi.StringPtrOutput `pulumi:"enabledState"`
+	// Key-Value pair representing additional properties for frontdoor.
+	ExtendedProperties pulumi.StringMapOutput `pulumi:"extendedProperties"`
 	// A friendly name for the frontDoor
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// The Id of the frontdoor.
@@ -227,6 +230,11 @@ func (o FrontDoorOutput) Cname() pulumi.StringOutput {
 // Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 func (o FrontDoorOutput) EnabledState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FrontDoor) pulumi.StringPtrOutput { return v.EnabledState }).(pulumi.StringPtrOutput)
+}
+
+// Key-Value pair representing additional properties for frontdoor.
+func (o FrontDoorOutput) ExtendedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FrontDoor) pulumi.StringMapOutput { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
 // A friendly name for the frontDoor

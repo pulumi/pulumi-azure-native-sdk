@@ -21,18 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:keyvault/v20210601preview:Key":
-		r = &Key{}
 	case "azure-native:keyvault/v20210601preview:MHSMPrivateEndpointConnection":
 		r = &MHSMPrivateEndpointConnection{}
 	case "azure-native:keyvault/v20210601preview:ManagedHsm":
 		r = &ManagedHsm{}
-	case "azure-native:keyvault/v20210601preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:keyvault/v20210601preview:Secret":
-		r = &Secret{}
-	case "azure-native:keyvault/v20210601preview:Vault":
-		r = &Vault{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

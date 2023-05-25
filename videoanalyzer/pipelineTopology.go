@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,6 +18,7 @@ import (
 //   - Processors: list of nodes which perform data analysis or transformations.
 //   - Sinks: list of one or more data sinks which allow for data to be stored or exported to other destinations.
 //     API Version: 2021-11-01-preview.
+//     Previous API Version: 2021-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PipelineTopology struct {
 	pulumi.CustomResourceState
 

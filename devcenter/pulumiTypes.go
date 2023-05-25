@@ -545,7 +545,7 @@ type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -564,7 +564,7 @@ type ManagedServiceIdentityArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -651,8 +651,8 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -690,13 +690,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -815,7 +815,7 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 // The role definition assigned to the environment creator on backing resources.
 type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment struct {
 	// A map of roles to assign to the environment creator.
-	Roles map[string]interface{} `pulumi:"roles"`
+	Roles []string `pulumi:"roles"`
 }
 
 // ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentInput is an input type that accepts ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs and ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput values.
@@ -832,7 +832,7 @@ type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentInput interface 
 // The role definition assigned to the environment creator on backing resources.
 type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs struct {
 	// A map of roles to assign to the environment creator.
-	Roles pulumi.MapInput `pulumi:"roles"`
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs) ElementType() reflect.Type {
@@ -914,10 +914,8 @@ func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput) ToPro
 }
 
 // A map of roles to assign to the environment creator.
-func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput) Roles() pulumi.MapOutput {
-	return o.ApplyT(func(v ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) map[string]interface{} {
-		return v.Roles
-	}).(pulumi.MapOutput)
+func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput struct{ *pulumi.OutputState }
@@ -945,13 +943,13 @@ func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput) El
 }
 
 // A map of roles to assign to the environment creator.
-func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput) Roles() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) map[string]interface{} {
+func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) []string {
 		if v == nil {
 			return nil
 		}
 		return v.Roles
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The role definition assigned to the environment creator on backing resources.
@@ -1278,7 +1276,7 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 // Mapping of user object ID to role assignments.
 type UserRoleAssignment struct {
 	// A map of roles to assign to the parent user.
-	Roles map[string]interface{} `pulumi:"roles"`
+	Roles []string `pulumi:"roles"`
 }
 
 // UserRoleAssignmentInput is an input type that accepts UserRoleAssignmentArgs and UserRoleAssignmentOutput values.
@@ -1295,7 +1293,7 @@ type UserRoleAssignmentInput interface {
 // Mapping of user object ID to role assignments.
 type UserRoleAssignmentArgs struct {
 	// A map of roles to assign to the parent user.
-	Roles pulumi.MapInput `pulumi:"roles"`
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (UserRoleAssignmentArgs) ElementType() reflect.Type {
@@ -1351,8 +1349,8 @@ func (o UserRoleAssignmentOutput) ToUserRoleAssignmentOutputWithContext(ctx cont
 }
 
 // A map of roles to assign to the parent user.
-func (o UserRoleAssignmentOutput) Roles() pulumi.MapOutput {
-	return o.ApplyT(func(v UserRoleAssignment) map[string]interface{} { return v.Roles }).(pulumi.MapOutput)
+func (o UserRoleAssignmentOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserRoleAssignment) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 type UserRoleAssignmentMapOutput struct{ *pulumi.OutputState }

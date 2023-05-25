@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +59,9 @@ func NewExpressRoutePortAuthorization(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:ExpressRoutePortAuthorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRoutePortAuthorization"),
 		},
 	})
 	opts = append(opts, aliases)

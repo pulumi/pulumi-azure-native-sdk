@@ -21,14 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:storage/v20180301preview:BlobContainer":
-		r = &BlobContainer{}
-	case "azure-native:storage/v20180301preview:BlobContainerImmutabilityPolicy":
-		r = &BlobContainerImmutabilityPolicy{}
 	case "azure-native:storage/v20180301preview:ManagementPolicy":
 		r = &ManagementPolicy{}
-	case "azure-native:storage/v20180301preview:StorageAccount":
-		r = &StorageAccount{}
 	case "azure-native:storage/v20180301preview:StorageAccountManagementPolicies":
 		r = &StorageAccountManagementPolicies{}
 	default:

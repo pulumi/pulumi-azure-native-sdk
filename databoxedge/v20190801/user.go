@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
-//
-// Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
 type User struct {
 	pulumi.CustomResourceState
 

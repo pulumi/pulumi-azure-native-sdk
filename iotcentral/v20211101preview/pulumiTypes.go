@@ -278,11 +278,11 @@ func (val *NetworkRuleSets) Defaults() *NetworkRuleSets {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplyToDevices) {
+	if tmp.ApplyToDevices == nil {
 		applyToDevices_ := false
 		tmp.ApplyToDevices = &applyToDevices_
 	}
-	if isZero(tmp.ApplyToIoTCentral) {
+	if tmp.ApplyToIoTCentral == nil {
 		applyToIoTCentral_ := false
 		tmp.ApplyToIoTCentral = &applyToIoTCentral_
 	}
@@ -318,10 +318,10 @@ func (val *NetworkRuleSetsArgs) Defaults() *NetworkRuleSetsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplyToDevices) {
+	if tmp.ApplyToDevices == nil {
 		tmp.ApplyToDevices = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.ApplyToIoTCentral) {
+	if tmp.ApplyToIoTCentral == nil {
 		tmp.ApplyToIoTCentral = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -506,11 +506,11 @@ func (val *NetworkRuleSetsResponse) Defaults() *NetworkRuleSetsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplyToDevices) {
+	if tmp.ApplyToDevices == nil {
 		applyToDevices_ := false
 		tmp.ApplyToDevices = &applyToDevices_
 	}
-	if isZero(tmp.ApplyToIoTCentral) {
+	if tmp.ApplyToIoTCentral == nil {
 		applyToIoTCentral_ := false
 		tmp.ApplyToIoTCentral = &applyToIoTCentral_
 	}

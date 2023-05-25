@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api Operation details.
-// API Version: 2020-12-01.
+// API Operation details.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ApiOperation struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type ApiOperation struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A Valid HTTP Operation Method. Typical Http Methods like GET, PUT, POST but not limited by only them.
 	Method pulumi.StringOutput `pulumi:"method"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Operation Policies
 	Policies pulumi.StringPtrOutput `pulumi:"policies"`
@@ -32,7 +33,7 @@ type ApiOperation struct {
 	Responses ResponseContractResponseArrayOutput `pulumi:"responses"`
 	// Collection of URL template parameters.
 	TemplateParameters ParameterContractResponseArrayOutput `pulumi:"templateParameters"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
 	UrlTemplate pulumi.StringOutput `pulumi:"urlTemplate"`
@@ -112,6 +113,9 @@ func NewApiOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiOperation
@@ -160,7 +164,7 @@ type apiOperationArgs struct {
 	Policies *string `pulumi:"policies"`
 	// An entity containing request details.
 	Request *RequestContract `pulumi:"request"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Array of Operation responses.
 	Responses []ResponseContract `pulumi:"responses"`
@@ -188,7 +192,7 @@ type ApiOperationArgs struct {
 	Policies pulumi.StringPtrInput
 	// An entity containing request details.
 	Request RequestContractPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Array of Operation responses.
 	Responses ResponseContractArrayInput
@@ -252,7 +256,7 @@ func (o ApiOperationOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiOperation) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ApiOperationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiOperation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -277,7 +281,7 @@ func (o ApiOperationOutput) TemplateParameters() ParameterContractResponseArrayO
 	return o.ApplyT(func(v *ApiOperation) ParameterContractResponseArrayOutput { return v.TemplateParameters }).(ParameterContractResponseArrayOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApiOperationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiOperation) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

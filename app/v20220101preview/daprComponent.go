@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +62,9 @@ func NewDaprComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:DaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:DaprComponent"),
 		},
 	})
 	opts = append(opts, aliases)

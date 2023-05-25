@@ -11,7 +11,7 @@ import (
 )
 
 // Get a workspace.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getWorkspace", args, &rv, opts...)
@@ -55,6 +55,8 @@ type LookupWorkspaceResult struct {
 	ObjectId string                                           `pulumi:"objectId"`
 	Plan     *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	Sku      *ResourceModelWithAllowedPropertySetResponseSku  `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -165,6 +167,11 @@ func (o LookupWorkspaceResultOutput) Plan() ResourceModelWithAllowedPropertySetR
 
 func (o LookupWorkspaceResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupWorkspaceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

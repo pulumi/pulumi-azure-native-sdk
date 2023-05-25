@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the developer portal's content type. Content types describe content items' properties, validation rules, and constraints.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ...pulumi.InvokeOption) (*LookupContentTypeResult, error) {
 	var rv LookupContentTypeResult
 	err := ctx.Invoke("azure-native:apimanagement:getContentType", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ..
 type LookupContentTypeArgs struct {
 	// Content type identifier.
 	ContentTypeId string `pulumi:"contentTypeId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -34,13 +34,13 @@ type LookupContentTypeArgs struct {
 type LookupContentTypeResult struct {
 	// Content type description.
 	Description *string `pulumi:"description"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Content type schema.
 	Schema interface{} `pulumi:"schema"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Content type version.
 	Version *string `pulumi:"version"`
@@ -62,7 +62,7 @@ func LookupContentTypeOutput(ctx *pulumi.Context, args LookupContentTypeOutputAr
 type LookupContentTypeOutputArgs struct {
 	// Content type identifier.
 	ContentTypeId pulumi.StringInput `pulumi:"contentTypeId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -92,12 +92,12 @@ func (o LookupContentTypeResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupContentTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupContentTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -107,7 +107,7 @@ func (o LookupContentTypeResultOutput) Schema() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) interface{} { return v.Schema }).(pulumi.AnyOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupContentTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }

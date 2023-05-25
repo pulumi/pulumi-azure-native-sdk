@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +50,9 @@ func NewManagedEnvironmentsStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ManagedEnvironmentsStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ManagedEnvironmentsStorage"),
 		},
 	})
 	opts = append(opts, aliases)

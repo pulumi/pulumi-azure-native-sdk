@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Mongo Role Definition.
-// API Version: 2021-10-15-preview.
+// API Version: 2022-11-15.
+// Previous API Version: 2021-10-15-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type MongoDBResourceMongoRoleDefinition struct {
 	pulumi.CustomResourceState
 
@@ -66,7 +67,16 @@ func NewMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:MongoDBResourceMongoRoleDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:MongoDBResourceMongoRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -117,7 +127,7 @@ type mongoDBResourceMongoRoleDefinitionArgs struct {
 	// The set of roles inherited by this Role Definition.
 	Roles []Role `pulumi:"roles"`
 	// Indicates whether the Role Definition was built-in or user created.
-	Type *MongoRoleDefinitionType `pulumi:"type"`
+	Type *float64 `pulumi:"type"`
 }
 
 // The set of arguments for constructing a MongoDBResourceMongoRoleDefinition resource.
@@ -137,7 +147,7 @@ type MongoDBResourceMongoRoleDefinitionArgs struct {
 	// The set of roles inherited by this Role Definition.
 	Roles RoleArrayInput
 	// Indicates whether the Role Definition was built-in or user created.
-	Type MongoRoleDefinitionTypePtrInput
+	Type pulumi.Float64PtrInput
 }
 
 func (MongoDBResourceMongoRoleDefinitionArgs) ElementType() reflect.Type {

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets details of the specified Data Lake Analytics account.
-//
-// Deprecated: Version 2015-10-01-preview will be removed in v2 of the provider.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:datalakeanalytics/v20151001preview:getAccount", args, &rv, opts...)
@@ -103,7 +101,7 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.QueryStoreRetention) {
+	if tmp.QueryStoreRetention == nil {
 		queryStoreRetention_ := 30
 		tmp.QueryStoreRetention = &queryStoreRetention_
 	}

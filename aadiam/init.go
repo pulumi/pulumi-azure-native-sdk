@@ -25,9 +25,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DiagnosticSetting{}
 	case "azure-native:aadiam:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
-	case "azure-native:aadiam:azureADMetric":
-		r = &AzureADMetric{}
-	case "azure-native:aadiam:privateLinkForAzureAd":
+	case "azure-native:aadiam:PrivateLinkForAzureAd":
 		r = &PrivateLinkForAzureAd{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

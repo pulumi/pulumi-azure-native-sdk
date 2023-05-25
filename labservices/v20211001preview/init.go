@@ -21,14 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:labservices/v20211001preview:Lab":
-		r = &Lab{}
 	case "azure-native:labservices/v20211001preview:LabPlan":
 		r = &LabPlan{}
 	case "azure-native:labservices/v20211001preview:Schedule":
 		r = &Schedule{}
-	case "azure-native:labservices/v20211001preview:User":
-		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

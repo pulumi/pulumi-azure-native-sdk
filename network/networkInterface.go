@@ -7,20 +7,25 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A network interface in a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
+	// Auxiliary mode of Network Interface resource.
+	AuxiliaryMode pulumi.StringPtrOutput `pulumi:"auxiliaryMode"`
+	// Indicates whether to disable tcp state tracking.
+	DisableTcpStateTracking pulumi.BoolPtrOutput `pulumi:"disableTcpStateTracking"`
 	// The DNS settings in network interface.
 	DnsSettings NetworkInterfaceDnsSettingsResponsePtrOutput `pulumi:"dnsSettings"`
 	// A reference to the dscp configuration to which the network interface is linked.
 	DscpConfiguration SubResourceResponseOutput `pulumi:"dscpConfiguration"`
-	// If the network interface is accelerated networking enabled.
+	// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
 	EnableAcceleratedNetworking pulumi.BoolPtrOutput `pulumi:"enableAcceleratedNetworking"`
 	// Indicates whether IP forwarding is enabled on this network interface.
 	EnableIPForwarding pulumi.BoolPtrOutput `pulumi:"enableIPForwarding"`
@@ -62,6 +67,10 @@ type NetworkInterface struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The reference to a virtual machine.
 	VirtualMachine SubResourceResponseOutput `pulumi:"virtualMachine"`
+	// Whether the virtual machine this nic is attached to supports encryption.
+	VnetEncryptionSupported pulumi.BoolOutput `pulumi:"vnetEncryptionSupported"`
+	// WorkloadType of the NetworkInterface for BareMetal resources
+	WorkloadType pulumi.StringPtrOutput `pulumi:"workloadType"`
 }
 
 // NewNetworkInterface registers a new resource with the given unique name, arguments, and options.
@@ -207,6 +216,9 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkInterface
@@ -241,9 +253,13 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 }
 
 type networkInterfaceArgs struct {
+	// Auxiliary mode of Network Interface resource.
+	AuxiliaryMode *string `pulumi:"auxiliaryMode"`
+	// Indicates whether to disable tcp state tracking.
+	DisableTcpStateTracking *bool `pulumi:"disableTcpStateTracking"`
 	// The DNS settings in network interface.
 	DnsSettings *NetworkInterfaceDnsSettings `pulumi:"dnsSettings"`
-	// If the network interface is accelerated networking enabled.
+	// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
 	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
 	// Indicates whether IP forwarding is enabled on this network interface.
 	EnableIPForwarding *bool `pulumi:"enableIPForwarding"`
@@ -269,13 +285,19 @@ type networkInterfaceArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// WorkloadType of the NetworkInterface for BareMetal resources
+	WorkloadType *string `pulumi:"workloadType"`
 }
 
 // The set of arguments for constructing a NetworkInterface resource.
 type NetworkInterfaceArgs struct {
+	// Auxiliary mode of Network Interface resource.
+	AuxiliaryMode pulumi.StringPtrInput
+	// Indicates whether to disable tcp state tracking.
+	DisableTcpStateTracking pulumi.BoolPtrInput
 	// The DNS settings in network interface.
 	DnsSettings NetworkInterfaceDnsSettingsPtrInput
-	// If the network interface is accelerated networking enabled.
+	// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
 	EnableAcceleratedNetworking pulumi.BoolPtrInput
 	// Indicates whether IP forwarding is enabled on this network interface.
 	EnableIPForwarding pulumi.BoolPtrInput
@@ -301,6 +323,8 @@ type NetworkInterfaceArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// WorkloadType of the NetworkInterface for BareMetal resources
+	WorkloadType pulumi.StringPtrInput
 }
 
 func (NetworkInterfaceArgs) ElementType() reflect.Type {
@@ -340,6 +364,16 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
+// Auxiliary mode of Network Interface resource.
+func (o NetworkInterfaceOutput) AuxiliaryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.AuxiliaryMode }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to disable tcp state tracking.
+func (o NetworkInterfaceOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolPtrOutput { return v.DisableTcpStateTracking }).(pulumi.BoolPtrOutput)
+}
+
 // The DNS settings in network interface.
 func (o NetworkInterfaceOutput) DnsSettings() NetworkInterfaceDnsSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) NetworkInterfaceDnsSettingsResponsePtrOutput { return v.DnsSettings }).(NetworkInterfaceDnsSettingsResponsePtrOutput)
@@ -350,7 +384,7 @@ func (o NetworkInterfaceOutput) DscpConfiguration() SubResourceResponseOutput {
 	return o.ApplyT(func(v *NetworkInterface) SubResourceResponseOutput { return v.DscpConfiguration }).(SubResourceResponseOutput)
 }
 
-// If the network interface is accelerated networking enabled.
+// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
 func (o NetworkInterfaceOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolPtrOutput { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
 }
@@ -457,6 +491,16 @@ func (o NetworkInterfaceOutput) Type() pulumi.StringOutput {
 // The reference to a virtual machine.
 func (o NetworkInterfaceOutput) VirtualMachine() SubResourceResponseOutput {
 	return o.ApplyT(func(v *NetworkInterface) SubResourceResponseOutput { return v.VirtualMachine }).(SubResourceResponseOutput)
+}
+
+// Whether the virtual machine this nic is attached to supports encryption.
+func (o NetworkInterfaceOutput) VnetEncryptionSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolOutput { return v.VnetEncryptionSupported }).(pulumi.BoolOutput)
+}
+
+// WorkloadType of the NetworkInterface for BareMetal resources
+func (o NetworkInterfaceOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.WorkloadType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

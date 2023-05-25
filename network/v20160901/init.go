@@ -21,44 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:network/v20160901:ApplicationGateway":
-		r = &ApplicationGateway{}
-	case "azure-native:network/v20160901:ExpressRouteCircuit":
-		r = &ExpressRouteCircuit{}
-	case "azure-native:network/v20160901:ExpressRouteCircuitAuthorization":
-		r = &ExpressRouteCircuitAuthorization{}
-	case "azure-native:network/v20160901:ExpressRouteCircuitPeering":
-		r = &ExpressRouteCircuitPeering{}
-	case "azure-native:network/v20160901:LoadBalancer":
-		r = &LoadBalancer{}
 	case "azure-native:network/v20160901:LocalNetworkGateway":
 		r = &LocalNetworkGateway{}
-	case "azure-native:network/v20160901:NetworkInterface":
-		r = &NetworkInterface{}
-	case "azure-native:network/v20160901:NetworkSecurityGroup":
-		r = &NetworkSecurityGroup{}
-	case "azure-native:network/v20160901:NetworkWatcher":
-		r = &NetworkWatcher{}
-	case "azure-native:network/v20160901:PacketCapture":
-		r = &PacketCapture{}
-	case "azure-native:network/v20160901:PublicIPAddress":
-		r = &PublicIPAddress{}
-	case "azure-native:network/v20160901:Route":
-		r = &Route{}
-	case "azure-native:network/v20160901:RouteTable":
-		r = &RouteTable{}
-	case "azure-native:network/v20160901:SecurityRule":
-		r = &SecurityRule{}
-	case "azure-native:network/v20160901:Subnet":
-		r = &Subnet{}
-	case "azure-native:network/v20160901:VirtualNetwork":
-		r = &VirtualNetwork{}
 	case "azure-native:network/v20160901:VirtualNetworkGateway":
 		r = &VirtualNetworkGateway{}
-	case "azure-native:network/v20160901:VirtualNetworkGatewayConnection":
-		r = &VirtualNetworkGatewayConnection{}
-	case "azure-native:network/v20160901:VirtualNetworkPeering":
-		r = &VirtualNetworkPeering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

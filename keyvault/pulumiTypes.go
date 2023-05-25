@@ -204,6 +204,201 @@ func (o AccessPolicyEntryResponseArrayOutput) Index(i pulumi.IntInput) AccessPol
 	}).(AccessPolicyEntryResponseOutput)
 }
 
+type Action struct {
+	// The type of action.
+	Type *KeyRotationPolicyActionType `pulumi:"type"`
+}
+
+// ActionInput is an input type that accepts ActionArgs and ActionOutput values.
+// You can construct a concrete instance of `ActionInput` via:
+//
+//	ActionArgs{...}
+type ActionInput interface {
+	pulumi.Input
+
+	ToActionOutput() ActionOutput
+	ToActionOutputWithContext(context.Context) ActionOutput
+}
+
+type ActionArgs struct {
+	// The type of action.
+	Type KeyRotationPolicyActionTypePtrInput `pulumi:"type"`
+}
+
+func (ActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Action)(nil)).Elem()
+}
+
+func (i ActionArgs) ToActionOutput() ActionOutput {
+	return i.ToActionOutputWithContext(context.Background())
+}
+
+func (i ActionArgs) ToActionOutputWithContext(ctx context.Context) ActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput)
+}
+
+func (i ActionArgs) ToActionPtrOutput() ActionPtrOutput {
+	return i.ToActionPtrOutputWithContext(context.Background())
+}
+
+func (i ActionArgs) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput).ToActionPtrOutputWithContext(ctx)
+}
+
+// ActionPtrInput is an input type that accepts ActionArgs, ActionPtr and ActionPtrOutput values.
+// You can construct a concrete instance of `ActionPtrInput` via:
+//
+//	        ActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionPtrInput interface {
+	pulumi.Input
+
+	ToActionPtrOutput() ActionPtrOutput
+	ToActionPtrOutputWithContext(context.Context) ActionPtrOutput
+}
+
+type actionPtrType ActionArgs
+
+func ActionPtr(v *ActionArgs) ActionPtrInput {
+	return (*actionPtrType)(v)
+}
+
+func (*actionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Action)(nil)).Elem()
+}
+
+func (i *actionPtrType) ToActionPtrOutput() ActionPtrOutput {
+	return i.ToActionPtrOutputWithContext(context.Background())
+}
+
+func (i *actionPtrType) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPtrOutput)
+}
+
+type ActionOutput struct{ *pulumi.OutputState }
+
+func (ActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Action)(nil)).Elem()
+}
+
+func (o ActionOutput) ToActionOutput() ActionOutput {
+	return o
+}
+
+func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutput {
+	return o
+}
+
+func (o ActionOutput) ToActionPtrOutput() ActionPtrOutput {
+	return o.ToActionPtrOutputWithContext(context.Background())
+}
+
+func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Action) *Action {
+		return &v
+	}).(ActionPtrOutput)
+}
+
+// The type of action.
+func (o ActionOutput) Type() KeyRotationPolicyActionTypePtrOutput {
+	return o.ApplyT(func(v Action) *KeyRotationPolicyActionType { return v.Type }).(KeyRotationPolicyActionTypePtrOutput)
+}
+
+type ActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Action)(nil)).Elem()
+}
+
+func (o ActionPtrOutput) ToActionPtrOutput() ActionPtrOutput {
+	return o
+}
+
+func (o ActionPtrOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
+	return o
+}
+
+func (o ActionPtrOutput) Elem() ActionOutput {
+	return o.ApplyT(func(v *Action) Action {
+		if v != nil {
+			return *v
+		}
+		var ret Action
+		return ret
+	}).(ActionOutput)
+}
+
+// The type of action.
+func (o ActionPtrOutput) Type() KeyRotationPolicyActionTypePtrOutput {
+	return o.ApplyT(func(v *Action) *KeyRotationPolicyActionType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(KeyRotationPolicyActionTypePtrOutput)
+}
+
+type ActionResponse struct {
+	// The type of action.
+	Type *string `pulumi:"type"`
+}
+
+type ActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionResponse)(nil)).Elem()
+}
+
+func (o ActionResponseOutput) ToActionResponseOutput() ActionResponseOutput {
+	return o
+}
+
+func (o ActionResponseOutput) ToActionResponseOutputWithContext(ctx context.Context) ActionResponseOutput {
+	return o
+}
+
+// The type of action.
+func (o ActionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionResponse)(nil)).Elem()
+}
+
+func (o ActionResponsePtrOutput) ToActionResponsePtrOutput() ActionResponsePtrOutput {
+	return o
+}
+
+func (o ActionResponsePtrOutput) ToActionResponsePtrOutputWithContext(ctx context.Context) ActionResponsePtrOutput {
+	return o
+}
+
+func (o ActionResponsePtrOutput) Elem() ActionResponseOutput {
+	return o.ApplyT(func(v *ActionResponse) ActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ActionResponse
+		return ret
+	}).(ActionResponseOutput)
+}
+
+// The type of action.
+func (o ActionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // A rule governing the accessibility of a vault from a specific ip address or ip range.
 type IPRule struct {
 	// An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
@@ -350,14 +545,29 @@ func (o IPRuleResponseArrayOutput) Index(i pulumi.IntInput) IPRuleResponseOutput
 	}).(IPRuleResponseOutput)
 }
 
-// The attributes of the key.
+// The object attributes managed by the Azure Key Vault service.
 type KeyAttributes struct {
 	// Determines whether or not the object is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Expiry date in seconds since 1970-01-01T00:00:00Z.
 	Expires *float64 `pulumi:"expires"`
+	// Indicates if the private key can be exported.
+	Exportable *bool `pulumi:"exportable"`
 	// Not before date in seconds since 1970-01-01T00:00:00Z.
 	NotBefore *float64 `pulumi:"notBefore"`
+}
+
+// Defaults sets the appropriate defaults for KeyAttributes
+func (val *KeyAttributes) Defaults() *KeyAttributes {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Exportable == nil {
+		exportable_ := false
+		tmp.Exportable = &exportable_
+	}
+	return &tmp
 }
 
 // KeyAttributesInput is an input type that accepts KeyAttributesArgs and KeyAttributesOutput values.
@@ -371,16 +581,29 @@ type KeyAttributesInput interface {
 	ToKeyAttributesOutputWithContext(context.Context) KeyAttributesOutput
 }
 
-// The attributes of the key.
+// The object attributes managed by the Azure Key Vault service.
 type KeyAttributesArgs struct {
 	// Determines whether or not the object is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Expiry date in seconds since 1970-01-01T00:00:00Z.
 	Expires pulumi.Float64PtrInput `pulumi:"expires"`
+	// Indicates if the private key can be exported.
+	Exportable pulumi.BoolPtrInput `pulumi:"exportable"`
 	// Not before date in seconds since 1970-01-01T00:00:00Z.
 	NotBefore pulumi.Float64PtrInput `pulumi:"notBefore"`
 }
 
+// Defaults sets the appropriate defaults for KeyAttributesArgs
+func (val *KeyAttributesArgs) Defaults() *KeyAttributesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Exportable == nil {
+		tmp.Exportable = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (KeyAttributesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyAttributes)(nil)).Elem()
 }
@@ -434,7 +657,7 @@ func (i *keyAttributesPtrType) ToKeyAttributesPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KeyAttributesPtrOutput)
 }
 
-// The attributes of the key.
+// The object attributes managed by the Azure Key Vault service.
 type KeyAttributesOutput struct{ *pulumi.OutputState }
 
 func (KeyAttributesOutput) ElementType() reflect.Type {
@@ -467,6 +690,11 @@ func (o KeyAttributesOutput) Enabled() pulumi.BoolPtrOutput {
 // Expiry date in seconds since 1970-01-01T00:00:00Z.
 func (o KeyAttributesOutput) Expires() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v KeyAttributes) *float64 { return v.Expires }).(pulumi.Float64PtrOutput)
+}
+
+// Indicates if the private key can be exported.
+func (o KeyAttributesOutput) Exportable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KeyAttributes) *bool { return v.Exportable }).(pulumi.BoolPtrOutput)
 }
 
 // Not before date in seconds since 1970-01-01T00:00:00Z.
@@ -518,6 +746,16 @@ func (o KeyAttributesPtrOutput) Expires() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Indicates if the private key can be exported.
+func (o KeyAttributesPtrOutput) Exportable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KeyAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Exportable
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Not before date in seconds since 1970-01-01T00:00:00Z.
 func (o KeyAttributesPtrOutput) NotBefore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *KeyAttributes) *float64 {
@@ -528,7 +766,7 @@ func (o KeyAttributesPtrOutput) NotBefore() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The attributes of the key.
+// The object attributes managed by the Azure Key Vault service.
 type KeyAttributesResponse struct {
 	// Creation time in seconds since 1970-01-01T00:00:00Z.
 	Created float64 `pulumi:"created"`
@@ -536,6 +774,8 @@ type KeyAttributesResponse struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Expiry date in seconds since 1970-01-01T00:00:00Z.
 	Expires *float64 `pulumi:"expires"`
+	// Indicates if the private key can be exported.
+	Exportable *bool `pulumi:"exportable"`
 	// Not before date in seconds since 1970-01-01T00:00:00Z.
 	NotBefore *float64 `pulumi:"notBefore"`
 	// The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval.
@@ -544,7 +784,20 @@ type KeyAttributesResponse struct {
 	Updated float64 `pulumi:"updated"`
 }
 
-// The attributes of the key.
+// Defaults sets the appropriate defaults for KeyAttributesResponse
+func (val *KeyAttributesResponse) Defaults() *KeyAttributesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Exportable == nil {
+		exportable_ := false
+		tmp.Exportable = &exportable_
+	}
+	return &tmp
+}
+
+// The object attributes managed by the Azure Key Vault service.
 type KeyAttributesResponseOutput struct{ *pulumi.OutputState }
 
 func (KeyAttributesResponseOutput) ElementType() reflect.Type {
@@ -572,6 +825,11 @@ func (o KeyAttributesResponseOutput) Enabled() pulumi.BoolPtrOutput {
 // Expiry date in seconds since 1970-01-01T00:00:00Z.
 func (o KeyAttributesResponseOutput) Expires() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v KeyAttributesResponse) *float64 { return v.Expires }).(pulumi.Float64PtrOutput)
+}
+
+// Indicates if the private key can be exported.
+func (o KeyAttributesResponseOutput) Exportable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KeyAttributesResponse) *bool { return v.Exportable }).(pulumi.BoolPtrOutput)
 }
 
 // Not before date in seconds since 1970-01-01T00:00:00Z.
@@ -643,6 +901,16 @@ func (o KeyAttributesResponsePtrOutput) Expires() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Indicates if the private key can be exported.
+func (o KeyAttributesResponsePtrOutput) Exportable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KeyAttributesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Exportable
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Not before date in seconds since 1970-01-01T00:00:00Z.
 func (o KeyAttributesResponsePtrOutput) NotBefore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *KeyAttributesResponse) *float64 {
@@ -684,6 +952,23 @@ type KeyProperties struct {
 	KeySize *int `pulumi:"keySize"`
 	// The type of the key. For valid values, see JsonWebKeyType.
 	Kty *string `pulumi:"kty"`
+	// Key release policy in response. It will be used for both output and input. Omitted if empty
+	ReleasePolicy *KeyReleasePolicy `pulumi:"releasePolicy"`
+	// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+	RotationPolicy *RotationPolicy `pulumi:"rotationPolicy"`
+}
+
+// Defaults sets the appropriate defaults for KeyProperties
+func (val *KeyProperties) Defaults() *KeyProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Attributes = tmp.Attributes.Defaults()
+
+	tmp.ReleasePolicy = tmp.ReleasePolicy.Defaults()
+
+	return &tmp
 }
 
 // KeyPropertiesInput is an input type that accepts KeyPropertiesArgs and KeyPropertiesOutput values.
@@ -708,8 +993,21 @@ type KeyPropertiesArgs struct {
 	KeySize pulumi.IntPtrInput `pulumi:"keySize"`
 	// The type of the key. For valid values, see JsonWebKeyType.
 	Kty pulumi.StringPtrInput `pulumi:"kty"`
+	// Key release policy in response. It will be used for both output and input. Omitted if empty
+	ReleasePolicy KeyReleasePolicyPtrInput `pulumi:"releasePolicy"`
+	// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+	RotationPolicy RotationPolicyPtrInput `pulumi:"rotationPolicy"`
 }
 
+// Defaults sets the appropriate defaults for KeyPropertiesArgs
+func (val *KeyPropertiesArgs) Defaults() *KeyPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (KeyPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyProperties)(nil)).Elem()
 }
@@ -761,7 +1059,840 @@ func (o KeyPropertiesOutput) Kty() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyProperties) *string { return v.Kty }).(pulumi.StringPtrOutput)
 }
 
-// A rule governing the accessibility of a managed hsm pool from a specific ip address or ip range.
+// Key release policy in response. It will be used for both output and input. Omitted if empty
+func (o KeyPropertiesOutput) ReleasePolicy() KeyReleasePolicyPtrOutput {
+	return o.ApplyT(func(v KeyProperties) *KeyReleasePolicy { return v.ReleasePolicy }).(KeyReleasePolicyPtrOutput)
+}
+
+// Key rotation policy in response. It will be used for both output and input. Omitted if empty
+func (o KeyPropertiesOutput) RotationPolicy() RotationPolicyPtrOutput {
+	return o.ApplyT(func(v KeyProperties) *RotationPolicy { return v.RotationPolicy }).(RotationPolicyPtrOutput)
+}
+
+type KeyReleasePolicy struct {
+	// Content type and version of key release policy
+	ContentType *string `pulumi:"contentType"`
+	// Blob encoding the policy rules under which the key can be released.
+	Data *string `pulumi:"data"`
+}
+
+// Defaults sets the appropriate defaults for KeyReleasePolicy
+func (val *KeyReleasePolicy) Defaults() *KeyReleasePolicy {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContentType == nil {
+		contentType_ := "application/json; charset=utf-8"
+		tmp.ContentType = &contentType_
+	}
+	return &tmp
+}
+
+// KeyReleasePolicyInput is an input type that accepts KeyReleasePolicyArgs and KeyReleasePolicyOutput values.
+// You can construct a concrete instance of `KeyReleasePolicyInput` via:
+//
+//	KeyReleasePolicyArgs{...}
+type KeyReleasePolicyInput interface {
+	pulumi.Input
+
+	ToKeyReleasePolicyOutput() KeyReleasePolicyOutput
+	ToKeyReleasePolicyOutputWithContext(context.Context) KeyReleasePolicyOutput
+}
+
+type KeyReleasePolicyArgs struct {
+	// Content type and version of key release policy
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// Blob encoding the policy rules under which the key can be released.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+}
+
+// Defaults sets the appropriate defaults for KeyReleasePolicyArgs
+func (val *KeyReleasePolicyArgs) Defaults() *KeyReleasePolicyArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContentType == nil {
+		tmp.ContentType = pulumi.StringPtr("application/json; charset=utf-8")
+	}
+	return &tmp
+}
+func (KeyReleasePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyReleasePolicy)(nil)).Elem()
+}
+
+func (i KeyReleasePolicyArgs) ToKeyReleasePolicyOutput() KeyReleasePolicyOutput {
+	return i.ToKeyReleasePolicyOutputWithContext(context.Background())
+}
+
+func (i KeyReleasePolicyArgs) ToKeyReleasePolicyOutputWithContext(ctx context.Context) KeyReleasePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyReleasePolicyOutput)
+}
+
+func (i KeyReleasePolicyArgs) ToKeyReleasePolicyPtrOutput() KeyReleasePolicyPtrOutput {
+	return i.ToKeyReleasePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i KeyReleasePolicyArgs) ToKeyReleasePolicyPtrOutputWithContext(ctx context.Context) KeyReleasePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyReleasePolicyOutput).ToKeyReleasePolicyPtrOutputWithContext(ctx)
+}
+
+// KeyReleasePolicyPtrInput is an input type that accepts KeyReleasePolicyArgs, KeyReleasePolicyPtr and KeyReleasePolicyPtrOutput values.
+// You can construct a concrete instance of `KeyReleasePolicyPtrInput` via:
+//
+//	        KeyReleasePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyReleasePolicyPtrInput interface {
+	pulumi.Input
+
+	ToKeyReleasePolicyPtrOutput() KeyReleasePolicyPtrOutput
+	ToKeyReleasePolicyPtrOutputWithContext(context.Context) KeyReleasePolicyPtrOutput
+}
+
+type keyReleasePolicyPtrType KeyReleasePolicyArgs
+
+func KeyReleasePolicyPtr(v *KeyReleasePolicyArgs) KeyReleasePolicyPtrInput {
+	return (*keyReleasePolicyPtrType)(v)
+}
+
+func (*keyReleasePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyReleasePolicy)(nil)).Elem()
+}
+
+func (i *keyReleasePolicyPtrType) ToKeyReleasePolicyPtrOutput() KeyReleasePolicyPtrOutput {
+	return i.ToKeyReleasePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *keyReleasePolicyPtrType) ToKeyReleasePolicyPtrOutputWithContext(ctx context.Context) KeyReleasePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyReleasePolicyPtrOutput)
+}
+
+type KeyReleasePolicyOutput struct{ *pulumi.OutputState }
+
+func (KeyReleasePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyReleasePolicy)(nil)).Elem()
+}
+
+func (o KeyReleasePolicyOutput) ToKeyReleasePolicyOutput() KeyReleasePolicyOutput {
+	return o
+}
+
+func (o KeyReleasePolicyOutput) ToKeyReleasePolicyOutputWithContext(ctx context.Context) KeyReleasePolicyOutput {
+	return o
+}
+
+func (o KeyReleasePolicyOutput) ToKeyReleasePolicyPtrOutput() KeyReleasePolicyPtrOutput {
+	return o.ToKeyReleasePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o KeyReleasePolicyOutput) ToKeyReleasePolicyPtrOutputWithContext(ctx context.Context) KeyReleasePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyReleasePolicy) *KeyReleasePolicy {
+		return &v
+	}).(KeyReleasePolicyPtrOutput)
+}
+
+// Content type and version of key release policy
+func (o KeyReleasePolicyOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyReleasePolicy) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// Blob encoding the policy rules under which the key can be released.
+func (o KeyReleasePolicyOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyReleasePolicy) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+type KeyReleasePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyReleasePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyReleasePolicy)(nil)).Elem()
+}
+
+func (o KeyReleasePolicyPtrOutput) ToKeyReleasePolicyPtrOutput() KeyReleasePolicyPtrOutput {
+	return o
+}
+
+func (o KeyReleasePolicyPtrOutput) ToKeyReleasePolicyPtrOutputWithContext(ctx context.Context) KeyReleasePolicyPtrOutput {
+	return o
+}
+
+func (o KeyReleasePolicyPtrOutput) Elem() KeyReleasePolicyOutput {
+	return o.ApplyT(func(v *KeyReleasePolicy) KeyReleasePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KeyReleasePolicy
+		return ret
+	}).(KeyReleasePolicyOutput)
+}
+
+// Content type and version of key release policy
+func (o KeyReleasePolicyPtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyReleasePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Blob encoding the policy rules under which the key can be released.
+func (o KeyReleasePolicyPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyReleasePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyReleasePolicyResponse struct {
+	// Content type and version of key release policy
+	ContentType *string `pulumi:"contentType"`
+	// Blob encoding the policy rules under which the key can be released.
+	Data *string `pulumi:"data"`
+}
+
+// Defaults sets the appropriate defaults for KeyReleasePolicyResponse
+func (val *KeyReleasePolicyResponse) Defaults() *KeyReleasePolicyResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContentType == nil {
+		contentType_ := "application/json; charset=utf-8"
+		tmp.ContentType = &contentType_
+	}
+	return &tmp
+}
+
+type KeyReleasePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyReleasePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyReleasePolicyResponse)(nil)).Elem()
+}
+
+func (o KeyReleasePolicyResponseOutput) ToKeyReleasePolicyResponseOutput() KeyReleasePolicyResponseOutput {
+	return o
+}
+
+func (o KeyReleasePolicyResponseOutput) ToKeyReleasePolicyResponseOutputWithContext(ctx context.Context) KeyReleasePolicyResponseOutput {
+	return o
+}
+
+// Content type and version of key release policy
+func (o KeyReleasePolicyResponseOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyReleasePolicyResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// Blob encoding the policy rules under which the key can be released.
+func (o KeyReleasePolicyResponseOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyReleasePolicyResponse) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+type KeyReleasePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyReleasePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyReleasePolicyResponse)(nil)).Elem()
+}
+
+func (o KeyReleasePolicyResponsePtrOutput) ToKeyReleasePolicyResponsePtrOutput() KeyReleasePolicyResponsePtrOutput {
+	return o
+}
+
+func (o KeyReleasePolicyResponsePtrOutput) ToKeyReleasePolicyResponsePtrOutputWithContext(ctx context.Context) KeyReleasePolicyResponsePtrOutput {
+	return o
+}
+
+func (o KeyReleasePolicyResponsePtrOutput) Elem() KeyReleasePolicyResponseOutput {
+	return o.ApplyT(func(v *KeyReleasePolicyResponse) KeyReleasePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyReleasePolicyResponse
+		return ret
+	}).(KeyReleasePolicyResponseOutput)
+}
+
+// Content type and version of key release policy
+func (o KeyReleasePolicyResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyReleasePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Blob encoding the policy rules under which the key can be released.
+func (o KeyReleasePolicyResponsePtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyReleasePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyRotationPolicyAttributes struct {
+	// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+	ExpiryTime *string `pulumi:"expiryTime"`
+}
+
+// KeyRotationPolicyAttributesInput is an input type that accepts KeyRotationPolicyAttributesArgs and KeyRotationPolicyAttributesOutput values.
+// You can construct a concrete instance of `KeyRotationPolicyAttributesInput` via:
+//
+//	KeyRotationPolicyAttributesArgs{...}
+type KeyRotationPolicyAttributesInput interface {
+	pulumi.Input
+
+	ToKeyRotationPolicyAttributesOutput() KeyRotationPolicyAttributesOutput
+	ToKeyRotationPolicyAttributesOutputWithContext(context.Context) KeyRotationPolicyAttributesOutput
+}
+
+type KeyRotationPolicyAttributesArgs struct {
+	// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+	ExpiryTime pulumi.StringPtrInput `pulumi:"expiryTime"`
+}
+
+func (KeyRotationPolicyAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRotationPolicyAttributes)(nil)).Elem()
+}
+
+func (i KeyRotationPolicyAttributesArgs) ToKeyRotationPolicyAttributesOutput() KeyRotationPolicyAttributesOutput {
+	return i.ToKeyRotationPolicyAttributesOutputWithContext(context.Background())
+}
+
+func (i KeyRotationPolicyAttributesArgs) ToKeyRotationPolicyAttributesOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRotationPolicyAttributesOutput)
+}
+
+func (i KeyRotationPolicyAttributesArgs) ToKeyRotationPolicyAttributesPtrOutput() KeyRotationPolicyAttributesPtrOutput {
+	return i.ToKeyRotationPolicyAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i KeyRotationPolicyAttributesArgs) ToKeyRotationPolicyAttributesPtrOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRotationPolicyAttributesOutput).ToKeyRotationPolicyAttributesPtrOutputWithContext(ctx)
+}
+
+// KeyRotationPolicyAttributesPtrInput is an input type that accepts KeyRotationPolicyAttributesArgs, KeyRotationPolicyAttributesPtr and KeyRotationPolicyAttributesPtrOutput values.
+// You can construct a concrete instance of `KeyRotationPolicyAttributesPtrInput` via:
+//
+//	        KeyRotationPolicyAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyRotationPolicyAttributesPtrInput interface {
+	pulumi.Input
+
+	ToKeyRotationPolicyAttributesPtrOutput() KeyRotationPolicyAttributesPtrOutput
+	ToKeyRotationPolicyAttributesPtrOutputWithContext(context.Context) KeyRotationPolicyAttributesPtrOutput
+}
+
+type keyRotationPolicyAttributesPtrType KeyRotationPolicyAttributesArgs
+
+func KeyRotationPolicyAttributesPtr(v *KeyRotationPolicyAttributesArgs) KeyRotationPolicyAttributesPtrInput {
+	return (*keyRotationPolicyAttributesPtrType)(v)
+}
+
+func (*keyRotationPolicyAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRotationPolicyAttributes)(nil)).Elem()
+}
+
+func (i *keyRotationPolicyAttributesPtrType) ToKeyRotationPolicyAttributesPtrOutput() KeyRotationPolicyAttributesPtrOutput {
+	return i.ToKeyRotationPolicyAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *keyRotationPolicyAttributesPtrType) ToKeyRotationPolicyAttributesPtrOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRotationPolicyAttributesPtrOutput)
+}
+
+type KeyRotationPolicyAttributesOutput struct{ *pulumi.OutputState }
+
+func (KeyRotationPolicyAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRotationPolicyAttributes)(nil)).Elem()
+}
+
+func (o KeyRotationPolicyAttributesOutput) ToKeyRotationPolicyAttributesOutput() KeyRotationPolicyAttributesOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesOutput) ToKeyRotationPolicyAttributesOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesOutput) ToKeyRotationPolicyAttributesPtrOutput() KeyRotationPolicyAttributesPtrOutput {
+	return o.ToKeyRotationPolicyAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRotationPolicyAttributesOutput) ToKeyRotationPolicyAttributesPtrOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRotationPolicyAttributes) *KeyRotationPolicyAttributes {
+		return &v
+	}).(KeyRotationPolicyAttributesPtrOutput)
+}
+
+// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+func (o KeyRotationPolicyAttributesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRotationPolicyAttributes) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+type KeyRotationPolicyAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyRotationPolicyAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRotationPolicyAttributes)(nil)).Elem()
+}
+
+func (o KeyRotationPolicyAttributesPtrOutput) ToKeyRotationPolicyAttributesPtrOutput() KeyRotationPolicyAttributesPtrOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesPtrOutput) ToKeyRotationPolicyAttributesPtrOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesPtrOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesPtrOutput) Elem() KeyRotationPolicyAttributesOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyAttributes) KeyRotationPolicyAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret KeyRotationPolicyAttributes
+		return ret
+	}).(KeyRotationPolicyAttributesOutput)
+}
+
+// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+func (o KeyRotationPolicyAttributesPtrOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiryTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyRotationPolicyAttributesResponse struct {
+	// Creation time in seconds since 1970-01-01T00:00:00Z.
+	Created float64 `pulumi:"created"`
+	// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+	ExpiryTime *string `pulumi:"expiryTime"`
+	// Last updated time in seconds since 1970-01-01T00:00:00Z.
+	Updated float64 `pulumi:"updated"`
+}
+
+type KeyRotationPolicyAttributesResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyRotationPolicyAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRotationPolicyAttributesResponse)(nil)).Elem()
+}
+
+func (o KeyRotationPolicyAttributesResponseOutput) ToKeyRotationPolicyAttributesResponseOutput() KeyRotationPolicyAttributesResponseOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesResponseOutput) ToKeyRotationPolicyAttributesResponseOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesResponseOutput {
+	return o
+}
+
+// Creation time in seconds since 1970-01-01T00:00:00Z.
+func (o KeyRotationPolicyAttributesResponseOutput) Created() pulumi.Float64Output {
+	return o.ApplyT(func(v KeyRotationPolicyAttributesResponse) float64 { return v.Created }).(pulumi.Float64Output)
+}
+
+// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+func (o KeyRotationPolicyAttributesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRotationPolicyAttributesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Last updated time in seconds since 1970-01-01T00:00:00Z.
+func (o KeyRotationPolicyAttributesResponseOutput) Updated() pulumi.Float64Output {
+	return o.ApplyT(func(v KeyRotationPolicyAttributesResponse) float64 { return v.Updated }).(pulumi.Float64Output)
+}
+
+type KeyRotationPolicyAttributesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyRotationPolicyAttributesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRotationPolicyAttributesResponse)(nil)).Elem()
+}
+
+func (o KeyRotationPolicyAttributesResponsePtrOutput) ToKeyRotationPolicyAttributesResponsePtrOutput() KeyRotationPolicyAttributesResponsePtrOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesResponsePtrOutput) ToKeyRotationPolicyAttributesResponsePtrOutputWithContext(ctx context.Context) KeyRotationPolicyAttributesResponsePtrOutput {
+	return o
+}
+
+func (o KeyRotationPolicyAttributesResponsePtrOutput) Elem() KeyRotationPolicyAttributesResponseOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyAttributesResponse) KeyRotationPolicyAttributesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyRotationPolicyAttributesResponse
+		return ret
+	}).(KeyRotationPolicyAttributesResponseOutput)
+}
+
+// Creation time in seconds since 1970-01-01T00:00:00Z.
+func (o KeyRotationPolicyAttributesResponsePtrOutput) Created() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyAttributesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Created
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
+func (o KeyRotationPolicyAttributesResponsePtrOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyAttributesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiryTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last updated time in seconds since 1970-01-01T00:00:00Z.
+func (o KeyRotationPolicyAttributesResponsePtrOutput) Updated() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyAttributesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Updated
+	}).(pulumi.Float64PtrOutput)
+}
+
+type LifetimeAction struct {
+	// The action of key rotation policy lifetimeAction.
+	Action *Action `pulumi:"action"`
+	// The trigger of key rotation policy lifetimeAction.
+	Trigger *Trigger `pulumi:"trigger"`
+}
+
+// LifetimeActionInput is an input type that accepts LifetimeActionArgs and LifetimeActionOutput values.
+// You can construct a concrete instance of `LifetimeActionInput` via:
+//
+//	LifetimeActionArgs{...}
+type LifetimeActionInput interface {
+	pulumi.Input
+
+	ToLifetimeActionOutput() LifetimeActionOutput
+	ToLifetimeActionOutputWithContext(context.Context) LifetimeActionOutput
+}
+
+type LifetimeActionArgs struct {
+	// The action of key rotation policy lifetimeAction.
+	Action ActionPtrInput `pulumi:"action"`
+	// The trigger of key rotation policy lifetimeAction.
+	Trigger TriggerPtrInput `pulumi:"trigger"`
+}
+
+func (LifetimeActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifetimeAction)(nil)).Elem()
+}
+
+func (i LifetimeActionArgs) ToLifetimeActionOutput() LifetimeActionOutput {
+	return i.ToLifetimeActionOutputWithContext(context.Background())
+}
+
+func (i LifetimeActionArgs) ToLifetimeActionOutputWithContext(ctx context.Context) LifetimeActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifetimeActionOutput)
+}
+
+// LifetimeActionArrayInput is an input type that accepts LifetimeActionArray and LifetimeActionArrayOutput values.
+// You can construct a concrete instance of `LifetimeActionArrayInput` via:
+//
+//	LifetimeActionArray{ LifetimeActionArgs{...} }
+type LifetimeActionArrayInput interface {
+	pulumi.Input
+
+	ToLifetimeActionArrayOutput() LifetimeActionArrayOutput
+	ToLifetimeActionArrayOutputWithContext(context.Context) LifetimeActionArrayOutput
+}
+
+type LifetimeActionArray []LifetimeActionInput
+
+func (LifetimeActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifetimeAction)(nil)).Elem()
+}
+
+func (i LifetimeActionArray) ToLifetimeActionArrayOutput() LifetimeActionArrayOutput {
+	return i.ToLifetimeActionArrayOutputWithContext(context.Background())
+}
+
+func (i LifetimeActionArray) ToLifetimeActionArrayOutputWithContext(ctx context.Context) LifetimeActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifetimeActionArrayOutput)
+}
+
+type LifetimeActionOutput struct{ *pulumi.OutputState }
+
+func (LifetimeActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifetimeAction)(nil)).Elem()
+}
+
+func (o LifetimeActionOutput) ToLifetimeActionOutput() LifetimeActionOutput {
+	return o
+}
+
+func (o LifetimeActionOutput) ToLifetimeActionOutputWithContext(ctx context.Context) LifetimeActionOutput {
+	return o
+}
+
+// The action of key rotation policy lifetimeAction.
+func (o LifetimeActionOutput) Action() ActionPtrOutput {
+	return o.ApplyT(func(v LifetimeAction) *Action { return v.Action }).(ActionPtrOutput)
+}
+
+// The trigger of key rotation policy lifetimeAction.
+func (o LifetimeActionOutput) Trigger() TriggerPtrOutput {
+	return o.ApplyT(func(v LifetimeAction) *Trigger { return v.Trigger }).(TriggerPtrOutput)
+}
+
+type LifetimeActionArrayOutput struct{ *pulumi.OutputState }
+
+func (LifetimeActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifetimeAction)(nil)).Elem()
+}
+
+func (o LifetimeActionArrayOutput) ToLifetimeActionArrayOutput() LifetimeActionArrayOutput {
+	return o
+}
+
+func (o LifetimeActionArrayOutput) ToLifetimeActionArrayOutputWithContext(ctx context.Context) LifetimeActionArrayOutput {
+	return o
+}
+
+func (o LifetimeActionArrayOutput) Index(i pulumi.IntInput) LifetimeActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifetimeAction {
+		return vs[0].([]LifetimeAction)[vs[1].(int)]
+	}).(LifetimeActionOutput)
+}
+
+type LifetimeActionResponse struct {
+	// The action of key rotation policy lifetimeAction.
+	Action *ActionResponse `pulumi:"action"`
+	// The trigger of key rotation policy lifetimeAction.
+	Trigger *TriggerResponse `pulumi:"trigger"`
+}
+
+type LifetimeActionResponseOutput struct{ *pulumi.OutputState }
+
+func (LifetimeActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifetimeActionResponse)(nil)).Elem()
+}
+
+func (o LifetimeActionResponseOutput) ToLifetimeActionResponseOutput() LifetimeActionResponseOutput {
+	return o
+}
+
+func (o LifetimeActionResponseOutput) ToLifetimeActionResponseOutputWithContext(ctx context.Context) LifetimeActionResponseOutput {
+	return o
+}
+
+// The action of key rotation policy lifetimeAction.
+func (o LifetimeActionResponseOutput) Action() ActionResponsePtrOutput {
+	return o.ApplyT(func(v LifetimeActionResponse) *ActionResponse { return v.Action }).(ActionResponsePtrOutput)
+}
+
+// The trigger of key rotation policy lifetimeAction.
+func (o LifetimeActionResponseOutput) Trigger() TriggerResponsePtrOutput {
+	return o.ApplyT(func(v LifetimeActionResponse) *TriggerResponse { return v.Trigger }).(TriggerResponsePtrOutput)
+}
+
+type LifetimeActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LifetimeActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifetimeActionResponse)(nil)).Elem()
+}
+
+func (o LifetimeActionResponseArrayOutput) ToLifetimeActionResponseArrayOutput() LifetimeActionResponseArrayOutput {
+	return o
+}
+
+func (o LifetimeActionResponseArrayOutput) ToLifetimeActionResponseArrayOutputWithContext(ctx context.Context) LifetimeActionResponseArrayOutput {
+	return o
+}
+
+func (o LifetimeActionResponseArrayOutput) Index(i pulumi.IntInput) LifetimeActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifetimeActionResponse {
+		return vs[0].([]LifetimeActionResponse)[vs[1].(int)]
+	}).(LifetimeActionResponseOutput)
+}
+
+// A region that this managed HSM Pool has been extended to.
+type MHSMGeoReplicatedRegion struct {
+	// A boolean value that indicates whether the region is the primary region or a secondary region.
+	IsPrimary *bool `pulumi:"isPrimary"`
+	// Name of the geo replicated region.
+	Name *string `pulumi:"name"`
+}
+
+// MHSMGeoReplicatedRegionInput is an input type that accepts MHSMGeoReplicatedRegionArgs and MHSMGeoReplicatedRegionOutput values.
+// You can construct a concrete instance of `MHSMGeoReplicatedRegionInput` via:
+//
+//	MHSMGeoReplicatedRegionArgs{...}
+type MHSMGeoReplicatedRegionInput interface {
+	pulumi.Input
+
+	ToMHSMGeoReplicatedRegionOutput() MHSMGeoReplicatedRegionOutput
+	ToMHSMGeoReplicatedRegionOutputWithContext(context.Context) MHSMGeoReplicatedRegionOutput
+}
+
+// A region that this managed HSM Pool has been extended to.
+type MHSMGeoReplicatedRegionArgs struct {
+	// A boolean value that indicates whether the region is the primary region or a secondary region.
+	IsPrimary pulumi.BoolPtrInput `pulumi:"isPrimary"`
+	// Name of the geo replicated region.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (MHSMGeoReplicatedRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MHSMGeoReplicatedRegion)(nil)).Elem()
+}
+
+func (i MHSMGeoReplicatedRegionArgs) ToMHSMGeoReplicatedRegionOutput() MHSMGeoReplicatedRegionOutput {
+	return i.ToMHSMGeoReplicatedRegionOutputWithContext(context.Background())
+}
+
+func (i MHSMGeoReplicatedRegionArgs) ToMHSMGeoReplicatedRegionOutputWithContext(ctx context.Context) MHSMGeoReplicatedRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MHSMGeoReplicatedRegionOutput)
+}
+
+// MHSMGeoReplicatedRegionArrayInput is an input type that accepts MHSMGeoReplicatedRegionArray and MHSMGeoReplicatedRegionArrayOutput values.
+// You can construct a concrete instance of `MHSMGeoReplicatedRegionArrayInput` via:
+//
+//	MHSMGeoReplicatedRegionArray{ MHSMGeoReplicatedRegionArgs{...} }
+type MHSMGeoReplicatedRegionArrayInput interface {
+	pulumi.Input
+
+	ToMHSMGeoReplicatedRegionArrayOutput() MHSMGeoReplicatedRegionArrayOutput
+	ToMHSMGeoReplicatedRegionArrayOutputWithContext(context.Context) MHSMGeoReplicatedRegionArrayOutput
+}
+
+type MHSMGeoReplicatedRegionArray []MHSMGeoReplicatedRegionInput
+
+func (MHSMGeoReplicatedRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MHSMGeoReplicatedRegion)(nil)).Elem()
+}
+
+func (i MHSMGeoReplicatedRegionArray) ToMHSMGeoReplicatedRegionArrayOutput() MHSMGeoReplicatedRegionArrayOutput {
+	return i.ToMHSMGeoReplicatedRegionArrayOutputWithContext(context.Background())
+}
+
+func (i MHSMGeoReplicatedRegionArray) ToMHSMGeoReplicatedRegionArrayOutputWithContext(ctx context.Context) MHSMGeoReplicatedRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MHSMGeoReplicatedRegionArrayOutput)
+}
+
+// A region that this managed HSM Pool has been extended to.
+type MHSMGeoReplicatedRegionOutput struct{ *pulumi.OutputState }
+
+func (MHSMGeoReplicatedRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MHSMGeoReplicatedRegion)(nil)).Elem()
+}
+
+func (o MHSMGeoReplicatedRegionOutput) ToMHSMGeoReplicatedRegionOutput() MHSMGeoReplicatedRegionOutput {
+	return o
+}
+
+func (o MHSMGeoReplicatedRegionOutput) ToMHSMGeoReplicatedRegionOutputWithContext(ctx context.Context) MHSMGeoReplicatedRegionOutput {
+	return o
+}
+
+// A boolean value that indicates whether the region is the primary region or a secondary region.
+func (o MHSMGeoReplicatedRegionOutput) IsPrimary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MHSMGeoReplicatedRegion) *bool { return v.IsPrimary }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the geo replicated region.
+func (o MHSMGeoReplicatedRegionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MHSMGeoReplicatedRegion) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MHSMGeoReplicatedRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (MHSMGeoReplicatedRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MHSMGeoReplicatedRegion)(nil)).Elem()
+}
+
+func (o MHSMGeoReplicatedRegionArrayOutput) ToMHSMGeoReplicatedRegionArrayOutput() MHSMGeoReplicatedRegionArrayOutput {
+	return o
+}
+
+func (o MHSMGeoReplicatedRegionArrayOutput) ToMHSMGeoReplicatedRegionArrayOutputWithContext(ctx context.Context) MHSMGeoReplicatedRegionArrayOutput {
+	return o
+}
+
+func (o MHSMGeoReplicatedRegionArrayOutput) Index(i pulumi.IntInput) MHSMGeoReplicatedRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MHSMGeoReplicatedRegion {
+		return vs[0].([]MHSMGeoReplicatedRegion)[vs[1].(int)]
+	}).(MHSMGeoReplicatedRegionOutput)
+}
+
+// A region that this managed HSM Pool has been extended to.
+type MHSMGeoReplicatedRegionResponse struct {
+	// A boolean value that indicates whether the region is the primary region or a secondary region.
+	IsPrimary *bool `pulumi:"isPrimary"`
+	// Name of the geo replicated region.
+	Name *string `pulumi:"name"`
+	// Provisioning state of the geo replicated region.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// A region that this managed HSM Pool has been extended to.
+type MHSMGeoReplicatedRegionResponseOutput struct{ *pulumi.OutputState }
+
+func (MHSMGeoReplicatedRegionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MHSMGeoReplicatedRegionResponse)(nil)).Elem()
+}
+
+func (o MHSMGeoReplicatedRegionResponseOutput) ToMHSMGeoReplicatedRegionResponseOutput() MHSMGeoReplicatedRegionResponseOutput {
+	return o
+}
+
+func (o MHSMGeoReplicatedRegionResponseOutput) ToMHSMGeoReplicatedRegionResponseOutputWithContext(ctx context.Context) MHSMGeoReplicatedRegionResponseOutput {
+	return o
+}
+
+// A boolean value that indicates whether the region is the primary region or a secondary region.
+func (o MHSMGeoReplicatedRegionResponseOutput) IsPrimary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MHSMGeoReplicatedRegionResponse) *bool { return v.IsPrimary }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the geo replicated region.
+func (o MHSMGeoReplicatedRegionResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MHSMGeoReplicatedRegionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of the geo replicated region.
+func (o MHSMGeoReplicatedRegionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MHSMGeoReplicatedRegionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type MHSMGeoReplicatedRegionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MHSMGeoReplicatedRegionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MHSMGeoReplicatedRegionResponse)(nil)).Elem()
+}
+
+func (o MHSMGeoReplicatedRegionResponseArrayOutput) ToMHSMGeoReplicatedRegionResponseArrayOutput() MHSMGeoReplicatedRegionResponseArrayOutput {
+	return o
+}
+
+func (o MHSMGeoReplicatedRegionResponseArrayOutput) ToMHSMGeoReplicatedRegionResponseArrayOutputWithContext(ctx context.Context) MHSMGeoReplicatedRegionResponseArrayOutput {
+	return o
+}
+
+func (o MHSMGeoReplicatedRegionResponseArrayOutput) Index(i pulumi.IntInput) MHSMGeoReplicatedRegionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MHSMGeoReplicatedRegionResponse {
+		return vs[0].([]MHSMGeoReplicatedRegionResponse)[vs[1].(int)]
+	}).(MHSMGeoReplicatedRegionResponseOutput)
+}
+
+// A rule governing the accessibility of a managed HSM pool from a specific IP address or IP range.
 type MHSMIPRule struct {
 	// An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
 	Value string `pulumi:"value"`
@@ -778,7 +1909,7 @@ type MHSMIPRuleInput interface {
 	ToMHSMIPRuleOutputWithContext(context.Context) MHSMIPRuleOutput
 }
 
-// A rule governing the accessibility of a managed hsm pool from a specific ip address or ip range.
+// A rule governing the accessibility of a managed HSM pool from a specific IP address or IP range.
 type MHSMIPRuleArgs struct {
 	// An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
 	Value pulumi.StringInput `pulumi:"value"`
@@ -821,7 +1952,7 @@ func (i MHSMIPRuleArray) ToMHSMIPRuleArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MHSMIPRuleArrayOutput)
 }
 
-// A rule governing the accessibility of a managed hsm pool from a specific ip address or ip range.
+// A rule governing the accessibility of a managed HSM pool from a specific IP address or IP range.
 type MHSMIPRuleOutput struct{ *pulumi.OutputState }
 
 func (MHSMIPRuleOutput) ElementType() reflect.Type {
@@ -861,13 +1992,13 @@ func (o MHSMIPRuleArrayOutput) Index(i pulumi.IntInput) MHSMIPRuleOutput {
 	}).(MHSMIPRuleOutput)
 }
 
-// A rule governing the accessibility of a managed hsm pool from a specific ip address or ip range.
+// A rule governing the accessibility of a managed HSM pool from a specific IP address or IP range.
 type MHSMIPRuleResponse struct {
 	// An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
 	Value string `pulumi:"value"`
 }
 
-// A rule governing the accessibility of a managed hsm pool from a specific ip address or ip range.
+// A rule governing the accessibility of a managed HSM pool from a specific IP address or IP range.
 type MHSMIPRuleResponseOutput struct{ *pulumi.OutputState }
 
 func (MHSMIPRuleResponseOutput) ElementType() reflect.Type {
@@ -919,23 +2050,6 @@ type MHSMNetworkRuleSet struct {
 	VirtualNetworkRules []MHSMVirtualNetworkRule `pulumi:"virtualNetworkRules"`
 }
 
-// Defaults sets the appropriate defaults for MHSMNetworkRuleSet
-func (val *MHSMNetworkRuleSet) Defaults() *MHSMNetworkRuleSet {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Bypass) {
-		bypass_ := "AzureServices"
-		tmp.Bypass = &bypass_
-	}
-	if isZero(tmp.DefaultAction) {
-		defaultAction_ := "Allow"
-		tmp.DefaultAction = &defaultAction_
-	}
-	return &tmp
-}
-
 // MHSMNetworkRuleSetInput is an input type that accepts MHSMNetworkRuleSetArgs and MHSMNetworkRuleSetOutput values.
 // You can construct a concrete instance of `MHSMNetworkRuleSetInput` via:
 //
@@ -959,20 +2073,6 @@ type MHSMNetworkRuleSetArgs struct {
 	VirtualNetworkRules MHSMVirtualNetworkRuleArrayInput `pulumi:"virtualNetworkRules"`
 }
 
-// Defaults sets the appropriate defaults for MHSMNetworkRuleSetArgs
-func (val *MHSMNetworkRuleSetArgs) Defaults() *MHSMNetworkRuleSetArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Bypass) {
-		tmp.Bypass = pulumi.StringPtr("AzureServices")
-	}
-	if isZero(tmp.DefaultAction) {
-		tmp.DefaultAction = pulumi.StringPtr("Allow")
-	}
-	return &tmp
-}
 func (MHSMNetworkRuleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*MHSMNetworkRuleSet)(nil)).Elem()
 }
@@ -1145,23 +2245,6 @@ type MHSMNetworkRuleSetResponse struct {
 	IpRules []MHSMIPRuleResponse `pulumi:"ipRules"`
 	// The list of virtual network rules.
 	VirtualNetworkRules []MHSMVirtualNetworkRuleResponse `pulumi:"virtualNetworkRules"`
-}
-
-// Defaults sets the appropriate defaults for MHSMNetworkRuleSetResponse
-func (val *MHSMNetworkRuleSetResponse) Defaults() *MHSMNetworkRuleSetResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Bypass) {
-		bypass_ := "AzureServices"
-		tmp.Bypass = &bypass_
-	}
-	if isZero(tmp.DefaultAction) {
-		defaultAction_ := "Allow"
-		tmp.DefaultAction = &defaultAction_
-	}
-	return &tmp
 }
 
 // A set of rules governing the network accessibility of a managed hsm pool.
@@ -1819,6 +2902,39 @@ func (o MHSMVirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) MHSM
 	}).(MHSMVirtualNetworkRuleResponseOutput)
 }
 
+// The security domain properties of the managed hsm.
+type ManagedHSMSecurityDomainPropertiesResponse struct {
+	// Activation Status
+	ActivationStatus string `pulumi:"activationStatus"`
+	// Activation Status Message.
+	ActivationStatusMessage string `pulumi:"activationStatusMessage"`
+}
+
+// The security domain properties of the managed hsm.
+type ManagedHSMSecurityDomainPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedHSMSecurityDomainPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedHSMSecurityDomainPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ToManagedHSMSecurityDomainPropertiesResponseOutput() ManagedHSMSecurityDomainPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ToManagedHSMSecurityDomainPropertiesResponseOutputWithContext(ctx context.Context) ManagedHSMSecurityDomainPropertiesResponseOutput {
+	return o
+}
+
+// Activation Status
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ActivationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHSMSecurityDomainPropertiesResponse) string { return v.ActivationStatus }).(pulumi.StringOutput)
+}
+
+// Activation Status Message.
+func (o ManagedHSMSecurityDomainPropertiesResponseOutput) ActivationStatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHSMSecurityDomainPropertiesResponse) string { return v.ActivationStatusMessage }).(pulumi.StringOutput)
+}
+
 // Properties of the managed HSM Pool
 type ManagedHsmProperties struct {
 	// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
@@ -1833,6 +2949,8 @@ type ManagedHsmProperties struct {
 	NetworkAcls *MHSMNetworkRuleSet `pulumi:"networkAcls"`
 	// Control permission to the managed HSM from public networks.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// List of all regions associated with the managed hsm pool.
+	Regions []MHSMGeoReplicatedRegion `pulumi:"regions"`
 	// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
@@ -1845,21 +2963,19 @@ func (val *ManagedHsmProperties) Defaults() *ManagedHsmProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := true
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
-
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -1891,6 +3007,8 @@ type ManagedHsmPropertiesArgs struct {
 	NetworkAcls MHSMNetworkRuleSetPtrInput `pulumi:"networkAcls"`
 	// Control permission to the managed HSM from public networks.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
+	// List of all regions associated with the managed hsm pool.
+	Regions MHSMGeoReplicatedRegionArrayInput `pulumi:"regions"`
 	// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 	SoftDeleteRetentionInDays pulumi.IntPtrInput `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
@@ -1903,17 +3021,16 @@ func (val *ManagedHsmPropertiesArgs) Defaults() *ManagedHsmPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		tmp.EnablePurgeProtection = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
-
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -2026,6 +3143,11 @@ func (o ManagedHsmPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ManagedHsmProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// List of all regions associated with the managed hsm pool.
+func (o ManagedHsmPropertiesOutput) Regions() MHSMGeoReplicatedRegionArrayOutput {
+	return o.ApplyT(func(v ManagedHsmProperties) []MHSMGeoReplicatedRegion { return v.Regions }).(MHSMGeoReplicatedRegionArrayOutput)
+}
+
 // Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 func (o ManagedHsmPropertiesOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *int { return v.SoftDeleteRetentionInDays }).(pulumi.IntPtrOutput)
@@ -2120,6 +3242,16 @@ func (o ManagedHsmPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of all regions associated with the managed hsm pool.
+func (o ManagedHsmPropertiesPtrOutput) Regions() MHSMGeoReplicatedRegionArrayOutput {
+	return o.ApplyT(func(v *ManagedHsmProperties) []MHSMGeoReplicatedRegion {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(MHSMGeoReplicatedRegionArrayOutput)
+}
+
 // Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 func (o ManagedHsmPropertiesPtrOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedHsmProperties) *int {
@@ -2158,8 +3290,12 @@ type ManagedHsmPropertiesResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Control permission to the managed HSM from public networks.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// List of all regions associated with the managed hsm pool.
+	Regions []MHSMGeoReplicatedRegionResponse `pulumi:"regions"`
 	// The scheduled purge date in UTC.
 	ScheduledPurgeDate string `pulumi:"scheduledPurgeDate"`
+	// Managed HSM security domain properties.
+	SecurityDomainProperties ManagedHSMSecurityDomainPropertiesResponse `pulumi:"securityDomainProperties"`
 	// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// Resource Status Message.
@@ -2174,21 +3310,19 @@ func (val *ManagedHsmPropertiesResponse) Defaults() *ManagedHsmPropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := true
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	tmp.NetworkAcls = tmp.NetworkAcls.Defaults()
-
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -2252,9 +3386,21 @@ func (o ManagedHsmPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringP
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
+// List of all regions associated with the managed hsm pool.
+func (o ManagedHsmPropertiesResponseOutput) Regions() MHSMGeoReplicatedRegionResponseArrayOutput {
+	return o.ApplyT(func(v ManagedHsmPropertiesResponse) []MHSMGeoReplicatedRegionResponse { return v.Regions }).(MHSMGeoReplicatedRegionResponseArrayOutput)
+}
+
 // The scheduled purge date in UTC.
 func (o ManagedHsmPropertiesResponseOutput) ScheduledPurgeDate() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedHsmPropertiesResponse) string { return v.ScheduledPurgeDate }).(pulumi.StringOutput)
+}
+
+// Managed HSM security domain properties.
+func (o ManagedHsmPropertiesResponseOutput) SecurityDomainProperties() ManagedHSMSecurityDomainPropertiesResponseOutput {
+	return o.ApplyT(func(v ManagedHsmPropertiesResponse) ManagedHSMSecurityDomainPropertiesResponse {
+		return v.SecurityDomainProperties
+	}).(ManagedHSMSecurityDomainPropertiesResponseOutput)
 }
 
 // Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
@@ -3353,6 +4499,237 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type RotationPolicy struct {
+	// The attributes of key rotation policy.
+	Attributes *KeyRotationPolicyAttributes `pulumi:"attributes"`
+	// The lifetimeActions for key rotation action.
+	LifetimeActions []LifetimeAction `pulumi:"lifetimeActions"`
+}
+
+// RotationPolicyInput is an input type that accepts RotationPolicyArgs and RotationPolicyOutput values.
+// You can construct a concrete instance of `RotationPolicyInput` via:
+//
+//	RotationPolicyArgs{...}
+type RotationPolicyInput interface {
+	pulumi.Input
+
+	ToRotationPolicyOutput() RotationPolicyOutput
+	ToRotationPolicyOutputWithContext(context.Context) RotationPolicyOutput
+}
+
+type RotationPolicyArgs struct {
+	// The attributes of key rotation policy.
+	Attributes KeyRotationPolicyAttributesPtrInput `pulumi:"attributes"`
+	// The lifetimeActions for key rotation action.
+	LifetimeActions LifetimeActionArrayInput `pulumi:"lifetimeActions"`
+}
+
+func (RotationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RotationPolicy)(nil)).Elem()
+}
+
+func (i RotationPolicyArgs) ToRotationPolicyOutput() RotationPolicyOutput {
+	return i.ToRotationPolicyOutputWithContext(context.Background())
+}
+
+func (i RotationPolicyArgs) ToRotationPolicyOutputWithContext(ctx context.Context) RotationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RotationPolicyOutput)
+}
+
+func (i RotationPolicyArgs) ToRotationPolicyPtrOutput() RotationPolicyPtrOutput {
+	return i.ToRotationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RotationPolicyArgs) ToRotationPolicyPtrOutputWithContext(ctx context.Context) RotationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RotationPolicyOutput).ToRotationPolicyPtrOutputWithContext(ctx)
+}
+
+// RotationPolicyPtrInput is an input type that accepts RotationPolicyArgs, RotationPolicyPtr and RotationPolicyPtrOutput values.
+// You can construct a concrete instance of `RotationPolicyPtrInput` via:
+//
+//	        RotationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RotationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRotationPolicyPtrOutput() RotationPolicyPtrOutput
+	ToRotationPolicyPtrOutputWithContext(context.Context) RotationPolicyPtrOutput
+}
+
+type rotationPolicyPtrType RotationPolicyArgs
+
+func RotationPolicyPtr(v *RotationPolicyArgs) RotationPolicyPtrInput {
+	return (*rotationPolicyPtrType)(v)
+}
+
+func (*rotationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RotationPolicy)(nil)).Elem()
+}
+
+func (i *rotationPolicyPtrType) ToRotationPolicyPtrOutput() RotationPolicyPtrOutput {
+	return i.ToRotationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *rotationPolicyPtrType) ToRotationPolicyPtrOutputWithContext(ctx context.Context) RotationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RotationPolicyPtrOutput)
+}
+
+type RotationPolicyOutput struct{ *pulumi.OutputState }
+
+func (RotationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RotationPolicy)(nil)).Elem()
+}
+
+func (o RotationPolicyOutput) ToRotationPolicyOutput() RotationPolicyOutput {
+	return o
+}
+
+func (o RotationPolicyOutput) ToRotationPolicyOutputWithContext(ctx context.Context) RotationPolicyOutput {
+	return o
+}
+
+func (o RotationPolicyOutput) ToRotationPolicyPtrOutput() RotationPolicyPtrOutput {
+	return o.ToRotationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RotationPolicyOutput) ToRotationPolicyPtrOutputWithContext(ctx context.Context) RotationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RotationPolicy) *RotationPolicy {
+		return &v
+	}).(RotationPolicyPtrOutput)
+}
+
+// The attributes of key rotation policy.
+func (o RotationPolicyOutput) Attributes() KeyRotationPolicyAttributesPtrOutput {
+	return o.ApplyT(func(v RotationPolicy) *KeyRotationPolicyAttributes { return v.Attributes }).(KeyRotationPolicyAttributesPtrOutput)
+}
+
+// The lifetimeActions for key rotation action.
+func (o RotationPolicyOutput) LifetimeActions() LifetimeActionArrayOutput {
+	return o.ApplyT(func(v RotationPolicy) []LifetimeAction { return v.LifetimeActions }).(LifetimeActionArrayOutput)
+}
+
+type RotationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RotationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RotationPolicy)(nil)).Elem()
+}
+
+func (o RotationPolicyPtrOutput) ToRotationPolicyPtrOutput() RotationPolicyPtrOutput {
+	return o
+}
+
+func (o RotationPolicyPtrOutput) ToRotationPolicyPtrOutputWithContext(ctx context.Context) RotationPolicyPtrOutput {
+	return o
+}
+
+func (o RotationPolicyPtrOutput) Elem() RotationPolicyOutput {
+	return o.ApplyT(func(v *RotationPolicy) RotationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RotationPolicy
+		return ret
+	}).(RotationPolicyOutput)
+}
+
+// The attributes of key rotation policy.
+func (o RotationPolicyPtrOutput) Attributes() KeyRotationPolicyAttributesPtrOutput {
+	return o.ApplyT(func(v *RotationPolicy) *KeyRotationPolicyAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(KeyRotationPolicyAttributesPtrOutput)
+}
+
+// The lifetimeActions for key rotation action.
+func (o RotationPolicyPtrOutput) LifetimeActions() LifetimeActionArrayOutput {
+	return o.ApplyT(func(v *RotationPolicy) []LifetimeAction {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeActions
+	}).(LifetimeActionArrayOutput)
+}
+
+type RotationPolicyResponse struct {
+	// The attributes of key rotation policy.
+	Attributes *KeyRotationPolicyAttributesResponse `pulumi:"attributes"`
+	// The lifetimeActions for key rotation action.
+	LifetimeActions []LifetimeActionResponse `pulumi:"lifetimeActions"`
+}
+
+type RotationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (RotationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RotationPolicyResponse)(nil)).Elem()
+}
+
+func (o RotationPolicyResponseOutput) ToRotationPolicyResponseOutput() RotationPolicyResponseOutput {
+	return o
+}
+
+func (o RotationPolicyResponseOutput) ToRotationPolicyResponseOutputWithContext(ctx context.Context) RotationPolicyResponseOutput {
+	return o
+}
+
+// The attributes of key rotation policy.
+func (o RotationPolicyResponseOutput) Attributes() KeyRotationPolicyAttributesResponsePtrOutput {
+	return o.ApplyT(func(v RotationPolicyResponse) *KeyRotationPolicyAttributesResponse { return v.Attributes }).(KeyRotationPolicyAttributesResponsePtrOutput)
+}
+
+// The lifetimeActions for key rotation action.
+func (o RotationPolicyResponseOutput) LifetimeActions() LifetimeActionResponseArrayOutput {
+	return o.ApplyT(func(v RotationPolicyResponse) []LifetimeActionResponse { return v.LifetimeActions }).(LifetimeActionResponseArrayOutput)
+}
+
+type RotationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RotationPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RotationPolicyResponse)(nil)).Elem()
+}
+
+func (o RotationPolicyResponsePtrOutput) ToRotationPolicyResponsePtrOutput() RotationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o RotationPolicyResponsePtrOutput) ToRotationPolicyResponsePtrOutputWithContext(ctx context.Context) RotationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o RotationPolicyResponsePtrOutput) Elem() RotationPolicyResponseOutput {
+	return o.ApplyT(func(v *RotationPolicyResponse) RotationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RotationPolicyResponse
+		return ret
+	}).(RotationPolicyResponseOutput)
+}
+
+// The attributes of key rotation policy.
+func (o RotationPolicyResponsePtrOutput) Attributes() KeyRotationPolicyAttributesResponsePtrOutput {
+	return o.ApplyT(func(v *RotationPolicyResponse) *KeyRotationPolicyAttributesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(KeyRotationPolicyAttributesResponsePtrOutput)
+}
+
+// The lifetimeActions for key rotation action.
+func (o RotationPolicyResponsePtrOutput) LifetimeActions() LifetimeActionResponseArrayOutput {
+	return o.ApplyT(func(v *RotationPolicyResponse) []LifetimeActionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeActions
+	}).(LifetimeActionResponseArrayOutput)
+}
+
 // The secret management attributes.
 type SecretAttributes struct {
 	// Determines whether the object is enabled.
@@ -3944,6 +5321,237 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+type Trigger struct {
+	// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+	TimeAfterCreate *string `pulumi:"timeAfterCreate"`
+	// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+	TimeBeforeExpiry *string `pulumi:"timeBeforeExpiry"`
+}
+
+// TriggerInput is an input type that accepts TriggerArgs and TriggerOutput values.
+// You can construct a concrete instance of `TriggerInput` via:
+//
+//	TriggerArgs{...}
+type TriggerInput interface {
+	pulumi.Input
+
+	ToTriggerOutput() TriggerOutput
+	ToTriggerOutputWithContext(context.Context) TriggerOutput
+}
+
+type TriggerArgs struct {
+	// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+	TimeAfterCreate pulumi.StringPtrInput `pulumi:"timeAfterCreate"`
+	// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+	TimeBeforeExpiry pulumi.StringPtrInput `pulumi:"timeBeforeExpiry"`
+}
+
+func (TriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trigger)(nil)).Elem()
+}
+
+func (i TriggerArgs) ToTriggerOutput() TriggerOutput {
+	return i.ToTriggerOutputWithContext(context.Background())
+}
+
+func (i TriggerArgs) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerOutput)
+}
+
+func (i TriggerArgs) ToTriggerPtrOutput() TriggerPtrOutput {
+	return i.ToTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerArgs) ToTriggerPtrOutputWithContext(ctx context.Context) TriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerOutput).ToTriggerPtrOutputWithContext(ctx)
+}
+
+// TriggerPtrInput is an input type that accepts TriggerArgs, TriggerPtr and TriggerPtrOutput values.
+// You can construct a concrete instance of `TriggerPtrInput` via:
+//
+//	        TriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerPtrInput interface {
+	pulumi.Input
+
+	ToTriggerPtrOutput() TriggerPtrOutput
+	ToTriggerPtrOutputWithContext(context.Context) TriggerPtrOutput
+}
+
+type triggerPtrType TriggerArgs
+
+func TriggerPtr(v *TriggerArgs) TriggerPtrInput {
+	return (*triggerPtrType)(v)
+}
+
+func (*triggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trigger)(nil)).Elem()
+}
+
+func (i *triggerPtrType) ToTriggerPtrOutput() TriggerPtrOutput {
+	return i.ToTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerPtrType) ToTriggerPtrOutputWithContext(ctx context.Context) TriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPtrOutput)
+}
+
+type TriggerOutput struct{ *pulumi.OutputState }
+
+func (TriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trigger)(nil)).Elem()
+}
+
+func (o TriggerOutput) ToTriggerOutput() TriggerOutput {
+	return o
+}
+
+func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
+	return o
+}
+
+func (o TriggerOutput) ToTriggerPtrOutput() TriggerPtrOutput {
+	return o.ToTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerOutput) ToTriggerPtrOutputWithContext(ctx context.Context) TriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Trigger) *Trigger {
+		return &v
+	}).(TriggerPtrOutput)
+}
+
+// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerOutput) TimeAfterCreate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Trigger) *string { return v.TimeAfterCreate }).(pulumi.StringPtrOutput)
+}
+
+// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerOutput) TimeBeforeExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Trigger) *string { return v.TimeBeforeExpiry }).(pulumi.StringPtrOutput)
+}
+
+type TriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trigger)(nil)).Elem()
+}
+
+func (o TriggerPtrOutput) ToTriggerPtrOutput() TriggerPtrOutput {
+	return o
+}
+
+func (o TriggerPtrOutput) ToTriggerPtrOutputWithContext(ctx context.Context) TriggerPtrOutput {
+	return o
+}
+
+func (o TriggerPtrOutput) Elem() TriggerOutput {
+	return o.ApplyT(func(v *Trigger) Trigger {
+		if v != nil {
+			return *v
+		}
+		var ret Trigger
+		return ret
+	}).(TriggerOutput)
+}
+
+// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerPtrOutput) TimeAfterCreate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeAfterCreate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerPtrOutput) TimeBeforeExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeBeforeExpiry
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerResponse struct {
+	// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+	TimeAfterCreate *string `pulumi:"timeAfterCreate"`
+	// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+	TimeBeforeExpiry *string `pulumi:"timeBeforeExpiry"`
+}
+
+type TriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (TriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerResponse)(nil)).Elem()
+}
+
+func (o TriggerResponseOutput) ToTriggerResponseOutput() TriggerResponseOutput {
+	return o
+}
+
+func (o TriggerResponseOutput) ToTriggerResponseOutputWithContext(ctx context.Context) TriggerResponseOutput {
+	return o
+}
+
+// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerResponseOutput) TimeAfterCreate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerResponse) *string { return v.TimeAfterCreate }).(pulumi.StringPtrOutput)
+}
+
+// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerResponseOutput) TimeBeforeExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerResponse) *string { return v.TimeBeforeExpiry }).(pulumi.StringPtrOutput)
+}
+
+type TriggerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerResponse)(nil)).Elem()
+}
+
+func (o TriggerResponsePtrOutput) ToTriggerResponsePtrOutput() TriggerResponsePtrOutput {
+	return o
+}
+
+func (o TriggerResponsePtrOutput) ToTriggerResponsePtrOutputWithContext(ctx context.Context) TriggerResponsePtrOutput {
+	return o
+}
+
+func (o TriggerResponsePtrOutput) Elem() TriggerResponseOutput {
+	return o.ApplyT(func(v *TriggerResponse) TriggerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerResponse
+		return ret
+	}).(TriggerResponseOutput)
+}
+
+// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerResponsePtrOutput) TimeAfterCreate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeAfterCreate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
+func (o TriggerResponsePtrOutput) TimeBeforeExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeBeforeExpiry
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of the vault
 type VaultProperties struct {
 	// An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
@@ -3966,13 +5574,15 @@ type VaultProperties struct {
 	NetworkAcls *NetworkRuleSet `pulumi:"networkAcls"`
 	// Provisioning state of the vault.
 	ProvisioningState *string `pulumi:"provisioningState"`
+	// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// SKU details
 	Sku Sku `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 	TenantId string `pulumi:"tenantId"`
-	// The URI of the vault for performing operations on keys and secrets. This property is readonly
+	// The URI of the vault for performing operations on keys and secrets.
 	VaultUri *string `pulumi:"vaultUri"`
 }
 
@@ -3982,15 +5592,19 @@ func (val *VaultProperties) Defaults() *VaultProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -4030,13 +5644,15 @@ type VaultPropertiesArgs struct {
 	NetworkAcls NetworkRuleSetPtrInput `pulumi:"networkAcls"`
 	// Provisioning state of the vault.
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
+	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// SKU details
 	Sku SkuInput `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
 	SoftDeleteRetentionInDays pulumi.IntPtrInput `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
-	// The URI of the vault for performing operations on keys and secrets. This property is readonly
+	// The URI of the vault for performing operations on keys and secrets.
 	VaultUri pulumi.StringPtrInput `pulumi:"vaultUri"`
 }
 
@@ -4046,13 +5662,16 @@ func (val *VaultPropertiesArgs) Defaults() *VaultPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		tmp.EnableRbacAuthorization = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.PublicNetworkAccess == nil {
+		tmp.PublicNetworkAccess = pulumi.StringPtr("enabled")
+	}
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -4134,6 +5753,11 @@ func (o VaultPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
+func (o VaultPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VaultProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
 // SKU details
 func (o VaultPropertiesOutput) Sku() SkuOutput {
 	return o.ApplyT(func(v VaultProperties) Sku { return v.Sku }).(SkuOutput)
@@ -4149,7 +5773,7 @@ func (o VaultPropertiesOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultProperties) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The URI of the vault for performing operations on keys and secrets. This property is readonly
+// The URI of the vault for performing operations on keys and secrets.
 func (o VaultPropertiesOutput) VaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultProperties) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
 }
@@ -4178,13 +5802,15 @@ type VaultPropertiesResponse struct {
 	PrivateEndpointConnections []PrivateEndpointConnectionItemResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the vault.
 	ProvisioningState *string `pulumi:"provisioningState"`
+	// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// SKU details
 	Sku SkuResponse `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 	TenantId string `pulumi:"tenantId"`
-	// The URI of the vault for performing operations on keys and secrets. This property is readonly
+	// The URI of the vault for performing operations on keys and secrets.
 	VaultUri *string `pulumi:"vaultUri"`
 }
 
@@ -4194,15 +5820,19 @@ func (val *VaultPropertiesResponse) Defaults() *VaultPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -4281,6 +5911,11 @@ func (o VaultPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v VaultPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
+func (o VaultPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
 // SKU details
 func (o VaultPropertiesResponseOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v VaultPropertiesResponse) SkuResponse { return v.Sku }).(SkuResponseOutput)
@@ -4296,7 +5931,7 @@ func (o VaultPropertiesResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultPropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The URI of the vault for performing operations on keys and secrets. This property is readonly
+// The URI of the vault for performing operations on keys and secrets.
 func (o VaultPropertiesResponseOutput) VaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultPropertiesResponse) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
 }
@@ -4468,6 +6103,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyEntryArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyEntryResponseOutput{})
 	pulumi.RegisterOutputType(AccessPolicyEntryResponseArrayOutput{})
+	pulumi.RegisterOutputType(ActionOutput{})
+	pulumi.RegisterOutputType(ActionPtrOutput{})
+	pulumi.RegisterOutputType(ActionResponseOutput{})
+	pulumi.RegisterOutputType(ActionResponsePtrOutput{})
 	pulumi.RegisterOutputType(IPRuleOutput{})
 	pulumi.RegisterOutputType(IPRuleArrayOutput{})
 	pulumi.RegisterOutputType(IPRuleResponseOutput{})
@@ -4477,6 +6116,22 @@ func init() {
 	pulumi.RegisterOutputType(KeyAttributesResponseOutput{})
 	pulumi.RegisterOutputType(KeyAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyPropertiesOutput{})
+	pulumi.RegisterOutputType(KeyReleasePolicyOutput{})
+	pulumi.RegisterOutputType(KeyReleasePolicyPtrOutput{})
+	pulumi.RegisterOutputType(KeyReleasePolicyResponseOutput{})
+	pulumi.RegisterOutputType(KeyReleasePolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyRotationPolicyAttributesOutput{})
+	pulumi.RegisterOutputType(KeyRotationPolicyAttributesPtrOutput{})
+	pulumi.RegisterOutputType(KeyRotationPolicyAttributesResponseOutput{})
+	pulumi.RegisterOutputType(KeyRotationPolicyAttributesResponsePtrOutput{})
+	pulumi.RegisterOutputType(LifetimeActionOutput{})
+	pulumi.RegisterOutputType(LifetimeActionArrayOutput{})
+	pulumi.RegisterOutputType(LifetimeActionResponseOutput{})
+	pulumi.RegisterOutputType(LifetimeActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(MHSMGeoReplicatedRegionOutput{})
+	pulumi.RegisterOutputType(MHSMGeoReplicatedRegionArrayOutput{})
+	pulumi.RegisterOutputType(MHSMGeoReplicatedRegionResponseOutput{})
+	pulumi.RegisterOutputType(MHSMGeoReplicatedRegionResponseArrayOutput{})
 	pulumi.RegisterOutputType(MHSMIPRuleOutput{})
 	pulumi.RegisterOutputType(MHSMIPRuleArrayOutput{})
 	pulumi.RegisterOutputType(MHSMIPRuleResponseOutput{})
@@ -4497,6 +6152,7 @@ func init() {
 	pulumi.RegisterOutputType(MHSMVirtualNetworkRuleArrayOutput{})
 	pulumi.RegisterOutputType(MHSMVirtualNetworkRuleResponseOutput{})
 	pulumi.RegisterOutputType(MHSMVirtualNetworkRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedHSMSecurityDomainPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedHsmPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedHsmPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedHsmPropertiesResponseOutput{})
@@ -4518,6 +6174,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(RotationPolicyOutput{})
+	pulumi.RegisterOutputType(RotationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RotationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(RotationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretAttributesOutput{})
 	pulumi.RegisterOutputType(SecretAttributesPtrOutput{})
 	pulumi.RegisterOutputType(SecretAttributesResponseOutput{})
@@ -4527,6 +6187,10 @@ func init() {
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TriggerOutput{})
+	pulumi.RegisterOutputType(TriggerPtrOutput{})
+	pulumi.RegisterOutputType(TriggerResponseOutput{})
+	pulumi.RegisterOutputType(TriggerResponsePtrOutput{})
 	pulumi.RegisterOutputType(VaultPropertiesOutput{})
 	pulumi.RegisterOutputType(VaultPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleOutput{})

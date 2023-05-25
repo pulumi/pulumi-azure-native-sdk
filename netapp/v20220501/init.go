@@ -23,24 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:netapp/v20220501:Account":
 		r = &Account{}
-	case "azure-native:netapp/v20220501:Backup":
-		r = &Backup{}
-	case "azure-native:netapp/v20220501:BackupPolicy":
-		r = &BackupPolicy{}
-	case "azure-native:netapp/v20220501:Pool":
-		r = &Pool{}
-	case "azure-native:netapp/v20220501:Snapshot":
-		r = &Snapshot{}
-	case "azure-native:netapp/v20220501:SnapshotPolicy":
-		r = &SnapshotPolicy{}
-	case "azure-native:netapp/v20220501:Subvolume":
-		r = &Subvolume{}
-	case "azure-native:netapp/v20220501:Volume":
-		r = &Volume{}
-	case "azure-native:netapp/v20220501:VolumeGroup":
-		r = &VolumeGroup{}
-	case "azure-native:netapp/v20220501:VolumeQuotaRule":
-		r = &VolumeQuotaRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace data table definition.
-// API Version: 2021-12-01-preview.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-12-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Table struct {
 	pulumi.CustomResourceState
 
@@ -29,9 +30,11 @@ type Table struct {
 	// Parameters of the restore operation that initiated this table.
 	RestoredLogs RestoredLogsResponsePtrOutput `pulumi:"restoredLogs"`
 	// Search job execution statistics.
-	ResultStatistics ResultStatisticsResponsePtrOutput `pulumi:"resultStatistics"`
+	ResultStatistics ResultStatisticsResponseOutput `pulumi:"resultStatistics"`
 	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
 	RetentionInDays pulumi.IntPtrOutput `pulumi:"retentionInDays"`
+	// True - Value originates from workspace retention in days, False - Customer specific.
+	RetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"retentionInDaysAsDefault"`
 	// Table schema.
 	Schema SchemaResponsePtrOutput `pulumi:"schema"`
 	// Parameters of the search job that initiated this table.
@@ -40,6 +43,8 @@ type Table struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays pulumi.IntPtrOutput `pulumi:"totalRetentionInDays"`
+	// True - Value originates from retention in days, False - Customer specific.
+	TotalRetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"totalRetentionInDaysAsDefault"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -208,13 +213,18 @@ func (o TableOutput) RestoredLogs() RestoredLogsResponsePtrOutput {
 }
 
 // Search job execution statistics.
-func (o TableOutput) ResultStatistics() ResultStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *Table) ResultStatisticsResponsePtrOutput { return v.ResultStatistics }).(ResultStatisticsResponsePtrOutput)
+func (o TableOutput) ResultStatistics() ResultStatisticsResponseOutput {
+	return o.ApplyT(func(v *Table) ResultStatisticsResponseOutput { return v.ResultStatistics }).(ResultStatisticsResponseOutput)
 }
 
 // The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
 func (o TableOutput) RetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntPtrOutput { return v.RetentionInDays }).(pulumi.IntPtrOutput)
+}
+
+// True - Value originates from workspace retention in days, False - Customer specific.
+func (o TableOutput) RetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolOutput { return v.RetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // Table schema.
@@ -235,6 +245,11 @@ func (o TableOutput) SystemData() SystemDataResponseOutput {
 // The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.
 func (o TableOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntPtrOutput { return v.TotalRetentionInDays }).(pulumi.IntPtrOutput)
+}
+
+// True - Value originates from retention in days, False - Customer specific.
+func (o TableOutput) TotalRetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolOutput { return v.TotalRetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

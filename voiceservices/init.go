@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:voiceservices:CommunicationsGateway":
 		r = &CommunicationsGateway{}
-	case "azure-native:voiceservices:Contact":
-		r = &Contact{}
 	case "azure-native:voiceservices:TestLine":
 		r = &TestLine{}
 	default:

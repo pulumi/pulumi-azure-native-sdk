@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // IP firewall rule
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type IpFirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -105,7 +106,7 @@ type ipFirewallRuleArgs struct {
 	RuleName *string `pulumi:"ruleName"`
 	// The start IP address of the firewall rule. Must be IPv4 format
 	StartIpAddress *string `pulumi:"startIpAddress"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -119,7 +120,7 @@ type IpFirewallRuleArgs struct {
 	RuleName pulumi.StringPtrInput
 	// The start IP address of the firewall rule. Must be IPv4 format
 	StartIpAddress pulumi.StringPtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

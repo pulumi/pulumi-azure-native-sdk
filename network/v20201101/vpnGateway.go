@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -143,6 +143,9 @@ func NewVpnGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VpnGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VpnGateway"),
 		},
 	})
 	opts = append(opts, aliases)

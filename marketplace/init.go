@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateStoreCollection{}
 	case "azure-native:marketplace:PrivateStoreCollectionOffer":
 		r = &PrivateStoreCollectionOffer{}
-	case "azure-native:marketplace:PrivateStoreOffer":
-		r = &PrivateStoreOffer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

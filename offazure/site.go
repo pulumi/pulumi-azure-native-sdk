@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Site REST Resource.
-// API Version: 2020-01-01.
+// API Version: 2020-07-07.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Site struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +25,9 @@ type Site struct {
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Nested properties of VMWare site.
 	Properties SitePropertiesResponseOutput `pulumi:"properties"`
-	Tags       pulumi.StringMapOutput       `pulumi:"tags"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
 	// Type of resource. Type = Microsoft.OffAzure/VMWareSites.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -167,6 +170,11 @@ func (o SiteOutput) Name() pulumi.StringPtrOutput {
 // Nested properties of VMWare site.
 func (o SiteOutput) Properties() SitePropertiesResponseOutput {
 	return o.ApplyT(func(v *Site) SitePropertiesResponseOutput { return v.Properties }).(SitePropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o SiteOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Site) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 func (o SiteOutput) Tags() pulumi.StringMapOutput {

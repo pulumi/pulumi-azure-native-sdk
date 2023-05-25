@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -202,6 +202,9 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuit"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuit"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteCircuit
@@ -241,7 +244,7 @@ type expressRouteCircuitArgs struct {
 	// Flag to enable Global Reach on the circuit.
 	AllowGlobalReach *bool `pulumi:"allowGlobalReach"`
 	// The list of authorizations.
-	Authorizations []ExpressRouteCircuitAuthorizationType `pulumi:"authorizations"`
+	Authorizations []ExpressRouteCircuitAuthorization `pulumi:"authorizations"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 	BandwidthInGbps *float64 `pulumi:"bandwidthInGbps"`
 	// The name of the circuit.
@@ -259,7 +262,7 @@ type expressRouteCircuitArgs struct {
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// The list of peerings.
-	Peerings []ExpressRouteCircuitPeeringType `pulumi:"peerings"`
+	Peerings []ExpressRouteCircuitPeering `pulumi:"peerings"`
 	// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The name of the resource group.
@@ -285,7 +288,7 @@ type ExpressRouteCircuitArgs struct {
 	// Flag to enable Global Reach on the circuit.
 	AllowGlobalReach pulumi.BoolPtrInput
 	// The list of authorizations.
-	Authorizations ExpressRouteCircuitAuthorizationTypeArrayInput
+	Authorizations ExpressRouteCircuitAuthorizationArrayInput
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 	BandwidthInGbps pulumi.Float64PtrInput
 	// The name of the circuit.
@@ -303,7 +306,7 @@ type ExpressRouteCircuitArgs struct {
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// The list of peerings.
-	Peerings ExpressRouteCircuitPeeringTypeArrayInput
+	Peerings ExpressRouteCircuitPeeringArrayInput
 	// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 	ProvisioningState pulumi.StringPtrInput
 	// The name of the resource group.

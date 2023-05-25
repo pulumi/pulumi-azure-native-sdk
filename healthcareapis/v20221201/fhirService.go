@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +91,9 @@ func NewFhirService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221001preview:FhirService"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:FhirService"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
-//
-// Deprecated: Version 2016-04-01 will be removed in v2 of the provider.
 type RedisFirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +74,12 @@ func NewRedisFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:RedisFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:RedisFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:RedisFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

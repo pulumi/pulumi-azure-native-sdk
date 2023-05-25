@@ -23,38 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:sql/v20170301preview:BackupLongTermRetentionPolicy":
 		r = &BackupLongTermRetentionPolicy{}
-	case "azure-native:sql/v20170301preview:Database":
-		r = &Database{}
-	case "azure-native:sql/v20170301preview:DatabaseBlobAuditingPolicy":
-		r = &DatabaseBlobAuditingPolicy{}
-	case "azure-native:sql/v20170301preview:DatabaseVulnerabilityAssessment":
-		r = &DatabaseVulnerabilityAssessment{}
-	case "azure-native:sql/v20170301preview:DatabaseVulnerabilityAssessmentRuleBaseline":
-		r = &DatabaseVulnerabilityAssessmentRuleBaseline{}
-	case "azure-native:sql/v20170301preview:ExtendedDatabaseBlobAuditingPolicy":
-		r = &ExtendedDatabaseBlobAuditingPolicy{}
-	case "azure-native:sql/v20170301preview:ExtendedServerBlobAuditingPolicy":
-		r = &ExtendedServerBlobAuditingPolicy{}
-	case "azure-native:sql/v20170301preview:Job":
-		r = &Job{}
-	case "azure-native:sql/v20170301preview:JobAgent":
-		r = &JobAgent{}
-	case "azure-native:sql/v20170301preview:JobCredential":
-		r = &JobCredential{}
-	case "azure-native:sql/v20170301preview:JobStep":
-		r = &JobStep{}
-	case "azure-native:sql/v20170301preview:JobTargetGroup":
-		r = &JobTargetGroup{}
-	case "azure-native:sql/v20170301preview:ManagedDatabase":
-		r = &ManagedDatabase{}
-	case "azure-native:sql/v20170301preview:ManagedInstanceAdministrator":
-		r = &ManagedInstanceAdministrator{}
-	case "azure-native:sql/v20170301preview:SensitivityLabel":
-		r = &SensitivityLabel{}
-	case "azure-native:sql/v20170301preview:ServerBlobAuditingPolicy":
-		r = &ServerBlobAuditingPolicy{}
-	case "azure-native:sql/v20170301preview:ServerDnsAlias":
-		r = &ServerDnsAlias{}
 	case "azure-native:sql/v20170301preview:ServerSecurityAlertPolicy":
 		r = &ServerSecurityAlertPolicy{}
 	default:

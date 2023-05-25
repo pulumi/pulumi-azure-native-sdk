@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified IpAllocation by resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupIpAllocation(ctx *pulumi.Context, args *LookupIpAllocationArgs, opts ...pulumi.InvokeOption) (*LookupIpAllocationResult, error) {
 	var rv LookupIpAllocationResult
 	err := ctx.Invoke("azure-native:network:getIpAllocation", args, &rv, opts...)
@@ -66,7 +66,7 @@ func (val *LookupIpAllocationResult) Defaults() *LookupIpAllocationResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrefixLength) {
+	if tmp.PrefixLength == nil {
 		prefixLength_ := 0
 		tmp.PrefixLength = &prefixLength_
 	}

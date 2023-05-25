@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the MongoDB collection under an existing Azure Cosmos DB database account.
-//
-// Deprecated: Version 2016-03-31 will be removed in v2 of the provider.
 func LookupDatabaseAccountMongoDBCollection(ctx *pulumi.Context, args *LookupDatabaseAccountMongoDBCollectionArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountMongoDBCollectionResult, error) {
 	var rv LookupDatabaseAccountMongoDBCollectionResult
 	err := ctx.Invoke("azure-native:documentdb/v20160331:getDatabaseAccountMongoDBCollection", args, &rv, opts...)

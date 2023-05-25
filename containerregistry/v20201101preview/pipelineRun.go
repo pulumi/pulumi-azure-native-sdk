@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,9 +48,6 @@ func NewPipelineRun(ctx *pulumi.Context,
 		args.Request = args.Request.ToPipelineRunRequestPtrOutput().ApplyT(func(v *PipelineRunRequest) *PipelineRunRequest { return v.Defaults() }).(PipelineRunRequestPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:containerregistry:PipelineRun"),
-		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20191201preview:PipelineRun"),
 		},

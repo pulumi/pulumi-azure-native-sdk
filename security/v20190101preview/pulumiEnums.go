@@ -12,18 +12,6 @@ const (
 	ActionTypeWorkspace = ActionType("Workspace")
 )
 
-// Programmatic code for the status of the assessment
-type AssessmentStatusCode string
-
-const (
-	// The resource is healthy
-	AssessmentStatusCodeHealthy = AssessmentStatusCode("Healthy")
-	// The resource has a security issue that needs to be addressed
-	AssessmentStatusCodeUnhealthy = AssessmentStatusCode("Unhealthy")
-	// Assessment for this resource did not happen
-	AssessmentStatusCodeNotApplicable = AssessmentStatusCode("NotApplicable")
-)
-
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 type AssessmentType string
 
@@ -123,18 +111,6 @@ const (
 	SeverityLow    = Severity("Low")
 	SeverityMedium = Severity("Medium")
 	SeverityHigh   = Severity("High")
-)
-
-// The platform where the assessed resource resides
-type Source string
-
-const (
-	// Resource is in Azure
-	SourceAzure = Source("Azure")
-	// Resource in an on premise machine connected to Azure cloud
-	SourceOnPremise = Source("OnPremise")
-	// SQL Resource in an on premise machine connected to Azure cloud
-	SourceOnPremiseSql = Source("OnPremiseSql")
 )
 
 // Threats impact of the assessment

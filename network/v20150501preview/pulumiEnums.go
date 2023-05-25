@@ -61,20 +61,20 @@ const (
 )
 
 // Gets or sets state of Peering
-type ExpressRouteCircuitPeeringStateEnum string
+type ExpressRouteCircuitPeeringState string
 
 const (
-	ExpressRouteCircuitPeeringStateEnumDisabled = ExpressRouteCircuitPeeringStateEnum("Disabled")
-	ExpressRouteCircuitPeeringStateEnumEnabled  = ExpressRouteCircuitPeeringStateEnum("Enabled")
+	ExpressRouteCircuitPeeringStateDisabled = ExpressRouteCircuitPeeringState("Disabled")
+	ExpressRouteCircuitPeeringStateEnabled  = ExpressRouteCircuitPeeringState("Enabled")
 )
 
 // Gets or sets PeeringType
-type ExpressRouteCircuitPeeringTypeEnum string
+type ExpressRouteCircuitPeeringType string
 
 const (
-	ExpressRouteCircuitPeeringTypeEnumAzurePublicPeering  = ExpressRouteCircuitPeeringTypeEnum("AzurePublicPeering")
-	ExpressRouteCircuitPeeringTypeEnumAzurePrivatePeering = ExpressRouteCircuitPeeringTypeEnum("AzurePrivatePeering")
-	ExpressRouteCircuitPeeringTypeEnumMicrosoftPeering    = ExpressRouteCircuitPeeringTypeEnum("MicrosoftPeering")
+	ExpressRouteCircuitPeeringTypeAzurePublicPeering  = ExpressRouteCircuitPeeringType("AzurePublicPeering")
+	ExpressRouteCircuitPeeringTypeAzurePrivatePeering = ExpressRouteCircuitPeeringType("AzurePrivatePeering")
+	ExpressRouteCircuitPeeringTypeMicrosoftPeering    = ExpressRouteCircuitPeeringType("MicrosoftPeering")
 )
 
 // Gets or sets family of the sku.

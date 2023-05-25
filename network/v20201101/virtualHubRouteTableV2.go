@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +94,9 @@ func NewVirtualHubRouteTableV2(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualHubRouteTableV2"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualHubRouteTableV2"),
 		},
 	})
 	opts = append(opts, aliases)

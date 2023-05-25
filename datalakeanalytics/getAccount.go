@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details of the specified Data Lake Analytics account.
-// API Version: 2016-11-01.
+// API Version: 2019-11-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:datalakeanalytics:getAccount", args, &rv, opts...)
@@ -44,6 +44,8 @@ type LookupAccountResult struct {
 	DebugDataAccessLevel string `pulumi:"debugDataAccessLevel"`
 	// The default Data Lake Store account associated with this account.
 	DefaultDataLakeStoreAccount string `pulumi:"defaultDataLakeStoreAccount"`
+	// The type of the default Data Lake Store account associated with this account.
+	DefaultDataLakeStoreAccountType string `pulumi:"defaultDataLakeStoreAccountType"`
 	// The full CName endpoint for this account.
 	Endpoint string `pulumi:"endpoint"`
 	// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
@@ -106,15 +108,15 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxDegreeOfParallelism) {
+	if tmp.MaxDegreeOfParallelism == nil {
 		maxDegreeOfParallelism_ := 30
 		tmp.MaxDegreeOfParallelism = &maxDegreeOfParallelism_
 	}
-	if isZero(tmp.MaxJobCount) {
+	if tmp.MaxJobCount == nil {
 		maxJobCount_ := 3
 		tmp.MaxJobCount = &maxJobCount_
 	}
-	if isZero(tmp.QueryStoreRetention) {
+	if tmp.QueryStoreRetention == nil {
 		queryStoreRetention_ := 30
 		tmp.QueryStoreRetention = &queryStoreRetention_
 	}
@@ -193,6 +195,11 @@ func (o LookupAccountResultOutput) DebugDataAccessLevel() pulumi.StringOutput {
 // The default Data Lake Store account associated with this account.
 func (o LookupAccountResultOutput) DefaultDataLakeStoreAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.DefaultDataLakeStoreAccount }).(pulumi.StringOutput)
+}
+
+// The type of the default Data Lake Store account associated with this account.
+func (o LookupAccountResultOutput) DefaultDataLakeStoreAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.DefaultDataLakeStoreAccountType }).(pulumi.StringOutput)
 }
 
 // The full CName endpoint for this account.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +78,15 @@ func NewCassandraCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraCluster"),
 		},
 	})
 	opts = append(opts, aliases)

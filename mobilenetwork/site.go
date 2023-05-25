@@ -7,32 +7,21 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Site resource.
-// API Version: 2022-04-01-preview.
+// Site resource. Must be created in the same location as its parent mobile network.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Site struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// An array of IDs of the network functions deployed on the site, maintained by the user.
+	// An array of IDs of the network functions deployed in the site. Deleting the site will delete any network functions that are deployed in the site.
 	NetworkFunctions SubResourceResponseArrayOutput `pulumi:"networkFunctions"`
 	// The provisioning state of the site resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -101,24 +90,10 @@ func (SiteState) ElementType() reflect.Type {
 }
 
 type siteArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the mobile network.
 	MobileNetworkName string `pulumi:"mobileNetworkName"`
-	// An array of IDs of the network functions deployed on the site, maintained by the user.
-	NetworkFunctions []SubResource `pulumi:"networkFunctions"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the mobile network site.
@@ -129,24 +104,10 @@ type siteArgs struct {
 
 // The set of arguments for constructing a Site resource.
 type SiteArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the mobile network.
 	MobileNetworkName pulumi.StringInput
-	// An array of IDs of the network functions deployed on the site, maintained by the user.
-	NetworkFunctions SubResourceArrayInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the mobile network site.
@@ -192,36 +153,6 @@ func (o SiteOutput) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SiteOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SiteOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SiteOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SiteOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SiteOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SiteOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // The geo-location where the resource lives
 func (o SiteOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -232,7 +163,7 @@ func (o SiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// An array of IDs of the network functions deployed on the site, maintained by the user.
+// An array of IDs of the network functions deployed in the site. Deleting the site will delete any network functions that are deployed in the site.
 func (o SiteOutput) NetworkFunctions() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v *Site) SubResourceResponseArrayOutput { return v.NetworkFunctions }).(SubResourceResponseArrayOutput)
 }

@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:batch/v20170101:Application":
-		r = &Application{}
-	case "azure-native:batch/v20170101:ApplicationPackage":
-		r = &ApplicationPackage{}
 	case "azure-native:batch/v20170101:BatchAccount":
 		r = &BatchAccount{}
 	default:

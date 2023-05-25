@@ -50,7 +50,7 @@ func (val *AlertProcessingRuleProperties) Defaults() *AlertProcessingRulePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := true
 		tmp.Enabled = &enabled_
 	}
@@ -90,7 +90,7 @@ func (val *AlertProcessingRulePropertiesArgs) Defaults() *AlertProcessingRulePro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -309,7 +309,7 @@ func (val *AlertProcessingRulePropertiesResponse) Defaults() *AlertProcessingRul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := true
 		tmp.Enabled = &enabled_
 	}

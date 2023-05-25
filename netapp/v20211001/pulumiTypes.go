@@ -10,1015 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Encryption settings
-type AccountEncryption struct {
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-	KeySource *string `pulumi:"keySource"`
-}
-
-// AccountEncryptionInput is an input type that accepts AccountEncryptionArgs and AccountEncryptionOutput values.
-// You can construct a concrete instance of `AccountEncryptionInput` via:
-//
-//	AccountEncryptionArgs{...}
-type AccountEncryptionInput interface {
-	pulumi.Input
-
-	ToAccountEncryptionOutput() AccountEncryptionOutput
-	ToAccountEncryptionOutputWithContext(context.Context) AccountEncryptionOutput
-}
-
-// Encryption settings
-type AccountEncryptionArgs struct {
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-	KeySource pulumi.StringPtrInput `pulumi:"keySource"`
-}
-
-func (AccountEncryptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountEncryption)(nil)).Elem()
-}
-
-func (i AccountEncryptionArgs) ToAccountEncryptionOutput() AccountEncryptionOutput {
-	return i.ToAccountEncryptionOutputWithContext(context.Background())
-}
-
-func (i AccountEncryptionArgs) ToAccountEncryptionOutputWithContext(ctx context.Context) AccountEncryptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountEncryptionOutput)
-}
-
-func (i AccountEncryptionArgs) ToAccountEncryptionPtrOutput() AccountEncryptionPtrOutput {
-	return i.ToAccountEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i AccountEncryptionArgs) ToAccountEncryptionPtrOutputWithContext(ctx context.Context) AccountEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountEncryptionOutput).ToAccountEncryptionPtrOutputWithContext(ctx)
-}
-
-// AccountEncryptionPtrInput is an input type that accepts AccountEncryptionArgs, AccountEncryptionPtr and AccountEncryptionPtrOutput values.
-// You can construct a concrete instance of `AccountEncryptionPtrInput` via:
-//
-//	        AccountEncryptionArgs{...}
-//
-//	or:
-//
-//	        nil
-type AccountEncryptionPtrInput interface {
-	pulumi.Input
-
-	ToAccountEncryptionPtrOutput() AccountEncryptionPtrOutput
-	ToAccountEncryptionPtrOutputWithContext(context.Context) AccountEncryptionPtrOutput
-}
-
-type accountEncryptionPtrType AccountEncryptionArgs
-
-func AccountEncryptionPtr(v *AccountEncryptionArgs) AccountEncryptionPtrInput {
-	return (*accountEncryptionPtrType)(v)
-}
-
-func (*accountEncryptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountEncryption)(nil)).Elem()
-}
-
-func (i *accountEncryptionPtrType) ToAccountEncryptionPtrOutput() AccountEncryptionPtrOutput {
-	return i.ToAccountEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i *accountEncryptionPtrType) ToAccountEncryptionPtrOutputWithContext(ctx context.Context) AccountEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountEncryptionPtrOutput)
-}
-
-// Encryption settings
-type AccountEncryptionOutput struct{ *pulumi.OutputState }
-
-func (AccountEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountEncryption)(nil)).Elem()
-}
-
-func (o AccountEncryptionOutput) ToAccountEncryptionOutput() AccountEncryptionOutput {
-	return o
-}
-
-func (o AccountEncryptionOutput) ToAccountEncryptionOutputWithContext(ctx context.Context) AccountEncryptionOutput {
-	return o
-}
-
-func (o AccountEncryptionOutput) ToAccountEncryptionPtrOutput() AccountEncryptionPtrOutput {
-	return o.ToAccountEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (o AccountEncryptionOutput) ToAccountEncryptionPtrOutputWithContext(ctx context.Context) AccountEncryptionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountEncryption) *AccountEncryption {
-		return &v
-	}).(AccountEncryptionPtrOutput)
-}
-
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-func (o AccountEncryptionOutput) KeySource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccountEncryption) *string { return v.KeySource }).(pulumi.StringPtrOutput)
-}
-
-type AccountEncryptionPtrOutput struct{ *pulumi.OutputState }
-
-func (AccountEncryptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountEncryption)(nil)).Elem()
-}
-
-func (o AccountEncryptionPtrOutput) ToAccountEncryptionPtrOutput() AccountEncryptionPtrOutput {
-	return o
-}
-
-func (o AccountEncryptionPtrOutput) ToAccountEncryptionPtrOutputWithContext(ctx context.Context) AccountEncryptionPtrOutput {
-	return o
-}
-
-func (o AccountEncryptionPtrOutput) Elem() AccountEncryptionOutput {
-	return o.ApplyT(func(v *AccountEncryption) AccountEncryption {
-		if v != nil {
-			return *v
-		}
-		var ret AccountEncryption
-		return ret
-	}).(AccountEncryptionOutput)
-}
-
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-func (o AccountEncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountEncryption) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeySource
-	}).(pulumi.StringPtrOutput)
-}
-
-// Encryption settings
-type AccountEncryptionResponse struct {
-	// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-	KeySource *string `pulumi:"keySource"`
-}
-
-// Encryption settings
-type AccountEncryptionResponseOutput struct{ *pulumi.OutputState }
-
-func (AccountEncryptionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountEncryptionResponse)(nil)).Elem()
-}
-
-func (o AccountEncryptionResponseOutput) ToAccountEncryptionResponseOutput() AccountEncryptionResponseOutput {
-	return o
-}
-
-func (o AccountEncryptionResponseOutput) ToAccountEncryptionResponseOutputWithContext(ctx context.Context) AccountEncryptionResponseOutput {
-	return o
-}
-
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-func (o AccountEncryptionResponseOutput) KeySource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccountEncryptionResponse) *string { return v.KeySource }).(pulumi.StringPtrOutput)
-}
-
-type AccountEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AccountEncryptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountEncryptionResponse)(nil)).Elem()
-}
-
-func (o AccountEncryptionResponsePtrOutput) ToAccountEncryptionResponsePtrOutput() AccountEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o AccountEncryptionResponsePtrOutput) ToAccountEncryptionResponsePtrOutputWithContext(ctx context.Context) AccountEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o AccountEncryptionResponsePtrOutput) Elem() AccountEncryptionResponseOutput {
-	return o.ApplyT(func(v *AccountEncryptionResponse) AccountEncryptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AccountEncryptionResponse
-		return ret
-	}).(AccountEncryptionResponseOutput)
-}
-
-// Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
-func (o AccountEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeySource
-	}).(pulumi.StringPtrOutput)
-}
-
-// Active Directory
-type ActiveDirectory struct {
-	// Id of the Active Directory
-	ActiveDirectoryId *string `pulumi:"activeDirectoryId"`
-	// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-	AdName *string `pulumi:"adName"`
-	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-	Administrators []string `pulumi:"administrators"`
-	// If enabled, AES encryption will be enabled for SMB communication.
-	AesEncryption *bool `pulumi:"aesEncryption"`
-	//  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-	AllowLocalNfsUsersWithLdap *bool `pulumi:"allowLocalNfsUsersWithLdap"`
-	// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-	BackupOperators []string `pulumi:"backupOperators"`
-	// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-	Dns *string `pulumi:"dns"`
-	// Name of the Active Directory domain
-	Domain *string `pulumi:"domain"`
-	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-	EncryptDCConnections *bool `pulumi:"encryptDCConnections"`
-	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
-	KdcIP *string `pulumi:"kdcIP"`
-	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-	LdapOverTLS *bool `pulumi:"ldapOverTLS"`
-	// LDAP Search scope options
-	LdapSearchScope *LdapSearchScopeOpt `pulumi:"ldapSearchScope"`
-	// Specifies whether or not the LDAP traffic needs to be signed.
-	LdapSigning *bool `pulumi:"ldapSigning"`
-	// The Organizational Unit (OU) within the Windows Active Directory
-	OrganizationalUnit *string `pulumi:"organizationalUnit"`
-	// Plain text password of Active Directory domain administrator, value is masked in the response
-	Password *string `pulumi:"password"`
-	// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-	SecurityOperators []string `pulumi:"securityOperators"`
-	// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-	ServerRootCACertificate *string `pulumi:"serverRootCACertificate"`
-	// The Active Directory site the service will limit Domain Controller discovery to
-	Site *string `pulumi:"site"`
-	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-	SmbServerName *string `pulumi:"smbServerName"`
-	// A domain user account with permission to create machine accounts
-	Username *string `pulumi:"username"`
-}
-
-// Defaults sets the appropriate defaults for ActiveDirectory
-func (val *ActiveDirectory) Defaults() *ActiveDirectory {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
-		organizationalUnit_ := "CN=Computers"
-		tmp.OrganizationalUnit = &organizationalUnit_
-	}
-	return &tmp
-}
-
-// ActiveDirectoryInput is an input type that accepts ActiveDirectoryArgs and ActiveDirectoryOutput values.
-// You can construct a concrete instance of `ActiveDirectoryInput` via:
-//
-//	ActiveDirectoryArgs{...}
-type ActiveDirectoryInput interface {
-	pulumi.Input
-
-	ToActiveDirectoryOutput() ActiveDirectoryOutput
-	ToActiveDirectoryOutputWithContext(context.Context) ActiveDirectoryOutput
-}
-
-// Active Directory
-type ActiveDirectoryArgs struct {
-	// Id of the Active Directory
-	ActiveDirectoryId pulumi.StringPtrInput `pulumi:"activeDirectoryId"`
-	// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-	AdName pulumi.StringPtrInput `pulumi:"adName"`
-	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-	Administrators pulumi.StringArrayInput `pulumi:"administrators"`
-	// If enabled, AES encryption will be enabled for SMB communication.
-	AesEncryption pulumi.BoolPtrInput `pulumi:"aesEncryption"`
-	//  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-	AllowLocalNfsUsersWithLdap pulumi.BoolPtrInput `pulumi:"allowLocalNfsUsersWithLdap"`
-	// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-	BackupOperators pulumi.StringArrayInput `pulumi:"backupOperators"`
-	// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-	Dns pulumi.StringPtrInput `pulumi:"dns"`
-	// Name of the Active Directory domain
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-	EncryptDCConnections pulumi.BoolPtrInput `pulumi:"encryptDCConnections"`
-	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
-	KdcIP pulumi.StringPtrInput `pulumi:"kdcIP"`
-	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-	LdapOverTLS pulumi.BoolPtrInput `pulumi:"ldapOverTLS"`
-	// LDAP Search scope options
-	LdapSearchScope LdapSearchScopeOptPtrInput `pulumi:"ldapSearchScope"`
-	// Specifies whether or not the LDAP traffic needs to be signed.
-	LdapSigning pulumi.BoolPtrInput `pulumi:"ldapSigning"`
-	// The Organizational Unit (OU) within the Windows Active Directory
-	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
-	// Plain text password of Active Directory domain administrator, value is masked in the response
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-	SecurityOperators pulumi.StringArrayInput `pulumi:"securityOperators"`
-	// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-	ServerRootCACertificate pulumi.StringPtrInput `pulumi:"serverRootCACertificate"`
-	// The Active Directory site the service will limit Domain Controller discovery to
-	Site pulumi.StringPtrInput `pulumi:"site"`
-	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-	SmbServerName pulumi.StringPtrInput `pulumi:"smbServerName"`
-	// A domain user account with permission to create machine accounts
-	Username pulumi.StringPtrInput `pulumi:"username"`
-}
-
-// Defaults sets the appropriate defaults for ActiveDirectoryArgs
-func (val *ActiveDirectoryArgs) Defaults() *ActiveDirectoryArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
-		tmp.OrganizationalUnit = pulumi.StringPtr("CN=Computers")
-	}
-	return &tmp
-}
-func (ActiveDirectoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActiveDirectory)(nil)).Elem()
-}
-
-func (i ActiveDirectoryArgs) ToActiveDirectoryOutput() ActiveDirectoryOutput {
-	return i.ToActiveDirectoryOutputWithContext(context.Background())
-}
-
-func (i ActiveDirectoryArgs) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryOutput)
-}
-
-// ActiveDirectoryArrayInput is an input type that accepts ActiveDirectoryArray and ActiveDirectoryArrayOutput values.
-// You can construct a concrete instance of `ActiveDirectoryArrayInput` via:
-//
-//	ActiveDirectoryArray{ ActiveDirectoryArgs{...} }
-type ActiveDirectoryArrayInput interface {
-	pulumi.Input
-
-	ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput
-	ToActiveDirectoryArrayOutputWithContext(context.Context) ActiveDirectoryArrayOutput
-}
-
-type ActiveDirectoryArray []ActiveDirectoryInput
-
-func (ActiveDirectoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActiveDirectory)(nil)).Elem()
-}
-
-func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput {
-	return i.ToActiveDirectoryArrayOutputWithContext(context.Background())
-}
-
-func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutputWithContext(ctx context.Context) ActiveDirectoryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryArrayOutput)
-}
-
-// Active Directory
-type ActiveDirectoryOutput struct{ *pulumi.OutputState }
-
-func (ActiveDirectoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActiveDirectory)(nil)).Elem()
-}
-
-func (o ActiveDirectoryOutput) ToActiveDirectoryOutput() ActiveDirectoryOutput {
-	return o
-}
-
-func (o ActiveDirectoryOutput) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
-	return o
-}
-
-// Id of the Active Directory
-func (o ActiveDirectoryOutput) ActiveDirectoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.ActiveDirectoryId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-func (o ActiveDirectoryOutput) AdName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.AdName }).(pulumi.StringPtrOutput)
-}
-
-// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-func (o ActiveDirectoryOutput) Administrators() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActiveDirectory) []string { return v.Administrators }).(pulumi.StringArrayOutput)
-}
-
-// If enabled, AES encryption will be enabled for SMB communication.
-func (o ActiveDirectoryOutput) AesEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *bool { return v.AesEncryption }).(pulumi.BoolPtrOutput)
-}
-
-// If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-func (o ActiveDirectoryOutput) AllowLocalNfsUsersWithLdap() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *bool { return v.AllowLocalNfsUsersWithLdap }).(pulumi.BoolPtrOutput)
-}
-
-// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-func (o ActiveDirectoryOutput) BackupOperators() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActiveDirectory) []string { return v.BackupOperators }).(pulumi.StringArrayOutput)
-}
-
-// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-func (o ActiveDirectoryOutput) Dns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.Dns }).(pulumi.StringPtrOutput)
-}
-
-// Name of the Active Directory domain
-func (o ActiveDirectoryOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.Domain }).(pulumi.StringPtrOutput)
-}
-
-// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-func (o ActiveDirectoryOutput) EncryptDCConnections() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *bool { return v.EncryptDCConnections }).(pulumi.BoolPtrOutput)
-}
-
-// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
-func (o ActiveDirectoryOutput) KdcIP() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.KdcIP }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-func (o ActiveDirectoryOutput) LdapOverTLS() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *bool { return v.LdapOverTLS }).(pulumi.BoolPtrOutput)
-}
-
-// LDAP Search scope options
-func (o ActiveDirectoryOutput) LdapSearchScope() LdapSearchScopeOptPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *LdapSearchScopeOpt { return v.LdapSearchScope }).(LdapSearchScopeOptPtrOutput)
-}
-
-// Specifies whether or not the LDAP traffic needs to be signed.
-func (o ActiveDirectoryOutput) LdapSigning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *bool { return v.LdapSigning }).(pulumi.BoolPtrOutput)
-}
-
-// The Organizational Unit (OU) within the Windows Active Directory
-func (o ActiveDirectoryOutput) OrganizationalUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.OrganizationalUnit }).(pulumi.StringPtrOutput)
-}
-
-// Plain text password of Active Directory domain administrator, value is masked in the response
-func (o ActiveDirectoryOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-func (o ActiveDirectoryOutput) SecurityOperators() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActiveDirectory) []string { return v.SecurityOperators }).(pulumi.StringArrayOutput)
-}
-
-// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-func (o ActiveDirectoryOutput) ServerRootCACertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.ServerRootCACertificate }).(pulumi.StringPtrOutput)
-}
-
-// The Active Directory site the service will limit Domain Controller discovery to
-func (o ActiveDirectoryOutput) Site() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.Site }).(pulumi.StringPtrOutput)
-}
-
-// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-func (o ActiveDirectoryOutput) SmbServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
-}
-
-// A domain user account with permission to create machine accounts
-func (o ActiveDirectoryOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type ActiveDirectoryArrayOutput struct{ *pulumi.OutputState }
-
-func (ActiveDirectoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActiveDirectory)(nil)).Elem()
-}
-
-func (o ActiveDirectoryArrayOutput) ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput {
-	return o
-}
-
-func (o ActiveDirectoryArrayOutput) ToActiveDirectoryArrayOutputWithContext(ctx context.Context) ActiveDirectoryArrayOutput {
-	return o
-}
-
-func (o ActiveDirectoryArrayOutput) Index(i pulumi.IntInput) ActiveDirectoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActiveDirectory {
-		return vs[0].([]ActiveDirectory)[vs[1].(int)]
-	}).(ActiveDirectoryOutput)
-}
-
-// Active Directory
-type ActiveDirectoryResponse struct {
-	// Id of the Active Directory
-	ActiveDirectoryId *string `pulumi:"activeDirectoryId"`
-	// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-	AdName *string `pulumi:"adName"`
-	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-	Administrators []string `pulumi:"administrators"`
-	// If enabled, AES encryption will be enabled for SMB communication.
-	AesEncryption *bool `pulumi:"aesEncryption"`
-	//  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-	AllowLocalNfsUsersWithLdap *bool `pulumi:"allowLocalNfsUsersWithLdap"`
-	// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-	BackupOperators []string `pulumi:"backupOperators"`
-	// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-	Dns *string `pulumi:"dns"`
-	// Name of the Active Directory domain
-	Domain *string `pulumi:"domain"`
-	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-	EncryptDCConnections *bool `pulumi:"encryptDCConnections"`
-	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
-	KdcIP *string `pulumi:"kdcIP"`
-	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-	LdapOverTLS *bool `pulumi:"ldapOverTLS"`
-	// LDAP Search scope options
-	LdapSearchScope *LdapSearchScopeOptResponse `pulumi:"ldapSearchScope"`
-	// Specifies whether or not the LDAP traffic needs to be signed.
-	LdapSigning *bool `pulumi:"ldapSigning"`
-	// The Organizational Unit (OU) within the Windows Active Directory
-	OrganizationalUnit *string `pulumi:"organizationalUnit"`
-	// Plain text password of Active Directory domain administrator, value is masked in the response
-	Password *string `pulumi:"password"`
-	// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-	SecurityOperators []string `pulumi:"securityOperators"`
-	// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-	ServerRootCACertificate *string `pulumi:"serverRootCACertificate"`
-	// The Active Directory site the service will limit Domain Controller discovery to
-	Site *string `pulumi:"site"`
-	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-	SmbServerName *string `pulumi:"smbServerName"`
-	// Status of the Active Directory
-	Status string `pulumi:"status"`
-	// Any details in regards to the Status of the Active Directory
-	StatusDetails string `pulumi:"statusDetails"`
-	// A domain user account with permission to create machine accounts
-	Username *string `pulumi:"username"`
-}
-
-// Defaults sets the appropriate defaults for ActiveDirectoryResponse
-func (val *ActiveDirectoryResponse) Defaults() *ActiveDirectoryResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
-		organizationalUnit_ := "CN=Computers"
-		tmp.OrganizationalUnit = &organizationalUnit_
-	}
-	return &tmp
-}
-
-// Active Directory
-type ActiveDirectoryResponseOutput struct{ *pulumi.OutputState }
-
-func (ActiveDirectoryResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActiveDirectoryResponse)(nil)).Elem()
-}
-
-func (o ActiveDirectoryResponseOutput) ToActiveDirectoryResponseOutput() ActiveDirectoryResponseOutput {
-	return o
-}
-
-func (o ActiveDirectoryResponseOutput) ToActiveDirectoryResponseOutputWithContext(ctx context.Context) ActiveDirectoryResponseOutput {
-	return o
-}
-
-// Id of the Active Directory
-func (o ActiveDirectoryResponseOutput) ActiveDirectoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.ActiveDirectoryId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-func (o ActiveDirectoryResponseOutput) AdName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.AdName }).(pulumi.StringPtrOutput)
-}
-
-// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-func (o ActiveDirectoryResponseOutput) Administrators() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) []string { return v.Administrators }).(pulumi.StringArrayOutput)
-}
-
-// If enabled, AES encryption will be enabled for SMB communication.
-func (o ActiveDirectoryResponseOutput) AesEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.AesEncryption }).(pulumi.BoolPtrOutput)
-}
-
-// If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-func (o ActiveDirectoryResponseOutput) AllowLocalNfsUsersWithLdap() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.AllowLocalNfsUsersWithLdap }).(pulumi.BoolPtrOutput)
-}
-
-// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-func (o ActiveDirectoryResponseOutput) BackupOperators() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) []string { return v.BackupOperators }).(pulumi.StringArrayOutput)
-}
-
-// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-func (o ActiveDirectoryResponseOutput) Dns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Dns }).(pulumi.StringPtrOutput)
-}
-
-// Name of the Active Directory domain
-func (o ActiveDirectoryResponseOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Domain }).(pulumi.StringPtrOutput)
-}
-
-// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-func (o ActiveDirectoryResponseOutput) EncryptDCConnections() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.EncryptDCConnections }).(pulumi.BoolPtrOutput)
-}
-
-// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
-func (o ActiveDirectoryResponseOutput) KdcIP() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.KdcIP }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-func (o ActiveDirectoryResponseOutput) LdapOverTLS() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.LdapOverTLS }).(pulumi.BoolPtrOutput)
-}
-
-// LDAP Search scope options
-func (o ActiveDirectoryResponseOutput) LdapSearchScope() LdapSearchScopeOptResponsePtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *LdapSearchScopeOptResponse { return v.LdapSearchScope }).(LdapSearchScopeOptResponsePtrOutput)
-}
-
-// Specifies whether or not the LDAP traffic needs to be signed.
-func (o ActiveDirectoryResponseOutput) LdapSigning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.LdapSigning }).(pulumi.BoolPtrOutput)
-}
-
-// The Organizational Unit (OU) within the Windows Active Directory
-func (o ActiveDirectoryResponseOutput) OrganizationalUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.OrganizationalUnit }).(pulumi.StringPtrOutput)
-}
-
-// Plain text password of Active Directory domain administrator, value is masked in the response
-func (o ActiveDirectoryResponseOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-func (o ActiveDirectoryResponseOutput) SecurityOperators() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) []string { return v.SecurityOperators }).(pulumi.StringArrayOutput)
-}
-
-// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-func (o ActiveDirectoryResponseOutput) ServerRootCACertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.ServerRootCACertificate }).(pulumi.StringPtrOutput)
-}
-
-// The Active Directory site the service will limit Domain Controller discovery to
-func (o ActiveDirectoryResponseOutput) Site() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Site }).(pulumi.StringPtrOutput)
-}
-
-// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-func (o ActiveDirectoryResponseOutput) SmbServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
-}
-
-// Status of the Active Directory
-func (o ActiveDirectoryResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Any details in regards to the Status of the Active Directory
-func (o ActiveDirectoryResponseOutput) StatusDetails() pulumi.StringOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) string { return v.StatusDetails }).(pulumi.StringOutput)
-}
-
-// A domain user account with permission to create machine accounts
-func (o ActiveDirectoryResponseOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type ActiveDirectoryResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ActiveDirectoryResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActiveDirectoryResponse)(nil)).Elem()
-}
-
-func (o ActiveDirectoryResponseArrayOutput) ToActiveDirectoryResponseArrayOutput() ActiveDirectoryResponseArrayOutput {
-	return o
-}
-
-func (o ActiveDirectoryResponseArrayOutput) ToActiveDirectoryResponseArrayOutputWithContext(ctx context.Context) ActiveDirectoryResponseArrayOutput {
-	return o
-}
-
-func (o ActiveDirectoryResponseArrayOutput) Index(i pulumi.IntInput) ActiveDirectoryResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActiveDirectoryResponse {
-		return vs[0].([]ActiveDirectoryResponse)[vs[1].(int)]
-	}).(ActiveDirectoryResponseOutput)
-}
-
-// Daily Schedule properties
-type DailySchedule struct {
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour *int `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Daily snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// DailyScheduleInput is an input type that accepts DailyScheduleArgs and DailyScheduleOutput values.
-// You can construct a concrete instance of `DailyScheduleInput` via:
-//
-//	DailyScheduleArgs{...}
-type DailyScheduleInput interface {
-	pulumi.Input
-
-	ToDailyScheduleOutput() DailyScheduleOutput
-	ToDailyScheduleOutputWithContext(context.Context) DailyScheduleOutput
-}
-
-// Daily Schedule properties
-type DailyScheduleArgs struct {
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour pulumi.IntPtrInput `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute pulumi.IntPtrInput `pulumi:"minute"`
-	// Daily snapshot count to keep
-	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes pulumi.Float64PtrInput `pulumi:"usedBytes"`
-}
-
-func (DailyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DailySchedule)(nil)).Elem()
-}
-
-func (i DailyScheduleArgs) ToDailyScheduleOutput() DailyScheduleOutput {
-	return i.ToDailyScheduleOutputWithContext(context.Background())
-}
-
-func (i DailyScheduleArgs) ToDailyScheduleOutputWithContext(ctx context.Context) DailyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DailyScheduleOutput)
-}
-
-func (i DailyScheduleArgs) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return i.ToDailySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i DailyScheduleArgs) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DailyScheduleOutput).ToDailySchedulePtrOutputWithContext(ctx)
-}
-
-// DailySchedulePtrInput is an input type that accepts DailyScheduleArgs, DailySchedulePtr and DailySchedulePtrOutput values.
-// You can construct a concrete instance of `DailySchedulePtrInput` via:
-//
-//	        DailyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type DailySchedulePtrInput interface {
-	pulumi.Input
-
-	ToDailySchedulePtrOutput() DailySchedulePtrOutput
-	ToDailySchedulePtrOutputWithContext(context.Context) DailySchedulePtrOutput
-}
-
-type dailySchedulePtrType DailyScheduleArgs
-
-func DailySchedulePtr(v *DailyScheduleArgs) DailySchedulePtrInput {
-	return (*dailySchedulePtrType)(v)
-}
-
-func (*dailySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DailySchedule)(nil)).Elem()
-}
-
-func (i *dailySchedulePtrType) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return i.ToDailySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *dailySchedulePtrType) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DailySchedulePtrOutput)
-}
-
-// Daily Schedule properties
-type DailyScheduleOutput struct{ *pulumi.OutputState }
-
-func (DailyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DailySchedule)(nil)).Elem()
-}
-
-func (o DailyScheduleOutput) ToDailyScheduleOutput() DailyScheduleOutput {
-	return o
-}
-
-func (o DailyScheduleOutput) ToDailyScheduleOutputWithContext(ctx context.Context) DailyScheduleOutput {
-	return o
-}
-
-func (o DailyScheduleOutput) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return o.ToDailySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o DailyScheduleOutput) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DailySchedule) *DailySchedule {
-		return &v
-	}).(DailySchedulePtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o DailyScheduleOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DailySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o DailyScheduleOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DailySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Daily snapshot count to keep
-func (o DailyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DailySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o DailyScheduleOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DailySchedule) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type DailySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (DailySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DailySchedule)(nil)).Elem()
-}
-
-func (o DailySchedulePtrOutput) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return o
-}
-
-func (o DailySchedulePtrOutput) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return o
-}
-
-func (o DailySchedulePtrOutput) Elem() DailyScheduleOutput {
-	return o.ApplyT(func(v *DailySchedule) DailySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret DailySchedule
-		return ret
-	}).(DailyScheduleOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o DailySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hour
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o DailySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Daily snapshot count to keep
-func (o DailySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o DailySchedulePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *DailySchedule) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Daily Schedule properties
-type DailyScheduleResponse struct {
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour *int `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Daily snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// Daily Schedule properties
-type DailyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (DailyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DailyScheduleResponse)(nil)).Elem()
-}
-
-func (o DailyScheduleResponseOutput) ToDailyScheduleResponseOutput() DailyScheduleResponseOutput {
-	return o
-}
-
-func (o DailyScheduleResponseOutput) ToDailyScheduleResponseOutputWithContext(ctx context.Context) DailyScheduleResponseOutput {
-	return o
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o DailyScheduleResponseOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DailyScheduleResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o DailyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DailyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Daily snapshot count to keep
-func (o DailyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DailyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o DailyScheduleResponseOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DailyScheduleResponse) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type DailyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DailyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DailyScheduleResponse)(nil)).Elem()
-}
-
-func (o DailyScheduleResponsePtrOutput) ToDailyScheduleResponsePtrOutput() DailyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o DailyScheduleResponsePtrOutput) ToDailyScheduleResponsePtrOutputWithContext(ctx context.Context) DailyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o DailyScheduleResponsePtrOutput) Elem() DailyScheduleResponseOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) DailyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DailyScheduleResponse
-		return ret
-	}).(DailyScheduleResponseOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o DailyScheduleResponsePtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hour
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o DailyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Daily snapshot count to keep
-func (o DailyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o DailyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
 // Volume Export Policy Rule
 type ExportPolicyRule struct {
 	// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
@@ -1059,35 +50,35 @@ func (val *ExportPolicyRule) Defaults() *ExportPolicyRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		chownMode_ := "Restricted"
 		tmp.ChownMode = &chownMode_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -1145,28 +136,28 @@ func (val *ExportPolicyRuleArgs) Defaults() *ExportPolicyRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		tmp.ChownMode = pulumi.StringPtr("Restricted")
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		tmp.HasRootAccess = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		tmp.Kerberos5ReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		tmp.Kerberos5ReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		tmp.Kerberos5iReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		tmp.Kerberos5iReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		tmp.Kerberos5pReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		tmp.Kerberos5pReadWrite = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1358,35 +349,35 @@ func (val *ExportPolicyRuleResponse) Defaults() *ExportPolicyRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		chownMode_ := "Restricted"
 		tmp.ChownMode = &chownMode_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -1501,894 +492,6 @@ func (o ExportPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) ExportPoli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportPolicyRuleResponse {
 		return vs[0].([]ExportPolicyRuleResponse)[vs[1].(int)]
 	}).(ExportPolicyRuleResponseOutput)
-}
-
-// Hourly Schedule properties
-type HourlySchedule struct {
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Hourly snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// HourlyScheduleInput is an input type that accepts HourlyScheduleArgs and HourlyScheduleOutput values.
-// You can construct a concrete instance of `HourlyScheduleInput` via:
-//
-//	HourlyScheduleArgs{...}
-type HourlyScheduleInput interface {
-	pulumi.Input
-
-	ToHourlyScheduleOutput() HourlyScheduleOutput
-	ToHourlyScheduleOutputWithContext(context.Context) HourlyScheduleOutput
-}
-
-// Hourly Schedule properties
-type HourlyScheduleArgs struct {
-	// Indicates which minute snapshot should be taken
-	Minute pulumi.IntPtrInput `pulumi:"minute"`
-	// Hourly snapshot count to keep
-	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes pulumi.Float64PtrInput `pulumi:"usedBytes"`
-}
-
-func (HourlyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HourlySchedule)(nil)).Elem()
-}
-
-func (i HourlyScheduleArgs) ToHourlyScheduleOutput() HourlyScheduleOutput {
-	return i.ToHourlyScheduleOutputWithContext(context.Background())
-}
-
-func (i HourlyScheduleArgs) ToHourlyScheduleOutputWithContext(ctx context.Context) HourlyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HourlyScheduleOutput)
-}
-
-func (i HourlyScheduleArgs) ToHourlySchedulePtrOutput() HourlySchedulePtrOutput {
-	return i.ToHourlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i HourlyScheduleArgs) ToHourlySchedulePtrOutputWithContext(ctx context.Context) HourlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HourlyScheduleOutput).ToHourlySchedulePtrOutputWithContext(ctx)
-}
-
-// HourlySchedulePtrInput is an input type that accepts HourlyScheduleArgs, HourlySchedulePtr and HourlySchedulePtrOutput values.
-// You can construct a concrete instance of `HourlySchedulePtrInput` via:
-//
-//	        HourlyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type HourlySchedulePtrInput interface {
-	pulumi.Input
-
-	ToHourlySchedulePtrOutput() HourlySchedulePtrOutput
-	ToHourlySchedulePtrOutputWithContext(context.Context) HourlySchedulePtrOutput
-}
-
-type hourlySchedulePtrType HourlyScheduleArgs
-
-func HourlySchedulePtr(v *HourlyScheduleArgs) HourlySchedulePtrInput {
-	return (*hourlySchedulePtrType)(v)
-}
-
-func (*hourlySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HourlySchedule)(nil)).Elem()
-}
-
-func (i *hourlySchedulePtrType) ToHourlySchedulePtrOutput() HourlySchedulePtrOutput {
-	return i.ToHourlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *hourlySchedulePtrType) ToHourlySchedulePtrOutputWithContext(ctx context.Context) HourlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HourlySchedulePtrOutput)
-}
-
-// Hourly Schedule properties
-type HourlyScheduleOutput struct{ *pulumi.OutputState }
-
-func (HourlyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HourlySchedule)(nil)).Elem()
-}
-
-func (o HourlyScheduleOutput) ToHourlyScheduleOutput() HourlyScheduleOutput {
-	return o
-}
-
-func (o HourlyScheduleOutput) ToHourlyScheduleOutputWithContext(ctx context.Context) HourlyScheduleOutput {
-	return o
-}
-
-func (o HourlyScheduleOutput) ToHourlySchedulePtrOutput() HourlySchedulePtrOutput {
-	return o.ToHourlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o HourlyScheduleOutput) ToHourlySchedulePtrOutputWithContext(ctx context.Context) HourlySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HourlySchedule) *HourlySchedule {
-		return &v
-	}).(HourlySchedulePtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o HourlyScheduleOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HourlySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Hourly snapshot count to keep
-func (o HourlyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HourlySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o HourlyScheduleOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v HourlySchedule) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type HourlySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (HourlySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HourlySchedule)(nil)).Elem()
-}
-
-func (o HourlySchedulePtrOutput) ToHourlySchedulePtrOutput() HourlySchedulePtrOutput {
-	return o
-}
-
-func (o HourlySchedulePtrOutput) ToHourlySchedulePtrOutputWithContext(ctx context.Context) HourlySchedulePtrOutput {
-	return o
-}
-
-func (o HourlySchedulePtrOutput) Elem() HourlyScheduleOutput {
-	return o.ApplyT(func(v *HourlySchedule) HourlySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret HourlySchedule
-		return ret
-	}).(HourlyScheduleOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o HourlySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HourlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Hourly snapshot count to keep
-func (o HourlySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HourlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o HourlySchedulePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *HourlySchedule) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Hourly Schedule properties
-type HourlyScheduleResponse struct {
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Hourly snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// Hourly Schedule properties
-type HourlyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (HourlyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HourlyScheduleResponse)(nil)).Elem()
-}
-
-func (o HourlyScheduleResponseOutput) ToHourlyScheduleResponseOutput() HourlyScheduleResponseOutput {
-	return o
-}
-
-func (o HourlyScheduleResponseOutput) ToHourlyScheduleResponseOutputWithContext(ctx context.Context) HourlyScheduleResponseOutput {
-	return o
-}
-
-// Indicates which minute snapshot should be taken
-func (o HourlyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HourlyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Hourly snapshot count to keep
-func (o HourlyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HourlyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o HourlyScheduleResponseOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v HourlyScheduleResponse) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type HourlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HourlyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HourlyScheduleResponse)(nil)).Elem()
-}
-
-func (o HourlyScheduleResponsePtrOutput) ToHourlyScheduleResponsePtrOutput() HourlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o HourlyScheduleResponsePtrOutput) ToHourlyScheduleResponsePtrOutputWithContext(ctx context.Context) HourlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o HourlyScheduleResponsePtrOutput) Elem() HourlyScheduleResponseOutput {
-	return o.ApplyT(func(v *HourlyScheduleResponse) HourlyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HourlyScheduleResponse
-		return ret
-	}).(HourlyScheduleResponseOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o HourlyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HourlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Hourly snapshot count to keep
-func (o HourlyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HourlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o HourlyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *HourlyScheduleResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
-// LDAP search scope
-type LdapSearchScopeOpt struct {
-	// This specifies the group DN, which overrides the base DN for group lookups.
-	GroupDN *string `pulumi:"groupDN"`
-	// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-	GroupMembershipFilter *string `pulumi:"groupMembershipFilter"`
-	// This specifies the user DN, which overrides the base DN for user lookups.
-	UserDN *string `pulumi:"userDN"`
-}
-
-// LdapSearchScopeOptInput is an input type that accepts LdapSearchScopeOptArgs and LdapSearchScopeOptOutput values.
-// You can construct a concrete instance of `LdapSearchScopeOptInput` via:
-//
-//	LdapSearchScopeOptArgs{...}
-type LdapSearchScopeOptInput interface {
-	pulumi.Input
-
-	ToLdapSearchScopeOptOutput() LdapSearchScopeOptOutput
-	ToLdapSearchScopeOptOutputWithContext(context.Context) LdapSearchScopeOptOutput
-}
-
-// LDAP search scope
-type LdapSearchScopeOptArgs struct {
-	// This specifies the group DN, which overrides the base DN for group lookups.
-	GroupDN pulumi.StringPtrInput `pulumi:"groupDN"`
-	// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-	GroupMembershipFilter pulumi.StringPtrInput `pulumi:"groupMembershipFilter"`
-	// This specifies the user DN, which overrides the base DN for user lookups.
-	UserDN pulumi.StringPtrInput `pulumi:"userDN"`
-}
-
-func (LdapSearchScopeOptArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LdapSearchScopeOpt)(nil)).Elem()
-}
-
-func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptOutput() LdapSearchScopeOptOutput {
-	return i.ToLdapSearchScopeOptOutputWithContext(context.Background())
-}
-
-func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptOutputWithContext(ctx context.Context) LdapSearchScopeOptOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LdapSearchScopeOptOutput)
-}
-
-func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
-	return i.ToLdapSearchScopeOptPtrOutputWithContext(context.Background())
-}
-
-func (i LdapSearchScopeOptArgs) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LdapSearchScopeOptOutput).ToLdapSearchScopeOptPtrOutputWithContext(ctx)
-}
-
-// LdapSearchScopeOptPtrInput is an input type that accepts LdapSearchScopeOptArgs, LdapSearchScopeOptPtr and LdapSearchScopeOptPtrOutput values.
-// You can construct a concrete instance of `LdapSearchScopeOptPtrInput` via:
-//
-//	        LdapSearchScopeOptArgs{...}
-//
-//	or:
-//
-//	        nil
-type LdapSearchScopeOptPtrInput interface {
-	pulumi.Input
-
-	ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput
-	ToLdapSearchScopeOptPtrOutputWithContext(context.Context) LdapSearchScopeOptPtrOutput
-}
-
-type ldapSearchScopeOptPtrType LdapSearchScopeOptArgs
-
-func LdapSearchScopeOptPtr(v *LdapSearchScopeOptArgs) LdapSearchScopeOptPtrInput {
-	return (*ldapSearchScopeOptPtrType)(v)
-}
-
-func (*ldapSearchScopeOptPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LdapSearchScopeOpt)(nil)).Elem()
-}
-
-func (i *ldapSearchScopeOptPtrType) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
-	return i.ToLdapSearchScopeOptPtrOutputWithContext(context.Background())
-}
-
-func (i *ldapSearchScopeOptPtrType) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LdapSearchScopeOptPtrOutput)
-}
-
-// LDAP search scope
-type LdapSearchScopeOptOutput struct{ *pulumi.OutputState }
-
-func (LdapSearchScopeOptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LdapSearchScopeOpt)(nil)).Elem()
-}
-
-func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptOutput() LdapSearchScopeOptOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptOutputWithContext(ctx context.Context) LdapSearchScopeOptOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
-	return o.ToLdapSearchScopeOptPtrOutputWithContext(context.Background())
-}
-
-func (o LdapSearchScopeOptOutput) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LdapSearchScopeOpt) *LdapSearchScopeOpt {
-		return &v
-	}).(LdapSearchScopeOptPtrOutput)
-}
-
-// This specifies the group DN, which overrides the base DN for group lookups.
-func (o LdapSearchScopeOptOutput) GroupDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LdapSearchScopeOpt) *string { return v.GroupDN }).(pulumi.StringPtrOutput)
-}
-
-// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-func (o LdapSearchScopeOptOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LdapSearchScopeOpt) *string { return v.GroupMembershipFilter }).(pulumi.StringPtrOutput)
-}
-
-// This specifies the user DN, which overrides the base DN for user lookups.
-func (o LdapSearchScopeOptOutput) UserDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LdapSearchScopeOpt) *string { return v.UserDN }).(pulumi.StringPtrOutput)
-}
-
-type LdapSearchScopeOptPtrOutput struct{ *pulumi.OutputState }
-
-func (LdapSearchScopeOptPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LdapSearchScopeOpt)(nil)).Elem()
-}
-
-func (o LdapSearchScopeOptPtrOutput) ToLdapSearchScopeOptPtrOutput() LdapSearchScopeOptPtrOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptPtrOutput) ToLdapSearchScopeOptPtrOutputWithContext(ctx context.Context) LdapSearchScopeOptPtrOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptPtrOutput) Elem() LdapSearchScopeOptOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOpt) LdapSearchScopeOpt {
-		if v != nil {
-			return *v
-		}
-		var ret LdapSearchScopeOpt
-		return ret
-	}).(LdapSearchScopeOptOutput)
-}
-
-// This specifies the group DN, which overrides the base DN for group lookups.
-func (o LdapSearchScopeOptPtrOutput) GroupDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOpt) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupDN
-	}).(pulumi.StringPtrOutput)
-}
-
-// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-func (o LdapSearchScopeOptPtrOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOpt) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupMembershipFilter
-	}).(pulumi.StringPtrOutput)
-}
-
-// This specifies the user DN, which overrides the base DN for user lookups.
-func (o LdapSearchScopeOptPtrOutput) UserDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOpt) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserDN
-	}).(pulumi.StringPtrOutput)
-}
-
-// LDAP search scope
-type LdapSearchScopeOptResponse struct {
-	// This specifies the group DN, which overrides the base DN for group lookups.
-	GroupDN *string `pulumi:"groupDN"`
-	// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-	GroupMembershipFilter *string `pulumi:"groupMembershipFilter"`
-	// This specifies the user DN, which overrides the base DN for user lookups.
-	UserDN *string `pulumi:"userDN"`
-}
-
-// LDAP search scope
-type LdapSearchScopeOptResponseOutput struct{ *pulumi.OutputState }
-
-func (LdapSearchScopeOptResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LdapSearchScopeOptResponse)(nil)).Elem()
-}
-
-func (o LdapSearchScopeOptResponseOutput) ToLdapSearchScopeOptResponseOutput() LdapSearchScopeOptResponseOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptResponseOutput) ToLdapSearchScopeOptResponseOutputWithContext(ctx context.Context) LdapSearchScopeOptResponseOutput {
-	return o
-}
-
-// This specifies the group DN, which overrides the base DN for group lookups.
-func (o LdapSearchScopeOptResponseOutput) GroupDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LdapSearchScopeOptResponse) *string { return v.GroupDN }).(pulumi.StringPtrOutput)
-}
-
-// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-func (o LdapSearchScopeOptResponseOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LdapSearchScopeOptResponse) *string { return v.GroupMembershipFilter }).(pulumi.StringPtrOutput)
-}
-
-// This specifies the user DN, which overrides the base DN for user lookups.
-func (o LdapSearchScopeOptResponseOutput) UserDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LdapSearchScopeOptResponse) *string { return v.UserDN }).(pulumi.StringPtrOutput)
-}
-
-type LdapSearchScopeOptResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LdapSearchScopeOptResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LdapSearchScopeOptResponse)(nil)).Elem()
-}
-
-func (o LdapSearchScopeOptResponsePtrOutput) ToLdapSearchScopeOptResponsePtrOutput() LdapSearchScopeOptResponsePtrOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptResponsePtrOutput) ToLdapSearchScopeOptResponsePtrOutputWithContext(ctx context.Context) LdapSearchScopeOptResponsePtrOutput {
-	return o
-}
-
-func (o LdapSearchScopeOptResponsePtrOutput) Elem() LdapSearchScopeOptResponseOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOptResponse) LdapSearchScopeOptResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LdapSearchScopeOptResponse
-		return ret
-	}).(LdapSearchScopeOptResponseOutput)
-}
-
-// This specifies the group DN, which overrides the base DN for group lookups.
-func (o LdapSearchScopeOptResponsePtrOutput) GroupDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOptResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupDN
-	}).(pulumi.StringPtrOutput)
-}
-
-// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-func (o LdapSearchScopeOptResponsePtrOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOptResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupMembershipFilter
-	}).(pulumi.StringPtrOutput)
-}
-
-// This specifies the user DN, which overrides the base DN for user lookups.
-func (o LdapSearchScopeOptResponsePtrOutput) UserDN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LdapSearchScopeOptResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserDN
-	}).(pulumi.StringPtrOutput)
-}
-
-// Monthly Schedule properties
-type MonthlySchedule struct {
-	// Indicates which days of the month snapshot should be taken. A comma delimited string.
-	DaysOfMonth *string `pulumi:"daysOfMonth"`
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour *int `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Monthly snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// MonthlyScheduleInput is an input type that accepts MonthlyScheduleArgs and MonthlyScheduleOutput values.
-// You can construct a concrete instance of `MonthlyScheduleInput` via:
-//
-//	MonthlyScheduleArgs{...}
-type MonthlyScheduleInput interface {
-	pulumi.Input
-
-	ToMonthlyScheduleOutput() MonthlyScheduleOutput
-	ToMonthlyScheduleOutputWithContext(context.Context) MonthlyScheduleOutput
-}
-
-// Monthly Schedule properties
-type MonthlyScheduleArgs struct {
-	// Indicates which days of the month snapshot should be taken. A comma delimited string.
-	DaysOfMonth pulumi.StringPtrInput `pulumi:"daysOfMonth"`
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour pulumi.IntPtrInput `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute pulumi.IntPtrInput `pulumi:"minute"`
-	// Monthly snapshot count to keep
-	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes pulumi.Float64PtrInput `pulumi:"usedBytes"`
-}
-
-func (MonthlyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonthlySchedule)(nil)).Elem()
-}
-
-func (i MonthlyScheduleArgs) ToMonthlyScheduleOutput() MonthlyScheduleOutput {
-	return i.ToMonthlyScheduleOutputWithContext(context.Background())
-}
-
-func (i MonthlyScheduleArgs) ToMonthlyScheduleOutputWithContext(ctx context.Context) MonthlyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleOutput)
-}
-
-func (i MonthlyScheduleArgs) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return i.ToMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i MonthlyScheduleArgs) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleOutput).ToMonthlySchedulePtrOutputWithContext(ctx)
-}
-
-// MonthlySchedulePtrInput is an input type that accepts MonthlyScheduleArgs, MonthlySchedulePtr and MonthlySchedulePtrOutput values.
-// You can construct a concrete instance of `MonthlySchedulePtrInput` via:
-//
-//	        MonthlyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type MonthlySchedulePtrInput interface {
-	pulumi.Input
-
-	ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput
-	ToMonthlySchedulePtrOutputWithContext(context.Context) MonthlySchedulePtrOutput
-}
-
-type monthlySchedulePtrType MonthlyScheduleArgs
-
-func MonthlySchedulePtr(v *MonthlyScheduleArgs) MonthlySchedulePtrInput {
-	return (*monthlySchedulePtrType)(v)
-}
-
-func (*monthlySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlySchedule)(nil)).Elem()
-}
-
-func (i *monthlySchedulePtrType) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return i.ToMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *monthlySchedulePtrType) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlySchedulePtrOutput)
-}
-
-// Monthly Schedule properties
-type MonthlyScheduleOutput struct{ *pulumi.OutputState }
-
-func (MonthlyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonthlySchedule)(nil)).Elem()
-}
-
-func (o MonthlyScheduleOutput) ToMonthlyScheduleOutput() MonthlyScheduleOutput {
-	return o
-}
-
-func (o MonthlyScheduleOutput) ToMonthlyScheduleOutputWithContext(ctx context.Context) MonthlyScheduleOutput {
-	return o
-}
-
-func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return o.ToMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonthlySchedule) *MonthlySchedule {
-		return &v
-	}).(MonthlySchedulePtrOutput)
-}
-
-// Indicates which days of the month snapshot should be taken. A comma delimited string.
-func (o MonthlyScheduleOutput) DaysOfMonth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *string { return v.DaysOfMonth }).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o MonthlyScheduleOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o MonthlyScheduleOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Monthly snapshot count to keep
-func (o MonthlyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o MonthlyScheduleOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type MonthlySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (MonthlySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlySchedule)(nil)).Elem()
-}
-
-func (o MonthlySchedulePtrOutput) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return o
-}
-
-func (o MonthlySchedulePtrOutput) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return o
-}
-
-func (o MonthlySchedulePtrOutput) Elem() MonthlyScheduleOutput {
-	return o.ApplyT(func(v *MonthlySchedule) MonthlySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret MonthlySchedule
-		return ret
-	}).(MonthlyScheduleOutput)
-}
-
-// Indicates which days of the month snapshot should be taken. A comma delimited string.
-func (o MonthlySchedulePtrOutput) DaysOfMonth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DaysOfMonth
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o MonthlySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hour
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o MonthlySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Monthly snapshot count to keep
-func (o MonthlySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o MonthlySchedulePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Monthly Schedule properties
-type MonthlyScheduleResponse struct {
-	// Indicates which days of the month snapshot should be taken. A comma delimited string.
-	DaysOfMonth *string `pulumi:"daysOfMonth"`
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour *int `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Monthly snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// Monthly Schedule properties
-type MonthlyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (MonthlyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutput() MonthlyScheduleResponseOutput {
-	return o
-}
-
-func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutputWithContext(ctx context.Context) MonthlyScheduleResponseOutput {
-	return o
-}
-
-// Indicates which days of the month snapshot should be taken. A comma delimited string.
-func (o MonthlyScheduleResponseOutput) DaysOfMonth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonthlyScheduleResponse) *string { return v.DaysOfMonth }).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o MonthlyScheduleResponseOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlyScheduleResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o MonthlyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Monthly snapshot count to keep
-func (o MonthlyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o MonthlyScheduleResponseOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MonthlyScheduleResponse) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type MonthlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MonthlyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o MonthlyScheduleResponsePtrOutput) Elem() MonthlyScheduleResponseOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) MonthlyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MonthlyScheduleResponse
-		return ret
-	}).(MonthlyScheduleResponseOutput)
-}
-
-// Indicates which days of the month snapshot should be taken. A comma delimited string.
-func (o MonthlyScheduleResponsePtrOutput) DaysOfMonth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DaysOfMonth
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o MonthlyScheduleResponsePtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hour
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o MonthlyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Monthly snapshot count to keep
-func (o MonthlyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o MonthlyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Mount target properties
@@ -3333,66 +1436,6 @@ func (o VolumeBackupPropertiesResponsePtrOutput) VaultId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Volume details using the backup policy
-type VolumeBackupsResponse struct {
-	// Total count of backups for volume
-	BackupsCount *int `pulumi:"backupsCount"`
-	// Policy enabled
-	PolicyEnabled *bool `pulumi:"policyEnabled"`
-	// Volume name
-	VolumeName *string `pulumi:"volumeName"`
-}
-
-// Volume details using the backup policy
-type VolumeBackupsResponseOutput struct{ *pulumi.OutputState }
-
-func (VolumeBackupsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeBackupsResponse)(nil)).Elem()
-}
-
-func (o VolumeBackupsResponseOutput) ToVolumeBackupsResponseOutput() VolumeBackupsResponseOutput {
-	return o
-}
-
-func (o VolumeBackupsResponseOutput) ToVolumeBackupsResponseOutputWithContext(ctx context.Context) VolumeBackupsResponseOutput {
-	return o
-}
-
-// Total count of backups for volume
-func (o VolumeBackupsResponseOutput) BackupsCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VolumeBackupsResponse) *int { return v.BackupsCount }).(pulumi.IntPtrOutput)
-}
-
-// Policy enabled
-func (o VolumeBackupsResponseOutput) PolicyEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VolumeBackupsResponse) *bool { return v.PolicyEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Volume name
-func (o VolumeBackupsResponseOutput) VolumeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackupsResponse) *string { return v.VolumeName }).(pulumi.StringPtrOutput)
-}
-
-type VolumeBackupsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeBackupsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeBackupsResponse)(nil)).Elem()
-}
-
-func (o VolumeBackupsResponseArrayOutput) ToVolumeBackupsResponseArrayOutput() VolumeBackupsResponseArrayOutput {
-	return o
-}
-
-func (o VolumeBackupsResponseArrayOutput) ToVolumeBackupsResponseArrayOutputWithContext(ctx context.Context) VolumeBackupsResponseArrayOutput {
-	return o
-}
-
-func (o VolumeBackupsResponseArrayOutput) Index(i pulumi.IntInput) VolumeBackupsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeBackupsResponse {
-		return vs[0].([]VolumeBackupsResponse)[vs[1].(int)]
-	}).(VolumeBackupsResponseOutput)
-}
-
 // Volume group properties
 type VolumeGroupMetaData struct {
 	// Application specific identifier
@@ -3831,59 +1874,59 @@ func (val *VolumeGroupVolumeProperties) Defaults() *VolumeGroupVolumeProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		avsDataStore_ := "Disabled"
 		tmp.AvsDataStore = &avsDataStore_
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		defaultGroupQuotaInKiBs_ := 0.0
 		tmp.DefaultGroupQuotaInKiBs = &defaultGroupQuotaInKiBs_
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		defaultUserQuotaInKiBs_ := 0.0
 		tmp.DefaultUserQuotaInKiBs = &defaultUserQuotaInKiBs_
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		enableSubvolumes_ := "Disabled"
 		tmp.EnableSubvolumes = &enableSubvolumes_
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.IsDefaultQuotaEnabled == nil {
 		isDefaultQuotaEnabled_ := false
 		tmp.IsDefaultQuotaEnabled = &isDefaultQuotaEnabled_
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
@@ -3981,49 +2024,49 @@ func (val *VolumeGroupVolumePropertiesArgs) Defaults() *VolumeGroupVolumePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		tmp.AvsDataStore = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		tmp.CoolAccess = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		tmp.DefaultGroupQuotaInKiBs = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		tmp.DefaultUserQuotaInKiBs = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		tmp.EnableSubvolumes = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.IsDefaultQuotaEnabled == nil {
 		tmp.IsDefaultQuotaEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		tmp.KerberosEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		tmp.LdapEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		tmp.NetworkFeatures = pulumi.StringPtr("Basic")
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		tmp.SecurityStyle = pulumi.StringPtr("unix")
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		tmp.SmbContinuouslyAvailable = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		tmp.SmbEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		tmp.SnapshotDirectoryVisible = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		tmp.UnixPermissions = pulumi.StringPtr("0770")
 	}
-	if isZero(tmp.UsageThreshold) {
+	if tmp.UsageThreshold == nil {
 		tmp.UsageThreshold = pulumi.Float64(107374182400.0)
 	}
 	return &tmp
@@ -4370,59 +2413,59 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		avsDataStore_ := "Disabled"
 		tmp.AvsDataStore = &avsDataStore_
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		defaultGroupQuotaInKiBs_ := 0.0
 		tmp.DefaultGroupQuotaInKiBs = &defaultGroupQuotaInKiBs_
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		defaultUserQuotaInKiBs_ := 0.0
 		tmp.DefaultUserQuotaInKiBs = &defaultUserQuotaInKiBs_
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		enableSubvolumes_ := "Disabled"
 		tmp.EnableSubvolumes = &enableSubvolumes_
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.IsDefaultQuotaEnabled == nil {
 		isDefaultQuotaEnabled_ := false
 		tmp.IsDefaultQuotaEnabled = &isDefaultQuotaEnabled_
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
@@ -5372,379 +3415,11 @@ func (o VolumeSnapshotPropertiesResponsePtrOutput) SnapshotPolicyId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Weekly Schedule properties, make a snapshot every week at a specific day or days
-type WeeklySchedule struct {
-	// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-	Day *string `pulumi:"day"`
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour *int `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Weekly snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// WeeklyScheduleInput is an input type that accepts WeeklyScheduleArgs and WeeklyScheduleOutput values.
-// You can construct a concrete instance of `WeeklyScheduleInput` via:
-//
-//	WeeklyScheduleArgs{...}
-type WeeklyScheduleInput interface {
-	pulumi.Input
-
-	ToWeeklyScheduleOutput() WeeklyScheduleOutput
-	ToWeeklyScheduleOutputWithContext(context.Context) WeeklyScheduleOutput
-}
-
-// Weekly Schedule properties, make a snapshot every week at a specific day or days
-type WeeklyScheduleArgs struct {
-	// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-	Day pulumi.StringPtrInput `pulumi:"day"`
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour pulumi.IntPtrInput `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute pulumi.IntPtrInput `pulumi:"minute"`
-	// Weekly snapshot count to keep
-	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes pulumi.Float64PtrInput `pulumi:"usedBytes"`
-}
-
-func (WeeklyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklySchedule)(nil)).Elem()
-}
-
-func (i WeeklyScheduleArgs) ToWeeklyScheduleOutput() WeeklyScheduleOutput {
-	return i.ToWeeklyScheduleOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleArgs) ToWeeklyScheduleOutputWithContext(ctx context.Context) WeeklyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput)
-}
-
-func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput).ToWeeklySchedulePtrOutputWithContext(ctx)
-}
-
-// WeeklySchedulePtrInput is an input type that accepts WeeklyScheduleArgs, WeeklySchedulePtr and WeeklySchedulePtrOutput values.
-// You can construct a concrete instance of `WeeklySchedulePtrInput` via:
-//
-//	        WeeklyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type WeeklySchedulePtrInput interface {
-	pulumi.Input
-
-	ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput
-	ToWeeklySchedulePtrOutputWithContext(context.Context) WeeklySchedulePtrOutput
-}
-
-type weeklySchedulePtrType WeeklyScheduleArgs
-
-func WeeklySchedulePtr(v *WeeklyScheduleArgs) WeeklySchedulePtrInput {
-	return (*weeklySchedulePtrType)(v)
-}
-
-func (*weeklySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklySchedule)(nil)).Elem()
-}
-
-func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklySchedulePtrOutput)
-}
-
-// Weekly Schedule properties, make a snapshot every week at a specific day or days
-type WeeklyScheduleOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklySchedule)(nil)).Elem()
-}
-
-func (o WeeklyScheduleOutput) ToWeeklyScheduleOutput() WeeklyScheduleOutput {
-	return o
-}
-
-func (o WeeklyScheduleOutput) ToWeeklyScheduleOutputWithContext(ctx context.Context) WeeklyScheduleOutput {
-	return o
-}
-
-func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return o.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklySchedule) *WeeklySchedule {
-		return &v
-	}).(WeeklySchedulePtrOutput)
-}
-
-// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-func (o WeeklyScheduleOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o WeeklyScheduleOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o WeeklyScheduleOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Weekly snapshot count to keep
-func (o WeeklyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o WeeklyScheduleOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type WeeklySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (WeeklySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklySchedule)(nil)).Elem()
-}
-
-func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return o
-}
-
-func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o
-}
-
-func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
-	return o.ApplyT(func(v *WeeklySchedule) WeeklySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret WeeklySchedule
-		return ret
-	}).(WeeklyScheduleOutput)
-}
-
-// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-func (o WeeklySchedulePtrOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Day
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o WeeklySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hour
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o WeeklySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Weekly snapshot count to keep
-func (o WeeklySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o WeeklySchedulePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Weekly Schedule properties, make a snapshot every week at a specific day or days
-type WeeklyScheduleResponse struct {
-	// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-	Day *string `pulumi:"day"`
-	// Indicates which hour in UTC timezone a snapshot should be taken
-	Hour *int `pulumi:"hour"`
-	// Indicates which minute snapshot should be taken
-	Minute *int `pulumi:"minute"`
-	// Weekly snapshot count to keep
-	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
-	// Resource size in bytes, current storage usage for the volume in bytes
-	UsedBytes *float64 `pulumi:"usedBytes"`
-}
-
-// Weekly Schedule properties, make a snapshot every week at a specific day or days
-type WeeklyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
-	return o
-}
-
-// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-func (o WeeklyScheduleResponseOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) *string { return v.Day }).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o WeeklyScheduleResponseOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o WeeklyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
-}
-
-// Weekly snapshot count to keep
-func (o WeeklyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o WeeklyScheduleResponseOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) *float64 { return v.UsedBytes }).(pulumi.Float64PtrOutput)
-}
-
-type WeeklyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WeeklyScheduleResponse
-		return ret
-	}).(WeeklyScheduleResponseOutput)
-}
-
-// Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
-func (o WeeklyScheduleResponsePtrOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Day
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates which hour in UTC timezone a snapshot should be taken
-func (o WeeklyScheduleResponsePtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hour
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates which minute snapshot should be taken
-func (o WeeklyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minute
-	}).(pulumi.IntPtrOutput)
-}
-
-// Weekly snapshot count to keep
-func (o WeeklyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotsToKeep
-	}).(pulumi.IntPtrOutput)
-}
-
-// Resource size in bytes, current storage usage for the volume in bytes
-func (o WeeklyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UsedBytes
-	}).(pulumi.Float64PtrOutput)
-}
-
 func init() {
-	pulumi.RegisterOutputType(AccountEncryptionOutput{})
-	pulumi.RegisterOutputType(AccountEncryptionPtrOutput{})
-	pulumi.RegisterOutputType(AccountEncryptionResponseOutput{})
-	pulumi.RegisterOutputType(AccountEncryptionResponsePtrOutput{})
-	pulumi.RegisterOutputType(ActiveDirectoryOutput{})
-	pulumi.RegisterOutputType(ActiveDirectoryArrayOutput{})
-	pulumi.RegisterOutputType(ActiveDirectoryResponseOutput{})
-	pulumi.RegisterOutputType(ActiveDirectoryResponseArrayOutput{})
-	pulumi.RegisterOutputType(DailyScheduleOutput{})
-	pulumi.RegisterOutputType(DailySchedulePtrOutput{})
-	pulumi.RegisterOutputType(DailyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(DailyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(HourlyScheduleOutput{})
-	pulumi.RegisterOutputType(HourlySchedulePtrOutput{})
-	pulumi.RegisterOutputType(HourlyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(HourlyScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(LdapSearchScopeOptOutput{})
-	pulumi.RegisterOutputType(LdapSearchScopeOptPtrOutput{})
-	pulumi.RegisterOutputType(LdapSearchScopeOptResponseOutput{})
-	pulumi.RegisterOutputType(LdapSearchScopeOptResponsePtrOutput{})
-	pulumi.RegisterOutputType(MonthlyScheduleOutput{})
-	pulumi.RegisterOutputType(MonthlySchedulePtrOutput{})
-	pulumi.RegisterOutputType(MonthlyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(MonthlyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(MountTargetPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MountTargetPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsOutput{})
@@ -5760,8 +3435,6 @@ func init() {
 	pulumi.RegisterOutputType(VolumeBackupPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeBackupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VolumeBackupPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(VolumeBackupsResponseOutput{})
-	pulumi.RegisterOutputType(VolumeBackupsResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeGroupMetaDataOutput{})
 	pulumi.RegisterOutputType(VolumeGroupMetaDataPtrOutput{})
 	pulumi.RegisterOutputType(VolumeGroupMetaDataResponseOutput{})
@@ -5782,8 +3455,4 @@ func init() {
 	pulumi.RegisterOutputType(VolumeSnapshotPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleOutput{})
-	pulumi.RegisterOutputType(WeeklySchedulePtrOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleResponsePtrOutput{})
 }

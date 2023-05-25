@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +43,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dbformysql:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

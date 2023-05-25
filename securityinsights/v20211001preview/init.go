@@ -27,22 +27,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AATPDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:ASCDataConnector":
 		r = &ASCDataConnector{}
-	case "azure-native:securityinsights/v20211001preview:Action":
-		r = &Action{}
 	case "azure-native:securityinsights/v20211001preview:ActivityCustomEntityQuery":
 		r = &ActivityCustomEntityQuery{}
 	case "azure-native:securityinsights/v20211001preview:Anomalies":
 		r = &Anomalies{}
-	case "azure-native:securityinsights/v20211001preview:AutomationRule":
-		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20211001preview:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:AwsS3DataConnector":
 		r = &AwsS3DataConnector{}
-	case "azure-native:securityinsights/v20211001preview:Bookmark":
-		r = &Bookmark{}
-	case "azure-native:securityinsights/v20211001preview:BookmarkRelation":
-		r = &BookmarkRelation{}
 	case "azure-native:securityinsights/v20211001preview:CodelessApiPollingDataConnector":
 		r = &CodelessApiPollingDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:CodelessUiDataConnector":
@@ -55,12 +47,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EyesOn{}
 	case "azure-native:securityinsights/v20211001preview:FusionAlertRule":
 		r = &FusionAlertRule{}
-	case "azure-native:securityinsights/v20211001preview:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20211001preview:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20211001preview:IncidentRelation":
-		r = &IncidentRelation{}
 	case "azure-native:securityinsights/v20211001preview:MCASDataConnector":
 		r = &MCASDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:MDATPDataConnector":
@@ -71,8 +57,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MSTIDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:MTPDataConnector":
 		r = &MTPDataConnector{}
-	case "azure-native:securityinsights/v20211001preview:Metadata":
-		r = &Metadata{}
 	case "azure-native:securityinsights/v20211001preview:MicrosoftSecurityIncidentCreationAlertRule":
 		r = &MicrosoftSecurityIncidentCreationAlertRule{}
 	case "azure-native:securityinsights/v20211001preview:NrtAlertRule":
@@ -89,24 +73,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficePowerBIDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20211001preview:SentinelOnboardingState":
-		r = &SentinelOnboardingState{}
-	case "azure-native:securityinsights/v20211001preview:SourceControl":
-		r = &SourceControl{}
 	case "azure-native:securityinsights/v20211001preview:TIDataConnector":
 		r = &TIDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:ThreatIntelligenceAlertRule":
 		r = &ThreatIntelligenceAlertRule{}
-	case "azure-native:securityinsights/v20211001preview:ThreatIntelligenceIndicator":
-		r = &ThreatIntelligenceIndicator{}
 	case "azure-native:securityinsights/v20211001preview:TiTaxiiDataConnector":
 		r = &TiTaxiiDataConnector{}
 	case "azure-native:securityinsights/v20211001preview:Ueba":
 		r = &Ueba{}
 	case "azure-native:securityinsights/v20211001preview:Watchlist":
 		r = &Watchlist{}
-	case "azure-native:securityinsights/v20211001preview:WatchlistItem":
-		r = &WatchlistItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,7 +56,7 @@ func NewMediaService(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.MinimumTlsVersion) {
+	if args.MinimumTlsVersion == nil {
 		args.MinimumTlsVersion = pulumi.StringPtr("Tls12")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

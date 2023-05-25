@@ -23,14 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:azurearcdata/v20220301preview:ActiveDirectoryConnector":
 		r = &ActiveDirectoryConnector{}
-	case "azure-native:azurearcdata/v20220301preview:DataController":
-		r = &DataController{}
-	case "azure-native:azurearcdata/v20220301preview:PostgresInstance":
-		r = &PostgresInstance{}
-	case "azure-native:azurearcdata/v20220301preview:SqlManagedInstance":
-		r = &SqlManagedInstance{}
-	case "azure-native:azurearcdata/v20220301preview:SqlServerInstance":
-		r = &SqlServerInstance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -11,8 +11,6 @@ import (
 )
 
 // Get the SignalR service and its properties.
-//
-// Deprecated: Version 2018-10-01 will be removed in v2 of the provider.
 func LookupSignalR(ctx *pulumi.Context, args *LookupSignalRArgs, opts ...pulumi.InvokeOption) (*LookupSignalRResult, error) {
 	var rv LookupSignalRResult
 	err := ctx.Invoke("azure-native:signalrservice/v20181001:getSignalR", args, &rv, opts...)

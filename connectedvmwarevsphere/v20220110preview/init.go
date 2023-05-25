@@ -21,30 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:connectedvmwarevsphere/v20220110preview:Cluster":
-		r = &Cluster{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:Datastore":
-		r = &Datastore{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:GuestAgent":
-		r = &GuestAgent{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:Host":
-		r = &Host{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:HybridIdentityMetadatum":
-		r = &HybridIdentityMetadatum{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:InventoryItem":
-		r = &InventoryItem{}
 	case "azure-native:connectedvmwarevsphere/v20220110preview:MachineExtension":
 		r = &MachineExtension{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:ResourcePool":
-		r = &ResourcePool{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:VCenter":
-		r = &VCenter{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:VirtualMachine":
-		r = &VirtualMachine{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:VirtualMachineTemplate":
-		r = &VirtualMachineTemplate{}
-	case "azure-native:connectedvmwarevsphere/v20220110preview:VirtualNetwork":
-		r = &VirtualNetwork{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

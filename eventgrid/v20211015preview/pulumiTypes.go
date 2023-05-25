@@ -61,7 +61,7 @@ func (val *AzureADPartnerClientAuthenticationArgs) Defaults() *AzureADPartnerCli
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientAuthenticationType) {
+	if tmp.ClientAuthenticationType == nil {
 		tmp.ClientAuthenticationType = pulumi.String("AzureAD")
 	}
 	return &tmp
@@ -347,11 +347,11 @@ func (val *AzureFunctionEventSubscriptionDestination) Defaults() *AzureFunctionE
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -379,11 +379,11 @@ func (val *AzureFunctionEventSubscriptionDestinationResponse) Defaults() *AzureF
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -410,184 +410,6 @@ type BoolEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The boolean filter value.
 	Value *bool `pulumi:"value"`
-}
-
-// ConnectionState information.
-type ConnectionState struct {
-	// Actions required (if any).
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// Description of the connection state.
-	Description *string `pulumi:"description"`
-	// Status of the connection.
-	Status *string `pulumi:"status"`
-}
-
-// ConnectionStateInput is an input type that accepts ConnectionStateArgs and ConnectionStateOutput values.
-// You can construct a concrete instance of `ConnectionStateInput` via:
-//
-//	ConnectionStateArgs{...}
-type ConnectionStateInput interface {
-	pulumi.Input
-
-	ToConnectionStateOutput() ConnectionStateOutput
-	ToConnectionStateOutputWithContext(context.Context) ConnectionStateOutput
-}
-
-// ConnectionState information.
-type ConnectionStateArgs struct {
-	// Actions required (if any).
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// Description of the connection state.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Status of the connection.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (ConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionState)(nil)).Elem()
-}
-
-func (i ConnectionStateArgs) ToConnectionStateOutput() ConnectionStateOutput {
-	return i.ToConnectionStateOutputWithContext(context.Background())
-}
-
-func (i ConnectionStateArgs) ToConnectionStateOutputWithContext(ctx context.Context) ConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStateOutput)
-}
-
-func (i ConnectionStateArgs) ToConnectionStatePtrOutput() ConnectionStatePtrOutput {
-	return i.ToConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i ConnectionStateArgs) ToConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStateOutput).ToConnectionStatePtrOutputWithContext(ctx)
-}
-
-// ConnectionStatePtrInput is an input type that accepts ConnectionStateArgs, ConnectionStatePtr and ConnectionStatePtrOutput values.
-// You can construct a concrete instance of `ConnectionStatePtrInput` via:
-//
-//	        ConnectionStateArgs{...}
-//
-//	or:
-//
-//	        nil
-type ConnectionStatePtrInput interface {
-	pulumi.Input
-
-	ToConnectionStatePtrOutput() ConnectionStatePtrOutput
-	ToConnectionStatePtrOutputWithContext(context.Context) ConnectionStatePtrOutput
-}
-
-type connectionStatePtrType ConnectionStateArgs
-
-func ConnectionStatePtr(v *ConnectionStateArgs) ConnectionStatePtrInput {
-	return (*connectionStatePtrType)(v)
-}
-
-func (*connectionStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionState)(nil)).Elem()
-}
-
-func (i *connectionStatePtrType) ToConnectionStatePtrOutput() ConnectionStatePtrOutput {
-	return i.ToConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i *connectionStatePtrType) ToConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatePtrOutput)
-}
-
-// ConnectionState information.
-type ConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (ConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionState)(nil)).Elem()
-}
-
-func (o ConnectionStateOutput) ToConnectionStateOutput() ConnectionStateOutput {
-	return o
-}
-
-func (o ConnectionStateOutput) ToConnectionStateOutputWithContext(ctx context.Context) ConnectionStateOutput {
-	return o
-}
-
-func (o ConnectionStateOutput) ToConnectionStatePtrOutput() ConnectionStatePtrOutput {
-	return o.ToConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (o ConnectionStateOutput) ToConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionState) *ConnectionState {
-		return &v
-	}).(ConnectionStatePtrOutput)
-}
-
-// Actions required (if any).
-func (o ConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// Description of the connection state.
-func (o ConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Status of the connection.
-func (o ConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type ConnectionStatePtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectionStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionState)(nil)).Elem()
-}
-
-func (o ConnectionStatePtrOutput) ToConnectionStatePtrOutput() ConnectionStatePtrOutput {
-	return o
-}
-
-func (o ConnectionStatePtrOutput) ToConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionStatePtrOutput {
-	return o
-}
-
-func (o ConnectionStatePtrOutput) Elem() ConnectionStateOutput {
-	return o.ApplyT(func(v *ConnectionState) ConnectionState {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectionState
-		return ret
-	}).(ConnectionStateOutput)
-}
-
-// Actions required (if any).
-func (o ConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// Description of the connection state.
-func (o ConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of the connection.
-func (o ConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
 }
 
 // ConnectionState information.
@@ -1496,7 +1318,7 @@ func (val *EventChannelFilter) Defaults() *EventChannelFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableAdvancedFilteringOnArrays) {
+	if tmp.EnableAdvancedFilteringOnArrays == nil {
 		enableAdvancedFilteringOnArrays_ := false
 		tmp.EnableAdvancedFilteringOnArrays = &enableAdvancedFilteringOnArrays_
 	}
@@ -1528,7 +1350,7 @@ func (val *EventChannelFilterArgs) Defaults() *EventChannelFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableAdvancedFilteringOnArrays) {
+	if tmp.EnableAdvancedFilteringOnArrays == nil {
 		tmp.EnableAdvancedFilteringOnArrays = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1679,7 +1501,7 @@ func (val *EventChannelFilterResponse) Defaults() *EventChannelFilterResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableAdvancedFilteringOnArrays) {
+	if tmp.EnableAdvancedFilteringOnArrays == nil {
 		enableAdvancedFilteringOnArrays_ := false
 		tmp.EnableAdvancedFilteringOnArrays = &enableAdvancedFilteringOnArrays_
 	}
@@ -2010,7 +1832,7 @@ func (val *EventSubscriptionFilter) Defaults() *EventSubscriptionFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		isSubjectCaseSensitive_ := false
 		tmp.IsSubjectCaseSensitive = &isSubjectCaseSensitive_
 	}
@@ -2054,7 +1876,7 @@ func (val *EventSubscriptionFilterArgs) Defaults() *EventSubscriptionFilterArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		tmp.IsSubjectCaseSensitive = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -2285,7 +2107,7 @@ func (val *EventSubscriptionFilterResponse) Defaults() *EventSubscriptionFilterR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		isSubjectCaseSensitive_ := false
 		tmp.IsSubjectCaseSensitive = &isSubjectCaseSensitive_
 	}
@@ -5744,146 +5566,6 @@ func (o PartnerTopicInfoResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrivateEndpoint information.
-type PrivateEndpoint struct {
-	// The ARM identifier for Private Endpoint.
-	Id *string `pulumi:"id"`
-}
-
-// PrivateEndpointInput is an input type that accepts PrivateEndpointArgs and PrivateEndpointOutput values.
-// You can construct a concrete instance of `PrivateEndpointInput` via:
-//
-//	PrivateEndpointArgs{...}
-type PrivateEndpointInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointOutput() PrivateEndpointOutput
-	ToPrivateEndpointOutputWithContext(context.Context) PrivateEndpointOutput
-}
-
-// PrivateEndpoint information.
-type PrivateEndpointArgs struct {
-	// The ARM identifier for Private Endpoint.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (PrivateEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpoint)(nil)).Elem()
-}
-
-func (i PrivateEndpointArgs) ToPrivateEndpointOutput() PrivateEndpointOutput {
-	return i.ToPrivateEndpointOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointArgs) ToPrivateEndpointOutputWithContext(ctx context.Context) PrivateEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput)
-}
-
-func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
-	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput).ToPrivateEndpointPtrOutputWithContext(ctx)
-}
-
-// PrivateEndpointPtrInput is an input type that accepts PrivateEndpointArgs, PrivateEndpointPtr and PrivateEndpointPtrOutput values.
-// You can construct a concrete instance of `PrivateEndpointPtrInput` via:
-//
-//	        PrivateEndpointArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateEndpointPtrInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput
-	ToPrivateEndpointPtrOutputWithContext(context.Context) PrivateEndpointPtrOutput
-}
-
-type privateEndpointPtrType PrivateEndpointArgs
-
-func PrivateEndpointPtr(v *PrivateEndpointArgs) PrivateEndpointPtrInput {
-	return (*privateEndpointPtrType)(v)
-}
-
-func (*privateEndpointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpoint)(nil)).Elem()
-}
-
-func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
-	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPtrOutput)
-}
-
-// PrivateEndpoint information.
-type PrivateEndpointOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpoint)(nil)).Elem()
-}
-
-func (o PrivateEndpointOutput) ToPrivateEndpointOutput() PrivateEndpointOutput {
-	return o
-}
-
-func (o PrivateEndpointOutput) ToPrivateEndpointOutputWithContext(ctx context.Context) PrivateEndpointOutput {
-	return o
-}
-
-func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
-	return o.ToPrivateEndpointPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpoint) *PrivateEndpoint {
-		return &v
-	}).(PrivateEndpointPtrOutput)
-}
-
-// The ARM identifier for Private Endpoint.
-func (o PrivateEndpointOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpoint)(nil)).Elem()
-}
-
-func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointPtrOutput) Elem() PrivateEndpointOutput {
-	return o.ApplyT(func(v *PrivateEndpoint) PrivateEndpoint {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpoint
-		return ret
-	}).(PrivateEndpointOutput)
-}
-
-// The ARM identifier for Private Endpoint.
-func (o PrivateEndpointPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 type PrivateEndpointConnectionResponse struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
@@ -6222,7 +5904,7 @@ func (val *ResourceSku) Defaults() *ResourceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "Basic"
 		tmp.Name = &name_
 	}
@@ -6252,7 +5934,7 @@ func (val *ResourceSkuArgs) Defaults() *ResourceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		tmp.Name = pulumi.StringPtr("Basic")
 	}
 	return &tmp
@@ -6386,7 +6068,7 @@ func (val *ResourceSkuResponse) Defaults() *ResourceSkuResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "Basic"
 		tmp.Name = &name_
 	}
@@ -6461,11 +6143,11 @@ func (val *RetryPolicy) Defaults() *RetryPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EventTimeToLiveInMinutes) {
+	if tmp.EventTimeToLiveInMinutes == nil {
 		eventTimeToLiveInMinutes_ := 1440
 		tmp.EventTimeToLiveInMinutes = &eventTimeToLiveInMinutes_
 	}
-	if isZero(tmp.MaxDeliveryAttempts) {
+	if tmp.MaxDeliveryAttempts == nil {
 		maxDeliveryAttempts_ := 30
 		tmp.MaxDeliveryAttempts = &maxDeliveryAttempts_
 	}
@@ -6497,10 +6179,10 @@ func (val *RetryPolicyArgs) Defaults() *RetryPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EventTimeToLiveInMinutes) {
+	if tmp.EventTimeToLiveInMinutes == nil {
 		tmp.EventTimeToLiveInMinutes = pulumi.IntPtr(1440)
 	}
-	if isZero(tmp.MaxDeliveryAttempts) {
+	if tmp.MaxDeliveryAttempts == nil {
 		tmp.MaxDeliveryAttempts = pulumi.IntPtr(30)
 	}
 	return &tmp
@@ -6651,11 +6333,11 @@ func (val *RetryPolicyResponse) Defaults() *RetryPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EventTimeToLiveInMinutes) {
+	if tmp.EventTimeToLiveInMinutes == nil {
 		eventTimeToLiveInMinutes_ := 1440
 		tmp.EventTimeToLiveInMinutes = &eventTimeToLiveInMinutes_
 	}
-	if isZero(tmp.MaxDeliveryAttempts) {
+	if tmp.MaxDeliveryAttempts == nil {
 		maxDeliveryAttempts_ := 30
 		tmp.MaxDeliveryAttempts = &maxDeliveryAttempts_
 	}
@@ -6794,7 +6476,7 @@ func (val *StaticDeliveryAttributeMapping) Defaults() *StaticDeliveryAttributeMa
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -6820,7 +6502,7 @@ func (val *StaticDeliveryAttributeMappingResponse) Defaults() *StaticDeliveryAtt
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -7556,11 +7238,11 @@ func (val *WebHookEventSubscriptionDestination) Defaults() *WebHookEventSubscrip
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -7594,11 +7276,11 @@ func (val *WebHookEventSubscriptionDestinationResponse) Defaults() *WebHookEvent
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxEventsPerBatch) {
+	if tmp.MaxEventsPerBatch == nil {
 		maxEventsPerBatch_ := 1
 		tmp.MaxEventsPerBatch = &maxEventsPerBatch_
 	}
-	if isZero(tmp.PreferredBatchSizeInKilobytes) {
+	if tmp.PreferredBatchSizeInKilobytes == nil {
 		preferredBatchSizeInKilobytes_ := 64
 		tmp.PreferredBatchSizeInKilobytes = &preferredBatchSizeInKilobytes_
 	}
@@ -7687,7 +7369,7 @@ func (val *WebhookPartnerDestinationInfoArgs) Defaults() *WebhookPartnerDestinat
 	}
 	tmp := *val
 
-	if isZero(tmp.EndpointType) {
+	if tmp.EndpointType == nil {
 		tmp.EndpointType = pulumi.String("WebHook")
 	}
 	return &tmp
@@ -8165,8 +7847,6 @@ func init() {
 	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationResponseOutput{})
 	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ConnectionStateOutput{})
-	pulumi.RegisterOutputType(ConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityOutput{})
@@ -8241,8 +7921,6 @@ func init() {
 	pulumi.RegisterOutputType(PartnerTopicInfoPtrOutput{})
 	pulumi.RegisterOutputType(PartnerTopicInfoResponseOutput{})
 	pulumi.RegisterOutputType(PartnerTopicInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})

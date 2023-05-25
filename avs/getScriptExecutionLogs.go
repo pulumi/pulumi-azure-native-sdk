@@ -11,7 +11,7 @@ import (
 )
 
 // Return the logs for a script execution resource
-// API Version: 2021-06-01.
+// API Version: 2022-05-01.
 func GetScriptExecutionLogs(ctx *pulumi.Context, args *GetScriptExecutionLogsArgs, opts ...pulumi.InvokeOption) (*GetScriptExecutionLogsResult, error) {
 	var rv GetScriptExecutionLogsResult
 	err := ctx.Invoke("azure-native:avs:getScriptExecutionLogs", args, &rv, opts...)

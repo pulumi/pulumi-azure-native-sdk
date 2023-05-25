@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// CPU architecture supported by an OS disk.
+type Architecture string
+
+const (
+	ArchitectureX64   = Architecture("x64")
+	ArchitectureArm64 = Architecture("Arm64")
+)
+
 // Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None** for Standard storage. **ReadOnly** for Premium storage.
 type CachingTypes string
 
@@ -175,6 +183,16 @@ func (in *cachingTypesPtr) ToCachingTypesPtrOutput() CachingTypesPtrOutput {
 func (in *cachingTypesPtr) ToCachingTypesPtrOutputWithContext(ctx context.Context) CachingTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CachingTypesPtrOutput)
 }
+
+// Slot type for the cloud service.
+// Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />
+// If not specified, the default value is Production.
+type CloudServiceSlotType string
+
+const (
+	CloudServiceSlotTypeProduction = CloudServiceSlotType("Production")
+	CloudServiceSlotTypeStaging    = CloudServiceSlotType("Staging")
+)
 
 // Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.
 // Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />
@@ -350,6 +368,42 @@ func (in *componentNamesPtr) ToComponentNamesPtrOutput() ComponentNamesPtrOutput
 func (in *componentNamesPtr) ToComponentNamesPtrOutputWithContext(ctx context.Context) ComponentNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComponentNamesPtrOutput)
 }
+
+// confidential VM encryption types
+type ConfidentialVMEncryptionType string
+
+const (
+	ConfidentialVMEncryptionTypeEncryptedVMGuestStateOnlyWithPmk = ConfidentialVMEncryptionType("EncryptedVMGuestStateOnlyWithPmk")
+	ConfidentialVMEncryptionTypeEncryptedWithPmk                 = ConfidentialVMEncryptionType("EncryptedWithPmk")
+	ConfidentialVMEncryptionTypeEncryptedWithCmk                 = ConfidentialVMEncryptionType("EncryptedWithCmk")
+)
+
+// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+type ConsistencyModeTypes string
+
+const (
+	ConsistencyModeTypesCrashConsistent       = ConsistencyModeTypes("CrashConsistent")
+	ConsistencyModeTypesFileSystemConsistent  = ConsistencyModeTypes("FileSystemConsistent")
+	ConsistencyModeTypesApplicationConsistent = ConsistencyModeTypes("ApplicationConsistent")
+)
+
+// Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
+type CopyCompletionErrorReason string
+
+const (
+	// Indicates that the source snapshot was deleted while the background copy of the resource created via CopyStart operation was in progress.
+	CopyCompletionErrorReasonCopySourceNotFound = CopyCompletionErrorReason("CopySourceNotFound")
+)
+
+// Additional authentication requirements when exporting or uploading to a disk or snapshot.
+type DataAccessAuthMode string
+
+const (
+	// When export/upload URL is used, the system checks if the user has an identity in Azure Active Directory and has necessary permissions to export/upload the data. Please refer to aka.ms/DisksAzureADAuth.
+	DataAccessAuthModeAzureActiveDirectory = DataAccessAuthMode("AzureActiveDirectory")
+	// No additional authentication would be performed when accessing export/upload URL.
+	DataAccessAuthModeNone = DataAccessAuthMode("None")
+)
 
 // Specifies the software license type that will be applied to the VMs deployed on the dedicated host. <br><br> Possible values are: <br><br> **None** <br><br> **Windows_Server_Hybrid** <br><br> **Windows_Server_Perpetual** <br><br> Default: **None**
 type DedicatedHostLicenseTypes string
@@ -540,6 +594,14 @@ const (
 	DiffDiskPlacementResourceDisk = DiffDiskPlacement("ResourceDisk")
 )
 
+// Specifies the disk controller type configured for the VM. <br><br>NOTE: This property will be set to the default disk controller type if not specified provided virtual machine is being created as a hyperVGeneration: V2 based on the capabilities of the operating system disk and VM size from the the specified minimum api version. <br>You need to deallocate the VM before updating its disk controller type unless you are updating the VM size in the VM configuration which implicitly deallocates and reallocates the VM. <br><br> Minimum api-version: 2022-08-01
+type DiskControllerTypes string
+
+const (
+	DiskControllerTypesSCSI = DiskControllerTypes("SCSI")
+	DiskControllerTypesNVMe = DiskControllerTypes("NVMe")
+)
+
 // This enumerates the possible sources of a disk's creation.
 type DiskCreateOption string
 
@@ -558,6 +620,12 @@ const (
 	DiskCreateOptionRestore = DiskCreateOption("Restore")
 	// Create a new disk by obtaining a write token and using it to directly upload the contents of the disk.
 	DiskCreateOptionUpload = DiskCreateOption("Upload")
+	// Create a new disk by using a deep copy process, where the resource creation is considered complete only after all data has been copied from the source.
+	DiskCreateOptionCopyStart = DiskCreateOption("CopyStart")
+	// Similar to Import create option. Create a new Trusted Launch VM or Confidential VM supported disk by importing additional blob for VM guest state specified by securityDataUri in storage account specified by storageAccountId
+	DiskCreateOptionImportSecure = DiskCreateOption("ImportSecure")
+	// Similar to Upload create option. Create a new Trusted Launch VM or Confidential VM supported disk and upload using write token in both disk and VM guest state
+	DiskCreateOptionUploadPreparedSecure = DiskCreateOption("UploadPreparedSecure")
 )
 
 // Specifies how the virtual machine should be created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value is used when you are using a specialized disk to create the virtual machine.<br><br> **FromImage** \u2013 This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
@@ -588,8 +656,10 @@ const (
 type DiskEncryptionSetIdentityType string
 
 const (
-	DiskEncryptionSetIdentityTypeSystemAssigned = DiskEncryptionSetIdentityType("SystemAssigned")
-	DiskEncryptionSetIdentityTypeNone           = DiskEncryptionSetIdentityType("None")
+	DiskEncryptionSetIdentityTypeSystemAssigned               = DiskEncryptionSetIdentityType("SystemAssigned")
+	DiskEncryptionSetIdentityTypeUserAssigned                 = DiskEncryptionSetIdentityType("UserAssigned")
+	DiskEncryptionSetIdentityType_SystemAssigned_UserAssigned = DiskEncryptionSetIdentityType("SystemAssigned, UserAssigned")
+	DiskEncryptionSetIdentityTypeNone                         = DiskEncryptionSetIdentityType("None")
 )
 
 // The type of key used to encrypt the data of the disk.
@@ -600,6 +670,8 @@ const (
 	DiskEncryptionSetTypeEncryptionAtRestWithCustomerKey = DiskEncryptionSetType("EncryptionAtRestWithCustomerKey")
 	// Resource using diskEncryptionSet would be encrypted at rest with two layers of encryption. One of the keys is Customer managed and the other key is Platform managed.
 	DiskEncryptionSetTypeEncryptionAtRestWithPlatformAndCustomerKeys = DiskEncryptionSetType("EncryptionAtRestWithPlatformAndCustomerKeys")
+	// Confidential VM supported disk and VM guest state would be encrypted with customer managed key.
+	DiskEncryptionSetTypeConfidentialVmEncryptedWithCustomerKey = DiskEncryptionSetType("ConfidentialVmEncryptedWithCustomerKey")
 )
 
 // Specifies the SecurityType of the VM. Applicable for OS disks only.
@@ -608,6 +680,12 @@ type DiskSecurityTypes string
 const (
 	// Trusted Launch provides security features such as secure boot and virtual Trusted Platform Module (vTPM)
 	DiskSecurityTypesTrustedLaunch = DiskSecurityTypes("TrustedLaunch")
+	// Indicates Confidential VM disk with only VM guest state encrypted
+	DiskSecurityTypes_ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey = DiskSecurityTypes("ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey")
+	// Indicates Confidential VM disk with both OS disk and VM guest state encrypted with a platform managed key
+	DiskSecurityTypes_ConfidentialVM_DiskEncryptedWithPlatformKey = DiskSecurityTypes("ConfidentialVM_DiskEncryptedWithPlatformKey")
+	// Indicates Confidential VM disk with both OS disk and VM guest state encrypted with a customer managed key
+	DiskSecurityTypes_ConfidentialVM_DiskEncryptedWithCustomerKey = DiskSecurityTypes("ConfidentialVM_DiskEncryptedWithCustomerKey")
 )
 
 // The sku name.
@@ -626,6 +704,8 @@ const (
 	DiskStorageAccountTypes_Premium_ZRS = DiskStorageAccountTypes("Premium_ZRS")
 	// Standard SSD zone redundant storage. Best for web servers, lightly used enterprise applications and dev/test that need storage resiliency against zone failures.
 	DiskStorageAccountTypes_StandardSSD_ZRS = DiskStorageAccountTypes("StandardSSD_ZRS")
+	// Premium SSD v2 locally redundant storage. Best for production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput.
+	DiskStorageAccountTypes_PremiumV2_LRS = DiskStorageAccountTypes("PremiumV2_LRS")
 )
 
 // The type of key used to encrypt the data of the disk.
@@ -647,12 +727,187 @@ const (
 	ExtendedLocationTypesEdgeZone = ExtendedLocationTypes("EdgeZone")
 )
 
-// This property allows you to specify the permission of sharing gallery. <br><br> Possible values are: <br><br> **Private** <br><br> **Groups**
+// Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
+type GalleryApplicationCustomActionParameterType string
+
+const (
+	GalleryApplicationCustomActionParameterTypeString                = GalleryApplicationCustomActionParameterType("String")
+	GalleryApplicationCustomActionParameterTypeConfigurationDataBlob = GalleryApplicationCustomActionParameterType("ConfigurationDataBlob")
+	GalleryApplicationCustomActionParameterTypeLogOutputBlob         = GalleryApplicationCustomActionParameterType("LogOutputBlob")
+)
+
+func (GalleryApplicationCustomActionParameterType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GalleryApplicationCustomActionParameterType)(nil)).Elem()
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToGalleryApplicationCustomActionParameterTypeOutput() GalleryApplicationCustomActionParameterTypeOutput {
+	return pulumi.ToOutput(e).(GalleryApplicationCustomActionParameterTypeOutput)
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToGalleryApplicationCustomActionParameterTypeOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GalleryApplicationCustomActionParameterTypeOutput)
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToGalleryApplicationCustomActionParameterTypePtrOutput() GalleryApplicationCustomActionParameterTypePtrOutput {
+	return e.ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(context.Background())
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypePtrOutput {
+	return GalleryApplicationCustomActionParameterType(e).ToGalleryApplicationCustomActionParameterTypeOutputWithContext(ctx).ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx)
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GalleryApplicationCustomActionParameterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GalleryApplicationCustomActionParameterTypeOutput struct{ *pulumi.OutputState }
+
+func (GalleryApplicationCustomActionParameterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GalleryApplicationCustomActionParameterType)(nil)).Elem()
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToGalleryApplicationCustomActionParameterTypeOutput() GalleryApplicationCustomActionParameterTypeOutput {
+	return o
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToGalleryApplicationCustomActionParameterTypeOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypeOutput {
+	return o
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToGalleryApplicationCustomActionParameterTypePtrOutput() GalleryApplicationCustomActionParameterTypePtrOutput {
+	return o.ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(context.Background())
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GalleryApplicationCustomActionParameterType) *GalleryApplicationCustomActionParameterType {
+		return &v
+	}).(GalleryApplicationCustomActionParameterTypePtrOutput)
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GalleryApplicationCustomActionParameterType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GalleryApplicationCustomActionParameterType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GalleryApplicationCustomActionParameterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GalleryApplicationCustomActionParameterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GalleryApplicationCustomActionParameterType)(nil)).Elem()
+}
+
+func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToGalleryApplicationCustomActionParameterTypePtrOutput() GalleryApplicationCustomActionParameterTypePtrOutput {
+	return o
+}
+
+func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypePtrOutput {
+	return o
+}
+
+func (o GalleryApplicationCustomActionParameterTypePtrOutput) Elem() GalleryApplicationCustomActionParameterTypeOutput {
+	return o.ApplyT(func(v *GalleryApplicationCustomActionParameterType) GalleryApplicationCustomActionParameterType {
+		if v != nil {
+			return *v
+		}
+		var ret GalleryApplicationCustomActionParameterType
+		return ret
+	}).(GalleryApplicationCustomActionParameterTypeOutput)
+}
+
+func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GalleryApplicationCustomActionParameterType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GalleryApplicationCustomActionParameterTypeInput is an input type that accepts GalleryApplicationCustomActionParameterTypeArgs and GalleryApplicationCustomActionParameterTypeOutput values.
+// You can construct a concrete instance of `GalleryApplicationCustomActionParameterTypeInput` via:
+//
+//	GalleryApplicationCustomActionParameterTypeArgs{...}
+type GalleryApplicationCustomActionParameterTypeInput interface {
+	pulumi.Input
+
+	ToGalleryApplicationCustomActionParameterTypeOutput() GalleryApplicationCustomActionParameterTypeOutput
+	ToGalleryApplicationCustomActionParameterTypeOutputWithContext(context.Context) GalleryApplicationCustomActionParameterTypeOutput
+}
+
+var galleryApplicationCustomActionParameterTypePtrType = reflect.TypeOf((**GalleryApplicationCustomActionParameterType)(nil)).Elem()
+
+type GalleryApplicationCustomActionParameterTypePtrInput interface {
+	pulumi.Input
+
+	ToGalleryApplicationCustomActionParameterTypePtrOutput() GalleryApplicationCustomActionParameterTypePtrOutput
+	ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(context.Context) GalleryApplicationCustomActionParameterTypePtrOutput
+}
+
+type galleryApplicationCustomActionParameterTypePtr string
+
+func GalleryApplicationCustomActionParameterTypePtr(v string) GalleryApplicationCustomActionParameterTypePtrInput {
+	return (*galleryApplicationCustomActionParameterTypePtr)(&v)
+}
+
+func (*galleryApplicationCustomActionParameterTypePtr) ElementType() reflect.Type {
+	return galleryApplicationCustomActionParameterTypePtrType
+}
+
+func (in *galleryApplicationCustomActionParameterTypePtr) ToGalleryApplicationCustomActionParameterTypePtrOutput() GalleryApplicationCustomActionParameterTypePtrOutput {
+	return pulumi.ToOutput(in).(GalleryApplicationCustomActionParameterTypePtrOutput)
+}
+
+func (in *galleryApplicationCustomActionParameterTypePtr) ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GalleryApplicationCustomActionParameterTypePtrOutput)
+}
+
+// It is type of the extended location.
+type GalleryExtendedLocationType string
+
+const (
+	GalleryExtendedLocationTypeEdgeZone = GalleryExtendedLocationType("EdgeZone")
+	GalleryExtendedLocationTypeUnknown  = GalleryExtendedLocationType("Unknown")
+)
+
+// This property allows you to specify the permission of sharing gallery. <br><br> Possible values are: <br><br> **Private** <br><br> **Groups** <br><br> **Community**
 type GallerySharingPermissionTypes string
 
 const (
-	GallerySharingPermissionTypesPrivate = GallerySharingPermissionTypes("Private")
-	GallerySharingPermissionTypesGroups  = GallerySharingPermissionTypes("Groups")
+	GallerySharingPermissionTypesPrivate   = GallerySharingPermissionTypes("Private")
+	GallerySharingPermissionTypesGroups    = GallerySharingPermissionTypes("Groups")
+	GallerySharingPermissionTypesCommunity = GallerySharingPermissionTypes("Community")
 )
 
 // The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -1028,6 +1283,16 @@ const (
 	LinuxPatchAssessmentModeAutomaticByPlatform = LinuxPatchAssessmentMode("AutomaticByPlatform")
 )
 
+// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+type LinuxVMGuestPatchAutomaticByPlatformRebootSetting string
+
+const (
+	LinuxVMGuestPatchAutomaticByPlatformRebootSettingUnknown    = LinuxVMGuestPatchAutomaticByPlatformRebootSetting("Unknown")
+	LinuxVMGuestPatchAutomaticByPlatformRebootSettingIfRequired = LinuxVMGuestPatchAutomaticByPlatformRebootSetting("IfRequired")
+	LinuxVMGuestPatchAutomaticByPlatformRebootSettingNever      = LinuxVMGuestPatchAutomaticByPlatformRebootSetting("Never")
+	LinuxVMGuestPatchAutomaticByPlatformRebootSettingAlways     = LinuxVMGuestPatchAutomaticByPlatformRebootSetting("Always")
+)
+
 // Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
 type LinuxVMGuestPatchMode string
 
@@ -1055,7 +1320,7 @@ const (
 	NetworkApiVersion_2020_11_01 = NetworkApiVersion("2020-11-01")
 )
 
-// The OS State.
+// The OS State. For managed images, use Generalized.
 type OperatingSystemStateTypes string
 
 const (
@@ -1765,7 +2030,34 @@ const (
 	PublicIPAllocationMethodStatic  = PublicIPAllocationMethod("Static")
 )
 
-// The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
+// Policy for controlling export on the disk.
+type PublicNetworkAccess string
+
+const (
+	// You can generate a SAS URI to access the underlying data of the disk publicly on the internet when NetworkAccessPolicy is set to AllowAll. You can access the data via the SAS URI only from your trusted Azure VNET when NetworkAccessPolicy is set to AllowPrivate.
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// You cannot access the underlying data of the disk publicly on the internet even when NetworkAccessPolicy is set to AllowAll. You can access the data via the SAS URI only from your trusted Azure VNET when NetworkAccessPolicy is set to AllowPrivate.
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+// Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.
+type RepairAction string
+
+const (
+	RepairActionReplace = RepairAction("Replace")
+	RepairActionRestart = RepairAction("Restart")
+	RepairActionReimage = RepairAction("Reimage")
+)
+
+// Optional parameter which specifies the mode to be used for replication. This property is not updatable.
+type ReplicationMode string
+
+const (
+	ReplicationModeFull    = ReplicationMode("Full")
+	ReplicationModeShallow = ReplicationMode("Shallow")
+)
+
+// The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 type ResourceIdentityType string
 
 const (
@@ -1932,11 +2224,20 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-// Specifies the SecurityType of the virtual machine. It is set as TrustedLaunch to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set as TrustedLaunch.
+// Specifies the EncryptionType of the managed disk. <br> It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, and VMGuestStateOnly for encryption of just the VMGuestState blob. <br><br> NOTE: It can be set for only Confidential VMs.
+type SecurityEncryptionTypes string
+
+const (
+	SecurityEncryptionTypesVMGuestStateOnly     = SecurityEncryptionTypes("VMGuestStateOnly")
+	SecurityEncryptionTypesDiskWithVMGuestState = SecurityEncryptionTypes("DiskWithVMGuestState")
+)
+
+// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.
 type SecurityTypes string
 
 const (
-	SecurityTypesTrustedLaunch = SecurityTypes("TrustedLaunch")
+	SecurityTypesTrustedLaunch  = SecurityTypes("TrustedLaunch")
+	SecurityTypesConfidentialVM = SecurityTypes("ConfidentialVM")
 )
 
 // Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
@@ -2291,7 +2592,7 @@ const (
 	StorageAccountType_Premium_LRS  = StorageAccountType("Premium_LRS")
 )
 
-// Specifies the storage account type for the managed disk. Managed OS disk storage account type can only be set when you create the scale set. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
 type StorageAccountTypes string
 
 const (
@@ -2301,6 +2602,7 @@ const (
 	StorageAccountTypes_UltraSSD_LRS    = StorageAccountTypes("UltraSSD_LRS")
 	StorageAccountTypes_Premium_ZRS     = StorageAccountTypes("Premium_ZRS")
 	StorageAccountTypes_StandardSSD_ZRS = StorageAccountTypes("StandardSSD_ZRS")
+	StorageAccountTypes_PremiumV2_LRS   = StorageAccountTypes("PremiumV2_LRS")
 )
 
 // Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
@@ -2674,6 +2976,16 @@ const (
 	WindowsPatchAssessmentModeAutomaticByPlatform = WindowsPatchAssessmentMode("AutomaticByPlatform")
 )
 
+// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+type WindowsVMGuestPatchAutomaticByPlatformRebootSetting string
+
+const (
+	WindowsVMGuestPatchAutomaticByPlatformRebootSettingUnknown    = WindowsVMGuestPatchAutomaticByPlatformRebootSetting("Unknown")
+	WindowsVMGuestPatchAutomaticByPlatformRebootSettingIfRequired = WindowsVMGuestPatchAutomaticByPlatformRebootSetting("IfRequired")
+	WindowsVMGuestPatchAutomaticByPlatformRebootSettingNever      = WindowsVMGuestPatchAutomaticByPlatformRebootSetting("Never")
+	WindowsVMGuestPatchAutomaticByPlatformRebootSettingAlways     = WindowsVMGuestPatchAutomaticByPlatformRebootSetting("Always")
+)
+
 // Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
 type WindowsVMGuestPatchMode string
 
@@ -2690,6 +3002,8 @@ func init() {
 	pulumi.RegisterOutputType(ComponentNamesPtrOutput{})
 	pulumi.RegisterOutputType(DedicatedHostLicenseTypesOutput{})
 	pulumi.RegisterOutputType(DedicatedHostLicenseTypesPtrOutput{})
+	pulumi.RegisterOutputType(GalleryApplicationCustomActionParameterTypeOutput{})
+	pulumi.RegisterOutputType(GalleryApplicationCustomActionParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(HostCachingOutput{})
 	pulumi.RegisterOutputType(HostCachingPtrOutput{})
 	pulumi.RegisterOutputType(IntervalInMinsOutput{})

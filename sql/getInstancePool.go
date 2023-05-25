@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an instance pool.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	var rv LookupInstancePoolResult
 	err := ctx.Invoke("azure-native:sql:getInstancePool", args, &rv, opts...)

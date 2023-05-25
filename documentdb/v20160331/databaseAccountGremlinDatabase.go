@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Gremlin database.
-//
-// Deprecated: Version 2016-03-31 will be removed in v2 of the provider.
 type DatabaseAccountGremlinDatabase struct {
 	pulumi.CustomResourceState
 
@@ -138,7 +136,16 @@ func NewDatabaseAccountGremlinDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:DatabaseAccountGremlinDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:DatabaseAccountGremlinDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:DatabaseAccountGremlinDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccountGremlinDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccountGremlinDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

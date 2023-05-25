@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:dbformysql/v20200701privatepreview:Configuration":
 		r = &Configuration{}
-	case "azure-native:dbformysql/v20200701privatepreview:Database":
-		r = &Database{}
-	case "azure-native:dbformysql/v20200701privatepreview:FirewallRule":
-		r = &FirewallRule{}
 	case "azure-native:dbformysql/v20200701privatepreview:Server":
 		r = &Server{}
 	case "azure-native:dbformysql/v20200701privatepreview:ServerKey":

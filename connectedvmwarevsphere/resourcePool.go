@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the resourcePool.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
+// Previous API Version: 2020-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ResourcePool struct {
 	pulumi.CustomResourceState
 
@@ -27,6 +28,8 @@ type ResourcePool struct {
 	CpuSharesLevel pulumi.StringOutput `pulumi:"cpuSharesLevel"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName pulumi.StringOutput `pulumi:"customResourceName"`
+	// Gets or sets the datastore ARM ids.
+	DatastoreIds pulumi.StringArrayOutput `pulumi:"datastoreIds"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Gets or sets the inventory Item ID for the resource pool.
@@ -50,6 +53,8 @@ type ResourcePool struct {
 	MoRefId pulumi.StringPtrOutput `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Gets or sets the network ARM ids.
+	NetworkIds pulumi.StringArrayOutput `pulumi:"networkIds"`
 	// Gets or sets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The resource status information.
@@ -222,6 +227,11 @@ func (o ResourcePoolOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringOutput { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
+// Gets or sets the datastore ARM ids.
+func (o ResourcePoolOutput) DatastoreIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourcePool) pulumi.StringArrayOutput { return v.DatastoreIds }).(pulumi.StringArrayOutput)
+}
+
 // Gets or sets the extended location.
 func (o ResourcePoolOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *ResourcePool) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -273,6 +283,11 @@ func (o ResourcePoolOutput) MoRefId() pulumi.StringPtrOutput {
 // Gets or sets the name.
 func (o ResourcePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Gets or sets the network ARM ids.
+func (o ResourcePoolOutput) NetworkIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourcePool) pulumi.StringArrayOutput { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
 // Gets or sets the provisioning state.

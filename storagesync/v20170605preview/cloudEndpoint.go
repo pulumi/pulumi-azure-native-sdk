@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cloud Endpoint object.
-//
-// Deprecated: Version 2017-06-05-preview will be removed in v2 of the provider.
 type CloudEndpoint struct {
 	pulumi.CustomResourceState
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +50,9 @@ func NewEmailService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20220701preview:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230301preview:EmailService"),
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230331:EmailService"),

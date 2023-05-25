@@ -11,8 +11,6 @@ import (
 )
 
 // Retrieves information about a proximity placement group .
-//
-// Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
 func LookupProximityPlacementGroup(ctx *pulumi.Context, args *LookupProximityPlacementGroupArgs, opts ...pulumi.InvokeOption) (*LookupProximityPlacementGroupResult, error) {
 	var rv LookupProximityPlacementGroupResult
 	err := ctx.Invoke("azure-native:compute/v20190301:getProximityPlacementGroup", args, &rv, opts...)

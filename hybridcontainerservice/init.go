@@ -21,15 +21,15 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:hybridcontainerservice:AgentPool":
+		r = &AgentPool{}
 	case "azure-native:hybridcontainerservice:HybridIdentityMetadatum":
 		r = &HybridIdentityMetadatum{}
 	case "azure-native:hybridcontainerservice:ProvisionedCluster":
 		r = &ProvisionedCluster{}
-	case "azure-native:hybridcontainerservice:agentPool":
-		r = &AgentPool{}
-	case "azure-native:hybridcontainerservice:storageSpaceRetrieve":
+	case "azure-native:hybridcontainerservice:StorageSpaceRetrieve":
 		r = &StorageSpaceRetrieve{}
-	case "azure-native:hybridcontainerservice:virtualNetworkRetrieve":
+	case "azure-native:hybridcontainerservice:VirtualNetworkRetrieve":
 		r = &VirtualNetworkRetrieve{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

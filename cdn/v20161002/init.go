@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:cdn/v20161002:CustomDomain":
 		r = &CustomDomain{}
-	case "azure-native:cdn/v20161002:Endpoint":
-		r = &Endpoint{}
-	case "azure-native:cdn/v20161002:Profile":
-		r = &Profile{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

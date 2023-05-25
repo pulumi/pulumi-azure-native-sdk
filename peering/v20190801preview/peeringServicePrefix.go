@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The peering service prefix class.
-//
-// Deprecated: Version 2019-08-01-preview will be removed in v2 of the provider.
 type PeeringServicePrefix struct {
 	pulumi.CustomResourceState
 

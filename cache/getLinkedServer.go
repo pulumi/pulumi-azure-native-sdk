@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
-// API Version: 2020-06-01.
+// API Version: 2022-06-01.
 func LookupLinkedServer(ctx *pulumi.Context, args *LookupLinkedServerArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServerResult, error) {
 	var rv LookupLinkedServerResult
 	err := ctx.Invoke("azure-native:cache:getLinkedServer", args, &rv, opts...)
@@ -32,19 +32,23 @@ type LookupLinkedServerArgs struct {
 
 // Response to put/get linked server (with properties) for Redis cache.
 type LookupLinkedServerResult struct {
-	// Resource ID.
+	// The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
+	GeoReplicatedPrimaryHostName string `pulumi:"geoReplicatedPrimaryHostName"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Fully qualified resourceId of the linked redis cache.
 	LinkedRedisCacheId string `pulumi:"linkedRedisCacheId"`
 	// Location of the linked redis cache.
 	LinkedRedisCacheLocation string `pulumi:"linkedRedisCacheLocation"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// The changing DNS name that resolves to the current geo-primary cache among the linked redis caches before or after the Geo Failover.
+	PrimaryHostName string `pulumi:"primaryHostName"`
 	// Terminal state of the link between primary and secondary redis cache.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Role of the linked server.
 	ServerRole string `pulumi:"serverRole"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -89,7 +93,12 @@ func (o LookupLinkedServerResultOutput) ToLookupLinkedServerResultOutputWithCont
 	return o
 }
 
-// Resource ID.
+// The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
+func (o LookupLinkedServerResultOutput) GeoReplicatedPrimaryHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.GeoReplicatedPrimaryHostName }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLinkedServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -104,9 +113,14 @@ func (o LookupLinkedServerResultOutput) LinkedRedisCacheLocation() pulumi.String
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.LinkedRedisCacheLocation }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupLinkedServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The changing DNS name that resolves to the current geo-primary cache among the linked redis caches before or after the Geo Failover.
+func (o LookupLinkedServerResultOutput) PrimaryHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.PrimaryHostName }).(pulumi.StringOutput)
 }
 
 // Terminal state of the link between primary and secondary redis cache.
@@ -119,7 +133,7 @@ func (o LookupLinkedServerResultOutput) ServerRole() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.ServerRole }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupLinkedServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.Type }).(pulumi.StringOutput)
 }

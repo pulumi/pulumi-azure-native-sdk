@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -113,6 +113,9 @@ func NewApi(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Api"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Api"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a RoutingIntent.
-// API Version: 2022-01-01.
+// API Version: 2022-09-01.
 func LookupRoutingIntent(ctx *pulumi.Context, args *LookupRoutingIntentArgs, opts ...pulumi.InvokeOption) (*LookupRoutingIntentResult, error) {
 	var rv LookupRoutingIntentResult
 	err := ctx.Invoke("azure-native:network:getRoutingIntent", args, &rv, opts...)

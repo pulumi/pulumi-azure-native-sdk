@@ -11,7 +11,7 @@ import (
 )
 
 // Get a host pool.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
 func LookupHostPool(ctx *pulumi.Context, args *LookupHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupHostPoolResult, error) {
 	var rv LookupHostPoolResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getHostPool", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupHostPoolArgs struct {
 
 // Represents a HostPool definition.
 type LookupHostPoolResult struct {
+	// The session host configuration for updating agent, monitoring agent, and stack component.
+	AgentUpdate *AgentUpdatePropertiesResponse `pulumi:"agentUpdate"`
 	// List of applicationGroup links.
 	ApplicationGroupReferences []string `pulumi:"applicationGroupReferences"`
 	// Is cloud pc resource.
@@ -57,8 +59,6 @@ type LookupHostPoolResult struct {
 	ManagedBy *string `pulumi:"managedBy"`
 	// The max session limit of HostPool.
 	MaxSessionLimit *int `pulumi:"maxSessionLimit"`
-	// The registration info of HostPool.
-	MigrationRequest *MigrationRequestPropertiesResponse `pulumi:"migrationRequest"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// ObjectId of HostPool. (internal use)
@@ -83,6 +83,8 @@ type LookupHostPoolResult struct {
 	SsoadfsAuthority *string `pulumi:"ssoadfsAuthority"`
 	// The flag to turn on/off StartVMOnConnect feature.
 	StartVMOnConnect *bool `pulumi:"startVMOnConnect"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -130,6 +132,11 @@ func (o LookupHostPoolResultOutput) ToLookupHostPoolResultOutput() LookupHostPoo
 
 func (o LookupHostPoolResultOutput) ToLookupHostPoolResultOutputWithContext(ctx context.Context) LookupHostPoolResultOutput {
 	return o
+}
+
+// The session host configuration for updating agent, monitoring agent, and stack component.
+func (o LookupHostPoolResultOutput) AgentUpdate() AgentUpdatePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *AgentUpdatePropertiesResponse { return v.AgentUpdate }).(AgentUpdatePropertiesResponsePtrOutput)
 }
 
 // List of applicationGroup links.
@@ -201,11 +208,6 @@ func (o LookupHostPoolResultOutput) MaxSessionLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *int { return v.MaxSessionLimit }).(pulumi.IntPtrOutput)
 }
 
-// The registration info of HostPool.
-func (o LookupHostPoolResultOutput) MigrationRequest() MigrationRequestPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *MigrationRequestPropertiesResponse { return v.MigrationRequest }).(MigrationRequestPropertiesResponsePtrOutput)
-}
-
 // The name of the resource
 func (o LookupHostPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.Name }).(pulumi.StringOutput)
@@ -267,6 +269,11 @@ func (o LookupHostPoolResultOutput) SsoadfsAuthority() pulumi.StringPtrOutput {
 // The flag to turn on/off StartVMOnConnect feature.
 func (o LookupHostPoolResultOutput) StartVMOnConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *bool { return v.StartVMOnConnect }).(pulumi.BoolPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupHostPoolResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

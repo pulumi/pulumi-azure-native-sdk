@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,9 +53,6 @@ func NewMediaGraph(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Sources'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:media:MediaGraph"),
-		},
 		{
 			Type: pulumi.String("azure-native:media/v20190901preview:MediaGraph"),
 		},

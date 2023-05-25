@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a schedule resource.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:devcenter:getSchedule", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupScheduleArgs struct {
 	PoolName string `pulumi:"poolName"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the schedule that uniquely identifies it.
 	ScheduleName string `pulumi:"scheduleName"`
@@ -74,7 +74,7 @@ type LookupScheduleOutputArgs struct {
 	PoolName pulumi.StringInput `pulumi:"poolName"`
 	// The name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the schedule that uniquely identifies it.
 	ScheduleName pulumi.StringInput `pulumi:"scheduleName"`

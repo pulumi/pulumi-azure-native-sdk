@@ -27,10 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScheduledAction{}
 	case "azure-native:costmanagement/v20221001:ScheduledActionByScope":
 		r = &ScheduledActionByScope{}
-	case "azure-native:costmanagement/v20221001:View":
-		r = &View{}
-	case "azure-native:costmanagement/v20221001:ViewByScope":
-		r = &ViewByScope{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

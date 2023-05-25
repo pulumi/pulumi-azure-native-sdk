@@ -11,7 +11,7 @@ import (
 )
 
 // Collector policy resource.
-type CollectorPolicyType struct {
+type CollectorPolicy struct {
 	// Emission policies.
 	EmissionPolicies []EmissionPoliciesPropertiesFormat `pulumi:"emissionPolicies"`
 	// Ingestion policies.
@@ -22,19 +22,19 @@ type CollectorPolicyType struct {
 	Tags map[string]string `pulumi:"tags"`
 }
 
-// CollectorPolicyTypeInput is an input type that accepts CollectorPolicyTypeArgs and CollectorPolicyTypeOutput values.
-// You can construct a concrete instance of `CollectorPolicyTypeInput` via:
+// CollectorPolicyInput is an input type that accepts CollectorPolicyArgs and CollectorPolicyOutput values.
+// You can construct a concrete instance of `CollectorPolicyInput` via:
 //
-//	CollectorPolicyTypeArgs{...}
-type CollectorPolicyTypeInput interface {
+//	CollectorPolicyArgs{...}
+type CollectorPolicyInput interface {
 	pulumi.Input
 
-	ToCollectorPolicyTypeOutput() CollectorPolicyTypeOutput
-	ToCollectorPolicyTypeOutputWithContext(context.Context) CollectorPolicyTypeOutput
+	ToCollectorPolicyOutput() CollectorPolicyOutput
+	ToCollectorPolicyOutputWithContext(context.Context) CollectorPolicyOutput
 }
 
 // Collector policy resource.
-type CollectorPolicyTypeArgs struct {
+type CollectorPolicyArgs struct {
 	// Emission policies.
 	EmissionPolicies EmissionPoliciesPropertiesFormatArrayInput `pulumi:"emissionPolicies"`
 	// Ingestion policies.
@@ -45,96 +45,96 @@ type CollectorPolicyTypeArgs struct {
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
-func (CollectorPolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CollectorPolicyType)(nil)).Elem()
+func (CollectorPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectorPolicy)(nil)).Elem()
 }
 
-func (i CollectorPolicyTypeArgs) ToCollectorPolicyTypeOutput() CollectorPolicyTypeOutput {
-	return i.ToCollectorPolicyTypeOutputWithContext(context.Background())
+func (i CollectorPolicyArgs) ToCollectorPolicyOutput() CollectorPolicyOutput {
+	return i.ToCollectorPolicyOutputWithContext(context.Background())
 }
 
-func (i CollectorPolicyTypeArgs) ToCollectorPolicyTypeOutputWithContext(ctx context.Context) CollectorPolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CollectorPolicyTypeOutput)
+func (i CollectorPolicyArgs) ToCollectorPolicyOutputWithContext(ctx context.Context) CollectorPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectorPolicyOutput)
 }
 
-// CollectorPolicyTypeArrayInput is an input type that accepts CollectorPolicyTypeArray and CollectorPolicyTypeArrayOutput values.
-// You can construct a concrete instance of `CollectorPolicyTypeArrayInput` via:
+// CollectorPolicyArrayInput is an input type that accepts CollectorPolicyArray and CollectorPolicyArrayOutput values.
+// You can construct a concrete instance of `CollectorPolicyArrayInput` via:
 //
-//	CollectorPolicyTypeArray{ CollectorPolicyTypeArgs{...} }
-type CollectorPolicyTypeArrayInput interface {
+//	CollectorPolicyArray{ CollectorPolicyArgs{...} }
+type CollectorPolicyArrayInput interface {
 	pulumi.Input
 
-	ToCollectorPolicyTypeArrayOutput() CollectorPolicyTypeArrayOutput
-	ToCollectorPolicyTypeArrayOutputWithContext(context.Context) CollectorPolicyTypeArrayOutput
+	ToCollectorPolicyArrayOutput() CollectorPolicyArrayOutput
+	ToCollectorPolicyArrayOutputWithContext(context.Context) CollectorPolicyArrayOutput
 }
 
-type CollectorPolicyTypeArray []CollectorPolicyTypeInput
+type CollectorPolicyArray []CollectorPolicyInput
 
-func (CollectorPolicyTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CollectorPolicyType)(nil)).Elem()
+func (CollectorPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CollectorPolicy)(nil)).Elem()
 }
 
-func (i CollectorPolicyTypeArray) ToCollectorPolicyTypeArrayOutput() CollectorPolicyTypeArrayOutput {
-	return i.ToCollectorPolicyTypeArrayOutputWithContext(context.Background())
+func (i CollectorPolicyArray) ToCollectorPolicyArrayOutput() CollectorPolicyArrayOutput {
+	return i.ToCollectorPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i CollectorPolicyTypeArray) ToCollectorPolicyTypeArrayOutputWithContext(ctx context.Context) CollectorPolicyTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CollectorPolicyTypeArrayOutput)
+func (i CollectorPolicyArray) ToCollectorPolicyArrayOutputWithContext(ctx context.Context) CollectorPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectorPolicyArrayOutput)
 }
 
 // Collector policy resource.
-type CollectorPolicyTypeOutput struct{ *pulumi.OutputState }
+type CollectorPolicyOutput struct{ *pulumi.OutputState }
 
-func (CollectorPolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CollectorPolicyType)(nil)).Elem()
+func (CollectorPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectorPolicy)(nil)).Elem()
 }
 
-func (o CollectorPolicyTypeOutput) ToCollectorPolicyTypeOutput() CollectorPolicyTypeOutput {
+func (o CollectorPolicyOutput) ToCollectorPolicyOutput() CollectorPolicyOutput {
 	return o
 }
 
-func (o CollectorPolicyTypeOutput) ToCollectorPolicyTypeOutputWithContext(ctx context.Context) CollectorPolicyTypeOutput {
+func (o CollectorPolicyOutput) ToCollectorPolicyOutputWithContext(ctx context.Context) CollectorPolicyOutput {
 	return o
 }
 
 // Emission policies.
-func (o CollectorPolicyTypeOutput) EmissionPolicies() EmissionPoliciesPropertiesFormatArrayOutput {
-	return o.ApplyT(func(v CollectorPolicyType) []EmissionPoliciesPropertiesFormat { return v.EmissionPolicies }).(EmissionPoliciesPropertiesFormatArrayOutput)
+func (o CollectorPolicyOutput) EmissionPolicies() EmissionPoliciesPropertiesFormatArrayOutput {
+	return o.ApplyT(func(v CollectorPolicy) []EmissionPoliciesPropertiesFormat { return v.EmissionPolicies }).(EmissionPoliciesPropertiesFormatArrayOutput)
 }
 
 // Ingestion policies.
-func (o CollectorPolicyTypeOutput) IngestionPolicy() IngestionPolicyPropertiesFormatPtrOutput {
-	return o.ApplyT(func(v CollectorPolicyType) *IngestionPolicyPropertiesFormat { return v.IngestionPolicy }).(IngestionPolicyPropertiesFormatPtrOutput)
+func (o CollectorPolicyOutput) IngestionPolicy() IngestionPolicyPropertiesFormatPtrOutput {
+	return o.ApplyT(func(v CollectorPolicy) *IngestionPolicyPropertiesFormat { return v.IngestionPolicy }).(IngestionPolicyPropertiesFormatPtrOutput)
 }
 
 // Resource location.
-func (o CollectorPolicyTypeOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CollectorPolicyType) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o CollectorPolicyOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectorPolicy) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Resource tags.
-func (o CollectorPolicyTypeOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v CollectorPolicyType) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o CollectorPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CollectorPolicy) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-type CollectorPolicyTypeArrayOutput struct{ *pulumi.OutputState }
+type CollectorPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (CollectorPolicyTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CollectorPolicyType)(nil)).Elem()
+func (CollectorPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CollectorPolicy)(nil)).Elem()
 }
 
-func (o CollectorPolicyTypeArrayOutput) ToCollectorPolicyTypeArrayOutput() CollectorPolicyTypeArrayOutput {
+func (o CollectorPolicyArrayOutput) ToCollectorPolicyArrayOutput() CollectorPolicyArrayOutput {
 	return o
 }
 
-func (o CollectorPolicyTypeArrayOutput) ToCollectorPolicyTypeArrayOutputWithContext(ctx context.Context) CollectorPolicyTypeArrayOutput {
+func (o CollectorPolicyArrayOutput) ToCollectorPolicyArrayOutputWithContext(ctx context.Context) CollectorPolicyArrayOutput {
 	return o
 }
 
-func (o CollectorPolicyTypeArrayOutput) Index(i pulumi.IntInput) CollectorPolicyTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CollectorPolicyType {
-		return vs[0].([]CollectorPolicyType)[vs[1].(int)]
-	}).(CollectorPolicyTypeOutput)
+func (o CollectorPolicyArrayOutput) Index(i pulumi.IntInput) CollectorPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CollectorPolicy {
+		return vs[0].([]CollectorPolicy)[vs[1].(int)]
+	}).(CollectorPolicyOutput)
 }
 
 // Collector policy resource.
@@ -1071,8 +1071,8 @@ func (o TrackedResourceResponseSystemDataOutput) LastModifiedByType() pulumi.Str
 }
 
 func init() {
-	pulumi.RegisterOutputType(CollectorPolicyTypeOutput{})
-	pulumi.RegisterOutputType(CollectorPolicyTypeArrayOutput{})
+	pulumi.RegisterOutputType(CollectorPolicyOutput{})
+	pulumi.RegisterOutputType(CollectorPolicyArrayOutput{})
 	pulumi.RegisterOutputType(CollectorPolicyResponseOutput{})
 	pulumi.RegisterOutputType(CollectorPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(EmissionPoliciesPropertiesFormatOutput{})

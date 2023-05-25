@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container App.
-// API Version: 2022-03-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2022-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ContainerApp struct {
 	pulumi.CustomResourceState
 
@@ -20,15 +21,23 @@ type ContainerApp struct {
 	Configuration ConfigurationResponsePtrOutput `pulumi:"configuration"`
 	// Id used to verify domain name ownership
 	CustomDomainVerificationId pulumi.StringOutput `pulumi:"customDomainVerificationId"`
+	// Resource ID of environment.
+	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
+	// The endpoint of the eventstream of the container app.
+	EventStreamEndpoint pulumi.StringOutput `pulumi:"eventStreamEndpoint"`
+	// The complex type of the extended location.
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// Name of the latest ready revision of the Container App.
+	LatestReadyRevisionName pulumi.StringOutput `pulumi:"latestReadyRevisionName"`
 	// Fully Qualified Domain Name of the latest revision of the Container App.
 	LatestRevisionFqdn pulumi.StringOutput `pulumi:"latestRevisionFqdn"`
 	// Name of the latest revision of the Container App.
 	LatestRevisionName pulumi.StringOutput `pulumi:"latestRevisionName"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource ID of the Container App's environment.
+	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId pulumi.StringPtrOutput `pulumi:"managedEnvironmentId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -44,6 +53,8 @@ type ContainerApp struct {
 	Template TemplateResponsePtrOutput `pulumi:"template"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Workload profile type to pin for container app execution.
+	WorkloadProfileType pulumi.StringPtrOutput `pulumi:"workloadProfileType"`
 }
 
 // NewContainerApp registers a new resource with the given unique name, arguments, and options.
@@ -74,6 +85,9 @@ func NewContainerApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ContainerApp"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ContainerApp"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -113,11 +127,15 @@ type containerAppArgs struct {
 	Configuration *Configuration `pulumi:"configuration"`
 	// Name of the Container App.
 	ContainerAppName *string `pulumi:"containerAppName"`
+	// Resource ID of environment.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The complex type of the extended location.
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Resource ID of the Container App's environment.
+	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -125,6 +143,8 @@ type containerAppArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Container App versioned application definition.
 	Template *Template `pulumi:"template"`
+	// Workload profile type to pin for container app execution.
+	WorkloadProfileType *string `pulumi:"workloadProfileType"`
 }
 
 // The set of arguments for constructing a ContainerApp resource.
@@ -133,11 +153,15 @@ type ContainerAppArgs struct {
 	Configuration ConfigurationPtrInput
 	// Name of the Container App.
 	ContainerAppName pulumi.StringPtrInput
+	// Resource ID of environment.
+	EnvironmentId pulumi.StringPtrInput
+	// The complex type of the extended location.
+	ExtendedLocation ExtendedLocationPtrInput
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Resource ID of the Container App's environment.
+	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -145,6 +169,8 @@ type ContainerAppArgs struct {
 	Tags pulumi.StringMapInput
 	// Container App versioned application definition.
 	Template TemplatePtrInput
+	// Workload profile type to pin for container app execution.
+	WorkloadProfileType pulumi.StringPtrInput
 }
 
 func (ContainerAppArgs) ElementType() reflect.Type {
@@ -194,9 +220,29 @@ func (o ContainerAppOutput) CustomDomainVerificationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.CustomDomainVerificationId }).(pulumi.StringOutput)
 }
 
+// Resource ID of environment.
+func (o ContainerAppOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringPtrOutput { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of the eventstream of the container app.
+func (o ContainerAppOutput) EventStreamEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.EventStreamEndpoint }).(pulumi.StringOutput)
+}
+
+// The complex type of the extended location.
+func (o ContainerAppOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *ContainerApp) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 func (o ContainerAppOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ContainerApp) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Name of the latest ready revision of the Container App.
+func (o ContainerAppOutput) LatestReadyRevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.LatestReadyRevisionName }).(pulumi.StringOutput)
 }
 
 // Fully Qualified Domain Name of the latest revision of the Container App.
@@ -214,7 +260,7 @@ func (o ContainerAppOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource ID of the Container App's environment.
+// Deprecated. Resource ID of the Container App's environment.
 func (o ContainerAppOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringPtrOutput { return v.ManagedEnvironmentId }).(pulumi.StringPtrOutput)
 }
@@ -252,6 +298,11 @@ func (o ContainerAppOutput) Template() TemplateResponsePtrOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ContainerAppOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Workload profile type to pin for container app execution.
+func (o ContainerAppOutput) WorkloadProfileType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringPtrOutput { return v.WorkloadProfileType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

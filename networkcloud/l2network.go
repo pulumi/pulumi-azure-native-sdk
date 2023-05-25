@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API Version: 2022-12-12-preview.
+// Previous API Version: 2022-12-12-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type L2Network struct {
 	pulumi.CustomResourceState
 
@@ -63,7 +64,7 @@ func NewL2Network(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HybridAksPluginType) {
+	if args.HybridAksPluginType == nil {
 		args.HybridAksPluginType = pulumi.StringPtr("SRIOV")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

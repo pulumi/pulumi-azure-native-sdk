@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The endpoint for the target resource.
 // API Version: 2022-05-01-preview.
+// Previous API Version: 2022-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +58,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20220501preview:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)

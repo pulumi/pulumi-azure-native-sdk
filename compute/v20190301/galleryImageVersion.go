@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery Image Version that you want to create or update.
-//
-// Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
 type GalleryImageVersion struct {
 	pulumi.CustomResourceState
 

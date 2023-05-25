@@ -21,36 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:network/v20220201preview:AdminRule":
-		r = &AdminRule{}
-	case "azure-native:network/v20220201preview:AdminRuleCollection":
-		r = &AdminRuleCollection{}
-	case "azure-native:network/v20220201preview:ConnectivityConfiguration":
-		r = &ConnectivityConfiguration{}
-	case "azure-native:network/v20220201preview:DefaultAdminRule":
-		r = &DefaultAdminRule{}
-	case "azure-native:network/v20220201preview:DefaultUserRule":
-		r = &DefaultUserRule{}
-	case "azure-native:network/v20220201preview:ManagementGroupNetworkManagerConnection":
-		r = &ManagementGroupNetworkManagerConnection{}
-	case "azure-native:network/v20220201preview:NetworkGroup":
-		r = &NetworkGroup{}
-	case "azure-native:network/v20220201preview:NetworkManager":
-		r = &NetworkManager{}
 	case "azure-native:network/v20220201preview:ScopeConnection":
 		r = &ScopeConnection{}
-	case "azure-native:network/v20220201preview:SecurityAdminConfiguration":
-		r = &SecurityAdminConfiguration{}
-	case "azure-native:network/v20220201preview:SecurityUserConfiguration":
-		r = &SecurityUserConfiguration{}
 	case "azure-native:network/v20220201preview:StaticMember":
 		r = &StaticMember{}
 	case "azure-native:network/v20220201preview:SubscriptionNetworkManagerConnection":
 		r = &SubscriptionNetworkManagerConnection{}
-	case "azure-native:network/v20220201preview:UserRule":
-		r = &UserRule{}
-	case "azure-native:network/v20220201preview:UserRuleCollection":
-		r = &UserRuleCollection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

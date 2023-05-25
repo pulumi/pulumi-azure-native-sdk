@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Anomaly Security ML Analytics Settings
-// API Version: 2022-05-01-preview.
+// API Version: 2023-02-01.
+// Previous API Version: 2022-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type AnomalySecurityMLAnalyticsSettings struct {
 	pulumi.CustomResourceState
 
@@ -127,7 +128,13 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:AnomalySecurityMLAnalyticsSettings"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:AnomalySecurityMLAnalyticsSettings"),
 		},
 	})
 	opts = append(opts, aliases)

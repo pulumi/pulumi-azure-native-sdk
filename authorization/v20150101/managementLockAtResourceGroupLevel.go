@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Management lock information.
-//
-// Deprecated: Version 2015-01-01 will be removed in v2 of the provider.
 type ManagementLockAtResourceGroupLevel struct {
 	pulumi.CustomResourceState
 

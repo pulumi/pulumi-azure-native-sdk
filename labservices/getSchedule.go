@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the properties of a lab Schedule.
-// API Version: 2021-10-01-preview.
+// API Version: 2022-08-01.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:labservices:getSchedule", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulum
 }
 
 type LookupScheduleArgs struct {
-	// The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+	// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
 	LabName string `pulumi:"labName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -68,7 +68,7 @@ func LookupScheduleOutput(ctx *pulumi.Context, args LookupScheduleOutputArgs, op
 }
 
 type LookupScheduleOutputArgs struct {
-	// The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+	// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

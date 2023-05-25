@@ -2021,7 +2021,7 @@ func (val *ConflictResolutionPolicy) Defaults() *ConflictResolutionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "LastWriterWins"
 		tmp.Mode = &mode_
 	}
@@ -2055,7 +2055,7 @@ func (val *ConflictResolutionPolicyArgs) Defaults() *ConflictResolutionPolicyArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("LastWriterWins")
 	}
 	return &tmp
@@ -2223,7 +2223,7 @@ func (val *ConflictResolutionPolicyResponse) Defaults() *ConflictResolutionPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "LastWriterWins"
 		tmp.Mode = &mode_
 	}
@@ -2602,7 +2602,7 @@ func (val *ContainerPartitionKey) Defaults() *ContainerPartitionKey {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -2636,7 +2636,7 @@ func (val *ContainerPartitionKeyArgs) Defaults() *ContainerPartitionKeyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		tmp.Kind = pulumi.StringPtr("Hash")
 	}
 	return &tmp
@@ -2806,7 +2806,7 @@ func (val *ContainerPartitionKeyResponse) Defaults() *ContainerPartitionKeyRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -4382,11 +4382,11 @@ func (val *Indexes) Defaults() *Indexes {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		dataType_ := "String"
 		tmp.DataType = &dataType_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -4420,10 +4420,10 @@ func (val *IndexesArgs) Defaults() *IndexesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		tmp.DataType = pulumi.StringPtr("String")
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		tmp.Kind = pulumi.StringPtr("Hash")
 	}
 	return &tmp
@@ -4531,11 +4531,11 @@ func (val *IndexesResponse) Defaults() *IndexesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		dataType_ := "String"
 		tmp.DataType = &dataType_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -4614,7 +4614,7 @@ func (val *IndexingPolicy) Defaults() *IndexingPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		indexingMode_ := "consistent"
 		tmp.IndexingMode = &indexingMode_
 	}
@@ -4654,7 +4654,7 @@ func (val *IndexingPolicyArgs) Defaults() *IndexingPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		tmp.IndexingMode = pulumi.StringPtr("consistent")
 	}
 	return &tmp
@@ -4873,7 +4873,7 @@ func (val *IndexingPolicyResponse) Defaults() *IndexingPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		indexingMode_ := "consistent"
 		tmp.IndexingMode = &indexingMode_
 	}
@@ -5359,7 +5359,7 @@ type ManagedServiceIdentity struct {
 	// The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -5378,7 +5378,7 @@ type ManagedServiceIdentityArgs struct {
 	// The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -5465,8 +5465,8 @@ func (o ManagedServiceIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -5504,13 +5504,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.

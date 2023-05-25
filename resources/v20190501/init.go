@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:resources/v20190501:Deployment":
-		r = &Deployment{}
-	case "azure-native:resources/v20190501:DeploymentAtManagementGroupScope":
-		r = &DeploymentAtManagementGroupScope{}
-	case "azure-native:resources/v20190501:DeploymentAtSubscriptionScope":
-		r = &DeploymentAtSubscriptionScope{}
 	case "azure-native:resources/v20190501:Resource":
 		r = &Resource{}
 	case "azure-native:resources/v20190501:ResourceGroup":

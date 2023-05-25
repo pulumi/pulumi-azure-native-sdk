@@ -12,7 +12,7 @@ import (
 
 // Retrieves details about given subscription which is associated with the management group.
 //
-// API Version: 2020-05-01.
+// API Version: 2021-04-01.
 func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManagementGroupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupSubscriptionResult, error) {
 	var rv LookupManagementGroupSubscriptionResult
 	err := ctx.Invoke("azure-native:management:getManagementGroupSubscription", args, &rv, opts...)

@@ -23,22 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:healthcareapis/v20221001preview:AnalyticsConnector":
 		r = &AnalyticsConnector{}
-	case "azure-native:healthcareapis/v20221001preview:DicomService":
-		r = &DicomService{}
-	case "azure-native:healthcareapis/v20221001preview:FhirService":
-		r = &FhirService{}
-	case "azure-native:healthcareapis/v20221001preview:IotConnector":
-		r = &IotConnector{}
-	case "azure-native:healthcareapis/v20221001preview:IotConnectorFhirDestination":
-		r = &IotConnectorFhirDestination{}
-	case "azure-native:healthcareapis/v20221001preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:healthcareapis/v20221001preview:Service":
-		r = &Service{}
-	case "azure-native:healthcareapis/v20221001preview:Workspace":
-		r = &Workspace{}
-	case "azure-native:healthcareapis/v20221001preview:WorkspacePrivateEndpointConnection":
-		r = &WorkspacePrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

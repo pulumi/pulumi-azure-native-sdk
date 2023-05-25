@@ -7,21 +7,28 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Private endpoint resource.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// Application security groups in which the private endpoint IP configuration is included.
+	ApplicationSecurityGroups ApplicationSecurityGroupResponseArrayOutput `pulumi:"applicationSecurityGroups"`
 	// An array of custom dns configurations.
 	CustomDnsConfigs CustomDnsConfigPropertiesFormatResponseArrayOutput `pulumi:"customDnsConfigs"`
+	// The custom name of the network interface attached to the private endpoint.
+	CustomNetworkInterfaceName pulumi.StringPtrOutput `pulumi:"customNetworkInterfaceName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the load balancer.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+	IpConfigurations PrivateEndpointIPConfigurationResponseArrayOutput `pulumi:"ipConfigurations"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
@@ -137,6 +144,9 @@ func NewPrivateEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:PrivateEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:PrivateEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpoint
@@ -171,12 +181,18 @@ func (PrivateEndpointState) ElementType() reflect.Type {
 }
 
 type privateEndpointArgs struct {
+	// Application security groups in which the private endpoint IP configuration is included.
+	ApplicationSecurityGroups []ApplicationSecurityGroupType `pulumi:"applicationSecurityGroups"`
 	// An array of custom dns configurations.
 	CustomDnsConfigs []CustomDnsConfigPropertiesFormat `pulumi:"customDnsConfigs"`
+	// The custom name of the network interface attached to the private endpoint.
+	CustomNetworkInterfaceName *string `pulumi:"customNetworkInterfaceName"`
 	// The extended location of the load balancer.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+	IpConfigurations []PrivateEndpointIPConfiguration `pulumi:"ipConfigurations"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
@@ -195,12 +211,18 @@ type privateEndpointArgs struct {
 
 // The set of arguments for constructing a PrivateEndpoint resource.
 type PrivateEndpointArgs struct {
+	// Application security groups in which the private endpoint IP configuration is included.
+	ApplicationSecurityGroups ApplicationSecurityGroupTypeArrayInput
 	// An array of custom dns configurations.
 	CustomDnsConfigs CustomDnsConfigPropertiesFormatArrayInput
+	// The custom name of the network interface attached to the private endpoint.
+	CustomNetworkInterfaceName pulumi.StringPtrInput
 	// The extended location of the load balancer.
 	ExtendedLocation ExtendedLocationPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
+	// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+	IpConfigurations PrivateEndpointIPConfigurationArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
@@ -254,9 +276,21 @@ func (o PrivateEndpointOutput) ToPrivateEndpointOutputWithContext(ctx context.Co
 	return o
 }
 
+// Application security groups in which the private endpoint IP configuration is included.
+func (o PrivateEndpointOutput) ApplicationSecurityGroups() ApplicationSecurityGroupResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) ApplicationSecurityGroupResponseArrayOutput {
+		return v.ApplicationSecurityGroups
+	}).(ApplicationSecurityGroupResponseArrayOutput)
+}
+
 // An array of custom dns configurations.
 func (o PrivateEndpointOutput) CustomDnsConfigs() CustomDnsConfigPropertiesFormatResponseArrayOutput {
 	return o.ApplyT(func(v *PrivateEndpoint) CustomDnsConfigPropertiesFormatResponseArrayOutput { return v.CustomDnsConfigs }).(CustomDnsConfigPropertiesFormatResponseArrayOutput)
+}
+
+// The custom name of the network interface attached to the private endpoint.
+func (o PrivateEndpointOutput) CustomNetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) pulumi.StringPtrOutput { return v.CustomNetworkInterfaceName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -267,6 +301,11 @@ func (o PrivateEndpointOutput) Etag() pulumi.StringOutput {
 // The extended location of the load balancer.
 func (o PrivateEndpointOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *PrivateEndpoint) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+func (o PrivateEndpointOutput) IpConfigurations() PrivateEndpointIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) PrivateEndpointIPConfigurationResponseArrayOutput { return v.IpConfigurations }).(PrivateEndpointIPConfigurationResponseArrayOutput)
 }
 
 // Resource location.

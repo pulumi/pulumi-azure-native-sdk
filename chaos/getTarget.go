@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Target resource that extends a tracked regional resource.
-// API Version: 2021-09-15-preview.
+// API Version: 2022-10-01-preview.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
 	var rv LookupTargetResult
 	err := ctx.Invoke("azure-native:chaos:getTarget", args, &rv, opts...)

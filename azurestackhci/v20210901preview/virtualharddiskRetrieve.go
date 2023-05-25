@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,12 +59,18 @@ func NewVirtualharddiskRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualharddiskRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:virtualharddiskRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualharddiskRetrieve
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:VirtualharddiskRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +82,7 @@ func NewVirtualharddiskRetrieve(ctx *pulumi.Context,
 func GetVirtualharddiskRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VirtualharddiskRetrieveState, opts ...pulumi.ResourceOption) (*VirtualharddiskRetrieve, error) {
 	var resource VirtualharddiskRetrieve
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:VirtualharddiskRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -11,8 +11,6 @@ import (
 )
 
 // Management lock information.
-//
-// Deprecated: Version 2015-01-01 will be removed in v2 of the provider.
 type ManagementLock struct {
 	pulumi.CustomResourceState
 

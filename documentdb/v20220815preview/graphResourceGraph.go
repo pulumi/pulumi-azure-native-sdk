@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,9 +47,6 @@ func NewGraphResourceGraph(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:GraphResourceGraph"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210701preview:GraphResourceGraph"),
 		},
 		{
@@ -63,6 +60,12 @@ func NewGraphResourceGraph(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20220515preview:GraphResourceGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:GraphResourceGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:GraphResourceGraph"),
 		},
 	})
 	opts = append(opts, aliases)

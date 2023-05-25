@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the access policy with the specified name in the specified environment.
-//
-// Deprecated: Version 2017-11-15 will be removed in v2 of the provider.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	var rv LookupAccessPolicyResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20171115:getAccessPolicy", args, &rv, opts...)

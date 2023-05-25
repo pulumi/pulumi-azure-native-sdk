@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +38,12 @@ func NewAPICollection(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:security:APICollection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource APICollection
 	err := ctx.RegisterResource("azure-native:security/v20221120preview:APICollection", name, args, &resource, opts...)
 	if err != nil {

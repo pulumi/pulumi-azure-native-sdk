@@ -11,8 +11,6 @@ import (
 )
 
 // Get DigitalTwinsInstances Endpoint.
-//
-// Deprecated: Version 2020-03-01-preview will be removed in v2 of the provider.
 func LookupDigitalTwinsEndpoint(ctx *pulumi.Context, args *LookupDigitalTwinsEndpointArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinsEndpointResult, error) {
 	var rv LookupDigitalTwinsEndpointResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20200301preview:getDigitalTwinsEndpoint", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +106,9 @@ func NewIdentityProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:IdentityProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:IdentityProvider"),
 		},
 	})
 	opts = append(opts, aliases)

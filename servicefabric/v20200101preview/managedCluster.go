@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,10 +77,10 @@ func NewManagedCluster(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ClientConnectionPort) {
+	if args.ClientConnectionPort == nil {
 		args.ClientConnectionPort = pulumi.IntPtr(19000)
 	}
-	if isZero(args.HttpGatewayConnectionPort) {
+	if args.HttpGatewayConnectionPort == nil {
 		args.HttpGatewayConnectionPort = pulumi.IntPtr(19080)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -119,6 +119,9 @@ func NewManagedCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230201preview:ManagedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ManagedCluster"),
 		},
 	})
 	opts = append(opts, aliases)

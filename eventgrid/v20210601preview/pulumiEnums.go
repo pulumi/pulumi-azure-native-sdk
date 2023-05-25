@@ -28,51 +28,6 @@ const (
 	AdvancedFilterOperatorTypeIsNotNull                 = AdvancedFilterOperatorType("IsNotNull")
 )
 
-// Type of the endpoint for the dead letter destination
-type DeadLetterEndPointType string
-
-const (
-	DeadLetterEndPointTypeStorageBlob = DeadLetterEndPointType("StorageBlob")
-)
-
-// Type of the delivery attribute or header name.
-type DeliveryAttributeMappingType string
-
-const (
-	DeliveryAttributeMappingTypeStatic  = DeliveryAttributeMappingType("Static")
-	DeliveryAttributeMappingTypeDynamic = DeliveryAttributeMappingType("Dynamic")
-)
-
-// Type of the endpoint for the event subscription destination.
-type EndpointType string
-
-const (
-	EndpointTypeWebHook          = EndpointType("WebHook")
-	EndpointTypeEventHub         = EndpointType("EventHub")
-	EndpointTypeStorageQueue     = EndpointType("StorageQueue")
-	EndpointTypeHybridConnection = EndpointType("HybridConnection")
-	EndpointTypeServiceBusQueue  = EndpointType("ServiceBusQueue")
-	EndpointTypeServiceBusTopic  = EndpointType("ServiceBusTopic")
-	EndpointTypeAzureFunction    = EndpointType("AzureFunction")
-)
-
-// The event delivery schema for the event subscription.
-type EventDeliverySchema string
-
-const (
-	EventDeliverySchemaEventGridSchema       = EventDeliverySchema("EventGridSchema")
-	EventDeliverySchemaCustomInputSchema     = EventDeliverySchema("CustomInputSchema")
-	EventDeliverySchema_CloudEventSchemaV1_0 = EventDeliverySchema("CloudEventSchemaV1_0")
-)
-
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
-type EventSubscriptionIdentityType string
-
-const (
-	EventSubscriptionIdentityTypeSystemAssigned = EventSubscriptionIdentityType("SystemAssigned")
-	EventSubscriptionIdentityTypeUserAssigned   = EventSubscriptionIdentityType("UserAssigned")
-)
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
 type IdentityType string
 
@@ -81,22 +36,6 @@ const (
 	IdentityTypeSystemAssigned               = IdentityType("SystemAssigned")
 	IdentityTypeUserAssigned                 = IdentityType("UserAssigned")
 	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned, UserAssigned")
-)
-
-// This determines the format that Event Grid should expect for incoming events published to the topic.
-type InputSchema string
-
-const (
-	InputSchemaEventGridSchema       = InputSchema("EventGridSchema")
-	InputSchemaCustomEventSchema     = InputSchema("CustomEventSchema")
-	InputSchema_CloudEventSchemaV1_0 = InputSchema("CloudEventSchemaV1_0")
-)
-
-// Type of the custom mapping
-type InputSchemaMappingType string
-
-const (
-	InputSchemaMappingTypeJson = InputSchemaMappingType("Json")
 )
 
 // Action to perform based on the match or no match of the IpMask.
@@ -115,51 +54,13 @@ const (
 	PartnerRegistrationVisibilityStateGenerallyAvailable = PartnerRegistrationVisibilityState("GenerallyAvailable")
 )
 
-// Status of the connection.
-type PersistedConnectionStatus string
-
-const (
-	PersistedConnectionStatusPending      = PersistedConnectionStatus("Pending")
-	PersistedConnectionStatusApproved     = PersistedConnectionStatus("Approved")
-	PersistedConnectionStatusRejected     = PersistedConnectionStatus("Rejected")
-	PersistedConnectionStatusDisconnected = PersistedConnectionStatus("Disconnected")
-)
-
 // This determines if traffic is allowed over public network. By default it is enabled.
-// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
+// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
 type PublicNetworkAccess string
 
 const (
 	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
-)
-
-// Kind of the resource.
-type ResourceKind string
-
-const (
-	ResourceKindAzure    = ResourceKind("Azure")
-	ResourceKindAzureArc = ResourceKind("AzureArc")
-)
-
-// Provisioning state of the Private Endpoint Connection.
-type ResourceProvisioningState string
-
-const (
-	ResourceProvisioningStateCreating  = ResourceProvisioningState("Creating")
-	ResourceProvisioningStateUpdating  = ResourceProvisioningState("Updating")
-	ResourceProvisioningStateDeleting  = ResourceProvisioningState("Deleting")
-	ResourceProvisioningStateSucceeded = ResourceProvisioningState("Succeeded")
-	ResourceProvisioningStateCanceled  = ResourceProvisioningState("Canceled")
-	ResourceProvisioningStateFailed    = ResourceProvisioningState("Failed")
-)
-
-// The Sku name of the resource. The possible values are: Basic or Premium.
-type Sku string
-
-const (
-	SkuBasic   = Sku("Basic")
-	SkuPremium = Sku("Premium")
 )
 
 func init() {

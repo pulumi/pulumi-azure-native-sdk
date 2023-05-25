@@ -11,7 +11,7 @@ import (
 )
 
 // Get all delivery attributes for an event subscription of a partner topic.
-// API Version: 2021-06-01-preview.
+// API Version: 2022-06-15.
 func GetPartnerTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetPartnerTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetPartnerTopicEventSubscriptionDeliveryAttributesResult, error) {
 	var rv GetPartnerTopicEventSubscriptionDeliveryAttributesResult
 	err := ctx.Invoke("azure-native:eventgrid:getPartnerTopicEventSubscriptionDeliveryAttributes", args, &rv, opts...)

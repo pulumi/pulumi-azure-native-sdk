@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Virtual Network resource
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
@@ -181,6 +179,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

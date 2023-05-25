@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,8 +49,14 @@ func NewStoragecontainerRetrieve(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:storagecontainerRetrieve"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource StoragecontainerRetrieve
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:storagecontainerRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:StoragecontainerRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +68,7 @@ func NewStoragecontainerRetrieve(ctx *pulumi.Context,
 func GetStoragecontainerRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *StoragecontainerRetrieveState, opts ...pulumi.ResourceOption) (*StoragecontainerRetrieve, error) {
 	var resource StoragecontainerRetrieve
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:storagecontainerRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:StoragecontainerRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

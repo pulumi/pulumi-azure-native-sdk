@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +43,9 @@ func NewSapLandscapeMonitor(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:workloads:SapLandscapeMonitor"),
+		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20221101preview:SapLandscapeMonitor"),
 		},

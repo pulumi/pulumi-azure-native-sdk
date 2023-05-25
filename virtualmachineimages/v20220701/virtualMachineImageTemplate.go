@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,7 +72,7 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
-	if isZero(args.BuildTimeoutInMinutes) {
+	if args.BuildTimeoutInMinutes == nil {
 		args.BuildTimeoutInMinutes = pulumi.IntPtr(0)
 	}
 	if args.Validate != nil {

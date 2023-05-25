@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The private endpoint connection of an IotHub
-// API Version: 2020-08-31.
+// API Version: 2021-07-02.
+// Previous API Version: 2020-08-31. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -85,6 +86,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20220430preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

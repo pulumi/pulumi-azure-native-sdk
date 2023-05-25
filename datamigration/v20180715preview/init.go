@@ -23,14 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:datamigration/v20180715preview:File":
 		r = &File{}
-	case "azure-native:datamigration/v20180715preview:Project":
-		r = &Project{}
-	case "azure-native:datamigration/v20180715preview:Service":
-		r = &Service{}
-	case "azure-native:datamigration/v20180715preview:ServiceTask":
-		r = &ServiceTask{}
-	case "azure-native:datamigration/v20180715preview:Task":
-		r = &Task{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

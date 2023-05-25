@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves a specific Service Bus Hybrid Connection used by this Web App.
-// API Version: 2020-12-01.
+// Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
+// API Version: 2022-09-01.
 func LookupWebAppHybridConnectionSlot(ctx *pulumi.Context, args *LookupWebAppHybridConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionSlotResult, error) {
 	var rv LookupWebAppHybridConnectionSlotResult
 	err := ctx.Invoke("azure-native:web:getWebAppHybridConnectionSlot", args, &rv, opts...)

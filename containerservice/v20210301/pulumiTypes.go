@@ -667,29 +667,29 @@ func (val *ContainerServiceNetworkProfile) Defaults() *ContainerServiceNetworkPr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DnsServiceIP) {
+	if tmp.DnsServiceIP == nil {
 		dnsServiceIP_ := "10.0.0.10"
 		tmp.DnsServiceIP = &dnsServiceIP_
 	}
-	if isZero(tmp.DockerBridgeCidr) {
+	if tmp.DockerBridgeCidr == nil {
 		dockerBridgeCidr_ := "172.17.0.1/16"
 		tmp.DockerBridgeCidr = &dockerBridgeCidr_
 	}
 	tmp.LoadBalancerProfile = tmp.LoadBalancerProfile.Defaults()
 
-	if isZero(tmp.NetworkPlugin) {
+	if tmp.NetworkPlugin == nil {
 		networkPlugin_ := "kubenet"
 		tmp.NetworkPlugin = &networkPlugin_
 	}
-	if isZero(tmp.OutboundType) {
+	if tmp.OutboundType == nil {
 		outboundType_ := "loadBalancer"
 		tmp.OutboundType = &outboundType_
 	}
-	if isZero(tmp.PodCidr) {
+	if tmp.PodCidr == nil {
 		podCidr_ := "10.244.0.0/16"
 		tmp.PodCidr = &podCidr_
 	}
-	if isZero(tmp.ServiceCidr) {
+	if tmp.ServiceCidr == nil {
 		serviceCidr_ := "10.0.0.0/16"
 		tmp.ServiceCidr = &serviceCidr_
 	}
@@ -737,23 +737,23 @@ func (val *ContainerServiceNetworkProfileArgs) Defaults() *ContainerServiceNetwo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DnsServiceIP) {
+	if tmp.DnsServiceIP == nil {
 		tmp.DnsServiceIP = pulumi.StringPtr("10.0.0.10")
 	}
-	if isZero(tmp.DockerBridgeCidr) {
+	if tmp.DockerBridgeCidr == nil {
 		tmp.DockerBridgeCidr = pulumi.StringPtr("172.17.0.1/16")
 	}
 
-	if isZero(tmp.NetworkPlugin) {
+	if tmp.NetworkPlugin == nil {
 		tmp.NetworkPlugin = pulumi.StringPtr("kubenet")
 	}
-	if isZero(tmp.OutboundType) {
+	if tmp.OutboundType == nil {
 		tmp.OutboundType = pulumi.StringPtr("loadBalancer")
 	}
-	if isZero(tmp.PodCidr) {
+	if tmp.PodCidr == nil {
 		tmp.PodCidr = pulumi.StringPtr("10.244.0.0/16")
 	}
-	if isZero(tmp.ServiceCidr) {
+	if tmp.ServiceCidr == nil {
 		tmp.ServiceCidr = pulumi.StringPtr("10.0.0.0/16")
 	}
 	return &tmp
@@ -1042,29 +1042,29 @@ func (val *ContainerServiceNetworkProfileResponse) Defaults() *ContainerServiceN
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DnsServiceIP) {
+	if tmp.DnsServiceIP == nil {
 		dnsServiceIP_ := "10.0.0.10"
 		tmp.DnsServiceIP = &dnsServiceIP_
 	}
-	if isZero(tmp.DockerBridgeCidr) {
+	if tmp.DockerBridgeCidr == nil {
 		dockerBridgeCidr_ := "172.17.0.1/16"
 		tmp.DockerBridgeCidr = &dockerBridgeCidr_
 	}
 	tmp.LoadBalancerProfile = tmp.LoadBalancerProfile.Defaults()
 
-	if isZero(tmp.NetworkPlugin) {
+	if tmp.NetworkPlugin == nil {
 		networkPlugin_ := "kubenet"
 		tmp.NetworkPlugin = &networkPlugin_
 	}
-	if isZero(tmp.OutboundType) {
+	if tmp.OutboundType == nil {
 		outboundType_ := "loadBalancer"
 		tmp.OutboundType = &outboundType_
 	}
-	if isZero(tmp.PodCidr) {
+	if tmp.PodCidr == nil {
 		podCidr_ := "10.244.0.0/16"
 		tmp.PodCidr = &podCidr_
 	}
-	if isZero(tmp.ServiceCidr) {
+	if tmp.ServiceCidr == nil {
 		serviceCidr_ := "10.0.0.0/16"
 		tmp.ServiceCidr = &serviceCidr_
 	}
@@ -4860,7 +4860,7 @@ type ManagedClusterIdentity struct {
 	// The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedClusterIdentityInput is an input type that accepts ManagedClusterIdentityArgs and ManagedClusterIdentityOutput values.
@@ -4879,7 +4879,7 @@ type ManagedClusterIdentityArgs struct {
 	// The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedClusterIdentityArgs) ElementType() reflect.Type {
@@ -4966,8 +4966,8 @@ func (o ManagedClusterIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ManagedClusterIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedClusterIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedClusterIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedClusterIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedClusterIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -5005,13 +5005,13 @@ func (o ManagedClusterIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ManagedClusterIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedClusterIdentity) map[string]interface{} {
+func (o ManagedClusterIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedClusterIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the managed cluster.
@@ -5200,11 +5200,11 @@ func (val *ManagedClusterLoadBalancerProfile) Defaults() *ManagedClusterLoadBala
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocatedOutboundPorts) {
+	if tmp.AllocatedOutboundPorts == nil {
 		allocatedOutboundPorts_ := 0
 		tmp.AllocatedOutboundPorts = &allocatedOutboundPorts_
 	}
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 30
 		tmp.IdleTimeoutInMinutes = &idleTimeoutInMinutes_
 	}
@@ -5246,10 +5246,10 @@ func (val *ManagedClusterLoadBalancerProfileArgs) Defaults() *ManagedClusterLoad
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocatedOutboundPorts) {
+	if tmp.AllocatedOutboundPorts == nil {
 		tmp.AllocatedOutboundPorts = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		tmp.IdleTimeoutInMinutes = pulumi.IntPtr(30)
 	}
 
@@ -5465,7 +5465,7 @@ func (val *ManagedClusterLoadBalancerProfileManagedOutboundIPs) Defaults() *Mana
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
@@ -5495,7 +5495,7 @@ func (val *ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs) Defaults() *
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -5921,11 +5921,11 @@ func (val *ManagedClusterLoadBalancerProfileResponse) Defaults() *ManagedCluster
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocatedOutboundPorts) {
+	if tmp.AllocatedOutboundPorts == nil {
 		allocatedOutboundPorts_ := 0
 		tmp.AllocatedOutboundPorts = &allocatedOutboundPorts_
 	}
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 30
 		tmp.IdleTimeoutInMinutes = &idleTimeoutInMinutes_
 	}
@@ -6083,7 +6083,7 @@ func (val *ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs) Defaults
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}

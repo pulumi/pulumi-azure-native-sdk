@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
-// API Version: 2018-07-10.
+// API Version: 2023-02-01.
+// Previous API Version: 2018-07-10. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ReplicationNetworkMapping struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +39,9 @@ func NewReplicationNetworkMapping(ctx *pulumi.Context,
 	}
 	if args.NetworkName == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkName'")
+	}
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -153,7 +157,7 @@ type replicationNetworkMappingArgs struct {
 	// Primary network name.
 	NetworkName string `pulumi:"networkName"`
 	// Input properties for creating network mapping.
-	Properties *CreateNetworkMappingInputProperties `pulumi:"properties"`
+	Properties CreateNetworkMappingInputProperties `pulumi:"properties"`
 	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the recovery services vault.
@@ -169,7 +173,7 @@ type ReplicationNetworkMappingArgs struct {
 	// Primary network name.
 	NetworkName pulumi.StringInput
 	// Input properties for creating network mapping.
-	Properties CreateNetworkMappingInputPropertiesPtrInput
+	Properties CreateNetworkMappingInputPropertiesInput
 	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName pulumi.StringInput
 	// The name of the recovery services vault.

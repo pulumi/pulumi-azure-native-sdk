@@ -26,7 +26,7 @@ func (val *AccountEncryption) Defaults() *AccountEncryption {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.NetApp"
 		tmp.KeySource = &keySource_
 	}
@@ -60,7 +60,7 @@ func (val *AccountEncryptionArgs) Defaults() *AccountEncryptionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		tmp.KeySource = pulumi.StringPtr("Microsoft.NetApp")
 	}
 	return &tmp
@@ -228,7 +228,7 @@ func (val *AccountEncryptionResponse) Defaults() *AccountEncryptionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.NetApp"
 		tmp.KeySource = &keySource_
 	}
@@ -371,7 +371,7 @@ func (val *ActiveDirectory) Defaults() *ActiveDirectory {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -441,7 +441,7 @@ func (val *ActiveDirectoryArgs) Defaults() *ActiveDirectoryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		tmp.OrganizationalUnit = pulumi.StringPtr("CN=Computers")
 	}
 	return &tmp
@@ -679,7 +679,7 @@ func (val *ActiveDirectoryResponse) Defaults() *ActiveDirectoryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OrganizationalUnit) {
+	if tmp.OrganizationalUnit == nil {
 		organizationalUnit_ := "CN=Computers"
 		tmp.OrganizationalUnit = &organizationalUnit_
 	}
@@ -1401,35 +1401,35 @@ func (val *ExportPolicyRule) Defaults() *ExportPolicyRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		chownMode_ := "Restricted"
 		tmp.ChownMode = &chownMode_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -1487,28 +1487,28 @@ func (val *ExportPolicyRuleArgs) Defaults() *ExportPolicyRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		tmp.ChownMode = pulumi.StringPtr("Restricted")
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		tmp.HasRootAccess = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		tmp.Kerberos5ReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		tmp.Kerberos5ReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		tmp.Kerberos5iReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		tmp.Kerberos5iReadWrite = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		tmp.Kerberos5pReadOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		tmp.Kerberos5pReadWrite = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1700,35 +1700,35 @@ func (val *ExportPolicyRuleResponse) Defaults() *ExportPolicyRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ChownMode) {
+	if tmp.ChownMode == nil {
 		chownMode_ := "Restricted"
 		tmp.ChownMode = &chownMode_
 	}
-	if isZero(tmp.HasRootAccess) {
+	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
 	}
-	if isZero(tmp.Kerberos5ReadOnly) {
+	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
 		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
 	}
-	if isZero(tmp.Kerberos5ReadWrite) {
+	if tmp.Kerberos5ReadWrite == nil {
 		kerberos5ReadWrite_ := false
 		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
 	}
-	if isZero(tmp.Kerberos5iReadOnly) {
+	if tmp.Kerberos5iReadOnly == nil {
 		kerberos5iReadOnly_ := false
 		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
 	}
-	if isZero(tmp.Kerberos5iReadWrite) {
+	if tmp.Kerberos5iReadWrite == nil {
 		kerberos5iReadWrite_ := false
 		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
 	}
-	if isZero(tmp.Kerberos5pReadOnly) {
+	if tmp.Kerberos5pReadOnly == nil {
 		kerberos5pReadOnly_ := false
 		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
 	}
-	if isZero(tmp.Kerberos5pReadWrite) {
+	if tmp.Kerberos5pReadWrite == nil {
 		kerberos5pReadWrite_ := false
 		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
 	}
@@ -2700,7 +2700,7 @@ type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -2719,7 +2719,7 @@ type ManagedServiceIdentityArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -2806,8 +2806,8 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -2845,13 +2845,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -4845,67 +4845,67 @@ func (val *VolumeGroupVolumeProperties) Defaults() *VolumeGroupVolumeProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		avsDataStore_ := "Disabled"
 		tmp.AvsDataStore = &avsDataStore_
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		defaultGroupQuotaInKiBs_ := 0.0
 		tmp.DefaultGroupQuotaInKiBs = &defaultGroupQuotaInKiBs_
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		defaultUserQuotaInKiBs_ := 0.0
 		tmp.DefaultUserQuotaInKiBs = &defaultUserQuotaInKiBs_
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		enableSubvolumes_ := "Disabled"
 		tmp.EnableSubvolumes = &enableSubvolumes_
 	}
-	if isZero(tmp.EncryptionKeySource) {
+	if tmp.EncryptionKeySource == nil {
 		encryptionKeySource_ := "Microsoft.NetApp"
 		tmp.EncryptionKeySource = &encryptionKeySource_
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.IsDefaultQuotaEnabled == nil {
 		isDefaultQuotaEnabled_ := false
 		tmp.IsDefaultQuotaEnabled = &isDefaultQuotaEnabled_
 	}
-	if isZero(tmp.IsLargeVolume) {
+	if tmp.IsLargeVolume == nil {
 		isLargeVolume_ := false
 		tmp.IsLargeVolume = &isLargeVolume_
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
@@ -5013,55 +5013,55 @@ func (val *VolumeGroupVolumePropertiesArgs) Defaults() *VolumeGroupVolumePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		tmp.AvsDataStore = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		tmp.CoolAccess = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		tmp.DefaultGroupQuotaInKiBs = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		tmp.DefaultUserQuotaInKiBs = pulumi.Float64Ptr(0.0)
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		tmp.EnableSubvolumes = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.EncryptionKeySource) {
+	if tmp.EncryptionKeySource == nil {
 		tmp.EncryptionKeySource = pulumi.StringPtr("Microsoft.NetApp")
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.IsDefaultQuotaEnabled == nil {
 		tmp.IsDefaultQuotaEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsLargeVolume) {
+	if tmp.IsLargeVolume == nil {
 		tmp.IsLargeVolume = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		tmp.KerberosEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		tmp.LdapEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		tmp.NetworkFeatures = pulumi.StringPtr("Basic")
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		tmp.SecurityStyle = pulumi.StringPtr("unix")
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		tmp.SmbContinuouslyAvailable = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		tmp.SmbEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		tmp.SnapshotDirectoryVisible = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		tmp.UnixPermissions = pulumi.StringPtr("0770")
 	}
-	if isZero(tmp.UsageThreshold) {
+	if tmp.UsageThreshold == nil {
 		tmp.UsageThreshold = pulumi.Float64(107374182400.0)
 	}
 	return &tmp
@@ -5451,70 +5451,70 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AvsDataStore) {
+	if tmp.AvsDataStore == nil {
 		avsDataStore_ := "Disabled"
 		tmp.AvsDataStore = &avsDataStore_
 	}
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.DefaultGroupQuotaInKiBs) {
+	if tmp.DefaultGroupQuotaInKiBs == nil {
 		defaultGroupQuotaInKiBs_ := 0.0
 		tmp.DefaultGroupQuotaInKiBs = &defaultGroupQuotaInKiBs_
 	}
-	if isZero(tmp.DefaultUserQuotaInKiBs) {
+	if tmp.DefaultUserQuotaInKiBs == nil {
 		defaultUserQuotaInKiBs_ := 0.0
 		tmp.DefaultUserQuotaInKiBs = &defaultUserQuotaInKiBs_
 	}
-	if isZero(tmp.EnableSubvolumes) {
+	if tmp.EnableSubvolumes == nil {
 		enableSubvolumes_ := "Disabled"
 		tmp.EnableSubvolumes = &enableSubvolumes_
 	}
-	if isZero(tmp.EncryptionKeySource) {
+	if tmp.EncryptionKeySource == nil {
 		encryptionKeySource_ := "Microsoft.NetApp"
 		tmp.EncryptionKeySource = &encryptionKeySource_
 	}
 	if isZero(tmp.FileAccessLogs) {
 		tmp.FileAccessLogs = "Disabled"
 	}
-	if isZero(tmp.IsDefaultQuotaEnabled) {
+	if tmp.IsDefaultQuotaEnabled == nil {
 		isDefaultQuotaEnabled_ := false
 		tmp.IsDefaultQuotaEnabled = &isDefaultQuotaEnabled_
 	}
-	if isZero(tmp.IsLargeVolume) {
+	if tmp.IsLargeVolume == nil {
 		isLargeVolume_ := false
 		tmp.IsLargeVolume = &isLargeVolume_
 	}
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.UnixPermissions) {
+	if tmp.UnixPermissions == nil {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}

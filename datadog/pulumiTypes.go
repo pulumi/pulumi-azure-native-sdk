@@ -382,10 +382,14 @@ type DatadogOrganizationProperties struct {
 	ApplicationKey *string `pulumi:"applicationKey"`
 	// The Id of the Enterprise App used for Single sign on.
 	EnterpriseAppId *string `pulumi:"enterpriseAppId"`
+	// Id of the Datadog organization.
+	Id *string `pulumi:"id"`
 	// The auth code used to linking to an existing datadog organization.
 	LinkingAuthCode *string `pulumi:"linkingAuthCode"`
 	// The client_id from an existing in exchange for an auth token to link organization.
 	LinkingClientId *string `pulumi:"linkingClientId"`
+	// Name of the Datadog organization.
+	Name *string `pulumi:"name"`
 	// The redirect uri for linking.
 	RedirectUri *string `pulumi:"redirectUri"`
 }
@@ -409,10 +413,14 @@ type DatadogOrganizationPropertiesArgs struct {
 	ApplicationKey pulumi.StringPtrInput `pulumi:"applicationKey"`
 	// The Id of the Enterprise App used for Single sign on.
 	EnterpriseAppId pulumi.StringPtrInput `pulumi:"enterpriseAppId"`
+	// Id of the Datadog organization.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The auth code used to linking to an existing datadog organization.
 	LinkingAuthCode pulumi.StringPtrInput `pulumi:"linkingAuthCode"`
 	// The client_id from an existing in exchange for an auth token to link organization.
 	LinkingClientId pulumi.StringPtrInput `pulumi:"linkingClientId"`
+	// Name of the Datadog organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The redirect uri for linking.
 	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
 }
@@ -510,6 +518,11 @@ func (o DatadogOrganizationPropertiesOutput) EnterpriseAppId() pulumi.StringPtrO
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.EnterpriseAppId }).(pulumi.StringPtrOutput)
 }
 
+// Id of the Datadog organization.
+func (o DatadogOrganizationPropertiesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // The auth code used to linking to an existing datadog organization.
 func (o DatadogOrganizationPropertiesOutput) LinkingAuthCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.LinkingAuthCode }).(pulumi.StringPtrOutput)
@@ -518,6 +531,11 @@ func (o DatadogOrganizationPropertiesOutput) LinkingAuthCode() pulumi.StringPtrO
 // The client_id from an existing in exchange for an auth token to link organization.
 func (o DatadogOrganizationPropertiesOutput) LinkingClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.LinkingClientId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Datadog organization.
+func (o DatadogOrganizationPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The redirect uri for linking.
@@ -579,6 +597,16 @@ func (o DatadogOrganizationPropertiesPtrOutput) EnterpriseAppId() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Id of the Datadog organization.
+func (o DatadogOrganizationPropertiesPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // The auth code used to linking to an existing datadog organization.
 func (o DatadogOrganizationPropertiesPtrOutput) LinkingAuthCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
@@ -599,6 +627,16 @@ func (o DatadogOrganizationPropertiesPtrOutput) LinkingClientId() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Datadog organization.
+func (o DatadogOrganizationPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // The redirect uri for linking.
 func (o DatadogOrganizationPropertiesPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
@@ -612,9 +650,9 @@ func (o DatadogOrganizationPropertiesPtrOutput) RedirectUri() pulumi.StringPtrOu
 // Datadog organization properties
 type DatadogOrganizationPropertiesResponse struct {
 	// Id of the Datadog organization.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 	// Name of the Datadog organization.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 }
 
 // Datadog organization properties
@@ -633,13 +671,13 @@ func (o DatadogOrganizationPropertiesResponseOutput) ToDatadogOrganizationProper
 }
 
 // Id of the Datadog organization.
-func (o DatadogOrganizationPropertiesResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v DatadogOrganizationPropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o DatadogOrganizationPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatadogOrganizationPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Name of the Datadog organization.
-func (o DatadogOrganizationPropertiesResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DatadogOrganizationPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+func (o DatadogOrganizationPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatadogOrganizationPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type DatadogOrganizationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -672,7 +710,7 @@ func (o DatadogOrganizationPropertiesResponsePtrOutput) Id() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.Id
+		return v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -682,7 +720,7 @@ func (o DatadogOrganizationPropertiesResponsePtrOutput) Name() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return &v.Name
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 

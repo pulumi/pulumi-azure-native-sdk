@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -135,6 +135,9 @@ func NewVirtualHub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualHub"),
 		},
 	})
 	opts = append(opts, aliases)

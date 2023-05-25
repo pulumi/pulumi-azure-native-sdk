@@ -10,152 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cosmos DB capability object
-type Capability struct {
-	// Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-	Name *string `pulumi:"name"`
-}
-
-// CapabilityInput is an input type that accepts CapabilityArgs and CapabilityOutput values.
-// You can construct a concrete instance of `CapabilityInput` via:
-//
-//	CapabilityArgs{...}
-type CapabilityInput interface {
-	pulumi.Input
-
-	ToCapabilityOutput() CapabilityOutput
-	ToCapabilityOutputWithContext(context.Context) CapabilityOutput
-}
-
-// Cosmos DB capability object
-type CapabilityArgs struct {
-	// Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (CapabilityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Capability)(nil)).Elem()
-}
-
-func (i CapabilityArgs) ToCapabilityOutput() CapabilityOutput {
-	return i.ToCapabilityOutputWithContext(context.Background())
-}
-
-func (i CapabilityArgs) ToCapabilityOutputWithContext(ctx context.Context) CapabilityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapabilityOutput)
-}
-
-// CapabilityArrayInput is an input type that accepts CapabilityArray and CapabilityArrayOutput values.
-// You can construct a concrete instance of `CapabilityArrayInput` via:
-//
-//	CapabilityArray{ CapabilityArgs{...} }
-type CapabilityArrayInput interface {
-	pulumi.Input
-
-	ToCapabilityArrayOutput() CapabilityArrayOutput
-	ToCapabilityArrayOutputWithContext(context.Context) CapabilityArrayOutput
-}
-
-type CapabilityArray []CapabilityInput
-
-func (CapabilityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Capability)(nil)).Elem()
-}
-
-func (i CapabilityArray) ToCapabilityArrayOutput() CapabilityArrayOutput {
-	return i.ToCapabilityArrayOutputWithContext(context.Background())
-}
-
-func (i CapabilityArray) ToCapabilityArrayOutputWithContext(ctx context.Context) CapabilityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapabilityArrayOutput)
-}
-
-// Cosmos DB capability object
-type CapabilityOutput struct{ *pulumi.OutputState }
-
-func (CapabilityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Capability)(nil)).Elem()
-}
-
-func (o CapabilityOutput) ToCapabilityOutput() CapabilityOutput {
-	return o
-}
-
-func (o CapabilityOutput) ToCapabilityOutputWithContext(ctx context.Context) CapabilityOutput {
-	return o
-}
-
-// Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-func (o CapabilityOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Capability) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type CapabilityArrayOutput struct{ *pulumi.OutputState }
-
-func (CapabilityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Capability)(nil)).Elem()
-}
-
-func (o CapabilityArrayOutput) ToCapabilityArrayOutput() CapabilityArrayOutput {
-	return o
-}
-
-func (o CapabilityArrayOutput) ToCapabilityArrayOutputWithContext(ctx context.Context) CapabilityArrayOutput {
-	return o
-}
-
-func (o CapabilityArrayOutput) Index(i pulumi.IntInput) CapabilityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Capability {
-		return vs[0].([]Capability)[vs[1].(int)]
-	}).(CapabilityOutput)
-}
-
-// Cosmos DB capability object
-type CapabilityResponse struct {
-	// Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-	Name *string `pulumi:"name"`
-}
-
-// Cosmos DB capability object
-type CapabilityResponseOutput struct{ *pulumi.OutputState }
-
-func (CapabilityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CapabilityResponse)(nil)).Elem()
-}
-
-func (o CapabilityResponseOutput) ToCapabilityResponseOutput() CapabilityResponseOutput {
-	return o
-}
-
-func (o CapabilityResponseOutput) ToCapabilityResponseOutputWithContext(ctx context.Context) CapabilityResponseOutput {
-	return o
-}
-
-// Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-func (o CapabilityResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CapabilityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type CapabilityResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CapabilityResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CapabilityResponse)(nil)).Elem()
-}
-
-func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutput() CapabilityResponseArrayOutput {
-	return o
-}
-
-func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutputWithContext(ctx context.Context) CapabilityResponseArrayOutput {
-	return o
-}
-
-func (o CapabilityResponseArrayOutput) Index(i pulumi.IntInput) CapabilityResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CapabilityResponse {
-		return vs[0].([]CapabilityResponse)[vs[1].(int)]
-	}).(CapabilityResponseOutput)
-}
-
 type CassandraKeyspaceGetPropertiesResponseResource struct {
 	// A system generated property representing the resource etag required for optimistic concurrency control.
 	Etag string `pulumi:"etag"`
@@ -1451,7 +1305,7 @@ func (val *ConflictResolutionPolicy) Defaults() *ConflictResolutionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "LastWriterWins"
 		tmp.Mode = &mode_
 	}
@@ -1485,7 +1339,7 @@ func (val *ConflictResolutionPolicyArgs) Defaults() *ConflictResolutionPolicyArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		tmp.Mode = pulumi.StringPtr("LastWriterWins")
 	}
 	return &tmp
@@ -1653,7 +1507,7 @@ func (val *ConflictResolutionPolicyResponse) Defaults() *ConflictResolutionPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "LastWriterWins"
 		tmp.Mode = &mode_
 	}
@@ -1744,278 +1598,6 @@ func (o ConflictResolutionPolicyResponsePtrOutput) Mode() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The consistency policy for the Cosmos DB database account.
-type ConsistencyPolicy struct {
-	// The default consistency level and configuration settings of the Cosmos DB account.
-	DefaultConsistencyLevel DefaultConsistencyLevel `pulumi:"defaultConsistencyLevel"`
-	// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-	MaxIntervalInSeconds *int `pulumi:"maxIntervalInSeconds"`
-	// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-	MaxStalenessPrefix *float64 `pulumi:"maxStalenessPrefix"`
-}
-
-// ConsistencyPolicyInput is an input type that accepts ConsistencyPolicyArgs and ConsistencyPolicyOutput values.
-// You can construct a concrete instance of `ConsistencyPolicyInput` via:
-//
-//	ConsistencyPolicyArgs{...}
-type ConsistencyPolicyInput interface {
-	pulumi.Input
-
-	ToConsistencyPolicyOutput() ConsistencyPolicyOutput
-	ToConsistencyPolicyOutputWithContext(context.Context) ConsistencyPolicyOutput
-}
-
-// The consistency policy for the Cosmos DB database account.
-type ConsistencyPolicyArgs struct {
-	// The default consistency level and configuration settings of the Cosmos DB account.
-	DefaultConsistencyLevel DefaultConsistencyLevelInput `pulumi:"defaultConsistencyLevel"`
-	// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-	MaxIntervalInSeconds pulumi.IntPtrInput `pulumi:"maxIntervalInSeconds"`
-	// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-	MaxStalenessPrefix pulumi.Float64PtrInput `pulumi:"maxStalenessPrefix"`
-}
-
-func (ConsistencyPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsistencyPolicy)(nil)).Elem()
-}
-
-func (i ConsistencyPolicyArgs) ToConsistencyPolicyOutput() ConsistencyPolicyOutput {
-	return i.ToConsistencyPolicyOutputWithContext(context.Background())
-}
-
-func (i ConsistencyPolicyArgs) ToConsistencyPolicyOutputWithContext(ctx context.Context) ConsistencyPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsistencyPolicyOutput)
-}
-
-func (i ConsistencyPolicyArgs) ToConsistencyPolicyPtrOutput() ConsistencyPolicyPtrOutput {
-	return i.ToConsistencyPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i ConsistencyPolicyArgs) ToConsistencyPolicyPtrOutputWithContext(ctx context.Context) ConsistencyPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsistencyPolicyOutput).ToConsistencyPolicyPtrOutputWithContext(ctx)
-}
-
-// ConsistencyPolicyPtrInput is an input type that accepts ConsistencyPolicyArgs, ConsistencyPolicyPtr and ConsistencyPolicyPtrOutput values.
-// You can construct a concrete instance of `ConsistencyPolicyPtrInput` via:
-//
-//	        ConsistencyPolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type ConsistencyPolicyPtrInput interface {
-	pulumi.Input
-
-	ToConsistencyPolicyPtrOutput() ConsistencyPolicyPtrOutput
-	ToConsistencyPolicyPtrOutputWithContext(context.Context) ConsistencyPolicyPtrOutput
-}
-
-type consistencyPolicyPtrType ConsistencyPolicyArgs
-
-func ConsistencyPolicyPtr(v *ConsistencyPolicyArgs) ConsistencyPolicyPtrInput {
-	return (*consistencyPolicyPtrType)(v)
-}
-
-func (*consistencyPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsistencyPolicy)(nil)).Elem()
-}
-
-func (i *consistencyPolicyPtrType) ToConsistencyPolicyPtrOutput() ConsistencyPolicyPtrOutput {
-	return i.ToConsistencyPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *consistencyPolicyPtrType) ToConsistencyPolicyPtrOutputWithContext(ctx context.Context) ConsistencyPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsistencyPolicyPtrOutput)
-}
-
-// The consistency policy for the Cosmos DB database account.
-type ConsistencyPolicyOutput struct{ *pulumi.OutputState }
-
-func (ConsistencyPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsistencyPolicy)(nil)).Elem()
-}
-
-func (o ConsistencyPolicyOutput) ToConsistencyPolicyOutput() ConsistencyPolicyOutput {
-	return o
-}
-
-func (o ConsistencyPolicyOutput) ToConsistencyPolicyOutputWithContext(ctx context.Context) ConsistencyPolicyOutput {
-	return o
-}
-
-func (o ConsistencyPolicyOutput) ToConsistencyPolicyPtrOutput() ConsistencyPolicyPtrOutput {
-	return o.ToConsistencyPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ConsistencyPolicyOutput) ToConsistencyPolicyPtrOutputWithContext(ctx context.Context) ConsistencyPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsistencyPolicy) *ConsistencyPolicy {
-		return &v
-	}).(ConsistencyPolicyPtrOutput)
-}
-
-// The default consistency level and configuration settings of the Cosmos DB account.
-func (o ConsistencyPolicyOutput) DefaultConsistencyLevel() DefaultConsistencyLevelOutput {
-	return o.ApplyT(func(v ConsistencyPolicy) DefaultConsistencyLevel { return v.DefaultConsistencyLevel }).(DefaultConsistencyLevelOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyOutput) MaxIntervalInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ConsistencyPolicy) *int { return v.MaxIntervalInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyOutput) MaxStalenessPrefix() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ConsistencyPolicy) *float64 { return v.MaxStalenessPrefix }).(pulumi.Float64PtrOutput)
-}
-
-type ConsistencyPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ConsistencyPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsistencyPolicy)(nil)).Elem()
-}
-
-func (o ConsistencyPolicyPtrOutput) ToConsistencyPolicyPtrOutput() ConsistencyPolicyPtrOutput {
-	return o
-}
-
-func (o ConsistencyPolicyPtrOutput) ToConsistencyPolicyPtrOutputWithContext(ctx context.Context) ConsistencyPolicyPtrOutput {
-	return o
-}
-
-func (o ConsistencyPolicyPtrOutput) Elem() ConsistencyPolicyOutput {
-	return o.ApplyT(func(v *ConsistencyPolicy) ConsistencyPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ConsistencyPolicy
-		return ret
-	}).(ConsistencyPolicyOutput)
-}
-
-// The default consistency level and configuration settings of the Cosmos DB account.
-func (o ConsistencyPolicyPtrOutput) DefaultConsistencyLevel() DefaultConsistencyLevelPtrOutput {
-	return o.ApplyT(func(v *ConsistencyPolicy) *DefaultConsistencyLevel {
-		if v == nil {
-			return nil
-		}
-		return &v.DefaultConsistencyLevel
-	}).(DefaultConsistencyLevelPtrOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyPtrOutput) MaxIntervalInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ConsistencyPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxIntervalInSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyPtrOutput) MaxStalenessPrefix() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ConsistencyPolicy) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MaxStalenessPrefix
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The consistency policy for the Cosmos DB database account.
-type ConsistencyPolicyResponse struct {
-	// The default consistency level and configuration settings of the Cosmos DB account.
-	DefaultConsistencyLevel string `pulumi:"defaultConsistencyLevel"`
-	// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-	MaxIntervalInSeconds *int `pulumi:"maxIntervalInSeconds"`
-	// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-	MaxStalenessPrefix *float64 `pulumi:"maxStalenessPrefix"`
-}
-
-// The consistency policy for the Cosmos DB database account.
-type ConsistencyPolicyResponseOutput struct{ *pulumi.OutputState }
-
-func (ConsistencyPolicyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsistencyPolicyResponse)(nil)).Elem()
-}
-
-func (o ConsistencyPolicyResponseOutput) ToConsistencyPolicyResponseOutput() ConsistencyPolicyResponseOutput {
-	return o
-}
-
-func (o ConsistencyPolicyResponseOutput) ToConsistencyPolicyResponseOutputWithContext(ctx context.Context) ConsistencyPolicyResponseOutput {
-	return o
-}
-
-// The default consistency level and configuration settings of the Cosmos DB account.
-func (o ConsistencyPolicyResponseOutput) DefaultConsistencyLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v ConsistencyPolicyResponse) string { return v.DefaultConsistencyLevel }).(pulumi.StringOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyResponseOutput) MaxIntervalInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ConsistencyPolicyResponse) *int { return v.MaxIntervalInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyResponseOutput) MaxStalenessPrefix() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ConsistencyPolicyResponse) *float64 { return v.MaxStalenessPrefix }).(pulumi.Float64PtrOutput)
-}
-
-type ConsistencyPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ConsistencyPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsistencyPolicyResponse)(nil)).Elem()
-}
-
-func (o ConsistencyPolicyResponsePtrOutput) ToConsistencyPolicyResponsePtrOutput() ConsistencyPolicyResponsePtrOutput {
-	return o
-}
-
-func (o ConsistencyPolicyResponsePtrOutput) ToConsistencyPolicyResponsePtrOutputWithContext(ctx context.Context) ConsistencyPolicyResponsePtrOutput {
-	return o
-}
-
-func (o ConsistencyPolicyResponsePtrOutput) Elem() ConsistencyPolicyResponseOutput {
-	return o.ApplyT(func(v *ConsistencyPolicyResponse) ConsistencyPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ConsistencyPolicyResponse
-		return ret
-	}).(ConsistencyPolicyResponseOutput)
-}
-
-// The default consistency level and configuration settings of the Cosmos DB account.
-func (o ConsistencyPolicyResponsePtrOutput) DefaultConsistencyLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConsistencyPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DefaultConsistencyLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyResponsePtrOutput) MaxIntervalInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ConsistencyPolicyResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxIntervalInSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
-func (o ConsistencyPolicyResponsePtrOutput) MaxStalenessPrefix() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ConsistencyPolicyResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MaxStalenessPrefix
-	}).(pulumi.Float64PtrOutput)
-}
-
 // The configuration of the partition key to be used for partitioning data into multiple partitions
 type ContainerPartitionKey struct {
 	// Indicates the kind of algorithm used for partitioning
@@ -2032,7 +1614,7 @@ func (val *ContainerPartitionKey) Defaults() *ContainerPartitionKey {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -2066,7 +1648,7 @@ func (val *ContainerPartitionKeyArgs) Defaults() *ContainerPartitionKeyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		tmp.Kind = pulumi.StringPtr("Hash")
 	}
 	return &tmp
@@ -2234,7 +1816,7 @@ func (val *ContainerPartitionKeyResponse) Defaults() *ContainerPartitionKeyRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -2517,66 +2099,6 @@ func (o ExcludedPathResponseArrayOutput) Index(i pulumi.IntInput) ExcludedPathRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExcludedPathResponse {
 		return vs[0].([]ExcludedPathResponse)[vs[1].(int)]
 	}).(ExcludedPathResponseOutput)
-}
-
-// The failover policy for a given region of a database account.
-type FailoverPolicyResponse struct {
-	// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-	FailoverPriority *int `pulumi:"failoverPriority"`
-	// The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
-	Id string `pulumi:"id"`
-	// The name of the region in which the database account exists.
-	LocationName *string `pulumi:"locationName"`
-}
-
-// The failover policy for a given region of a database account.
-type FailoverPolicyResponseOutput struct{ *pulumi.OutputState }
-
-func (FailoverPolicyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FailoverPolicyResponse)(nil)).Elem()
-}
-
-func (o FailoverPolicyResponseOutput) ToFailoverPolicyResponseOutput() FailoverPolicyResponseOutput {
-	return o
-}
-
-func (o FailoverPolicyResponseOutput) ToFailoverPolicyResponseOutputWithContext(ctx context.Context) FailoverPolicyResponseOutput {
-	return o
-}
-
-// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-func (o FailoverPolicyResponseOutput) FailoverPriority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FailoverPolicyResponse) *int { return v.FailoverPriority }).(pulumi.IntPtrOutput)
-}
-
-// The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
-func (o FailoverPolicyResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v FailoverPolicyResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the region in which the database account exists.
-func (o FailoverPolicyResponseOutput) LocationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FailoverPolicyResponse) *string { return v.LocationName }).(pulumi.StringPtrOutput)
-}
-
-type FailoverPolicyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (FailoverPolicyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FailoverPolicyResponse)(nil)).Elem()
-}
-
-func (o FailoverPolicyResponseArrayOutput) ToFailoverPolicyResponseArrayOutput() FailoverPolicyResponseArrayOutput {
-	return o
-}
-
-func (o FailoverPolicyResponseArrayOutput) ToFailoverPolicyResponseArrayOutputWithContext(ctx context.Context) FailoverPolicyResponseArrayOutput {
-	return o
-}
-
-func (o FailoverPolicyResponseArrayOutput) Index(i pulumi.IntInput) FailoverPolicyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FailoverPolicyResponse {
-		return vs[0].([]FailoverPolicyResponse)[vs[1].(int)]
-	}).(FailoverPolicyResponseOutput)
 }
 
 type GremlinDatabaseGetPropertiesResponseResource struct {
@@ -3258,11 +2780,11 @@ func (val *Indexes) Defaults() *Indexes {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		dataType_ := "String"
 		tmp.DataType = &dataType_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -3296,10 +2818,10 @@ func (val *IndexesArgs) Defaults() *IndexesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		tmp.DataType = pulumi.StringPtr("String")
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		tmp.Kind = pulumi.StringPtr("Hash")
 	}
 	return &tmp
@@ -3407,11 +2929,11 @@ func (val *IndexesResponse) Defaults() *IndexesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataType) {
+	if tmp.DataType == nil {
 		dataType_ := "String"
 		tmp.DataType = &dataType_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "Hash"
 		tmp.Kind = &kind_
 	}
@@ -3490,7 +3012,7 @@ func (val *IndexingPolicy) Defaults() *IndexingPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		indexingMode_ := "Consistent"
 		tmp.IndexingMode = &indexingMode_
 	}
@@ -3530,7 +3052,7 @@ func (val *IndexingPolicyArgs) Defaults() *IndexingPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		tmp.IndexingMode = pulumi.StringPtr("Consistent")
 	}
 	return &tmp
@@ -3749,7 +3271,7 @@ func (val *IndexingPolicyResponse) Defaults() *IndexingPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IndexingMode) {
+	if tmp.IndexingMode == nil {
 		indexingMode_ := "Consistent"
 		tmp.IndexingMode = &indexingMode_
 	}
@@ -3883,205 +3405,6 @@ func (o IndexingPolicyResponsePtrOutput) SpatialIndexes() SpatialSpecResponseArr
 		}
 		return v.SpatialIndexes
 	}).(SpatialSpecResponseArrayOutput)
-}
-
-// A region in which the Azure Cosmos DB database account is deployed.
-type Location struct {
-	// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-	FailoverPriority *int `pulumi:"failoverPriority"`
-	// Flag to indicate whether or not this region is an AvailabilityZone region
-	IsZoneRedundant *bool `pulumi:"isZoneRedundant"`
-	// The name of the region.
-	LocationName *string `pulumi:"locationName"`
-}
-
-// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
-// You can construct a concrete instance of `LocationInput` via:
-//
-//	LocationArgs{...}
-type LocationInput interface {
-	pulumi.Input
-
-	ToLocationOutput() LocationOutput
-	ToLocationOutputWithContext(context.Context) LocationOutput
-}
-
-// A region in which the Azure Cosmos DB database account is deployed.
-type LocationArgs struct {
-	// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-	FailoverPriority pulumi.IntPtrInput `pulumi:"failoverPriority"`
-	// Flag to indicate whether or not this region is an AvailabilityZone region
-	IsZoneRedundant pulumi.BoolPtrInput `pulumi:"isZoneRedundant"`
-	// The name of the region.
-	LocationName pulumi.StringPtrInput `pulumi:"locationName"`
-}
-
-func (LocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (i LocationArgs) ToLocationOutput() LocationOutput {
-	return i.ToLocationOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
-}
-
-// LocationArrayInput is an input type that accepts LocationArray and LocationArrayOutput values.
-// You can construct a concrete instance of `LocationArrayInput` via:
-//
-//	LocationArray{ LocationArgs{...} }
-type LocationArrayInput interface {
-	pulumi.Input
-
-	ToLocationArrayOutput() LocationArrayOutput
-	ToLocationArrayOutputWithContext(context.Context) LocationArrayOutput
-}
-
-type LocationArray []LocationInput
-
-func (LocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Location)(nil)).Elem()
-}
-
-func (i LocationArray) ToLocationArrayOutput() LocationArrayOutput {
-	return i.ToLocationArrayOutputWithContext(context.Background())
-}
-
-func (i LocationArray) ToLocationArrayOutputWithContext(ctx context.Context) LocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationArrayOutput)
-}
-
-// A region in which the Azure Cosmos DB database account is deployed.
-type LocationOutput struct{ *pulumi.OutputState }
-
-func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (o LocationOutput) ToLocationOutput() LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return o
-}
-
-// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-func (o LocationOutput) FailoverPriority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Location) *int { return v.FailoverPriority }).(pulumi.IntPtrOutput)
-}
-
-// Flag to indicate whether or not this region is an AvailabilityZone region
-func (o LocationOutput) IsZoneRedundant() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Location) *bool { return v.IsZoneRedundant }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the region.
-func (o LocationOutput) LocationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.LocationName }).(pulumi.StringPtrOutput)
-}
-
-type LocationArrayOutput struct{ *pulumi.OutputState }
-
-func (LocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Location)(nil)).Elem()
-}
-
-func (o LocationArrayOutput) ToLocationArrayOutput() LocationArrayOutput {
-	return o
-}
-
-func (o LocationArrayOutput) ToLocationArrayOutputWithContext(ctx context.Context) LocationArrayOutput {
-	return o
-}
-
-func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Location {
-		return vs[0].([]Location)[vs[1].(int)]
-	}).(LocationOutput)
-}
-
-// A region in which the Azure Cosmos DB database account is deployed.
-type LocationResponse struct {
-	// The connection endpoint for the specific region. Example: https://&lt;accountName&gt;-&lt;locationName&gt;.documents.azure.com:443/
-	DocumentEndpoint string `pulumi:"documentEndpoint"`
-	// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-	FailoverPriority *int `pulumi:"failoverPriority"`
-	// The unique identifier of the region within the database account. Example: &lt;accountName&gt;-&lt;locationName&gt;.
-	Id string `pulumi:"id"`
-	// Flag to indicate whether or not this region is an AvailabilityZone region
-	IsZoneRedundant *bool `pulumi:"isZoneRedundant"`
-	// The name of the region.
-	LocationName *string `pulumi:"locationName"`
-	// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// A region in which the Azure Cosmos DB database account is deployed.
-type LocationResponseOutput struct{ *pulumi.OutputState }
-
-func (LocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
-	return o
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
-	return o
-}
-
-// The connection endpoint for the specific region. Example: https://&lt;accountName&gt;-&lt;locationName&gt;.documents.azure.com:443/
-func (o LocationResponseOutput) DocumentEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v LocationResponse) string { return v.DocumentEndpoint }).(pulumi.StringOutput)
-}
-
-// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-func (o LocationResponseOutput) FailoverPriority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *int { return v.FailoverPriority }).(pulumi.IntPtrOutput)
-}
-
-// The unique identifier of the region within the database account. Example: &lt;accountName&gt;-&lt;locationName&gt;.
-func (o LocationResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LocationResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Flag to indicate whether or not this region is an AvailabilityZone region
-func (o LocationResponseOutput) IsZoneRedundant() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *bool { return v.IsZoneRedundant }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the region.
-func (o LocationResponseOutput) LocationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.LocationName }).(pulumi.StringPtrOutput)
-}
-
-// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-func (o LocationResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LocationResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-type LocationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LocationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponseArrayOutput) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
-	return o
-}
-
-func (o LocationResponseArrayOutput) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
-	return o
-}
-
-func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationResponse {
-		return vs[0].([]LocationResponse)[vs[1].(int)]
-	}).(LocationResponseOutput)
 }
 
 type MongoDBCollectionGetPropertiesResponseResource struct {
@@ -6886,168 +6209,6 @@ func (o UniqueKeyResponseArrayOutput) Index(i pulumi.IntInput) UniqueKeyResponse
 	}).(UniqueKeyResponseOutput)
 }
 
-// Virtual Network ACL Rule object
-type VirtualNetworkRule struct {
-	// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
-	Id *string `pulumi:"id"`
-	// Create firewall rule before the virtual network has vnet service endpoint enabled.
-	IgnoreMissingVNetServiceEndpoint *bool `pulumi:"ignoreMissingVNetServiceEndpoint"`
-}
-
-// VirtualNetworkRuleInput is an input type that accepts VirtualNetworkRuleArgs and VirtualNetworkRuleOutput values.
-// You can construct a concrete instance of `VirtualNetworkRuleInput` via:
-//
-//	VirtualNetworkRuleArgs{...}
-type VirtualNetworkRuleInput interface {
-	pulumi.Input
-
-	ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput
-	ToVirtualNetworkRuleOutputWithContext(context.Context) VirtualNetworkRuleOutput
-}
-
-// Virtual Network ACL Rule object
-type VirtualNetworkRuleArgs struct {
-	// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Create firewall rule before the virtual network has vnet service endpoint enabled.
-	IgnoreMissingVNetServiceEndpoint pulumi.BoolPtrInput `pulumi:"ignoreMissingVNetServiceEndpoint"`
-}
-
-func (VirtualNetworkRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkRule)(nil)).Elem()
-}
-
-func (i VirtualNetworkRuleArgs) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {
-	return i.ToVirtualNetworkRuleOutputWithContext(context.Background())
-}
-
-func (i VirtualNetworkRuleArgs) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
-}
-
-// VirtualNetworkRuleArrayInput is an input type that accepts VirtualNetworkRuleArray and VirtualNetworkRuleArrayOutput values.
-// You can construct a concrete instance of `VirtualNetworkRuleArrayInput` via:
-//
-//	VirtualNetworkRuleArray{ VirtualNetworkRuleArgs{...} }
-type VirtualNetworkRuleArrayInput interface {
-	pulumi.Input
-
-	ToVirtualNetworkRuleArrayOutput() VirtualNetworkRuleArrayOutput
-	ToVirtualNetworkRuleArrayOutputWithContext(context.Context) VirtualNetworkRuleArrayOutput
-}
-
-type VirtualNetworkRuleArray []VirtualNetworkRuleInput
-
-func (VirtualNetworkRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualNetworkRule)(nil)).Elem()
-}
-
-func (i VirtualNetworkRuleArray) ToVirtualNetworkRuleArrayOutput() VirtualNetworkRuleArrayOutput {
-	return i.ToVirtualNetworkRuleArrayOutputWithContext(context.Background())
-}
-
-func (i VirtualNetworkRuleArray) ToVirtualNetworkRuleArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleArrayOutput)
-}
-
-// Virtual Network ACL Rule object
-type VirtualNetworkRuleOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkRule)(nil)).Elem()
-}
-
-func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {
-	return o
-}
-
-func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
-	return o
-}
-
-// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
-func (o VirtualNetworkRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkRule) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Create firewall rule before the virtual network has vnet service endpoint enabled.
-func (o VirtualNetworkRuleOutput) IgnoreMissingVNetServiceEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkRule) *bool { return v.IgnoreMissingVNetServiceEndpoint }).(pulumi.BoolPtrOutput)
-}
-
-type VirtualNetworkRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualNetworkRule)(nil)).Elem()
-}
-
-func (o VirtualNetworkRuleArrayOutput) ToVirtualNetworkRuleArrayOutput() VirtualNetworkRuleArrayOutput {
-	return o
-}
-
-func (o VirtualNetworkRuleArrayOutput) ToVirtualNetworkRuleArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleArrayOutput {
-	return o
-}
-
-func (o VirtualNetworkRuleArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkRule {
-		return vs[0].([]VirtualNetworkRule)[vs[1].(int)]
-	}).(VirtualNetworkRuleOutput)
-}
-
-// Virtual Network ACL Rule object
-type VirtualNetworkRuleResponse struct {
-	// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
-	Id *string `pulumi:"id"`
-	// Create firewall rule before the virtual network has vnet service endpoint enabled.
-	IgnoreMissingVNetServiceEndpoint *bool `pulumi:"ignoreMissingVNetServiceEndpoint"`
-}
-
-// Virtual Network ACL Rule object
-type VirtualNetworkRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkRuleResponse)(nil)).Elem()
-}
-
-func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutput() VirtualNetworkRuleResponseOutput {
-	return o
-}
-
-func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseOutput {
-	return o
-}
-
-// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
-func (o VirtualNetworkRuleResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Create firewall rule before the virtual network has vnet service endpoint enabled.
-func (o VirtualNetworkRuleResponseOutput) IgnoreMissingVNetServiceEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkRuleResponse) *bool { return v.IgnoreMissingVNetServiceEndpoint }).(pulumi.BoolPtrOutput)
-}
-
-type VirtualNetworkRuleResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkRuleResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualNetworkRuleResponse)(nil)).Elem()
-}
-
-func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArrayOutput() VirtualNetworkRuleResponseArrayOutput {
-	return o
-}
-
-func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseArrayOutput {
-	return o
-}
-
-func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkRuleResponse {
-		return vs[0].([]VirtualNetworkRuleResponse)[vs[1].(int)]
-	}).(VirtualNetworkRuleResponseOutput)
-}
-
 type CompositePathArrayArray []CompositePathArrayInput
 
 func (CompositePathArrayArray) ElementType() reflect.Type {
@@ -7114,10 +6275,6 @@ func (o CompositePathResponseArrayArrayOutput) Index(i pulumi.IntInput) Composit
 }
 
 func init() {
-	pulumi.RegisterOutputType(CapabilityOutput{})
-	pulumi.RegisterOutputType(CapabilityArrayOutput{})
-	pulumi.RegisterOutputType(CapabilityResponseOutput{})
-	pulumi.RegisterOutputType(CapabilityResponseArrayOutput{})
 	pulumi.RegisterOutputType(CassandraKeyspaceGetPropertiesResponseResourceOutput{})
 	pulumi.RegisterOutputType(CassandraKeyspaceGetPropertiesResponseResourcePtrOutput{})
 	pulumi.RegisterOutputType(CassandraKeyspaceResourceOutput{})
@@ -7148,10 +6305,6 @@ func init() {
 	pulumi.RegisterOutputType(ConflictResolutionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ConflictResolutionPolicyResponseOutput{})
 	pulumi.RegisterOutputType(ConflictResolutionPolicyResponsePtrOutput{})
-	pulumi.RegisterOutputType(ConsistencyPolicyOutput{})
-	pulumi.RegisterOutputType(ConsistencyPolicyPtrOutput{})
-	pulumi.RegisterOutputType(ConsistencyPolicyResponseOutput{})
-	pulumi.RegisterOutputType(ConsistencyPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyResponseOutput{})
@@ -7162,8 +6315,6 @@ func init() {
 	pulumi.RegisterOutputType(ExcludedPathArrayOutput{})
 	pulumi.RegisterOutputType(ExcludedPathResponseOutput{})
 	pulumi.RegisterOutputType(ExcludedPathResponseArrayOutput{})
-	pulumi.RegisterOutputType(FailoverPolicyResponseOutput{})
-	pulumi.RegisterOutputType(FailoverPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GremlinDatabaseGetPropertiesResponseResourceOutput{})
 	pulumi.RegisterOutputType(GremlinDatabaseGetPropertiesResponseResourcePtrOutput{})
 	pulumi.RegisterOutputType(GremlinDatabaseResourceOutput{})
@@ -7182,10 +6333,6 @@ func init() {
 	pulumi.RegisterOutputType(IndexingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IndexingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(IndexingPolicyResponsePtrOutput{})
-	pulumi.RegisterOutputType(LocationOutput{})
-	pulumi.RegisterOutputType(LocationArrayOutput{})
-	pulumi.RegisterOutputType(LocationResponseOutput{})
-	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(MongoDBCollectionGetPropertiesResponseResourceOutput{})
 	pulumi.RegisterOutputType(MongoDBCollectionGetPropertiesResponseResourcePtrOutput{})
 	pulumi.RegisterOutputType(MongoDBCollectionResourceOutput{})
@@ -7234,10 +6381,6 @@ func init() {
 	pulumi.RegisterOutputType(UniqueKeyPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(UniqueKeyResponseOutput{})
 	pulumi.RegisterOutputType(UniqueKeyResponseArrayOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkRuleOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkRuleArrayOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkRuleResponseOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(CompositePathArrayArrayOutput{})
 	pulumi.RegisterOutputType(CompositePathResponseArrayArrayOutput{})
 }

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about managed application.
-//
-// Deprecated: Version 2017-12-01 will be removed in v2 of the provider.
 type Application struct {
 	pulumi.CustomResourceState
 

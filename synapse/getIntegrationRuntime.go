@@ -11,7 +11,7 @@ import (
 )
 
 // Get an integration runtime
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
 	var rv LookupIntegrationRuntimeResult
 	err := ctx.Invoke("azure-native:synapse:getIntegrationRuntime", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,9 +76,6 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("EventHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:synapse:EventHubDataConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210401preview:EventHubDataConnection"),
 		},

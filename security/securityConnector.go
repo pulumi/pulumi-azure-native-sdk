@@ -7,21 +7,26 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The security connector resource.
-// API Version: 2021-07-01-preview.
+// API Version: 2022-08-01-preview.
+// Previous API Version: 2021-07-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type SecurityConnector struct {
 	pulumi.CustomResourceState
 
+	// The security connector environment data.
+	EnvironmentData pulumi.AnyOutput `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
-	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
+	EnvironmentName pulumi.StringPtrOutput `pulumi:"environmentName"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// The multi cloud resource identifier (account id in case of AWS connector).
+	// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 	HierarchyIdentifier pulumi.StringPtrOutput `pulumi:"hierarchyIdentifier"`
+	// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
+	HierarchyIdentifierTrialEndDate pulumi.StringOutput `pulumi:"hierarchyIdentifierTrialEndDate"`
 	// Kind of the resource
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Location where the resource is stored
@@ -30,8 +35,6 @@ type SecurityConnector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A collection of offerings for the security connector.
 	Offerings pulumi.ArrayOutput `pulumi:"offerings"`
-	// The multi cloud account's organizational data
-	OrganizationalData SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput `pulumi:"organizationalData"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
@@ -62,6 +65,9 @@ func NewSecurityConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20220801preview:SecurityConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20230301preview:SecurityConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -97,9 +103,11 @@ func (SecurityConnectorState) ElementType() reflect.Type {
 }
 
 type securityConnectorArgs struct {
+	// The security connector environment data.
+	EnvironmentData interface{} `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
-	CloudName *string `pulumi:"cloudName"`
-	// The multi cloud resource identifier (account id in case of AWS connector).
+	EnvironmentName *string `pulumi:"environmentName"`
+	// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 	HierarchyIdentifier *string `pulumi:"hierarchyIdentifier"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
@@ -107,8 +115,6 @@ type securityConnectorArgs struct {
 	Location *string `pulumi:"location"`
 	// A collection of offerings for the security connector.
 	Offerings []interface{} `pulumi:"offerings"`
-	// The multi cloud account's organizational data
-	OrganizationalData *SecurityConnectorPropertiesOrganizationalData `pulumi:"organizationalData"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security connector name.
@@ -119,9 +125,11 @@ type securityConnectorArgs struct {
 
 // The set of arguments for constructing a SecurityConnector resource.
 type SecurityConnectorArgs struct {
+	// The security connector environment data.
+	EnvironmentData pulumi.Input
 	// The multi cloud resource's cloud name.
-	CloudName pulumi.StringPtrInput
-	// The multi cloud resource identifier (account id in case of AWS connector).
+	EnvironmentName pulumi.StringPtrInput
+	// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 	HierarchyIdentifier pulumi.StringPtrInput
 	// Kind of the resource
 	Kind pulumi.StringPtrInput
@@ -129,8 +137,6 @@ type SecurityConnectorArgs struct {
 	Location pulumi.StringPtrInput
 	// A collection of offerings for the security connector.
 	Offerings pulumi.ArrayInput
-	// The multi cloud account's organizational data
-	OrganizationalData SecurityConnectorPropertiesOrganizationalDataPtrInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The security connector name.
@@ -176,9 +182,14 @@ func (o SecurityConnectorOutput) ToSecurityConnectorOutputWithContext(ctx contex
 	return o
 }
 
+// The security connector environment data.
+func (o SecurityConnectorOutput) EnvironmentData() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SecurityConnector) pulumi.AnyOutput { return v.EnvironmentData }).(pulumi.AnyOutput)
+}
+
 // The multi cloud resource's cloud name.
-func (o SecurityConnectorOutput) CloudName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnector) pulumi.StringPtrOutput { return v.CloudName }).(pulumi.StringPtrOutput)
+func (o SecurityConnectorOutput) EnvironmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityConnector) pulumi.StringPtrOutput { return v.EnvironmentName }).(pulumi.StringPtrOutput)
 }
 
 // Entity tag is used for comparing two or more entities from the same requested resource.
@@ -186,9 +197,14 @@ func (o SecurityConnectorOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// The multi cloud resource identifier (account id in case of AWS connector).
+// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 func (o SecurityConnectorOutput) HierarchyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringPtrOutput { return v.HierarchyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
+func (o SecurityConnectorOutput) HierarchyIdentifierTrialEndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityConnector) pulumi.StringOutput { return v.HierarchyIdentifierTrialEndDate }).(pulumi.StringOutput)
 }
 
 // Kind of the resource
@@ -209,13 +225,6 @@ func (o SecurityConnectorOutput) Name() pulumi.StringOutput {
 // A collection of offerings for the security connector.
 func (o SecurityConnectorOutput) Offerings() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.ArrayOutput { return v.Offerings }).(pulumi.ArrayOutput)
-}
-
-// The multi cloud account's organizational data
-func (o SecurityConnectorOutput) OrganizationalData() SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
-	return o.ApplyT(func(v *SecurityConnector) SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
-		return v.OrganizationalData
-	}).(SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

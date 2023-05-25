@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +58,9 @@ func NewContainerAppsAuthConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ContainerAppsAuthConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ContainerAppsAuthConfig"),
 		},
 	})
 	opts = append(opts, aliases)

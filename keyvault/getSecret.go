@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified secret.  NOTE: This API is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
-// API Version: 2019-09-01.
+// API Version: 2023-02-01.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	var rv LookupSecretResult
 	err := ctx.Invoke("azure-native:keyvault:getSecret", args, &rv, opts...)

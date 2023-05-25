@@ -3,97 +3,6 @@
 
 package v20160330
 
-// Gets or sets the cookie affinity
-type ApplicationGatewayCookieBasedAffinity string
-
-const (
-	ApplicationGatewayCookieBasedAffinityEnabled  = ApplicationGatewayCookieBasedAffinity("Enabled")
-	ApplicationGatewayCookieBasedAffinityDisabled = ApplicationGatewayCookieBasedAffinity("Disabled")
-)
-
-// Gets or sets the protocol
-type ApplicationGatewayProtocol string
-
-const (
-	ApplicationGatewayProtocolHttp  = ApplicationGatewayProtocol("Http")
-	ApplicationGatewayProtocolHttps = ApplicationGatewayProtocol("Https")
-)
-
-// Gets or sets the rule type
-type ApplicationGatewayRequestRoutingRuleType string
-
-const (
-	ApplicationGatewayRequestRoutingRuleTypeBasic            = ApplicationGatewayRequestRoutingRuleType("Basic")
-	ApplicationGatewayRequestRoutingRuleTypePathBasedRouting = ApplicationGatewayRequestRoutingRuleType("PathBasedRouting")
-)
-
-// Gets or sets name of application gateway SKU
-type ApplicationGatewaySkuName string
-
-const (
-	ApplicationGatewaySkuName_Standard_Small  = ApplicationGatewaySkuName("Standard_Small")
-	ApplicationGatewaySkuName_Standard_Medium = ApplicationGatewaySkuName("Standard_Medium")
-	ApplicationGatewaySkuName_Standard_Large  = ApplicationGatewaySkuName("Standard_Large")
-)
-
-// Gets or sets tier of application gateway
-type ApplicationGatewayTier string
-
-const (
-	ApplicationGatewayTierStandard = ApplicationGatewayTier("Standard")
-)
-
-// Gets or sets AuthorizationUseStatus
-type AuthorizationUseStatus string
-
-const (
-	AuthorizationUseStatusAvailable = AuthorizationUseStatus("Available")
-	AuthorizationUseStatusInUse     = AuthorizationUseStatus("InUse")
-)
-
-// Gets or sets AdvertisedPublicPrefixState of the Peering resource
-type ExpressRouteCircuitPeeringAdvertisedPublicPrefixState string
-
-const (
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateNotConfigured    = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("NotConfigured")
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateConfiguring      = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("Configuring")
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateConfigured       = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("Configured")
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateValidationNeeded = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("ValidationNeeded")
-)
-
-// Gets or sets state of Peering
-type ExpressRouteCircuitPeeringStateEnum string
-
-const (
-	ExpressRouteCircuitPeeringStateEnumDisabled = ExpressRouteCircuitPeeringStateEnum("Disabled")
-	ExpressRouteCircuitPeeringStateEnumEnabled  = ExpressRouteCircuitPeeringStateEnum("Enabled")
-)
-
-// Gets or sets PeeringType
-type ExpressRouteCircuitPeeringTypeEnum string
-
-const (
-	ExpressRouteCircuitPeeringTypeEnumAzurePublicPeering  = ExpressRouteCircuitPeeringTypeEnum("AzurePublicPeering")
-	ExpressRouteCircuitPeeringTypeEnumAzurePrivatePeering = ExpressRouteCircuitPeeringTypeEnum("AzurePrivatePeering")
-	ExpressRouteCircuitPeeringTypeEnumMicrosoftPeering    = ExpressRouteCircuitPeeringTypeEnum("MicrosoftPeering")
-)
-
-// Gets or sets family of the sku.
-type ExpressRouteCircuitSkuFamily string
-
-const (
-	ExpressRouteCircuitSkuFamilyUnlimitedData = ExpressRouteCircuitSkuFamily("UnlimitedData")
-	ExpressRouteCircuitSkuFamilyMeteredData   = ExpressRouteCircuitSkuFamily("MeteredData")
-)
-
-// Gets or sets tier of the sku.
-type ExpressRouteCircuitSkuTier string
-
-const (
-	ExpressRouteCircuitSkuTierStandard = ExpressRouteCircuitSkuTier("Standard")
-	ExpressRouteCircuitSkuTierPremium  = ExpressRouteCircuitSkuTier("Premium")
-)
-
 // Gets or sets PrivateIP allocation method (Static/Dynamic)
 type IPAllocationMethod string
 
@@ -108,23 +17,6 @@ type IPVersion string
 const (
 	IPVersionIPv4 = IPVersion("IPv4")
 	IPVersionIPv6 = IPVersion("IPv6")
-)
-
-// Gets or sets the load distribution policy for this rule
-type LoadDistribution string
-
-const (
-	LoadDistributionDefault          = LoadDistribution("Default")
-	LoadDistributionSourceIP         = LoadDistribution("SourceIP")
-	LoadDistributionSourceIPProtocol = LoadDistribution("SourceIPProtocol")
-)
-
-// Gets or sets the protocol of the end point. Possible values are http pr Tcp. If Tcp is specified, a received ACK is required for the probe to be successful. If http is specified,a 200 OK response from the specifies URI is required for the probe to be successful
-type ProbeProtocol string
-
-const (
-	ProbeProtocolHttp = ProbeProtocol("Http")
-	ProbeProtocolTcp  = ProbeProtocol("Tcp")
 )
 
 // Gets or sets the type of Azure hop the packet should be sent to.
@@ -163,76 +55,12 @@ const (
 	SecurityRuleProtocolAsterisk = SecurityRuleProtocol("*")
 )
 
-// Gets or sets ServiceProviderProvisioningState state of the resource
-type ServiceProviderProvisioningState string
-
-const (
-	ServiceProviderProvisioningStateNotProvisioned = ServiceProviderProvisioningState("NotProvisioned")
-	ServiceProviderProvisioningStateProvisioning   = ServiceProviderProvisioningState("Provisioning")
-	ServiceProviderProvisioningStateProvisioned    = ServiceProviderProvisioningState("Provisioned")
-	ServiceProviderProvisioningStateDeprovisioning = ServiceProviderProvisioningState("Deprovisioning")
-)
-
 // Gets or sets the transport protocol for the external endpoint. Possible values are Udp or Tcp
 type TransportProtocol string
 
 const (
 	TransportProtocolUdp = TransportProtocol("Udp")
 	TransportProtocolTcp = TransportProtocol("Tcp")
-)
-
-// Virtual network Gateway connection status
-type VirtualNetworkGatewayConnectionStatus string
-
-const (
-	VirtualNetworkGatewayConnectionStatusUnknown      = VirtualNetworkGatewayConnectionStatus("Unknown")
-	VirtualNetworkGatewayConnectionStatusConnecting   = VirtualNetworkGatewayConnectionStatus("Connecting")
-	VirtualNetworkGatewayConnectionStatusConnected    = VirtualNetworkGatewayConnectionStatus("Connected")
-	VirtualNetworkGatewayConnectionStatusNotConnected = VirtualNetworkGatewayConnectionStatus("NotConnected")
-)
-
-// Gateway connection type IPsec/Dedicated/VpnClient/Vnet2Vnet
-type VirtualNetworkGatewayConnectionType string
-
-const (
-	VirtualNetworkGatewayConnectionTypeIPsec        = VirtualNetworkGatewayConnectionType("IPsec")
-	VirtualNetworkGatewayConnectionTypeVnet2Vnet    = VirtualNetworkGatewayConnectionType("Vnet2Vnet")
-	VirtualNetworkGatewayConnectionTypeExpressRoute = VirtualNetworkGatewayConnectionType("ExpressRoute")
-	VirtualNetworkGatewayConnectionTypeVPNClient    = VirtualNetworkGatewayConnectionType("VPNClient")
-)
-
-// Gateway sku name -Basic/HighPerformance/Standard
-type VirtualNetworkGatewaySkuName string
-
-const (
-	VirtualNetworkGatewaySkuNameBasic           = VirtualNetworkGatewaySkuName("Basic")
-	VirtualNetworkGatewaySkuNameHighPerformance = VirtualNetworkGatewaySkuName("HighPerformance")
-	VirtualNetworkGatewaySkuNameStandard        = VirtualNetworkGatewaySkuName("Standard")
-)
-
-// Gateway sku tier -Basic/HighPerformance/Standard
-type VirtualNetworkGatewaySkuTier string
-
-const (
-	VirtualNetworkGatewaySkuTierBasic           = VirtualNetworkGatewaySkuTier("Basic")
-	VirtualNetworkGatewaySkuTierHighPerformance = VirtualNetworkGatewaySkuTier("HighPerformance")
-	VirtualNetworkGatewaySkuTierStandard        = VirtualNetworkGatewaySkuTier("Standard")
-)
-
-// The type of this virtual network gateway.
-type VirtualNetworkGatewayTypeEnum string
-
-const (
-	VirtualNetworkGatewayTypeEnumVpn          = VirtualNetworkGatewayTypeEnum("Vpn")
-	VirtualNetworkGatewayTypeEnumExpressRoute = VirtualNetworkGatewayTypeEnum("ExpressRoute")
-)
-
-// The type of this virtual network gateway.
-type VpnType string
-
-const (
-	VpnTypePolicyBased = VpnType("PolicyBased")
-	VpnTypeRouteBased  = VpnType("RouteBased")
 )
 
 func init() {

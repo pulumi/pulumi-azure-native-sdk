@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,7 +52,13 @@ func NewWebPubSubCustomCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:webpubsub:WebPubSubCustomCertificate"),
+		},
+		{
 			Type: pulumi.String("azure-native:webpubsub/v20220801preview:WebPubSubCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230301preview:WebPubSubCustomCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

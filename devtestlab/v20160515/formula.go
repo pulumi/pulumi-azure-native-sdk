@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A formula for creating a VM, specifying an image base and other parameters
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 type Formula struct {
 	pulumi.CustomResourceState
 

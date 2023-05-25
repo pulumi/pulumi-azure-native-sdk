@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:dbforpostgresql/v20210615privatepreview:Configuration":
-		r = &Configuration{}
-	case "azure-native:dbforpostgresql/v20210615privatepreview:FirewallRule":
-		r = &FirewallRule{}
 	case "azure-native:dbforpostgresql/v20210615privatepreview:Migration":
 		r = &Migration{}
 	case "azure-native:dbforpostgresql/v20210615privatepreview:Server":

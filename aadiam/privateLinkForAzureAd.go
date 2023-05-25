@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // PrivateLink Policy configuration object.
 // API Version: 2020-03-01.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type PrivateLinkForAzureAd struct {
 	pulumi.CustomResourceState
 
@@ -48,7 +49,16 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:aadiam:privateLinkForAzureAd"),
+		},
+		{
+			Type: pulumi.String("azure-native:aadiam/v20200301:PrivateLinkForAzureAd"),
+		},
+		{
 			Type: pulumi.String("azure-native:aadiam/v20200301:privateLinkForAzureAd"),
+		},
+		{
+			Type: pulumi.String("azure-native:aadiam/v20200301preview:PrivateLinkForAzureAd"),
 		},
 		{
 			Type: pulumi.String("azure-native:aadiam/v20200301preview:privateLinkForAzureAd"),
@@ -56,7 +66,7 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkForAzureAd
-	err := ctx.RegisterResource("azure-native:aadiam:privateLinkForAzureAd", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:aadiam:PrivateLinkForAzureAd", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +78,7 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 func GetPrivateLinkForAzureAd(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkForAzureAdState, opts ...pulumi.ResourceOption) (*PrivateLinkForAzureAd, error) {
 	var resource PrivateLinkForAzureAd
-	err := ctx.ReadResource("azure-native:aadiam:privateLinkForAzureAd", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:aadiam:PrivateLinkForAzureAd", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

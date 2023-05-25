@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a catalog.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Catalog struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type Catalog struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The synchronization state of the catalog.
+	SyncState pulumi.StringOutput `pulumi:"syncState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -57,6 +60,12 @@ func NewCatalog(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Catalog"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Catalog"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:Catalog"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -100,7 +109,7 @@ type catalogArgs struct {
 	DevCenterName string `pulumi:"devCenterName"`
 	// Properties for a GitHub catalog type.
 	GitHub *GitCatalog `pulumi:"gitHub"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -114,7 +123,7 @@ type CatalogArgs struct {
 	DevCenterName pulumi.StringInput
 	// Properties for a GitHub catalog type.
 	GitHub GitCatalogPtrInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -178,6 +187,11 @@ func (o CatalogOutput) Name() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o CatalogOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The synchronization state of the catalog.
+func (o CatalogOutput) SyncState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.SyncState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

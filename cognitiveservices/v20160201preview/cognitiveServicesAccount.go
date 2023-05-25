@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cognitive Services Account is an Azure resource representing the provisioned account, its type, location and SKU.
-//
-// Deprecated: Version 2016-02-01-preview will be removed in v2 of the provider.
 type CognitiveServicesAccount struct {
 	pulumi.CustomResourceState
 

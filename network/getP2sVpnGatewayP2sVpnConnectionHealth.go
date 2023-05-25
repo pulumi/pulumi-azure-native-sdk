@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the connection health of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func GetP2sVpnGatewayP2sVpnConnectionHealth(ctx *pulumi.Context, args *GetP2sVpnGatewayP2sVpnConnectionHealthArgs, opts ...pulumi.InvokeOption) (*GetP2sVpnGatewayP2sVpnConnectionHealthResult, error) {
 	var rv GetP2sVpnGatewayP2sVpnConnectionHealthResult
 	err := ctx.Invoke("azure-native:network:getP2sVpnGatewayP2sVpnConnectionHealth", args, &rv, opts...)

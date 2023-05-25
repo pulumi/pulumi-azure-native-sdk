@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,10 +46,16 @@ func NewRouteMap(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:network:RouteMap"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20220501:RouteMap"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:RouteMap"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteMap"),
 		},
 	})
 	opts = append(opts, aliases)

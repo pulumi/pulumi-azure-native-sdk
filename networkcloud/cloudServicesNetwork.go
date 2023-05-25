@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +16,7 @@ import (
 // of the same layer 2 (L2) isolation domain. At least one service network must be created but may be reused across many
 // virtual machines and/or Hybrid AKS clusters.
 // API Version: 2022-12-12-preview.
+// Previous API Version: 2022-12-12-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type CloudServicesNetwork struct {
 	pulumi.CustomResourceState
 
@@ -66,7 +67,7 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.EnableDefaultEgressEndpoints) {
+	if args.EnableDefaultEgressEndpoints == nil {
 		args.EnableDefaultEgressEndpoints = pulumi.StringPtr("True")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

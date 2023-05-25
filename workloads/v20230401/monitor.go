@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,10 +61,22 @@ func NewMonitor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:workloads/v20230401:monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads:Monitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:workloads:monitor"),
 		},
 		{
+			Type: pulumi.String("azure-native:workloads/v20211201preview:Monitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20221101preview:Monitor"),
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20221101preview:monitor"),
@@ -72,7 +84,7 @@ func NewMonitor(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource Monitor
-	err := ctx.RegisterResource("azure-native:workloads/v20230401:monitor", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:workloads/v20230401:Monitor", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +96,7 @@ func NewMonitor(ctx *pulumi.Context,
 func GetMonitor(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MonitorState, opts ...pulumi.ResourceOption) (*Monitor, error) {
 	var resource Monitor
-	err := ctx.ReadResource("azure-native:workloads/v20230401:monitor", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:workloads/v20230401:Monitor", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

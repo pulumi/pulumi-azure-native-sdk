@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A workspace
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -20,12 +21,14 @@ type Workspace struct {
 	AdlaResourceId pulumi.StringOutput `pulumi:"adlaResourceId"`
 	// Connectivity endpoints
 	ConnectivityEndpoints pulumi.StringMapOutput `pulumi:"connectivityEndpoints"`
+	// Initial workspace AAD admin properties for a CSP subscription
+	CspWorkspaceAdminProperties CspWorkspaceAdminPropertiesResponsePtrOutput `pulumi:"cspWorkspaceAdminProperties"`
 	// Workspace default data lake storage account details
 	DefaultDataLakeStorage DataLakeStorageAccountDetailsResponsePtrOutput `pulumi:"defaultDataLakeStorage"`
 	// The encryption details of the workspace
 	Encryption EncryptionDetailsResponsePtrOutput `pulumi:"encryption"`
 	// Workspace level configs and feature flags
-	ExtraProperties pulumi.MapOutput `pulumi:"extraProperties"`
+	ExtraProperties pulumi.AnyOutput `pulumi:"extraProperties"`
 	// Identity of the workspace
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -46,12 +49,16 @@ type Workspace struct {
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Purview Configuration
 	PurviewConfiguration PurviewConfigurationResponsePtrOutput `pulumi:"purviewConfiguration"`
+	// Workspace settings
+	Settings pulumi.MapOutput `pulumi:"settings"`
 	// Login for workspace SQL active directory administrator
 	SqlAdministratorLogin pulumi.StringPtrOutput `pulumi:"sqlAdministratorLogin"`
 	// SQL administrator login password
 	SqlAdministratorLoginPassword pulumi.StringPtrOutput `pulumi:"sqlAdministratorLoginPassword"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Is trustedServiceBypassEnabled for the workspace
+	TrustedServiceBypassEnabled pulumi.BoolPtrOutput `pulumi:"trustedServiceBypassEnabled"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Virtual Network profile
@@ -71,6 +78,12 @@ func NewWorkspace(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.PublicNetworkAccess == nil {
+		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
+	if args.TrustedServiceBypassEnabled == nil {
+		args.TrustedServiceBypassEnabled = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -128,8 +141,10 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
-	// Connectivity endpoints
-	ConnectivityEndpoints map[string]string `pulumi:"connectivityEndpoints"`
+	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
+	AzureADOnlyAuthentication *bool `pulumi:"azureADOnlyAuthentication"`
+	// Initial workspace AAD admin properties for a CSP subscription
+	CspWorkspaceAdminProperties *CspWorkspaceAdminProperties `pulumi:"cspWorkspaceAdminProperties"`
 	// Workspace default data lake storage account details
 	DefaultDataLakeStorage *DataLakeStorageAccountDetails `pulumi:"defaultDataLakeStorage"`
 	// The encryption details of the workspace
@@ -158,9 +173,11 @@ type workspaceArgs struct {
 	SqlAdministratorLoginPassword *string `pulumi:"sqlAdministratorLoginPassword"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Is trustedServiceBypassEnabled for the workspace
+	TrustedServiceBypassEnabled *bool `pulumi:"trustedServiceBypassEnabled"`
 	// Virtual Network profile
 	VirtualNetworkProfile *VirtualNetworkProfile `pulumi:"virtualNetworkProfile"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName *string `pulumi:"workspaceName"`
 	// Git integration settings
 	WorkspaceRepositoryConfiguration *WorkspaceRepositoryConfiguration `pulumi:"workspaceRepositoryConfiguration"`
@@ -168,8 +185,10 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
-	// Connectivity endpoints
-	ConnectivityEndpoints pulumi.StringMapInput
+	// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
+	AzureADOnlyAuthentication pulumi.BoolPtrInput
+	// Initial workspace AAD admin properties for a CSP subscription
+	CspWorkspaceAdminProperties CspWorkspaceAdminPropertiesPtrInput
 	// Workspace default data lake storage account details
 	DefaultDataLakeStorage DataLakeStorageAccountDetailsPtrInput
 	// The encryption details of the workspace
@@ -198,9 +217,11 @@ type WorkspaceArgs struct {
 	SqlAdministratorLoginPassword pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Is trustedServiceBypassEnabled for the workspace
+	TrustedServiceBypassEnabled pulumi.BoolPtrInput
 	// Virtual Network profile
 	VirtualNetworkProfile VirtualNetworkProfilePtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringPtrInput
 	// Git integration settings
 	WorkspaceRepositoryConfiguration WorkspaceRepositoryConfigurationPtrInput
@@ -253,6 +274,11 @@ func (o WorkspaceOutput) ConnectivityEndpoints() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.ConnectivityEndpoints }).(pulumi.StringMapOutput)
 }
 
+// Initial workspace AAD admin properties for a CSP subscription
+func (o WorkspaceOutput) CspWorkspaceAdminProperties() CspWorkspaceAdminPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) CspWorkspaceAdminPropertiesResponsePtrOutput { return v.CspWorkspaceAdminProperties }).(CspWorkspaceAdminPropertiesResponsePtrOutput)
+}
+
 // Workspace default data lake storage account details
 func (o WorkspaceOutput) DefaultDataLakeStorage() DataLakeStorageAccountDetailsResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) DataLakeStorageAccountDetailsResponsePtrOutput { return v.DefaultDataLakeStorage }).(DataLakeStorageAccountDetailsResponsePtrOutput)
@@ -264,8 +290,8 @@ func (o WorkspaceOutput) Encryption() EncryptionDetailsResponsePtrOutput {
 }
 
 // Workspace level configs and feature flags
-func (o WorkspaceOutput) ExtraProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.MapOutput { return v.ExtraProperties }).(pulumi.MapOutput)
+func (o WorkspaceOutput) ExtraProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.AnyOutput { return v.ExtraProperties }).(pulumi.AnyOutput)
 }
 
 // Identity of the workspace
@@ -320,6 +346,11 @@ func (o WorkspaceOutput) PurviewConfiguration() PurviewConfigurationResponsePtrO
 	return o.ApplyT(func(v *Workspace) PurviewConfigurationResponsePtrOutput { return v.PurviewConfiguration }).(PurviewConfigurationResponsePtrOutput)
 }
 
+// Workspace settings
+func (o WorkspaceOutput) Settings() pulumi.MapOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.MapOutput { return v.Settings }).(pulumi.MapOutput)
+}
+
 // Login for workspace SQL active directory administrator
 func (o WorkspaceOutput) SqlAdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.SqlAdministratorLogin }).(pulumi.StringPtrOutput)
@@ -333,6 +364,11 @@ func (o WorkspaceOutput) SqlAdministratorLoginPassword() pulumi.StringPtrOutput 
 // Resource tags.
 func (o WorkspaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Is trustedServiceBypassEnabled for the workspace
+func (o WorkspaceOutput) TrustedServiceBypassEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.TrustedServiceBypassEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -84,11 +84,11 @@ func (val *LookupAppServicePlanResult) Defaults() *LookupAppServicePlanResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PerSiteScaling) {
+	if tmp.PerSiteScaling == nil {
 		perSiteScaling_ := false
 		tmp.PerSiteScaling = &perSiteScaling_
 	}
-	if isZero(tmp.Reserved) {
+	if tmp.Reserved == nil {
 		reserved_ := false
 		tmp.Reserved = &reserved_
 	}

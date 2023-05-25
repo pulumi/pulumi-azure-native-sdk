@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified FHIR Service.
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
 func LookupFhirService(ctx *pulumi.Context, args *LookupFhirServiceArgs, opts ...pulumi.InvokeOption) (*LookupFhirServiceResult, error) {
 	var rv LookupFhirServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis:getFhirService", args, &rv, opts...)
@@ -50,6 +50,10 @@ type LookupFhirServiceResult struct {
 	Id string `pulumi:"id"`
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity *ServiceManagedIdentityResponseIdentity `pulumi:"identity"`
+	// Implementation Guides configuration.
+	ImplementationGuidesConfiguration *ImplementationGuidesConfigurationResponse `pulumi:"implementationGuidesConfiguration"`
+	// Fhir Service import configuration.
+	ImportConfiguration *FhirServiceImportConfigurationResponse `pulumi:"importConfiguration"`
 	// The kind of the service.
 	Kind *string `pulumi:"kind"`
 	// The resource location.
@@ -158,6 +162,18 @@ func (o LookupFhirServiceResultOutput) Id() pulumi.StringOutput {
 // Setting indicating whether the service has a managed identity associated with it.
 func (o LookupFhirServiceResultOutput) Identity() ServiceManagedIdentityResponseIdentityPtrOutput {
 	return o.ApplyT(func(v LookupFhirServiceResult) *ServiceManagedIdentityResponseIdentity { return v.Identity }).(ServiceManagedIdentityResponseIdentityPtrOutput)
+}
+
+// Implementation Guides configuration.
+func (o LookupFhirServiceResultOutput) ImplementationGuidesConfiguration() ImplementationGuidesConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupFhirServiceResult) *ImplementationGuidesConfigurationResponse {
+		return v.ImplementationGuidesConfiguration
+	}).(ImplementationGuidesConfigurationResponsePtrOutput)
+}
+
+// Fhir Service import configuration.
+func (o LookupFhirServiceResultOutput) ImportConfiguration() FhirServiceImportConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupFhirServiceResult) *FhirServiceImportConfigurationResponse { return v.ImportConfiguration }).(FhirServiceImportConfigurationResponsePtrOutput)
 }
 
 // The kind of the service.

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // StaticMember Item.
-// API Version: 2022-02-01-preview.
+// API Version: 2022-09-01.
+// Previous API Version: 2022-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type StaticMember struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,10 @@ type StaticMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The provisioning state of the scope assignment resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Resource region.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// Resource Id.
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// The system metadata related to this resource.
@@ -65,6 +70,9 @@ func NewStaticMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:StaticMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:StaticMember"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +179,16 @@ func (o StaticMemberOutput) Etag() pulumi.StringOutput {
 // Resource name.
 func (o StaticMemberOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticMember) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the scope assignment resource.
+func (o StaticMemberOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticMember) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource region.
+func (o StaticMemberOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Resource Id.

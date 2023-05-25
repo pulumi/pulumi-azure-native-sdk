@@ -27,24 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AATPDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:ASCDataConnector":
 		r = &ASCDataConnector{}
-	case "azure-native:securityinsights/v20221201preview:Action":
-		r = &Action{}
 	case "azure-native:securityinsights/v20221201preview:ActivityCustomEntityQuery":
 		r = &ActivityCustomEntityQuery{}
 	case "azure-native:securityinsights/v20221201preview:Anomalies":
 		r = &Anomalies{}
 	case "azure-native:securityinsights/v20221201preview:AnomalySecurityMLAnalyticsSettings":
 		r = &AnomalySecurityMLAnalyticsSettings{}
-	case "azure-native:securityinsights/v20221201preview:AutomationRule":
-		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20221201preview:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:AwsS3DataConnector":
 		r = &AwsS3DataConnector{}
-	case "azure-native:securityinsights/v20221201preview:Bookmark":
-		r = &Bookmark{}
-	case "azure-native:securityinsights/v20221201preview:BookmarkRelation":
-		r = &BookmarkRelation{}
 	case "azure-native:securityinsights/v20221201preview:CodelessApiPollingDataConnector":
 		r = &CodelessApiPollingDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:CodelessUiDataConnector":
@@ -55,18 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntityAnalytics{}
 	case "azure-native:securityinsights/v20221201preview:EyesOn":
 		r = &EyesOn{}
-	case "azure-native:securityinsights/v20221201preview:FileImport":
-		r = &FileImport{}
 	case "azure-native:securityinsights/v20221201preview:FusionAlertRule":
 		r = &FusionAlertRule{}
-	case "azure-native:securityinsights/v20221201preview:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20221201preview:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20221201preview:IncidentRelation":
-		r = &IncidentRelation{}
-	case "azure-native:securityinsights/v20221201preview:IncidentTask":
-		r = &IncidentTask{}
 	case "azure-native:securityinsights/v20221201preview:IoTDataConnector":
 		r = &IoTDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:MCASDataConnector":
@@ -79,8 +61,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MSTIDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:MTPDataConnector":
 		r = &MTPDataConnector{}
-	case "azure-native:securityinsights/v20221201preview:Metadata":
-		r = &Metadata{}
 	case "azure-native:securityinsights/v20221201preview:MicrosoftSecurityIncidentCreationAlertRule":
 		r = &MicrosoftSecurityIncidentCreationAlertRule{}
 	case "azure-native:securityinsights/v20221201preview:NrtAlertRule":
@@ -97,24 +77,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficePowerBIDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20221201preview:SentinelOnboardingState":
-		r = &SentinelOnboardingState{}
-	case "azure-native:securityinsights/v20221201preview:SourceControl":
-		r = &SourceControl{}
 	case "azure-native:securityinsights/v20221201preview:TIDataConnector":
 		r = &TIDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:ThreatIntelligenceAlertRule":
 		r = &ThreatIntelligenceAlertRule{}
-	case "azure-native:securityinsights/v20221201preview:ThreatIntelligenceIndicator":
-		r = &ThreatIntelligenceIndicator{}
 	case "azure-native:securityinsights/v20221201preview:TiTaxiiDataConnector":
 		r = &TiTaxiiDataConnector{}
 	case "azure-native:securityinsights/v20221201preview:Ueba":
 		r = &Ueba{}
-	case "azure-native:securityinsights/v20221201preview:Watchlist":
-		r = &Watchlist{}
-	case "azure-native:securityinsights/v20221201preview:WatchlistItem":
-		r = &WatchlistItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

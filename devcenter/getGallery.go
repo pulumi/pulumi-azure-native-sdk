@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a gallery
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
 func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.InvokeOption) (*LookupGalleryResult, error) {
 	var rv LookupGalleryResult
 	err := ctx.Invoke("azure-native:devcenter:getGallery", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupGalleryArgs struct {
 	DevCenterName string `pulumi:"devCenterName"`
 	// The name of the gallery.
 	GalleryName string `pulumi:"galleryName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -64,7 +64,7 @@ type LookupGalleryOutputArgs struct {
 	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
 	// The name of the gallery.
 	GalleryName pulumi.StringInput `pulumi:"galleryName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

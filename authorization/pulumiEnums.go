@@ -10,43 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The recurrence type : weekly, monthly, etc.
-type AccessReviewRecurrencePatternType string
-
-const (
-	AccessReviewRecurrencePatternTypeWeekly          = AccessReviewRecurrencePatternType("weekly")
-	AccessReviewRecurrencePatternTypeAbsoluteMonthly = AccessReviewRecurrencePatternType("absoluteMonthly")
-)
-
-// The recurrence range type. The possible values are: endDate, noEnd, numbered.
-type AccessReviewRecurrenceRangeType string
-
-const (
-	AccessReviewRecurrenceRangeTypeEndDate  = AccessReviewRecurrenceRangeType("endDate")
-	AccessReviewRecurrenceRangeTypeNoEnd    = AccessReviewRecurrenceRangeType("noEnd")
-	AccessReviewRecurrenceRangeTypeNumbered = AccessReviewRecurrenceRangeType("numbered")
-)
-
-// Represents a reviewer's decision for a given review
-type AccessReviewResult string
-
-const (
-	AccessReviewResultApprove     = AccessReviewResult("Approve")
-	AccessReviewResultDeny        = AccessReviewResult("Deny")
-	AccessReviewResultNotReviewed = AccessReviewResult("NotReviewed")
-	AccessReviewResultDontKnow    = AccessReviewResult("DontKnow")
-	AccessReviewResultNotNotified = AccessReviewResult("NotNotified")
-)
-
-// This specifies the behavior for the autoReview feature when an access review completes.
-type DefaultDecisionType string
-
-const (
-	DefaultDecisionTypeApprove        = DefaultDecisionType("Approve")
-	DefaultDecisionTypeDeny           = DefaultDecisionType("Deny")
-	DefaultDecisionTypeRecommendation = DefaultDecisionType("Recommendation")
-)
-
 // The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 type EnforcementMode string
 
@@ -57,16 +20,6 @@ const (
 	EnforcementModeDoNotEnforce = EnforcementMode("DoNotEnforce")
 )
 
-// The policy exemption category. Possible values are Waiver and Mitigated.
-type ExemptionCategory string
-
-const (
-	// This category of exemptions usually means the scope is not applicable for the policy.
-	ExemptionCategoryWaiver = ExemptionCategory("Waiver")
-	// This category of exemptions usually means the mitigation actions have been applied to the scope.
-	ExemptionCategoryMitigated = ExemptionCategory("Mitigated")
-)
-
 // The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
 type LockLevel string
 
@@ -74,6 +27,14 @@ const (
 	LockLevelNotSpecified = LockLevel("NotSpecified")
 	LockLevelCanNotDelete = LockLevel("CanNotDelete")
 	LockLevelReadOnly     = LockLevel("ReadOnly")
+)
+
+// The override kind.
+type OverrideKind string
+
+const (
+	// It will override the policy effect type.
+	OverrideKindPolicyEffect = OverrideKind("policyEffect")
 )
 
 // The data type of the parameter.
@@ -117,12 +78,14 @@ const (
 	PublicNetworkAccessOptionsDisabled = PublicNetworkAccessOptions("Disabled")
 )
 
-// The identity type. This is the only required field when adding a system assigned identity to a resource.
+// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
 type ResourceIdentityType string
 
 const (
 	// Indicates that a system assigned identity is associated with the resource.
 	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
+	// Indicates that a system assigned identity is associated with the resource.
+	ResourceIdentityTypeUserAssigned = ResourceIdentityType("UserAssigned")
 	// Indicates that no identity is associated with the resource or that the existing identity should be removed.
 	ResourceIdentityTypeNone = ResourceIdentityType("None")
 )
@@ -283,6 +246,20 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
+
+// The selector kind.
+type SelectorKind string
+
+const (
+	// The selector kind to filter policies by the resource location.
+	SelectorKindResourceLocation = SelectorKind("resourceLocation")
+	// The selector kind to filter policies by the resource type.
+	SelectorKindResourceType = SelectorKind("resourceType")
+	// The selector kind to filter policies by the resource without location.
+	SelectorKindResourceWithoutLocation = SelectorKind("resourceWithoutLocation")
+	// The selector kind to filter policies by the policy definition reference ID.
+	SelectorKindPolicyDefinitionReferenceId = SelectorKind("policyDefinitionReferenceId")
+)
 
 func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})

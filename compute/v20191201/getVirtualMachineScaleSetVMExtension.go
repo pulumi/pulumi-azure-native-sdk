@@ -11,8 +11,6 @@ import (
 )
 
 // The operation to get the VMSS VM extension.
-//
-// Deprecated: Version 2019-12-01 will be removed in v2 of the provider.
 func LookupVirtualMachineScaleSetVMExtension(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMExtensionResult, error) {
 	var rv LookupVirtualMachineScaleSetVMExtensionResult
 	err := ctx.Invoke("azure-native:compute/v20191201:getVirtualMachineScaleSetVMExtension", args, &rv, opts...)

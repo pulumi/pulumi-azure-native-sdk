@@ -7,27 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The network group resource
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type NetworkGroup struct {
 	pulumi.CustomResourceState
 
-	// Network group conditional filter.
-	ConditionalMembership pulumi.StringPtrOutput `pulumi:"conditionalMembership"`
 	// A description of the network group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A friendly name for the network group.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Group members of network group.
-	GroupMembers GroupMembersItemResponseArrayOutput `pulumi:"groupMembers"`
-	// Group member type.
-	MemberType pulumi.StringPtrOutput `pulumi:"memberType"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the scope assignment resource.
@@ -76,6 +69,9 @@ func NewNetworkGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkGroup
@@ -110,17 +106,9 @@ func (NetworkGroupState) ElementType() reflect.Type {
 }
 
 type networkGroupArgs struct {
-	// Network group conditional filter.
-	ConditionalMembership *string `pulumi:"conditionalMembership"`
 	// A description of the network group.
 	Description *string `pulumi:"description"`
-	// A friendly name for the network group.
-	DisplayName *string `pulumi:"displayName"`
-	// Group members of network group.
-	GroupMembers []GroupMembersItem `pulumi:"groupMembers"`
-	// Group member type.
-	MemberType *string `pulumi:"memberType"`
-	// The name of the network group to get.
+	// The name of the network group.
 	NetworkGroupName *string `pulumi:"networkGroupName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -130,17 +118,9 @@ type networkGroupArgs struct {
 
 // The set of arguments for constructing a NetworkGroup resource.
 type NetworkGroupArgs struct {
-	// Network group conditional filter.
-	ConditionalMembership pulumi.StringPtrInput
 	// A description of the network group.
 	Description pulumi.StringPtrInput
-	// A friendly name for the network group.
-	DisplayName pulumi.StringPtrInput
-	// Group members of network group.
-	GroupMembers GroupMembersItemArrayInput
-	// Group member type.
-	MemberType pulumi.StringPtrInput
-	// The name of the network group to get.
+	// The name of the network group.
 	NetworkGroupName pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
@@ -185,34 +165,14 @@ func (o NetworkGroupOutput) ToNetworkGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Network group conditional filter.
-func (o NetworkGroupOutput) ConditionalMembership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkGroup) pulumi.StringPtrOutput { return v.ConditionalMembership }).(pulumi.StringPtrOutput)
-}
-
 // A description of the network group.
 func (o NetworkGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A friendly name for the network group.
-func (o NetworkGroupOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkGroup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o NetworkGroupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkGroup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
-}
-
-// Group members of network group.
-func (o NetworkGroupOutput) GroupMembers() GroupMembersItemResponseArrayOutput {
-	return o.ApplyT(func(v *NetworkGroup) GroupMembersItemResponseArrayOutput { return v.GroupMembers }).(GroupMembersItemResponseArrayOutput)
-}
-
-// Group member type.
-func (o NetworkGroupOutput) MemberType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkGroup) pulumi.StringPtrOutput { return v.MemberType }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

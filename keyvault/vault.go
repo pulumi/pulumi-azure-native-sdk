@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource information with extended details.
-// API Version: 2019-09-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2019-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Vault struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type Vault struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the vault
 	Properties VaultPropertiesResponseOutput `pulumi:"properties"`
+	// System metadata for the key vault.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags assigned to the key vault resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type of the key vault resource.
@@ -195,6 +198,11 @@ func (o VaultOutput) Name() pulumi.StringOutput {
 // Properties of the vault
 func (o VaultOutput) Properties() VaultPropertiesResponseOutput {
 	return o.ApplyT(func(v *Vault) VaultPropertiesResponseOutput { return v.Properties }).(VaultPropertiesResponseOutput)
+}
+
+// System metadata for the key vault.
+func (o VaultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Vault) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags assigned to the key vault resource.

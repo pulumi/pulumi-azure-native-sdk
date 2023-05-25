@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a database data masking policy.
-// API Version: 2014-04-01.
+// A database data masking policy.
+// API Version: 2021-11-01.
+// Previous API Version: 2014-04-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type DataMaskingPolicy struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type DataMaskingPolicy struct {
 	DataMaskingState pulumi.StringOutput `pulumi:"dataMaskingState"`
 	// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
 	ExemptPrincipals pulumi.StringPtrOutput `pulumi:"exemptPrincipals"`
-	// The kind of data masking policy. Metadata, used for Azure portal.
+	// The kind of Data Masking Policy. Metadata, used for Azure portal.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The location of the data masking policy.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -103,7 +104,7 @@ func (DataMaskingPolicyState) ElementType() reflect.Type {
 }
 
 type dataMaskingPolicyArgs struct {
-	// The name of the database for which the data masking rule applies.
+	// The name of the database for which the data masking policy applies.
 	DataMaskingPolicyName *string `pulumi:"dataMaskingPolicyName"`
 	// The state of the data masking policy.
 	DataMaskingState DataMaskingState `pulumi:"dataMaskingState"`
@@ -119,7 +120,7 @@ type dataMaskingPolicyArgs struct {
 
 // The set of arguments for constructing a DataMaskingPolicy resource.
 type DataMaskingPolicyArgs struct {
-	// The name of the database for which the data masking rule applies.
+	// The name of the database for which the data masking policy applies.
 	DataMaskingPolicyName pulumi.StringPtrInput
 	// The state of the data masking policy.
 	DataMaskingState DataMaskingStateInput
@@ -185,7 +186,7 @@ func (o DataMaskingPolicyOutput) ExemptPrincipals() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataMaskingPolicy) pulumi.StringPtrOutput { return v.ExemptPrincipals }).(pulumi.StringPtrOutput)
 }
 
-// The kind of data masking policy. Metadata, used for Azure portal.
+// The kind of Data Masking Policy. Metadata, used for Azure portal.
 func (o DataMaskingPolicyOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataMaskingPolicy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

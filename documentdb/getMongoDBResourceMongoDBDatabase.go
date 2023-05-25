@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
-// API Version: 2021-03-15.
+// API Version: 2022-11-15.
 func LookupMongoDBResourceMongoDBDatabase(ctx *pulumi.Context, args *LookupMongoDBResourceMongoDBDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoDBDatabaseResult, error) {
 	var rv LookupMongoDBResourceMongoDBDatabaseResult
 	err := ctx.Invoke("azure-native:documentdb:getMongoDBResourceMongoDBDatabase", args, &rv, opts...)

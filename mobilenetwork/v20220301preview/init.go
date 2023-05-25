@@ -21,26 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:mobilenetwork/v20220301preview:AttachedDataNetwork":
-		r = &AttachedDataNetwork{}
-	case "azure-native:mobilenetwork/v20220301preview:DataNetwork":
-		r = &DataNetwork{}
-	case "azure-native:mobilenetwork/v20220301preview:MobileNetwork":
-		r = &MobileNetwork{}
 	case "azure-native:mobilenetwork/v20220301preview:PacketCoreControlPlane":
 		r = &PacketCoreControlPlane{}
-	case "azure-native:mobilenetwork/v20220301preview:PacketCoreDataPlane":
-		r = &PacketCoreDataPlane{}
-	case "azure-native:mobilenetwork/v20220301preview:Service":
-		r = &Service{}
 	case "azure-native:mobilenetwork/v20220301preview:Sim":
 		r = &Sim{}
-	case "azure-native:mobilenetwork/v20220301preview:SimPolicy":
-		r = &SimPolicy{}
-	case "azure-native:mobilenetwork/v20220301preview:Site":
-		r = &Site{}
-	case "azure-native:mobilenetwork/v20220301preview:Slice":
-		r = &Slice{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

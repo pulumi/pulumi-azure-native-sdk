@@ -27,24 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AATPDataConnector{}
 	case "azure-native:securityinsights/v20221101:ASCDataConnector":
 		r = &ASCDataConnector{}
-	case "azure-native:securityinsights/v20221101:Action":
-		r = &Action{}
 	case "azure-native:securityinsights/v20221101:AnomalySecurityMLAnalyticsSettings":
 		r = &AnomalySecurityMLAnalyticsSettings{}
-	case "azure-native:securityinsights/v20221101:AutomationRule":
-		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20221101:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
-	case "azure-native:securityinsights/v20221101:Bookmark":
-		r = &Bookmark{}
 	case "azure-native:securityinsights/v20221101:FusionAlertRule":
 		r = &FusionAlertRule{}
-	case "azure-native:securityinsights/v20221101:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20221101:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20221101:IncidentRelation":
-		r = &IncidentRelation{}
 	case "azure-native:securityinsights/v20221101:MCASDataConnector":
 		r = &MCASDataConnector{}
 	case "azure-native:securityinsights/v20221101:MDATPDataConnector":
@@ -55,16 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficeDataConnector{}
 	case "azure-native:securityinsights/v20221101:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20221101:SentinelOnboardingState":
-		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights/v20221101:TIDataConnector":
 		r = &TIDataConnector{}
-	case "azure-native:securityinsights/v20221101:ThreatIntelligenceIndicator":
-		r = &ThreatIntelligenceIndicator{}
-	case "azure-native:securityinsights/v20221101:Watchlist":
-		r = &Watchlist{}
-	case "azure-native:securityinsights/v20221101:WatchlistItem":
-		r = &WatchlistItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

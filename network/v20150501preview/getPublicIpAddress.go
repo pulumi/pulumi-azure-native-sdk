@@ -11,8 +11,6 @@ import (
 )
 
 // The Get publicIpAddress operation retrieves information about the specified pubicIpAddress
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupPublicIpAddress(ctx *pulumi.Context, args *LookupPublicIpAddressArgs, opts ...pulumi.InvokeOption) (*LookupPublicIpAddressResult, error) {
 	var rv LookupPublicIpAddressResult
 	err := ctx.Invoke("azure-native:network/v20150501preview:getPublicIpAddress", args, &rv, opts...)

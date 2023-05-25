@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Azure Traffic Collector in a specified resource group
-// API Version: 2022-05-01.
+// API Version: 2022-11-01.
 func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCollectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureTrafficCollectorResult, error) {
 	var rv LookupAzureTrafficCollectorResult
 	err := ctx.Invoke("azure-native:networkfunction:getAzureTrafficCollector", args, &rv, opts...)
@@ -31,13 +31,13 @@ type LookupAzureTrafficCollectorArgs struct {
 // Azure Traffic Collector resource.
 type LookupAzureTrafficCollectorResult struct {
 	// Collector Policies for Azure Traffic Collector.
-	CollectorPolicies []CollectorPolicyResponse `pulumi:"collectorPolicies"`
+	CollectorPolicies []ResourceReferenceResponse `pulumi:"collectorPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location.
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// The provisioning state of the application rule collection resource.
@@ -92,8 +92,8 @@ func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorRe
 }
 
 // Collector Policies for Azure Traffic Collector.
-func (o LookupAzureTrafficCollectorResultOutput) CollectorPolicies() CollectorPolicyResponseArrayOutput {
-	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) []CollectorPolicyResponse { return v.CollectorPolicies }).(CollectorPolicyResponseArrayOutput)
+func (o LookupAzureTrafficCollectorResultOutput) CollectorPolicies() ResourceReferenceResponseArrayOutput {
+	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) []ResourceReferenceResponse { return v.CollectorPolicies }).(ResourceReferenceResponseArrayOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -107,8 +107,8 @@ func (o LookupAzureTrafficCollectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Resource location.
-func (o LookupAzureTrafficCollectorResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o LookupAzureTrafficCollectorResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // Resource name.

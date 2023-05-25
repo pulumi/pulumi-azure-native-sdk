@@ -11,8 +11,6 @@ import (
 )
 
 // The Get VirtualNetworkGateway operation retrieves information about the specified virtual network gateway through Network resource provider.
-//
-// Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
 func LookupVirtualNetworkGateway(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayResult, error) {
 	var rv LookupVirtualNetworkGatewayResult
 	err := ctx.Invoke("azure-native:network/v20160601:getVirtualNetworkGateway", args, &rv, opts...)

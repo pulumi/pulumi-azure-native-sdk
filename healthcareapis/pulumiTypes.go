@@ -1629,6 +1629,478 @@ func (o FhirServiceExportConfigurationResponsePtrOutput) StorageAccountName() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Import operation configuration information
+type FhirServiceImportConfiguration struct {
+	// If the import operation is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// If the FHIR service is in InitialImportMode.
+	InitialImportMode *bool `pulumi:"initialImportMode"`
+	// The name of the default integration storage account.
+	IntegrationDataStore *string `pulumi:"integrationDataStore"`
+}
+
+// FhirServiceImportConfigurationInput is an input type that accepts FhirServiceImportConfigurationArgs and FhirServiceImportConfigurationOutput values.
+// You can construct a concrete instance of `FhirServiceImportConfigurationInput` via:
+//
+//	FhirServiceImportConfigurationArgs{...}
+type FhirServiceImportConfigurationInput interface {
+	pulumi.Input
+
+	ToFhirServiceImportConfigurationOutput() FhirServiceImportConfigurationOutput
+	ToFhirServiceImportConfigurationOutputWithContext(context.Context) FhirServiceImportConfigurationOutput
+}
+
+// Import operation configuration information
+type FhirServiceImportConfigurationArgs struct {
+	// If the import operation is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// If the FHIR service is in InitialImportMode.
+	InitialImportMode pulumi.BoolPtrInput `pulumi:"initialImportMode"`
+	// The name of the default integration storage account.
+	IntegrationDataStore pulumi.StringPtrInput `pulumi:"integrationDataStore"`
+}
+
+func (FhirServiceImportConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirServiceImportConfiguration)(nil)).Elem()
+}
+
+func (i FhirServiceImportConfigurationArgs) ToFhirServiceImportConfigurationOutput() FhirServiceImportConfigurationOutput {
+	return i.ToFhirServiceImportConfigurationOutputWithContext(context.Background())
+}
+
+func (i FhirServiceImportConfigurationArgs) ToFhirServiceImportConfigurationOutputWithContext(ctx context.Context) FhirServiceImportConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceImportConfigurationOutput)
+}
+
+func (i FhirServiceImportConfigurationArgs) ToFhirServiceImportConfigurationPtrOutput() FhirServiceImportConfigurationPtrOutput {
+	return i.ToFhirServiceImportConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i FhirServiceImportConfigurationArgs) ToFhirServiceImportConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceImportConfigurationOutput).ToFhirServiceImportConfigurationPtrOutputWithContext(ctx)
+}
+
+// FhirServiceImportConfigurationPtrInput is an input type that accepts FhirServiceImportConfigurationArgs, FhirServiceImportConfigurationPtr and FhirServiceImportConfigurationPtrOutput values.
+// You can construct a concrete instance of `FhirServiceImportConfigurationPtrInput` via:
+//
+//	        FhirServiceImportConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirServiceImportConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToFhirServiceImportConfigurationPtrOutput() FhirServiceImportConfigurationPtrOutput
+	ToFhirServiceImportConfigurationPtrOutputWithContext(context.Context) FhirServiceImportConfigurationPtrOutput
+}
+
+type fhirServiceImportConfigurationPtrType FhirServiceImportConfigurationArgs
+
+func FhirServiceImportConfigurationPtr(v *FhirServiceImportConfigurationArgs) FhirServiceImportConfigurationPtrInput {
+	return (*fhirServiceImportConfigurationPtrType)(v)
+}
+
+func (*fhirServiceImportConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirServiceImportConfiguration)(nil)).Elem()
+}
+
+func (i *fhirServiceImportConfigurationPtrType) ToFhirServiceImportConfigurationPtrOutput() FhirServiceImportConfigurationPtrOutput {
+	return i.ToFhirServiceImportConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirServiceImportConfigurationPtrType) ToFhirServiceImportConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceImportConfigurationPtrOutput)
+}
+
+// Import operation configuration information
+type FhirServiceImportConfigurationOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceImportConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirServiceImportConfiguration)(nil)).Elem()
+}
+
+func (o FhirServiceImportConfigurationOutput) ToFhirServiceImportConfigurationOutput() FhirServiceImportConfigurationOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationOutput) ToFhirServiceImportConfigurationOutputWithContext(ctx context.Context) FhirServiceImportConfigurationOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationOutput) ToFhirServiceImportConfigurationPtrOutput() FhirServiceImportConfigurationPtrOutput {
+	return o.ToFhirServiceImportConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o FhirServiceImportConfigurationOutput) ToFhirServiceImportConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirServiceImportConfiguration) *FhirServiceImportConfiguration {
+		return &v
+	}).(FhirServiceImportConfigurationPtrOutput)
+}
+
+// If the import operation is enabled.
+func (o FhirServiceImportConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirServiceImportConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o FhirServiceImportConfigurationOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirServiceImportConfiguration) *bool { return v.InitialImportMode }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o FhirServiceImportConfigurationOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirServiceImportConfiguration) *string { return v.IntegrationDataStore }).(pulumi.StringPtrOutput)
+}
+
+type FhirServiceImportConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceImportConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirServiceImportConfiguration)(nil)).Elem()
+}
+
+func (o FhirServiceImportConfigurationPtrOutput) ToFhirServiceImportConfigurationPtrOutput() FhirServiceImportConfigurationPtrOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationPtrOutput) ToFhirServiceImportConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationPtrOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationPtrOutput) Elem() FhirServiceImportConfigurationOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfiguration) FhirServiceImportConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret FhirServiceImportConfiguration
+		return ret
+	}).(FhirServiceImportConfigurationOutput)
+}
+
+// If the import operation is enabled.
+func (o FhirServiceImportConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o FhirServiceImportConfigurationPtrOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InitialImportMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o FhirServiceImportConfigurationPtrOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationDataStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import operation configuration information
+type FhirServiceImportConfigurationResponse struct {
+	// If the import operation is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// If the FHIR service is in InitialImportMode.
+	InitialImportMode *bool `pulumi:"initialImportMode"`
+	// The name of the default integration storage account.
+	IntegrationDataStore *string `pulumi:"integrationDataStore"`
+}
+
+// Import operation configuration information
+type FhirServiceImportConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceImportConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirServiceImportConfigurationResponse)(nil)).Elem()
+}
+
+func (o FhirServiceImportConfigurationResponseOutput) ToFhirServiceImportConfigurationResponseOutput() FhirServiceImportConfigurationResponseOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationResponseOutput) ToFhirServiceImportConfigurationResponseOutputWithContext(ctx context.Context) FhirServiceImportConfigurationResponseOutput {
+	return o
+}
+
+// If the import operation is enabled.
+func (o FhirServiceImportConfigurationResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirServiceImportConfigurationResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o FhirServiceImportConfigurationResponseOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirServiceImportConfigurationResponse) *bool { return v.InitialImportMode }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o FhirServiceImportConfigurationResponseOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirServiceImportConfigurationResponse) *string { return v.IntegrationDataStore }).(pulumi.StringPtrOutput)
+}
+
+type FhirServiceImportConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceImportConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirServiceImportConfigurationResponse)(nil)).Elem()
+}
+
+func (o FhirServiceImportConfigurationResponsePtrOutput) ToFhirServiceImportConfigurationResponsePtrOutput() FhirServiceImportConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationResponsePtrOutput) ToFhirServiceImportConfigurationResponsePtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o FhirServiceImportConfigurationResponsePtrOutput) Elem() FhirServiceImportConfigurationResponseOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfigurationResponse) FhirServiceImportConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FhirServiceImportConfigurationResponse
+		return ret
+	}).(FhirServiceImportConfigurationResponseOutput)
+}
+
+// If the import operation is enabled.
+func (o FhirServiceImportConfigurationResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o FhirServiceImportConfigurationResponsePtrOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InitialImportMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o FhirServiceImportConfigurationResponsePtrOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirServiceImportConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationDataStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
+type ImplementationGuidesConfiguration struct {
+	// If US Core Missing Data requirement is enabled.
+	UsCoreMissingData *bool `pulumi:"usCoreMissingData"`
+}
+
+// ImplementationGuidesConfigurationInput is an input type that accepts ImplementationGuidesConfigurationArgs and ImplementationGuidesConfigurationOutput values.
+// You can construct a concrete instance of `ImplementationGuidesConfigurationInput` via:
+//
+//	ImplementationGuidesConfigurationArgs{...}
+type ImplementationGuidesConfigurationInput interface {
+	pulumi.Input
+
+	ToImplementationGuidesConfigurationOutput() ImplementationGuidesConfigurationOutput
+	ToImplementationGuidesConfigurationOutputWithContext(context.Context) ImplementationGuidesConfigurationOutput
+}
+
+// The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
+type ImplementationGuidesConfigurationArgs struct {
+	// If US Core Missing Data requirement is enabled.
+	UsCoreMissingData pulumi.BoolPtrInput `pulumi:"usCoreMissingData"`
+}
+
+func (ImplementationGuidesConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImplementationGuidesConfiguration)(nil)).Elem()
+}
+
+func (i ImplementationGuidesConfigurationArgs) ToImplementationGuidesConfigurationOutput() ImplementationGuidesConfigurationOutput {
+	return i.ToImplementationGuidesConfigurationOutputWithContext(context.Background())
+}
+
+func (i ImplementationGuidesConfigurationArgs) ToImplementationGuidesConfigurationOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImplementationGuidesConfigurationOutput)
+}
+
+func (i ImplementationGuidesConfigurationArgs) ToImplementationGuidesConfigurationPtrOutput() ImplementationGuidesConfigurationPtrOutput {
+	return i.ToImplementationGuidesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ImplementationGuidesConfigurationArgs) ToImplementationGuidesConfigurationPtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImplementationGuidesConfigurationOutput).ToImplementationGuidesConfigurationPtrOutputWithContext(ctx)
+}
+
+// ImplementationGuidesConfigurationPtrInput is an input type that accepts ImplementationGuidesConfigurationArgs, ImplementationGuidesConfigurationPtr and ImplementationGuidesConfigurationPtrOutput values.
+// You can construct a concrete instance of `ImplementationGuidesConfigurationPtrInput` via:
+//
+//	        ImplementationGuidesConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImplementationGuidesConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToImplementationGuidesConfigurationPtrOutput() ImplementationGuidesConfigurationPtrOutput
+	ToImplementationGuidesConfigurationPtrOutputWithContext(context.Context) ImplementationGuidesConfigurationPtrOutput
+}
+
+type implementationGuidesConfigurationPtrType ImplementationGuidesConfigurationArgs
+
+func ImplementationGuidesConfigurationPtr(v *ImplementationGuidesConfigurationArgs) ImplementationGuidesConfigurationPtrInput {
+	return (*implementationGuidesConfigurationPtrType)(v)
+}
+
+func (*implementationGuidesConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImplementationGuidesConfiguration)(nil)).Elem()
+}
+
+func (i *implementationGuidesConfigurationPtrType) ToImplementationGuidesConfigurationPtrOutput() ImplementationGuidesConfigurationPtrOutput {
+	return i.ToImplementationGuidesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *implementationGuidesConfigurationPtrType) ToImplementationGuidesConfigurationPtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImplementationGuidesConfigurationPtrOutput)
+}
+
+// The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
+type ImplementationGuidesConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ImplementationGuidesConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImplementationGuidesConfiguration)(nil)).Elem()
+}
+
+func (o ImplementationGuidesConfigurationOutput) ToImplementationGuidesConfigurationOutput() ImplementationGuidesConfigurationOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationOutput) ToImplementationGuidesConfigurationOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationOutput) ToImplementationGuidesConfigurationPtrOutput() ImplementationGuidesConfigurationPtrOutput {
+	return o.ToImplementationGuidesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ImplementationGuidesConfigurationOutput) ToImplementationGuidesConfigurationPtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImplementationGuidesConfiguration) *ImplementationGuidesConfiguration {
+		return &v
+	}).(ImplementationGuidesConfigurationPtrOutput)
+}
+
+// If US Core Missing Data requirement is enabled.
+func (o ImplementationGuidesConfigurationOutput) UsCoreMissingData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImplementationGuidesConfiguration) *bool { return v.UsCoreMissingData }).(pulumi.BoolPtrOutput)
+}
+
+type ImplementationGuidesConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ImplementationGuidesConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImplementationGuidesConfiguration)(nil)).Elem()
+}
+
+func (o ImplementationGuidesConfigurationPtrOutput) ToImplementationGuidesConfigurationPtrOutput() ImplementationGuidesConfigurationPtrOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationPtrOutput) ToImplementationGuidesConfigurationPtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationPtrOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationPtrOutput) Elem() ImplementationGuidesConfigurationOutput {
+	return o.ApplyT(func(v *ImplementationGuidesConfiguration) ImplementationGuidesConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ImplementationGuidesConfiguration
+		return ret
+	}).(ImplementationGuidesConfigurationOutput)
+}
+
+// If US Core Missing Data requirement is enabled.
+func (o ImplementationGuidesConfigurationPtrOutput) UsCoreMissingData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImplementationGuidesConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UsCoreMissingData
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
+type ImplementationGuidesConfigurationResponse struct {
+	// If US Core Missing Data requirement is enabled.
+	UsCoreMissingData *bool `pulumi:"usCoreMissingData"`
+}
+
+// The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
+type ImplementationGuidesConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ImplementationGuidesConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImplementationGuidesConfigurationResponse)(nil)).Elem()
+}
+
+func (o ImplementationGuidesConfigurationResponseOutput) ToImplementationGuidesConfigurationResponseOutput() ImplementationGuidesConfigurationResponseOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationResponseOutput) ToImplementationGuidesConfigurationResponseOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationResponseOutput {
+	return o
+}
+
+// If US Core Missing Data requirement is enabled.
+func (o ImplementationGuidesConfigurationResponseOutput) UsCoreMissingData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImplementationGuidesConfigurationResponse) *bool { return v.UsCoreMissingData }).(pulumi.BoolPtrOutput)
+}
+
+type ImplementationGuidesConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ImplementationGuidesConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImplementationGuidesConfigurationResponse)(nil)).Elem()
+}
+
+func (o ImplementationGuidesConfigurationResponsePtrOutput) ToImplementationGuidesConfigurationResponsePtrOutput() ImplementationGuidesConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationResponsePtrOutput) ToImplementationGuidesConfigurationResponsePtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ImplementationGuidesConfigurationResponsePtrOutput) Elem() ImplementationGuidesConfigurationResponseOutput {
+	return o.ApplyT(func(v *ImplementationGuidesConfigurationResponse) ImplementationGuidesConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImplementationGuidesConfigurationResponse
+		return ret
+	}).(ImplementationGuidesConfigurationResponseOutput)
+}
+
+// If US Core Missing Data requirement is enabled.
+func (o ImplementationGuidesConfigurationResponsePtrOutput) UsCoreMissingData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImplementationGuidesConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UsCoreMissingData
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Event Hub ingestion endpoint configuration
 type IotEventHubIngestionEndpointConfiguration struct {
 	// Consumer group of the event hub to connected to.
@@ -4131,12 +4603,284 @@ func (o ServiceExportConfigurationInfoResponsePtrOutput) StorageAccountName() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Import operation configuration information
+type ServiceImportConfigurationInfo struct {
+	// If the import operation is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// If the FHIR service is in InitialImportMode.
+	InitialImportMode *bool `pulumi:"initialImportMode"`
+	// The name of the default integration storage account.
+	IntegrationDataStore *string `pulumi:"integrationDataStore"`
+}
+
+// ServiceImportConfigurationInfoInput is an input type that accepts ServiceImportConfigurationInfoArgs and ServiceImportConfigurationInfoOutput values.
+// You can construct a concrete instance of `ServiceImportConfigurationInfoInput` via:
+//
+//	ServiceImportConfigurationInfoArgs{...}
+type ServiceImportConfigurationInfoInput interface {
+	pulumi.Input
+
+	ToServiceImportConfigurationInfoOutput() ServiceImportConfigurationInfoOutput
+	ToServiceImportConfigurationInfoOutputWithContext(context.Context) ServiceImportConfigurationInfoOutput
+}
+
+// Import operation configuration information
+type ServiceImportConfigurationInfoArgs struct {
+	// If the import operation is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// If the FHIR service is in InitialImportMode.
+	InitialImportMode pulumi.BoolPtrInput `pulumi:"initialImportMode"`
+	// The name of the default integration storage account.
+	IntegrationDataStore pulumi.StringPtrInput `pulumi:"integrationDataStore"`
+}
+
+func (ServiceImportConfigurationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceImportConfigurationInfo)(nil)).Elem()
+}
+
+func (i ServiceImportConfigurationInfoArgs) ToServiceImportConfigurationInfoOutput() ServiceImportConfigurationInfoOutput {
+	return i.ToServiceImportConfigurationInfoOutputWithContext(context.Background())
+}
+
+func (i ServiceImportConfigurationInfoArgs) ToServiceImportConfigurationInfoOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceImportConfigurationInfoOutput)
+}
+
+func (i ServiceImportConfigurationInfoArgs) ToServiceImportConfigurationInfoPtrOutput() ServiceImportConfigurationInfoPtrOutput {
+	return i.ToServiceImportConfigurationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceImportConfigurationInfoArgs) ToServiceImportConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceImportConfigurationInfoOutput).ToServiceImportConfigurationInfoPtrOutputWithContext(ctx)
+}
+
+// ServiceImportConfigurationInfoPtrInput is an input type that accepts ServiceImportConfigurationInfoArgs, ServiceImportConfigurationInfoPtr and ServiceImportConfigurationInfoPtrOutput values.
+// You can construct a concrete instance of `ServiceImportConfigurationInfoPtrInput` via:
+//
+//	        ServiceImportConfigurationInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceImportConfigurationInfoPtrInput interface {
+	pulumi.Input
+
+	ToServiceImportConfigurationInfoPtrOutput() ServiceImportConfigurationInfoPtrOutput
+	ToServiceImportConfigurationInfoPtrOutputWithContext(context.Context) ServiceImportConfigurationInfoPtrOutput
+}
+
+type serviceImportConfigurationInfoPtrType ServiceImportConfigurationInfoArgs
+
+func ServiceImportConfigurationInfoPtr(v *ServiceImportConfigurationInfoArgs) ServiceImportConfigurationInfoPtrInput {
+	return (*serviceImportConfigurationInfoPtrType)(v)
+}
+
+func (*serviceImportConfigurationInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceImportConfigurationInfo)(nil)).Elem()
+}
+
+func (i *serviceImportConfigurationInfoPtrType) ToServiceImportConfigurationInfoPtrOutput() ServiceImportConfigurationInfoPtrOutput {
+	return i.ToServiceImportConfigurationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceImportConfigurationInfoPtrType) ToServiceImportConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceImportConfigurationInfoPtrOutput)
+}
+
+// Import operation configuration information
+type ServiceImportConfigurationInfoOutput struct{ *pulumi.OutputState }
+
+func (ServiceImportConfigurationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceImportConfigurationInfo)(nil)).Elem()
+}
+
+func (o ServiceImportConfigurationInfoOutput) ToServiceImportConfigurationInfoOutput() ServiceImportConfigurationInfoOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoOutput) ToServiceImportConfigurationInfoOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoOutput) ToServiceImportConfigurationInfoPtrOutput() ServiceImportConfigurationInfoPtrOutput {
+	return o.ToServiceImportConfigurationInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceImportConfigurationInfoOutput) ToServiceImportConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceImportConfigurationInfo) *ServiceImportConfigurationInfo {
+		return &v
+	}).(ServiceImportConfigurationInfoPtrOutput)
+}
+
+// If the import operation is enabled.
+func (o ServiceImportConfigurationInfoOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceImportConfigurationInfo) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o ServiceImportConfigurationInfoOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceImportConfigurationInfo) *bool { return v.InitialImportMode }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o ServiceImportConfigurationInfoOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceImportConfigurationInfo) *string { return v.IntegrationDataStore }).(pulumi.StringPtrOutput)
+}
+
+type ServiceImportConfigurationInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceImportConfigurationInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceImportConfigurationInfo)(nil)).Elem()
+}
+
+func (o ServiceImportConfigurationInfoPtrOutput) ToServiceImportConfigurationInfoPtrOutput() ServiceImportConfigurationInfoPtrOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoPtrOutput) ToServiceImportConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoPtrOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoPtrOutput) Elem() ServiceImportConfigurationInfoOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfo) ServiceImportConfigurationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceImportConfigurationInfo
+		return ret
+	}).(ServiceImportConfigurationInfoOutput)
+}
+
+// If the import operation is enabled.
+func (o ServiceImportConfigurationInfoPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o ServiceImportConfigurationInfoPtrOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InitialImportMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o ServiceImportConfigurationInfoPtrOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationDataStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import operation configuration information
+type ServiceImportConfigurationInfoResponse struct {
+	// If the import operation is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// If the FHIR service is in InitialImportMode.
+	InitialImportMode *bool `pulumi:"initialImportMode"`
+	// The name of the default integration storage account.
+	IntegrationDataStore *string `pulumi:"integrationDataStore"`
+}
+
+// Import operation configuration information
+type ServiceImportConfigurationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceImportConfigurationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceImportConfigurationInfoResponse)(nil)).Elem()
+}
+
+func (o ServiceImportConfigurationInfoResponseOutput) ToServiceImportConfigurationInfoResponseOutput() ServiceImportConfigurationInfoResponseOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoResponseOutput) ToServiceImportConfigurationInfoResponseOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoResponseOutput {
+	return o
+}
+
+// If the import operation is enabled.
+func (o ServiceImportConfigurationInfoResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceImportConfigurationInfoResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o ServiceImportConfigurationInfoResponseOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceImportConfigurationInfoResponse) *bool { return v.InitialImportMode }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o ServiceImportConfigurationInfoResponseOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceImportConfigurationInfoResponse) *string { return v.IntegrationDataStore }).(pulumi.StringPtrOutput)
+}
+
+type ServiceImportConfigurationInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceImportConfigurationInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceImportConfigurationInfoResponse)(nil)).Elem()
+}
+
+func (o ServiceImportConfigurationInfoResponsePtrOutput) ToServiceImportConfigurationInfoResponsePtrOutput() ServiceImportConfigurationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoResponsePtrOutput) ToServiceImportConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ServiceImportConfigurationInfoResponsePtrOutput) Elem() ServiceImportConfigurationInfoResponseOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfoResponse) ServiceImportConfigurationInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceImportConfigurationInfoResponse
+		return ret
+	}).(ServiceImportConfigurationInfoResponseOutput)
+}
+
+// If the import operation is enabled.
+func (o ServiceImportConfigurationInfoResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the FHIR service is in InitialImportMode.
+func (o ServiceImportConfigurationInfoResponsePtrOutput) InitialImportMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InitialImportMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the default integration storage account.
+func (o ServiceImportConfigurationInfoResponsePtrOutput) IntegrationDataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceImportConfigurationInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationDataStore
+	}).(pulumi.StringPtrOutput)
+}
+
 // Setting indicating whether the service has a managed identity associated with it.
 type ServiceManagedIdentityIdentity struct {
 	// Type of identity being specified, currently SystemAssigned and None are allowed.
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ServiceManagedIdentityIdentityInput is an input type that accepts ServiceManagedIdentityIdentityArgs and ServiceManagedIdentityIdentityOutput values.
@@ -4155,7 +4899,7 @@ type ServiceManagedIdentityIdentityArgs struct {
 	// Type of identity being specified, currently SystemAssigned and None are allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ServiceManagedIdentityIdentityArgs) ElementType() reflect.Type {
@@ -4242,8 +4986,8 @@ func (o ServiceManagedIdentityIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ServiceManagedIdentityIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ServiceManagedIdentityIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ServiceManagedIdentityIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceManagedIdentityIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ServiceManagedIdentityIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -4281,13 +5025,13 @@ func (o ServiceManagedIdentityIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ServiceManagedIdentityIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServiceManagedIdentityIdentity) map[string]interface{} {
+func (o ServiceManagedIdentityIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceManagedIdentityIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Setting indicating whether the service has a managed identity associated with it.
@@ -4595,6 +5339,8 @@ type ServicesProperties struct {
 	CosmosDbConfiguration *ServiceCosmosDbConfigurationInfo `pulumi:"cosmosDbConfiguration"`
 	// The settings for the export operation of the service instance.
 	ExportConfiguration *ServiceExportConfigurationInfo `pulumi:"exportConfiguration"`
+	// The settings for the import operation of the service instance.
+	ImportConfiguration *ServiceImportConfigurationInfo `pulumi:"importConfiguration"`
 	// The list of private endpoint connections that are set up for this resource.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
@@ -4626,6 +5372,8 @@ type ServicesPropertiesArgs struct {
 	CosmosDbConfiguration ServiceCosmosDbConfigurationInfoPtrInput `pulumi:"cosmosDbConfiguration"`
 	// The settings for the export operation of the service instance.
 	ExportConfiguration ServiceExportConfigurationInfoPtrInput `pulumi:"exportConfiguration"`
+	// The settings for the import operation of the service instance.
+	ImportConfiguration ServiceImportConfigurationInfoPtrInput `pulumi:"importConfiguration"`
 	// The list of private endpoint connections that are set up for this resource.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput `pulumi:"privateEndpointConnections"`
 	// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
@@ -4742,6 +5490,11 @@ func (o ServicesPropertiesOutput) ExportConfiguration() ServiceExportConfigurati
 	return o.ApplyT(func(v ServicesProperties) *ServiceExportConfigurationInfo { return v.ExportConfiguration }).(ServiceExportConfigurationInfoPtrOutput)
 }
 
+// The settings for the import operation of the service instance.
+func (o ServicesPropertiesOutput) ImportConfiguration() ServiceImportConfigurationInfoPtrOutput {
+	return o.ApplyT(func(v ServicesProperties) *ServiceImportConfigurationInfo { return v.ImportConfiguration }).(ServiceImportConfigurationInfoPtrOutput)
+}
+
 // The list of private endpoint connections that are set up for this resource.
 func (o ServicesPropertiesOutput) PrivateEndpointConnections() PrivateEndpointConnectionTypeArrayOutput {
 	return o.ApplyT(func(v ServicesProperties) []PrivateEndpointConnectionType { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionTypeArrayOutput)
@@ -4836,6 +5589,16 @@ func (o ServicesPropertiesPtrOutput) ExportConfiguration() ServiceExportConfigur
 	}).(ServiceExportConfigurationInfoPtrOutput)
 }
 
+// The settings for the import operation of the service instance.
+func (o ServicesPropertiesPtrOutput) ImportConfiguration() ServiceImportConfigurationInfoPtrOutput {
+	return o.ApplyT(func(v *ServicesProperties) *ServiceImportConfigurationInfo {
+		if v == nil {
+			return nil
+		}
+		return v.ImportConfiguration
+	}).(ServiceImportConfigurationInfoPtrOutput)
+}
+
 // The list of private endpoint connections that are set up for this resource.
 func (o ServicesPropertiesPtrOutput) PrivateEndpointConnections() PrivateEndpointConnectionTypeArrayOutput {
 	return o.ApplyT(func(v *ServicesProperties) []PrivateEndpointConnectionType {
@@ -4870,6 +5633,8 @@ type ServicesPropertiesResponse struct {
 	CosmosDbConfiguration *ServiceCosmosDbConfigurationInfoResponse `pulumi:"cosmosDbConfiguration"`
 	// The settings for the export operation of the service instance.
 	ExportConfiguration *ServiceExportConfigurationInfoResponse `pulumi:"exportConfiguration"`
+	// The settings for the import operation of the service instance.
+	ImportConfiguration *ServiceImportConfigurationInfoResponse `pulumi:"importConfiguration"`
 	// The list of private endpoint connections that are set up for this resource.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The provisioning state.
@@ -4927,6 +5692,13 @@ func (o ServicesPropertiesResponseOutput) ExportConfiguration() ServiceExportCon
 	return o.ApplyT(func(v ServicesPropertiesResponse) *ServiceExportConfigurationInfoResponse {
 		return v.ExportConfiguration
 	}).(ServiceExportConfigurationInfoResponsePtrOutput)
+}
+
+// The settings for the import operation of the service instance.
+func (o ServicesPropertiesResponseOutput) ImportConfiguration() ServiceImportConfigurationInfoResponsePtrOutput {
+	return o.ApplyT(func(v ServicesPropertiesResponse) *ServiceImportConfigurationInfoResponse {
+		return v.ImportConfiguration
+	}).(ServiceImportConfigurationInfoResponsePtrOutput)
 }
 
 // The list of private endpoint connections that are set up for this resource.
@@ -5363,6 +6135,14 @@ func init() {
 	pulumi.RegisterOutputType(FhirServiceExportConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(FhirServiceExportConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(FhirServiceExportConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FhirServiceImportConfigurationOutput{})
+	pulumi.RegisterOutputType(FhirServiceImportConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(FhirServiceImportConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(FhirServiceImportConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ImplementationGuidesConfigurationOutput{})
+	pulumi.RegisterOutputType(ImplementationGuidesConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ImplementationGuidesConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ImplementationGuidesConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(IotEventHubIngestionEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(IotEventHubIngestionEndpointConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(IotEventHubIngestionEndpointConfigurationResponseOutput{})
@@ -5407,6 +6187,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceExportConfigurationInfoPtrOutput{})
 	pulumi.RegisterOutputType(ServiceExportConfigurationInfoResponseOutput{})
 	pulumi.RegisterOutputType(ServiceExportConfigurationInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceImportConfigurationInfoOutput{})
+	pulumi.RegisterOutputType(ServiceImportConfigurationInfoPtrOutput{})
+	pulumi.RegisterOutputType(ServiceImportConfigurationInfoResponseOutput{})
+	pulumi.RegisterOutputType(ServiceImportConfigurationInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceManagedIdentityIdentityOutput{})
 	pulumi.RegisterOutputType(ServiceManagedIdentityIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ServiceManagedIdentityResponseIdentityOutput{})

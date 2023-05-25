@@ -25,10 +25,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ActiveDirectoryConnector{}
 	case "azure-native:azurearcdata:DataController":
 		r = &DataController{}
+	case "azure-native:azurearcdata:FailoverGroup":
+		r = &FailoverGroup{}
 	case "azure-native:azurearcdata:PostgresInstance":
 		r = &PostgresInstance{}
+	case "azure-native:azurearcdata:SqlAvailabilityGroup":
+		r = &SqlAvailabilityGroup{}
+	case "azure-native:azurearcdata:SqlAvailabilityGroupDatabase":
+		r = &SqlAvailabilityGroupDatabase{}
+	case "azure-native:azurearcdata:SqlAvailabilityGroupReplica":
+		r = &SqlAvailabilityGroupReplica{}
 	case "azure-native:azurearcdata:SqlManagedInstance":
 		r = &SqlManagedInstance{}
+	case "azure-native:azurearcdata:SqlServerAvailabilityGroup":
+		r = &SqlServerAvailabilityGroup{}
+	case "azure-native:azurearcdata:SqlServerDatabase":
+		r = &SqlServerDatabase{}
 	case "azure-native:azurearcdata:SqlServerInstance":
 		r = &SqlServerInstance{}
 	default:

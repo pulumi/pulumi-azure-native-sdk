@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:managedidentity/v20220131preview:FederatedIdentityCredential":
 		r = &FederatedIdentityCredential{}
-	case "azure-native:managedidentity/v20220131preview:UserAssignedIdentity":
-		r = &UserAssignedIdentity{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

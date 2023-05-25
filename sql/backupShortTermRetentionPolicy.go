@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A short term retention policy.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type BackupShortTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 
+	// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
+	DiffBackupIntervalInHours pulumi.IntPtrOutput `pulumi:"diffBackupIntervalInHours"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
@@ -113,6 +116,8 @@ func (BackupShortTermRetentionPolicyState) ElementType() reflect.Type {
 type backupShortTermRetentionPolicyArgs struct {
 	// The name of the database.
 	DatabaseName string `pulumi:"databaseName"`
+	// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
+	DiffBackupIntervalInHours *int `pulumi:"diffBackupIntervalInHours"`
 	// The policy name. Should always be "default".
 	PolicyName *string `pulumi:"policyName"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -127,6 +132,8 @@ type backupShortTermRetentionPolicyArgs struct {
 type BackupShortTermRetentionPolicyArgs struct {
 	// The name of the database.
 	DatabaseName pulumi.StringInput
+	// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
+	DiffBackupIntervalInHours pulumi.IntPtrInput
 	// The policy name. Should always be "default".
 	PolicyName pulumi.StringPtrInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -172,6 +179,11 @@ func (o BackupShortTermRetentionPolicyOutput) ToBackupShortTermRetentionPolicyOu
 
 func (o BackupShortTermRetentionPolicyOutput) ToBackupShortTermRetentionPolicyOutputWithContext(ctx context.Context) BackupShortTermRetentionPolicyOutput {
 	return o
+}
+
+// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
+func (o BackupShortTermRetentionPolicyOutput) DiffBackupIntervalInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupShortTermRetentionPolicy) pulumi.IntPtrOutput { return v.DiffBackupIntervalInHours }).(pulumi.IntPtrOutput)
 }
 
 // Resource name.

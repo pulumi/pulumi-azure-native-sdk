@@ -366,101 +366,6 @@ func (o BlobStorageAccountPathResponseArrayOutput) Index(i pulumi.IntInput) Blob
 	}).(BlobStorageAccountPathResponseOutput)
 }
 
-// Identity of resource
-type Identity struct {
-	// Identity Type
-	Type *string `pulumi:"type"`
-}
-
-// IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
-// You can construct a concrete instance of `IdentityInput` via:
-//
-//	IdentityArgs{...}
-type IdentityInput interface {
-	pulumi.Input
-
-	ToIdentityOutput() IdentityOutput
-	ToIdentityOutputWithContext(context.Context) IdentityOutput
-}
-
-// Identity of resource
-type IdentityArgs struct {
-	// Identity Type
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (IdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Identity)(nil)).Elem()
-}
-
-func (i IdentityArgs) ToIdentityOutput() IdentityOutput {
-	return i.ToIdentityOutputWithContext(context.Background())
-}
-
-func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
-}
-
-// Identity of resource
-type IdentityOutput struct{ *pulumi.OutputState }
-
-func (IdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Identity)(nil)).Elem()
-}
-
-func (o IdentityOutput) ToIdentityOutput() IdentityOutput {
-	return o
-}
-
-func (o IdentityOutput) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
-	return o
-}
-
-// Identity Type
-func (o IdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Identity of resource
-type IdentityResponse struct {
-	// service principal Id
-	PrincipalId string `pulumi:"principalId"`
-	// Tenant Id
-	TenantId string `pulumi:"tenantId"`
-	// Identity Type
-	Type *string `pulumi:"type"`
-}
-
-// Identity of resource
-type IdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (IdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityResponse)(nil)).Elem()
-}
-
-func (o IdentityResponseOutput) ToIdentityResponseOutput() IdentityResponseOutput {
-	return o
-}
-
-func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
-	return o
-}
-
-// service principal Id
-func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// Tenant Id
-func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Identity Type
-func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
 // A type of synchronization setting based on schedule
 type ScheduledSourceSynchronizationSettingResponse struct {
 	// Kind of synchronization setting on share.
@@ -934,8 +839,6 @@ func init() {
 	pulumi.RegisterOutputType(BlobStorageAccountPathArrayOutput{})
 	pulumi.RegisterOutputType(BlobStorageAccountPathResponseOutput{})
 	pulumi.RegisterOutputType(BlobStorageAccountPathResponseArrayOutput{})
-	pulumi.RegisterOutputType(IdentityOutput{})
-	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(ScheduledSourceSynchronizationSettingResponseOutput{})
 	pulumi.RegisterOutputType(ScheduledSourceSynchronizationSettingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ShareSubscriptionSynchronizationResponseOutput{})

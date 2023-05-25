@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,6 +93,9 @@ func NewDscpConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:DscpConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:DscpConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the properties of the specified container service in the specified subscription and resource group. The operation returns the properties including state, orchestrator, number of masters and agents, and FQDNs of masters and agents.
-//
-// Deprecated: Version 2017-01-31 will be removed in v2 of the provider.
 func LookupContainerService(ctx *pulumi.Context, args *LookupContainerServiceArgs, opts ...pulumi.InvokeOption) (*LookupContainerServiceResult, error) {
 	var rv LookupContainerServiceResult
 	err := ctx.Invoke("azure-native:containerservice/v20170131:getContainerService", args, &rv, opts...)

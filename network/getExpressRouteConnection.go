@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified ExpressRouteConnection.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupExpressRouteConnection(ctx *pulumi.Context, args *LookupExpressRouteConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteConnectionResult, error) {
 	var rv LookupExpressRouteConnectionResult
 	err := ctx.Invoke("azure-native:network:getExpressRouteConnection", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupExpressRouteConnectionResult struct {
 	AuthorizationKey *string `pulumi:"authorizationKey"`
 	// Enable internet security.
 	EnableInternetSecurity *bool `pulumi:"enableInternetSecurity"`
+	// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
+	EnablePrivateLinkFastPath *bool `pulumi:"enablePrivateLinkFastPath"`
 	// The ExpressRoute circuit peering.
 	ExpressRouteCircuitPeering ExpressRouteCircuitPeeringIdResponse `pulumi:"expressRouteCircuitPeering"`
 	// Enable FastPath to vWan Firewall hub.
@@ -101,6 +103,11 @@ func (o LookupExpressRouteConnectionResultOutput) AuthorizationKey() pulumi.Stri
 // Enable internet security.
 func (o LookupExpressRouteConnectionResultOutput) EnableInternetSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *bool { return v.EnableInternetSecurity }).(pulumi.BoolPtrOutput)
+}
+
+// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
+func (o LookupExpressRouteConnectionResultOutput) EnablePrivateLinkFastPath() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *bool { return v.EnablePrivateLinkFastPath }).(pulumi.BoolPtrOutput)
 }
 
 // The ExpressRoute circuit peering.

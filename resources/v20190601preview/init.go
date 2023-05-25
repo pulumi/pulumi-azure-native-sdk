@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:resources/v20190601preview:TemplateSpec":
-		r = &TemplateSpec{}
 	case "azure-native:resources/v20190601preview:TemplateSpecVersion":
 		r = &TemplateSpecVersion{}
 	default:

@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConfigurationAssignment{}
 	case "azure-native:maintenance:ConfigurationAssignmentParent":
 		r = &ConfigurationAssignmentParent{}
+	case "azure-native:maintenance:ConfigurationAssignmentsForResourceGroup":
+		r = &ConfigurationAssignmentsForResourceGroup{}
+	case "azure-native:maintenance:ConfigurationAssignmentsForSubscription":
+		r = &ConfigurationAssignmentsForSubscription{}
 	case "azure-native:maintenance:MaintenanceConfiguration":
 		r = &MaintenanceConfiguration{}
 	default:

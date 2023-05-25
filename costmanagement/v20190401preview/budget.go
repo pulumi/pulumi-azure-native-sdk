@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +59,12 @@ func NewBudget(ctx *pulumi.Context,
 	if args.TimePeriod == nil {
 		return nil, errors.New("invalid value for required argument 'TimePeriod'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:Budget"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Budget
 	err := ctx.RegisterResource("azure-native:costmanagement/v20190401preview:Budget", name, args, &resource, opts...)
 	if err != nil {

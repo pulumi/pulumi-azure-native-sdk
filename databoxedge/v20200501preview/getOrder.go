@@ -11,8 +11,6 @@ import (
 )
 
 // The order details.
-//
-// Deprecated: Version 2020-05-01-preview will be removed in v2 of the provider.
 func LookupOrder(ctx *pulumi.Context, args *LookupOrderArgs, opts ...pulumi.InvokeOption) (*LookupOrderResult, error) {
 	var rv LookupOrderResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200501preview:getOrder", args, &rv, opts...)

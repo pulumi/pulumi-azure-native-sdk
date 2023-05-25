@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +52,12 @@ func NewStaticSiteDatabaseConnection(ctx *pulumi.Context,
 	if args.ResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:web:StaticSiteDatabaseConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource StaticSiteDatabaseConnection
 	err := ctx.RegisterResource("azure-native:web/v20220901:StaticSiteDatabaseConnection", name, args, &resource, opts...)
 	if err != nil {

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets details of the Source Control Configuration.
-//
-// Deprecated: Version 2019-11-01-preview will be removed in v2 of the provider.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {
 	var rv LookupSourceControlConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20191101preview:getSourceControlConfiguration", args, &rv, opts...)
@@ -73,11 +71,11 @@ func (val *LookupSourceControlConfigurationResult) Defaults() *LookupSourceContr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OperatorNamespace) {
+	if tmp.OperatorNamespace == nil {
 		operatorNamespace_ := "default"
 		tmp.OperatorNamespace = &operatorNamespace_
 	}
-	if isZero(tmp.OperatorScope) {
+	if tmp.OperatorScope == nil {
 		operatorScope_ := "cluster"
 		tmp.OperatorScope = &operatorScope_
 	}

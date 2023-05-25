@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a storage insight instance.
-//
-// Deprecated: Version 2015-03-20 will be removed in v2 of the provider.
 func LookupStorageInsight(ctx *pulumi.Context, args *LookupStorageInsightArgs, opts ...pulumi.InvokeOption) (*LookupStorageInsightResult, error) {
 	var rv LookupStorageInsightResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20150320:getStorageInsight", args, &rv, opts...)

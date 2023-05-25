@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,9 +52,6 @@ func NewApiDiagnosticLogger(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:apimanagement:ApiDiagnosticLogger"),
-		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20180101:ApiDiagnosticLogger"),
 		},

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // HealthBot resource definition
-//
-// Deprecated: Version 2020-10-20-preview will be removed in v2 of the provider.
 type Getbot struct {
 	pulumi.CustomResourceState
 
@@ -45,22 +43,46 @@ func NewGetbot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:healthbot/v20201020preview:getbot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot:Getbot"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthbot:getbot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot/v20201020:Getbot"),
 		},
 		{
 			Type: pulumi.String("azure-native:healthbot/v20201020:getbot"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthbot/v20201208:Getbot"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthbot/v20201208:getbot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot/v20201208preview:Getbot"),
 		},
 		{
 			Type: pulumi.String("azure-native:healthbot/v20201208preview:getbot"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthbot/v20210610:Getbot"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthbot/v20210610:getbot"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthbot/v20210824:Getbot"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthbot/v20210824:getbot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot/v20220808:Getbot"),
 		},
 		{
 			Type: pulumi.String("azure-native:healthbot/v20220808:getbot"),
@@ -68,7 +90,7 @@ func NewGetbot(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource Getbot
-	err := ctx.RegisterResource("azure-native:healthbot/v20201020preview:getbot", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:healthbot/v20201020preview:Getbot", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +102,7 @@ func NewGetbot(ctx *pulumi.Context,
 func GetGetbot(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GetbotState, opts ...pulumi.ResourceOption) (*Getbot, error) {
 	var resource Getbot
-	err := ctx.ReadResource("azure-native:healthbot/v20201020preview:getbot", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:healthbot/v20201020preview:Getbot", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

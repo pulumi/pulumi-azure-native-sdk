@@ -23,38 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:synapse/v20210501:BigDataPool":
 		r = &BigDataPool{}
-	case "azure-native:synapse/v20210501:IntegrationRuntime":
-		r = &IntegrationRuntime{}
-	case "azure-native:synapse/v20210501:IpFirewallRule":
-		r = &IpFirewallRule{}
-	case "azure-native:synapse/v20210501:Key":
-		r = &Key{}
-	case "azure-native:synapse/v20210501:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:synapse/v20210501:PrivateLinkHub":
-		r = &PrivateLinkHub{}
 	case "azure-native:synapse/v20210501:SqlPool":
 		r = &SqlPool{}
-	case "azure-native:synapse/v20210501:SqlPoolSensitivityLabel":
-		r = &SqlPoolSensitivityLabel{}
-	case "azure-native:synapse/v20210501:SqlPoolTransparentDataEncryption":
-		r = &SqlPoolTransparentDataEncryption{}
-	case "azure-native:synapse/v20210501:SqlPoolVulnerabilityAssessment":
-		r = &SqlPoolVulnerabilityAssessment{}
-	case "azure-native:synapse/v20210501:SqlPoolVulnerabilityAssessmentRuleBaseline":
-		r = &SqlPoolVulnerabilityAssessmentRuleBaseline{}
-	case "azure-native:synapse/v20210501:SqlPoolWorkloadClassifier":
-		r = &SqlPoolWorkloadClassifier{}
-	case "azure-native:synapse/v20210501:SqlPoolWorkloadGroup":
-		r = &SqlPoolWorkloadGroup{}
 	case "azure-native:synapse/v20210501:Workspace":
 		r = &Workspace{}
-	case "azure-native:synapse/v20210501:WorkspaceAadAdmin":
-		r = &WorkspaceAadAdmin{}
-	case "azure-native:synapse/v20210501:WorkspaceManagedSqlServerVulnerabilityAssessment":
-		r = &WorkspaceManagedSqlServerVulnerabilityAssessment{}
-	case "azure-native:synapse/v20210501:WorkspaceSqlAadAdmin":
-		r = &WorkspaceSqlAadAdmin{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

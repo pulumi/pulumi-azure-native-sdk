@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
-// API Version: 2021-06-01.
+// API Version: 2022-10-01.
 func LookupConnectionMonitorTest(ctx *pulumi.Context, args *LookupConnectionMonitorTestArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorTestResult, error) {
 	var rv LookupConnectionMonitorTestResult
 	err := ctx.Invoke("azure-native:peering:getConnectionMonitorTest", args, &rv, opts...)

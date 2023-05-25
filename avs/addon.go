@@ -7,23 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An addon resource
-// API Version: 2020-07-17-preview.
+// API Version: 2022-05-01.
+// Previous API Version: 2020-07-17-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Addon struct {
 	pulumi.CustomResourceState
 
-	// The type of private cloud addon
-	AddonType pulumi.StringPtrOutput `pulumi:"addonType"`
-	// The SRM license
-	LicenseKey pulumi.StringPtrOutput `pulumi:"licenseKey"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The state of the addon provisioning
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The properties of an addon resource
+	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -93,12 +90,10 @@ func (AddonState) ElementType() reflect.Type {
 type addonArgs struct {
 	// Name of the addon for the private cloud
 	AddonName *string `pulumi:"addonName"`
-	// The type of private cloud addon
-	AddonType *string `pulumi:"addonType"`
-	// The SRM license
-	LicenseKey *string `pulumi:"licenseKey"`
 	// The name of the private cloud.
 	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The properties of an addon resource
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -107,12 +102,10 @@ type addonArgs struct {
 type AddonArgs struct {
 	// Name of the addon for the private cloud
 	AddonName pulumi.StringPtrInput
-	// The type of private cloud addon
-	AddonType pulumi.StringPtrInput
-	// The SRM license
-	LicenseKey pulumi.StringPtrInput
 	// The name of the private cloud.
 	PrivateCloudName pulumi.StringInput
+	// The properties of an addon resource
+	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -154,24 +147,14 @@ func (o AddonOutput) ToAddonOutputWithContext(ctx context.Context) AddonOutput {
 	return o
 }
 
-// The type of private cloud addon
-func (o AddonOutput) AddonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Addon) pulumi.StringPtrOutput { return v.AddonType }).(pulumi.StringPtrOutput)
-}
-
-// The SRM license
-func (o AddonOutput) LicenseKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Addon) pulumi.StringPtrOutput { return v.LicenseKey }).(pulumi.StringPtrOutput)
-}
-
 // Resource name.
 func (o AddonOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The state of the addon provisioning
-func (o AddonOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+// The properties of an addon resource
+func (o AddonOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Addon) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Resource type.

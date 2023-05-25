@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties for the database account.
-// API Version: 2021-04-01-preview.
+// API Version: 2022-11-15.
+// Previous API Version: 2021-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -69,7 +70,16 @@ func NewService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:Service"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:Service"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:Service"),
 		},
 	})
 	opts = append(opts, aliases)

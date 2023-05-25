@@ -89,11 +89,11 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableAadAuth) {
+	if tmp.DisableAadAuth == nil {
 		disableAadAuth_ := false
 		tmp.DisableAadAuth = &disableAadAuth_
 	}
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
@@ -101,7 +101,7 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 
 	tmp.NetworkACLs = tmp.NetworkACLs.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

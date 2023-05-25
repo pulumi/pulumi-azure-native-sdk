@@ -11,7 +11,7 @@ import (
 )
 
 // List Content Keys used by this Streaming Locator
-// API Version: 2020-05-01.
+// API Version: 2022-08-01.
 func ListStreamingLocatorContentKeys(ctx *pulumi.Context, args *ListStreamingLocatorContentKeysArgs, opts ...pulumi.InvokeOption) (*ListStreamingLocatorContentKeysResult, error) {
 	var rv ListStreamingLocatorContentKeysResult
 	err := ctx.Invoke("azure-native:media:listStreamingLocatorContentKeys", args, &rv, opts...)

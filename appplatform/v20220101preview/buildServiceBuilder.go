@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,9 @@ func NewBuildServiceBuilder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildServiceBuilder"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildServiceBuilder"),
 		},
 	})
 	opts = append(opts, aliases)

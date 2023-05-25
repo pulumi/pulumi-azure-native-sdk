@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:workloads/v20230401:Monitor":
+		r = &Monitor{}
 	case "azure-native:workloads/v20230401:ProviderInstance":
 		r = &ProviderInstance{}
 	case "azure-native:workloads/v20230401:SAPApplicationServerInstance":
@@ -33,8 +35,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SAPVirtualInstance{}
 	case "azure-native:workloads/v20230401:SapLandscapeMonitor":
 		r = &SapLandscapeMonitor{}
-	case "azure-native:workloads/v20230401:monitor":
-		r = &Monitor{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

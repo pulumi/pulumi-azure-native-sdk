@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SpatialAnchorsAccount Response.
-//
-// Deprecated: Version 2019-02-28-preview will be removed in v2 of the provider.
 type SpatialAnchorsAccount struct {
 	pulumi.CustomResourceState
 

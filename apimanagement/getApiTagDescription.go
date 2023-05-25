@@ -11,7 +11,7 @@ import (
 )
 
 // Get Tag description in scope of API
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupApiTagDescription(ctx *pulumi.Context, args *LookupApiTagDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupApiTagDescriptionResult, error) {
 	var rv LookupApiTagDescriptionResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiTagDescription", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupApiTagDescription(ctx *pulumi.Context, args *LookupApiTagDescriptionA
 type LookupApiTagDescriptionArgs struct {
 	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
 	ApiId string `pulumi:"apiId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -42,13 +42,13 @@ type LookupApiTagDescriptionResult struct {
 	ExternalDocsDescription *string `pulumi:"externalDocsDescription"`
 	// Absolute URL of external resources describing the tag.
 	ExternalDocsUrl *string `pulumi:"externalDocsUrl"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Identifier of the tag in the form of /tags/{tagId}
 	TagId *string `pulumi:"tagId"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -68,7 +68,7 @@ func LookupApiTagDescriptionOutput(ctx *pulumi.Context, args LookupApiTagDescrip
 type LookupApiTagDescriptionOutputArgs struct {
 	// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
 	ApiId pulumi.StringInput `pulumi:"apiId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -115,12 +115,12 @@ func (o LookupApiTagDescriptionResultOutput) ExternalDocsUrl() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.ExternalDocsUrl }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupApiTagDescriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupApiTagDescriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -130,7 +130,7 @@ func (o LookupApiTagDescriptionResultOutput) TagId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) *string { return v.TagId }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupApiTagDescriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

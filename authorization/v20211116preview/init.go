@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:authorization/v20211116preview:AccessReviewHistoryDefinitionById":
 		r = &AccessReviewHistoryDefinitionById{}
-	case "azure-native:authorization/v20211116preview:AccessReviewScheduleDefinitionById":
-		r = &AccessReviewScheduleDefinitionById{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

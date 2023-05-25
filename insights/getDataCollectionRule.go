@@ -11,7 +11,7 @@ import (
 )
 
 // Definition of ARM tracked top level resource.
-// API Version: 2019-11-01-preview.
+// API Version: 2022-06-01.
 func LookupDataCollectionRule(ctx *pulumi.Context, args *LookupDataCollectionRuleArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionRuleResult, error) {
 	var rv LookupDataCollectionRuleResult
 	err := ctx.Invoke("azure-native:insights:getDataCollectionRule", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupDataCollectionRuleArgs struct {
 
 // Definition of ARM tracked top level resource.
 type LookupDataCollectionRuleResult struct {
+	// The resource ID of the data collection endpoint that this rule can be used with.
+	DataCollectionEndpointId *string `pulumi:"dataCollectionEndpointId"`
 	// The specification of data flows.
 	DataFlows []DataFlowResponse `pulumi:"dataFlows"`
 	// The specification of data sources.
@@ -43,16 +45,24 @@ type LookupDataCollectionRuleResult struct {
 	Etag string `pulumi:"etag"`
 	// Fully qualified ID of the resource.
 	Id string `pulumi:"id"`
+	// Managed service identity of the resource.
+	Identity *DataCollectionRuleResourceResponseIdentity `pulumi:"identity"`
 	// The immutable ID of this data collection rule. This property is READ-ONLY.
 	ImmutableId string `pulumi:"immutableId"`
 	// The kind of the resource.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives.
 	Location string `pulumi:"location"`
+	// Metadata about the resource
+	Metadata DataCollectionRuleResponseMetadata `pulumi:"metadata"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
 	// The resource provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Declaration of custom streams used in this rule.
+	StreamDeclarations map[string]StreamDeclarationResponse `pulumi:"streamDeclarations"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData DataCollectionRuleResourceResponseSystemData `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
@@ -98,6 +108,11 @@ func (o LookupDataCollectionRuleResultOutput) ToLookupDataCollectionRuleResultOu
 	return o
 }
 
+// The resource ID of the data collection endpoint that this rule can be used with.
+func (o LookupDataCollectionRuleResultOutput) DataCollectionEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleResult) *string { return v.DataCollectionEndpointId }).(pulumi.StringPtrOutput)
+}
+
 // The specification of data flows.
 func (o LookupDataCollectionRuleResultOutput) DataFlows() DataFlowResponseArrayOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleResult) []DataFlowResponse { return v.DataFlows }).(DataFlowResponseArrayOutput)
@@ -129,6 +144,11 @@ func (o LookupDataCollectionRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Managed service identity of the resource.
+func (o LookupDataCollectionRuleResultOutput) Identity() DataCollectionRuleResourceResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleResult) *DataCollectionRuleResourceResponseIdentity { return v.Identity }).(DataCollectionRuleResourceResponseIdentityPtrOutput)
+}
+
 // The immutable ID of this data collection rule. This property is READ-ONLY.
 func (o LookupDataCollectionRuleResultOutput) ImmutableId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleResult) string { return v.ImmutableId }).(pulumi.StringOutput)
@@ -144,6 +164,11 @@ func (o LookupDataCollectionRuleResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Metadata about the resource
+func (o LookupDataCollectionRuleResultOutput) Metadata() DataCollectionRuleResponseMetadataOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleResult) DataCollectionRuleResponseMetadata { return v.Metadata }).(DataCollectionRuleResponseMetadataOutput)
+}
+
 // The name of the resource.
 func (o LookupDataCollectionRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleResult) string { return v.Name }).(pulumi.StringOutput)
@@ -152,6 +177,20 @@ func (o LookupDataCollectionRuleResultOutput) Name() pulumi.StringOutput {
 // The resource provisioning state.
 func (o LookupDataCollectionRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Declaration of custom streams used in this rule.
+func (o LookupDataCollectionRuleResultOutput) StreamDeclarations() StreamDeclarationResponseMapOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleResult) map[string]StreamDeclarationResponse {
+		return v.StreamDeclarations
+	}).(StreamDeclarationResponseMapOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupDataCollectionRuleResultOutput) SystemData() DataCollectionRuleResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleResult) DataCollectionRuleResourceResponseSystemData {
+		return v.SystemData
+	}).(DataCollectionRuleResourceResponseSystemDataOutput)
 }
 
 // Resource tags.

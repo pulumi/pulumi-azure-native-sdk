@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +42,12 @@ func NewFeaturesetContainerEntity(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	args.FeaturesetContainerProperties = args.FeaturesetContainerProperties.ToFeaturesetContainerOutput().ApplyT(func(v FeaturesetContainer) FeaturesetContainer { return *v.Defaults() }).(FeaturesetContainerOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturesetContainerEntity"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource FeaturesetContainerEntity
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20230401preview:FeaturesetContainerEntity", name, args, &resource, opts...)
 	if err != nil {

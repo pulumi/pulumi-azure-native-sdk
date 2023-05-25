@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The bandwidth schedule details.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type BandwidthSchedule struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +27,7 @@ type BandwidthSchedule struct {
 	Start pulumi.StringOutput `pulumi:"start"`
 	// The stop time of the schedule in UTC.
 	Stop pulumi.StringOutput `pulumi:"stop"`
-	// Bandwidth object related to ASE resource
+	// Metadata pertaining to creation and last modification of BandwidthSchedule
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -233,7 +234,7 @@ func (o BandwidthScheduleOutput) Stop() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthSchedule) pulumi.StringOutput { return v.Stop }).(pulumi.StringOutput)
 }
 
-// Bandwidth object related to ASE resource
+// Metadata pertaining to creation and last modification of BandwidthSchedule
 func (o BandwidthScheduleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *BandwidthSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

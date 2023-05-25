@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Security assessment on a resource
-// API Version: 2020-01-01.
+// Security assessment on a resource - response format
+// API Version: 2021-06-01.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type Assessment struct {
 	pulumi.CustomResourceState
 
@@ -31,7 +32,7 @@ type Assessment struct {
 	// Details of the resource that was assessed
 	ResourceDetails pulumi.AnyOutput `pulumi:"resourceDetails"`
 	// The result of the assessment
-	Status AssessmentStatusResponseOutput `pulumi:"status"`
+	Status AssessmentStatusResponseResponseOutput `pulumi:"status"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -203,8 +204,8 @@ func (o AssessmentOutput) ResourceDetails() pulumi.AnyOutput {
 }
 
 // The result of the assessment
-func (o AssessmentOutput) Status() AssessmentStatusResponseOutput {
-	return o.ApplyT(func(v *Assessment) AssessmentStatusResponseOutput { return v.Status }).(AssessmentStatusResponseOutput)
+func (o AssessmentOutput) Status() AssessmentStatusResponseResponseOutput {
+	return o.ApplyT(func(v *Assessment) AssessmentStatusResponseResponseOutput { return v.Status }).(AssessmentStatusResponseResponseOutput)
 }
 
 // Resource type

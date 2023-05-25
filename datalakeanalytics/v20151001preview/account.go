@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Data Lake Analytics account object, containing all information associated with the named Data Lake Analytics account.
-//
-// Deprecated: Version 2015-10-01-preview will be removed in v2 of the provider.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -97,22 +95,22 @@ func NewAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.FirewallAllowAzureIps) {
+	if args.FirewallAllowAzureIps == nil {
 		args.FirewallAllowAzureIps = FirewallAllowAzureIpsState("Disabled")
 	}
-	if isZero(args.FirewallState) {
+	if args.FirewallState == nil {
 		args.FirewallState = FirewallState("Disabled")
 	}
-	if isZero(args.MaxDegreeOfParallelismPerJob) {
+	if args.MaxDegreeOfParallelismPerJob == nil {
 		args.MaxDegreeOfParallelismPerJob = pulumi.IntPtr(32)
 	}
-	if isZero(args.MaxJobCount) {
+	if args.MaxJobCount == nil {
 		args.MaxJobCount = pulumi.IntPtr(20)
 	}
-	if isZero(args.NewTier) {
+	if args.NewTier == nil {
 		args.NewTier = TierType("Consumption")
 	}
-	if isZero(args.QueryStoreRetention) {
+	if args.QueryStoreRetention == nil {
 		args.QueryStoreRetention = pulumi.IntPtr(30)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

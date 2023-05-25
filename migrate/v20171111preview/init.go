@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:migrate/v20171111preview:Assessment":
 		r = &Assessment{}
-	case "azure-native:migrate/v20171111preview:Group":
-		r = &Group{}
-	case "azure-native:migrate/v20171111preview:Project":
-		r = &Project{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

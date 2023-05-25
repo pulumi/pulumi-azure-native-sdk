@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +60,9 @@ func NewSuppression(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:advisor/v20220901:Suppression"),
+		},
+		{
+			Type: pulumi.String("azure-native:advisor/v20230101:Suppression"),
 		},
 	})
 	opts = append(opts, aliases)

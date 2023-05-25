@@ -21,20 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:storage/v20190401:BlobContainer":
-		r = &BlobContainer{}
 	case "azure-native:storage/v20190401:BlobContainerImmutabilityPolicy":
 		r = &BlobContainerImmutabilityPolicy{}
-	case "azure-native:storage/v20190401:BlobServiceProperties":
-		r = &BlobServiceProperties{}
-	case "azure-native:storage/v20190401:FileServiceProperties":
-		r = &FileServiceProperties{}
-	case "azure-native:storage/v20190401:FileShare":
-		r = &FileShare{}
-	case "azure-native:storage/v20190401:ManagementPolicy":
-		r = &ManagementPolicy{}
-	case "azure-native:storage/v20190401:StorageAccount":
-		r = &StorageAccount{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

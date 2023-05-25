@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the description for the specified WCFRelays.
-//
-// Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
 func LookupWCFRelay(ctx *pulumi.Context, args *LookupWCFRelayArgs, opts ...pulumi.InvokeOption) (*LookupWCFRelayResult, error) {
 	var rv LookupWCFRelayResult
 	err := ctx.Invoke("azure-native:relay/v20160701:getWCFRelay", args, &rv, opts...)

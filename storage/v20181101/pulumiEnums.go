@@ -1033,185 +1033,12 @@ const (
 	PermissionsP = Permissions("p")
 )
 
-// Specifies whether data in the container may be accessed publicly and the level of access.
-type PublicAccess string
-
-const (
-	PublicAccessContainer = PublicAccess("Container")
-	PublicAccessBlob      = PublicAccess("Blob")
-	PublicAccessNone      = PublicAccess("None")
-)
-
-func (PublicAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicAccess)(nil)).Elem()
-}
-
-func (e PublicAccess) ToPublicAccessOutput() PublicAccessOutput {
-	return pulumi.ToOutput(e).(PublicAccessOutput)
-}
-
-func (e PublicAccess) ToPublicAccessOutputWithContext(ctx context.Context) PublicAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PublicAccessOutput)
-}
-
-func (e PublicAccess) ToPublicAccessPtrOutput() PublicAccessPtrOutput {
-	return e.ToPublicAccessPtrOutputWithContext(context.Background())
-}
-
-func (e PublicAccess) ToPublicAccessPtrOutputWithContext(ctx context.Context) PublicAccessPtrOutput {
-	return PublicAccess(e).ToPublicAccessOutputWithContext(ctx).ToPublicAccessPtrOutputWithContext(ctx)
-}
-
-func (e PublicAccess) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PublicAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type PublicAccessOutput struct{ *pulumi.OutputState }
-
-func (PublicAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicAccess)(nil)).Elem()
-}
-
-func (o PublicAccessOutput) ToPublicAccessOutput() PublicAccessOutput {
-	return o
-}
-
-func (o PublicAccessOutput) ToPublicAccessOutputWithContext(ctx context.Context) PublicAccessOutput {
-	return o
-}
-
-func (o PublicAccessOutput) ToPublicAccessPtrOutput() PublicAccessPtrOutput {
-	return o.ToPublicAccessPtrOutputWithContext(context.Background())
-}
-
-func (o PublicAccessOutput) ToPublicAccessPtrOutputWithContext(ctx context.Context) PublicAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicAccess) *PublicAccess {
-		return &v
-	}).(PublicAccessPtrOutput)
-}
-
-func (o PublicAccessOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o PublicAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicAccess) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o PublicAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PublicAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicAccess) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type PublicAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (PublicAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublicAccess)(nil)).Elem()
-}
-
-func (o PublicAccessPtrOutput) ToPublicAccessPtrOutput() PublicAccessPtrOutput {
-	return o
-}
-
-func (o PublicAccessPtrOutput) ToPublicAccessPtrOutputWithContext(ctx context.Context) PublicAccessPtrOutput {
-	return o
-}
-
-func (o PublicAccessPtrOutput) Elem() PublicAccessOutput {
-	return o.ApplyT(func(v *PublicAccess) PublicAccess {
-		if v != nil {
-			return *v
-		}
-		var ret PublicAccess
-		return ret
-	}).(PublicAccessOutput)
-}
-
-func (o PublicAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PublicAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicAccess) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// PublicAccessInput is an input type that accepts PublicAccessArgs and PublicAccessOutput values.
-// You can construct a concrete instance of `PublicAccessInput` via:
-//
-//	PublicAccessArgs{...}
-type PublicAccessInput interface {
-	pulumi.Input
-
-	ToPublicAccessOutput() PublicAccessOutput
-	ToPublicAccessOutputWithContext(context.Context) PublicAccessOutput
-}
-
-var publicAccessPtrType = reflect.TypeOf((**PublicAccess)(nil)).Elem()
-
-type PublicAccessPtrInput interface {
-	pulumi.Input
-
-	ToPublicAccessPtrOutput() PublicAccessPtrOutput
-	ToPublicAccessPtrOutputWithContext(context.Context) PublicAccessPtrOutput
-}
-
-type publicAccessPtr string
-
-func PublicAccessPtr(v string) PublicAccessPtrInput {
-	return (*publicAccessPtr)(&v)
-}
-
-func (*publicAccessPtr) ElementType() reflect.Type {
-	return publicAccessPtrType
-}
-
-func (in *publicAccessPtr) ToPublicAccessPtrOutput() PublicAccessPtrOutput {
-	return pulumi.ToOutput(in).(PublicAccessPtrOutput)
-}
-
-func (in *publicAccessPtr) ToPublicAccessPtrOutputWithContext(ctx context.Context) PublicAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PublicAccessPtrOutput)
-}
-
 // The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
 type ReasonCode string
 
 const (
 	ReasonCodeQuotaId                     = ReasonCode("QuotaId")
 	ReasonCodeNotAvailableForSubscription = ReasonCode("NotAvailableForSubscription")
-)
-
-// The valid value is Lifecycle
-type RuleType string
-
-const (
-	RuleTypeLifecycle = RuleType("Lifecycle")
 )
 
 // The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
@@ -1593,8 +1420,6 @@ func init() {
 	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(KindOutput{})
 	pulumi.RegisterOutputType(KindPtrOutput{})
-	pulumi.RegisterOutputType(PublicAccessOutput{})
-	pulumi.RegisterOutputType(PublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(SkuNameOutput{})
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
 	pulumi.RegisterOutputType(StateOutput{})

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration Assignment
-// API Version: 2021-04-01-preview.
+// API Version: 2022-11-01-preview.
+// Previous API Version: 2021-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/TODO for information on migrating from v1 to v2 of the provider.
 type ConfigurationAssignment struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +62,9 @@ func NewConfigurationAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20221101preview:ConfigurationAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20230401:ConfigurationAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

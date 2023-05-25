@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,6 +109,9 @@ func NewVirtualRouter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:VirtualRouter"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualRouter"),
 		},
 	})
 	opts = append(opts, aliases)

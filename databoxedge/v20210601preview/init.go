@@ -23,14 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:databoxedge/v20210601preview:ArcAddon":
 		r = &ArcAddon{}
-	case "azure-native:databoxedge/v20210601preview:BandwidthSchedule":
-		r = &BandwidthSchedule{}
 	case "azure-native:databoxedge/v20210601preview:CloudEdgeManagementRole":
 		r = &CloudEdgeManagementRole{}
-	case "azure-native:databoxedge/v20210601preview:Container":
-		r = &Container{}
-	case "azure-native:databoxedge/v20210601preview:Device":
-		r = &Device{}
 	case "azure-native:databoxedge/v20210601preview:FileEventTrigger":
 		r = &FileEventTrigger{}
 	case "azure-native:databoxedge/v20210601preview:IoTAddon":
@@ -41,20 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KubernetesRole{}
 	case "azure-native:databoxedge/v20210601preview:MECRole":
 		r = &MECRole{}
-	case "azure-native:databoxedge/v20210601preview:MonitoringConfig":
-		r = &MonitoringConfig{}
-	case "azure-native:databoxedge/v20210601preview:Order":
-		r = &Order{}
 	case "azure-native:databoxedge/v20210601preview:PeriodicTimerEventTrigger":
 		r = &PeriodicTimerEventTrigger{}
-	case "azure-native:databoxedge/v20210601preview:Share":
-		r = &Share{}
-	case "azure-native:databoxedge/v20210601preview:StorageAccount":
-		r = &StorageAccount{}
-	case "azure-native:databoxedge/v20210601preview:StorageAccountCredential":
-		r = &StorageAccountCredential{}
-	case "azure-native:databoxedge/v20210601preview:User":
-		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
