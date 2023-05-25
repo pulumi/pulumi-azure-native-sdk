@@ -80,7 +80,7 @@ func (val *LookupDefaultCniNetworkResult) Defaults() *LookupDefaultCniNetworkRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IpAllocationType) {
+	if tmp.IpAllocationType == nil {
 		ipAllocationType_ := "DualStack"
 		tmp.IpAllocationType = &ipAllocationType_
 	}

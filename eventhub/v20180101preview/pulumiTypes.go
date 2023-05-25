@@ -1184,7 +1184,7 @@ func (val *Encryption) Defaults() *Encryption {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := KeySource("Microsoft.KeyVault")
 		tmp.KeySource = &keySource_
 	}
@@ -1216,7 +1216,7 @@ func (val *EncryptionArgs) Defaults() *EncryptionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		tmp.KeySource = KeySource("Microsoft.KeyVault")
 	}
 	return &tmp
@@ -1367,7 +1367,7 @@ func (val *EncryptionResponse) Defaults() *EncryptionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.KeyVault"
 		tmp.KeySource = &keySource_
 	}
@@ -1459,7 +1459,7 @@ func (val *Identity) Defaults() *Identity {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := IdentityType("SystemAssigned")
 		tmp.Type = &type_
 	}
@@ -1493,7 +1493,7 @@ func (val *IdentityArgs) Defaults() *IdentityArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = IdentityType("SystemAssigned")
 	}
 	return &tmp
@@ -1661,7 +1661,7 @@ func (val *IdentityResponse) Defaults() *IdentityResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "SystemAssigned"
 		tmp.Type = &type_
 	}

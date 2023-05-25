@@ -1078,7 +1078,7 @@ func (val *Notification) Defaults() *Notification {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ThresholdType) {
+	if tmp.ThresholdType == nil {
 		thresholdType_ := "Actual"
 		tmp.ThresholdType = &thresholdType_
 	}
@@ -1120,7 +1120,7 @@ func (val *NotificationArgs) Defaults() *NotificationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ThresholdType) {
+	if tmp.ThresholdType == nil {
 		tmp.ThresholdType = pulumi.StringPtr("Actual")
 	}
 	return &tmp
@@ -1256,7 +1256,7 @@ func (val *NotificationResponse) Defaults() *NotificationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ThresholdType) {
+	if tmp.ThresholdType == nil {
 		thresholdType_ := "Actual"
 		tmp.ThresholdType = &thresholdType_
 	}

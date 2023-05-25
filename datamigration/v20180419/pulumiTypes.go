@@ -194,11 +194,11 @@ func (val *ConnectToSourceSqlServerTaskInput) Defaults() *ConnectToSourceSqlServ
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CollectAgentJobs) {
+	if tmp.CollectAgentJobs == nil {
 		collectAgentJobs_ := false
 		tmp.CollectAgentJobs = &collectAgentJobs_
 	}
-	if isZero(tmp.CollectLogins) {
+	if tmp.CollectLogins == nil {
 		collectLogins_ := false
 		tmp.CollectLogins = &collectLogins_
 	}
@@ -225,11 +225,11 @@ func (val *ConnectToSourceSqlServerTaskInputResponse) Defaults() *ConnectToSourc
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CollectAgentJobs) {
+	if tmp.CollectAgentJobs == nil {
 		collectAgentJobs_ := false
 		tmp.CollectAgentJobs = &collectAgentJobs_
 	}
-	if isZero(tmp.CollectLogins) {
+	if tmp.CollectLogins == nil {
 		collectLogins_ := false
 		tmp.CollectLogins = &collectLogins_
 	}
@@ -3401,11 +3401,11 @@ func (val *SqlConnectionInfo) Defaults() *SqlConnectionInfo {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}
@@ -3441,11 +3441,11 @@ func (val *SqlConnectionInfoResponse) Defaults() *SqlConnectionInfoResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}

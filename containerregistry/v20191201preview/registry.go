@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,10 +70,10 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.AdminUserEnabled) {
+	if args.AdminUserEnabled == nil {
 		args.AdminUserEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(args.NetworkRuleBypassOptions) {
+	if args.NetworkRuleBypassOptions == nil {
 		args.NetworkRuleBypassOptions = pulumi.StringPtr("AzureServices")
 	}
 	if args.NetworkRuleSet != nil {
@@ -82,7 +82,7 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.Policies != nil {
 		args.Policies = args.Policies.ToPoliciesPtrOutput().ApplyT(func(v *Policies) *Policies { return v.Defaults() }).(PoliciesPtrOutput)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

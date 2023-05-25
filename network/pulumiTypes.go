@@ -14750,7 +14750,7 @@ func (val *BackendPoolsSettings) Defaults() *BackendPoolsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := "Enabled"
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
@@ -14782,7 +14782,7 @@ func (val *BackendPoolsSettingsArgs) Defaults() *BackendPoolsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		tmp.EnforceCertificateNameCheck = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -14933,7 +14933,7 @@ func (val *BackendPoolsSettingsResponse) Defaults() *BackendPoolsSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := "Enabled"
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
@@ -31022,7 +31022,7 @@ func (val *FlowLogFormatParameters) Defaults() *FlowLogFormatParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Version) {
+	if tmp.Version == nil {
 		version_ := 0
 		tmp.Version = &version_
 	}
@@ -31054,7 +31054,7 @@ func (val *FlowLogFormatParametersArgs) Defaults() *FlowLogFormatParametersArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Version) {
+	if tmp.Version == nil {
 		tmp.Version = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -31205,7 +31205,7 @@ func (val *FlowLogFormatParametersResponse) Defaults() *FlowLogFormatParametersR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Version) {
+	if tmp.Version == nil {
 		version_ := 0
 		tmp.Version = &version_
 	}
@@ -34465,7 +34465,7 @@ func (val *HealthProbeSettingsModel) Defaults() *HealthProbeSettingsModel {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HealthProbeMethod) {
+	if tmp.HealthProbeMethod == nil {
 		healthProbeMethod_ := "HEAD"
 		tmp.HealthProbeMethod = &healthProbeMethod_
 	}
@@ -34507,7 +34507,7 @@ func (val *HealthProbeSettingsModelArgs) Defaults() *HealthProbeSettingsModelArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HealthProbeMethod) {
+	if tmp.HealthProbeMethod == nil {
 		tmp.HealthProbeMethod = pulumi.StringPtr("HEAD")
 	}
 	return &tmp
@@ -34647,7 +34647,7 @@ func (val *HealthProbeSettingsModelResponse) Defaults() *HealthProbeSettingsMode
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HealthProbeMethod) {
+	if tmp.HealthProbeMethod == nil {
 		healthProbeMethod_ := "HEAD"
 		tmp.HealthProbeMethod = &healthProbeMethod_
 	}
@@ -36010,7 +36010,7 @@ func (val *IPConfigurationResponse) Defaults() *IPConfigurationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIPAllocationMethod) {
+	if tmp.PrivateIPAllocationMethod == nil {
 		privateIPAllocationMethod_ := "Dynamic"
 		tmp.PrivateIPAllocationMethod = &privateIPAllocationMethod_
 	}
@@ -36216,7 +36216,7 @@ func (val *InboundEndpointIPConfiguration) Defaults() *InboundEndpointIPConfigur
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIpAllocationMethod) {
+	if tmp.PrivateIpAllocationMethod == nil {
 		privateIpAllocationMethod_ := "Dynamic"
 		tmp.PrivateIpAllocationMethod = &privateIpAllocationMethod_
 	}
@@ -36250,7 +36250,7 @@ func (val *InboundEndpointIPConfigurationArgs) Defaults() *InboundEndpointIPConf
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIpAllocationMethod) {
+	if tmp.PrivateIpAllocationMethod == nil {
 		tmp.PrivateIpAllocationMethod = pulumi.StringPtr("Dynamic")
 	}
 	return &tmp
@@ -36358,7 +36358,7 @@ func (val *InboundEndpointIPConfigurationResponse) Defaults() *InboundEndpointIP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIpAllocationMethod) {
+	if tmp.PrivateIpAllocationMethod == nil {
 		privateIpAllocationMethod_ := "Dynamic"
 		tmp.PrivateIpAllocationMethod = &privateIpAllocationMethod_
 	}
@@ -48306,7 +48306,7 @@ func (val *PacketCaptureFilter) Defaults() *PacketCaptureFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}
@@ -48344,7 +48344,7 @@ func (val *PacketCaptureFilterArgs) Defaults() *PacketCaptureFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		tmp.Protocol = pulumi.StringPtr("Any")
 	}
 	return &tmp
@@ -48466,7 +48466,7 @@ func (val *PacketCaptureFilterResponse) Defaults() *PacketCaptureFilterResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}
@@ -54845,11 +54845,11 @@ func (val *RetentionPolicyParameters) Defaults() *RetentionPolicyParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 0
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}
@@ -54881,10 +54881,10 @@ func (val *RetentionPolicyParametersArgs) Defaults() *RetentionPolicyParametersA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		tmp.Days = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -55035,11 +55035,11 @@ func (val *RetentionPolicyParametersResponse) Defaults() *RetentionPolicyParamet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 0
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}

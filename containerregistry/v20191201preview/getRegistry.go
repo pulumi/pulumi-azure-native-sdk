@@ -79,11 +79,11 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdminUserEnabled) {
+	if tmp.AdminUserEnabled == nil {
 		adminUserEnabled_ := false
 		tmp.AdminUserEnabled = &adminUserEnabled_
 	}
-	if isZero(tmp.NetworkRuleBypassOptions) {
+	if tmp.NetworkRuleBypassOptions == nil {
 		networkRuleBypassOptions_ := "AzureServices"
 		tmp.NetworkRuleBypassOptions = &networkRuleBypassOptions_
 	}
@@ -91,7 +91,7 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 
 	tmp.Policies = tmp.Policies.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

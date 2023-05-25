@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,7 +51,7 @@ func NewAppliance(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Distro) {
+	if args.Distro == nil {
 		args.Distro = pulumi.StringPtr("AKSEdge")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

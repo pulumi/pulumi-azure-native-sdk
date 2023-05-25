@@ -51,7 +51,7 @@ func (val *EventSubscriptionFilter) Defaults() *EventSubscriptionFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		isSubjectCaseSensitive_ := false
 		tmp.IsSubjectCaseSensitive = &isSubjectCaseSensitive_
 	}
@@ -92,7 +92,7 @@ func (val *EventSubscriptionFilterArgs) Defaults() *EventSubscriptionFilterArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		tmp.IsSubjectCaseSensitive = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -292,7 +292,7 @@ func (val *EventSubscriptionFilterResponse) Defaults() *EventSubscriptionFilterR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSubjectCaseSensitive) {
+	if tmp.IsSubjectCaseSensitive == nil {
 		isSubjectCaseSensitive_ := false
 		tmp.IsSubjectCaseSensitive = &isSubjectCaseSensitive_
 	}

@@ -2198,7 +2198,7 @@ func (val *ClusterCreateProperties) Defaults() *ClusterCreateProperties {
 
 	tmp.EncryptionInTransitProperties = tmp.EncryptionInTransitProperties.Defaults()
 
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := Tier("Standard")
 		tmp.Tier = &tier_
 	}
@@ -2253,7 +2253,7 @@ func (val *ClusterCreatePropertiesArgs) Defaults() *ClusterCreatePropertiesArgs 
 	}
 	tmp := *val
 
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = Tier("Standard")
 	}
 	return &tmp
@@ -3436,7 +3436,7 @@ func (val *ComputeIsolationProperties) Defaults() *ComputeIsolationProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableComputeIsolation) {
+	if tmp.EnableComputeIsolation == nil {
 		enableComputeIsolation_ := false
 		tmp.EnableComputeIsolation = &enableComputeIsolation_
 	}
@@ -3468,7 +3468,7 @@ func (val *ComputeIsolationPropertiesArgs) Defaults() *ComputeIsolationPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableComputeIsolation) {
+	if tmp.EnableComputeIsolation == nil {
 		tmp.EnableComputeIsolation = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3619,7 +3619,7 @@ func (val *ComputeIsolationPropertiesResponse) Defaults() *ComputeIsolationPrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableComputeIsolation) {
+	if tmp.EnableComputeIsolation == nil {
 		enableComputeIsolation_ := false
 		tmp.EnableComputeIsolation = &enableComputeIsolation_
 	}
@@ -4151,7 +4151,7 @@ func (val *DiskEncryptionProperties) Defaults() *DiskEncryptionProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptionAtHost) {
+	if tmp.EncryptionAtHost == nil {
 		encryptionAtHost_ := false
 		tmp.EncryptionAtHost = &encryptionAtHost_
 	}
@@ -4191,7 +4191,7 @@ func (val *DiskEncryptionPropertiesArgs) Defaults() *DiskEncryptionPropertiesArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptionAtHost) {
+	if tmp.EncryptionAtHost == nil {
 		tmp.EncryptionAtHost = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -4410,7 +4410,7 @@ func (val *DiskEncryptionPropertiesResponse) Defaults() *DiskEncryptionPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptionAtHost) {
+	if tmp.EncryptionAtHost == nil {
 		encryptionAtHost_ := false
 		tmp.EncryptionAtHost = &encryptionAtHost_
 	}
@@ -4558,7 +4558,7 @@ func (val *EncryptionInTransitProperties) Defaults() *EncryptionInTransitPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEncryptionInTransitEnabled) {
+	if tmp.IsEncryptionInTransitEnabled == nil {
 		isEncryptionInTransitEnabled_ := false
 		tmp.IsEncryptionInTransitEnabled = &isEncryptionInTransitEnabled_
 	}
@@ -4588,7 +4588,7 @@ func (val *EncryptionInTransitPropertiesArgs) Defaults() *EncryptionInTransitPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEncryptionInTransitEnabled) {
+	if tmp.IsEncryptionInTransitEnabled == nil {
 		tmp.IsEncryptionInTransitEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -4722,7 +4722,7 @@ func (val *EncryptionInTransitPropertiesResponse) Defaults() *EncryptionInTransi
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEncryptionInTransitEnabled) {
+	if tmp.IsEncryptionInTransitEnabled == nil {
 		isEncryptionInTransitEnabled_ := false
 		tmp.IsEncryptionInTransitEnabled = &isEncryptionInTransitEnabled_
 	}
@@ -6258,7 +6258,7 @@ func (val *Role) Defaults() *Role {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptDataDisks) {
+	if tmp.EncryptDataDisks == nil {
 		encryptDataDisks_ := false
 		tmp.EncryptDataDisks = &encryptDataDisks_
 	}
@@ -6308,7 +6308,7 @@ func (val *RoleArgs) Defaults() *RoleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptDataDisks) {
+	if tmp.EncryptDataDisks == nil {
 		tmp.EncryptDataDisks = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -6472,7 +6472,7 @@ func (val *RoleResponse) Defaults() *RoleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptDataDisks) {
+	if tmp.EncryptDataDisks == nil {
 		encryptDataDisks_ := false
 		tmp.EncryptDataDisks = &encryptDataDisks_
 	}

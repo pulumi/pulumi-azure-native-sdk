@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +49,9 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:TrafficControllerInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:TrafficControllerInterface"),
 		},
 	})
 	opts = append(opts, aliases)

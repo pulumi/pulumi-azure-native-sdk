@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,7 +68,7 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
-	if isZero(args.AutoMitigate) {
+	if args.AutoMitigate == nil {
 		args.AutoMitigate = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -89,6 +89,9 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20220801preview:ScheduledQueryRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230315preview:ScheduledQueryRule"),
 		},
 	})
 	opts = append(opts, aliases)

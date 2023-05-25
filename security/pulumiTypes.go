@@ -79,7 +79,7 @@ func (val *AdditionalWorkspacesProperties) Defaults() *AdditionalWorkspacesPrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Sentinel"
 		tmp.Type = &type_
 	}
@@ -113,7 +113,7 @@ func (val *AdditionalWorkspacesPropertiesArgs) Defaults() *AdditionalWorkspacesP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("Sentinel")
 	}
 	return &tmp
@@ -221,7 +221,7 @@ func (val *AdditionalWorkspacesPropertiesResponse) Defaults() *AdditionalWorkspa
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Sentinel"
 		tmp.Type = &type_
 	}
@@ -5090,7 +5090,7 @@ func (val *RecommendationConfigurationPropertiesArgs) Defaults() *Recommendation
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.String("Enabled")
 	}
 	return &tmp

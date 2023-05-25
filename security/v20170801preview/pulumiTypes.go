@@ -463,7 +463,7 @@ func (val *RecommendationConfigurationPropertiesArgs) Defaults() *Recommendation
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.String("Enabled")
 	}
 	return &tmp

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +75,12 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

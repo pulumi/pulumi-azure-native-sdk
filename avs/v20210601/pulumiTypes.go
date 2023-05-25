@@ -197,7 +197,7 @@ func (val *DiskPoolVolume) Defaults() *DiskPoolVolume {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountOption) {
+	if tmp.MountOption == nil {
 		mountOption_ := "MOUNT"
 		tmp.MountOption = &mountOption_
 	}
@@ -231,7 +231,7 @@ func (val *DiskPoolVolumeArgs) Defaults() *DiskPoolVolumeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountOption) {
+	if tmp.MountOption == nil {
 		tmp.MountOption = pulumi.StringPtr("MOUNT")
 	}
 	return &tmp
@@ -401,7 +401,7 @@ func (val *DiskPoolVolumeResponse) Defaults() *DiskPoolVolumeResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountOption) {
+	if tmp.MountOption == nil {
 		mountOption_ := "MOUNT"
 		tmp.MountOption = &mountOption_
 	}

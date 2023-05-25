@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +84,9 @@ func NewResourceGuard(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230101:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:ResourceGuard"),
 		},
 	})
 	opts = append(opts, aliases)

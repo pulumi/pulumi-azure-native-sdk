@@ -91,11 +91,11 @@ func (val *LookupRedisResult) Defaults() *LookupRedisResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNonSslPort) {
+	if tmp.EnableNonSslPort == nil {
 		enableNonSslPort_ := false
 		tmp.EnableNonSslPort = &enableNonSslPort_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

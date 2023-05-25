@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,13 +116,13 @@ func NewNodeType(ctx *pulumi.Context,
 	if args.VmInstanceCount == nil {
 		return nil, errors.New("invalid value for required argument 'VmInstanceCount'")
 	}
-	if isZero(args.EnableEncryptionAtHost) {
+	if args.EnableEncryptionAtHost == nil {
 		args.EnableEncryptionAtHost = pulumi.BoolPtr(false)
 	}
-	if isZero(args.IsStateless) {
+	if args.IsStateless == nil {
 		args.IsStateless = pulumi.BoolPtr(false)
 	}
-	if isZero(args.MultiplePlacementGroups) {
+	if args.MultiplePlacementGroups == nil {
 		args.MultiplePlacementGroups = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -161,6 +161,9 @@ func NewNodeType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230201preview:NodeType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:NodeType"),
 		},
 	})
 	opts = append(opts, aliases)

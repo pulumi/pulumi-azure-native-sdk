@@ -57,7 +57,7 @@ func (val *LookupReplicationResult) Defaults() *LookupReplicationResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RegionEndpointEnabled) {
+	if tmp.RegionEndpointEnabled == nil {
 		regionEndpointEnabled_ := true
 		tmp.RegionEndpointEnabled = &regionEndpointEnabled_
 	}

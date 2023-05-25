@@ -31,7 +31,7 @@ func (val *ImageTemplateFileCustomizer) Defaults() *ImageTemplateFileCustomizer 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Sha256Checksum) {
+	if tmp.Sha256Checksum == nil {
 		sha256Checksum_ := ""
 		tmp.Sha256Checksum = &sha256Checksum_
 	}
@@ -59,7 +59,7 @@ func (val *ImageTemplateFileCustomizerResponse) Defaults() *ImageTemplateFileCus
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Sha256Checksum) {
+	if tmp.Sha256Checksum == nil {
 		sha256Checksum_ := ""
 		tmp.Sha256Checksum = &sha256Checksum_
 	}
@@ -379,15 +379,15 @@ func (val *ImageTemplatePowerShellCustomizer) Defaults() *ImageTemplatePowerShel
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RunAsSystem) {
+	if tmp.RunAsSystem == nil {
 		runAsSystem_ := false
 		tmp.RunAsSystem = &runAsSystem_
 	}
-	if isZero(tmp.RunElevated) {
+	if tmp.RunElevated == nil {
 		runElevated_ := false
 		tmp.RunElevated = &runElevated_
 	}
-	if isZero(tmp.Sha256Checksum) {
+	if tmp.Sha256Checksum == nil {
 		sha256Checksum_ := ""
 		tmp.Sha256Checksum = &sha256Checksum_
 	}
@@ -421,15 +421,15 @@ func (val *ImageTemplatePowerShellCustomizerResponse) Defaults() *ImageTemplateP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RunAsSystem) {
+	if tmp.RunAsSystem == nil {
 		runAsSystem_ := false
 		tmp.RunAsSystem = &runAsSystem_
 	}
-	if isZero(tmp.RunElevated) {
+	if tmp.RunElevated == nil {
 		runElevated_ := false
 		tmp.RunElevated = &runElevated_
 	}
-	if isZero(tmp.Sha256Checksum) {
+	if tmp.Sha256Checksum == nil {
 		sha256Checksum_ := ""
 		tmp.Sha256Checksum = &sha256Checksum_
 	}
@@ -491,7 +491,7 @@ func (val *ImageTemplateSharedImageDistributor) Defaults() *ImageTemplateSharedI
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExcludeFromLatest) {
+	if tmp.ExcludeFromLatest == nil {
 		excludeFromLatest_ := false
 		tmp.ExcludeFromLatest = &excludeFromLatest_
 	}
@@ -523,7 +523,7 @@ func (val *ImageTemplateSharedImageDistributorResponse) Defaults() *ImageTemplat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExcludeFromLatest) {
+	if tmp.ExcludeFromLatest == nil {
 		excludeFromLatest_ := false
 		tmp.ExcludeFromLatest = &excludeFromLatest_
 	}
@@ -569,7 +569,7 @@ func (val *ImageTemplateShellCustomizer) Defaults() *ImageTemplateShellCustomize
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Sha256Checksum) {
+	if tmp.Sha256Checksum == nil {
 		sha256Checksum_ := ""
 		tmp.Sha256Checksum = &sha256Checksum_
 	}
@@ -597,7 +597,7 @@ func (val *ImageTemplateShellCustomizerResponse) Defaults() *ImageTemplateShellC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Sha256Checksum) {
+	if tmp.Sha256Checksum == nil {
 		sha256Checksum_ := ""
 		tmp.Sha256Checksum = &sha256Checksum_
 	}
@@ -642,11 +642,11 @@ func (val *ImageTemplateVmProfile) Defaults() *ImageTemplateVmProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OsDiskSizeGB) {
+	if tmp.OsDiskSizeGB == nil {
 		osDiskSizeGB_ := 0
 		tmp.OsDiskSizeGB = &osDiskSizeGB_
 	}
-	if isZero(tmp.VmSize) {
+	if tmp.VmSize == nil {
 		vmSize_ := ""
 		tmp.VmSize = &vmSize_
 	}
@@ -680,10 +680,10 @@ func (val *ImageTemplateVmProfileArgs) Defaults() *ImageTemplateVmProfileArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OsDiskSizeGB) {
+	if tmp.OsDiskSizeGB == nil {
 		tmp.OsDiskSizeGB = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.VmSize) {
+	if tmp.VmSize == nil {
 		tmp.VmSize = pulumi.StringPtr("")
 	}
 	return &tmp
@@ -851,11 +851,11 @@ func (val *ImageTemplateVmProfileResponse) Defaults() *ImageTemplateVmProfileRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OsDiskSizeGB) {
+	if tmp.OsDiskSizeGB == nil {
 		osDiskSizeGB_ := 0
 		tmp.OsDiskSizeGB = &osDiskSizeGB_
 	}
-	if isZero(tmp.VmSize) {
+	if tmp.VmSize == nil {
 		vmSize_ := ""
 		tmp.VmSize = &vmSize_
 	}

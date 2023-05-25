@@ -59,7 +59,7 @@ func (val *LookupPolicyDefinitionAtManagementGroupResult) Defaults() *LookupPoli
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Indexed"
 		tmp.Mode = &mode_
 	}

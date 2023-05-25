@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,10 +49,10 @@ func NewStartStopManagedInstanceSchedule(ctx *pulumi.Context,
 	if args.ScheduleList == nil {
 		return nil, errors.New("invalid value for required argument 'ScheduleList'")
 	}
-	if isZero(args.Description) {
+	if args.Description == nil {
 		args.Description = pulumi.StringPtr("")
 	}
-	if isZero(args.TimeZoneId) {
+	if args.TimeZoneId == nil {
 		args.TimeZoneId = pulumi.StringPtr("UTC")
 	}
 	var resource StartStopManagedInstanceSchedule

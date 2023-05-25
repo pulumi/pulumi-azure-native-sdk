@@ -445,11 +445,11 @@ func (val *EmailNotification) Defaults() *EmailNotification {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendToSubscriptionAdministrator) {
+	if tmp.SendToSubscriptionAdministrator == nil {
 		sendToSubscriptionAdministrator_ := false
 		tmp.SendToSubscriptionAdministrator = &sendToSubscriptionAdministrator_
 	}
-	if isZero(tmp.SendToSubscriptionCoAdministrators) {
+	if tmp.SendToSubscriptionCoAdministrators == nil {
 		sendToSubscriptionCoAdministrators_ := false
 		tmp.SendToSubscriptionCoAdministrators = &sendToSubscriptionCoAdministrators_
 	}
@@ -483,10 +483,10 @@ func (val *EmailNotificationArgs) Defaults() *EmailNotificationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendToSubscriptionAdministrator) {
+	if tmp.SendToSubscriptionAdministrator == nil {
 		tmp.SendToSubscriptionAdministrator = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.SendToSubscriptionCoAdministrators) {
+	if tmp.SendToSubscriptionCoAdministrators == nil {
 		tmp.SendToSubscriptionCoAdministrators = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -654,11 +654,11 @@ func (val *EmailNotificationResponse) Defaults() *EmailNotificationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendToSubscriptionAdministrator) {
+	if tmp.SendToSubscriptionAdministrator == nil {
 		sendToSubscriptionAdministrator_ := false
 		tmp.SendToSubscriptionAdministrator = &sendToSubscriptionAdministrator_
 	}
-	if isZero(tmp.SendToSubscriptionCoAdministrators) {
+	if tmp.SendToSubscriptionCoAdministrators == nil {
 		sendToSubscriptionCoAdministrators_ := false
 		tmp.SendToSubscriptionCoAdministrators = &sendToSubscriptionCoAdministrators_
 	}
@@ -2606,7 +2606,7 @@ func (val *ScaleAction) Defaults() *ScaleAction {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Value) {
+	if tmp.Value == nil {
 		value_ := "1"
 		tmp.Value = &value_
 	}
@@ -2642,7 +2642,7 @@ func (val *ScaleActionArgs) Defaults() *ScaleActionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Value) {
+	if tmp.Value == nil {
 		tmp.Value = pulumi.StringPtr("1")
 	}
 	return &tmp
@@ -2712,7 +2712,7 @@ func (val *ScaleActionResponse) Defaults() *ScaleActionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Value) {
+	if tmp.Value == nil {
 		value_ := "1"
 		tmp.Value = &value_
 	}

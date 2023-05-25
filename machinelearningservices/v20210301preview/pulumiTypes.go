@@ -64,11 +64,11 @@ func (val *AKSProperties) Defaults() *AKSProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
+	if tmp.ClusterPurpose == nil {
 		clusterPurpose_ := "FastProd"
 		tmp.ClusterPurpose = &clusterPurpose_
 	}
-	if isZero(tmp.LoadBalancerType) {
+	if tmp.LoadBalancerType == nil {
 		loadBalancerType_ := "PublicIp"
 		tmp.LoadBalancerType = &loadBalancerType_
 	}
@@ -141,11 +141,11 @@ func (val *AKSResponseProperties) Defaults() *AKSResponseProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
+	if tmp.ClusterPurpose == nil {
 		clusterPurpose_ := "FastProd"
 		tmp.ClusterPurpose = &clusterPurpose_
 	}
-	if isZero(tmp.LoadBalancerType) {
+	if tmp.LoadBalancerType == nil {
 		loadBalancerType_ := "PublicIp"
 		tmp.LoadBalancerType = &loadBalancerType_
 	}
@@ -340,15 +340,15 @@ func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -437,15 +437,15 @@ func (val *AmlComputeResponseProperties) Defaults() *AmlComputeResponsePropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -2806,15 +2806,15 @@ func (val *ComputeInstanceProperties) Defaults() *ComputeInstanceProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
+	if tmp.ComputeInstanceAuthorizationType == nil {
 		computeInstanceAuthorizationType_ := "personal"
 		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
 	}
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
@@ -2901,15 +2901,15 @@ func (val *ComputeInstanceResponseProperties) Defaults() *ComputeInstanceRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
+	if tmp.ComputeInstanceAuthorizationType == nil {
 		computeInstanceAuthorizationType_ := "personal"
 		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
 	}
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
@@ -2932,7 +2932,7 @@ func (val *ComputeInstanceSshSettings) Defaults() *ComputeInstanceSshSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -2957,7 +2957,7 @@ func (val *ComputeInstanceSshSettingsResponse) Defaults() *ComputeInstanceSshSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -9739,7 +9739,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -9762,7 +9762,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}

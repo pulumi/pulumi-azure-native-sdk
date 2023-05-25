@@ -87,11 +87,11 @@ func (val *LookupSubnetResult) Defaults() *LookupSubnetResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		privateEndpointNetworkPolicies_ := "Enabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		privateLinkServiceNetworkPolicies_ := "Enabled"
 		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,7 +78,7 @@ func NewPacketCoreControlPlane(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.UeMtu) {
+	if args.UeMtu == nil {
 		args.UeMtu = pulumi.IntPtr(1440)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

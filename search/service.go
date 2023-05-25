@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,16 +60,16 @@ func NewService(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HostingMode) {
+	if args.HostingMode == nil {
 		args.HostingMode = HostingMode("default")
 	}
-	if isZero(args.PartitionCount) {
+	if args.PartitionCount == nil {
 		args.PartitionCount = pulumi.IntPtr(1)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = PublicNetworkAccess("enabled")
 	}
-	if isZero(args.ReplicaCount) {
+	if args.ReplicaCount == nil {
 		args.ReplicaCount = pulumi.IntPtr(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

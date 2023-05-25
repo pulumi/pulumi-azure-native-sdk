@@ -226,7 +226,7 @@ func (val *ArgumentResponse) Defaults() *ArgumentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -607,7 +607,7 @@ func (val *BaseImageTrigger) Defaults() *BaseImageTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -641,7 +641,7 @@ func (val *BaseImageTriggerArgs) Defaults() *BaseImageTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -809,7 +809,7 @@ func (val *BaseImageTriggerResponse) Defaults() *BaseImageTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -1348,11 +1348,11 @@ func (val *DockerBuildStepResponse) Defaults() *DockerBuildStepResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsPushEnabled) {
+	if tmp.IsPushEnabled == nil {
 		isPushEnabled_ := true
 		tmp.IsPushEnabled = &isPushEnabled_
 	}
-	if isZero(tmp.NoCache) {
+	if tmp.NoCache == nil {
 		noCache_ := false
 		tmp.NoCache = &noCache_
 	}
@@ -1783,7 +1783,7 @@ func (val *SetValueResponse) Defaults() *SetValueResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsSecret) {
+	if tmp.IsSecret == nil {
 		isSecret_ := false
 		tmp.IsSecret = &isSecret_
 	}
@@ -2156,7 +2156,7 @@ func (val *SourceTrigger) Defaults() *SourceTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
@@ -2192,7 +2192,7 @@ func (val *SourceTriggerArgs) Defaults() *SourceTriggerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -2307,7 +2307,7 @@ func (val *SourceTriggerResponse) Defaults() *SourceTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}

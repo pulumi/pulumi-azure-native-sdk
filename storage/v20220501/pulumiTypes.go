@@ -3925,7 +3925,7 @@ func (val *Encryption) Defaults() *Encryption {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.Storage"
 		tmp.KeySource = &keySource_
 	}
@@ -3963,7 +3963,7 @@ func (val *EncryptionArgs) Defaults() *EncryptionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		tmp.KeySource = pulumi.StringPtr("Microsoft.Storage")
 	}
 	return &tmp
@@ -4401,7 +4401,7 @@ func (val *EncryptionResponse) Defaults() *EncryptionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.Storage"
 		tmp.KeySource = &keySource_
 	}
@@ -5608,7 +5608,7 @@ func (val *IPRule) Defaults() *IPRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := Action("Allow")
 		tmp.Action = &action_
 	}
@@ -5640,7 +5640,7 @@ func (val *IPRuleArgs) Defaults() *IPRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = Action("Allow")
 	}
 	return &tmp
@@ -5741,7 +5741,7 @@ func (val *IPRuleResponse) Defaults() *IPRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -9293,7 +9293,7 @@ func (val *NetworkRuleSet) Defaults() *NetworkRuleSet {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
@@ -9334,10 +9334,10 @@ func (val *NetworkRuleSetArgs) Defaults() *NetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		tmp.Bypass = pulumi.StringPtr("AzureServices")
 	}
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = DefaultAction("Allow")
 	}
 	return &tmp
@@ -9539,7 +9539,7 @@ func (val *NetworkRuleSetResponse) Defaults() *NetworkRuleSetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
@@ -11474,7 +11474,7 @@ func (val *SasPolicyArgs) Defaults() *SasPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExpirationAction) {
+	if tmp.ExpirationAction == nil {
 		tmp.ExpirationAction = pulumi.String("Log")
 	}
 	return &tmp
@@ -13747,7 +13747,7 @@ func (val *VirtualNetworkRule) Defaults() *VirtualNetworkRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := Action("Allow")
 		tmp.Action = &action_
 	}
@@ -13781,7 +13781,7 @@ func (val *VirtualNetworkRuleArgs) Defaults() *VirtualNetworkRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = Action("Allow")
 	}
 	return &tmp
@@ -13889,7 +13889,7 @@ func (val *VirtualNetworkRuleResponse) Defaults() *VirtualNetworkRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}

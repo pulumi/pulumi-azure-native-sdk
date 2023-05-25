@@ -59,7 +59,7 @@ func (val *LookupAutoscaleSettingResult) Defaults() *LookupAutoscaleSettingResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}

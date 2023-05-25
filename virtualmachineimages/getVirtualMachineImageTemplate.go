@@ -66,7 +66,7 @@ func (val *LookupVirtualMachineImageTemplateResult) Defaults() *LookupVirtualMac
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BuildTimeoutInMinutes) {
+	if tmp.BuildTimeoutInMinutes == nil {
 		buildTimeoutInMinutes_ := 0
 		tmp.BuildTimeoutInMinutes = &buildTimeoutInMinutes_
 	}

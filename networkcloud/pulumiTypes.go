@@ -3107,11 +3107,11 @@ func (val *OsDisk) Defaults() *OsDisk {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CreateOption) {
+	if tmp.CreateOption == nil {
 		createOption_ := "Ephemeral"
 		tmp.CreateOption = &createOption_
 	}
-	if isZero(tmp.DeleteOption) {
+	if tmp.DeleteOption == nil {
 		deleteOption_ := "Delete"
 		tmp.DeleteOption = &deleteOption_
 	}
@@ -3144,10 +3144,10 @@ func (val *OsDiskArgs) Defaults() *OsDiskArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CreateOption) {
+	if tmp.CreateOption == nil {
 		tmp.CreateOption = pulumi.StringPtr("Ephemeral")
 	}
-	if isZero(tmp.DeleteOption) {
+	if tmp.DeleteOption == nil {
 		tmp.DeleteOption = pulumi.StringPtr("Delete")
 	}
 	return &tmp
@@ -3208,11 +3208,11 @@ func (val *OsDiskResponse) Defaults() *OsDiskResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CreateOption) {
+	if tmp.CreateOption == nil {
 		createOption_ := "Ephemeral"
 		tmp.CreateOption = &createOption_
 	}
-	if isZero(tmp.DeleteOption) {
+	if tmp.DeleteOption == nil {
 		deleteOption_ := "Delete"
 		tmp.DeleteOption = &deleteOption_
 	}

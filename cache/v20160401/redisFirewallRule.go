@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +76,12 @@ func NewRedisFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:RedisFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:RedisFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:RedisFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

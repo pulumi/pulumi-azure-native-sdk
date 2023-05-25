@@ -54,7 +54,7 @@ func (val *LookupJobResult) Defaults() *LookupJobResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Description) {
+	if tmp.Description == nil {
 		description_ := ""
 		tmp.Description = &description_
 	}

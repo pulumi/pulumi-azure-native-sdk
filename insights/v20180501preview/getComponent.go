@@ -92,19 +92,19 @@ func (val *LookupComponentResult) Defaults() *LookupComponentResult {
 	if isZero(tmp.ApplicationType) {
 		tmp.ApplicationType = "web"
 	}
-	if isZero(tmp.FlowType) {
+	if tmp.FlowType == nil {
 		flowType_ := "Bluefield"
 		tmp.FlowType = &flowType_
 	}
-	if isZero(tmp.IngestionMode) {
+	if tmp.IngestionMode == nil {
 		ingestionMode_ := "ApplicationInsights"
 		tmp.IngestionMode = &ingestionMode_
 	}
-	if isZero(tmp.RequestSource) {
+	if tmp.RequestSource == nil {
 		requestSource_ := "rest"
 		tmp.RequestSource = &requestSource_
 	}
-	if isZero(tmp.RetentionInDays) {
+	if tmp.RetentionInDays == nil {
 		retentionInDays_ := 90
 		tmp.RetentionInDays = &retentionInDays_
 	}

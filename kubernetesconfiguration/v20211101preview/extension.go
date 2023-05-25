@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,10 +70,10 @@ func NewExtension(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoUpgradeMinorVersion) {
+	if args.AutoUpgradeMinorVersion == nil {
 		args.AutoUpgradeMinorVersion = pulumi.BoolPtr(true)
 	}
-	if isZero(args.ReleaseTrain) {
+	if args.ReleaseTrain == nil {
 		args.ReleaseTrain = pulumi.StringPtr("Stable")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

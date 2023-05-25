@@ -5113,19 +5113,19 @@ func (val *LabVirtualMachineCreationParameter) Defaults() *LabVirtualMachineCrea
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowClaim) {
+	if tmp.AllowClaim == nil {
 		allowClaim_ := false
 		tmp.AllowClaim = &allowClaim_
 	}
-	if isZero(tmp.DisallowPublicIpAddress) {
+	if tmp.DisallowPublicIpAddress == nil {
 		disallowPublicIpAddress_ := false
 		tmp.DisallowPublicIpAddress = &disallowPublicIpAddress_
 	}
-	if isZero(tmp.OwnerObjectId) {
+	if tmp.OwnerObjectId == nil {
 		ownerObjectId_ := "dynamicValue"
 		tmp.OwnerObjectId = &ownerObjectId_
 	}
-	if isZero(tmp.StorageType) {
+	if tmp.StorageType == nil {
 		storageType_ := "labStorageType"
 		tmp.StorageType = &storageType_
 	}
@@ -5207,16 +5207,16 @@ func (val *LabVirtualMachineCreationParameterArgs) Defaults() *LabVirtualMachine
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowClaim) {
+	if tmp.AllowClaim == nil {
 		tmp.AllowClaim = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.DisallowPublicIpAddress) {
+	if tmp.DisallowPublicIpAddress == nil {
 		tmp.DisallowPublicIpAddress = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.OwnerObjectId) {
+	if tmp.OwnerObjectId == nil {
 		tmp.OwnerObjectId = pulumi.StringPtr("dynamicValue")
 	}
-	if isZero(tmp.StorageType) {
+	if tmp.StorageType == nil {
 		tmp.StorageType = pulumi.StringPtr("labStorageType")
 	}
 	return &tmp
@@ -5792,19 +5792,19 @@ func (val *LabVirtualMachineCreationParameterResponse) Defaults() *LabVirtualMac
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowClaim) {
+	if tmp.AllowClaim == nil {
 		allowClaim_ := false
 		tmp.AllowClaim = &allowClaim_
 	}
-	if isZero(tmp.DisallowPublicIpAddress) {
+	if tmp.DisallowPublicIpAddress == nil {
 		disallowPublicIpAddress_ := false
 		tmp.DisallowPublicIpAddress = &disallowPublicIpAddress_
 	}
-	if isZero(tmp.OwnerObjectId) {
+	if tmp.OwnerObjectId == nil {
 		ownerObjectId_ := "dynamicValue"
 		tmp.OwnerObjectId = &ownerObjectId_
 	}
-	if isZero(tmp.StorageType) {
+	if tmp.StorageType == nil {
 		storageType_ := "labStorageType"
 		tmp.StorageType = &storageType_
 	}
@@ -6979,7 +6979,7 @@ func (val *NotificationSettings) Defaults() *NotificationSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}
@@ -7017,7 +7017,7 @@ func (val *NotificationSettingsArgs) Defaults() *NotificationSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -7219,7 +7219,7 @@ func (val *NotificationSettingsResponse) Defaults() *NotificationSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}
@@ -7534,7 +7534,7 @@ func (val *ScheduleCreationParameter) Defaults() *ScheduleCreationParameter {
 	tmp := *val
 	tmp.NotificationSettings = tmp.NotificationSettings.Defaults()
 
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}
@@ -7583,7 +7583,7 @@ func (val *ScheduleCreationParameterArgs) Defaults() *ScheduleCreationParameterA
 	}
 	tmp := *val
 
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -7744,7 +7744,7 @@ func (val *ScheduleCreationParameterResponse) Defaults() *ScheduleCreationParame
 	tmp := *val
 	tmp.NotificationSettings = tmp.NotificationSettings.Defaults()
 
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}
@@ -7885,7 +7885,7 @@ func (val *ScheduleResponse) Defaults() *ScheduleResponse {
 	tmp := *val
 	tmp.NotificationSettings = tmp.NotificationSettings.Defaults()
 
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Disabled"
 		tmp.Status = &status_
 	}

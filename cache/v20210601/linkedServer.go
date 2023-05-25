@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +78,12 @@ func NewLinkedServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:LinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:LinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:LinkedServer"),
 		},
 	})
 	opts = append(opts, aliases)

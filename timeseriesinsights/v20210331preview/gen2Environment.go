@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,7 +73,7 @@ func NewGen2Environment(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TimeSeriesIdProperties'")
 	}
 	args.Kind = pulumi.String("Gen2")
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -87,7 +87,7 @@ func (val *LookupCacheResult) Defaults() *LookupCacheResult {
 
 	tmp.NetworkSettings = tmp.NetworkSettings.Defaults()
 
-	if isZero(tmp.ScalingFactor) {
+	if tmp.ScalingFactor == nil {
 		scalingFactor_ := 1.0
 		tmp.ScalingFactor = &scalingFactor_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,31 +94,31 @@ func NewCluster(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.EnableAutoStop) {
+	if args.EnableAutoStop == nil {
 		args.EnableAutoStop = pulumi.BoolPtr(true)
 	}
-	if isZero(args.EnableDiskEncryption) {
+	if args.EnableDiskEncryption == nil {
 		args.EnableDiskEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableDoubleEncryption) {
+	if args.EnableDoubleEncryption == nil {
 		args.EnableDoubleEncryption = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnablePurge) {
+	if args.EnablePurge == nil {
 		args.EnablePurge = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableStreamingIngest) {
+	if args.EnableStreamingIngest == nil {
 		args.EnableStreamingIngest = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EngineType) {
+	if args.EngineType == nil {
 		args.EngineType = pulumi.StringPtr("V3")
 	}
-	if isZero(args.PublicIPType) {
+	if args.PublicIPType == nil {
 		args.PublicIPType = pulumi.StringPtr("IPv4")
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
-	if isZero(args.RestrictOutboundNetworkAccess) {
+	if args.RestrictOutboundNetworkAccess == nil {
 		args.RestrictOutboundNetworkAccess = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

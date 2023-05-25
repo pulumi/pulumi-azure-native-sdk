@@ -63,7 +63,7 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AccountId) {
+	if tmp.AccountId == nil {
 		accountId_ := "00000000-0000-0000-0000-000000000000"
 		tmp.AccountId = &accountId_
 	}

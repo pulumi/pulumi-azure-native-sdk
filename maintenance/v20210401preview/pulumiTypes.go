@@ -1011,7 +1011,7 @@ func (val *TaskProperties) Defaults() *TaskProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TaskScope) {
+	if tmp.TaskScope == nil {
 		taskScope_ := "Global"
 		tmp.TaskScope = &taskScope_
 	}
@@ -1045,7 +1045,7 @@ func (val *TaskPropertiesArgs) Defaults() *TaskPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TaskScope) {
+	if tmp.TaskScope == nil {
 		tmp.TaskScope = pulumi.StringPtr("Global")
 	}
 	return &tmp
@@ -1153,7 +1153,7 @@ func (val *TaskPropertiesResponse) Defaults() *TaskPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TaskScope) {
+	if tmp.TaskScope == nil {
 		taskScope_ := "Global"
 		tmp.TaskScope = &taskScope_
 	}

@@ -78,7 +78,7 @@ func (val *LookupSourceControlConfigurationResult) Defaults() *LookupSourceContr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.OperatorNamespace) {
+	if tmp.OperatorNamespace == nil {
 		operatorNamespace_ := "default"
 		tmp.OperatorNamespace = &operatorNamespace_
 	}

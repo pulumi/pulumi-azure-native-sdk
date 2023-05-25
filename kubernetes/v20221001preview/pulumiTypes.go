@@ -51,7 +51,7 @@ func (val *ConnectedClusterIdentityArgs) Defaults() *ConnectedClusterIdentityArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = ResourceIdentityType("SystemAssigned")
 	}
 	return &tmp
